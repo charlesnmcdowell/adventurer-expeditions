@@ -1,0 +1,646 @@
+{
+  "schema": "adventurer.astra.source-regions.v1",
+  "date": "2026-09-19",
+  "status": "painted-source-art-not-runtime-atlas",
+  "coordinateConvention": "Rectangles [x,y,width,height], origin top-left, full actual source pixels; regions are intake guides. Recheck sparse glow boundaries before trim/packing.",
+  "sheets": [
+    {
+      "file": "assets/expedition/astra-v1/effects/combat-effects-source.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "columns": 4,
+      "rows": 4,
+      "regions": [
+        {
+          "id": "katana_arc_narrow",
+          "row": 1,
+          "column": 1,
+          "rect": [
+            0,
+            0,
+            314,
+            313
+          ],
+          "empty": false
+        },
+        {
+          "id": "katana_arc_cross",
+          "row": 1,
+          "column": 2,
+          "rect": [
+            314,
+            0,
+            313,
+            313
+          ],
+          "empty": false
+        },
+        {
+          "id": "katana_arc_broad",
+          "row": 1,
+          "column": 3,
+          "rect": [
+            627,
+            0,
+            313,
+            313
+          ],
+          "empty": false
+        },
+        {
+          "id": "hiro_afterimage",
+          "row": 1,
+          "column": 4,
+          "rect": [
+            940,
+            0,
+            314,
+            313
+          ],
+          "empty": false
+        },
+        {
+          "id": "aura_level_1",
+          "row": 2,
+          "column": 1,
+          "rect": [
+            0,
+            313,
+            314,
+            297
+          ],
+          "empty": false
+        },
+        {
+          "id": "aura_level_2",
+          "row": 2,
+          "column": 2,
+          "rect": [
+            314,
+            313,
+            313,
+            297
+          ],
+          "empty": false
+        },
+        {
+          "id": "aura_level_3",
+          "row": 2,
+          "column": 3,
+          "rect": [
+            627,
+            313,
+            313,
+            297
+          ],
+          "empty": false
+        },
+        {
+          "id": "fire_bolt",
+          "row": 2,
+          "column": 4,
+          "rect": [
+            940,
+            313,
+            314,
+            297
+          ],
+          "empty": false
+        },
+        {
+          "id": "ice_bolt",
+          "row": 3,
+          "column": 1,
+          "rect": [
+            0,
+            610,
+            314,
+            290
+          ],
+          "empty": false
+        },
+        {
+          "id": "lightning_bolt",
+          "row": 3,
+          "column": 2,
+          "rect": [
+            314,
+            610,
+            313,
+            290
+          ],
+          "empty": false
+        },
+        {
+          "id": "status_bleed",
+          "row": 3,
+          "column": 3,
+          "rect": [
+            627,
+            610,
+            313,
+            290
+          ],
+          "empty": false
+        },
+        {
+          "id": "status_poison",
+          "row": 3,
+          "column": 4,
+          "rect": [
+            940,
+            610,
+            314,
+            290
+          ],
+          "empty": false
+        },
+        {
+          "id": "dust_skid",
+          "row": 4,
+          "column": 1,
+          "rect": [
+            0,
+            900,
+            314,
+            354
+          ],
+          "empty": false
+        },
+        {
+          "id": "impact_spark",
+          "row": 4,
+          "column": 2,
+          "rect": [
+            314,
+            900,
+            313,
+            354
+          ],
+          "empty": false
+        },
+        {
+          "id": "defeat_light",
+          "row": 4,
+          "column": 3,
+          "rect": [
+            627,
+            900,
+            313,
+            354
+          ],
+          "empty": false
+        },
+        {
+          "id": "shield_ripple",
+          "row": 4,
+          "column": 4,
+          "rect": [
+            940,
+            900,
+            314,
+            354
+          ],
+          "empty": false
+        }
+      ]
+    },
+    {
+      "file": "assets/expedition/astra-v1/icons/bram-skills-source.png",
+      "width": 1774,
+      "height": 887,
+      "mode": "RGBA",
+      "columns": 4,
+      "rows": 2,
+      "regions": [
+        {
+          "id": "shield_wall",
+          "row": 1,
+          "column": 1,
+          "rect": [
+            0,
+            0,
+            444,
+            440
+          ],
+          "empty": false
+        },
+        {
+          "id": "cleave",
+          "row": 1,
+          "column": 2,
+          "rect": [
+            444,
+            0,
+            443,
+            440
+          ],
+          "empty": false
+        },
+        {
+          "id": "bulwark",
+          "row": 1,
+          "column": 3,
+          "rect": [
+            887,
+            0,
+            443,
+            440
+          ],
+          "empty": false
+        },
+        {
+          "id": "taunt",
+          "row": 1,
+          "column": 4,
+          "rect": [
+            1330,
+            0,
+            444,
+            440
+          ],
+          "empty": false
+        },
+        {
+          "id": "sunder",
+          "row": 2,
+          "column": 1,
+          "rect": [
+            0,
+            440,
+            444,
+            447
+          ],
+          "empty": false
+        },
+        {
+          "id": "stand_fast",
+          "row": 2,
+          "column": 2,
+          "rect": [
+            444,
+            440,
+            443,
+            447
+          ],
+          "empty": false
+        },
+        {
+          "id": "momentum",
+          "row": 2,
+          "column": 3,
+          "rect": [
+            887,
+            440,
+            443,
+            447
+          ],
+          "empty": false
+        },
+        {
+          "id": "arena_champion",
+          "row": 2,
+          "column": 4,
+          "rect": [
+            1330,
+            440,
+            444,
+            447
+          ],
+          "empty": false
+        }
+      ]
+    },
+    {
+      "file": "assets/expedition/astra-v1/icons/nyx-skills-source.png",
+      "width": 1774,
+      "height": 887,
+      "mode": "RGBA",
+      "columns": 4,
+      "rows": 2,
+      "regions": [
+        {
+          "id": "venom_fang",
+          "row": 1,
+          "column": 1,
+          "rect": [
+            0,
+            0,
+            444,
+            443
+          ],
+          "empty": false
+        },
+        {
+          "id": "aimed_shot",
+          "row": 1,
+          "column": 2,
+          "rect": [
+            444,
+            0,
+            443,
+            443
+          ],
+          "empty": false
+        },
+        {
+          "id": "opportunist",
+          "row": 1,
+          "column": 3,
+          "rect": [
+            887,
+            0,
+            443,
+            443
+          ],
+          "empty": false
+        },
+        {
+          "id": "snare",
+          "row": 1,
+          "column": 4,
+          "rect": [
+            1330,
+            0,
+            444,
+            443
+          ],
+          "empty": false
+        },
+        {
+          "id": "smoke_bomb",
+          "row": 2,
+          "column": 1,
+          "rect": [
+            0,
+            443,
+            444,
+            444
+          ],
+          "empty": false
+        },
+        {
+          "id": "marksman",
+          "row": 2,
+          "column": 2,
+          "rect": [
+            444,
+            443,
+            443,
+            444
+          ],
+          "empty": false
+        },
+        {
+          "id": "sniper",
+          "row": 2,
+          "column": 3,
+          "rect": [
+            887,
+            443,
+            443,
+            444
+          ],
+          "empty": false
+        },
+        {
+          "id": "septic_sanguine",
+          "row": 2,
+          "column": 4,
+          "rect": [
+            1330,
+            443,
+            444,
+            444
+          ],
+          "empty": false
+        }
+      ]
+    },
+    {
+      "file": "assets/expedition/astra-v1/icons/sable-skills-source.png",
+      "width": 1774,
+      "height": 887,
+      "mode": "RGBA",
+      "columns": 4,
+      "rows": 2,
+      "regions": [
+        {
+          "id": "fire_bolt",
+          "row": 1,
+          "column": 1,
+          "rect": [
+            0,
+            0,
+            444,
+            435
+          ],
+          "empty": false
+        },
+        {
+          "id": "spark",
+          "row": 1,
+          "column": 2,
+          "rect": [
+            444,
+            0,
+            443,
+            435
+          ],
+          "empty": false
+        },
+        {
+          "id": "arcane_focus",
+          "row": 1,
+          "column": 3,
+          "rect": [
+            887,
+            0,
+            443,
+            435
+          ],
+          "empty": false
+        },
+        {
+          "id": "frost_touch",
+          "row": 1,
+          "column": 4,
+          "rect": [
+            1330,
+            0,
+            444,
+            435
+          ],
+          "empty": false
+        },
+        {
+          "id": "ember_lash",
+          "row": 2,
+          "column": 1,
+          "rect": [
+            0,
+            435,
+            444,
+            452
+          ],
+          "empty": false
+        },
+        {
+          "id": "pyromaniac",
+          "row": 2,
+          "column": 2,
+          "rect": [
+            444,
+            435,
+            443,
+            452
+          ],
+          "empty": false
+        },
+        {
+          "id": "lightning_king",
+          "row": 2,
+          "column": 3,
+          "rect": [
+            887,
+            435,
+            443,
+            452
+          ],
+          "empty": false
+        },
+        {
+          "id": null,
+          "row": 2,
+          "column": 4,
+          "rect": [
+            1330,
+            435,
+            444,
+            452
+          ],
+          "empty": true
+        }
+      ]
+    },
+    {
+      "file": "assets/expedition/astra-v1/icons/hiro-skills-tiers-source.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "columns": 3,
+      "rows": 3,
+      "regions": [
+        {
+          "id": "katana_slash",
+          "row": 1,
+          "column": 1,
+          "rect": [
+            0,
+            0,
+            418,
+            412
+          ],
+          "empty": false
+        },
+        {
+          "id": "god_aura",
+          "row": 1,
+          "column": 2,
+          "rect": [
+            418,
+            0,
+            414,
+            412
+          ],
+          "empty": false
+        },
+        {
+          "id": "counter_attack",
+          "row": 1,
+          "column": 3,
+          "rect": [
+            832,
+            0,
+            422,
+            412
+          ],
+          "empty": false
+        },
+        {
+          "id": "finisher",
+          "row": 2,
+          "column": 1,
+          "rect": [
+            0,
+            412,
+            418,
+            399
+          ],
+          "empty": false
+        },
+        {
+          "id": "lone_wolf",
+          "row": 2,
+          "column": 2,
+          "rect": [
+            418,
+            412,
+            414,
+            399
+          ],
+          "empty": false
+        },
+        {
+          "id": "expedition_riposte",
+          "row": 2,
+          "column": 3,
+          "rect": [
+            832,
+            412,
+            422,
+            399
+          ],
+          "empty": false
+        },
+        {
+          "id": "tier_basic",
+          "row": 3,
+          "column": 1,
+          "rect": [
+            0,
+            811,
+            418,
+            443
+          ],
+          "empty": false
+        },
+        {
+          "id": "tier_intermediate",
+          "row": 3,
+          "column": 2,
+          "rect": [
+            418,
+            811,
+            414,
+            443
+          ],
+          "empty": false
+        },
+        {
+          "id": "tier_advanced",
+          "row": 3,
+          "column": 3,
+          "rect": [
+            832,
+            811,
+            422,
+            443
+          ],
+          "empty": false
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "budgetMB": 20.0,
+  "note": "What the CrazyGames build ships (GDD v0.8 §12a). Scripts, styles and icons come from index.html; everything else is listed here. tools/size_check.js sums it, fails over budget, and test/browser_expedition.js --ship serves only this set.",
+  "files": [
+    "index.html",
+    "THIRD_PARTY_NOTICES.txt",
+    "assets/app/icon-180.png",
+    "assets/app/icon-192.png",
+    "assets/anime/v2/runtime/hiro_cyber_20260916.webp",
+    "assets/anime/v2/runtime/creatures_1.webp",
+    "assets/anime/v2/runtime/forest.webp",
+    "assets/anime/v2/runtime/road.webp",
+    "assets/anime/v2/runtime/mountain.webp",
+    "assets/anime/v2/runtime/alley.webp",
+    "assets/anime/v2/runtime/marsh.webp",
+    "assets/anime/v2/runtime/ruins.webp",
+    "assets/anime/v2/runtime/tavern.webp",
+    "assets/anime/travel/v1/runtime/forest.webp",
+    "assets/anime/travel/v1/runtime/city.webp",
+    "assets/anime/travel/v1/runtime/marsh.webp",
+    "assets/anime/travel/v1/runtime/ruins.webp",
+    "assets/expedition/hiro/hiro.webp",
+    "assets/expedition/hiro/hiro.json"
+  ],
+  "dirs": [
+    "audio/music",
+    "audio/sfx",
+    "audio/vo",
+    "assets/expedition/busts"
+  ],
+  "partSheets": {
+    "note": "The recruits' painted busts are composed at runtime from these part sheets (4.4 MB). tools/bake_busts.js renders them once into assets/expedition/busts/ and the game loads those instead; the sheets then stay out of the build.",
+    "files": [
+      "assets/anime/v2/runtime/heads_m_styles1.webp",
+      "assets/anime/v2/runtime/wardrobe_m2.webp",
+      "assets/anime/v2/runtime/heads_f_styles1.webp",
+      "assets/anime/v2/runtime/wardrobe_f3.webp",
+      "assets/anime/v2/runtime/headgear.webp"
+    ]
+  }
+}

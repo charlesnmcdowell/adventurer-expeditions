@@ -1,0 +1,538 @@
+{
+  "builtIn": true,
+  "referencePrompt": "Use case: stylized-concept. Asset type: golden reference for a painted full-frame 2D game creature animation. Reference image is the existing game creature atlas; use ONLY the TOP LEFT gray dire wolf, not the boar, plant or raptor. Draw one complete dire wolf at generous size in a landscape canvas, facing LEFT in a true readable side view with a very slight three-quarter view of the face, all four paws and tail fully visible. Match the existing high-detail painted anime game art exactly: grey and white individual fur locks, black charcoal spiky neck ruff and back, pale muzzle and legs, yellow amber eyes, broad paws and claws, powerful forequarters, focused fierce expression. Keep the wolf quadrupedal, anatomically coherent, with one head, four legs and one tail. Neutral alert battle stance, weight on forelegs, jaws only slightly open, no attack effects. Soft upper-left illumination, intricate fur shading, restrained dark ink contours; not photorealistic, not chibi, not simplified flat cel shading. No floor, scenery, objects, text, watermark or border. True TRANSPARENT background, clean silhouette. Original game art reference identity must be preserved. This is not a werewolf. No wounds, blood or gore. Output a clean single character reference rather than a sheet. Leave clear padding around the character.",
+  "clips": [
+    {
+      "id": "wolf_idle",
+      "prompt": "Use case: identity-preserve. Asset type: painted full-frame animation SOURCE CONTACT SHEET for Adventurer Expeditions, clip wolf_idle. Reference image is golden creature identity, not an edit target. Preserve exactly the same gray-white dire wolf, amber-yellow eyes, charcoal large spiked ruff, white face and forelegs, powerful forequarters, coherent four-legged anatomy. All poses FACE LEFT, never mirror or rotate camera. Paint 4 distinct complete wolf frames in a strict 2 column by 2 row equal-cell grid, reading left-to-right then top-to-bottom.  Overall canvas landscape, each cell generous wide or square proportions with clear empty gutters and 12% padding. Same wolf size within cells, same virtual foot baseline at 85% cell height, same center-of-mass alignment; airborne poses can raise above baseline naturally. No parts cross a cell boundary. No text, numbering, labels, borders, floor, shadows, scenery, targets or extra animals. Every cell contains one whole independently painted wolf, no cutouts or rigs. Genuine transparent background. High-detail painted anime art equal to the reference; individual fur locks, subtle shading, crisp expressive silhouette. Warm upper-left light fixed between frames. Full contact poses with exaggeration, strong anticipation, recovery overshoot; fur/tail trailing a beat after body. No gore/wounds. Pose sequence: 1: Alert grounded guard, closed jaw and level shoulders. 2: Small inhale, chest lifts subtly, ears swivel toward danger. 3: Exhale, weight settles, forepaw flexes while rear paws stay planted. 4: Return toward frame1, tail and ruff settling one beat behind chest. This is an animation sequence, not random poses; retain bone lengths, face and fur pattern across every cell.",
+      "spec": {
+        "id": "wolf_idle",
+        "frames": 4,
+        "cols": 2,
+        "rows": 2,
+        "poses": [
+          "Alert grounded guard, closed jaw and level shoulders.",
+          "Small inhale, chest lifts subtly, ears swivel toward danger.",
+          "Exhale, weight settles, forepaw flexes while rear paws stay planted.",
+          "Return toward frame1, tail and ruff settling one beat behind chest."
+        ]
+      },
+      "source": "C:\\Users\\charl\\.codex\\generated_images\\01a0b9f4-5be3-7e50-8e02-bc2e978b94ac\\exec-852ab79a-ce41-4c39-80c6-672cffdb83fa.png",
+      "file": "assets/expedition/astra-v1/beasts/wolf_idle.png"
+    },
+    {
+      "id": "wolf_run",
+      "prompt": "Use case: identity-preserve. Asset type: painted full-frame animation SOURCE CONTACT SHEET for Adventurer Expeditions, clip wolf_run. Reference image is golden creature identity, not an edit target. Preserve exactly the same gray-white dire wolf, amber-yellow eyes, charcoal large spiked ruff, white face and forelegs, powerful forequarters, coherent four-legged anatomy. All poses FACE LEFT, never mirror or rotate camera. Paint 6 distinct complete wolf frames in a strict 3 column by 2 row equal-cell grid, reading left-to-right then top-to-bottom.  Overall canvas landscape, each cell generous wide or square proportions with clear empty gutters and 12% padding. Same wolf size within cells, same virtual foot baseline at 85% cell height, same center-of-mass alignment; airborne poses can raise above baseline naturally. No parts cross a cell boundary. No text, numbering, labels, borders, floor, shadows, scenery, targets or extra animals. Every cell contains one whole independently painted wolf, no cutouts or rigs. Genuine transparent background. High-detail painted anime art equal to the reference; individual fur locks, subtle shading, crisp expressive silhouette. Warm upper-left light fixed between frames. Full contact poses with exaggeration, strong anticipation, recovery overshoot; fur/tail trailing a beat after body. No gore/wounds. Pose sequence: 1: Collected stride, all paws under body, hindquarters loaded. 2: Push-off with hindlegs, front legs reaching toward left. 3: Airborne extension, front paws ahead, hind paws behind, fur trailing right. 4: Forepaws touch down, shoulders compress, hindlegs swing forward. 5: Front support, spine collects and hindlegs tuck underneath. 6: Hind paws plant and load for next stride; tail follows through. This is an animation sequence, not random poses; retain bone lengths, face and fur pattern across every cell.",
+      "spec": {
+        "id": "wolf_run",
+        "frames": 6,
+        "cols": 3,
+        "rows": 2,
+        "poses": [
+          "Collected stride, all paws under body, hindquarters loaded.",
+          "Push-off with hindlegs, front legs reaching toward left.",
+          "Airborne extension, front paws ahead, hind paws behind, fur trailing right.",
+          "Forepaws touch down, shoulders compress, hindlegs swing forward.",
+          "Front support, spine collects and hindlegs tuck underneath.",
+          "Hind paws plant and load for next stride; tail follows through."
+        ]
+      },
+      "source": "C:\\Users\\charl\\.codex\\generated_images\\01a0b9f4-5be3-7e50-8e02-bc2e978b94ac\\exec-6d1cda2e-210d-4d38-84d6-050dc723de70.png",
+      "file": "assets/expedition/astra-v1/beasts/wolf_run.png"
+    },
+    {
+      "id": "wolf_leap",
+      "prompt": "Use case: identity-preserve. Asset type: painted full-frame animation SOURCE CONTACT SHEET for Adventurer Expeditions, clip wolf_leap. Reference image is golden creature identity, not an edit target. Preserve exactly the same gray-white dire wolf, amber-yellow eyes, charcoal large spiked ruff, white face and forelegs, powerful forequarters, coherent four-legged anatomy. All poses FACE LEFT, never mirror or rotate camera. Paint 5 distinct complete wolf frames in a strict 3 column by 2 row equal-cell grid, reading left-to-right then top-to-bottom. Final unused cell must be completely empty. Overall canvas landscape, each cell generous wide or square proportions with clear empty gutters and 12% padding. Same wolf size within cells, same virtual foot baseline at 85% cell height, same center-of-mass alignment; airborne poses can raise above baseline naturally. No parts cross a cell boundary. No text, numbering, labels, borders, floor, shadows, scenery, targets or extra animals. Every cell contains one whole independently painted wolf, no cutouts or rigs. Genuine transparent background. High-detail painted anime art equal to the reference; individual fur locks, subtle shading, crisp expressive silhouette. Warm upper-left light fixed between frames. Full contact poses with exaggeration, strong anticipation, recovery overshoot; fur/tail trailing a beat after body. No gore/wounds. Pose sequence: 1: Deep crouch tell with shoulder blades high and hindquarters coiled. 2: Powerful takeoff, hind paws pushing, forelegs reaching up-left. 3: Airborne arc apex, full body elongated, jaws open toward unseen target to LEFT. 4: Contact anticipation, front paws reach forward, chest compresses, muzzle near imaginary contact point on left; no target drawn. 5: Low balanced landing, all paws collect underneath; ruff and tail overshoot forward. This is an animation sequence, not random poses; retain bone lengths, face and fur pattern across every cell.",
+      "spec": {
+        "id": "wolf_leap",
+        "frames": 5,
+        "cols": 3,
+        "rows": 2,
+        "poses": [
+          "Deep crouch tell with shoulder blades high and hindquarters coiled.",
+          "Powerful takeoff, hind paws pushing, forelegs reaching up-left.",
+          "Airborne arc apex, full body elongated, jaws open toward unseen target to LEFT.",
+          "Contact anticipation, front paws reach forward, chest compresses, muzzle near imaginary contact point on left; no target drawn.",
+          "Low balanced landing, all paws collect underneath; ruff and tail overshoot forward."
+        ]
+      },
+      "source": "C:\\Users\\charl\\.codex\\generated_images\\01a0b9f4-5be3-7e50-8e02-bc2e978b94ac\\exec-7e2aaa3e-9e90-4973-b7a8-198ffa5d4e50.png",
+      "file": "assets/expedition/astra-v1/beasts/wolf_leap.png"
+    },
+    {
+      "id": "wolf_bite",
+      "prompt": "Use case: identity-preserve. Asset type: painted full-frame animation SOURCE CONTACT SHEET for Adventurer Expeditions, clip wolf_bite. Input reference is golden creature identity. Preserve exactly the same gray-white dire wolf, amber-yellow eyes, charcoal large spiked ruff, white face and forelegs, powerful forequarters, coherent four-legged anatomy. Every pose FACE LEFT, same camera. Paint 4 distinct complete wolf frames in a strict 2 column by 2 row equal-cell grid, reading left-to-right then top-to-bottom.  Overall canvas landscape, equal generously padded cells, no frame overlaps another. No text, numbering, labels, borders, floor, shadows, scenery, targets or extra animals. Every cell contains one whole independently painted wolf, no cutouts or rigs. Genuine transparent background. High-detail painted anime art equal to reference: individual fur locks, subtle shading, crisp expressive silhouette. Fixed warm upper-left light. Keep same scale and virtual groundline within cells; airborne poses move above baseline naturally. Exaggerate impact, weight and recovery overshoot; fur/tail trails a beat after body. No gore/wounds. Pose sequence: 1: Airborne/reared forequarters, neck extended left, jaws widely open approaching imaginary horizontal target outside mouth. 2: Jaws close firmly at left contact point, visible mouth opening sized for a forearm but no arm/hero drawn, forelegs braced and hindlegs tucked. 3: Clamped hold, neck compressed and shoulders straining slightly, same contact point as frame2, fur swings opposite to resisted pull. 4: Jaw release, neck pulls back right, front paws retract, body recoils away from contact. This must be an articulated animation sequence, not identical bodies rotated or pasted. Retain face, bone lengths and fur pattern. All body parts stay inside cells.",
+      "spec": {
+        "id": "wolf_bite",
+        "frames": 4,
+        "cols": 2,
+        "rows": 2,
+        "poses": [
+          "Airborne/reared forequarters, neck extended left, jaws widely open approaching imaginary horizontal target outside mouth.",
+          "Jaws close firmly at left contact point, visible mouth opening sized for a forearm but no arm/hero drawn, forelegs braced and hindlegs tucked.",
+          "Clamped hold, neck compressed and shoulders straining slightly, same contact point as frame2, fur swings opposite to resisted pull.",
+          "Jaw release, neck pulls back right, front paws retract, body recoils away from contact."
+        ]
+      },
+      "source": "C:\\Users\\charl\\.codex\\generated_images\\01a0b9f4-5be3-7e50-8e02-bc2e978b94ac\\exec-ed38360c-dec4-450f-a096-41ad9a0b7c72.png",
+      "file": "assets/expedition/astra-v1/beasts/wolf_bite.png"
+    },
+    {
+      "id": "wolf_land_tumble",
+      "prompt": "Use case: identity-preserve. Asset type: painted full-frame animation SOURCE CONTACT SHEET for Adventurer Expeditions, clip wolf_land_tumble. Input reference is golden creature identity. Preserve exactly the same gray-white dire wolf, amber-yellow eyes, charcoal large spiked ruff, white face and forelegs, powerful forequarters, coherent four-legged anatomy. Every pose FACE LEFT, same camera. Paint 5 distinct complete wolf frames in a strict 3 column by 2 row equal-cell grid, reading left-to-right then top-to-bottom. Final unused cell completely empty. Overall canvas landscape, equal generously padded cells, no frame overlaps another. No text, numbering, labels, borders, floor, shadows, scenery, targets or extra animals. Every cell contains one whole independently painted wolf, no cutouts or rigs. Genuine transparent background. High-detail painted anime art equal to reference: individual fur locks, subtle shading, crisp expressive silhouette. Fixed warm upper-left light. Keep same scale and virtual groundline within cells; airborne poses move above baseline naturally. Exaggerate impact, weight and recovery overshoot; fur/tail trails a beat after body. No gore/wounds. Pose sequence: 1: Thrown sideways back toward right after shake-off; torso curls, paws splayed but four coherent limbs. 2: Low airborne half tumble, back curled, head left, tail trailing, no full flip. 3: Shoulder and hip touch imaginary ground, legs gather; soft impact with compressed fur. 4: Forepaws plant, body rises out of tumble, hind paws underneath. 5: Return to stable left-facing battle guard, ruff overshoots and settles. This must be an articulated animation sequence, not identical bodies rotated or pasted. Retain face, bone lengths and fur pattern. All body parts stay inside cells.",
+      "spec": {
+        "id": "wolf_land_tumble",
+        "frames": 5,
+        "cols": 3,
+        "rows": 2,
+        "poses": [
+          "Thrown sideways back toward right after shake-off; torso curls, paws splayed but four coherent limbs.",
+          "Low airborne half tumble, back curled, head left, tail trailing, no full flip.",
+          "Shoulder and hip touch imaginary ground, legs gather; soft impact with compressed fur.",
+          "Forepaws plant, body rises out of tumble, hind paws underneath.",
+          "Return to stable left-facing battle guard, ruff overshoots and settles."
+        ]
+      },
+      "source": "C:\\Users\\charl\\.codex\\generated_images\\01a0b9f4-5be3-7e50-8e02-bc2e978b94ac\\exec-5ae51c88-e75d-49b9-bc4d-722d31b6cade.png",
+      "file": "assets/expedition/astra-v1/beasts/wolf_land_tumble.png"
+    },
+    {
+      "id": "wolf_overshoot_land",
+      "prompt": "Use case: identity-preserve. Asset type: painted full-frame animation SOURCE CONTACT SHEET for Adventurer Expeditions, clip wolf_overshoot_land. Input reference is golden creature identity. Preserve exactly the same gray-white dire wolf, amber-yellow eyes, charcoal large spiked ruff, white face and forelegs, powerful forequarters, coherent four-legged anatomy. Every pose FACE LEFT, same camera. Paint 4 distinct complete wolf frames in a strict 2 column by 2 row equal-cell grid, reading left-to-right then top-to-bottom.  Overall canvas landscape, equal generously padded cells, no frame overlaps another. No text, numbering, labels, borders, floor, shadows, scenery, targets or extra animals. Every cell contains one whole independently painted wolf, no cutouts or rigs. Genuine transparent background. High-detail painted anime art equal to reference: individual fur locks, subtle shading, crisp expressive silhouette. Fixed warm upper-left light. Keep same scale and virtual groundline within cells; airborne poses move above baseline naturally. Exaggerate impact, weight and recovery overshoot; fur/tail trails a beat after body. No gore/wounds. Pose sequence: 1: Leap misses; stretched airborne pose heading left, jaws closing on empty air. 2: Forepaws hit ground too far forward, shoulders compressed, hind legs still trailing right. 3: Skid low, front claws drag on imaginary ground, chest braking; tail and mane swing forward. 4: Recover left-facing guard, paws collected, wary glare toward left. This must be an articulated animation sequence, not identical bodies rotated or pasted. Retain face, bone lengths and fur pattern. All body parts stay inside cells.",
+      "spec": {
+        "id": "wolf_overshoot_land",
+        "frames": 4,
+        "cols": 2,
+        "rows": 2,
+        "poses": [
+          "Leap misses; stretched airborne pose heading left, jaws closing on empty air.",
+          "Forepaws hit ground too far forward, shoulders compressed, hind legs still trailing right.",
+          "Skid low, front claws drag on imaginary ground, chest braking; tail and mane swing forward.",
+          "Recover left-facing guard, paws collected, wary glare toward left."
+        ]
+      },
+      "source": "C:\\Users\\charl\\.codex\\generated_images\\01a0b9f4-5be3-7e50-8e02-bc2e978b94ac\\exec-cdc3e856-64c1-4b0d-a419-88d5cded4603.png",
+      "file": "assets/expedition/astra-v1/beasts/wolf_overshoot_land.png"
+    },
+    {
+      "id": "wolf_land_beside",
+      "prompt": "Use case: identity-preserve. Asset type: painted full-frame animation SOURCE CONTACT SHEET for Adventurer Expeditions, clip wolf_land_beside. Reference image is golden creature identity. Preserve same gray-white dire wolf, amber-yellow eyes, charcoal spiked ruff, white face/forelegs, four-legged anatomy. All poses FACE LEFT, same camera. Paint 3 distinct complete wolf frames in a strict 3 column by 1 row equal-cell grid, reading left-to-right then top-to-bottom. Landscape canvas. VERY GENEROUS cell padding: animal fits in inner 75% of each cell, no fur/paw/tail crosses cell boundary, clear gaps between figures. No text, numbering, labels, borders, floor, shadows, scenery, targets or extra animals. Every cell contains one whole independently painted wolf, no cutouts/rigs. Genuine transparent background. High-detail painted anime style matching reference; individual fur locks, subtle shading, expressive silhouette. Fixed upper-left light. Same scale; virtual groundline at85% cellheight exceptairborneposes. Exaggerated contact and recovery overshoot; fur/tail trails a beat behind body. No gore/wounds. Pose sequence: 1: Parried aside by unseen guard; neck twists slightly, body deflects right, forepaws splayed for balance. 2: Off-balance short landing, left-facing, front legs crossed in a quick scramble, ruff compressed. 3: Stable low guard restored, four feet grounded, fur settles; head stays left. An articulated animation sequence, not copies of one pose. Retain face, bone lengths and fur pattern.",
+      "spec": {
+        "id": "wolf_land_beside",
+        "frames": 3,
+        "cols": 3,
+        "rows": 1,
+        "poses": [
+          "Parried aside by unseen guard; neck twists slightly, body deflects right, forepaws splayed for balance.",
+          "Off-balance short landing, left-facing, front legs crossed in a quick scramble, ruff compressed.",
+          "Stable low guard restored, four feet grounded, fur settles; head stays left."
+        ]
+      },
+      "source": "C:\\Users\\charl\\.codex\\generated_images\\01a0b9f4-5be3-7e50-8e02-bc2e978b94ac\\exec-265f24f5-d165-4e78-a6d1-8f696f73dda9.png",
+      "file": "assets/expedition/astra-v1/beasts/wolf_land_beside.png"
+    },
+    {
+      "id": "wolf_hit_short",
+      "prompt": "Use case: identity-preserve. Asset type: painted full-frame animation SOURCE CONTACT SHEET for Adventurer Expeditions, clip wolf_hit_short. Reference image is golden creature identity. Preserve same gray-white dire wolf, amber-yellow eyes, charcoal spiked ruff, white face/forelegs, four-legged anatomy. All poses FACE LEFT, same camera. Paint 3 distinct complete wolf frames in a strict 3 column by 1 row equal-cell grid, reading left-to-right then top-to-bottom. Landscape canvas. VERY GENEROUS cell padding: animal fits in inner 75% of each cell, no fur/paw/tail crosses cell boundary, clear gaps between figures. No text, numbering, labels, borders, floor, shadows, scenery, targets or extra animals. Every cell contains one whole independently painted wolf, no cutouts/rigs. Genuine transparent background. High-detail painted anime style matching reference; individual fur locks, subtle shading, expressive silhouette. Fixed upper-left light. Same scale; virtual groundline at85% cellheight exceptairborneposes. Exaggerated contact and recovery overshoot; fur/tail trails a beat behind body. No gore/wounds. Pose sequence: 1: Clear contact recoil from a non-graphic blow from left: head/shoulders compress toward right, grimace, four paws coherent, no visible wound. 2: Recoil overshoot, weight shifting onto hindlegs, mane trailing opposite body motion. 3: Recover ground support and left-facing guard, jaw set, no blood. An articulated animation sequence, not copies of one pose. Retain face, bone lengths and fur pattern.",
+      "spec": {
+        "id": "wolf_hit_short",
+        "frames": 3,
+        "cols": 3,
+        "rows": 1,
+        "poses": [
+          "Clear contact recoil from a non-graphic blow from left: head/shoulders compress toward right, grimace, four paws coherent, no visible wound.",
+          "Recoil overshoot, weight shifting onto hindlegs, mane trailing opposite body motion.",
+          "Recover ground support and left-facing guard, jaw set, no blood."
+        ]
+      },
+      "source": "C:\\Users\\charl\\.codex\\generated_images\\01a0b9f4-5be3-7e50-8e02-bc2e978b94ac\\exec-35cc98df-186e-4a41-8781-eb8b54a4f1f3.png",
+      "file": "assets/expedition/astra-v1/beasts/wolf_hit_short.png"
+    },
+    {
+      "id": "wolf_down_fade",
+      "prompt": "Use case: identity-preserve. Asset type: painted full-frame animation SOURCE CONTACT SHEET for Adventurer Expeditions, clip wolf_down_fade. Reference image is golden creature identity. Preserve same gray-white dire wolf, amber-yellow eyes, charcoal spiked ruff, white face/forelegs, four-legged anatomy. All poses FACE LEFT, same camera. Paint 4 distinct complete wolf frames in a strict 2 column by 2 row equal-cell grid, reading left-to-right then top-to-bottom. Landscape canvas. VERY GENEROUS cell padding: animal fits in inner 75% of each cell, no fur/paw/tail crosses cell boundary, clear gaps between figures. No text, numbering, labels, borders, floor, shadows, scenery, targets or extra animals. Every cell contains one whole independently painted wolf, no cutouts/rigs. Genuine transparent background. High-detail painted anime style matching reference; individual fur locks, subtle shading, expressive silhouette. Fixed upper-left light. Same scale; virtual groundline at85% cellheight exceptairborneposes. Exaggerated contact and recovery overshoot; fur/tail trails a beat behind body. No gore/wounds. Pose sequence: 1: Defeated animal staggers, front legs buckle, head lowers, non-graphic. 2: Settles onto side low to ground with eyes closed; no wounds, no corpse detail. 3: Same low pose beginning to dissolve into soft warm gold-white dust motes at outer silhouette; core still readable. 4: Mostly dispersed faint golden fur-shaped light and small motes, no animal corpse remains. An articulated animation sequence, not copies of one pose. Retain face, bone lengths and fur pattern.",
+      "spec": {
+        "id": "wolf_down_fade",
+        "frames": 4,
+        "cols": 2,
+        "rows": 2,
+        "poses": [
+          "Defeated animal staggers, front legs buckle, head lowers, non-graphic.",
+          "Settles onto side low to ground with eyes closed; no wounds, no corpse detail.",
+          "Same low pose beginning to dissolve into soft warm gold-white dust motes at outer silhouette; core still readable.",
+          "Mostly dispersed faint golden fur-shaped light and small motes, no animal corpse remains."
+        ]
+      },
+      "source": "C:\\Users\\charl\\.codex\\generated_images\\01a0b9f4-5be3-7e50-8e02-bc2e978b94ac\\exec-64feebc8-a070-474b-8a3e-13708054f969.png",
+      "file": "assets/expedition/astra-v1/beasts/wolf_down_fade.png"
+    },
+    {
+      "id": "boar_action_keys",
+      "prompt": "Use case: stylized-concept. Asset type: full-frame painted creature animation KEY POSES sheet for Adventurer Expeditions. Reference image role: exact original creature style/identity guide. Use ONLY the TOP RIGHT creature from reference atlas: a massive brown cave boar with long ivory upward-curved tusks, coarse dark mane, red eyes, heavy hooves and thick muscular torso. All frames show the same boar facing LEFT. It has four hooved legs, one tail, no paws, no wolf fur. Create six complete independent painted poses in strict THREE columns TWO rows; rows read left-to-right. Large landscape canvas, generous padding around each cell, complete silhouette with every limb and tail inside own cell. Same scale and eye-level camera across all cells, no perspective changes. Each creature fits inside the central75% cell width; no overlap between cells. Genuine transparent background, no scenery/floor/cast shadows, no labels/text/borders/watermark. Match existing richly painted high-detail anime game assets with individually rendered fur/bark, shaded materials, restrained contour lines, upperleft light. NO chibi, no pixelart, no rigs, no cutouts. Exaggerated anticipated attacks, contact squash/stretch, recovery overshoot and trailing details painted into full frames. Poses: 1: Idle battle stance, head low, hooves planted. 2: Charge anticipation: pawing the ground, shoulders lowered, weight coiled back. 3: Charge contact: horizontal tusk-led impact left, stretched trunk and compressed neck, rear hooves driving, no target drawn. 4: Hit recoil: shoulders knocked back right, grimace, tusks intact, no wounds. 5: Recovery: heavy hooves regroup and the mane overshoots, ready to charge again. 6: Defeat: kneels low and dissolves at the edges into gentle gold-white motes, no corpse, no gore. Every cell is complete independently drawn artwork, not bodyparts or merely rotated samepose. Non-graphic younger audience action: no blood or flesh injury.",
+      "spec": {
+        "id": "boar_action_keys",
+        "frames": 6,
+        "cols": 3,
+        "rows": 2,
+        "subject": "Use ONLY the TOP RIGHT creature from reference atlas: a massive brown cave boar with long ivory upward-curved tusks, coarse dark mane, red eyes, heavy hooves and thick muscular torso. All frames show the same boar facing LEFT. It has four hooved legs, one tail, no paws, no wolf fur.",
+        "poses": [
+          "Idle battle stance, head low, hooves planted.",
+          "Charge anticipation: pawing the ground, shoulders lowered, weight coiled back.",
+          "Charge contact: horizontal tusk-led impact left, stretched trunk and compressed neck, rear hooves driving, no target drawn.",
+          "Hit recoil: shoulders knocked back right, grimace, tusks intact, no wounds.",
+          "Recovery: heavy hooves regroup and the mane overshoots, ready to charge again.",
+          "Defeat: kneels low and dissolves at the edges into gentle gold-white motes, no corpse, no gore."
+        ]
+      },
+      "source": "C:\\Users\\charl\\.codex\\generated_images\\01a0b9f4-5be3-7e50-8e02-bc2e978b94ac\\exec-d4058ba5-206c-43fb-b585-4004d4f5ef61.png",
+      "file": "assets/expedition/astra-v1/beasts/boar_action_keys.png"
+    },
+    {
+      "id": "thorn_lurker_action_keys",
+      "prompt": "Use case: stylized-concept. Asset type: full-frame painted creature animation KEY POSES sheet for Adventurer Expeditions. Reference image role: exact original creature style/identity guide. Use ONLY the BOTTOM LEFT creature from reference atlas: a rooted monster of twisting woody green vines, a large burgundy flower-mouth with yellow teeth and pale stamens, thorn-covered curling tendrils. It faces LEFT to attack. Same number and shape of major flower petals and roots throughout. Root base remains fixed; it does not walk or leap. Create six complete independent painted poses in strict THREE columns TWO rows; rows read left-to-right. Large landscape canvas, generous padding around each cell, complete silhouette with every limb and tail inside own cell. Same scale and eye-level camera across all cells, no perspective changes. Each creature fits inside the central75% cell width; no overlap between cells. Genuine transparent background, no scenery/floor/cast shadows, no labels/text/borders/watermark. Match existing richly painted high-detail anime game assets with individually rendered fur/bark, shaded materials, restrained contour lines, upperleft light. NO chibi, no pixelart, no rigs, no cutouts. Exaggerated anticipated attacks, contact squash/stretch, recovery overshoot and trailing details painted into full frames. Poses: 1: Idle rooted stance, giant flower-mouth angled left, vines curled loosely. 2: Lash anticipation: upper tendril winds backward right, flower pulls back, root base grips. 3: Lash contact: a single thorny vine whips dramatically left, long reach, flower body compressed oppositely, root base stays planted. 4: Hit recoil: flower recoils right, mouth grimaces, vines flinch, no blood. 5: Recovery: attack vine curls back, petals and leaf tips trail and settle, roots stay fixed. 6: Defeat: leaves lower, flower closes and roots dissolve into gentle pale green-gold motes, no gore. Every cell is complete independently drawn artwork, not bodyparts or merely rotated samepose. Non-graphic younger audience action: no blood or flesh injury.",
+      "spec": {
+        "id": "thorn_lurker_action_keys",
+        "frames": 6,
+        "cols": 3,
+        "rows": 2,
+        "subject": "Use ONLY the BOTTOM LEFT creature from reference atlas: a rooted monster of twisting woody green vines, a large burgundy flower-mouth with yellow teeth and pale stamens, thorn-covered curling tendrils. It faces LEFT to attack. Same number and shape of major flower petals and roots throughout. Root base remains fixed; it does not walk or leap.",
+        "poses": [
+          "Idle rooted stance, giant flower-mouth angled left, vines curled loosely.",
+          "Lash anticipation: upper tendril winds backward right, flower pulls back, root base grips.",
+          "Lash contact: a single thorny vine whips dramatically left, long reach, flower body compressed oppositely, root base stays planted.",
+          "Hit recoil: flower recoils right, mouth grimaces, vines flinch, no blood.",
+          "Recovery: attack vine curls back, petals and leaf tips trail and settle, roots stay fixed.",
+          "Defeat: leaves lower, flower closes and roots dissolve into gentle pale green-gold motes, no gore."
+        ]
+      },
+      "source": "C:\\Users\\charl\\.codex\\generated_images\\01a0b9f4-5be3-7e50-8e02-bc2e978b94ac\\exec-5bf5ca6b-a7a1-41a7-bf69-3d5a96e838fb.png",
+      "file": "assets/expedition/astra-v1/beasts/thorn_lurker_action_keys.png"
+    },
+    {
+      "id": "alpha_action_keys",
+      "prompt": "Use case: stylized-concept. Asset type: full-frame painted creature animation KEY POSES sheet for Adventurer Expeditions. Reference image role: exact original creature style/identity guide. Use golden reference wolf identity as base, but this is the ALPHA BOSS: noticeably heavier broad charcoal ruff, thick silver muzzle with two pale healed scar lines (NOT open wounds), large jaw and forepaws, dark silver-gray coat, intense amber eyes. Quadrupedal wolf, full body, same left-facing sideview and boss identity across every cell. Larger presence through proportions, not just enlarging the ordinary wolf. Create six complete independent painted poses in strict THREE columns TWO rows; rows read left-to-right. Large landscape canvas, generous padding around each cell, complete silhouette with every limb and tail inside own cell. Same scale and eye-level camera across all cells, no perspective changes. Each creature fits inside the central75% cell width; no overlap between cells. Genuine transparent background, no scenery/floor/cast shadows, no labels/text/borders/watermark. Match existing richly painted high-detail anime game assets with individually rendered fur/bark, shaded materials, restrained contour lines, upperleft light. NO chibi, no pixelart, no rigs, no cutouts. Exaggerated anticipated attacks, contact squash/stretch, recovery overshoot and trailing details painted into full frames. Poses: 1: Idle command stance: high massive shoulders, low head and powerful forepaws planted. 2: Pounce anticipation: very deep crouch, hindquarters coiled, foreclaws scraping invisible ground. 3: Pounce contact: huge airborne horizontal lunge left with open jaw and reaching forepaws, exaggerated stretch, no target. 4: Heavy hit recoil: shoulders compressed and head turned aside, mane swings opposite; no wound. 5: Phase-two enrage: grounded roar with head raised and mane bristling, amber eyes brighter, no permanent fire glow or aura. 6: Defeat: shoulders collapse into low non-graphic kneel, outer fur dissolves into gentle gold-white motes. Every cell is complete independently drawn artwork, not bodyparts or merely rotated samepose. Non-graphic younger audience action: no blood or flesh injury.",
+      "spec": {
+        "id": "alpha_action_keys",
+        "frames": 6,
+        "cols": 3,
+        "rows": 2,
+        "subject": "Use golden reference wolf identity as base, but this is the ALPHA BOSS: noticeably heavier broad charcoal ruff, thick silver muzzle with two pale healed scar lines (NOT open wounds), large jaw and forepaws, dark silver-gray coat, intense amber eyes. Quadrupedal wolf, full body, same left-facing sideview and boss identity across every cell. Larger presence through proportions, not just enlarging the ordinary wolf.",
+        "poses": [
+          "Idle command stance: high massive shoulders, low head and powerful forepaws planted.",
+          "Pounce anticipation: very deep crouch, hindquarters coiled, foreclaws scraping invisible ground.",
+          "Pounce contact: huge airborne horizontal lunge left with open jaw and reaching forepaws, exaggerated stretch, no target.",
+          "Heavy hit recoil: shoulders compressed and head turned aside, mane swings opposite; no wound.",
+          "Phase-two enrage: grounded roar with head raised and mane bristling, amber eyes brighter, no permanent fire glow or aura.",
+          "Defeat: shoulders collapse into low non-graphic kneel, outer fur dissolves into gentle gold-white motes."
+        ]
+      },
+      "source": "C:\\Users\\charl\\.codex\\generated_images\\01a0b9f4-5be3-7e50-8e02-bc2e978b94ac\\exec-406cdebf-e65e-4643-a2a7-bdaf882161e3.png",
+      "file": "assets/expedition/astra-v1/beasts/alpha_action_keys.png"
+    },
+    {
+      "id": "alpha_action_keys_v2",
+      "prompt": "Use case: identity-preserve. Edit ONLY the Alpha boss's distinguishing features in this existing six-frame animation source sheet. Keep the exact six complete poses, grid positions, facing, animation order, coherent anatomy, transparency and painted detail. Make this visibly a distinct boss wolf rather than the ordinary dire wolf: broaden the charcoal neck-and-shoulder ruff, make the back/ruff darker charcoal, add a clearly visible pale silver double diagonal HEALED scar mark across the upper muzzle in each view where the muzzle is visible, and a pale silver eyebrow tuft above each amber eye. These scar marks are smooth closed pale fur markings, no open wound, no blood. Retain gray-white chest/paws and the old game art's high-detail painted anime rendering. Keep clean transparent background and leave complete silhouettes uncropped in own cells. No new objects, text, graphic violence, or changes to action sequence. In the roar frame make the shoulder ruff bristle, while retaining the same boss markings.",
+      "reference": "alpha_action_keys.png",
+      "source": "C:\\Users\\charl\\.codex\\generated_images\\01a0b9f4-5be3-7e50-8e02-bc2e978b94ac\\exec-6e0e8127-bdf5-4b13-940d-493776bba0ec.png",
+      "file": "assets/expedition/astra-v1/beasts/alpha_action_keys_v2.png"
+    },
+    {
+      "id": "wolf_bite_v2",
+      "prompt": "Use case: identity-preserve. Repair this four-frame wolf bite animation source sheet for reliable sprite extraction. Keep exact wolf identity, painted detail, facing left, grayscale fur pattern, amber eyes, and all four complete poses. Layout EXACTLY two equal columns and two equal rows in a landscape1536x1024 canvas. Reduce each whole figure enough to fit inside the central80percent of its own cell with WIDE EMPTY transparent gutters. No paw, tail or fur may cross any cell midpoint; no overlapping figures. No text, labels or floor. Improve two middle contact poses: upper-right and lower-left jaw remains slightly open at the SAME imaginary clamped contact height, sized as if gripping a forearm but NO arm/person/target drawn. Upper-left is open-jaw approach, lower-right is jaw-release recoil. Preserve stable size, fur, face and bone lengths across all frames. True transparent background with clean alpha and no glow/gradient behind wolves. This is full-frame painted animation, not cutouts.",
+      "reference": "wolf_bite.png",
+      "source": "C:\\Users\\charl\\.codex\\generated_images\\01a0b9f4-5be3-7e50-8e02-bc2e978b94ac\\exec-f3fed83c-237f-4cd0-af8e-5245d5020fb5.png",
+      "file": "assets/expedition/astra-v1/beasts/wolf_bite_v2.png"
+    },
+    {
+      "id": "boar_run",
+      "prompt": "Use case: identity-preserve. Asset type: complete painted creature-motion source sheet, action \"boar_run\", for Adventurer Expeditions. Reference image is the character identity and rendering reference; do not simply copy its six poses. Draw NEW 6 consecutive action frames for the specific motion below. The BROWN CAVE BOAR from the reference: thick muscular quadruped, long upward-curved ivory tusks, reddish eyes, coarse dark brown mane, broad pinkish snout and four black hooves. Preserve proportions and tusk length across poses. It is not a wolf, bear, or piglet. All creatures face LEFT, eye-level sideview/slightthreequarterhead, same camera, proportions and lighting. Paint EXACTLY 6 complete articulated figures in a strict 3cols ×2rows equal-cell grid, left-to-right then top-to-bottom, landscape1536×1024. Each whole figure occupies inner75percent of its cell with clear transparent padding and NO limbs/tusks/tail/tendrils crossing gridboundary. Keep constant character scale and virtual ground baseline across cells; airborneposes mayliftfeet. No text, numbers, borders, floor, scenery, VFX, extra creatures, or opponent. Actual transparent alpha background. Rich painted anime illustration at existing game's fidelity, textured shading and expressive silhouettes, not photorealistic, not pixelart/chibi, not flatcelshading. Every frame is a complete painted body, no rigs or cutout limbs. Strong anticipation, weight at contact, exaggerated stretch/compression, recovery overshoot, mane/tail/leaves trailing body by1beat. NO gore, blood or open wounds. Pose sequence: 1: Collected gallop stance, hind hooves beneath torso, front hooves about to lift. 2: Hindlegs push backward against invisible ground, front legs extend forward-left. 3: Full gallop extension, all four legs offground, frontlegs reaching left and hindlegs trailing right. 4: Forehoof touchdown, head and heavy shoulders compress downward, hindlegs sweep in. 5: Body passes over planted forelegs, hindhooves collect forward under belly. 6: Hindhooves land and body coils for repeat, mane and tail trail a beat behind. Consecutive continuous motion with same exact character; no identical pasted poses or changed species.",
+      "spec": {
+        "id": "boar_run",
+        "creature": "cave_boar",
+        "ref": "boar_action_keys.png",
+        "frames": 6,
+        "cols": 3,
+        "rows": 2,
+        "appearance": "The BROWN CAVE BOAR from the reference: thick muscular quadruped, long upward-curved ivory tusks, reddish eyes, coarse dark brown mane, broad pinkish snout and four black hooves. Preserve proportions and tusk length across poses. It is not a wolf, bear, or piglet.",
+        "poses": [
+          "Collected gallop stance, hind hooves beneath torso, front hooves about to lift.",
+          "Hindlegs push backward against invisible ground, front legs extend forward-left.",
+          "Full gallop extension, all four legs offground, frontlegs reaching left and hindlegs trailing right.",
+          "Forehoof touchdown, head and heavy shoulders compress downward, hindlegs sweep in.",
+          "Body passes over planted forelegs, hindhooves collect forward under belly.",
+          "Hindhooves land and body coils for repeat, mane and tail trail a beat behind."
+        ]
+      },
+      "reference": "boar_action_keys.png",
+      "source": "C:\\Users\\charl\\.codex\\generated_images\\01a0b9f4-5be3-7e50-8e02-bc2e978b94ac\\exec-4a94766b-1561-46e7-ae02-347cccb784ea.png",
+      "file": "assets/expedition/astra-v1/beasts/boar_run.png"
+    },
+    {
+      "id": "boar_charge",
+      "prompt": "Use case: identity-preserve. Asset type: complete painted creature-motion source sheet, action \"boar_charge\", for Adventurer Expeditions. Reference image is the character identity and rendering reference; do not simply copy its six poses. Draw NEW 6 consecutive action frames for the specific motion below. The BROWN CAVE BOAR from reference: thick muscular quadruped, long upward-curved ivory tusks, reddish eyes, coarse dark brown mane, broad pinkish snout and four black hooves. Preserve proportions/tusks across poses. All creatures face LEFT, eye-level sideview/slightthreequarterhead, same camera, proportions and lighting. Paint EXACTLY 6 complete articulated figures in a strict 3cols ×2rows equal-cell grid, left-to-right then top-to-bottom, landscape1536×1024. Each whole figure occupies inner75percent of its cell with clear transparent padding and NO limbs/tusks/tail/tendrils crossing gridboundary. Keep constant character scale and virtual ground baseline across cells; airborneposes mayliftfeet. No text, numbers, borders, floor, scenery, VFX, extra creatures, or opponent. Actual transparent alpha background. Rich painted anime illustration at existing game's fidelity, textured shading and expressive silhouettes, not photorealistic, not pixelart/chibi, not flatcelshading. Every frame is a complete painted body, no rigs or cutout limbs. Strong anticipation, weight at contact, exaggerated stretch/compression, recovery overshoot, mane/tail/leaves trailing body by1beat. NO gore, blood or open wounds. Pose sequence: 1: Threat tell, snout lowered left, one front hoof raised, weight back. 2: Anticipation deeper coil, all four hooves braced, mane lifted and tusks angled forward. 3: Launch, rearhooves push right, neck extends left, forelegs reaching forward. 4: CONTACT pose into invisible target just left: tusks lead, neck and forequarters compressed with exaggerated weighted impact, powerful rearleg drive; no target drawn. 5: Overshoot after contact, head follows through and forehooves brake, mane swings forward. 6: Recover grounded battle stance, rearhooves regroup, snout rises slightly left, mane settling. Consecutive continuous motion with same exact character; no identical pasted poses or changed species.",
+      "spec": {
+        "id": "boar_charge",
+        "creature": "cave_boar",
+        "ref": "boar_action_keys.png",
+        "frames": 6,
+        "cols": 3,
+        "rows": 2,
+        "appearance": "The BROWN CAVE BOAR from reference: thick muscular quadruped, long upward-curved ivory tusks, reddish eyes, coarse dark brown mane, broad pinkish snout and four black hooves. Preserve proportions/tusks across poses.",
+        "poses": [
+          "Threat tell, snout lowered left, one front hoof raised, weight back.",
+          "Anticipation deeper coil, all four hooves braced, mane lifted and tusks angled forward.",
+          "Launch, rearhooves push right, neck extends left, forelegs reaching forward.",
+          "CONTACT pose into invisible target just left: tusks lead, neck and forequarters compressed with exaggerated weighted impact, powerful rearleg drive; no target drawn.",
+          "Overshoot after contact, head follows through and forehooves brake, mane swings forward.",
+          "Recover grounded battle stance, rearhooves regroup, snout rises slightly left, mane settling."
+        ]
+      },
+      "reference": "boar_action_keys.png",
+      "source": "C:\\Users\\charl\\.codex\\generated_images\\01a0b9f4-5be3-7e50-8e02-bc2e978b94ac\\exec-4df58d31-c781-4629-851f-a620fc3bcb9b.png",
+      "file": "assets/expedition/astra-v1/beasts/boar_charge.png"
+    },
+    {
+      "id": "thorn_lurker_idle",
+      "prompt": "Use case: identity-preserve. Asset type: complete painted creature-motion source sheet, action \"thorn_lurker_idle\", for Adventurer Expeditions. Reference image is the character identity and rendering reference; do not simply copy its six poses. Draw NEW 4 consecutive action frames for the specific motion below. The rooted THORN LURKER from reference: twisted woody GREEN vines, two dominant thorny curling vine arms, large BURGUNDY flower-mouth with yellow teeth and purple tongue, layered petals, thick roots gripping ground. Preserve flower design and major root shapes. Plant rooted in place, no legs, no walking, no fire. All creatures face LEFT, eye-level sideview/slightthreequarterhead, same camera, proportions and lighting. Paint EXACTLY 4 complete articulated figures in a strict 2cols ×2rows equal-cell grid, left-to-right then top-to-bottom, landscape1536×1024. Each whole figure occupies inner75percent of its cell with clear transparent padding and NO limbs/tusks/tail/tendrils crossing gridboundary. Keep constant character scale and virtual ground baseline across cells; airborneposes mayliftfeet. No text, numbers, borders, floor, scenery, VFX, extra creatures, or opponent. Actual transparent alpha background. Rich painted anime illustration at existing game's fidelity, textured shading and expressive silhouettes, not photorealistic, not pixelart/chibi, not flatcelshading. Every frame is a complete painted body, no rigs or cutout limbs. Strong anticipation, weight at contact, exaggerated stretch/compression, recovery overshoot, mane/tail/leaves trailing body by1beat. NO gore, blood or open wounds. Pose sequence: 1: Alert idle, flower-mouth angled left, vine arms loosely curled, major root anchor fixed. 2: Small breathlike lift of flower petals, mouth slightly opens, vine tips unfurl slightly while roots stay fixed. 3: Flower settles, lips/petals close slightly, arms coil back with trailing leaf motion. 4: Return close to frame1 with petals and tendril tips settling; same fixed root footprint. Consecutive continuous motion with same exact character; no identical pasted poses or changed species.",
+      "spec": {
+        "id": "thorn_lurker_idle",
+        "creature": "thorn_lurker",
+        "ref": "thorn_lurker_action_keys.png",
+        "frames": 4,
+        "cols": 2,
+        "rows": 2,
+        "appearance": "The rooted THORN LURKER from reference: twisted woody GREEN vines, two dominant thorny curling vine arms, large BURGUNDY flower-mouth with yellow teeth and purple tongue, layered petals, thick roots gripping ground. Preserve flower design and major root shapes. Plant rooted in place, no legs, no walking, no fire.",
+        "poses": [
+          "Alert idle, flower-mouth angled left, vine arms loosely curled, major root anchor fixed.",
+          "Small breathlike lift of flower petals, mouth slightly opens, vine tips unfurl slightly while roots stay fixed.",
+          "Flower settles, lips/petals close slightly, arms coil back with trailing leaf motion.",
+          "Return close to frame1 with petals and tendril tips settling; same fixed root footprint."
+        ]
+      },
+      "reference": "thorn_lurker_action_keys.png",
+      "source": "C:\\Users\\charl\\.codex\\generated_images\\01a0b9f4-5be3-7e50-8e02-bc2e978b94ac\\exec-bf5bab31-6815-4ad4-996a-298c9cedfa39.png",
+      "file": "assets/expedition/astra-v1/beasts/thorn_lurker_idle.png"
+    },
+    {
+      "id": "thorn_lurker_lash",
+      "prompt": "Use case: identity-preserve. Asset type: complete painted creature-motion source sheet, action \"thorn_lurker_lash\", for Adventurer Expeditions. Reference image is exact character identity and rendering guide, not poses to copy. Draw NEW 6 consecutive action frames for this motion. The rooted THORN LURKER from reference: twisting woody GREEN vine torso, two dominant thorny tendril arms, large BURGUNDY flower-mouth/yellow teeth/purple tongue, broad layered petals and thick fixed roots. One arm whips left while the other stays coiled. Root anchor must not translate or change shape dramatically. All figures face LEFT, eye-level sideview/slightthreequarterhead, identical camera, scale and upperleft lighting. Paint EXACTLY 6 complete articulated figures in a strict 3columns ×2rows equal-cell grid, left-to-right then top-to-bottom, landscape1536×1024. Each whole figure occupies inner75percent of its cell; clear transparent padding and NO limbs/tendrils/tail crossing gridboundary. Keep constant scale and virtual ground baseline; airborneposes mayliftfeet. No text/numbers/borders/floor/scenery/VFX/extra animals/opponent. Actual transparent alpha background. Rich painted anime illustration equal to game reference, textured shading and expressive silhouettes, not photorealism/pixelart/chibi/flatcelshading. Every frame full independently painted body, no rigs/cutouts. Strong anticipation, exaggerated contact stretch/compression, recovery overshoot, mane/tail/leaves lag behind. NO gore/blood/openwounds. Pose sequence: 1: Rooted guard, flower angled left, one attacking vine curled at right side. 2: Wind-up, attacking tendril coils far back right, flower and torso lean slightly right while roots anchored. 3: Acceleration, tendril swings toward left, broad curved arc, petals trail right. 4: CONTACT pose, one long thornvine almost horizontally reaches LEFT toward unseen target, exaggerated whip-stretch; flower torso compresses opposite, roots remain firmly anchored. 5: Overshoot, tendril sweeps slightly below contact height then rebounds in curve, loose leaf tips lag. 6: Recover, tendril curls back near original guard, petals settle, identical rooted footprint. Sequence must display readable continuous motion and stable anatomy/identity, not random poses.",
+      "spec": {
+        "id": "thorn_lurker_lash",
+        "creature": "thorn_lurker",
+        "ref": "thorn_lurker_action_keys.png",
+        "frames": 6,
+        "cols": 3,
+        "rows": 2,
+        "appearance": "The rooted THORN LURKER from reference: twisting woody GREEN vine torso, two dominant thorny tendril arms, large BURGUNDY flower-mouth/yellow teeth/purple tongue, broad layered petals and thick fixed roots. One arm whips left while the other stays coiled. Root anchor must not translate or change shape dramatically.",
+        "poses": [
+          "Rooted guard, flower angled left, one attacking vine curled at right side.",
+          "Wind-up, attacking tendril coils far back right, flower and torso lean slightly right while roots anchored.",
+          "Acceleration, tendril swings toward left, broad curved arc, petals trail right.",
+          "CONTACT pose, one long thornvine almost horizontally reaches LEFT toward unseen target, exaggerated whip-stretch; flower torso compresses opposite, roots remain firmly anchored.",
+          "Overshoot, tendril sweeps slightly below contact height then rebounds in curve, loose leaf tips lag.",
+          "Recover, tendril curls back near original guard, petals settle, identical rooted footprint."
+        ]
+      },
+      "reference": "thorn_lurker_action_keys.png",
+      "source": "C:\\Users\\charl\\.codex\\generated_images\\01a0b9f4-5be3-7e50-8e02-bc2e978b94ac\\exec-b91d41c1-1494-4617-857d-c370b78a2873.png",
+      "file": "assets/expedition/astra-v1/beasts/thorn_lurker_lash.png"
+    },
+    {
+      "id": "alpha_stalk",
+      "prompt": "Use case: identity-preserve. Asset type: complete painted creature-motion source sheet, action \"alpha_stalk\", for Adventurer Expeditions. Reference image is exact character identity and rendering guide, not poses to copy. Draw NEW 4 consecutive action frames for this motion. The ALPHA BOSS from reference, not ordinary wolf: charcoal dark silver/gray fur, HUGE broad spiked shoulder ruff, large jaw/forepaws, pale silver eyebrows and distinct closed double pale healed muzzle scar stripes, fierce amber eyes, four coherent legs. Same exact boss marks in every visible view. All figures face LEFT, eye-level sideview/slightthreequarterhead, identical camera, scale and upperleft lighting. Paint EXACTLY 4 complete articulated figures in a strict 2columns ×2rows equal-cell grid, left-to-right then top-to-bottom, landscape1536×1024. Each whole figure occupies inner75percent of its cell; clear transparent padding and NO limbs/tendrils/tail crossing gridboundary. Keep constant scale and virtual ground baseline; airborneposes mayliftfeet. No text/numbers/borders/floor/scenery/VFX/extra animals/opponent. Actual transparent alpha background. Rich painted anime illustration equal to game reference, textured shading and expressive silhouettes, not photorealism/pixelart/chibi/flatcelshading. Every frame full independently painted body, no rigs/cutouts. Strong anticipation, exaggerated contact stretch/compression, recovery overshoot, mane/tail/leaves lag behind. NO gore/blood/openwounds. Pose sequence: 1: Low commanding stalk, head left, right forepaw lifted forward, rearlegs carry weight. 2: Forward forepaw plants, shoulders roll low, other forepaw begins moving, fur trails. 3: Opposite forepaw reaches ahead, head stays low and menacing, rearlegs advance alternately. 4: Complete slow stride, shoulder weight settles and backlegs reset toward frame1, mane/tail lag behind. Sequence must display readable continuous motion and stable anatomy/identity, not random poses.",
+      "spec": {
+        "id": "alpha_stalk",
+        "creature": "alpha",
+        "ref": "alpha_action_keys_v2.png",
+        "frames": 4,
+        "cols": 2,
+        "rows": 2,
+        "appearance": "The ALPHA BOSS from reference, not ordinary wolf: charcoal dark silver/gray fur, HUGE broad spiked shoulder ruff, large jaw/forepaws, pale silver eyebrows and distinct closed double pale healed muzzle scar stripes, fierce amber eyes, four coherent legs. Same exact boss marks in every visible view.",
+        "poses": [
+          "Low commanding stalk, head left, right forepaw lifted forward, rearlegs carry weight.",
+          "Forward forepaw plants, shoulders roll low, other forepaw begins moving, fur trails.",
+          "Opposite forepaw reaches ahead, head stays low and menacing, rearlegs advance alternately.",
+          "Complete slow stride, shoulder weight settles and backlegs reset toward frame1, mane/tail lag behind."
+        ]
+      },
+      "reference": "alpha_action_keys_v2.png",
+      "source": "C:\\Users\\charl\\.codex\\generated_images\\01a0b9f4-5be3-7e50-8e02-bc2e978b94ac\\exec-83a199ad-1d95-4555-b572-463bd06b65a1.png",
+      "file": "assets/expedition/astra-v1/beasts/alpha_stalk.png"
+    },
+    {
+      "id": "alpha_pounce",
+      "prompt": "Use case: identity-preserve. Asset type: complete painted creature-motion source sheet, action \"alpha_pounce\", for Adventurer Expeditions. Reference image is exact character identity and rendering guide, not poses to copy. Draw NEW 6 consecutive action frames for this motion. The ALPHA BOSS from reference: dark charcoal silver-gray fur, HUGE broad spiked shoulder ruff, muscular forequarters, large jaw/forepaws, pale silver eyebrows and closed pale healed double muzzle scar, fierce amber eyes. Not a generic smaller gray wolf. Four coherent legs, no open wounds. All figures face LEFT, eye-level sideview/slightthreequarterhead, identical camera, scale and upperleft lighting. Paint EXACTLY 6 complete articulated figures in a strict 3columns ×2rows equal-cell grid, left-to-right then top-to-bottom, landscape1536×1024. Each whole figure occupies inner75percent of its cell; clear transparent padding and NO limbs/tendrils/tail crossing gridboundary. Keep constant scale and virtual ground baseline; airborneposes mayliftfeet. No text/numbers/borders/floor/scenery/VFX/extra animals/opponent. Actual transparent alpha background. Rich painted anime illustration equal to game reference, textured shading and expressive silhouettes, not photorealism/pixelart/chibi/flatcelshading. Every frame full independently painted body, no rigs/cutouts. Strong anticipation, exaggerated contact stretch/compression, recovery overshoot, mane/tail/leaves lag behind. NO gore/blood/openwounds. Pose sequence: 1: Forepaw scrapes invisible ground in warning, shoulders high, head low left. 2: Very deep crouch, hindquarters coil, forepaws brace, mane bristles back. 3: Explosive takeoff up-left, hindlegs extend behind, forelegs reach, jaw opens. 4: CONTACT at forward crest toward unseen target LEFT: powerful elongated torso, huge forepaws reaching left, jaw open, exaggerated shoulder compression/stretch, no target drawn. 5: Heavy landing, frontpaws hit imaginaryground and shoulders compress deeply, hindlegs tuck underneath, mane overshoots forward. 6: Recover imposing low guard, four paws regain ground support, mane settles, jaw closes. Sequence must display readable continuous motion and stable anatomy/identity, not random poses.",
+      "spec": {
+        "id": "alpha_pounce",
+        "creature": "alpha",
+        "ref": "alpha_action_keys_v2.png",
+        "frames": 6,
+        "cols": 3,
+        "rows": 2,
+        "appearance": "The ALPHA BOSS from reference: dark charcoal silver-gray fur, HUGE broad spiked shoulder ruff, muscular forequarters, large jaw/forepaws, pale silver eyebrows and closed pale healed double muzzle scar, fierce amber eyes. Not a generic smaller gray wolf. Four coherent legs, no open wounds.",
+        "poses": [
+          "Forepaw scrapes invisible ground in warning, shoulders high, head low left.",
+          "Very deep crouch, hindquarters coil, forepaws brace, mane bristles back.",
+          "Explosive takeoff up-left, hindlegs extend behind, forelegs reach, jaw opens.",
+          "CONTACT at forward crest toward unseen target LEFT: powerful elongated torso, huge forepaws reaching left, jaw open, exaggerated shoulder compression/stretch, no target drawn.",
+          "Heavy landing, frontpaws hit imaginaryground and shoulders compress deeply, hindlegs tuck underneath, mane overshoots forward.",
+          "Recover imposing low guard, four paws regain ground support, mane settles, jaw closes."
+        ]
+      },
+      "reference": "alpha_action_keys_v2.png",
+      "source": "C:\\Users\\charl\\.codex\\generated_images\\01a0b9f4-5be3-7e50-8e02-bc2e978b94ac\\exec-9994323c-6ec3-48a2-a6da-57c32e715d25.png",
+      "file": "assets/expedition/astra-v1/beasts/alpha_pounce.png"
+    },
+    {
+      "id": "boar_hit_short",
+      "prompt": "Use case: identity-preserve. Assettype: painted full-frame creature animation SOURCE SHEET for Adventurer Expeditions, actionboar_hit_short. Reference is exact design/fidelity. Draw 3 NEW successive action drawings; The brown cave boar from reference: heavy four-hoofed quadruped, coarse DARK BROWN mane, red eyes, large ivory upward-curved tusks, muscular trunk, broad pinkish snout. Four hoofed legs, same bone lengths/tusk length; not bipedal. Strict3columns×1rows equalcells, readlefttoright topthenbottom. Wide horizontalstrip, threecomplete figures inone row. EVERY complete subject centeredinside itsowncell withlarge blankgutter; allfur,tusks,paws,tail,rootstips insidecell, no overlap/no cropping. Constant creaturesize andcamera,facingLEFT, fixedvirtualground baseline; motioncanliftfeet naturally. True transparent alpha background, NO floor/scenery/castshadow/text/numbers/borders/watermark. Same richly painted high-detail anime gameillustration asreference, renderedmaterials, texturedfur/bark, restrainedcontours, no rigs/cutouts/flatanimation/pixelart/chibi. NO gore,blood,severedparts,openwounds. Non-graphicyounger-audience action. Fullbodypose sequence: 1: Non-graphic CONTACT RECOIL from unseen hit on LEFT: neck/shoulders compress right, head winces and front hooves skid a little, all4legs coherent. 2: Overshoot: weight rocks back onto hindlegs, front hooves lift slightly, mane/tail trail opposite motion; compact grimace. 3: Recovery: all hooves grounded again, head lowered facingleft, tusks intact, mane settles into guard. Samecreatureacrossframes. Contactframeexaggerates squash, followingposeovershoots,andfur/leaveslagbody. Do notmerely rotateidenticalimage.",
+      "spec": {
+        "id": "boar_hit_short",
+        "creature": "cave_boar",
+        "ref": "boar_action_keys.png",
+        "frames": 3,
+        "cols": 3,
+        "rows": 1,
+        "appearance": "The brown cave boar from reference: heavy four-hoofed quadruped, coarse DARK BROWN mane, red eyes, large ivory upward-curved tusks, muscular trunk, broad pinkish snout. Four hoofed legs, same bone lengths/tusk length; not bipedal.",
+        "poses": [
+          "Non-graphic CONTACT RECOIL from unseen hit on LEFT: neck/shoulders compress right, head winces and front hooves skid a little, all4legs coherent.",
+          "Overshoot: weight rocks back onto hindlegs, front hooves lift slightly, mane/tail trail opposite motion; compact grimace.",
+          "Recovery: all hooves grounded again, head lowered facingleft, tusks intact, mane settles into guard."
+        ]
+      },
+      "reference": "boar_action_keys.png",
+      "source": "C:\\Users\\charl\\.codex\\generated_images\\01a0b9f4-5be3-7e50-8e02-bc2e978b94ac\\exec-40a78169-7c45-4e80-bd5d-a20541e04d87.png",
+      "file": "assets/expedition/astra-v1/beasts/boar_hit_short.png"
+    },
+    {
+      "id": "boar_down_fade",
+      "prompt": "Use case: identity-preserve. Assettype: painted full-frame creature animation SOURCE SHEET for Adventurer Expeditions, actionboar_down_fade. Reference is exact design/fidelity. Draw 4 NEW successive action drawings; The brown cave boar from reference: heavy four-hoofed quadruped, coarse DARK BROWN mane, red eyes, large ivory upward-curved tusks, muscular trunk, broad pinkish snout. Keep consistent same anatomy, no injury details. Strict2columns×2rows equalcells, readlefttoright topthenbottom. Landscape canvas, fourcomplete figures intworows. EVERY complete subject centeredinside itsowncell withlarge blankgutter; allfur,tusks,paws,tail,rootstips insidecell, no overlap/no cropping. Constant creaturesize andcamera,facingLEFT, fixedvirtualground baseline; motioncanliftfeet naturally. True transparent alpha background, NO floor/scenery/castshadow/text/numbers/borders/watermark. Same richly painted high-detail anime gameillustration asreference, renderedmaterials, texturedfur/bark, restrainedcontours, no rigs/cutouts/flatanimation/pixelart/chibi. NO gore,blood,severedparts,openwounds. Non-graphicyounger-audience action. Fullbodypose sequence: 1: Defeated stagger: forelegs buckle, snout lowers, shoulders sag, closed-eye strain, no wound. 2: Lowers peacefully onto folded legs and side, eyes closed, no injury or corpse realism. 3: Same low resting pose begins to dissolve from rear and mane into warm GOLD WHITE motes, front shape still visible. 4: Almost fully dissolved into soft GOLD WHITE silhouette wisps and small drifting motes, no solid corpse remains. Samecreatureacrossframes. Contactframeexaggerates squash, followingposeovershoots,andfur/leaveslagbody. Do notmerely rotateidenticalimage.",
+      "spec": {
+        "id": "boar_down_fade",
+        "creature": "cave_boar",
+        "ref": "boar_action_keys.png",
+        "frames": 4,
+        "cols": 2,
+        "rows": 2,
+        "appearance": "The brown cave boar from reference: heavy four-hoofed quadruped, coarse DARK BROWN mane, red eyes, large ivory upward-curved tusks, muscular trunk, broad pinkish snout. Keep consistent same anatomy, no injury details.",
+        "poses": [
+          "Defeated stagger: forelegs buckle, snout lowers, shoulders sag, closed-eye strain, no wound.",
+          "Lowers peacefully onto folded legs and side, eyes closed, no injury or corpse realism.",
+          "Same low resting pose begins to dissolve from rear and mane into warm GOLD WHITE motes, front shape still visible.",
+          "Almost fully dissolved into soft GOLD WHITE silhouette wisps and small drifting motes, no solid corpse remains."
+        ]
+      },
+      "reference": "boar_action_keys.png",
+      "source": "C:\\Users\\charl\\.codex\\generated_images\\01a0b9f4-5be3-7e50-8e02-bc2e978b94ac\\exec-bbc41990-6ac0-4431-923f-40e2d30497a1.png",
+      "file": "assets/expedition/astra-v1/beasts/boar_down_fade.png"
+    },
+    {
+      "id": "thorn_lurker_hit_short",
+      "prompt": "Use case: identity-preserve. Assettype: painted full-frame creature animation SOURCE SHEET for Adventurer Expeditions, actionthorn_lurker_hit_short. Reference is exact design/fidelity. Draw 3 NEW successive action drawings; The rooted THORN LURKER from reference: twisting woody green vine trunk, large BURGUNDY flower mouth/yellow teeth/purple tongue, curling thornvine arms, layered petals and thick roots. It remains fixed to ground through roots; no limbs becoming animal legs. Strict3columns×1rows equalcells, readlefttoright topthenbottom. Wide horizontalstrip, threecomplete figures inone row. EVERY complete subject centeredinside itsowncell withlarge blankgutter; allfur,tusks,paws,tail,rootstips insidecell, no overlap/no cropping. Constant creaturesize andcamera,facingLEFT, fixedvirtualground baseline; motioncanliftfeet naturally. True transparent alpha background, NO floor/scenery/castshadow/text/numbers/borders/watermark. Same richly painted high-detail anime gameillustration asreference, renderedmaterials, texturedfur/bark, restrainedcontours, no rigs/cutouts/flatanimation/pixelart/chibi. NO gore,blood,severedparts,openwounds. Non-graphicyounger-audience action. Fullbodypose sequence: 1: Contact recoil from unseen hit atleft: flower and uppertrunk compress right, thornarms flinch, rootfootprint anchored. 2: Overshoot: flower leans farther right and petals trail left, arms curl protectively, rootbase remains planted. 3: Recovery: flower regains leftfacing guard, arms loosen, petaltips settle; same fixed rootanchor. Samecreatureacrossframes. Contactframeexaggerates squash, followingposeovershoots,andfur/leaveslagbody. Do notmerely rotateidenticalimage.",
+      "spec": {
+        "id": "thorn_lurker_hit_short",
+        "creature": "thorn_lurker",
+        "ref": "thorn_lurker_action_keys.png",
+        "frames": 3,
+        "cols": 3,
+        "rows": 1,
+        "appearance": "The rooted THORN LURKER from reference: twisting woody green vine trunk, large BURGUNDY flower mouth/yellow teeth/purple tongue, curling thornvine arms, layered petals and thick roots. It remains fixed to ground through roots; no limbs becoming animal legs.",
+        "poses": [
+          "Contact recoil from unseen hit atleft: flower and uppertrunk compress right, thornarms flinch, rootfootprint anchored.",
+          "Overshoot: flower leans farther right and petals trail left, arms curl protectively, rootbase remains planted.",
+          "Recovery: flower regains leftfacing guard, arms loosen, petaltips settle; same fixed rootanchor."
+        ]
+      },
+      "reference": "thorn_lurker_action_keys.png",
+      "source": "C:\\Users\\charl\\.codex\\generated_images\\01a0b9f4-5be3-7e50-8e02-bc2e978b94ac\\exec-9fc66396-af98-4eaa-9470-cc31f6178876.png",
+      "file": "assets/expedition/astra-v1/beasts/thorn_lurker_hit_short.png"
+    },
+    {
+      "id": "thorn_lurker_down_fade",
+      "prompt": "Use case: identity-preserve. Assettype: painted full-frame creature animation SOURCE SHEET for Adventurer Expeditions, actionthorn_lurker_down_fade. Reference is exact design/fidelity. Draw 4 NEW successive action drawings; The rooted THORN LURKER from reference: twisting woody green vine trunk, large BURGUNDY flower mouth/yellow teeth/purple tongue, curling thornvine arms, layered petals and thick roots. Fixed rootanchor, plantcreature noanimalbody. Strict2columns×2rows equalcells, readlefttoright topthenbottom. Landscape canvas, fourcomplete figures intworows. EVERY complete subject centeredinside itsowncell withlarge blankgutter; allfur,paws,tail,rootstips insidecell, no overlap/no cropping. Constant creaturesize andcamera,facingLEFT, fixedvirtualground baseline; motioncanliftfeet naturally. True transparent alpha background, NO floor/scenery/castshadow/text/numbers/borders/watermark. Same richly painted high-detail anime gameillustration asreference, renderedmaterials, texturedfur/bark, restrainedcontours, no rigs/cutouts/flatanimation/pixelart/chibi. NO gore,blood,severedparts,openwounds. Non-graphicyounger-audience action. Fullbodypose sequence: 1: Defeat: flower droops, vine arms lower and lose tension, roots still anchored. 2: Flower closes into burgundy petals, vine trunk folds lower and leaves droop; non-graphic, no cuts. 3: Closed flower and rooted body dissolve from edges into pale GREEN GOLD leaf-shaped motes, center still recognizable. 4: Only a faint paleGREEN GOLD plant-shaped wisp and leaf motes remain above old rootmark, no corpse/body. Samecreatureacrossframes. Contactframeexaggerates squash, followingposeovershoots,andfur/leaveslagbody. Do notmerely rotateidenticalimage.",
+      "spec": {
+        "id": "thorn_lurker_down_fade",
+        "creature": "thorn_lurker",
+        "ref": "thorn_lurker_action_keys.png",
+        "frames": 4,
+        "cols": 2,
+        "rows": 2,
+        "appearance": "The rooted THORN LURKER from reference: twisting woody green vine trunk, large BURGUNDY flower mouth/yellow teeth/purple tongue, curling thornvine arms, layered petals and thick roots. Fixed rootanchor, plantcreature noanimalbody.",
+        "poses": [
+          "Defeat: flower droops, vine arms lower and lose tension, roots still anchored.",
+          "Flower closes into burgundy petals, vine trunk folds lower and leaves droop; non-graphic, no cuts.",
+          "Closed flower and rooted body dissolve from edges into pale GREEN GOLD leaf-shaped motes, center still recognizable.",
+          "Only a faint paleGREEN GOLD plant-shaped wisp and leaf motes remain above old rootmark, no corpse/body."
+        ]
+      },
+      "reference": "thorn_lurker_action_keys.png",
+      "source": "C:\\Users\\charl\\.codex\\generated_images\\01a0b9f4-5be3-7e50-8e02-bc2e978b94ac\\exec-313a3038-d039-4321-ae78-dbb8712d3f9f.png",
+      "file": "assets/expedition/astra-v1/beasts/thorn_lurker_down_fade.png"
+    },
+    {
+      "id": "alpha_hit_heavy",
+      "prompt": "Use case: identity-preserve. Assettype: painted full-frame creature animation SOURCE SHEET for Adventurer Expeditions, actionalpha_hit_heavy. Reference is exact design/fidelity. Draw 3 NEW successive action drawings; The exact ALPHA BOSS fromreference: dark charcoal silver-gray wolf, HUGE broad spiked shoulder ruff, muscular forequarters, large paws/jaw, pale SILVER eyebrows and closed PALE double healed muzzle scars, amber eyes. Four legs, no open wound. Strict3columns×1rows equalcells, readlefttoright topthenbottom. Wide horizontalstrip, threecomplete figures inone row. EVERY complete subject centeredinside itsowncell withlarge blankgutter; allfur,paws,tail,rootstips insidecell, no overlap/no cropping. Constant creaturesize andcamera,facingLEFT, fixedvirtualground baseline; motioncanliftfeet naturally. True transparent alpha background, NO floor/scenery/castshadow/text/numbers/borders/watermark. Same richly painted high-detail anime gameillustration asreference, renderedmaterials, texturedfur/bark, restrainedcontours, no rigs/cutouts/flatanimation/pixelart/chibi. NO gore,blood,severedparts,openwounds. Non-graphicyounger-audience action. Fullbodypose sequence: 1: Heavy contact from left: huge shoulders compress backright, head winces and ears flatten; fourlegs coherent. 2: Overshoot: body rocks onto hindquarters, one forepaw lifts, mane violently trails left, muzzle turned slightly aside without changing identity. 3: Recovery: frontpaws plant, boss lowers head left and snarls, masssettles, mane follows a beat later. Samecreatureacrossframes. Contactframeexaggerates squash, followingposeovershoots,andfur/leaveslagbody. Do notmerely rotateidenticalimage.",
+      "spec": {
+        "id": "alpha_hit_heavy",
+        "creature": "alpha",
+        "ref": "alpha_action_keys_v2.png",
+        "frames": 3,
+        "cols": 3,
+        "rows": 1,
+        "appearance": "The exact ALPHA BOSS fromreference: dark charcoal silver-gray wolf, HUGE broad spiked shoulder ruff, muscular forequarters, large paws/jaw, pale SILVER eyebrows and closed PALE double healed muzzle scars, amber eyes. Four legs, no open wound.",
+        "poses": [
+          "Heavy contact from left: huge shoulders compress backright, head winces and ears flatten; fourlegs coherent.",
+          "Overshoot: body rocks onto hindquarters, one forepaw lifts, mane violently trails left, muzzle turned slightly aside without changing identity.",
+          "Recovery: frontpaws plant, boss lowers head left and snarls, masssettles, mane follows a beat later."
+        ]
+      },
+      "reference": "alpha_action_keys_v2.png",
+      "source": "C:\\Users\\charl\\.codex\\generated_images\\01a0b9f4-5be3-7e50-8e02-bc2e978b94ac\\exec-f13a07d0-608d-454d-a44e-f5ea41e20411.png",
+      "file": "assets/expedition/astra-v1/beasts/alpha_hit_heavy.png"
+    },
+    {
+      "id": "alpha_enrage",
+      "prompt": "Use case: identity-preserve. Assettype: painted full-frame creature animation SOURCE SHEET for Adventurer Expeditions, actionalpha_enrage. Reference is exact design/fidelity. Draw 4 NEW successive action drawings; The exact ALPHA BOSS fromreference: dark charcoal silver-gray wolf, HUGE broad spiked shoulder ruff, muscular forequarters, large paws/jaw, pale SILVER eyebrows and closed PALE double healed muzzle scars, amber eyes. Fourlegs, allfur recognizable, no permanentflames orarmor. Strict2columns×2rows equalcells, readlefttoright topthenbottom. Landscape canvas, fourcomplete figures intworows. EVERY complete subject centeredinside itsowncell withlarge blankgutter; allfur,paws,tail,rootstips insidecell, no overlap/no cropping. Constant creaturesize andcamera,facingLEFT, fixedvirtualground baseline; motioncanliftfeet naturally. True transparent alpha background, NO floor/scenery/castshadow/text/numbers/borders/watermark. Same richly painted high-detail anime gameillustration asreference, renderedmaterials, texturedfur/bark, restrainedcontours, no rigs/cutouts/flatanimation/pixelart/chibi. NO gore,blood,severedparts,openwounds. Non-graphicyounger-audience action. Fullbodypose sequence: 1: Trigger: planted low bossguard, amber eyes narrow, ruff beginning to rise. 2: Anticipation: breath draws, chest expands, forepaws dig in, head tilts upward slightly, fur trails. 3: Peak enrage roar: jaws open upward-left, giant ruffbristling, fourlegs remain onground, intense amber eyes; no beams orflames. 4: Settle into deeper dangerous leftfacing guard, jawclosing, ruffstill raised, gaze fierce. Samecreatureacrossframes. Contactframeexaggerates squash, followingposeovershoots,andfur/leaveslagbody. Do notmerely rotateidenticalimage.",
+      "spec": {
+        "id": "alpha_enrage",
+        "creature": "alpha",
+        "ref": "alpha_action_keys_v2.png",
+        "frames": 4,
+        "cols": 2,
+        "rows": 2,
+        "appearance": "The exact ALPHA BOSS fromreference: dark charcoal silver-gray wolf, HUGE broad spiked shoulder ruff, muscular forequarters, large paws/jaw, pale SILVER eyebrows and closed PALE double healed muzzle scars, amber eyes. Fourlegs, allfur recognizable, no permanentflames orarmor.",
+        "poses": [
+          "Trigger: planted low bossguard, amber eyes narrow, ruff beginning to rise.",
+          "Anticipation: breath draws, chest expands, forepaws dig in, head tilts upward slightly, fur trails.",
+          "Peak enrage roar: jaws open upward-left, giant ruffbristling, fourlegs remain onground, intense amber eyes; no beams orflames.",
+          "Settle into deeper dangerous leftfacing guard, jawclosing, ruffstill raised, gaze fierce."
+        ]
+      },
+      "reference": "alpha_action_keys_v2.png",
+      "source": "C:\\Users\\charl\\.codex\\generated_images\\01a0b9f4-5be3-7e50-8e02-bc2e978b94ac\\exec-090eb04b-6b87-4295-849d-0f10b96aa0da.png",
+      "file": "assets/expedition/astra-v1/beasts/alpha_enrage.png"
+    },
+    {
+      "id": "alpha_down_fade",
+      "prompt": "Use case: identity-preserve. Assettype: painted full-frame creature animation SOURCE SHEET for Adventurer Expeditions, actionalpha_down_fade. Reference is exact design/fidelity. Draw FOUR NEW successive action drawings. The exact ALPHA BOSS fromreference: dark charcoal silver-gray wolf, HUGE broad spiked shoulder ruff, muscular forequarters, large paws/jaw, pale SILVER eyebrows and closed PALE double healed muzzle scars, amber eyes. No openinjury/blood. Strict2columns×2rows equalcells, readlefttoright topthenbottom, landscape1536x1024. EVERY complete wolf centeredinside itsowncell withlarge blankgutter; fullfur,paws,tail insidecell, no overlap/no cropping. Constant creaturesize andcamera,facingLEFT, fixedvirtualgroundbaseline. True transparent alpha background, NO floor/scenery/castshadow/text/numbers/borders/watermark. Same richly painted high-detail anime gameillustration asreference, texturedfur and coherentbody. NO gore,blood,severedparts,openwounds. Fullbodypose sequence: 1: Defeat stagger: forepaws buckle, large head bows, ruff settles; no wound. 2: Lowers on foldedlegs onto side, eyes closed, heavy mane rests, no corpse realism. 3: Same lowpose dissolves from outerfur and hindquarters into bright soft GOLD WHITE motes, face still recognizable. 4: Mostly vanished into faint GOLD WHITE wolf-shaped light and drifting particles, no solidcorpse. Non-graphic magical defeat, peaceful closingeyes thenstylizedsoftgoldwhitelightmotes. Preserve the muzzlemarking and heavy bossruff; don't substituteordinarywolf orchangeanimal species. Four fullpainted frames, not cutoutpuppets.",
+      "spec": {
+        "id": "alpha_down_fade",
+        "creature": "alpha",
+        "ref": "alpha_action_keys_v2.png",
+        "frames": 4,
+        "cols": 2,
+        "rows": 2,
+        "appearance": "The exact ALPHA BOSS fromreference: dark charcoal silver-gray wolf, HUGE broad spiked shoulder ruff, muscular forequarters, large paws/jaw, pale SILVER eyebrows and closed PALE double healed muzzle scars, amber eyes. No openinjury/blood.",
+        "poses": [
+          "Defeat stagger: forepaws buckle, large head bows, ruff settles; no wound.",
+          "Lowers on foldedlegs onto side, eyes closed, heavy mane rests, no corpse realism.",
+          "Same lowpose dissolves from outerfur and hindquarters into bright soft GOLD WHITE motes, face still recognizable.",
+          "Mostly vanished into faint GOLD WHITE wolf-shaped light and drifting particles, no solidcorpse."
+        ]
+      },
+      "reference": "alpha_action_keys_v2.png",
+      "source": "C:\\Users\\charl\\.codex\\generated_images\\01a0b9f4-5be3-7e50-8e02-bc2e978b94ac\\exec-322e2043-cc32-421f-99c5-5de950d63300.png",
+      "file": "assets/expedition/astra-v1/beasts/alpha_down_fade.png"
+    }
+  ]
+}

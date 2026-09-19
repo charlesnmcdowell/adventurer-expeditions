@@ -1,0 +1,72 @@
+:root {
+  --adv-safe-top: env(safe-area-inset-top, 0px);
+  --adv-safe-right: env(safe-area-inset-right, 0px);
+  --adv-safe-bottom: env(safe-area-inset-bottom, 0px);
+  --adv-safe-left: env(safe-area-inset-left, 0px);
+}
+html, body { height: 100%; height: 100dvh; overflow: hidden; overscroll-behavior: none; touch-action: manipulation; }
+#game {
+  top: var(--adv-safe-top); left: var(--adv-safe-left); right: auto; bottom: auto;
+  width: calc(var(--adv-view-width, 100%) - var(--adv-safe-left) - var(--adv-safe-right));
+  height: calc(var(--adv-view-height, 100dvh) - var(--adv-safe-top) - var(--adv-safe-bottom));
+}
+#rotate { box-sizing: border-box; padding: max(1.5rem, var(--adv-safe-top)) max(1.5rem, var(--adv-safe-right)) max(1.5rem, var(--adv-safe-bottom)) max(1.5rem, var(--adv-safe-left)); }
+body.rotate-required #rotate { display: flex; }
+#rotate-dismiss { position: absolute; top: max(.75rem, var(--adv-safe-top)); right: max(.75rem, var(--adv-safe-right)); min-width: 44px; min-height: 44px; border: 1px solid #b9a77d; border-radius: 50%; background: #211d18; color: #f4e9d4; font-size: 1.5rem; cursor: pointer; }
+#rotate .s { max-width: 28em; line-height: 1.6; }
+.mobile-launch #game canvas, .mobile-loading #game canvas { width: 100% !important; height: 100% !important; margin: 0 !important; object-fit: cover; pointer-events: none; }
+.mobile-launch #game { pointer-events: none; }
+.mobile-home, .mobile-home * { box-sizing: border-box; }
+.mobile-home {
+  position: fixed; inset: 0; z-index: 60; height: 100dvh;
+  height: var(--adv-view-height, 100dvh);
+  padding: max(1rem, var(--adv-safe-top)) max(1.25rem, var(--adv-safe-right)) max(1rem, var(--adv-safe-bottom)) max(1.25rem, var(--adv-safe-left));
+  display: flex; flex-direction: column; align-items: center; gap: clamp(.65rem, 2dvh, 1.25rem);
+  overflow: auto; overscroll-behavior: contain; touch-action: manipulation;
+  color: #f2e8d4; background: linear-gradient(180deg, #0b131c55, #0b131c33 35%, #0b131cee 85%);
+  font-family: Georgia, 'Times New Roman', serif; font-size: clamp(1rem, 2.8vw, 1.15rem); line-height: 1.5;
+}
+.mobile-home button, .mobile-home input, .mobile-home select {
+  font: inherit; min-height: 48px; min-width: 44px; width: 100%; border-radius: .65rem;
+  border: 1px solid #ac9565; background: #18232ff5; color: #f2e8d4;
+  padding: .65rem 1rem; touch-action: manipulation;
+}
+.mobile-home button { cursor: pointer; }
+.mobile-home button:focus-visible, .mobile-home input:focus-visible { outline: 3px solid #f0c666; outline-offset: 3px; }
+.mobile-home button.primary { background: linear-gradient(#e5bf71, #c29950); color: #17202b; font-weight: bold; border-color: #efd8a0; }
+.mobile-home button.danger { color: #ffc7bf; border-color: #c57366; }
+.mobile-home input { user-select: text; -webkit-user-select: text; font-size: 16px; }
+.mobile-home header { text-align: center; margin-top: clamp(.5rem, 7dvh, 4rem); }
+.mobile-home h1 { font-size: clamp(2rem, 8.8vw, 3.7rem); line-height: 1.15; margin: 0; color: #f1cd80; letter-spacing: .04em; text-shadow: 0 2px 16px #000; }
+.mobile-home h2 { font-size: clamp(1.35rem, 5vw, 1.8rem); line-height: 1.25; margin: 0; color: #f1cd80; }
+.mobile-home p { margin: .5rem 0; }
+.mobile-home .tagline { font-style: italic; color: #e4d8c0; }
+.mobile-home .version { margin-top: .15rem; color: #f1cd80; font-size: .95rem; letter-spacing: .04em; }
+.mobile-home .launch-actions { margin-top: auto; width: 100%; max-width: 28rem; display: grid; gap: .65rem; }
+.mobile-home .save-note { text-align: center; font-size: .8rem; color: #cfbf9f; margin: .2rem 0 0; }
+.mobile-home .browser-hint { width: 100%; max-width: 30rem; padding: .7rem; background: #172534f2; border: 1px solid #68727a; border-radius: .8rem; font: .88rem/1.45 system-ui, sans-serif; }
+.mobile-home .hint-actions { display: flex; align-items: center; gap: .5rem; margin-top: .35rem; }
+.mobile-home .hint-actions button { width: auto; flex: 1; font-size: .85rem; padding: .4rem; }
+.mobile-home .hint-actions .close-hint { flex: 0 0 44px; }
+.mobile-home .sheet-shade { position: fixed; inset: 0; background: #050b12b8; display: flex; align-items: end; justify-content: center; z-index: 2; }
+.mobile-home .sheet {
+  width: 100%; max-width: 34rem; max-height: calc(var(--adv-view-height, 100dvh) - max(1rem, var(--adv-safe-top)));
+  overflow: auto; overscroll-behavior: contain; background: #111e2c; border: 1px solid #827552; border-radius: 1.1rem 1.1rem 0 0;
+  padding: 1.25rem max(1.25rem, var(--adv-safe-right)) max(1.25rem, var(--adv-safe-bottom)) max(1.25rem, var(--adv-safe-left));
+  display: grid; gap: .75rem;
+}
+.mobile-home .sheet-heading { display: flex; gap: 1rem; align-items: center; justify-content: space-between; }
+.mobile-home .sheet-heading button { flex: 0 0 44px; width: 44px; padding: .4rem; }
+.mobile-home .sheet label { display: grid; gap: .35rem; }
+.mobile-home .status { font: .9rem/1.4 system-ui, sans-serif; }
+.mobile-home .card-count { color: #cfbf9f; font-size: .9rem; }
+.mobile-home .onboarding { width: 100%; max-width: 30rem; margin: auto 0; background: #101b28ee; border: 1px solid #786b4c; padding: clamp(1rem, 4vw, 2rem); border-radius: 1rem; }
+@media (orientation: landscape) and (max-height: 500px) {
+  .mobile-home { gap: .5rem; }
+  .mobile-home header { margin-top: 0; }
+  .mobile-home h1 { font-size: clamp(1.7rem, 5vw, 2.3rem); }
+  .mobile-home .tagline { display: none; }
+  .mobile-home .launch-actions { gap: .4rem; }
+  .mobile-home .browser-hint { font-size: .8rem; }
+}
+@media (prefers-reduced-motion: reduce) { #rotate .icon { animation: none; transform: rotate(90deg); } }

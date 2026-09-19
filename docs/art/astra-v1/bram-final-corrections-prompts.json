@@ -1,0 +1,26 @@
+[
+  {
+    "id": "slash_clean",
+    "file": "slash_clean.png",
+    "cols": 3,
+    "rows": 2,
+    "frames": 6,
+    "refs": [
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions/assets/expedition/astra-v1/heroes/bram/slash.png"
+    ],
+    "prompt": "EDIT the attached Bram six-pose action sheet. Preserve the exact dark brown man with black locs, burgundy coat, gold piping, white collar, silver single shoulder armor, dark boots, right-hand straight sword and left-arm round shield. Maintain high-fidelity painted anime look. Fix the intake layout: six full-body action drawings in equal 3-column 2-row cells, on pure white background. Reduce each figure uniformly to leave 12 percent empty margin all around EVERY cell; no sword, coat or boot may cross any cell boundary. No visible grid lines or text. Frame1 ready guard. Frame2 raised right-hand sword windup. Frame3 full rightward striking extension, both feet planted. Frame4 strongly lowered follow-through with sword tip forward and low, all inside cell. Frame5 recoil and settle with sword lifted halfway. Frame6 guard. Consistent scale, camera and equipment; two hands only, no opponent, no glow hiding the blade, all faces point right. Keep the entire drawn blade tips. Do not zoom the drawings to fill their cells. This is animation source art; generous white margins are essential.",
+    "source": "C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227\\exec-1c990e65-693e-43ff-9b92-0bf0822d23c5.png"
+  },
+  {
+    "id": "bite_leg_a_clean",
+    "file": "bite_leg_a_clean.png",
+    "cols": 3,
+    "rows": 2,
+    "frames": 6,
+    "refs": [
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions/assets/expedition/astra-v1/heroes/bram/bite_leg_b.png"
+    ],
+    "prompt": "Using the attached four-frame Bram/wolf sheet as identity and LEFT/RIGHT staging reference, paint the SIX preceding frames for the first half of this exact leg-bite reaction. 3 columns by 2 rows, six paired full-body drawings on PURE WHITE, no grid lines or text, BOTH figures completely inside each cell with 12 percent blank margin. SAME CAMERA and SAME SCALE through all frames. Bram ALWAYS on LEFT facing RIGHT; wolf ALWAYS on RIGHT facing LEFT. Bram is the dark brown adult black-loc-haired burgundy-coated shieldbearer from reference; straight sword in RIGHT hand held behind and down safely away from wolf, round shield on LEFT forearm. Gray-white yellow-eyed wolf, wolf shoulders around man's knee height. Frame1 Bram stands guarding, wolf crouches facing his forward boot. Frame2 wolf short pounce toward Bram's extended RIGHT shin. Frame3 wolf closes jaw around rigid leather/metal RIGHT boot cuff, above ankle, no wound. Frame4 wolf holds the SAME boot; Bram bends at waist, grimaces and braces left rear foot, shield turned down toward wolf. Frame5 Bram raises the held right knee slightly and pushes shield against wolf shoulder while wolf maintains grip. Frame6 Bram draws the right knee back for the following kick, wolf STILL gripping boot with weight pulled forward, ready for release in next sheet. Maintain all anatomy, two human legs and arms, four wolf legs, one tail. No blood, no puncture marks, no exposed injury; brief stylized PG action. DO NOT put the wolf behind Bram or switch the two sides. Do not show release, tumble or recovery yet. Full painted anime detailed materials and lively action, no rigged cutouts.",
+    "source": "C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227\\exec-536c6463-93ea-4c19-b146-9f02a503c185.png"
+  }
+]

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<!-- viewport-fit=cover lets the canvas run under the iPhone notch/home bar; the
+     game draws its own margins. maximum-scale/user-scalable stop pinch and
+     double-tap zoom, which a canvas game never wants. -->
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Adventurer">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/app/icon-180.png">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/app/icon-192.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#0b0a08">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>Adventurer: Expeditions</title>
+<!-- live-9 20260915T2356 -->
+<style>
+  html, body {
+    margin: 0; padding: 0; background: #0b0a08;
+    width: 100%; height: 100%;
+    overflow: hidden;                 /* no page scroll, no horizontal scroll */
+    overscroll-behavior: none;        /* no rubber-band on the body */
+    -webkit-text-size-adjust: 100%;
+    touch-action: manipulation;       /* DOM controls work; canvas owns its gestures */
+    -webkit-user-select: none; user-select: none;
+    -webkit-touch-callout: none;      /* no long-press callout over the canvas */
+    -webkit-tap-highlight-color: transparent;
+  }
+  /* 100dvh tracks the iOS Safari toolbar as it shows/hides; fall back to 100%. */
+  /* Phaser's autoCenter positions the canvas inside #game with margins;
+     #game itself must NOT also flex-centre it or the offset doubles. */
+  #game { position: fixed; inset: 0; width: 100%; height: 100%; height: 100dvh; display: block; }
+  canvas { image-rendering: auto; display: block; touch-action: none; }
+  /* Fullscreen: the game box owns the monitor / phone display. */
+  :fullscreen, :-webkit-full-screen { background: #0b0a08; width: 100%; height: 100%; }
+  #game:fullscreen, #game:-webkit-full-screen {
+    width: calc(100dvw - var(--adv-safe-left) - var(--adv-safe-right)) !important;
+    height: calc(100dvh - var(--adv-safe-top) - var(--adv-safe-bottom)) !important;
+  }
+
+  /* DOM text fields overlaid on the canvas (canvas text can't summon a
+     software keyboard). Positioned by ADV.UI.textField in game-space units. */
+  .adv-field {
+    position: absolute; box-sizing: border-box; z-index: 40;
+    background: #211d18; color: #e8e0d0; border: 1px solid #5a4e3c; border-radius: 4px;
+    font-family: Georgia, 'Times New Roman', serif; font-size: 16px; /* >=16px: iOS won't zoom */
+    text-align: center; outline: none; padding: 0 8px; margin: 0;
+    -webkit-user-select: text; user-select: text; touch-action: manipulation;
+    pointer-events: auto;
+    -webkit-appearance: none; appearance: none;
+  }
+  .adv-field:focus { border-color: #c8a24a; }
+  .adv-field.adv-purple { color: #b48ee0; }
+
+  /* Landscape-only: on a phone held upright, ask for a turn. Dismisses itself
+     the moment the viewport is wider than it is tall. */
+  #rotate {
+    position: fixed; inset: 0; z-index: 100; display: none;
+    background: #0b0a08; color: #d8cdb8; text-align: center;
+    font-family: Georgia, serif; padding: 0 24px;
+    flex-direction: column; justify-content: center; align-items: center; gap: 18px;
+  }
+  #rotate .icon { width: 64px; height: 112px; border: 3px solid #c8a24a; border-radius: 10px;
+                  animation: advturn 1.6s ease-in-out infinite; }
+  #rotate .t { font-size: 20px; color: #e7b450; letter-spacing: 1px; }
+  #rotate .s { font-size: 14px; color: #8b7d6b; }
+  @keyframes advturn { 0%,25% { transform: rotate(0deg); } 60%,100% { transform: rotate(90deg); } }
+
+  #adv-live-update {
+    display: none; position: fixed; inset: 0; z-index: 10000;
+    background: rgba(11, 10, 8, 0.92); color: #e8e0d0;
+    font-family: Georgia, 'Times New Roman', serif;
+    flex-direction: column; justify-content: center; align-items: center;
+    text-align: center; padding: 28px 24px;
+  }
+  #adv-live-update.show { display: flex; }
+  #adv-live-update h1 { color: #e7b450; font-size: 26px; letter-spacing: 0.5px; margin: 0 0 18px; }
+  #adv-live-update p { font-size: 16px; line-height: 1.5; max-width: 520px; margin: 0 0 28px; color: #d8cdb8; }
+  #adv-live-update button {
+    background: #211d18; color: #e8e0d0; border: 1px solid #c8a24a; border-radius: 4px;
+    font-family: Georgia, 'Times New Roman', serif; font-size: 16px;
+    padding: 12px 52px; cursor: pointer;
+  }
+  #adv-live-update button:focus { outline: 2px solid #c8a24a; }
+</style>
+<link rel="stylesheet" href="assets/mobile.css?v=20260914-mobile2">
+<link rel="stylesheet" href="assets/save-ui.css?v=20260914-audit1">
+</head>
+<body>
+<div id="game"></div>
+<script src="lib/phaser.min.js?v=20260918-xp1"></script>
+<script src="js/data/constants.js?v=20260918-xp1"></script>
+<script src="js/data/version.js?v=20260918-xp1"></script>
+<script src="js/data/skills.js?v=20260918-xp1"></script>
+<script src="js/data/campaign_skills.js?v=20260918-xp1"></script>
+<script src="js/data/campaign_data.js?v=20260918-xp1"></script>
+<script src="js/data/campaign_dialogue.js?v=20260918-xp1"></script>
+<script src="js/data/campaign2_skills.js?v=20260918-xp1"></script>
+<script src="js/data/monster_skills.js?v=20260918-xp1"></script>
+<script src="js/data/campaign2_data.js?v=20260918-xp1"></script>
+<script src="js/data/campaign2_dialogue.js?v=20260918-xp1"></script>
+<script src="js/data/campaign3_data.js?v=20260918-xp1"></script>
+<script src="js/data/campaign3_dialogue.js?v=20260918-xp1"></script>
+<script src="js/data/gate_finale.js?v=20260918-xp1"></script>
+<script src="js/data/gate_epilogue_voice.js?v=20260918-xp1"></script>
+<script src="js/data/campaign3_perks.js?v=20260918-xp1"></script>
+<script src="js/data/enemies.js?v=20260918-xp1"></script>
+<script src="js/data/minibosses.js?v=20260918-xp1"></script>
+<script src="js/data/enemy_tactics.js?v=20260918-xp1"></script>
+<script src="js/data/names.js?v=20260918-xp1"></script>
+<script src="js/data/tutorial.js?v=20260918-xp1"></script>
+<script src="js/data/registry.js?v=20260918-xp1"></script>
+<script src="js/data/dialogue.js?v=20260918-xp1"></script>
+<script src="js/data/dialogue_hiro.js?v=20260918-xp1"></script>
+<script src="js/data/dialogue2.js?v=20260918-xp1"></script>
+<script src="js/data/dialogue_context.js?v=20260918-xp1"></script>
+<script src="js/data/dialogue_bonus.js?v=20260918-xp1"></script>
+<script src="js/data/travel.js?v=20260918-xp1"></script>
+<script src="js/data/personality_events.js?v=20260918-xp1"></script>
+<script src="js/data/personality_pairs.js?v=20260918-xp1"></script>
+<script src="js/data/personality_travel.js?v=20260918-xp1"></script>
+<script src="js/data/personality_social.js?v=20260918-xp1"></script>
+<script src="js/data/campaign_story.js?v=20260918-xp1"></script>
+<script src="js/data/voice_manifest.js?v=20260918-xp1"></script>
+<script src="js/data/audio_update_manifest.js?v=20260918-xp1"></script>
+<script src="js/data/lifecycle_voice_manifest.js?v=20260918-xp1"></script>
+<script src="js/core/rng.js?v=20260918-xp1"></script>
+<script src="js/core/util.js?v=20260918-xp1"></script>
+<script src="js/core/skillsys.js?v=20260918-xp1"></script>
+<script src="js/core/character.js?v=20260918-xp1"></script>
+<script src="js/core/housing.js?v=20260918-xp1"></script>
+<script src="js/core/survival.js?v=20260918-xp1"></script>
+<script src="js/core/combat_events.js?v=20260918-xp1"></script>
+<script src="js/core/combat_turns.js?v=20260918-xp1"></script>
+<script src="js/core/combat_targeting.js?v=20260918-xp1"></script>
+<script src="js/core/combat_damage.js?v=20260918-xp1"></script>
+<script src="js/core/combat_healing.js?v=20260918-xp1"></script>
+<script src="js/core/combat_statuses.js?v=20260918-xp1"></script>
+<script src="js/core/combat.js?v=20260918-xp1"></script>
+<script src="js/core/combat_ai.js?v=20260918-xp1"></script>
+<script src="js/core/combat_effects.js?v=20260918-xp1"></script>
+<script src="js/core/relationships.js?v=20260918-xp1"></script>
+<script src="js/core/courtship.js?v=20260918-xp1"></script>
+<script src="js/core/hiro.js?v=20260918-xp1"></script>
+<script src="js/core/vault.js?v=20260918-xp1"></script>
+<script src="js/core/quests.js?v=20260918-xp1"></script>
+<script src="js/core/party.js?v=20260918-xp1"></script>
+<script src="js/core/divine.js?v=20260918-xp1"></script>
+<script src="js/core/death.js?v=20260918-xp1"></script>
+<script src="js/core/world.js?v=20260918-xp1"></script>
+<script src="js/core/save_store.js?v=20260918-xp1"></script>
+<script src="js/core/save.js?v=20260918-xp1"></script>
+<script src="js/core/release_config.js?v=20260918-xp1"></script>
+<script src="js/core/prefs.js?v=20260918-xp1"></script>
+<script src="js/core/censorship.js?v=20260918-xp1"></script>
+<script src="js/core/campaign_router.js?v=20260918-xp1"></script>
+<script src="js/core/campaign.js?v=20260918-xp1"></script>
+<script src="js/core/campaign2.js?v=20260918-xp1"></script>
+<script src="js/core/quest_lifecycle.js?v=20260918-xp1"></script>
+<script src="js/core/game.js?v=20260918-xp1"></script>
+<script src="js/core/campaign3.js?v=20260918-xp1"></script>
+<script src="js/core/gate_finale.js?v=20260918-xp1"></script>
+<script src="js/core/campaign3_perks.js?v=20260918-xp1"></script>
+<script src="js/core/campaign3_perk_combat.js?v=20260918-xp1"></script>
+<script src="js/core/conversation.js?v=20260918-xp1"></script>
+<script src="js/core/travel.js?v=20260918-xp1"></script>
+<script src="js/core/difficulty.js?v=20260918-xp1"></script>
+<script src="js/core/balance_support.js?v=20260918-xp1"></script>
+<script src="js/core/family_support.js?v=20260918-xp1"></script>
+<script src="js/ui/theme.js?v=20260918-xp1"></script>
+<script src="js/ui/uikit.js?v=20260918-xp1"></script>
+<script src="js/ui/home_art.js?v=20260918-xp1"></script>
+<script src="js/ui/home_life.js?v=20260918-xp1"></script>
+<script src="js/ui/music.js?v=20260918-xp1"></script>
+<script src="js/ui/tooltip.js?v=20260918-xp1"></script>
+<script src="js/ui/portraits.js?v=20260918-xp1"></script>
+<script src="js/ui/vfx.js?v=20260918-xp1"></script>
+<script src="js/ui/combat_presentation.js?v=20260918-xp1"></script>
+<script src="js/ui/weather.js?v=20260918-xp1"></script>
+<script src="js/ui/spell_fx.js?v=20260918-xp1"></script>
+<script src="js/ui/skill_art_catalog.js?v=20260918-xp1"></script>
+<script src="js/ui/skill_art.js?v=20260918-xp1"></script>
+<script src="js/ui/battle_art.js?v=20260918-xp1"></script>
+<script src="js/ui/travel_battle_art.js?v=20260918-xp1"></script>
+<script src="js/ui/mobile_viewport.js?v=20260918-xp1"></script>
+<script src="js/ui/anime_art.js?v=20260918-xp1"></script>
+<script src="js/ui/anime_manifest.js?v=20260918-xp1"></script>
+<script src="js/ui/anime_identities.js?v=20260918-xp1"></script>
+<script src="js/ui/asset_queue.js?v=20260918-xp1"></script>
+<script src="js/ui/anime_world.js?v=20260918-xp1"></script>
+<script src="js/ui/anime_environments.js?v=20260918-xp1"></script>
+<script src="js/ui/travel_ambience.js?v=20260918-xp1"></script>
+<script src="js/ui/travel_panorama.js?v=20260918-xp1"></script>
+<script src="js/ui/dialoguebox.js?v=20260918-xp1"></script>
+<script src="js/ui/cutscenes.js?v=20260918-xp1"></script>
+<script src="js/ui/portal.js?v=20260918-xp1"></script>
+<script src="js/expedition/data.js?v=20260918-xp1"></script>
+<script src="js/expedition/shim.js?v=20260918-xp1"></script>
+<script src="js/expedition/encounter.js?v=20260918-xp1"></script>
+<script src="js/expedition/run.js?v=20260918-xp1"></script>
+<script src="js/expedition/ui_common.js?v=20260918-xp1"></script>
+<script src="js/expedition/actors.js?v=20260918-xp1"></script>
+<script src="js/expedition/beats.js?v=20260918-xp1"></script>
+<script src="js/expedition/hud.js?v=20260918-xp1"></script>
+<script src="js/expedition/campaign.js?v=20260918-xp1"></script>
+<script src="js/expedition/scene.js?v=20260918-xp1"></script>
+<script src="js/expedition/scenes_town.js?v=20260918-xp1"></script>
+<script>
+(async function () {
+await ADV.Portal.prepare();
+const params = new URLSearchParams(location.search);
+const seed = params.has('seed') ? Number(params.get('seed')) : undefined;
+window.__game = new Phaser.Game({
+  type: (location.protocol === 'file:' || params.get('renderer') === 'canvas') ? Phaser.CANVAS : Phaser.AUTO,
+  parent: 'game',
+  width: ADV.T.W,
+  height: ADV.T.H,
+  backgroundColor: '#171512',
+  scale: { mode: Phaser.Scale.FIT, autoCenter: Phaser.Scale.CENTER_BOTH, fullscreenTarget: document.getElementById('game') },
+  input: { activePointers: 3 },
+  scene: [],
+});
+window.__game.scene.add('Inn', ADV.ExpeditionInnScene, false);
+window.__game.scene.add('Travel', ADV.ExpeditionTravelScene, false);
+window.__game.scene.add('Grave', ADV.ExpeditionGraveScene, false);
+window.__game.scene.add('Expedition', ADV.ExpeditionScene, false);
+// Resume where the run left off; a fresh run opens straight into the ambush.
+// Dev entry (tests, art review): ?at=inn[&gold=N] starts a fresh run at the inn with the road behind it.
+let run = params.has('fresh') ? null : ADV.Expedition.Run.load();
+if (params.get('at') === 'inn') {
+  run = ADV.Expedition.Run.reset();
+  run.questsDone = ['road']; run.phase = 'inn'; run.gold = params.has('gold') ? Number(params.get('gold')) : 150;
+  Object.assign(run.tutorial, { arrowDone: true, finisherDone: true, purchases: 3, recruitDone: false, embarkDone: false });
+  ADV.Expedition.Run.save(run);
+}
+const phase = run ? run.phase : 'quest';
+const start = phase === 'inn' ? 'Inn' : phase === 'travel' ? 'Travel' : phase === 'grave' ? 'Grave' : 'Expedition';
+window.__game.scene.start(start, { seed, fresh: params.has('fresh'), run: run || undefined, leg: run && run.travelLeg });
+if (ADV.MobileViewport) { window.__mobileViewport = ADV.MobileViewport.install(window, document, window.__game); window.__refit = window.__mobileViewport.schedule; }
+ADV.Portal.attach(window.__game);
+})();
+</script>
+</body>
+</html>

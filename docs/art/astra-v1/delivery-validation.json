@@ -1,0 +1,2040 @@
+{
+  "date": "2026-09-19T14:42:55.801794+00:00",
+  "status": "PASS",
+  "scope": "Image decode, selected-path existence, JSON, metadata rectangles and clip counts/timings only.",
+  "runtimeIntegrated": false,
+  "playbackGreenlit": false,
+  "summary": {
+    "selectedFiles": 82,
+    "selectedBytes": 163492349,
+    "drawingCountsByGroup": {
+      "Hiro": 128,
+      "Bram": 96,
+      "Beasts": 113,
+      "Human": 25,
+      "Effects": 16,
+      "Icons": 32
+    },
+    "allSourceImages": 100,
+    "allSourceBytes": 203054021,
+    "checkedRectangles": 152
+  },
+  "errors": [],
+  "selected": [
+    {
+      "group": "Hiro",
+      "path": "assets/expedition/astra-v1/heroes/hiro/hiro-reference.png",
+      "label": "Hiro \u00b7 identity reference",
+      "count": 0,
+      "kind": "reference",
+      "note": "Dark skin \u00b7 purple locs \u00b7 cyberpunk samurai \u00b7 katana",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "bytes": 2245270
+    },
+    {
+      "group": "Hiro",
+      "path": "assets/expedition/astra-v1/heroes/hiro/idle.png",
+      "label": "Idle",
+      "count": 4,
+      "kind": "painted keys",
+      "note": "",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "bytes": 1947645
+    },
+    {
+      "group": "Hiro",
+      "path": "assets/expedition/astra-v1/heroes/hiro/walk.png",
+      "label": "Walk",
+      "count": 8,
+      "kind": "painted keys",
+      "note": "Eight poses present; gait/passing alternation needs playback validation before loop greenlight.",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "bytes": 2035016
+    },
+    {
+      "group": "Hiro",
+      "path": "assets/expedition/astra-v1/heroes/hiro/draw.png",
+      "label": "Draw",
+      "count": 8,
+      "kind": "painted keys",
+      "note": "",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "bytes": 2267537
+    },
+    {
+      "group": "Hiro",
+      "path": "assets/expedition/astra-v1/heroes/hiro/short-draw.png",
+      "label": "Short Draw",
+      "count": 4,
+      "kind": "painted keys",
+      "note": "",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "bytes": 1884472
+    },
+    {
+      "group": "Hiro",
+      "path": "assets/expedition/astra-v1/heroes/hiro/slash-l1.png",
+      "label": "Slash L1",
+      "count": 6,
+      "kind": "painted keys",
+      "note": "",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "bytes": 2139735
+    },
+    {
+      "group": "Hiro",
+      "path": "assets/expedition/astra-v1/heroes/hiro/slash-l2.png",
+      "label": "Slash L2",
+      "count": 6,
+      "kind": "painted keys",
+      "note": "",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "bytes": 2110757
+    },
+    {
+      "group": "Hiro",
+      "path": "assets/expedition/astra-v1/heroes/hiro/slash-l3.png",
+      "label": "Slash L3",
+      "count": 6,
+      "kind": "painted keys",
+      "note": "",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "bytes": 2209708
+    },
+    {
+      "group": "Hiro",
+      "path": "assets/expedition/astra-v1/heroes/hiro/roll.png",
+      "label": "Roll",
+      "count": 6,
+      "kind": "painted keys",
+      "note": "",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "bytes": 2040762
+    },
+    {
+      "group": "Hiro",
+      "path": "assets/expedition/astra-v1/heroes/hiro/victory-sheath.png",
+      "label": "Victory Sheath",
+      "count": 8,
+      "kind": "painted keys",
+      "note": "",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "bytes": 2195664
+    },
+    {
+      "group": "Hiro",
+      "path": "assets/expedition/astra-v1/heroes/hiro/kneel.png",
+      "label": "Kneel",
+      "count": 4,
+      "kind": "painted keys",
+      "note": "",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "bytes": 1822647
+    },
+    {
+      "group": "Hiro",
+      "path": "assets/expedition/astra-v1/heroes/hiro/aura-l1.png",
+      "label": "Aura L1",
+      "count": 4,
+      "kind": "painted keys",
+      "note": "",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "bytes": 1783615
+    },
+    {
+      "group": "Hiro",
+      "path": "assets/expedition/astra-v1/heroes/hiro/aura-l2.png",
+      "label": "Aura L2",
+      "count": 4,
+      "kind": "painted keys",
+      "note": "",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "bytes": 1950898
+    },
+    {
+      "group": "Hiro",
+      "path": "assets/expedition/astra-v1/heroes/hiro/aura-l3.png",
+      "label": "Aura L3",
+      "count": 4,
+      "kind": "painted keys",
+      "note": "",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "bytes": 2045883
+    },
+    {
+      "group": "Hiro",
+      "path": "assets/expedition/astra-v1/heroes/hiro/bite-leg-paired.png",
+      "label": "Bite Leg Paired",
+      "count": 10,
+      "kind": "painted keys",
+      "note": "Keep both actors on one timeline; never split pair into unrelated clips.",
+      "width": 1983,
+      "height": 793,
+      "mode": "RGB",
+      "bytes": 2056018
+    },
+    {
+      "group": "Hiro",
+      "path": "assets/expedition/astra-v1/heroes/hiro/bite-arm-paired.png",
+      "label": "Bite Arm Paired",
+      "count": 10,
+      "kind": "painted keys",
+      "note": "Keep both actors on one timeline; never split pair into unrelated clips.",
+      "width": 1983,
+      "height": 793,
+      "mode": "RGB",
+      "bytes": 2079381
+    },
+    {
+      "group": "Hiro",
+      "path": "assets/expedition/astra-v1/heroes/hiro/finisher-l1-paired.png",
+      "label": "Finisher L1 Paired",
+      "count": 3,
+      "kind": "painted keys",
+      "note": "Keep both actors on one timeline; never split pair into unrelated clips.",
+      "width": 2172,
+      "height": 724,
+      "mode": "RGB",
+      "bytes": 1900150
+    },
+    {
+      "group": "Hiro",
+      "path": "assets/expedition/astra-v1/heroes/hiro/finisher-l2-paired.png",
+      "label": "Finisher L2 Paired",
+      "count": 3,
+      "kind": "painted keys",
+      "note": "Keep both actors on one timeline; never split pair into unrelated clips.",
+      "width": 2172,
+      "height": 724,
+      "mode": "RGB",
+      "bytes": 1936581
+    },
+    {
+      "group": "Hiro",
+      "path": "assets/expedition/astra-v1/heroes/hiro/finisher-l3-paired.png",
+      "label": "Finisher L3 Paired",
+      "count": 3,
+      "kind": "painted keys",
+      "note": "Keep both actors on one timeline; never split pair into unrelated clips.",
+      "width": 2172,
+      "height": 724,
+      "mode": "RGB",
+      "bytes": 1778221
+    },
+    {
+      "group": "Hiro",
+      "path": "assets/expedition/astra-v1/heroes/hiro/intercept-v2.png",
+      "label": "Intercept",
+      "count": 6,
+      "kind": "painted keys",
+      "note": "v2 selected; sword tips have tight top margin: inspect before equal-grid extraction.",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "bytes": 2060742
+    },
+    {
+      "group": "Hiro",
+      "path": "assets/expedition/astra-v1/heroes/hiro/riposte-v2.png",
+      "label": "Riposte",
+      "count": 6,
+      "kind": "painted keys",
+      "note": "v2 selected: added sixth settling pose; use custom bounds for extended sword.",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "bytes": 1934104
+    },
+    {
+      "group": "Hiro",
+      "path": "assets/expedition/astra-v1/heroes/hiro/hit-short-v2.png",
+      "label": "Hit Short",
+      "count": 3,
+      "kind": "painted keys",
+      "note": "v2 selected: drawn katana retained through recoil.",
+      "width": 2172,
+      "height": 724,
+      "mode": "RGB",
+      "bytes": 1852966
+    },
+    {
+      "group": "Hiro",
+      "path": "assets/expedition/astra-v1/heroes/hiro/counter-l2.png",
+      "label": "Counter L2",
+      "count": 6,
+      "kind": "painted keys",
+      "note": "",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "bytes": 2169841
+    },
+    {
+      "group": "Hiro",
+      "path": "assets/expedition/astra-v1/heroes/hiro/counter-l3.png",
+      "label": "Counter L3",
+      "count": 6,
+      "kind": "painted keys",
+      "note": "",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "bytes": 2153615
+    },
+    {
+      "group": "Bram",
+      "path": "assets/expedition/astra-v1/heroes/bram/bram_side_reference.png",
+      "label": "Bram \u00b7 starter outfit",
+      "count": 0,
+      "kind": "reference",
+      "note": "Burgundy duelist coat, straight sword and shield. Plate Harness variants remain.",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGB",
+      "bytes": 1950215
+    },
+    {
+      "group": "Bram",
+      "path": "assets/expedition/astra-v1/heroes/bram/idle_clean.png",
+      "label": "Idle",
+      "count": 4,
+      "kind": "painted keys",
+      "note": "Small breathing changes; registration and loop testing needed.",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGB",
+      "bytes": 1913578
+    },
+    {
+      "group": "Bram",
+      "path": "assets/expedition/astra-v1/heroes/bram/walk_clean.png",
+      "label": "Walk",
+      "count": 8,
+      "kind": "painted keys",
+      "note": "Alternating weight and passing poses; validate foot-lock and scale before approval.",
+      "width": 1774,
+      "height": 887,
+      "mode": "RGB",
+      "bytes": 1622431
+    },
+    {
+      "group": "Bram",
+      "path": "assets/expedition/astra-v1/heroes/bram/draw.png",
+      "label": "Draw",
+      "count": 8,
+      "kind": "painted keys",
+      "note": "Starter straight sword and shield, not Hiro katana. Colored matte needs isolation.",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "bytes": 2144582
+    },
+    {
+      "group": "Bram",
+      "path": "assets/expedition/astra-v1/heroes/bram/short_draw.png",
+      "label": "Short Draw",
+      "count": 4,
+      "kind": "painted keys",
+      "note": "",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "bytes": 1227617
+    },
+    {
+      "group": "Bram",
+      "path": "assets/expedition/astra-v1/heroes/bram/slash_clean.png",
+      "label": "Slash",
+      "count": 6,
+      "kind": "painted keys",
+      "note": "Blade in frame3 (zero-based) exceeds nominal first-column boundary slightly; custom regions required.",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "bytes": 1605035
+    },
+    {
+      "group": "Bram",
+      "path": "assets/expedition/astra-v1/heroes/bram/hit_short.png",
+      "label": "Hit Short",
+      "count": 3,
+      "kind": "painted keys",
+      "note": "",
+      "width": 1774,
+      "height": 887,
+      "mode": "RGBA",
+      "bytes": 1597812
+    },
+    {
+      "group": "Bram",
+      "path": "assets/expedition/astra-v1/heroes/bram/roll.png",
+      "label": "Roll",
+      "count": 6,
+      "kind": "painted keys",
+      "note": "Colored matte. Root translation must not double baked pose movement.",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "bytes": 2052323
+    },
+    {
+      "group": "Bram",
+      "path": "assets/expedition/astra-v1/heroes/bram/intercept.png",
+      "label": "Intercept",
+      "count": 5,
+      "kind": "painted keys",
+      "note": "Cell5 unused; shield must meet opponent in final registration.",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "bytes": 1793643
+    },
+    {
+      "group": "Bram",
+      "path": "assets/expedition/astra-v1/heroes/bram/riposte_clean.png",
+      "label": "Riposte",
+      "count": 6,
+      "kind": "painted keys",
+      "note": "Six delivered keys replace earlier five-key proposal. Straight sword length must be normalized if inconsistent in playback.",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "bytes": 1858514
+    },
+    {
+      "group": "Bram",
+      "path": "assets/expedition/astra-v1/heroes/bram/cast.png",
+      "label": "Cast",
+      "count": 6,
+      "kind": "painted keys",
+      "note": "Gold shield invocation source; projectile/gameplay release belongs to existing simulation.",
+      "width": 1227,
+      "height": 1282,
+      "mode": "RGB",
+      "bytes": 2085561
+    },
+    {
+      "group": "Bram",
+      "path": "assets/expedition/astra-v1/heroes/bram/victory.png",
+      "label": "Victory",
+      "count": 8,
+      "kind": "painted keys",
+      "note": "Composed sword-sheathing victory; may not transfer to purchased Plate Harness.",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "bytes": 2064439
+    },
+    {
+      "group": "Bram",
+      "path": "assets/expedition/astra-v1/heroes/bram/kneel.png",
+      "label": "Kneel",
+      "count": 4,
+      "kind": "painted keys",
+      "note": "",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGB",
+      "bytes": 2037159
+    },
+    {
+      "group": "Bram",
+      "path": "assets/expedition/astra-v1/heroes/bram/bite_leg_a_clean.png",
+      "label": "Bite Leg \u00b7 1",
+      "count": 6,
+      "kind": "painted keys",
+      "note": "Bram left and wolf right in both preferred sheets. Normalize pair scale across the 3x2 and 2x2 source canvases. Contact is front boot cuff. Frame6 holds grip,7 releases; arm/foot contact still needs motion review.",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "bytes": 2014706
+    },
+    {
+      "group": "Bram",
+      "path": "assets/expedition/astra-v1/heroes/bram/bite_leg_b.png",
+      "label": "Bite Leg \u00b7 2",
+      "count": 4,
+      "kind": "painted keys",
+      "note": "Bram left and wolf right in both preferred sheets. Normalize pair scale across the 3x2 and 2x2 source canvases. Contact is front boot cuff. Frame6 holds grip,7 releases; arm/foot contact still needs motion review.",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "bytes": 2101207
+    },
+    {
+      "group": "Bram",
+      "path": "assets/expedition/astra-v1/heroes/bram/bite_arm_clean.png",
+      "label": "Bite Arm",
+      "count": 6,
+      "kind": "painted keys",
+      "note": "Wolf grips left upper-arm armor above shield, not the sword arm; both actors must hide while paired source displays.",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "bytes": 1724151
+    },
+    {
+      "group": "Bram",
+      "path": "assets/expedition/astra-v1/heroes/bram/finisher_quadruped_clean.png",
+      "label": "Finisher Quadruped",
+      "count": 3,
+      "kind": "painted keys",
+      "note": "Paired with gray dire wolf only.",
+      "width": 2172,
+      "height": 724,
+      "mode": "RGB",
+      "bytes": 1474787
+    },
+    {
+      "group": "Bram",
+      "path": "assets/expedition/astra-v1/heroes/bram/finisher_plant_clean.png",
+      "label": "Finisher Plant",
+      "count": 3,
+      "kind": "painted keys",
+      "note": "Paired with thorn lurker.",
+      "width": 2172,
+      "height": 724,
+      "mode": "RGB",
+      "bytes": 1631539
+    },
+    {
+      "group": "Bram",
+      "path": "assets/expedition/astra-v1/heroes/bram/finisher_human_clean.png",
+      "label": "Finisher Human",
+      "count": 3,
+      "kind": "painted keys",
+      "note": "Paired with the painted female street-leather bandit only.",
+      "width": 2172,
+      "height": 724,
+      "mode": "RGB",
+      "bytes": 1664616
+    },
+    {
+      "group": "Bram",
+      "path": "assets/expedition/astra-v1/heroes/bram/finisher_boss_clean.png",
+      "label": "Finisher Boss",
+      "count": 3,
+      "kind": "painted keys",
+      "note": "Paired with scarred Alpha wolf.",
+      "width": 2172,
+      "height": 724,
+      "mode": "RGB",
+      "bytes": 1713767
+    },
+    {
+      "group": "Beasts",
+      "path": "assets/expedition/astra-v1/beasts/wolf_reference.png",
+      "label": "Dire wolf \u00b7 identity",
+      "count": 0,
+      "kind": "reference",
+      "note": "",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 2385412
+    },
+    {
+      "group": "Beasts",
+      "path": "assets/expedition/astra-v1/beasts/wolf_idle.png",
+      "label": "Wolf \u00b7 Idle",
+      "count": 4,
+      "kind": "painted keys",
+      "note": "",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 2480207
+    },
+    {
+      "group": "Beasts",
+      "path": "assets/expedition/astra-v1/beasts/wolf_run.png",
+      "label": "Wolf \u00b7 Run",
+      "count": 6,
+      "kind": "painted keys",
+      "note": "",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 2176412
+    },
+    {
+      "group": "Beasts",
+      "path": "assets/expedition/astra-v1/beasts/wolf_leap.png",
+      "label": "Wolf \u00b7 Leap",
+      "count": 5,
+      "kind": "painted keys",
+      "note": "",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 2101352
+    },
+    {
+      "group": "Beasts",
+      "path": "assets/expedition/astra-v1/beasts/wolf_bite_v2.png",
+      "label": "Wolf \u00b7 Bite",
+      "count": 4,
+      "kind": "painted keys",
+      "note": "Needs partner alignment; frames1/2 clamped-contact candidates, not certified actor joint anchors.",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 2413522
+    },
+    {
+      "group": "Beasts",
+      "path": "assets/expedition/astra-v1/beasts/wolf_land_tumble.png",
+      "label": "Wolf \u00b7 Land Tumble",
+      "count": 5,
+      "kind": "painted keys",
+      "note": "",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 2331609
+    },
+    {
+      "group": "Beasts",
+      "path": "assets/expedition/astra-v1/beasts/wolf_overshoot_land.png",
+      "label": "Wolf \u00b7 Overshoot Land",
+      "count": 4,
+      "kind": "painted keys",
+      "note": "",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 2425403
+    },
+    {
+      "group": "Beasts",
+      "path": "assets/expedition/astra-v1/beasts/wolf_land_beside.png",
+      "label": "Wolf \u00b7 Land Beside",
+      "count": 3,
+      "kind": "painted keys",
+      "note": "2172x724 source; three724px cells.",
+      "width": 2172,
+      "height": 724,
+      "mode": "RGBA",
+      "bytes": 1487095
+    },
+    {
+      "group": "Beasts",
+      "path": "assets/expedition/astra-v1/beasts/wolf_hit_short.png",
+      "label": "Wolf \u00b7 Hit Short",
+      "count": 3,
+      "kind": "painted keys",
+      "note": "2032x774 source is not divisible by3; measure frame rectangles instead of uniform spritesheet loading.",
+      "width": 2032,
+      "height": 774,
+      "mode": "RGBA",
+      "bytes": 1454678
+    },
+    {
+      "group": "Beasts",
+      "path": "assets/expedition/astra-v1/beasts/wolf_down_fade.png",
+      "label": "Wolf \u00b7 Down Fade",
+      "count": 4,
+      "kind": "painted keys",
+      "note": "",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 2351074
+    },
+    {
+      "group": "Beasts",
+      "path": "assets/expedition/astra-v1/beasts/boar_run.png",
+      "label": "Cave Boar \u00b7 Run",
+      "count": 6,
+      "kind": "painted keys",
+      "note": "",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 2125952
+    },
+    {
+      "group": "Beasts",
+      "path": "assets/expedition/astra-v1/beasts/boar_charge.png",
+      "label": "Cave Boar \u00b7 Charge",
+      "count": 6,
+      "kind": "painted keys",
+      "note": "",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 2262127
+    },
+    {
+      "group": "Beasts",
+      "path": "assets/expedition/astra-v1/beasts/thorn_lurker_idle.png",
+      "label": "Thorn Lurker \u00b7 Idle",
+      "count": 4,
+      "kind": "painted keys",
+      "note": "",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 2655195
+    },
+    {
+      "group": "Beasts",
+      "path": "assets/expedition/astra-v1/beasts/thorn_lurker_lash.png",
+      "label": "Thorn Lurker \u00b7 Lash",
+      "count": 6,
+      "kind": "painted keys",
+      "note": "Register root anchor; do not tween whole plant forward during lash. Vine reaches cell edge; measure silhouette bounds.",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 2765013
+    },
+    {
+      "group": "Beasts",
+      "path": "assets/expedition/astra-v1/beasts/alpha_stalk.png",
+      "label": "Alpha \u00b7 Stalk",
+      "count": 4,
+      "kind": "painted keys",
+      "note": "",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 2475741
+    },
+    {
+      "group": "Beasts",
+      "path": "assets/expedition/astra-v1/beasts/alpha_pounce.png",
+      "label": "Alpha \u00b7 Pounce",
+      "count": 6,
+      "kind": "painted keys",
+      "note": "",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 2521368
+    },
+    {
+      "group": "Beasts",
+      "path": "assets/expedition/astra-v1/beasts/boar_hit_short.png",
+      "label": "Cave Boar \u00b7 Hit Short",
+      "count": 3,
+      "kind": "painted keys",
+      "note": "",
+      "width": 2172,
+      "height": 724,
+      "mode": "RGBA",
+      "bytes": 1383012
+    },
+    {
+      "group": "Beasts",
+      "path": "assets/expedition/astra-v1/beasts/boar_down_fade.png",
+      "label": "Cave Boar \u00b7 Down Fade",
+      "count": 4,
+      "kind": "painted keys",
+      "note": "",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 2333500
+    },
+    {
+      "group": "Beasts",
+      "path": "assets/expedition/astra-v1/beasts/thorn_lurker_hit_short.png",
+      "label": "Thorn Lurker \u00b7 Hit Short",
+      "count": 3,
+      "kind": "painted keys",
+      "note": "Keep rooted base fixed; leaves are secondary motion, not extra damage.",
+      "width": 2172,
+      "height": 724,
+      "mode": "RGBA",
+      "bytes": 2106333
+    },
+    {
+      "group": "Beasts",
+      "path": "assets/expedition/astra-v1/beasts/thorn_lurker_down_fade.png",
+      "label": "Thorn Lurker \u00b7 Down Fade",
+      "count": 4,
+      "kind": "painted keys",
+      "note": "",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 2580308
+    },
+    {
+      "group": "Beasts",
+      "path": "assets/expedition/astra-v1/beasts/alpha_hit_heavy.png",
+      "label": "Alpha \u00b7 Hit Heavy",
+      "count": 3,
+      "kind": "painted keys",
+      "note": "",
+      "width": 2172,
+      "height": 724,
+      "mode": "RGBA",
+      "bytes": 1663379
+    },
+    {
+      "group": "Beasts",
+      "path": "assets/expedition/astra-v1/beasts/alpha_enrage.png",
+      "label": "Alpha \u00b7 Enrage",
+      "count": 4,
+      "kind": "painted keys",
+      "note": "",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 2585095
+    },
+    {
+      "group": "Beasts",
+      "path": "assets/expedition/astra-v1/beasts/alpha_down_fade.png",
+      "label": "Alpha \u00b7 Down Fade",
+      "count": 4,
+      "kind": "painted keys",
+      "note": "",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 2440061
+    },
+    {
+      "group": "Beasts",
+      "path": "assets/expedition/astra-v1/beasts/boar_action_keys.png",
+      "label": "Cave Boar \u00b7 action studies",
+      "count": 6,
+      "kind": "proof keys",
+      "note": "Pose studies; not a continuous clip by themselves.",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 2400849
+    },
+    {
+      "group": "Beasts",
+      "path": "assets/expedition/astra-v1/beasts/thorn_lurker_action_keys.png",
+      "label": "Thorn Lurker \u00b7 action studies",
+      "count": 6,
+      "kind": "proof keys",
+      "note": "Pose studies; not a continuous clip by themselves.",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 2857658
+    },
+    {
+      "group": "Beasts",
+      "path": "assets/expedition/astra-v1/beasts/alpha_action_keys_v2.png",
+      "label": "Alpha \u00b7 action studies",
+      "count": 6,
+      "kind": "proof keys",
+      "note": "Pose studies; not a continuous clip by themselves.",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 2642122
+    },
+    {
+      "group": "Human",
+      "path": "assets/expedition/astra-v1/humans/bandit-approach-source.png",
+      "label": "Bandit \u00b7 Approach",
+      "count": 6,
+      "kind": "painted keys",
+      "note": "One painted identity. Other humans require matching outfit/face variants.",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 2032779
+    },
+    {
+      "group": "Human",
+      "path": "assets/expedition/astra-v1/humans/bandit-slash-source.png",
+      "label": "Bandit \u00b7 Slash",
+      "count": 6,
+      "kind": "painted keys",
+      "note": "One painted identity. Other humans require matching outfit/face variants.",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "bytes": 1995766
+    },
+    {
+      "group": "Human",
+      "path": "assets/expedition/astra-v1/humans/bandit-cast-source.png",
+      "label": "Bandit \u00b7 Cast",
+      "count": 6,
+      "kind": "painted keys",
+      "note": "One painted identity. Other humans require matching outfit/face variants.",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "bytes": 1862712
+    },
+    {
+      "group": "Human",
+      "path": "assets/expedition/astra-v1/humans/bandit-hit-source.png",
+      "label": "Bandit \u00b7 Hit",
+      "count": 3,
+      "kind": "painted keys",
+      "note": "One painted identity. Other humans require matching outfit/face variants.",
+      "width": 2172,
+      "height": 724,
+      "mode": "RGBA",
+      "bytes": 1227739
+    },
+    {
+      "group": "Human",
+      "path": "assets/expedition/astra-v1/humans/bandit-down-source.png",
+      "label": "Bandit \u00b7 Down",
+      "count": 4,
+      "kind": "painted keys",
+      "note": "One painted identity. Other humans require matching outfit/face variants.",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "bytes": 1474202
+    },
+    {
+      "group": "Effects",
+      "path": "assets/expedition/astra-v1/effects/combat-effects-source.png",
+      "label": "Combat Effects",
+      "count": 16,
+      "kind": "texture cells",
+      "note": "",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "bytes": 1714608
+    },
+    {
+      "group": "Icons",
+      "path": "assets/expedition/astra-v1/icons/bram-skills-source.png",
+      "label": "Bram Skills",
+      "count": 8,
+      "kind": "texture cells",
+      "note": "",
+      "width": 1774,
+      "height": 887,
+      "mode": "RGBA",
+      "bytes": 2468742
+    },
+    {
+      "group": "Icons",
+      "path": "assets/expedition/astra-v1/icons/nyx-skills-source.png",
+      "label": "Nyx Skills",
+      "count": 8,
+      "kind": "texture cells",
+      "note": "",
+      "width": 1774,
+      "height": 887,
+      "mode": "RGBA",
+      "bytes": 1706883
+    },
+    {
+      "group": "Icons",
+      "path": "assets/expedition/astra-v1/icons/sable-skills-source.png",
+      "label": "Sable Skills",
+      "count": 7,
+      "kind": "texture cells",
+      "note": "",
+      "width": 1774,
+      "height": 887,
+      "mode": "RGBA",
+      "bytes": 1667426
+    },
+    {
+      "group": "Icons",
+      "path": "assets/expedition/astra-v1/icons/hiro-skills-tiers-source.png",
+      "label": "Hiro Skills Tiers",
+      "count": 9,
+      "kind": "texture cells",
+      "note": "",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "bytes": 1887005
+    },
+    {
+      "group": "Backgrounds",
+      "path": "assets/expedition/astra-v1/backgrounds/bandit-camp.webp",
+      "label": "Bandit camp",
+      "count": 0,
+      "kind": "base plate",
+      "note": "Still environment plate. Runtime atmosphere and scrolling are not embedded.",
+      "width": 1672,
+      "height": 941,
+      "mode": "RGB",
+      "bytes": 634128
+    },
+    {
+      "group": "Backgrounds",
+      "path": "assets/expedition/astra-v1/backgrounds/toll-house-alley.webp",
+      "label": "Toll-house alley",
+      "count": 0,
+      "kind": "base plate",
+      "note": "Still environment plate. Runtime atmosphere and scrolling are not embedded.",
+      "width": 1672,
+      "height": 941,
+      "mode": "RGB",
+      "bytes": 536972
+    }
+  ],
+  "allImages": [
+    {
+      "path": "assets/expedition/astra-v1/backgrounds/bandit-camp.png",
+      "width": 1672,
+      "height": 941,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "bytes": 3329616,
+      "sha256": "f3f6e5d248503e828698a559e7920ee2637914db9b3beb7ee0777d8123c66d83"
+    },
+    {
+      "path": "assets/expedition/astra-v1/backgrounds/bandit-camp.webp",
+      "width": 1672,
+      "height": 941,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "bytes": 634128,
+      "sha256": "06661346f673727b3859b49fe2e7d00ab375060386acb1e7f19a00850904b17f"
+    },
+    {
+      "path": "assets/expedition/astra-v1/backgrounds/toll-house-alley.png",
+      "width": 1672,
+      "height": 941,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "bytes": 3078238,
+      "sha256": "eb841af6018ced9059b697be9753ce68e98aff5b4afe3ee0c1ef17e0a18b703d"
+    },
+    {
+      "path": "assets/expedition/astra-v1/backgrounds/toll-house-alley.webp",
+      "width": 1672,
+      "height": 941,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "bytes": 536972,
+      "sha256": "d880b2e33444b4822d9a1dc2bfa9772cc7a25ad8217786922a1f70c95f63c41f"
+    },
+    {
+      "path": "assets/expedition/astra-v1/beasts/alpha_action_keys.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "bytes": 2711964,
+      "sha256": "9e2d60faf3239268d707f637462b2e773def1fe9660add68cb59af88731bc03d"
+    },
+    {
+      "path": "assets/expedition/astra-v1/beasts/alpha_action_keys_v2.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "bytes": 2642122,
+      "sha256": "51b4e05fac2097d370fcee2f396fe0fce23993bbdd255156604bb1f720e53f71"
+    },
+    {
+      "path": "assets/expedition/astra-v1/beasts/alpha_down_fade.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "bytes": 2440061,
+      "sha256": "4590888855f95c2df8562c55aa95e21045bf153c8f46aa8d3eab9232870709eb"
+    },
+    {
+      "path": "assets/expedition/astra-v1/beasts/alpha_enrage.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "bytes": 2585095,
+      "sha256": "1dbd5611ad57a36200dec231843024d3e6911fd9e8b9c0a9cb4e619fcef11e57"
+    },
+    {
+      "path": "assets/expedition/astra-v1/beasts/alpha_hit_heavy.png",
+      "width": 2172,
+      "height": 724,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "bytes": 1663379,
+      "sha256": "0b31a0f41f27778851d8c553a6daec7759d942fb266aaccbb5f897e6b2a06ab5"
+    },
+    {
+      "path": "assets/expedition/astra-v1/beasts/alpha_pounce.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "bytes": 2521368,
+      "sha256": "d57ead700dd601d668781c3c1a67ae5fb1c563684a18f0e606c39d438de1fd35"
+    },
+    {
+      "path": "assets/expedition/astra-v1/beasts/alpha_stalk.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "bytes": 2475741,
+      "sha256": "8dbf2a529b5d4184d646d44158f70fe42489849cdd842bdd910be16331c31005"
+    },
+    {
+      "path": "assets/expedition/astra-v1/beasts/boar_action_keys.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "bytes": 2400849,
+      "sha256": "137347b0c484686b192817122e27063574a483e8420276540a222ba827e7879f"
+    },
+    {
+      "path": "assets/expedition/astra-v1/beasts/boar_charge.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "bytes": 2262127,
+      "sha256": "0d74de59c6058895ee52547aedc41eb843db19e6cdc4cce1899be24d8f8387b4"
+    },
+    {
+      "path": "assets/expedition/astra-v1/beasts/boar_down_fade.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "bytes": 2333500,
+      "sha256": "412c6fb766bd6f06b718a7e0f27d0d6645762390c0aea5c02ab1535830981906"
+    },
+    {
+      "path": "assets/expedition/astra-v1/beasts/boar_hit_short.png",
+      "width": 2172,
+      "height": 724,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "bytes": 1383012,
+      "sha256": "9ca66b500a2f649ee445c597fa48e54a9419b304ba94ba4a6a3e9c0e737006c0"
+    },
+    {
+      "path": "assets/expedition/astra-v1/beasts/boar_run.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "bytes": 2125952,
+      "sha256": "0d699ff6f2c79840c3d722d9a2ce3b190fd9a49ba28935c4b74b5a4aecf00f73"
+    },
+    {
+      "path": "assets/expedition/astra-v1/beasts/thorn_lurker_action_keys.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "bytes": 2857658,
+      "sha256": "7a8ebbd631005acde45b0b13e0ed96c165bd1544553d9c0fd87b99babc2efb9b"
+    },
+    {
+      "path": "assets/expedition/astra-v1/beasts/thorn_lurker_down_fade.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "bytes": 2580308,
+      "sha256": "452e8ffad9b48994dda0fd3c1c5c22e75c5e4217490a8f6b3293488cb86b0c6c"
+    },
+    {
+      "path": "assets/expedition/astra-v1/beasts/thorn_lurker_hit_short.png",
+      "width": 2172,
+      "height": 724,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "bytes": 2106333,
+      "sha256": "824e74f0995378fe2a5cf4ee473d4d8521ea7bdd17a27ecdc2bd119244905feb"
+    },
+    {
+      "path": "assets/expedition/astra-v1/beasts/thorn_lurker_idle.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "bytes": 2655195,
+      "sha256": "c69233322ae8187572491cf8b74f88c523d7dc40ca3aae69dabaa91310d87cf2"
+    },
+    {
+      "path": "assets/expedition/astra-v1/beasts/thorn_lurker_lash.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "bytes": 2765013,
+      "sha256": "d7dbcbfce5aa3198101f7746bc416ecb82e4280ba82d62762e47ae3acec7e51a"
+    },
+    {
+      "path": "assets/expedition/astra-v1/beasts/wolf_bite.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "bytes": 2608232,
+      "sha256": "aa97fbb76119ed44619e830d5aff5660fb2d9d89f9ac888398ba7cbeb8d0f9a7"
+    },
+    {
+      "path": "assets/expedition/astra-v1/beasts/wolf_bite_v2.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "bytes": 2413522,
+      "sha256": "b3ba8b399311a20f2beb4a3ac140c1374706f989c3da92018e004ad78ea69812"
+    },
+    {
+      "path": "assets/expedition/astra-v1/beasts/wolf_down_fade.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "bytes": 2351074,
+      "sha256": "21bf4311269fb81c2ead921d710758dff937f843bc3602dca2a0bf2eeb572831"
+    },
+    {
+      "path": "assets/expedition/astra-v1/beasts/wolf_hit_short.png",
+      "width": 2032,
+      "height": 774,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "bytes": 1454678,
+      "sha256": "d6528656b81bb5a44e6555c0577f8343eb50c871eacf232d69bf3182703e0967"
+    },
+    {
+      "path": "assets/expedition/astra-v1/beasts/wolf_idle.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "bytes": 2480207,
+      "sha256": "9c10af5d78f21410589192a47058db647bae79a4567f7da90f2e4f3d4b88e243"
+    },
+    {
+      "path": "assets/expedition/astra-v1/beasts/wolf_land_beside.png",
+      "width": 2172,
+      "height": 724,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "bytes": 1487095,
+      "sha256": "f0a5cbc89851cf811c3929a2773c137cb1ce6b3802fe05ee9b949302ecf0a7ba"
+    },
+    {
+      "path": "assets/expedition/astra-v1/beasts/wolf_land_tumble.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "bytes": 2331609,
+      "sha256": "a88ac4e793b7f50c54567a03dd47c1900215f9cf47b1b21ff911ac0151eff628"
+    },
+    {
+      "path": "assets/expedition/astra-v1/beasts/wolf_leap.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "bytes": 2101352,
+      "sha256": "9de35d40e0720622992524c140dd1c5c65efe9ea4390e1c1fc148b5700ba214c"
+    },
+    {
+      "path": "assets/expedition/astra-v1/beasts/wolf_overshoot_land.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "bytes": 2425403,
+      "sha256": "698c5cadc2b7deff5f8e24a539bb948c959aae2dcdb8d59826444cf5ab9eefbd"
+    },
+    {
+      "path": "assets/expedition/astra-v1/beasts/wolf_reference.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "bytes": 2385412,
+      "sha256": "5dec5c6fcd524b25d5508035b1ce85ae009bcf81ff0435b3bf13dd64a6dc883e"
+    },
+    {
+      "path": "assets/expedition/astra-v1/beasts/wolf_run.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "bytes": 2176412,
+      "sha256": "88de7b5df15a9154e421b0873d85b0d9c273c9732e081736e21e13685a3f728d"
+    },
+    {
+      "path": "assets/expedition/astra-v1/effects/combat-effects-source.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "bytes": 1714608,
+      "sha256": "9f860c6edc407ddea13ff7ac33ab37fd049cc714a5abddaffaf8566f6331bd42"
+    },
+    {
+      "path": "assets/expedition/astra-v1/heroes/bram/bite_arm.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "bytes": 2179111,
+      "sha256": "592b8312c0812169a640ba7f4246a5c69b10e9418814a49fadd04903f6db0133"
+    },
+    {
+      "path": "assets/expedition/astra-v1/heroes/bram/bite_arm_clean.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "bytes": 1724151,
+      "sha256": "e5eab43b9d5cc8c78d08978e82f493208b655137b99f4adbab2657ffd6337210"
+    },
+    {
+      "path": "assets/expedition/astra-v1/heroes/bram/bite_leg_a.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "bytes": 1913446,
+      "sha256": "980e4185779a9457ea3510d5ea977779dfaf16b5da336fcd236e2d66c27b4a3f"
+    },
+    {
+      "path": "assets/expedition/astra-v1/heroes/bram/bite_leg_a_clean.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "bytes": 2014706,
+      "sha256": "a0c9e817aed4d752e30f57ae2a726459e66840aba6b458cbe831eaa1260d904a"
+    },
+    {
+      "path": "assets/expedition/astra-v1/heroes/bram/bite_leg_b.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "bytes": 2101207,
+      "sha256": "2f57e75fc095810832a978ab6ad61259128ad1a0f9b3495bfd29532d94c73b2a"
+    },
+    {
+      "path": "assets/expedition/astra-v1/heroes/bram/bram_reference.png",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "bytes": 2111112,
+      "sha256": "9dd18f153f3855513ded8bece0d4b51980f55a2ca7824b7fc97542bd086d4238"
+    },
+    {
+      "path": "assets/expedition/astra-v1/heroes/bram/bram_side_reference.png",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "bytes": 1950215,
+      "sha256": "01aa3d35764300cc4d53bea3ff35a54ae9d73b901cad6cf66c673c1516d5a352"
+    },
+    {
+      "path": "assets/expedition/astra-v1/heroes/bram/cast.png",
+      "width": 1227,
+      "height": 1282,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "bytes": 2085561,
+      "sha256": "07ff9c65090a98f4133f9092a34b26c1b0e1c660bdc647f02ce816911e372f0e"
+    },
+    {
+      "path": "assets/expedition/astra-v1/heroes/bram/draw.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "bytes": 2144582,
+      "sha256": "649d15e93e617b87c9c060a29d6033e0c76cc0b755b3152234ec102efd8e8ef2"
+    },
+    {
+      "path": "assets/expedition/astra-v1/heroes/bram/finisher_boss.png",
+      "width": 2172,
+      "height": 724,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "bytes": 1906682,
+      "sha256": "cdf36b79cb67d5ec22eb4515a82b822a3b14f46863a9cc77760667ba6a354d98"
+    },
+    {
+      "path": "assets/expedition/astra-v1/heroes/bram/finisher_boss_clean.png",
+      "width": 2172,
+      "height": 724,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "bytes": 1713767,
+      "sha256": "9714c27a71cbf49a2103aad8af61cea5c90aae00a30c5667d06a235754279a7c"
+    },
+    {
+      "path": "assets/expedition/astra-v1/heroes/bram/finisher_human.png",
+      "width": 2172,
+      "height": 724,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "bytes": 1897712,
+      "sha256": "5cfcc80bcf6540dcb8a167e371e93654df05e9e46bd5480429ba1a854391d3d0"
+    },
+    {
+      "path": "assets/expedition/astra-v1/heroes/bram/finisher_human_clean.png",
+      "width": 2172,
+      "height": 724,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "bytes": 1664616,
+      "sha256": "d89db8124bc5bef6e198497e2e07681e34cb4541785d88376a813fa3010f7030"
+    },
+    {
+      "path": "assets/expedition/astra-v1/heroes/bram/finisher_plant.png",
+      "width": 2172,
+      "height": 724,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "bytes": 2026209,
+      "sha256": "5023183c25e69c0f4fff0bdfb9e3e62a175339f57fd62f488e119ac0922db474"
+    },
+    {
+      "path": "assets/expedition/astra-v1/heroes/bram/finisher_plant_clean.png",
+      "width": 2172,
+      "height": 724,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "bytes": 1631539,
+      "sha256": "e6106717cf8cffcdbcf98a24a1e6535b8cc45cb4ee8bade2eaf3854486ec768c"
+    },
+    {
+      "path": "assets/expedition/astra-v1/heroes/bram/finisher_quadruped.png",
+      "width": 2172,
+      "height": 724,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "bytes": 1785109,
+      "sha256": "8fe5127b76cc891742bc47cf5293b24bcea20ad7f4578a65e9dfa3277f241a11"
+    },
+    {
+      "path": "assets/expedition/astra-v1/heroes/bram/finisher_quadruped_clean.png",
+      "width": 2172,
+      "height": 724,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "bytes": 1474787,
+      "sha256": "6daa5782413ea1c37d81d8c6bc9374cd6e0700e10d104ebae5fe5ae40b165bb3"
+    },
+    {
+      "path": "assets/expedition/astra-v1/heroes/bram/hit_short.png",
+      "width": 1774,
+      "height": 887,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "bytes": 1597812,
+      "sha256": "29d90f91adc0b8ca47ebbc57670526682737030d79e7e140de0e4d55b84a8bcf"
+    },
+    {
+      "path": "assets/expedition/astra-v1/heroes/bram/idle.png",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "bytes": 2326157,
+      "sha256": "28f79068687b5069421c8283fc71cbdcdf2b5c73d00e4cc4e627742564ff11d0"
+    },
+    {
+      "path": "assets/expedition/astra-v1/heroes/bram/idle_clean.png",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "bytes": 1913578,
+      "sha256": "12bf04bc9a60ce4103e690aa6a3b3f409b583a0241649a3f5d7937fb8876c8fe"
+    },
+    {
+      "path": "assets/expedition/astra-v1/heroes/bram/intercept.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "bytes": 1793643,
+      "sha256": "5f48a89cc8ecadc2bcd8e7df76bce05cc0f6e25cf565b515b24a431f8dc3d886"
+    },
+    {
+      "path": "assets/expedition/astra-v1/heroes/bram/kneel.png",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "bytes": 2037159,
+      "sha256": "37b24ce8a48ecfb1a7087a8371c300eedb9ebee6b30e5e98631a67550cba01a7"
+    },
+    {
+      "path": "assets/expedition/astra-v1/heroes/bram/riposte.png",
+      "width": 1619,
+      "height": 971,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "bytes": 1699428,
+      "sha256": "c03cbee80176d28285b4a822643b06a5884140bc41df2a413edf8886462e51bb"
+    },
+    {
+      "path": "assets/expedition/astra-v1/heroes/bram/riposte_clean.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "bytes": 1858514,
+      "sha256": "1b2ed419f12929ed15e1734738e3ab5c5deb5900392c4ef00ff8932095de0c7d"
+    },
+    {
+      "path": "assets/expedition/astra-v1/heroes/bram/roll.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "bytes": 2052323,
+      "sha256": "464f0cbb53162d319e8fca0b649e16039744846dad9142c83403fc58c5d1d1bf"
+    },
+    {
+      "path": "assets/expedition/astra-v1/heroes/bram/short_draw.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "bytes": 1227617,
+      "sha256": "910b21f91a52028ad5558ecc5dd3f88249df7ab3707233914fc3a5d777b69c85"
+    },
+    {
+      "path": "assets/expedition/astra-v1/heroes/bram/slash.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "bytes": 1883066,
+      "sha256": "5a8bff6679cdccaf995ecc76b99a5f4e85dcbe7d633384c047c42f8b2dcbffef"
+    },
+    {
+      "path": "assets/expedition/astra-v1/heroes/bram/slash_clean.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "bytes": 1605035,
+      "sha256": "01abf26f30afca982b2dd9165fad68943909fa1f8b1d99d235aa4c1a70ce8cd7"
+    },
+    {
+      "path": "assets/expedition/astra-v1/heroes/bram/victory.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "bytes": 2064439,
+      "sha256": "e36911a85e231f82cf6e0959fe78ada8302cea26ad4e528d0798954226ffbd5e"
+    },
+    {
+      "path": "assets/expedition/astra-v1/heroes/bram/walk.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "bytes": 2271411,
+      "sha256": "253db26dd839fcaa49f3d5e30ced07e3a4de8702511e5d18585f0a2ac20e287e"
+    },
+    {
+      "path": "assets/expedition/astra-v1/heroes/bram/walk_clean.png",
+      "width": 1774,
+      "height": 887,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "bytes": 1622431,
+      "sha256": "9aff5933edc9b263e798b66943e10573321ade11195a04723a80f6109934f8b0"
+    },
+    {
+      "path": "assets/expedition/astra-v1/heroes/hiro/aura-l1.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "bytes": 1783615,
+      "sha256": "e1f06d4173d1c7ad123db714d8575cb7de73623f0befcf3091dc1af2ae0375db"
+    },
+    {
+      "path": "assets/expedition/astra-v1/heroes/hiro/aura-l2.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "bytes": 1950898,
+      "sha256": "11f8a0796da288c9a32e22331062bac249c14dce7c40d26ced2768247cb22863"
+    },
+    {
+      "path": "assets/expedition/astra-v1/heroes/hiro/aura-l3.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "bytes": 2045883,
+      "sha256": "05c08413d338505b3d2ab83d23cd4fb3053812287ec844f6f12ef8c52ebb94a2"
+    },
+    {
+      "path": "assets/expedition/astra-v1/heroes/hiro/bite-arm-paired.png",
+      "width": 1983,
+      "height": 793,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "bytes": 2079381,
+      "sha256": "94b6009914c3648e6819c6dca410319e02e0c42db428ed11fbd6294607a0dd6d"
+    },
+    {
+      "path": "assets/expedition/astra-v1/heroes/hiro/bite-leg-paired.png",
+      "width": 1983,
+      "height": 793,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "bytes": 2056018,
+      "sha256": "0464b4a60665a2c53521f6bf5a3ef602669eb6f1fa35d626c5f567e08328e271"
+    },
+    {
+      "path": "assets/expedition/astra-v1/heroes/hiro/counter-l2.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "bytes": 2169841,
+      "sha256": "da264dcc574f3d02f5a15a2e82181e9be61e5274647ab79dd971af582c8bf3a2"
+    },
+    {
+      "path": "assets/expedition/astra-v1/heroes/hiro/counter-l3.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "bytes": 2153615,
+      "sha256": "1bd850639aa2a47a5cf36d4a2025cd621b5a98174f5663e5750e72de1846d771"
+    },
+    {
+      "path": "assets/expedition/astra-v1/heroes/hiro/draw.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "bytes": 2267537,
+      "sha256": "a4b0695eda8c470f494733847708dcad300272967f6235a782151164dcccc412"
+    },
+    {
+      "path": "assets/expedition/astra-v1/heroes/hiro/finisher-l1-paired.png",
+      "width": 2172,
+      "height": 724,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "bytes": 1900150,
+      "sha256": "272b6b0d274a7dca0dbafc643a132f3d3abf4bc25fd89f4d81341d2f553f421b"
+    },
+    {
+      "path": "assets/expedition/astra-v1/heroes/hiro/finisher-l2-paired.png",
+      "width": 2172,
+      "height": 724,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "bytes": 1936581,
+      "sha256": "b3a3e19ea32036ff4d108f278e47c8ef34575410395dfe693ce9976f11a80460"
+    },
+    {
+      "path": "assets/expedition/astra-v1/heroes/hiro/finisher-l3-paired.png",
+      "width": 2172,
+      "height": 724,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "bytes": 1778221,
+      "sha256": "860cdaf70f260b0ce09a6e860f6c578f409bbf5e23a834d728d3d3892d00d37f"
+    },
+    {
+      "path": "assets/expedition/astra-v1/heroes/hiro/hiro-reference.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "bytes": 2245270,
+      "sha256": "75887456f8c07c1f4465739861e70d28917dafebc0b658b8eb7e5e580f10057c"
+    },
+    {
+      "path": "assets/expedition/astra-v1/heroes/hiro/hit-short-v2.png",
+      "width": 2172,
+      "height": 724,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "bytes": 1852966,
+      "sha256": "6434044d19efebe693772621f6bc963550f885a2dfba10e4dd4eb7669e946016"
+    },
+    {
+      "path": "assets/expedition/astra-v1/heroes/hiro/hit-short.png",
+      "width": 2172,
+      "height": 724,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "bytes": 1901269,
+      "sha256": "057e19517710a7fde8ebc81028addb79cca4630a2cb041b40c504e2e1d26cf27"
+    },
+    {
+      "path": "assets/expedition/astra-v1/heroes/hiro/idle.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "bytes": 1947645,
+      "sha256": "23d392577ed9aa90da3b426daafefa0dc81232790d77751ec1de3a7e43636d36"
+    },
+    {
+      "path": "assets/expedition/astra-v1/heroes/hiro/intercept-v2.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "bytes": 2060742,
+      "sha256": "c32c1a0458258a3f07b32e605b6849e783b7ac2ce37879e420732391beadc115"
+    },
+    {
+      "path": "assets/expedition/astra-v1/heroes/hiro/intercept.png",
+      "width": 2172,
+      "height": 724,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "bytes": 2035128,
+      "sha256": "a3eaaf418cac9331643f89690468e724bd6e0810df88d2d94a51c0494af22f49"
+    },
+    {
+      "path": "assets/expedition/astra-v1/heroes/hiro/kneel.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "bytes": 1822647,
+      "sha256": "02bcd22f9fc13a777d092c86cd44d6c23e2d8c09312cb3ffeea1b94015c393cf"
+    },
+    {
+      "path": "assets/expedition/astra-v1/heroes/hiro/riposte-v2.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "bytes": 1934104,
+      "sha256": "546804e18e485c64b6cf99dc132f5fedd4c5d2067025705123c4cf799b61807d"
+    },
+    {
+      "path": "assets/expedition/astra-v1/heroes/hiro/riposte.png",
+      "width": 2172,
+      "height": 724,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "bytes": 1897782,
+      "sha256": "f30cfeb32885d313f2759acffca9bd1c856b42e8d4f480c999c0ecb49a23233d"
+    },
+    {
+      "path": "assets/expedition/astra-v1/heroes/hiro/roll.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "bytes": 2040762,
+      "sha256": "1b9c9458b89da110a24e1a571c1ac2f8b20daf70751354ab0b18c195c92f8325"
+    },
+    {
+      "path": "assets/expedition/astra-v1/heroes/hiro/short-draw.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "bytes": 1884472,
+      "sha256": "4f4936c0297aa1aced8fe292b7fcb05db656cfd9f1b6fc5f6cb20f13a2274a90"
+    },
+    {
+      "path": "assets/expedition/astra-v1/heroes/hiro/slash-l1.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "bytes": 2139735,
+      "sha256": "3904106a19eb87c3364789c0b63a50effb3e649760169606671c7e8dd4795b1c"
+    },
+    {
+      "path": "assets/expedition/astra-v1/heroes/hiro/slash-l2.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "bytes": 2110757,
+      "sha256": "fe42e9dd96b1aa63f2feebc17549644041289850b18b9b2cef2e9b211f1b5240"
+    },
+    {
+      "path": "assets/expedition/astra-v1/heroes/hiro/slash-l3.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "bytes": 2209708,
+      "sha256": "4fac7c453843336a38647f32328840aa3a9138ff1567a93c537d0082bf5e6bfd"
+    },
+    {
+      "path": "assets/expedition/astra-v1/heroes/hiro/victory-sheath.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "bytes": 2195664,
+      "sha256": "fe67a671de6ca5cd82be0622609a8106ccd188bdec1e222d16a0d8b965750b92"
+    },
+    {
+      "path": "assets/expedition/astra-v1/heroes/hiro/walk.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "bytes": 2035016,
+      "sha256": "4579483e2aa55bb651511ba48c890d69d384ce303ff7206a1e87d81b074c1517"
+    },
+    {
+      "path": "assets/expedition/astra-v1/humans/bandit-approach-source.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "bytes": 2032779,
+      "sha256": "4425467b7c773e9f21d00b3b40d393f9f2299d66ddc836b552f2732e03d89755"
+    },
+    {
+      "path": "assets/expedition/astra-v1/humans/bandit-cast-source.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "alphaExtrema": null,
+      "bytes": 1862712,
+      "sha256": "3274f0f179231241054fc4da3d69923d687551b120658a38cc9881ae68fd05a5"
+    },
+    {
+      "path": "assets/expedition/astra-v1/humans/bandit-down-source.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "bytes": 1474202,
+      "sha256": "8f105b1e5b4c38ef4d35e4d880f49d444ddde6e16575122e59e98907e7874f3d"
+    },
+    {
+      "path": "assets/expedition/astra-v1/humans/bandit-hit-source.png",
+      "width": 2172,
+      "height": 724,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "bytes": 1227739,
+      "sha256": "c54d6f0a53ebba9312d0fe7216e5b079a72bd203d7f2fed230c95c843a58445a"
+    },
+    {
+      "path": "assets/expedition/astra-v1/humans/bandit-slash-source.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        254
+      ],
+      "bytes": 1995766,
+      "sha256": "6b4e162daab40fc0afd724f7dee676598eff198849f38b4368c24677fe72dcd3"
+    },
+    {
+      "path": "assets/expedition/astra-v1/icons/bram-skills-source.png",
+      "width": 1774,
+      "height": 887,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "bytes": 2468742,
+      "sha256": "7c141a41b36af82e8f34ab075faa96a9268026163e770b9dde0a64b236e2ea48"
+    },
+    {
+      "path": "assets/expedition/astra-v1/icons/hiro-skills-tiers-source.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "bytes": 1887005,
+      "sha256": "8511b501e6224278f80dbeca54f08a5ca8e50dc1524a1903662d0dc33cff42d8"
+    },
+    {
+      "path": "assets/expedition/astra-v1/icons/nyx-skills-source.png",
+      "width": 1774,
+      "height": 887,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "bytes": 1706883,
+      "sha256": "e903e76596471ecc13c84adee655520520e2c07ed7b5406ea9c787cba9437138"
+    },
+    {
+      "path": "assets/expedition/astra-v1/icons/sable-skills-source.png",
+      "width": 1774,
+      "height": 887,
+      "mode": "RGBA",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "bytes": 1667426,
+      "sha256": "aa83c6ce930157ca3acd86780c8ce39ac8677511e7e4213346236d743164d00a"
+    }
+  ]
+}

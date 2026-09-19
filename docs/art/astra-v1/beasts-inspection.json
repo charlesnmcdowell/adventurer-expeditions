@@ -1,0 +1,366 @@
+[
+  {
+    "file": "alpha_action_keys.png",
+    "width": 1536,
+    "height": 1024,
+    "mode": "RGBA",
+    "alphaExtrema": [
+      0,
+      254
+    ],
+    "transparentFraction": 0.45,
+    "bytes": 2711964,
+    "sha256": "9e2d60faf3239268d707f637462b2e773def1fe9660add68cb59af88731bc03d"
+  },
+  {
+    "file": "alpha_action_keys_v2.png",
+    "width": 1536,
+    "height": 1024,
+    "mode": "RGBA",
+    "alphaExtrema": [
+      0,
+      254
+    ],
+    "transparentFraction": 0.459,
+    "bytes": 2642122,
+    "sha256": "51b4e05fac2097d370fcee2f396fe0fce23993bbdd255156604bb1f720e53f71"
+  },
+  {
+    "file": "alpha_down_fade.png",
+    "width": 1536,
+    "height": 1024,
+    "mode": "RGBA",
+    "alphaExtrema": [
+      0,
+      254
+    ],
+    "transparentFraction": 0.458,
+    "bytes": 2440061,
+    "sha256": "4590888855f95c2df8562c55aa95e21045bf153c8f46aa8d3eab9232870709eb"
+  },
+  {
+    "file": "alpha_enrage.png",
+    "width": 1536,
+    "height": 1024,
+    "mode": "RGBA",
+    "alphaExtrema": [
+      0,
+      254
+    ],
+    "transparentFraction": 0.479,
+    "bytes": 2585095,
+    "sha256": "1dbd5611ad57a36200dec231843024d3e6911fd9e8b9c0a9cb4e619fcef11e57"
+  },
+  {
+    "file": "alpha_hit_heavy.png",
+    "width": 2172,
+    "height": 724,
+    "mode": "RGBA",
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "transparentFraction": 0.547,
+    "bytes": 1663379,
+    "sha256": "0b31a0f41f27778851d8c553a6daec7759d942fb266aaccbb5f897e6b2a06ab5"
+  },
+  {
+    "file": "alpha_pounce.png",
+    "width": 1536,
+    "height": 1024,
+    "mode": "RGBA",
+    "alphaExtrema": [
+      0,
+      254
+    ],
+    "transparentFraction": 0.506,
+    "bytes": 2521368,
+    "sha256": "d57ead700dd601d668781c3c1a67ae5fb1c563684a18f0e606c39d438de1fd35"
+  },
+  {
+    "file": "alpha_stalk.png",
+    "width": 1536,
+    "height": 1024,
+    "mode": "RGBA",
+    "alphaExtrema": [
+      0,
+      254
+    ],
+    "transparentFraction": 0.506,
+    "bytes": 2475741,
+    "sha256": "8dbf2a529b5d4184d646d44158f70fe42489849cdd842bdd910be16331c31005"
+  },
+  {
+    "file": "boar_action_keys.png",
+    "width": 1536,
+    "height": 1024,
+    "mode": "RGBA",
+    "alphaExtrema": [
+      0,
+      254
+    ],
+    "transparentFraction": 0.515,
+    "bytes": 2400849,
+    "sha256": "137347b0c484686b192817122e27063574a483e8420276540a222ba827e7879f"
+  },
+  {
+    "file": "boar_charge.png",
+    "width": 1536,
+    "height": 1024,
+    "mode": "RGBA",
+    "alphaExtrema": [
+      0,
+      254
+    ],
+    "transparentFraction": 0.573,
+    "bytes": 2262127,
+    "sha256": "0d74de59c6058895ee52547aedc41eb843db19e6cdc4cce1899be24d8f8387b4"
+  },
+  {
+    "file": "boar_down_fade.png",
+    "width": 1536,
+    "height": 1024,
+    "mode": "RGBA",
+    "alphaExtrema": [
+      0,
+      254
+    ],
+    "transparentFraction": 0.488,
+    "bytes": 2333500,
+    "sha256": "412c6fb766bd6f06b718a7e0f27d0d6645762390c0aea5c02ab1535830981906"
+  },
+  {
+    "file": "boar_hit_short.png",
+    "width": 2172,
+    "height": 724,
+    "mode": "RGBA",
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "transparentFraction": 0.611,
+    "bytes": 1383012,
+    "sha256": "9ca66b500a2f649ee445c597fa48e54a9419b304ba94ba4a6a3e9c0e737006c0"
+  },
+  {
+    "file": "boar_run.png",
+    "width": 1536,
+    "height": 1024,
+    "mode": "RGBA",
+    "alphaExtrema": [
+      0,
+      254
+    ],
+    "transparentFraction": 0.622,
+    "bytes": 2125952,
+    "sha256": "0d699ff6f2c79840c3d722d9a2ce3b190fd9a49ba28935c4b74b5a4aecf00f73"
+  },
+  {
+    "file": "thorn_lurker_action_keys.png",
+    "width": 1536,
+    "height": 1024,
+    "mode": "RGBA",
+    "alphaExtrema": [
+      0,
+      254
+    ],
+    "transparentFraction": 0.457,
+    "bytes": 2857658,
+    "sha256": "7a8ebbd631005acde45b0b13e0ed96c165bd1544553d9c0fd87b99babc2efb9b"
+  },
+  {
+    "file": "thorn_lurker_down_fade.png",
+    "width": 1536,
+    "height": 1024,
+    "mode": "RGBA",
+    "alphaExtrema": [
+      0,
+      254
+    ],
+    "transparentFraction": 0.473,
+    "bytes": 2580308,
+    "sha256": "452e8ffad9b48994dda0fd3c1c5c22e75c5e4217490a8f6b3293488cb86b0c6c"
+  },
+  {
+    "file": "thorn_lurker_hit_short.png",
+    "width": 2172,
+    "height": 724,
+    "mode": "RGBA",
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "transparentFraction": 0.494,
+    "bytes": 2106333,
+    "sha256": "824e74f0995378fe2a5cf4ee473d4d8521ea7bdd17a27ecdc2bd119244905feb"
+  },
+  {
+    "file": "thorn_lurker_idle.png",
+    "width": 1536,
+    "height": 1024,
+    "mode": "RGBA",
+    "alphaExtrema": [
+      0,
+      254
+    ],
+    "transparentFraction": 0.535,
+    "bytes": 2655195,
+    "sha256": "c69233322ae8187572491cf8b74f88c523d7dc40ca3aae69dabaa91310d87cf2"
+  },
+  {
+    "file": "thorn_lurker_lash.png",
+    "width": 1536,
+    "height": 1024,
+    "mode": "RGBA",
+    "alphaExtrema": [
+      0,
+      254
+    ],
+    "transparentFraction": 0.494,
+    "bytes": 2765013,
+    "sha256": "d7dbcbfce5aa3198101f7746bc416ecb82e4280ba82d62762e47ae3acec7e51a"
+  },
+  {
+    "file": "wolf_bite.png",
+    "width": 1536,
+    "height": 1024,
+    "mode": "RGBA",
+    "alphaExtrema": [
+      0,
+      254
+    ],
+    "transparentFraction": 0.468,
+    "bytes": 2608232,
+    "sha256": "aa97fbb76119ed44619e830d5aff5660fb2d9d89f9ac888398ba7cbeb8d0f9a7"
+  },
+  {
+    "file": "wolf_bite_v2.png",
+    "width": 1536,
+    "height": 1024,
+    "mode": "RGBA",
+    "alphaExtrema": [
+      0,
+      254
+    ],
+    "transparentFraction": 0.53,
+    "bytes": 2413522,
+    "sha256": "b3ba8b399311a20f2beb4a3ac140c1374706f989c3da92018e004ad78ea69812"
+  },
+  {
+    "file": "wolf_down_fade.png",
+    "width": 1536,
+    "height": 1024,
+    "mode": "RGBA",
+    "alphaExtrema": [
+      0,
+      254
+    ],
+    "transparentFraction": 0.48,
+    "bytes": 2351074,
+    "sha256": "21bf4311269fb81c2ead921d710758dff937f843bc3602dca2a0bf2eeb572831"
+  },
+  {
+    "file": "wolf_hit_short.png",
+    "width": 2032,
+    "height": 774,
+    "mode": "RGBA",
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "transparentFraction": 0.627,
+    "bytes": 1454678,
+    "sha256": "d6528656b81bb5a44e6555c0577f8343eb50c871eacf232d69bf3182703e0967"
+  },
+  {
+    "file": "wolf_idle.png",
+    "width": 1536,
+    "height": 1024,
+    "mode": "RGBA",
+    "alphaExtrema": [
+      0,
+      254
+    ],
+    "transparentFraction": 0.523,
+    "bytes": 2480207,
+    "sha256": "9c10af5d78f21410589192a47058db647bae79a4567f7da90f2e4f3d4b88e243"
+  },
+  {
+    "file": "wolf_land_beside.png",
+    "width": 2172,
+    "height": 724,
+    "mode": "RGBA",
+    "alphaExtrema": [
+      0,
+      255
+    ],
+    "transparentFraction": 0.615,
+    "bytes": 1487095,
+    "sha256": "f0a5cbc89851cf811c3929a2773c137cb1ce6b3802fe05ee9b949302ecf0a7ba"
+  },
+  {
+    "file": "wolf_land_tumble.png",
+    "width": 1536,
+    "height": 1024,
+    "mode": "RGBA",
+    "alphaExtrema": [
+      0,
+      254
+    ],
+    "transparentFraction": 0.59,
+    "bytes": 2331609,
+    "sha256": "a88ac4e793b7f50c54567a03dd47c1900215f9cf47b1b21ff911ac0151eff628"
+  },
+  {
+    "file": "wolf_leap.png",
+    "width": 1536,
+    "height": 1024,
+    "mode": "RGBA",
+    "alphaExtrema": [
+      0,
+      254
+    ],
+    "transparentFraction": 0.644,
+    "bytes": 2101352,
+    "sha256": "9de35d40e0720622992524c140dd1c5c65efe9ea4390e1c1fc148b5700ba214c"
+  },
+  {
+    "file": "wolf_overshoot_land.png",
+    "width": 1536,
+    "height": 1024,
+    "mode": "RGBA",
+    "alphaExtrema": [
+      0,
+      254
+    ],
+    "transparentFraction": 0.55,
+    "bytes": 2425403,
+    "sha256": "698c5cadc2b7deff5f8e24a539bb948c959aae2dcdb8d59826444cf5ab9eefbd"
+  },
+  {
+    "file": "wolf_reference.png",
+    "width": 1536,
+    "height": 1024,
+    "mode": "RGBA",
+    "alphaExtrema": [
+      0,
+      254
+    ],
+    "transparentFraction": 0.51,
+    "bytes": 2385412,
+    "sha256": "5dec5c6fcd524b25d5508035b1ce85ae009bcf81ff0435b3bf13dd64a6dc883e"
+  },
+  {
+    "file": "wolf_run.png",
+    "width": 1536,
+    "height": 1024,
+    "mode": "RGBA",
+    "alphaExtrema": [
+      0,
+      254
+    ],
+    "transparentFraction": 0.635,
+    "bytes": 2176412,
+    "sha256": "88de7b5df15a9154e421b0873d85b0d9c273c9732e081736e21e13685a3f728d"
+  }
+]

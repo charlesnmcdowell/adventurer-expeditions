@@ -1,0 +1,57 @@
+{
+  "scope": "Static art gallery only; no game playback test",
+  "status": "PASS",
+  "brokenImages": [],
+  "checks": [
+    {
+      "group": "All",
+      "count": 82,
+      "want": 82
+    },
+    {
+      "group": "Hiro",
+      "count": 24,
+      "want": 24
+    },
+    {
+      "group": "Bram",
+      "count": 20,
+      "want": 20
+    },
+    {
+      "group": "Beasts",
+      "count": 26,
+      "want": 26
+    },
+    {
+      "group": "Human",
+      "count": 5,
+      "want": 5
+    },
+    {
+      "group": "Effects",
+      "count": 1,
+      "want": 1
+    },
+    {
+      "group": "Icons",
+      "count": 4,
+      "want": 4
+    },
+    {
+      "group": "Backgrounds",
+      "count": 2,
+      "want": 2
+    },
+    {
+      "search": "victory",
+      "count": 2,
+      "want": 2
+    },
+    {
+      "mobileWidth": 375,
+      "horizontalOverflow": false
+    }
+  ],
+  "errors": []
+}

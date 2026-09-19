@@ -1,0 +1,383 @@
+{
+  "schema": "adventurer.astra.human-keyframes.v1",
+  "date": "2026-09-19",
+  "status": "source-keyframes-await-matting-registration-playback-greenlight",
+  "character": "female_street_bandit_exemplar",
+  "matchingExistingExample": "campaign.js bandit_b (female, head 9, street gear); interpretive full-body design based on existing wardrobe/head styles, not pixel-identical composed bust.",
+  "facing": "left",
+  "drawnMethod": "complete painted frame per pose; no rig or part-based cutout",
+  "pathsRelativeTo": "assets/expedition/astra-v1/humans",
+  "rectConvention": "x,y,width,height source pixels, top-left origin",
+  "timingStatus": "suggested review timings, not runtime-approved",
+  "clips": [
+    {
+      "clip": "approach",
+      "file": "bandit-approach-source.png",
+      "width": 1536,
+      "height": 1024,
+      "frames": [
+        {
+          "frame": 0,
+          "row": 1,
+          "column": 1,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "frame": 1,
+          "row": 1,
+          "column": 2,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "frame": 2,
+          "row": 1,
+          "column": 3,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "frame": 3,
+          "row": 2,
+          "column": 1,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ]
+        },
+        {
+          "frame": 4,
+          "row": 2,
+          "column": 2,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ]
+        },
+        {
+          "frame": 5,
+          "row": 2,
+          "column": 3,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ]
+        }
+      ],
+      "frameMs": [
+        100,
+        85,
+        100,
+        100,
+        85,
+        100
+      ],
+      "loop": true,
+      "footfalls": [
+        0,
+        3
+      ],
+      "contact": null,
+      "quality": "Pose-corrected source. Transparent alpha exists but visible vignette residue needs masking. Opposite-leg phasing and foot planting need playback review."
+    },
+    {
+      "clip": "slash",
+      "file": "bandit-slash-source.png",
+      "width": 1536,
+      "height": 1024,
+      "frames": [
+        {
+          "frame": 0,
+          "row": 1,
+          "column": 1,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "frame": 1,
+          "row": 1,
+          "column": 2,
+          "rect": [
+            512,
+            0,
+            448,
+            512
+          ]
+        },
+        {
+          "frame": 2,
+          "row": 1,
+          "column": 3,
+          "rect": [
+            960,
+            0,
+            576,
+            512
+          ]
+        },
+        {
+          "frame": 3,
+          "row": 2,
+          "column": 1,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ]
+        },
+        {
+          "frame": 4,
+          "row": 2,
+          "column": 2,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ]
+        },
+        {
+          "frame": 5,
+          "row": 2,
+          "column": 3,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ]
+        }
+      ],
+      "frameMs": [
+        90,
+        180,
+        65,
+        90,
+        100,
+        110
+      ],
+      "loop": false,
+      "contact": 2,
+      "quality": "Contact has extended blade crossing nominal third-cell left boundary; supplied region widens third frame. Alpha vignette needs cleanup. No opponent is in this sheet."
+    },
+    {
+      "clip": "cast",
+      "file": "bandit-cast-source.png",
+      "width": 1536,
+      "height": 1024,
+      "frames": [
+        {
+          "frame": 0,
+          "row": 1,
+          "column": 1,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "frame": 1,
+          "row": 1,
+          "column": 2,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "frame": 2,
+          "row": 1,
+          "column": 3,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "frame": 3,
+          "row": 2,
+          "column": 1,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ]
+        },
+        {
+          "frame": 4,
+          "row": 2,
+          "column": 2,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ]
+        },
+        {
+          "frame": 5,
+          "row": 2,
+          "column": 3,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ]
+        }
+      ],
+      "frameMs": [
+        90,
+        140,
+        110,
+        70,
+        100,
+        100
+      ],
+      "loop": false,
+      "contact": 3,
+      "quality": "Anatomy-corrected frame 4 (zero-based); final file RGB with painted vignette, needs full foreground matte. Motion example only; does not grant bandits a spell."
+    },
+    {
+      "clip": "hit",
+      "file": "bandit-hit-source.png",
+      "width": 2172,
+      "height": 724,
+      "frames": [
+        {
+          "frame": 0,
+          "row": 1,
+          "column": 1,
+          "rect": [
+            0,
+            0,
+            724,
+            724
+          ]
+        },
+        {
+          "frame": 1,
+          "row": 1,
+          "column": 2,
+          "rect": [
+            724,
+            0,
+            724,
+            724
+          ]
+        },
+        {
+          "frame": 2,
+          "row": 1,
+          "column": 3,
+          "rect": [
+            1448,
+            0,
+            724,
+            724
+          ]
+        }
+      ],
+      "frameMs": [
+        90,
+        100,
+        120
+      ],
+      "loop": false,
+      "contact": 0,
+      "quality": "Isolated RGBA. Root registration and scale must match other clips. Compression, brace, return sequence visually reviewed."
+    },
+    {
+      "clip": "down",
+      "file": "bandit-down-source.png",
+      "width": 1254,
+      "height": 1254,
+      "frames": [
+        {
+          "frame": 0,
+          "row": 1,
+          "column": 1,
+          "rect": [
+            0,
+            0,
+            627,
+            627
+          ]
+        },
+        {
+          "frame": 1,
+          "row": 1,
+          "column": 2,
+          "rect": [
+            627,
+            0,
+            627,
+            627
+          ]
+        },
+        {
+          "frame": 2,
+          "row": 2,
+          "column": 1,
+          "rect": [
+            0,
+            627,
+            627,
+            627
+          ]
+        },
+        {
+          "frame": 3,
+          "row": 2,
+          "column": 2,
+          "rect": [
+            627,
+            627,
+            627,
+            627
+          ]
+        }
+      ],
+      "frameMs": [
+        120,
+        180,
+        180,
+        240
+      ],
+      "loop": false,
+      "contact": null,
+      "quality": "Isolated RGBA with translucent defeat light in last two frames. Do not hard-threshold the light alpha."
+    }
+  ]
+}

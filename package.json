@@ -1,0 +1,18 @@
+{
+  "name": "adventurer-expeditions",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Adventurer: Expeditions \u2014 the CrazyGames edition of Adventurer (Hiro's loop: inn, recruit, quest, repeat). Separate from the website game.",
+  "scripts": {
+    "sync": "node tools/sync_shared.js",
+    "sync:check": "node tools/sync_shared.js --check",
+    "test": "node test/expedition_sim.js && node tools/size_check.js",
+    "test:browser": "node test/browser_expedition.js",
+    "test:ship": "node test/browser_expedition.js --ship",
+    "art:review": "node test/browser_art_review.js",
+    "size": "node tools/size_check.js",
+    "zip": "node tools/size_check.js --zip",
+    "bake:busts": "node tools/bake_busts.js",
+    "play": "node play_local.js"
+  }
+}

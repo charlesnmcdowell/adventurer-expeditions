@@ -1,0 +1,1036 @@
+{
+  "schema": "adventurer.astra.bram-source-regions.v1",
+  "date": "2026-09-19",
+  "scope": "Read-only image QA; no source image or runtime changes. Metadata files only.",
+  "status": "source boards awaiting matte-registration-playback review; not runtime atlas",
+  "basePath": "assets/expedition/astra-v1/heroes/bram",
+  "rectConvention": "[x,y,width,height] in actual unscaled source pixels, top-left origin, zero-based frame indices. Rectangles include background/grid pixels and require subject extraction. Some named crops overlap by design to preserve silhouettes.",
+  "frameCount": 78,
+  "sourceCount": 14,
+  "sheets": [
+    {
+      "file": "idle_clean.png",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGB",
+      "frames": [
+        {
+          "frame": 0,
+          "row": 1,
+          "column": 1,
+          "rect": [
+            0,
+            0,
+            512,
+            768
+          ]
+        },
+        {
+          "frame": 1,
+          "row": 1,
+          "column": 2,
+          "rect": [
+            512,
+            0,
+            512,
+            768
+          ]
+        },
+        {
+          "frame": 2,
+          "row": 2,
+          "column": 1,
+          "rect": [
+            0,
+            768,
+            512,
+            768
+          ]
+        },
+        {
+          "frame": 3,
+          "row": 2,
+          "column": 2,
+          "rect": [
+            512,
+            768,
+            512,
+            768
+          ]
+        }
+      ],
+      "baselineObservation": "Approximate foot ground-line consistent across the four source cells; breathing/cloth changes subtle. Register to boot sole, not auto-trim center.",
+      "notes": []
+    },
+    {
+      "file": "walk_clean.png",
+      "width": 1774,
+      "height": 887,
+      "mode": "RGB",
+      "frames": [
+        {
+          "frame": 0,
+          "row": 1,
+          "column": 1,
+          "rect": [
+            0,
+            0,
+            444,
+            444
+          ]
+        },
+        {
+          "frame": 1,
+          "row": 1,
+          "column": 2,
+          "rect": [
+            444,
+            0,
+            444,
+            444
+          ]
+        },
+        {
+          "frame": 2,
+          "row": 1,
+          "column": 3,
+          "rect": [
+            888,
+            0,
+            443,
+            444
+          ]
+        },
+        {
+          "frame": 3,
+          "row": 1,
+          "column": 4,
+          "rect": [
+            1331,
+            0,
+            443,
+            444
+          ]
+        },
+        {
+          "frame": 4,
+          "row": 2,
+          "column": 1,
+          "rect": [
+            0,
+            444,
+            444,
+            443
+          ]
+        },
+        {
+          "frame": 5,
+          "row": 2,
+          "column": 2,
+          "rect": [
+            444,
+            444,
+            444,
+            443
+          ]
+        },
+        {
+          "frame": 6,
+          "row": 2,
+          "column": 3,
+          "rect": [
+            888,
+            444,
+            443,
+            443
+          ]
+        },
+        {
+          "frame": 7,
+          "row": 2,
+          "column": 4,
+          "rect": [
+            1331,
+            444,
+            443,
+            443
+          ]
+        }
+      ],
+      "baselineObservation": "Grounded soles near row bottom; small per-frame vertical shifts remain. Different foot contacts/passing poses require explicit contact registration; loop continuity not proven.",
+      "notes": [
+        "Painted divider strokes must be removed. Verify alternating leading leg in playback; repeated contact poses may need timing changes."
+      ]
+    },
+    {
+      "file": "draw.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "frames": [
+        {
+          "frame": 0,
+          "row": 1,
+          "column": 1,
+          "rect": [
+            0,
+            0,
+            384,
+            512
+          ]
+        },
+        {
+          "frame": 1,
+          "row": 1,
+          "column": 2,
+          "rect": [
+            384,
+            0,
+            384,
+            512
+          ]
+        },
+        {
+          "frame": 2,
+          "row": 1,
+          "column": 3,
+          "rect": [
+            768,
+            0,
+            384,
+            512
+          ]
+        },
+        {
+          "frame": 3,
+          "row": 1,
+          "column": 4,
+          "rect": [
+            1152,
+            0,
+            384,
+            512
+          ]
+        },
+        {
+          "frame": 4,
+          "row": 2,
+          "column": 1,
+          "rect": [
+            0,
+            512,
+            384,
+            512
+          ]
+        },
+        {
+          "frame": 5,
+          "row": 2,
+          "column": 2,
+          "rect": [
+            384,
+            512,
+            384,
+            512
+          ]
+        },
+        {
+          "frame": 6,
+          "row": 2,
+          "column": 3,
+          "rect": [
+            768,
+            512,
+            384,
+            512
+          ]
+        },
+        {
+          "frame": 7,
+          "row": 2,
+          "column": 4,
+          "rect": [
+            1152,
+            512,
+            384,
+            512
+          ]
+        }
+      ],
+      "baselineObservation": "Grounded boot soles vary modestly around the row baseline; knees lower the torso intentionally. No fixed pivot encoded.",
+      "notes": [
+        "Blue/gray background must be masked. Frame 6 raised sword approaches top of lower row; preserve its tip."
+      ]
+    },
+    {
+      "file": "short_draw.png",
+      "width": 1254,
+      "height": 1254,
+      "mode": "RGBA",
+      "frames": [
+        {
+          "frame": 0,
+          "row": 1,
+          "column": 1,
+          "rect": [
+            0,
+            0,
+            627,
+            627
+          ]
+        },
+        {
+          "frame": 1,
+          "row": 1,
+          "column": 2,
+          "rect": [
+            627,
+            0,
+            627,
+            627
+          ]
+        },
+        {
+          "frame": 2,
+          "row": 2,
+          "column": 1,
+          "rect": [
+            0,
+            627,
+            627,
+            627
+          ]
+        },
+        {
+          "frame": 3,
+          "row": 2,
+          "column": 2,
+          "rect": [
+            627,
+            627,
+            627,
+            627
+          ]
+        }
+      ],
+      "baselineObservation": "Grounded baseline broadly consistent after row offset. Center-of-crop varies substantially due to overhead sword.",
+      "notes": [
+        "Blade alpha fringe/light edge requires dark-background check. Source border padding limited at bottom and final sword tip."
+      ]
+    },
+    {
+      "file": "slash_clean.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "frames": [
+        {
+          "frame": 0,
+          "row": 1,
+          "column": 1,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "frame": 1,
+          "row": 1,
+          "column": 2,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "frame": 2,
+          "row": 1,
+          "column": 3,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "frame": 3,
+          "row": 2,
+          "column": 1,
+          "rect": [
+            0,
+            512,
+            536,
+            512
+          ]
+        },
+        {
+          "frame": 4,
+          "row": 2,
+          "column": 2,
+          "rect": [
+            548,
+            512,
+            476,
+            512
+          ]
+        },
+        {
+          "frame": 5,
+          "row": 2,
+          "column": 3,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ]
+        }
+      ],
+      "baselineObservation": "Feet and stance span change with lunge. Register support foot/hips and intentional root lunge; don't normalize each crop by center.",
+      "notes": [
+        "Frame 4 blade crosses nominal x512 boundary; use widened region below. Frame 3 sword tip close to outer right edge but visible."
+      ]
+    },
+    {
+      "file": "hit_short.png",
+      "width": 1774,
+      "height": 887,
+      "mode": "RGBA",
+      "frames": [
+        {
+          "frame": 0,
+          "row": 1,
+          "column": 1,
+          "rect": [
+            0,
+            0,
+            591,
+            887
+          ]
+        },
+        {
+          "frame": 1,
+          "row": 1,
+          "column": 2,
+          "rect": [
+            591,
+            0,
+            592,
+            887
+          ]
+        },
+        {
+          "frame": 2,
+          "row": 1,
+          "column": 3,
+          "rect": [
+            1183,
+            0,
+            591,
+            887
+          ]
+        }
+      ],
+      "baselineObservation": "Lowest boot soles approximately stable across all three frames; torso compresses and recovers. Root needs common ground calibration.",
+      "notes": [
+        "White/light alpha fringe around swords needs compositing review; do not aggressively cut blade highlight."
+      ]
+    },
+    {
+      "file": "roll.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "frames": [
+        {
+          "frame": 0,
+          "row": 1,
+          "column": 1,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "frame": 1,
+          "row": 1,
+          "column": 2,
+          "rect": [
+            512,
+            0,
+            514,
+            512
+          ]
+        },
+        {
+          "frame": 2,
+          "row": 1,
+          "column": 3,
+          "rect": [
+            1026,
+            0,
+            510,
+            512
+          ]
+        },
+        {
+          "frame": 3,
+          "row": 2,
+          "column": 1,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ]
+        },
+        {
+          "frame": 4,
+          "row": 2,
+          "column": 2,
+          "rect": [
+            512,
+            512,
+            514,
+            512
+          ]
+        },
+        {
+          "frame": 5,
+          "row": 2,
+          "column": 3,
+          "rect": [
+            1026,
+            512,
+            510,
+            512
+          ]
+        }
+      ],
+      "baselineObservation": "No stable foot baseline is appropriate: frames 3–4 are inverted/sideways. Register rolling body/root path, then use boots only on entry/exit.",
+      "notes": [
+        "Blue/gray matte and white dividers need removal. Shield/sword rotate with body; no extra limbs identified, but roll arc unverified in playback."
+      ]
+    },
+    {
+      "file": "intercept.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "frames": [
+        {
+          "frame": 0,
+          "row": 1,
+          "column": 1,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "frame": 1,
+          "row": 1,
+          "column": 2,
+          "rect": [
+            512,
+            0,
+            587,
+            512
+          ]
+        },
+        {
+          "frame": 2,
+          "row": 1,
+          "column": 3,
+          "rect": [
+            1099,
+            0,
+            437,
+            512
+          ]
+        },
+        {
+          "frame": 3,
+          "row": 2,
+          "column": 1,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ]
+        },
+        {
+          "frame": 4,
+          "row": 2,
+          "column": 2,
+          "rect": [
+            512,
+            512,
+            587,
+            512
+          ]
+        }
+      ],
+      "baselineObservation": "Feet roughly stay near ground line, but lunge/contact root changes. Unequal cell widths must not affect actor scale.",
+      "notes": [
+        "Unequal columns: x512 and x1099. Five drawn poses; lower-right cell empty. Remove grid strokes before trim."
+      ]
+    },
+    {
+      "file": "riposte_clean.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "frames": [
+        {
+          "frame": 0,
+          "row": 1,
+          "column": 1,
+          "rect": [
+            0,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "frame": 1,
+          "row": 1,
+          "column": 2,
+          "rect": [
+            512,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "frame": 2,
+          "row": 1,
+          "column": 3,
+          "rect": [
+            1024,
+            0,
+            512,
+            512
+          ]
+        },
+        {
+          "frame": 3,
+          "row": 2,
+          "column": 1,
+          "rect": [
+            0,
+            512,
+            512,
+            512
+          ]
+        },
+        {
+          "frame": 4,
+          "row": 2,
+          "column": 2,
+          "rect": [
+            512,
+            512,
+            512,
+            512
+          ]
+        },
+        {
+          "frame": 5,
+          "row": 2,
+          "column": 3,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ]
+        }
+      ],
+      "baselineObservation": "Forward thrust changes stance; baseline roughly stable by row but per-frame pivot is not. Hold supporting heel through thrust.",
+      "notes": [
+        "Six source poses exist, not five. Frame 3 long blade tip has very tight right margin. First and last guards are similar but not identical."
+      ]
+    },
+    {
+      "file": "cast.png",
+      "width": 1227,
+      "height": 1282,
+      "mode": "RGB",
+      "frames": [
+        {
+          "frame": 0,
+          "row": 1,
+          "column": 1,
+          "rect": [
+            0,
+            0,
+            400,
+            641
+          ]
+        },
+        {
+          "frame": 1,
+          "row": 1,
+          "column": 2,
+          "rect": [
+            400,
+            0,
+            427,
+            641
+          ]
+        },
+        {
+          "frame": 2,
+          "row": 1,
+          "column": 3,
+          "rect": [
+            827,
+            0,
+            400,
+            641
+          ]
+        },
+        {
+          "frame": 3,
+          "row": 2,
+          "column": 1,
+          "rect": [
+            0,
+            641,
+            400,
+            641
+          ]
+        },
+        {
+          "frame": 4,
+          "row": 2,
+          "column": 2,
+          "rect": [
+            400,
+            641,
+            427,
+            641
+          ]
+        },
+        {
+          "frame": 5,
+          "row": 2,
+          "column": 3,
+          "rect": [
+            827,
+            641,
+            400,
+            641
+          ]
+        }
+      ],
+      "baselineObservation": "Boot soles approximately line up within rows; cast stance and raised sword change bounds rather than intended body size.",
+      "notes": [
+        "Unequal 400/427/400-wide columns, not square frames. Golden aura/glows baked over white need careful matte. Lower-left sword begins close to row divider."
+      ]
+    },
+    {
+      "file": "victory.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "frames": [
+        {
+          "frame": 0,
+          "row": 1,
+          "column": 1,
+          "rect": [
+            0,
+            0,
+            384,
+            512
+          ]
+        },
+        {
+          "frame": 1,
+          "row": 1,
+          "column": 2,
+          "rect": [
+            384,
+            0,
+            384,
+            512
+          ]
+        },
+        {
+          "frame": 2,
+          "row": 1,
+          "column": 3,
+          "rect": [
+            768,
+            0,
+            384,
+            512
+          ]
+        },
+        {
+          "frame": 3,
+          "row": 1,
+          "column": 4,
+          "rect": [
+            1152,
+            0,
+            384,
+            512
+          ]
+        },
+        {
+          "frame": 4,
+          "row": 2,
+          "column": 1,
+          "rect": [
+            0,
+            512,
+            384,
+            512
+          ]
+        },
+        {
+          "frame": 5,
+          "row": 2,
+          "column": 2,
+          "rect": [
+            384,
+            512,
+            384,
+            512
+          ]
+        },
+        {
+          "frame": 6,
+          "row": 2,
+          "column": 3,
+          "rect": [
+            768,
+            512,
+            384,
+            512
+          ]
+        },
+        {
+          "frame": 7,
+          "row": 2,
+          "column": 4,
+          "rect": [
+            1152,
+            512,
+            384,
+            512
+          ]
+        }
+      ],
+      "baselineObservation": "First seven poses have a broadly shared planted baseline; final pose intentionally steps. Registration must preserve this step rather than locking both feet.",
+      "notes": [
+        "Sword becomes partially inserted during frames 4–6 then sheathed in 7–8; don't interpret shortened visible blade as an extra weapon. Check scabbard alignment in sequence."
+      ]
+    },
+    {
+      "file": "kneel.png",
+      "width": 1024,
+      "height": 1536,
+      "mode": "RGB",
+      "frames": [
+        {
+          "frame": 0,
+          "row": 1,
+          "column": 1,
+          "rect": [
+            0,
+            0,
+            512,
+            832
+          ]
+        },
+        {
+          "frame": 1,
+          "row": 1,
+          "column": 2,
+          "rect": [
+            512,
+            0,
+            512,
+            832
+          ]
+        },
+        {
+          "frame": 2,
+          "row": 2,
+          "column": 1,
+          "rect": [
+            0,
+            832,
+            512,
+            704
+          ]
+        },
+        {
+          "frame": 3,
+          "row": 2,
+          "column": 2,
+          "rect": [
+            512,
+            832,
+            512,
+            704
+          ]
+        }
+      ],
+      "baselineObservation": "Ground contact switches boots→knee→seated body/shield. Lowest sword point is not a reliable root marker.",
+      "notes": [
+        "Nominal y768 slice cuts first-row sword tips/feet. Use row boundary832. Lower-row poses occupy shorter cells; never scale each frame to its full crop height."
+      ]
+    },
+    {
+      "file": "bite_leg_a_clean.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "frames": [
+        {
+          "frame": 0,
+          "row": 1,
+          "column": 1,
+          "rect": [
+            0,
+            0,
+            523,
+            512
+          ]
+        },
+        {
+          "frame": 1,
+          "row": 1,
+          "column": 2,
+          "rect": [
+            514,
+            0,
+            515,
+            512
+          ]
+        },
+        {
+          "frame": 2,
+          "row": 1,
+          "column": 3,
+          "rect": [
+            1022,
+            0,
+            514,
+            512
+          ]
+        },
+        {
+          "frame": 3,
+          "row": 2,
+          "column": 1,
+          "rect": [
+            0,
+            512,
+            537,
+            512
+          ]
+        },
+        {
+          "frame": 4,
+          "row": 2,
+          "column": 2,
+          "rect": [
+            523,
+            512,
+            510,
+            512
+          ]
+        },
+        {
+          "frame": 5,
+          "row": 2,
+          "column": 3,
+          "rect": [
+            1024,
+            512,
+            512,
+            512
+          ]
+        }
+      ],
+      "baselineObservation": "Support boot stays grounded through grip/lift but apparent pair size differs from bite_leg_b. Calibrate Bram height once, with both figures scaled together.",
+      "notes": [
+        "Six paired poses. Neighboring silhouettes cross nominal x512 boundaries; overlapping intake rectangles require per-frame foreground masks. Paw/boot contact migrates from shin to boot as the leg lifts; inspect sequence."
+      ]
+    },
+    {
+      "file": "bite_leg_b.png",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "frames": [
+        {
+          "frame": 0,
+          "row": 1,
+          "column": 1,
+          "rect": [
+            0,
+            0,
+            768,
+            512
+          ]
+        },
+        {
+          "frame": 1,
+          "row": 1,
+          "column": 2,
+          "rect": [
+            768,
+            0,
+            768,
+            512
+          ]
+        },
+        {
+          "frame": 2,
+          "row": 2,
+          "column": 1,
+          "rect": [
+            0,
+            512,
+            768,
+            512
+          ]
+        },
+        {
+          "frame": 3,
+          "row": 2,
+          "column": 2,
+          "rect": [
+            768,
+            512,
+            768,
+            512
+          ]
+        }
+      ],
+      "baselineObservation": "Support boot ground line broadly consistent. First-frame Bram is larger in source pixels than bite_leg_a; pair must be registered as one unit across both boards.",
+      "notes": [
+        "Four paired poses. Shield and raised boot both meet wolf at kick frame; actual wolf release/contact needs beat tagging. Last two frames show grounded recovery. Remove divider strokes."
+      ]
+    }
+  ]
+}

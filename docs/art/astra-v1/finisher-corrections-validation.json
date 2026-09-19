@@ -1,0 +1,63 @@
+[
+  {
+    "file": "finisher_boss_clean.png",
+    "size": [
+      2172,
+      724
+    ],
+    "mode": "RGB",
+    "bytes": 1713767,
+    "sha256": "9714c27a71cbf49a2103aad8af61cea5c90aae00a30c5667d06a235754279a7c",
+    "separator_columns": [
+      688,
+      689,
+      1436,
+      1437
+    ]
+  },
+  {
+    "file": "finisher_human_clean.png",
+    "size": [
+      2172,
+      724
+    ],
+    "mode": "RGB",
+    "bytes": 1664616,
+    "sha256": "d89db8124bc5bef6e198497e2e07681e34cb4541785d88376a813fa3010f7030",
+    "separator_columns": [
+      723,
+      1447
+    ]
+  },
+  {
+    "file": "finisher_plant_clean.png",
+    "size": [
+      2172,
+      724
+    ],
+    "mode": "RGB",
+    "bytes": 1631539,
+    "sha256": "e6106717cf8cffcdbcf98a24a1e6535b8cc45cb4ee8bade2eaf3854486ec768c",
+    "separator_columns": [
+      1447,
+      2171
+    ]
+  },
+  {
+    "file": "finisher_quadruped_clean.png",
+    "size": [
+      2172,
+      724
+    ],
+    "mode": "RGB",
+    "bytes": 1474787,
+    "sha256": "6daa5782413ea1c37d81d8c6bc9374cd6e0700e10d104ebae5fe5ae40b165bb3",
+    "separator_columns": [
+      0,
+      723,
+      724,
+      1447,
+      2171
+    ]
+  }
+]

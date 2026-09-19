@@ -1,0 +1,8 @@
+{
+  "headless": [
+    { "file": "test/expedition_sim.js", "args": [] }
+  ],
+  "browser": [
+    { "file": "test/browser_expedition.js", "args": [] }
+  ]
+}

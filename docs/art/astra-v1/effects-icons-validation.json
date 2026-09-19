@@ -1,0 +1,72 @@
+[
+  {
+    "file": "assets/expedition/astra-v1/icons/bram-skills-source.png",
+    "size": [
+      1774,
+      887
+    ],
+    "bytes": 2468742,
+    "sha256": "7c141a41b36af82e8f34ab075faa96a9268026163e770b9dde0a64b236e2ea48",
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ]
+  },
+  {
+    "file": "assets/expedition/astra-v1/icons/hiro-skills-tiers-source.png",
+    "size": [
+      1254,
+      1254
+    ],
+    "bytes": 1887005,
+    "sha256": "8511b501e6224278f80dbeca54f08a5ca8e50dc1524a1903662d0dc33cff42d8",
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ]
+  },
+  {
+    "file": "assets/expedition/astra-v1/icons/nyx-skills-source.png",
+    "size": [
+      1774,
+      887
+    ],
+    "bytes": 1706883,
+    "sha256": "e903e76596471ecc13c84adee655520520e2c07ed7b5406ea9c787cba9437138",
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ]
+  },
+  {
+    "file": "assets/expedition/astra-v1/icons/sable-skills-source.png",
+    "size": [
+      1774,
+      887
+    ],
+    "bytes": 1667426,
+    "sha256": "aa83c6ce930157ca3acd86780c8ce39ac8677511e7e4213346236d743164d00a",
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ]
+  },
+  {
+    "file": "assets/expedition/astra-v1/effects/combat-effects-source.png",
+    "size": [
+      1254,
+      1254
+    ],
+    "bytes": 1714608,
+    "sha256": "9f860c6edc407ddea13ff7ac33ab37fd049cc714a5abddaffaf8566f6331bd42",
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      254
+    ]
+  }
+]

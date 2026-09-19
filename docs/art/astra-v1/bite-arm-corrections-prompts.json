@@ -1,0 +1,100 @@
+{
+  "tool": "built-in image_gen",
+  "date": "2026-09-19",
+  "inputs": [
+    "assets/expedition/astra-v1/heroes/bram/bite_arm.png",
+    "assets/expedition/astra-v1/heroes/bram/bram_side_reference.png"
+  ],
+  "attempts": [
+    {
+      "prompt": "Use case: identity-preserve. Edit target is the FIRST reference, a six-panel paired animation source sheet showing Bram and a wolf. SECOND reference is Bram's exact character identity and equipment-hand reference. Create a clean replacement of this six-frame bite-and-shield-push animation. Strict THREE COLUMNS by TWO ROWS equal cells on1536x1024 canvas; SAME relative sizes in every cell. Each cell shows BOTH complete figures fully visible: Bram at LEFT facing right, dire wolf at RIGHT facing left, no change of sides. CRITICAL: leave15percent EMPTY WHITE MARGIN inside EVERY cell, on all four sides. Scale BOTH figures down to fit completely: include every wolf tail tip, all paws, all Bram boots, locs, sword tip, shield edge. No figure touches cell edges. Do not crop wolf tail in top-left frame. No black gridlines, no borders, no captions/text/numbers, no floor/background scenery. Uniform plain white keyable background. Hero exactly matches reference: dark-brown skin, BLACK long locs, trimmed short goatee, burgundy embroidered duelist longcoat/gold piping/white collar, engraved silver shoulder, black boots. Fixed handedness IN ALL6FRAMES: STRAIGHT SWORD HELD IN BRAM'S ANATOMICAL RIGHT HAND, which is the near hand down toward viewer-left in reference; ROUND SHIELD ATTACHED TO BRAM'S ANATOMICAL LEFT FOREARM, which is the far/forward arm toward viewer-right in reference. Do NOT swap sword/shield, no extra hand/weapon. Wolf is gray/white with charcoal spiked ruff and amber eyes. Paint full articulated bodies at richly rendered anime game fidelity, no cutout puppets. Pose sequence row-major: frame1 wolf leaps from right toward Bram's LEFT UPPER ARM above the shield edge; Bram grounded, shield forward low enough that contact site is visible, sword right hand held safely down. Frame2 jaws close around covered left upper sleeve JUST ABOVE shield top edge; Bram braces and grimaces, shield strapped left forearm, sword remains right. Frame3 sustained firm sleeve grip, wolf's forepaws brace on shield, Bram leans backward slightly and loads his left shoulder for push. Frame4 Bram extends his LEFT SHIELD ARM forward, round shield pushes wolf away; wolf mouth OPENS and releases sleeve, sword still right hand lowered. Frame5 wolf lands fully to Bram's RIGHT in a low crouch with all legs/tail shown; Bram regains planted guard. Frame6 Bram's composed guard onleft, wolf's wary low guard onright, separation restored. No blood, no torn flesh, no visible injury, no gore. Cloth covered contact and facial strain only. Contact point stays consistent above shield; do not relocate bite to neck, face, or sword arm. Keep broad padding in everycell even in extended push pose.",
+      "generatedSource": "C:\\Users\\charl\\.codex\\generated_images\\01a0b9f4-5be3-7e50-8e02-bc2e978b94ac\\exec-e2fb6ab0-44fd-4bbd-a467-c690a7746e18.png",
+      "status": "superseded composition draft"
+    },
+    {
+      "prompt": "Use case: precise-object-edit. Edit this six-pair animation SOURCE SHEET ONLY to fix the empty margins and equalize scale. Preserve the same six drawings, identity, poses, colors, equipment hands and frame order. Target1536x1024, EXACT 3 columns2rows of512x512cells. EVERY pair must occupy a centered bounding box no larger than350px wide AND350px tall within its512pxcell. This means each cell has AT LEAST80px of blankwhite space at LEFT RIGHT TOP BOTTOM. Scale the hero+wolf TOGETHER as one drawn pair; do not resize them relative to each other. Hero full-body height should be about300px in everycell, kept constant across all6 cells. Keep Bram onleft andwolf onright. Preserve sword in anatomicalright hand andshield on anatomicalleft forearm, same leftupperarm sleevebite then shieldrelease narrative. All tails,boots andswordtips fullyvisible. No cropping,no addedobjects,no text,no gridlines,no borders. Flatwhite background. Preserve rich painted anime finish. The ONLY requested change is composition/scale to introduce LARGE even safe padding and stable character scale across six cells. Do not alter the poses or regenerate different gestures.",
+      "generatedSource": "C:\\Users\\charl\\.codex\\generated_images\\01a0b9f4-5be3-7e50-8e02-bc2e978b94ac\\exec-0664e9d3-ff5f-48c7-a19e-983548fd5d4a.png",
+      "saved": "assets/expedition/astra-v1/heroes/bram/bite_arm_clean.png",
+      "status": "preferred uncropped source; does not satisfy exact15percent margin spec; not runtimeapproved"
+    }
+  ],
+  "file": {
+    "width": 1536,
+    "height": 1024,
+    "grid": [
+      3,
+      2
+    ],
+    "frameCount": 6,
+    "bytes": 1724151,
+    "sha256": "e5eab43b9d5cc8c78d08978e82f493208b655137b99f4adbab2657ffd6337210"
+  },
+  "suggestedZeroBasedTags": {
+    "approach": 0,
+    "contact": 1,
+    "grip": 2,
+    "release": 3,
+    "landing": 4,
+    "guard": 5
+  },
+  "hands": "right hand sword, left forearm shield; left upper sleeve contact above shield",
+  "marginCheck": {
+    "method": "dark RGB pixels minimum channel <220 in each512x512cell; approximate silhouette bounds, not keyed-alpha proof",
+    "frames": [
+      {
+        "frame": 0,
+        "margins": [
+          47,
+          107,
+          39,
+          50
+        ]
+      },
+      {
+        "frame": 1,
+        "margins": [
+          40,
+          127,
+          43,
+          48
+        ]
+      },
+      {
+        "frame": 2,
+        "margins": [
+          29,
+          131,
+          62,
+          48
+        ]
+      },
+      {
+        "frame": 3,
+        "margins": [
+          39,
+          67,
+          48,
+          111
+        ]
+      },
+      {
+        "frame": 4,
+        "margins": [
+          14,
+          83,
+          41,
+          111
+        ]
+      },
+      {
+        "frame": 5,
+        "margins": [
+          7,
+          83,
+          35,
+          108
+        ]
+      }
+    ]
+  }
+}

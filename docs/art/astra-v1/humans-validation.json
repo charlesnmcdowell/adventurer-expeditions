@@ -1,0 +1,69 @@
+[
+  {
+    "file": "assets/expedition/astra-v1/humans/bandit-approach-source.png",
+    "size": [
+      1536,
+      1024
+    ],
+    "bytes": 2032779,
+    "sha256": "4425467b7c773e9f21d00b3b40d393f9f2299d66ddc836b552f2732e03d89755",
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      254
+    ]
+  },
+  {
+    "file": "assets/expedition/astra-v1/humans/bandit-cast-source.png",
+    "size": [
+      1536,
+      1024
+    ],
+    "bytes": 1862712,
+    "sha256": "3274f0f179231241054fc4da3d69923d687551b120658a38cc9881ae68fd05a5",
+    "mode": "RGB",
+    "alpha_extrema": null
+  },
+  {
+    "file": "assets/expedition/astra-v1/humans/bandit-down-source.png",
+    "size": [
+      1254,
+      1254
+    ],
+    "bytes": 1474202,
+    "sha256": "8f105b1e5b4c38ef4d35e4d880f49d444ddde6e16575122e59e98907e7874f3d",
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ]
+  },
+  {
+    "file": "assets/expedition/astra-v1/humans/bandit-hit-source.png",
+    "size": [
+      2172,
+      724
+    ],
+    "bytes": 1227739,
+    "sha256": "c54d6f0a53ebba9312d0fe7216e5b079a72bd203d7f2fed230c95c843a58445a",
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ]
+  },
+  {
+    "file": "assets/expedition/astra-v1/humans/bandit-slash-source.png",
+    "size": [
+      1536,
+      1024
+    ],
+    "bytes": 1995766,
+    "sha256": "6b4e162daab40fc0afd724f7dee676598eff198849f38b4368c24677fe72dcd3",
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      254
+    ]
+  }
+]
