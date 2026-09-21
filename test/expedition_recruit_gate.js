@@ -1,0 +1,110 @@
+'use strict';
+// Recruitment is a content gate, not just an inn button state. Cover direct
+// calls, stale saves, missing atlas frames, and the simulation party boundary.
+const assert = require('node:assert/strict');
+const fs = require('node:fs'), path = require('node:path'), vm = require('node:vm');
+const H = require('./harness.js'), A = H.load(), root = path.join(__dirname, '..');
+for (const f of ['data', 'shim', 'encounter', 'campaign', 'run']) vm.runInThisContext(fs.readFileSync(path.join(root, 'js/expedition/' + f + '.js'), 'utf8'), { filename: f });
+const X = A.Expedition, Camp = X.Campaign;
+globalThis.localStorage = H.memBackend();
+let passed = 0;
+function test(name, fn) { fn(); passed++; console.log('ok ' + name); }
+const complete = { clips: Object.fromEntries(Camp.recruitArt.bram.clips.map(id => [id, { frames: [id + '/0', id + '/1'] }])) };
+const ready = () => Camp.registerRecruitArt('bram', complete, () => true);
+
+test('only five approved identities and permanent Hiro', () => {
+  assert.deepEqual(X.recruits.map(d => d.key), ['bram', 'nyx', 'sable', 'aera', 'ren']);
+  assert.equal(X.hero.registryId, 'hiro');
+  const run = X.Run.fresh(); run.gold = 999;
+  assert.equal(Camp.canBuy(run, 'stranger'), false);
+  assert.equal(Camp.buy(run, 'stranger').reason, 'unknown');
+  for (const key of ['bram', 'nyx', 'sable', 'aera', 'ren']) assert.equal(Camp.canBuy(run, key), false);
+});
+test('full clip coverage and actual loaded frames are required', () => {
+  const incomplete = JSON.parse(JSON.stringify(complete)); delete incomplete.clips.roll;
+  assert.equal(Camp.registerRecruitArt('bram', incomplete, () => true), false);
+  assert.equal(Camp.registerRecruitArt('bram', complete, f => f !== 'victory/1'), false);
+  const stills = JSON.parse(JSON.stringify(complete)); stills.clips.walk.frames = ['walk/0', 'walk/0'];
+  assert.equal(Camp.registerRecruitArt('bram', stills, () => true), false);
+  assert.equal(Camp.registerRecruitArt('nyx', complete, () => true), false, 'unreviewed art cannot be enabled by a matching filename');
+  assert.equal(ready(), true);
+});
+test('tutorial recruitment lock applies to direct calls without spending gold', () => {
+  const run = X.Run.fresh(); run.gold = 150;
+  ready(); assert.equal(X.slice.firstLevelOnly, true);
+  assert.equal(Camp.canBuy(run, 'bram'), false);
+  assert.equal(Camp.buy(run, 'bram').reason, 'slice locked');
+  assert.equal(Camp.buy(run, 'nyx').reason, 'art unavailable');
+  assert.equal(run.gold, 150); assert.deepEqual(run.roster, []); assert.deepEqual(run.field, []);
+});
+test('Bram purchase and fielding enforce readiness when recruitment is explicitly enabled', () => {
+  const run = X.Run.fresh(); run.gold = 150;
+  const locked = X.slice.firstLevelOnly; X.slice.firstLevelOnly = false;
+  try {
+    assert.equal(Camp.buy(run, 'nyx').reason, 'art unavailable'); assert.equal(run.gold, 150);
+    assert.equal(Camp.buy(run, 'bram').ok, true); assert.equal(run.gold, 90);
+    assert.deepEqual(run.roster, ['bram']); assert.deepEqual(run.field, ['bram']);
+    assert.equal(Camp.buy(run, 'bram').reason, 'owned');
+    assert.equal(Camp.toggleField(run, 'bram').fielded, false);
+    Camp.registerRecruitArt('bram', null, () => true);
+    assert.equal(Camp.toggleField(run, 'bram').reason, 'art unavailable');
+    ready(); assert.equal(Camp.toggleField(run, 'bram').fielded, true);
+  } finally { X.slice.firstLevelOnly = locked; }
+});
+test('legacy roster cannot smuggle unapproved or unpainted actors into combat', () => {
+  const run = X.Run.fresh();
+  run.hero = 'nyx'; run.roster = ['stranger', 'nyx', 'bram', 'bram']; run.field = ['stranger', 'nyx', 'bram', 'bram'];
+  run.rel.stranger = { hiro: 50 }; run.rel.hiro = { stranger: 20, bram: 10 };
+  assert.equal(X.Run.save(run).ok, true); const saved = X.Run.load();
+  assert.ok(saved, 'a valid save reloads rather than being silently discarded');
+  assert.deepEqual(saved.roster, ['nyx', 'bram'], 'retain legitimate paid ownership');
+  assert.deepEqual(saved.field, ['bram']); assert.equal(saved.hero, undefined);
+  assert.equal(saved.rel.stranger, undefined); assert.equal(saved.rel.hiro.stranger, undefined);
+  const world = Camp.buildWorld(saved);
+  try { assert.equal(world.hero.name, 'Hiro'); assert.deepEqual(world.companions.map(c => c.companionKey), ['bram']); } finally { world.restoreIds(); }
+  Camp.registerRecruitArt('bram', null, () => true);
+  const missing = Camp.buildWorld(saved);
+  try { assert.equal(missing.companions.length, 0, 'failed art load cannot field a placeholder'); } finally { missing.restoreIds(); }
+  ready();
+});
+test('save reload preserves locked skills and all existing quest identities', () => {
+  const run = X.Run.fresh(); X.Run.save(run); const saved = X.Run.load();
+  assert.equal(saved.levels.katana_slash, 1);
+  for (const key of X.purchasable) assert.equal(saved.levels[key], 0);
+  assert.deepEqual(X.quests.map(q => q.id), ['road', 'rain', 'city', 'marsh', 'ruins']);
+  assert.equal(X.enemies.cutthroat.human.sex, 'm'); assert.equal(X.enemies.hedge_mage.human.set, 'adept');
+  assert.ok(Camp.questEncounters('road').every(enc => enc.enemies.every(id => ['wolf', 'plant'].includes(X.enemies[id].kind))), 'active tutorial uses only ordinary wolf/plant art');
+});
+test('legacy saves cannot reopen later quests or replace Hiro, but keep earned progress', () => {
+  const run = X.Run.fresh();
+  Object.assign(run, { hero: { key: 'nyx' }, phase: 'travel', questId: 'city', wave: 2, travelLeg: 'outbound', gold: 137, questsDone: ['road', 'city'], roster: ['bram', 'nyx', 'stranger'], field: ['bram', 'nyx'] });
+  run.levels.god_aura = 2;
+  localStorage.setItem(X.saveKey, JSON.stringify(run)); // exercise load of an old unsanitized save
+  Camp.registerRecruitArt('bram', null, () => true);
+  const saved = X.Run.load(); assert.ok(saved);
+  assert.equal(saved.questId, 'road'); assert.equal(saved.phase, 'quest'); assert.equal(saved.wave, 0);
+  assert.equal(saved.hero, undefined); assert.equal(saved.travelLeg, undefined);
+  assert.equal(saved.gold, 137); assert.equal(saved.levels.god_aura, 2);
+  assert.deepEqual(saved.questsDone, ['road', 'city']); assert.deepEqual(saved.roster, ['bram', 'nyx']);
+  assert.deepEqual(saved.field, ['bram'], 'legitimate Bram selection survives loading before textures');
+  const waiting = Camp.buildWorld(saved);
+  try { assert.equal(waiting.companions.length, 0); } finally { waiting.restoreIds(); }
+  ready(); const loaded = Camp.buildWorld(saved);
+  try { assert.deepEqual(loaded.companions.map(c => c.companionKey), ['bram']); } finally { loaded.restoreIds(); }
+});
+test('malformed identity collections are normalized without dropping a valid save', () => {
+  const run = X.Run.fresh();
+  Object.assign(run, { roster: null, field: 'bram', rel: { stranger: { hiro: 1 }, hiro: { bram: 900, nyx: 'bad' } }, visits: [], cycles: null, voice: null, questsDone: null, awarded: null, questId: 'unknown', phase: 'unknown', wave: -5 });
+  assert.equal(X.Run.save(run).ok, true);
+  const saved = X.Run.load(); assert.ok(saved); assert.deepEqual(saved.roster, []); assert.deepEqual(saved.field, []);
+  assert.deepEqual(saved.rel, { hiro: { bram: 100 } }); assert.equal(saved.questId, 'road'); assert.equal(saved.phase, 'quest');
+});
+const atlasPath = path.join(root, 'assets/expedition/bram/bram.json');
+if (fs.existsSync(atlasPath)) test('intaken Bram atlas satisfies the actual shipping gate', () => {
+  const atlas = JSON.parse(fs.readFileSync(atlasPath, 'utf8'));
+  const frames = new Set((atlas.textures || []).flatMap(t => t.frames.map(f => f.filename)));
+  assert.ok(atlas.textures && atlas.textures.length, 'Phaser multiatlas pages exist');
+  for (const page of atlas.textures) assert.ok(fs.existsSync(path.join(path.dirname(atlasPath), page.image)), page.image);
+  assert.equal(Camp.registerRecruitArt('bram', atlas, f => frames.has(f)), true);
+});
+console.log('expedition_recruit_gate: ' + passed + ' checks passed');

@@ -6,13 +6,19 @@
   "scripts": {
     "sync": "node tools/sync_shared.js",
     "sync:check": "node tools/sync_shared.js --check",
-    "test": "node test/expedition_sim.js && node tools/size_check.js",
+    "test": "node test/expedition_sim.js && node test/expedition_recruit_gate.js && node test/actor_animation_lifecycle.js && node test/cinematic_scope.js && node test/portal_readiness.js && node test/inn_art_lifecycle.js && node test/art_registration.js && node test/ship_budget_contract.js && node tools/size_check.js",
     "test:browser": "node test/browser_expedition.js",
     "test:ship": "node test/browser_expedition.js --ship",
     "art:review": "node test/browser_art_review.js",
+    "art:build": "python tools/build_painted_art.py && python tools/build_inn_art.py && python tools/build_skill_icons.py",
+    "media:hashes": "node tools/build_media_hashes.js",
+    "test:startup": "node test/browser_startup_budget.js",
     "size": "node tools/size_check.js",
     "zip": "node tools/size_check.js --zip",
     "bake:busts": "node tools/bake_busts.js",
-    "play": "node play_local.js"
+    "play": "node play_local.js",
+    "test:inn": "node test/browser_inn_art.js --ship",
+    "test:art-intake": "node test/browser_art_intake_v2.js --ship",
+    "test:icons": "node test/browser_skill_icons.js"
   }
 }

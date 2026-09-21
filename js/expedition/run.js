@@ -19,15 +19,21 @@ Run.load = function () {
     const raw = storage().getItem(X.saveKey);
     if (!raw) return null;
     const r = JSON.parse(raw);
-    if (!r || r.version !== X.VERSION || !r.levels || !r.phase) return null;
-    for (const id of Object.keys(X.skills)) if (!r.levels[id]) r.levels[id] = 1;
+    if (!r || r.version !== X.VERSION || !r.levels || typeof r.levels !== 'object' || Array.isArray(r.levels) || !r.phase) return null;
+    // Zero means locked, not missing. Reload must not grant free skills.
+    const initial = X.Encounter.freshRun().levels;
+    for (const id of Object.keys(X.skills)) r.levels[id] = Number.isFinite(r.levels[id]) ? Math.max(id === 'katana_slash' ? 1 : 0, Math.min(X.economy.maxLevel, Math.floor(r.levels[id]))) : initial[id];
     r.awarded = r.awarded || []; r.tutorial = r.tutorial || {}; r.voice = r.voice || {};
+    if (X.Campaign) X.Campaign.sanitizeRun(r);
     return r;
   } catch (e) { return null; }
 };
 
 Run.save = function (run) {
-  try { storage().setItem(X.saveKey, JSON.stringify(run)); return { ok: true }; }
+  try {
+    if (X.Campaign) X.Campaign.sanitizeRun(run);
+    storage().setItem(X.saveKey, JSON.stringify(run)); return { ok: true };
+  }
   catch (e) { return { ok: false, error: e && e.message }; }
 };
 

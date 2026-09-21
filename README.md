@@ -1,39 +1,82 @@
 # Adventurer: Expeditions (CrazyGames edition)
 
-A separate build of Adventurer for CrazyGames. The loop: an immediate solo
-road contract (two monster groups and a boss, automatic fighting, mini skill
-icons around Hiro's portrait, gold-funded unlocks, a forward arrow between
-fights) → the inn (solo contract / apply to a party) → travel with mood-driven
-banter from the website's personality tables and recorded clips → three party
-contracts, the last of which ends at the leader's grave → back to the inn.
-Design: `docs/ADVENTURER_EXPEDITIONS_GDD_v0.5.md`.
+A separate build of Adventurer for CrazyGames. Hiro starts in a guided road
+ambush, earns gold and unlocks skills during the quest. The current first-road
+slice ends at the animated inn with Replay; later quests and recruitment stay
+locked while the opening is tested. Fighting is automatic; players tap their
+purchased skills and buy upgrades.
+
+Approved Astra v2 movement, finishers, idle, inn and icons are integrated.
+[Current integration and tests](docs/ASTRA_V2_INTEGRATION_20260920.md).
+[Design document](docs/ADVENTURER_EXPEDITIONS_GDD_v0.9.md).
 
 **This folder never touches `../adventurer`.** The website game keeps running
 from its own folder. Shared engine files are *copied* here by
 `node tools/sync_shared.js` (one way: original → here). Everything this edition
-adds or changes lives in `js/expedition/` and `index.html`; the one shared file
+adds or changes primarily lives in `js/expedition/` and `index.html`; the shared file
 this folder owns its own copy of is `js/ui/portal.js` (it carries the
 Expedition scene-key hook and is never overwritten by the sync).
 
 ## Play locally
 
-Double-click **Play Expeditions.bat**, or `node play_local.js`, then open
-http://127.0.0.1:8735/index.html
+Double-click **Play Expeditions.bat**, then open
+http://127.0.0.1:8735/index.html. For PowerShell, run:
 
-- `?fresh=1` wipes the demo save (its own key: `adventurer_expeditions_hiro_preview_v1`)
+```powershell
+$env:ADV_PORT = '8735'
+node play_local.js
+```
+
+Keep the server running while playing. If that port is occupied, use the URL
+printed by the server.
+
+- `?fresh=1` wipes this edition's save (key: `adventurer_expeditions_loop_v1`)
 - `&seed=N` makes the fight repeatable
+- Hiro is permanent. Bram is the only art-ready companion; the first-road slice
+  keeps new recruitment locked. Other recruits remain unavailable.
 
 ## Tests
 
-    node test/expedition_sim.js         headless simulation gate (determinism, no-tap win rate, request/purchase integrity)
-    node test/browser_expedition.js     Playwright run of the guided first fight with screenshots in test/reports/expedition/
-    node tools/sync_shared.js --check   reports shared files that drifted from ../adventurer
+```powershell
+npm test
+npm run test:ship
+npm run test:startup
+node test/browser_startup_budget.js --portal-test --scenery-delay=1800
+npm run size
+```
+
+Browser tests need Playwright and Chromium. See
+[measurement notes](test/STARTUP_MEASUREMENT.md) for methodology and limits.
+These checks do not substitute for physical-phone or uploaded-portal QA.
+
+The upload allowlist is `tools/ship_manifest.json`. It must stay strictly below
+**20,000,000 bytes**, including every required atlas page. Documents, raw art,
+old atlases and test captures are excluded. `npm run zip` packages that set
+for transport; extract and upload its contents if the portal requires individual
+files. Do not upload the working folder. The checked-in release policy is still
+the website preview policy; configure/verify CrazyGames policy before submission.
+
+## Rebuild art
+
+```powershell
+python -m pip install -r tools/requirements-art.txt
+npm run art:build
+npm run media:hashes
+```
+
+Masters live outside deployment at
+`../adventurer-expeditions-source-art/astra-v1`. The builder creates registration
+manifests and six WebP multiatlases, then checks registration and size.
+`python tools/build_painted_art.py --help` documents source/actor overrides.
+Run browser checks after changing art. Review shared-file imports with
+`node tools/sync_shared.js --check` before syncing from the original game.
 
 ## Layout
 
     index.html            entry (the original's data+core script block, a UI subset, then js/expedition/*)
-    js/expedition/        data.js (overrides) · shim.js · encounter.js · campaign.js (quests, party, banter) · run.js · actors.js · beats.js · hud.js · scene.js (combat) · scenes_town.js (inn, travel, grave)
-    js/data, js/core      synced copies of the shipped engine (do not edit here; edit the original and re-sync)
+    js/expedition/        quests, saves, recruitment, actors, combat presentation, HUD, inn and travel
+    js/data, js/core      reused engine copies (review changes; do not alter the original for offshoot-only work)
     js/ui/                synced UI helpers + this folder's portal.js
     assets/, audio/, lib/ synced subset actually used by the demo
-    docs/                 GDD v0.5 and the reuse map
+    tools/                art intake, upload allowlist, size gate, cache-hash generation
+    docs/                 GDD v0.9, change log, art contracts and integration review

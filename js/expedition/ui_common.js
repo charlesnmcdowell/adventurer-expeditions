@@ -69,7 +69,17 @@ UI.gate = function (scene, rect, opts) {
   const ring = scene.add.graphics().setDepth(D.gate + 1);
   ring.lineStyle(4, 0xffe28a, 1); ring.strokeRoundedRect(hx, hy, hw, hh, 12); objs.push(ring);
   scene.tweens.add({ targets: ring, alpha: 0.35, duration: 480, yoyo: true, repeat: -1 });
-  objs.push(hand(scene, rect.x + rect.w / 2 + 46, rect.y + rect.h / 2 + 60));
+  if (opts.hint === 'hold') {
+    // A press that stays: the hand sits on the control and a ring fills over the hold time, again and again.
+    const h = hand(scene, rect.x + rect.w / 2 + 30, rect.y + rect.h / 2 + 40, { tap: false }); objs.push(h);
+    const arc = scene.add.graphics().setDepth(D.gate + 2); objs.push(arc);
+    const cx = rect.x + rect.w / 2, cy = rect.y + rect.h / 2, rr = Math.max(rect.w, rect.h) / 2 + 14;
+    const prog = { t: 0 };
+    const tw = scene.tweens.add({ targets: prog, t: 1, duration: X.infoHoldMs || 3000, repeat: -1, onUpdate: () => {
+      arc.clear(); arc.lineStyle(5, 0xffe28a, 0.95); arc.beginPath(); arc.arc(cx, cy, rr, -Math.PI / 2, -Math.PI / 2 + prog.t * Math.PI * 2, false); arc.strokePath();
+    } });
+    objs.push({ destroy: () => tw.stop() });
+  } else objs.push(hand(scene, rect.x + rect.w / 2 + 46, rect.y + rect.h / 2 + 60));
   let resolve = null;
   const clear = () => { for (const o of objs) { try { o.destroy(); } catch (e) {} } objs.length = 0; scene.__gateRect = null; };
   const release = payload => { if (!resolve) return false; const r = resolve; resolve = null; clear(); r(payload || { tapped: true }); return true; };
@@ -84,6 +94,77 @@ UI.gate = function (scene, rect, opts) {
   scene.__gateRect = rect;
   const promise = new Promise(r => { resolve = r; });
   return { promise, release, clear, get active() { return !!resolve; } };
+};
+
+// Two cameras: the world on the main camera (which the cinematic zooms and
+// pans), the HUD — anything at depth ≥ DEPTH.hud — on a second, fixed camera.
+// Objects are sorted every frame by depth, so chips, cards, gates and hands
+// created later land on the right camera without registering themselves.
+UI.splitCameras = function (scene) {
+  if (scene.hudCam) return scene.hudCam;
+  const main = scene.cameras.main;
+  const hud = scene.cameras.add(0, 0, W, H, false, 'hud');
+  hud.setScroll(0, 0);
+  const sort = () => {
+    const list = scene.children.list;
+    for (let i = 0; i < list.length; i++) {
+      const o = list[i];
+      const isHud = o.depth >= D.hud;
+      const want = isHud ? main.id : hud.id;       // the camera that must IGNORE it
+      if (o.cameraFilter !== want) o.cameraFilter = want;
+    }
+  };
+  scene.events.on('prerender', sort);
+  scene.events.once('shutdown', () => { scene.events.off('prerender', sort); scene.hudCam = null; });
+  sort();
+  scene.hudCam = hud;
+  return hud;
+};
+
+// A cinematic beat: slow the world (tweens, animations, timers) and push the
+// main camera toward a point while fn runs; restore after. kind: 'cast' | 'kill'.
+UI.cinematic = async function (scene, kind, focus, fn) {
+  const c = (X.cinematic && X.cinematic[kind]) || { scale: 0.5, zoom: 1.15, ms: 240 };
+  const cam = scene.cameras.main;
+  let state = scene.__cinematicState;
+  if (!state) {
+    state = scene.__cinematicState = { tokens: [], closed: false, base: {
+      tween: scene.tweens.timeScale, anim: scene.anims.globalTimeScale, clock: scene.time.timeScale,
+      zoom: cam.zoom, x: cam.scrollX + cam.width / 2, y: cam.scrollY + cam.height / 2,
+      scrollX: cam.scrollX, scrollY: cam.scrollY,
+    } };
+    state.restore = () => {
+      scene.tweens.timeScale = state.base.tween; scene.anims.globalTimeScale = state.base.anim; scene.time.timeScale = state.base.clock;
+    };
+    state.shutdown = () => {
+      state.closed = true; state.restore();
+      try { cam.panEffect.reset(); cam.zoomEffect.reset(); cam.setZoom(state.base.zoom); cam.setScroll(state.base.scrollX, state.base.scrollY); } catch (e) {}
+      scene.__cine = 0; scene.__cinematicState = null;
+    };
+    scene.events.once('shutdown', state.shutdown);
+  }
+  const reduced = typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const token = { scale: reduced ? 1 : c.scale, zoom: reduced ? state.base.zoom : c.zoom,
+    x: focus ? Math.max(W * .32, Math.min(W * .68, focus.x)) : state.base.x,
+    y: focus ? Math.max(H * .42, Math.min(H * .6, focus.y)) : state.base.y };
+  state.tokens.push(token); scene.__cine = state.tokens.length;
+  const apply = current => {
+    const k = current ? Math.min(...state.tokens.map(t => t.scale)) : 1;
+    scene.tweens.timeScale = state.base.tween * k; scene.anims.globalTimeScale = state.base.anim * k; scene.time.timeScale = state.base.clock * k;
+    const target = current || state.base;
+    try { cam.pan(target.x, target.y, c.ms, 'Sine.easeOut', true); cam.zoomTo(target.zoom, c.ms, 'Sine.easeOut', true); } catch (e) {}
+  };
+  apply(token);
+  try { return await fn(); }
+  finally {
+    if (!state.closed) {
+      state.tokens = state.tokens.filter(t => t !== token); scene.__cine = state.tokens.length;
+      apply(state.tokens[state.tokens.length - 1]);
+      if (!state.tokens.length) {
+        scene.events.off('shutdown', state.shutdown); scene.__cinematicState = null;
+      }
+    }
+  }
 };
 
 // The corner control: mute, pause and Start over, mounted by every scene so
@@ -175,22 +256,6 @@ UI.goldPill = function (scene, gold) {
   return pill;
 };
 
-// Placeholder Hiro: the authored head plate over the outfit plate, plus a face crop.
-UI.ensureHiroTextures = function (scene) {
-  if (scene.textures.exists('xp_hiro_face')) return;
-  const src = scene.textures.get('xp_hiro_plates').getSourceImage();
-  const c = document.createElement('canvas'); c.width = 520; c.height = 780;
-  const ctx = c.getContext('2d');
-  ctx.drawImage(src, 500, 0, 500, 500, 10, 250, 500, 500);
-  ctx.drawImage(src, 0, 0, 500, 500, 100, 0, 320, 320);
-  const g = ctx.createLinearGradient(0, 640, 0, 750); g.addColorStop(0, 'rgba(0,0,0,0)'); g.addColorStop(1, 'rgba(0,0,0,1)');
-  ctx.globalCompositeOperation = 'destination-out'; ctx.fillStyle = g; ctx.fillRect(0, 640, 520, 140);
-  scene.textures.addCanvas('xp_hiro', c);
-  const f = document.createElement('canvas'); f.width = 256; f.height = 256;
-  f.getContext('2d').drawImage(src, 60, 20, 380, 380, 0, 0, 256, 256);
-  scene.textures.addCanvas('xp_hiro_face', f);
-};
-
 // Baked recruit busts (tools/bake_busts.js → assets/expedition/busts/). Every
 // scene preloads them; installBusts turns each into the same canvas texture the
 // runtime composer would have made (with its portrait meta, so the dialogue
@@ -202,7 +267,7 @@ UI.preloadBusts = function (scene) {
   if (UI.bustsOff()) return;
   scene.load.json('xp_busts', UI.BUSTS + 'busts.json');
   scene.load.on('filecomplete-json-xp_busts', (key, type, data) => {
-    for (const [k, b] of Object.entries((data && data.busts) || {})) if (!scene.textures.exists('xp_bust_' + k)) scene.load.image('xp_bust_img_' + k, UI.BUSTS + b.file);
+    for (const [k, b] of Object.entries((data && data.busts) || {})) if (k === 'bram' && !scene.textures.exists('xp_bust_' + k)) scene.load.image('xp_bust_img_' + k, UI.BUSTS + b.file);
   });
 };
 UI.installBusts = function (scene) {

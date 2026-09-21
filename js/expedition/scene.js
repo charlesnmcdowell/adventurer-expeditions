@@ -17,25 +17,22 @@ class ExpeditionScene extends Phaser.Scene {
   init(data) { this.opts = data || {}; }
 
   preload() {
-    this.load.image('xp_hiro_plates', 'assets/anime/v2/runtime/hiro_cyber_20260916.webp');
-    this.load.spritesheet('xp_creatures1', 'assets/anime/v2/runtime/creatures_1.webp', { frameWidth: 512, frameHeight: 512 });
-    // Astra's painted Hiro (tools/art_intake.py output); ?sheet=0 keeps the plate placeholder.
-    if (X.art && X.art.hiroSheet && !/[?&]sheet=0/.test(location.search)) {
-      this.load.atlas('xp_hiro_sheet', X.art.hiroAtlas + '.webp', X.art.hiroAtlas + '.json');
-      this.load.json('xp_hiro_clips', X.art.hiroAtlas + '.json');
-    }
+    X.Painted.preload(this);
     X.UI.preloadBusts(this);
   }
 
   // The painted sheet descriptor for Actor, or null while the plates stand in.
   hiroSheet() {
-    if (!this.textures.exists('xp_hiro_sheet') || !this.cache.json.exists('xp_hiro_clips')) return null;
-    const j = this.cache.json.get('xp_hiro_clips');
-    return { key: 'xp_hiro_sheet', clips: j.clips, canvas: j.canvas, standing: j.standing };
+    return X.Painted.sheet(this, 'hiro');
   }
+
+  isPortalReady() { return !!this.__presentationReady; }
 
   // ---------------------------------------------------------------- create
   create() {
+    this.__presentationReady = false;
+    X.Painted.install(this);
+    if (!X.Painted.require(this, ['hiro', 'wolf', 'plant'])) return;
     this.actors = new Map();
     this.paused = false; this.time.paused = false;
     this.ended = false;
@@ -68,9 +65,9 @@ class ExpeditionScene extends Phaser.Scene {
     });
     this.startMusic();
     X.UI.corner(this);
-    if (A.Portal && A.Portal.active) A.Portal.sync([this]);
+    X.UI.splitCameras(this);
     this.events.once('shutdown', () => { this.ended = true; });
-    this.startWave(this.run.wave, this.run.wave === 0);
+    X.Painted.present(this, this.env, () => this.startWave(this.run.wave, this.run.wave === 0));
   }
 
   // One encounter: build its sim, spawn its foes, fight it out.
@@ -90,23 +87,7 @@ class ExpeditionScene extends Phaser.Scene {
     this.fight(first);
   }
 
-  buildTextures() {
-    if (!this.textures.exists('xp_hiro')) {
-      // Placeholder Hiro: the authored head plate over the outfit plate.
-      const src = this.textures.get('xp_hiro_plates').getSourceImage();
-      const c = document.createElement('canvas'); c.width = 520; c.height = 780;
-      const ctx = c.getContext('2d');
-      ctx.drawImage(src, 500, 0, 500, 500, 10, 250, 500, 500);          // outfit plate
-      ctx.drawImage(src, 0, 0, 500, 500, 100, 0, 320, 320);             // head plate
-      // Soften the plate's bottom edge so the bust sits on the band.
-      const g = ctx.createLinearGradient(0, 640, 0, 750); g.addColorStop(0, 'rgba(0,0,0,0)'); g.addColorStop(1, 'rgba(0,0,0,1)');
-      ctx.globalCompositeOperation = 'destination-out'; ctx.fillStyle = g; ctx.fillRect(0, 640, 520, 140);
-      this.textures.addCanvas('xp_hiro', c);
-      const f = document.createElement('canvas'); f.width = 256; f.height = 256;
-      f.getContext('2d').drawImage(src, 60, 20, 380, 380, 0, 0, 256, 256);
-      this.textures.addCanvas('xp_hiro_face', f);
-    }
-  }
+  buildTextures() { X.UI.ensureHiroTextures(this); }
 
   buildBand() {
     // No strip and no foliage bar: the painted plate is the whole frame. The
@@ -129,9 +110,12 @@ class ExpeditionScene extends Phaser.Scene {
     let i = 0;
     for (const u of this.enc.st.units) {
       if (u.side !== 'a' || u.uid === this.hero.uid) continue;
-      const key = A.Portraits.key(this, u.ch);           // the website's own NPC portrait, as a placeholder bust
+      const id = u.ch.companionKey;
+      const sheet = X.Painted.sheet(this, id);
+      if (!sheet || !X.Campaign.recruitReady(id, this)) continue;
+      const key = sheet.key;
       const m = marks[i] || marks[marks.length - 1];
-      const a = new X.Actor(this, { uid: u.uid, unit: u, side: 'a', x: m.x, y: m.y, texture: key, height: 240, name: u.ch.name, level: 3, depth: m.depth, kind: 'ally' });
+      const a = new X.Actor(this, { uid: u.uid, unit: u, side: 'a', x: m.x, y: m.y, texture: key, height: 310, name: u.ch.name, level: 3, depth: m.depth, kind: 'ally', sheet });
       a.setLevel(3 + X.Campaign.timesCleared(this.run, this.quest.id));
       this.actors.set(u.uid, a);
       i++;
@@ -147,9 +131,11 @@ class ExpeditionScene extends Phaser.Scene {
       const def = X.enemies[key] || {};
       const human = !!u.ch.expeditionHuman;
       // Humans (bandits, the watch, rivals) are the website's composed busts, mirrored to face the party.
-      const texture = human ? A.Portraits.key(this, u.ch) : 'xp_creatures1';
+      const sheet = X.Painted.sheet(this, def.kind);
+      if (!sheet) throw new Error('No complete painted enemy in tutorial: ' + key);
+      const texture = sheet.key;
       const a = new X.Actor(this, { uid: u.uid, unit: u, side: 'b', x: FOE_X[i] || FOE_X[FOE_X.length - 1], y: GROUND_Y - 4 + i * 6,
-        texture, frame: human ? undefined : (def.frame || 0), flipX: human, height: def.height || (human ? 245 : 250), name: u.ch.name, level: def.level || u.ch.level || 1, tint: def.tint, depth: 100 + i, kind: human ? 'human' : (def.kind || 'wolf') });
+        texture, sheet, height: def.height || 200, name: u.ch.name, level: def.level || u.ch.level || 1, tint: def.tint, depth: 100 + i, kind: def.kind });
       a.phase2At = def.phase2At || 0;
       a.root.x = W + 300 + i * 160;     // enters from the right
       this.actors.set(u.uid, a);
@@ -169,7 +155,9 @@ class ExpeditionScene extends Phaser.Scene {
     const r = X.Encounter.requestSkill(this.enc, id);
     if (r.ok) {
       this.hud.flashQueued(id);
-      if (id === 'finisher') { this.run.tutorial.finisherDone = true; X.Run.save(this.run); }
+      const t = this.run.tutorial; t.used = t.used || {}; t.used[id] = true;
+      if (id === 'finisher') t.finisherDone = true;
+      X.Run.save(this.run);
       this.hud.releaseGate({ tapped: true, skill: id });
     } else {
       this.hud.shakeIcon(id);
@@ -215,13 +203,21 @@ class ExpeditionScene extends Phaser.Scene {
       const pk = Enc.peek(enc);
       if (pk.events.length) await X.Beats.ticksOnly(this, pk.events);
       if (pk.over) break;
-      const fs = Enc.finisherState(enc);
       this.hud.setSkillStates(Enc.skillStates(enc));
-      // First Finisher window: hold and point at the portrait until it is tapped (or skipped).
-      if (pk.hero && fs.ready && !this.run.tutorial.finisherDone && !enc.request) {
-        const r = await this.hud.gate(this.hud.icons.finisher.rect, { skippable: true });
-        if (r && r.skipped) { this.run.tutorial.finisherDone = true; X.Run.save(this.run); }
-        if (this.ended) return;
+      // The first time each bought skill is ready the game holds (nothing steps
+      // while the gate is up) and points at its icon until it is tapped or skipped.
+      if (pk.hero && !enc.request) {
+        const t = this.run.tutorial; t.used = t.used || {};
+        if (t.finisherDone) t.used.finisher = true;
+        for (const id of ['finisher', 'counter_attack', 'god_aura']) {
+          if (t.used[id] || !Enc.owned(this.run, id)) continue;
+          const st = Enc.skillState(enc, id); if (!st || !st.ready) continue;
+          this.hud._gateFor = 'use:' + id;
+          const r = await this.hud.gate(this.hud.icons[id].rect, { skippable: true });
+          if (this.ended) return;
+          if (r && r.skipped) { t.used[id] = true; X.Run.save(this.run); }
+          break;
+        }
       }
       const step = Enc.step(enc);
       if (step.hero && step.choice && step.choice.how === 'request') this.hud.fired(step.choice.action.skillId, this.hero.x, this.hero.y - this.hero.height * 0.55);
@@ -304,6 +300,13 @@ class ExpeditionScene extends Phaser.Scene {
     if (this.ended) return;
     if (r2 && r2.skipped) { t.skipGuide = true; this.hud.closeChip(); X.Run.save(run); return; }
     t.purchases++; X.Run.save(run);
+    // A newly unlocked skill: hold on its icon until the player has held it and read what it does.
+    if (!t.inspectDone && Enc.owned(run, pick)) {
+      const r3 = await this.hud.gateUntilInspected(this.hud.icons[pick]);
+      if (this.ended) return;
+      t.inspectDone = true; X.Run.save(run);
+      if (r3 && r3.skipped) this.hud.closeInfo();
+    }
   }
 
   async defeat() {

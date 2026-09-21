@@ -1,0 +1,159 @@
+{
+  "hero": "boar",
+  "registrationNote": "Body-unit scale is clip-authored; crouches, recoil, jumps and weapon extent do not redefine body size.",
+  "clips": [
+    {
+      "id": "idle",
+      "file": "boar_action_keys.png",
+      "grid": [
+        3,
+        2
+      ],
+      "frames": 1,
+      "roles": [
+        "idle",
+        "charge_anticipation",
+        "charge_contact",
+        "hit_recoil",
+        "recover",
+        "down_fade"
+      ],
+      "completeClipSet": false,
+      "loop": true,
+      "durationsMs": [
+        600
+      ],
+      "columns": 3,
+      "rows": 2,
+      "contactFramesZeroBased": [],
+      "releaseFrameZeroBased": 0,
+      "registration": {
+        "referenceHeight": 410
+      },
+      "impactDraft": {},
+      "regions": [
+        [
+          0,
+          0,
+          512,
+          512
+        ]
+      ]
+    },
+    {
+      "creature": "cave_boar",
+      "id": "run",
+      "file": "boar_run.png",
+      "grid": [
+        3,
+        2
+      ],
+      "frames": 6,
+      "loop": true,
+      "durationsMs": [
+        90,
+        80,
+        80,
+        90,
+        100,
+        100
+      ],
+      "contact": null,
+      "release": 5,
+      "columns": 3,
+      "rows": 2,
+      "contactFramesZeroBased": [],
+      "releaseFrameZeroBased": 5,
+      "registration": {
+        "referenceHeight": 410
+      },
+      "impactDraft": {}
+    },
+    {
+      "creature": "cave_boar",
+      "id": "charge",
+      "file": "boar_charge.png",
+      "grid": [
+        3,
+        2
+      ],
+      "frames": 6,
+      "loop": false,
+      "durationsMs": [
+        130,
+        180,
+        80,
+        70,
+        100,
+        140
+      ],
+      "contact": 3,
+      "release": 5,
+      "columns": 3,
+      "rows": 2,
+      "contactFramesZeroBased": [
+        3
+      ],
+      "releaseFrameZeroBased": 5,
+      "registration": {
+        "referenceHeight": 410
+      },
+      "impactDraft": {}
+    },
+    {
+      "creature": "cave_boar",
+      "id": "hit_short",
+      "file": "boar_hit_short.png",
+      "grid": [
+        3,
+        1
+      ],
+      "frames": 3,
+      "loop": false,
+      "durationsMs": [
+        70,
+        100,
+        160
+      ],
+      "contact": 0,
+      "release": 2,
+      "columns": 3,
+      "rows": 1,
+      "contactFramesZeroBased": [
+        0
+      ],
+      "releaseFrameZeroBased": 2,
+      "registration": {
+        "referenceHeight": 570
+      },
+      "impactDraft": {}
+    },
+    {
+      "creature": "cave_boar",
+      "id": "down_fade",
+      "file": "boar_down_fade.png",
+      "grid": [
+        2,
+        2
+      ],
+      "frames": 4,
+      "loop": false,
+      "durationsMs": [
+        140,
+        160,
+        180,
+        240
+      ],
+      "contact": null,
+      "release": 3,
+      "columns": 2,
+      "rows": 2,
+      "contactFramesZeroBased": [],
+      "releaseFrameZeroBased": 3,
+      "registration": {
+        "referenceHeight": 430
+      },
+      "impactDraft": {}
+    }
+  ]
+}

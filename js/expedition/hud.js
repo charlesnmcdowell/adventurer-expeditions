@@ -1,6 +1,6 @@
 // Adventurer: Expeditions — HUD and non-verbal guidance.
-// Top: gold, wave nodes, mute/pause. Bottom: Hiro's portrait as the Finisher
-// control, four upgrade cards with inline confirm chips. Right: forward arrow.
+// Top: gold and wave nodes. Bottom: portrait with an automatic Slash badge and
+// three painted active controls with upgrade chips. Right: forward arrow.
 // Guidance is a pointing hand + pulsing ring over the one thing to tap, with an
 // input blocker behind it so the game holds until that thing is tapped.
 (function () {
@@ -10,7 +10,15 @@ const T = () => A.T;
 const W = 1280, H = 760;
 const D = X.UI.DEPTH;
 
-// Placeholder glyphs until the painted icon set lands; colour follows the class.
+// Authored Hiro art has a glyph fallback; other heroes retain their class glyphs.
+const ICON_KEY = 'xp_hiro_skill_icons';
+const PAINTED_SKILLS = new Set(['katana_slash', 'god_aura', 'counter_attack', 'finisher']);
+function hasArt(scene, id) {
+  return PAINTED_SKILLS.has(id) && scene.textures.exists(ICON_KEY) && scene.textures.get(ICON_KEY).has(id);
+}
+function paintedIcon(scene, id, x, y, size) {
+  return hasArt(scene, id) ? scene.add.image(x, y, ICON_KEY, id).setDisplaySize(size, size) : null;
+}
 const CLASS_COLOR = { tank: 0x8fb4ff, fighter: 0xf2a25a, rogue: 0xb489ff, ranger: 0x9fd86a, mage: 0xff8f5a, druid: 0x7fd2a0, healer: 0xffe28a, hiro: 0xb489ff };
 const SKILL_UI = {
   katana_slash:   { glyph: '⚔', color: 0xb489ff },
@@ -44,6 +52,12 @@ function ui(id) {
 }
 
 class Hud {
+  // Shared Painted.preload calls this for combat and the inn. A failed optional
+  // image/atlas load leaves the existing glyph controls fully usable.
+  static preloadArt(scene) {
+    if (!scene.textures.exists(ICON_KEY)) scene.load.atlas(ICON_KEY, 'assets/expedition/icons/hiro-skills.webp', 'assets/expedition/icons/hiro-skills.json');
+  }
+
   constructor(scene, opts) {
     this.scene = scene;
     this.run = opts.run;
@@ -64,7 +78,7 @@ class Hud {
     if (this.inn) {
       // Inn mode: just the portrait and its icons, for levelling between quests.
       this.portrait = this.buildPortrait(opts.portraitKey, 150, H - 24);
-      const pr = this.portrait.rect, pcx = pr.x + pr.w / 2, pcy = pr.y + pr.h / 2, R = pr.w / 2 + 30;
+      const pr = this.portrait.rect, pcx = pr.x + pr.w / 2, pcy = pr.y + pr.h / 2, R = pr.w / 2 + (this.kit.hiro ? 58 : 30);
       this.kit.actives.forEach((id, i) => { const a = [-82, -40, 2][i] * Math.PI / 180; this.icons[id] = this.buildIcon(id, Math.round(pcx + Math.cos(a) * R), Math.round(pcy + Math.sin(a) * R), 'active'); });
       this.refresh();
       return;
@@ -99,7 +113,7 @@ class Hud {
     // perks on the mirror arc at its top-left (a picked hero only).
     const perks = this.kit.perks || [];
     this.portrait = this.buildPortrait(opts.portraitKey, perks.length ? 150 : 100, H - 24);
-    const pr = this.portrait.rect, pcx = pr.x + pr.w / 2, pcy = pr.y + pr.h / 2, R = pr.w / 2 + 30;
+    const pr = this.portrait.rect, pcx = pr.x + pr.w / 2, pcy = pr.y + pr.h / 2, R = pr.w / 2 + (this.kit.hiro ? 58 : 30);
     const angles = perks.length ? [-70, -28, 14] : [-82, -40, 2];
     this.kit.actives.forEach((id, i) => {
       const a = angles[i] * Math.PI / 180;
@@ -140,40 +154,68 @@ class Hud {
     // A bracket ties the icon row to the portrait.
     const bracket = s.add.graphics(); bracket.lineStyle(3, 0x5a4a34, 1); bracket.beginPath(); bracket.moveTo(w / 2 + 6, -12); bracket.lineTo(w / 2 + 20, -12); bracket.lineTo(w / 2 + 20, 12); bracket.lineTo(w / 2 + 6, 12); bracket.strokePath();
     c.add([frame, img, bracket]);
+    // Slash stays automatic; this art is a label, never a fourth input control.
+    if (this.kit.hiro) {
+      const auto = s.add.container(-42, h / 2 - 18);
+      const bg = s.add.rectangle(20, 0, 76, 34, 0x14110d, 0.92).setStrokeStyle(1, 0x5a4a34);
+      const art = paintedIcon(s, 'katana_slash', 0, 0, 32);
+      const symbol = art || T().text(s, 0, 0, ui('katana_slash').glyph, { size: 20, ox: 0.5, oy: 0.5, color: '#b489ff' });
+      const label = T().text(s, 20, 0, 'AUTO', { size: 11, ox: 0, oy: 0.5, color: '#e8dfc8', display: true });
+      auto.add([bg, symbol, label]); c.add(auto); c.autoSlashBadge = auto;
+    }
     c.rect = { x: x - w / 2 - 6, y: bottom - h - 6, w: w + 12, h: h + 12 };
     return c;
   }
 
-  // One mini skill icon: ring + glyph, level pips under it, a + badge when an
+  // One skill icon: painted art (or glyph), level pips, a + badge when an
   // upgrade is affordable, a cooldown wedge, and a glow when ready to use.
   buildIcon(id, x, y, kind) {
     const s = this.scene, u = ui(id), perk = kind === 'perk';
-    const r = perk ? 15 : 18;
+    const painted = !perk && PAINTED_SKILLS.has(id);
+    const r = painted ? 34 : (perk ? 15 : (X.hudIconR || 18));
     const c = s.add.container(x, y).setDepth(D.hud).setScrollFactor(0);
     const glow = s.add.circle(0, 0, r + 8, u.color, 0.0).setStrokeStyle(3, 0xffe28a, 0);
-    const disc = perk ? s.add.rectangle(0, 0, r * 2, r * 2, 0x14110d, 0.95).setStrokeStyle(3, u.color, 1) : s.add.circle(0, 0, r, 0x14110d, 0.95).setStrokeStyle(3, u.color, 1);
+    const disc = perk || painted ? s.add.rectangle(0, 0, r * 2, r * 2, 0x14110d, 0.95).setStrokeStyle(3, u.color, 1) : s.add.circle(0, 0, r, 0x14110d, 0.95).setStrokeStyle(3, u.color, 1);
     const fill = perk ? s.add.rectangle(0, 0, r * 2 - 6, r * 2 - 6, u.color, 0.22) : s.add.circle(0, 0, r - 3, u.color, 0.22);
-    const glyph = T().text(s, 0, 0, u.glyph, { size: perk ? 14 : 16, ox: 0.5, oy: 0.5, color: '#ffffff' });
+    const glyph = T().text(s, 0, 0, u.glyph, { size: perk ? 14 : Math.round(r * 0.9), ox: 0.5, oy: 0.5, color: '#ffffff' });
+    const art = paintedIcon(s, id, 0, 0, 64);
+    glyph.setVisible(!art);
     const lock = s.add.graphics();                  // drawn when locked
     lock.fillStyle(0x0b0908, 1); lock.fillRoundedRect(-6, -2, 12, 9, 2); lock.lineStyle(2, 0xc9c0b0, 1); lock.strokeRoundedRect(-6, -2, 12, 9, 2);
     lock.beginPath(); lock.arc(0, -3, 4, Math.PI, 0, false); lock.strokePath();
     const cd = s.add.graphics();                    // cooldown wedge
     const pips = s.add.container(0, r + 7);
     for (let i = 0; i < 3; i++) pips.add(s.add.circle((i - 1) * 9, 0, 3, 0x3a3128).setStrokeStyle(1, 0x000000));
-    const plus = s.add.container(r - 3, -r + 3);
-    const pb = s.add.circle(0, 0, 9, 0x62c95a).setStrokeStyle(2, 0x1e4d1c);
+    const plusOffset = painted ? r + 7 : r - 3;
+    const plus = s.add.container(plusOffset, -plusOffset);
+    const pb = s.add.circle(0, 0, painted ? 12 : 9, 0x62c95a).setStrokeStyle(2, 0x1e4d1c);
     const pt = T().text(s, 0, 0, '+', { size: 14, ox: 0.5, oy: 0.55, color: '#ffffff', display: true });
     plus.add([pb, pt]);
-    const plusZone = s.add.zone(r - 3, -r + 3, 22, 22).setInteractive({ useHandCursor: true });
+    const plusSize = painted ? 48 : 22;
+    const plusZone = s.add.zone(plusOffset, -plusOffset, plusSize, plusSize).setInteractive({ useHandCursor: true });
     plusZone.on('pointerdown', () => this.openChip(id));
-    const zone = s.add.zone(0, 0, r * 2 + 8, r * 2 + 8).setInteractive({ useHandCursor: true });
-    // Perk: a tap tells what it does. Locked active: the unlock chip. Owned active: a request.
-    zone.on('pointerdown', () => { if (perk) this.infoChip(id); else if (X.Encounter.owned(this.run, id)) this.onSkill(id); else this.openChip(id); });
-    c.add([glow, disc, fill, glyph, lock, cd, pips, zone, plus, plusZone]);
-    Object.assign(c, { glow, disc, fill, glyph, lock, cd, pips, plus, plusZone, zone, r, id, kind: kind || 'active' });
+    const hitSize = Math.max(48, r * 2 + 8);
+    const zone = s.add.zone(0, 0, hitSize, hitSize).setInteractive({ useHandCursor: true });
+    // A tap: perk → what it does; locked active → the unlock chip; owned active → a request.
+    // A hold of X.infoHoldMs: the info box, which lingers X.infoLingerMs after release.
+    let holdTimer = null, held = false;
+    const tap = () => { if (perk) this.infoChip(id); else if (X.Encounter.owned(this.run, id)) this.onSkill(id); else this.openChip(id); };
+    zone.on('pointerdown', () => {
+      held = false;
+      if (holdTimer) holdTimer.remove(false);
+      holdTimer = s.time.delayedCall(X.infoHoldMs || 3000, () => { held = true; holdTimer = null; this.infoChip(id, null, { hold: true }); });
+    });
+    const up = () => {
+      if (holdTimer) { holdTimer.remove(false); holdTimer = null; if (!held) tap(); }
+      if (held && this.info && this.info.id === id) this.lingerInfo();
+      held = false;
+    };
+    zone.on('pointerup', up); zone.on('pointerout', () => { if (holdTimer) { holdTimer.remove(false); holdTimer = null; } if (held) this.lingerInfo(); held = false; });
+    c.add([glow, disc, fill, ...(art ? [art] : []), glyph, lock, cd, pips, zone, plus, plusZone]);
+    Object.assign(c, { glow, disc, fill, glyph, art, lock, cd, pips, plus, plusZone, zone, r, id, kind: kind || 'active' });
     lock.setVisible(false); plus.setVisible(false); plusZone.setVisible(false);
-    c.rect = { x: x - r - 4, y: y - r - 4, w: r * 2 + 8, h: r * 2 + 8 };
-    c.plusRect = { x: x + r - 3 - 11, y: y - r + 3 - 11, w: 22, h: 22 };
+    c.rect = { x: x - hitSize / 2, y: y - hitSize / 2, w: hitSize, h: hitSize };
+    c.plusRect = { x: x + plusOffset - plusSize / 2, y: y - plusOffset - plusSize / 2, w: plusSize, h: plusSize };
     return c;
   }
 
@@ -232,7 +274,8 @@ class Hud {
     for (const id of Object.keys(this.icons)) {
       const c = this.icons[id], lvl = run.levels[id] || 0, owned = lvl > 0;
       c.pips.list.forEach((p, i) => p.setFillStyle(i < lvl ? SKILL_UI[id].color : 0x3a3128));
-      c.lock.setVisible(!owned); c.glyph.setVisible(owned);
+      c.lock.setVisible(!owned); c.glyph.setVisible(owned && !c.art);
+      if (c.art) c.art.setAlpha(owned ? 1 : 0.25);
       c.disc.setStrokeStyle(3, owned ? SKILL_UI[id].color : 0x4a4036, 1);
       c.fill.setFillStyle(SKILL_UI[id].color, owned ? 0.22 : 0.05);
       const can = X.Encounter.canUpgrade(run, id);
@@ -251,6 +294,7 @@ class Hud {
       const c = this.icons[id], st = states && states[id];
       const owned = X.Encounter.owned(this.run, id);
       const ready = owned && !!(st && st.ready);
+      if (c.art) c.art.setAlpha(!owned ? 0.25 : (ready ? 1 : 0.58));
       if (ready && !c.readyTween) {
         c.glow.setStrokeStyle(4, 0xffe28a, 1).setFillStyle(ui(id).color, 0.18);
         c.readyTween = this.scene.tweens.add({ targets: c.glow, alpha: 0.35, duration: 420, yoyo: true, repeat: -1 });
@@ -281,28 +325,45 @@ class Hud {
   // ---------------------------------------------------------------- info chip
   // What a skill is: its tier name, kind, and one line of what it does. Opens on a
   // perk tap or an active tapped while it cannot fire; closes on the next tap.
-  infoChip(id, reason) {
+  // The info box: big enough to read on a phone, written for a fourth-grader
+  // (X.skillText). Opened by a hold (opts.hold) it stays until the finger lifts,
+  // then lingers X.infoLingerMs; opened by a tap (a dark icon's reason, a perk)
+  // it closes itself after the linger.
+  infoChip(id, reason, opts) {
+    opts = opts || {};
     this.closeInfo();
     const s = this.scene, icon = this.icons[id] || this.perkIcons[id]; if (!icon) return;
     const sk = A.DATA.SKILLS[id] || { name: id, desc: '' };
-    const name = this.hero && !this.kit.hiro ? tierName(this.hero, id) : sk.name;
-    const tier = this.hero && !this.kit.hiro ? ['', 'Basic', 'Intermediate', 'Advanced'][tierIndex(this.hero, id)] : ('Lv ' + (this.run.levels[id] || 1));
-    const w = 250, pad = 12;
+    const kid = X.skillText && X.skillText[id];
+    const name = kid ? kid.name : (this.hero && !this.kit.hiro ? tierName(this.hero, id) : sk.name);
+    const tier = this.hero && !this.kit.hiro ? ['', 'Basic', 'Intermediate', 'Advanced'][tierIndex(this.hero, id)] : ('Level ' + (this.run.levels[id] || 1));
+    const w = 340, pad = 16;
     const c = s.add.container(0, 0).setDepth(D.hud + 2);
-    const title = T().text(s, -w / 2 + pad, 0, ui(id).glyph + '  ' + name, { size: 15, color: '#f4eee0', display: true });
-    const sub = T().text(s, -w / 2 + pad, 22, (sk.kind === 'perk' ? 'Perk' : 'Skill') + ' · ' + tier + (reason ? '  ·  ' + reason : ''), { size: 12, color: '#c9c0b0' });
-    const body = T().text(s, -w / 2 + pad, 42, (sk.desc || '').split('. ')[0].replace(/\.?$/, '.'), { size: 12, color: '#e8dfc8', wrap: w - pad * 2 });
-    const h = 42 + body.height + pad;
-    const g = s.add.graphics(); g.fillStyle(0x1c1712, 0.97); g.fillRoundedRect(-w / 2, -pad, w, h + pad, 10); g.lineStyle(2, ui(id).color, 1); g.strokeRoundedRect(-w / 2, -pad, w, h + pad, 10);
+    const title = T().text(s, -w / 2 + pad, 0, ui(id).glyph + '  ' + name, { size: 20, color: '#f4eee0', display: true });
+    const sub = T().text(s, -w / 2 + pad, 28, (sk.kind === 'perk' ? 'Perk' : 'Skill') + ' · ' + tier + (reason ? '  ·  ' + reason : ''), { size: 14, color: '#c9c0b0' });
+    const text = kid ? kid.text : (sk.desc || '').split('. ')[0].replace(/\.?$/, '.');
+    const body = T().text(s, -w / 2 + pad, 54, text, { size: 16, color: '#e8dfc8', wrap: w - pad * 2 });
+    const h = 54 + body.height + pad;
+    const g = s.add.graphics(); g.fillStyle(0x1c1712, 0.97); g.fillRoundedRect(-w / 2, -pad, w, h + pad, 12); g.lineStyle(3, ui(id).color, 1); g.strokeRoundedRect(-w / 2, -pad, w, h + pad, 12);
     c.add([g, title, sub, body]);
-    c.x = Math.min(W - w / 2 - 8, Math.max(w / 2 + 8, icon.x + 40)); c.y = icon.y - h - 30;
+    c.x = Math.min(W - w / 2 - 8, Math.max(w / 2 + 8, icon.x + 60)); c.y = icon.y - h - 40;
     c.setAlpha(0); s.tweens.add({ targets: c, alpha: 1, y: c.y - 6, duration: 140 });
-    this.info = { root: c, id };
-    s.time.delayedCall(60, () => { if (this.info && this.info.root === c) s.input.once('pointerdown', () => { if (this.info && this.info.root === c) this.closeInfo(); }); });
-    s.time.delayedCall(4200, () => { if (this.info && this.info.root === c) this.closeInfo(); });
+    this.info = { root: c, id, rect: { x: c.x - w / 2, y: c.y - pad - 6, w, h: h + pad } };
+    if (opts.hold) { if (this.gateActive() && this._gateFor === 'inspect:' + id) this.releaseGate({ inspected: id }); }
+    else this.lingerInfo();
     return this.info;
   }
+  lingerInfo() {
+    const c = this.info && this.info.root; if (!c) return;
+    this.scene.time.delayedCall(X.infoLingerMs || 3000, () => { if (this.info && this.info.root === c) this.closeInfo(); });
+  }
   closeInfo() { if (this.info) { this.info.root.destroy(); this.info = null; } }
+  // Tutorial: hold on an icon until the player has held it long enough to read it.
+  gateUntilInspected(icon) {
+    const p = this.gate(icon.rect, { skippable: true, hint: 'hold' });
+    this._gateFor = 'inspect:' + icon.id;
+    return p;
+  }
 
   // A tap was accepted: the icon presses, and a gold "queued" ring stays on it
   // until the skill actually fires (setQueued(null)).
@@ -338,7 +399,7 @@ class Hud {
     const cost = X.Encounter.upgradeCost(run, id);
     if (cost == null || run.gold < cost) { this.shakeIcon(id); return; }
     const s = this.scene, icon = this.icons[id];
-    const w = 150, h = 74, x = Math.max(w / 2 + 8, icon.x + 30), y = icon.y - 74;
+    const w = 150, h = 108, x = Math.max(w / 2 + 8, icon.x + 30), y = icon.y - icon.r - h / 2 - 12;
     const c = s.add.container(x, y).setDepth(D.hud + 2);
     const g = s.add.graphics(); g.fillStyle(0x1c1712, 0.97); g.fillRoundedRect(-w / 2, -h / 2, w, h, 10); g.lineStyle(2, 0xf2c94c, 1); g.strokeRoundedRect(-w / 2, -h / 2, w, h, 10);
     g.fillTriangle(-10, h / 2, 10, h / 2, 0, h / 2 + 10);
@@ -346,7 +407,7 @@ class Hud {
     const lvl = T().text(s, -w / 2 + 12, -h / 2 + 10, SKILL_UI[id].glyph + '  ' + (cur === 0 ? '🔓' : 'Lv ' + cur + ' → ' + (cur + 1)), { size: 13, color: '#e8dfc8', display: true });
     const coin = s.add.circle(w / 2 - 22, -h / 2 + 18, 9, 0xf2c94c).setStrokeStyle(2, 0x9a7a1f);
     const price = T().text(s, w / 2 - 34, -h / 2 + 18, String(cost), { size: 14, ox: 1, oy: 0.5, color: '#f4eee0', display: true });
-    const bw = w - 24, bh = 30;
+    const bw = w - 24, bh = 48;
     const bg = s.add.graphics(); bg.fillStyle(0x62c95a, 1); bg.fillRoundedRect(-bw / 2, 4, bw, bh, 8);
     const check = T().text(s, 0, 4 + bh / 2, '✓', { size: 20, ox: 0.5, oy: 0.5, color: '#0f2d0f', display: true });
     const zone = s.add.zone(0, 4 + bh / 2, bw, bh).setInteractive({ useHandCursor: true });

@@ -1,4 +1,4 @@
-// Adventurer: Expeditions — the build-size gate (GDD v0.8 §12a).
+// Adventurer: Expeditions — the build-size gate (GDD v0.9 rev B §12a).
 //
 //   node tools/size_check.js            list the ship set by group, fail over budget
 //   node tools/size_check.js --zip      also write dist/expeditions.zip from that set
@@ -37,7 +37,9 @@ function shipList() {
   const set = new Set(fromIndex());
   for (const f of MAN.files) set.add(f);
   for (const d of MAN.dirs) for (const f of walk(d, [])) set.add(f);
-  const baked = MAN.partSheets && MAN.dirs.includes('assets/expedition/busts') && walk('assets/expedition/busts', []).length > 0;
+  const bustManifest = 'assets/expedition/busts/busts.json';
+  const baked = !!(MAN.partSheets && set.has(bustManifest) && fs.existsSync(path.join(ROOT, bustManifest)) &&
+    [...set].some(f => f.startsWith('assets/expedition/busts/') && f.endsWith('.webp')));
   if (MAN.partSheets && !baked) for (const f of MAN.partSheets.files) set.add(f);
   return { files: [...set].sort(), baked };
 }
@@ -55,16 +57,22 @@ function report() {
   const { files, baked } = shipList();
   const rows = [], missing = [], groups = {};
   let total = 0;
+  for (const dir of MAN.dirs) {
+    const abs = path.join(ROOT, dir);
+    if (!fs.existsSync(abs) || !fs.statSync(abs).isDirectory()) missing.push(dir + '/');
+  }
   for (const rel of files) {
     const abs = path.join(ROOT, rel);
     if (!fs.existsSync(abs)) { missing.push(rel); continue; }
     const b = fs.statSync(abs).size; total += b; rows.push({ rel, b });
     groups[group(rel)] = (groups[group(rel)] || 0) + b;
   }
-  const budget = MAN.budgetMB * 1024 * 1024;
-  return { files: rows, missing, groups, total, budget, budgetMB: MAN.budgetMB, over: total > budget, baked };
+  const budget = MAN.budgetBytes;
+  if (!Number.isSafeInteger(budget) || budget <= 0) throw new Error('ship_manifest.budgetBytes must be a positive integer');
+  return { files: rows, missing, groups, total, budget, budgetMB: budget / 1000000, over: total >= budget, baked };
 }
-const MB = b => (b / 1024 / 1024).toFixed(2) + ' MB';
+// The platform's MB limit is decimal. Never silently permit 20 MiB (20,971,520 B).
+const MB = b => (b / 1000000).toFixed(2) + ' MB';
 
 if (require.main === module) {
   const args = new Set(process.argv.slice(2));
@@ -78,6 +86,8 @@ if (require.main === module) {
     if (r.missing.length) console.log('  MISSING: ' + r.missing.join(', '));
     console.log('total ' + MB(r.total) + ' of ' + r.budgetMB.toFixed(1) + ' MB budget' + (r.over ? '  — OVER by ' + MB(r.total - r.budget) : '  — ' + MB(r.budget - r.total) + ' to spare'));
   }
+  if (r.missing.length) { console.error('size_check: ' + r.missing.length + ' listed file(s) missing'); process.exit(1); }
+  if (r.over) { console.error('size_check: must be below ' + r.budget + ' bytes'); process.exit(1); }
   if (args.has('--zip')) {
     const { execFileSync } = require('node:child_process');
     fs.mkdirSync(path.join(ROOT, 'dist'), { recursive: true });
@@ -87,7 +97,5 @@ if (require.main === module) {
     try { fs.rmSync(zip, { force: true }); execFileSync('zip', ['-q', '-X', zip, '-@'], { cwd: ROOT, input: r.files.map(f => f.rel).join('\n') + '\n' }); console.log('wrote dist/expeditions.zip (' + MB(fs.statSync(zip).size) + ')'); }
     catch (e) { console.log('zip not available here (' + (e.message || e).split('\n')[0] + '); dist/ship_list.txt written instead'); }
   }
-  if (r.missing.length) { console.error('size_check: ' + r.missing.length + ' listed file(s) missing'); process.exit(1); }
-  if (r.over) { console.error('size_check: over budget'); process.exit(1); }
 }
 module.exports = { shipList, report };

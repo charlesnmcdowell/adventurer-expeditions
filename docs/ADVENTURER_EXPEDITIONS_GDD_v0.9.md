@@ -1,9 +1,28 @@
 # Adventurer: Expeditions
 ## CrazyGames edition — game design document
 
-Version 0.9 · September 19, 2026 (rev. b, same day) · Working title · Design + build status + review
+Version 0.9 · September 19, 2026 (rev. b) · Status reconciled September 20, 2026 · Working title
 
 This revision supersedes v0.8; v0.5 through v0.8 are kept in `docs/` for history.
+
+**Current status — approved v2 art integrated, September 20, 2026.** The first
+road remains the playable slice: Hiro, ordinary wolves, thorn lurkers and the
+gray-wolf leader. Bram is the only art-ready companion; new recruitment and
+next-quest locks remain. The inn offers Replay. Broader quests/recruits below
+remain roadmap/history.
+
+Hiro has175 runtime frames across 27 clips, including the approved16-frame run,
+four-frame sheathed idle and 44 frames across six finishers. Wolf tier1 is the
+overhead strike/twirl; plant tier1 is stem iaido. Animated inn paintings and four
+painted skill icons are integrated. Other combat, enemy art, music and voices
+are reused. The package is 17,828,737 bytes / 205 files. Cold gameplay download is
+13,743,116 bytes, 14,788,076after audio unlock. Local headless, upload-only journey,
+all-six-finisher, inn, HUD and desktop/emulated-phone tests pass.
+
+See [integration report](ASTRA_V2_INTEGRATION_20260920.md) and
+[intake notes](art/astra-v2/ART_INTAKE_NOTES.md). Physical-phone/portal QA remains.
+This current status supersedes earlier dated source-only/paused-intake notes
+and frame counts preserved below.
 
 **What changed since v0.8 — a review pass, no new design.** The v0.8 loop was
 built the same day (CHANGELOG, "Build session"), so this revision corrects every
@@ -56,6 +75,11 @@ quests are contracts and the loop is the game.
 ---
 
 ## 2. Scope lock (revised 2026-09-19)
+
+**Current override, 2026-09-20:** first tutorial only, then the inn and Replay;
+Hiro and Bram are the supported heroes. Keep the broader loop below as the
+roadmap while the first five minutes are polished. Do not re-enable it merely
+because older quest data or art remains on disk.
 
 **In.** Hiro as the permanent, tappable first member. A recruitable roster bought
 with gold. Skill levelling on the HUD. A tutorial quest plus four repeatable
@@ -143,6 +167,15 @@ is empty when Embark is tapped, the first two owned recruits ride along, so nobo
 walks into a loop quest alone by accident. The quest button is the third control
 and nothing else is on screen.
 
+**Locked for the slice (Hiro, 2026-09-20).** While the first five minutes are
+being finished, the inn shows Hiro (painted idle; Astra's table vignette replaces
+it after intake), his skills for levelling, *Next quest* and *Unlock a hero*
+locked, and *Replay the road*. New recruitment is disabled by scope, not because
+Bram lacks runtime art. Existing Bram ownership is preserved and fielded only
+when his painted art passes readiness; unsupported actors remain unavailable.
+`X.slice.firstLevelOnly` must stay true during this pass; turning it off would
+reopen the broader historical loop below.
+
 **As built (2026-09-19).** Prices are 60 / 90 / 120 / 150 / 180 for the five
 recruits in the order bought; skills 20 / 30 / 40 per level. The tutorial road
 pays 40 / 50 / 60 = 150, so the three guided unlocks (60) leave 90: the first
@@ -155,6 +188,11 @@ HUD in *inn mode* (portrait and icons only).
 ---
 
 ## 5. Quests, environments and music
+
+**Scope note, 2026-09-20:** this section records the broader loop design. Its
+additional quests remain locked by `firstLevelOnly`; the live tutorial uses
+wolves, thorn lurkers and the gray-wolf leader. Existing scenery and music are
+reused, and the inn's Replay preserves the first-level restriction.
 
 A tutorial plus **four repeatable quests**, on **three music tracks**. Each quest
 is three fights with a travel beat before, between and after.
@@ -254,9 +292,21 @@ why it is dark — cooldown, no target, locked. A tap on a perk explains what it
 does. Nothing in the HUD is ever silent on a tap; that was the single most
 important fix of the 18th.
 
-**The fight runs itself.** The whole demo is completable without tapping a skill.
-Tapping is an advantage, not an obligation. §7a defines what that means once the
-clock is real rather than turn-based.
+**The fight no longer runs itself (Hiro, 2026-09-20).** Hiro swings Katana Slash
+on his own; God Aura, Counter Attack and Finisher fire only when the player taps
+them, and a tapped skill is a cinematic: the world slows to half speed and the
+camera pushes toward the action while it plays. Every killing blow does the same,
+harder (0.36×, 1.26 zoom) — the finishing-move slot that Astra's paired clips
+(§10.2, three per enemy type) will fill. The HUD sits on its own camera and stays
+still. A run with purchases and no taps is exactly as strong as a run with
+neither, and the sim's "auto" rows now measure that. §7a's real-time model is
+unchanged by this; it only moves the tap to a clock.
+
+**Icons and the info box (2026-09-20).** Icons are 52 px across (were 36).
+Skill text shows only on a three-second hold, stays while held and fades three
+seconds after release; the box is wide enough to read on a phone and its text
+is written for a fourth-grade reader (`X.skillText`): what the skill does, one
+or two short sentences, no numbers.
 
 **Start over, pause and mute everywhere — built 2026-09-19.** `X.UI.corner`
 mounts mute, pause and Start over (with a ✓/✕ confirm) in the inn, the travel
@@ -525,9 +575,12 @@ piece of code (`X.UI.gate`): four input blockers around a hole, a pulsing ring o
 the hole, a drawn hand tapping toward it, and a ✕ to skip. The game does not
 advance until that one thing is tapped.
 
-It is used for: the first Finisher window, the first purchase (icon, then the
-confirm ✓), the forward arrow, and — at the inn — the first recruit. After three
-guided purchases the guide retires itself, and skipping once turns it off for good.
+It is used for: the first time *each* bought skill is ready (the game holds — no
+step is taken — until it is tapped), the first purchase (icon, then the confirm
+✓), a hold-to-read step on the first unlocked skill (a ring fills over the hold
+time until the info box opens), the forward arrow, and — at the inn — the first
+recruit. After three guided purchases the guide retires itself, and skipping once
+turns it off for good. (Hiro, 2026-09-20: every guided tap pauses the game.)
 
 **At the inn, as built.** A second mechanism, `X.UI.invite`, rings *every*
 affordable recruit at once with the hand sweeping the row and no blockers; the
@@ -727,6 +780,14 @@ to be thrown away, and worse, it trains everyone's eye on the wrong timing.
 
 ### 10.2 Finishing moves
 
+**Current override, 2026-09-20:** every resolved killing blow may finish. The
+last-enemy-only restriction and 1.8-second target below are historical. Runtime
+slow motion currently lengthens the older clips; review final pacing after v2
+intake. Pair eligibility must match the actual painted victim identity, not
+merely a broad silhouette class: do not show a wolf in place of a boar, tinted
+wolf or plant. The new source delivery provides three wolf and three plant
+finishers, each six frames (§10.5).
+
 **Structural rule: a finisher is one clip containing both figures, choreographed
 together.** Never two clips played side by side and hoped into alignment. This is
 the *Assassin's Creed* lesson — structural only, nothing about the look — that
@@ -778,6 +839,13 @@ ahead of the shared human set — because it is the single clip most likely to
 carry the store video, and twelve frames is cheap for that.
 
 ### 10.2a Intake, as built (2026-09-19)
+
+**Superseded implementation notes:** the current player uses authored canvas
+pivots and registered standing heights, honors individual frame durations, and
+settles its playback promise after recovery rather than at release. Paired
+rendering is present and guarded; missing painted variants use safe painted
+fallbacks rather than distorting an entire sprite. The following paragraph
+records the earlier nine-clip intake and is not the current renderer contract.
 
 `tools/art_intake.py` reads Astra's `manifest.json`, keys each cell by flood-filling
 the border gray (soft fringe on the boundary), trims per frame, and registers every
@@ -899,23 +967,25 @@ size and need no pipeline.
 
 ### 10.5 What has no painted art (the list the no-placeholder rule points at)
 
-Kept current by whoever changes the roster, the enemy table or the intake. As of
-the 2026-09-19 build:
+Updated 2026-09-20. Distinguish assets already playing from new source awaiting
+intake. The selected v2 masters live in the sibling
+`../adventurer-expeditions-source-art/astra-v2/`, outside the ship set. See the
+[final delivery and repair report](ART_PASS_2_AND_REPAIR_20260920.md).
 
 | Thing | Status | Where it shows |
 |---|---|---|
-| Hiro — idle, walk, draw, short-draw, slash L1, hit, roll, victory, kneel | **Painted, in** | battle |
-| Hiro — slash L2/L3, aura ×3, counter ×2, intercept, riposte | Painted, **not intaken** (one command each) | battle: plays as tween motion today — remove or intake |
-| Hiro — finisher ×3, bite ×2 (paired) | Painted, needs the §10.2 renderer | battle |
-| Hiro — **sheathed idle** | **Not painted** (§15.2 item 2a) | after a win, inn, road |
-| Hiro — inn and road figure | Uses the old plate | inn, travel: should draw from the sheet's idle / walk |
-| Bram — full set | Delivered, **not intaken** | battle as ally; bust baked from the website's parts |
+| Hiro — v1 ordinary combat/movement set, higher tiers, aura, counter, intercept, riposte | **Painted and integrated**; frame timing, scale and recovery safeguards restored | battle and travel |
+| Hiro — v1 paired wolf finishers and bites | **Integrated**; exact art identity, resolved lethal outcome, approach, hidden-target retirement and interruption restoration guarded | battle; every resolved kill may finish, not just the last enemy |
+| Hiro — six new v2 paired finishers | **Integrated:44 frames** — wolf12/6/6 and plant8/6/6 | enemy identity and skill tier; lethal outcomes only |
+| Hiro — replacement walk and sheathed idle | **Integrated** — run16 frames, sheathed idle4 | travel/approach and victory rest |
+| Hiro — inn and road figure | **Painted runtime figures restored**, no old head/body plate assembly | inn and travel; seated inn paintings are integrated |
+| Bram — full painted set | **Integrated**; legacy ownership/save readiness requires the supported art set | only supported recruit; new purchases remain locked in this first-level pass |
 | Nyx, Sable, Aera, Ren — clip sets | **Not painted** | not purchasable until they are |
-| Recruit and human-foe busts | Baked from the website's composed parts, not Astra's design | inn bar, dialogue, human foes |
-| Wolf, boar, thorn lurker, Alpha | Delivered, **not intaken** | battle: the `creatures_1` plate sheet today |
-| Bandit, watch, cutthroat, hedge mage, bailiff, captain | One human combat set delivered, **not intaken** | battle: baked busts as actors today |
-| Skill icons | Delivered, not wired | HUD glyphs are drawn text today |
-| Effect textures | Delivered, not wired | procedural VFX today |
+| Ordinary wolf and thorn lurker | **Integrated: 13 clips / 55 frames** reused from v1; no new beast painting needed | current tutorial; gray-wolf leader explicitly shares ordinary-wolf art identity |
+| Boar, Alpha, human foes and other recruits | Historical assets/data retained, **outside current slice** | locked broader-quest roadmap; not substituted into the tutorial |
+| Four new Hiro skill icons | **Integrated** | three manual buttons and automatic-slash portrait badge |
+| Inn vignettes | **Integrated** — solo Hiro and Hiro+Bram base paintings, plus candle, steam and hearth effects (4 frames each) | quiet menu regions retained; new art is now the live inn |
+| General v1 effect textures | Source retained; no new runtime adoption claimed in this pass | current code-side VFX remains |
 | Plates and panoramas | Website art, graded to night + weather | all scenes — accepted, not placeholder |
 
 ---
@@ -993,6 +1063,14 @@ sheet rather than at submission.
 | **Total** | **20.0 MB** | |
 
 ### 12a.1a Where it landed (build of 2026-09-19)
+
+**Current measurement, 2026-09-20:** the first-level ship set is **15,650,969
+bytes / 195 files**, below the 20,000,000-byte local gate. Browser cold start is
+**11,931,986 bytes**, or **12,976,946 after audio unlock**, in the desktop/mobile
+checks. These are distinct measurements: package bytes are not initial network
+bytes. New v2 masters are excluded and must be remeasured after intake. Actual
+portal/mobile-device behavior is still unverified. The following 16.97 MB result
+is retained as the September 19 historical baseline.
 
 `node tools/size_check.js` → **16.97 MB of 20.0**, ship set 248 files: shared art
 5.3, music 3.2, js 2.7, voice 2.0, expedition art 1.9 (Hiro's nine clips 1.29 +
@@ -1074,13 +1152,13 @@ From the platform's quality guidance, FAQ and Basic Launch metrics:
 |---|---|---|
 | Time to gameplay | Immediate; no title or creator screens | ✅ fights in the first seconds |
 | Onboarding | Visual, skippable, no wall of text | ✅ hand and ring, always skippable |
-| Build size | Under 20 MB | ⚠️ **26 MB** runtime today; §12a budgets the redesign at **20.0 MB** with painted art in, and gates it |
-| Load time | Under 10 s cold | To measure in the portal iframe |
-| Controls | Large targets, no hover-only info, no Esc / Ctrl+W | ✅ tap targets; needs a phone pass |
-| Art and audio | Consistent | ⚠️ placeholder on screen; painted source delivered but not yet integrated (§10.4) |
+| Build size | Under 20 MB local gate | ✅ **15,650,969 bytes / 195 files**; new v2 art not yet intaken |
+| Load time | Under 10 s cold | Desktop/mobile browser byte checks and SDK-stub delayed-scenery check passed; actual portal timing unverified |
+| Controls | Large targets, no hover-only info, no Esc / Ctrl+W | Desktop/mobile browser checks passed; physical phone QA remains |
+| Art and audio | Consistent | Four painted runtime actors restored; v2 finishers, movement, inn and icons await intake and visual timing review (§10.5) |
 | Rejection causes | Bugs, no English, clones, **content targeted at kids** | Addressed; see below |
 | Conversion at 1 min | 80%+ | Unmeasured |
-| Average play time | 10+ min | A repeatable loop with four quests (§5) rather than a fixed arc — this is what the metric actually wants |
+| Average play time | 10+ min historical planning target | Unmeasured; current scope is the first tutorial plus Replay, with the broader loop locked |
 | D1 retention | 10–15% | Unmeasured |
 
 **Audience decision, revised.** v0.5 aimed "preteen-friendly". The platform lists
@@ -1098,6 +1176,15 @@ was chosen to match this, and should keep matching it.
 ---
 
 ## 15. Status
+
+**Current reconciliation, 2026-09-20:** §10.5 and
+[ART_PASS_2_AND_REPAIR_20260920.md](ART_PASS_2_AND_REPAIR_20260920.md) supersede the
+September 19 backlog below. The current code restores the four-actor loader,
+Bram purchase/save readiness, authored frame timing, stable body scale and
+pivots, recoil/recovery, paused animation, safe paired targets and nested
+cinematic cleanup. Manual skills and every-kill finishing behavior are retained.
+The first tutorial and inn Replay stay locked; the four-quest roadmap does not
+reopen as part of this repair. New v2 art is delivered but not yet intaken.
 
 ### 15.1 Fable (Claude) — finished
 
@@ -1130,6 +1217,16 @@ was chosen to match this, and should keep matching it.
 
 ### 15.2 Astra — delivered as source, awaiting intake
 
+**Final v2 source delivery, 2026-09-20:** six paired finishers / 36 frames,
+selected eight-frame walk, four-frame sheathed idle, two high-resolution inn
+baseplates with three transparent four-frame effect loops, and four Hiro skill
+icons. These are selected source assets, not deployed animations. Ordinary wolf
+and thorn-lurker coverage is reused and already runtime-ready (13 clips / 55
+frames). The current remaining work is deliberate v2 intake, registration and
+visual/impact timing approval, followed by the size and gameplay gates. The
+older v1 inventory and requests below are preserved as history; the sheathed
+idle and inn art are no longer missing source deliveries.
+
 **The first delivery landed 2026-09-19** (`astra-v1`, 101 files, 194 MB —
 inventory and manifest detail in §10.4). It covers every line of the previous
 list, and over-delivers on the first: two heroes arrived rather than one.
@@ -1147,7 +1244,7 @@ list, and over-delivers on the first: two heroes arrived rather than one.
 Everything is painted to the impact language in §10.1 and the manifest carries
 the §10.1 parameter block per clip, pre-populated and marked `greenlit: false`.
 
-**Still owed, and neither is blocking:**
+**September 19 outstanding list (historical; current overrides above and §10.5):**
 
 1. **The greenlight pass** — Astra setting each clip's real `hitStop`, `flash`,
    `shake` and `drift` numbers. This cannot start until intake produces registered
@@ -1174,6 +1271,14 @@ target, and it means the intake pipeline now has to prove itself on a backlog
 rather than on a single clip. See §10.4.
 
 ### 15.3 Fable (Claude) — still to build
+
+**Current priorities, 2026-09-20:** integrate the selected v2 sources without
+discarding required v1 clips; review contact, loops and readability at runtime
+size; rerun the package/network gates; complete physical-device and actual
+CrazyGames-portal QA. Existing beast/Hiro/Bram runtime intake and the paired
+renderer are already present. The next list is the September 19 backlog, retained
+for context rather than an instruction to rebuild those completed pieces or
+unlock additional quests.
 
 Items 1–4, 6 and 7 of the previous list shipped on 2026-09-19 (§15.1). What
 remains, in order:
@@ -1364,7 +1469,23 @@ wants any of it, the code and the written design are both there.
 
 ---
 
-## 19. Build review — 2026-09-19, after the build session
+## 19. Build review — current reconciliation and historical findings
+
+### 19.1 Current result — September 20, 2026
+
+Approved v2 art is integrated. See the current status at the top and the
+[final integration/test report](ASTRA_V2_INTEGRATION_20260920.md). The earlier
+[repair report](ART_PASS_2_AND_REPAIR_20260920.md) records the baseline before
+this intake. Existing first-road locks and manual skill controls remain.
+Physical-device and actual CrazyGames portal testing are still outstanding.
+
+### 19.2 Historical review — 2026-09-19, after the build session
+
+The findings and next-session order below describe that dated build. They are
+kept for traceability; §19.1 and §10.5 govern current status. In particular the
+missing beast/Bram intake, old inn/travel plate, nine-clip limit and missing
+sheathed-idle source are no longer current findings. Broader-quest balance and
+retention findings are deferred while the first-level lock is active.
 
 What was played (headless Chromium, 1280 × 760 and the full loop; art review at
 250 ms cadence) and what the screenshots and logs say. Severity: **A** blocks

@@ -63,9 +63,11 @@ X.riposte = {
 
 X.enemies = {
   // kind drives the placeholder choreography (leap / charge / lash / pounce) and the art frame.
-  dire_wolf:    { base: 'dire_wolf', level: 1, kind: 'wolf', frame: 0, height: 250 },
+  dire_wolf:    { base: 'dire_wolf', level: 1, kind: 'wolf', frame: 0, height: 185 },
+  road_wolf_leader: { base: 'dire_wolf', level: 4, kind: 'wolf', height: 185, name: 'Pack Leader', boss: true,
+    artIdentity: 'dire_wolf', statMult: { hp: 1.25, atk: 0.8 } },
   cave_boar:    { base: 'cave_boar', level: 2, kind: 'boar', frame: 1, height: 250, actives: ['tusk_gore'] },          // charge: Bleed + pull
-  thorn_lurker: { base: 'thorn_lurker', level: 2, kind: 'plant', frame: 2, height: 260, actives: ['thorn_lash'],       // lash: Poison + root
+  thorn_lurker: { base: 'thorn_lurker', level: 2, kind: 'plant', frame: 2, height: 245, actives: ['thorn_lash'],       // lash: Poison + root
                   perks: [] },                                                                                       // no regenerate/thorn skin: brisk, no healer stall
   alpha:        { base: 'alpha', level: 4, kind: 'boss', frame: 0, height: 330, tint: 0xb9b3c4, actives: ['pack_snap', 'cleave'], perks: ['momentum'],
                   statMult: { atk: 0.8, hp: 1.25 }, phase2At: 0.5 },
@@ -74,8 +76,8 @@ X.enemies = {
 X.encounters = [
   // 150 in all: three guided unlocks (3 × 20) leave 90 — the first recruit (60) and change.
   { id: 'road_ambush', bg: 'deep_wood',   enemies: ['dire_wolf', 'dire_wolf'],                 gold: 40 },
-  { id: 'thicket',     bg: 'bandit_road', enemies: ['dire_wolf', 'cave_boar', 'thorn_lurker'], gold: 50 },
-  { id: 'clearing',    bg: 'mountain',    enemies: ['alpha'], boss: true,                       gold: 60 },
+  { id: 'thicket',     bg: 'bandit_road', enemies: ['dire_wolf', 'thorn_lurker', 'thorn_lurker'], gold: 50 },
+  { id: 'clearing',    bg: 'mountain',    enemies: ['road_wolf_leader'], boss: true,              gold: 60 },
 ];
 
 // Katana Slash is what Hiro does by default: always owned, never shown, never
@@ -88,6 +90,34 @@ X.economy = { start: 0, costs: { 1: 20, 2: 30, 3: 40 }, maxLevel: 3 };
 // this many of Hiro's turns so a beginner can tap it themselves.
 X.finisherHoldOffTurns = 1;
 
+// The first five minutes, locked (Hiro, 2026-09-20): only the tutorial road is
+// playable; the inn's Embark and Unlock-a-hero are shown locked and the road
+// replays. Flip to false when the loop reopens for testing.
+X.slice = { firstLevelOnly: true };
+
+// Skills are the player's to fire (Hiro, 2026-09-20): Hiro auto-uses only
+// Katana Slash; God Aura, Counter Attack and Finisher wait for a tap. The
+// headless sim stands in for the player with Enc.tapPolicy.
+X.manualSkills = true;
+
+// Cinematic beats: a tapped skill and every killing blow slow the world and
+// push the main camera in; the HUD sits on its own camera and stays put.
+X.cinematic = { cast: { scale: 0.5, zoom: 1.16, ms: 240 }, kill: { scale: 0.36, zoom: 1.26, ms: 220 } };
+
+// HUD icon radius (was 18): easier to tap on a phone.
+X.hudIconR = 26;
+
+// Skill text for the info box (hold an icon for X.infoHoldMs), written for a
+// fourth-grade reader: what it does, in one or two short sentences.
+X.infoHoldMs = 3000;
+X.infoLingerMs = 3000;
+X.skillText = {
+  katana_slash:   { name: 'Katana Slash',  text: 'Hiro swings his sword at one enemy. At level 3 he hits all of them.' },
+  god_aura:       { name: 'God Aura',      text: 'A glowing shield. Hiro takes less damage for a while. Higher levels last longer.' },
+  counter_attack: { name: 'Counter Attack', text: 'Hiro gets ready. When an enemy attacks him, he blocks it and strikes back.' },
+  finisher:       { name: 'Finisher',      text: 'A big final strike. If the enemy is weak, it is knocked out right away, and Hiro heals a little.' },
+};
+
 // Painted sheets (GDD v0.8 §10.3). art.hiroSheet turns Astra's Hiro atlas on;
 // ?sheet=0 keeps the plate placeholder for an A/B screenshot.
 X.art = { hiroSheet: true, hiroAtlas: 'assets/expedition/hiro/hiro' };
@@ -96,8 +126,18 @@ X.art = { hiroSheet: true, hiroAtlas: 'assets/expedition/hiro/hiro' };
 // (l1 when the sheet lacks that level); anything unmapped keeps its own name.
 X.clipFor = function (clip, opts) {
   const lvl = Math.max(1, Math.min(3, (opts && opts.level) || 1));
+  if (clip === 'finisher') {
+    // Each approved paired timeline contains a specific creature. Actor.canPair
+    // additionally checks identity, tint and the resolved lethal outcome.
+    const finishers = {
+      wolf: ['wolf-cleave-paired', 'wolf-pin-paired', 'wolf-rising-cut-paired'],
+      plant: ['plant-stem-cut-paired', 'plant-vine-pin-paired', 'plant-crosscut-paired'],
+    };
+    const family = finishers[opts && opts.target && opts.target.kind];
+    return family ? family[lvl - 1] : 'slash-l' + lvl;
+  }
   const M = { enter: 'walk', walk: 'walk', short_draw: 'short-draw', hit_short: 'hit-short', stagger: 'hit-short', victory: 'victory-sheath',
-    slash: 'slash-l' + lvl, slash_wide: 'slash-l3', aura: 'aura-l' + lvl, stance: 'counter-l' + Math.max(2, lvl), finisher: 'finisher-l' + lvl + '-paired' };
+    slash: 'slash-l' + lvl, slash_wide: 'slash-l3', aura: 'aura-l' + lvl, stance: 'counter-l' + Math.max(2, lvl) };
   return M[clip] || clip;
 };
 

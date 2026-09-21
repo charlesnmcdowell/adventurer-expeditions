@@ -1,0 +1,1441 @@
+{
+  "hero": "bram",
+  "registrationNote": "Body-unit scale is clip-authored; crouches, recoil, jumps and weapon extent do not redefine body size.",
+  "clips": [
+    {
+      "id": "idle",
+      "file": "idle_clean.png",
+      "grid": [
+        2,
+        2
+      ],
+      "frames": 4,
+      "frameOrder": "row-major",
+      "durationsMs": [
+        170,
+        180,
+        170,
+        180
+      ],
+      "contact": null,
+      "loop": true,
+      "release": null,
+      "note": "Small breathing changes; registration and loop testing needed.",
+      "impactDraft": {
+        "hitStopMs": 0,
+        "flash": {
+          "color": "#fff6d7",
+          "alpha": 0
+        },
+        "drift": {
+          "ease": "Cubic.Out",
+          "distancePx": 0
+        },
+        "shakeAmplitude": 0
+      },
+      "columns": 2,
+      "rows": 2,
+      "contactFramesZeroBased": [],
+      "releaseFrameZeroBased": 3,
+      "registration": {
+        "referenceHeight": 725
+      },
+      "regions": [
+        [
+          0,
+          0,
+          512,
+          768
+        ],
+        [
+          512,
+          0,
+          512,
+          768
+        ],
+        [
+          0,
+          768,
+          512,
+          768
+        ],
+        [
+          512,
+          768,
+          512,
+          768
+        ]
+      ],
+      "paired": false
+    },
+    {
+      "id": "walk",
+      "file": "walk_clean.png",
+      "grid": [
+        4,
+        2
+      ],
+      "frames": 8,
+      "frameOrder": "row-major",
+      "durationsMs": [
+        80,
+        80,
+        80,
+        90,
+        80,
+        80,
+        80,
+        90
+      ],
+      "contact": null,
+      "loop": true,
+      "release": null,
+      "note": "Alternating weight and passing poses; validate foot-lock and scale before approval.",
+      "impactDraft": {
+        "hitStopMs": 0,
+        "flash": {
+          "color": "#fff6d7",
+          "alpha": 0
+        },
+        "drift": {
+          "ease": "Cubic.Out",
+          "distancePx": 0
+        },
+        "shakeAmplitude": 0
+      },
+      "columns": 4,
+      "rows": 2,
+      "contactFramesZeroBased": [],
+      "releaseFrameZeroBased": 7,
+      "registration": {
+        "referenceHeight": 423
+      },
+      "regions": [
+        [
+          0,
+          0,
+          444,
+          444
+        ],
+        [
+          444,
+          0,
+          444,
+          444
+        ],
+        [
+          888,
+          0,
+          443,
+          444
+        ],
+        [
+          1331,
+          0,
+          443,
+          444
+        ],
+        [
+          0,
+          444,
+          444,
+          443
+        ],
+        [
+          444,
+          444,
+          444,
+          443
+        ],
+        [
+          888,
+          444,
+          443,
+          443
+        ],
+        [
+          1331,
+          444,
+          443,
+          443
+        ]
+      ],
+      "paired": false
+    },
+    {
+      "id": "draw",
+      "file": "draw.png",
+      "grid": [
+        4,
+        2
+      ],
+      "frames": 8,
+      "frameOrder": "row-major",
+      "durationsMs": [
+        100,
+        100,
+        90,
+        80,
+        70,
+        80,
+        90,
+        140
+      ],
+      "contact": null,
+      "loop": false,
+      "release": null,
+      "note": "Starter straight sword and shield, not Hiro katana. Colored matte needs isolation.",
+      "impactDraft": {
+        "hitStopMs": 0,
+        "flash": {
+          "color": "#fff6d7",
+          "alpha": 0
+        },
+        "drift": {
+          "ease": "Cubic.Out",
+          "distancePx": 0
+        },
+        "shakeAmplitude": 0
+      },
+      "columns": 4,
+      "rows": 2,
+      "contactFramesZeroBased": [],
+      "releaseFrameZeroBased": 7,
+      "registration": {
+        "referenceHeight": 495
+      },
+      "regions": [
+        [
+          0,
+          0,
+          384,
+          512
+        ],
+        [
+          384,
+          0,
+          384,
+          512
+        ],
+        [
+          768,
+          0,
+          384,
+          512
+        ],
+        [
+          1152,
+          0,
+          384,
+          512
+        ],
+        [
+          0,
+          512,
+          384,
+          512
+        ],
+        [
+          384,
+          512,
+          384,
+          512
+        ],
+        [
+          768,
+          512,
+          384,
+          512
+        ],
+        [
+          1152,
+          512,
+          384,
+          512
+        ]
+      ],
+      "matteTolerance": 45,
+      "paired": false
+    },
+    {
+      "id": "short_draw",
+      "file": "short_draw.png",
+      "grid": [
+        2,
+        2
+      ],
+      "frames": 4,
+      "frameOrder": "row-major",
+      "durationsMs": [
+        100,
+        80,
+        80,
+        130
+      ],
+      "contact": null,
+      "loop": false,
+      "release": null,
+      "note": "",
+      "impactDraft": {
+        "hitStopMs": 0,
+        "flash": {
+          "color": "#fff6d7",
+          "alpha": 0
+        },
+        "drift": {
+          "ease": "Cubic.Out",
+          "distancePx": 0
+        },
+        "shakeAmplitude": 0
+      },
+      "columns": 2,
+      "rows": 2,
+      "contactFramesZeroBased": [],
+      "releaseFrameZeroBased": 3,
+      "registration": {
+        "referenceHeight": 613
+      },
+      "regions": [
+        [
+          0,
+          0,
+          627,
+          627
+        ],
+        [
+          627,
+          0,
+          627,
+          627
+        ],
+        [
+          0,
+          627,
+          627,
+          627
+        ],
+        [
+          627,
+          627,
+          627,
+          627
+        ]
+      ],
+      "paired": false
+    },
+    {
+      "id": "slash",
+      "file": "slash_clean.png",
+      "grid": [
+        3,
+        2
+      ],
+      "frames": 6,
+      "frameOrder": "row-major",
+      "durationsMs": [
+        95,
+        170,
+        60,
+        80,
+        95,
+        130
+      ],
+      "contact": 2,
+      "loop": false,
+      "release": null,
+      "note": "Blade in frame3 (zero-based) exceeds nominal first-column boundary slightly; custom regions required.",
+      "impactDraft": {
+        "hitStopMs": 55,
+        "flash": {
+          "color": "#fff6d7",
+          "alpha": 0.1
+        },
+        "drift": {
+          "ease": "Cubic.Out",
+          "distancePx": 18
+        },
+        "shakeAmplitude": 0.002
+      },
+      "columns": 3,
+      "rows": 2,
+      "contactFramesZeroBased": [
+        2
+      ],
+      "releaseFrameZeroBased": 5,
+      "registration": {
+        "referenceHeight": 490
+      },
+      "regions": [
+        [
+          0,
+          0,
+          512,
+          512
+        ],
+        [
+          512,
+          0,
+          512,
+          512
+        ],
+        [
+          1024,
+          0,
+          512,
+          512
+        ],
+        [
+          0,
+          512,
+          536,
+          512
+        ],
+        [
+          548,
+          512,
+          476,
+          512
+        ],
+        [
+          1024,
+          512,
+          512,
+          512
+        ]
+      ],
+      "paired": false
+    },
+    {
+      "id": "hit_short",
+      "file": "hit_short.png",
+      "grid": [
+        3,
+        1
+      ],
+      "frames": 3,
+      "frameOrder": "row-major",
+      "durationsMs": [
+        80,
+        100,
+        140
+      ],
+      "contact": 0,
+      "loop": false,
+      "release": null,
+      "note": "",
+      "impactDraft": {
+        "hitStopMs": 45,
+        "flash": {
+          "color": "#fff6d7",
+          "alpha": 0.06
+        },
+        "drift": {
+          "ease": "Cubic.Out",
+          "distancePx": 10
+        },
+        "shakeAmplitude": 0.0015
+      },
+      "columns": 3,
+      "rows": 1,
+      "contactFramesZeroBased": [
+        0
+      ],
+      "releaseFrameZeroBased": 2,
+      "registration": {
+        "referenceHeight": 830
+      },
+      "regions": [
+        [
+          0,
+          0,
+          591,
+          887
+        ],
+        [
+          591,
+          0,
+          592,
+          887
+        ],
+        [
+          1183,
+          0,
+          591,
+          887
+        ]
+      ],
+      "paired": false
+    },
+    {
+      "id": "roll",
+      "file": "roll.png",
+      "grid": [
+        3,
+        2
+      ],
+      "frames": 6,
+      "frameOrder": "row-major",
+      "durationsMs": [
+        90,
+        70,
+        65,
+        65,
+        85,
+        130
+      ],
+      "contact": null,
+      "loop": false,
+      "release": null,
+      "note": "Colored matte. Root translation must not double baked pose movement.",
+      "impactDraft": {
+        "hitStopMs": 0,
+        "flash": {
+          "color": "#fff6d7",
+          "alpha": 0
+        },
+        "drift": {
+          "ease": "Cubic.Out",
+          "distancePx": 0
+        },
+        "shakeAmplitude": 0
+      },
+      "columns": 3,
+      "rows": 2,
+      "contactFramesZeroBased": [],
+      "releaseFrameZeroBased": 5,
+      "registration": {
+        "referenceHeight": 500
+      },
+      "regions": [
+        [
+          0,
+          0,
+          512,
+          512
+        ],
+        [
+          512,
+          0,
+          514,
+          512
+        ],
+        [
+          1026,
+          0,
+          510,
+          512
+        ],
+        [
+          0,
+          512,
+          512,
+          512
+        ],
+        [
+          512,
+          512,
+          514,
+          512
+        ],
+        [
+          1026,
+          512,
+          510,
+          512
+        ]
+      ],
+      "matteTolerance": 45,
+      "paired": false
+    },
+    {
+      "id": "intercept",
+      "file": "intercept.png",
+      "grid": [
+        3,
+        2
+      ],
+      "frames": 5,
+      "frameOrder": "row-major",
+      "durationsMs": [
+        110,
+        150,
+        65,
+        90,
+        140
+      ],
+      "contact": 2,
+      "loop": false,
+      "release": null,
+      "note": "Cell5 unused; shield must meet opponent in final registration.",
+      "impactDraft": {
+        "hitStopMs": 65,
+        "flash": {
+          "color": "#fff3ca",
+          "alpha": 0.12
+        },
+        "drift": {
+          "ease": "Cubic.Out",
+          "distancePx": 12
+        },
+        "shakeAmplitude": 0.002
+      },
+      "columns": 3,
+      "rows": 2,
+      "contactFramesZeroBased": [
+        2
+      ],
+      "releaseFrameZeroBased": 4,
+      "registration": {
+        "referenceHeight": 490
+      },
+      "regions": [
+        [
+          0,
+          0,
+          512,
+          512
+        ],
+        [
+          512,
+          0,
+          587,
+          512
+        ],
+        [
+          1099,
+          0,
+          437,
+          512
+        ],
+        [
+          0,
+          512,
+          512,
+          512
+        ],
+        [
+          512,
+          512,
+          587,
+          512
+        ]
+      ],
+      "paired": false
+    },
+    {
+      "id": "riposte",
+      "file": "riposte_clean.png",
+      "grid": [
+        3,
+        2
+      ],
+      "frames": 6,
+      "frameOrder": "row-major",
+      "durationsMs": [
+        90,
+        130,
+        60,
+        75,
+        95,
+        140
+      ],
+      "contact": 2,
+      "loop": false,
+      "release": null,
+      "note": "Six delivered keys replace earlier five-key proposal. Straight sword length must be normalized if inconsistent in playback.",
+      "impactDraft": {
+        "hitStopMs": 60,
+        "flash": {
+          "color": "#fff3ca",
+          "alpha": 0.1
+        },
+        "drift": {
+          "ease": "Cubic.Out",
+          "distancePx": 22
+        },
+        "shakeAmplitude": 0.0025
+      },
+      "columns": 3,
+      "rows": 2,
+      "contactFramesZeroBased": [
+        2
+      ],
+      "releaseFrameZeroBased": 5,
+      "registration": {
+        "referenceHeight": 490
+      },
+      "regions": [
+        [
+          0,
+          0,
+          512,
+          512
+        ],
+        [
+          512,
+          0,
+          512,
+          512
+        ],
+        [
+          1024,
+          0,
+          512,
+          512
+        ],
+        [
+          0,
+          512,
+          512,
+          512
+        ],
+        [
+          512,
+          512,
+          512,
+          512
+        ],
+        [
+          1024,
+          512,
+          512,
+          512
+        ]
+      ],
+      "paired": false
+    },
+    {
+      "id": "cast",
+      "file": "cast.png",
+      "grid": [
+        3,
+        2
+      ],
+      "frames": 6,
+      "frameOrder": "row-major",
+      "durationsMs": [
+        110,
+        140,
+        110,
+        80,
+        100,
+        140
+      ],
+      "contact": null,
+      "loop": false,
+      "release": 3,
+      "note": "Gold shield invocation source; projectile/gameplay release belongs to existing simulation.",
+      "impactDraft": {
+        "hitStopMs": 0,
+        "flash": {
+          "color": "#fff6d7",
+          "alpha": 0
+        },
+        "drift": {
+          "ease": "Cubic.Out",
+          "distancePx": 0
+        },
+        "shakeAmplitude": 0
+      },
+      "columns": 3,
+      "rows": 2,
+      "contactFramesZeroBased": [],
+      "releaseFrameZeroBased": 3,
+      "registration": {
+        "referenceHeight": 560
+      },
+      "regions": [
+        [
+          0,
+          0,
+          400,
+          641
+        ],
+        [
+          400,
+          0,
+          427,
+          641
+        ],
+        [
+          827,
+          0,
+          400,
+          641
+        ],
+        [
+          0,
+          641,
+          400,
+          641
+        ],
+        [
+          400,
+          641,
+          427,
+          641
+        ],
+        [
+          827,
+          641,
+          400,
+          641
+        ]
+      ],
+      "paired": false
+    },
+    {
+      "id": "victory",
+      "file": "victory.png",
+      "grid": [
+        4,
+        2
+      ],
+      "frames": 8,
+      "frameOrder": "row-major",
+      "durationsMs": [
+        120,
+        100,
+        100,
+        90,
+        90,
+        100,
+        120,
+        200
+      ],
+      "contact": null,
+      "loop": false,
+      "release": null,
+      "note": "Composed sword-sheathing victory; may not transfer to purchased Plate Harness.",
+      "impactDraft": {
+        "hitStopMs": 0,
+        "flash": {
+          "color": "#fff6d7",
+          "alpha": 0
+        },
+        "drift": {
+          "ease": "Cubic.Out",
+          "distancePx": 0
+        },
+        "shakeAmplitude": 0
+      },
+      "columns": 4,
+      "rows": 2,
+      "contactFramesZeroBased": [],
+      "releaseFrameZeroBased": 7,
+      "registration": {
+        "referenceHeight": 500
+      },
+      "regions": [
+        [
+          0,
+          0,
+          384,
+          512
+        ],
+        [
+          384,
+          0,
+          384,
+          512
+        ],
+        [
+          768,
+          0,
+          384,
+          512
+        ],
+        [
+          1152,
+          0,
+          384,
+          512
+        ],
+        [
+          0,
+          512,
+          384,
+          512
+        ],
+        [
+          384,
+          512,
+          384,
+          512
+        ],
+        [
+          768,
+          512,
+          384,
+          512
+        ],
+        [
+          1152,
+          512,
+          384,
+          512
+        ]
+      ],
+      "paired": false
+    },
+    {
+      "id": "kneel",
+      "file": "kneel.png",
+      "grid": [
+        2,
+        2
+      ],
+      "frames": 4,
+      "frameOrder": "row-major",
+      "durationsMs": [
+        120,
+        140,
+        150,
+        200
+      ],
+      "contact": null,
+      "loop": false,
+      "release": null,
+      "note": "",
+      "impactDraft": {
+        "hitStopMs": 0,
+        "flash": {
+          "color": "#fff6d7",
+          "alpha": 0
+        },
+        "drift": {
+          "ease": "Cubic.Out",
+          "distancePx": 0
+        },
+        "shakeAmplitude": 0
+      },
+      "columns": 2,
+      "rows": 2,
+      "contactFramesZeroBased": [],
+      "releaseFrameZeroBased": 3,
+      "registration": {
+        "referenceHeight": 800
+      },
+      "regions": [
+        [
+          0,
+          0,
+          512,
+          832
+        ],
+        [
+          512,
+          0,
+          512,
+          832
+        ],
+        [
+          0,
+          832,
+          512,
+          704
+        ],
+        [
+          512,
+          832,
+          512,
+          704
+        ]
+      ],
+      "paired": false
+    },
+    {
+      "id": "bite_leg",
+      "files": [
+        {
+          "file": "bite_leg_a_clean.png",
+          "frames": 6,
+          "grid": [
+            3,
+            2
+          ]
+        },
+        {
+          "file": "bite_leg_b.png",
+          "frames": 4,
+          "grid": [
+            2,
+            2
+          ]
+        }
+      ],
+      "frames": 10,
+      "contact": 2,
+      "release": 7,
+      "loop": false,
+      "durationsMs": [
+        120,
+        80,
+        70,
+        100,
+        90,
+        100,
+        70,
+        90,
+        110,
+        160
+      ],
+      "stage": "pair_source",
+      "note": "Bram left and wolf right in both preferred sheets. Normalize pair scale across the 3x2 and 2x2 source canvases. Contact is front boot cuff. Frame6 holds grip,7 releases; arm/foot contact still needs motion review.",
+      "impactDraft": {
+        "hitStopMs": 50,
+        "flash": {
+          "color": "#fff6d7",
+          "alpha": 0.06
+        },
+        "drift": {
+          "ease": "Sine.Out",
+          "distancePx": 0
+        },
+        "shakeAmplitude": 0.002
+      },
+      "contactFramesZeroBased": [
+        2
+      ],
+      "releaseFrameZeroBased": 7,
+      "registration": {
+        "referenceHeight": 440,
+        "anchorX": 180
+      },
+      "sources": [
+        {
+          "file": "bite_leg_a_clean.png",
+          "frames": 6,
+          "grid": [
+            3,
+            2
+          ],
+          "columns": 3,
+          "rows": 2,
+          "regions": [
+            [
+              0,
+              0,
+              523,
+              512
+            ],
+            [
+              514,
+              0,
+              515,
+              512
+            ],
+            [
+              1022,
+              0,
+              514,
+              512
+            ],
+            [
+              0,
+              512,
+              537,
+              512
+            ],
+            [
+              523,
+              512,
+              510,
+              512
+            ],
+            [
+              1024,
+              512,
+              512,
+              512
+            ]
+          ]
+        },
+        {
+          "file": "bite_leg_b.png",
+          "frames": 4,
+          "grid": [
+            2,
+            2
+          ],
+          "columns": 2,
+          "rows": 2,
+          "regions": [
+            [
+              0,
+              0,
+              768,
+              512
+            ],
+            [
+              768,
+              0,
+              768,
+              512
+            ],
+            [
+              0,
+              512,
+              768,
+              512
+            ],
+            [
+              768,
+              512,
+              768,
+              512
+            ]
+          ],
+          "referenceHeight": 445
+        }
+      ],
+      "paired": true,
+      "opponentKinds": [
+        "wolf"
+      ]
+    },
+    {
+      "id": "bite_arm",
+      "files": [
+        {
+          "file": "bite_arm_clean.png",
+          "frames": 6,
+          "grid": [
+            3,
+            2
+          ]
+        }
+      ],
+      "frames": 6,
+      "contact": 1,
+      "release": 3,
+      "loop": false,
+      "durationsMs": [
+        120,
+        80,
+        130,
+        100,
+        120,
+        160
+      ],
+      "stage": "pair_source",
+      "note": "Wolf grips left upper-arm armor above shield, not the sword arm; both actors must hide while paired source displays.",
+      "impactDraft": {
+        "hitStopMs": 55,
+        "flash": {
+          "color": "#fff6d7",
+          "alpha": 0.06
+        },
+        "drift": {
+          "ease": "Sine.Out",
+          "distancePx": 0
+        },
+        "shakeAmplitude": 0.002
+      },
+      "contactFramesZeroBased": [
+        1
+      ],
+      "releaseFrameZeroBased": 3,
+      "registration": {
+        "referenceHeight": 435,
+        "anchorX": 180
+      },
+      "sources": [
+        {
+          "file": "bite_arm_clean.png",
+          "frames": 6,
+          "grid": [
+            3,
+            2
+          ],
+          "columns": 3,
+          "rows": 2
+        }
+      ],
+      "paired": true,
+      "opponentKinds": [
+        "wolf"
+      ]
+    },
+    {
+      "id": "finisher_quadruped",
+      "file": "finisher_quadruped_clean.png",
+      "grid": [
+        3,
+        1
+      ],
+      "frames": 3,
+      "contact": 1,
+      "release": 2,
+      "loop": false,
+      "durationsMs": [
+        500,
+        80,
+        700
+      ],
+      "leadInMs": {
+        "triggerCue": 150,
+        "cameraPush": 250
+      },
+      "opponent": "gray dire wolf only",
+      "impactDraft": {
+        "hitStopMs": 140,
+        "flash": {
+          "color": "#fff3cf",
+          "alpha": 0.13
+        },
+        "drift": {
+          "ease": "Cubic.Out",
+          "distancePx": 0
+        },
+        "shakeAmplitude": 0.003
+      },
+      "note": "Use exact rectangles in finisher-corrections.md; single paired group, not two independently offset actors. Last enemy + actual lethal result gate. Unsupported species/outfits require separate art.",
+      "columns": 3,
+      "rows": 1,
+      "contactFramesZeroBased": [
+        1
+      ],
+      "releaseFrameZeroBased": 2,
+      "registration": {
+        "referenceHeight": 420,
+        "anchorX": 230,
+        "groundY": 585
+      },
+      "paired": true,
+      "opponentKinds": [
+        "wolf"
+      ],
+      "regions": [
+        [
+          2,
+          2,
+          719,
+          720
+        ],
+        [
+          727,
+          2,
+          718,
+          720
+        ],
+        [
+          1450,
+          2,
+          720,
+          720
+        ]
+      ]
+    },
+    {
+      "id": "finisher_plant",
+      "file": "finisher_plant_clean.png",
+      "grid": [
+        3,
+        1
+      ],
+      "frames": 3,
+      "contact": 1,
+      "release": 2,
+      "loop": false,
+      "durationsMs": [
+        500,
+        80,
+        700
+      ],
+      "leadInMs": {
+        "triggerCue": 150,
+        "cameraPush": 250
+      },
+      "opponent": "thorn lurker",
+      "impactDraft": {
+        "hitStopMs": 140,
+        "flash": {
+          "color": "#fff3cf",
+          "alpha": 0.13
+        },
+        "drift": {
+          "ease": "Cubic.Out",
+          "distancePx": 0
+        },
+        "shakeAmplitude": 0.003
+      },
+      "note": "Use exact rectangles in finisher-corrections.md; single paired group, not two independently offset actors. Last enemy + actual lethal result gate. Unsupported species/outfits require separate art.",
+      "columns": 3,
+      "rows": 1,
+      "contactFramesZeroBased": [
+        1
+      ],
+      "releaseFrameZeroBased": 2,
+      "registration": {
+        "referenceHeight": 420,
+        "anchorX": 230,
+        "groundY": 585
+      },
+      "paired": true,
+      "opponentKinds": [
+        "plant"
+      ],
+      "regions": [
+        [
+          2,
+          2,
+          719,
+          720
+        ],
+        [
+          726,
+          2,
+          719,
+          720
+        ],
+        [
+          1450,
+          2,
+          720,
+          720
+        ]
+      ]
+    },
+    {
+      "id": "finisher_human",
+      "file": "finisher_human_clean.png",
+      "grid": [
+        3,
+        1
+      ],
+      "frames": 3,
+      "contact": 1,
+      "release": 2,
+      "loop": false,
+      "durationsMs": [
+        500,
+        80,
+        700
+      ],
+      "leadInMs": {
+        "triggerCue": 150,
+        "cameraPush": 250
+      },
+      "opponent": "the painted female street-leather bandit only",
+      "impactDraft": {
+        "hitStopMs": 140,
+        "flash": {
+          "color": "#fff3cf",
+          "alpha": 0.13
+        },
+        "drift": {
+          "ease": "Cubic.Out",
+          "distancePx": 0
+        },
+        "shakeAmplitude": 0.003
+      },
+      "note": "Use exact rectangles in finisher-corrections.md; single paired group, not two independently offset actors. Last enemy + actual lethal result gate. Unsupported species/outfits require separate art.",
+      "columns": 3,
+      "rows": 1,
+      "contactFramesZeroBased": [
+        1
+      ],
+      "releaseFrameZeroBased": 2,
+      "registration": {
+        "referenceHeight": 420,
+        "anchorX": 230,
+        "groundY": 585
+      },
+      "paired": true,
+      "opponentKinds": [
+        "female_street_bandit"
+      ],
+      "regions": [
+        [
+          2,
+          2,
+          719,
+          720
+        ],
+        [
+          726,
+          2,
+          719,
+          720
+        ],
+        [
+          1450,
+          2,
+          720,
+          720
+        ]
+      ]
+    },
+    {
+      "id": "finisher_boss",
+      "file": "finisher_boss_clean.png",
+      "grid": [
+        3,
+        1
+      ],
+      "frames": 3,
+      "contact": 1,
+      "release": 2,
+      "loop": false,
+      "durationsMs": [
+        500,
+        80,
+        700
+      ],
+      "leadInMs": {
+        "triggerCue": 150,
+        "cameraPush": 250
+      },
+      "opponent": "scarred Alpha wolf",
+      "impactDraft": {
+        "hitStopMs": 140,
+        "flash": {
+          "color": "#fff3cf",
+          "alpha": 0.13
+        },
+        "drift": {
+          "ease": "Cubic.Out",
+          "distancePx": 0
+        },
+        "shakeAmplitude": 0.003
+      },
+      "note": "Use exact rectangles in finisher-corrections.md; single paired group, not two independently offset actors. Last enemy + actual lethal result gate. Unsupported species/outfits require separate art.",
+      "columns": 3,
+      "rows": 1,
+      "contactFramesZeroBased": [
+        1
+      ],
+      "releaseFrameZeroBased": 2,
+      "registration": {
+        "referenceHeight": 420,
+        "anchorX": 230,
+        "groundY": 585
+      },
+      "paired": true,
+      "opponentKinds": [
+        "boss"
+      ],
+      "regions": [
+        [
+          2,
+          2,
+          684,
+          720
+        ],
+        [
+          692,
+          2,
+          742,
+          720
+        ],
+        [
+          1440,
+          2,
+          730,
+          720
+        ]
+      ]
+    }
+  ]
+}

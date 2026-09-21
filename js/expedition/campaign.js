@@ -94,6 +94,7 @@ Camp.scaleFor = (run, questId) => Math.min(3.0, 1 + 0.3 * Camp.timesCleared(run,
 // The order the Embark button walks: tutorial once, then the four in a cycle.
 Camp.nextQuestId = function (run) {
   const loop = X.quests.filter(q => !q.tutorial).map(q => q.id);
+  if (X.slice && X.slice.firstLevelOnly) return 'road';         // the slice is the road until Hiro reopens the loop
   if (!run.questsDone.includes('road')) return 'road';
   const n = run.questsDone.filter(id => id !== 'road').length;
   return loop[n % loop.length];
@@ -117,12 +118,73 @@ X.recruits = [
 ];
 X.party = { fieldMax: 2, recruitCosts: [60, 90, 120, 150, 180] };
 Camp.recruit = key => X.recruits.find(r => r.key === key) || null;
+// Reviewed identities and loaded animation coverage are separate gates. A saved
+// purchase or a matching portrait filename cannot approve a new combat actor.
+Camp.recruitArt = Object.freeze({
+  bram: Object.freeze({ approved: true, clips: ['idle', 'walk', 'draw', 'short_draw', 'slash', 'hit_short', 'roll', 'intercept', 'riposte', 'cast', 'victory', 'kneel', 'bite_leg', 'bite_arm', 'finisher_quadruped', 'finisher_plant', 'finisher_human', 'finisher_boss'] }),
+});
+const loadedRecruitArt = new Set();
+Camp.recruitApproved = key => !!(Camp.recruitArt[key] && Camp.recruitArt[key].approved);
+Camp.registerRecruitArt = function (key, sheet, hasFrame) {
+  loadedRecruitArt.delete(key);
+  const spec = Camp.recruitArt[key];
+  if (!spec || !spec.approved || !sheet || !sheet.clips || typeof hasFrame !== 'function') return false;
+  const valid = spec.clips.every(id => {
+    const clip = sheet.clips[id], frames = clip && clip.frames;
+    return Array.isArray(frames) && frames.length >= 2 && new Set(frames).size === frames.length &&
+      frames.every(frame => typeof frame === 'string' && hasFrame(frame));
+  });
+  if (valid) loadedRecruitArt.add(key);
+  return valid;
+};
+Camp.recruitReady = key => Camp.recruitApproved(key) && loadedRecruitArt.has(key);
+Camp.recruitingLocked = () => !!(X.slice && X.slice.firstLevelOnly);
+
+// Save sanitation must work before textures load. Preserve known paid ownership,
+// but strip unknown identities and unsupported field members; buildWorld applies
+// the loaded-frame gate separately. The tutorial lock also covers old checkpoints.
+Camp.sanitizeRun = function (run) {
+  const record = v => v && typeof v === 'object' && !Array.isArray(v);
+  const list = v => Array.isArray(v) ? v : [];
+  const unique = v => [...new Set(list(v))];
+  delete run.hero; // Hiro is permanent; old hero-pick saves cannot change his kit.
+  run.roster = unique(run.roster).filter(key => !!Camp.recruit(key));
+  run.field = unique(run.field).filter(key => run.roster.includes(key) && Camp.recruitApproved(key)).slice(0, X.party.fieldMax);
+  run.gold = Number.isFinite(run.gold) ? Math.max(0, Math.floor(run.gold)) : 0;
+  run.questsDone = list(run.questsDone).filter(id => !!Camp.quest(id));
+  run.awarded = unique(run.awarded).filter(id => !!Camp.encounter(id));
+  run.tutorial = record(run.tutorial) ? run.tutorial : {};
+  run.voice = record(run.voice) ? run.voice : {};
+  run.visits = record(run.visits) ? run.visits : {};
+  run.cycles = record(run.cycles) ? run.cycles : {};
+  const validIdentity = key => key === 'hiro' || !!Camp.recruit(key);
+  const rel = {};
+  for (const [from, tos] of Object.entries(record(run.rel) ? run.rel : {})) {
+    if (!validIdentity(from) || !record(tos)) continue;
+    rel[from] = {};
+    for (const [to, score] of Object.entries(tos)) if (validIdentity(to) && Number.isFinite(score)) rel[from][to] = Math.max(-100, Math.min(100, score));
+  }
+  run.rel = rel;
+  if (!['quest', 'travel', 'inn', 'grave'].includes(run.phase)) run.phase = 'quest';
+  if (!Camp.quest(run.questId) || (Camp.recruitingLocked() && run.questId !== 'road')) {
+    run.questId = 'road'; run.wave = 0; run.checkpoint = 0;
+    if (run.phase !== 'inn') run.phase = 'quest';
+    delete run.travelLeg;
+  }
+  const count = Camp.quest(run.questId).encounters.length;
+  run.wave = Number.isFinite(run.wave) ? Math.max(0, Math.min(count, Math.floor(run.wave))) : 0;
+  if (run.phase === 'quest' && run.wave === count) { run.phase = 'inn'; run.wave = 0; }
+  run.checkpoint = Number.isFinite(run.checkpoint) ? Math.max(0, Math.min(count, Math.floor(run.checkpoint))) : 0;
+  return run;
+};
 Camp.recruitCost = run => X.party.recruitCosts[Math.min(X.party.recruitCosts.length - 1, (run.roster || []).length)];
 Camp.owns = (run, key) => (run.roster || []).includes(key);
 Camp.fielded = (run, key) => (run.field || []).includes(key);
-Camp.canBuy = (run, key) => !Camp.owns(run, key) && run.gold >= Camp.recruitCost(run);
+Camp.canBuy = (run, key) => !!Camp.recruit(key) && Camp.recruitReady(key) && !Camp.recruitingLocked() && !Camp.owns(run, key) && run.gold >= Camp.recruitCost(run);
 Camp.buy = function (run, key) {
   if (!Camp.recruit(key)) return { ok: false, reason: 'unknown' };
+  if (!Camp.recruitReady(key)) return { ok: false, reason: 'art unavailable' };
+  if (Camp.recruitingLocked()) return { ok: false, reason: 'slice locked' };
   if (Camp.owns(run, key)) return { ok: false, reason: 'owned' };
   const cost = Camp.recruitCost(run);
   if (run.gold < cost) return { ok: false, reason: 'gold', cost };
@@ -131,6 +193,8 @@ Camp.buy = function (run, key) {
   return { ok: true, cost, fielded: Camp.fielded(run, key) };
 };
 Camp.toggleField = function (run, key) {
+  if (!Camp.recruit(key)) return { ok: false, reason: 'unknown' };
+  if (!Camp.recruitReady(key)) return { ok: false, reason: 'art unavailable' };
   if (!Camp.owns(run, key)) return { ok: false, reason: 'not owned' };
   const i = run.field.indexOf(key);
   if (i >= 0) { run.field.splice(i, 1); return { ok: true, fielded: false }; }
@@ -141,6 +205,7 @@ Camp.toggleField = function (run, key) {
 // Build a recruit as a finished website character.
 Camp.makeRecruit = function (run, key) {
   const d = Camp.recruit(key);
+  if (!d || !Camp.recruitReady(key)) return null;
   const lvl = A.DATA.CONST.TIER_THRESHOLDS.intermediate;
   const ch = A.Character.makePlayer(new A.RNG(d.seed), { name: d.name, sex: d.sex, personalityId: d.personalityId, portraitSeed: d.seed, portraitSlot: 1, appearance: { head: d.head }, startingSkills: [] });
   ch.isPlayer = false; ch.freeSkillsUsed = A.DATA.CONST.FREE_STARTING_SKILLS;
@@ -169,11 +234,12 @@ Camp.attachVoice = function (run, c) {
 // A tiny world holds Hiro and the fielded recruits so Rel and the dialogue
 // tables work unchanged. Rebuilt from the run (relationship scores persist).
 Camp.buildWorld = function (run) {
+  Camp.sanitizeRun(run);
   const rng = new A.RNG(48103);
   const nextId = A.Character.peekNextId ? A.Character.peekNextId() : null;
   const world = A.World.create(48103);
   const hero = X.Encounter.makeHero(new A.RNG(5), run);
-  const companions = (run.field || []).filter(k => Camp.recruit(k)).map(k => Camp.makeRecruit(run, k));
+  const companions = run.field.filter(k => Camp.recruitReady(k)).map(k => Camp.makeRecruit(run, k)).filter(Boolean);
   world.characters = [hero].concat(companions); world.playerId = hero.id;
   // Regard between everyone, from the run (so quests move it and banter follows).
   const rel = run.rel || (run.rel = {});

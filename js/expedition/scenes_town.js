@@ -1,6 +1,6 @@
 // Adventurer: Expeditions — the inn and the road (GDD v0.8).
-// Inn: Hiro at the near table; the recruits along the bar — owned ones bright
-// and tappable to field, the rest dimmed with a price. Hiro's skill icons sit
+// Inn: painted Hiro at the table, joined by Bram when fielded and art-ready.
+// Recruits remain menu choices. Hiro's skill icons sit
 // by his portrait for levelling, the same + badge and chip the tutorial taught.
 // One Embark button. Travel: the website's scrolling panorama, graded to the
 // quest's time of day with its weather, the party walking, mood banter through
@@ -15,10 +15,6 @@ const wait = (scene, t) => new Promise(r => scene.time.delayedCall(t, r));
 const ensureHiroTextures = scene => X.UI.ensureHiroTextures(scene);
 const bigButton = (...args) => X.UI.bigButton(...args);
 
-// Hiro in a town scene (placeholder plates until the painted bust lands).
-function heroImage(scene, x, bottom, height, depth) {
-  return scene.add.image(x, bottom, 'xp_hiro').setOrigin(0.5, 1).setScale(height / 780).setDepth(depth);
-}
 // The scene's weather/phase context, read by BattleArt and the panorama.
 function questContext(scene, quest) {
   scene.game_ = scene.game_ || { world: { seed: 1, questClock: 0 } };
@@ -30,29 +26,34 @@ function questContext(scene, quest) {
 class InnScene extends Phaser.Scene {
   constructor() { super('Inn'); }
   init(d) { this.opts = d || {}; }
-  preload() { this.load.image('xp_hiro_plates', 'assets/anime/v2/runtime/hiro_cyber_20260916.webp'); X.UI.preloadBusts(this); }
+  preload() { X.Painted.preload(this); X.UI.preloadBusts(this); X.InnArt.preload(this); }
+  isPortalReady() { return !!this.__presentationReady; }
   create() {
+    this.__presentationReady = false; this.input.enabled = false;
     this.run = this.opts.run || X.Run.load() || X.Run.fresh();
     this.run.phase = 'inn'; this.run.wave = 0; X.Run.save(this.run);
     this.seed = this.opts.seed != null ? this.opts.seed : ((Date.now() % 100000) + 1);
-    ensureHiroTextures(this); X.UI.installBusts(this);
+    X.Painted.install(this); ensureHiroTextures(this); X.UI.installBusts(this);
+    if (X.Painted.require && !X.Painted.require(this, ['hiro'])) return;
     questContext(this, null);
-    A.BattleArt.paint(this, 'tavern', 'day');
     try { A.Music.playStory(X.innMusic); } catch (e) {}
     // Phaser reuses the scene object: clear what the last visit left behind.
     this.ended = false; this.gate = null; this.chipObj = null; this.btn = null; this._gateFor = null; this.busts = {};
+    this.lockedButtons = []; this.__confirmRect = null;
     this.paused = false; this.time.paused = false;
     this.events.once('shutdown', () => { this.ended = true; });
     X.UI.corner(this);
     if (A.Portal && A.Portal.active) A.Portal.sync([this]);
     this.build();
+    this.env = X.InnArt.paint(this, this.run);
+    X.Painted.present(this, this.env, () => { if (A.Portal && A.Portal.active) A.Portal.sync([this]); });
   }
 
   build() {
     const run = this.run;
     this.world = X.Campaign.buildWorld(run);
-    heroImage(this, 240, 700, 300, 100);
     this.pill = X.UI.goldPill(this, run.gold);
+    if (X.slice && X.slice.firstLevelOnly) return this.buildLocked();
     // Hiro's skills, for levelling: the combat HUD in inn mode (portrait + icons only).
     this.hud = new X.Hud(this, { run, hero: this.world.hero, portraitKey: 'xp_hiro_face', inn: true,
       onSkill: () => {}, onUpgrade: id => this.buyUpgrade(id), onArrow: () => {}, onPause: () => {} });
@@ -68,12 +69,36 @@ class InnScene extends Phaser.Scene {
     this.guide();
   }
 
+  // The slice (X.slice.firstLevelOnly): Hiro's skills for levelling, Next quest
+  // and Unlock a hero shown locked, and Replay the road — the only way onward
+  // while the first five minutes are being finished (Hiro, 2026-09-20).
+  buildLocked() {
+    const run = this.run;
+    this.hud = new X.Hud(this, { run, hero: this.world.hero, portraitKey: 'xp_hiro_face', inn: true,
+      onSkill: () => {}, onUpgrade: id => this.buyUpgrade(id), onArrow: () => {}, onPause: () => {} });
+    this.hud.refresh();
+    this.world.restoreIds();
+    const locked = (btn, label) => { btn.zone.disableInteractive(); btn.setAlpha(0.55); btn.label.setText(label + '  🔒'); this.lockedButtons.push(btn); return btn; };
+    locked(bigButton(this, W - 112, H - 230, 200, 100, '⚔', 'Next quest', () => {}, 0x5a4a34), 'Next quest');
+    locked(bigButton(this, W - 336, H - 230, 200, 100, '☺', 'Unlock a hero', () => {}, 0x5a4a34), 'Unlock a hero');
+    this.embarkBtn = bigButton(this, W - 112, H - 110, 200, 100, '↻', 'Replay the road', () => this.replayRoad(), 0xf2c94c);
+    this.btn = this.embarkBtn;
+  }
+  replayRoad() {
+    if (!this.isPortalReady() || this.ended) return;
+    this.ended = true;
+    const run = this.run;
+    run.questId = 'road'; run.phase = 'quest'; run.wave = 0; run.checkpoint = 0;
+    run.awarded = run.awarded.filter(id => !X.Campaign.questEncounters('road').some(e => e.id === id));   // the road pays again
+    X.Run.save(run);
+    this.scene.start('Expedition', { run, seed: this.seed + 1 });
+  }
+
   // One recruit at the bar: bust, name, and either a price or the fielded ring.
   bust(d, x, bottom) {
-    const ch = X.Campaign.makeRecruit(this.run, d.key);
-    const key = A.Portraits.key(this, ch);
+    const ready = X.Campaign.recruitReady(d.key);
     const c = this.add.container(x, bottom).setDepth(90);
-    const img = this.add.image(0, 0, key).setOrigin(0.5, 1).setDisplaySize(150, 191);
+    const img = ready ? X.UI.paintedFigure(this, d.key, 0, 0, 190, 90, 'idle') : this.add.container(0, 0);
     const ring = this.add.graphics(); ring.lineStyle(4, 0xffe28a, 1); ring.strokeRoundedRect(-78, -196, 156, 200, 14); ring.setVisible(false);
     const name = T().text(this, 0, 8, d.name, { size: 14, ox: 0.5, oy: 0, color: '#f4eee0', display: true }); name.setStroke('#000000', 4);
     const tag = this.add.container(0, 30);
@@ -82,9 +107,10 @@ class InnScene extends Phaser.Scene {
     const price = T().text(this, 4, 0, '', { size: 13, ox: 0.5, oy: 0.5, color: '#f4eee0', display: true });
     tag.add([tbg, coin, price]);
     const zone = this.add.zone(0, -96, 150, 200).setInteractive({ useHandCursor: true });
+    if (!ready) zone.disableInteractive();
     zone.on('pointerdown', () => this.tapRecruit(d.key));
     c.add([ring, img, name, tag, zone]);
-    Object.assign(c, { key: d.key, img, ring, tag, price, rect: { x: x - 75, y: bottom - 191, w: 150, h: 191 } });
+    Object.assign(c, { key: d.key, ready, img, ring, tag, price, coin, zone, rect: { x: x - 75, y: bottom - 191, w: 150, h: 191 } });
     return c;
   }
 
@@ -92,19 +118,23 @@ class InnScene extends Phaser.Scene {
     const run = this.run, cost = X.Campaign.recruitCost(run);
     for (const c of Object.values(this.busts)) {
       const owned = X.Campaign.owns(run, c.key), fielded = X.Campaign.fielded(run, c.key), can = X.Campaign.canBuy(run, c.key);
-      c.img.setTint(owned ? 0xffffff : 0x6a6a72).setAlpha(owned ? 1 : 0.85);
+      if (c.img.setTint) c.img.setTint(owned ? 0xffffff : 0x6a6a72);
+      c.img.setAlpha(owned ? 1 : 0.85);
       c.ring.setVisible(fielded);
-      c.tag.setVisible(!owned); c.price.setText(String(cost)); c.price.setColor(can ? '#f4eee0' : '#d9433b');
+      c.tag.setVisible(!owned || !c.ready); c.coin.setVisible(c.ready);
+      c.price.setText(c.ready ? String(cost) : 'Not ready'); c.price.setColor(!c.ready ? '#b5ad9e' : can ? '#f4eee0' : '#d9433b');
       if (can && !c.inviteTween) c.inviteTween = this.tweens.add({ targets: c.tag, scale: 1.1, duration: 480, yoyo: true, repeat: -1, ease: 'Sine.InOut' });
       if (!can && c.inviteTween) { c.inviteTween.stop(); c.inviteTween = null; c.tag.setScale(1); }
     }
     this.pill.text.setText(String(run.gold));
     this.hud.setGold(run.gold);
+    if (this.env && this.env.setParty) this.env.setParty(run);
   }
 
   // Unowned: a confirm chip with the price. Owned: ride along or stay behind.
   tapRecruit(key) {
     const run = this.run, c = this.busts[key];
+    if (!this.isPortalReady() || X.Campaign.recruitingLocked() || !c || !c.ready) return;
     if (X.Campaign.owns(run, key)) {
       const r = X.Campaign.toggleField(run, key);
       if (!r.ok) { this.tweens.add({ targets: c, x: c.x + 5, duration: 40, yoyo: true, repeat: 3 }); return; }
@@ -116,6 +146,7 @@ class InnScene extends Phaser.Scene {
     this.openChip(key);
   }
   openChip(key) {
+    if (!this.isPortalReady() || X.Campaign.recruitingLocked() || !this.busts[key] || !X.Campaign.canBuy(this.run, key)) return;
     this.closeChip();
     const c = this.busts[key], d = X.Campaign.recruit(key), cost = X.Campaign.recruitCost(this.run);
     const w = 190, h = 92, x = Math.min(W - w / 2 - 8, Math.max(w / 2 + 8, c.x)), y = c.rect.y - 60;
@@ -139,6 +170,7 @@ class InnScene extends Phaser.Scene {
   }
   closeChip() { if (this.chipObj) { this.chipObj.root.destroy(); this.chipObj = null; this.__confirmRect = null; } }
   buyRecruit(key) {
+    if (!this.isPortalReady()) return { ok: false, reason: 'loading' };
     const r = X.Campaign.buy(this.run, key);
     if (!r.ok) return r;
     X.Run.save(this.run); this.closeChip();
@@ -150,6 +182,7 @@ class InnScene extends Phaser.Scene {
     return r;
   }
   buyUpgrade(id) {
+    if (!this.isPortalReady()) return { ok: false, reason: 'loading' };
     const r = X.Encounter.upgrade(this.run, id, this.world.hero);
     if (!r.ok) return r;
     X.Run.save(this.run);
@@ -185,11 +218,14 @@ class InnScene extends Phaser.Scene {
   releaseGate(payload) { if (this.gate && this.gate.release) this.gate.release(payload); }
 
   embark() {
+    if (X.Campaign.recruitingLocked()) return this.replayRoad();
+    if (!this.isPortalReady() || this.ended) return;
+    this.ended = true;
     if (this.gate && this.gate.clear) { this.gate.clear(); this.gate = null; }
     this.closeChip();
     const run = this.run;
     run.tutorial.embarkDone = true;
-    if (!run.field.length) for (const k of run.roster) if (run.field.length < X.party.fieldMax) run.field.push(k);   // nobody rides alone by accident
+    if (!run.field.length) for (const k of run.roster) if (X.Campaign.recruitReady(k) && run.field.length < X.party.fieldMax) run.field.push(k);
     run.questId = X.Campaign.nextQuestId(run);
     run.awarded = run.awarded.filter(id => !X.Campaign.questEncounters(run.questId).some(e => e.id === id));   // a fresh contract pays again
     run.phase = 'travel'; run.travelLeg = 'outbound'; run.wave = 0;
@@ -203,13 +239,17 @@ class InnScene extends Phaser.Scene {
 class TravelScene extends Phaser.Scene {
   constructor() { super('Travel'); }
   init(d) { this.opts = d || {}; }
-  preload() { this.load.image('xp_hiro_plates', 'assets/anime/v2/runtime/hiro_cyber_20260916.webp'); X.UI.preloadBusts(this); }
+  preload() { X.Painted.preload(this); X.UI.preloadBusts(this); }
+  isPortalReady() { return !!this.__presentationReady; }
   create() {
+    this.__presentationReady = false; this.input.enabled = false;
     this.run = this.opts.run || X.Run.load() || X.Run.fresh();
+    X.Campaign.sanitizeRun(this.run);
     this.leg = this.opts.leg || this.run.travelLeg || 'outbound';
     this.seed = this.opts.seed != null ? this.opts.seed : 1;
     this.quest = X.Campaign.quest(this.run.questId) || X.quests[0];
-    ensureHiroTextures(this); X.UI.installBusts(this);
+    X.Painted.install(this); ensureHiroTextures(this); X.UI.installBusts(this);
+    if (X.Painted.require && !X.Painted.require(this, ['hiro'])) return;
     const world = this.world = X.Campaign.buildWorld(this.run);
     this.game_ = world.game;
     const phase = questContext(this, this.quest);
@@ -224,18 +264,21 @@ class TravelScene extends Phaser.Scene {
     try { A.Music.playStory(this.quest.music); } catch (e) {}
     // The walkers, bobbing in step.
     this.walkers = [];
-    this.walkers.push(heroImage(this, 560, 690, 300, 100));
+    const hiroWalk = X.UI.paintedFigure(this, 'hiro', 560, 690, 300, 100, 'walk');
+    if (hiroWalk) this.walkers.push(hiroWalk);
     world.companions.forEach((c, i) => {
-      const key = A.Portraits.key(this, c);
-      this.walkers.push(this.add.image(410 - i * 120, 675 - i * 22, key).setOrigin(0.5, 1).setDisplaySize(180, 229).setDepth(98 - i));
+      const walker = X.UI.paintedFigure(this, c.companionKey, 410 - i * 120, 675 - i * 22, 285, 98 - i, 'walk');
+      if (walker) this.walkers.push(walker);
     });
     this.elapsed = 0;
-    this.events.on('update', (t, dt) => { this.elapsed += dt; if (this.pano.advance) this.pano.advance(dt, this.moving ? 120 : 0); this.walkers.forEach((w, i) => { w.y = w.__base != null ? w.__base + (this.moving ? Math.sin(this.elapsed / 112 + i * 1.7) * 3.5 : 0) : (w.__base = w.y); }); });
-    this.moving = true;
+    const advance = (t, dt) => { if (!this.isPortalReady() || this.paused) return; this.elapsed += dt; if (this.pano.advance) this.pano.advance(dt, this.moving ? 120 : 0); };
+    this.events.on('update', advance);
+    this.events.once('shutdown', () => this.events.off('update', advance));
+    this.moving = false;
     this.paused = false; this.time.paused = false;
     X.UI.corner(this);
     if (A.Portal && A.Portal.active) A.Portal.sync([this]);
-    this.play();
+    X.Painted.present(this, this.pano, () => { this.moving = true; this.play(); });
   }
   async play() {
     await wait(this, this.leg === 'midleg' ? 900 : 1400);
@@ -273,6 +316,7 @@ class TravelScene extends Phaser.Scene {
 class GraveScene extends Phaser.Scene {
   constructor() { super('Grave'); }
   init(d) { this.opts = d || {}; }
+  isPortalReady() { return false; }
   create() {
     this.run = this.opts.run || X.Run.load() || X.Run.fresh();
     this.run.phase = 'inn'; X.Run.save(this.run);

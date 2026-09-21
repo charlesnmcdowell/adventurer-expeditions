@@ -1,0 +1,1126 @@
+{
+  "hero": "hiro",
+  "registrationNote": "Body-unit scale is clip-authored; crouches, recoil, jumps and weapon extent do not redefine body size.",
+  "clips": [
+    {
+      "id": "idle",
+      "file": "idle.png",
+      "frames": 4,
+      "columns": 2,
+      "rows": 2,
+      "paired": false,
+      "status": "painted-source-reviewed-intake-pending",
+      "contactFramesProposed": [],
+      "releaseFrameProposed": 4,
+      "notes": "",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "bytes": 1947645,
+      "sha256": "23d392577ed9aa90da3b426daafefa0dc81232790d77751ec1de3a7e43636d36",
+      "contactFramesZeroBased": [],
+      "releaseFrameZeroBased": 3,
+      "durationMsDraft": 1200,
+      "impactDraft": {
+        "hitStopMs": 0,
+        "flash": {
+          "alpha": 0,
+          "color": "#ffffff"
+        },
+        "shakeAmplitude": 0,
+        "drift": {
+          "distancePx": 0,
+          "ease": "Quad.Out"
+        },
+        "greenlit": false,
+        "note": "Provisional; tune against registered painted playback."
+      },
+      "timingGreenlit": false,
+      "registration": {
+        "referenceHeight": 500
+      },
+      "durationsMs": [
+        280,
+        300,
+        280,
+        300
+      ]
+    },
+    {
+      "id": "walk",
+      "file": "walk.png",
+      "frames": 8,
+      "columns": 4,
+      "rows": 2,
+      "paired": false,
+      "status": "painted-source-reviewed-intake-pending",
+      "contactFramesProposed": [],
+      "releaseFrameProposed": 8,
+      "notes": "Eight poses present; gait/passing alternation needs playback validation before loop greenlight.",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "bytes": 2035016,
+      "sha256": "4579483e2aa55bb651511ba48c890d69d384ce303ff7206a1e87d81b074c1517",
+      "contactFramesZeroBased": [],
+      "releaseFrameZeroBased": 7,
+      "durationMsDraft": 900,
+      "impactDraft": {
+        "hitStopMs": 0,
+        "flash": {
+          "alpha": 0,
+          "color": "#ffffff"
+        },
+        "shakeAmplitude": 0,
+        "drift": {
+          "distancePx": 0,
+          "ease": "Quad.Out"
+        },
+        "greenlit": false,
+        "note": "Provisional; tune against registered painted playback."
+      },
+      "timingGreenlit": false,
+      "registration": {
+        "referenceHeight": 490
+      },
+      "durationsMs": [
+        80,
+        80,
+        85,
+        85,
+        80,
+        80,
+        85,
+        85
+      ]
+    },
+    {
+      "id": "draw",
+      "file": "draw.png",
+      "frames": 8,
+      "columns": 4,
+      "rows": 2,
+      "paired": false,
+      "status": "painted-source-reviewed-intake-pending",
+      "contactFramesProposed": [],
+      "releaseFrameProposed": 8,
+      "notes": "",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "bytes": 2267537,
+      "sha256": "a4b0695eda8c470f494733847708dcad300272967f6235a782151164dcccc412",
+      "contactFramesZeroBased": [],
+      "releaseFrameZeroBased": 7,
+      "durationMsDraft": 1000,
+      "impactDraft": {
+        "hitStopMs": 0,
+        "flash": {
+          "alpha": 0,
+          "color": "#ffffff"
+        },
+        "shakeAmplitude": 0,
+        "drift": {
+          "distancePx": 0,
+          "ease": "Quad.Out"
+        },
+        "greenlit": false,
+        "note": "Provisional; tune against registered painted playback."
+      },
+      "timingGreenlit": false,
+      "registration": {
+        "referenceHeight": 500
+      },
+      "durationsMs": [
+        100,
+        90,
+        90,
+        80,
+        65,
+        80,
+        100,
+        180
+      ]
+    },
+    {
+      "id": "short-draw",
+      "file": "short-draw.png",
+      "frames": 4,
+      "columns": 2,
+      "rows": 2,
+      "paired": false,
+      "status": "painted-source-reviewed-intake-pending",
+      "contactFramesProposed": [],
+      "releaseFrameProposed": 4,
+      "notes": "",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "bytes": 1884472,
+      "sha256": "4f4936c0297aa1aced8fe292b7fcb05db656cfd9f1b6fc5f6cb20f13a2274a90",
+      "contactFramesZeroBased": [],
+      "releaseFrameZeroBased": 3,
+      "durationMsDraft": 450,
+      "impactDraft": {
+        "hitStopMs": 0,
+        "flash": {
+          "alpha": 0,
+          "color": "#ffffff"
+        },
+        "shakeAmplitude": 0,
+        "drift": {
+          "distancePx": 0,
+          "ease": "Quad.Out"
+        },
+        "greenlit": false,
+        "note": "Provisional; tune against registered painted playback."
+      },
+      "timingGreenlit": false,
+      "registration": {
+        "referenceHeight": 500
+      },
+      "durationsMs": [
+        100,
+        80,
+        75,
+        150
+      ]
+    },
+    {
+      "id": "slash-l1",
+      "file": "slash-l1.png",
+      "frames": 6,
+      "columns": 3,
+      "rows": 2,
+      "paired": false,
+      "status": "painted-source-reviewed-intake-pending",
+      "contactFramesProposed": [
+        3
+      ],
+      "releaseFrameProposed": 6,
+      "notes": "",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "bytes": 2139735,
+      "sha256": "3904106a19eb87c3364789c0b63a50effb3e649760169606671c7e8dd4795b1c",
+      "contactFramesZeroBased": [
+        2
+      ],
+      "releaseFrameZeroBased": 5,
+      "durationMsDraft": 600,
+      "impactDraft": {
+        "hitStopMs": 60,
+        "flash": {
+          "alpha": 0.1,
+          "color": "#d9bdff"
+        },
+        "shakeAmplitude": 0.0015,
+        "drift": {
+          "distancePx": 12,
+          "ease": "Quad.Out"
+        },
+        "greenlit": false,
+        "note": "Provisional; tune against registered painted playback."
+      },
+      "timingGreenlit": false,
+      "registration": {
+        "referenceHeight": 486
+      },
+      "durationsMs": [
+        110,
+        100,
+        65,
+        75,
+        90,
+        150
+      ]
+    },
+    {
+      "id": "slash-l2",
+      "file": "slash-l2.png",
+      "frames": 6,
+      "columns": 3,
+      "rows": 2,
+      "paired": false,
+      "status": "painted-source-reviewed-intake-pending",
+      "contactFramesProposed": [
+        2,
+        4
+      ],
+      "releaseFrameProposed": 6,
+      "notes": "",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "bytes": 2110757,
+      "sha256": "fe42e9dd96b1aa63f2feebc17549644041289850b18b9b2cef2e9b211f1b5240",
+      "contactFramesZeroBased": [
+        1,
+        3
+      ],
+      "releaseFrameZeroBased": 5,
+      "durationMsDraft": 700,
+      "impactDraft": {
+        "hitStopMs": 70,
+        "flash": {
+          "alpha": 0.13,
+          "color": "#d9bdff"
+        },
+        "shakeAmplitude": 0.002,
+        "drift": {
+          "distancePx": 18,
+          "ease": "Quad.Out"
+        },
+        "greenlit": false,
+        "note": "Provisional; tune against registered painted playback."
+      },
+      "timingGreenlit": false,
+      "registration": {
+        "referenceHeight": 480
+      },
+      "durationsMs": [
+        120,
+        100,
+        65,
+        75,
+        90,
+        150
+      ]
+    },
+    {
+      "id": "slash-l3",
+      "file": "slash-l3.png",
+      "frames": 6,
+      "columns": 3,
+      "rows": 2,
+      "paired": false,
+      "status": "painted-source-reviewed-intake-pending",
+      "contactFramesProposed": [
+        3,
+        4
+      ],
+      "releaseFrameProposed": 6,
+      "notes": "",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "bytes": 2209708,
+      "sha256": "4fac7c453843336a38647f32328840aa3a9138ff1567a93c537d0082bf5e6bfd",
+      "contactFramesZeroBased": [
+        2,
+        3
+      ],
+      "releaseFrameZeroBased": 5,
+      "durationMsDraft": 800,
+      "impactDraft": {
+        "hitStopMs": 85,
+        "flash": {
+          "alpha": 0.16,
+          "color": "#d9bdff"
+        },
+        "shakeAmplitude": 0.0025,
+        "drift": {
+          "distancePx": 24,
+          "ease": "Cubic.Out"
+        },
+        "greenlit": false,
+        "note": "Provisional; tune against registered painted playback."
+      },
+      "timingGreenlit": false,
+      "registration": {
+        "referenceHeight": 485
+      },
+      "durationsMs": [
+        120,
+        115,
+        65,
+        80,
+        100,
+        170
+      ]
+    },
+    {
+      "id": "roll",
+      "file": "roll.png",
+      "frames": 6,
+      "columns": 3,
+      "rows": 2,
+      "paired": false,
+      "status": "painted-source-reviewed-intake-pending",
+      "contactFramesProposed": [],
+      "releaseFrameProposed": 6,
+      "notes": "",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "bytes": 2040762,
+      "sha256": "1b9c9458b89da110a24e1a571c1ac2f8b20daf70751354ab0b18c195c92f8325",
+      "contactFramesZeroBased": [],
+      "releaseFrameZeroBased": 5,
+      "durationMsDraft": 650,
+      "impactDraft": {
+        "hitStopMs": 0,
+        "flash": {
+          "alpha": 0,
+          "color": "#ffffff"
+        },
+        "shakeAmplitude": 0,
+        "drift": {
+          "distancePx": 0,
+          "ease": "Quad.Out"
+        },
+        "greenlit": false,
+        "note": "Provisional; tune against registered painted playback."
+      },
+      "timingGreenlit": false,
+      "registration": {
+        "referenceHeight": 500
+      },
+      "durationsMs": [
+        90,
+        80,
+        70,
+        80,
+        100,
+        140
+      ]
+    },
+    {
+      "id": "victory-sheath",
+      "file": "victory-sheath.png",
+      "frames": 8,
+      "columns": 4,
+      "rows": 2,
+      "paired": false,
+      "status": "painted-source-reviewed-intake-pending",
+      "contactFramesProposed": [],
+      "releaseFrameProposed": 8,
+      "notes": "",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "bytes": 2195664,
+      "sha256": "fe67a671de6ca5cd82be0622609a8106ccd188bdec1e222d16a0d8b965750b92",
+      "contactFramesZeroBased": [],
+      "releaseFrameZeroBased": 7,
+      "durationMsDraft": 1300,
+      "impactDraft": {
+        "hitStopMs": 0,
+        "flash": {
+          "alpha": 0,
+          "color": "#ffffff"
+        },
+        "shakeAmplitude": 0,
+        "drift": {
+          "distancePx": 0,
+          "ease": "Quad.Out"
+        },
+        "greenlit": false,
+        "note": "Provisional; tune against registered painted playback."
+      },
+      "timingGreenlit": false,
+      "registration": {
+        "referenceHeight": 500
+      },
+      "durationsMs": [
+        140,
+        130,
+        115,
+        100,
+        100,
+        110,
+        140,
+        250
+      ]
+    },
+    {
+      "id": "kneel",
+      "file": "kneel.png",
+      "frames": 4,
+      "columns": 2,
+      "rows": 2,
+      "paired": false,
+      "status": "painted-source-reviewed-intake-pending",
+      "contactFramesProposed": [],
+      "releaseFrameProposed": 4,
+      "notes": "",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "bytes": 1822647,
+      "sha256": "02bcd22f9fc13a777d092c86cd44d6c23e2d8c09312cb3ffeea1b94015c393cf",
+      "contactFramesZeroBased": [],
+      "releaseFrameZeroBased": 3,
+      "durationMsDraft": 700,
+      "impactDraft": {
+        "hitStopMs": 0,
+        "flash": {
+          "alpha": 0,
+          "color": "#ffffff"
+        },
+        "shakeAmplitude": 0,
+        "drift": {
+          "distancePx": 0,
+          "ease": "Quad.Out"
+        },
+        "greenlit": false,
+        "note": "Provisional; tune against registered painted playback."
+      },
+      "timingGreenlit": false,
+      "registration": {
+        "referenceHeight": 500
+      },
+      "durationsMs": [
+        180,
+        160,
+        200,
+        500
+      ]
+    },
+    {
+      "id": "aura-l1",
+      "file": "aura-l1.png",
+      "frames": 4,
+      "columns": 2,
+      "rows": 2,
+      "paired": false,
+      "status": "painted-source-reviewed-intake-pending",
+      "contactFramesProposed": [],
+      "releaseFrameProposed": 4,
+      "notes": "",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "bytes": 1783615,
+      "sha256": "e1f06d4173d1c7ad123db714d8575cb7de73623f0befcf3091dc1af2ae0375db",
+      "contactFramesZeroBased": [],
+      "releaseFrameZeroBased": 3,
+      "durationMsDraft": 700,
+      "impactDraft": {
+        "hitStopMs": 0,
+        "flash": {
+          "alpha": 0,
+          "color": "#ffffff"
+        },
+        "shakeAmplitude": 0,
+        "drift": {
+          "distancePx": 0,
+          "ease": "Quad.Out"
+        },
+        "greenlit": false,
+        "note": "Provisional; tune against registered painted playback."
+      },
+      "timingGreenlit": false,
+      "registration": {
+        "referenceHeight": 493
+      }
+    },
+    {
+      "id": "aura-l2",
+      "file": "aura-l2.png",
+      "frames": 4,
+      "columns": 2,
+      "rows": 2,
+      "paired": false,
+      "status": "painted-source-reviewed-intake-pending",
+      "contactFramesProposed": [],
+      "releaseFrameProposed": 4,
+      "notes": "",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "bytes": 1950898,
+      "sha256": "11f8a0796da288c9a32e22331062bac249c14dce7c40d26ced2768247cb22863",
+      "contactFramesZeroBased": [],
+      "releaseFrameZeroBased": 3,
+      "durationMsDraft": 800,
+      "impactDraft": {
+        "hitStopMs": 0,
+        "flash": {
+          "alpha": 0,
+          "color": "#ffffff"
+        },
+        "shakeAmplitude": 0,
+        "drift": {
+          "distancePx": 0,
+          "ease": "Quad.Out"
+        },
+        "greenlit": false,
+        "note": "Provisional; tune against registered painted playback."
+      },
+      "timingGreenlit": false,
+      "registration": {
+        "referenceHeight": 495
+      }
+    },
+    {
+      "id": "aura-l3",
+      "file": "aura-l3.png",
+      "frames": 4,
+      "columns": 2,
+      "rows": 2,
+      "paired": false,
+      "status": "painted-source-reviewed-intake-pending",
+      "contactFramesProposed": [],
+      "releaseFrameProposed": 4,
+      "notes": "",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "bytes": 2045883,
+      "sha256": "05c08413d338505b3d2ab83d23cd4fb3053812287ec844f6f12ef8c52ebb94a2",
+      "contactFramesZeroBased": [],
+      "releaseFrameZeroBased": 3,
+      "durationMsDraft": 900,
+      "impactDraft": {
+        "hitStopMs": 0,
+        "flash": {
+          "alpha": 0,
+          "color": "#ffffff"
+        },
+        "shakeAmplitude": 0,
+        "drift": {
+          "distancePx": 0,
+          "ease": "Quad.Out"
+        },
+        "greenlit": false,
+        "note": "Provisional; tune against registered painted playback."
+      },
+      "timingGreenlit": false,
+      "registration": {
+        "referenceHeight": 495
+      }
+    },
+    {
+      "id": "bite-leg-paired",
+      "file": "bite-leg-paired.png",
+      "frames": 10,
+      "columns": 5,
+      "rows": 2,
+      "paired": true,
+      "status": "painted-source-reviewed-intake-pending",
+      "contactFramesProposed": [
+        3
+      ],
+      "releaseFrameProposed": 7,
+      "notes": "Keep both actors on one timeline; never split pair into unrelated clips.",
+      "width": 1983,
+      "height": 793,
+      "mode": "RGB",
+      "bytes": 2056018,
+      "sha256": "0464b4a60665a2c53521f6bf5a3ef602669eb6f1fa35d626c5f567e08328e271",
+      "contactFramesZeroBased": [
+        2
+      ],
+      "releaseFrameZeroBased": 6,
+      "durationMsDraft": 1000,
+      "impactDraft": {
+        "hitStopMs": 60,
+        "flash": {
+          "alpha": 0.05,
+          "color": "#ffffff"
+        },
+        "shakeAmplitude": 0.001,
+        "drift": {
+          "distancePx": 0,
+          "ease": "Quad.Out"
+        },
+        "greenlit": false,
+        "note": "Provisional; tune after extraction/registration. Paired actors must not drift independently."
+      },
+      "timingGreenlit": false,
+      "registration": {
+        "referenceHeight": 340,
+        "anchorX": 115,
+        "groundY": 375,
+        "frames": [
+          {
+            "groundY": 375
+          },
+          {
+            "groundY": 375
+          },
+          {
+            "groundY": 375
+          },
+          {
+            "groundY": 375
+          },
+          {
+            "groundY": 375
+          },
+          {
+            "groundY": 340
+          },
+          {
+            "groundY": 340
+          },
+          {
+            "groundY": 340
+          },
+          {
+            "groundY": 340
+          },
+          {
+            "groundY": 340
+          }
+        ]
+      },
+      "opponentKinds": [
+        "wolf"
+      ]
+    },
+    {
+      "id": "bite-arm-paired",
+      "file": "bite-arm-paired.png",
+      "frames": 10,
+      "columns": 5,
+      "rows": 2,
+      "paired": true,
+      "status": "painted-source-reviewed-intake-pending",
+      "contactFramesProposed": [
+        3
+      ],
+      "releaseFrameProposed": 7,
+      "notes": "Keep both actors on one timeline; never split pair into unrelated clips.",
+      "width": 1983,
+      "height": 793,
+      "mode": "RGB",
+      "bytes": 2079381,
+      "sha256": "94b6009914c3648e6819c6dca410319e02e0c42db428ed11fbd6294607a0dd6d",
+      "contactFramesZeroBased": [
+        2
+      ],
+      "releaseFrameZeroBased": 6,
+      "durationMsDraft": 1100,
+      "impactDraft": {
+        "hitStopMs": 60,
+        "flash": {
+          "alpha": 0.05,
+          "color": "#ffffff"
+        },
+        "shakeAmplitude": 0.001,
+        "drift": {
+          "distancePx": 0,
+          "ease": "Quad.Out"
+        },
+        "greenlit": false,
+        "note": "Provisional; tune after extraction/registration. Paired actors must not drift independently."
+      },
+      "timingGreenlit": false,
+      "registration": {
+        "referenceHeight": 340,
+        "anchorX": 115,
+        "groundY": 375,
+        "frames": [
+          {
+            "groundY": 375
+          },
+          {
+            "groundY": 375
+          },
+          {
+            "groundY": 375
+          },
+          {
+            "groundY": 375
+          },
+          {
+            "groundY": 375
+          },
+          {
+            "groundY": 340
+          },
+          {
+            "groundY": 340
+          },
+          {
+            "groundY": 340
+          },
+          {
+            "groundY": 340
+          },
+          {
+            "groundY": 340
+          }
+        ]
+      },
+      "opponentKinds": [
+        "wolf"
+      ]
+    },
+    {
+      "id": "finisher-l1-paired",
+      "file": "finisher-l1-paired.png",
+      "frames": 3,
+      "columns": 3,
+      "rows": 1,
+      "paired": true,
+      "status": "painted-source-reviewed-intake-pending",
+      "contactFramesProposed": [
+        2
+      ],
+      "releaseFrameProposed": 3,
+      "notes": "Keep both actors on one timeline; never split pair into unrelated clips.",
+      "width": 2172,
+      "height": 724,
+      "mode": "RGB",
+      "bytes": 1900150,
+      "sha256": "272b6b0d274a7dca0dbafc643a132f3d3abf4bc25fd89f4d81341d2f553f421b",
+      "contactFramesZeroBased": [
+        1
+      ],
+      "releaseFrameZeroBased": 2,
+      "durationMsDraft": 1820,
+      "impactDraft": {
+        "hitStopMs": 140,
+        "flash": {
+          "alpha": 0.16,
+          "color": "#ead5ff"
+        },
+        "shakeAmplitude": 0.003,
+        "drift": {
+          "distancePx": 0,
+          "ease": "Quad.Out"
+        },
+        "greenlit": false,
+        "note": "Provisional; tune after extraction/registration. Paired actors must not drift independently."
+      },
+      "timingGreenlit": false,
+      "registration": {
+        "referenceHeight": 515,
+        "anchorX": 218,
+        "groundY": 604
+      },
+      "opponentKinds": [
+        "wolf"
+      ]
+    },
+    {
+      "id": "finisher-l2-paired",
+      "file": "finisher-l2-paired.png",
+      "frames": 3,
+      "columns": 3,
+      "rows": 1,
+      "paired": true,
+      "status": "painted-source-reviewed-intake-pending",
+      "contactFramesProposed": [
+        2
+      ],
+      "releaseFrameProposed": 3,
+      "notes": "Keep both actors on one timeline; never split pair into unrelated clips.",
+      "width": 2172,
+      "height": 724,
+      "mode": "RGB",
+      "bytes": 1936581,
+      "sha256": "b3a3e19ea32036ff4d108f278e47c8ef34575410395dfe693ce9976f11a80460",
+      "contactFramesZeroBased": [
+        1
+      ],
+      "releaseFrameZeroBased": 2,
+      "durationMsDraft": 1820,
+      "impactDraft": {
+        "hitStopMs": 140,
+        "flash": {
+          "alpha": 0.16,
+          "color": "#ead5ff"
+        },
+        "shakeAmplitude": 0.003,
+        "drift": {
+          "distancePx": 0,
+          "ease": "Quad.Out"
+        },
+        "greenlit": false,
+        "note": "Provisional; tune after extraction/registration. Paired actors must not drift independently."
+      },
+      "timingGreenlit": false,
+      "registration": {
+        "referenceHeight": 515,
+        "anchorX": 218,
+        "groundY": 604
+      },
+      "opponentKinds": [
+        "wolf"
+      ]
+    },
+    {
+      "id": "finisher-l3-paired",
+      "file": "finisher-l3-paired.png",
+      "frames": 3,
+      "columns": 3,
+      "rows": 1,
+      "paired": true,
+      "status": "painted-source-reviewed-intake-pending",
+      "contactFramesProposed": [
+        2
+      ],
+      "releaseFrameProposed": 3,
+      "notes": "Keep both actors on one timeline; never split pair into unrelated clips.",
+      "width": 2172,
+      "height": 724,
+      "mode": "RGB",
+      "bytes": 1778221,
+      "sha256": "860cdaf70f260b0ce09a6e860f6c578f409bbf5e23a834d728d3d3892d00d37f",
+      "contactFramesZeroBased": [
+        1
+      ],
+      "releaseFrameZeroBased": 2,
+      "durationMsDraft": 1820,
+      "impactDraft": {
+        "hitStopMs": 140,
+        "flash": {
+          "alpha": 0.16,
+          "color": "#ead5ff"
+        },
+        "shakeAmplitude": 0.003,
+        "drift": {
+          "distancePx": 0,
+          "ease": "Quad.Out"
+        },
+        "greenlit": false,
+        "note": "Provisional; tune after extraction/registration. Paired actors must not drift independently."
+      },
+      "timingGreenlit": false,
+      "registration": {
+        "referenceHeight": 515,
+        "anchorX": 218,
+        "groundY": 604
+      },
+      "opponentKinds": [
+        "wolf"
+      ]
+    },
+    {
+      "id": "intercept",
+      "file": "intercept-v2.png",
+      "frames": 6,
+      "columns": 3,
+      "rows": 2,
+      "paired": false,
+      "status": "painted-source-reviewed-intake-pending",
+      "contactFramesProposed": [
+        3
+      ],
+      "releaseFrameProposed": 6,
+      "notes": "v2 selected; sword tips have tight top margin: inspect before equal-grid extraction.",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "bytes": 2060742,
+      "sha256": "c32c1a0458258a3f07b32e605b6849e783b7ac2ce37879e420732391beadc115",
+      "contactFramesZeroBased": [
+        2
+      ],
+      "releaseFrameZeroBased": 5,
+      "durationMsDraft": 450,
+      "impactDraft": {
+        "hitStopMs": 45,
+        "flash": {
+          "alpha": 0.08,
+          "color": "#ffe6a8"
+        },
+        "shakeAmplitude": 0.001,
+        "drift": {
+          "distancePx": 4,
+          "ease": "Quad.Out"
+        },
+        "greenlit": false,
+        "note": "Provisional; tune against registered painted playback."
+      },
+      "timingGreenlit": false,
+      "registration": {
+        "referenceHeight": 470
+      },
+      "durationsMs": [
+        110,
+        100,
+        75,
+        80,
+        100,
+        160
+      ]
+    },
+    {
+      "id": "riposte",
+      "file": "riposte-v2.png",
+      "frames": 6,
+      "columns": 3,
+      "rows": 2,
+      "paired": false,
+      "status": "painted-source-reviewed-intake-pending",
+      "contactFramesProposed": [
+        3
+      ],
+      "releaseFrameProposed": 6,
+      "notes": "v2 selected: added sixth settling pose; use custom bounds for extended sword.",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "bytes": 1934104,
+      "sha256": "546804e18e485c64b6cf99dc132f5fedd4c5d2067025705123c4cf799b61807d",
+      "contactFramesZeroBased": [
+        2
+      ],
+      "releaseFrameZeroBased": 5,
+      "durationMsDraft": 520,
+      "impactDraft": {
+        "hitStopMs": 65,
+        "flash": {
+          "alpha": 0.12,
+          "color": "#d9bdff"
+        },
+        "shakeAmplitude": 0.0018,
+        "drift": {
+          "distancePx": 14,
+          "ease": "Quad.Out"
+        },
+        "greenlit": false,
+        "note": "Provisional; tune against registered painted playback."
+      },
+      "timingGreenlit": false,
+      "registration": {
+        "referenceHeight": 470
+      },
+      "durationsMs": [
+        110,
+        90,
+        65,
+        75,
+        95,
+        150
+      ]
+    },
+    {
+      "id": "hit-short",
+      "file": "hit-short-v2.png",
+      "frames": 3,
+      "columns": 3,
+      "rows": 1,
+      "paired": false,
+      "status": "painted-source-reviewed-intake-pending",
+      "contactFramesProposed": [],
+      "releaseFrameProposed": 3,
+      "notes": "v2 selected: drawn katana retained through recoil.",
+      "width": 2172,
+      "height": 724,
+      "mode": "RGB",
+      "bytes": 1852966,
+      "sha256": "6434044d19efebe693772621f6bc963550f885a2dfba10e4dd4eb7669e946016",
+      "contactFramesZeroBased": [],
+      "releaseFrameZeroBased": 2,
+      "durationMsDraft": 360,
+      "impactDraft": {
+        "hitStopMs": 55,
+        "flash": {
+          "alpha": 0.06,
+          "color": "#ffffff"
+        },
+        "shakeAmplitude": 0.0012,
+        "drift": {
+          "distancePx": 8,
+          "ease": "Quad.Out"
+        },
+        "greenlit": false,
+        "note": "Provisional; tune against registered painted playback."
+      },
+      "timingGreenlit": false,
+      "registration": {
+        "referenceHeight": 674
+      },
+      "durationsMs": [
+        90,
+        105,
+        155
+      ]
+    },
+    {
+      "id": "counter-l2",
+      "file": "counter-l2.png",
+      "frames": 6,
+      "columns": 3,
+      "rows": 2,
+      "paired": false,
+      "status": "painted-source-reviewed-intake-pending",
+      "contactFramesProposed": [
+        2,
+        4
+      ],
+      "releaseFrameProposed": 6,
+      "notes": "",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "bytes": 2169841,
+      "sha256": "da264dcc574f3d02f5a15a2e82181e9be61e5274647ab79dd971af582c8bf3a2",
+      "contactFramesZeroBased": [
+        1,
+        3
+      ],
+      "releaseFrameZeroBased": 5,
+      "durationMsDraft": 850,
+      "impactDraft": {
+        "hitStopMs": 65,
+        "flash": {
+          "alpha": 0.12,
+          "color": "#d9bdff"
+        },
+        "shakeAmplitude": 0.0018,
+        "drift": {
+          "distancePx": 14,
+          "ease": "Quad.Out"
+        },
+        "greenlit": false,
+        "note": "Provisional; tune against registered painted playback."
+      },
+      "timingGreenlit": false,
+      "registration": {
+        "referenceHeight": 480
+      }
+    },
+    {
+      "id": "counter-l3",
+      "file": "counter-l3.png",
+      "frames": 6,
+      "columns": 3,
+      "rows": 2,
+      "paired": false,
+      "status": "painted-source-reviewed-intake-pending",
+      "contactFramesProposed": [
+        2,
+        4
+      ],
+      "releaseFrameProposed": 6,
+      "notes": "",
+      "width": 1536,
+      "height": 1024,
+      "mode": "RGB",
+      "bytes": 2153615,
+      "sha256": "1bd850639aa2a47a5cf36d4a2025cd621b5a98174f5663e5750e72de1846d771",
+      "contactFramesZeroBased": [
+        1,
+        3
+      ],
+      "releaseFrameZeroBased": 5,
+      "durationMsDraft": 950,
+      "impactDraft": {
+        "hitStopMs": 80,
+        "flash": {
+          "alpha": 0.14,
+          "color": "#d9bdff"
+        },
+        "shakeAmplitude": 0.0024,
+        "drift": {
+          "distancePx": 20,
+          "ease": "Cubic.Out"
+        },
+        "greenlit": false,
+        "note": "Provisional; tune against registered painted playback."
+      },
+      "timingGreenlit": false,
+      "registration": {
+        "referenceHeight": 475
+      }
+    }
+  ]
+}

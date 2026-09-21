@@ -1,0 +1,117 @@
+{
+  "auditDate": "2026-09-20",
+  "kind": "conditional-exclusion-inventory-no-runtime-changes",
+  "baselineBytes": 19788571,
+  "budgetBytes": 20000000,
+  "baselineFileCount": 212,
+  "sourceMastersIncluded": false,
+  "exclusionsApplied": false,
+  "groups": {
+    "offscopeBeasts": {
+      "bytes": 707381,
+      "files": [
+        {
+          "rel": "assets/expedition/alpha/alpha-0.webp",
+          "b": 393088
+        },
+        {
+          "rel": "assets/expedition/alpha/alpha.json",
+          "b": 9811
+        },
+        {
+          "rel": "assets/expedition/boar/boar-0.webp",
+          "b": 295148
+        },
+        {
+          "rel": "assets/expedition/boar/boar.json",
+          "b": 9334
+        }
+      ]
+    },
+    "humanFoeBusts": {
+      "bytes": 361826,
+      "files": [
+        {
+          "rel": "assets/expedition/busts/foe_bandit.webp",
+          "b": 53056
+        },
+        {
+          "rel": "assets/expedition/busts/foe_bandit_b.webp",
+          "b": 52708
+        },
+        {
+          "rel": "assets/expedition/busts/foe_cutthroat.webp",
+          "b": 47830
+        },
+        {
+          "rel": "assets/expedition/busts/foe_hedge_mage.webp",
+          "b": 48562
+        },
+        {
+          "rel": "assets/expedition/busts/foe_storm_bailiff.webp",
+          "b": 48198
+        },
+        {
+          "rel": "assets/expedition/busts/foe_town_watch.webp",
+          "b": 55936
+        },
+        {
+          "rel": "assets/expedition/busts/foe_watch_captain.webp",
+          "b": 55536
+        }
+      ]
+    },
+    "otherQuestScenery": {
+      "bytes": 2086420,
+      "files": [
+        {
+          "rel": "assets/anime/travel/v1/runtime/city.webp",
+          "b": 304524
+        },
+        {
+          "rel": "assets/anime/travel/v1/runtime/marsh.webp",
+          "b": 345582
+        },
+        {
+          "rel": "assets/anime/travel/v1/runtime/ruins.webp",
+          "b": 312058
+        },
+        {
+          "rel": "assets/anime/v2/runtime/alley.webp",
+          "b": 363212
+        },
+        {
+          "rel": "assets/anime/v2/runtime/marsh.webp",
+          "b": 361934
+        },
+        {
+          "rel": "assets/anime/v2/runtime/ruins.webp",
+          "b": 399110
+        }
+      ]
+    },
+    "nightMusic": {
+      "bytes": 995806,
+      "files": [
+        {
+          "rel": "audio/music/night1.mp3",
+          "b": 995806
+        }
+      ]
+    }
+  },
+  "conditionalSavingsBytes": 4151433,
+  "conditionalRetainedBytes": 15637138,
+  "conditionalHeadroomBytes": 4362862,
+  "optionalTavernReplacement": {
+    "rel": "assets/anime/v2/runtime/tavern.webp",
+    "b": 279194
+  },
+  "conditions": [
+    "Remove boar and Alpha from tutorial encounters; lock later quests and handle existing saves before exclusions",
+    "Narrow shared Painted.preload actor IDs; restrict foe-bust preloading",
+    "Do not request city/marsh/ruins plates or night1 from any reachable scene",
+    "Keep full Bram set, battle_origin and edwyn2 music, forest/road/mountain plates and forest travel",
+    "Measure actual new atlas/vignette files before claiming any future package fits"
+  ]
+}

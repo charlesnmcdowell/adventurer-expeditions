@@ -1,0 +1,827 @@
+{
+  "auditDate": "2026-09-20",
+  "kind": "read-only existing-v1 coverage audit",
+  "newArtworkGenerated": false,
+  "runtimeChanged": false,
+  "scope": [
+    "wolf",
+    "thorn_lurker"
+  ],
+  "sourceBase": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v1\\beasts",
+  "actors": [
+    {
+      "id": "wolf",
+      "runtimeManifest": "assets/expedition/wolf/wolf.json",
+      "registrationManifest": "tools/art_registration/wolf.json",
+      "runtimeFrameCount": 38,
+      "runtimeStandingReference": 200,
+      "runtimeCanvas": {
+        "w": 526,
+        "h": 233,
+        "pivot": {
+          "x": 263,
+          "y": 230
+        }
+      },
+      "clips": [
+        {
+          "id": "idle",
+          "source": "wolf_idle.png",
+          "sourceSize": [
+            1536,
+            1024
+          ],
+          "sha256": "9c10af5d78f21410589192a47058db647bae79a4567f7da90f2e4f3d4b88e243",
+          "grid": [
+            2,
+            2
+          ],
+          "sourceFrameCount": 4,
+          "runtimeFrameCount": 4,
+          "allRuntimeFrameKeysPresent": true,
+          "contactFramesZeroBased": [],
+          "releaseFrameZeroBased": 3,
+          "durationsMs": [
+            140,
+            160,
+            140,
+            160
+          ],
+          "loop": true,
+          "referenceHeightSourcePixels": 475,
+          "measuredForegroundMargins": [
+            {
+              "frameZeroBased": 0,
+              "left": 72,
+              "top": 31,
+              "right": 2,
+              "bottom": 2
+            },
+            {
+              "frameZeroBased": 1,
+              "left": 59,
+              "top": 36,
+              "right": 33,
+              "bottom": 1
+            },
+            {
+              "frameZeroBased": 2,
+              "left": 75,
+              "top": 24,
+              "right": 17,
+              "bottom": 23
+            },
+            {
+              "frameZeroBased": 3,
+              "left": 25,
+              "top": 20,
+              "right": 34,
+              "bottom": 31
+            }
+          ],
+          "marginNote": "Small alpha-bound margins are inspection flags, not proof of a clipped body. Source transparency, particles, and shadows also affect bounds."
+        },
+        {
+          "id": "run",
+          "source": "wolf_run.png",
+          "sourceSize": [
+            1536,
+            1024
+          ],
+          "sha256": "88de7b5df15a9154e421b0873d85b0d9c273c9732e081736e21e13685a3f728d",
+          "grid": [
+            3,
+            2
+          ],
+          "sourceFrameCount": 6,
+          "runtimeFrameCount": 6,
+          "allRuntimeFrameKeysPresent": true,
+          "contactFramesZeroBased": [],
+          "releaseFrameZeroBased": 5,
+          "durationsMs": [
+            90,
+            90,
+            80,
+            80,
+            90,
+            90
+          ],
+          "loop": true,
+          "referenceHeightSourcePixels": 370,
+          "measuredForegroundMargins": [
+            {
+              "frameZeroBased": 0,
+              "left": 18,
+              "top": 145,
+              "right": 17,
+              "bottom": 30
+            },
+            {
+              "frameZeroBased": 1,
+              "left": 9,
+              "top": 151,
+              "right": 0,
+              "bottom": 30
+            },
+            {
+              "frameZeroBased": 2,
+              "left": 0,
+              "top": 163,
+              "right": 14,
+              "bottom": 96
+            },
+            {
+              "frameZeroBased": 3,
+              "left": 33,
+              "top": 100,
+              "right": 11,
+              "bottom": 95
+            },
+            {
+              "frameZeroBased": 4,
+              "left": 20,
+              "top": 102,
+              "right": 12,
+              "bottom": 93
+            },
+            {
+              "frameZeroBased": 5,
+              "left": 14,
+              "top": 103,
+              "right": 18,
+              "bottom": 91
+            }
+          ],
+          "marginNote": "Small alpha-bound margins are inspection flags, not proof of a clipped body. Source transparency, particles, and shadows also affect bounds."
+        },
+        {
+          "id": "leap",
+          "source": "wolf_leap.png",
+          "sourceSize": [
+            1536,
+            1024
+          ],
+          "sha256": "9de35d40e0720622992524c140dd1c5c65efe9ea4390e1c1fc148b5700ba214c",
+          "grid": [
+            3,
+            2
+          ],
+          "sourceFrameCount": 5,
+          "runtimeFrameCount": 5,
+          "allRuntimeFrameKeysPresent": true,
+          "contactFramesZeroBased": [
+            3
+          ],
+          "releaseFrameZeroBased": 4,
+          "durationsMs": [
+            160,
+            70,
+            80,
+            60,
+            110
+          ],
+          "loop": false,
+          "referenceHeightSourcePixels": 370,
+          "measuredForegroundMargins": [
+            {
+              "frameZeroBased": 0,
+              "left": 14,
+              "top": 119,
+              "right": 0,
+              "bottom": 33
+            },
+            {
+              "frameZeroBased": 1,
+              "left": 0,
+              "top": 56,
+              "right": 0,
+              "bottom": 35
+            },
+            {
+              "frameZeroBased": 2,
+              "left": 0,
+              "top": 76,
+              "right": 12,
+              "bottom": 88
+            },
+            {
+              "frameZeroBased": 3,
+              "left": 13,
+              "top": 81,
+              "right": 7,
+              "bottom": 80
+            },
+            {
+              "frameZeroBased": 4,
+              "left": 8,
+              "top": 113,
+              "right": 0,
+              "bottom": 75
+            }
+          ],
+          "marginNote": "Small alpha-bound margins are inspection flags, not proof of a clipped body. Source transparency, particles, and shadows also affect bounds."
+        },
+        {
+          "id": "bite",
+          "source": "wolf_bite_v2.png",
+          "sourceSize": [
+            1536,
+            1024
+          ],
+          "sha256": "b3ba8b399311a20f2beb4a3ac140c1374706f989c3da92018e004ad78ea69812",
+          "grid": [
+            2,
+            2
+          ],
+          "sourceFrameCount": 4,
+          "runtimeFrameCount": 4,
+          "allRuntimeFrameKeysPresent": true,
+          "contactFramesZeroBased": [
+            1
+          ],
+          "releaseFrameZeroBased": 3,
+          "durationsMs": [
+            80,
+            100,
+            110,
+            80
+          ],
+          "loop": false,
+          "referenceHeightSourcePixels": 500,
+          "measuredForegroundMargins": [
+            {
+              "frameZeroBased": 0,
+              "left": 36,
+              "top": 54,
+              "right": 0,
+              "bottom": 17
+            },
+            {
+              "frameZeroBased": 1,
+              "left": 0,
+              "top": 92,
+              "right": 13,
+              "bottom": 20
+            },
+            {
+              "frameZeroBased": 2,
+              "left": 42,
+              "top": 62,
+              "right": 0,
+              "bottom": 53
+            },
+            {
+              "frameZeroBased": 3,
+              "left": 0,
+              "top": 45,
+              "right": 16,
+              "bottom": 45
+            }
+          ],
+          "marginNote": "Small alpha-bound margins are inspection flags, not proof of a clipped body. Source transparency, particles, and shadows also affect bounds."
+        },
+        {
+          "id": "land_tumble",
+          "source": "wolf_land_tumble.png",
+          "sourceSize": [
+            1536,
+            1024
+          ],
+          "sha256": "a88ac4e793b7f50c54567a03dd47c1900215f9cf47b1b21ff911ac0151eff628",
+          "grid": [
+            3,
+            2
+          ],
+          "sourceFrameCount": 5,
+          "runtimeFrameCount": 5,
+          "allRuntimeFrameKeysPresent": true,
+          "contactFramesZeroBased": [],
+          "releaseFrameZeroBased": 4,
+          "durationsMs": [
+            70,
+            70,
+            80,
+            90,
+            150
+          ],
+          "loop": false,
+          "referenceHeightSourcePixels": 385,
+          "measuredForegroundMargins": [
+            {
+              "frameZeroBased": 0,
+              "left": 22,
+              "top": 69,
+              "right": 6,
+              "bottom": 23
+            },
+            {
+              "frameZeroBased": 1,
+              "left": 9,
+              "top": 107,
+              "right": 0,
+              "bottom": 34
+            },
+            {
+              "frameZeroBased": 2,
+              "left": 0,
+              "top": 92,
+              "right": 16,
+              "bottom": 9
+            },
+            {
+              "frameZeroBased": 3,
+              "left": 17,
+              "top": 73,
+              "right": 0,
+              "bottom": 63
+            },
+            {
+              "frameZeroBased": 4,
+              "left": 0,
+              "top": 58,
+              "right": 0,
+              "bottom": 66
+            }
+          ],
+          "marginNote": "Small alpha-bound margins are inspection flags, not proof of a clipped body. Source transparency, particles, and shadows also affect bounds."
+        },
+        {
+          "id": "overshoot_land",
+          "source": "wolf_overshoot_land.png",
+          "sourceSize": [
+            1536,
+            1024
+          ],
+          "sha256": "698c5cadc2b7deff5f8e24a539bb948c959aae2dcdb8d59826444cf5ab9eefbd",
+          "grid": [
+            2,
+            2
+          ],
+          "sourceFrameCount": 4,
+          "runtimeFrameCount": 4,
+          "allRuntimeFrameKeysPresent": true,
+          "contactFramesZeroBased": [
+            1
+          ],
+          "releaseFrameZeroBased": 3,
+          "durationsMs": [
+            80,
+            70,
+            120,
+            160
+          ],
+          "loop": false,
+          "referenceHeightSourcePixels": 500,
+          "measuredForegroundMargins": [
+            {
+              "frameZeroBased": 0,
+              "left": 17,
+              "top": 92,
+              "right": 0,
+              "bottom": 3
+            },
+            {
+              "frameZeroBased": 1,
+              "left": 0,
+              "top": 91,
+              "right": 14,
+              "bottom": 0
+            },
+            {
+              "frameZeroBased": 2,
+              "left": 20,
+              "top": 46,
+              "right": 3,
+              "bottom": 49
+            },
+            {
+              "frameZeroBased": 3,
+              "left": 24,
+              "top": 0,
+              "right": 24,
+              "bottom": 51
+            }
+          ],
+          "marginNote": "Small alpha-bound margins are inspection flags, not proof of a clipped body. Source transparency, particles, and shadows also affect bounds."
+        },
+        {
+          "id": "land_beside",
+          "source": "wolf_land_beside.png",
+          "sourceSize": [
+            2172,
+            724
+          ],
+          "sha256": "f0a5cbc89851cf811c3929a2773c137cb1ce6b3802fe05ee9b949302ecf0a7ba",
+          "grid": [
+            3,
+            1
+          ],
+          "sourceFrameCount": 3,
+          "runtimeFrameCount": 3,
+          "allRuntimeFrameKeysPresent": true,
+          "contactFramesZeroBased": [
+            1
+          ],
+          "releaseFrameZeroBased": 2,
+          "durationsMs": [
+            90,
+            100,
+            150
+          ],
+          "loop": false,
+          "referenceHeightSourcePixels": 600,
+          "measuredForegroundMargins": [
+            {
+              "frameZeroBased": 0,
+              "left": 28,
+              "top": 103,
+              "right": 0,
+              "bottom": 51
+            },
+            {
+              "frameZeroBased": 1,
+              "left": 40,
+              "top": 157,
+              "right": 0,
+              "bottom": 80
+            },
+            {
+              "frameZeroBased": 2,
+              "left": 0,
+              "top": 183,
+              "right": 26,
+              "bottom": 66
+            }
+          ],
+          "marginNote": "Small alpha-bound margins are inspection flags, not proof of a clipped body. Source transparency, particles, and shadows also affect bounds."
+        },
+        {
+          "id": "hit_short",
+          "source": "wolf_hit_short.png",
+          "sourceSize": [
+            2032,
+            774
+          ],
+          "sha256": "d6528656b81bb5a44e6555c0577f8343eb50c871eacf232d69bf3182703e0967",
+          "grid": [
+            3,
+            1
+          ],
+          "sourceFrameCount": 3,
+          "runtimeFrameCount": 3,
+          "allRuntimeFrameKeysPresent": true,
+          "contactFramesZeroBased": [
+            0
+          ],
+          "releaseFrameZeroBased": 2,
+          "durationsMs": [
+            70,
+            100,
+            140
+          ],
+          "loop": false,
+          "referenceHeightSourcePixels": 560,
+          "measuredForegroundMargins": [
+            {
+              "frameZeroBased": 0,
+              "left": 17,
+              "top": 200,
+              "right": 0,
+              "bottom": 52
+            },
+            {
+              "frameZeroBased": 1,
+              "left": 0,
+              "top": 104,
+              "right": 0,
+              "bottom": 72
+            },
+            {
+              "frameZeroBased": 2,
+              "left": 0,
+              "top": 212,
+              "right": 20,
+              "bottom": 51
+            }
+          ],
+          "marginNote": "Small alpha-bound margins are inspection flags, not proof of a clipped body. Source transparency, particles, and shadows also affect bounds."
+        },
+        {
+          "id": "down_fade",
+          "source": "wolf_down_fade.png",
+          "sourceSize": [
+            1536,
+            1024
+          ],
+          "sha256": "21bf4311269fb81c2ead921d710758dff937f843bc3602dca2a0bf2eeb572831",
+          "grid": [
+            2,
+            2
+          ],
+          "sourceFrameCount": 4,
+          "runtimeFrameCount": 4,
+          "allRuntimeFrameKeysPresent": true,
+          "contactFramesZeroBased": [],
+          "releaseFrameZeroBased": 3,
+          "durationsMs": [
+            140,
+            180,
+            180,
+            220
+          ],
+          "loop": false,
+          "referenceHeightSourcePixels": 510,
+          "measuredForegroundMargins": [
+            {
+              "frameZeroBased": 0,
+              "left": 54,
+              "top": 47,
+              "right": 35,
+              "bottom": 23
+            },
+            {
+              "frameZeroBased": 1,
+              "left": 3,
+              "top": 202,
+              "right": 22,
+              "bottom": 28
+            },
+            {
+              "frameZeroBased": 2,
+              "left": 44,
+              "top": 73,
+              "right": 4,
+              "bottom": 64
+            },
+            {
+              "frameZeroBased": 3,
+              "left": 21,
+              "top": 39,
+              "right": 30,
+              "bottom": 39
+            }
+          ],
+          "marginNote": "Small alpha-bound margins are inspection flags, not proof of a clipped body. Source transparency, particles, and shadows also affect bounds."
+        }
+      ]
+    },
+    {
+      "id": "plant",
+      "runtimeManifest": "assets/expedition/plant/plant.json",
+      "registrationManifest": "tools/art_registration/plant.json",
+      "runtimeFrameCount": 17,
+      "runtimeStandingReference": 200,
+      "runtimeCanvas": {
+        "w": 318,
+        "h": 222,
+        "pivot": {
+          "x": 159,
+          "y": 219
+        }
+      },
+      "clips": [
+        {
+          "id": "idle",
+          "source": "thorn_lurker_idle.png",
+          "sourceSize": [
+            1536,
+            1024
+          ],
+          "sha256": "c69233322ae8187572491cf8b74f88c523d7dc40ca3aae69dabaa91310d87cf2",
+          "grid": [
+            2,
+            2
+          ],
+          "sourceFrameCount": 4,
+          "runtimeFrameCount": 4,
+          "allRuntimeFrameKeysPresent": true,
+          "contactFramesZeroBased": [],
+          "releaseFrameZeroBased": 3,
+          "durationsMs": [
+            160,
+            180,
+            160,
+            180
+          ],
+          "loop": true,
+          "referenceHeightSourcePixels": 465,
+          "measuredForegroundMargins": [
+            {
+              "frameZeroBased": 0,
+              "left": 168,
+              "top": 15,
+              "right": 68,
+              "bottom": 2
+            },
+            {
+              "frameZeroBased": 1,
+              "left": 61,
+              "top": 7,
+              "right": 116,
+              "bottom": 2
+            },
+            {
+              "frameZeroBased": 2,
+              "left": 163,
+              "top": 18,
+              "right": 49,
+              "bottom": 15
+            },
+            {
+              "frameZeroBased": 3,
+              "left": 132,
+              "top": 10,
+              "right": 106,
+              "bottom": 15
+            }
+          ],
+          "marginNote": "Small alpha-bound margins are inspection flags, not proof of a clipped body. Source transparency, particles, and shadows also affect bounds."
+        },
+        {
+          "id": "lash",
+          "source": "thorn_lurker_lash.png",
+          "sourceSize": [
+            1536,
+            1024
+          ],
+          "sha256": "d7dbcbfce5aa3198101f7746bc416ecb82e4280ba82d62762e47ae3acec7e51a",
+          "grid": [
+            3,
+            2
+          ],
+          "sourceFrameCount": 6,
+          "runtimeFrameCount": 6,
+          "allRuntimeFrameKeysPresent": true,
+          "contactFramesZeroBased": [
+            3
+          ],
+          "releaseFrameZeroBased": 5,
+          "durationsMs": [
+            100,
+            180,
+            70,
+            60,
+            100,
+            150
+          ],
+          "loop": false,
+          "referenceHeightSourcePixels": 460,
+          "measuredForegroundMargins": [
+            {
+              "frameZeroBased": 0,
+              "left": 62,
+              "top": 44,
+              "right": 22,
+              "bottom": 13
+            },
+            {
+              "frameZeroBased": 1,
+              "left": 69,
+              "top": 23,
+              "right": 1,
+              "bottom": 12
+            },
+            {
+              "frameZeroBased": 2,
+              "left": 0,
+              "top": 101,
+              "right": 6,
+              "bottom": 13
+            },
+            {
+              "frameZeroBased": 3,
+              "left": 16,
+              "top": 91,
+              "right": 0,
+              "bottom": 41
+            },
+            {
+              "frameZeroBased": 4,
+              "left": 0,
+              "top": 76,
+              "right": 0,
+              "bottom": 36
+            },
+            {
+              "frameZeroBased": 5,
+              "left": 0,
+              "top": 21,
+              "right": 10,
+              "bottom": 34
+            }
+          ],
+          "marginNote": "Small alpha-bound margins are inspection flags, not proof of a clipped body. Source transparency, particles, and shadows also affect bounds."
+        },
+        {
+          "id": "hit_short",
+          "source": "thorn_lurker_hit_short.png",
+          "sourceSize": [
+            2172,
+            724
+          ],
+          "sha256": "824e74f0995378fe2a5cf4ee473d4d8521ea7bdd17a27ecdc2bd119244905feb",
+          "grid": [
+            3,
+            1
+          ],
+          "sourceFrameCount": 3,
+          "runtimeFrameCount": 3,
+          "allRuntimeFrameKeysPresent": true,
+          "contactFramesZeroBased": [
+            0
+          ],
+          "releaseFrameZeroBased": 2,
+          "durationsMs": [
+            70,
+            100,
+            160
+          ],
+          "loop": false,
+          "referenceHeightSourcePixels": 650,
+          "measuredForegroundMargins": [
+            {
+              "frameZeroBased": 0,
+              "left": 19,
+              "top": 34,
+              "right": 19,
+              "bottom": 32
+            },
+            {
+              "frameZeroBased": 1,
+              "left": 25,
+              "top": 90,
+              "right": 16,
+              "bottom": 32
+            },
+            {
+              "frameZeroBased": 2,
+              "left": 98,
+              "top": 34,
+              "right": 20,
+              "bottom": 32
+            }
+          ],
+          "marginNote": "Small alpha-bound margins are inspection flags, not proof of a clipped body. Source transparency, particles, and shadows also affect bounds."
+        },
+        {
+          "id": "down_fade",
+          "source": "thorn_lurker_down_fade.png",
+          "sourceSize": [
+            1536,
+            1024
+          ],
+          "sha256": "452e8ffad9b48994dda0fd3c1c5c22e75c5e4217490a8f6b3293488cb86b0c6c",
+          "grid": [
+            2,
+            2
+          ],
+          "sourceFrameCount": 4,
+          "runtimeFrameCount": 4,
+          "allRuntimeFrameKeysPresent": true,
+          "contactFramesZeroBased": [],
+          "releaseFrameZeroBased": 3,
+          "durationsMs": [
+            160,
+            180,
+            200,
+            240
+          ],
+          "loop": false,
+          "referenceHeightSourcePixels": 460,
+          "measuredForegroundMargins": [
+            {
+              "frameZeroBased": 0,
+              "left": 151,
+              "top": 21,
+              "right": 47,
+              "bottom": 0
+            },
+            {
+              "frameZeroBased": 1,
+              "left": 96,
+              "top": 81,
+              "right": 92,
+              "bottom": 10
+            },
+            {
+              "frameZeroBased": 2,
+              "left": 147,
+              "top": 0,
+              "right": 91,
+              "bottom": 24
+            },
+            {
+              "frameZeroBased": 3,
+              "left": 90,
+              "top": 6,
+              "right": 108,
+              "bottom": 8
+            }
+          ],
+          "marginNote": "Small alpha-bound margins are inspection flags, not proof of a clipped body. Source transparency, particles, and shadows also affect bounds."
+        }
+      ]
+    }
+  ],
+  "conclusion": "Existing wolf 38-frame and thorn-lurker 17-frame sets cover the requested ordinary full-fight categories and are already packed and wired. Additional species-specific Hiro finishers are new pass-two work, not a missing ordinary enemy animation set."
+}

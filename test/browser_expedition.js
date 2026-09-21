@@ -10,7 +10,9 @@
 'use strict';
 const http = require('node:http'), fs = require('node:fs'), path = require('node:path');
 const ROOT = path.join(__dirname, '..');
-const OUT = path.join(ROOT, 'test', 'reports', 'expedition');
+const reportName = process.env.EXPEDITION_REPORT_NAME || 'expedition';
+if (!/^[a-z0-9][a-z0-9_-]{0,79}$/i.test(reportName)) throw new Error('Unsafe EXPEDITION_REPORT_NAME');
+const OUT = path.join(ROOT, 'test', 'reports', reportName);
 fs.mkdirSync(OUT, { recursive: true });
 for (const f of fs.readdirSync(OUT)) if (f.endsWith('.png')) fs.unlinkSync(path.join(OUT, f));
 const args = Object.fromEntries(process.argv.slice(2).map(a => { const m = a.match(/^--([^=]+)(?:=(.*))?$/); return m ? [m[1], m[2] == null ? true : m[2]] : [a, true]; }));
@@ -86,16 +88,31 @@ function serve() {
       defeated: hud.defeatCardObj ? hud.defeatCardObj.againRect : null, tutorial: !!(s.quest && s.quest.tutorial),
       heroHp: E.heroUnit(enc) ? E.heroUnit(enc).chp : null, request: enc.request ? enc.request.skillId : null };
   });
-  const tap = async (r, why) => { console.log('tap', why, JSON.stringify(r)); await page.mouse.click(r.x + r.w / 2, r.y + r.h / 2); };
+  const point = async (x, y) => { const b = await page.locator('canvas').first().boundingBox(); return { x: b.x + x * b.width / 1280, y: b.y + y * b.height / 760 }; };
+  const tap = async (r, why) => { console.log('tap', why, JSON.stringify(r)); const p = await point(r.x + r.w / 2, r.y + r.h / 2); await page.mouse.click(p.x, p.y); };
 
   await page.waitForFunction(() => window.__game && window.__game.scene.getScenes(true).length, null, { timeout: 15000 });
+  await page.evaluate(() => {
+    const X = ADV.Expedition, trace = window.__journeyTrace = { heroChoices: [], cinematics: [], restores: [] };
+    const step = X.Encounter.step;
+    X.Encounter.step = function () { const r = step.apply(this, arguments); if (r.hero && r.choice) trace.heroChoices.push({ skill: r.choice.action.skillId, how: r.choice.how }); return r; };
+    const cinematic = X.UI.cinematic;
+    X.UI.cinematic = async function (scene, kind) {
+      trace.cinematics.push(kind);
+      const result = await cinematic.apply(this, arguments);
+      if (!scene.__cine) trace.restores.push({ clock: scene.time.timeScale, tweens: scene.tweens.timeScale, animations: scene.anims.globalTimeScale });
+      return result;
+    };
+  });
   await page.waitForTimeout(1200); await shot('start');
   if (process.env.PROBE) await page.evaluate(re => { const orig = ADV.ArtAssets.load; ADV.ArtAssets.load = function (u) { if (new RegExp(re).test(u)) console.log('PROBE ' + u + ' :: ' + new Error().stack.split('\n').slice(8, 14).join(' | ')); return orig.apply(this, arguments); }; }, process.env.PROBE);
   const t0 = Date.now();
-  const TARGET = Number(args.clears || 5);   // tutorial + one full cycle of the four loop quests
-  let lastKey = '', lastShot = 0, s = null, tappedSkillAt = 0, inns = 0, dialogues = 0, recruits = 0, innBuys = 0, embarks = 0, innShots = 0, defeats = 0;
+  const slice = await page.evaluate(() => !!(ADV.Expedition.slice && ADV.Expedition.slice.firstLevelOnly));
+  const TARGET = Number(args.clears || (slice ? 2 : 5));   // slice: the road twice (Replay); loop: tutorial + one full cycle
+  let lastKey = '', lastShot = 0, s = null, tappedSkillAt = 0, inns = 0, dialogues = 0, recruits = 0, innBuys = 0, embarks = 0, innShots = 0, defeats = 0, inspectHolds = 0;
   while (Date.now() - t0 < 900000) {
     await page.waitForTimeout(250);
+    if (errors.length) throw new Error('Page error during journey: ' + errors.join('\n'));
     s = await st(); if (!s || !s.scene) continue;
     const tag = s.scene + ':' + (s.questId || '') + ':' + (s.scene === 'Travel' ? (s.leg || '') : (s.wave == null ? '' : s.wave));
     if (tag !== lastKey) { lastKey = tag; await page.waitForTimeout(1800); await shot(tag.replace(/:/g, '-')); lastShot = Date.now(); }
@@ -111,12 +128,18 @@ function serve() {
       if (s.btn) { await tap(s.btn, 'embark'); embarks++; await page.waitForTimeout(700); }
       continue;
     }
-    if (s.scene === 'Travel') { if (s.dialogue) { dialogues++; await page.waitForTimeout(900); if (dialogues <= 6) await shot('travel-dialogue-' + dialogues); await page.mouse.click(640, 660); } continue; }
+    if (s.scene === 'Travel') { if (s.dialogue) { dialogues++; await page.waitForTimeout(900); if (dialogues <= 6) await shot('travel-dialogue-' + dialogues); await tap({ x: 640, y: 660, w: 0, h: 0 }, 'dialogue'); } continue; }
     if (s.scene === 'Grave') { if (s.btn) { await tap(s.btn, 'grave → inn'); await page.waitForTimeout(500); } continue; }
     if (s.scene !== 'Expedition' || s.over == null) continue;
     if (s.done && s.replay) { await page.waitForTimeout(400); await tap(s.replay, 'contract done →'); await page.waitForTimeout(600); continue; }
     if (s.defeated) { defeats++; await shot('defeat-' + defeats); await tap(s.defeated, 'again'); await page.waitForTimeout(600); continue; }
-    if (s.gate && s.gateRect) { await shot(tag.replace(/:/g, '-') + '-gate-' + (s.gateFor || 'x')); await tap(s.gateRect, 'gate ' + s.gateFor); await page.waitForTimeout(400); continue; }
+    if (s.gate && s.gateRect) {
+      await shot(tag.replace(/:/g, '-') + '-gate-' + (s.gateFor || 'x'));
+      if (/^inspect:/.test(s.gateFor || '')) {   // hold the icon until the info box has opened
+        const r = s.gateRect; console.log('hold', s.gateFor); const p = await point(r.x + r.w / 2, r.y + r.h / 2); await page.mouse.move(p.x, p.y); await page.mouse.down(); await page.waitForTimeout(3400); await shot(tag.replace(/:/g, '-') + '-info'); await page.mouse.up(); inspectHolds++; await page.waitForTimeout(400); continue;
+      }
+      await tap(s.gateRect, 'gate ' + s.gateFor); await page.waitForTimeout(400); continue;
+    }
     if (s.chip) { await tap(s.chip, 'confirm'); await page.waitForTimeout(400); continue; }
     if (s.arrow) { await tap(s.arrowRect, 'arrow'); await page.waitForTimeout(600); continue; }
     if (!s.over && s.glowing.length && !s.request && Date.now() - tappedSkillAt > 1500) { await tap(s.glowing[0].rect, 'skill ' + s.glowing[0].id); tappedSkillAt = Date.now(); continue; }
@@ -128,11 +151,24 @@ function serve() {
     }
   }
   console.log('summary', JSON.stringify({ inns, dialogues, recruits, innBuys, embarks, defeats, last: s }));
+  const evidence = await page.evaluate(() => {
+    const X = ADV.Expedition, scene = window.__game.scene.getScene('Inn'), loaded = X.Run.load();
+    return { trace: window.__journeyTrace, saved: loaded && { gold: loaded.gold, levels: loaded.levels, questsDone: loaded.questsDone, phase: loaded.phase },
+      final: scene.run && { gold: scene.run.gold, levels: scene.run.levels, questsDone: scene.run.questsDone, phase: scene.run.phase },
+      camera: { zoom: scene.cameras.main.zoom, clock: scene.time.timeScale, animations: scene.anims.globalTimeScale } };
+  });
+  const manual = evidence.trace.heroChoices.filter(c => ['finisher', 'god_aura', 'counter_attack'].includes(c.skill));
+  if (slice && (!manual.length || manual.some(c => c.how !== 'request'))) errors.push('Purchased skills did not fire exclusively from player requests');
+  if (slice && !inspectHolds && !args.at) errors.push('Guided 3-second inspection hold was not exercised');
+  if (JSON.stringify(evidence.saved) !== JSON.stringify(evidence.final)) errors.push('Saved gold/upgrades/progress differs from final inn state');
+  if (evidence.trace.restores.some(r => r.clock !== 1 || r.tweens !== 1 || r.animations !== 1)) errors.push('Cinematic speed did not restore');
+  if (evidence.camera.zoom !== 1 || evidence.camera.clock !== 1 || evidence.camera.animations !== 1) errors.push('Final camera/time state did not restore');
+  fs.writeFileSync(path.join(OUT, 'verification.json'), JSON.stringify({ generatedAt: new Date().toISOString(), shipOnly: !!SHIP, slice, targetClears: TARGET, width: vw, inns, dialogues, recruits, innBuys, embarks, defeats, inspectHolds, last: s, evidence, errors }, null, 2) + '\n');
   fs.writeFileSync(path.join(OUT, 'console.log'), logs.join('\n'));
   await browser.close(); srv.close();
   if (errors.length) { console.error('PAGE ERRORS:\n' + errors.join('\n')); process.exit(1); }
   if (!(s && s.scene === 'Inn' && s.done >= TARGET)) { console.error('the loop did not complete ' + TARGET + ' quests and return to the inn'); process.exit(1); }
-  if (recruits < 1) { console.error('no recruit was bought at the inn'); process.exit(1); }
-  if (dialogues < 2) { console.error('no travel dialogue seen'); process.exit(1); }
+  if (!slice && recruits < 1) { console.error('no recruit was bought at the inn'); process.exit(1); }
+  if (!slice && dialogues < 2) { console.error('no travel dialogue seen'); process.exit(1); }
   console.log('browser_expedition: ok');
 })().catch(e => { console.error(e); if ((global.__errors || []).length) console.error('PAGE ERRORS:\n' + global.__errors.join('\n')); try { fs.writeFileSync(path.join(OUT, 'console.log'), (global.__logs || []).join('\n')); } catch (x) {} process.exit(1); });

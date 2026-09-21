@@ -15,6 +15,219 @@ of small fixes within a day.
 
 ---
 
+## 2026-09-20 — Approved Astra v2 integrated; ready to test
+
+Integrated the 16-frame run, sheathed idle, six paired finishers, painted skill
+icons and animated solo/Bram inn. Preserved body registration, blade/foot bounds,
+single-contact combat events, saved progress and the existing first-road locks.
+Updated converter, figure timing, enemy/tier selection, HUD, inn and allowlist.
+Superseded runtime finishers are retired; source masters remain outside upload.
+
+Headless checks, two upload-only tutorial clears, all-six-finisher Phaser QA,
+icon interactions, inn lifecycle and desktop/emulated-phone startup pass.
+Build:17,828,737 bytes / 205 files,2,171,263 bytes below 20 MB. Local test port8742.
+[Integration details and evidence](ASTRA_V2_INTEGRATION_20260920.md).
+No publication or original Adventurer changes.
+
+---
+
+## 2026-09-20 — Astra: overhead wolf finisher and relaxed run, preview only
+
+The user rejected the wolf iaido and the run's stomach-clutch posture. Source
+selection now uses a 12-frame overhead slash, non-gory wolf dissolve, sword
+twirl and return to Hiro's existing drawn idle. Locomotion uses 16 new paintings
+with an upright chest, one hand resting at the hilt and the other arm swinging.
+The plant iaido and all other art selections remain unchanged.
+
+The source gallery supports both two-sheet timelines. Crop regions, body-scale
+references, foot registration and zero-based contact/recovery markers accompany
+the images. Source checks and review captures live in the source-art folder at
+`astra-v2/review/overhead-run-v4/`; details and prompts are linked in
+`astra-v2/REVISION_OVERHEAD_RUN_V4.md`. Selected Hiro content totals 64 frames
+across eight clips. No game integration or publication occurred.
+
+---
+
+## 2026-09-20 — Astra: integration paused; three source-animation corrections
+
+At Hiro's request, paused runtime intake and changed only the source/preview
+selection for wolf horizontal cleave, plant stem cut and locomotion. The wolf
+now uses a fast iaido midsection cut with low scabbard hand; the plant shows a
+corrected draw, horizontal stem cut and consistent sword-hand recovery. The
+walk is replaced by a 16-frame, 800 ms samurai run with the hand at the sheathed
+katana. Source regions/ground anchors were measured and the gallery supports
+the run's two eight-frame sheets. Other four finishers, icons, idle and inn
+compositions are unchanged.
+
+Source index: `../adventurer-expeditions-source-art/astra-v2/manifest.json`.
+Preview and details: `astra-v2/index.html` and `REVISION_IAIDO_RUN.md` in that
+source directory. Selected Hiro content is now 58 frames across 8 clips; source
+validation passes 28 PNG files including 13 reused originals. Runtime remains
+15,650,969 bytes / 195 files. Before the pause, only an inn conversion script and
+unused inn WebP candidates were created; no loader, scene, HUD or ship-manifest
+integration occurred. Those candidates are excluded from the upload.
+
+---
+
+## 2026-09-20 — Astra: art pass 2 delivered; Fable overwrite reconciled
+
+Fable was paused before repair. Restored the painted multiatlas loader,
+save normalization, complete Bram readiness checks, scenery/SDK start gating,
+paired contact and recoil sequencing, and nested cinematic recovery. Preserved
+manual skills, hold-to-read tutorial gates, locked inn options and replay.
+The tutorial uses ordinary wolves, thorn lurkers and a gray-wolf leader;
+unused later-level assets remain on disk and are excluded from the upload.
+
+Source delivery is complete outside the game: six paired finishers/36 drawings,
+a corrected eight-frame walk, four-frame sheathed idle, two inn paintings plus
+three transparent four-frame overlays, and four Hiro icons. Existing wolf/plant
+13-clip coverage was confirmed. New v2 art is source-only, awaiting intake.
+
+Current package: **15,650,969 bytes / 195 files**, cold gameplay download
+**11,931,986 bytes**, after audio **12,976,946 bytes**. Two upload-only tutorial
+clears passed with 12 manual casts and 20 cinematic restorations. Desktop and
+mobile browser startup plus delayed-scene SDK checks passed. Physical iPhone
+and actual CrazyGames portal remain unverified. See
+[complete repair and art report](ART_PASS_2_AND_REPAIR_20260920.md) and
+[final intake notes](art/astra-v2/ART_INTAKE_NOTES.md).
+
+The Fable notice below is retained as the incident record; its statement that
+these integrations are currently absent is superseded by this repair entry.
+
+---
+
+## 2026-09-20 — NOTICE from Fable: my 17:34 commit overwrote concurrent work — read before editing
+
+**Signed: Fable (Claude), 2026-09-20.** For Astra, and for whichever session comes
+next. No further changes from me until Hiro says otherwise.
+
+**What happened.** At 17:34 today I force-wrote my working copies of twelve files
+into this folder without diffing against the folder first: `js/expedition/scene.js`,
+`scenes_town.js`, `hud.js`, `ui_common.js`, `data.js`, `campaign.js`,
+`encounter.js`, `beats.js`, `test/expedition_sim.js`, `test/browser_expedition.js`,
+`docs/CHANGELOG.md`, `docs/ADVENTURER_EXPEDITIONS_GDD_v0.9.md`. Between my previous
+commit (2026-09-19 19:19) and then, another session had edited those same files as
+part of the animation-integration pass described in
+`docs/ANIMATION_INTEGRATION_REVIEW_20260919.md` (multi-page atlases, victory
+holding the sheathed frame, paired-finisher playback, Bram purchasable behind an
+art-readiness gate, save validation, HUD portrait cropped from the atlas). **Those
+edits to the eight code files and two tests are gone from disk.** The `.git` repo
+here has a single commit (2026-09-19 19:48) that predates them, so there is
+nothing to restore from. The files I wrote carry my 2026-09-20 changes only
+(entry below: "The first five minutes").
+
+**What survived of the other session's work:** `js/expedition/actors.js` (the
+rewritten actor), `run.js`, `index.html`, `js/expedition/media_hashes.js`,
+`package.json` (its scripts), all of `tools/` (`art_intake_v2.py`,
+`build_painted_art.py`, `prepare_art_registration.py`,
+`review_art_registration.py`, `build_media_hashes.js`, `art_registration/`,
+`ship_manifest.json`, `size_check.js`), the six atlases under
+`assets/expedition/{hiro,bram,wolf,boar,plant,alpha}/`, the new tests
+(`actor_animation_lifecycle.js`, `art_registration.js`, `expedition_recruit_gate.js`,
+`browser_recruit_gate.js`, `browser_startup_budget.js`, `portal_readiness.js`,
+`ship_budget_contract.js`, `harness.js` changes), `docs/art/astra-v2/`, and the
+review doc. Astra's 17:41 changelog entry above is intact.
+
+**State of the tree right now: inconsistent.** The surviving `actors.js` and tests
+expect the other session's `scene.js` / `hud.js` / `campaign.js`; mine are older.
+Measured on this machine at 17:5x: `expedition_sim` 13 pass, `art_registration`
+pass, `portal_readiness` pass, `ship_budget_contract` pass,
+`actor_animation_lifecycle` 15 pass / 1 fail, `expedition_recruit_gate` crashes
+(`campaign.js` lacks the readiness gate), `size_check` 19.79 MB of 20.0.
+Assume the game does not run cleanly end to end until the two sides are merged.
+
+**Also observed, not mine, flagged for Hiro:** `git status` shows edits to synced
+shared copies — `js/core/campaign.js`, `campaign2.js`, `campaign3.js`,
+`character.js`, `courtship.js`, `death.js`, `game.js`, `hiro.js`, `housing.js`,
+`relationships.js`, `save.js`, `util.js`, `world.js`, `js/ui/anime_identities.js`,
+`cutscenes.js`, `dialoguebox.js`, `portal.js`, `test/harness.js`. The next
+`node tools/sync_shared.js` will overwrite those (only `js/ui/portal.js` is owned
+here). Whoever made them should move the logic into `js/expedition/` or add the
+files to `LOCAL` in `tools/sync_shared.js` with a note.
+
+**What has to happen next (Hiro decides who):**
+1. Re-apply the other session's edits to the eight code files and two tests
+   (from its own workspace if it still has them; otherwise reconstructed from
+   `actors.js`, the new tests and the review doc).
+2. Merge my 2026-09-20 changes onto that: `X.manualSkills` + `Enc.tapPolicy`,
+   `X.UI.splitCameras` + `X.UI.cinematic` and the beat that calls it,
+   `X.hudIconR`, hold-to-read `infoChip` + `X.skillText`, per-skill first-use
+   gates + `gateUntilInspected`, `X.slice.firstLevelOnly` with the locked inn and
+   `replayRoad`, `X.UI.hiroFigure`. Every one is self-contained and marked with a
+   2026-09-20 comment in the file; the entry below lists them.
+3. Run everything in `package.json`'s `test` plus `test:ship`, then `git add -A
+   && git commit` before any further commit from any session.
+
+**Rules from this, effective now:**
+- **`git commit` first.** Before writing into this folder, commit the tree as it
+  is (`git add -A && git commit -m "pre-<who> <date>"`), so a bad write is one
+  `git checkout` away from undone.
+- **One session in the folder at a time.** If two must overlap, each edits only
+  files the other has not touched that day, and checks `git status` / mtimes
+  before every commit. Never force-write a file whose mtime is newer than your
+  copy of it.
+- **Diff before commit.** A commit that does not show the diff it is about to
+  make has not been checked.
+
+— Fable
+
+## 2026-09-20 — Astra art pass 2 source handoff (intake pending)
+
+Six Hiro/wolf-and-plant finisher sheets / 36 paired drawings are source-delivered
+and inspected. Existing beast coverage is reused: 13 clips / 55 drawings.
+Movement, four icons and inn production status, source hashes, inspection notes,
+conditional budget savings and code-reconciliation pointers are in
+[`docs/art/astra-v2/ART_INTAKE_NOTES.md`](art/astra-v2/ART_INTAKE_NOTES.md).
+Masters stay in the sibling source-art folder. This art pass changes no runtime,
+ship manifest, original website or export and preserves concurrent code work.
+
+## 2026-09-20 — The first five minutes: player-fired skills, cinematics, hold-to-read, locked slice
+
+From Hiro's playtest notes (the code side; Astra's list went out separately).
+Both suites pass; ship set 16.97 MB.
+
+**Skills no longer auto-fire.** `X.manualSkills`: Hiro's automatic policy may
+use only Katana Slash; God Aura, Counter Attack and Finisher fire from a tap
+(`Enc.requestSkill`) and nothing else. The headless sim stands in for the
+player with `Enc.tapPolicy` (Finisher → Counter → Aura when ready), which
+`runToEnd` uses when no policy is given. The "auto" rows of the whole-quest test
+now hold the no-purchase floor only — an untapped run is an untapped run.
+
+**Cinematic beats.** `X.UI.cinematic(scene, kind, focus, fn)`: a tapped skill
+(`cast`: world at 0.5×, camera 1.16 toward the action) and every killing blow
+(`kill`: 0.36×, 1.26) slow tweens, animations and timers and push the main
+camera in, then restore. The HUD lives on its own camera now
+(`X.UI.splitCameras`: everything at depth ≥ 800 is sorted onto it each frame),
+so it neither zooms nor drifts. Values in `X.cinematic`.
+
+**HUD.** Icon radius 18 → 26 (`X.hudIconR`). Skill info opens only on a
+3-second hold (`X.infoHoldMs`), stays while held, lingers 3 s after release
+(`X.infoLingerMs`); the box is 340 px wide at 16–20 px type and reads
+`X.skillText` — four skills rewritten for a fourth-grade reader. A tap on an
+icon still fires / unlocks as before.
+
+**Tutorial.** The game holds (no step is taken) the first time *each* bought
+skill is ready, pointing at its icon — was Finisher only. After the first
+unlock a new hold-to-inspect step (`gateUntilInspected`, a ring that fills over
+the hold time) until the info box has opened. Flags: `tutorial.used[id]`,
+`tutorial.inspectDone`.
+
+**The slice is the road.** `X.slice.firstLevelOnly`: `Camp.nextQuestId` returns
+`road`; the inn shows Hiro from the painted sheet (idle — no sheathed idle
+yet), his skills for levelling, *Next quest* and *Unlock a hero* locked, and
+*Replay the road*. Recruit busts are not shown (their combat art is the baked
+website bust, which the no-placeholder rule forbids). The travel road walks the
+painted `walk` loop instead of the plate; with no sheet loaded nothing is drawn
+rather than a plate. Flip the flag to reopen the loop.
+
+**Tests.** `browser_expedition.js` reads `X.slice` from the page: in the slice it
+plays the road, the inn, Replay, the road again (2 clears) and holds the icon
+for the inspect gate (`hold inspect:<id>` in the log); recruit/dialogue
+assertions apply only to the open loop. Sim: the quest-cycle assertion respects
+the lock. Fixed on the way: Phaser camera effects take `Sine.easeOut`, not
+`Sine.Out` (the tween spelling) — a wrong name throws inside the camera update
+and freezes the fight.
+
 ## 2026-09-19 — GDD v0.9 rev. b: two corrections from Hiro
 
 Same file, same day. (1) **Recruits get full painted sets to Hiro's standard**,

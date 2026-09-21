@@ -1,0 +1,164 @@
+{
+  "version": 1,
+  "canvas": {
+    "width": 1280,
+    "height": 760
+  },
+  "backgrounds": {
+    "inn-hiro-solo": {
+      "file": "inn-hiro-solo.webp",
+      "actors": [
+        "hiro"
+      ],
+      "placements": [
+        {
+          "effect": "inn-candle-flame",
+          "x": 526.708,
+          "y": 344.596,
+          "phaseOffsetMs": 0
+        },
+        {
+          "effect": "inn-stew-steam",
+          "x": 628.986,
+          "y": 354.037,
+          "phaseOffsetMs": 0
+        },
+        {
+          "effect": "inn-hearth-fire",
+          "x": 1124.638,
+          "y": 301.325,
+          "phaseOffsetMs": 0,
+          "clipRect": {
+            "x": 1053.83,
+            "y": 217.143,
+            "w": 145.549,
+            "h": 92.836
+          }
+        }
+      ],
+      "source": "inn-hiro-solo-base.png",
+      "sourceSha256": "a4ef0c75e9886175b8fd2ccc0f6cc11ac7650d06e9850c059979625102705c2b"
+    },
+    "inn-hiro-bram": {
+      "file": "inn-hiro-bram.webp",
+      "actors": [
+        "hiro",
+        "bram"
+      ],
+      "placements": [
+        {
+          "effect": "inn-candle-flame",
+          "x": 663.602,
+          "y": 354.824,
+          "phaseOffsetMs": 0
+        },
+        {
+          "effect": "inn-stew-steam",
+          "x": 592.795,
+          "y": 365.052,
+          "phaseOffsetMs": 0
+        },
+        {
+          "effect": "inn-stew-steam",
+          "x": 729.689,
+          "y": 366.625,
+          "phaseOffsetMs": 800
+        },
+        {
+          "effect": "inn-hearth-fire",
+          "x": 1124.638,
+          "y": 301.325,
+          "phaseOffsetMs": 0,
+          "clipRect": {
+            "x": 1053.83,
+            "y": 217.143,
+            "w": 145.549,
+            "h": 92.836
+          }
+        }
+      ],
+      "source": "inn-hiro-bram-base.png",
+      "sourceSha256": "c37912cc8b7f8c5166ab761b7a0c18544209710b15c6763c092f104a5d86288a"
+    }
+  },
+  "effects": {
+    "inn-candle-flame": {
+      "file": "inn-candle-flame.webp",
+      "frameWidth": 64,
+      "frameHeight": 96,
+      "frames": 4,
+      "originX": 0.5,
+      "originY": 0.7291666666666666,
+      "displayWidth": 25.176,
+      "displayHeight": 37.764,
+      "opacity": 0.8,
+      "durationsMs": [
+        220,
+        180,
+        260,
+        200
+      ],
+      "order": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "source": "inn-candle-flame-loop.png",
+      "sourceSha256": "38084281dda27f5eb3636547dadfb7c267972388563330bf58fb5452431858f2",
+      "alpha": true
+    },
+    "inn-stew-steam": {
+      "file": "inn-stew-steam.webp",
+      "frameWidth": 108,
+      "frameHeight": 144,
+      "frames": 4,
+      "originX": 0.5009208103130756,
+      "originY": 0.8674033149171271,
+      "displayWidth": 59.809,
+      "displayHeight": 79.745,
+      "opacity": 0.16,
+      "durationsMs": [
+        600,
+        550,
+        650,
+        600
+      ],
+      "order": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "source": "inn-stew-steam-loop.png",
+      "sourceSha256": "32ed981888b608f4cd0dbbec2363a63331f255d0fa738801868a4e7d915a174c",
+      "alpha": true
+    },
+    "inn-hearth-fire": {
+      "file": "inn-hearth-fire.webp",
+      "frameWidth": 171,
+      "frameHeight": 256,
+      "frames": 4,
+      "originX": 0.5,
+      "originY": 0.8385416666666666,
+      "displayWidth": 96.676,
+      "displayHeight": 145.014,
+      "opacity": 0.5,
+      "durationsMs": [
+        220,
+        120,
+        200,
+        240
+      ],
+      "order": [
+        0,
+        2,
+        3,
+        2
+      ],
+      "source": "inn-hearth-fire-loop.png",
+      "sourceSha256": "902fb862c493ba7a4e1b57f3e98ea79f31ef7aae41339c452e0d860d8f669d3e",
+      "alpha": true
+    }
+  }
+}

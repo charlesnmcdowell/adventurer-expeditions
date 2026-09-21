@@ -1,7 +1,7 @@
 // Adventurer: Expeditions — actors on the foreground band.
 // An Actor owns one sprite (a sheet, or a one-frame placeholder), its shadow,
 // floating level tag + HP bar, and status badges. It plays named clips and
-// resolves a promise when the clip releases. With painted sheets the clip is a
+// resolves a promise after the clip's recovery. With painted sheets the clip is a
 // frame animation with tagged contact frames; until then, the same clip names
 // are performed as motion on the placeholder (the website's portrait-motion
 // vocabulary: lunge, recoil, hit-stop, arcs), so the director never changes.
@@ -32,8 +32,8 @@ class Actor {
     this.level = opts.level || 1;
     this.alive = true;
     // A painted sheet from tools/art_intake.py: { key, clips, canvas, standing }.
-    // Every frame shares the hero canvas whose bottom centre is the ground pivot
-    // (GDD §10.3 registration), so origin (0.5, 1) holds across clips.
+    // Every frame shares an actor canvas and an authored ground pivot (GDD
+    // §10.3 registration). Older sheets default to the bottom-centre pivot.
     this.sheet = opts.sheet || null;
     this.height = opts.height || 300;
 
@@ -48,9 +48,22 @@ class Actor {
       this.img = scene.add.image(0, 0, opts.texture, opts.frame).setOrigin(0.5, 1);
       s = this.height / this.img.height;
     }
-    this.img.setScale(s * (opts.flipX ? -1 : 1), s);
+    this._baseScaleX = s * (opts.flipX ? -1 : 1);
+    this._baseScaleY = s;
+    this.img.setScale(this._baseScaleX, this._baseScaleY);
+    this._playback = null;
+    this._destroyed = false;
     if (opts.tint) { this.img.setTint(opts.tint); this.img.__baseTint = opts.tint; }
     this.root.add([this.shadow, this.img]);
+    this.root.once('destroy', () => {
+      this._destroyed = true; this.cancelPlayback();
+      if (scene.events) scene.events.off('update', this.syncPause, this);
+    });
+    if (scene.events) scene.events.on('update', this.syncPause, this);
+    if (this.sheet && this.sheet.canvas && this.sheet.canvas.pivot) {
+      const canvas = this.sheet.canvas;
+      this.img.setOrigin(canvas.pivot.x / canvas.w, canvas.pivot.y / canvas.h);
+    }
     this.badges = new Map();
     this.buildPlates(scene);
     if (this.sheet) this.idle();
@@ -58,7 +71,7 @@ class Actor {
 
   // ---------------------------------------------------------------- plates
   buildPlates(scene) {
-    const w = 132, top = -this.height - 14;
+    const w = 132, top = -this.height - 42;
     const plate = scene.add.container(0, top);
     this.tag = T().text(scene, 0, 0, '[Lvl.' + this.level + ']', { size: 12, ox: 0.5, color: '#f4eee0', display: true });
     this.tag.setStroke('#000000', 3);
@@ -115,7 +128,7 @@ class Actor {
 
   layoutBadges() {
     let i = 0;
-    for (const b of this.badges.values()) { b.setPosition(-this.height * 0.28 + i * 26, -this.height - 34); i++; }
+    for (const b of this.badges.values()) { b.setPosition(-this.height * 0.28 + i * 26, -this.height - 64); i++; }
   }
 
   pulseBadge(kind) {
@@ -132,85 +145,242 @@ class Actor {
   contactPoint(other) { return { x: (this.root.x + other.root.x) / 2, y: this.root.y - this.height * 0.4 }; }
 
   // ---------------------------------------------------------------- clips
-  // Every clip resolves when it releases. `opts.onContact` fires at the
-  // contact moment so the director can apply impact presentation exactly then.
+  // `opts.onContact` fires at contact, `opts.onRelease` at the release frame,
+  // and the promise resolves after recovery so another clip cannot cut it off.
   play(clip, opts) {
     opts = opts || {};
     const sheetClip = this.sheet ? this.sheetClipFor(clip, opts) : null;
-    if (sheetClip) return this.playSheet(sheetClip, clip, opts);
+    if (sheetClip) {
+      const playing = this.playSheet(sheetClip, clip, opts);
+      return clip === 'down_fade' ? playing.then(() => this._destroyed ? undefined : this.fadeOut()) : playing;
+    }
     const fn = Actor.PLACEHOLDER[clip];
     if (!fn) return Promise.resolve();
     return new Promise(resolve => fn.call(this, this.scene, opts, resolve));
   }
 
-  // Director clip name → painted clip id (X.clipFor maps the vocabulary; a
-  // clip the sheet lacks falls back to placeholder motion, so partial
-  // deliveries play).
+  // Exact actor vocabulary wins before Hiro's aliases. Bram and the beasts use
+  // underscores in their own manifests, so accept either separator at intake.
   sheetClipFor(clip, opts) {
-    const id = X.clipFor ? X.clipFor(clip, opts) : clip;
-    return id && this.sheet.clips[id] ? id : null;
+    if (!this.sheet) return null;
+    opts = opts || {};
+    const available = this.sheet.clips, level = Math.max(1, Math.min(3, opts.level || 1));
+    const aliases = {
+      enter: ['walk', 'run', 'idle'], short_draw: ['short-draw', 'draw'],
+      slash: ['slash-l' + level, 'slash-l1', 'attack', 'attack-light', 'bite'],
+      slash_wide: ['slash-l3', 'slash-l1', 'slash', 'attack'],
+      hit_short: ['hit-short', 'hit-heavy', 'hit'], stagger: ['hit-short', 'hit-heavy', 'hit'],
+      bite_grip: [opts.arm ? 'bite-arm-paired' : 'bite-leg-paired', opts.arm ? 'bite-arm' : 'bite-leg', 'bite-paired', 'hit-short', 'hit'],
+      victory: ['victory-sheath', 'victory'], kneel: ['kneel', 'down'],
+      aura: ['aura-l' + level, 'aura-l1', 'cast'],
+      stance: ['intercept', 'cast', 'counter-l' + Math.max(2, level)],
+      cast: ['cast', 'aura-l1'], roll: ['roll', 'overshoot-land', 'land-tumble', 'hit-short'],
+      finisher: ['finisher-l' + level + '-paired', 'finisher-' + (opts.target && ['wolf', 'boar'].includes(opts.target.kind) ? 'quadruped' : opts.target && opts.target.kind), 'slash-l' + level, 'slash-l1', 'slash', 'attack'],
+      charge: ['charge', 'run', 'leap'], pounce: ['pounce', 'leap'],
+      land_tumble: ['land-tumble', 'down', 'hit'], overshoot_land: ['overshoot-land', 'land-tumble', 'hit'],
+      land_beside: ['land-beside', 'land-tumble', 'idle'], lash_back: ['recover', 'idle'],
+      down_fade: ['down-fade', 'down'], enrage: ['enrage', 'idle'], stalk: ['stalk', 'idle'],
+    };
+    const candidates = [clip, X.clipFor ? X.clipFor(clip, opts) : null, ...(aliases[clip] || [])];
+    for (const candidate of candidates) {
+      if (!candidate) continue;
+      for (const id of [candidate, candidate.replace(/_/g, '-'), candidate.replace(/-/g, '_')]) {
+        const c = available[id];
+        if (c && (!c.paired || this.canPair(c, clip, opts))) return id;
+      }
+    }
+    // Missing painted variants stay painted; do not deform a whole body as a
+    // portrait puppet. The release contract still lets the director progress.
+    if (available.idle) return 'idle';
+    return null;
   }
 
-  // Idle loop; the resting state every other clip returns to.
+  canPair(c, clip, opts) {
+    const target = opts.target;
+    if (!target || !target.alive || target._destroyed) return false;
+    // Sep20: every resolved kill may finish, not only the wave's last foe.
+    if (/finisher/.test(clip) && !opts.lethal) return false;
+    if (!Array.isArray(c.opponentKinds) || !c.opponentKinds.includes(target.kind)) return false;
+    const ch = target.unit && target.unit.ch;
+    // Encounter variants may share an exact painted identity while their
+    // combat key and stats differ (for example the gray road-wolf leader).
+    const key = ch && (ch.expeditionArtIdentity || ch.expeditionKey);
+    if (c.opponentKeys && !c.opponentKeys.includes(key)) return false;
+    // A gray wolf painted into the pair cannot double as the green blight wolf.
+    if (target.img.__baseTint != null) return false;
+    if (target.kind === 'wolf' && key && !c.opponentKeys && key !== 'dire_wolf') return false;
+    return true;
+  }
+
+  syncPause() {
+    if (this._destroyed || !this.img.anims) return;
+    const clock = this.scene.time;
+    const paused = !!(this.scene.paused || (clock && clock.paused) || this.scene.__paintedHitStopCount > 0 || (clock && clock.now < (this.scene.__paintedHitStopUntil || 0)));
+    if (paused) {
+      if (!this.img.anims.isPaused) { this.img.anims.pause(); this._pausedByScene = true; }
+    } else if (this._pausedByScene) { this.img.anims.resume(); this._pausedByScene = false; }
+  }
+
+  resetImageTransform() {
+    this.scene.tweens.killTweensOf(this.img);
+    this.img.setScale(this._baseScaleX, this._baseScaleY);
+    this.img.setPosition(0, 0).setAngle(0);
+  }
+
+  cancelPlayback() {
+    if (this._playback) this._playback.cancel();
+  }
+
+  // Victory is a persistent rest state until the next action. An arriving
+  // idle-sheathed atlas can loop it; older deliveries hold the closing frame.
   idle() {
-    if (!this.sheet || !this.alive) return;
-    const c = this.sheet.clips.idle; if (!c) return;
-    this.img.play(this.animKey('idle'), true);
+    if (!this.sheet || !this.alive || this._destroyed) return;
+    const sheathed = this.sheet.clips['idle-sheathed'] || this.sheet.clips.idle_sheathed;
+    if (this._sheathed && !sheathed) return;
+    const id = this._sheathed ? (this.sheet.clips['idle-sheathed'] ? 'idle-sheathed' : 'idle_sheathed') : 'idle';
+    if (!this.sheet.clips[id]) return;
+    this.resetImageTransform();
+    this.img.play(this.animKey(id), true);
+    this.syncPause();
   }
 
   animKey(id) {
     const key = this.sheet.key + ':' + id, scene = this.scene, c = this.sheet.clips[id];
     if (!scene.anims.exists(key)) {
-      const ms = c.frameMs || Math.round((c.durationMs || c.frames.length * 100) / c.frames.length);
-      scene.anims.create({ key, frames: c.frames.map(f => ({ key: this.sheet.key, frame: f, duration: ms })), repeat: c.loop ? -1 : 0 });
+      const explicit = c.frameDurationsMs || (Array.isArray(c.frameMs) ? c.frameMs : null);
+      const total = c.durationMs || c.durationMsDraft || c.frames.length * (Number(c.frameMs) || 100);
+      const durations = c.frames.map((f, i) => explicit ? explicit[i] : total / c.frames.length);
+      // Bundled Phaser treats AnimationFrame.duration as the whole frame hold,
+      // not an addition. Set duration too so progress/complete metadata agrees.
+      scene.anims.create({ key, frames: c.frames.map((f, i) => ({ key: this.sheet.key, frame: f, duration: Math.max(1, Number(durations[i]) || total / c.frames.length) })),
+        duration: durations.reduce((sum, n) => sum + (Math.max(1, Number(n)) || total / c.frames.length), 0), repeat: c.loop ? -1 : 0 });
     }
     return key;
   }
 
-  // Frame playback with Astra's zero-based, clip-local marks (GDD §10.3):
-  // onContact at the first contact frame (frame 0 included), onHit(k) for any
-  // further contact, the promise resolves at the release frame while the
-  // frames run out to the end, then idle. Impact drift moves the root forward
-  // over the contact and back after release (X.impact overrides the draft).
+  // One playback owns all callbacks and root drift. Release is a contact-side
+  // notification; awaiting play waits for the recovery frames to finish. This
+  // prevents the next combat action from being reset by the previous clip.
   playSheet(id, clip, opts) {
+    this.cancelPlayback();
+    if (this._destroyed) return Promise.resolve();
+    this.resetImageTransform();
+    this.img.anims.stop();
     const c = this.sheet.clips[id], scene = this.scene, key = this.animKey(id);
     const imp = (X.impact && X.impact[id]) || c.impact || {};
-    const drift = imp.drift && imp.drift.distancePx ? imp.drift.distancePx : 0;
-    // A looping locomotion clip: play while the root moves, then idle.
-    if (c.loop) {
-      return (async () => {
-        if (opts.from != null) this.root.x = opts.from;
-        this.img.play(key, true);
-        const to = opts.x != null ? opts.x : (clip === 'enter' ? this.home.x : this.root.x + 200);
-        if (to !== this.root.x) await this.tween({ x: to }, opts.duration || 700, clip === 'enter' ? 'Sine.Out' : 'Sine.InOut');
-        if (clip !== 'walk' || opts.thenIdle !== false) this.idle();
-      })();
-    }
+    const drift = !c.paired && imp.drift ? Number(imp.drift.distancePx) || 0 : 0;
+    if (!['walk', 'enter', 'idle', 'victory'].includes(clip)) this._sheathed = false;
     return new Promise(resolve => {
-      const contacts = (c.contact || []).slice();
-      const release = c.release != null ? c.release : c.frames.length - 1;
-      let hits = 0, released = false;
-      const at = (i) => {
+      let ended = false, released = false, hits = 0;
+      const target = c.paired ? opts.target : null, targetVisible = target && target.root.visible;
+      const originX = this.root.x;
+      const pairedFinish = !!(target && /finisher/.test(clip) && opts.lethal);
+      // Pair canvases are registered on the hero. Close to the embedded foe's
+      // authored offset before replacing the separate actor, rather than making
+      // a distant foe teleport into the contact pose. Metadata can tune each pair.
+      const pairDistance = c.pairTargetDistance != null ? c.pairTargetDistance : this.height * (c.pairTargetDistanceRatio || 0.65);
+      const pairX = pairedFinish ? target.root.x - pairDistance * this.facing : originX;
+      const pairApproach = pairedFinish && Math.abs(pairX - originX) > 24;
+      const approaching = !c.paired && opts.target && /^(slash|slash_wide|riposte|finisher|leap|pounce|charge)$/.test(clip);
+      const attacking = /^(slash|slash_wide|riposte|finisher)$/.test(clip);
+      const returning = /^(land_tumble|land_beside|overshoot_land|lash_back)$/.test(clip);
+      const reach = c.contactDistance || this.height * (attacking ? 0.55 : 0.34) + (opts.target ? opts.target.height * 0.2 : 0);
+      const contactX = approaching ? opts.target.root.x - reach * this.facing : originX;
+      const contacts = [...new Set(c.contact || c.contactFramesZeroBased || [])].filter(n => Number.isInteger(n) && n >= 0 && n < c.frames.length).sort((a, b) => a - b);
+      const release = Math.max(0, Math.min(c.frames.length - 1, c.release != null ? c.release : c.releaseFrameZeroBased != null ? c.releaseFrameZeroBased : c.frames.length - 1));
+      const motion = new Set();
+      const detach = () => {
+        this.img.off('animationstart', onStart); this.img.off('animationupdate', onUpdate); this.img.off('animationcomplete', onDone);
+      };
+      const clean = () => {
+        detach();
+        for (const t of motion) t.stop();
+        motion.clear();
+        if (target && !target._destroyed && target.alive) target.root.setVisible(targetVisible);
+      };
+      const finish = (cancelled) => {
+        if (ended) return;
+        if (!cancelled && pairedFinish && !target._destroyed) {
+          // The embedded ending already disposed of the foe. Retire its visual
+          // actor so playDowns cannot briefly revive it for a second death clip.
+          target.alive = false;
+          target.cancelPlayback();
+          if (target.img.anims) target.img.anims.stop();
+          target.root.setVisible(false);
+        }
+        ended = true; clean();
+        if (this._playback === playback) this._playback = null;
+        if (cancelled && (drift || approaching || returning || pairApproach)) this.root.x = originX;
+        resolve();
+      };
+      const playback = this._playback = { cancel: () => finish(true) };
+      const live = () => !ended && !this._destroyed && this._playback === playback;
+      const move = (x, duration, ease, then) => {
+        const t = scene.tweens.add({ targets: this.root, x, duration, ease, onComplete: () => { motion.delete(t); if (live() && then) then(); } });
+        motion.add(t);
+      };
+      const at = i => {
+        if (!live()) return;
         while (contacts.length && i >= contacts[0]) {
           contacts.shift();
-          if (hits === 0) { if (opts.onContact) opts.onContact(); if (drift) this.tween({ x: this.root.x + drift * this.facing }, 90, imp.drift.ease || 'Quad.Out'); }
-          else if (opts.onHit) opts.onHit(hits);
-          hits++;
+          if (hits++ === 0) {
+            if (opts.onContact) opts.onContact();
+            if (drift && live()) move(contactX + drift * this.facing, 70, imp.drift.ease || 'Quad.Out');
+          } else if (opts.onHit) opts.onHit(hits - 1);
+          if (!live()) return;
         }
-        if (!released && i >= release) { released = true; if (opts.onRelease) opts.onRelease(); resolve(); }
+        if (!released && i >= release) { released = true; if (opts.onRelease) opts.onRelease(); }
       };
-      const onStart = (anim, frame) => at(frame.index - 1);
-      const onUpdate = (anim, frame) => at(frame.index - 1);
-      const onDone = () => {
-        this.img.off('animationstart', onStart); this.img.off('animationupdate', onUpdate);
-        at(c.frames.length - 1);
-        if (drift) this.tween({ x: this.home.x }, 160, 'Sine.Out');
-        if (clip !== 'kneel') this.idle();
+      const onStart = (anim, frame) => { if (anim.key === key) at(frame.index - 1); };
+      const onUpdate = (anim, frame) => { if (anim.key === key) at(frame.index - 1); };
+      const settle = () => {
+        if (!live()) return;
+        if (clip === 'victory' || /victory/.test(id)) {
+          this._sheathed = true;
+          this.img.setFrame(c.frames[c.frames.length - 1]);
+          this.idle();
+        } else if (clip === 'kneel' || /^down/.test(clip)) this.img.setFrame(c.frames[c.frames.length - 1]);
+        else this.idle();
+        finish(false);
       };
-      this.img.on('animationstart', onStart);
-      this.img.on('animationupdate', onUpdate);
-      this.img.once('animationcomplete', onDone);
-      this.img.play(key, true);
+      const onDone = (anim) => {
+        if (anim.key !== key || !live()) return;
+        at(c.frames.length - 1); detach();
+        if (pairApproach) {
+          if (this.sheet.clips.walk) this.img.play(this.animKey('walk'), true);
+          move(originX, Math.min(260, Math.abs(pairX - originX)), 'Sine.InOut', settle);
+        } else if (drift || (approaching && attacking)) move(originX, 100, 'Sine.Out', settle); else settle();
+      };
+      const startClip = () => {
+        if (!live()) return;
+        if (target) target.root.setVisible(false);
+        this.img.on('animationstart', onStart); this.img.on('animationupdate', onUpdate); this.img.on('animationcomplete', onDone);
+        this.img.play(key, false);
+        this.syncPause();
+      };
+      if (pairApproach) {
+        if (this.sheet.clips.walk) this.img.play(this.animKey('walk'), true);
+        move(pairX, Math.min(280, Math.max(120, Math.abs(pairX - originX))), 'Sine.InOut', startClip);
+        this.syncPause();
+      } else startClip();
+      if (!c.loop && approaching) {
+        const first = contacts.length ? contacts[0] : Math.floor(c.frames.length / 2);
+        const leadMs = (c.durationMs || 600) * first / c.frames.length;
+        move(contactX, Math.max(1, Math.min(170, leadMs || 1)), 'Sine.Out');
+      } else if (!c.loop && returning) move(this.home.x, Math.max(100, (c.durationMs || 500) - 80), 'Sine.Out');
+      if (c.loop) {
+        // Idle used as a safe painted fallback is a hold, never an accidental
+        // 200px walk. Locomotion alone moves the root and owns that tween.
+        if (clip === 'enter' || clip === 'walk') {
+          if (opts.from != null) this.root.x = opts.from;
+          const to = opts.x != null ? opts.x : clip === 'enter' ? this.home.x : this.root.x + 200;
+          move(to, opts.duration || 700, 'Sine.InOut', () => { if (opts.thenIdle !== false) this.idle(); finish(false); });
+        } else {
+          if (opts.onContact) opts.onContact();
+          if (!released && opts.onRelease) opts.onRelease();
+          finish(false);
+        }
+      }
     });
   }
 
@@ -235,7 +405,7 @@ class Actor {
     this.root.setVisible(false);
   }
 
-  destroy() { this.root.destroy(); }
+  destroy() { this._destroyed = true; this.cancelPlayback(); this.scene.tweens.killTweensOf(this.img); this.scene.tweens.killTweensOf(this.root); if (this.img.anims) this.img.anims.stop(); this.root.destroy(); }
 }
 
 // ---------------------------------------------------------------- placeholder motion

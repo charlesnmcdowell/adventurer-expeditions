@@ -20,6 +20,43 @@ function sfx(scene, family, phase) {
 
 function actorOf(scene, uid) { return scene.actors.get(uid) || null; }
 
+// The shared helper pauses tweens, not painted frame animations. Use the same
+// scaled scene timer for both, including cinematic slow motion and user pause.
+function hitStop(scene, ms) {
+  const sync = () => { for (const a of scene.actors.values()) if (a.syncPause) a.syncPause(); };
+  scene.__paintedHitStopCount = (scene.__paintedHitStopCount || 0) + 1;
+  sync();
+  V().hitStop(scene, ms);
+  scene.time.delayedCall(ms || 60, () => {
+    scene.__paintedHitStopCount = Math.max(0, scene.__paintedHitStopCount - 1);
+    sync();
+  });
+}
+
+function trackImpact(scene, promise) {
+  const work = scene.__paintedReactions || (scene.__paintedReactions = new Set());
+  work.add(promise);
+  promise.then(() => work.delete(promise), () => work.delete(promise));
+}
+
+function deferImpact(scene, delay, fn) {
+  trackImpact(scene, new Promise((resolve, reject) => scene.time.delayedCall(delay, () => {
+    try { fn(); resolve(); } catch (error) { reject(error); }
+  })));
+}
+
+async function finishReactions(scene) {
+  const work = scene.__paintedReactions;
+  while (work && work.size) await Promise.all([...work]);
+}
+
+function recoil(scene, target, event) {
+  if (target.side !== 'b' || !target.alive || target._destroyed || !target.root.visible || !target.sheet || event.tag === 'dot' || !(event.dmg > 0)) return;
+  const id = target.sheetClipFor('hit_short');
+  if (!id || !/^(hit[-_](short|heavy)|hit)$/.test(id) || target.sheet.clips[id].paired) return;
+  trackImpact(scene, target.play('hit_short'));
+}
+
 function dmgColor(e) { return e.tag === 'dot' ? (e.visual && e.visual.dotKind === 'poison' ? '#9be79b' : '#ff8a80') : '#f4eee0'; }
 
 // Impact presentation shared by every landed blow.
@@ -31,17 +68,18 @@ function impact(scene, tgt, e, opts) {
   if (opts.burst) V().burst(scene, p.x, p.y, opts.burst, 8);
   V().damageNumber(scene, p.x + (Math.random() - 0.5) * 30, p.y - 20, e.dmg, dmgColor(e));
   tgt.refresh();
+  recoil(scene, tgt, e);
   // A painted clip brings its own impact parameters (X.impact, GDD §10.1);
   // placeholder motion keeps the timing table's single hit-stop.
   const im = opts.clip && X.impact && X.impact[opts.clip];
   if (im) {
-    if (opts.hitStop) V().hitStop(scene, im.hitStopMs || TM().hitStop);
+    if (opts.hitStop) hitStop(scene, im.hitStopMs || TM().hitStop);
     if (im.flash && im.flash.alpha && opts.hitStop) V().flashOverlay(scene, parseInt((im.flash.color || '#ffffff').slice(1), 16), im.flash.alpha);
     const mag = Math.max(opts.shake || 0, opts.hitStop ? (im.shakeAmplitude || 0) : 0);
     if (mag) V().camShake(scene, mag);
     return;
   }
-  if (opts.hitStop) V().hitStop(scene, TM().hitStop);
+  if (opts.hitStop) hitStop(scene, TM().hitStop);
   if (opts.shake) V().camShake(scene, opts.shake);
 }
 
@@ -77,8 +115,34 @@ async function playTicks(scene, events) {
   for (const e of events) if (e.t === 'heal' && !e.tick) { const t = actorOf(scene, e.uid); if (t) { V().healSparkle(scene, t.x, t.y - t.height * 0.5); t.refresh(); } }
 }
 
-async function playDowns(scene, downs) {
-  await Promise.all(downs.map(e => { const t = actorOf(scene, e.uid); return t && t.alive ? t.play('down_fade') : Promise.resolve(); }));
+const lethalTarget = (g, target) => !!target && g.down.some(d => d.uid === target.uid);
+
+async function cinematic(scene, kind, actor, target, fn) {
+  if (scene.__cine > 0 || !X.UI || !X.UI.cinematic) return fn();
+  const focus = target ? { x: (actor.x + target.x) / 2, y: actor.y - actor.height * 0.45 } : { x: actor.x + 120 * actor.facing, y: actor.y - actor.height * 0.45 };
+  return X.UI.cinematic(scene, kind, focus, fn);
+}
+
+async function playDowns(scene, downs, events) {
+  // Resolve each death once, sequentially: a paired clip embeds one victim.
+  // This also covers off-turn ripostes, DOT kills and additional cleave victims.
+  for (const e of downs) {
+    const target = actorOf(scene, e.uid);
+    if (!target || !target.alive || target._destroyed) continue;
+    if (target.__finisherPresented) { await target.play('down_fade'); continue; }
+    const source = e.by || [...(events || [])].reverse().find(p => p.uid === e.uid && ['damage', 'execute'].includes(p.t))?.by;
+    const killer = actorOf(scene, source) || scene.hero;
+    if (target.side === 'b' && killer && killer.side === 'a' && killer.alive && !killer._destroyed) {
+      await cinematic(scene, 'kill', killer, target, async () => {
+        sfx(scene, 'slash', 'use');
+        await killer.play('finisher', { target, lethal: true, level: scene.enc?.run?.levels?.finisher || 1,
+          onContact: () => { sfx(scene, 'slash', 'hit'); V().burst(scene, target.chest().x, target.chest().y, 0xd9c2ff, 12); hitStop(scene, TM().hitStop * 2); } });
+        // A matching paired finisher already retired its victim. Unpaired art
+        // keeps the correct creature visible and uses that creature's own down.
+        if (target.alive) await target.play('down_fade');
+      });
+    } else await target.play('down_fade');
+  }
 }
 
 // ---------------------------------------------------------------- hero actions
@@ -92,15 +156,17 @@ async function heroAction(scene, hero, g, step) {
 
   if (skill === 'katana_slash' || skill === 'basic_attack') {
     const first = hits[0] ? targetOf(hits[0]) : actorOf(scene, e.target);
-    const clip = level >= 3 && skill === 'katana_slash' ? 'slash_wide' : 'slash';
-    const painted = hero.sheetClipFor ? hero.sheetClipFor(clip, { level }) : null;
+    const lethal = lethalTarget(g, first);
+    const clip = lethal ? 'finisher' : level >= 3 && skill === 'katana_slash' ? 'slash_wide' : 'slash';
+    const painted = hero.sheetClipFor ? hero.sheetClipFor(clip, { level, target: first, lethal }) : null;
     sfx(scene, 'slash', 'use');
-    await hero.play(clip, { target: first, level, hold: level >= 2 ? 200 : 140, onContact: () => {
+    await hero.play(clip, { target: first, level, lethal, hold: level >= 2 ? 200 : 140, onContact: () => {
       sfx(scene, 'slash', 'hit');
-      hits.forEach((h, i) => scene.time.delayedCall(i * 70, () => impact(scene, targetOf(h), h, { arc: level >= 2 ? 0xd9c2ff : 0xe8dfc8, hitStop: i === 0, shake: level >= 3 ? 0.004 : 0, clip: painted })));
+      hits.forEach((h, i) => deferImpact(scene, i * 70, () => impact(scene, targetOf(h), h, { arc: level >= 2 ? 0xd9c2ff : 0xe8dfc8, hitStop: i === 0, shake: level >= 3 ? 0.004 : 0, clip: painted })));
       if (!hits.length) { const t = first; if (t) { sfx(scene, 'miss', 'miss'); } }
       if (level >= 2 && first) scene.time.delayedCall(90, () => V().slashArc(scene, first.chest().x + 20, first.chest().y - 10, 0xd9c2ff));
     } });
+    if (lethal && first.alive) first.__finisherPresented = true;
   } else if (skill === 'god_aura') {
     sfx(scene, 'guard', 'use');
     V().flashOverlay(scene, 0xa66bff, 0.12);
@@ -114,14 +180,17 @@ async function heroAction(scene, hero, g, step) {
     hero.refresh();
   } else if (skill === 'finisher') {
     const tgt = executes[0] ? targetOf(executes[0]) : (hits[0] ? targetOf(hits[0]) : actorOf(scene, e.target));
-    V().zoomPunch(scene);
+    // The cinematic wrapper already owns the camera through recovery. A second
+    // zoom tween here would reset it to 1 midway through a slow finisher.
+    if (!scene.__cine) V().zoomPunch(scene);
     sfx(scene, 'slash', 'use');
-    await hero.play('finisher', { target: tgt, onContact: () => {
+    await hero.play('finisher', { target: tgt, level, lethal: lethalTarget(g, tgt), onContact: () => {
       sfx(scene, 'slash', 'hit');
       V().flashOverlay(scene, 0xffffff, 0.22);
-      if (executes[0] && tgt) { V().slashArc(scene, tgt.chest().x, tgt.chest().y, 0xfff4d6); V().burst(scene, tgt.chest().x, tgt.chest().y, 0xd9c2ff, 14); V().hitStop(scene, TM().hitStop * 2); tgt.unit && tgt.refresh(); }
+      if (executes[0] && tgt) { V().slashArc(scene, tgt.chest().x, tgt.chest().y, 0xfff4d6); V().burst(scene, tgt.chest().x, tgt.chest().y, 0xd9c2ff, 14); hitStop(scene, TM().hitStop * 2); tgt.unit && tgt.refresh(); }
       for (const h of hits) impact(scene, targetOf(h), h, { arc: 0xfff4d6, hitStop: true, shake: 0.006 });
     } });
+    if (lethalTarget(g, tgt) && tgt.alive) tgt.__finisherPresented = true;
     const heal = g.after.find(x => x.t === 'heal' && x.uid === hero.uid);
     if (heal) { V().healSparkle(scene, hero.x, hero.y - hero.height * 0.5); hero.refresh(); }
   } else {
@@ -158,13 +227,13 @@ async function kitAction(scene, actor, g) {
       scene.tweens.add({ targets: bolt, x: to.x, y: to.y, duration: 220, ease: 'Power2', onComplete: () => { bolt.destroy(); res(); } });
     });
     sfx(scene, 'slash', 'hit');
-    hits.forEach((h, i) => scene.time.delayedCall(i * 60, () => impact(scene, targetOf(h), h, { burst: color, hitStop: i === 0 })));
+    hits.forEach((h, i) => deferImpact(scene, i * 60, () => impact(scene, targetOf(h), h, { burst: color, hitStop: i === 0 })));
     if (sk.elemental) V().burst(scene, to.x, to.y, color, 14);
     await new Promise(res => scene.time.delayedCall(220, res));
     return;
   }
   sfx(scene, 'slash', 'use');
-  await actor.play('slash', { target: first, onContact: () => { sfx(scene, 'slash', 'hit'); hits.forEach((h, i) => scene.time.delayedCall(i * 60, () => impact(scene, targetOf(h), h, { arc: 0xe8dfc8, hitStop: i === 0 }))); } });
+  await actor.play('slash', { target: first, onContact: () => { sfx(scene, 'slash', 'hit'); hits.forEach((h, i) => deferImpact(scene, i * 60, () => impact(scene, targetOf(h), h, { arc: 0xe8dfc8, hitStop: i === 0 }))); } });
 }
 
 // ---------------------------------------------------------------- enemy actions
@@ -194,7 +263,7 @@ async function enemyAction(scene, foe, g) {
   if (counter) {
     // Parry and answer: intercept spark, the attacker lands short, the riposte cut.
     sfx(scene, 'block', 'block');
-    await hero.play('intercept', { onContact: () => { const c = hero.contactPoint(foe); V().burst(scene, c.x, c.y - 40, 0xfff2b0, 10); V().hitStop(scene, TM().hitStop); } });
+    await hero.play('intercept', { onContact: () => { const c = hero.contactPoint(foe); V().burst(scene, c.x, c.y - 40, 0xfff2b0, 10); hitStop(scene, TM().hitStop); } });
     if (kind === 'plant') await foe.play('lash_back'); else await foe.play('land_beside');
     if (riposte) {
       sfx(scene, 'slash', 'use');
@@ -223,8 +292,16 @@ async function enemyAction(scene, foe, g) {
       // Contact: jaws on the boot, grimace, shake-off, wolf tumbles back.
       sfx(scene, 'bite', 'hit');
       impact(scene, hero, hit, { burst: 0xc0392b, hitStop: true, shake: 0.004 });
-      await Promise.all([hero.play('bite_grip', {}), foe.play('bite')]);
-      await foe.play('land_tumble');
+      const grip = { target: foe, arm: hit.dmg >= hero.unit.maxHp * 0.2 };
+      const id = hero.sheetClipFor && hero.sheetClipFor('bite_grip', grip);
+      const paired = id && hero.sheet && hero.sheet.clips[id].paired;
+      if (paired) {
+        await hero.play('bite_grip', grip);
+        await foe.play('land_beside');
+      } else {
+        await Promise.all([hero.play('hit_short'), foe.play('bite')]);
+        await foe.play('land_tumble');
+      }
     }
   } else {
     // A strike that resolved to nothing visible (guard, immune): land and back off.
@@ -248,8 +325,10 @@ async function allyAction(scene, ally, g) {
     return;
   }
   const first = hits[0] ? targetOf(hits[0]) : actorOf(scene, e.target);
+  const lethal = lethalTarget(g, first);
   sfx(scene, 'slash', 'use');
-  await ally.play('slash', { target: first, onContact: () => { sfx(scene, 'slash', 'hit'); hits.forEach((h, i) => scene.time.delayedCall(i * 60, () => impact(scene, targetOf(h), h, { arc: 0xe8dfc8, hitStop: i === 0 }))); } });
+  await ally.play(lethal ? 'finisher' : 'slash', { target: first, lethal, onContact: () => { sfx(scene, 'slash', 'hit'); hits.forEach((h, i) => deferImpact(scene, i * 60, () => impact(scene, targetOf(h), h, { arc: 0xe8dfc8, hitStop: i === 0 }))); } });
+  if (lethal && first.alive) first.__finisherPresented = true;
 }
 
 // A human foe: a spell or shot is a cast and a bolt; anything else a lunge.
@@ -261,7 +340,7 @@ async function humanAction(scene, foe, hero, g, r) {
   const answer = async () => {
     if (r.counter) {
       sfx(scene, 'block', 'block');
-      await hero.play('intercept', { onContact: () => { const c = hero.contactPoint(foe); V().burst(scene, c.x, c.y - 40, 0xfff2b0, 10); V().hitStop(scene, TM().hitStop); } });
+      await hero.play('intercept', { onContact: () => { const c = hero.contactPoint(foe); V().burst(scene, c.x, c.y - 40, 0xfff2b0, 10); hitStop(scene, TM().hitStop); } });
       if (r.riposte) { sfx(scene, 'slash', 'use'); await hero.play('riposte', { target: foe, onContact: () => { sfx(scene, 'slash', 'hit'); if (r.riposteHit) impact(scene, foe, r.riposteHit, { arc: 0xe8dfc8, hitStop: true }); if (r.riposteKill) V().burst(scene, foe.chest().x, foe.chest().y, 0xd9c2ff, 12); } }); }
       if (r.hit) impact(scene, hero, r.hit, {});
     } else if (r.evade) { sfx(scene, 'miss', 'miss'); await hero.play('roll'); }
@@ -290,22 +369,30 @@ Beats.play = async function (scene, step) {
   await playTicks(scene, g.pre);
   // Round-boundary downs (a wolf bleeding out) happen before any action.
   const preDowns = g.pre.length ? g.down.filter(d => g.pre.some(p => p.uid === d.uid && p.t === 'damage')) : [];
-  if (preDowns.length && !g.use) await playDowns(scene, preDowns);
+  if (preDowns.length) await playDowns(scene, preDowns, g.pre);
   if (g.use) {
     const actor = actorOf(scene, g.use.uid);
-    if (actor && actor.alive) {
-      if (step.hero) await heroAction(scene, actor, g, step);
-      else if (actor.side === 'a') await allyAction(scene, actor, g);
-      else await enemyAction(scene, actor, g);
-    }
-    await playTicks(scene, g.after);
-    await playDowns(scene, g.down);
+    const perform = async () => {
+      if (actor && actor.alive && !actor._destroyed) {
+        if (step.hero) await heroAction(scene, actor, g, step);
+        else if (actor.side === 'a') await allyAction(scene, actor, g);
+        else await enemyAction(scene, actor, g);
+      }
+      await finishReactions(scene);
+      await playTicks(scene, g.after);
+      await playDowns(scene, g.down, step.events);
+    };
+    const kills = actor && actor.side === 'a' && g.down.some(d => actorOf(scene, d.uid)?.side === 'b');
+    const tapped = step.hero && step.choice && step.choice.how === 'request';
+    const tgt = actorOf(scene, (kills && g.down.find(d => actorOf(scene, d.uid)?.side === 'b')?.uid) || g.use.target);
+    if (actor && (kills || tapped)) await cinematic(scene, kills ? 'kill' : 'cast', actor, tgt, perform);
+    else await perform();
   } else if (step.choice && step.choice.action && step.choice.action.kind === 'hold') {
     await wait(scene, 200);
   } else if (!g.pre.length) {
     await wait(scene, 60);
   } else if (g.down.length) {
-    await playDowns(scene, g.down);
+    await playDowns(scene, g.down, step.events);
   }
   for (const a of scene.actors.values()) if (a.alive) a.refresh();
   // Boss second wind: once, the first time it drops under its threshold.
@@ -316,5 +403,5 @@ Beats.play = async function (scene, step) {
   for (const e of step.events) if (e.t === 'exposedBurst') { const t = actorOf(scene, e.uid); if (t) V().burst(scene, t.chest().x, t.chest().y, 0xf4c26b, 6); }
 };
 
-Beats.ticksOnly = async function (scene, events) { await playTicks(scene, events); const downs = events.filter(e => e.t === 'down'); if (downs.length) await playDowns(scene, downs); };
+Beats.ticksOnly = async function (scene, events) { await playTicks(scene, events); const downs = events.filter(e => e.t === 'down'); if (downs.length) await playDowns(scene, downs, events); };
 })();

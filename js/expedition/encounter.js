@@ -49,6 +49,7 @@ Enc.makeEnemy = function (rng, key, scale) {
   if (!e) throw new Error('Expedition: unknown enemy ' + key);
   const ch = A.Character.makeEnemy(rng, e.base, { level: e.level });
   ch.expeditionKey = key;
+  if (e.artIdentity) ch.expeditionArtIdentity = e.artIdentity;
   if (e.actives) ch.actives = ch.actives.filter(a => e.actives.includes(a.skillId));
   if (e.statMult) for (const k of ['hp', 'atk', 'def', 'spd']) if (e.statMult[k] != null) ch.stats[k] = Math.round(ch.stats[k] * e.statMult[k]);
   // Repeat scaling (Campaign.scaleFor): a cleared quest comes back harder.
@@ -180,9 +181,12 @@ Enc.requestFinisher = enc => Enc.requestSkill(enc, 'finisher');
 Enc.clearRequest = function (enc) { enc.request = null; };
 
 // ---------------------------------------------------------------- stepping
+// Manual mode (X.manualSkills): the automatic policy may only use Katana Slash;
+// every purchased skill fires from a tap (Enc.requestSkill) and nothing else.
+Enc.autoAllowed = skillId => !X.manualSkills || skillId === 'katana_slash';
 function pickAuto(st, u, excludeFinisher) {
   const saved = u.ch.autoOrder;
-  if (excludeFinisher) u.ch.autoOrder = saved.filter(x => x.skillId !== 'finisher');
+  u.ch.autoOrder = saved.filter(x => Enc.autoAllowed(x.skillId) && !(excludeFinisher && x.skillId === 'finisher'));
   let ready = null;
   try { ready = A.Combat.autoReadyAction(st, u); } finally { u.ch.autoOrder = saved; }
   if (ready) return { action: ready.action, tgt: ready.tgt, how: 'auto' };
@@ -262,8 +266,23 @@ Enc.step = function (enc) {
   return { over: !!st.over, actor: u.uid, hero: u.uid === enc.heroUid, choice, events };
 };
 
-// Drive to the end. policy(enc) may call requestFinisher each hero boundary.
+// The headless stand-in for a player in manual mode: at each hero boundary tap
+// the strongest owned skill that is ready. Finisher first, then Counter Attack
+// when a foe is about to act, then God Aura.
+Enc.tapPolicy = function (enc) {
+  if (enc.request || enc.st.over) return;
+  const t = A.Combat.currentTurn(enc.st);
+  if (!t || t.unit.uid !== enc.heroUid) return;
+  for (const id of ['finisher', 'counter_attack', 'god_aura']) {
+    const s = Enc.skillState(enc, id);
+    if (s && s.ready) { Enc.requestSkill(enc, id); return; }
+  }
+};
+
+// Drive to the end. policy(enc) may call requestSkill each hero boundary; with
+// no policy given and manual skills on, the tap policy stands in for the player.
 Enc.runToEnd = function (enc, policy, maxSteps) {
+  if (policy === undefined && X.manualSkills) policy = Enc.tapPolicy;
   maxSteps = maxSteps || 400;
   const out = [];
   while (!enc.st.over && enc.steps < maxSteps) {

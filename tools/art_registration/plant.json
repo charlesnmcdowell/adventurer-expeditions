@@ -1,0 +1,121 @@
+{
+  "hero": "plant",
+  "registrationNote": "Body-unit scale is clip-authored; crouches, recoil, jumps and weapon extent do not redefine body size.",
+  "clips": [
+    {
+      "creature": "thorn_lurker",
+      "id": "idle",
+      "file": "thorn_lurker_idle.png",
+      "grid": [
+        2,
+        2
+      ],
+      "frames": 4,
+      "loop": true,
+      "durationsMs": [
+        160,
+        180,
+        160,
+        180
+      ],
+      "contact": null,
+      "release": 3,
+      "columns": 2,
+      "rows": 2,
+      "contactFramesZeroBased": [],
+      "releaseFrameZeroBased": 3,
+      "registration": {
+        "referenceHeight": 465
+      },
+      "impactDraft": {}
+    },
+    {
+      "creature": "thorn_lurker",
+      "id": "lash",
+      "file": "thorn_lurker_lash.png",
+      "grid": [
+        3,
+        2
+      ],
+      "frames": 6,
+      "loop": false,
+      "durationsMs": [
+        100,
+        180,
+        70,
+        60,
+        100,
+        150
+      ],
+      "contact": 3,
+      "release": 5,
+      "note": "Register root anchor; do not tween whole plant forward during lash. Vine reaches cell edge; measure silhouette bounds.",
+      "columns": 3,
+      "rows": 2,
+      "contactFramesZeroBased": [
+        3
+      ],
+      "releaseFrameZeroBased": 5,
+      "registration": {
+        "referenceHeight": 460
+      },
+      "impactDraft": {}
+    },
+    {
+      "creature": "thorn_lurker",
+      "id": "hit_short",
+      "file": "thorn_lurker_hit_short.png",
+      "grid": [
+        3,
+        1
+      ],
+      "frames": 3,
+      "loop": false,
+      "durationsMs": [
+        70,
+        100,
+        160
+      ],
+      "contact": 0,
+      "release": 2,
+      "note": "Keep rooted base fixed; leaves are secondary motion, not extra damage.",
+      "columns": 3,
+      "rows": 1,
+      "contactFramesZeroBased": [
+        0
+      ],
+      "releaseFrameZeroBased": 2,
+      "registration": {
+        "referenceHeight": 650
+      },
+      "impactDraft": {}
+    },
+    {
+      "creature": "thorn_lurker",
+      "id": "down_fade",
+      "file": "thorn_lurker_down_fade.png",
+      "grid": [
+        2,
+        2
+      ],
+      "frames": 4,
+      "loop": false,
+      "durationsMs": [
+        160,
+        180,
+        200,
+        240
+      ],
+      "contact": null,
+      "release": 3,
+      "columns": 2,
+      "rows": 2,
+      "contactFramesZeroBased": [],
+      "releaseFrameZeroBased": 3,
+      "registration": {
+        "referenceHeight": 460
+      },
+      "impactDraft": {}
+    }
+  ]
+}

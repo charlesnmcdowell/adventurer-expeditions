@@ -33,11 +33,14 @@ P.prepare = async function () {
 P.sync = function (scenes) {
   if (!P.ready) return;
   const opened = scenes.filter(scene => scene.sys?.settings?.status === Phaser.Scenes.RUNNING);
-  if (loading && opened.length) { call('loadingStop'); loading = false; }
-  const next = opened.some(scene => {
+  // A RUNNING Phaser scene can still be fetching its scenery outside the
+  // loader. Its explicit presentation gate must clear before SDK readiness.
+  const presented = opened.filter(scene => typeof scene.isPortalReady !== 'function' || scene.isPortalReady());
+  if (loading && presented.length) { call('loadingStop'); loading = false; }
+  const next = presented.some(scene => {
     const key = scene.sys.settings.key;
     if (key === 'Town') return !scene._arrivalPending && !['settings', 'difficulty', 'codex'].includes(scene.currentPanel);
-    return key === 'Quest' || key === 'Combat' || !!(A.Expedition && A.Expedition.portalSceneKeys && A.Expedition.portalSceneKeys.includes(key));
+    return key === 'Quest' || key === 'Combat' || !!(A.Expedition && A.Expedition.portalSceneKeys && A.Expedition.portalSceneKeys.includes(key) && !scene.paused);
   });
   if (next !== playing) { playing = next; call(playing ? 'gameplayStart' : 'gameplayStop'); }
 };

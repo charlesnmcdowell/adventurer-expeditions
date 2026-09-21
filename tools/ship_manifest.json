@@ -1,35 +1,45 @@
 {
-  "budgetMB": 20.0,
-  "note": "What the CrazyGames build ships (GDD v0.8 §12a). Scripts, styles and icons come from index.html; everything else is listed here. tools/size_check.js sums it, fails over budget, and test/browser_expedition.js --ship serves only this set.",
+  "note": "Tutorial-only ship set: Hiro, Bram, gray wolves and thorn lurkers; complete release must stay below20,000,000decimalbytes. Othercontent retained on disk but excluded until deliberately reopened and revalidated. Astra-v2 masters are art delivery only and never ship raw.",
   "files": [
     "index.html",
     "THIRD_PARTY_NOTICES.txt",
     "assets/app/icon-180.png",
     "assets/app/icon-192.png",
-    "assets/anime/v2/runtime/hiro_cyber_20260916.webp",
-    "assets/anime/v2/runtime/creatures_1.webp",
     "assets/anime/v2/runtime/forest.webp",
     "assets/anime/v2/runtime/road.webp",
     "assets/anime/v2/runtime/mountain.webp",
-    "assets/anime/v2/runtime/alley.webp",
-    "assets/anime/v2/runtime/marsh.webp",
-    "assets/anime/v2/runtime/ruins.webp",
     "assets/anime/v2/runtime/tavern.webp",
     "assets/anime/travel/v1/runtime/forest.webp",
-    "assets/anime/travel/v1/runtime/city.webp",
-    "assets/anime/travel/v1/runtime/marsh.webp",
-    "assets/anime/travel/v1/runtime/ruins.webp",
-    "assets/expedition/hiro/hiro.webp",
-    "assets/expedition/hiro/hiro.json"
+    "assets/expedition/hiro/hiro.json",
+    "assets/expedition/hiro/hiro-0.webp",
+    "assets/expedition/hiro/hiro-1.webp",
+    "assets/expedition/hiro/hiro-2.webp",
+    "assets/expedition/bram/bram.json",
+    "assets/expedition/bram/bram-0.webp",
+    "assets/expedition/bram/bram-1.webp",
+    "assets/expedition/wolf/wolf.json",
+    "assets/expedition/wolf/wolf-0.webp",
+    "assets/expedition/plant/plant.json",
+    "assets/expedition/plant/plant-0.webp",
+    "assets/expedition/busts/busts.json",
+    "assets/expedition/busts/bram.webp",
+    "assets/expedition/inn/inn.json",
+    "assets/expedition/inn/inn-hiro-solo.webp",
+    "assets/expedition/inn/inn-hiro-bram.webp",
+    "assets/expedition/inn/inn-candle-flame.webp",
+    "assets/expedition/inn/inn-stew-steam.webp",
+    "assets/expedition/inn/inn-hearth-fire.webp",
+    "assets/expedition/icons/hiro-skills.json",
+    "assets/expedition/icons/hiro-skills.webp",
+    "audio/music/battle_origin.mp3",
+    "audio/music/edwyn2.mp3"
   ],
   "dirs": [
-    "audio/music",
     "audio/sfx",
-    "audio/vo",
-    "assets/expedition/busts"
+    "audio/vo/M05"
   ],
   "partSheets": {
-    "note": "The recruits' painted busts are composed at runtime from these part sheets (4.4 MB). tools/bake_busts.js renders them once into assets/expedition/busts/ and the game loads those instead; the sheets then stay out of the build.",
+    "note": "Development-only portrait part sheets. They are needed only when baked busts are absent. The final build ships explicit ready-recruit and human-foe bust files and omits these source sheets.",
     "files": [
       "assets/anime/v2/runtime/heads_m_styles1.webp",
       "assets/anime/v2/runtime/wardrobe_m2.webp",
@@ -37,5 +47,6 @@
       "assets/anime/v2/runtime/wardrobe_f3.webp",
       "assets/anime/v2/runtime/headgear.webp"
     ]
-  }
+  },
+  "budgetBytes": 20000000
 }

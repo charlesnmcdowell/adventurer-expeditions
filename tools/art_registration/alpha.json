@@ -1,0 +1,146 @@
+{
+  "hero": "alpha",
+  "registrationNote": "Body-unit scale is clip-authored; crouches, recoil, jumps and weapon extent do not redefine body size.",
+  "clips": [
+    {
+      "creature": "alpha",
+      "id": "stalk",
+      "file": "alpha_stalk.png",
+      "grid": [
+        2,
+        2
+      ],
+      "frames": 4,
+      "loop": true,
+      "durationsMs": [
+        160,
+        150,
+        160,
+        150
+      ],
+      "contact": null,
+      "release": 3,
+      "columns": 2,
+      "rows": 2,
+      "contactFramesZeroBased": [],
+      "releaseFrameZeroBased": 3,
+      "registration": {
+        "referenceHeight": 475
+      },
+      "impactDraft": {}
+    },
+    {
+      "creature": "alpha",
+      "id": "pounce",
+      "file": "alpha_pounce.png",
+      "grid": [
+        3,
+        2
+      ],
+      "frames": 6,
+      "loop": false,
+      "durationsMs": [
+        160,
+        200,
+        80,
+        70,
+        120,
+        180
+      ],
+      "contact": 3,
+      "release": 5,
+      "columns": 3,
+      "rows": 2,
+      "contactFramesZeroBased": [
+        3
+      ],
+      "releaseFrameZeroBased": 5,
+      "registration": {
+        "referenceHeight": 420
+      },
+      "impactDraft": {}
+    },
+    {
+      "creature": "alpha",
+      "id": "hit_heavy",
+      "file": "alpha_hit_heavy.png",
+      "grid": [
+        3,
+        1
+      ],
+      "frames": 3,
+      "loop": false,
+      "durationsMs": [
+        90,
+        140,
+        180
+      ],
+      "contact": 0,
+      "release": 2,
+      "columns": 3,
+      "rows": 1,
+      "contactFramesZeroBased": [
+        0
+      ],
+      "releaseFrameZeroBased": 2,
+      "registration": {
+        "referenceHeight": 550
+      },
+      "impactDraft": {}
+    },
+    {
+      "creature": "alpha",
+      "id": "enrage",
+      "file": "alpha_enrage.png",
+      "grid": [
+        2,
+        2
+      ],
+      "frames": 4,
+      "loop": false,
+      "durationsMs": [
+        160,
+        220,
+        260,
+        180
+      ],
+      "contact": null,
+      "release": 3,
+      "columns": 2,
+      "rows": 2,
+      "contactFramesZeroBased": [],
+      "releaseFrameZeroBased": 3,
+      "registration": {
+        "referenceHeight": 475
+      },
+      "impactDraft": {}
+    },
+    {
+      "creature": "alpha",
+      "id": "down_fade",
+      "file": "alpha_down_fade.png",
+      "grid": [
+        2,
+        2
+      ],
+      "frames": 4,
+      "loop": false,
+      "durationsMs": [
+        160,
+        200,
+        220,
+        260
+      ],
+      "contact": null,
+      "release": 3,
+      "columns": 2,
+      "rows": 2,
+      "contactFramesZeroBased": [],
+      "releaseFrameZeroBased": 3,
+      "registration": {
+        "referenceHeight": 430
+      },
+      "impactDraft": {}
+    }
+  ]
+}
