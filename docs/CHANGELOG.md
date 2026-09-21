@@ -15,6 +15,50 @@ of small fixes within a day.
 
 ---
 
+## 2026-09-21 — Doc corrections, and the size gate is failing
+
+Fable, at Hiro's request after the status checklist: *"yea you can update the
+stale lines. we do need to know the actual current size of the game got to keep
+below 20 or won't meet crazy games mobile requirements."*
+
+**The size, measured rather than quoted.** Last committed state is **17,867,032
+bytes / 207 files**, 2.13 MB clear of the gate. The working tree is not: an
+**Alpha boss intake landed at 13:57 today** from a concurrent session — page 0
+grows 393 KB → 1.89 MB and a 399 KB page 1 is new — which puts the ship set at
+**20,182,102 bytes / 210 files, over the 20,000,000-byte gate by 182,102**.
+`npm test` fails on it, which is the gate doing its job. Packaged with gzip the
+same set is 17.27 MB, but the gate measures served bytes and stays the strict
+reading of the platform's 20 MB.
+
+Where it sits: Hiro 4.76 MB, `js` 2.46, music 2.34, Alpha 2.31, Bram 2.26,
+plates 1.89, Phaser 1.19, sfx 1.04, wolf 0.63, plant 0.40, inn 0.39, voice 0.33.
+Two trims clear it and cost the slice nothing: the `js/data` trim (~1.5 MB, long
+on the list) and **Bram's 2.26 MB, which ships for a recruit the slice keeps
+locked** — he was taken off the critical path, but he is still inside the
+package. Either alone is enough; neither has been done, and this is Hiro's call
+to make against the Alpha art he just gained.
+
+**Doc corrections.** Seven passages that the last two days had overtaken:
+§12a.1a (the measurement above, replacing 15,650,969 / 195 files), §14's build-
+size row (now flagged over), §15's preamble (said every-kill finishing behavior
+was retained — it is tap-only since round 3), §15.1's "16.97 MB of 20.0",
+§15.3 item 1 (said fourteen Hiro clips were on disk only — superseded by the
+09-21 audit; the unintaken set is now the manifest-less candidates), §16's
+preamble (said levelling buys the cooldown — it is gone), and §16.10 (finishers
+gated to the last enemy — superseded by tap-only, and with no cooldown they can
+chain inside a wave).
+
+**Not touched: the code.** A concurrent session is mid-flight in this folder —
+`actors.js`, `data.js`, `painted.js`, `scene.js`, `art_registration.js` and
+`ship_manifest.json` are all modified and uncommitted at the time of writing,
+giving the road's third fight a distinct painted Alpha with its own paired
+finishers instead of a dressed-up wolf. Their work builds on this session's
+commits and the Finisher cooldown change survived intact. This entry and the GDD
+edits were committed **by path** (`docs/` only) so that nothing of theirs was
+swept into a commit it did not belong in.
+
+---
+
 ## 2026-09-21 — Finisher loses its cooldown
 
 Fable, at Hiro's call: *"can you take the cool down off finisher? It's already

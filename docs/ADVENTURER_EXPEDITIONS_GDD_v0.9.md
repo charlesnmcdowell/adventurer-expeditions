@@ -1142,10 +1142,22 @@ sheet rather than at submission.
 
 ### 12a.1a Where it landed (build of 2026-09-19)
 
-**Current measurement, 2026-09-20:** the first-level ship set is **15,650,969
-bytes / 195 files**, below the 20,000,000-byte local gate. Browser cold start is
-**11,931,986 bytes**, or **12,976,946 after audio unlock**, in the desktop/mobile
-checks. These are distinct measurements: package bytes are not initial network
+**Current measurement, 2026-09-21 (re-measured; the gate is failing).** Last
+committed state: **17,867,032 bytes / 207 files**, 2.13 MB clear. With the Alpha
+boss intake that landed the same afternoon (a 1.89 MB page 0 in place of a
+393 KB one, plus a new 399 KB page 1): **20,182,102 bytes / 210 files — over the
+20,000,000-byte gate by 182,102 bytes.** Packaged with gzip it is 17.27 MB, but
+the gate measures served bytes and stays the strict reading. **Something must
+come off before submission.** Where it sits now: Hiro 4.76, `js` 2.46, music
+2.34, **Alpha 2.31**, Bram 2.26, plates 1.89, Phaser 1.19, sfx 1.04, wolf 0.63,
+plant 0.40, inn 0.39, voice 0.33. The two candidates that cost the slice
+nothing: the `js/data` trim (~1.5 MB, long on the list) and **Bram's 2.26 MB,
+which ships for a recruit the slice keeps locked** — deferring him off the
+critical path already happened, but he is still inside the package. Either one
+alone clears the overage with room to spare.
+
+Browser cold start was **11,931,986 bytes**, or **12,976,946 after audio
+unlock**, in the desktop/mobile checks (measured before the Alpha intake). These are distinct measurements: package bytes are not initial network
 bytes. New v2 masters are excluded and must be remeasured after intake. Actual
 portal/mobile-device behavior is still unverified. The following 16.97 MB result
 is retained as the September 19 historical baseline.
@@ -1261,7 +1273,7 @@ From the platform's quality guidance, FAQ and Basic Launch metrics:
 |---|---|---|
 | Time to gameplay | Immediate; no title or creator screens | ✅ fights in the first seconds |
 | Onboarding | Visual, skippable, no wall of text | ✅ hand and ring, always skippable |
-| Build size | Under 20 MB local gate | ✅ **15,650,969 bytes / 195 files**; new v2 art not yet intaken |
+| Build size | Under 20 MB local gate | ⚠️ **20,182,102 bytes / 210 files — over by 182,102** after the 2026-09-21 Alpha intake (17,867,032 / 207 as last committed). §12a.1a names the two trims that clear it. |
 | Load time | Under 10 s cold | Desktop/mobile browser byte checks and SDK-stub delayed-scenery check passed; actual portal timing unverified |
 | Controls | Large targets, no hover-only info, no Esc / Ctrl+W | Desktop/mobile browser checks passed; physical phone QA remains |
 | Art and audio | Consistent | Four painted runtime actors restored; v2 finishers, movement, inn and icons await intake and visual timing review (§10.5) |
@@ -1291,7 +1303,9 @@ was chosen to match this, and should keep matching it.
 September 19 backlog below. The current code restores the four-actor loader,
 Bram purchase/save readiness, authored frame timing, stable body scale and
 pivots, recoil/recovery, paused animation, safe paired targets and nested
-cinematic cleanup. Manual skills and every-kill finishing behavior are retained.
+cinematic cleanup. Manual skills are retained; **finishing moves now play only
+from a player-tapped Finisher** (2026-09-21, §7) — the every-kill behavior this
+line used to describe is gone.
 The first tutorial and inn Replay stay locked; the four-quest roadmap does not
 reopen as part of this repair. New v2 art is delivered but not yet intaken.
 
@@ -1315,7 +1329,8 @@ reopen as part of this repair. New v2 art is delivered but not yet intaken.
   `X.impact` table. `?sheet=0` shows the old plates for comparison.
 - **The size gate holds (§12a):** manifest + `tools/size_check.js` in `npm test`,
   `npm run test:ship` serving only the ship set, busts baked, audio re-encoded,
-  masters out of the folder. 16.97 MB of 20.0.
+  masters out of the folder. (That session measured 16.97 MB of 20.0; the current
+figure is in §12a.1a and the gate is failing as of 2026-09-21.)
 - The encounter simulation, the director, the event → beat mapping, the actor
   layer and the placeholder choreography (kept as the fallback for any clip a
   sheet lacks).
@@ -1394,7 +1409,13 @@ remains, in order:
 
 **Should happen before submission:**
 
-1. **The rest of the intake backlog (§10.3, §10.4).** Fourteen Hiro clips are
+1. **The rest of the intake backlog (§10.3, §10.4).** *Superseded by the
+   2026-09-21 audit in §10.5: Hiro's fourteen clips, the paired finishers and the
+   paired-frame renderer all landed, and the road's Alpha boss was intaken on
+   2026-09-21. What remains unintaken are the candidate paintings with no
+   authoritative manifest — the boar, the Ironback, the Marsh and Ruins Alphas,
+   the raiders and the town watch — which is why the quests needing them stay
+   shut. The September 19 text follows.* Fourteen Hiro clips are
    still on disk only: slash-l2/l3, aura-l1..3, counter-l2/l3, intercept, riposte,
    the three paired finishers and the two paired bites. The unpaired ones are one
    command each (`tools/art_intake.py --clips …`); the paired ones need the
@@ -1424,8 +1445,9 @@ remains, in order:
 
 *Round 3 answers (2026-09-21), from Hiro unless marked.* The Finisher's windows
 are **50 % for a normal enemy, 25 % for a boss, flat at every level** — levelling
-buys the heal, the cooldown and the hit (assumption: 50/25 was given without a
-per-level curve, so flat; a three-line change if it should scale). The slice opens
+buys the heal and the hit (assumption: 50/25 was given without a per-level curve,
+so flat; a three-line change if it should scale). **The Finisher has no cooldown
+at all** (Hiro, 2026-09-21): the health window is the only gate. The slice opens
 **Road in the Rain** and nothing else. Hiring stays locked; Bram is not wired.
 Finishing moves play **only** from a tapped Finisher. Decided here, not by Hiro:
 `js/ui/gate_ambience.js` is now synced (20 KB) because `travel_panorama.js` calls
@@ -1470,7 +1492,11 @@ foes' busts are baked from the part sheets like the recruits' (new).
 9. **Which hero is canonical for intake (§10.4)?** Astra painted Hiro and Bram.
    Hiro is now permanent, so he is the obvious first target; Bram is the first
    recruit and his delivered set is used whole (§3, corrected 2026-09-19).
-10. **Are finishers gated to the last enemy of a wave (§10.2)?** Assumed yes.
+10. **Are finishers gated to the last enemy of a wave (§10.2)?** ~~Assumed yes~~
+   — **superseded 2026-09-21.** They are not gated by position in the wave at
+   all: a finishing move plays whenever a player-tapped Finisher is the killing
+   blow, and never from an automatic kill. With the cooldown also gone, finishes
+   can chain inside one wave.
 11. **Do the human bosses reuse the human paired set scaled up (§10.2)?** Assumed
    yes.
 12. **Does Astra own the impact numbers (§10.1)?** Assumed yes — Fable ships
