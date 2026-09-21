@@ -164,7 +164,16 @@ class Actor {
   sheetClipFor(clip, opts) {
     if (!this.sheet) return null;
     opts = opts || {};
-    const available = this.sheet.clips, level = Math.max(1, Math.min(3, opts.level || 1));
+    let sheet = this.sheet;
+    const targetIdentity = opts.target && opts.target.unit && opts.target.unit.ch && opts.target.unit.ch.expeditionArtIdentity;
+    // Alpha's paired source sheets contain both Hiro and the boss. Play those
+    // frames on Hiro for an exact contact pose, then restore Hiro's own atlas
+    // and scale when the pair releases.
+    if (clip === 'finisher' && targetIdentity === 'tutorial-alpha' && X.Painted && X.Painted.sheet) {
+      const alpha = X.Painted.sheet(this.scene, 'alpha');
+      if (alpha) { sheet = alpha; opts.sheet = alpha; }
+    }
+    const available = sheet.clips, level = Math.max(1, Math.min(3, opts.level || 1));
     const aliases = {
       enter: ['walk', 'run', 'idle'], short_draw: ['short-draw', 'draw'],
       slash: ['slash-l' + level, 'slash-l1', 'attack', 'attack-light', 'bite'],
@@ -176,9 +185,9 @@ class Actor {
       stance: ['intercept', 'cast', 'counter-l' + Math.max(2, level)],
       cast: ['cast', 'aura-l1'], roll: ['roll', 'overshoot-land', 'land-tumble', 'hit-short'],
       finisher: ['finisher-l' + level + '-paired', 'finisher-' + (opts.target && ['wolf', 'boar'].includes(opts.target.kind) ? 'quadruped' : opts.target && opts.target.kind), 'slash-l' + level, 'slash-l1', 'slash', 'attack'],
-      charge: ['charge', 'run', 'leap'], pounce: ['pounce', 'leap'],
-      land_tumble: ['land-tumble', 'down', 'hit'], overshoot_land: ['overshoot-land', 'land-tumble', 'hit'],
-      land_beside: ['land-beside', 'land-tumble', 'idle'], lash_back: ['recover', 'idle'],
+      bite: ['bite', 'attack', 'hit'], charge: ['charge', 'run', 'leap'], pounce: ['pounce', 'approach-leap', 'leap', 'attack'],
+      land_tumble: ['land-tumble', 'down', 'hit', 'idle'], overshoot_land: ['overshoot-land', 'land-tumble', 'hit', 'down'],
+      land_beside: ['land-beside', 'land-tumble', 'hit', 'idle'], lash_back: ['recover', 'idle'],
       down_fade: ['down-fade', 'down'], enrage: ['enrage', 'idle'], stalk: ['stalk', 'idle'],
     };
     const candidates = [clip, X.clipFor ? X.clipFor(clip, opts) : null, ...(aliases[clip] || [])];
@@ -204,11 +213,15 @@ class Actor {
     const ch = target.unit && target.unit.ch;
     // Encounter variants may share an exact painted identity while their
     // combat key and stats differ (for example the gray road-wolf leader).
-    const key = ch && (ch.expeditionArtIdentity || ch.expeditionKey);
-    if (c.opponentKeys && !c.opponentKeys.includes(key)) return false;
+    const keys = ch ? [ch.expeditionArtIdentity, ch.expeditionKey].filter(Boolean) : [];
+    // A paired source may name the combat variant (`road_wolf_leader`) while
+    // the runtime actor carries its painted identity (`tutorial-alpha`). Both
+    // are authoritative for this exact encounter; requiring either keeps the
+    // identity gate strict without rejecting a valid boss pair.
+    if (c.opponentKeys && !c.opponentKeys.some(k => keys.includes(k))) return false;
     // A gray wolf painted into the pair cannot double as the green blight wolf.
     if (target.img.__baseTint != null) return false;
-    if (target.kind === 'wolf' && key && !c.opponentKeys && key !== 'dire_wolf') return false;
+    if (target.kind === 'wolf' && keys[0] && !c.opponentKeys && !keys.includes('dire_wolf')) return false;
     return true;
   }
 
@@ -224,6 +237,10 @@ class Actor {
   resetImageTransform() {
     this.scene.tweens.killTweensOf(this.img);
     this.img.setScale(this._baseScaleX, this._baseScaleY);
+    if (this.sheet && this.sheet.canvas && this.sheet.canvas.pivot) {
+      const canvas = this.sheet.canvas;
+      this.img.setOrigin(canvas.pivot.x / canvas.w, canvas.pivot.y / canvas.h);
+    }
     this.img.setPosition(0, 0).setAngle(0);
   }
 
@@ -244,15 +261,16 @@ class Actor {
     this.syncPause();
   }
 
-  animKey(id) {
-    const key = this.sheet.key + ':' + id, scene = this.scene, c = this.sheet.clips[id];
+  animKey(id, sheet) {
+    sheet = sheet || this.sheet;
+    const key = sheet.key + ':' + id, scene = this.scene, c = sheet.clips[id];
     if (!scene.anims.exists(key)) {
       const explicit = c.frameDurationsMs || (Array.isArray(c.frameMs) ? c.frameMs : null);
       const total = c.durationMs || c.durationMsDraft || c.frames.length * (Number(c.frameMs) || 100);
       const durations = c.frames.map((f, i) => explicit ? explicit[i] : total / c.frames.length);
       // Bundled Phaser treats AnimationFrame.duration as the whole frame hold,
       // not an addition. Set duration too so progress/complete metadata agrees.
-      scene.anims.create({ key, frames: c.frames.map((f, i) => ({ key: this.sheet.key, frame: f, duration: Math.max(1, Number(durations[i]) || total / c.frames.length) })),
+      scene.anims.create({ key, frames: c.frames.map((f, i) => ({ key: sheet.key, frame: f, duration: Math.max(1, Number(durations[i]) || total / c.frames.length) })),
         duration: durations.reduce((sum, n) => sum + (Math.max(1, Number(n)) || total / c.frames.length), 0), repeat: c.loop ? -1 : 0 });
     }
     return key;
@@ -266,7 +284,14 @@ class Actor {
     if (this._destroyed) return Promise.resolve();
     this.resetImageTransform();
     this.img.anims.stop();
-    const c = this.sheet.clips[id], scene = this.scene, key = this.animKey(id);
+    const sheet = opts.sheet || this.sheet;
+    const c = sheet.clips[id], scene = this.scene, key = this.animKey(id, sheet);
+    if (sheet !== this.sheet && sheet.canvas && sheet.canvas.pivot) {
+      const canvas = sheet.canvas;
+      const s = this.height / (sheet.standing || this.img.height);
+      this.img.setOrigin(canvas.pivot.x / canvas.w, canvas.pivot.y / canvas.h);
+      this.img.setScale(s * (this.facing < 0 ? -1 : 1), s);
+    }
     const imp = (X.impact && X.impact[id]) || c.impact || {};
     const drift = !c.paired && imp.drift ? Number(imp.drift.distancePx) || 0 : 0;
     if (!['walk', 'enter', 'idle', 'victory'].includes(clip)) this._sheathed = false;

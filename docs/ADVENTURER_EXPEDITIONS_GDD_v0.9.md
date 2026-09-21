@@ -5,19 +5,22 @@ Version 0.9 · September 19, 2026 (rev. b) · Status reconciled September 20, 20
 
 This revision supersedes v0.8; v0.5 through v0.8 are kept in `docs/` for history.
 
-**Current status — approved v2 art integrated, September 20, 2026.** The first
+**Current status — Alpha boss art integrated, September 21, 2026.** The first
 road remains the playable slice: Hiro, ordinary wolves, thorn lurkers and the
-gray-wolf leader. Bram is the only art-ready companion; new recruitment and
-next-quest locks remain. The inn offers Replay. Broader quests/recruits below
-remain roadmap/history.
+distinct painted Alpha boss. Bram is the only art-ready companion; new
+recruitment and next-quest locks remain. The inn offers Replay. Broader
+quests/recruits below remain roadmap/history.
 
-Hiro has175 runtime frames across 27 clips, including the approved16-frame run,
-four-frame sheathed idle and 44 frames across six finishers. Wolf tier1 is the
-overhead strike/twirl; plant tier1 is stem iaido. Animated inn paintings and four
-painted skill icons are integrated. Other combat, enemy art, music and voices
-are reused. The package is 17,828,737 bytes / 205 files. Cold gameplay download is
-13,743,116 bytes, 14,788,076after audio unlock. Local headless, upload-only journey,
-all-six-finisher, inn, HUD and desktop/emulated-phone tests pass.
+Hiro has 175 runtime frames across 27 clips, including the approved 16-frame
+run, four-frame sheathed idle and 64 paired-finisher frames across nine
+finishers. Alpha has 45 runtime frames across nine clips, including three
+Hiro/Alpha paired finishers; the road leader is keyed as `artActor: alpha` and
+`artIdentity: tutorial-alpha`. Wolf tier1 is the overhead strike/twirl; plant
+tier1 is stem iaido. Animated inn paintings and four painted skill icons are
+integrated. Other combat, enemy art, music and voices are reused. The package
+is 19,910,649 bytes / 210 files, 89,351 bytes under the 20 MB ship gate. Local
+headless, upload-only journey, all-nine-finisher, inn, HUD and
+desktop/emulated-phone tests pass.
 
 See [integration report](ASTRA_V2_INTEGRATION_20260920.md) and
 [intake notes](art/astra-v2/ART_INTAKE_NOTES.md). Physical-phone/portal QA remains.
@@ -1035,15 +1038,16 @@ size and need no pipeline.
 
 ### 10.5 What has no painted art (the list the no-placeholder rule points at)
 
-**Status, 2026-09-21 (audited).** The validated source catalogue is **3 actors,
-28 clips, 144 frames, 9 paired finishers** — the tutorial Alpha plus the approved
-wolf and plant sets. Runtime carries six intaken atlases (Hiro, Bram, wolf, boar,
-plant, alpha). Candidate paintings exist for the boar, an Ironback boss, the Marsh
-Alpha, the Ruins Alpha, raiders and the town watch, but those folders carry no
-authoritative manifest yet, so they are **not ready for intake** and the quests
-that would need them stay shut (§5). **The road's boss is the gray-wolf leader; a
-boss of its own, with its own finishers, is still to paint — until it exists the
-encounter uses the leader as delivered rather than a dressed-up wolf.**
+**Status, 2026-09-21 (audited).** The validated source catalogue now includes
+the tutorial Alpha alongside the approved wolf and plant sets. Runtime carries
+six intaken atlases (Hiro, Bram, wolf, boar, plant, alpha). Candidate paintings
+exist for the boar, an Ironback boss, the Marsh Alpha, the Ruins Alpha, raiders
+and the town watch, but those folders carry no authoritative manifest yet, so
+they are **not ready for intake** and the quests that would need them stay shut
+(§5). The road's third fight is now a real boss: `road_wolf_leader` uses the
+Alpha atlas, `boss: true`, `artActor: alpha`, `artIdentity: tutorial-alpha`, and
+its own idle, approach, attack, hit, enrage, down and three paired Hiro
+finishers.
 
 Updated 2026-09-20. Distinguish assets already playing from new source awaiting
 intake. The selected v2 masters live in the sibling
@@ -1054,13 +1058,14 @@ intake. The selected v2 masters live in the sibling
 |---|---|---|
 | Hiro — v1 ordinary combat/movement set, higher tiers, aura, counter, intercept, riposte | **Painted and integrated**; frame timing, scale and recovery safeguards restored | battle and travel |
 | Hiro — v1 paired wolf finishers and bites | **Integrated**; exact art identity, resolved lethal outcome, approach, hidden-target retirement and interruption restoration guarded | battle; every resolved kill may finish, not just the last enemy |
-| Hiro — six new v2 paired finishers | **Integrated:44 frames** — wolf12/6/6 and plant8/6/6 | enemy identity and skill tier; lethal outcomes only |
+| Hiro — v2 paired finishers | **Integrated:64 frames** — wolf12/6/6, plant8/6/6 and Alpha8/6/6 | enemy identity and skill tier; lethal outcomes only |
 | Hiro — replacement walk and sheathed idle | **Integrated** — run16 frames, sheathed idle4 | travel/approach and victory rest |
 | Hiro — inn and road figure | **Painted runtime figures restored**, no old head/body plate assembly | inn and travel; seated inn paintings are integrated |
 | Bram — full painted set | **Integrated**; legacy ownership/save readiness requires the supported art set | only supported recruit; new purchases remain locked in this first-level pass |
 | Nyx, Sable, Aera, Ren — clip sets | **Not painted** | not purchasable until they are |
-| Ordinary wolf and thorn lurker | **Integrated: 13 clips / 55 frames** reused from v1; no new beast painting needed | current tutorial; gray-wolf leader explicitly shares ordinary-wolf art identity |
-| Boar, Alpha, human foes and other recruits | Historical assets/data retained, **outside current slice** | locked broader-quest roadmap; not substituted into the tutorial |
+| Ordinary wolf and thorn lurker | **Integrated: 13 clips / 55 frames** reused from v1; no new ordinary-beast painting needed | current tutorial; Alpha is a separate boss identity |
+| Tutorial Alpha | **Integrated: 9 clips / 45 frames**, including three paired Hiro finishers | road fight 3 boss |
+| Boar, later Alpha variants, human foes and other recruits | Historical assets/data retained, **outside current slice** | locked broader-quest roadmap; not substituted into the tutorial |
 | Four new Hiro skill icons | **Integrated** | three manual buttons and automatic-slash portrait badge |
 | Inn vignettes | **Integrated** — solo Hiro and Hiro+Bram base paintings, plus candle, steam and hearth effects (4 frames each) | quiet menu regions retained; new art is now the live inn |
 | General v1 effect textures | Source retained; no new runtime adoption claimed in this pass | current code-side VFX remains |
@@ -1142,19 +1147,15 @@ sheet rather than at submission.
 
 ### 12a.1a Where it landed (build of 2026-09-19)
 
-**Current measurement, 2026-09-21 (re-measured; the gate is failing).** Last
-committed state: **17,867,032 bytes / 207 files**, 2.13 MB clear. With the Alpha
-boss intake that landed the same afternoon (a 1.89 MB page 0 in place of a
-393 KB one, plus a new 399 KB page 1): **20,182,102 bytes / 210 files — over the
-20,000,000-byte gate by 182,102 bytes.** Packaged with gzip it is 17.27 MB, but
-the gate measures served bytes and stays the strict reading. **Something must
-come off before submission.** Where it sits now: Hiro 4.76, `js` 2.46, music
-2.34, **Alpha 2.31**, Bram 2.26, plates 1.89, Phaser 1.19, sfx 1.04, wolf 0.63,
-plant 0.40, inn 0.39, voice 0.33. The two candidates that cost the slice
-nothing: the `js/data` trim (~1.5 MB, long on the list) and **Bram's 2.26 MB,
-which ships for a recruit the slice keeps locked** — deferring him off the
-critical path already happened, but he is still inside the package. Either one
-alone clears the overage with room to spare.
+**Current measurement, 2026-09-21 (re-measured after Alpha intake and WebP
+retune).** The ship set is **19,910,649 bytes / 210 files — 89,351 bytes under
+the 20,000,000-byte gate**. Packaged with gzip it is smaller still, but the gate
+measures served bytes and this strict reading is the one we hold. The Alpha
+atlas intake is 45 frames across two WebP pages; quality was lowered only enough
+to clear the gate while preserving the painted runtime set. The two earlier trim
+candidates — the `js/data` subset and Bram's locked 2.26 MB atlas — remain
+available if later content needs more headroom. Browser cold-start and actual
+portal/mobile-device behavior still need a final measurement.
 
 Browser cold start was **11,931,986 bytes**, or **12,976,946 after audio
 unlock**, in the desktop/mobile checks (measured before the Alpha intake). These are distinct measurements: package bytes are not initial network
@@ -1222,6 +1223,76 @@ walk, draw, slash, hit, roll — with finishers, auras and counters streamed dur
 the first travel beat (~2 MB). Together those put the critical path near 6 MB,
 which is the bundle this section always assumed. Until then the 10-second target
 holds only on a fast connection.
+
+---
+
+## 12b. Modules — flagging content in and out of the build (spec, 2026-09-21)
+
+*Design only; nothing below is built. Hiro's ask: "are we able to flag portions
+of the game for back up and removal to easily remove from the game and re add
+to the game, sorta like modules, so we can tweak the size easily?" The answer is
+yes, and three of the four pieces already exist.*
+
+**What exists.** `tools/ship_manifest.json` and `tools/size_check.js` decide what
+is in the package. `npm run test:ship` serves only that set, so anything cut but
+still referenced 404s during the tests instead of in front of a player.
+`P.needed()` in `painted.js` is already a single chokepoint deciding which actor
+atlases get queued — it is how Bram's 2.26 MB stays off the critical path, and
+the Alpha was added to it the same way. Placeholder choreography is already the
+fallback for any clip a sheet lacks. What is missing is one source of truth
+joining those three, and one safety rule.
+
+**The safety rule, which is the reason to build this deliberately.** Phaser's
+loader parks a scene in `preload` until every queued file arrives. A file absent
+from the package does not degrade gracefully — it hangs the game on a black
+screen before `create()` runs. So the build must never *discover* that a module
+is missing; it has to be told in advance. A generated flag file, read at the
+queue points, is the mechanism. 404-tolerance is the backstop, never the plan.
+
+**The design.**
+
+1. `tools/modules.json` is the single source of truth. Each module carries an
+   id, a label, the files and folders it owns, `core: true` for anything that can
+   never come out, `requires` for dependencies (a recruit needs his baked bust),
+   and one line of plain English naming what the player loses without it. Sizes
+   are computed from disk, never hand-entered, so the file cannot lie.
+2. `npm run build:preset <name>` writes a generated `js/expedition/build.js`
+   declaring which modules are present. That generated file is the only thing
+   runtime code consults — no probing, no try/catch around a load.
+3. `size_check.js` reads the same manifest, applies the active preset, and prints
+   per-module megabytes with what each toggle buys, so the trade is visible
+   before it is made.
+4. Runtime gates sit at the chokepoints that already exist: `P.needed()` for art,
+   the inn's buy path (a recruit whose module is out reads "not in this build"
+   rather than presenting a dead button), and the music picker falling back to an
+   included track.
+5. `release:check` prints the active preset, the total and what is off, so a
+   package cannot be submitted without its contents being stated.
+
+**Nothing is deleted.** A module being off is a flag; the files stay in the
+folder and in git, and re-adding is one command. That is what makes the lever
+safe to pull repeatedly — and it is required anyway, since the sandbox that
+edits this folder cannot delete files in it.
+
+**The one new hazard is saves.** A save naming a module that is now out — Bram
+in the roster — must drop him with a note rather than crash. That is the failure
+a player would actually hit after a preset changes between builds, so it gets a
+test of its own.
+
+**Tests to hold it.** Per preset: boot headless, play a fight, reach the inn,
+assert zero 404s and zero missing-texture warnings. Plus a contract test that
+every file in an on-module exists and nothing references an off-module.
+
+**Starting modules, with measured weights (2026-09-21).** `core` (index, `js`,
+Phaser, HUD, Hiro's atlas, wolf, plant, the road's plates, sfx) is never
+removable. Then `bram` 2.26 MB, `alpha` 2.31 MB, `music` as full-versus-single
+-battle-track (~1.0 MB swing), `voice` 0.33 MB, and the `js/data` trim (1.37 MB
+in the ship set, of which `voice_manifest.js` alone is 0.42 MB) as a build step
+on the same lever. Roughly 7 MB of adjustable weight.
+
+**What this does not do.** Bram and the Alpha cost within 0.05 MB of each other,
+so the system makes that choice one command instead of a manifest edit — it does
+not manufacture space. The overage still has to be paid by a real cut.
 
 ---
 

@@ -3,7 +3,7 @@
 'use strict';
 const A = ADV, X = A.Expedition, UI = X.UI;
 const P = X.Painted = {};
-P.actors = ['hiro', 'bram', 'wolf', 'plant'];
+P.actors = ['hiro', 'bram', 'wolf', 'plant', 'alpha'];
 
 // What a scene actually needs before it can run. Bram is ~2 MB and cannot be in
 // the party while recruiting is locked (X.slice.firstLevelOnly), so loading him
@@ -18,8 +18,10 @@ P.needed = function (scene) {
   if (!run) { try { run = X.Run.load(); } catch (e) { run = null; } }
   const owned = run && run.roster ? run.roster.slice() : [];
   const hireable = !(X.Campaign && X.Campaign.recruitingLocked && X.Campaign.recruitingLocked());
+  const sceneKey = scene && scene.sys && scene.sys.settings && scene.sys.settings.key;
   return P.actors.filter(id => {
     if (id === 'bram') return hireable || owned.includes('bram');
+    if (id === 'alpha') return sceneKey === 'Expedition' || (scene && scene.__needsAlpha);
     return true;
   });
 };

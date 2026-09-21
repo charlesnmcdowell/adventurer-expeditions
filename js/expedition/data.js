@@ -74,8 +74,11 @@ X.riposte = {
 X.enemies = {
   // kind drives the placeholder choreography (leap / charge / lash / pounce) and the art frame.
   dire_wolf:    { base: 'dire_wolf', level: 1, kind: 'wolf', frame: 0, height: 185 },
-  road_wolf_leader: { base: 'dire_wolf', level: 4, kind: 'wolf', height: 185, name: 'Pack Leader', boss: true,
-    artIdentity: 'dire_wolf', statMult: { hp: 1.25, atk: 0.8 } },
+  // The road's third fight uses a distinct painted Alpha boss. Keep its road
+  // variant stats, but let the boss kind drive heavy choreography and its own
+  // atlas instead of reusing the ordinary wolf.
+  road_wolf_leader: { base: 'dire_wolf', level: 4, kind: 'boss', artActor: 'alpha', height: 330, name: 'Alpha', boss: true,
+    artIdentity: 'tutorial-alpha', statMult: { hp: 1.25, atk: 0.8 }, phase2At: 0.5 },
   cave_boar:    { base: 'cave_boar', level: 2, kind: 'boar', frame: 1, height: 250, actives: ['tusk_gore'] },          // charge: Bleed + pull
   thorn_lurker: { base: 'thorn_lurker', level: 2, kind: 'plant', frame: 2, height: 245, actives: ['thorn_lash'],       // lash: Poison + root
                   perks: [] },                                                                                       // no regenerate/thorn skin: brisk, no healer stall
@@ -150,6 +153,10 @@ X.clipFor = function (clip, opts) {
   if (clip === 'finisher') {
     // Each approved paired timeline contains a specific creature. Actor.canPair
     // additionally checks identity, tint and the resolved lethal outcome.
+    const targetIdentity = opts && opts.target && opts.target.unit && opts.target.unit.ch && opts.target.unit.ch.expeditionArtIdentity;
+    if (targetIdentity === 'tutorial-alpha') {
+      return ['hiro-alpha-cleave-paired', 'hiro-alpha-pin-paired', 'hiro-alpha-parry-paired'][lvl - 1];
+    }
     const finishers = {
       wolf: ['wolf-cleave-paired', 'wolf-pin-paired', 'wolf-rising-cut-paired'],
       plant: ['plant-stem-cut-paired', 'plant-vine-pin-paired', 'plant-crosscut-paired'],

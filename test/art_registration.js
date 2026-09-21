@@ -2,7 +2,7 @@
 'use strict';
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
 const root=path.resolve(__dirname,'..');
-const counts={hiro:175,bram:96,wolf:38,boar:20,plant:17,alpha:21};
+const counts={hiro:175,bram:96,wolf:38,boar:20,plant:17,alpha:45};
 for(const [id,count] of Object.entries(counts)){
   const dir=path.join(root,'assets/expedition',id);
   const m=JSON.parse(fs.readFileSync(path.join(dir,id+'.json'),'utf8'));
@@ -74,6 +74,20 @@ for(const [id,count] of Object.entries(counts)){
     assert(overhead.referenceHeights.slice(0,6).every(v=>v===358));
     assert(overhead.referenceHeights.slice(6).every(v=>v===391),'twirl must keep body calibration');
     assert.deepEqual(overhead.authoredAlphaFrames,[6,7,8,9,10,11],'twirl must keep original alpha');
+  }
+  if(id==='alpha'){
+    const required={idle:4,'approach-leap':6,attack:6,hit:3,enrage:3,down:3,
+      'hiro-alpha-cleave-paired':8,'hiro-alpha-pin-paired':6,'hiro-alpha-parry-paired':6};
+    for(const [name,n] of Object.entries(required)){
+      const c=m.clips[name];assert(c,'missing Alpha clip '+name);assert.equal(c.frames.length,n,name);
+      if(c.paired){
+        assert.deepEqual(c.opponentKinds,['wolf','boss']);
+        assert.deepEqual(c.opponentKeys,['road_wolf_leader']);
+        assert(c.contact.includes(3),'missing Alpha impact '+name);
+        assert(c.victimFullyGoneFrame<=c.release,'Alpha victim must disappear before release '+name);
+      }
+    }
+    assert.equal(m.standing,360,'Alpha atlas standing height changed');
   }
   console.log('registered '+id+': '+count+' frames');
 }

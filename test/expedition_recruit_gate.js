@@ -75,7 +75,9 @@ test('save reload preserves locked skills and all existing quest identities', ()
   for (const key of X.purchasable) assert.equal(saved.levels[key], 0);
   assert.deepEqual(X.quests.map(q => q.id), ['road', 'rain', 'city', 'marsh', 'ruins']);
   assert.equal(X.enemies.cutthroat.human.sex, 'm'); assert.equal(X.enemies.hedge_mage.human.set, 'adept');
-  assert.ok(Camp.questEncounters('road').every(enc => enc.enemies.every(id => ['wolf', 'plant'].includes(X.enemies[id].kind))), 'active tutorial uses only ordinary wolf/plant art');
+  assert.deepEqual(Camp.questEncounters('road').flatMap(enc => enc.enemies).map(id => X.enemies[id].kind), ['wolf', 'wolf', 'wolf', 'plant', 'plant', 'boss'], 'tutorial uses the dedicated Alpha boss on the final board');
+  assert.equal(X.enemies.road_wolf_leader.artActor, 'alpha');
+  assert.equal(X.enemies.road_wolf_leader.artIdentity, 'tutorial-alpha');
 });
 test('legacy saves cannot reopen later quests or replace Hiro, but keep earned progress', () => {
   const run = X.Run.fresh();

@@ -15,6 +15,54 @@ of small fixes within a day.
 
 ---
 
+## 2026-09-21 — Module spec (§12b), and the trim candidates measured
+
+Fable, design only — no code. Hiro asked whether parts of the game could be
+flagged in and out of the build like modules, to tweak the size easily, and
+chose "just give me the plan for now".
+
+**§12b added to the GDD.** Three of the four pieces already exist: the ship
+manifest plus `size_check`, `test:ship` serving only that set so a cut-but-
+referenced file 404s in the tests, and `P.needed()` in `painted.js` as a single
+chokepoint for actor atlases. What is missing is a `tools/modules.json` source of
+truth, a `build:preset` generator writing `js/expedition/build.js`, per-module
+sizes in `size_check`, and the preset printed by `release:check`.
+
+**The safety rule is the load path, not the file system.** Phaser parks a scene
+in `preload` until every queued file arrives, so an absent file hangs the game on
+a black screen rather than degrading. The build must be *told* what is out, never
+discover it. Modules being "off" never deletes anything; the files stay in git.
+The one new hazard is a save naming a module that is now out, which must drop the
+member with a note rather than crash — it gets its own test.
+
+**Trim candidates, measured against the 182,102-byte overage.** Bram 2.26 MB (a
+recruit the slice locks). `js/data` 1.37 MB in the ship set, of which
+`voice_manifest.js` alone is 0.42 MB and the website's dialogue tables —
+`campaign3_dialogue` 0.18, `dialogue_context` 0.11, `dialogue_bonus` 0.07 — make
+up most of the rest; realistic recovery 1.0–1.2 MB. `tavern.webp` 0.28 MB, now
+that the inn runs on painted inn art, pending a reachability check. `audio/sfx`
+1.04 MB across 42 files, unaudited for what the slice actually triggers. Hiro's
+atlas is 4.76 MB at 400 px, where a drop to ~340 px is worth 1.2–1.4 MB but is
+Astra's call. Phaser at 1.19 MB could give up perhaps 0.3 MB to a custom build,
+which is not worth the risk. Voice at 0.33 MB stays.
+
+**A correction made in the course of measuring.** A first pass reported the five
+part sheets (4.40 MB) as back in the ship set; they are not. The grep had matched
+`ship_manifest.json`'s `partSheets` block, which `size_check` excludes while the
+busts are baked. The plate audit was redone against `shipList()` itself. The real
+result: the anime plates in the build total 1.89 MB, the alley, marsh, ruins and
+city plates are already out, and `tavern.webp` is the only one the open slice
+cannot reach.
+
+**Hiro's direction on the trim:** Bram and the `js/data` trim, with more options
+to discuss. Together those are ~3.3–3.5 MB against a 0.18 MB overage, which also
+buys room for the unintaken candidates and the Hiro atlas split that load
+phasing needs (§12a.3).
+
+Docs committed by path again: the concurrent session's code is still uncommitted.
+
+---
+
 ## 2026-09-21 — Doc corrections, and the size gate is failing
 
 Fable, at Hiro's request after the status checklist: *"yea you can update the

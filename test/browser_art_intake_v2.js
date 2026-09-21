@@ -7,8 +7,8 @@ const { createHash } = require('node:crypto');
 const ROOT = path.join(__dirname, '..'), OUT = path.join(__dirname, 'reports/art-intake-v2');
 const mime = { '.html': 'text/html', '.js': 'application/javascript', '.json': 'application/json', '.webp': 'image/webp', '.png': 'image/png', '.mp3': 'audio/mpeg', '.css': 'text/css' };
 const ship = process.argv.includes('--ship') ? new Set(require('../tools/size_check.js').shipList().files) : null;
-const families = { wolf: ['wolf-cleave-paired', 'wolf-pin-paired', 'wolf-rising-cut-paired'], plant: ['plant-stem-cut-paired', 'plant-vine-pin-paired', 'plant-crosscut-paired'] };
-const expectedFrames = { wolf: [12, 6, 6], plant: [8, 6, 6] };
+const families = { wolf: ['wolf-cleave-paired', 'wolf-pin-paired', 'wolf-rising-cut-paired'], plant: ['plant-stem-cut-paired', 'plant-vine-pin-paired', 'plant-crosscut-paired'], alpha: ['hiro-alpha-cleave-paired', 'hiro-alpha-pin-paired', 'hiro-alpha-parry-paired'] };
+const expectedFrames = { wolf: [12, 6, 6], plant: [8, 6, 6], alpha: [8, 6, 6] };
 (async () => {
   fs.mkdirSync(OUT, { recursive: true });
   const atlasFiles = () => {
@@ -35,7 +35,7 @@ const expectedFrames = { wolf: [12, 6, 6], plant: [8, 6, 6] };
       for (const s of game.scene.getScenes(true)) game.scene.stop(s.sys.settings.key);
       class IntakeScene extends Phaser.Scene {
         constructor() { super('IntakeV2'); }
-        preload() { X.Painted.preload(this); }
+        preload() { this.__needsAlpha = true; X.Painted.preload(this); }
         create() {
           this.paused = false; this.game_ = { world: { seed: 11, questClock: 0 }, quest: { travel: { weather: 'clear' } } };
           this.actors = new Map(); this.env = ADV.BattleArt.paint(this, 'forest', 'day');
@@ -62,21 +62,24 @@ const expectedFrames = { wolf: [12, 6, 6], plant: [8, 6, 6] };
           this.hero = new X.Actor(this, { uid: 'hero', unit, side: 'a', x: 400, y: 612, height: 330, kind: 'hero', sheet: X.Painted.sheet(this, 'hiro') });
           this.actors.set('hero', this.hero);
           if (kind) {
-            const id = kind === 'wolf' ? 'dire_wolf' : 'thorn_lurker';
-            this.foe = new X.Actor(this, { uid: 'foe', unit: { chp: 0, maxHp: 100, statuses: [], ch: { expeditionKey: id } }, side: 'b', x: 850, y: 612, height: kind === 'wolf' ? 185 : 215, kind, sheet: X.Painted.sheet(this, kind) });
+            const id = kind === 'wolf' ? 'dire_wolf' : kind === 'plant' ? 'thorn_lurker' : 'road_wolf_leader';
+            const sheetId = kind === 'alpha' ? 'alpha' : kind;
+            const ch = { expeditionKey: id };
+            if (kind === 'alpha') ch.expeditionArtIdentity = 'tutorial-alpha';
+            this.foe = new X.Actor(this, { uid: 'foe', unit: { chp: 0, maxHp: 100, statuses: [], ch }, side: 'b', x: 850, y: 612, height: kind === 'wolf' ? 185 : kind === 'plant' ? 215 : 330, kind: kind === 'alpha' ? 'boss' : kind, sheet: X.Painted.sheet(this, sheetId) });
             this.actors.set('foe', this.foe);
           }
           return this.hero;
         }
         async finisher(kind, level) {
           const h = this.setup(kind), target = this.foe;
-          const opts = { target, level, lethal: true }, id = h.sheetClipFor('finisher', opts), clip = h.sheet.clips[id];
+          const opts = { target, level, lethal: true }, id = h.sheetClipFor('finisher', opts), pairSheet = opts.sheet || h.sheet, clip = pairSheet.clips[id];
           if (!clip.paired) throw new Error('Selected an unpaired fallback for ' + kind + level);
           const result = { id, kind, level, frames: clip.frames.length, contacts: 0, releases: 0, contactFrames: [], seen: [], scales: [], metadataContacts: clip.contact || clip.contactFramesZeroBased,
-            releaseFrame: clip.release != null ? clip.release : clip.releaseFrameZeroBased, expectedDuration: clip.durationMs || clip.durationMsDraft, baseline: [h._baseScaleX, h._baseScaleY], hiddenOnContact: false, hiddenOnRelease: false, done: false };
+            releaseFrame: clip.release != null ? clip.release : clip.releaseFrameZeroBased, expectedDuration: clip.durationMs || clip.durationMsDraft, baseline: [h._baseScaleX, h._baseScaleY], pairBaseline: [h.height / (pairSheet.standing || h.img.height), h.height / (pairSheet.standing || h.img.height)], hiddenOnContact: false, hiddenOnRelease: false, done: false };
           this.result = result;
           const note = (anim, f) => {
-            if (anim.key !== h.animKey(id)) return;
+            if (anim.key !== h.animKey(id, pairSheet)) return;
             if (!result.seen.includes(f.index - 1)) result.seen.push(f.index - 1);
             result.scales.push([h.img.scaleX, h.img.scaleY]);
             if (id === 'wolf-cleave-paired' && (f.index - 1 === 5 || f.index - 1 === 6)) this.holdQa('seam-' + (f.index - 1));
@@ -97,10 +100,10 @@ const expectedFrames = { wolf: [12, 6, 6], plant: [8, 6, 6] };
           // Wrong species, nonlethal outcomes and recolored creatures may not
           // select a clip containing a different or dying animal.
           target.alive = true;
-          result.nonlethalPaired = !!h.sheet.clips[h.sheetClipFor('finisher', { ...opts, lethal: false })].paired;
-          const other = kind === 'wolf' ? 'plant' : 'wolf'; target.kind = other;
+          result.nonlethalPaired = !!pairSheet.clips[h.sheetClipFor('finisher', { ...opts, lethal: false })].paired;
+          const other = kind === 'wolf' ? 'plant' : kind === 'plant' ? 'wolf' : 'plant'; target.kind = other;
           result.wrongSpeciesAccepted = h.canPair(clip, 'finisher', opts);
-          target.kind = kind; target.img.__baseTint = 0x55aa55;
+          target.kind = kind === 'alpha' ? 'boss' : kind; target.img.__baseTint = 0x55aa55;
           result.tintedAccepted = h.canPair(clip, 'finisher', opts);
           delete target.img.__baseTint; target.alive = false;
           result.done = true;
@@ -154,7 +157,8 @@ const expectedFrames = { wolf: [12, 6, 6], plant: [8, 6, 6] };
       assert.equal(result.hiddenOnContact, true); assert.equal(result.hiddenOnRelease, true); assert.equal(result.alive, false); assert.equal(result.visible, false); assert.equal(result.downDidNotRevive, true);
       assert.match(result.idle, /:idle$/); assert.equal(result.playbackCleared, true); assert.equal(result.finalX, 400);
       assert.equal(result.nonlethalPaired, false); assert.equal(result.wrongSpeciesAccepted, false); assert.equal(result.tintedAccepted, false);
-      for (const scale of [...result.scales, result.scaleAfter]) assert.deepEqual(scale, result.baseline);
+      for (const scale of result.scales) assert.deepEqual(scale, kind === 'alpha' ? result.pairBaseline : result.baseline);
+      assert.deepEqual(result.scaleAfter, result.baseline);
       reports.push(result); console.log('ok ' + result.id + ': one contact, complete recovery, hidden victim');
     }
     await page.evaluate(() => { __intakeQa.locomotion().catch(e => { __intakeQa.failure = String(e.stack || e); }); });
@@ -166,6 +170,6 @@ const expectedFrames = { wolf: [12, 6, 6], plant: [8, 6, 6] };
     assert.deepEqual(errors, []);
     assert.deepEqual(atlasFiles(), runtimeFiles, 'runtime atlas changed during test; rerun against the finished build');
     fs.writeFileSync(path.join(OUT, 'result.json'), JSON.stringify({ ship: !!ship, runtimeFiles, metadata, reports, locomotion, errors }, null, 2) + '\n');
-    console.log('browser_art_intake_v2: 6 finishers, 16 run frames and4 sheathed idle frames passed');
+    console.log('browser_art_intake_v2: 9 finishers, 16 run frames and4 sheathed idle frames passed');
   } finally { await browser.close(); await new Promise(r => server.close(r)); }
 })().catch(e => { console.error(e); process.exitCode = 1; });

@@ -17,6 +17,7 @@ class ExpeditionScene extends Phaser.Scene {
   init(data) { this.opts = data || {}; }
 
   preload() {
+    this.__needsAlpha = true;
     X.Painted.preload(this);
     X.UI.preloadBusts(this);
   }
@@ -32,7 +33,7 @@ class ExpeditionScene extends Phaser.Scene {
   create() {
     this.__presentationReady = false;
     X.Painted.install(this);
-    if (!X.Painted.require(this, ['hiro', 'wolf', 'plant'])) return;
+    if (!X.Painted.require(this, ['hiro', 'wolf', 'plant', 'alpha'])) return;
     this.actors = new Map();
     this.paused = false; this.time.paused = false;
     this.ended = false;
@@ -131,7 +132,8 @@ class ExpeditionScene extends Phaser.Scene {
       const def = X.enemies[key] || {};
       const human = !!u.ch.expeditionHuman;
       // Humans (bandits, the watch, rivals) are the website's composed busts, mirrored to face the party.
-      const sheet = X.Painted.sheet(this, def.kind);
+      const artId = def.artActor || def.kind;
+      const sheet = X.Painted.sheet(this, artId);
       if (!sheet) throw new Error('No complete painted enemy in tutorial: ' + key);
       const texture = sheet.key;
       const a = new X.Actor(this, { uid: u.uid, unit: u, side: 'b', x: FOE_X[i] || FOE_X[FOE_X.length - 1], y: GROUND_Y - 4 + i * 6,

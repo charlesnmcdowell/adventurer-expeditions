@@ -37,7 +37,7 @@ try {
 }
 const { shipList, report } = require('../tools/size_check');
 const set = new Set(shipList().files);
-const actors = ['hiro', 'bram', 'wolf', 'plant'];
+const actors = ['hiro', 'bram', 'wolf', 'plant', 'alpha'];
 // Exercise the actual cold-boot preloader. Checking a second hardcoded manifest
 // list alone would miss a runtime that still requests removed boar/Alpha pages.
 const context = vm.createContext({ ADV: { Expedition: { UI: {} }, DATA: {} } });
@@ -46,7 +46,7 @@ assert.ok(set.has(paintedPath), 'The shared painted loader must ship');
 vm.runInContext(fs.readFileSync(path.join(ROOT, paintedPath), 'utf8'), context);
 const painted = context.ADV.Expedition.Painted, loads = [];
 assert.deepEqual(Array.from(painted.actors), actors, 'Boot actor selection matches tutorial scope');
-painted.preload({ textures: { exists: () => false }, cache: { json: { exists: () => false } }, load: {
+painted.preload({ sys: { settings: { key: 'Expedition' } }, __needsAlpha: true, textures: { exists: () => false }, cache: { json: { exists: () => false } }, load: {
   multiatlas: (key, file, base) => loads.push({ kind: 'atlas', key, file, base }),
   json: (key, file) => loads.push({ kind: 'metadata', key, file }),
 } });
@@ -73,7 +73,7 @@ assert.deepEqual(Object.keys(icons.frames).sort(), ['counter_attack', 'finisher'
 assert.ok(!set.has('assets/expedition/hiro/hiro.webp'), 'Superseded atlas must not ship');
 assert.ok(!set.has('assets/anime/v2/runtime/hiro_cyber_20260916.webp'), 'Superseded Hiro plate must not ship');
 assert.ok(![...set].some(f => /(?:^|\/)astra-v\d+(?:\/|$)/.test(f)), 'Source masters/review art must not ship');
-assert.ok(![...set].some(f => /^assets\/expedition\/(boar|alpha)\//.test(f)), 'Off-scope creature atlases must stay excluded');
+assert.ok(![...set].some(f => /^assets\/expedition\/boar\//.test(f)), 'Off-scope creature atlases must stay excluded');
 assert.ok(![...set].some(f => /^assets\/expedition\/busts\/(foe_|nyx\.|sable\.|aera\.|ren\.)/.test(f)), 'Off-scope human/recruit portraits must stay excluded');
 for (const f of [
   'assets/anime/v2/runtime/alley.webp', 'assets/anime/v2/runtime/marsh.webp', 'assets/anime/v2/runtime/ruins.webp',
