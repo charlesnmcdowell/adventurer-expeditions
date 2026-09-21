@@ -50,7 +50,11 @@ Camp.weatherOf = q => X.weatherKinds[(q && q.weather) || 'clear'] || X.weatherKi
 // declared sky — the reed marsh is a *clear* night (GDD §5). The phase is
 // applied, so a night storm reads as night rather than as a bright day storm.
 Camp.weatherFor = function (quest, world, phase) {
-  const over = Camp.weatherOf(quest);
+  // Developer overrides (Hiro, 2026-09-21): the dev panel cycles these so a
+  // location can be judged under every sky while a quest is being designed.
+  // Unset for players — nothing writes them but the panel.
+  const over = (X.devWeather && X.weatherKinds[X.devWeather]) || Camp.weatherOf(quest);
+  if (X.devPhase) phase = X.devPhase;
   const w = (world && world.world) || world || { seed: 1, questClock: 0 };
   try { return A.Weather.at(w, { phase: phase || (quest && quest.phase) || 'day', override: over }); }
   catch (e) { return over; }

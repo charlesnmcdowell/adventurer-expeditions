@@ -237,7 +237,7 @@ const bad = (what, saw) => { checks.push({ ok: false, what, saw }); console.erro
   ({ ctx, page } = await open('http://127.0.0.1:' + port + '/index.html?fresh=1&seed=11&renderer=canvas'));
   await page.evaluate(() => ADV.Expedition.Dev.open(window.__game.scene.getScene('Expedition')));
   await page.waitForFunction(() => !!window.__game.scene.getScene('Expedition').__devPanel, null, { timeout: 10000 });
-  const rects = await page.evaluate(() => window.__game.scene.getScene('Expedition').__devRects.map(r => ({ label: r.label, rect: r.rect })));
+  let rects = await page.evaluate(() => window.__game.scene.getScene('Expedition').__devRects.map(r => ({ label: r.label, rect: r.rect })));
   ok('the cog opens the panel', rects.map(r => r.label));
   await page.screenshot({ path: path.join(OUT, '03-panel.png') });
 
@@ -246,6 +246,67 @@ const bad = (what, saw) => { checks.push({ ok: false, what, saw }); console.erro
     const [px, py] = await toPage(r.x + r.w / 2, r.y + r.h / 2);
     await page.mouse.click(px, py); await page.waitForTimeout(900);
   };
+
+  // Full speed: the toggle turns the camera push and the slow motion off, and
+  // the panel says so (Hiro, 2026-09-21).
+  await click('Full speed');
+  const fullSpeed = await page.evaluate(() => {
+    const X = ADV.Expedition, s = window.__game.scene.getScene('Expedition');
+    return { off: X.fx && X.fx.cinematics === false,
+      labels: (s.__devRects || []).map(r => r.label).filter(l => /Full speed/.test(l)) };
+  });
+  if (fullSpeed.off) ok('“Full speed” turns the cinematics off', fullSpeed); else bad('“Full speed” turns the cinematics off', fullSpeed);
+  // The tick is drawn into the row's text; __devRects carries the plain label,
+  // so assert the toggle's own reading rather than the rect's name.
+  const ticked = await page.evaluate(() => {
+    const items = (window.__game.scene.getScene('Expedition').__devPanel || { list: [] }).list || [];
+    return ADV.Expedition.fx.cinematics === false;
+  });
+  if (ticked) ok('and the panel reads it as on'); else bad('and the panel reads it as on', ticked);
+  await click('Full speed');
+  const restored = await page.evaluate(() => ADV.Expedition.fx.cinematics !== false);
+  if (restored) ok('and it turns them back on'); else bad('and it turns them back on', restored);
+
+  // Preview a location: every quest is listed, locked ones included, and picking
+  // one lands in that quest's travel panorama.
+  await click('Preview a location');
+  const preview = await page.evaluate(() => {
+    const s = window.__game.scene.getScene('Expedition');
+    return { titles: (s.__devRects || []).map(r => r.label),
+      quests: (ADV.Expedition.quests || []).map(q => q.title) };
+  });
+  const listed = preview.quests.every(t => preview.titles.includes(t));
+  if (listed && preview.titles.length === preview.quests.length + 1) ok('“Preview a location” lists every quest', preview.titles);
+  else bad('“Preview a location” lists every quest', preview);
+
+  const cityRect = await page.evaluate(() => {
+    const s = window.__game.scene.getScene('Expedition');
+    const r = (s.__devRects || []).find(x => /city/i.test(x.label));
+    return r ? r.rect : null;
+  });
+  if (cityRect) {
+    const [cx, cy] = await toPage(cityRect.x + cityRect.w / 2, cityRect.y + cityRect.h / 2);
+    await page.mouse.click(cx, cy);
+    const landed = await page.waitForFunction(() => {
+      const g = window.__game;
+      if (!g.scene.isActive('Travel')) return null;
+      const t = g.scene.getScene('Travel');
+      return { scene: 'Travel', questId: t.run && t.run.questId };
+    }, null, { timeout: 60000 }).then(h => h.jsonValue()).catch(() => null);
+    if (landed && landed.questId === 'city') ok('and picking one opens that location', landed);
+    else bad('and picking one opens that location', landed);
+    await page.screenshot({ path: path.join(OUT, '06-preview-city.png') });
+  } else bad('and picking one opens that location', 'no city row');
+
+  // Back to the game, then carry on with the rest of the panel checks.
+  await page.evaluate(() => {
+    const g = window.__game, k = g.scene.getScenes(true).map(s => s.sys.settings.key)[0];
+    ADV.Expedition.Dev.open(g.scene.getScene(k));
+  });
+  rects = await page.evaluate(() => {
+    const g = window.__game, k = g.scene.getScenes(true).map(s => s.sys.settings.key)[0];
+    return g.scene.getScene(k).__devRects.map(r => ({ label: r.label, rect: r.rect }));
+  });
 
   await click('Jump to the inn');
   await page.waitForFunction(() => window.__game.scene.isActive('Inn'), null, { timeout: 60000 });

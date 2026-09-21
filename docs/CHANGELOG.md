@@ -46,6 +46,55 @@ Browser inn/recruit suites now read `embarkBtn` as the next quest and
 
 ---
 
+## 2026-09-21 — Full speed, a location preview, and the art catalogue
+
+Fable. Hiro, after confirming the tutorial now works: *"temporarily disable the
+cinematic cam and the slow down on finishing moves and skill use to see how the
+game looks at full speed"*, *"I'm still not able to get to the next quest
+location, it just repeats to the forest area again"*, and then a request for the
+full palette to design level two with.
+
+**Full speed.** `X.fx = { cinematics: true }`. With it false, `UI.cinematic`
+runs its body straight through — no push, no slow motion, no scene bookkeeping —
+and `hitStop` returns immediately, so no impact holds. The same hits land in the
+same order at one speed. The dev panel's **Full speed** toggles it; players
+cannot reach the switch. `data.js`, `ui_common.js`, `beats.js`.
+
+**Why the forest repeats, which is not a bug.** Road in the Rain is painted on
+the same plates as the tutorial road — `deep_wood, bandit_road, mountain` — with
+the same `forest` panorama and storm weather. It is the same place in worse
+weather, by design. The City Watch (alley) is the first visually distinct stop,
+and it is open now.
+
+**Preview a location.** A second page on the dev panel listing every quest,
+locked ones included: picking one lifts the slice lock, retires the guidance and
+drops into that quest's travel panorama, so the location is the first thing on
+screen. The marsh and ruins are not in the packaged build, so this works against
+a local server — which is where the panel lives — and not in a `--ship` run.
+
+**Weather and time cycling.** `Camp.weatherFor` now honours `X.devWeather` and
+`X.devPhase`, and the panel cycles both (clear / overcast / rain / storm, and
+day / evening / night) restaging the scene so the change is painted. Both are
+unset for players and nothing but the panel writes them.
+
+**The catalogue, for level two.** The offshoot carries 7 battle plates and 4
+travel panoramas; the website game has **34 plates and 28 panoramas**, each
+0.26–0.48 MB, one `sync_shared.js` entry away. Contact sheets are in
+`dist/catalogue/`. On creatures, Hiro was explicit — only reworked art counts.
+Four creatures qualify: **wolf** (9 clips / 38 frames, five Hiro pairs including
+the two bites), **thorn lurker** (4 / 17, three pairs), **Alpha** (9 / 45, three
+pairs in its own atlas) and **cave boar** (5 / 20, animated but **no finishing
+move painted**, and currently outside the ship set). Everything else in the game
+is plate art and is not offered as an option.
+
+**Tests.** Headless green (sim 16, recruit 9, lifecycle 25, cinematic **6** with
+a new full-speed case asserting the body still runs while camera and clocks are
+untouched, portal 6, inn 5, registration, contract). `test:restart` **22/0**,
+now covering the Full speed toggle, the preview listing every quest, and picking
+the city landing in its travel scene. Ship set 18.33 MB of 20.0.
+
+---
+
 ## 2026-09-21 — The tutorial teaches during the fight; the city opens
 
 Fable, on two reports from Hiro: *"tutorial is kinda broken, it start after the

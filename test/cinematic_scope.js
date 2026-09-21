@@ -32,6 +32,27 @@ const rest = { tween: 1, anim: 1, clock: 1, zoom: 1, x: 0, y: 0 };
 const deferred = () => { let resolve; const promise = new Promise(r => { resolve = r; }); return { promise, resolve }; };
 const cases = [];
 const test = (name, fn) => cases.push([name, fn]);
+// Full speed (Hiro, 2026-09-21): with X.fx.cinematics false the body still runs
+// and still returns its value, but nothing touches the camera or the clocks —
+// no push, no slow motion, and no cinematic bookkeeping left on the scene.
+test('full speed runs the body without touching the camera or the clocks', async () => {
+  const s = scene(), before = snapshot(s);
+  X.fx = { cinematics: false };
+  try {
+    let ran = false;
+    const out = await X.UI.cinematic(s, 'kill', { x: 600, y: 390 }, async () => {
+      ran = true;
+      assert.deepEqual(snapshot(s), before, 'nothing may change while the body runs');
+      return 'done';
+    });
+    assert.ok(ran, 'the body still runs');
+    assert.equal(out, 'done', 'and its value is still returned');
+    assert.deepEqual(snapshot(s), before, 'and nothing changed after it');
+    assert.deepEqual(s.writes, [], 'the camera is never written to');
+    assert.ok(!s.__cinematicState && !s.__cine, 'no cinematic state is left behind');
+  } finally { X.fx = { cinematics: true }; }
+});
+
 test('normal completion returns the scene to its resting camera and time scales', async () => {
   const s = scene(), before = snapshot(s);
   const result = await X.UI.cinematic(s, 'cast', { x: 600, y: 390 }, async () => {

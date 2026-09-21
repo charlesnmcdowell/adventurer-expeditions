@@ -143,6 +143,15 @@ X.manualSkills = true;
 // push the main camera in; the HUD sits on its own camera and stays put.
 // Slower, not laggy (Hiro, round 3): cast 0.50 → 0.70, kill 0.36 → 0.55, and the
 // push-in snaps (240/220 ms → 150/140) instead of drifting.
+// Full speed, for looking at the game with no showmanship in the way (Hiro,
+// 2026-09-21: "temporarily disable the cinematic cam and the slow down on
+// finishing moves and skill use"). With `cinematics` false the camera never
+// pushes in and nothing ever slows: UI.cinematic runs its body straight through
+// and the impact hit-stop is skipped. Nothing else changes — the same hits land
+// in the same order, just at one speed. The dev panel toggles it; it is on for
+// players, and no player can reach the switch.
+X.fx = { cinematics: true };
+
 X.cinematic = { cast: { scale: 0.70, zoom: 1.16, ms: 150 }, kill: { scale: 0.55, zoom: 1.26, ms: 140 } };
 
 // HUD icon radius (was 18): easier to tap on a phone.

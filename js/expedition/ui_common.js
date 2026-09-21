@@ -155,6 +155,8 @@ UI.resetCamera = function (scene) {
 };
 
 UI.cinematic = async function (scene, kind, focus, fn) {
+  // Full speed: no push, no slow motion, no bookkeeping — just do the thing.
+  if (X.fx && X.fx.cinematics === false) return await fn();
   const c = (X.cinematic && X.cinematic[kind]) || { scale: 0.7, zoom: 1.15, ms: 150 };
   const cam = scene.cameras.main;
   const base = UI.cameraBase(scene);

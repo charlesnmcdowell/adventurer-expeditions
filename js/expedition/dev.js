@@ -91,6 +91,25 @@ const ITEMS = [
   { label: 'Open every quest', hint: 'lifts the slice lock', keep: true, toggle: () => !(X.slice && X.slice.firstLevelOnly), run: () => {
       X.slice.firstLevelOnly = !X.slice.firstLevelOnly;
     } },
+  { label: 'Full speed', hint: 'no camera push, no slow motion', keep: true,
+    toggle: () => !!(X.fx && X.fx.cinematics === false), run: () => {
+      X.fx = X.fx || {};
+      X.fx.cinematics = X.fx.cinematics === false;     // off -> on, on -> off
+    } },
+  { label: 'Preview a location', hint: 'any quest, local build only', nav: true, run: scene => Dev.openPreview(scene) },
+  // Cycle the sky and the hour on whatever is on screen. Both are overrides the
+  // quest itself does not carry, so they survive a scene restart and are cleared
+  // by picking "as written".
+  { label: () => 'Weather: ' + (X.devWeather || 'as written'), hint: 'clear, overcast, rain, storm', keep: true, run: scene => {
+      const order = [null].concat(Object.keys(X.weatherKinds || {}));
+      X.devWeather = order[(order.indexOf(X.devWeather || null) + 1) % order.length];
+      Dev.restage(scene);
+    } },
+  { label: () => 'Time: ' + (X.devPhase || 'as written'), hint: 'day, evening, night', keep: true, run: scene => {
+      const order = [null, 'day', 'evening', 'night'];
+      X.devPhase = order[(order.indexOf(X.devPhase || null) + 1) % order.length];
+      Dev.restage(scene);
+    } },
   { label: 'Painted art off', hint: 'compare against the plates', keep: true, toggle: () => !(X.art && X.art.hiroSheet), run: scene => {
       X.art.hiroSheet = !X.art.hiroSheet;
       Dev.go(scene, scene.scene.key, { run: scene.run });
@@ -100,6 +119,16 @@ const ITEMS = [
       Dev.go(scene, 'Expedition', { fresh: true });
     } },
 ];
+
+// Re-enter the scene that is on screen so a changed sky is actually painted.
+// The run is saved first, so the restart picks up exactly where it was.
+Dev.restage = function (scene) {
+  try {
+    const key = scene.scene.key;
+    if (scene.run) X.Run.save(scene.run);
+    Dev.go(scene, key, { run: scene.run || (scene.opts && scene.opts.run), leg: scene.leg });
+  } catch (e) { console.warn('dev restage:', e); }
+};
 
 // Leave the current scene cleanly: the camera comes home first, exactly as it
 // does for Start over, so a jump can never strand a pushed-in camera.
@@ -114,11 +143,37 @@ Dev.close = function (scene) {
   scene.__devRects = null;
 };
 
-Dev.open = function (scene) {
+// Every quest, as somewhere to stand and look. Lifts the slice lock so
+// sanitation keeps the choice, retires the guidance, and drops the player into
+// the travel panorama so the location is the first thing on screen. The marsh
+// and the ruins are not in the packaged build (GDD 5), so this works on a local
+// server — which is where the panel lives anyway — and not in a --ship run.
+const previewItems = () => (X.quests || []).map(q => ({
+  label: q.title,
+  hint: q.id === 'road' ? 'the tutorial road' : q.plates[0] + ', ' + q.weather + ', ' + q.phase,
+  run: scene => {
+    if (X.slice) X.slice.firstLevelOnly = false;
+    const run = X.Run.reset();
+    run.phase = 'travel'; run.questId = q.id; run.wave = 0; run.checkpoint = 0; run.travelLeg = 'outbound';
+    run.questsDone = q.tutorial ? [] : ['road'];
+    run.gold = 150;
+    Object.assign(run.levels, { finisher: 1, god_aura: 1, counter_attack: 1 });
+    Object.assign(run.tutorial, { arrowDone: true, finisherDone: true, purchases: 3, inspectDone: true, skipGuide: true,
+      used: { finisher: true, god_aura: true, counter_attack: true } });
+    X.Run.save(run);
+    Dev.go(scene, 'Travel', { run, leg: 'outbound' });
+  },
+}));
+
+Dev.open = scene => Dev.panel(scene, 'Developer', ITEMS);
+Dev.openPreview = scene => Dev.panel(scene, 'Preview a location', previewItems().concat(
+  { label: '\u2039  Back', hint: '', nav: true, run: s2 => Dev.open(s2) }));
+
+Dev.panel = function (scene, title, items) {
   Dev.close(scene);
   const W = A.T.W, H = A.T.H, D = UI.DEPTH;
   const w = 300, rowH = 44, pad = 14;
-  const h = pad * 2 + 26 + ITEMS.length * rowH;
+  const h = pad * 2 + 26 + items.length * rowH;
   const x = W / 2, y = H / 2;
   const root = scene.add.container(x, y).setDepth(D.hand + 40).setScrollFactor(0);
   const shade = scene.add.rectangle(0, 0, W, H, 0x000000, 0.45).setInteractive();
@@ -126,24 +181,26 @@ Dev.open = function (scene) {
   const g = scene.add.graphics();
   g.fillStyle(0x14110d, 0.97); g.fillRoundedRect(-w / 2, -h / 2, w, h, 12);
   g.lineStyle(2, 0x62c95a, 1); g.strokeRoundedRect(-w / 2, -h / 2, w, h, 12);
-  const title = T().text(scene, 0, -h / 2 + 18, 'Developer', { size: 16, ox: 0.5, oy: 0.5, color: '#9fd86a', display: true });
-  root.add([shade, g, title]);
+  const heading = T().text(scene, 0, -h / 2 + 18, title, { size: 16, ox: 0.5, oy: 0.5, color: '#9fd86a', display: true });
+  root.add([shade, g, heading]);
   const rects = [];
-  ITEMS.forEach((item, i) => {
+  items.forEach((item, i) => {
     const ry = -h / 2 + pad + 26 + i * rowH + rowH / 2;
     const on = item.toggle ? item.toggle() : false;
+    const text = typeof item.label === 'function' ? item.label() : item.label;
     const bg = scene.add.graphics();
     bg.fillStyle(on ? 0x24402a : 0x1f1a15, 1); bg.fillRoundedRect(-w / 2 + pad, ry - rowH / 2 + 4, w - pad * 2, rowH - 8, 8);
     bg.lineStyle(1, on ? 0x62c95a : 0x3a3128, 1); bg.strokeRoundedRect(-w / 2 + pad, ry - rowH / 2 + 4, w - pad * 2, rowH - 8, 8);
-    const label = T().text(scene, -w / 2 + pad + 12, ry - (item.hint ? 7 : 0), item.label + (on ? '  ✓' : ''), { size: 14, oy: 0.5, color: '#f4eee0', display: true });
+    const label = T().text(scene, -w / 2 + pad + 12, ry - (item.hint ? 7 : 0), text + (on ? '  ✓' : ''), { size: 14, oy: 0.5, color: '#f4eee0', display: true });
     const hint = item.hint ? T().text(scene, -w / 2 + pad + 12, ry + 9, item.hint, { size: 11, oy: 0.5, color: '#8d8377' }) : null;
     const zone = scene.add.zone(0, ry, w - pad * 2, rowH - 8).setInteractive({ useHandCursor: true });
     zone.on('pointerdown', () => {
       try { item.run(scene); } catch (e) { console.warn('dev:', e); }
-      if (item.keep) Dev.open(scene); else Dev.close(scene);
+      if (item.nav) return;                            // it opened a panel of its own
+      if (item.keep) Dev.panel(scene, title, items); else Dev.close(scene);
     });
     root.add(bg); root.add(label); if (hint) root.add(hint); root.add(zone);
-    rects.push({ label: item.label, rect: { x: x - w / 2 + pad, y: y + ry - rowH / 2 + 4, w: w - pad * 2, h: rowH - 8 } });
+    rects.push({ label: text, rect: { x: x - w / 2 + pad, y: y + ry - rowH / 2 + 4, w: w - pad * 2, h: rowH - 8 } });
   });
   const close = T().text(scene, w / 2 - 18, -h / 2 + 18, '✕', { size: 16, ox: 0.5, oy: 0.5, color: '#c9c0b0' });
   const cz = scene.add.zone(w / 2 - 18, -h / 2 + 18, 34, 34).setInteractive({ useHandCursor: true });

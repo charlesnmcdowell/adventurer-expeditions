@@ -23,6 +23,7 @@ function actorOf(scene, uid) { return scene.actors.get(uid) || null; }
 // The shared helper pauses tweens, not painted frame animations. Use the same
 // scaled scene timer for both, including cinematic slow motion and user pause.
 function hitStop(scene, ms) {
+  if (X.fx && X.fx.cinematics === false) return;                  // full speed: nothing holds
   const sync = () => { for (const a of scene.actors.values()) if (a.syncPause) a.syncPause(); };
   scene.__paintedHitStopCount = (scene.__paintedHitStopCount || 0) + 1;
   sync();
