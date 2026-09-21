@@ -25,9 +25,9 @@ X.hero = {
 X.skills = {
   katana_slash: {
     base: { autoKillPct: 0, noReflect: true, reach: 'any' },
-    1: { power: 1.6, target: 'enemy',      status: { bleed: { power: 0.4, rounds: 3, stacks: true } } },
-    2: { power: 1.9, target: 'enemy',      status: { bleed: { power: 0.5, rounds: 3, stacks: true } } },
-    3: { power: 2.1, target: 'allEnemies', status: { bleed: { power: 0.6, rounds: 3, stacks: true } } },
+    1: { power: 1.3, target: 'enemy',      status: { bleed: { power: 0.3, rounds: 3, stacks: true } } },
+    2: { power: 1.6, target: 'enemy',      status: { bleed: { power: 0.4, rounds: 3, stacks: true } } },
+    3: { power: 1.85, target: 'allEnemies', status: { bleed: { power: 0.5, rounds: 3, stacks: true } } },
   },
   god_aura: {
     base: { target: 'party', power: 0 },
@@ -55,9 +55,12 @@ X.skills = {
     // The engine reads a falsy cooldown as none at all (combat.js), so 0 is the
     // whole change; the HUD's wedge and the "Cooldown n" chip simply never fire.
     base: { target: 'enemy', permStatGain: 0, questGain: false },
-    1: { requireBelowPct: 0.50, executeBelow: 0.50, healOnKillPct: 0.25, cooldown: 0, power: 2.4 },
-    2: { requireBelowPct: 0.50, executeBelow: 0.50, healOnKillPct: 0.35, cooldown: 0, power: 2.8 },
-    3: { requireBelowPct: 0.50, executeBelow: 0.50, healOnKillPct: 0.50, cooldown: 0, power: 3.2 },
+    // Core targeting is a strict `<`, so 0.51 is how "at or under half" is
+    // actually offered. A wolf sitting on exactly 50% used to grey Finisher out
+    // and the tutorial never paused.
+    1: { requireBelowPct: 0.51, executeBelow: 0.51, healOnKillPct: 0.25, cooldown: 0, power: 2.4 },
+    2: { requireBelowPct: 0.51, executeBelow: 0.51, healOnKillPct: 0.35, cooldown: 0, power: 2.8 },
+    3: { requireBelowPct: 0.51, executeBelow: 0.51, healOnKillPct: 0.50, cooldown: 0, power: 3.2 },
   },
 };
 
@@ -78,12 +81,12 @@ X.enemies = {
   // variant stats, but let the boss kind drive heavy choreography and its own
   // atlas instead of reusing the ordinary wolf.
   road_wolf_leader: { base: 'dire_wolf', level: 4, kind: 'boss', artActor: 'alpha', height: 330, name: 'Alpha', boss: true,
-    artIdentity: 'tutorial-alpha', statMult: { hp: 1.25, atk: 0.8 }, phase2At: 0.5 },
+    artIdentity: 'tutorial-alpha', statMult: { hp: 1.9, atk: 0.8 }, phase2At: 0.5 },
   cave_boar:    { base: 'cave_boar', level: 2, kind: 'boar', frame: 1, height: 250, actives: ['tusk_gore'] },          // charge: Bleed + pull
   thorn_lurker: { base: 'thorn_lurker', level: 2, kind: 'plant', frame: 2, height: 245, actives: ['thorn_lash'],       // lash: Poison + root
                   perks: [] },                                                                                       // no regenerate/thorn skin: brisk, no healer stall
   alpha:        { base: 'alpha', level: 4, kind: 'boss', frame: 0, height: 330, tint: 0xb9b3c4, actives: ['pack_snap', 'cleave'], perks: ['momentum'],
-                  statMult: { atk: 0.8, hp: 1.25 }, phase2At: 0.5 },
+                  statMult: { atk: 0.8, hp: 1.9 }, phase2At: 0.5 },
 };
 
 X.encounters = [
@@ -113,26 +116,13 @@ X.finisherHoldOffTurns = 1;
 // exempts bosses from execution outright.
 X.finisherThresholds = { normal: 0.50, boss: 0.25 };
 
-// The first five minutes, locked (Hiro, 2026-09-20): only the tutorial road is
-// playable; the inn's Embark and Unlock-a-hero are shown locked and the road
-// replays. Flip to false when the loop reopens for testing.
-// The slice opens one step at a time (Hiro). `firstLevelOnly` keeps the inn's
-// recruiting and every later quest shut; `openQuests` is the whitelist of loop
-// quests that may follow the tutorial road — first entry is what Embark offers.
-// Round 3 opened exactly one: Road in the Rain.
-// Open every quest whose art the package actually carries (Hiro, 2026-09-21:
-// "make sure the remaining quests that have artwork finished is unlocked").
-// All four qualify: their beasts are the wolf, plant, boar and Alpha atlases,
-// and their human foes render from the baked busts, so the only thing that had
-// been missing was the background plates — cut from the build for size, now
-// paid for by dropping Bram's combat art, which the locked inn cannot reach.
-// Recruiting stays shut; `firstLevelOnly` still governs that.
+// The first five minutes, locked (Hiro, 2026-09-20): recruiting stays shut.
+// `openQuests` is the whitelist Embark walks after the tutorial — rain, then
+// city — so the inn hands out the next finished location instead of replaying
+// the road. Flip `firstLevelOnly` to false when hiring reopens.
+// The night pair stays shut on budget, not on art: marsh/ruins share `night1`
+// and four plates the 20 MB package has not got.
 X.slice = { firstLevelOnly: true, openQuests: ['rain', 'city'] };
-
-// The night pair stays shut on budget, not on art: the marsh and the ruins share
-// `night1` (1.00 MB), which the build does not carry, and their four plates cost
-// 1.42 MB on top. 2.42 MB against 1.58 MB spare — they open the moment a trim
-// (js/data, or Hiro's atlas height) pays for them.
 
 // What the package carries. A missing atlas does not degrade — Phaser parks the
 // scene in preload until a queued file arrives, so an absent one is a black

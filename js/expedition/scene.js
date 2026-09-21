@@ -198,6 +198,26 @@ class ExpeditionScene extends Phaser.Scene {
 
   togglePause() { if (this.corner) this.corner.togglePause(); }
 
+  // The first time each bought skill is ready the game holds (nothing steps
+  // while the gate is up) and points at its icon until it is tapped or skipped.
+  // Called both before a step and after a swing that first opened the window.
+  async guideSkillUse() {
+    const enc = this.enc, Enc = X.Encounter;
+    if (!enc || enc.request || this.ended) return;
+    const t = this.run.tutorial; t.used = t.used || {};
+    if (t.finisherDone) t.used.finisher = true;
+    for (const id of ['finisher', 'counter_attack', 'god_aura']) {
+      if (t.used[id] || !Enc.owned(this.run, id)) continue;
+      const st = Enc.skillState(enc, id); if (!st || !st.ready) continue;
+      const icon = this.hud.icons[id]; if (!icon || !icon.rect) continue;
+      this.hud._gateFor = 'use:' + id;
+      const r = await this.hud.gate(icon.rect, { skippable: true });
+      if (this.ended) return;
+      if (r && r.skipped) { t.used[id] = true; X.Run.save(this.run); }
+      break;
+    }
+  }
+
   // ---------------------------------------------------------------- director
   async fight(first) {
     const enc = this.enc, Enc = X.Encounter;
@@ -216,27 +236,18 @@ class ExpeditionScene extends Phaser.Scene {
       if (pk.events.length) await X.Beats.ticksOnly(this, pk.events);
       if (pk.over) break;
       this.hud.setSkillStates(Enc.skillStates(enc));
-      // The first time each bought skill is ready the game holds (nothing steps
-      // while the gate is up) and points at its icon until it is tapped or skipped.
-      if (pk.hero && !enc.request) {
-        const t = this.run.tutorial; t.used = t.used || {};
-        if (t.finisherDone) t.used.finisher = true;
-        for (const id of ['finisher', 'counter_attack', 'god_aura']) {
-          if (t.used[id] || !Enc.owned(this.run, id)) continue;
-          const st = Enc.skillState(enc, id); if (!st || !st.ready) continue;
-          this.hud._gateFor = 'use:' + id;
-          const r = await this.hud.gate(this.hud.icons[id].rect, { skippable: true });
-          if (this.ended) return;
-          if (r && r.skipped) { t.used[id] = true; X.Run.save(this.run); }
-          break;
-        }
-      }
+      await this.guideSkillUse();
+      if (this.ended) return;
       const step = Enc.step(enc);
       if (step.hero && step.choice && step.choice.how === 'request') this.hud.fired(step.choice.action.skillId, this.hero.x, this.hero.y - this.hero.height * 0.55);
       if (step.hero && !enc.request) this.hud.setQueued(null);
       await X.Beats.play(this, step);
       this.hud.setSkillStates(Enc.skillStates(enc));
       if (step.over) break;
+      // Pause the moment a swing first opens Finisher, not only on Hiro's next
+      // turn — by then Katana Slash had often already spent the window.
+      await this.guideSkillUse();
+      if (this.ended) return;
     }
     if (this.ended) return;
     if (Enc.won(enc)) await this.victory(); else await this.defeat();

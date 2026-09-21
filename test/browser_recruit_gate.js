@@ -55,7 +55,7 @@ const server = http.createServer((req, res) => {
         // optional — the inn art suite owns that contract (heroFigure must be absent).
         return { hiro: s.heroFigure ? s.heroFigure.texture.key : null, locked: s.lockedButtons.map(b => ({ rect: b.rect, interactive: !!(b.zone.input && b.zone.input.enabled) })),
           roster: s.run.roster, ready: X.recruits.filter(r => C.recruitReady(r.key)).map(r => r.key),
-          directBuy: C.buy(s.run, 'bram'), gold: s.run.gold, busts: Object.keys(s.busts), next: s.embarkBtn.rect };
+          directBuy: C.buy(s.run, 'bram'), gold: s.run.gold, busts: Object.keys(s.busts), next: s.embarkBtn.rect, embark: s.embarkBtn.label.text };
       });
       assert.ok(snapshot.hiro === null || snapshot.hiro === 'xp_hiro_sheet');
       // Round 3: while recruiting is locked, Bram's 2 MB of art is kept off the
@@ -66,6 +66,7 @@ const server = http.createServer((req, res) => {
       assert.equal(snapshot.locked.length, 1); assert.ok(snapshot.locked.every(b => !b.interactive));
       assert.deepEqual(snapshot.roster, []); assert.deepEqual(snapshot.busts, []);
       assert.equal(snapshot.directBuy.reason, 'slice locked'); assert.equal(snapshot.gold, 150);
+      assert.match(snapshot.embark, /rain/i);
       for (const button of snapshot.locked) await tap(button.rect);
       assert.equal(await page.evaluate(() => window.__game.scene.getScene('Inn').run.phase), 'inn');
       await page.screenshot({ path: path.join(OUT, 'locked-inn-' + width + '.png') });
@@ -81,7 +82,7 @@ const server = http.createServer((req, res) => {
       const saved = await page.evaluate(() => {
         const s = window.__game.scene.getScene('Inn');
         return { roster: s.run.roster, field: s.run.field, hero: s.run.hero || null, gold: s.run.gold,
-          levels: s.run.levels, companions: (s.companionFigures || []).map(a => a.texture.key), innVariant: s.env && s.env.variant, replay: s.embarkBtn.rect };
+          levels: s.run.levels, companions: (s.companionFigures || []).map(a => a.texture.key), innVariant: s.env && s.env.variant, replay: s.replayBtn.rect };
       });
       assert.deepEqual(saved.roster, ['bram', 'nyx']); assert.deepEqual(saved.field, ['bram']);
       assert.equal(saved.hero, null); assert.equal(saved.gold, 150); assert.equal(saved.levels.finisher, 0);

@@ -15,6 +15,37 @@ of small fixes within a day.
 
 ---
 
+## 2026-09-21 — Inn Embark was still the tutorial; Finisher missed half health
+
+Hiro still never left the tutorial road, the first Finisher pause still did not
+hold, Katana Slash still hit too hard, and the Alpha died too fast.
+
+**Quest two was a lie.** `openQuests` already listed rain then city, and the inn
+even drew a Next-quest button — but `InnScene.embark()` returned `replayRoad()`
+whenever recruiting was locked, and the gold button the hand pointed at *was*
+Replay the road. Sanitation was fixed this morning; the button was not. Embark
+now walks `Camp.nextQuestId` (tutorial → rain → city → rain…) while hiring stays
+shut. Replay the road is the quieter extra above it. Marsh and ruins stay closed:
+their plates and `night1` are still over the 20 MB budget. `scenes_town.js`,
+`data.js`.
+
+**Finisher never paused at half.** Core targeting is a strict `<`, so a wolf
+sitting on exactly 50% greys the icon out. Katana Slash at 1.6 plus bleed then
+often skipped the window entirely. Fixes: Finisher L1–3 `requireBelowPct` /
+`executeBelow` 0.50 → 0.51 (so "at or under half" is actually offered), and the
+director holds as soon as the window opens rather than only on Hiro's next turn.
+`data.js`, `scene.js`.
+
+**Numbers.** Katana Slash L1 1.6 / bleed 0.4 → 1.3 / 0.3 (L2 1.6 / 0.4, L3 1.85
+/ 0.5). Alpha 1.25 → 1.9 HP.
+
+**Tests.** Headless sim: inclusive half-health window, ≥70% of road ambushes
+open a Finisher window without a tap, inn still cycles rain then city.
+Browser inn/recruit suites now read `embarkBtn` as the next quest and
+`replayBtn` as Replay the road.
+
+---
+
 ## 2026-09-21 — The tutorial teaches during the fight; the city opens
 
 Fable, on two reports from Hiro: *"tutorial is kinda broken, it start after the

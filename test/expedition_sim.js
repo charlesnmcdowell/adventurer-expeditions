@@ -50,7 +50,7 @@ test('shim resolves an Expedition Hiro by level', () => {
   assert.ok(!hero.actives.some(a => a.skillId === 'god_aura'), 'locked skills are not in the kit');
   const entry = hero.actives.find(a => a.skillId === 'katana_slash');
   let m = A.SkillSys.manifest(hero, entry);
-  assert.equal(m.data.power, 1.6); assert.equal(m.data.autoKillPct, 0); assert.equal(m.data.target, 'enemy');
+  assert.equal(m.data.power, 1.3); assert.equal(m.data.autoKillPct, 0); assert.equal(m.data.target, 'enemy');
   run.levels.katana_slash = 3;
   m = A.SkillSys.manifest(hero, entry);
   assert.equal(m.data.target, 'allEnemies'); assert.equal(m.level, 3);
@@ -118,6 +118,19 @@ test('finisher request fires once at the next hero boundary', () => {
   }
   console.log('finisher windows seen:', seen, 'fired by request:', fired);
   assert.ok(seen > 0 && fired > 0);
+});
+
+test('a first Finisher window opens on the road without a tap', () => {
+  let windows = 0, N = 80;
+  for (let s = 1; s <= N; s++) {
+    const run = Enc.freshRun(); run.levels.finisher = 1;
+    const enc = Enc.create({ encounter: 'road_ambush', seed: s, run });
+    let seen = false;
+    Enc.runToEnd(enc, e => { if (Enc.finisherState(e).ready) seen = true; }, 400);
+    if (seen) windows++;
+  }
+  console.log('road_ambush finisher windows:', windows + '/' + N);
+  assert.ok(windows / N >= 0.7, 'finisher window rate ' + (windows / N));
 });
 
 test('request on an invalid state is refused with a reason', () => {
@@ -198,7 +211,7 @@ test('rewards pay once; upgrades deduct exactly once and change the next manifes
   // The next encounter's Hiro owns Finisher and resolves it at level 1.
   const enc2 = Enc.create({ encounter: 'road_ambush', seed: 8, run });
   const m = A.SkillSys.manifest(enc2.hero, enc2.hero.actives.find(a => a.skillId === 'finisher'));
-  assert.equal(m.level, 1); assert.equal(m.data.executeBelow, X.finisherThresholds.normal);   // flat 50% at every level (GDD §7)
+  assert.equal(m.level, 1); assert.ok(m.data.executeBelow > X.finisherThresholds.normal && m.data.executeBelow <= 0.51);
 });
 
 // ------------------------------------------------- Finisher windows (GDD §7)
@@ -208,8 +221,8 @@ test('the Finisher takes a normal enemy at half health and a boss at a quarter',
     const run = Enc.freshRun(); run.levels.finisher = lvl;
     const hero = Enc.makeHero(new A.RNG(3), run);
     const m = A.SkillSys.manifest(hero, hero.actives.find(a => a.skillId === 'finisher'));
-    assert.equal(m.data.executeBelow, 0.50, 'level ' + lvl + ' window is flat');
-    assert.equal(m.data.requireBelowPct, 0.50, 'level ' + lvl + ' targeting matches the window');
+    assert.ok(m.data.executeBelow > 0.50 && m.data.executeBelow <= 0.51, 'level ' + lvl + ' window includes exactly half');
+    assert.equal(m.data.requireBelowPct, m.data.executeBelow, 'level ' + lvl + ' targeting matches the window');
   }
   // A normal enemy: offered under the line, not offered above it.
   const at = (pct, encounter) => {
@@ -219,6 +232,9 @@ test('the Finisher takes a normal enemy at half health and a boss at a quarter',
     return enc;
   };
   assert.ok(Enc.skillState(at(0.45, 'road_ambush'), 'finisher').ready, 'a wolf at 45% can be finished');
+  const half = at(0.50, 'road_ambush');
+  for (const f of half.st.units.filter(u => u.side === 'b')) f.chp = Math.max(1, Math.floor(f.maxHp / 2));
+  assert.ok(Enc.skillState(half, 'finisher').ready, 'a wolf sitting on exactly half can be finished');
   assert.equal(Enc.skillState(at(0.60, 'road_ambush'), 'finisher').reason, 'no_target', 'a wolf at 60% cannot');
 
   // A boss: a heavy hit above the boss line, an execution at or under it, and

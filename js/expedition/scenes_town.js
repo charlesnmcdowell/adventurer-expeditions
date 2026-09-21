@@ -69,9 +69,10 @@ class InnScene extends Phaser.Scene {
     this.guide();
   }
 
-  // The slice (X.slice.firstLevelOnly): Hiro's skills for levelling, Next quest
-  // and Unlock a hero shown locked, and Replay the road — the only way onward
-  // while the first five minutes are being finished (Hiro, 2026-09-20).
+  // The slice (X.slice.firstLevelOnly) locks hiring, not the open quests.
+  // Embark is the next finished location (rain, then city); Replay the road
+  // stays as a quieter extra. The Next-quest control used to call embark(),
+  // which then threw the player back onto the tutorial.
   buildLocked() {
     const run = this.run;
     this.hud = new X.Hud(this, { run, hero: this.world.hero, portraitKey: 'xp_hiro_face', inn: true,
@@ -79,15 +80,12 @@ class InnScene extends Phaser.Scene {
     this.hud.refresh();
     this.world.restoreIds();
     const locked = (btn, label) => { btn.zone.disableInteractive(); btn.setAlpha(0.55); btn.label.setText(label + '  🔒'); this.lockedButtons.push(btn); return btn; };
-    // Whatever the slice has opened past the road is a real Embark; everything
-    // else stays visibly shut. Hiring is locked for the whole slice.
-    const nextId = X.Campaign.nextQuestId(run);
-    const next = nextId !== 'road' ? X.Campaign.quest(nextId) : null;
-    if (next) this.nextBtn = bigButton(this, W - 112, H - 230, 200, 100, '⚔', next.title, () => this.embark(), 0xf2c94c);
-    else locked(bigButton(this, W - 112, H - 230, 200, 100, '⚔', 'Next quest', () => {}, 0x5a4a34), 'Next quest');
+    const next = X.Campaign.quest(X.Campaign.nextQuestId(run));
+    this.replayBtn = bigButton(this, W - 112, H - 230, 200, 100, '↻', 'Replay the road', () => this.replayRoad(), 0x5a4a34);
     locked(bigButton(this, W - 336, H - 230, 200, 100, '☺', 'Unlock a hero', () => {}, 0x5a4a34), 'Unlock a hero');
-    this.embarkBtn = bigButton(this, W - 112, H - 110, 200, 100, '↻', 'Replay the road', () => this.replayRoad(), 0xf2c94c);
-    this.btn = this.nextBtn || this.embarkBtn;
+    this.embarkBtn = bigButton(this, W - 112, H - 110, 200, 100, '⚔', next.title, () => this.embark(), 0xf2c94c);
+    this.btn = this.embarkBtn;
+    this.guide();
   }
   replayRoad() {
     if (!this.isPortalReady() || this.ended) return;
@@ -223,7 +221,6 @@ class InnScene extends Phaser.Scene {
   releaseGate(payload) { if (this.gate && this.gate.release) this.gate.release(payload); }
 
   embark() {
-    if (X.Campaign.recruitingLocked()) return this.replayRoad();
     if (!this.isPortalReady() || this.ended) return;
     this.ended = true;
     if (this.gate && this.gate.clear) { this.gate.clear(); this.gate = null; }
