@@ -68,6 +68,38 @@ for (const id of shippedActors) {
   const atlas = JSON.parse(fs.readFileSync(path.join(ROOT, base + id + '.json')));
   for (const texture of atlas.textures) assert.ok(set.has(base + texture.image), 'Missing atlas page: ' + base + texture.image);
 }
+// Every expedition script must carry the SAME cache-busting stamp, and that
+// stamp must be at least as new as the newest file it covers. A half-updated set
+// is what froze the game on 2026-09-21: today's dev.js loaded against a cached
+// yesterday's campaign.js, so new code called functions the old file did not
+// have, the scene died before the corner control existed, and there was no
+// Start over button left to press. One stamp, moved together, or none of this
+// is safe to reload.
+{
+  const html = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
+  const stamps = new Map();
+  // Only real script tags — index.html also mentions dev.js in a comment.
+  for (const m of html.matchAll(/src="js\/expedition\/([A-Za-z0-9_]+\.js)(?:\?v=([^"']*))?"/g)) {
+    if (!m[2]) assert.fail('js/expedition/' + m[1] + ' has no ?v= cache stamp');
+    stamps.set(m[1], m[2]);
+  }
+  assert.ok(stamps.size >= 10, 'the expedition scripts should all be listed in index.html');
+  const distinct = new Set(stamps.values());
+  assert.equal(distinct.size, 1, 'every expedition script must share one cache stamp, saw: ' +
+    [...new Set([...stamps].map(([f, v]) => v + ' (' + f + ')'))].join(', '));
+  // And the stamp must not be older than the files. Stamps lead with a date.
+  const stamp = [...distinct][0];
+  const d = /^(\d{4})(\d{2})(\d{2})/.exec(stamp);
+  assert.ok(d, 'a cache stamp should start with a date, saw: ' + stamp);
+  const stampDay = new Date(Date.UTC(+d[1], +d[2] - 1, +d[3], 23, 59, 59)).getTime();
+  for (const f of stamps.keys()) {
+    const abs = path.join(ROOT, 'js', 'expedition', f);
+    if (!fs.existsSync(abs)) continue;
+    assert.ok(fs.statSync(abs).mtimeMs <= stampDay,
+      f + ' was modified after its cache stamp (' + stamp + ') — bump the stamp or a returning player gets a half-updated build');
+  }
+}
+
 // New inn and icon dependencies must be complete in a files-only upload too.
 const innBase = 'assets/expedition/inn/';
 assert(set.has('js/expedition/inn_art.js') && set.has(innBase + 'inn.json'));

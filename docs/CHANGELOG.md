@@ -46,6 +46,43 @@ Browser inn/recruit suites now read `embarkBtn` as the next quest and
 
 ---
 
+## 2026-09-21 — Freeze: a half-updated build, and the guard against it
+
+Fable. Hiro: *"game has crashed"*, then *"game is frozen and I can't restart."*
+My fault, and the cause is worth recording because it will recur otherwise.
+
+**What happened.** Thirteen expedition scripts changed today, but `index.html`
+still stamped them `?v=20260920-astra-v2` — yesterday's cache-busting version.
+Only `dev.js` had its stamp bumped, in the very commit meant to make the new
+panel reachable. So a browser that already had the game open loaded **today's
+`dev.js` against yesterday's cached `campaign.js`, `data.js`, `scene.js` and the
+rest**. Today's code calls things that only exist in today's files —
+`Camp.artShipped`, `X.shipped`, `X.fx`, the rewritten `sanitizeRun` — so the
+scene threw during setup, died before `X.UI.corner` ever mounted, and took the
+Start over button down with it. Hence frozen *and* unable to restart: the only
+control that could have recovered the run is drawn by the scene that crashed.
+
+Note what did **not** cause it. The headless suite was green, and a probe that
+drove every new control in a real browser — weather cycling, time cycling, full
+speed, previewing the locked marsh, then reloading — reported zero page errors,
+zero console errors and zero failed requests. The code was fine. The delivery
+was not.
+
+**The fix.** All fifteen expedition scripts now share one stamp,
+`20260921-xp3`, and move together.
+
+**The guard.** `test/ship_budget_contract.js` now asserts two things about
+`index.html`: every `js/expedition/*.js` script tag carries a `?v=` stamp and
+all of them are identical, and that stamp's date is not older than the newest
+file it covers. Either mistake fails `npm test`. Verified by deliberately
+bumping one script out of step and watching the contract name the odd one out.
+
+**For Hiro:** a hard refresh (Ctrl+F5) once, and the whole set comes down
+together. `?fresh=1` clears a saved run without needing the frozen screen to
+respond, which is the general escape hatch for this class of problem.
+
+---
+
 ## 2026-09-21 — Full speed, a location preview, and the art catalogue
 
 Fable. Hiro, after confirming the tutorial now works: *"temporarily disable the
