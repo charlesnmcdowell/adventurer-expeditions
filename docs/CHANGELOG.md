@@ -15,6 +15,34 @@ of small fixes within a day.
 
 ---
 
+## 2026-09-21 — Review-only audit: source art present, intake incomplete
+
+Reviewed the reconciled runtime checkpoint (`f5b7781`) and the Astra v2 source-art
+tree after the art workers stopped. This review changed no game code, runtime
+assets, gameplay data, original Adventurer files, or source artwork. The runtime
+repository is clean at the checkpoint; the previously recorded `npm test` and
+`npm run test:ship` gates passed. The measured runtime remains **17,828,737 bytes
+/ 205 files**, leaving **2,171,263 bytes** below the strict 20 MB ceiling.
+
+The validated source catalog is still partial: **3 actors, 28 clips, 144 frames,
+9 paired finishers, 27 unique source images, and 57,273,763 source bytes**. It
+covers the tutorial Alpha plus the approved/reused wolf and plant sets and adds
+**0 runtime bytes**. Candidate paintings are present for the planned boar,
+Ironback boss, Marsh Alpha, Ruins Alpha, raiders, and town watch, but those new
+actor folders do not yet have complete authoritative manifests and therefore are
+not included in a strict catalog or ready for Fable intake. No claim is made that
+the later levels are playable or that their complete asset pack fits the mobile
+budget.
+
+The existing battle plates and travel panoramas remain the intended scenery
+reuse; no new background art was generated in this review. The source handoff
+continues to document the known marsh-weather and panorama-ambience wiring notes,
+the separate boss identities, registration requirements, and the remaining
+camera/Finisher/threshold/level-unlock work for Fable. Runtime intake and gameplay
+changes remain pending.
+
+---
+
 ## 2026-09-20 — Approved Astra v2 integrated; ready to test
 
 Integrated the 16-frame run, sheathed idle, six paired finishers, painted skill
