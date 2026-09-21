@@ -213,6 +213,37 @@ test('every open quest has its music, plates and panorama in the build', () => {
   }
 });
 
+// A tap is an instruction, not a suggestion (Hiro, 2026-09-21).
+test('a queued skill waits for its window instead of being silently dropped', () => {
+  const run = Enc.freshRun(); run.levels.finisher = 1;
+  const enc = Enc.create({ encounter: 'road_ambush', seed: 3, run });
+  // Queue the Finisher while a target is under the line, then put every enemy
+  // back to full so the window is shut when Hiro actually acts.
+  let queued = false;
+  for (let i = 0; i < 200 && !queued; i++) {
+    const foes = enc.st.units.filter(x => x.side === 'b' && !x.downed);
+    if (foes.length) foes[0].chp = Math.max(1, Math.round(foes[0].maxHp * 0.3));
+    if (Enc.skillState(enc, 'finisher').ready) { assert.equal(Enc.requestSkill(enc, 'finisher').ok, true); queued = true; break; }
+    Enc.step(enc);
+    if (enc.st.over) break;
+  }
+  assert.ok(queued, 'the finisher should become requestable');
+  for (const x of enc.st.units) if (x.side === 'b' && !x.downed) x.chp = x.maxHp;   // window shut
+  const before = enc.log.length;
+  let waited = false;
+  for (let i = 0; i < 6 && !enc.st.over; i++) {
+    Enc.step(enc);
+    if (enc.log.slice(before).some(e => e.t === 'requestWaiting')) { waited = true; break; }
+  }
+  assert.ok(waited, 'the request should wait for its window rather than vanish');
+  // And it must not wait forever: the grace is bounded and the drop is logged.
+  for (let i = 0; i < 40 && enc.request && !enc.st.over; i++) {
+    for (const x of enc.st.units) if (x.side === 'b' && !x.downed) x.chp = x.maxHp;
+    Enc.step(enc);
+  }
+  assert.ok(!enc.request, 'the request must not wait forever');
+});
+
 // ---------------------------------------------------------------- economy
 test('rewards pay once; upgrades deduct exactly once and change the next manifest', () => {
   const run = Enc.freshRun();

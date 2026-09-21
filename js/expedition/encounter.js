@@ -199,19 +199,40 @@ function pickAuto(st, u, excludeFinisher) {
   return { action: { kind: 'hold' }, tgt: null, how: 'hold' };
 }
 
+// How many of Hiro's turns a queued tap waits for its window to come back.
+// Hiro, 2026-09-21: "I hit finisher and sometimes he does not do the finisher
+// when the button is glowing ... I think it's stuck playing out previous
+// actions like katana slash." He was right about the symptom and close on the
+// cause. The tap was queued and then revalidated at the moment Hiro acted; if
+// the window had closed in between — the wounded enemy died to a bleed tick, or
+// an ally finished it, which is easy to miss during a long painted animation —
+// the request was thrown away without a word and the automatic Katana Slash ran
+// instead. A tap is an instruction, so it now waits for its moment instead of
+// being discarded, and says so if it never comes.
+const REQUEST_GRACE = 2;
+
 function heroAction(enc, u) {
   const st = enc.st;
   // A queued request is revalidated at the boundary it fires on.
   if (enc.request) {
     const skillId = enc.request.skillId;
     const s = Enc.skillState(enc, skillId);
-    enc.request = null;
     if (s.ready) {
+      enc.request = null;
       const hostile = s.pool[0] && s.pool[0].side !== u.side;
       const tgt = hostile ? (A.Combat.threatTargets(st, u, s.pool)[0] || s.pool[0]) : (s.pool.find(x => x.uid === u.uid) || s.pool[0]);
       return { action: { skillId, isAttack: false, pool: s.pool }, tgt, how: 'request' };
     }
-    enc.log.push({ t: 'requestDropped', reason: s.reason, skillId });
+    // Not ready *yet*. 'no_target' and 'cooldown' pass — a target can drop back
+    // under the line, a cooldown ends. 'locked' and 'over' never will.
+    const transient = s.reason === 'no_target' || s.reason === 'cooldown';
+    enc.request.waited = (enc.request.waited || 0) + 1;
+    if (transient && enc.request.waited <= REQUEST_GRACE) {
+      enc.log.push({ t: 'requestWaiting', reason: s.reason, skillId, waited: enc.request.waited });
+    } else {
+      enc.log.push({ t: 'requestDropped', reason: s.reason, skillId });
+      enc.request = null;
+    }
   }
   const fs = Enc.finisherState(enc);
   if (fs.ready && enc.holdOff > 0) { enc.holdOff--; return pickAuto(st, u, true); }

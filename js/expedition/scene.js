@@ -238,7 +238,15 @@ class ExpeditionScene extends Phaser.Scene {
       this.hud.setSkillStates(Enc.skillStates(enc));
       await this.guideSkillUse();
       if (this.ended) return;
+      const before = enc.log.length;
       const step = Enc.step(enc);
+      // Say what happened to a tap that could not fire. Silence here is what
+      // made the skills feel unresponsive: the icon glowed, the tap was taken,
+      // and then Katana Slash came out with no explanation (Hiro, 2026-09-21).
+      for (const e of enc.log.slice(before)) {
+        if (e.t === 'requestWaiting') this.hud.infoChip(e.skillId, e.reason === 'cooldown' ? 'Waiting — recovering' : 'Waiting for a target');
+        else if (e.t === 'requestDropped' && e.reason !== 'over') this.hud.infoChip(e.skillId, e.reason === 'no_target' ? 'No target left' : 'Not now');
+      }
       if (step.hero && step.choice && step.choice.how === 'request') this.hud.fired(step.choice.action.skillId, this.hero.x, this.hero.y - this.hero.height * 0.55);
       if (step.hero && !enc.request) this.hud.setQueued(null);
       await X.Beats.play(this, step);
