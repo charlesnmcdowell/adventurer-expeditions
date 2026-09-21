@@ -205,7 +205,7 @@ UI.corner = function (scene, opts) {
     c.add([g, t, z]); c.label = t; c.rect = { x, y: 20, w: 48, h: 40 };
     root.add(c); return c;
   };
-  const ctl = { root, paused: false };
+  const ctl = { root, paused: false, button: btn };
   ctl.mute = btn(W - 190, '♪', () => { if (A.Music) A.Music.toggleMute(); ctl.refresh(); });
   ctl.pause = btn(W - 130, '❚❚', () => ctl.togglePause());
   ctl.restart = btn(W - 70, '↺', () => ctl.confirmRestart());
@@ -255,6 +255,7 @@ UI.corner = function (scene, opts) {
   ctl.destroy = () => { ctl.closeConfirm(); if (ctl.paused) ctl.togglePause(); root.destroy(); };
   ctl.refresh();
   scene.corner = ctl;
+  if (X.Dev && X.Dev.attach) X.Dev.attach(scene, ctl);      // nothing for a player; the ⚙ appears only when the developer turns it on
   return ctl;
 };
 

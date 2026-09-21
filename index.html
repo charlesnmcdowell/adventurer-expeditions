@@ -202,6 +202,7 @@
 <script src="js/expedition/encounter.js?v=20260920-astra-v2"></script>
 <script src="js/expedition/run.js?v=20260920-astra-v2"></script>
 <script src="js/expedition/ui_common.js?v=20260920-astra-v2"></script>
+<script src="js/expedition/dev.js?v=20260921-xp1"></script>
 <script src="js/expedition/painted.js?v=20260920-astra-v2"></script>
 <script src="js/expedition/inn_art.js?v=20260920-astra-v2"></script>
 <script src="js/expedition/actors.js?v=20260920-astra-v2"></script>
@@ -230,13 +231,13 @@ window.__game.scene.add('Travel', ADV.ExpeditionTravelScene, false);
 window.__game.scene.add('Grave', ADV.ExpeditionGraveScene, false);
 window.__game.scene.add('Expedition', ADV.ExpeditionScene, false);
 // Resume where the run left off; a fresh run opens straight into the ambush.
-// Dev entry (tests, art review): ?at=inn[&gold=N] starts a fresh run at the inn with the road behind it.
-let run = params.has('fresh') ? null : ADV.Expedition.Run.load();
+// ?fresh=1 is a true restart: the stored run is wiped, so nothing — least of all
+// the tutorial's 'already seen' flags — can bleed into the new one. The same
+// shortcuts are available in the game itself (js/expedition/dev.js), which is how
+// they are meant to be used; these parameters exist for the automated tests.
+let run = params.has('fresh') ? ADV.Expedition.Run.reset() : ADV.Expedition.Run.load();
 if (params.get('at') === 'inn') {
-  run = ADV.Expedition.Run.reset();
-  run.questsDone = ['road']; run.phase = 'inn'; run.gold = params.has('gold') ? Number(params.get('gold')) : 150;
-  Object.assign(run.tutorial, { arrowDone: true, finisherDone: true, purchases: 3, recruitDone: false, embarkDone: false });
-  ADV.Expedition.Run.save(run);
+  run = ADV.Expedition.Dev.innRun(params.has('gold') ? Number(params.get('gold')) : 150);
 }
 const phase = run ? run.phase : 'quest';
 const start = phase === 'inn' ? 'Inn' : phase === 'travel' ? 'Travel' : phase === 'grave' ? 'Grave' : 'Expedition';

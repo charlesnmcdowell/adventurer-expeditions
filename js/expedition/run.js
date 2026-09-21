@@ -39,11 +39,11 @@ Run.save = function (run) {
 
 Run.reset = function () { try { storage().removeItem(X.saveKey); } catch (e) {} return Run.fresh(); };
 
-// A deliberate restart: a new run, but the guidance the player has already seen
-// stays retired. Clearing the browser's storage is the only thing that brings it back.
-Run.startOver = function (prev) {
+// Start over is a true restart (Hiro, 2026-09-21): a new run *and* a new first
+// five minutes. Nothing is carried across — the old run's tutorial flags used to
+// be copied in, which is why the hand never came back after a restart.
+Run.startOver = function () {
   const r = Run.reset();
-  if (prev && prev.tutorial) r.tutorial = Object.assign({}, prev.tutorial);
   Run.save(r);
   return r;
 };

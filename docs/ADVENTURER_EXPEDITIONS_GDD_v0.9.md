@@ -340,10 +340,34 @@ or two short sentences, no numbers.
 
 **Start over, pause and mute everywhere — built 2026-09-19.** `X.UI.corner`
 mounts mute, pause and Start over (with a ✓/✕ confirm) in the inn, the travel
-scene and the battle; Start over wipes the run but keeps the tutorial retired.
+scene and the battle; Start over wipes the run **and the first five minutes
+with it** — a blank save, the guidance re-armed, the hand back on the first
+skill (corrected 2026-09-21; it used to carry the retired tutorial flags across,
+so a restart dropped the player into an unguided fight). `Run.startOver` is now
+`Run.reset` and nothing else, which makes it the same run a new player gets and
+the same one `?fresh=1` builds — one path, so a bug in it cannot hide in the
+difference between the two. `test/browser_restart_dev.js` holds it there.
 The defeat card is also new: the tutorial road goes again on a loss, a loop quest
 offers *Again* or *Back to the inn* with the gold from fights already won. The
 paragraphs below are the finding as it stood before the fix, kept for the record.
+
+**The developer's tools live in the game, not in the URL — built 2026-09-21.**
+Hiro plays this build the way a player does, so the shortcuts that used to be
+URL parameters are a panel behind a ⚙ in the corner control of every scene:
+*Fresh tutorial*, *Jump to the inn* (road cleared, 150 g), *Boss fight*, *+100
+gold*, *Unlock every skill*, *Open every quest* (lifts the slice lock), *Painted
+art off* (the A/B against the plates) and *Clear the save*. Any jump resets the
+camera first, so it can never strand a pushed-in one.
+
+The tools are simply on while the game is in development — no key to remember,
+and they work on a phone, which is where most of the testing happens. Two ways
+to look at the game as a player will: **Shift+D** hides and restores them
+without a reload, and `?dev=0` hides them for one session. One line ships the
+game without them: `Dev.DEV_BUILD = false` at the top of `js/expedition/dev.js`,
+after which no cog, no key and no URL brings them back. `npm run release:check`
+refuses to bless a package while that flag is still on, and checks the size
+budget, the baked busts and the notices file at the same time, so the flag
+cannot be the thing that slips out the door.
 
 **There was no way to start over, and no HUD outside a fight (found 2026-09-19).**
 The run saves a checkpoint on every scene change and the page resumes into it, so
@@ -1202,6 +1226,14 @@ dialogue seen, and on no page error. Flags: `--ship` (serve only the manifest),
 `test/browser_art_review.js` — screenshots the first fight every N ms with the
 painted sheet on or off (`--sheet=0`) for Astra's review (§10.1 greenlight).
 
+`test/browser_restart_dev.js` (`npm run test:restart`) — the restart contract and
+the developer's tools. Retires guidance the way play does, presses Start over in
+the corner control, and asserts the run *and* the tutorial flags are blank in
+memory and on disk and that the hand comes back on its own. Then: the cog is
+there on a plain load, Shift+D hides and restores it, `?dev=0` hides it, and —
+serving `dev.js` rewritten to `DEV_BUILD = false`, which is the shipping build —
+nothing appears for the cog, the key or `?dev=1`. Last run: 12 passed, 0 failed.
+
 `tools/bake_busts.js` and `tools/art_intake.py` are build steps, not tests, but
 both fail loudly (a placeholder still pending, an atlas over 4096 px).
 
@@ -1394,7 +1426,7 @@ recruiting is locked**, which took 2.2 MB off the critical path (§12a.3).*
 the items below. Every one is a one-line change; none was decided.* `night1` stands in for Hunter's Breath (1); `battle_origin` is the
 Origin slot (2); the loop repeats with +30 % per clear and no ending (4);
 five recruits at 60/90/120/150/180, fielding two (5); Bram M05, Nyx F07, Sable
-M11 (6); Start over keeps the tutorial retired (7); the turn-based engine stays
+M11 (6); Start over is a true restart (7, decided 2026-09-21); the turn-based engine stays
 (8); Hiro is the intake hero and Bram's set is used whole (9); the human
 foes' busts are baked from the part sheets like the recruits' (new).
 
@@ -1417,8 +1449,11 @@ foes' busts are baked from the part sheets like the recruits' (new).
    the third quest; more means more clip sets.
 6. **Personality IDs for Bram, Nyx and Sable (§3).** They need distinct voiced
    sets or the roster's travel banter repeats — Aera and Ren already have theirs.
-7. **Does Start over reset the tutorial (§7)?** Assumed no — a player who
-   deliberately restarts has already seen the hand.
+7. **Does Start over reset the tutorial (§7)?** ~~Assumed no~~ — **decided yes,
+   2026-09-21 (Hiro): "it should be a true restart."** Start over is `Run.reset`
+   and nothing more, so a restart is indistinguishable from a first launch. The
+   assumption had been costing the one thing a restart is for — seeing the
+   opening again.
 8. **Real time — decided, or exploratory (§7a)?** The folder still runs the
    turn-based engine, and the §7a port is the largest item on §15.3.
 9. **Which hero is canonical for intake (§10.4)?** Astra painted Hiro and Bram.

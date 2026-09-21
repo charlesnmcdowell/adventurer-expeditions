@@ -15,6 +15,77 @@ of small fixes within a day.
 
 ---
 
+## 2026-09-21 — A true restart, and the developer's tools move into the game
+
+Fable. Two things Hiro asked for after the round-3 build: *"yea it should be a
+true restart"*, and *"assume that I as the developer will not use these urls,
+and will need debug buttons in the game."* Mid-session he set the policy for
+those buttons: *"we are still in development so it's ok to show debug tools, we
+will just need a flag to hide debug tools after development."*
+
+**Start over is a true restart.** `Run.startOver` used to build a fresh run and
+then copy the old one's `tutorial` object into it — `arrowDone`, `finisherDone`,
+`used{}`, `inspectDone`, `purchases`, `skipGuide`, `recruitDone`, `embarkDone`.
+So a restart handed the player a blank save *and* a retired tutorial: no hand,
+no holds, straight into a fight with an unlearned kit. It is now `Run.reset` and
+nothing else, which is also exactly what `?fresh=1` builds — one path instead of
+two, which is why the suites never caught this (`?fresh=1` had no `prev` to copy
+from, so only the in-game button was broken). `js/expedition/run.js`.
+
+**The developer's tools are a panel in the game.** New `js/expedition/dev.js`
+(~9 KB) behind a cog in the corner control of every scene: Fresh tutorial, Jump
+to the inn (road cleared, 150 g), Boss fight, +100 gold, Unlock every skill,
+Open every quest (toggles `X.slice.firstLevelOnly`), Painted art off (toggles
+`X.art.hiroSheet` for the A/B against the plates), Clear the save. Every jump
+calls `UI.resetCamera` first, so a jump cannot strand a pushed-in camera.
+`ui_common.js`'s corner control now exposes `button` and calls `Dev.attach`.
+
+**One flag hides them.** Per Hiro's note, the tools are on by default during
+development — no key to remember, and they work on a phone. `Dev.DEV_BUILD =
+false` at the top of `dev.js` removes them completely for the CrazyGames
+package: no cog, no keyboard shortcut, and nothing a stored setting or a URL can
+do about it. For a player's-eye look without editing anything, **Shift+D** hides
+and restores them, and `?dev=0` hides them for one session.
+
+**New: `npm run release:check`** (`tools/release_check.js`) — the last gate
+before packaging. Fails while `DEV_BUILD` is true, and checks that `Dev.attach`
+is actually gated on it, that the build is inside the size budget, that the
+busts are baked and that the notices file is there. It changes nothing. It
+reports *not ready to ship* today, correctly: the flag is on because we are
+still building.
+
+**The URLs still work** for the automated suites, which cannot press buttons
+before the scene exists: `?fresh=1` builds a genuinely fresh tutorial run, and
+`?at=inn[&gold=N]` now routes through `Dev.innRun(...)`, so the shortcut and the
+panel button produce the same run instead of drifting apart. `index.html`.
+
+**New test: `npm run test:restart`** (`test/browser_restart_dev.js`, 12 checks,
+all passing). It retires guidance the way play does, presses Start over in the
+corner control, and asserts the run *and* the tutorial flags are blank in memory
+and on disk and that the hand comes back unaided — the regression for the bug
+above. Then the tools: present on a plain load, hidden and restored by Shift+D,
+hidden by `?dev=0`, and — serving `dev.js` rewritten to `DEV_BUILD = false`,
+which is the shipping build exactly — absent for the cog, the key and `?dev=1`.
+
+**Verification.** Headless suite green (sim 14, recruit gate 9, actor lifecycle
+25/0, cinematic scope 5/0, portal readiness 6, inn art 5, art registration, ship
+budget contract). Browser: `test:ship` ok, `test:camera` 6/0 with a finisher
+kill seen, `test:recruit` ok at 1280 and 375, `test:restart` 12/0. Size gate
+17.87 MB of 20.0 MB.
+
+**GDD v0.9:** §7 rewritten on both points, the developer-tools paragraph added,
+the test list gained `browser_restart_dev.js`, and **§16.7 is answered** — Start
+over resets the tutorial, decided by Hiro, 2026-09-21. The 2026-09-19 design
+entry still reads "keeps the tutorial retired"; it is left as written, because
+it is a record of what was decided that day, and §7 and §16.7 now carry the
+correction.
+
+**Housekeeping.** `dist/xp_sync3.tgz` and `dist/xp_sync4.tgz` are scratch
+transfer archives (git-ignored). The sandbox cannot delete files in this folder,
+so Hiro can remove those, and the two older ones, by hand.
+
+---
+
 ## 2026-09-21 — Round 3: camera comes home, player-spent finishers, Road in the Rain opens
 
 Fable. Hiro's playtest list plus the non-art backlog. Checkpointed first
