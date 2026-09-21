@@ -24,12 +24,13 @@ add('developer tools hidden (Dev.DEV_BUILD = false)', !!flag && flag[1] === 'fal
 add('the panel is gated on that flag', /Dev\.attach\s*=\s*function[\s\S]{0,200}?if\s*\(!Dev\.DEV_BUILD\)\s*return;/.test(dev),
   'Dev.attach must start with `if (!Dev.DEV_BUILD) return;`');
 
-// 3. The size gate passes.
+// 3. The size gate passes. Megabytes are decimal here, the way size_check.js
+//    counts them and the way the portal states its limit.
 let size = null;
 try {
   size = require('./size_check.js').report();
   add('build inside the size budget', !size.over && !size.missing.length,
-    null, true, (size.total / 1024 / 1024).toFixed(2) + ' MB of ' + size.budgetMB.toFixed(1) + ' MB' + (size.missing.length ? '; missing: ' + size.missing.join(', ') : ''));
+    null, true, (size.total / 1e6).toFixed(2) + ' MB of ' + (size.budget / 1e6).toFixed(1) + ' MB' + (size.missing.length ? '; missing: ' + size.missing.join(', ') : ''));
 } catch (e) { add('build inside the size budget', false, String(e.message || e)); }
 
 // 4. The busts are baked, or the part sheets are riding along.
