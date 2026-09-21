@@ -158,6 +158,35 @@ test('a request whose target dies first is dropped, not stranded', () => {
 // A quest may only be open if the build carries everything it needs. A missing
 // plate or track does not degrade: Phaser parks the scene in preload until the
 // file arrives, so an open quest with a missing asset is a black screen.
+// The freeze of 2026-09-21: Road in the Rain opens on two cave boars, and the
+// boar atlas had been left out of X.shipped, so the runtime refused to load it.
+// The boars were in the fight with a health bar and no body, and nothing could
+// resolve. Art for a scenery file is checked below; this is the one that matters
+// more, because an enemy with no art stops the game rather than looking wrong.
+test('every creature an open quest can field has its art in the build', () => {
+  const Camp = X.Campaign;
+  const shipped = new Set((X.shipped && X.shipped.actors) || []);
+  const open = ['road'].concat(X.slice.openQuests || []);
+  const missing = [];
+  for (const id of open) {
+    const q = Camp.quest(id);
+    if (!q) continue;
+    for (const encDef of Camp.questEncounters(id)) {
+      for (const key of (encDef.enemies || [])) {
+        const def = X.enemies[key];
+        assert.ok(def, id + ' fields an enemy that is not defined: ' + key);
+        // Humans are composed from the shared part sheets, not an actor atlas.
+        if (def.human || def.kind === 'human') continue;
+        const actor = def.artActor || def.kind;               // 'wolf', 'boar', 'plant', 'boss'/alpha
+        const name = actor === 'boss' ? 'alpha' : actor;
+        if (!shipped.has(name)) missing.push(id + ':' + key + ' needs ' + name);
+      }
+    }
+  }
+  assert.deepEqual(missing, [], 'an open quest fields a creature whose art is not shipped — ' +
+    'that is an enemy with a health bar and no body, and a fight that cannot end: ' + missing.join(', '));
+});
+
 test('every open quest has its music, plates and panorama in the build', () => {
   const { shipList } = require('../tools/size_check.js');
   const set = new Set(shipList().files);

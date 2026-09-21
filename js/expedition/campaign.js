@@ -67,7 +67,13 @@ Object.assign(X.enemies, {
   thorn_2:      { base: 'thorn_lurker', level: 8, kind: 'plant', frame: 2, height: 260, actives: ['thorn_lash'], perks: [], statMult: { hp: 2.0 } },
   boar_boss:    { base: 'cave_boar', level: 6, kind: 'boar', frame: 1, height: 310, tint: 0xd8c2b0, actives: ['tusk_gore'], perks: ['momentum'],
                   boss: true, statMult: { hp: 4.0, atk: 1.0 }, phase2At: 0.5 },
-  alpha_2:      { base: 'alpha', level: 6, kind: 'boss', frame: 0, height: 330, tint: 0xb9b3c4, actives: ['pack_snap', 'cleave'], perks: ['momentum'],
+  // Wired to the painted Alpha exactly as the road's boss is (2026-09-21). It
+  // had neither artActor nor artIdentity, so it resolved to no painted set at
+  // all: scene.js refuses to open a fight with an enemy that has no complete
+  // art, which is why the loop threw the moment a boss wave came up. The tint is
+  // gone too — it belonged to the plate art, not to a painted sheet.
+  alpha_2:      { base: 'alpha', level: 6, kind: 'boss', artActor: 'alpha', artIdentity: 'tutorial-alpha',
+                  height: 330, actives: ['pack_snap', 'cleave'], perks: ['momentum'],
                   statMult: { atk: 1.0, hp: 3.2 }, phase2At: 0.5 },
   // Humans: sex, head and outfit are fixed so every bust composes from the
   // synced part sheets. The outfit is a real gear set.
@@ -82,17 +88,27 @@ Object.assign(X.enemies, {
 });
 
 Object.assign(X.encounterDefs = {}, Object.fromEntries(X.encounters.map(e => [e.id, e])), {
-  rain_boars:      { id: 'rain_boars',      enemies: ['cave_boar_2', 'cave_boar_2'],                gold: 40 },
-  rain_bandits:    { id: 'rain_bandits',    enemies: ['bandit', 'cutthroat', 'bandit_b'],           gold: 50 },
-  rain_boar_boss:  { id: 'rain_boar_boss',  enemies: ['boar_boss', 'thorn_2'], boss: true,          gold: 60 },
-  city_watch:      { id: 'city_watch',      enemies: ['town_watch', 'town_watch'],                  gold: 40 },
-  city_bailiff:    { id: 'city_bailiff',    enemies: ['town_watch', 'storm_bailiff'],               gold: 50 },
-  city_captain:    { id: 'city_captain',    enemies: ['watch_captain', 'storm_bailiff'], boss: true, gold: 70 },
+  // Wolf, plant and the Alpha only (Hiro, 2026-09-21: "we should only be using
+  // the wolf and the plant creature for now, since those are the only ones with
+  // full art"). The boars and the human foes are out of every open quest: the
+  // boars have an animated set but no finishing move, and the humans are
+  // composed from the old part sheets rather than a reworked set. The Alpha
+  // stays as the boss — 9 clips, 45 frames and three Hiro finishers, the same
+  // bar as the other two. The original rosters are kept below, commented, so
+  // they can come back with the art.
+  rain_boars:      { id: 'rain_boars',      enemies: ['dire_wolf_2', 'dire_wolf_2'],                gold: 40 },
+  rain_bandits:    { id: 'rain_bandits',    enemies: ['dire_wolf_2', 'thorn_2', 'thorn_2'],         gold: 50 },
+  rain_boar_boss:  { id: 'rain_boar_boss',  enemies: ['alpha_2', 'thorn_2'], boss: true,            gold: 60 },
+  // was: cave_boar_2 x2 / bandit, cutthroat, bandit_b / boar_boss + thorn_2
+  city_watch:      { id: 'city_watch',      enemies: ['thorn_2', 'dire_wolf_2'],                    gold: 40 },
+  city_bailiff:    { id: 'city_bailiff',    enemies: ['dire_wolf_2', 'dire_wolf_2', 'thorn_2'],     gold: 50 },
+  city_captain:    { id: 'city_captain',    enemies: ['alpha_2', 'dire_wolf_2'], boss: true,        gold: 70 },
+  // was: town_watch x2 / town_watch + storm_bailiff / watch_captain + storm_bailiff
   marsh_wolves:    { id: 'marsh_wolves',    enemies: ['dire_wolf_2', 'dire_wolf_2'],                gold: 40 },
   marsh_lurkers:   { id: 'marsh_lurkers',   enemies: ['thorn_2', 'dire_wolf_2', 'thorn_2'],         gold: 50 },
   marsh_alpha:     { id: 'marsh_alpha',     enemies: ['alpha_2'], boss: true,                       gold: 60 },
-  ruins_lurkers:   { id: 'ruins_lurkers',   enemies: ['cave_boar_2', 'thorn_2', 'thorn_2'],         gold: 40 },
-  ruins_mage:      { id: 'ruins_mage',      enemies: ['bandit', 'hedge_mage', 'bandit_b'],          gold: 50 },
+  ruins_lurkers:   { id: 'ruins_lurkers',   enemies: ['dire_wolf_2', 'thorn_2', 'thorn_2'],         gold: 40 },   // was cave_boar_2
+  ruins_mage:      { id: 'ruins_mage',      enemies: ['thorn_2', 'dire_wolf_2', 'thorn_2'],         gold: 50 },   // was bandit, hedge_mage, bandit_b
   ruins_alpha:     { id: 'ruins_alpha',     enemies: ['alpha_2', 'dire_wolf_2'], boss: true,        gold: 70 },
 });
 Camp.encounter = id => X.encounterDefs[id];

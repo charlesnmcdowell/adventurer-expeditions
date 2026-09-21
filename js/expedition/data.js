@@ -130,8 +130,12 @@ X.slice = { firstLevelOnly: true, openQuests: ['rain', 'city'] };
 // test/ship_budget_contract.js asserts this matches tools/ship_manifest.json.
 // Bram is deliberately absent: he cannot be hired while the slice is locked, so
 // his 2.42 MB bought nothing. Re-add him here and in the manifest together.
-// The boar is not here on purpose: its atlas is off-scope and it renders from
-// the shared creature plates, like any beast without an intaken set.
+// Every creature an open quest can field must be listed here AND in
+// tools/ship_manifest.json. Leaving the boar out while Road in the Rain still
+// fought boars is what froze the game on 2026-09-21 — the enemies arrived with a
+// health bar and no body, and the fight could not resolve. The quests now field
+// wolf, plant and the Alpha only, so the boar is out of both lists; putting it
+// back means adding it here, in the manifest, and to a quest, together.
 X.shipped = { actors: ['hiro', 'wolf', 'plant', 'alpha'] };
 
 // Skills are the player's to fire (Hiro, 2026-09-20): Hiro auto-uses only

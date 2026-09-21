@@ -114,7 +114,9 @@ assert.deepEqual(Object.keys(icons.frames).sort(), ['counter_attack', 'finisher'
 assert.ok(!set.has('assets/expedition/hiro/hiro.webp'), 'Superseded atlas must not ship');
 assert.ok(!set.has('assets/anime/v2/runtime/hiro_cyber_20260916.webp'), 'Superseded Hiro plate must not ship');
 assert.ok(![...set].some(f => /(?:^|\/)astra-v\d+(?:\/|$)/.test(f)), 'Source masters/review art must not ship');
-assert.ok(![...set].some(f => /^assets\/expedition\/boar\//.test(f)), 'Off-scope creature atlases must stay excluded');
+// The boar stays out while no quest fields it (Hiro's wolf-and-plant rule). The
+// sim asserts the other half of this: nothing an open quest fights may lack art.
+assert.ok(![...set].some(f => /^assets\/expedition\/boar\//.test(f)), 'The boar atlas stays out while no open quest fields a boar');
 assert.ok(![...set].some(f => /^assets\/expedition\/busts\/(foe_|nyx\.|sable\.|aera\.|ren\.)/.test(f)), 'Off-scope human/recruit portraits must stay excluded');
 // The road, the rain and the city are open (GDD 5), so their plates ship. The
 // night pair does not: `night1` plus four plates is 2.42 MB the budget lacks.

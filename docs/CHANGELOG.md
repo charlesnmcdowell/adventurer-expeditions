@@ -46,6 +46,56 @@ Browser inn/recruit suites now read `embarkBtn` as the next quest and
 
 ---
 
+## 2026-09-21 — The real freeze: an enemy with no body. Wolf and plant only.
+
+Fable. The cache-stamp fix earlier was necessary but it was not the freeze Hiro
+was seeing. His screenshot showed it plainly: a green enemy health bar floating
+by the arch with **no creature under it**, and a fight that could not end.
+
+**Cause, and it was mine.** Road in the Rain opens on two cave boars
+(`rain_boars`) and closes on a boar boss. When I added `X.shipped.actors` as the
+list of art the runtime may queue, I left the boar out — deliberately, on the
+strength of a contract assertion that said the boar atlas was "off-scope". That
+assertion predated the rain quest being open. So `P.needed()` refused to load
+the boar atlas, the boars arrived with stats and a health bar and no body, and
+nothing could resolve. The guard meant to prevent a missing-art hang caused one.
+
+**Hiro's call, and the better fix:** *"we should only be using the wolf and the
+plant creature for now, since those are the only ones with full art."* Right —
+so rather than shipping boar art, every open quest is rebuilt from the creatures
+that have been reworked. Road in the Rain and the City Watch now field wolves,
+thorn lurkers and the Alpha; the boars and the human foes are out of both. The
+original rosters are kept in a comment beside each one so they can come back
+when their art does. The marsh and ruins rosters were fixed the same way even
+though they stay closed, so reopening them cannot repeat this.
+
+The Alpha stays as the boss on purpose: 9 clips, 45 frames and three Hiro paired
+finishers, which is the same bar as the wolf and the plant.
+
+**A second bug the fix uncovered.** `alpha_2` — the boss of every non-tutorial
+quest — had neither `artActor` nor `artIdentity`, so it resolved to no painted
+set, and `scene.js` threw *"No complete painted enemy in tutorial: alpha_2"* the
+moment a boss wave came up. It is now wired exactly as the road's boss is, and
+its `tint` is gone; that belonged to plate art, not to a painted sheet. Worth
+noting that this one failed loudly rather than silently, which is the behaviour
+we want: the scene refuses to open a fight with an enemy that has no art.
+
+**The gate that would have caught it.** `test/expedition_sim.js` now walks every
+encounter of every open quest and asserts that each creature it can field has
+its art in `X.shipped` — humans excepted, since they compose from the shared
+part sheets. An enemy with no art stops the game rather than merely looking
+wrong, so this is the more important half of the art contract; the scenery check
+added earlier is the other half.
+
+**Verification.** Headless 17 sim / 9 recruit / 25 lifecycle / 6 cinematic / 6
+portal / 5 inn / registration / contract. A browser probe jumped straight into
+Road in the Rain and reported both enemies carrying `xp_wolf_sheet` at full
+size, the wave resolving, and no page errors or failed requests. `test:ship`
+plays the whole journey into the rain quest and passes; `test:restart` 22/0.
+Ship set 18.33 MB of 20.0.
+
+---
+
 ## 2026-09-21 — Freeze: a half-updated build, and the guard against it
 
 Fable. Hiro: *"game has crashed"*, then *"game is frozen and I can't restart."*
