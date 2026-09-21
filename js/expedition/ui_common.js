@@ -191,6 +191,58 @@ UI.cinematic = async function (scene, kind, focus, fn) {
   }
 };
 
+// The settings shown while paused. A labelled row that reads its own state, so
+// it is always honest about what the game is doing.
+UI.pauseSettings = function (scene, ctl) {
+  const D2 = UI.DEPTH, W2 = A.T.W, H2 = A.T.H;
+  const root = scene.add.container(W2 / 2, H2 / 2 + 30).setDepth(D2.hand + 12).setScrollFactor(0);
+  const w = 420, rowH = 56;
+  const rows = [{
+    label: 'Cinematic camera',
+    hint: 'the push in and slow motion on finishers',
+    get: () => !(X.fx && X.fx.cinematics === false),
+    set: v => { X.fx = X.fx || {}; X.fx.cinematics = v; },
+  }];
+  const drawn = [];
+  rows.forEach((row, i) => {
+    const y = i * rowH;
+    const on = row.get();
+    const g = scene.add.graphics();
+    g.fillStyle(0x14110d, 0.95); g.fillRoundedRect(-w / 2, y - rowH / 2 + 4, w, rowH - 8, 10);
+    g.lineStyle(2, 0x3a3128, 1); g.strokeRoundedRect(-w / 2, y - rowH / 2 + 4, w, rowH - 8, 10);
+    const t = T().text(scene, -w / 2 + 16, y - 8, row.label, { size: 15, oy: 0.5, color: '#f4eee0', display: true });
+    const h = T().text(scene, -w / 2 + 16, y + 11, row.hint, { size: 11, oy: 0.5, color: '#8d8377' });
+    const pill = scene.add.graphics();
+    pill.fillStyle(on ? 0x2f6b2c : 0x3a3128, 1); pill.fillRoundedRect(w / 2 - 92, y - 13, 76, 26, 13);
+    const pt = T().text(scene, w / 2 - 54, y, on ? 'On' : 'Off', { size: 13, ox: 0.5, oy: 0.5, color: '#f4eee0', display: true });
+    const z = scene.add.zone(w / 2 - 54, y, 76, 26).setInteractive({ useHandCursor: true });
+    z.on('pointerdown', () => {
+      row.set(!row.get());
+      const now = row.get();
+      pill.clear(); pill.fillStyle(now ? 0x2f6b2c : 0x3a3128, 1); pill.fillRoundedRect(w / 2 - 92, y - 13, 76, 26, 13);
+      pt.setText(now ? 'On' : 'Off');
+    });
+    root.add([g, t, h, pill, pt, z]);
+    drawn.push({ label: row.label, rect: { x: W2 / 2 + w / 2 - 92, y: H2 / 2 + 30 + y - 13, w: 76, h: 26 } });
+  });
+  scene.__settingRects = drawn;
+  const api = { root, rows: drawn, destroy: () => { try { root.destroy(); } catch (e) {} scene.__settingRects = null; } };
+  return api;
+};
+
+// Reload into a guaranteed-clean session. Returns false when there is no URL to
+// work with, so callers can fall back to restarting the scene in place.
+UI.reloadFresh = function () {
+  try {
+    if (typeof location !== 'function' && !location.href) return false;
+    const u = new URL(location.href);
+    u.searchParams.set('fresh', '1');
+    for (const p of ['at', 'gold', 'seed']) u.searchParams.delete(p);   // a jump must not survive a restart
+    location.replace(u.toString());
+    return true;
+  } catch (e) { return false; }
+};
+
 // The corner control: mute, pause and Start over, mounted by every scene so
 // none of them is a dead end. Pause shades the scene and freezes its clock and
 // tweens; Start over confirms, then wipes the run and boots a fresh tutorial
@@ -217,11 +269,17 @@ UI.corner = function (scene, opts) {
     ctl.paused = !ctl.paused; scene.paused = ctl.paused;
     if (ctl.paused) {
       ctl.shade = scene.add.rectangle(W / 2, H / 2, W, H, 0x000000, 0.5).setDepth(D.hand + 10).setInteractive().setScrollFactor(0);
-      ctl.glyph = T().text(scene, W / 2, H / 2, '❚❚', { size: 48, ox: 0.5, oy: 0.5, color: '#f4eee0', display: true }).setDepth(D.hand + 11).setScrollFactor(0);
+      ctl.glyph = T().text(scene, W / 2, H / 2 - 60, '❚❚', { size: 48, ox: 0.5, oy: 0.5, color: '#f4eee0', display: true }).setDepth(D.hand + 11).setScrollFactor(0);
       scene.tweens.pauseAll(); scene.time.paused = true;
       ctl.shade.on('pointerdown', () => ctl.togglePause());
+      // Settings live on the pause screen (Hiro, 2026-09-21). One row for now:
+      // the cinematic camera and its slow motion, which some players will want
+      // and some will find in the way. Off by default while the game is being
+      // judged at full speed.
+      ctl.settings = UI.pauseSettings(scene, ctl);
     } else {
       ctl.shade.destroy(); ctl.glyph.destroy(); ctl.shade = ctl.glyph = null;
+      if (ctl.settings) { ctl.settings.destroy(); ctl.settings = null; }
       scene.time.paused = false; scene.tweens.resumeAll();
     }
   };
@@ -250,8 +308,18 @@ UI.corner = function (scene, opts) {
   ctl.closeConfirm = () => { if (ctl.confirm) { ctl.confirm.root.destroy(); ctl.confirm = null; scene.__confirmRect = null; } };
   ctl.startOver = () => {
     UI.resetCamera(scene);                       // never carry a pushed-in camera into a fresh run (round 3 #1)
+    if (X.Dev && X.Dev.resetOverrides) X.Dev.resetOverrides();
     const fresh = X.Run.startOver(scene.run);
     if (opts.onStartOver) { opts.onStartOver(fresh); return; }
+    // Reload the page rather than restarting the scene in place (Hiro,
+    // 2026-09-21: "should be a fresh start, ?fresh=1 or something like that").
+    // The run always reset correctly, but a scene restart cannot clear what
+    // lives outside the run — a stale cached script, leftover scene or audio
+    // state, a developer toggle — so the board came back while the session
+    // around it did not. A reload with ?fresh=1 is the same path the URL takes,
+    // and it is the only one that is genuinely a first launch. Falls back to
+    // the in-place restart wherever there is no URL to reload.
+    if (UI.reloadFresh()) return;
     scene.scene.start('Expedition', { run: fresh, fresh: true, seed: scene.seed != null ? scene.seed + 1 : undefined });
   };
   ctl.destroy = () => { ctl.closeConfirm(); if (ctl.paused) ctl.togglePause(); root.destroy(); };

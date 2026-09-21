@@ -298,6 +298,29 @@ const bad = (what, saw) => { checks.push({ ok: false, what, saw }); console.erro
     await page.screenshot({ path: path.join(OUT, '06-preview-city.png') });
   } else bad('and picking one opens that location', 'no city row');
 
+  // Previewing lifted the slice lock and may have left a weather override. Start
+  // over must put all of it back, or the "fresh" run opens with the inn and every
+  // quest unlocked and does not look like a first launch at all.
+  const dirty = await page.evaluate(() => {
+    const X = ADV.Expedition; X.devWeather = 'storm'; X.fx.cinematics = false;
+    return { firstLevelOnly: X.slice.firstLevelOnly, devWeather: X.devWeather, cinematics: X.fx.cinematics };
+  });
+  if (dirty.firstLevelOnly === false) ok('previewing a location lifts the slice lock', dirty);
+  else bad('previewing a location lifts the slice lock', dirty);
+  await page.evaluate(() => {
+    const g = window.__game, k = g.scene.getScenes(true).map(s => s.sys.settings.key)[0];
+    g.scene.getScene(k).corner.startOver();
+  });
+  await page.waitForTimeout(2500);
+  const cleaned = await page.evaluate(() => {
+    const X = ADV.Expedition;
+    return { firstLevelOnly: X.slice.firstLevelOnly, openQuests: (X.slice.openQuests || []).slice(),
+      devWeather: X.devWeather || null, cinematics: X.fx.cinematics, hiroSheet: !!(X.art && X.art.hiroSheet) };
+  });
+  if (cleaned.firstLevelOnly === true && !cleaned.devWeather && cleaned.cinematics !== false)
+    ok('Start over puts the developer overrides back', cleaned);
+  else bad('Start over puts the developer overrides back', cleaned);
+
   // Back to the game, then carry on with the rest of the panel checks.
   await page.evaluate(() => {
     const g = window.__game, k = g.scene.getScenes(true).map(s => s.sys.settings.key)[0];

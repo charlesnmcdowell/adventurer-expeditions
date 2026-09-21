@@ -154,7 +154,11 @@ X.manualSkills = true;
 // and the impact hit-stop is skipped. Nothing else changes — the same hits land
 // in the same order, just at one speed. The dev panel toggles it; it is on for
 // players, and no player can reach the switch.
-X.fx = { cinematics: true };
+// Off for now (Hiro, 2026-09-21: "for now I would like this setting to be off so
+// I can see the game at full speed with no slow downs"). It is a player-facing
+// setting on the pause screen as well as a dev-panel toggle, so turning the
+// showmanship back on for release is a one-word change here.
+X.fx = { cinematics: false };
 
 X.cinematic = { cast: { scale: 0.70, zoom: 1.16, ms: 150 }, kill: { scale: 0.55, zoom: 1.26, ms: 140 } };
 

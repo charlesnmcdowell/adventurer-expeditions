@@ -28,14 +28,18 @@ Dev.DEV_BUILD = true;
 const asked = (function () {
   try { const v = new URLSearchParams(location.search).get('dev'); return v == null ? null : v !== '0'; } catch (e) { return null; }
 })();
-Dev.enabled = function () {
-  if (!Dev.DEV_BUILD) return false;
-  if (asked != null) return asked;
-  const s = store();
-  try { const v = s && s.getItem(KEY); if (v === '0') return false; } catch (e) {}
-  return true;
-};
-Dev.setEnabled = function (on) { const s = store(); try { s && (on ? s.removeItem(KEY) : s.setItem(KEY, '0')); } catch (e) {} };
+// While this is a development build the tools are ALWAYS there (Hiro,
+// 2026-09-21: "it needs to always be available ... they should show up for now
+// to make it easier for me to debug the game"). There used to be a stored
+// "hidden" flag that Shift+D set, and pressing it once made the cog vanish for
+// good — across reloads, with no way back from inside the game. That flag is
+// gone; DEV_BUILD is the only switch, and flipping it to false for the
+// CrazyGames package removes every trace of the tools.
+Dev.enabled = function () { return !!Dev.DEV_BUILD; };
+Dev.setEnabled = function () {};                       // kept so old callers are harmless
+// Clear the stale flag from any browser that still carries one, so the cog
+// comes back on the next load without anyone opening developer tools.
+try { const s0 = store(); if (s0 && s0.getItem(KEY) !== null) s0.removeItem(KEY); } catch (e) {}
 
 // Kept for the tests and the old boot path: which machine we are on. It no
 // longer gates anything — DEV_BUILD does.
@@ -44,6 +48,28 @@ Dev.local = function () {
     const h = location.hostname;
     return location.protocol === 'file:' || h === 'localhost' || h === '127.0.0.1' || h === '::1' || h === '' || /^192\.168\./.test(h) || /^10\./.test(h);
   } catch (e) { return false; }
+};
+
+// What the game looks like untouched. Captured at load, before any toggle can
+// run, so "Start over" can put everything back — not just the save.
+const DEFAULTS = {
+  firstLevelOnly: !!(X.slice && X.slice.firstLevelOnly),
+  openQuests: ((X.slice && X.slice.openQuests) || []).slice(),
+  hiroSheet: !!(X.art && X.art.hiroSheet),
+  cinematics: !(X.fx && X.fx.cinematics === false),
+};
+
+// Put every developer override back (Hiro, 2026-09-21: Start over "is not doing
+// a fresh restart"). The run itself always reset correctly; what carried over
+// was the panel's own state — a lifted slice lock from previewing a location,
+// a weather override, full speed, the art switch. None of that lives in the
+// save, so wiping the save never touched it, and the next run did not look like
+// a first launch. Start over now calls this.
+Dev.resetOverrides = function () {
+  if (X.slice) { X.slice.firstLevelOnly = DEFAULTS.firstLevelOnly; X.slice.openQuests = DEFAULTS.openQuests.slice(); }
+  if (X.art) X.art.hiroSheet = DEFAULTS.hiroSheet;
+  X.fx = X.fx || {}; X.fx.cinematics = DEFAULTS.cinematics;
+  X.devWeather = null; X.devPhase = null;
 };
 
 // ---------------------------------------------------------------- runs
@@ -221,17 +247,13 @@ Dev.attach = function (scene, corner) {
     if (!Dev.enabled() || scene.__devButton || !corner || !corner.button) return;
     scene.__devButton = corner.button(A.T.W - 250, '\u2699', () => { if (scene.__devPanel) Dev.close(scene); else Dev.open(scene); });
   };
-  const disarm = () => {
-    Dev.close(scene);
-    if (scene.__devButton) { try { scene.__devButton.destroy(); } catch (e) {} scene.__devButton = null; }
-  };
   arm();
-  // Shift+D hides the tools and brings them back, so the game can be looked at
-  // through a player's eyes without a reload.
+  // Shift+D opens and closes the PANEL. It used to hide the tools themselves,
+  // which is how the cog disappeared and stayed gone.
   const onKey = e => {
     if (!(e.shiftKey && (e.key === 'D' || e.key === 'd'))) return;
-    Dev.setEnabled(!Dev.enabled());
-    if (Dev.enabled()) arm(); else disarm();
+    arm();
+    if (scene.__devPanel) Dev.close(scene); else Dev.open(scene);
   };
   window.addEventListener('keydown', onKey);
   scene.events.once('shutdown', () => window.removeEventListener('keydown', onKey));
