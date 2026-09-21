@@ -55,7 +55,15 @@ test('shim resolves an Expedition Hiro by level', () => {
   m = A.SkillSys.manifest(hero, entry);
   assert.equal(m.data.target, 'allEnemies'); assert.equal(m.level, 3);
   const fin = A.SkillSys.manifest(hero, hero.actives.find(a => a.skillId === 'finisher'));
-  assert.equal(fin.data.permStatGain, 0); assert.equal(fin.data.healOnKillPct, 0.25); assert.equal(fin.data.cooldown, 3);
+  assert.equal(fin.data.permStatGain, 0); assert.equal(fin.data.healOnKillPct, 0.25);
+  // Finisher has no cooldown at any level (Hiro, 2026-09-21): the health window is
+  // the only thing that gates it. A falsy value is what the engine reads as none.
+  for (const lvl of [1, 2, 3]) {
+    run.levels.finisher = lvl;
+    const f = A.SkillSys.manifest(hero, hero.actives.find(a => a.skillId === 'finisher'));
+    assert.ok(!f.data.cooldown, 'Finisher L' + lvl + ' must have no cooldown, saw ' + f.data.cooldown);
+  }
+  run.levels.finisher = 1;
   const rip = A.SkillSys.manifest(hero, hero.actives.find(a => a.skillId === X.riposte.id));
   assert.equal(rip.data.power, 1.4);
   run.levels.counter_attack = 3;

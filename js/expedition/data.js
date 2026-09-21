@@ -44,13 +44,20 @@ X.skills = {
   finisher: {
     // One rule the player can hold in their head (Hiro, round 3): a normal enemy
     // is finished at half health or less, a boss at a quarter. Flat across levels —
-    // what levelling buys is the heal, the cooldown and the hit itself, not a wider
-    // window. The shared engine refuses to execute a boss at all, so the boss case
-    // is resolved in Enc.step (X.finisherThresholds), never by editing js/core.
+    // what levelling buys is the heal and the hit itself, not a wider window. The
+    // shared engine refuses to execute a boss at all, so the boss case is resolved
+    // in Enc.step (X.finisherThresholds), never by editing js/core.
+    //
+    // No cooldown (Hiro, 2026-09-21): "it's already limited by having specific
+    // conditions it can be used under anyway." The health window *is* the cost —
+    // a second Finisher needs a second enemy softened below half — so a timer on
+    // top of it only took the tap away in the moment the window finally opened.
+    // The engine reads a falsy cooldown as none at all (combat.js), so 0 is the
+    // whole change; the HUD's wedge and the "Cooldown n" chip simply never fire.
     base: { target: 'enemy', permStatGain: 0, questGain: false },
-    1: { requireBelowPct: 0.50, executeBelow: 0.50, healOnKillPct: 0.25, cooldown: 3, power: 2.4 },
-    2: { requireBelowPct: 0.50, executeBelow: 0.50, healOnKillPct: 0.35, cooldown: 3, power: 2.8 },
-    3: { requireBelowPct: 0.50, executeBelow: 0.50, healOnKillPct: 0.50, cooldown: 2, power: 3.2 },
+    1: { requireBelowPct: 0.50, executeBelow: 0.50, healOnKillPct: 0.25, cooldown: 0, power: 2.4 },
+    2: { requireBelowPct: 0.50, executeBelow: 0.50, healOnKillPct: 0.35, cooldown: 0, power: 2.8 },
+    3: { requireBelowPct: 0.50, executeBelow: 0.50, healOnKillPct: 0.50, cooldown: 0, power: 3.2 },
   },
 };
 

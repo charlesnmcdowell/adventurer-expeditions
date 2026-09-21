@@ -15,6 +15,43 @@ of small fixes within a day.
 
 ---
 
+## 2026-09-21 — Finisher loses its cooldown
+
+Fable, at Hiro's call: *"can you take the cool down off finisher? It's already
+limited by having specific conditions it can be used under anyway."* Right —
+the health window is the cost. A second Finisher needs a second enemy softened
+below half, which the fight has to produce; a three-turn timer on top of that
+mostly meant refusing the tap at the one moment the window finally opened.
+
+`cooldown: 3 / 3 / 2` becomes `0` at all three levels in `js/expedition/data.js`.
+That is the whole change: `combat.js` only records a cooldown when the manifest
+carries a truthy one, so the HUD's wedge and the "Cooldown n" info chip simply
+never fire for Finisher now. Levelling still buys the heal (25/35/50 %) and the
+hit (2.4/2.8/3.2); the windows stay flat at 50 % normal, 25 % boss.
+
+Finishes can now chain inside one wave, and the finishing cinematic with them.
+That is intended — it is a reward for setting two enemies up — and the camera
+test confirms the camera still comes home between them.
+
+**Balance.** Every sim win rate stays 1.00. The measurable effect is the boss
+wave with tapped finishers: ~1.8 rounds → ~1.4. Finisher windows seen 183,
+fired by request 120, 0 requests dropped, 0 engine errors.
+
+**Tests.** `expedition_sim.js` asserted `cooldown === 3`; it now walks L1–L3 and
+asserts there is no cooldown at any level, so it cannot quietly come back.
+Headless suite green (sim 14, recruit gate 9, actor lifecycle 25/0, cinematic
+scope 5/0, portal readiness 6, inn art 5, art registration, ship budget).
+Browser: `test:camera` 6/0 (finisher kill seen), `test:ship` ok, `test:restart`
+12/0.
+
+**GDD v0.9:** §7 carries the decision and the reasoning; §7a's real-time table
+had Finisher on a 20 s ultimate timer, which now contradicted the rule, so that
+row reads "none — the health window is the gate", with the note that if finishes
+ever chain too freely in real time the answer is a gap between *cinematics*, not
+a cooldown on the skill.
+
+---
+
 ## 2026-09-21 — A true restart, and the developer's tools move into the game
 
 Fable. Two things Hiro asked for after the round-3 build: *"yea it should be a

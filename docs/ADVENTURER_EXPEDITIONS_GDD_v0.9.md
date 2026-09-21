@@ -313,9 +313,20 @@ choice), so nothing else can quietly opt in.
 
 **The windows: half for a normal enemy, a quarter for a boss.** The Finisher
 takes an ordinary enemy at 50 % health or less and a boss at 25 % or less, flat
-at every level — levelling buys the heal, the cooldown and the size of the hit,
-not a wider window, because one number the player can hold in their head beats
-three they cannot. The shared engine exempts bosses from execution outright and
+at every level — levelling buys the heal and the size of the hit, not a wider
+window, because one number the player can hold in their head beats three they
+cannot.
+
+**And no cooldown at all** (Hiro, 2026-09-21: *"it's already limited by having
+specific conditions it can be used under anyway"*). The health window is the
+cost: a second Finisher needs a second enemy softened below half, which the
+fight has to produce. A timer stacked on top of that took the tap away at the
+exact moment the window finally opened — the worst time to be told no — so the
+three-turn cooldown is gone at every level (`cooldown: 0`). The engine treats a
+falsy cooldown as none, so nothing else changed: the HUD's wedge and the
+"Cooldown n" chip simply never fire for it. Back-to-back finishes are now
+possible in a crowded wave, and that is the intent — the cinematic is a reward
+for setting two enemies up, not a rationed effect. The shared engine exempts bosses from execution outright and
 `js/core` is never edited here, so the boss case is resolved in the Expedition
 layer (`Enc.bossExecutable`): when a boss is already under its line and the
 Finisher is what is being spent on it, the engine's own execute path is allowed
@@ -447,7 +458,7 @@ that invalidates.
 | — L3 sweep | Light | 5 s | L3 currently retargets to `allEnemies`. Free AoE every 1.08 s is not a purchase, it is a different game; the sweep becomes a timed cast and the basic stays single-target. |
 | God Aura | Heavy | 10 s, 5 s duration | A party-wide atk/def/evade buff at 50% uptime is a decision about *when*, not a permanent stat line. |
 | Counter Attack | Light | 5 s, 4 s window | Reactive and short-lived; the player should be able to answer a second incoming burst in the same fight. |
-| Finisher | Ultimate | 20 s, **starts ready** | An execute should be rare. But fights run 10–20 s, so a cold 20 s timer would mean the tutorial's signature tap never comes up in fight one — it starts off cooldown, and the existing hold-off rule still hands the player the first cast. |
+| Finisher | Ultimate | **none — the health window is the gate** | Matches the turn-based build after 2026-09-21 (§7). The execute is already rare because it needs a target under its line; a timer on top of that would, in a 10–20 s fight, mostly mean refusing the tap at the one moment it was earned. If real-time play shows finishes chaining too freely, the answer is a short global gap between *cinematics*, not a cooldown on the skill. |
 
 **The three heroes (§3):**
 
