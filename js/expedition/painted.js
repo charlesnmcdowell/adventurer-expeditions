@@ -19,7 +19,11 @@ P.needed = function (scene) {
   const owned = run && run.roster ? run.roster.slice() : [];
   const hireable = !(X.Campaign && X.Campaign.recruitingLocked && X.Campaign.recruitingLocked());
   const sceneKey = scene && scene.sys && scene.sys.settings && scene.sys.settings.key;
+  const shipped = (X.shipped && X.shipped.actors) || null;
   return P.actors.filter(id => {
+    // Never queue art the package does not carry, whatever the run says: a
+    // missing atlas hangs the scene in preload (Hiro, 2026-09-21).
+    if (shipped && !shipped.includes(id)) return false;
     if (id === 'bram') return hireable || owned.includes('bram');
     if (id === 'alpha') return sceneKey === 'Expedition' || (scene && scene.__needsAlpha);
     return true;

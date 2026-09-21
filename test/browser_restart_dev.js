@@ -33,6 +33,13 @@ function serve(host) {
   });
 }
 
+// "Re-armed" means no guidance has been retired — not that the object is empty.
+// The fight's own bookkeeping writes `purchases: 0` before the player does
+// anything, which is a blank state, not a completed one.
+const armed = t => !!t && !t.arrowDone && !t.finisherDone && !t.inspectDone && !t.skipGuide
+  && !(t.purchases > 0) && !Object.keys(t.used || {}).length;
+// Game coordinates -> page coordinates, through the canvas.
+let toPage;
 const checks = [];
 const ok = (what, extra) => { checks.push({ ok: true, what }); console.log('PASS ' + what + (extra ? ' ' + JSON.stringify(extra) : '')); };
 const bad = (what, saw) => { checks.push({ ok: false, what, saw }); console.error('FAIL ' + what + ' ' + JSON.stringify(saw)); };
@@ -50,6 +57,10 @@ const bad = (what, saw) => { checks.push({ ok: false, what, saw }); console.erro
     page.on('console', m => { if (m.type() === 'error') errors.push(m.text()); });
     await page.goto(url);
     await page.waitForFunction(() => window.__game && window.__game.scene.getScenes(true).length, null, { timeout: 20000 });
+    toPage = (x, y) => page.evaluate(([gx, gy]) => {
+      const sc = window.__game.scale, b = sc.canvasBounds, d = sc.displayScale;
+      return [b.x + gx / d.x, b.y + gy / d.y];
+    }, [x, y]);
     return { ctx, page };
   };
   const state = page => page.evaluate(() => {
@@ -57,7 +68,8 @@ const bad = (what, saw) => { checks.push({ ok: false, what, saw }); console.erro
     const X = ADV.Expedition;
     return { scene: key, run: s.run ? { gold: s.run.gold, levels: Object.assign({}, s.run.levels), questsDone: (s.run.questsDone || []).slice(), tutorial: Object.assign({}, s.run.tutorial) } : null,
       stored: X.Run.load() ? Object.assign({}, X.Run.load().tutorial) : null,
-      devButton: !!s.__devButton, devPanel: !!s.__devPanel, devEnabled: X.Dev.enabled(), devBuild: X.Dev.DEV_BUILD };
+      devButton: !!s.__devButton, devPanel: !!s.__devPanel, devEnabled: X.Dev.enabled(), devBuild: X.Dev.DEV_BUILD,
+      start: X.economy.start };
   });
 
   // ---- 1. Start over is a true restart -------------------------------------
@@ -74,11 +86,14 @@ const bad = (what, saw) => { checks.push({ ok: false, what, saw }); console.erro
   else bad('guidance was retired before the restart', before.run.tutorial);
 
   await page.evaluate(() => window.__game.scene.getScene('Expedition').corner.startOver());
-  await page.waitForFunction(() => { const s = window.__game.scene.getScene('Expedition'); return s && s.run && s.run.gold === 0; }, null, { timeout: 15000 });
+  // A fresh run opens with X.economy.start in hand (20 since 2026-09-21), so the
+  // restart is "back to the starting purse", not "back to nothing".
+  await page.waitForFunction(() => { const s = window.__game.scene.getScene('Expedition'); const X = ADV.Expedition;
+    return s && s.run && s.run.gold === X.economy.start && !(s.run.questsDone || []).length; }, null, { timeout: 40000 });
   const after = await state(page);
-  const blankRun = after.run && after.run.gold === 0 && !after.run.questsDone.length && after.run.levels.finisher === 0;
-  const blankTut = after.run && Object.keys(after.run.tutorial).length === 0;
-  const blankStored = after.stored && Object.keys(after.stored).length === 0;
+  const blankRun = after.run && after.run.gold === after.start && !after.run.questsDone.length && after.run.levels.finisher === 0;
+  const blankTut = after.run && armed(after.run.tutorial);
+  const blankStored = after.stored && armed(after.stored);
   if (blankRun) ok('Start over gives a blank run'); else bad('Start over gives a blank run', after.run);
   if (blankTut && blankStored) ok('Start over brings the tutorial back', { run: after.run.tutorial, stored: after.stored });
   else bad('Start over brings the tutorial back', { run: after.run && after.run.tutorial, stored: after.stored });
@@ -91,6 +106,86 @@ const bad = (what, saw) => { checks.push({ ok: false, what, saw }); console.erro
   }, null, { timeout: 90000 }).then(() => true).catch(() => false);
   if (gateBack) ok('the hand comes back after a restart'); else bad('the hand comes back after a restart', 'no gate within 90s');
   await page.screenshot({ path: path.join(OUT, '02-guidance-returned.png') });
+  await ctx.close();
+
+  // ---- 1b. The tutorial happens before and during the fight ----------------
+  // The bug (Hiro, 2026-09-21): "it starts after the 3 wolves are killed". The
+  // player began with no gold and no skills, so the purchase guidance could not
+  // run until the first payout and the in-fight prompts had nothing to point at.
+  ({ ctx, page } = await open('http://127.0.0.1:' + port + '/index.html?fresh=1&seed=11&renderer=canvas'));
+  const firstGate = await page.waitForFunction(() => {
+    const s = window.__game.scene.getScene('Expedition');
+    if (!s || !s.hud) return null;
+    const up = (s.hud.gateActive && s.hud.gateActive()) || !!s.hud._gateRect;
+    if (!up) return null;
+    const foes = [...(s.actors ? s.actors.values() : [])].filter(a => a.side === 'b');
+    return { gold: s.run.gold, purchases: (s.run.tutorial || {}).purchases || 0, chip: !!s.hud.chip,
+      foes: foes.length, alive: foes.filter(a => a.alive).length, awarded: (s.run.awarded || []).length };
+  }, null, { timeout: 60000 }).then(h => h.jsonValue()).catch(() => null);
+
+  if (firstGate && firstGate.awarded === 0 && (firstGate.foes === 0 || firstGate.alive === firstGate.foes))
+    ok('the first guidance comes before anything has been killed', firstGate);
+  else bad('the first guidance comes before anything has been killed', firstGate);
+  // It is the purchase guidance: the hand is on a skill the player cannot yet
+  // use, and the money to buy it is in hand. (The first hold is on the icon;
+  // tapping it opens the buy chip, so `chip` is only set after that tap.)
+  if (firstGate && firstGate.gold >= 20 && firstGate.purchases === 0) ok('and it is the purchase, with the money in hand', { gold: firstGate.gold });
+  else bad('and it is the purchase, with the money in hand', firstGate);
+  await page.screenshot({ path: path.join(OUT, '00-first-guidance.png') });
+
+  // Follow it the way a player would — real taps on whatever the hand points at
+  // — until the skill is owned. Game coordinates map through the canvas.
+  for (let i = 0; i < 24; i++) {
+    const r = await page.evaluate(() => {
+      const s = window.__game.scene.getScene('Expedition');
+      if (!s || !s.hud || s.run.levels.finisher > 0) return null;
+      const rect = (s.hud.chip && s.hud.chip.confirmRect) || s.hud._gateRect;
+      return rect ? { x: rect.x, y: rect.y, w: rect.w, h: rect.h } : null;
+    });
+    if (!r) break;
+    const [px, py] = await toPage(r.x + r.w / 2, r.y + r.h / 2);
+    await page.mouse.click(px, py);
+    await page.waitForTimeout(350);
+  }
+  const bought = await page.evaluate(() => {
+    const s = window.__game.scene.getScene('Expedition');
+    return { finisher: s.run.levels.finisher, gold: s.run.gold, awarded: (s.run.awarded || []).length };
+  });
+  if (bought.finisher > 0 && bought.awarded === 0) ok('the skill is bought before any fight has paid out', bought);
+  else bad('the skill is bought before any fight has paid out', bought);
+
+  // After the buy the guide asks the player to hold the new icon and read what it
+  // does. Clear whatever it puts up — a press long enough to count as a hold —
+  // until the fight itself raises the "use it" gate.
+  let useGate = null;
+  for (let i = 0; i < 40 && !useGate; i++) {
+    const st = await page.evaluate(() => {
+      const s = window.__game.scene.getScene('Expedition');
+      if (!s || !s.hud) return null;
+      const rect = (s.hud.chip && s.hud.chip.confirmRect) || s.hud._gateRect;
+      const foes = [...(s.actors ? s.actors.values() : [])].filter(a => a.side === 'b' && a.alive);
+      return { gateFor: s.hud._gateFor || null,
+        rect: rect ? { x: rect.x, y: rect.y, w: rect.w, h: rect.h } : null,
+        living: foes.length, atOrUnderHalf: foes.filter(a => a.unit && a.unit.chp / a.unit.maxHp <= 0.5).length,
+        over: !!(s.enc && s.enc.st && s.enc.st.over) };
+    });
+    if (!st) break;
+    if (st.gateFor === 'use:finisher') { useGate = { living: st.living, atOrUnderHalf: st.atOrUnderHalf }; break; }
+    if (st.over) break;                                    // the wave ended without the prompt
+    if (st.rect) {
+      const [px, py] = await toPage(st.rect.x + st.rect.w / 2, st.rect.y + st.rect.h / 2);
+      await page.mouse.move(px, py); await page.mouse.down();
+      await page.waitForTimeout(3400);                     // long enough to count as a hold
+      await page.mouse.up();
+    }
+    await page.waitForTimeout(600);
+  }
+
+  if (useGate && useGate.living > 0) ok('the fight pauses for the Finisher while enemies are still up', useGate);
+  else bad('the fight pauses for the Finisher while enemies are still up', useGate);
+  if (useGate && useGate.atOrUnderHalf > 0) ok('and only once something is at or under half health', useGate);
+  else bad('and only once something is at or under half health', useGate);
+  await page.screenshot({ path: path.join(OUT, '00b-finisher-prompt.png') });
   await ctx.close();
 
   // ---- 2. The tools are here now, and gone in the shipping build ----------
@@ -146,10 +241,6 @@ const bad = (what, saw) => { checks.push({ ok: false, what, saw }); console.erro
   ok('the cog opens the panel', rects.map(r => r.label));
   await page.screenshot({ path: path.join(OUT, '03-panel.png') });
 
-  const toPage = (x, y) => page.evaluate(([gx, gy]) => {
-    const sc = window.__game.scale, b = sc.canvasBounds, d = sc.displayScale;
-    return [b.x + gx / d.x, b.y + gy / d.y];
-  }, [x, y]);
   const click = async label => {
     const r = rects.find(x => x.label === label).rect;
     const [px, py] = await toPage(r.x + r.w / 2, r.y + r.h / 2);
@@ -157,7 +248,7 @@ const bad = (what, saw) => { checks.push({ ok: false, what, saw }); console.erro
   };
 
   await click('Jump to the inn');
-  await page.waitForFunction(() => window.__game.scene.isActive('Inn'), null, { timeout: 25000 });
+  await page.waitForFunction(() => window.__game.scene.isActive('Inn'), null, { timeout: 60000 });
   const inn = await state(page);
   if (inn.scene === 'Inn' && inn.run.gold === 150 && inn.run.questsDone.includes('road')) ok('“Jump to the inn” lands at the inn with the road behind it', { gold: inn.run.gold });
   else bad('“Jump to the inn” lands at the inn with the road behind it', inn);
@@ -169,9 +260,10 @@ const bad = (what, saw) => { checks.push({ ok: false, what, saw }); console.erro
   const fresh = innRects.find(r => r.label === 'Fresh tutorial').rect;
   const [fx, fy] = await toPage(fresh.x + fresh.w / 2, fresh.y + fresh.h / 2);
   await page.mouse.click(fx, fy);
-  await page.waitForFunction(() => window.__game.scene.isActive('Expedition') && window.__game.scene.getScene('Expedition').run.gold === 0, null, { timeout: 25000 });
+  await page.waitForFunction(() => window.__game.scene.isActive('Expedition')
+    && window.__game.scene.getScene('Expedition').run.gold === ADV.Expedition.economy.start, null, { timeout: 60000 });
   const back = await state(page);
-  if (back.scene === 'Expedition' && Object.keys(back.run.tutorial).length === 0) ok('“Fresh tutorial” starts the road with the guidance back');
+  if (back.scene === 'Expedition' && armed(back.run.tutorial)) ok('“Fresh tutorial” starts the road with the guidance back');
   else bad('“Fresh tutorial” starts the road with the guidance back', back);
   await page.screenshot({ path: path.join(OUT, '05-fresh-tutorial.png') });
   await ctx.close();

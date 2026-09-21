@@ -97,7 +97,12 @@ X.encounters = [
 // bought. The other three start locked (level 0) and are unlocked, then raised,
 // with gold. costs[n] is the price of reaching level n.
 X.purchasable = ['finisher', 'god_aura', 'counter_attack'];
-X.economy = { start: 0, costs: { 1: 20, 2: 30, 3: 40 }, maxLevel: 3 };
+// Twenty in hand at the gate (Hiro, 2026-09-21). The tutorial's first beat is a
+// purchase, and a purchase needs money: with nothing to spend, the first fight
+// was played with an empty kit and the guidance had nothing to point at, so the
+// wolves died on their own and the tutorial only began at the first payout.
+// The road pays 40 + 50 + 60, so the player reaches the inn with 110.
+X.economy = { start: 20, costs: { 1: 20, 2: 30, 3: 40 }, maxLevel: 3 };
 
 // Once Finisher first becomes usable the automatic policy leaves it alone for
 // this many of Hiro's turns so a beginner can tap it themselves.
@@ -115,7 +120,29 @@ X.finisherThresholds = { normal: 0.50, boss: 0.25 };
 // recruiting and every later quest shut; `openQuests` is the whitelist of loop
 // quests that may follow the tutorial road — first entry is what Embark offers.
 // Round 3 opened exactly one: Road in the Rain.
-X.slice = { firstLevelOnly: true, openQuests: ['rain'] };
+// Open every quest whose art the package actually carries (Hiro, 2026-09-21:
+// "make sure the remaining quests that have artwork finished is unlocked").
+// All four qualify: their beasts are the wolf, plant, boar and Alpha atlases,
+// and their human foes render from the baked busts, so the only thing that had
+// been missing was the background plates — cut from the build for size, now
+// paid for by dropping Bram's combat art, which the locked inn cannot reach.
+// Recruiting stays shut; `firstLevelOnly` still governs that.
+X.slice = { firstLevelOnly: true, openQuests: ['rain', 'city'] };
+
+// The night pair stays shut on budget, not on art: the marsh and the ruins share
+// `night1` (1.00 MB), which the build does not carry, and their four plates cost
+// 1.42 MB on top. 2.42 MB against 1.58 MB spare — they open the moment a trim
+// (js/data, or Hiro's atlas height) pays for them.
+
+// What the package carries. A missing atlas does not degrade — Phaser parks the
+// scene in preload until a queued file arrives, so an absent one is a black
+// screen, not a fallback. Nothing may be requested unless it is listed here, and
+// test/ship_budget_contract.js asserts this matches tools/ship_manifest.json.
+// Bram is deliberately absent: he cannot be hired while the slice is locked, so
+// his 2.42 MB bought nothing. Re-add him here and in the manifest together.
+// The boar is not here on purpose: its atlas is off-scope and it renders from
+// the shared creature plates, like any beast without an intaken set.
+X.shipped = { actors: ['hiro', 'wolf', 'plant', 'alpha'] };
 
 // Skills are the player's to fire (Hiro, 2026-09-20): Hiro auto-uses only
 // Katana Slash; God Aura, Counter Attack and Finisher wait for a tap. The

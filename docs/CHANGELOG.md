@@ -15,6 +15,73 @@ of small fixes within a day.
 
 ---
 
+## 2026-09-21 — The tutorial teaches during the fight; the city opens
+
+Fable, on two reports from Hiro: *"tutorial is kinda broken, it start after the
+3 wolves are killed"* and *"I'm unable to get to the second quest."* Different
+bugs, both real.
+
+**The tutorial was starting over the corpses, and the cause was the economy.**
+The player began with 0 gold and every skill locked, and `guidePurchase()` ran
+at the end of `victory()` — after the payout. So the first purchase could not
+happen until a fight had already been won, and the in-fight prompts skip any
+skill the player does not own, which left fight one on autopilot with an empty
+kit. The pause-and-point machinery Hiro wanted was already built and correct; it
+simply never got a turn. Fixes: `X.economy.start` 0 → 20, `guidePurchase()`
+moved to the top of `fight()`, and the forward arrow now holds on every tutorial
+fight rather than only the first. The road reads buy → fight → hold at half
+health → tap → arrow, three times, once per skill. The player reaches the inn
+with 110 instead of 90 (Hiro's call). `data.js`, `scene.js`.
+
+**Quest two was unreachable by construction.** `Camp.sanitizeRun` forced
+`questId` back to `'road'` whenever `recruitingLocked()` and the quest was not
+literally the road — ignoring `X.slice.openQuests` entirely. Embarking on Road
+in the Rain worked and was then undone by the next save load. It now tests
+`Camp.questOpen(run.questId)`, so an open quest survives sanitation and a locked
+one is still pulled back. `campaign.js`.
+
+**The City Watch is open; the night pair is not, and the reason is size.** All
+three locked quests already had their character art — the wolf, plant, boar and
+Alpha, plus the human foes — so the only thing missing was backgrounds cut
+earlier for space. The city's alley plate and panorama (0.66 MB) are back, paid
+for by dropping Bram's combat atlas (2.42 MB): he cannot be hired while the inn
+is locked, so the package was carrying a companion the player cannot reach. The
+marsh and ruins share `night1` (1.00 MB) and need four plates (1.42 MB) — 2.42
+against 1.68 MB spare — so they wait for a trim. **Ship set: 18.32 MB of 20.0,
+1.68 MB spare**, down from 20.18 MB and failing this morning.
+
+**A new rule, because a missing file does not degrade.** Phaser parks a scene in
+`preload` until every queued file arrives, so an absent asset is a black screen,
+not a fallback. `X.shipped.actors` now names what the runtime may queue;
+`P.needed()` refuses anything outside it, and `Camp.recruitReady` refuses a
+recruit whose art the package lacks — which is what stops the dev panel's "Open
+every quest" from lifting the lock and sending the loader after Bram. Two
+assertions hold the line: every open quest's music, plates and panorama must be
+in the ship set, and `X.shipped` must match the package in both directions. That
+second one caught a mistake of mine immediately — I had listed the boar, whose
+atlas is deliberately off-scope because boars render from the shared plates.
+
+**Tests.** Headless 15 sim / 9 recruit / 25 lifecycle / 5 cinematic / 6 portal /
+5 inn / art registration / ship contract. Browser: `test:ship` ok, `test:camera`
+6/0 with a finisher kill, `test:restart` **17/0**, including the new regression
+for the reported bug — it asserts the first guidance arrives with every enemy
+alive and nothing paid out, the skill is owned before any payout, and the fight
+holds while enemies are still standing with one at or under half health
+(observed: 2 living, 1 at or under half).
+
+Several tests encoded the old economy and the one-open-quest slice and were
+updated to state the rule rather than the number — gold is now expressed against
+`X.economy.start`, the legacy-save smuggling test names `marsh` (a still-locked
+quest) instead of `city`, and the Bram fixtures carry him in `X.shipped` for the
+stretch that exercises the future loop. One honest note: `test:restart` timed out
+once on a loaded machine before its tight waits were raised, so treat it as
+occasionally slow rather than proven stable.
+
+**Not done here.** The `js/data` trim, which is what would pay for the night
+pair.
+
+---
+
 ## 2026-09-21 — Module spec (§12b), and the trim candidates measured
 
 Fable, design only — no code. Hiro asked whether parts of the game could be

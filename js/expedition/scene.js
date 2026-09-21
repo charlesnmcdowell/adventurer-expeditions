@@ -201,6 +201,15 @@ class ExpeditionScene extends Phaser.Scene {
   // ---------------------------------------------------------------- director
   async fight(first) {
     const enc = this.enc, Enc = X.Encounter;
+    // Buy, then fight (Hiro, 2026-09-21). The guided purchase used to run after
+    // the payout, which meant the first fight was fought with an empty kit: the
+    // in-fight prompts below skip any skill the player does not own, so three
+    // wolves died on their own and the tutorial only started once they were
+    // dead. Now each road fight is preceded by its purchase — Finisher before
+    // the first, then God Aura, then Counter Attack, each paid for by the
+    // previous fight's payout — and the fight itself holds for the first use.
+    await this.guidePurchase();
+    this.hud.closeChip();
     await this.intro(first);
     while (!this.ended) {
       const pk = Enc.peek(enc);
@@ -271,15 +280,13 @@ class ExpeditionScene extends Phaser.Scene {
       await new Promise(res => this.hud.payout(this.hero.x, this.hero.y - 200, award.gold, res));
     } else this.hud.setGold(this.run.gold);
     this.hud.refresh();
-    // Guided purchases: after each of the first three payouts the hand shows the
-    // next affordable buy (a locked skill first, then a level), skippable.
-    await this.guidePurchase();
-    this.hud.closeChip();
     if (this.enc.def.boss) { await this.complete(); return; }
     // Forward.
     this.hud.showArrow();
     this.arrowArmed = true;
-    if (!this.run.tutorial.arrowDone) {
+    // On the tutorial road the arrow holds every time, so the beat the player is
+    // learning — buy, fight, use it, move on — repeats for all three skills.
+    if (this.quest.tutorial || !this.run.tutorial.arrowDone) {
       const r = await this.hud.gate(this.hud.arrow.rect, { skippable: false });
       if (this.ended) return;
       if (r && r.skipped) this.tapArrow();

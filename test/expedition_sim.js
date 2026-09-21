@@ -141,22 +141,59 @@ test('a request whose target dies first is dropped, not stranded', () => {
   console.log('requests dropped because the target died first:', dropped);
 });
 
+// ------------------------------------------------- what the package carries
+// A quest may only be open if the build carries everything it needs. A missing
+// plate or track does not degrade: Phaser parks the scene in preload until the
+// file arrives, so an open quest with a missing asset is a black screen.
+test('every open quest has its music, plates and panorama in the build', () => {
+  const { shipList } = require('../tools/size_check.js');
+  const set = new Set(shipList().files);
+  const ALIAS = { bandit_road: 'road', deep_wood: 'forest', shallows: 'coast' };
+  const open = new Set(['road'].concat(X.slice.openQuests || []));
+  let checked = 0;
+  for (const q of X.quests) {
+    if (!open.has(q.id)) continue;
+    checked++;
+    assert.ok(set.has('audio/music/' + q.music + '.mp3'), q.id + ' is open but its music is not shipped: ' + q.music);
+    for (const p of new Set(q.plates))
+      assert.ok(set.has('assets/anime/v2/runtime/' + (ALIAS[p] || p) + '.webp'), q.id + ' is open but a battle plate is missing: ' + p);
+    assert.ok(set.has('assets/anime/travel/v1/runtime/' + q.travel + '.webp'), q.id + ' is open but its travel panorama is missing: ' + q.travel);
+  }
+  assert.ok(checked >= 2, 'the tutorial and at least one loop quest are open');
+  // X.shipped is the list the runtime may queue: it must name exactly the actor
+  // atlases in the package, in both directions.
+  const shipped = (X.shipped && X.shipped.actors) || [];
+  for (const id of shipped) assert.ok(set.has('assets/expedition/' + id + '/' + id + '.json'), 'X.shipped names an actor the build lacks: ' + id);
+  const NOT_ACTORS = new Set(['busts', 'inn', 'icons']);          // bundles, not fighters
+  for (const f of set) {
+    const m = /^assets\/expedition\/([a-z0-9_]+)\/\1\.json$/.exec(f);
+    if (m && !NOT_ACTORS.has(m[1])) assert.ok(shipped.includes(m[1]), 'the build carries an atlas X.shipped omits: ' + m[1]);
+  }
+});
+
 // ---------------------------------------------------------------- economy
 test('rewards pay once; upgrades deduct exactly once and change the next manifest', () => {
   const run = Enc.freshRun();
   const enc = Enc.create({ encounter: 'road_ambush', seed: 7, run });
   Enc.runToEnd(enc);
-  assert.equal(Enc.award(enc).gold, 40); assert.equal(run.gold, 40);
+  // The player starts with X.economy.start in hand (20 since 2026-09-21) so the
+  // tutorial's first beat can be a purchase, before any fighting.
+  assert.equal(X.economy.start, 20, 'the road opens with enough for the first skill');
+  assert.equal(Enc.award(enc).gold, 40); assert.equal(run.gold, X.economy.start + 40);
   assert.equal(Enc.award(enc).gold, 0, 'second award pays nothing');
   assert.equal(Enc.upgradeCost(run, 'katana_slash'), null, 'Katana Slash is not purchasable');
   assert.ok(Enc.canUpgrade(run, 'finisher'));
   assert.deepEqual(Enc.upgrade(run, 'finisher'), { ok: true, level: 1, cost: 20, unlocked: true });
-  assert.equal(run.gold, 20);
-  assert.equal(Enc.upgrade(run, 'god_aura').ok, true, '20 gold buys a second first-tier unlock');
-  assert.equal(run.gold, 0);
+  // Stated against the starting purse rather than a fixed number, so the rule
+  // under test is "an unlock costs 20", not "the player began with nothing".
+  assert.equal(run.gold, X.economy.start + 40 - X.economy.costs[1]);
+  assert.equal(Enc.upgrade(run, 'god_aura').ok, true, 'the next first-tier unlock is affordable');
+  assert.equal(run.gold, X.economy.start + 40 - 2 * X.economy.costs[1]);
+  run.gold = 0;                                                 // an empty purse, however it got there
   assert.equal(Enc.upgrade(run, 'counter_attack').ok, false, 'no gold, no unlock');
-  // The road pays 150 in all; three guided unlocks (3 × 20) must still leave the first recruit's price.
-  assert.ok(X.encounters.reduce((n, e) => n + e.gold, 0) - 3 * X.economy.costs[1] >= X.party.recruitCosts[0], 'the tutorial must fund the first recruit');
+  // The road pays 150, and the player starts with 20. Three guided unlocks
+  // (3 × 20) must still leave the first recruit's price.
+  assert.ok(X.economy.start + X.encounters.reduce((n, e) => n + e.gold, 0) - 3 * X.economy.costs[1] >= X.party.recruitCosts[0], 'the tutorial must fund the first recruit');
   assert.equal(Enc.heroLevel(run), 3);
   // The next encounter's Hiro owns Finisher and resolves it at level 1.
   const enc2 = Enc.create({ encounter: 'road_ambush', seed: 8, run });
@@ -282,6 +319,11 @@ test('a skill bought between fights works in the very next fight', () => {
 // ---------------------------------------------------------------- party campaign
 test('travel banter advances its round-robin across rebuilt worlds', () => {
   const Camp = X.Campaign;
+  // Bram's art is out of the package today, so field him under an X.shipped that
+  // carries him: this covers the banter rotation for when the inn reopens.
+  const savedShipped = X.shipped;
+  X.shipped = Object.assign({}, X.shipped, { actors: (X.shipped.actors || []).concat('bram') });
+  try {
   const run = Camp.freshRun(); run.roster = ['bram']; run.field = ['bram']; run.visits = {};
   const seen = [];
   for (let i = 0; i < 4; i++) {
@@ -298,20 +340,38 @@ test('travel banter advances its round-robin across rebuilt worlds', () => {
     run.voice = JSON.parse(JSON.stringify(run.voice));                     // survive a save/load round trip
   }
   assert.ok(new Set(seen).size >= 2, 'Bram must not say the same line every leg: ' + seen.join(' '));
+  } finally { X.shipped = savedShipped; }
 });
 
 test('the retained loop uses only painted Bram; tutorial lock and earned upgrades are respected', () => {
   const Camp = X.Campaign;
   const r1 = Camp.freshRun(); assert.equal(Camp.nextQuestId(r1), 'road');
-  // The slice opens one quest at a time (X.slice.openQuests). Round 3 opened Road
-  // in the Rain and nothing else: after the tutorial the only place to go is rain,
-  // and it repeats rather than rolling on into the city.
-  assert.deepEqual(X.slice.openQuests, ['rain'], 'exactly one loop quest is open');
-  r1.questsDone.push('road'); assert.equal(Camp.nextQuestId(r1), 'rain', 'the tutorial hands off to the one open quest');
-  r1.questsDone.push('rain'); assert.equal(Camp.nextQuestId(r1), 'rain', 'and nothing beyond it opens by itself');
-  assert.ok(Camp.questOpen('road') && Camp.questOpen('rain'));
-  for (const shut of ['city', 'marsh', 'ruins']) assert.ok(!Camp.questOpen(shut), shut + ' stays locked');
+  // The slice opens the quests whose art the package carries (X.slice.openQuests).
+  // The road, the rain and the city; the night pair stays shut because `night1`
+  // and their plates are 2.42 MB the budget has not got (2026-09-21).
+  assert.deepEqual(X.slice.openQuests, ['rain', 'city'], 'the open quests are the ones with art in the build');
+  r1.questsDone.push('road'); assert.equal(Camp.nextQuestId(r1), 'rain', 'the tutorial hands off to the first open quest');
+  r1.questsDone.push('rain'); assert.equal(Camp.nextQuestId(r1), 'city', 'and then on to the next open one');
+  r1.questsDone.push('city'); assert.ok(['rain', 'city'].includes(Camp.nextQuestId(r1)), 'the open set cycles rather than opening a locked quest');
+  assert.ok(Camp.questOpen('road') && Camp.questOpen('rain') && Camp.questOpen('city'));
+  for (const shut of ['marsh', 'ruins']) assert.ok(!Camp.questOpen(shut), shut + ' stays locked');
+  // A save naming a locked quest is pulled back; one naming an open quest is not.
+  // (This is the bug that made quest two unreachable: sanitation used to force
+  // every non-road quest back to the tutorial while the inn was locked.)
+  const keep = Camp.sanitizeRun(Object.assign(Camp.freshRun(), { questId: 'city', phase: 'quest', wave: 0 }));
+  assert.equal(keep.questId, 'city', 'an open quest survives sanitation');
+  const pulled = Camp.sanitizeRun(Object.assign(Camp.freshRun(), { questId: 'marsh', phase: 'quest', wave: 0 }));
+  assert.equal(pulled.questId, 'road', 'a locked quest is pulled back to the road');
+  // Bram's combat art is out of the package while the inn is locked, so he is
+  // refused for the same reason the unpainted recruits are.
+  assert.ok(!Camp.artShipped('bram'), "Bram's atlas is not in the build today");
   const savedSlice = X.slice; X.slice = Object.assign({}, X.slice, { firstLevelOnly: false });
+  // With the lock lifted, Bram is still refused while his art is out of the
+  // build — the guard that stops the dev panel sending the loader after a file
+  // the package does not have.
+  assert.equal(Camp.buy(Object.assign(Camp.freshRun(), { gold: 1000 }), 'bram').reason, 'art unavailable');
+  const savedShipped = X.shipped;
+  X.shipped = Object.assign({}, X.shipped, { actors: (X.shipped.actors || []).concat('bram') });
   try {
   // Explicitly test the preserved future loop without changing the ship lock.
   const run0 = Camp.freshRun(); run0.gold = 1000;
@@ -366,7 +426,7 @@ test('the retained loop uses only painted Bram; tutorial lock and earned upgrade
     assert.ok(sync.includes(q.music + '.mp3'), q.id + ' music ' + q.music + ' not synced');
   }
   assert.ok(sync.includes(X.innMusic + '.mp3'), 'inn music not synced');
-  } finally { X.slice = savedSlice; }
+  } finally { X.slice = savedSlice; X.shipped = savedShipped; }
 });
 
 if (verbose) {

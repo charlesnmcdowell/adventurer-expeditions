@@ -192,6 +192,29 @@ HUD in *inn mode* (portrait and icons only).
 
 ## 5. Quests, environments and music
 
+**Open as of 2026-09-21: the road, Road in the Rain, and the City Watch.** A
+quest opens when the package carries everything it needs, and two separate
+things had been keeping the loop shut. The first was a bug: `sanitizeRun` pulled
+any run whose quest was not literally `road` back to the tutorial whenever
+recruiting was locked, ignoring the open-quest whitelist — so embarking on the
+rain worked and was then undone on the next save load, which is why quest two
+was unreachable. It now tests `Camp.questOpen`.
+
+The second was size, not art. The city's foes are the human set, its beasts are
+the wolf, plant and Alpha atlases already in the build; only the alley plate and
+the city panorama were missing, cut earlier to save space. They are back, paid
+for by dropping Bram's combat atlas (2.42 MB) — he cannot be hired while the inn
+is locked, so the package was carrying a companion the player could not reach.
+The marsh and the ruins stay shut on budget alone: they share `night1` (1.00 MB)
+and need four plates (1.42 MB), which is 2.42 MB against 1.68 MB spare. They
+open when a trim pays for them (§12a, §12b).
+
+**Nothing may be open without its art.** `X.shipped.actors` names what the
+runtime is allowed to queue, and `test/expedition_sim.js` asserts both that every
+open quest's music, plates and panorama are in the ship set and that `X.shipped`
+matches the package exactly, in both directions. A missing file does not
+degrade — Phaser parks the scene in preload — so this is a gate, not a nicety.
+
 **Scope note, round 3 (2026-09-21):** the slice opens one quest at a time.
 `X.slice.openQuests` is the whitelist — today `['rain']`, so the tutorial hands
 off to **Road in the Rain** and stops there; the city, marsh and ruins are
@@ -637,6 +660,28 @@ asserts on `enc.st.round`; both go away. To keep proving what it claims:
 ---
 
 ## 8. Guidance
+
+**Buy, fight, use it, move on — corrected 2026-09-21.** Hiro: *"the tutorial is
+kinda broken, it starts after the 3 wolves are killed."* He was right, and the
+cause was the economy rather than the guidance. The player began with no gold
+and every skill locked, so the guided purchase — which ran after the payout —
+could not happen until a fight had already been won, and the in-fight prompts
+skip any skill the player does not own. The first fight was therefore played
+with an empty kit, on autopilot, and the tutorial only began over the corpses.
+
+Three changes put it in the intended order. The purse opens at 20 gold
+(`X.economy.start`), enough for the first unlock. `guidePurchase()` moved from
+the end of `victory()` to the start of `fight()`, so each road fight is preceded
+by its purchase — Finisher first, then God Aura, then Counter Attack, each paid
+for by the previous fight's payout. And the forward arrow holds on every
+tutorial fight rather than only the first, so the beat repeats.
+
+The road now reads: **buy Finisher → fight → the game holds the moment a wolf
+drops to half health and points at the icon → tap it → arrow to the next area**,
+then the same for the other two skills. `test/browser_restart_dev.js` asserts the
+first guidance arrives with every enemy still alive and nothing paid out, that
+the skill is owned before any payout, and that the fight's hold comes up while
+enemies are still standing and one is at or under half.
 
 All non-verbal, all skippable, never repeated once done. The mechanism is one
 piece of code (`X.UI.gate`): four input blockers around a hole, a pulsing ring on

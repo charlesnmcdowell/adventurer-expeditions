@@ -159,7 +159,12 @@ Camp.registerRecruitArt = function (key, sheet, hasFrame) {
   if (valid) loadedRecruitArt.add(key);
   return valid;
 };
-Camp.recruitReady = key => Camp.recruitApproved(key) && loadedRecruitArt.has(key);
+// Is this recruit's art actually in the package? (Hiro, 2026-09-21.) Bram's
+// combat atlas is out while the inn is locked, so he reads as "art unavailable"
+// exactly like the unpainted recruits — re-adding him is one entry in
+// X.shipped.actors and three in tools/ship_manifest.json, together.
+Camp.artShipped = key => !(X.shipped && X.shipped.actors) || X.shipped.actors.includes(key);
+Camp.recruitReady = key => Camp.recruitApproved(key) && Camp.artShipped(key) && loadedRecruitArt.has(key);
 Camp.recruitingLocked = () => !!(X.slice && X.slice.firstLevelOnly);
 
 // Save sanitation must work before textures load. Preserve known paid ownership,
@@ -188,7 +193,13 @@ Camp.sanitizeRun = function (run) {
   }
   run.rel = rel;
   if (!['quest', 'travel', 'inn', 'grave'].includes(run.phase)) run.phase = 'quest';
-  if (!Camp.quest(run.questId) || (Camp.recruitingLocked() && run.questId !== 'road')) {
+  // A save naming a quest that is not open is pulled back to the road — but
+  // "open" means the whitelist, not literally the road (Hiro, 2026-09-21). This
+  // used to test `recruitingLocked() && questId !== 'road'`, so every quest the
+  // slice had deliberately opened was undone on the next save load: embarking on
+  // Road in the Rain worked, and then sanitation put the player back on the
+  // tutorial. Quest two was unreachable by construction.
+  if (!Camp.quest(run.questId) || !Camp.questOpen(run.questId)) {
     run.questId = 'road'; run.wave = 0; run.checkpoint = 0;
     if (run.phase !== 'inn') run.phase = 'quest';
     delete run.travelLeg;

@@ -38,21 +38,30 @@ try {
 const { shipList, report } = require('../tools/size_check');
 const set = new Set(shipList().files);
 const actors = ['hiro', 'bram', 'wolf', 'plant', 'alpha'];
+// Which of those the package actually carries. Bram's atlas is deliberately out
+// while the inn is locked (2026-09-21), and the boot must not ask for it: a file
+// that is not there parks the scene in preload rather than degrading.
+const shippedActors = actors.filter(id => set.has('assets/expedition/' + id + '/' + id + '.json'));
+assert.ok(shippedActors.length && shippedActors.includes('hiro'), 'the package must at least carry Hiro');
 // Exercise the actual cold-boot preloader. Checking a second hardcoded manifest
 // list alone would miss a runtime that still requests removed boar/Alpha pages.
 const context = vm.createContext({ ADV: { Expedition: { UI: {} }, DATA: {} } });
 const paintedPath = 'js/expedition/painted.js';
 assert.ok(set.has(paintedPath), 'The shared painted loader must ship');
 vm.runInContext(fs.readFileSync(path.join(ROOT, paintedPath), 'utf8'), context);
+context.ADV.Expedition.shipped = { actors: shippedActors };      // as js/expedition/data.js declares it
 const painted = context.ADV.Expedition.Painted, loads = [];
 assert.deepEqual(Array.from(painted.actors), actors, 'Boot actor selection matches tutorial scope');
 painted.preload({ sys: { settings: { key: 'Expedition' } }, __needsAlpha: true, textures: { exists: () => false }, cache: { json: { exists: () => false } }, load: {
   multiatlas: (key, file, base) => loads.push({ kind: 'atlas', key, file, base }),
   json: (key, file) => loads.push({ kind: 'metadata', key, file }),
 } });
-assert.equal(loads.filter(load => load.kind === 'atlas').length, actors.length);
+assert.deepEqual(loads.filter(l => l.kind === 'atlas').map(l => l.key.replace(/^xp_|_sheet$/g, '')).sort(), shippedActors.slice().sort(),
+  'cold boot requests exactly the actors the package carries');
 for (const load of loads) assert.ok(set.has(load.file), 'Cold boot requests an excluded file: ' + load.file);
-for (const id of actors) {
+// Closure is required of what ships, not of the whole catalogue: an actor the
+// package leaves out has no metadata to be closed over.
+for (const id of shippedActors) {
   const base = 'assets/expedition/' + id + '/';
   assert.ok(set.has(base + id + '.json'), id + ' metadata must ship');
   assert.ok(loads.some(load => load.kind === 'atlas' && load.file === base + id + '.json' && load.base === base), id + ' must use its shipped multiatlas');
@@ -75,11 +84,18 @@ assert.ok(!set.has('assets/anime/v2/runtime/hiro_cyber_20260916.webp'), 'Superse
 assert.ok(![...set].some(f => /(?:^|\/)astra-v\d+(?:\/|$)/.test(f)), 'Source masters/review art must not ship');
 assert.ok(![...set].some(f => /^assets\/expedition\/boar\//.test(f)), 'Off-scope creature atlases must stay excluded');
 assert.ok(![...set].some(f => /^assets\/expedition\/busts\/(foe_|nyx\.|sable\.|aera\.|ren\.)/.test(f)), 'Off-scope human/recruit portraits must stay excluded');
+// The road, the rain and the city are open (GDD 5), so their plates ship. The
+// night pair does not: `night1` plus four plates is 2.42 MB the budget lacks.
 for (const f of [
-  'assets/anime/v2/runtime/alley.webp', 'assets/anime/v2/runtime/marsh.webp', 'assets/anime/v2/runtime/ruins.webp',
-  'assets/anime/travel/v1/runtime/city.webp', 'assets/anime/travel/v1/runtime/marsh.webp', 'assets/anime/travel/v1/runtime/ruins.webp',
+  'assets/anime/v2/runtime/marsh.webp', 'assets/anime/v2/runtime/ruins.webp',
+  'assets/anime/travel/v1/runtime/marsh.webp', 'assets/anime/travel/v1/runtime/ruins.webp',
   'audio/music/night1.mp3',
-]) assert.ok(!set.has(f), 'Later-quest-only asset must stay excluded: ' + f);
+]) assert.ok(!set.has(f), 'Closed-quest asset must stay excluded: ' + f);
+for (const f of ['assets/anime/v2/runtime/alley.webp', 'assets/anime/travel/v1/runtime/city.webp'])
+  assert.ok(set.has(f), 'An open quest must carry its plates: ' + f);
+
+// The open quests' own assets are checked in test/expedition_sim.js, where the
+// real X.Campaign is loaded rather than a bare vm context.
 
 // Compact cache data must exactly describe shipped recordings, including their
 // current contents, rather than bringing back the website-wide hash tables.

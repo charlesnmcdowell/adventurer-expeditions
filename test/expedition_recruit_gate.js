@@ -42,6 +42,12 @@ test('tutorial recruitment lock applies to direct calls without spending gold', 
 test('Bram purchase and fielding enforce readiness when recruitment is explicitly enabled', () => {
   const run = X.Run.fresh(); run.gold = 150;
   const locked = X.slice.firstLevelOnly; X.slice.firstLevelOnly = false;
+  // Bram's atlas is out of the package while the inn is locked (2026-09-21), and
+  // a recruit whose art the build lacks is refused even with the lock lifted —
+  // asserted first, then put back so the readiness mechanics stay covered.
+  assert.equal(Camp.buy(X.Run.fresh(), 'bram').reason, 'art unavailable', 'unshipped art is refused whatever the lock says');
+  const savedShipped = X.shipped;
+  X.shipped = Object.assign({}, X.shipped, { actors: (X.shipped.actors || []).concat('bram') });
   try {
     assert.equal(Camp.buy(run, 'nyx').reason, 'art unavailable'); assert.equal(run.gold, 150);
     assert.equal(Camp.buy(run, 'bram').ok, true); assert.equal(run.gold, 90);
@@ -51,7 +57,7 @@ test('Bram purchase and fielding enforce readiness when recruitment is explicitl
     Camp.registerRecruitArt('bram', null, () => true);
     assert.equal(Camp.toggleField(run, 'bram').reason, 'art unavailable');
     ready(); assert.equal(Camp.toggleField(run, 'bram').fielded, true);
-  } finally { X.slice.firstLevelOnly = locked; }
+  } finally { X.slice.firstLevelOnly = locked; X.shipped = savedShipped; }
 });
 test('legacy roster cannot smuggle unapproved or unpainted actors into combat', () => {
   const run = X.Run.fresh();
@@ -62,11 +68,21 @@ test('legacy roster cannot smuggle unapproved or unpainted actors into combat', 
   assert.deepEqual(saved.roster, ['nyx', 'bram'], 'retain legitimate paid ownership');
   assert.deepEqual(saved.field, ['bram']); assert.equal(saved.hero, undefined);
   assert.equal(saved.rel.stranger, undefined); assert.equal(saved.rel.hiro.stranger, undefined);
-  const world = Camp.buildWorld(saved);
-  try { assert.equal(world.hero.name, 'Hiro'); assert.deepEqual(world.companions.map(c => c.companionKey), ['bram']); } finally { world.restoreIds(); }
-  Camp.registerRecruitArt('bram', null, () => true);
-  const missing = Camp.buildWorld(saved);
-  try { assert.equal(missing.companions.length, 0, 'failed art load cannot field a placeholder'); } finally { missing.restoreIds(); }
+  // What follows is about sanitation and art loading, not about what the package
+  // ships, so field Bram under an X.shipped that carries him.
+  const savedShipped = X.shipped;
+  X.shipped = Object.assign({}, X.shipped, { actors: (X.shipped.actors || []).concat('bram') });
+  try {
+    const world = Camp.buildWorld(saved);
+    try { assert.equal(world.hero.name, 'Hiro'); assert.deepEqual(world.companions.map(c => c.companionKey), ['bram']); } finally { world.restoreIds(); }
+    Camp.registerRecruitArt('bram', null, () => true);
+    const missing = Camp.buildWorld(saved);
+    try { assert.equal(missing.companions.length, 0, 'failed art load cannot field a placeholder'); } finally { missing.restoreIds(); }
+    // And with the art out of the build entirely, he cannot be fielded at all.
+    X.shipped = Object.assign({}, X.shipped, { actors: (X.shipped.actors || []).filter(id => id !== 'bram') });
+    const unshipped = Camp.buildWorld(saved);
+    try { assert.equal(unshipped.companions.length, 0, 'art outside the package cannot be fielded'); } finally { unshipped.restoreIds(); }
+  } finally { X.shipped = savedShipped; }
   ready();
 });
 test('save reload preserves locked skills and all existing quest identities', () => {
@@ -81,7 +97,10 @@ test('save reload preserves locked skills and all existing quest identities', ()
 });
 test('legacy saves cannot reopen later quests or replace Hiro, but keep earned progress', () => {
   const run = X.Run.fresh();
-  Object.assign(run, { hero: { key: 'nyx' }, phase: 'travel', questId: 'city', wave: 2, travelLeg: 'outbound', gold: 137, questsDone: ['road', 'city'], roster: ['bram', 'nyx', 'stranger'], field: ['bram', 'nyx'] });
+  // `marsh` is a quest the slice still keeps shut, which is the point: a save
+  // naming it must be pulled back. (Until 2026-09-21 this used `city`, which is
+  // now legitimately open, so the smuggling attempt has to name a locked one.)
+  Object.assign(run, { hero: { key: 'nyx' }, phase: 'travel', questId: 'marsh', wave: 2, travelLeg: 'outbound', gold: 137, questsDone: ['road', 'city'], roster: ['bram', 'nyx', 'stranger'], field: ['bram', 'nyx'] });
   run.levels.god_aura = 2;
   localStorage.setItem(X.saveKey, JSON.stringify(run)); // exercise load of an old unsanitized save
   Camp.registerRecruitArt('bram', null, () => true);
@@ -93,8 +112,15 @@ test('legacy saves cannot reopen later quests or replace Hiro, but keep earned p
   assert.deepEqual(saved.field, ['bram'], 'legitimate Bram selection survives loading before textures');
   const waiting = Camp.buildWorld(saved);
   try { assert.equal(waiting.companions.length, 0); } finally { waiting.restoreIds(); }
-  ready(); const loaded = Camp.buildWorld(saved);
-  try { assert.deepEqual(loaded.companions.map(c => c.companionKey), ['bram']); } finally { loaded.restoreIds(); }
+  ready();
+  // Fielding him needs his art in the package as well as loaded, so carry him
+  // in X.shipped for this last step; today's build deliberately leaves him out.
+  const savedShipped = X.shipped;
+  X.shipped = Object.assign({}, X.shipped, { actors: (X.shipped.actors || []).concat('bram') });
+  try {
+    const loaded = Camp.buildWorld(saved);
+    try { assert.deepEqual(loaded.companions.map(c => c.companionKey), ['bram']); } finally { loaded.restoreIds(); }
+  } finally { X.shipped = savedShipped; }
 });
 test('malformed identity collections are normalized without dropping a valid save', () => {
   const run = X.Run.fresh();
