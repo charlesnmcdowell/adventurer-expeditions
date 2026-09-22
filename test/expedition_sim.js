@@ -272,6 +272,60 @@ test('every creature in an open quest has a finishing move', () => {
   assert.equal(X.paintedActorOfKey('alpha_2'), X.paintedActorOfKey('road_wolf_leader'));
 });
 
+// ------------------------------------------------- casting between turns
+// Hiro, 2026-09-22: a skill should fire when you tap it, whoever's turn it is,
+// and not cost a turn — "it'll add more player agency since the skill usage
+// doesn't count as a turn". Verified against the shared engine first: an
+// out-of-turn act leaves the current turn and the round exactly where they were.
+test('a cast fires between turns and costs nobody a turn', () => {
+  const run = Enc.freshRun(); run.levels.god_aura = 1;
+  const enc = Enc.create({ encounter: 'road_ambush', seed: 4, run });
+  const st = enc.st;
+  const cur = () => { const t = A.Combat.currentTurn(st); return t ? t.unit.uid : null; };
+  while (cur() === enc.heroUid && !st.over) Enc.step(enc);      // stop on an enemy's turn
+  const turnBefore = cur(), roundBefore = st.round, stepsBefore = enc.steps;
+  assert.notEqual(turnBefore, enc.heroUid, 'the cast is made on an enemy turn');
+  assert.equal(Enc.requestSkill(enc, 'god_aura').ok, true);
+  const cast = Enc.castNow(enc);
+  assert.ok(cast && cast.cast, 'the cast resolved immediately');
+  assert.ok(cast.events.length, 'and produced beats to play');
+  assert.equal(cur(), turnBefore, 'the turn order did not move');
+  assert.equal(st.round, roundBefore, 'nor the round');
+  assert.equal(enc.steps, stepsBefore, 'and it consumed no step');
+  assert.equal(enc.request, null, 'the request was spent');
+  // The fight still finishes cleanly afterwards.
+  let n = 0; while (!st.over && n < 200) { Enc.step(enc); n++; }
+  assert.ok(st.over, 'the fight still resolves after an out-of-turn cast');
+});
+
+test('recovery is measured in seconds, not turns', () => {
+  const realNow = X.now;
+  let clock = 1000000;
+  X.now = () => clock;
+  try {
+    const run = Enc.freshRun(); run.levels.god_aura = 1;
+    const enc = Enc.create({ encounter: 'road_ambush', seed: 6, run });
+    // Nothing in the shipped skill data may carry an engine cooldown any more:
+    // a recovery counted in turns cannot be read while casting off-turn.
+    for (const id of ['god_aura', 'counter_attack', 'finisher'])
+      for (const lvl of [1, 2, 3])
+        assert.ok(!(X.skills[id] && X.skills[id][lvl] && X.skills[id][lvl].cooldown),
+          id + ' L' + lvl + ' must not carry a turn-based cooldown');
+    assert.equal(Enc.requestSkill(enc, 'god_aura').ok, true);
+    assert.ok(Enc.castNow(enc), 'the cast fired');
+    const span = X.cooldownMsFor('god_aura', 1);
+    assert.equal(span, 10000, 'God Aura recovers in ten seconds');
+    assert.equal(Enc.skillState(enc, 'god_aura').reason, 'cooldown');
+    assert.ok(Enc.cooldownLeftMs(enc, 'god_aura') > 0);
+    // Turns passing does NOT shorten it; only the clock does.
+    for (let i = 0; i < 6 && !enc.st.over; i++) Enc.step(enc);
+    assert.equal(Enc.skillState(enc, 'god_aura').reason, 'cooldown', 'turns do not tick a clock');
+    clock += span + 1;
+    const after = Enc.skillState(enc, 'god_aura');
+    assert.ok(after.ready || after.reason !== 'cooldown', 'the clock does: ' + JSON.stringify(after));
+  } finally { X.now = realNow; }
+});
+
 // ---------------------------------------------------------------- economy
 test('rewards pay once; upgrades deduct exactly once and change the next manifest', () => {
   const run = Enc.freshRun();

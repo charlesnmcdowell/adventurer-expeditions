@@ -306,15 +306,25 @@ class Hud {
       if (!ready && owned) { c.glyph.setColor('#9a9184'); c.fill.setAlpha(0.35); }
       // Cooldown wedge: the remaining fraction of the icon shaded clockwise.
       c.cd.clear();
+      // Recovery is wall-clock since 2026-09-22, so the wedge drains smoothly
+      // rather than stepping once per turn. `leftMs` comes from the encounter's
+      // own timer; the turn-based path is kept for any kit that still uses it.
       const maxCd = owned ? this.cooldownOf(id) : 0;
-      const left = st && st.reason === 'cooldown' ? st.left : 0;
-      if (left > 0 && maxCd > 0) {
-        const frac = Math.min(1, left / maxCd);
+      const usingMs = st && st.leftMs != null;
+      const left = st && st.reason === 'cooldown' ? (usingMs ? st.leftMs : st.left) : 0;
+      const span = usingMs ? this.cooldownMsOf(id) : maxCd;
+      if (left > 0 && span > 0) {
+        const frac = Math.min(1, left / span);
         c.cd.fillStyle(0x000000, 0.6); c.cd.slice(0, 0, c.r - 2, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * frac, false); c.cd.fillPath();
       }
     }
   }
   setFinisher(state) { this.setSkillStates({ finisher: state }); }
+  // The full recovery for this skill in milliseconds, so the wedge knows what
+  // fraction is left. Zero when the skill has no clock-based recovery.
+  cooldownMsOf(id) {
+    return (X.cooldownMsFor ? X.cooldownMsFor(id, (this.run && this.run.levels && this.run.levels[id]) || 1) : 0) || 0;
+  }
   cooldownOf(id) {
     if (this.kit.hiro) return ((X.skills[id] || {})[this.run.levels[id] || 1] || {}).cooldown || 0;
     const e = this.hero && A.SkillSys.knownEntry(this.hero, id); if (!e) return 0;

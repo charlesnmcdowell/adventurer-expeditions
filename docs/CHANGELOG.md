@@ -15,6 +15,71 @@ of small fixes within a day.
 
 ---
 
+## 2026-09-22 — Skills fire between turns, and recover on a clock
+
+Fable, to Hiro's spec after a design pass: *"I want the skills to be turn
+agnostic, so they feel better ... it happens regardless of turn count because
+that feels better to the player ... it'll also add more player agency since the
+skill usage doesn't count as a turn."*
+
+**Verified before building, as promised.** The shared engine counts statuses and
+counters in rounds and `js/core` is never edited here, so acting out of turn was
+a real unknown. A probe settled it: `Combat.act` on the hero while an enemy held
+the turn returned ok, applied the aura, left the current turn and the round
+exactly where they were, and the fight finished normally. The seam is that
+`Enc.step` calls `commit()` and then `A.Combat.advance()` — a cast is the same
+commit without the advance. No fallback was needed.
+
+**Casting.** `Enc.castNow` resolves a queued tap immediately and deliberately
+does not advance the turn, so a cast costs nobody a turn and skips nobody's.
+`scene.drainCasts()` runs it between beats and inside the gap between turns,
+never mid-animation: a tap made while an enemy is swinging waits for that swing
+to land, then fires as its own beat. Measured in a browser: tap accepted at
+once, fired 830 ms later when the animation ended, turn `b0` before and after,
+round 2 before and after, one cast recorded.
+
+**Recovery is wall-clock.** God Aura and Counter Attack carried cooldowns of 5
+and 2 *turns*, which a player casting off-turn cannot read — the wedge would sit
+still because no turn had passed. All six entries in `X.skills` are now
+`cooldown: 0`, which is what stops the engine recording one, and
+`X.skillCooldownMs` owns recovery instead: God Aura 10/10/8 s, Counter Attack
+5/5/4 s. `Enc.cooldownLeftMs` is the only gate, `X.now()` is the single clock so
+the simulation can hold time still, and the HUD wedge drains against `leftMs`,
+repainted ten times a second while anything is recovering rather than stepping
+once per turn.
+
+**Durations stay in rounds.** God Aura's buff and Counter Attack's window are
+applied by the shared engine in rounds, and moving them would mean the
+Expedition layer expiring statuses the engine owns. Left alone deliberately: a
+buff's length therefore still shifts a little with turn speed.
+
+**Turn gap:** 1 s normal, 2 s slow, 0.5 s fast, per Hiro. The wait is sliced into
+120 ms pieces so a tap during the gap fires almost at once instead of waiting
+for the next turn.
+
+**Frame rate, asked about.** No `fps` block in the Phaser config, so it is the
+default: a `requestAnimationFrame` loop targeting 60, rendering at the display's
+refresh rate, WebGL unless `?renderer=canvas`. Headless Canvas with the GPU
+disabled — the worst case the tests can produce — measured 50.7 fps average
+against a target of 60. That number says nothing about Hiro's machine; a live
+readout in the dev panel is the honest way to answer it and has not been built.
+
+**Expect it to be easier.** Free casts on top of a simulation that already wins
+every fight is a real power jump. Deliberately not tuned yet: Hiro plays it
+first, then enemies come up rather than skills coming down.
+
+**Tests.** Two new sim cases: a cast fires between turns leaving the turn, round
+and step count untouched and the fight still resolving; and recovery measured in
+seconds, asserting no shipped skill carries a turn-based cooldown, that six
+turns passing does not shorten it, and that advancing the clock does. The
+journey's manual-skill contract now recognises `how: 'cast'` as a player tap
+alongside `how: 'request'`, and its trace hooks `castNow` as well as `step` —
+without that it would have seen no player-fired skills at all. Headless 21 sim /
+9 / 25 / 6 / 6 / 5 / registration / contract / levels doc; browser `test:ship`
+ok, `test:camera` 6/0, `test:restart` 24/0, level sweep 8/8.
+
+---
+
 ## 2026-09-22 — Four levels in order; finishers match by painted set, not by entity
 
 Fable, on Hiro's direction: unlock the other levels, wolf/Alpha/plant only, drop

@@ -151,8 +151,12 @@ Enc.skillState = function (enc, skillId) {
   if (Enc.isHiro(enc.hero) && X.purchasable.includes(skillId) && !(enc.run.levels[skillId] > 0)) return { ready: false, reason: 'locked' };
   if (!enc.hero.actives.some(a => a.skillId === skillId)) return { ready: false, reason: 'locked' };
   if (!u || u.downed || enc.st.over) return { ready: false, reason: 'over' };
-  const cd = (u.cooldowns && u.cooldowns[skillId]) || 0;
-  if (cd > 0) return { ready: false, reason: 'cooldown', left: cd };
+  // Recovery is wall-clock now that skills fire between turns (Hiro,
+  // 2026-09-22). The engine's own counter is left at zero in X.skills, so this
+  // is the only gate; `left` is seconds for a player and `leftMs` drives the
+  // HUD's wedge so it drains smoothly instead of stepping once per turn.
+  const leftMs = Enc.cooldownLeftMs(enc, skillId);
+  if (leftMs > 0) return { ready: false, reason: 'cooldown', leftMs, left: Math.ceil(leftMs / 1000) };
   const pool = A.Combat.validTargets(enc.st, u, skillId, false) || [];
   if (!pool.length) return { ready: false, reason: 'no_target' };
   return { ready: true, pool };
@@ -179,6 +183,69 @@ Enc.requestSkill = function (enc, skillId) {
 Enc.requestFinisher = enc => Enc.requestSkill(enc, 'finisher');
 
 Enc.clearRequest = function (enc) { enc.request = null; };
+
+// ------------------------------------------------- recovery, on a clock
+// Kept on the encounter rather than the unit, because the shared engine owns
+// `unit.cooldowns` and counts it in rounds. Nothing here touches js/core.
+Enc.cooldownLeftMs = function (enc, skillId) {
+  const until = enc.cool && enc.cool[skillId];
+  if (!until) return 0;
+  return Math.max(0, until - X.now());
+};
+Enc.cooldownTotalMs = function (enc, skillId) {
+  return X.cooldownMsFor(skillId, (enc.run && enc.run.levels && enc.run.levels[skillId]) || 1);
+};
+// Called for every skill the hero actually resolves, whichever path fired it.
+Enc.noteCast = function (enc, skillId) {
+  const ms = Enc.cooldownTotalMs(enc, skillId);
+  if (!ms) return;
+  enc.cool = enc.cool || {};
+  enc.cool[skillId] = X.now() + ms;
+};
+
+// ------------------------------------------------- casting between turns
+// A tap fires as soon as the scene can show it, whoever's turn it is, and costs
+// nobody a turn: this commits the action and deliberately does NOT call
+// A.Combat.advance (Hiro, 2026-09-22 — "it happens regardless of turn count
+// because that feels better to the player ... it'll also add more player agency
+// since the skill usage doesn't count as a turn"). Verified against the shared
+// engine before building: an out-of-turn act leaves the current turn and the
+// round exactly where they were.
+Enc.castNow = function (enc) {
+  const st = enc.st;
+  if (st.over || !enc.request) return null;
+  const u = Enc.heroUnit(enc);
+  if (!u || u.downed) { enc.request = null; return null; }
+  const skillId = enc.request.skillId;
+  const s = Enc.skillState(enc, skillId);
+  if (!s.ready) {
+    // Wait for the window rather than discarding the tap; the same grace the
+    // turn path uses, so a cast held behind an animation is not lost.
+    const transient = s.reason === 'no_target' || s.reason === 'cooldown';
+    enc.request.waited = (enc.request.waited || 0) + 1;
+    if (transient && enc.request.waited <= REQUEST_GRACE * 2) enc.log.push({ t: 'requestWaiting', reason: s.reason, skillId, waited: enc.request.waited });
+    else { enc.log.push({ t: 'requestDropped', reason: s.reason, skillId }); enc.request = null; }
+    return null;
+  }
+  enc.request = null;
+  const from = st.events.length;
+  const hostile = s.pool[0] && s.pool[0].side !== u.side;
+  const tgt = hostile ? (A.Combat.threatTargets(st, u, s.pool)[0] || s.pool[0]) : (s.pool.find(x => x.uid === u.uid) || s.pool[0]);
+  const choice = { action: { skillId, isAttack: false, pool: s.pool }, tgt, how: 'cast' };
+  const unmask = Enc.bossExecutable(enc, choice);
+  if (unmask) { unmask.ch.boss = false; enc.log.push({ t: 'bossExecutable', uid: unmask.uid }); }
+  let res = null;
+  try { res = commit(st, u, choice); } finally { if (unmask) unmask.ch.boss = true; }
+  if (!res || res.ok === false) {
+    enc.log.push({ t: 'castFailed', skillId, reason: res && res.error });
+    return null;
+  }
+  Enc.noteCast(enc, skillId);
+  enc.casts = (enc.casts || 0) + 1;
+  const events = st.events.slice(from);
+  enc.cursor = st.events.length;
+  return { over: !!st.over, actor: u.uid, hero: true, cast: true, choice, events };
+};
 
 // ---------------------------------------------------------------- stepping
 // Manual mode (X.manualSkills): the automatic policy may only use Katana Slash;
@@ -277,6 +344,7 @@ Enc.step = function (enc) {
     const unmask = Enc.bossExecutable(enc, choice);              // a boss under the boss line is executable for this resolution only
     if (unmask) { unmask.ch.boss = false; enc.log.push({ t: 'bossExecutable', uid: unmask.uid }); }
     try { res = commit(st, u, choice); } finally { if (unmask) unmask.ch.boss = true; }
+    if (res && res.ok !== false && choice.action && choice.action.skillId) Enc.noteCast(enc, choice.action.skillId);
     if (res && res.ok === false) { A.Combat.act(st, u, { kind: 'hold' }); choice = { action: { kind: 'hold' }, how: 'hold', error: res.error }; }
   } else {
     A.Combat.aiTakeTurn(st, u);

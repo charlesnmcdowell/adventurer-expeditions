@@ -96,6 +96,11 @@ function serve() {
     const X = ADV.Expedition, trace = window.__journeyTrace = { heroChoices: [], cinematics: [], restores: [] };
     const step = X.Encounter.step;
     X.Encounter.step = function () { const r = step.apply(this, arguments); if (r.hero && r.choice) trace.heroChoices.push({ skill: r.choice.action.skillId, how: r.choice.how }); return r; };
+    // Since 2026-09-22 a tapped skill can also resolve between turns, through
+    // Enc.castNow rather than Enc.step. Trace both or the journey sees no
+    // player-fired skills at all and wrongly reports the manual contract broken.
+    const castNow = X.Encounter.castNow;
+    X.Encounter.castNow = function () { const r = castNow.apply(this, arguments); if (r && r.choice) trace.heroChoices.push({ skill: r.choice.action.skillId, how: r.choice.how }); return r; };
     const cinematic = X.UI.cinematic;
     X.UI.cinematic = async function (scene, kind) {
       trace.cinematics.push(kind);
@@ -158,7 +163,11 @@ function serve() {
       camera: { zoom: scene.cameras.main.zoom, clock: scene.time.timeScale, animations: scene.anims.globalTimeScale } };
   });
   const manual = evidence.trace.heroChoices.filter(c => ['finisher', 'god_aura', 'counter_attack'].includes(c.skill));
-  if (slice && (!manual.length || manual.some(c => c.how !== 'request'))) errors.push('Purchased skills did not fire exclusively from player requests');
+  // 'request' is a tap resolved on Hiro's turn; 'cast' is the same tap resolved
+  // between turns (Enc.castNow, 2026-09-22). Both are the player pressing the
+  // button — what must never appear is a purchased skill the policy chose.
+  const BY_TAP = ['request', 'cast'];
+  if (slice && (!manual.length || manual.some(c => !BY_TAP.includes(c.how)))) errors.push('Purchased skills did not fire exclusively from player taps: ' + JSON.stringify(manual.map(c => c.skill + ':' + c.how)));
   if (slice && !inspectHolds && !args.at) errors.push('Guided 3-second inspection hold was not exercised');
   if (JSON.stringify(evidence.saved) !== JSON.stringify(evidence.final)) errors.push('Saved gold/upgrades/progress differs from final inn state');
   if (evidence.trace.restores.some(r => r.clock !== 1 || r.tweens !== 1 || r.animations !== 1)) errors.push('Cinematic speed did not restore');

@@ -85,6 +85,19 @@ class ExpeditionScene extends Phaser.Scene {
     this.hud.refresh();
     this.hud.setSkillStates(X.Encounter.skillStates(this.enc));
     this.startMusic(this.quest.music);            // one track for the whole quest (§5.1)
+    // Recovery runs on a clock now, so the wedge has to be repainted between
+    // beats or it would sit still through a long animation and then jump. Ten
+    // times a second is enough to read as draining, and it only does the work
+    // while something is actually recovering.
+    this.cooldownTicker = this.time.addEvent({ delay: 100, loop: true, callback: () => {
+      if (this.ended || !this.enc || this.enc.st.over) return;
+      const states = X.Encounter.skillStates(this.enc);
+      let live = false;
+      for (const id of Object.keys(states)) if (states[id] && states[id].leftMs > 0) { live = true; break; }
+      if (live || this.__cooldownWasLive) this.hud.setSkillStates(states);
+      this.__cooldownWasLive = live;                // one last repaint when it ends
+    } });
+    this.events.once('shutdown', () => { if (this.cooldownTicker) { this.cooldownTicker.remove(); this.cooldownTicker = null; } });
     this.fight(first);
   }
 
@@ -218,6 +231,35 @@ class ExpeditionScene extends Phaser.Scene {
     }
   }
 
+  // Fire whatever the player has tapped, as soon as nothing is playing. Called
+  // between beats and inside the gap between turns, never in the middle of an
+  // animation — Hiro, 2026-09-22: "I don't want it to cancel out a current
+  // enemies animation though, so that animation finishes first before the skill
+  // takes place, but it happens regardless of turn count". A cast costs nobody
+  // a turn: Enc.castNow commits the action without advancing the order.
+  async drainCasts() {
+    const Enc = X.Encounter, enc = this.enc;
+    let fired = 0;
+    while (!this.ended && enc.request && !enc.st.over && fired < 4) {
+      const before = enc.log.length;
+      const cast = Enc.castNow(enc);
+      if (!cast) {                                   // not ready yet: say why, keep it queued
+        for (const e of enc.log.slice(before)) {
+          if (e.t === 'requestWaiting') this.hud.infoChip(e.skillId, e.reason === 'cooldown' ? 'Recovering' : 'Waiting for a target');
+          else if (e.t === 'requestDropped' && e.reason !== 'over') this.hud.infoChip(e.skillId, e.reason === 'no_target' ? 'No target left' : 'Not now');
+        }
+        break;
+      }
+      fired++;
+      this.hud.fired(cast.choice.action.skillId, this.hero.x, this.hero.y - this.hero.height * 0.55);
+      this.hud.setQueued(null);
+      await X.Beats.play(this, cast);
+      this.hud.setSkillStates(Enc.skillStates(enc));
+      if (cast.over || this.ended) return true;
+    }
+    return false;
+  }
+
   // ---------------------------------------------------------------- director
   async fight(first) {
     const enc = this.enc, Enc = X.Encounter;
@@ -236,6 +278,8 @@ class ExpeditionScene extends Phaser.Scene {
       if (pk.events.length) await X.Beats.ticksOnly(this, pk.events);
       if (pk.over) break;
       this.hud.setSkillStates(Enc.skillStates(enc));
+      // A tap made during the last animation fires here, before anyone's turn.
+      if (enc.request) { await this.drainCasts(); if (this.ended) return; if (enc.st.over) break; }
       await this.guideSkillUse();
       if (this.ended) return;
       const before = enc.log.length;
@@ -256,10 +300,15 @@ class ExpeditionScene extends Phaser.Scene {
       // quickly ... lets go with 2s to give me more time to click my skills").
       // It sits after the beats have played and the icons have been refreshed,
       // so it is time to read a truthful HUD and tap, not dead air. A tap that
-      // lands during it is queued and fires on the next turn.
+      // lands during it fires inside the gap rather than waiting for a turn:
+      // the wait is sliced so the delay a player feels is a fraction of a second.
       const pause = X.turnPauseMs ? X.turnPauseMs() : 0;
-      if (pause > 0 && !this.ended) await wait(this, pause);
+      for (let left = pause; left > 0 && !this.ended && !enc.st.over; left -= 120) {
+        await wait(this, Math.min(120, left));
+        if (enc.request) { await this.drainCasts(); if (this.ended) return; }
+      }
       if (this.ended) return;
+      if (enc.st.over) break;
       // Pause the moment a swing first opens Finisher, not only on Hiro's next
       // turn — by then Katana Slash had often already spent the window.
       await this.guideSkillUse();

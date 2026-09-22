@@ -29,17 +29,22 @@ X.skills = {
     2: { power: 1.6, target: 'enemy',      status: { bleed: { power: 0.4, rounds: 3, stacks: true } } },
     3: { power: 1.85, target: 'allEnemies', status: { bleed: { power: 0.5, rounds: 3, stacks: true } } },
   },
+  // `cooldown: 0` on purpose. Skills fire between turns now (Hiro,
+  // 2026-09-22), and a recovery counted in turns cannot be read by a player
+  // casting off-turn: the wedge would sit still because no turn had passed.
+  // The engine records a cooldown only when the manifest carries a truthy
+  // one, so zero here hands recovery to X.skillCooldownMs, on a clock.
   god_aura: {
     base: { target: 'party', power: 0 },
-    1: { auraAtk: 1.2, auraDef: 1.2, auraEvade: 0.10, rounds: 2, cooldown: 5 },
-    2: { auraAtk: 1.3, auraDef: 1.3, auraEvade: 0.15, rounds: 3, cooldown: 5 },
-    3: { auraAtk: 1.4, auraDef: 1.4, auraEvade: 0.20, rounds: 3, cooldown: 4 },
+    1: { auraAtk: 1.2, auraDef: 1.2, auraEvade: 0.10, rounds: 2, cooldown: 0 },
+    2: { auraAtk: 1.3, auraDef: 1.3, auraEvade: 0.15, rounds: 3, cooldown: 0 },
+    3: { auraAtk: 1.4, auraDef: 1.4, auraEvade: 0.20, rounds: 3, cooldown: 0 },
   },
   counter_attack: {
     base: { target: 'self', power: 0, counterRiposte: 'expedition_riposte' },
-    1: { counterNext: 1, counterRounds: 2, cooldown: 2 },
-    2: { counterNext: 2, counterRounds: 2, cooldown: 2 },
-    3: { counterNext: 3, counterRounds: 2, cooldown: 1 },
+    1: { counterNext: 1, counterRounds: 2, cooldown: 0 },
+    2: { counterNext: 2, counterRounds: 2, cooldown: 0 },
+    3: { counterNext: 3, counterRounds: 2, cooldown: 0 },
   },
   finisher: {
     // One rule the player can hold in their head (Hiro, round 3): a normal enemy
@@ -185,7 +190,22 @@ X.paintedActorOfKey = function (key) {
 // A beat of air between turns, so a tap has somewhere to land (Hiro,
 // 2026-09-22: "turns are going by too quickly ... lets go with 2s"). A player
 // setting on the pause screen; `normal` is the two seconds he asked for.
-X.pacing = { mode: 'normal', ms: { slow: 3200, normal: 2000, fast: 600 } };
+X.pacing = { mode: 'normal', ms: { slow: 2000, normal: 1000, fast: 500 } };
+
+// Recovery on a clock, in milliseconds, by level (Hiro, 2026-09-22: "yes move
+// them to seconds"). These mirror the turn counts they replace — God Aura was
+// 5/5/4 turns, Counter Attack 2/2/1 — read as roughly ten and five seconds.
+// Finisher is absent on purpose: its only gate is the health window.
+X.skillCooldownMs = {
+  god_aura:       { 1: 10000, 2: 10000, 3: 8000 },
+  counter_attack: { 1: 5000,  2: 5000,  3: 4000 },
+};
+X.cooldownMsFor = function (skillId, level) {
+  const t = X.skillCooldownMs[skillId];
+  return t ? (t[Math.max(1, Math.min(3, level || 1))] || 0) : 0;
+};
+// One clock, so the simulation can hold time still while it checks the rules.
+X.now = () => Date.now();
 X.turnPauseMs = () => (X.pacing.ms[X.pacing.mode] != null ? X.pacing.ms[X.pacing.mode] : 2000);
 
 X.fx = { cinematics: false };
