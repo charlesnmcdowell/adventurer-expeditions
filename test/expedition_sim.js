@@ -326,6 +326,60 @@ test('recovery is measured in seconds, not turns', () => {
   } finally { X.now = realNow; }
 });
 
+// The Finisher's boss line (Hiro, 2026-09-22: "finisher is not working on dire
+// wolf, it's not doing the finishing move animations or killing him"). The boss
+// wolves glowed at 51 % but only execute at 25 %, so the Finisher dealt ~22
+// damage and killed nothing; in a mixed wave it aimed at the boss over a wolf it
+// could have finished three times in five. Each case below was measured before
+// the fix and failed.
+test('the Finisher only glows on a boss when it can actually finish it', () => {
+  const at = (key, pct, seed) => {
+    const run = Enc.freshRun(); run.levels.finisher = 1;
+    const enc = Enc.create({ encounter: { id: 'fin_' + key, enemies: [key], gold: 0 }, seed: seed || 3, run });
+    const foe = enc.st.units.find(u => u.side === 'b');
+    foe.chp = Math.max(1, Math.round(foe.maxHp * pct));
+    return { enc, foe };
+  };
+  const line = X.finisherThresholds.boss;
+  assert.equal(line, 0.25, 'bosses stay at 25 %, by Hiro\'s call');
+  for (const key of ['road_wolf_leader', 'alpha_2']) {
+    for (const pct of [0.45, 0.30]) {
+      const { enc } = at(key, pct);
+      const s = Enc.skillState(enc, 'finisher');
+      assert.equal(s.ready, false, key + ' at ' + pct * 100 + '% must not light the Finisher');
+      assert.equal(s.reason, 'no_target');
+    }
+    const { enc, foe } = at(key, 0.20);
+    assert.equal(Enc.skillState(enc, 'finisher').ready, true, key + ' at 20% can be finished');
+    Enc.requestSkill(enc, 'finisher');
+    assert.ok(Enc.castNow(enc), 'the cast resolves');
+    assert.ok(foe.downed || foe.chp <= 0, key + ' at 20% dies to the Finisher');
+  }
+  // Ordinary creatures are unchanged: still finishable at the ordinary line.
+  for (const key of ['dire_wolf', 'dire_wolf_2', 'thorn_lurker', 'thorn_2']) {
+    const { enc, foe } = at(key, 0.45);
+    assert.equal(Enc.skillState(enc, 'finisher').ready, true, key + ' at 45% still lights');
+    Enc.requestSkill(enc, 'finisher'); Enc.castNow(enc);
+    assert.ok(foe.downed || foe.chp <= 0, key + ' at 45% still dies');
+  }
+});
+
+test('in a boss wave the Finisher takes the wolf, never the boss above its line', () => {
+  for (let seed = 1; seed <= 12; seed++) {
+    const run = Enc.freshRun(); run.levels.finisher = 1;
+    const enc = Enc.create({ encounter: { id: 'mix', enemies: ['alpha_2', 'dire_wolf_2'], gold: 0, boss: true }, seed, run });
+    const foes = enc.st.units.filter(u => u.side === 'b');
+    for (const f of foes) f.chp = Math.round(f.maxHp * 0.40);
+    const s = Enc.skillState(enc, 'finisher');
+    assert.deepEqual(s.pool.map(u => u.ch.expeditionKey), ['dire_wolf_2'], 'seed ' + seed + ': only the wolf is on offer');
+    Enc.requestSkill(enc, 'finisher');
+    const cast = Enc.castNow(enc);
+    assert.equal(cast.choice.tgt.ch.expeditionKey, 'dire_wolf_2', 'seed ' + seed + ': aimed at the wolf');
+    const dead = foes.filter(f => f.downed || f.chp <= 0).map(f => f.ch.expeditionKey);
+    assert.deepEqual(dead, ['dire_wolf_2'], 'seed ' + seed + ': the wolf died and the boss did not');
+  }
+});
+
 // ---------------------------------------------------------------- economy
 test('rewards pay once; upgrades deduct exactly once and change the next manifest', () => {
   const run = Enc.freshRun();

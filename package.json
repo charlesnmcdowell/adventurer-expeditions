@@ -25,6 +25,7 @@
     "test:restart": "node test/browser_restart_dev.js",
     "release:check": "node tools/release_check.js",
     "levels": "node tools/levels_doc.js",
-    "stamp": "node tools/stamp.js"
+    "stamp": "node tools/stamp.js",
+    "test:finishers": "node test/browser_finishers.js"
   }
 }

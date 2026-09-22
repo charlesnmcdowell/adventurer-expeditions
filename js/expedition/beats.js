@@ -390,7 +390,10 @@ Beats.play = async function (scene, step) {
     // Cinematic rules (Hiro, round 3): a tapped skill gets the `cast` beat; only
     // a kill made *with the tapped Finisher* gets the heavier `kill` beat and a
     // finishing move. An automatic Katana Slash that happens to kill gets neither.
-    const tapped = step.hero && step.choice && step.choice.how === 'request';
+    // 'cast' is a tap resolved between turns (Enc.castNow, 2026-09-22). Missing
+    // it meant a between-turns Finisher never got its `kill` beat, and no cast
+    // got the `cast` beat, whenever the Cinematic camera setting is switched on.
+    const tapped = step.hero && step.choice && (step.choice.how === 'request' || step.choice.how === 'cast');
     const tappedFinisher = tapped && step.choice.action && step.choice.action.skillId === 'finisher';
     const kills = actor && actor.side === 'a' && g.down.some(d => actorOf(scene, d.uid)?.side === 'b');
     const finisherKill = !!(tappedFinisher && kills);

@@ -157,7 +157,20 @@ Enc.skillState = function (enc, skillId) {
   // HUD's wedge so it drains smoothly instead of stepping once per turn.
   const leftMs = Enc.cooldownLeftMs(enc, skillId);
   if (leftMs > 0) return { ready: false, reason: 'cooldown', leftMs, left: Math.ceil(leftMs / 1000) };
-  const pool = A.Combat.validTargets(enc.st, u, skillId, false) || [];
+  let pool = A.Combat.validTargets(enc.st, u, skillId, false) || [];
+  // Each target is judged against its OWN finishing line (Hiro, 2026-09-22:
+  // "keep bosses at 25% and make the changes to fix this bug"). The engine's
+  // pool uses the ordinary line for everyone, but a boss can only be executed
+  // at or under X.finisherThresholds.boss — Enc.bossExecutable unmasks it no
+  // earlier. So a boss between 25 % and 50 % used to sit in the pool: the button
+  // glowed, the Finisher fired, dealt ~22 damage, killed nothing and played no
+  // finishing move; and in a mixed wave threat targeting often chose the boss
+  // over a wolf it could have finished. Dropping such a boss here fixes the
+  // button, the targeting and the animation at once.
+  if (skillId === 'finisher') {
+    const bossLine = (X.finisherThresholds && X.finisherThresholds.boss) || 0.25;
+    pool = pool.filter(t => !(t.ch && t.ch.boss) || (t.chp / t.maxHp) <= bossLine + 1e-9);
+  }
   if (!pool.length) return { ready: false, reason: 'no_target' };
   return { ready: true, pool };
 };

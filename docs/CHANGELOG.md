@@ -15,6 +15,52 @@ of small fixes within a day.
 
 ---
 
+## 2026-09-22 — The Finisher kills the boss wolves, with their finishing move
+
+Opus 5.5. Hiro: *"Keep bosses at 25% and make the changes to fix this bug."* The
+boss line stays at 25 %. Three changes, one of them a cause the diagnosis below
+had not found.
+
+**Readiness now matches execution** (`js/expedition/encounter.js`).
+`Enc.skillState` builds the Finisher's target pool with each target's own line:
+ordinary enemies at 50 %, bosses at `X.finisherThresholds.boss` (25 %). An Alpha
+above 25 % is never offered, so the button glows only when a kill is real, and in
+a mixed boss wave the Finisher takes the wolf instead of wasting itself on the
+Alpha.
+
+**The Alpha on the later levels now plays its finishing move**
+(`js/expedition/actors.js`). With the kill fixed, the marsh, city and ruins boss
+(`alpha_2`) died — but with a plain `down`. Hiro borrows the Alpha's sheet, which
+holds the paired Alpha frames, only when the target's identity was exactly
+`tutorial-alpha`; `alpha_2` is drawn from the same painted set under another name
+and was skipped. The borrow now keys on the drawn set (`X.paintedActorOf`), the
+rule `Actor.canPair` already used. The rain boss was unaffected: it pairs from
+Hiro's own sheet.
+
+**Casts get their cinematic beats** (`js/expedition/beats.js`). A skill fired
+between turns (`how: 'cast'`) was not counted as a tap, so with Cinematic camera
+on it got no push-in on the kill. It now counts like a requested skill.
+
+**Tests.** `test/expedition_sim.js`: "the Finisher only glows on a boss when it can
+actually finish it" (both boss wolves dark at 45 % and 30 %, lit and killed at
+20 %; wolves and plants still finishable at 45 %) and "in a boss wave the
+Finisher takes the wolf, never the boss above its line" (12 seeds). Both fail on
+the old code. New `test/browser_finishers.js` (`npm run test:finishers`) finishes a
+wolf, a plant and the boss on each open level and requires the kill, a paired
+clip, and for bosses a clip from the Alpha sheet — 9/9 pass:
+
+| level | target | result |
+|---|---|---|
+| rain | dire_wolf / thorn_lurker / road_wolf_leader | killed, paired |
+| marsh | dire_wolf_2 / thorn_2 / alpha_2 | killed, paired |
+| city, ruins | alpha_2, thorn_2 | killed, paired |
+
+Also green: `npm test`, `test:ship`, `test:camera` (6/6, finisher kill seen),
+`test:restart` (24/24), and every open level's waves load with the right sheets.
+Cache stamp bumped.
+
+---
+
 ## 2026-09-22 — Status after play-testing; the Finisher's boss-line bug diagnosed
 
 Fable. Hiro, after playing the turn-agnostic build: *"the game is playing much

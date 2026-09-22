@@ -26,8 +26,9 @@ and is gated only by its health window (50 % normal, 25 % boss). Turn gap is a
 pause-screen setting — 1 s normal, 2 s slow, 0.5 s fast — beside a Cinematic
 camera toggle, which ships off. Status durations are still counted in rounds.
 
-*Known issue, diagnosed 2026-09-22, not yet fixed:* **the Finisher misfires on
-the boss wolves** — see §7, "The boss line and the glowing button."
+*Fixed 2026-09-22:* **the Finisher misfired on the boss wolves** — it now kills
+every boss at or under 25 % with its finishing move, and stays dark above that
+line. See §7, "The boss line and the glowing button."
 
 *Developer tools.* An always-present ⚙ while `Dev.DEV_BUILD` is true: preview
 any location, cycle weather and time, full speed, jump to the inn, clear the
@@ -377,7 +378,7 @@ at every level — levelling buys the heal and the size of the hit, not a wider
 window, because one number the player can hold in their head beats three they
 cannot.
 
-**The boss line and the glowing button — a bug, diagnosed 2026-09-22.** Hiro:
+**The boss line and the glowing button — a bug, diagnosed and fixed 2026-09-22.** Hiro:
 *"finisher is not working on dire wolf, it's not doing the finishing move
 animations or killing him ... it's working on regular wolfs and plants though."*
 Measured by firing the Finisher at every creature at 45 %, 30 % and 20 %: every
@@ -396,8 +397,18 @@ in the valid-target pool and threat targeting prefers it — and **nobody died**
 though a finishable wolf was standing beside it. The fix is to build the
 Finisher's target pool with each target's own line (50 % ordinary, 25 % boss), so
 an Alpha above 25 % is never offered: the button then glows only when a kill is
-real, and in a mixed wave it always takes the wolf. Not applied — proposed to
-Hiro first.
+real, and in a mixed wave it always takes the wolf. **Fixed as proposed** (Hiro:
+*"Keep bosses at 25% and make the changes to fix this bug"*): `Enc.skillState`
+filters the Finisher's pool by each target's own line.
+Fixing the kill exposed a second, separate cause for the missing animation. Hiro
+borrows the Alpha's sheet — where the paired Alpha frames live — before playing
+his finisher, but only did so for the exact identity `tutorial-alpha`. The rain
+boss (`road_wolf_leader`) happens to pair from Hiro's own sheet, but the Alpha on
+the marsh, city and ruins (`alpha_2`) died with a plain `down`. The borrow now
+keys on the painted set the target is drawn from (`X.paintedActorOf`), the same
+rule the pairing check already used. Guarded by two sim tests and a browser test,
+`npm run test:finishers`, that finishes a wolf, a plant and the boss on every open
+level and requires both the kill and a paired clip.
 
 **And no cooldown at all** (Hiro, 2026-09-21: *"it's already limited by having
 specific conditions it can be used under anyway"*). The health window is the

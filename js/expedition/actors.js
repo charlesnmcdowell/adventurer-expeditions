@@ -169,7 +169,13 @@ class Actor {
     // Alpha's paired source sheets contain both Hiro and the boss. Play those
     // frames on Hiro for an exact contact pose, then restore Hiro's own atlas
     // and scale when the pair releases.
-    if (clip === 'finisher' && targetIdentity === 'tutorial-alpha' && X.Painted && X.Painted.sheet) {
+    // Borrowed by PAINTED SET, not by identity string (2026-09-22). This asked for
+    // the exact identity 'tutorial-alpha', which only the rain's boss carries, so
+    // Hiro never borrowed the sheet against the Alpha on the marsh, city and
+    // ruins: the paired frames were not found and the boss died with a plain
+    // `down`. Any target drawn from the Alpha sheet now gets the Alpha's pair.
+    const drawnFrom = X.paintedActorOf ? X.paintedActorOf(opts.target) : null;
+    if (clip === 'finisher' && (drawnFrom === 'alpha' || targetIdentity === 'tutorial-alpha') && X.Painted && X.Painted.sheet) {
       const alpha = X.Painted.sheet(this.scene, 'alpha');
       if (alpha) { sheet = alpha; opts.sheet = alpha; }
     }
