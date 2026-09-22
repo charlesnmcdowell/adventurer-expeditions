@@ -15,6 +15,49 @@ of small fixes within a day.
 
 ---
 
+## 2026-09-22 — Version 1 scope, the update model, and the size rule corrected
+
+Opus 5.5. Docs only; no code changed. Hiro set the shape of version 1 and what
+comes after it, and the size rule this project has been working to turned out
+to be misread.
+
+**Version 1: Hiro alone.** *"we should not offer a new hero. instead just leave
+it at hero, develop 2 or 3 new enemy types, smooth out the animations with more
+frames and call it a game."* Hiring stays locked, not deleted.
+
+**Grow by updates, not sequels.** *"so instead of new game, we make new updates
+and we keep adding heroes and locations?"* Yes: location packs and hero packs on
+the same listing, loaded after gameplay starts. New GDD §12c.
+
+**Bram is not the next hero.** *"it was something ai came up with, I haven't
+really thought up the next character yet."* GDD §3 now marks the recruit table as
+history. Bram's art stays on disk, out of the package, as an archive and as the
+hero-pack test fixture.
+
+**The size rule, corrected.** CrazyGames' technical requirements, read today:
+initial download 50 MB or less to be accepted and 20 MB or less for the mobile
+homepage, measured up to the first `gameplayStart` when the SDK is integrated;
+whole game 250 MB and 1,500 files at most. This project has been gating the whole
+package at 20 MB, so the 20.77 MB total is not a submission blocker. The number
+that matters was last measured at 9.69 MB before the first fight (2026-09-21) and
+must be re-measured. New GDD §12a.0 lists the tooling change — two numbers in
+`size_check`, with `release:check` gating on the initial download — not built.
+
+**Size review, verified and recorded, not acted on.** 20.77 MB / 214 files, of
+which about 1.42 MB is loaded but never reached: website campaign and dialogue
+scripts ~0.59 (dropping them needs a load test, since shared core files may
+reference them), Bram voice 0.33, tavern plate 0.28, Bram inn painting 0.16, Bram
+bust 0.06. `Dev.DEV_BUILD` is still true. The quest comment in `data.js` carries
+two stale sentences above the current one. The fight ids `rain_boars`,
+`rain_bandits`, `rain_boar_boss` and `city_watch` name creatures they no longer
+field.
+
+**GDD edits:** top status (direction, size), §2 override, §3 roster note,
+§12a.0, §12b note, §12c, §14 size row, §15 reconciliation, §16.13 superseded and
+§16.14–17 added, §17 decision.
+
+---
+
 ## 2026-09-22 — The Finisher kills the boss wolves, with their finishing move
 
 Opus 5.5. Hiro: *"Keep bosses at 25% and make the changes to fix this bug."* The

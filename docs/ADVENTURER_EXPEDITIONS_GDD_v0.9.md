@@ -8,6 +8,14 @@ This revision supersedes v0.8; v0.5 through v0.8 are kept in `docs/` for history
 **Current status — September 22, 2026.** Hiro, after playing: *"the game is
 playing much more smoothly now."*
 
+*Direction, decided 2026-09-22 (§2, §12c).* **Version 1 ships with Hiro as the
+only hero.** What remains before submission is two or three new enemy types and
+smoother animation. After that the game grows by **updates, not sequels**: each
+update is a content pack — a new location, new enemies, or a new hero — loaded
+after play has started. The next hero is not designed yet and is Hiro's to
+create. **Bram is not the next hero** (he was an AI proposal); his finished art
+stays on disk as an archive and as the test case for the hero-pack format.
+
 *Playable.* Four levels in a fixed order — **Road in the Rain, the reed marsh,
 the city watch, the old ruins** — then round again. "Clear the road" is retired
 from the rotation and survives only as a dev-panel preview. A new run starts in
@@ -34,9 +42,14 @@ line. See §7, "The boss line and the glowing button."
 any location, cycle weather and time, full speed, jump to the inn, clear the
 save. Start over reloads with `?fresh=1` for a true first launch.
 
-*Size.* **20.77 MB against the 20.0 MB target**, over by Hiro's decision —
-correctness first, trim later (§12a, §12b). `npm test` reports it; `npm run
-release:check` refuses to package while it stands.
+*Size.* The whole game is **20.77 MB**, but that is not the number CrazyGames
+judges (corrected 2026-09-22, §12a.0). They measure only what downloads before
+the first `gameplayStart`: **50 MB or less to be accepted, 20 MB or less to be
+eligible for the mobile homepage**. The whole game may be up to 250 MB and 1,500
+files. What loads before the first fight was last measured at 9.69 MB
+(2026-09-21, before the marsh and ruins opened) and needs re-measuring. `npm run
+release:check` still gates on the whole-game total and has to be changed to gate
+on the initial download — not built yet.
 
 *Superseded status of September 21, kept for the record:*
 
@@ -114,7 +127,16 @@ quests are contracts and the loop is the game.
 
 ## 2. Scope lock (revised 2026-09-19)
 
-**Current override, 2026-09-20:** first tutorial only, then the inn and Replay;
+**Current override, 2026-09-22 (Hiro), supersedes the one below.** Version 1
+is Hiro alone — no hiring, no second hero — with the four open levels, the wolf,
+thorn lurker and Alpha, plus two or three new enemy types and smoother
+animation. Recruitment stays locked in version 1 rather than being deleted:
+new heroes arrive later as update content packs (§12c). Hiro: *"so instead of
+new game, we make new updates and we keep adding heroes and locations?"* — yes,
+because an update keeps the listing, its players and ratings, and CrazyGames'
+size rule allows it (§12a.0).
+
+**Current override, 2026-09-20 (superseded):** first tutorial only, then the inn and Replay;
 Hiro and Bram are the supported heroes. Keep the broader loop below as the
 roadmap while the first five minutes are polished. Do not re-enable it merely
 because older quest data or art remains on disk.
@@ -135,6 +157,15 @@ quest board. Inventory management.
 ---
 
 ## 3. The roster
+
+**2026-09-22: no recruits in version 1.** Hiro is the only hero at launch. The
+recruit table below is history: the five names and kits were proposed by an AI
+during design, not by Hiro, and none of them is committed. In particular **Bram
+is not the next hero** — Hiro: *"it was something ai came up with, I haven't
+really thought up the next character yet."* Bram's finished atlas, bust, inn
+painting and voice stay on disk, out of the package, as an archive and as the
+fixture that proves a hero pack loads and plays (§12c). The party mechanics
+below — owning, fielding two — remain the design a future hero plugs into.
 
 **Hiro** is the player's character in every run. He keeps the kit the tutorial
 teaches — Katana Slash by default, God Aura, Counter Attack and Finisher unlocked
@@ -1243,6 +1274,46 @@ silently. Anything not named does not ship.
 budget. It runs beside the tests, so it fails the first time someone adds a 2 MB
 sheet rather than at submission.
 
+### 12a.0 What CrazyGames actually measures (corrected 2026-09-22)
+
+From CrazyGames' technical requirements
+(<https://docs.crazygames.com/requirements/technical/>, read 2026-09-22):
+
+| Rule | Limit |
+|---|---|
+| Initial download, to be accepted | 50 MB or less |
+| Initial download, to be eligible for the mobile homepage | 20 MB or less |
+| Whole game | 250 MB and 1,500 files at most |
+
+With the SDK integrated — it is, through `js/ui/portal.js` — the initial
+download is measured from the start of loading to the first `gameplayStart`
+event, and anything loaded after that does not count. Without the SDK, the whole
+game counts.
+
+**What this corrects.** This document and `tools/size_check.js` have treated
+20 MB as a cap on the whole package, so the 20.77 MB total read as a blocking
+overage. It is not. The 20 MB applies to what arrives before the first fight,
+measured at 9.69 MB on 2026-09-21 (§12a.3). The whole-game total is still worth
+watching as housekeeping and for load time, but it is not a submission rule. The
+§12a.1 budget table below is therefore a planning split, not a limit.
+
+**What has to change (not built).**
+1. Re-measure the initial download against the current build: everything
+   requested before `gameplayStart`, with all four levels open.
+2. `size_check` reports two numbers — initial download against 20 MB, whole
+   game against 250 MB and 1,500 files — and `release:check` gates on the first.
+3. Confirm `gameplayStart` fires at the honest moment, when the first fight is
+   playable (§15.3 item 4).
+4. Anything the first fight does not need loads after `gameplayStart` (§12a.3,
+   §12c).
+
+**What still counts against the 20 MB** is everything the first fight needs:
+Phaser and the scripts, Hiro's whole atlas unless it is split, the tutorial
+road's creatures unless the later waves stream, the road's plates, the battle
+track and the sound effects. So **extra Hiro frames for smoother animation cost
+initial download directly**; new enemies and locations do not, provided they
+stream.
+
 ### 12a.1 The budget
 
 | Category | Budget | Notes |
@@ -1405,6 +1476,49 @@ on the same lever. Roughly 7 MB of adjustable weight.
 **What this does not do.** Bram and the Alpha cost within 0.05 MB of each other,
 so the system makes that choice one command instead of a manifest edit — it does
 not manufacture space. The overage still has to be paid by a real cut.
+*(2026-09-22: the whole-game overage is not a submission rule — see §12a.0.
+Modules remain the mechanism for content packs, §12c.)*
+
+---
+
+## 12c. Content packs and the update roadmap (plan, 2026-09-22)
+
+*Plan only; nothing below is built.* Hiro, 2026-09-22: *"so instead of new game,
+we make new updates and we keep adding heroes and locations?"* Yes. Version 1
+ships; the game then grows through updates on the same CrazyGames listing, which
+keeps its players, ratings and history, where a sequel would start from zero and
+be reviewed again. A separate game still makes sense later for a different
+premise, not just a new character.
+
+**Version 1.** Hiro alone; the four open levels; wolf, thorn lurker and Alpha
+plus two or three new enemy types; smoother animation. The tutorial road loads
+before the first fight, and everything else streams after `gameplayStart`.
+
+**A content pack** is a §12b module with a loading rule: one folder plus one
+manifest entry, loaded after gameplay has started, so it never counts against the
+20 MB initial download. Two kinds:
+
+| Pack | Carries |
+|---|---|
+| Location | battle plates, travel road, the encounters, their music, any new enemies with Hiro's finishers against them |
+| Hero | painted clip set, paired finishers against each enemy, bust, voice, kit and stats, inn art |
+
+A hero pack is generic; nothing is built around Bram. The recruit and party code
+already exists, locked, so a new hero unlocks and fills it rather than building
+it.
+
+**The cost that grows: finishing moves.** Every hero needs paired finishers
+against every enemy, so painted work grows as heroes × enemies — three heroes and
+eight enemies would be 24 paired sets for Astra. How to contain that is open
+(§16.14).
+
+**Streaming.** A player who reaches a pack before it has finished downloading
+needs a short, honest loading beat, not a missing texture. The §12b contract test
+(zero 404s, zero missing textures) applies to every pack.
+
+**Bram as the test fixture.** His finished art proves a hero pack end to end —
+loaded after start, shown at the inn, fighting, finishing — before the next
+hero's art exists. He does not ship in version 1.
 
 ---
 
@@ -1456,7 +1570,7 @@ From the platform's quality guidance, FAQ and Basic Launch metrics:
 |---|---|---|
 | Time to gameplay | Immediate; no title or creator screens | ✅ fights in the first seconds |
 | Onboarding | Visual, skippable, no wall of text | ✅ hand and ring, always skippable |
-| Build size | Under 20 MB local gate | ⚠️ **20,182,102 bytes / 210 files — over by 182,102** after the 2026-09-21 Alpha intake (17,867,032 / 207 as last committed). §12a.1a names the two trims that clear it. |
+| Initial download | 20 MB or less for the mobile homepage, 50 MB or less to be accepted; whole game 250 MB and 1,500 files (corrected 2026-09-22, §12a.0) | 9.69 MB before the first fight when last measured (2026-09-21); re-measure with all four levels open. Whole game 20.77 MB / 214 files |
 | Load time | Under 10 s cold | Desktop/mobile browser byte checks and SDK-stub delayed-scenery check passed; actual portal timing unverified |
 | Controls | Large targets, no hover-only info, no Esc / Ctrl+W | Desktop/mobile browser checks passed; physical phone QA remains |
 | Art and audio | Consistent | Four painted runtime actors restored; v2 finishers, movement, inn and icons await intake and visual timing review (§10.5) |
@@ -1487,8 +1601,10 @@ order and the tutorial road is retired; creatures are limited to the reworked
 wolf, plant and Alpha; finishers match by painted set; skills fire between turns
 with clock-based recovery; turn pacing and the cinematic camera are pause-screen
 settings; the dev panel is always present in a development build; Start over is
-a true reload. Open: the Finisher's boss-line bug (§7), the size overage, and
-status durations still in rounds.
+a true reload. The Finisher's boss-line bug (§7) was fixed the same day. Open:
+re-measuring the initial download against the corrected size rule (§12a.0), and
+status durations still in rounds. Direction for version 1 and after is §2 and
+§12c.
 
 **Reconciliation, 2026-09-20 (superseded):** §10.5 and
 [ART_PASS_2_AND_REPAIR_20260920.md](ART_PASS_2_AND_REPAIR_20260920.md) supersede the
@@ -1699,11 +1815,33 @@ foes' busts are baked from the part sheets like the recruits' (new).
    two recruits at ~320 px, or more if `js/data` is trimmed and the height drops.
    The honest slice may be Hiro + Bram + one more; the rest appear at the bar
    once their art exists. Hiro to choose the order (Nyx is the worked example in
-   §10.3 and the natural second).
+   §10.3 and the natural second). *Superseded 2026-09-22: no recruits in
+   version 1 (§2); future heroes arrive as packs (§12c).*
+14. **How are finishing moves contained as heroes and enemies grow (§12c)?**
+   Every hero against every enemy is a paired set. Options: signature finishers
+   only for chosen pairings, with a well-made generic finisher for the rest; or
+   each new hero pairs only with the enemies released alongside it. Open.
+15. **Which two or three new enemy types for version 1?** Open — Hiro to
+   choose. Each needs its animated set and Hiro's paired finisher before it can
+   be fielded.
+16. **Who is the next hero?** Open — Hiro is designing one. Not Bram.
+17. **Smoother animation: more frames, or better timing?** More Hiro frames count
+   against the 20 MB initial download (§12a.0); retiming and easing cost
+   nothing. Open — Hiro and Astra.
 
 ---
 
 ## 17. Decisions
+
+**2026-09-22 (version 1 and the update model).** Hiro. Version 1 ships with
+**Hiro as the only hero**: no hiring, the four open levels, two or three new enemy
+types, smoother animation. The game then grows by **updates on the same
+listing** — location packs and hero packs loaded after gameplay starts (§12c) —
+rather than by sequels. **Bram is not the next hero**; the next hero is Hiro's to
+design. **The size rule was misread and is corrected (§12a.0):** CrazyGames'
+20 MB is the initial download for mobile-homepage eligibility (50 MB for
+acceptance), not a cap on the whole game (250 MB, 1,500 files). **Bosses keep the
+25 % Finisher line**, and the boss Finisher bug is fixed (§7).
 
 **2026-09-19 (loop and size).** The demo becomes a loop: tutorial → inn →
 recruit → level a skill → travel → quest → travel → inn → repeat. **Hiro is the
