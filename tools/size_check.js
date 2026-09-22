@@ -87,7 +87,16 @@ if (require.main === module) {
     console.log('total ' + MB(r.total) + ' of ' + r.budgetMB.toFixed(1) + ' MB budget' + (r.over ? '  — OVER by ' + MB(r.total - r.budget) : '  — ' + MB(r.budget - r.total) + ' to spare'));
   }
   if (r.missing.length) { console.error('size_check: ' + r.missing.length + ' listed file(s) missing'); process.exit(1); }
-  if (r.over) { console.error('size_check: must be below ' + r.budget + ' bytes'); process.exit(1); }
+  // Over the target is fatal only with --strict, which tools/release_check.js
+  // uses before a package is blessed. Hiro, 2026-09-21: "ignore the budget for
+  // now ... more important that we set this stuff up correctly the first time
+  // around ... we can always refactor and clean the game up later in dev." So
+  // development says it loudly and carries on; nothing ships over the line.
+  if (r.over) {
+    console.error('size_check: OVER the ' + r.budgetMB.toFixed(1) + ' MB target by ' + MB(r.total - r.budget) +
+      ' — allowed while building, blocked at packaging (npm run release:check)');
+    if (args.has('--strict')) process.exit(1);
+  }
   if (args.has('--zip')) {
     const { execFileSync } = require('node:child_process');
     fs.mkdirSync(path.join(ROOT, 'dist'), { recursive: true });

@@ -122,7 +122,13 @@ X.finisherThresholds = { normal: 0.50, boss: 0.25 };
 // the road. Flip `firstLevelOnly` to false when hiring reopens.
 // The night pair stays shut on budget, not on art: marsh/ruins share `night1`
 // and four plates the 20 MB package has not got.
-X.slice = { firstLevelOnly: true, openQuests: ['rain', 'city'] };
+// The run starts at Road in the Rain and goes marsh, city, ruins (Hiro,
+// 2026-09-21: "we are never gonna use the clear the road ... we already start
+// off at the road in the rain"). `openQuests` is the order, and `startQuest` is
+// where a brand-new run begins. "Clear the road" is kept in the data as the
+// dev panel's preview and as the history of the tutorial, but nothing routes
+// to it any more.
+X.slice = { firstLevelOnly: true, startQuest: 'rain', openQuests: ['rain', 'marsh', 'city', 'ruins'] };
 
 // What the package carries. A missing atlas does not degrade — Phaser parks the
 // scene in preload until a queued file arrives, so an absent one is a black
@@ -158,6 +164,30 @@ X.manualSkills = true;
 // I can see the game at full speed with no slow downs"). It is a player-facing
 // setting on the pause screen as well as a dev-panel toggle, so turning the
 // showmanship back on for release is a one-word change here.
+// Which painted set an actor is drawn from — 'wolf', 'plant', 'alpha', 'hiro'.
+// This is the honest identity for animation: the paired finishing moves draw the
+// creature, so what matters is which painting it comes out of, not which entity
+// in the data named it (Hiro, 2026-09-22: "why is finisher and animations hard
+// tied to a specific entity, instead of a class type ... that way it doesn't
+// matter how many of them you have"). A new wolf variant now needs no wiring.
+X.paintedActorOf = function (target) {
+  const key = target && target.img && target.img.texture && target.img.texture.key;
+  const m = /^xp_([a-z0-9_]+)_sheet$/.exec(key || '');
+  return m ? m[1] : null;
+};
+// The painted set an enemy definition resolves to, for the same comparison.
+X.paintedActorOfKey = function (key) {
+  const d = (X.enemies && X.enemies[key]) || null;
+  if (!d) return key || null;
+  return d.artActor || (d.kind === 'boss' ? 'alpha' : d.kind) || null;
+};
+
+// A beat of air between turns, so a tap has somewhere to land (Hiro,
+// 2026-09-22: "turns are going by too quickly ... lets go with 2s"). A player
+// setting on the pause screen; `normal` is the two seconds he asked for.
+X.pacing = { mode: 'normal', ms: { slow: 3200, normal: 2000, fast: 600 } };
+X.turnPauseMs = () => (X.pacing.ms[X.pacing.mode] != null ? X.pacing.ms[X.pacing.mode] : 2000);
+
 X.fx = { cinematics: false };
 
 X.cinematic = { cast: { scale: 0.70, zoom: 1.16, ms: 150 }, kill: { scale: 0.55, zoom: 1.26, ms: 140 } };
@@ -188,14 +218,16 @@ X.clipFor = function (clip, opts) {
     // Each approved paired timeline contains a specific creature. Actor.canPair
     // additionally checks identity, tint and the resolved lethal outcome.
     const targetIdentity = opts && opts.target && opts.target.unit && opts.target.unit.ch && opts.target.unit.ch.expeditionArtIdentity;
-    if (targetIdentity === 'tutorial-alpha') {
-      return ['hiro-alpha-cleave-paired', 'hiro-alpha-pin-paired', 'hiro-alpha-parry-paired'][lvl - 1];
-    }
+    // By painted set: anything drawn from the Alpha sheet gets the Alpha pairs,
+    // anything from the wolf sheet the wolf pairs, and so on — however many
+    // variants of each a quest fields.
     const finishers = {
+      alpha: ['hiro-alpha-cleave-paired', 'hiro-alpha-pin-paired', 'hiro-alpha-parry-paired'],
       wolf: ['wolf-cleave-paired', 'wolf-pin-paired', 'wolf-rising-cut-paired'],
       plant: ['plant-stem-cut-paired', 'plant-vine-pin-paired', 'plant-crosscut-paired'],
     };
-    const family = finishers[opts && opts.target && opts.target.kind];
+    const tgt = opts && opts.target;
+    const family = finishers[X.paintedActorOf(tgt) || (tgt && tgt.kind)];
     return family ? family[lvl - 1] : 'slash-l' + lvl;
   }
   const M = { enter: 'walk', walk: 'walk', short_draw: 'short-draw', hit_short: 'hit-short', stagger: 'hit-short', victory: 'victory-sheath',

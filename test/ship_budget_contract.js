@@ -14,10 +14,16 @@ try {
   const manifest = { budgetBytes: 20000000, files: ['payload.bin'], dirs: [] };
   fs.writeFileSync(path.join(fixture, 'tools/ship_manifest.json'), JSON.stringify(manifest));
   fs.writeFileSync(path.join(fixture, 'payload.bin'), '');
+  // The boundary is exact, and --strict is what enforces it: since 2026-09-21
+  // a plain run reports an overage and carries on (development), while
+  // tools/release_check.js runs it --strict so nothing can be packaged over the
+  // line. Both behaviours are pinned here.
   for (const [bytes, exit] of [[19999999, 0], [20000000, 1], [20000001, 1]]) {
     fs.truncateSync(path.join(fixture, 'payload.bin'), bytes);
-    const result = spawnSync(process.execPath, ['tools/size_check.js', '--json'], { cwd: fixture, encoding: 'utf8' });
-    assert.equal(result.status, exit, 'CLI budget result for ' + bytes + ' bytes');
+    const result = spawnSync(process.execPath, ['tools/size_check.js', '--json', '--strict'], { cwd: fixture, encoding: 'utf8' });
+    assert.equal(result.status, exit, 'CLI budget result for ' + bytes + ' bytes (strict)');
+    const lenient = spawnSync(process.execPath, ['tools/size_check.js', '--json'], { cwd: fixture, encoding: 'utf8' });
+    assert.equal(lenient.status, 0, 'a plain run never fails on size alone, at ' + bytes + ' bytes');
     const report = JSON.parse(result.stdout.trim());
     assert.equal(report.total, bytes); assert.equal(report.budget, 20000000);
   }
@@ -118,15 +124,17 @@ assert.ok(![...set].some(f => /(?:^|\/)astra-v\d+(?:\/|$)/.test(f)), 'Source mas
 // sim asserts the other half of this: nothing an open quest fights may lack art.
 assert.ok(![...set].some(f => /^assets\/expedition\/boar\//.test(f)), 'The boar atlas stays out while no open quest fields a boar');
 assert.ok(![...set].some(f => /^assets\/expedition\/busts\/(foe_|nyx\.|sable\.|aera\.|ren\.)/.test(f)), 'Off-scope human/recruit portraits must stay excluded');
-// The road, the rain and the city are open (GDD 5), so their plates ship. The
-// night pair does not: `night1` plus four plates is 2.42 MB the budget lacks.
+// All four levels are open (2026-09-22), so every one of them must carry its
+// own plates, panorama and track — including `night1` for the two night levels,
+// which Hiro kept rather than substituting a track that already shipped.
 for (const f of [
-  'assets/anime/v2/runtime/marsh.webp', 'assets/anime/v2/runtime/ruins.webp',
-  'assets/anime/travel/v1/runtime/marsh.webp', 'assets/anime/travel/v1/runtime/ruins.webp',
+  'assets/anime/v2/runtime/alley.webp', 'assets/anime/travel/v1/runtime/city.webp',
+  'assets/anime/v2/runtime/marsh.webp', 'assets/anime/travel/v1/runtime/marsh.webp',
+  'assets/anime/v2/runtime/ruins.webp', 'assets/anime/travel/v1/runtime/ruins.webp',
   'audio/music/night1.mp3',
-]) assert.ok(!set.has(f), 'Closed-quest asset must stay excluded: ' + f);
-for (const f of ['assets/anime/v2/runtime/alley.webp', 'assets/anime/travel/v1/runtime/city.webp'])
-  assert.ok(set.has(f), 'An open quest must carry its plates: ' + f);
+]) assert.ok(set.has(f), 'An open quest must carry its own art: ' + f);
+// The retired tutorial's own plates ride along because the rain reuses them.
+assert.ok(set.has('assets/anime/v2/runtime/forest.webp') && set.has('assets/anime/v2/runtime/road.webp'));
 
 // The open quests' own assets are checked in test/expedition_sim.js, where the
 // real X.Campaign is loaded rather than a bare vm context.

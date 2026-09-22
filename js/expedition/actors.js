@@ -210,18 +210,30 @@ class Actor {
     // Sep20: every resolved kill may finish, not only the wave's last foe.
     if (/finisher/.test(clip) && !opts.lethal) return false;
     if (!Array.isArray(c.opponentKinds) || !c.opponentKinds.includes(target.kind)) return false;
-    const ch = target.unit && target.unit.ch;
-    // Encounter variants may share an exact painted identity while their
-    // combat key and stats differ (for example the gray road-wolf leader).
-    const keys = ch ? [ch.expeditionArtIdentity, ch.expeditionKey].filter(Boolean) : [];
-    // A paired source may name the combat variant (`road_wolf_leader`) while
-    // the runtime actor carries its painted identity (`tutorial-alpha`). Both
-    // are authoritative for this exact encounter; requiring either keeps the
-    // identity gate strict without rejecting a valid boss pair.
-    if (c.opponentKeys && !c.opponentKeys.some(k => keys.includes(k))) return false;
-    // A gray wolf painted into the pair cannot double as the green blight wolf.
+    // The pair is eligible when the target is the creature in the painting —
+    // the same painted SET, not the same entity id (Hiro, 2026-09-22: "why is
+    // finisher and animations hard tied to a specific entity, instead of a
+    // class type ... that way it doesn't matter how many of them you have").
+    // Both of the target's names are resolved to the set they are drawn from,
+    // and the clip's opponentKeys to theirs; if any of the target's resolve
+    // into that set, it is the creature in the frames. So every wolf variant
+    // pairs because it comes out of the wolf sheet, while a differently
+    // painted wolf still does not.
+    const XD = ADV.Expedition, ch = target.unit && target.unit.ch;
+    // Without data.js loaded (the animation harness) a name resolves to itself,
+    // which is the old exact-key behaviour and keeps those contracts honest.
+    const toSet = k => (XD && XD.paintedActorOfKey ? XD.paintedActorOfKey(k) : k);
+    if (c.opponentKeys && c.opponentKeys.length) {
+      const want = new Set(c.opponentKeys.map(toSet).filter(Boolean));
+      const names = ch ? [ch.expeditionArtIdentity, ch.expeditionKey].filter(Boolean) : [];
+      const mine = names.map(toSet).filter(Boolean);
+      const drawn = XD && XD.paintedActorOf && XD.paintedActorOf(target);
+      if (drawn) mine.push(drawn);
+      if (want.size && mine.length && !mine.some(k => want.has(k))) return false;
+    }
+    // A recolour still disqualifies a lookalike: the gray wolf painted into
+    // the pair cannot double as the green blight wolf.
     if (target.img.__baseTint != null) return false;
-    if (target.kind === 'wolf' && keys[0] && !c.opponentKeys && !keys.includes('dire_wolf')) return false;
     return true;
   }
 

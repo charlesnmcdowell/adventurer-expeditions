@@ -202,25 +202,34 @@ UI.pauseSettings = function (scene, ctl) {
     hint: 'the push in and slow motion on finishers',
     get: () => !(X.fx && X.fx.cinematics === false),
     set: v => { X.fx = X.fx || {}; X.fx.cinematics = v; },
+  }, {
+    label: 'Turn speed',
+    hint: 'how long you get between turns',
+    options: ['slow', 'normal', 'fast'],
+    value: () => (X.pacing && X.pacing.mode) || 'normal',
+    pick: v => { X.pacing = X.pacing || {}; X.pacing.mode = v; },
   }];
   const drawn = [];
   rows.forEach((row, i) => {
     const y = i * rowH;
-    const on = row.get();
+    const cycle = !!row.options;
+    const on = cycle ? row.value() !== 'normal' : row.get();
+    const shown = () => cycle ? row.value() : (row.get() ? 'On' : 'Off');
     const g = scene.add.graphics();
     g.fillStyle(0x14110d, 0.95); g.fillRoundedRect(-w / 2, y - rowH / 2 + 4, w, rowH - 8, 10);
     g.lineStyle(2, 0x3a3128, 1); g.strokeRoundedRect(-w / 2, y - rowH / 2 + 4, w, rowH - 8, 10);
     const t = T().text(scene, -w / 2 + 16, y - 8, row.label, { size: 15, oy: 0.5, color: '#f4eee0', display: true });
     const h = T().text(scene, -w / 2 + 16, y + 11, row.hint, { size: 11, oy: 0.5, color: '#8d8377' });
+    const lit = () => cycle ? row.value() !== 'normal' : row.get();
     const pill = scene.add.graphics();
-    pill.fillStyle(on ? 0x2f6b2c : 0x3a3128, 1); pill.fillRoundedRect(w / 2 - 92, y - 13, 76, 26, 13);
-    const pt = T().text(scene, w / 2 - 54, y, on ? 'On' : 'Off', { size: 13, ox: 0.5, oy: 0.5, color: '#f4eee0', display: true });
+    const paint = () => { pill.clear(); pill.fillStyle(lit() ? 0x2f6b2c : 0x3a3128, 1); pill.fillRoundedRect(w / 2 - 92, y - 13, 76, 26, 13); };
+    paint();
+    const pt = T().text(scene, w / 2 - 54, y, shown(), { size: 13, ox: 0.5, oy: 0.5, color: '#f4eee0', display: true });
     const z = scene.add.zone(w / 2 - 54, y, 76, 26).setInteractive({ useHandCursor: true });
     z.on('pointerdown', () => {
-      row.set(!row.get());
-      const now = row.get();
-      pill.clear(); pill.fillStyle(now ? 0x2f6b2c : 0x3a3128, 1); pill.fillRoundedRect(w / 2 - 92, y - 13, 76, 26, 13);
-      pt.setText(now ? 'On' : 'Off');
+      if (cycle) { const o = row.options; row.pick(o[(o.indexOf(row.value()) + 1) % o.length]); }
+      else row.set(!row.get());
+      paint(); pt.setText(shown());
     });
     root.add([g, t, h, pill, pt, z]);
     drawn.push({ label: row.label, rect: { x: W2 / 2 + w / 2 - 92, y: H2 / 2 + 30 + y - 13, w: 76, h: 26 } });

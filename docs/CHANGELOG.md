@@ -15,6 +15,77 @@ of small fixes within a day.
 
 ---
 
+## 2026-09-22 — Four levels in order; finishers match by painted set, not by entity
+
+Fable, on Hiro's direction: unlock the other levels, wolf/Alpha/plant only, drop
+"Clear the road" from the rotation, and run the suite because "the game will
+break if you use monsters that don't have art".
+
+**The rotation.** A run now starts at **Road in the Rain** and goes **the reed
+marsh, the city watch, the old ruins**, then cycles. `X.slice.startQuest` says
+where a run begins and `X.slice.openQuests` is the order; every place that used
+to hard-code `'road'` asks `Camp.startQuestId()` instead. "Clear the road" keeps
+its data as the dev panel's preview and as the record of the tutorial, but
+nothing routes to it. Road in the Rain inherits the tutorial's gentle curve —
+ordinary wolves, then wolves and lurkers, then the Alpha — because it is where a
+new player now lands; the three after it use the tougher variants.
+
+**Only reworked creatures.** Every wave across all four is wolf, thorn lurker or
+Alpha. Verified in a browser: eight checks, wave 1 and the boss wave of each
+level, every enemy carrying `xp_wolf_sheet`, `xp_plant_sheet` or
+`xp_alpha_sheet`, every wave resolving, no page errors and no failed requests.
+
+**Correct music and plates, over the budget deliberately.** Hiro: *"ignore the
+budget for now ... it is more important that we set this stuff up correctly the
+first time around."* So the marsh and the ruins keep `night1` rather than
+borrowing a track that already shipped, and all four plates are in. The set is
+**20.76 MB against the 20.0 MB target**. `size_check` now reports an overage
+loudly and carries on; `--strict` still fails, and `release_check` uses it, so
+nothing can be packaged over the line. Both behaviours are pinned in the
+contract test.
+
+**Finishing moves are matched by painted set, not by entity id.** Hiro asked the
+right question — *"why is finisher and animations hard tied to a specific
+entity, instead of a class type"* — after noticing the finisher animated on the
+forest board and nowhere else. The cause: the paired clips name their opponent
+exactly (`dire_wolf`, `thorn_lurker`, `road_wolf_leader`), and `Actor.canPair`
+demanded that exact key, so `dire_wolf_2`, `thorn_2` and `alpha_2` were all
+refused and the finisher resolved as an ordinary kill with no animation. The
+pair is painted against a *creature*, so the rule is now the painted set:
+`X.paintedActorOf` (which sheet the actor is drawn from) and
+`X.paintedActorOfKey` (which sheet a definition resolves to). Any number of wolf
+variants pair because they come out of the wolf sheet — no per-entity wiring —
+while a recolour is still refused, so the gray wolf cannot double as the green
+blight wolf. `X.clipFor` picks the family the same way. Without `data.js` loaded
+(the animation harness) a name resolves to itself, which is the old exact-key
+behaviour, so those contracts stay honest.
+
+**Turn pacing.** A pause between turns, **2 seconds by default**, after the
+beats have played and the icons have been refreshed — so it is time to read a
+truthful HUD and tap, not dead air. **Turn speed** is a player setting on the
+pause screen: slow (3.2 s), normal (2 s), fast (0.6 s).
+
+**The developer tools stop disappearing.** `Shift+D` used to write a persistent
+"hidden" flag; pressing it once removed the cog for good, across reloads, with
+no way back from inside the game. While `DEV_BUILD` is true the tools are always
+present, `Shift+D` opens and closes the panel, and a stored flag from before is
+cleared on load so an affected browser recovers by itself.
+
+**Cinematics off by default**, as asked, with a **Cinematic camera** row on the
+pause screen beside Turn speed.
+
+**New gate.** `expedition_sim` asserts every creature an open quest can field
+resolves to a painted set that has finishing moves — the rule as it is actually
+felt, rather than as a list of entity names — and that each variant resolves to
+the same set as the creature its clips were painted against.
+
+**Suites.** Headless 19 sim / 9 recruit / 25 lifecycle / 6 cinematic / 6 portal /
+5 inn / registration / contract / levels doc. Browser: level sweep 8/8,
+`test:restart` 24/0, `test:ship` ok, `test:camera` 6/0. `docs/LEVELS.md`
+regenerated and now reads in play order.
+
+---
+
 ## 2026-09-21 — Inn Embark was still the tutorial; Finisher missed half health
 
 Hiro still never left the tutorial road, the first Finisher pause still did not

@@ -62,6 +62,9 @@ Camp.weatherFor = function (quest, world, phase) {
 
 // Enemies beyond the tutorial. `bg` comes from the quest's plates, not the encounter.
 Object.assign(X.enemies, {
+  // No art wiring here on purpose: a finishing move matches on the painted set
+  // (Actor.canPair via X.paintedActorOf), so every wolf variant pairs because it
+  // is drawn from the wolf sheet. Add as many as a quest needs.
   dire_wolf_2:  { base: 'dire_wolf', level: 6, kind: 'wolf', frame: 0, height: 250, statMult: { hp: 2.0, atk: 1.15 } },
   cave_boar_2:  { base: 'cave_boar', level: 8, kind: 'boar', frame: 1, height: 250, actives: ['tusk_gore'], statMult: { hp: 2.2, atk: 1.1 } },
   thorn_2:      { base: 'thorn_lurker', level: 8, kind: 'plant', frame: 2, height: 260, actives: ['thorn_lash'], perks: [], statMult: { hp: 2.0 } },
@@ -72,7 +75,7 @@ Object.assign(X.enemies, {
   // all: scene.js refuses to open a fight with an enemy that has no complete
   // art, which is why the loop threw the moment a boss wave came up. The tint is
   // gone too — it belonged to the plate art, not to a painted sheet.
-  alpha_2:      { base: 'alpha', level: 6, kind: 'boss', artActor: 'alpha', artIdentity: 'tutorial-alpha',
+  alpha_2:      { base: 'alpha', level: 6, kind: 'boss', artActor: 'alpha',
                   height: 330, actives: ['pack_snap', 'cleave'], perks: ['momentum'],
                   statMult: { atk: 1.0, hp: 3.2 }, phase2At: 0.5 },
   // Humans: sex, head and outfit are fixed so every bust composes from the
@@ -96,9 +99,12 @@ Object.assign(X.encounterDefs = {}, Object.fromEntries(X.encounters.map(e => [e.
   // stays as the boss — 9 clips, 45 frames and three Hiro finishers, the same
   // bar as the other two. The original rosters are kept below, commented, so
   // they can come back with the art.
-  rain_boars:      { id: 'rain_boars',      enemies: ['dire_wolf_2', 'dire_wolf_2'],                gold: 40 },
-  rain_bandits:    { id: 'rain_bandits',    enemies: ['dire_wolf_2', 'thorn_2', 'thorn_2'],         gold: 50 },
-  rain_boar_boss:  { id: 'rain_boar_boss',  enemies: ['alpha_2', 'thorn_2'], boss: true,            gold: 60 },
+  // Road in the Rain is where a new player starts, so it keeps the tutorial's
+  // curve: ordinary wolves, then wolves and lurkers, then the Alpha. The three
+  // levels after it use the tougher _2 variants.
+  rain_boars:      { id: 'rain_boars',      enemies: ['dire_wolf', 'dire_wolf'],                    gold: 40 },
+  rain_bandits:    { id: 'rain_bandits',    enemies: ['dire_wolf', 'thorn_lurker', 'thorn_lurker'], gold: 50 },
+  rain_boar_boss:  { id: 'rain_boar_boss',  enemies: ['road_wolf_leader'], boss: true,              gold: 60 },
   // was: cave_boar_2 x2 / bandit, cutthroat, bandit_b / boar_boss + thorn_2
   city_watch:      { id: 'city_watch',      enemies: ['thorn_2', 'dire_wolf_2'],                    gold: 40 },
   city_bailiff:    { id: 'city_bailiff',    enemies: ['dire_wolf_2', 'dire_wolf_2', 'thorn_2'],     gold: 50 },
@@ -106,7 +112,7 @@ Object.assign(X.encounterDefs = {}, Object.fromEntries(X.encounters.map(e => [e.
   // was: town_watch x2 / town_watch + storm_bailiff / watch_captain + storm_bailiff
   marsh_wolves:    { id: 'marsh_wolves',    enemies: ['dire_wolf_2', 'dire_wolf_2'],                gold: 40 },
   marsh_lurkers:   { id: 'marsh_lurkers',   enemies: ['thorn_2', 'dire_wolf_2', 'thorn_2'],         gold: 50 },
-  marsh_alpha:     { id: 'marsh_alpha',     enemies: ['alpha_2'], boss: true,                       gold: 60 },
+  marsh_alpha:     { id: 'marsh_alpha',     enemies: ['alpha_2', 'thorn_2'], boss: true,            gold: 60 },
   ruins_lurkers:   { id: 'ruins_lurkers',   enemies: ['dire_wolf_2', 'thorn_2', 'thorn_2'],         gold: 40 },   // was cave_boar_2
   ruins_mage:      { id: 'ruins_mage',      enemies: ['thorn_2', 'dire_wolf_2', 'thorn_2'],         gold: 50 },   // was bandit, hedge_mage, bandit_b
   ruins_alpha:     { id: 'ruins_alpha',     enemies: ['alpha_2', 'dire_wolf_2'], boss: true,        gold: 70 },
@@ -133,13 +139,22 @@ Camp.openQuestIds = function () {
   const open = (X.slice.openQuests || []).filter(id => loop.includes(id));
   return open;
 };
-Camp.questOpen = id => id === 'road' || Camp.openQuestIds().includes(id);
+// Where a new run begins. Everything that used to hard-code 'road' asks this.
+Camp.startQuestId = () => (X.slice && X.slice.startQuest) || 'road';
+// A quest is open if it is the starting one, the retired tutorial (kept for the
+// dev panel's preview), or on the whitelist.
+Camp.questOpen = function (id) {
+  const q = Camp.quest(id);
+  return !!q && (id === Camp.startQuestId() || !!q.tutorial || Camp.openQuestIds().includes(id));
+};
+// The open quests in the order X.slice.openQuests lists them: the first one
+// not yet cleared, and once they are all cleared, round again.
 Camp.nextQuestId = function (run) {
   const open = Camp.openQuestIds();
-  if (!run.questsDone.includes('road')) return 'road';
-  if (!open.length) return 'road';                              // nothing past the tutorial is open yet
-  const n = run.questsDone.filter(id => id !== 'road').length;
-  return open[n % open.length];
+  if (!open.length) return Camp.startQuestId();
+  const done = (run.questsDone || []).filter(id => open.includes(id));
+  for (const id of open) if (!done.includes(id)) return id;
+  return open[done.length % open.length];
 };
 
 // ---------------------------------------------------------------- recruits
@@ -220,7 +235,7 @@ Camp.sanitizeRun = function (run) {
   // Road in the Rain worked, and then sanitation put the player back on the
   // tutorial. Quest two was unreachable by construction.
   if (!Camp.quest(run.questId) || !Camp.questOpen(run.questId)) {
-    run.questId = 'road'; run.wave = 0; run.checkpoint = 0;
+    run.questId = Camp.startQuestId(); run.wave = 0; run.checkpoint = 0;
     if (run.phase !== 'inn') run.phase = 'quest';
     delete run.travelLeg;
   }
@@ -343,7 +358,7 @@ Camp.banter = function (ctx, world, companions, leg, location, opts) {
 // ---------------------------------------------------------------- run state
 Camp.freshRun = function () {
   const r = X.Encounter.freshRun();
-  Object.assign(r, { phase: 'quest', questId: 'road', wave: 0, roster: [], field: [], questsDone: [], cycles: {}, rel: { aera: { ren: -55 }, ren: { aera: -50 } }, visits: {}, voice: {} });
+  Object.assign(r, { phase: 'quest', questId: Camp.startQuestId(), wave: 0, roster: [], field: [], questsDone: [], cycles: {}, rel: { aera: { ren: -55 }, ren: { aera: -50 } }, visits: {}, voice: {} });
   return r;
 };
 })();

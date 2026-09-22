@@ -24,6 +24,7 @@
     "test:camera": "node test/browser_camera_rest.js",
     "test:restart": "node test/browser_restart_dev.js",
     "release:check": "node tools/release_check.js",
-    "levels": "node tools/levels_doc.js"
+    "levels": "node tools/levels_doc.js",
+    "stamp": "node tools/stamp.js"
   }
 }

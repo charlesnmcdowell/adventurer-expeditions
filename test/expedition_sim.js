@@ -244,6 +244,34 @@ test('a queued skill waits for its window instead of being silently dropped', ()
   assert.ok(!enc.request, 'the request must not wait forever');
 });
 
+// Finishing moves are matched by painted set, not by entity id (Hiro,
+// 2026-09-22). Before that, `dire_wolf` paired and `dire_wolf_2` did not, so the
+// finisher animated on the tutorial road and nowhere else. This asserts the rule
+// the way it is felt: every creature you can meet in an open quest resolves to a
+// painted set that has finishing moves painted for it.
+test('every creature in an open quest has a finishing move', () => {
+  const Camp = X.Campaign;
+  const FAMILIES = { wolf: 1, plant: 1, alpha: 1 };         // the sets with paired finishers
+  const missing = [];
+  for (const qid of ['road'].concat(X.slice.openQuests || [])) {
+    if (!Camp.quest(qid)) continue;
+    for (const encDef of Camp.questEncounters(qid)) {
+      for (const key of (encDef.enemies || [])) {
+        const def = X.enemies[key] || {};
+        if (def.human || def.kind === 'human') continue;
+        const set = X.paintedActorOfKey(key);
+        if (!FAMILIES[set]) missing.push(qid + ':' + key + ' -> ' + set);
+      }
+    }
+  }
+  assert.deepEqual(missing, [], 'these would kill without a finishing move: ' + missing.join(', '));
+  // And the variants resolve to the same painted set as the creature the clips
+  // were painted against — which is what makes the pair eligible at all.
+  assert.equal(X.paintedActorOfKey('dire_wolf_2'), X.paintedActorOfKey('dire_wolf'));
+  assert.equal(X.paintedActorOfKey('thorn_2'), X.paintedActorOfKey('thorn_lurker'));
+  assert.equal(X.paintedActorOfKey('alpha_2'), X.paintedActorOfKey('road_wolf_leader'));
+});
+
 // ---------------------------------------------------------------- economy
 test('rewards pay once; upgrades deduct exactly once and change the next manifest', () => {
   const run = Enc.freshRun();
@@ -421,23 +449,25 @@ test('travel banter advances its round-robin across rebuilt worlds', () => {
 
 test('the retained loop uses only painted Bram; tutorial lock and earned upgrades are respected', () => {
   const Camp = X.Campaign;
-  const r1 = Camp.freshRun(); assert.equal(Camp.nextQuestId(r1), 'road');
-  // The slice opens the quests whose art the package carries (X.slice.openQuests).
-  // The road, the rain and the city; the night pair stays shut because `night1`
-  // and their plates are 2.42 MB the budget has not got (2026-09-21).
-  assert.deepEqual(X.slice.openQuests, ['rain', 'city'], 'the open quests are the ones with art in the build');
-  r1.questsDone.push('road'); assert.equal(Camp.nextQuestId(r1), 'rain', 'the tutorial hands off to the first open quest');
-  r1.questsDone.push('rain'); assert.equal(Camp.nextQuestId(r1), 'city', 'and then on to the next open one');
-  r1.questsDone.push('city'); assert.ok(['rain', 'city'].includes(Camp.nextQuestId(r1)), 'the open set cycles rather than opening a locked quest');
-  assert.ok(Camp.questOpen('road') && Camp.questOpen('rain') && Camp.questOpen('city'));
-  for (const shut of ['marsh', 'ruins']) assert.ok(!Camp.questOpen(shut), shut + ' stays locked');
-  // A save naming a locked quest is pulled back; one naming an open quest is not.
-  // (This is the bug that made quest two unreachable: sanitation used to force
-  // every non-road quest back to the tutorial while the inn was locked.)
-  const keep = Camp.sanitizeRun(Object.assign(Camp.freshRun(), { questId: 'city', phase: 'quest', wave: 0 }));
-  assert.equal(keep.questId, 'city', 'an open quest survives sanitation');
-  const pulled = Camp.sanitizeRun(Object.assign(Camp.freshRun(), { questId: 'marsh', phase: 'quest', wave: 0 }));
-  assert.equal(pulled.questId, 'road', 'a locked quest is pulled back to the road');
+  // All four levels are open, in the order Hiro set (2026-09-21): a run starts
+  // at Road in the Rain and goes marsh, city, ruins. "Clear the road" is retired
+  // from the rotation and survives only as the dev panel's preview.
+  assert.deepEqual(X.slice.openQuests, ['rain', 'marsh', 'city', 'ruins'], 'the four levels, in order');
+  assert.equal(X.slice.startQuest, 'rain', 'a new run starts in the rain');
+  const r1 = Camp.freshRun();
+  assert.equal(r1.questId, 'rain', 'a fresh run begins at the starting quest');
+  assert.equal(Camp.nextQuestId(r1), 'rain');
+  r1.questsDone.push('rain'); assert.equal(Camp.nextQuestId(r1), 'marsh', 'rain hands off to the marsh');
+  r1.questsDone.push('marsh'); assert.equal(Camp.nextQuestId(r1), 'city', 'then the city');
+  r1.questsDone.push('city'); assert.equal(Camp.nextQuestId(r1), 'ruins', 'then the ruins');
+  r1.questsDone.push('ruins'); assert.ok(X.slice.openQuests.includes(Camp.nextQuestId(r1)), 'and then it cycles');
+  for (const id of ['rain', 'marsh', 'city', 'ruins']) assert.ok(Camp.questOpen(id), id + ' is open');
+  assert.ok(Camp.questOpen('road'), 'the retired tutorial stays previewable');
+  // A save naming a quest that is not open is pulled back to the starting one.
+  const keep = Camp.sanitizeRun(Object.assign(Camp.freshRun(), { questId: 'ruins', phase: 'quest', wave: 0 }));
+  assert.equal(keep.questId, 'ruins', 'an open quest survives sanitation');
+  const bogus = Camp.sanitizeRun(Object.assign(Camp.freshRun(), { questId: 'nowhere', phase: 'quest', wave: 0 }));
+  assert.equal(bogus.questId, Camp.startQuestId(), 'an unknown quest falls back to the start');
   // Bram's combat art is out of the package while the inn is locked, so he is
   // refused for the same reason the unpainted recruits are.
   assert.ok(!Camp.artShipped('bram'), "Bram's atlas is not in the build today");

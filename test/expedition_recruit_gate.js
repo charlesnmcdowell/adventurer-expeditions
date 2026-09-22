@@ -97,18 +97,18 @@ test('save reload preserves locked skills and all existing quest identities', ()
 });
 test('legacy saves cannot reopen later quests or replace Hiro, but keep earned progress', () => {
   const run = X.Run.fresh();
-  // `marsh` is a quest the slice still keeps shut, which is the point: a save
-  // naming it must be pulled back. (Until 2026-09-21 this used `city`, which is
-  // now legitimately open, so the smuggling attempt has to name a locked one.)
-  Object.assign(run, { hero: { key: 'nyx' }, phase: 'travel', questId: 'marsh', wave: 2, travelLeg: 'outbound', gold: 137, questsDone: ['road', 'city'], roster: ['bram', 'nyx', 'stranger'], field: ['bram', 'nyx'] });
+  // All four levels are open since 2026-09-21, so a smuggling attempt has to
+  // name a quest that does not exist at all — which is the case that matters
+  // anyway: a save from an older or tampered build.
+  Object.assign(run, { hero: { key: 'nyx' }, phase: 'travel', questId: 'gate_of_nowhere', wave: 2, travelLeg: 'outbound', gold: 137, questsDone: ['rain', 'city'], roster: ['bram', 'nyx', 'stranger'], field: ['bram', 'nyx'] });
   run.levels.god_aura = 2;
   localStorage.setItem(X.saveKey, JSON.stringify(run)); // exercise load of an old unsanitized save
   Camp.registerRecruitArt('bram', null, () => true);
   const saved = X.Run.load(); assert.ok(saved);
-  assert.equal(saved.questId, 'road'); assert.equal(saved.phase, 'quest'); assert.equal(saved.wave, 0);
+  assert.equal(saved.questId, Camp.startQuestId()); assert.equal(saved.phase, 'quest'); assert.equal(saved.wave, 0);
   assert.equal(saved.hero, undefined); assert.equal(saved.travelLeg, undefined);
   assert.equal(saved.gold, 137); assert.equal(saved.levels.god_aura, 2);
-  assert.deepEqual(saved.questsDone, ['road', 'city']); assert.deepEqual(saved.roster, ['bram', 'nyx']);
+  assert.deepEqual(saved.questsDone, ['rain', 'city']); assert.deepEqual(saved.roster, ['bram', 'nyx']);
   assert.deepEqual(saved.field, ['bram'], 'legitimate Bram selection survives loading before textures');
   const waiting = Camp.buildWorld(saved);
   try { assert.equal(waiting.companions.length, 0); } finally { waiting.restoreIds(); }
@@ -127,7 +127,7 @@ test('malformed identity collections are normalized without dropping a valid sav
   Object.assign(run, { roster: null, field: 'bram', rel: { stranger: { hiro: 1 }, hiro: { bram: 900, nyx: 'bad' } }, visits: [], cycles: null, voice: null, questsDone: null, awarded: null, questId: 'unknown', phase: 'unknown', wave: -5 });
   assert.equal(X.Run.save(run).ok, true);
   const saved = X.Run.load(); assert.ok(saved); assert.deepEqual(saved.roster, []); assert.deepEqual(saved.field, []);
-  assert.deepEqual(saved.rel, { hiro: { bram: 100 } }); assert.equal(saved.questId, 'road'); assert.equal(saved.phase, 'quest');
+  assert.deepEqual(saved.rel, { hiro: { bram: 100 } }); assert.equal(saved.questId, Camp.startQuestId()); assert.equal(saved.phase, 'quest');
 });
 const atlasPath = path.join(root, 'assets/expedition/bram/bram.json');
 if (fs.existsSync(atlasPath)) test('intaken Bram atlas satisfies the actual shipping gate', () => {

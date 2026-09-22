@@ -252,6 +252,14 @@ class ExpeditionScene extends Phaser.Scene {
       await X.Beats.play(this, step);
       this.hud.setSkillStates(Enc.skillStates(enc));
       if (step.over) break;
+      // A beat of air between turns (Hiro, 2026-09-22: "turns are going by too
+      // quickly ... lets go with 2s to give me more time to click my skills").
+      // It sits after the beats have played and the icons have been refreshed,
+      // so it is time to read a truthful HUD and tap, not dead air. A tap that
+      // lands during it is queued and fires on the next turn.
+      const pause = X.turnPauseMs ? X.turnPauseMs() : 0;
+      if (pause > 0 && !this.ended) await wait(this, pause);
+      if (this.ended) return;
       // Pause the moment a swing first opens Finisher, not only on Hiro's next
       // turn — by then Katana Slash had often already spent the window.
       await this.guideSkillUse();

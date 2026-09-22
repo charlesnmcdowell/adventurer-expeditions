@@ -86,14 +86,19 @@ const bad = (what, saw) => { checks.push({ ok: false, what, saw }); console.erro
   else bad('guidance was retired before the restart', before.run.tutorial);
 
   await page.evaluate(() => window.__game.scene.getScene('Expedition').corner.startOver());
-  // A fresh run opens with X.economy.start in hand (20 since 2026-09-21), so the
-  // restart is "back to the starting purse", not "back to nothing".
-  await page.waitForFunction(() => { const s = window.__game.scene.getScene('Expedition'); const X = ADV.Expedition;
-    return s && s.run && s.run.gold === X.economy.start && !(s.run.questsDone || []).length; }, null, { timeout: 40000 });
+  // Start over reloads the page now, so the game disappears and comes back:
+  // the predicate has to survive a window with no __game in it. A fresh run also
+  // opens with X.economy.start in hand, so "fresh" is the starting purse rather
+  // than nothing at all.
+  await page.waitForFunction(() => {
+    const g = window.__game; if (!g || !g.scene || !g.scene.getScenes(true).length) return false;
+    const s = g.scene.getScene('Expedition'); const X = ADV.Expedition;
+    return !!(s && s.run && X && X.economy && s.run.gold === X.economy.start && !(s.run.questsDone || []).length);
+  }, null, { timeout: 60000 });
   const after = await state(page);
   const blankRun = after.run && after.run.gold === after.start && !after.run.questsDone.length && after.run.levels.finisher === 0;
   const blankTut = after.run && armed(after.run.tutorial);
-  const blankStored = after.stored && armed(after.stored);
+  const blankStored = after.stored === null || armed(after.stored);   // wiped outright, or armed
   if (blankRun) ok('Start over gives a blank run'); else bad('Start over gives a blank run', after.run);
   if (blankTut && blankStored) ok('Start over brings the tutorial back', { run: after.run.tutorial, stored: after.stored });
   else bad('Start over brings the tutorial back', { run: after.run && after.run.tutorial, stored: after.stored });
@@ -193,21 +198,28 @@ const bad = (what, saw) => { checks.push({ ok: false, what, saw }); console.erro
   let s2 = await state(page);
   if (s2.devButton && s2.devEnabled && s2.devBuild) ok('the developer tools are there on a plain load');
   else bad('the developer tools are there on a plain load', s2);
-  // Shift+D takes them away for a player's-eye look, and brings them back.
+  // Shift+D opens and closes the PANEL. It used to hide the tools themselves,
+  // and pressing it once made the cog vanish for good across reloads, which is
+  // what Hiro hit (2026-09-22). The cog must survive both presses.
   await page.keyboard.down('Shift'); await page.keyboard.press('KeyD'); await page.keyboard.up('Shift');
-  await page.waitForTimeout(400);
+  await page.waitForTimeout(500);
   s2 = await state(page);
-  if (!s2.devButton && !s2.devPanel && !s2.devEnabled) ok('Shift+D hides them'); else bad('Shift+D hides them', s2);
+  if (s2.devPanel && s2.devButton) ok('Shift+D opens the panel and the cog stays'); else bad('Shift+D opens the panel and the cog stays', s2);
   await page.keyboard.down('Shift'); await page.keyboard.press('KeyD'); await page.keyboard.up('Shift');
-  await page.waitForTimeout(400);
+  await page.waitForTimeout(500);
   s2 = await state(page);
-  if (s2.devButton && s2.devEnabled) ok('Shift+D brings them back'); else bad('Shift+D brings them back', s2);
+  if (!s2.devPanel && s2.devButton && s2.devEnabled) ok('and closes it again, with the cog still there'); else bad('and closes it again, with the cog still there', s2);
   await ctx.close();
 
-  // ?dev=0 for one session, without touching the flag.
+  // Nothing a player can do removes the tools while this is a dev build — the
+  // old stored "hidden" flag is cleared on load, so a browser that carries one
+  // recovers by itself.
   ({ ctx, page } = await open('http://127.0.0.1:' + port + '/index.html?fresh=1&seed=11&renderer=canvas&dev=0'));
+  await page.evaluate(() => { try { localStorage.setItem('adventurer_expeditions_dev', '0'); } catch (e) {} });
+  await page.reload(); await page.waitForFunction(() => window.__game && window.__game.scene.getScenes(true).length, null, { timeout: 40000 });
+  await page.waitForTimeout(800);
   s2 = await state(page);
-  if (!s2.devButton && !s2.devEnabled) ok('?dev=0 hides them for one session'); else bad('?dev=0 hides them for one session', s2);
+  if (s2.devButton && s2.devEnabled) ok('a stored hidden flag cannot strand the tools'); else bad('a stored hidden flag cannot strand the tools', s2);
   await ctx.close();
 
   // The shipping build: Dev.DEV_BUILD = false, served as the package would be.
@@ -249,23 +261,22 @@ const bad = (what, saw) => { checks.push({ ok: false, what, saw }); console.erro
 
   // Full speed: the toggle turns the camera push and the slow motion off, and
   // the panel says so (Hiro, 2026-09-21).
+  const cineWas = await page.evaluate(() => ADV.Expedition.fx.cinematics === false);
   await click('Full speed');
   const fullSpeed = await page.evaluate(() => {
     const X = ADV.Expedition, s = window.__game.scene.getScene('Expedition');
     return { off: X.fx && X.fx.cinematics === false,
       labels: (s.__devRects || []).map(r => r.label).filter(l => /Full speed/.test(l)) };
   });
-  if (fullSpeed.off) ok('“Full speed” turns the cinematics off', fullSpeed); else bad('“Full speed” turns the cinematics off', fullSpeed);
+  if (fullSpeed.off !== cineWas) ok('“Full speed” flips the cinematics', { was: cineWas ? 'off' : 'on', now: fullSpeed.off ? 'off' : 'on' });
+  else bad('“Full speed” flips the cinematics', { was: cineWas, now: fullSpeed.off });
   // The tick is drawn into the row's text; __devRects carries the plain label,
   // so assert the toggle's own reading rather than the rect's name.
-  const ticked = await page.evaluate(() => {
-    const items = (window.__game.scene.getScene('Expedition').__devPanel || { list: [] }).list || [];
-    return ADV.Expedition.fx.cinematics === false;
-  });
-  if (ticked) ok('and the panel reads it as on'); else bad('and the panel reads it as on', ticked);
+  const ticked = await page.evaluate(() => ADV.Expedition.fx.cinematics === false);
+  if (ticked === !cineWas) ok('and the panel reads the new state'); else bad('and the panel reads the new state', ticked);
   await click('Full speed');
-  const restored = await page.evaluate(() => ADV.Expedition.fx.cinematics !== false);
-  if (restored) ok('and it turns them back on'); else bad('and it turns them back on', restored);
+  const restored = await page.evaluate(() => ADV.Expedition.fx.cinematics === false);
+  if (restored === cineWas) ok('and it flips back'); else bad('and it flips back', { was: cineWas, now: restored });
 
   // Preview a location: every quest is listed, locked ones included, and picking
   // one lands in that quest's travel panorama.
@@ -311,13 +322,15 @@ const bad = (what, saw) => { checks.push({ ok: false, what, saw }); console.erro
     const g = window.__game, k = g.scene.getScenes(true).map(s => s.sys.settings.key)[0];
     g.scene.getScene(k).corner.startOver();
   });
-  await page.waitForTimeout(2500);
+  await page.waitForFunction(() => window.__game && window.__game.scene.getScenes(true).length, null, { timeout: 60000 });
+  await page.waitForTimeout(1200);
   const cleaned = await page.evaluate(() => {
     const X = ADV.Expedition;
     return { firstLevelOnly: X.slice.firstLevelOnly, openQuests: (X.slice.openQuests || []).slice(),
       devWeather: X.devWeather || null, cinematics: X.fx.cinematics, hiroSheet: !!(X.art && X.art.hiroSheet) };
   });
-  if (cleaned.firstLevelOnly === true && !cleaned.devWeather && cleaned.cinematics !== false)
+  // Restored means "back to how the game ships", and cinematics ship off.
+  if (cleaned.firstLevelOnly === true && !cleaned.devWeather && cleaned.cinematics === false && cleaned.hiroSheet === true)
     ok('Start over puts the developer overrides back', cleaned);
   else bad('Start over puts the developer overrides back', cleaned);
 
