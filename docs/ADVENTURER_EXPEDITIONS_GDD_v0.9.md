@@ -5,7 +5,41 @@ Version 0.9 · September 19, 2026 (rev. b) · Status reconciled September 20, 20
 
 This revision supersedes v0.8; v0.5 through v0.8 are kept in `docs/` for history.
 
-**Current status — Alpha boss art integrated, September 21, 2026.** The first
+**Current status — September 22, 2026.** Hiro, after playing: *"the game is
+playing much more smoothly now."*
+
+*Playable.* Four levels in a fixed order — **Road in the Rain, the reed marsh,
+the city watch, the old ruins** — then round again. "Clear the road" is retired
+from the rotation and survives only as a dev-panel preview. A new run starts in
+the rain with 20 gold, and the tutorial teaches in the fight: buy a skill, fight,
+the game holds the moment a wolf drops to half, tap it, arrow on.
+
+*Creatures.* Wolf, thorn lurker and the Alpha only — the three with reworked,
+animated art and Hiro paired finishers. Boars and the human foes are out of
+every quest until their art is done. Finishing moves match by **painted set**,
+not entity id, so any number of variants of a creature pair correctly (§7).
+
+*Combat.* Skills are **turn-agnostic**: a tap fires as soon as the animation in
+play has finished, costs nobody a turn and skips nobody's. God Aura and Counter
+Attack recover **on a clock** (10/10/8 s and 5/5/4 s); Finisher has no cooldown
+and is gated only by its health window (50 % normal, 25 % boss). Turn gap is a
+pause-screen setting — 1 s normal, 2 s slow, 0.5 s fast — beside a Cinematic
+camera toggle, which ships off. Status durations are still counted in rounds.
+
+*Known issue, diagnosed 2026-09-22, not yet fixed:* **the Finisher misfires on
+the boss wolves** — see §7, "The boss line and the glowing button."
+
+*Developer tools.* An always-present ⚙ while `Dev.DEV_BUILD` is true: preview
+any location, cycle weather and time, full speed, jump to the inn, clear the
+save. Start over reloads with `?fresh=1` for a true first launch.
+
+*Size.* **20.77 MB against the 20.0 MB target**, over by Hiro's decision —
+correctness first, trim later (§12a, §12b). `npm test` reports it; `npm run
+release:check` refuses to package while it stands.
+
+*Superseded status of September 21, kept for the record:*
+
+**Status — Alpha boss art integrated, September 21, 2026.** The first
 road remains the playable slice: Hiro, ordinary wolves, thorn lurkers and the
 distinct painted Alpha boss. Bram is the only art-ready companion; new
 recruitment and next-quest locks remain. The inn offers Replay. Broader
@@ -342,6 +376,28 @@ takes an ordinary enemy at 50 % health or less and a boss at 25 % or less, flat
 at every level — levelling buys the heal and the size of the hit, not a wider
 window, because one number the player can hold in their head beats three they
 cannot.
+
+**The boss line and the glowing button — a bug, diagnosed 2026-09-22.** Hiro:
+*"finisher is not working on dire wolf, it's not doing the finishing move
+animations or killing him ... it's working on regular wolfs and plants though."*
+Measured by firing the Finisher at every creature at 45 %, 30 % and 20 %: every
+ordinary wolf and plant dies at all three; **both boss wolves — the Alpha in the
+rain and the Alpha on the later levels — survive at 45 % and 30 %**, taking about
+22 damage, and only execute at 20 %. The cause is a mismatch between two numbers.
+Execution respects the boss line: a boss is unmasked for execution only at or
+under 25 %. But *readiness* — what lights the button — uses the ordinary line
+(`requireBelowPct 0.51`) for every enemy, boss included. So the button promises
+a kill at 51 % that the game will not deliver until 25 %. With no kill,
+`opts.lethal` is false and `Actor.canPair` correctly refuses the paired clip, so
+the missing animation and the missing kill are one bug, not two.
+It is worse in the later boss waves, where the Alpha fights beside a wolf. With
+both at 40 %, the Finisher aimed at the Alpha three times in five — the boss is
+in the valid-target pool and threat targeting prefers it — and **nobody died**,
+though a finishable wolf was standing beside it. The fix is to build the
+Finisher's target pool with each target's own line (50 % ordinary, 25 % boss), so
+an Alpha above 25 % is never offered: the button then glows only when a kill is
+real, and in a mixed wave it always takes the wolf. Not applied — proposed to
+Hiro first.
 
 **And no cooldown at all** (Hiro, 2026-09-21: *"it's already limited by having
 specific conditions it can be used under anyway"*). The health window is the
@@ -1414,7 +1470,16 @@ was chosen to match this, and should keep matching it.
 
 ## 15. Status
 
-**Current reconciliation, 2026-09-20:** §10.5 and
+**Current reconciliation, 2026-09-22:** the status at the top of this document
+is authoritative. Since the 2026-09-20 note below: all four levels are open in
+order and the tutorial road is retired; creatures are limited to the reworked
+wolf, plant and Alpha; finishers match by painted set; skills fire between turns
+with clock-based recovery; turn pacing and the cinematic camera are pause-screen
+settings; the dev panel is always present in a development build; Start over is
+a true reload. Open: the Finisher's boss-line bug (§7), the size overage, and
+status durations still in rounds.
+
+**Reconciliation, 2026-09-20 (superseded):** §10.5 and
 [ART_PASS_2_AND_REPAIR_20260920.md](ART_PASS_2_AND_REPAIR_20260920.md) supersede the
 September 19 backlog below. The current code restores the four-actor loader,
 Bram purchase/save readiness, authored frame timing, stable body scale and

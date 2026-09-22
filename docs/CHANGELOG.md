@@ -15,6 +15,57 @@ of small fixes within a day.
 
 ---
 
+## 2026-09-22 — Status after play-testing; the Finisher's boss-line bug diagnosed
+
+Fable. Hiro, after playing the turn-agnostic build: *"the game is playing much
+more smoothly now after those recent changes"* — and one report: *"finisher is
+not working on dire wolf, it's not doing the finishing move animations or
+killing him ... it's working on regular wolfs and plants though."*
+
+**Status.** GDD v0.9's top status block is rewritten for today and the
+2026-09-21 block kept beneath it as history; §15 gains a 2026-09-22
+reconciliation. It had still said only the first road was playable and that the
+build sat under 20 MB — both wrong since this morning.
+
+**Diagnosis, no code changed.** Measured rather than guessed: the Finisher fired
+at every creature an open quest fields, at 45 %, 30 % and 20 % health.
+
+| creature | 45 % | 30 % | 20 % |
+|---|---|---|---|
+| wolf (rain), wolf_2 (later) | dies | dies | dies |
+| thorn lurker, thorn_2 | dies | dies | dies |
+| **Alpha, rain boss** | **survives, ~22 dmg** | **survives** | dies |
+| **Alpha, later bosses** | **survives** | **survives** | dies |
+
+The wolf Hiro means is the boss — the Alpha is a gray wolf, and the rain's is
+built on the `dire_wolf` base. The cause is two thresholds that disagree.
+Execution honours the boss line: `Enc.bossExecutable` unmasks a boss only at or
+under 25 %, because the shared engine exempts bosses from execution outright.
+Readiness — what lights the button — uses the ordinary `requireBelowPct 0.51`
+for every enemy, boss included. So the button promises a kill at 51 % that the
+game will not deliver until 25 %. With no kill, `opts.lethal` is false and
+`Actor.canPair` correctly refuses the paired clip: the missing animation and the
+missing kill are one bug.
+
+It bites harder in the later boss waves, where the Alpha fights beside a wolf.
+Both at 40 %, five seeds: the Finisher aimed at the Alpha three times and
+**nobody died**, though a finishable wolf stood beside it — the boss sits in the
+valid-target pool and threat targeting prefers it.
+
+**Proposed fix, not applied.** Build the Finisher's target pool with each
+target's own line — 50 % for an ordinary enemy, 25 % for a boss. The button then
+glows only when a kill is real, an Alpha above 25 % is never offered, and in a
+mixed wave the Finisher always takes the wolf. One change in `Enc.skillState`,
+plus a sim case that fires at a boss at 40 % and asserts the button is dark.
+Waiting on Hiro before touching code.
+
+**Other status worth recording.** 20.77 MB against the 20.0 MB target, over by
+Hiro's call and blocked at packaging. Status durations remain in rounds. The
+headless-Canvas frame rate of 50.7 fps is a worst case with the GPU disabled,
+not a measurement of Hiro's machine.
+
+---
+
 ## 2026-09-22 — Skills fire between turns, and recover on a clock
 
 Fable, to Hiro's spec after a design pass: *"I want the skills to be turn
