@@ -4,9 +4,28 @@
 const A = ADV, X = A.Expedition, UI = X.UI;
 const P = X.Painted = {};
 P.actors = ['hiro', 'bram', 'wolf', 'plant'];
-P.preload = function (scene) {
+
+// What a scene actually needs before it can run. Bram is ~2 MB and cannot be in
+// the party while recruiting is locked (X.slice.firstLevelOnly), so loading him
+// on the tutorial road costs every player two megabytes for a companion they
+// will never see: measured, that is a fifth of everything downloaded before the
+// first fight. He loads once he can be hired, or once he is already in the run.
+P.needed = function (scene) {
+  // preload() runs before create(), and on a scene restart `scene.run` is still
+  // the *previous* visit's run — so the run being started (scene.opts.run) wins.
+  let run = scene && scene.opts && scene.opts.run;
+  if (!run) run = scene && scene.run;
+  if (!run) { try { run = X.Run.load(); } catch (e) { run = null; } }
+  const owned = run && run.roster ? run.roster.slice() : [];
+  const hireable = !(X.Campaign && X.Campaign.recruitingLocked && X.Campaign.recruitingLocked());
+  return P.actors.filter(id => {
+    if (id === 'bram') return hireable || owned.includes('bram');
+    return true;
+  });
+};
+P.preload = function (scene, ids) {
   if (X.Hud && X.Hud.preloadArt) X.Hud.preloadArt(scene);
-  for (const id of P.actors) {
+  for (const id of (ids || P.needed(scene))) {
     const key = 'xp_' + id + '_sheet', base = 'assets/expedition/' + id + '/';
     if (!scene.textures.exists(key)) scene.load.multiatlas(key, base + id + '.json', base);
     if (!scene.cache.json.exists('xp_' + id + '_clips')) scene.load.json('xp_' + id + '_clips', base + id + '.json');
@@ -18,7 +37,7 @@ P.sheet = function (scene, id) {
   return { key, clips: j.clips, canvas: j.canvas, standing: j.standing, actor: id, id };
 };
 P.install = function (scene) {
-  const j = scene.cache.json.get('xp_bram_clips');
+  const j = scene.cache.json.get('xp_bram_clips');   // absent while Bram is not loaded: no recruit art registered, which is correct
   if (j && X.Campaign.registerRecruitArt) X.Campaign.registerRecruitArt('bram', j, f => scene.textures.exists('xp_bram_sheet') && scene.textures.get('xp_bram_sheet').has(f));
 };
 P.failed = function (scene, message) {

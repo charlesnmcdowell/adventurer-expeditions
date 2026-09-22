@@ -189,10 +189,13 @@ HUD in *inn mode* (portrait and icons only).
 
 ## 5. Quests, environments and music
 
-**Scope note, 2026-09-20:** this section records the broader loop design. Its
-additional quests remain locked by `firstLevelOnly`; the live tutorial uses
-wolves, thorn lurkers and the gray-wolf leader. Existing scenery and music are
-reused, and the inn's Replay preserves the first-level restriction.
+**Scope note, round 3 (2026-09-21):** the slice opens one quest at a time.
+`X.slice.openQuests` is the whitelist — today `['rain']`, so the tutorial hands
+off to **Road in the Rain** and stops there; the city, marsh and ruins are
+unreachable rather than merely unlisted (`Camp.questOpen`). Hiring stays locked
+for the whole slice, and the inn offers Replay the road beside the open quest.
+The rest of this section records the broader loop design; the live tutorial uses
+wolves, thorn lurkers and the gray-wolf leader, and scenery and music are reused.
 
 A tutorial plus **four repeatable quests**, on **three music tracks**. Each quest
 is three fights with a travel beat before, between and after.
@@ -294,13 +297,40 @@ important fix of the 18th.
 
 **The fight no longer runs itself (Hiro, 2026-09-20).** Hiro swings Katana Slash
 on his own; God Aura, Counter Attack and Finisher fire only when the player taps
-them, and a tapped skill is a cinematic: the world slows to half speed and the
-camera pushes toward the action while it plays. Every killing blow does the same,
-harder (0.36×, 1.26 zoom) — the finishing-move slot that Astra's paired clips
-(§10.2, three per enemy type) will fill. The HUD sits on its own camera and stays
-still. A run with purchases and no taps is exactly as strong as a run with
-neither, and the sim's "auto" rows now measure that. §7a's real-time model is
-unchanged by this; it only moves the tap to a clock.
+them, and a tapped skill is a cinematic: the world slows and the camera pushes
+toward the action while it plays. The HUD sits on its own camera and stays still.
+A run with purchases and no taps is exactly as strong as a run with neither, and
+the sim's "auto" rows now measure that. §7a's real-time model is unchanged by
+this; it only moves the tap to a clock.
+
+**A finishing move is something the player spends, not something the game gives
+(Hiro, round 3, 2026-09-20).** Only a kill made *with the tapped Finisher* plays
+a finishing move and the heavier `kill` cinematic. A lethal Katana Slash, a
+counter, a riposte, a companion's blow or a bleed-out is an ordinary death: the
+normal clip, the normal hit-stop, no slow motion and no push-in. The rule lives
+in one place (`beats.js`: a `byFinisher` flag threaded from the step's own
+choice), so nothing else can quietly opt in.
+
+**The windows: half for a normal enemy, a quarter for a boss.** The Finisher
+takes an ordinary enemy at 50 % health or less and a boss at 25 % or less, flat
+at every level — levelling buys the heal, the cooldown and the size of the hit,
+not a wider window, because one number the player can hold in their head beats
+three they cannot. The shared engine exempts bosses from execution outright and
+`js/core` is never edited here, so the boss case is resolved in the Expedition
+layer (`Enc.bossExecutable`): when a boss is already under its line and the
+Finisher is what is being spent on it, the engine's own execute path is allowed
+to run, giving the same event, death bookkeeping and heal. Above the line the
+Finisher is still a heavy hit.
+
+**Cinematic rates (round 3).** A tapped skill runs the world at 0.70 and pushes
+to 1.16 over 150 ms; a Finisher kill runs at 0.55 and 1.26 over 140 ms. The
+first pass (0.50 / 0.36 over 240 / 220 ms) read as lag rather than drama. Every
+exit — fight over, defeat, restart, Start over, scene shutdown — snaps the
+camera back to zoom 1, centred, with time scales at 1 (`X.UI.resetCamera`). The
+baseline is a constant, not a sample of the live camera: sampling let a restore
+that was still in flight become the next baseline, which is why the zoom used to
+ratchet in over a fight and never come home. `test/browser_camera_rest.js`
+(`npm run test:camera`) asserts it after every fight and at the completion card.
 
 **Icons and the info box (2026-09-20).** Icons are 52 px across (were 36).
 Skill text shows only on a three-second hold, stays while held and fades three
@@ -780,10 +810,13 @@ to be thrown away, and worse, it trains everyone's eye on the wrong timing.
 
 ### 10.2 Finishing moves
 
-**Current override, 2026-09-20:** every resolved killing blow may finish. The
-last-enemy-only restriction and 1.8-second target below are historical. Runtime
-slow motion currently lengthens the older clips; review final pacing after v2
-intake. Pair eligibility must match the actual painted victim identity, not
+**Current rule, round 3 (2026-09-20):** a finishing move plays only when the
+player spent the Finisher on the kill (§7). Any other lethal blow — Katana
+Slash, a counter, a riposte, an ally, a bleed-out — is an ordinary death. The
+enemy must also be under the Finisher's window: 50 % for a normal enemy, 25 %
+for a boss. The last-enemy-only restriction and the 1.8-second target below are
+historical. Runtime slow motion lengthens the older clips; review final pacing
+after v2 intake. Pair eligibility must match the actual painted victim identity, not
 merely a broad silhouette class: do not show a wolf in place of a boar, tinted
 wolf or plant. The new source delivery provides three wolf and three plant
 finishers, each six frames (§10.5).
@@ -967,6 +1000,16 @@ size and need no pipeline.
 
 ### 10.5 What has no painted art (the list the no-placeholder rule points at)
 
+**Status, 2026-09-21 (audited).** The validated source catalogue is **3 actors,
+28 clips, 144 frames, 9 paired finishers** — the tutorial Alpha plus the approved
+wolf and plant sets. Runtime carries six intaken atlases (Hiro, Bram, wolf, boar,
+plant, alpha). Candidate paintings exist for the boar, an Ironback boss, the Marsh
+Alpha, the Ruins Alpha, raiders and the town watch, but those folders carry no
+authoritative manifest yet, so they are **not ready for intake** and the quests
+that would need them stay shut (§5). **The road's boss is the gray-wolf leader; a
+boss of its own, with its own finishers, is still to paint — until it exists the
+encounter uses the leader as delivered rather than a dressed-up wolf.**
+
 Updated 2026-09-20. Distinguish assets already playing from new source awaiting
 intake. The selected v2 masters live in the sibling
 `../adventurer-expeditions-source-art/astra-v2/`, outside the ship set. See the
@@ -1109,6 +1152,29 @@ CrazyGames measures time to gameplay, not total size. Ship a first bundle of abo
 6 MB — Hiro's frames, the wolf set, the tutorial's plates, one track — and stream
 the rest during the inn. That makes the 10-second target comfortable at any total
 inside the budget, and it means `gameplayStart` can be sent honestly.
+
+**Measured, 2026-09-21 — this is now the largest submission risk.** Throttled
+cold starts against the exact ship allowlist, phone viewport, first fight on
+screen:
+
+| Connection | Before round 3 | After deferring Bram | Bytes |
+|---|---|---|---|
+| Fast 4G (9 Mbps, 85 ms) | 12.2 s | **10.1 s** | 9.69 MB |
+| Slow 4G (4 Mbps, 150 ms) | 26.0 s | **21.6 s** | 9.69 MB |
+| 3G (1.6 Mbps, 300 ms) | did not arrive inside 60 s | **53.0 s** | 9.69 MB |
+| Unthrottled (the number quoted until now) | 1.0–1.2 s | 1.0–1.2 s | 13.77 MB |
+
+The unthrottled figure is the one previous reports quoted; it says nothing about
+a real player. What must arrive before the first fight is **9.69 MB**: expedition
+art 5.73, js 2.35, Phaser 1.14, plates 0.47. Deferring Bram (2.2 MB, and he
+cannot be in the party while hiring is locked) was the first cut and is done.
+The two that remain, in order of value: **trim `js/data`** to what the demo
+actually references (~1.5 MB; the sync copies the whole folder today), and
+**split Hiro's atlas** so the first fight loads only the clips it uses — idle,
+walk, draw, slash, hit, roll — with finishers, auras and counters streamed during
+the first travel beat (~2 MB). Together those put the critical path near 6 MB,
+which is the bundle this section always assumed. Until then the 10-second target
+holds only on a fast connection.
 
 ---
 
@@ -1312,6 +1378,17 @@ remains, in order:
 11. Retention instrumentation.
 
 ## 16. Open decisions for Hiro
+
+*Round 3 answers (2026-09-21), from Hiro unless marked.* The Finisher's windows
+are **50 % for a normal enemy, 25 % for a boss, flat at every level** — levelling
+buys the heal, the cooldown and the hit (assumption: 50/25 was given without a
+per-level curve, so flat; a three-line change if it should scale). The slice opens
+**Road in the Rain** and nothing else. Hiring stays locked; Bram is not wired.
+Finishing moves play **only** from a tapped Finisher. Decided here, not by Hiro:
+`js/ui/gate_ambience.js` is now synced (20 KB) because `travel_panorama.js` calls
+its `attach()` for every panorama, gate or not — without it the travel scenes ran
+with no ambience layer at all; and **Bram's 2 MB of art no longer loads while
+recruiting is locked**, which took 2.2 MB off the critical path (§12a.3).*
 
 *Build note, 2026-09-19: to keep moving, the build took a provisional answer on
 the items below. Every one is a one-line change; none was decided.* `night1` stands in for Hunter's Breath (1); `battle_origin` is the

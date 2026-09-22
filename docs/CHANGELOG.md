@@ -15,6 +15,106 @@ of small fixes within a day.
 
 ---
 
+## 2026-09-21 — Round 3: camera comes home, player-spent finishers, Road in the Rain opens
+
+Fable. Hiro's playtest list plus the non-art backlog. Checkpointed first
+(`2d14d71`), every suite green, ship set **17.86 MB / 206 files**.
+
+**1. The camera always comes home.** `X.UI.cameraBase` is now a constant — zoom
+1, centred — instead of a sample of the live camera. Sampling was the bug: a
+baseline captured while a restore pan was still in flight became the next
+baseline, so the zoom ratcheted in over a fight and never came back. Added
+`X.UI.resetCamera(scene)` and called it on every exit: fight over, victory,
+defeat, defeat-card buttons, wave arrow, scene restart, Start over, shutdown.
+Files: `ui_common.js`, `scene.js`.
+
+**2. Cinematic rates.** cast 0.50 → **0.70**, kill 0.36 → **0.55**; push-in
+240/220 ms → **150/140 ms**. The first pass read as lag rather than drama.
+`data.js` (`X.cinematic`).
+
+**3. Finishing moves are player-spent.** Only a kill made with the tapped
+Finisher plays a finishing move and the `kill` cinematic; a lethal Katana Slash,
+counter, riposte, ally blow or bleed-out is an ordinary death with the normal
+hit-stop. Two places were giving finishers away: the `playDowns` path (now takes
+a `byFinisher` flag threaded from the step's own choice) and the Katana Slash
+branch, which swapped its clip to `finisher` on any lethal hit (removed, as was
+the same swap for allies). `beats.js`.
+
+**4. Finisher windows: 50 % normal, 25 % boss, flat.** Was 40/50/60 by level with
+no boss case at all. Levelling still buys the heal, the cooldown and the power.
+The shared engine exempts bosses from execution and `js/core` is never edited
+here, so `Enc.bossExecutable` lifts that exemption for exactly one resolution
+when a boss is already under its line and the Finisher is being spent on it —
+the engine then runs its own execute path, event, death bookkeeping and heal
+included. Measured: boss at 20 % executes, at 40 % takes the hit and lives, flag
+restored both times. `X.skillText.finisher` rewritten for a fourth-grade reader.
+`data.js`, `encounter.js`.
+
+**5. Road in the Rain is open — and nothing else.** `X.slice.openQuests` is a
+whitelist (`['rain']`); `Camp.openQuestIds` / `Camp.questOpen` make city, marsh
+and ruins unreachable rather than merely unlisted, and the inn shows the open
+quest as a live Embark beside Replay the road. Hiring stays locked, Bram
+unwired. `data.js`, `campaign.js`, `scenes_town.js`.
+
+**6. Marsh weather.** `Camp.weatherFor(quest, world, phase)` resolves a quest's
+weather once, for battle and travel, deliberately without a `groundId` — the
+marsh plate's own `weatherBias: 'rain'` was overruling the quest's declared
+clear night (verified in-browser: marsh with groundId resolved `rain`, without
+it `clear`). Phase is applied, so a night storm reads as night.
+
+**7. Panorama ambience.** `travel_panorama.js` calls `A.GateAmbience.attach()`
+for *every* panorama, gate or not — the module was never synced, so the call
+was a silent no-op and the travel scenes ran with no ambience layer. Synced
+`js/ui/gate_ambience.js` (20 KB; depends only on already-synced modules), added
+to `index.html` and the sync list. Decision recorded in GDD §16.
+
+**8. Load phasing — measured, and it is the largest submission risk.** Throttled
+cold starts against the ship allowlist (phone viewport, first fight on screen):
+fast 4G **12.2 s**, slow 4G **26.0 s**, 3G did not arrive inside 60 s. The
+1.0–1.2 s figure quoted until now is unthrottled and says nothing about a real
+player. First cut taken: **Bram's 2 MB no longer loads while hiring is locked**
+(`Painted.needed`, reading the run being started, not the one left on the scene
+by the previous visit) — critical path 11.89 → **9.69 MB**, fast 4G → **10.1 s**,
+3G now arrives at 53 s. Remaining, in order of value: trim `js/data` (~1.5 MB)
+and split Hiro's atlas so the first fight loads only its own clips (~2 MB).
+Numbers and the plan are in GDD §12a.3.
+
+**9. The inn now waits for late scenery instead of failing.** `InnArt.paint`
+returned `Promise.resolve(false)` when its painting had not arrived yet, which
+`Painted.present` turned into "Scenery could not load" — on a slow connection
+that is a hard failure for a file that was merely still in flight. It now waits
+for the loader to finish and retries once. Found by throttling.
+
+**10. Buy refusals name the real reason.** `Camp.buy` checked art readiness
+before the slice lock, so with Bram's art deferred a locked-slice purchase was
+refused as "art unavailable". Lock first, art second.
+
+**Tests.** New `test/browser_camera_rest.js` (`npm run test:camera`): plays the
+road tapping skills so kills happen with and without the Finisher, and asserts
+zoom 1 / centred / time scales 1 after every fight and at the completion card —
+waiting for the cinematic to close rather than guessing a delay, and mapping game
+coordinates through the canvas so it is honest at phone width. Updated for the
+new rules: `actor_animation_lifecycle` (an automatic kill is an ordinary death;
+a tapped Finisher kill finishes every victim; a bleed-out is not cinematic),
+`cinematic_scope` (the contract is "restore to the resting camera", and one
+shutdown guard per scene rather than one per cinematic), `expedition_sim` (a new
+threshold test; the quest-cycle assertions split across two runs so the locked
+and unlocked cases stop sharing state), `expedition_recruit_gate`,
+`browser_inn_art` and `browser_recruit_gate`. That last one had rotted unrun —
+it referenced `companionFigures`, which the painted inn stopped creating — so it
+is now wired to `npm run test:recruit`.
+
+**Results.** `npm test` all green (sim 14, recruit gate 9, actor lifecycle 25,
+cinematic scope 5, portal readiness 6, inn art 5, registration, budget). Browser:
+ship-only journey ok; camera rest 6/6 with a real Finisher kill, at 1280 and 390;
+recruit gate ok at 1280 and 375; skill icons ok; inn art ok at 1280 and 375;
+startup and portal-stub findings empty.
+
+**Note for the next session.** Tutorial win rates are now 1.00 across every build
+(they were 0.82–0.89 on 2026-09-19) after the v2 roster change to the gray-wolf
+leader — the sim floors still assert but no longer discriminate. Worth retuning
+when the road's own boss art lands.
+
 ## 2026-09-21 — Review-only audit: source art present, intake incomplete
 
 Reviewed the reconciled runtime checkpoint (`f5b7781`) and the Astra v2 source-art

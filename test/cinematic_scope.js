@@ -23,19 +23,25 @@ function scene() {
   return { cameras: { main: cam }, tweens: { timeScale: 0.8 }, anims: { globalTimeScale: 0.7 }, time: { timeScale: 0.9 }, events: new EventEmitter(), writes, sys: { isActive: () => true } };
 }
 const snapshot = s => ({ tween: s.tweens.timeScale, anim: s.anims.globalTimeScale, clock: s.time.timeScale, zoom: s.cameras.main.zoom, x: s.cameras.main.scrollX, y: s.cameras.main.scrollY });
+// The contract changed in round 3 (Hiro): a cinematic no longer restores
+// whatever it happened to find, it restores the scene's resting camera — time
+// scales 1, zoom 1, centred. Sampling the live camera let a restore that was
+// still in flight become the next baseline, so the zoom ratcheted in over a
+// fight and never came back. `rest` is that fixed baseline.
+const rest = { tween: 1, anim: 1, clock: 1, zoom: 1, x: 0, y: 0 };
 const deferred = () => { let resolve; const promise = new Promise(r => { resolve = r; }); return { promise, resolve }; };
 const cases = [];
 const test = (name, fn) => cases.push([name, fn]);
-test('normal completion preserves distinct initial scales and camera framing', async () => {
+test('normal completion returns the scene to its resting camera and time scales', async () => {
   const s = scene(), before = snapshot(s);
   const result = await X.UI.cinematic(s, 'cast', { x: 600, y: 390 }, async () => {
     assert.ok(s.time.timeScale < before.clock);
     assert.ok(s.cameras.main.zoom > before.zoom);
     return 'finished';
   });
-  assert.deepEqual(snapshot(s), before);
+  assert.deepEqual(snapshot(s), rest);
   assert.equal(s.__cine || 0, 0);
-  assert.equal(s.events.listenerCount('shutdown'), 0);
+  assert.equal(s.events.listenerCount('shutdown'), 1, 'one shutdown guard for the scene, not one per cinematic');
 });
 test('nested kill restores the outer cast before restoring the baseline', async () => {
   const s = scene(), before = snapshot(s);
@@ -48,28 +54,28 @@ test('nested kill restores the outer cast before restoring the baseline', async 
     assert.deepEqual(snapshot(s), outer);
     assert.equal(s.__cine, 1);
   });
-  assert.deepEqual(snapshot(s), before);
+  assert.deepEqual(snapshot(s), rest);
   assert.equal(s.__cine || 0, 0);
 });
 test('a rejected animation restores state and preserves its original error', async () => {
   const s = scene(), before = snapshot(s), failure = new Error('animation interrupted');
   await assert.rejects(X.UI.cinematic(s, 'kill', null, async () => { throw failure; }), e => e === failure);
-  assert.deepEqual(snapshot(s), before);
+  assert.deepEqual(snapshot(s), rest);
   assert.equal(s.__cine || 0, 0);
-  assert.equal(s.events.listenerCount('shutdown'), 0);
+  assert.equal(s.events.listenerCount('shutdown'), 1, 'one shutdown guard for the scene, not one per cinematic');
 });
 test('shutdown immediately restores state and late completion cannot change the camera', async () => {
   const s = scene(), before = snapshot(s), wait = deferred();
   const p = X.UI.cinematic(s, 'kill', { x: 790, y: 430 }, () => wait.promise);
   assert.ok(s.events.listenerCount('shutdown') > 0);
   s.events.emit('shutdown');
-  assert.deepEqual(snapshot(s), before);
+  assert.deepEqual(snapshot(s), rest);
   assert.equal(s.__cine || 0, 0);
   const writesAfterShutdown = s.writes.length;
   wait.resolve(); await p;
   assert.equal(s.writes.length, writesAfterShutdown);
-  assert.deepEqual(snapshot(s), before);
-  assert.equal(s.events.listenerCount('shutdown'), 0);
+  assert.deepEqual(snapshot(s), rest);
+  assert.equal(s.events.listenerCount('shutdown'), 0, 'the guard is spent once the scene is gone');
 });
 test('an older overlapping scope cannot reset the newer active scope', async () => {
   const s = scene(), before = snapshot(s), a = deferred(), b = deferred();
@@ -80,9 +86,9 @@ test('an older overlapping scope cannot reset the newer active scope', async () 
   assert.deepEqual(snapshot(s), newer);
   assert.equal(s.__cine, 1);
   b.resolve(); await second;
-  assert.deepEqual(snapshot(s), before);
+  assert.deepEqual(snapshot(s), rest);
   assert.equal(s.__cine || 0, 0);
-  assert.equal(s.events.listenerCount('shutdown'), 0);
+  assert.equal(s.events.listenerCount('shutdown'), 1, 'one shutdown guard for the scene, not one per cinematic');
 });
 (async () => {
   let failed = 0;

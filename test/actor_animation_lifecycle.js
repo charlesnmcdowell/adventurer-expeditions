@@ -221,7 +221,26 @@ test('manual skill cinematics stay active until enemy recoil has recovered', asy
   } finally { X.UI = prev; }
 });
 
-test('every cleave victim gets one finisher, without a duplicate death for paired victims', async () => {
+// Finishing moves are the player's, not the game's (GDD §7, Hiro round 3).
+test('an automatic Katana Slash kill is an ordinary death, with no finisher and no cinematic', async () => {
+  const f = recoilFixture(), prev = X.UI, calls = [];
+  f.foe.sheet = null;
+  const deaths = [];
+  const second = { ...f.foe, uid: 'second', root: { visible: true }, play: async id => { deaths.push(['second', id]); } };
+  f.foe.play = async id => { deaths.push(['foe', id]); };
+  f.scene.actors.set('second', second);
+  f.scene.hero.play = async (id, opts) => { f.heroPlayed.push({ id, opts }); if (opts.onContact) opts.onContact(); };
+  X.UI = { cinematic: async (scene, kind, focus, fn) => { calls.push(kind); scene.__cine = 1; try { await fn(); } finally { scene.__cine = 0; } } };
+  try {
+    await X.Beats.play(f.scene, { hero: true, events: [{ t: 'use', uid: 'hero', skillId: 'katana_slash', target: 'foe' }, { t: 'damage', uid: 'foe', by: 'hero', dmg: 10 }, { t: 'damage', uid: 'second', by: 'hero', dmg: 10 }, { t: 'down', uid: 'foe', by: 'hero' }, { t: 'down', uid: 'second', by: 'hero' }] });
+    assert.ok(!f.heroPlayed.some(p => p.id === 'finisher'), 'no finishing move without a tapped Finisher');
+    assert.deepEqual(calls, [], 'an untapped kill gets no cinematic at all');
+    assert.deepEqual(deaths, [['foe', 'down_fade'], ['second', 'down_fade']], 'each victim simply dies');
+    assert.ok(!f.scene.__cine, 'no cinematic was ever entered');
+  } finally { X.UI = prev; }
+});
+
+test('a tapped Finisher kill plays the finishing move on every victim it downs', async () => {
   const f = recoilFixture(), prev = X.UI, calls = [];
   f.foe.sheet = null;
   const second = { ...f.foe, uid: 'second', root: { visible: true }, play: async id => { throw Error('paired victim should not play ' + id); } };
@@ -230,8 +249,9 @@ test('every cleave victim gets one finisher, without a duplicate death for paire
   f.scene.hero.play = async (id, opts) => { f.heroPlayed.push({ id, opts }); if (opts.onContact) opts.onContact(); if (id === 'finisher' && opts.lethal) opts.target.alive = false; };
   X.UI = { cinematic: async (scene, kind, focus, fn) => { calls.push(kind); scene.__cine = 1; try { await fn(); } finally { scene.__cine = 0; } } };
   try {
-    await X.Beats.play(f.scene, { hero: true, events: [{ t: 'use', uid: 'hero', skillId: 'katana_slash', target: 'foe' }, { t: 'damage', uid: 'foe', by: 'hero', dmg: 10 }, { t: 'damage', uid: 'second', by: 'hero', dmg: 10 }, { t: 'down', uid: 'foe', by: 'hero' }, { t: 'down', uid: 'second', by: 'hero' }] });
-    assert.deepEqual(f.heroPlayed.map(p => [p.id, p.opts.target.uid, p.opts.lethal]), [['finisher', 'foe', true], ['finisher', 'second', true]]);
+    await X.Beats.play(f.scene, { hero: true, choice: { how: 'request', action: { skillId: 'finisher' } },
+      events: [{ t: 'use', uid: 'hero', skillId: 'finisher', target: 'foe' }, { t: 'damage', uid: 'foe', by: 'hero', dmg: 10 }, { t: 'damage', uid: 'second', by: 'hero', dmg: 10 }, { t: 'down', uid: 'foe', by: 'hero' }, { t: 'down', uid: 'second', by: 'hero' }] });
+    assert.deepEqual(f.heroPlayed.filter(p => p.id === 'finisher').map(p => [p.id, p.opts.target.uid, p.opts.lethal]), [['finisher', 'foe', true], ['finisher', 'second', true]]);
     assert.deepEqual(calls, ['kill']); assert.equal(f.scene.__cine, 0);
   } finally { X.UI = prev; }
 });
@@ -243,13 +263,14 @@ test('a nonlethal tapped finisher preserves tier and cannot embed a dead victim'
   assert.equal(f.foe.alive, true); assert.deepEqual(f.played, []);
 });
 
-test('a DOT kill also gets a cinematic finish without a physical DOT recoil', async () => {
+test('a bleed-out is an ordinary death: no finishing move, no cinematic, no physical recoil', async () => {
   const f = recoilFixture(), prev = X.UI, calls = [];
   f.foe.pulseBadge = () => {};
   X.UI = { cinematic: async (scene, kind, focus, fn) => { calls.push(kind); await fn(); } };
   try {
     await X.Beats.ticksOnly(f.scene, [{ t: 'damage', uid: 'foe', by: 'hero', dmg: 1, tag: 'dot' }, { t: 'down', uid: 'foe', by: 'hero' }]);
-    assert.deepEqual(calls, ['kill']); assert.equal(f.heroPlayed[0].id, 'finisher'); assert.equal(f.heroPlayed[0].opts.lethal, true);
+    assert.deepEqual(calls, [], 'nothing the player did not tap is cinematic');
+    assert.ok(!f.heroPlayed.some(p => p.id === 'finisher'), 'a poison tick does not swing the katana');
     assert.deepEqual(f.played, ['down_fade']);
   } finally { X.UI = prev; }
 });

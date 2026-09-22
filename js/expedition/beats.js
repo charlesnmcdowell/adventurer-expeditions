@@ -123,7 +123,11 @@ async function cinematic(scene, kind, actor, target, fn) {
   return X.UI.cinematic(scene, kind, focus, fn);
 }
 
-async function playDowns(scene, downs, events) {
+// A finishing move plays only when the player spent the Finisher on the kill
+// (Hiro, round 3): `byFinisher` is true only for the step whose hero action was
+// a tapped Finisher request. Every other death — Katana Slash, a counter, a
+// riposte, a bleed tick — is an ordinary death with the normal hit-stop.
+async function playDowns(scene, downs, events, byFinisher) {
   // Resolve each death once, sequentially: a paired clip embeds one victim.
   // This also covers off-turn ripostes, DOT kills and additional cleave victims.
   for (const e of downs) {
@@ -132,7 +136,7 @@ async function playDowns(scene, downs, events) {
     if (target.__finisherPresented) { await target.play('down_fade'); continue; }
     const source = e.by || [...(events || [])].reverse().find(p => p.uid === e.uid && ['damage', 'execute'].includes(p.t))?.by;
     const killer = actorOf(scene, source) || scene.hero;
-    if (target.side === 'b' && killer && killer.side === 'a' && killer.alive && !killer._destroyed) {
+    if (byFinisher && target.side === 'b' && killer && killer.side === 'a' && killer.alive && !killer._destroyed) {
       await cinematic(scene, 'kill', killer, target, async () => {
         sfx(scene, 'slash', 'use');
         await killer.play('finisher', { target, lethal: true, level: scene.enc?.run?.levels?.finisher || 1,
@@ -156,17 +160,18 @@ async function heroAction(scene, hero, g, step) {
 
   if (skill === 'katana_slash' || skill === 'basic_attack') {
     const first = hits[0] ? targetOf(hits[0]) : actorOf(scene, e.target);
-    const lethal = lethalTarget(g, first);
-    const clip = lethal ? 'finisher' : level >= 3 && skill === 'katana_slash' ? 'slash_wide' : 'slash';
-    const painted = hero.sheetClipFor ? hero.sheetClipFor(clip, { level, target: first, lethal }) : null;
+    // A lethal Katana Slash is a normal kill (GDD §7, Hiro round 3): the ordinary
+    // slash, then the victim's own death. The finishing move belongs to the
+    // Finisher the player tapped, and to nothing else.
+    const clip = level >= 3 && skill === 'katana_slash' ? 'slash_wide' : 'slash';
+    const painted = hero.sheetClipFor ? hero.sheetClipFor(clip, { level, target: first, lethal: false }) : null;
     sfx(scene, 'slash', 'use');
-    await hero.play(clip, { target: first, level, lethal, hold: level >= 2 ? 200 : 140, onContact: () => {
+    await hero.play(clip, { target: first, level, lethal: false, hold: level >= 2 ? 200 : 140, onContact: () => {
       sfx(scene, 'slash', 'hit');
       hits.forEach((h, i) => deferImpact(scene, i * 70, () => impact(scene, targetOf(h), h, { arc: level >= 2 ? 0xd9c2ff : 0xe8dfc8, hitStop: i === 0, shake: level >= 3 ? 0.004 : 0, clip: painted })));
       if (!hits.length) { const t = first; if (t) { sfx(scene, 'miss', 'miss'); } }
       if (level >= 2 && first) scene.time.delayedCall(90, () => V().slashArc(scene, first.chest().x + 20, first.chest().y - 10, 0xd9c2ff));
     } });
-    if (lethal && first.alive) first.__finisherPresented = true;
   } else if (skill === 'god_aura') {
     sfx(scene, 'guard', 'use');
     V().flashOverlay(scene, 0xa66bff, 0.12);
@@ -325,10 +330,9 @@ async function allyAction(scene, ally, g) {
     return;
   }
   const first = hits[0] ? targetOf(hits[0]) : actorOf(scene, e.target);
-  const lethal = lethalTarget(g, first);
+  // A companion's kill is an ordinary kill: only Hiro's tapped Finisher finishes.
   sfx(scene, 'slash', 'use');
-  await ally.play(lethal ? 'finisher' : 'slash', { target: first, lethal, onContact: () => { sfx(scene, 'slash', 'hit'); hits.forEach((h, i) => deferImpact(scene, i * 60, () => impact(scene, targetOf(h), h, { arc: 0xe8dfc8, hitStop: i === 0 }))); } });
-  if (lethal && first.alive) first.__finisherPresented = true;
+  await ally.play('slash', { target: first, lethal: false, onContact: () => { sfx(scene, 'slash', 'hit'); hits.forEach((h, i) => deferImpact(scene, i * 60, () => impact(scene, targetOf(h), h, { arc: 0xe8dfc8, hitStop: i === 0 }))); } });
 }
 
 // A human foe: a spell or shot is a cast and a bolt; anything else a lunge.
@@ -380,12 +384,17 @@ Beats.play = async function (scene, step) {
       }
       await finishReactions(scene);
       await playTicks(scene, g.after);
-      await playDowns(scene, g.down, step.events);
+      await playDowns(scene, g.down, step.events, finisherKill);
     };
-    const kills = actor && actor.side === 'a' && g.down.some(d => actorOf(scene, d.uid)?.side === 'b');
+    // Cinematic rules (Hiro, round 3): a tapped skill gets the `cast` beat; only
+    // a kill made *with the tapped Finisher* gets the heavier `kill` beat and a
+    // finishing move. An automatic Katana Slash that happens to kill gets neither.
     const tapped = step.hero && step.choice && step.choice.how === 'request';
+    const tappedFinisher = tapped && step.choice.action && step.choice.action.skillId === 'finisher';
+    const kills = actor && actor.side === 'a' && g.down.some(d => actorOf(scene, d.uid)?.side === 'b');
+    const finisherKill = !!(tappedFinisher && kills);
     const tgt = actorOf(scene, (kills && g.down.find(d => actorOf(scene, d.uid)?.side === 'b')?.uid) || g.use.target);
-    if (actor && (kills || tapped)) await cinematic(scene, kills ? 'kill' : 'cast', actor, tgt, perform);
+    if (actor && tapped) await cinematic(scene, finisherKill ? 'kill' : 'cast', actor, tgt, perform);
     else await perform();
   } else if (step.choice && step.choice.action && step.choice.action.kind === 'hold') {
     await wait(scene, 200);

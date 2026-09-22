@@ -89,8 +89,17 @@ Art.paint = function (scene, run) {
   view.destroy = () => { if (view.destroyed) return; cleanup(); root.destroy(); };
   root.once('destroy', cleanup);
   scene.events.on('update', advance); scene.events.once('shutdown', view.destroy);
+  // Scenery that has not arrived yet is not scenery that failed. On a slow
+  // connection the painting can still be in flight when the scene paints, so
+  // wait for the loader to finish and try once more; only then is it a failure.
+  // (Found in round 3 by throttling the network — the inn used to hard-fail.)
   const valid = view.setParty(run);
-  view.readyPromise = view.ready = Promise.resolve(valid);
+  view.readyPromise = view.ready = valid ? Promise.resolve(true) : new Promise(resolve => {
+    if (!scene.load || !scene.load.isLoading || !scene.load.isLoading()) { resolve(view.setParty(run)); return; }
+    const done = () => { if (view.destroyed) { resolve(false); return; } resolve(view.setParty(run)); };
+    scene.load.once('complete', done);
+    scene.events.once('shutdown', () => { scene.load.off('complete', done); resolve(false); });
+  });
   return view;
 };
 })();

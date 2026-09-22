@@ -44,6 +44,18 @@ X.weatherKinds = {
 };
 Camp.weatherOf = q => X.weatherKinds[(q && q.weather) || 'clear'] || X.weatherKinds.clear;
 
+// The weather a quest actually gets, resolved once for both the battle plates
+// and the travel panorama. Deliberately no `groundId`: a plate carries its own
+// bias (the marsh plate's is rain) which would quietly overrule the quest's
+// declared sky — the reed marsh is a *clear* night (GDD §5). The phase is
+// applied, so a night storm reads as night rather than as a bright day storm.
+Camp.weatherFor = function (quest, world, phase) {
+  const over = Camp.weatherOf(quest);
+  const w = (world && world.world) || world || { seed: 1, questClock: 0 };
+  try { return A.Weather.at(w, { phase: phase || (quest && quest.phase) || 'day', override: over }); }
+  catch (e) { return over; }
+};
+
 // Enemies beyond the tutorial. `bg` comes from the quest's plates, not the encounter.
 Object.assign(X.enemies, {
   dire_wolf_2:  { base: 'dire_wolf', level: 6, kind: 'wolf', frame: 0, height: 250, statMult: { hp: 2.0, atk: 1.15 } },
@@ -92,12 +104,22 @@ Camp.timesCleared = (run, questId) => (run.cycles && run.cycles[questId]) || 0;
 Camp.scaleFor = (run, questId) => Math.min(3.0, 1 + 0.3 * Camp.timesCleared(run, questId));
 
 // The order the Embark button walks: tutorial once, then the four in a cycle.
-Camp.nextQuestId = function (run) {
+// The quests this build will actually hand out, in order: the tutorial road,
+// then whichever loop quests the slice has opened (all of them once the slice
+// is lifted). Anything not on that list is unreachable, not merely unlisted.
+Camp.openQuestIds = function () {
   const loop = X.quests.filter(q => !q.tutorial).map(q => q.id);
-  if (X.slice && X.slice.firstLevelOnly) return 'road';         // the slice is the road until Hiro reopens the loop
+  if (!(X.slice && X.slice.firstLevelOnly)) return loop;
+  const open = (X.slice.openQuests || []).filter(id => loop.includes(id));
+  return open;
+};
+Camp.questOpen = id => id === 'road' || Camp.openQuestIds().includes(id);
+Camp.nextQuestId = function (run) {
+  const open = Camp.openQuestIds();
   if (!run.questsDone.includes('road')) return 'road';
+  if (!open.length) return 'road';                              // nothing past the tutorial is open yet
   const n = run.questsDone.filter(id => id !== 'road').length;
-  return loop[n % loop.length];
+  return open[n % open.length];
 };
 
 // ---------------------------------------------------------------- recruits
@@ -183,8 +205,11 @@ Camp.fielded = (run, key) => (run.field || []).includes(key);
 Camp.canBuy = (run, key) => !!Camp.recruit(key) && Camp.recruitReady(key) && !Camp.recruitingLocked() && !Camp.owns(run, key) && run.gold >= Camp.recruitCost(run);
 Camp.buy = function (run, key) {
   if (!Camp.recruit(key)) return { ok: false, reason: 'unknown' };
-  if (!Camp.recruitReady(key)) return { ok: false, reason: 'art unavailable' };
+  // The lock is checked before the art: while recruiting is shut a recruit's art
+  // is deliberately not loaded (Painted.needed), so 'art unavailable' would be a
+  // symptom reported as the cause. The honest refusal is the lock itself.
   if (Camp.recruitingLocked()) return { ok: false, reason: 'slice locked' };
+  if (!Camp.recruitReady(key)) return { ok: false, reason: 'art unavailable' };
   if (Camp.owns(run, key)) return { ok: false, reason: 'owned' };
   const cost = Camp.recruitCost(run);
   if (run.gold < cost) return { ok: false, reason: 'gold', cost };

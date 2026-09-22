@@ -23,7 +23,7 @@ const ship = process.argv.includes('--ship') ? new Set(require('../tools/size_ch
       const ready = variant => page.waitForFunction(v => { const s = window.__game?.scene.getScene('Inn'); return s?.isPortalReady() && s.env?.variant === v; }, variant, { timeout: 60000 });
       await ready('inn-hiro-solo');
       const initial = await page.evaluate(() => { const s = __game.scene.getScene('Inn'); return { effects: s.env.effects.length, depth: s.env.root.depth, heroFigure: !!s.heroFigure, companions: (s.companionFigures || []).length, locked: s.lockedButtons.length, replay: s.embarkBtn.label.text }; });
-      assert.equal(initial.effects, 3); assert.equal(initial.depth, -100); assert.equal(initial.heroFigure, false); assert.equal(initial.companions, 0); assert.equal(initial.locked, 2); assert.match(initial.replay, /Replay/);
+      assert.equal(initial.effects, 3); assert.equal(initial.depth, -100); assert.equal(initial.heroFigure, false); assert.equal(initial.companions, 0); assert.equal(initial.locked, 1, 'only Unlock a hero stays shut while Road in the Rain is open'); assert.match(initial.replay, /Replay/);
       await page.screenshot({ path: path.join(OUT, 'solo-' + width + '.png') });
       const paused = await page.evaluate(() => { const s = __game.scene.getScene('Inn'); s.corner.togglePause(); return s.env.effects.map(f => f.elapsed); });
       await page.waitForTimeout(500);

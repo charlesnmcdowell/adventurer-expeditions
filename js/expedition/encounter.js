@@ -253,7 +253,9 @@ Enc.step = function (enc) {
     // The hold-off window opens the first time Finisher becomes usable.
     if (enc.holdOffArmed !== true && Enc.finisherState(enc).ready) { enc.holdOff = X.finisherHoldOffTurns; enc.holdOffArmed = true; }
     choice = heroAction(enc, u);
-    res = commit(st, u, choice);
+    const unmask = Enc.bossExecutable(enc, choice);              // a boss under the boss line is executable for this resolution only
+    if (unmask) { unmask.ch.boss = false; enc.log.push({ t: 'bossExecutable', uid: unmask.uid }); }
+    try { res = commit(st, u, choice); } finally { if (unmask) unmask.ch.boss = true; }
     if (res && res.ok === false) { A.Combat.act(st, u, { kind: 'hold' }); choice = { action: { kind: 'hold' }, how: 'hold', error: res.error }; }
   } else {
     A.Combat.aiTakeTurn(st, u);
@@ -264,6 +266,21 @@ Enc.step = function (enc) {
   enc.cursor = st.events.length;
   if (st.over && enc.request) { enc.log.push({ t: 'requestDropped', reason: 'over' }); enc.request = null; }
   return { over: !!st.over, actor: u.uid, hero: u.uid === enc.heroUid, choice, events };
+};
+
+// Boss execution (GDD §7, Hiro round 3). The shared engine executes an enemy
+// under the skill's threshold but exempts bosses outright (`!t.ch.boss`), and
+// js/core is never edited here. So when — and only when — a boss is already at
+// or under X.finisherThresholds.boss and the Finisher is what is being spent on
+// it, the layer lifts that exemption for the length of the resolution and lets
+// the engine run its own execute path: the same event, the same death
+// bookkeeping, the same heal. Anything above the line is left as a heavy hit.
+Enc.bossExecutable = function (enc, choice) {
+  if (!choice || !choice.action || choice.action.skillId !== 'finisher' || !choice.tgt) return null;
+  const t = choice.tgt, pct = (X.finisherThresholds && X.finisherThresholds.boss) || 0.25;
+  if (!t.ch || !t.ch.boss || t.downed || !t.maxHp) return null;
+  if ((t.chp + (t.tempHp || 0)) / t.maxHp > pct) return null;
+  return t;
 };
 
 // The headless stand-in for a player in manual mode: at each hero boundary tap

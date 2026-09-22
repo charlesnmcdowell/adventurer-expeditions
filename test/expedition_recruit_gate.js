@@ -34,7 +34,9 @@ test('tutorial recruitment lock applies to direct calls without spending gold', 
   ready(); assert.equal(X.slice.firstLevelOnly, true);
   assert.equal(Camp.canBuy(run, 'bram'), false);
   assert.equal(Camp.buy(run, 'bram').reason, 'slice locked');
-  assert.equal(Camp.buy(run, 'nyx').reason, 'art unavailable');
+  // While the slice is locked that is the refusal for everyone; an unpainted
+  // recruit's own 'art unavailable' is asserted below, with the lock lifted.
+  assert.equal(Camp.buy(run, 'nyx').reason, 'slice locked');
   assert.equal(run.gold, 150); assert.deepEqual(run.roster, []); assert.deepEqual(run.field, []);
 });
 test('Bram purchase and fielding enforce readiness when recruitment is explicitly enabled', () => {

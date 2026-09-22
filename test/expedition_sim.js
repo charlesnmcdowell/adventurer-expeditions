@@ -153,7 +153,52 @@ test('rewards pay once; upgrades deduct exactly once and change the next manifes
   // The next encounter's Hiro owns Finisher and resolves it at level 1.
   const enc2 = Enc.create({ encounter: 'road_ambush', seed: 8, run });
   const m = A.SkillSys.manifest(enc2.hero, enc2.hero.actives.find(a => a.skillId === 'finisher'));
-  assert.equal(m.level, 1); assert.equal(m.data.executeBelow, 0.4);
+  assert.equal(m.level, 1); assert.equal(m.data.executeBelow, X.finisherThresholds.normal);   // flat 50% at every level (GDD §7)
+});
+
+// ------------------------------------------------- Finisher windows (GDD §7)
+test('the Finisher takes a normal enemy at half health and a boss at a quarter', () => {
+  assert.deepEqual(X.finisherThresholds, { normal: 0.50, boss: 0.25 });
+  for (const lvl of [1, 2, 3]) {
+    const run = Enc.freshRun(); run.levels.finisher = lvl;
+    const hero = Enc.makeHero(new A.RNG(3), run);
+    const m = A.SkillSys.manifest(hero, hero.actives.find(a => a.skillId === 'finisher'));
+    assert.equal(m.data.executeBelow, 0.50, 'level ' + lvl + ' window is flat');
+    assert.equal(m.data.requireBelowPct, 0.50, 'level ' + lvl + ' targeting matches the window');
+  }
+  // A normal enemy: offered under the line, not offered above it.
+  const at = (pct, encounter) => {
+    const run = Enc.freshRun(); run.levels.finisher = 1;
+    const enc = Enc.create({ encounter, seed: 5, run });
+    for (const f of enc.st.units.filter(u => u.side === 'b')) f.chp = Math.max(1, Math.round(f.maxHp * pct));
+    return enc;
+  };
+  assert.ok(Enc.skillState(at(0.45, 'road_ambush'), 'finisher').ready, 'a wolf at 45% can be finished');
+  assert.equal(Enc.skillState(at(0.60, 'road_ambush'), 'finisher').reason, 'no_target', 'a wolf at 60% cannot');
+
+  // A boss: a heavy hit above the boss line, an execution at or under it, and
+  // its boss flag is intact afterwards either way.
+  const spend = (pct) => {
+    const enc = at(pct, 'clearing');
+    const boss = enc.st.units.find(u => u.side === 'b' && u.ch.boss);
+    assert.ok(boss, 'the clearing has a boss');
+    for (let i = 0; i < 40 && !enc.st.over; i++) {
+      const t = A.Combat.currentTurn(enc.st); if (!t) break;
+      if (t.unit.uid === enc.heroUid) {
+        Enc.requestSkill(enc, 'finisher');
+        const step = Enc.step(enc);
+        return { executed: step.events.some(e => e.t === 'execute'), flag: boss.ch.boss === true, hp: boss.chp, how: step.choice && step.choice.how };
+      }
+      Enc.step(enc);
+    }
+    return { executed: false, flag: boss.ch.boss === true, hp: boss.chp, how: 'none' };
+  };
+  const low = spend(0.20), high = spend(0.40);
+  assert.equal(low.how, 'request'); assert.ok(low.executed, 'a boss at 20% is finished');
+  assert.ok(low.flag, 'the boss flag is restored after an execution');
+  assert.ok(!high.executed, 'a boss at 40% is not finished');
+  assert.ok(high.hp > 0 && high.hp < Math.round(0.40 * 100), 'but it still takes the hit');
+  assert.ok(high.flag, 'the boss flag is restored after a non-execution');
 });
 
 test('every reachable build clears the road', () => {
@@ -250,7 +295,14 @@ test('travel banter advances its round-robin across rebuilt worlds', () => {
 test('the retained loop uses only painted Bram; tutorial lock and earned upgrades are respected', () => {
   const Camp = X.Campaign;
   const r1 = Camp.freshRun(); assert.equal(Camp.nextQuestId(r1), 'road');
-  r1.questsDone.push('road'); assert.equal(Camp.nextQuestId(r1), 'road', 'shipping slice stays on tutorial');
+  // The slice opens one quest at a time (X.slice.openQuests). Round 3 opened Road
+  // in the Rain and nothing else: after the tutorial the only place to go is rain,
+  // and it repeats rather than rolling on into the city.
+  assert.deepEqual(X.slice.openQuests, ['rain'], 'exactly one loop quest is open');
+  r1.questsDone.push('road'); assert.equal(Camp.nextQuestId(r1), 'rain', 'the tutorial hands off to the one open quest');
+  r1.questsDone.push('rain'); assert.equal(Camp.nextQuestId(r1), 'rain', 'and nothing beyond it opens by itself');
+  assert.ok(Camp.questOpen('road') && Camp.questOpen('rain'));
+  for (const shut of ['city', 'marsh', 'ruins']) assert.ok(!Camp.questOpen(shut), shut + ' stays locked');
   const savedSlice = X.slice; X.slice = Object.assign({}, X.slice, { firstLevelOnly: false });
   try {
   // Explicitly test the preserved future loop without changing the ship lock.
@@ -263,9 +315,11 @@ test('the retained loop uses only painted Bram; tutorial lock and earned upgrade
   assert.equal(Camp.toggleField(run0, 'bram').fielded, false); assert.equal(Camp.toggleField(run0, 'bram').fielded, true);
   assert.deepEqual(run0.field, ['bram']);
   assert.equal(Camp.buy(run0, 'bram').ok, false, 'no double purchase');
-  // Quest order: tutorial once, then the four in a cycle — unless the slice is locked to the road (X.slice).
-  assert.equal(Camp.nextQuestId(r1), 'rain');
-  r1.questsDone.push('rain', 'city', 'marsh', 'ruins'); assert.equal(Camp.nextQuestId(r1), 'rain');
+  // Quest order with the slice lifted: tutorial once, then the four in a cycle.
+  // A run of its own — r1 above belongs to the locked-slice assertions.
+  const r2 = Camp.freshRun(); r2.questsDone.push('road');
+  assert.equal(Camp.nextQuestId(r2), 'rain');
+  r2.questsDone.push('rain', 'city', 'marsh', 'ruins'); assert.equal(Camp.nextQuestId(r2), 'rain');
   // Fights.
   function quest(seed, qid, field, cycles, skillLevel = 1) {
     const run = Camp.freshRun(); run.roster = field.slice(); run.field = field.slice(); run.cycles = cycles || {};

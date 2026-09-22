@@ -33,6 +33,8 @@ const FILES = [
   'js/ui/battle_art.js', 'js/ui/travel_battle_art.js', 'js/ui/mobile_viewport.js', 'js/ui/anime_art.js', 'js/ui/anime_manifest.js',
   'js/ui/anime_identities.js', 'js/ui/asset_queue.js', 'js/ui/anime_world.js', 'js/ui/anime_environments.js', 'js/ui/travel_ambience.js',
   'js/ui/travel_panorama.js', 'js/ui/dialoguebox.js', 'js/ui/cutscenes.js',
+  'js/ui/gate_ambience.js',      // panorama ambience: travel_panorama calls its attach() for every panorama, gate or not
+
   'assets/anime/v2/runtime/marsh.webp', 'assets/anime/v2/runtime/ruins.webp',
   'assets/anime/travel/v1/runtime/forest.webp', 'assets/anime/travel/v1/runtime/marsh.webp', 'assets/anime/travel/v1/runtime/ruins.webp',
   // The recruits' and human foes' busts are composed from these part sheets, then

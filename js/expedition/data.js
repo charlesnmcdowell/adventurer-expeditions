@@ -42,12 +42,15 @@ X.skills = {
     3: { counterNext: 3, counterRounds: 2, cooldown: 1 },
   },
   finisher: {
-    // Executes ordinary enemies under the threshold; a boss cannot be executed, so
-    // `power` is what it does to the Alpha (a heavy, bounded hit). Both need the target under the threshold.
+    // One rule the player can hold in their head (Hiro, round 3): a normal enemy
+    // is finished at half health or less, a boss at a quarter. Flat across levels —
+    // what levelling buys is the heal, the cooldown and the hit itself, not a wider
+    // window. The shared engine refuses to execute a boss at all, so the boss case
+    // is resolved in Enc.step (X.finisherThresholds), never by editing js/core.
     base: { target: 'enemy', permStatGain: 0, questGain: false },
-    1: { requireBelowPct: 0.40, executeBelow: 0.40, healOnKillPct: 0.25, cooldown: 3, power: 2.4 },
+    1: { requireBelowPct: 0.50, executeBelow: 0.50, healOnKillPct: 0.25, cooldown: 3, power: 2.4 },
     2: { requireBelowPct: 0.50, executeBelow: 0.50, healOnKillPct: 0.35, cooldown: 3, power: 2.8 },
-    3: { requireBelowPct: 0.60, executeBelow: 0.60, healOnKillPct: 0.50, cooldown: 2, power: 3.2 },
+    3: { requireBelowPct: 0.50, executeBelow: 0.50, healOnKillPct: 0.50, cooldown: 2, power: 3.2 },
   },
 };
 
@@ -90,10 +93,19 @@ X.economy = { start: 0, costs: { 1: 20, 2: 30, 3: 40 }, maxLevel: 3 };
 // this many of Hiro's turns so a beginner can tap it themselves.
 X.finisherHoldOffTurns = 1;
 
+// Finisher windows (GDD §7). `normal` is also what the skill's own override
+// carries; `boss` is applied by the Expedition layer because the shared engine
+// exempts bosses from execution outright.
+X.finisherThresholds = { normal: 0.50, boss: 0.25 };
+
 // The first five minutes, locked (Hiro, 2026-09-20): only the tutorial road is
 // playable; the inn's Embark and Unlock-a-hero are shown locked and the road
 // replays. Flip to false when the loop reopens for testing.
-X.slice = { firstLevelOnly: true };
+// The slice opens one step at a time (Hiro). `firstLevelOnly` keeps the inn's
+// recruiting and every later quest shut; `openQuests` is the whitelist of loop
+// quests that may follow the tutorial road — first entry is what Embark offers.
+// Round 3 opened exactly one: Road in the Rain.
+X.slice = { firstLevelOnly: true, openQuests: ['rain'] };
 
 // Skills are the player's to fire (Hiro, 2026-09-20): Hiro auto-uses only
 // Katana Slash; God Aura, Counter Attack and Finisher wait for a tap. The
@@ -102,7 +114,9 @@ X.manualSkills = true;
 
 // Cinematic beats: a tapped skill and every killing blow slow the world and
 // push the main camera in; the HUD sits on its own camera and stays put.
-X.cinematic = { cast: { scale: 0.5, zoom: 1.16, ms: 240 }, kill: { scale: 0.36, zoom: 1.26, ms: 220 } };
+// Slower, not laggy (Hiro, round 3): cast 0.50 → 0.70, kill 0.36 → 0.55, and the
+// push-in snaps (240/220 ms → 150/140) instead of drifting.
+X.cinematic = { cast: { scale: 0.70, zoom: 1.16, ms: 150 }, kill: { scale: 0.55, zoom: 1.26, ms: 140 } };
 
 // HUD icon radius (was 18): easier to tap on a phone.
 X.hudIconR = 26;
@@ -115,7 +129,7 @@ X.skillText = {
   katana_slash:   { name: 'Katana Slash',  text: 'Hiro swings his sword at one enemy. At level 3 he hits all of them.' },
   god_aura:       { name: 'God Aura',      text: 'A glowing shield. Hiro takes less damage for a while. Higher levels last longer.' },
   counter_attack: { name: 'Counter Attack', text: 'Hiro gets ready. When an enemy attacks him, he blocks it and strikes back.' },
-  finisher:       { name: 'Finisher',      text: 'A big final strike. If the enemy is weak, it is knocked out right away, and Hiro heals a little.' },
+  finisher:       { name: 'Finisher',      text: 'A big final strike. If a normal enemy is at half health or less, it is knocked out. Bosses have to be at a quarter. Hiro heals a little.' },
 };
 
 // Painted sheets (GDD v0.8 §10.3). art.hiroSheet turns Astra's Hiro atlas on;

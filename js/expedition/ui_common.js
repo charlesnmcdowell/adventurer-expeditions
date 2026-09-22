@@ -123,35 +123,59 @@ UI.splitCameras = function (scene) {
 
 // A cinematic beat: slow the world (tweens, animations, timers) and push the
 // main camera toward a point while fn runs; restore after. kind: 'cast' | 'kill'.
+// The camera's resting state for a scene: zoom 1, centred. Captured once, on
+// the scene, and never re-read from the live camera — a baseline sampled while
+// a restore pan was still in flight used to ratchet the zoom in a little on
+// every kill, which is why the camera stopped returning to 1 (Hiro, round 3).
+UI.cameraBase = function (scene) {
+  if (!scene.__cameraBase) {
+    const cam = scene.cameras.main;
+    // The resting camera of every Expedition scene: unzoomed and centred on the
+    // 1280x760 view. Nothing else scrolls or zooms it, so this is a constant
+    // rather than a sample — which is the point (a sampled baseline drifted).
+    scene.__cameraBase = { tween: 1, anim: 1, clock: 1, zoom: 1,
+      x: cam.width / 2, y: cam.height / 2, scrollX: 0, scrollY: 0 };
+  }
+  return scene.__cameraBase;
+};
+
+// Put the world back: time scales to 1, camera effects cancelled, zoom and
+// scroll snapped to the baseline. Every exit calls this — fight over, defeat,
+// restart, Start over, scene shutdown — so nothing can leave the camera pushed in.
+UI.resetCamera = function (scene) {
+  const base = UI.cameraBase(scene), cam = scene.cameras && scene.cameras.main;
+  try { scene.tweens.timeScale = base.tween; scene.anims.globalTimeScale = base.anim; scene.time.timeScale = base.clock; } catch (e) {}
+  if (cam) {
+    try { cam.panEffect && cam.panEffect.reset(); cam.zoomEffect && cam.zoomEffect.reset(); } catch (e) {}
+    try { cam.setZoom(base.zoom); cam.setScroll(base.scrollX, base.scrollY); } catch (e) {}
+  }
+  const state = scene.__cinematicState;
+  if (state) { state.tokens.length = 0; }
+  scene.__cine = 0;
+};
+
 UI.cinematic = async function (scene, kind, focus, fn) {
-  const c = (X.cinematic && X.cinematic[kind]) || { scale: 0.5, zoom: 1.15, ms: 240 };
+  const c = (X.cinematic && X.cinematic[kind]) || { scale: 0.7, zoom: 1.15, ms: 150 };
   const cam = scene.cameras.main;
+  const base = UI.cameraBase(scene);
   let state = scene.__cinematicState;
   if (!state) {
-    state = scene.__cinematicState = { tokens: [], closed: false, base: {
-      tween: scene.tweens.timeScale, anim: scene.anims.globalTimeScale, clock: scene.time.timeScale,
-      zoom: cam.zoom, x: cam.scrollX + cam.width / 2, y: cam.scrollY + cam.height / 2,
-      scrollX: cam.scrollX, scrollY: cam.scrollY,
-    } };
+    state = scene.__cinematicState = { tokens: [], closed: false, base };
     state.restore = () => {
-      scene.tweens.timeScale = state.base.tween; scene.anims.globalTimeScale = state.base.anim; scene.time.timeScale = state.base.clock;
+      scene.tweens.timeScale = base.tween; scene.anims.globalTimeScale = base.anim; scene.time.timeScale = base.clock;
     };
-    state.shutdown = () => {
-      state.closed = true; state.restore();
-      try { cam.panEffect.reset(); cam.zoomEffect.reset(); cam.setZoom(state.base.zoom); cam.setScroll(state.base.scrollX, state.base.scrollY); } catch (e) {}
-      scene.__cine = 0; scene.__cinematicState = null;
-    };
+    state.shutdown = () => { state.closed = true; UI.resetCamera(scene); scene.__cinematicState = null; };
     scene.events.once('shutdown', state.shutdown);
   }
   const reduced = typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const token = { scale: reduced ? 1 : c.scale, zoom: reduced ? state.base.zoom : c.zoom,
-    x: focus ? Math.max(W * .32, Math.min(W * .68, focus.x)) : state.base.x,
-    y: focus ? Math.max(H * .42, Math.min(H * .6, focus.y)) : state.base.y };
+  const token = { scale: reduced ? 1 : c.scale, zoom: reduced ? base.zoom : c.zoom,
+    x: focus ? Math.max(W * .32, Math.min(W * .68, focus.x)) : base.x,
+    y: focus ? Math.max(H * .42, Math.min(H * .6, focus.y)) : base.y };
   state.tokens.push(token); scene.__cine = state.tokens.length;
   const apply = current => {
     const k = current ? Math.min(...state.tokens.map(t => t.scale)) : 1;
-    scene.tweens.timeScale = state.base.tween * k; scene.anims.globalTimeScale = state.base.anim * k; scene.time.timeScale = state.base.clock * k;
-    const target = current || state.base;
+    scene.tweens.timeScale = base.tween * k; scene.anims.globalTimeScale = base.anim * k; scene.time.timeScale = base.clock * k;
+    const target = current || base;
     try { cam.pan(target.x, target.y, c.ms, 'Sine.easeOut', true); cam.zoomTo(target.zoom, c.ms, 'Sine.easeOut', true); } catch (e) {}
   };
   apply(token);
@@ -160,9 +184,7 @@ UI.cinematic = async function (scene, kind, focus, fn) {
     if (!state.closed) {
       state.tokens = state.tokens.filter(t => t !== token); scene.__cine = state.tokens.length;
       apply(state.tokens[state.tokens.length - 1]);
-      if (!state.tokens.length) {
-        scene.events.off('shutdown', state.shutdown); scene.__cinematicState = null;
-      }
+      // The state (and its baseline) stays on the scene for the scene's life.
     }
   }
 };
@@ -225,6 +247,7 @@ UI.corner = function (scene, opts) {
   };
   ctl.closeConfirm = () => { if (ctl.confirm) { ctl.confirm.root.destroy(); ctl.confirm = null; scene.__confirmRect = null; } };
   ctl.startOver = () => {
+    UI.resetCamera(scene);                       // never carry a pushed-in camera into a fresh run (round 3 #1)
     const fresh = X.Run.startOver(scene.run);
     if (opts.onStartOver) { opts.onStartOver(fresh); return; }
     scene.scene.start('Expedition', { run: fresh, fresh: true, seed: scene.seed != null ? scene.seed + 1 : undefined });

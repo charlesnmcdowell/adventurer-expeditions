@@ -50,7 +50,7 @@ class ExpeditionScene extends Phaser.Scene {
 
     // The quest's time of day and weather grade the plate (§5: night and storm are data, not art).
     this.phase = this.quest.phase || 'day';
-    this.game_.quest = { travel: { weather: X.Campaign.weatherOf(this.quest) } };
+    this.game_.quest = { travel: { weather: X.Campaign.weatherFor(this.quest, this.world, this.phase) } };
     this.buildTextures(); X.UI.installBusts(this);
     this.env = A.BattleArt.paint(this, this.encs[this.run.wave].bg, this.phase);
     this.buildBand();
@@ -190,6 +190,7 @@ class ExpeditionScene extends Phaser.Scene {
     // banter — the same beat as the way out (§5.2). The next wave is the checkpoint.
     this.run.wave = this.run.wave + 1; this.run.checkpoint = this.run.wave;
     this.run.phase = 'travel'; this.run.travelLeg = 'midleg'; X.Run.save(this.run);
+    X.UI.resetCamera(this);
     this.scene.start('Travel', { run: this.run, seed: this.seed, leg: 'midleg' });
   }
 
@@ -258,6 +259,7 @@ class ExpeditionScene extends Phaser.Scene {
 
   async victory() {
     const enc = this.enc;
+    X.UI.resetCamera(this);                                                    // the fight ended: zoom/pan home before the payout (round 3 #1)
     // Between fights hostile effects clear and Hiro recovers (GDD §11).
     for (const a of this.actors.values()) if (a.side === 'a') { const u = a.unit; u.statuses = []; u.counter = 0; u.downed = false; u.chp = u.maxHp; a.alive = true; a.root.setVisible(true); a.img.setAlpha(1); a.plate.setVisible(true); a.refresh(); }
     await this.hero.play('victory');
@@ -311,6 +313,7 @@ class ExpeditionScene extends Phaser.Scene {
 
   async defeat() {
     await this.hero.play('kneel');
+    X.UI.resetCamera(this);                                                    // a kill cinematic must not survive into the defeat card (round 3 #1)
     await wait(this, 900);
     // Retry the same fight with the same purchases and a new seed. No story, no
     // grave (GDD v0.8 §18): losing costs time, never progress. The tutorial road
@@ -319,13 +322,14 @@ class ExpeditionScene extends Phaser.Scene {
     if (this.quest.tutorial) {
       this.hud.banner('Again', 1200);
       await wait(this, 700);
+      X.UI.resetCamera(this);
       this.scene.restart({ seed: this.seed + 1 });
       return;
     }
     const won = this.encs.slice(0, this.run.wave).reduce((n, e) => n + (this.run.awarded.includes(e.id) ? e.gold : 0), 0);
     this.hud.defeatCard({ title: this.world.companions.length ? 'The party falls back' : 'Down', sub: won ? 'Gold kept: ' + won : 'Nothing lost but time' },
-      () => this.scene.restart({ seed: this.seed + 1 }),
-      () => { this.run.phase = 'travel'; this.run.travelLeg = 'return'; this.run.wave = 0; X.Run.save(this.run); this.scene.start('Travel', { run: this.run, seed: this.seed, leg: 'return' }); });
+      () => { X.UI.resetCamera(this); this.scene.restart({ seed: this.seed + 1 }); },
+      () => { X.UI.resetCamera(this); this.run.phase = 'travel'; this.run.travelLeg = 'return'; this.run.wave = 0; X.Run.save(this.run); this.scene.start('Travel', { run: this.run, seed: this.seed, leg: 'return' }); });
   }
 
   // Quest complete: sheathed Hiro, a compact card over the scene, Replay.
@@ -336,8 +340,9 @@ class ExpeditionScene extends Phaser.Scene {
     if (this.world.companions.length) X.Campaign.afterQuest(this.run, true);
     this.run.phase = 'travel'; this.run.travelLeg = 'return';
     X.Run.save(this.run);
+    X.UI.resetCamera(this);                                                    // the completion card always draws over an un-zoomed scene (round 3 #1)
     await wait(this, 400);
-    this.hud.completion(this.run, () => this.scene.start('Travel', { run: this.run, seed: this.seed, leg: 'return' }), { title: this.quest.done || 'Contract done', encounters: this.encs });
+    this.hud.completion(this.run, () => { X.UI.resetCamera(this); this.scene.start('Travel', { run: this.run, seed: this.seed, leg: 'return' }); }, { title: this.quest.done || 'Contract done', encounters: this.encs });
   }
 
 }

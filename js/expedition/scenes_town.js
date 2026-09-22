@@ -18,7 +18,7 @@ const bigButton = (...args) => X.UI.bigButton(...args);
 // The scene's weather/phase context, read by BattleArt and the panorama.
 function questContext(scene, quest) {
   scene.game_ = scene.game_ || { world: { seed: 1, questClock: 0 } };
-  scene.game_.quest = { travel: { weather: X.Campaign.weatherOf(quest) } };
+  scene.game_.quest = { travel: { weather: X.Campaign.weatherFor(quest, scene.game_, quest && quest.phase) } };
   return quest ? quest.phase || 'day' : 'day';
 }
 
@@ -79,10 +79,15 @@ class InnScene extends Phaser.Scene {
     this.hud.refresh();
     this.world.restoreIds();
     const locked = (btn, label) => { btn.zone.disableInteractive(); btn.setAlpha(0.55); btn.label.setText(label + '  🔒'); this.lockedButtons.push(btn); return btn; };
-    locked(bigButton(this, W - 112, H - 230, 200, 100, '⚔', 'Next quest', () => {}, 0x5a4a34), 'Next quest');
+    // Whatever the slice has opened past the road is a real Embark; everything
+    // else stays visibly shut. Hiring is locked for the whole slice.
+    const nextId = X.Campaign.nextQuestId(run);
+    const next = nextId !== 'road' ? X.Campaign.quest(nextId) : null;
+    if (next) this.nextBtn = bigButton(this, W - 112, H - 230, 200, 100, '⚔', next.title, () => this.embark(), 0xf2c94c);
+    else locked(bigButton(this, W - 112, H - 230, 200, 100, '⚔', 'Next quest', () => {}, 0x5a4a34), 'Next quest');
     locked(bigButton(this, W - 336, H - 230, 200, 100, '☺', 'Unlock a hero', () => {}, 0x5a4a34), 'Unlock a hero');
     this.embarkBtn = bigButton(this, W - 112, H - 110, 200, 100, '↻', 'Replay the road', () => this.replayRoad(), 0xf2c94c);
-    this.btn = this.embarkBtn;
+    this.btn = this.nextBtn || this.embarkBtn;
   }
   replayRoad() {
     if (!this.isPortalReady() || this.ended) return;
@@ -257,8 +262,7 @@ class TravelScene extends Phaser.Scene {
     this.pano.setDepth(-10);
     // The quest's weather over the panorama (the battle plates get it from BattleArt).
     try {
-      // No groundId: the marsh's rain bias would overrule the quest's declared sky (§5: night-clear marsh, storm ruins).
-      const wx = A.Weather.at(world.world, { phase, override: X.Campaign.weatherOf(this.quest) });
+      const wx = X.Campaign.weatherFor(this.quest, world, phase);   // one resolution for battle and travel (§5)
       this.pano.weather = A.WeatherFX.attach(this, wx, phase, { x: 0, y: 0, w: W, h: H }, { depth: -5 });
     } catch (e) {}
     try { A.Music.playStory(this.quest.music); } catch (e) {}
