@@ -936,6 +936,12 @@ Two consequences that need a call — see §16.
 
 ## 10. Art direction and animation method
 
+**Art standard, 2026-09-24:** [ART_STANDARD.md](ART_STANDARD.md) is now the
+binding reference for new art. Its core rule: because Hiro is the only playable
+character, non-interactive scenes (inn, travel) are painted with Hiro inside
+them; fights keep separate sprites. It records how the inn and travel are built
+today and what Astra delivers for new painted travel beats.
+
 Unchanged from v0.5 and still binding. The painted illustration style is kept at
 full fidelity. Animation is **frame-based**: Astra paints full key frames at plate
 fidelity; Fable plays them as limited animation with holds, smears, ease curves,
@@ -1832,6 +1838,14 @@ foes' busts are baked from the part sheets like the recruits' (new).
 ---
 
 ## 17. Decisions
+
+**2026-09-24 (art standard).** Hiro. The inn stays as built; the Bram inn
+painting appears at random, now and then, on return from a quest (not built;
+frequency open). Travel is to be repainted as run-through scenes with Hiro
+painted into them — vaulting, sliding, climbing — on the method in
+[ART_STANDARD.md](ART_STANDARD.md) §5, starting with a one-beat test. **Enemies
+are monsters only**, which keeps dismemberment and disintegration finishes off
+human characters and inside the PEGI 12 target.
 
 **2026-09-22 (version 1 and the update model).** Hiro. Version 1 ships with
 **Hiro as the only hero**: no hiring, the four open levels, two or three new enemy

@@ -15,6 +15,33 @@ of small fixes within a day.
 
 ---
 
+## 2026-09-24 — Art standard: Hiro painted into every non-interactive scene
+
+Opus 5.5. Docs and research only; no game code or art changed.
+
+**Verified how the inn is built.** One still painting with Hiro in it, plus three
+4-frame loops (candle, stew steam, hearth) placed from `inn.json`. Hiro does not
+move; Astra's four-painting eating loop was rejected because the paintings did
+not line up. Hiro: keep it as is.
+
+**Verified how travel is built.** A website panorama scrolled sideways, code-driven
+ambience on top, and Hiro as a separate sprite running in place at a fixed height.
+Measured why it does not fit: fixed foot height lands on wall faces in the city
+and ruins, the ground moves ~77 px per stride so his feet slide, the panoramas
+are the website's style, and nothing reacts to him.
+
+**New `docs/ART_STANDARD.md`**, with screenshots in `docs/art_research/`: the
+standard, the research, three ways to build painted travel (recommended: clean
+plate + Hiro painted onto it + local loops at his footfalls + a camera path),
+beats per location, and what Astra delivers per beat. First job when art
+resumes: one test beat, the forest-road carriage vault.
+
+**Decisions (Hiro):** inn unchanged; the Bram inn painting shows at random on
+return (not built); travel to be repainted as run-through scenes; enemies are
+monsters only. GDD §10 pointer and §17 decision added.
+
+---
+
 ## 2026-09-22 — Version 1 scope, the update model, and the size rule corrected
 
 Opus 5.5. Docs only; no code changed. Hiro set the shape of version 1 and what
