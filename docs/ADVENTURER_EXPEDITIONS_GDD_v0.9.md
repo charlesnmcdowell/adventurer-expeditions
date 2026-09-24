@@ -16,6 +16,19 @@ after play has started. The next hero is not designed yet and is Hiro's to
 create. **Bram is not the next hero** (he was an AI proposal); his finished art
 stays on disk as an archive and as the test case for the hero-pack format.
 
+*Version 1 content, decided 2026-09-24 (§5, §7, §17).* **Three locations, then
+the end:** Road in the Rain (forest) → the swamp → the city, and after the city
+boss an ending screen announcing **Part 2 with a new protagonist**, with Hiro's
+Facebook and a way to send feedback. The old ruins is out of version 1.
+**Monsters:** forest — wolf, thorn plant, Alpha boss (built); swamp — serpent,
+beetle, moss giant, **hag boss**; city — goblin, spider, **orc boss** (new art).
+Every enemy gets **at least two unique Hiro finishing moves**; swamp monsters
+**melt into mud** on defeat and city monsters **burn away in blue flame**, where
+the forest keeps its sparkle ([ART_STANDARD.md](ART_STANDARD.md) §7). **Skill
+levelling is removed:** each skill is unlocked once with gold, each unlock
+costing moderately more, and **God Aura now raises attack instead of defense**.
+None of this is built yet.
+
 *Playable.* Four levels in a fixed order — **Road in the Rain, the reed marsh,
 the city watch, the old ruins** — then round again. "Clear the road" is retired
 from the rotation and survives only as a dev-panel preview. A new run starts in
@@ -127,6 +140,11 @@ quests are contracts and the loop is the game.
 
 ## 2. Scope lock (revised 2026-09-19)
 
+**Current override, 2026-09-24 (Hiro), adds to the one below.** Version 1 is
+three locations — forest, swamp, city — ending after the city boss with the
+Part 2 announcement (§5.0). The old ruins leaves version 1. Skill levelling is
+removed from version 1 (§7.0).
+
 **Current override, 2026-09-22 (Hiro), supersedes the one below.** Version 1
 is Hiro alone — no hiring, no second hero — with the four open levels, the wolf,
 thorn lurker and Alpha, plus two or three new enemy types and smoother
@@ -225,7 +243,7 @@ Two things to spend gold on, both on one screen, neither a scrolling list.
 | Spend | Cost | Effect |
 |---|---|---|
 | Recruit a member | 60 / 90 / 120 g, rising per recruit owned | Adds them to the roster, finished and ready |
-| Raise a skill | 20 / 30 / 40 g per level | Hiro's skills, levels 1–3, exactly as the tutorial teaches |
+| Raise a skill | 20 / 30 / 40 g per level | Hiro's skills, levels 1–3, exactly as the tutorial teaches. *Superseded 2026-09-24: no levels — each skill is unlocked once, each unlock costing more (§7.0).* |
 
 Recruits appear as busts along the bar; a tap shows the class, the kit and the
 price. Skill levelling uses the HUD icons the player already learned in the
@@ -257,6 +275,44 @@ HUD in *inn mode* (portrait and icons only).
 ---
 
 ## 5. Quests, environments and music
+
+### 5.0 Version 1 — three locations and an ending (decided 2026-09-24)
+
+*Hiro, 2026-09-24. Supersedes the four-level order below for version 1; not built.*
+
+| # | Location (today's quest) | Regular monsters | Boss | Defeat effect | Music |
+|---|---|---|---|---|---|
+| 1 | Forest — Road in the Rain | Dire wolf, thorn plant | Alpha | Sparkle (built) | Origin of the Last Name |
+| 2 | Swamp — the reed marsh | Serpent, beetle, moss giant | **Hag** | **Melt into mud** | Hunter's Breath (night) |
+| 3 | City | Goblin, spider | **Orc** | **Blue magical flame** | Origin of the Last Name |
+| — | Ending screen | | | | |
+
+The monster designs, skills and roars come from the original game — river
+serpent, iron beetle, moss giant, mire hag, goblin, crystal spider, orc king —
+listed with their data in [ART_STANDARD.md](ART_STANDARD.md) §7.1. Every
+monster needs at least two unique Hiro finishing moves before it can be
+fielded (ART_STANDARD §7.2). The old ruins is out of version 1; its data and
+art stay on disk. Astra's delivered but unused boss art (Ironback boar, Marsh
+Alpha, Ruins Alpha) and the cave boar also stay on disk, unused.
+
+**The ending.** After the city boss falls, the game ends on a screen that:
+thanks the player; announces **Part 2, featuring a new protagonist — stay
+tuned**; invites the player to **follow Hiro on Facebook**; and asks them to
+**send feedback**.
+
+**CrazyGames rule that shapes the ending** (gameplay requirements, read
+2026-09-24): *"The game should not include cross-promotions for external or
+internal games/platforms,"* but *"Community links (discord, dev website, ...)
+are allowed on the game menu only as long they don't lead directly to a
+playable web version,"* and links between games in the same series are
+allowed. So **the Facebook and feedback links live in the game menu** (the
+pause/settings menu), and the ending screen names them and points the player
+there rather than carrying a link itself. Announcing Part 2 is fine; a link to
+it is allowed once it exists, as the same series.
+
+Open: the Facebook page address; where feedback goes (a form, an email, or
+Facebook messages); and what the player can do after the ending (proposed:
+back to the inn with all three locations replayable).
 
 **Open as of 2026-09-21: the road, Road in the Rain, and the City Watch.** A
 quest opens when the package carries everything it needs, and two separate
@@ -365,6 +421,37 @@ with `ambush: true` and a rival's member list — the code for it is written.
 ---
 
 ## 7. Combat, presentation and the HUD
+
+### 7.0 Skill levelling removed; God Aura changes job (decided 2026-09-24)
+
+*Hiro, 2026-09-24: skill levelling "doesn't really add much to the game."* Not
+built. Everything below this subsection that describes levels 1–3 is history
+once this lands.
+
+- **One level per skill.** Finisher, God Aura and Counter Attack are each
+  unlocked once with gold and never raised. Katana Slash stays Hiro's default,
+  never bought. The HUD's `+` badge and level chip go; the inn shows unlock
+  prices instead.
+- **Each unlock costs moderately more than the one before.** Proposed: **20,
+  then 35, then 50 gold**, whichever skill is bought in which order. Checked
+  against the road: the player starts with 20 and fights pay 40 / 50 / 60, so
+  all three unlocks fit inside the tutorial road (20 → 0; +40 → 35 → 5; +50 →
+  50 → 5; +60 → 65 at the inn). To confirm in play.
+- **God Aura looks the same but raises attack instead of defense.** Today it
+  gives attack ×1.2–1.4 **and** defense ×1.2–1.4 plus evasion. New: **no
+  defense, no evasion, attack moderately higher** — proposed **×1.35** for the
+  aura's duration (today's level-2 attack was ×1.3). Counter Attack already
+  covers defense. The skill's info text changes from "a glowing shield … takes
+  less damage" to raising Hiro's attack.
+- **Proposed single values for the rest,** taken from today's middle level:
+  Counter Attack answers 2 attacks; Finisher power 2.8 and heals 35 % on a kill,
+  keeping its 50 % / 25 % windows and no cooldown; God Aura recovers in 10 s and
+  Counter Attack in 5 s.
+- **Art.** God Aura keeps its current look. Hiro's level-2 and level-3 clips for
+  slash, aura and counter lose their purpose; they can stay as random variety
+  or be left out of the package.
+- **Tutorial.** It still teaches buying a skill, then using it; the steps that
+  taught raising a skill go.
 
 One simulation, one director, one actor layer — unchanged from v0.5 §6 and worth
 restating because everything else depends on it. `js/expedition/encounter.js` is
@@ -1828,16 +1915,34 @@ foes' busts are baked from the part sheets like the recruits' (new).
    only for chosen pairings, with a well-made generic finisher for the rest; or
    each new hero pairs only with the enemies released alongside it. Open.
 15. **Which two or three new enemy types for version 1?** Open — Hiro to
-   choose. Each needs its animated set and Hiro's paired finisher before it can
+   choose. *Decided 2026-09-24: §5.0.* Each needs its animated set and Hiro's paired finisher before it can
    be fielded.
 16. **Who is the next hero?** Open — Hiro is designing one. Not Bram.
 17. **Smoother animation: more frames, or better timing?** More Hiro frames count
    against the 20 MB initial download (§12a.0); retiming and easing cost
    nothing. Open — Hiro and Astra.
+18. **Facebook page address and feedback destination for the menu (§5.0).**
+   Open — Hiro.
+19. **After the ending — replay, or back to the inn with all three locations
+   open (§5.0)?** Proposed: back to the inn. Open.
+20. **Part 2 — an update to this listing (§12c) or a separate game in the same
+   series?** Both are allowed by CrazyGames. Open.
+21. **Confirm the proposed numbers in §7.0** — unlocks 20 / 35 / 50 gold, God
+   Aura attack ×1.35. To tune in play.
 
 ---
 
 ## 17. Decisions
+
+**2026-09-24 (version 1 content and skills).** Hiro. Version 1 is **forest,
+swamp, city, then an ending** announcing Part 2 with a new protagonist, with
+Facebook and feedback links in the game menu (§5.0). Swamp: serpent, beetle,
+moss giant, hag boss, **melt into mud** on defeat. City: goblin, spider, orc
+boss, **burn away in blue magical flame**. Forest keeps its sparkle. Every enemy
+gets **at least two unique Hiro finishing moves**. The old ruins leaves version
+1. **Skill levelling is removed**: each skill is unlocked once, each unlock
+costing moderately more. **God Aura raises attack, not defense**; Counter
+Attack handles defense (§7.0).
 
 **2026-09-24 (art standard).** Hiro. The inn stays as built; the Bram inn
 painting appears at random, now and then, on return from a quest (not built;

@@ -15,6 +15,35 @@ of small fixes within a day.
 
 ---
 
+## 2026-09-24 — Version 1 content: three locations, new monsters, no skill levels
+
+Opus 5.5. Docs only; nothing built.
+
+**Locations and ending.** Version 1 is forest (Road in the Rain) → swamp → city,
+then an ending screen: thanks, **Part 2 with a new protagonist — stay tuned**,
+follow Hiro on Facebook, send feedback. The old ruins leaves version 1. Checked
+CrazyGames' gameplay rules: community links are allowed **in the game menu
+only**, so the Facebook and feedback links go in the pause/settings menu and
+the ending screen points there. GDD §5.0.
+
+**Monsters (Hiro).** Swamp: serpent, beetle, moss giant, **hag boss**. City:
+goblin, spider, **orc boss**. Designs, skills and roars from the original game
+(river serpent, iron beetle, moss giant, mire hag, goblin, crystal spider, orc
+king). Every enemy gets **at least two unique Hiro finishing moves** — 7 new
+monsters, at least 14 new paired sheets. Defeat effects: forest sparkle (as
+built), swamp **melt into mud**, city **blue magical flame**; recommended as one
+painted effect per location plus a dissolve in code. `ART_STANDARD.md` v1.1 §7.
+
+**Skills.** Levelling removed: each skill unlocked once, each unlock costing
+moderately more (proposed 20 / 35 / 50 gold, which fits inside the tutorial
+road's payouts). **God Aura** keeps its look but drops defense and evasion for
+more attack (proposed ×1.35). Proposed single values for Counter Attack and
+Finisher from today's middle level. GDD §7.0.
+
+Open decisions added as GDD §16.18–21 and ART_STANDARD §8.
+
+---
+
 ## 2026-09-24 — Art standard: Hiro painted into every non-interactive scene
 
 Opus 5.5. Docs and research only; no game code or art changed.

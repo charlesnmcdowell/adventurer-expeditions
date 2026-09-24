@@ -1,7 +1,8 @@
 # Adventurer: Expeditions — Art Standard
 
-Version 1 · September 24, 2026 · Research and standard only; nothing in the game
-has changed. Direction: Hiro. Painting: Astra (Codex, OpenAI image generation).
+Version 1.1 · September 24, 2026 · Research and standard only; nothing in the
+game has changed. 1.1 adds the version 1 monster roster, the two-finisher rule
+and the defeat effect per location (§7). Direction: Hiro. Painting: Astra (Codex, OpenAI image generation).
 Briefs, intake, runtime and this document: Fable (Claude).
 
 This is the standard every new piece of art for Expeditions is made to. It
@@ -53,7 +54,12 @@ what a party game cannot: scenery painted around that hero, pose by pose.
    on top of a painting needs the painting without it, plus exact positions and
    timings (§6). The inn's `inn.json` is the model.
 6. **Enemies are monsters only** (Hiro, 2026-09-24). See §7.
-7. **Existing rules still bind:** no placeholder art in the shipped game;
+7. **Every enemy gets at least two unique Hiro finishing moves** (Hiro,
+   2026-09-24). Unique to that monster, painted with Hiro and that monster
+   together on one sheet. A monster is not ready to fight until both exist.
+8. **Each location has its own defeat effect** — sparkle in the forest, mud in
+   the swamp, blue flame in the city (§7.3).
+9. **Existing rules still bind:** no placeholder art in the shipped game;
    greenlight per clip after it is seen in the game; masters stay out of the
    deploy folder; every delivery keeps its prompt and reference records.
 
@@ -185,13 +191,12 @@ is weaker. Park until a tool is available and tested.
 | Location (level) | Beats Hiro named | Status |
 |---|---|---|
 | Forest road — Road in the Rain | grass that sways around him as he runs; ducking tree limbs; vaulting a broken-down carriage | proposed |
-| Reed marsh | sliding under a fallen log | proposed; more beats open |
-| City watch | weaving through crowds of merchants; vaulting a merchant stand; climbing a building; running its rooftops | proposed |
-| Old ruins | — | **open: Hiro has not named beats** |
+| Swamp — the reed marsh | sliding under a fallen log | proposed; more beats open |
+| City | weaving through crowds of merchants; vaulting a merchant stand; climbing a building; running its rooftops | proposed |
 
-Note: there are **four** travel locations, not three — the ruins is the fourth
-level and has its own panorama today. It needs its own beats, or a decision to
-share another location's.
+Version 1 has **three** locations — forest, swamp, city — and ends after the
+city (GDD §5, 2026-09-24). The old ruins is out of version 1, so it needs no
+travel beats.
 
 Which travel leg (outbound, between fights, return) plays which beat is open.
 
@@ -252,16 +257,94 @@ children's game.
 Each new monster follows the existing enemy art pipeline: an animated set plus
 Hiro's paired finishers against it, painted together, before it is fielded.
 
+### 7.1 The version 1 roster (Hiro, 2026-09-24)
+
+Every design, skill set and roar comes from the original Adventurer game: the
+creature paintings on `creatures_1`–`creatures_7`, the stat blocks in
+`js/data/enemies.js` and `js/data/minibosses.js`, and two recorded roars per
+creature in `../adventurer/audio/vo/campaign/<id>/`. That is how the wolf and
+the thorn plant were set up. Sound effects use the existing families in
+`audio/sfx/`.
+
+| Location | Monster | Role | Original data | Signature skill |
+|---|---|---|---|---|
+| **Forest** (Road in the Rain) | Dire wolf | regular | `dire_wolf` | Pack Snap — tearing bite, stacking bleed |
+| | Thorn plant | regular | `thorn_lurker` | Thorn Lash — roots and poisons |
+| | Alpha | **boss** | `alpha` | Pack Snap, Cleave |
+| **Swamp** (reed marsh) | Serpent | regular | `river_serpent` | Coil Crush — wraps the prey: root and a stolen action |
+| | Beetle | regular | `iron_beetle` | Carapace Burst — detonates its shell: shock, thorns on itself |
+| | Moss giant | regular | `moss_giant` | Treefall — drops the canopy, delays everyone it hits |
+| | Hag | **boss** | `mire_hag` | Bog Curse — wither and poison |
+| **City** | Goblin | regular | `goblin_king` (a plain goblin is made from it) | Backstab, Smoke Bomb |
+| | Spider | regular | `crystal_spider` | Glass Web — root and frost |
+| | Orc | **boss** | `orc_king` | War Bellow, Cleave, Sunder |
+
+In the original game the swamp and city creatures are all mini-bosses, so the
+regular versions get lower stats here, the way `dire_wolf_2` is tuned today.
+Only the goblin has no ordinary version in the original data.
+
+The forest's three are already painted, in the game and finishable. Everything
+in the swamp and city is new art.
+
+### 7.2 At least two unique finishing moves per enemy
+
+**Rule (Hiro, 2026-09-24): every enemy has at least two finishing moves that
+are unique to it.** Each is a paired sheet with Hiro and that monster painted
+together, with contact and release frames marked, like the existing pairs. A
+generic pair must never be attached to a different monster (Astra's handoff
+rule of 2026-09-21).
+
+- **Forest — already met in the delivered art.** Astra's source files hold
+  three pairs each: wolf (cleave, pin, rising cut), plant (stem cut, cross cut,
+  vine pin), Alpha (cleave, parry, pin). Check at intake that at least two of
+  each are in the game.
+- **Swamp and city — 7 new monsters × at least 2 = at least 14 new paired
+  sheets.** Each finish should use what makes that monster distinct: cutting
+  through the serpent's coil, cracking the beetle's shell, felling the moss
+  giant like a tree, breaking the hag's staff; slipping the goblin's backstab,
+  cutting the spider's web, disarming the orc's axe.
+- Finishers show dismemberment and disintegration on monsters, never on humans.
+  Every creature on the roster is a fantasy character; the goblin, orc and hag
+  are humanoid, which the location defeat effects below keep stylized.
+
+### 7.3 Defeat effects by location
+
+A defeated monster leaves the fight by its location's effect, after the last
+frame of its finisher or its down clip.
+
+| Location | Defeat effect | Status |
+|---|---|---|
+| Forest | Sparkling defeat light (today's effect) | built |
+| Swamp | **Melts away into mud**: the body sags and slumps into a bubbling mud pool that sinks into the ground | new |
+| City | **Burns away in magical blue flames**: blue fire sweeps across the body, leaving drifting blue embers | new |
+
+**How to build them — recommended: one shared effect per location plus a
+dissolve done in code.** Astra paints each effect once as transparent loops;
+Fable plays it over any monster and dissolves the body with a moving mask.
+Painting a melt or burn for every monster would multiply the art by the roster.
+
+- **Swamp, Astra paints:** a mud splash burst (4–6 frames), a bubbling mud pool
+  loop (4 frames), and dripping-mud overlay strips. **Fable:** a top-down
+  dissolve that browns the body as it sinks, with the pool left for a moment.
+- **City, Astra paints:** a blue flame sheet rising (4–6 frames), a blue fire
+  burst, and blue ember and ash motes. **Fable:** a burn-edge dissolve with a
+  blue glow on the edge, embers drifting up after.
+
+Both effects apply to the bosses too.
+
 ---
 
 ## 8. Open decisions for Hiro
 
 1. How often the Bram inn painting appears on return (§3).
-2. Beats for the ruins (§5.2), and which leg plays which beat.
+2. Which travel leg plays which beat (§5.2).
 3. Approve option B and the one-beat test (carriage vault) as the first job for
    Astra when art resumes (§6).
 4. Whether travel beats may run longer than today's ~2–3.4 s.
-5. Which monsters for each location (with GDD §16.15).
+5. Approve the shared-effect-plus-dissolve method for the mud and blue-flame
+   defeats (§7.3).
+6. Whether the orc also appears as a regular in the city's waves or only as the
+   boss (§7.1 reads it as boss only).
 
 ---
 
@@ -274,5 +357,9 @@ Hiro's paired finishers against it, painted together, before it is fielded.
   `js/ui/travel_ambience.js`, `assets/expedition/hiro/hiro.json` (walk clip) —
   travel build.
 - Screenshots: captured from the running game, 2026-09-24.
+- Monster roster: `js/data/enemies.js`, `js/data/minibosses.js`,
+  `js/data/monster_skills.js`; designs `../adventurer/assets/anime/v2/runtime/creatures_1`–`7.webp`;
+  roars `../adventurer/audio/vo/campaign/`; existing pairs
+  `../adventurer-expeditions-source-art/astra-v2/heroes/hiro/` and `beasts/alpha/`.
 - PEGI descriptions: <https://askaboutgames.com/need-to-know/pegi-ratings>.
 - CrazyGames requirements: GDD §12a.0, §14.
