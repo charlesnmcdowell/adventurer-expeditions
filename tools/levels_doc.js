@@ -127,7 +127,10 @@ const out = L.join('\n') + '\n';
 const dest = path.join(ROOT, 'docs', 'LEVELS.md');
 if (process.argv.includes('--check')) {
   const cur = fs.existsSync(dest) ? fs.readFileSync(dest, 'utf8') : '';
-  if (cur !== out) { console.error('docs/LEVELS.md is out of date — run: node tools/levels_doc.js'); process.exit(1); }
+  // Compare content, not the day it was written: the date line changes daily, and
+  // line endings differ between checkouts (fixed 2026-09-24, it failed on a new day).
+  const norm = t => t.replace(/\r/g, '').replace(/Written \d{4}-\d{2}-\d{2}\./, 'Written.');
+  if (norm(cur) !== norm(out)) { console.error('docs/LEVELS.md is out of date — run: node tools/levels_doc.js'); process.exit(1); }
   console.log('levels_doc: docs/LEVELS.md is current');
 } else {
   fs.writeFileSync(dest, out);
