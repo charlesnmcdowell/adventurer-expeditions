@@ -310,9 +310,15 @@ pause/settings menu), and the ending screen names them and points the player
 there rather than carrying a link itself. Announcing Part 2 is fine; a link to
 it is allowed once it exists, as the same series.
 
-Open: the Facebook page address; where feedback goes (a form, an email, or
-Facebook messages); and what the player can do after the ending (proposed:
-back to the inn with all three locations replayable).
+**After the ending (Hiro, 2026-09-24): back to the inn, and replay.** The
+player returns to the inn with all three locations open to play again.
+
+**Part 2 is an add-on at a future date** (Hiro, 2026-09-24): new content added
+to this game on the same CrazyGames listing, as a content pack (§12c), not a
+separate game.
+
+Open: the Facebook page address, and where feedback goes (a form, an email, or
+Facebook messages).
 
 **Open as of 2026-09-21: the road, Road in the Rain, and the City Watch.** A
 quest opens when the package carries everything it needs, and two separate
@@ -1924,9 +1930,9 @@ foes' busts are baked from the part sheets like the recruits' (new).
 18. **Facebook page address and feedback destination for the menu (§5.0).**
    Open — Hiro.
 19. **After the ending — replay, or back to the inn with all three locations
-   open (§5.0)?** Proposed: back to the inn. Open.
+   open (§5.0)?** *Decided 2026-09-24: back to the inn, and replay.*
 20. **Part 2 — an update to this listing (§12c) or a separate game in the same
-   series?** Both are allowed by CrazyGames. Open.
+   series?** *Decided 2026-09-24: an add-on to this game at a future date.*
 21. **Confirm the proposed numbers in §7.0** — unlocks 20 / 35 / 50 gold, God
    Aura attack ×1.35. To tune in play.
 
@@ -1942,7 +1948,9 @@ boss, **burn away in blue magical flame**. Forest keeps its sparkle. Every enemy
 gets **at least two unique Hiro finishing moves**. The old ruins leaves version
 1. **Skill levelling is removed**: each skill is unlocked once, each unlock
 costing moderately more. **God Aura raises attack, not defense**; Counter
-Attack handles defense (§7.0).
+Attack handles defense (§7.0). After the ending the player goes back to the
+inn and can replay; **Part 2 is a future add-on to this game**, not a separate
+game.
 
 **2026-09-24 (art standard).** Hiro. The inn stays as built; the Bram inn
 painting appears at random, now and then, on return from a quest (not built;

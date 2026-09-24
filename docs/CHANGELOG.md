@@ -42,6 +42,11 @@ Finisher from today's middle level. GDD §7.0.
 
 Open decisions added as GDD §16.18–21 and ART_STANDARD §8.
 
+**Answered the same day (Hiro):** after the ending the player goes **back to the
+inn and can replay** all three locations; **Part 2 is an add-on** to this game
+at a future date, on the same listing (GDD §5.0, §16.19–20). Still open: the
+Facebook address and where feedback goes.
+
 ---
 
 ## 2026-09-24 — Art standard: Hiro painted into every non-interactive scene
