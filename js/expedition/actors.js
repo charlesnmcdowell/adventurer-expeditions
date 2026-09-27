@@ -69,6 +69,18 @@ class Actor {
     if (this.sheet) this.idle();
   }
 
+  // Shrink a standing actor a little (a crowded boss wave, 2026-09-27): the
+  // base scale, the ground shadow and the plate all follow, so later clips
+  // and borrowed sheets keep the new size.
+  rescale(k) {
+    if (!(k > 0) || k === 1) return;
+    this.height *= k;
+    this._baseScaleX *= k; this._baseScaleY *= k;
+    this.img.setScale(this._baseScaleX, this._baseScaleY);
+    if (this.shadow) this.shadow.setSize(this.height * 0.55, 26);
+    if (this.plate) this.plate.y = -this.height - 42;
+  }
+
   // ---------------------------------------------------------------- plates
   buildPlates(scene) {
     const w = 132, top = -this.height - 42;

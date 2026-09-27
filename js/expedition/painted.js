@@ -21,7 +21,7 @@ P.needed = function (scene) {
   const sceneKey = scene && scene.sys && scene.sys.settings && scene.sys.settings.key;
   const shipped = (X.shipped && X.shipped.actors) || null;
   const quest = X.Campaign && X.Campaign.quest((run && run.questId) || X.Campaign.startQuestId());
-  const neededFoes = new Set(quest ? X.Campaign.questEncounters(quest).flatMap(e => e.enemies || []).map(k => X.paintedActorOfKey(k)) : ['wolf', 'plant', 'alpha']);
+  const neededFoes = new Set(quest ? X.Campaign.questEncounters(quest, run).flatMap(e => e.enemies || []).map(k => X.paintedActorOfKey(k)) : ['wolf', 'plant', 'alpha']);
   return P.actors.filter(id => {
     // Never queue art the package does not carry, whatever the run says: a
     // missing atlas hangs the scene in preload (Hiro, 2026-09-21).

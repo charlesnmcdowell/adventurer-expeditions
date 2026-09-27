@@ -43,7 +43,7 @@ class ExpeditionScene extends Phaser.Scene {
     // Resume at the current quest's wave (pre-fight checkpoint). Anything else starts over.
     if (this.run.done || this.run.phase !== 'quest') this.run = X.Run.reset();
     this.quest = X.Campaign.quest(this.run.questId) || X.quests[0];
-    this.encs = X.Campaign.questEncounters(this.quest);
+    this.encs = X.Campaign.questEncounters(this.quest, this.run);
     if (this.run.wave >= this.encs.length) this.run.wave = 0;
     // The party (world, fielded recruits, relationships) lives for this quest.
     this.world = X.Campaign.buildWorld(this.run);
@@ -84,7 +84,7 @@ class ExpeditionScene extends Phaser.Scene {
   // One encounter: build its sim, spawn its foes, fight it out.
   startWave(i, first) {
     const allies = this.world.companions;
-    const scale = X.Campaign.scaleFor(this.run, this.quest.id);
+    const scale = X.Campaign.scaleFor(this.run);
     this.enc = X.Encounter.create({ encounter: this.encs[i], seed: (this.seed * 10 + i) >>> 0, run: this.run, hero: this.world.hero, allies, scale });
     this.hero.unit = X.Encounter.heroUnit(this.enc);
     this.hero.uid = this.hero.unit.uid; this.actors.clear(); this.actors.set(this.hero.uid, this.hero);
@@ -140,7 +140,7 @@ class ExpeditionScene extends Phaser.Scene {
       const key = sheet.key;
       const m = marks[i] || marks[marks.length - 1];
       const a = new X.Actor(this, { uid: u.uid, unit: u, side: 'a', x: m.x, y: m.y, texture: key, height: 310, name: u.ch.name, level: 3, depth: m.depth, kind: 'ally', sheet });
-      a.setLevel(3 + X.Campaign.timesCleared(this.run, this.quest.id));
+      a.setLevel(2 + X.Campaign.loopOf(this.run));
       this.actors.set(u.uid, a);
       i++;
     }
@@ -148,6 +148,7 @@ class ExpeditionScene extends Phaser.Scene {
 
   spawnFoes() {
     for (const a of [...this.actors.values()]) if (a.side === 'b') { a.destroy(); this.actors.delete(a.uid); }
+    const spawned = [];
     let i = 0;
     for (const u of this.enc.st.units) {
       if (u.side === 'a') continue;
@@ -164,8 +165,34 @@ class ExpeditionScene extends Phaser.Scene {
       a.phase2At = def.phase2At || 0;
       a.root.x = W + 300 + i * 160;     // enters from the right
       this.actors.set(u.uid, a);
+      spawned.push(a);
       i++;
     }
+    this.spaceFoes(spawned);
+  }
+
+  // Place the foes by their painted widths rather than at a fixed pitch, so a
+  // boss wave of two or three 330-px bosses (the loop rules, 2026-09-27) still
+  // fits the stage. Ordinary waves land on the same marks as before.
+  spaceFoes(foes) {
+    if (!foes.length) return;
+    const left = 790, right = 1210, span = right - left;
+    const widths = foes.map(a => Math.max(90, (a.img && a.img.displayWidth ? a.img.displayWidth : a.height * 0.9) * 0.62));
+    const total = widths.reduce((n, w) => n + w, 0);
+    const wide = total > span * 0.98;
+    // Small waves keep the classic marks when they fit; anything wider is packed.
+    if (!wide && foes.length <= FOE_X.length && total <= 300) { foes.forEach((a, i) => { a.home.x = FOE_X[i]; }); return; }
+    if (wide) {
+      // A crowd: shrink everyone a touch (never below 0.82) and spread across a
+      // wider span, front-most last so the overlap reads as a line, not a pile.
+      const k = Math.max(0.82, Math.min(1, span * 1.6 / total));
+      const l2 = left - 40, r2 = right + 20, step = (r2 - l2) / foes.length;
+      foes.forEach((a, i) => { a.rescale(k); a.home.x = Math.round(l2 + step * (i + 0.5)); a.root.setDepth(100 + i); });
+      return;
+    }
+    const gap = (span - total) / (foes.length + 1);
+    let x = left + gap;
+    foes.forEach((a, i) => { a.home.x = Math.round(x + widths[i] / 2); x += widths[i] + gap; });
   }
 
   startMusic(track) {

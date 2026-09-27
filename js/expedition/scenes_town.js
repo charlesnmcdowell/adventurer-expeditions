@@ -258,7 +258,7 @@ class InnScene extends Phaser.Scene {
     run.tutorial.embarkDone = true;
     if (!run.field.length) for (const k of run.roster) if (X.Campaign.recruitReady(k) && run.field.length < X.party.fieldMax) run.field.push(k);
     run.questId = X.Campaign.nextQuestId(run);
-    run.awarded = run.awarded.filter(id => !X.Campaign.questEncounters(run.questId).some(e => e.id === id));   // a fresh contract pays again
+    run.awarded = run.awarded.filter(id => !X.Campaign.questEncounters(run.questId, run).some(e => e.id === id));   // a fresh contract pays again
     run.phase = 'travel'; run.travelLeg = 'outbound'; run.wave = 0;
     X.Run.save(run);
     this.scene.start('Travel', { run, seed: this.seed + 1, leg: 'outbound' });

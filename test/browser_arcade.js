@@ -153,6 +153,49 @@ const OUT = path.join(__dirname, 'reports', 'arcade'); fs.mkdirSync(OUT, { recur
   await page.waitForTimeout(2500);
   check((await active()) === 'End', 'a reload of an ended run reopens the End scene');
 
+  // ---- 7. Loop 2+: a three-boss wave fits the stage and plays
+  await page.goto(base + '?fresh=1&seed=12&renderer=canvas');
+  await waitScene('Expedition', 30000);
+  await page.waitForFunction(() => window.__game.scene.getScene('Expedition').enc, null, { timeout: 30000 });
+  const triple = await page.evaluate(() => {
+    const X = ADV.Expedition, Camp = X.Campaign, s = window.__game.scene.getScenes(true)[0];
+    // A run on its fourth playthrough, with a seed that rolls three bosses on the forest road.
+    let run = null;
+    for (let seed = 1; seed < 400 && !run; seed++) {
+      const r = X.Run.reset(); r.seed = seed; for (let l = 1; l < 4; l++) for (const id of X.slice.openQuests) r.questsDone.push(id);
+      Camp.sanitizeRun(r);
+      const e = Camp.questEncounters('rain', r)[2];
+      if (e.enemies.length === 3) { run = r; run.questId = 'rain'; run.wave = 2; run.checkpoint = 2; run.phase = 'quest'; run.score = 9000; }
+    }
+    Object.assign(run.tutorial, { used: { finisher: true, counter_attack: true, god_aura: true }, finisherDone: true, arrowDone: true });
+    X.Run.save(run); X.Dev.go(s, 'Expedition', { run });
+    return { seed: run.seed, loop: run.loop, enemies: Camp.questEncounters('rain', run)[2].enemies, scale: Camp.scaleFor(run) };
+  });
+  check(triple.loop === 4 && triple.enemies.length === 3 && triple.scale.toFixed(3) === '2.197', 'a fourth-playthrough forest boss wave rolled three bosses', triple);
+  await page.waitForFunction(() => { const s = window.__game.scene.getScene('Expedition'); return s.enc && s.run.wave === 2 && [...s.actors.values()].filter(a => a.side === 'b').length === 3; }, null, { timeout: 60000 });
+  await page.waitForTimeout(4500);
+  await page.screenshot({ path: path.join(OUT, '06-three-bosses.png') });
+  const layout = await page.evaluate(() => {
+    const s = window.__game.scene.getScene('Expedition');
+    const foes = [...s.actors.values()].filter(a => a.side === 'b').map(a => ({ name: a.name, x: a.home.x, w: Math.round(a.img.displayWidth), boss: !!a.unit.ch.boss, hp: a.unit.maxHp }));
+    return { foes, heroX: s.hero.home.x };
+  });
+  const xs = layout.foes.map(f => f.x).sort((a, b) => a - b);
+  check(layout.foes.every(f => f.boss) && xs[0] > layout.heroX + 250 && xs[2] <= 1215 && xs[1] - xs[0] > 100 && xs[2] - xs[1] > 100, 'three bosses stand on the stage, spaced, clear of Hiro', layout);
+  // Finish one of them: the boss line (25%) and the paired finisher still hold at loop 4.
+  const fin = await page.evaluate(async () => {
+    const X = ADV.Expedition, Enc = X.Encounter, s = window.__game.scene.getScene('Expedition'), enc = s.enc;
+    const foes = enc.st.units.filter(u => u.side === 'b' && !u.downed);
+    for (const u of foes) u.chp = u.maxHp;
+    const mark = foes[1]; mark.chp = Math.max(1, Math.round(mark.maxHp * 0.2));
+    const seen = new Set(); const iv = setInterval(() => { for (const a of s.actors.values()) { const k = a.img && a.img.anims && a.img.anims.currentAnim && a.img.anims.currentAnim.key; if (k) seen.add(k); } }, 25);
+    Enc.requestSkill(enc, 'finisher');
+    const t = Date.now(); while (Date.now() - t < 20000 && !(mark.downed || mark.chp <= 0)) await new Promise(r => setTimeout(r, 60));
+    await new Promise(r => setTimeout(r, 2500)); clearInterval(iv);
+    return { target: mark.ch.expeditionKey, killed: !!(mark.downed || mark.chp <= 0), paired: [...seen].filter(k => /paired|:hiro-finisher-[12]$/.test(k)), left: enc.st.units.filter(u => u.side === 'b' && !u.downed).length };
+  });
+  check(fin.killed && fin.paired.length > 0 && fin.left === 2, 'the Finisher takes one boss of three with its paired move', fin);
+
   check(errs.length === 0, 'no page errors', errs.slice(0, 3));
   await browser.close(); srv.close();
   console.log('browser_arcade: ' + passed + ' passed, ' + failed + ' failed');

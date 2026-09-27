@@ -6,7 +6,7 @@ const plates = { mountain: 'mountain', alley: 'city' };
 Stage.preload = scene => {
   const r = scene.opts?.run || X.Run.load() || X.Run.fresh();
   const q = X.Campaign.quest(r.questId) || X.quests[0];
-  const e = X.Campaign.questEncounters(q)[r.wave || 0];
+  const e = X.Campaign.questEncounters(q, r)[r.wave || 0];
   const id = plates[e?.bg];
   if (id && !scene.textures.exists('xp_stage_' + id))
     scene.load.image('xp_stage_' + id, 'assets/expedition/stages/' + id + '.webp');

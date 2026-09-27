@@ -525,6 +525,48 @@ test('every skill fires from a tap and shows its effect', () => {
   } finally { w.restoreIds(); }
 });
 
+// ---------------------------------------------------------------- the loop (2026-09-27)
+test('from the second playthrough monsters shuffle, bosses roll, and it all replays from the seed', () => {
+  const Camp = X.Campaign;
+  const at = (loop, seed) => { const r = Camp.freshRun(); r.seed = seed; for (let l = 1; l < loop; l++) for (const id of X.slice.openQuests) r.questsDone.push(id); Camp.sanitizeRun(r); return r; };
+  // Playthrough 1 is exactly the authored game.
+  const r1 = at(1, 5);
+  assert.equal(r1.loop, 1);
+  assert.deepEqual(Camp.questEncounters('marsh', r1).map(e => e.enemies), [['serpent', 'beetle'], ['moss_giant', 'serpent'], ['hag']]);
+  assert.equal(Camp.scaleFor(r1), 1);
+  // Playthrough 2: generated waves, same sizes, seeded.
+  const r2 = at(2, 5);
+  assert.equal(r2.loop, 2);
+  assert.equal(Camp.scaleFor(r2), 1.3);
+  assert.equal(Camp.scaleFor(at(6, 5)).toFixed(2), '3.71', 'no cap: loop 6 is 1.3^5');
+  const a = Camp.questEncounters('marsh', r2), b = Camp.questEncounters('marsh', at(2, 5));
+  assert.deepEqual(a.map(e => e.enemies), b.map(e => e.enemies), 'the same seed rolls the same waves');
+  assert.ok(a.every(e => e.generated) && a.length === 3);
+  assert.deepEqual(a.map(e => e.enemies.length).slice(0, 2), [2, 2], 'wave sizes follow the authored quest');
+  assert.ok(a[2].boss && a[2].enemies[0] === 'hag', 'the boss wave always opens with the level\'s own boss');
+  const pool = new Set(Camp.loopPool().regulars);
+  for (const e of a.slice(0, 2)) for (const k of e.enemies) assert.ok(pool.has(k), k + ' is a regular from the shared pool');
+  // Different seeds, different waves; monsters cross levels.
+  const seen = new Set();
+  for (let s = 1; s <= 40; s++) for (const k of Camp.questEncounters('rain', at(2, s))[0].enemies) seen.add(k);
+  assert.ok(seen.has('serpent') || seen.has('goblin') || seen.has('spider'), 'swamp and city monsters turn up on the forest road: ' + [...seen]);
+  // Boss rolls: never more than three, never fewer than one, own boss always first; odds by loop.
+  const tally = loop => { const t = [0, 0, 0, 0]; for (let s = 1; s <= 400; s++) { const e = Camp.questEncounters('city', at(loop, s))[2]; assert.ok(e.enemies.length >= 1 && e.enemies.length <= Camp.maxBosses, 'boss count'); assert.equal(e.enemies[0], 'orc'); for (const k of e.enemies) assert.ok(X.enemies[k].boss, k + ' is a boss'); t[e.roll]++; } return t.map(n => n / 400); };
+  const t2 = tally(2), t4 = tally(4);
+  assert.ok(t2[3] === 0 && t2[0] > 0.5, 'loop 2 never rolls three bosses and mostly one: ' + t2);
+  assert.ok(t4[3] > 0.15 && t4[0] < 0.35, 'loop 4 rolls three bosses often: ' + t4);
+  // Every generated fight is winnable in principle: it opens, runs, and pays.
+  const r3 = at(3, 7); let bosses = 0;
+  for (const encDef of Camp.questEncounters('city', r3)) {
+    const enc = Enc.create({ encounter: encDef, seed: 77, run: r3, scale: Camp.scaleFor(r3) });
+    Enc.runToEnd(enc, e => { for (const id of ['finisher', 'counter_attack', 'god_aura']) if (Enc.skillState(e, id).ready) Enc.requestSkill(e, id); }, 900);
+    assert.ok(enc.st.over, encDef.id + ' ended');
+    if (encDef.boss) bosses = enc.st.units.filter(u => u.side === 'b' && u.ch.boss).length;
+    if (Enc.won(enc)) { const w = Enc.wavePoints(enc); assert.equal(w.mult, 1.5); if (encDef.boss) assert.equal(w.bosses, bosses); }
+  }
+  assert.ok(bosses >= 1);
+});
+
 // ---------------------------------------------------------------- party campaign
 test('travel banter advances its round-robin across rebuilt worlds', () => {
   const Camp = X.Campaign;
@@ -600,12 +642,15 @@ test('the retained loop uses only painted Bram; tutorial lock and scaling are re
   assert.equal(Camp.nextQuestId(r2), 'rain');
   r2.questsDone.push('rain', 'city', 'marsh', 'ruins'); assert.equal(Camp.nextQuestId(r2), 'rain');
   // Fights.
-  function quest(seed, qid, field, cycles) {
-    const run = Camp.freshRun(); run.roster = field.slice(); run.field = field.slice(); run.cycles = cycles || {};
+  function quest(seed, qid, field, loop) {
+    const run = Camp.freshRun(); run.roster = field.slice(); run.field = field.slice(); run.seed = seed;
+    // A run on playthrough `loop`: every open quest cleared loop-1 times.
+    for (let l = 1; l < (loop || 1); l++) for (const id of X.slice.openQuests) run.questsDone.push(id);
+    Camp.sanitizeRun(run);
     const w = Camp.buildWorld(run); const out = [];
     try {
-      for (const encDef of Camp.questEncounters(qid)) {
-        const enc = Enc.create({ encounter: encDef, seed: seed * 10 + out.length, run, hero: w.hero, allies: w.companions, scale: Camp.scaleFor(run, qid) });
+      for (const encDef of Camp.questEncounters(qid, run)) {
+        const enc = Enc.create({ encounter: encDef, seed: seed * 10 + out.length, run, hero: w.hero, allies: w.companions, scale: Camp.scaleFor(run) });
         Enc.runToEnd(enc, e => { for (const id of ['finisher', 'counter_attack', 'god_aura']) if (Enc.skillState(e, id).ready) Enc.requestSkill(e, id); }, 800);
         assert.ok(enc.st.over, qid + ' seed ' + seed + ' ended');
         out.push({ won: Enc.won(enc), rounds: enc.st.round });
@@ -623,10 +668,9 @@ test('the retained loop uses only painted Bram; tutorial lock and scaling are re
     console.log('loop ' + q.id.padEnd(6) + ' first clear win ' + (wins / N).toFixed(2) + ' avgRounds ' + (rounds / n).toFixed(1));
     assert.ok(wins / N >= 0.8, q.id + ' first clear win ' + wins / N);
     let wins3 = 0;
-    for (let s = 1; s <= N; s++) { const r = quest(s, q.id, crew, { [q.id]: 3 }); if (r.length === 3 && r.every(o => o.won)) wins3++; }
-    console.log('loop ' + q.id.padEnd(6) + ' fourth clear win ' + (wins3 / N).toFixed(2));
-    assert.ok(wins3 / N >= 0.4, q.id + ' fourth clear must stay beatable: ' + wins3 / N);
-    assert.equal(Camp.scaleFor({ cycles: { [q.id]: 3 } }, q.id), 1.9, 'enemy scaling is retained');
+    for (let s = 1; s <= N; s++) { const r = quest(s, q.id, crew, 3); if (r.length === 3 && r.every(o => o.won)) wins3++; }
+    console.log('loop ' + q.id.padEnd(6) + ' third playthrough (shuffled, x1.69) win ' + (wins3 / N).toFixed(2));
+    assert.ok(wins3 / N >= 0.3, q.id + ' third playthrough must stay beatable with a companion: ' + wins3 / N);
   }
   // Every quest's plates and panorama are in the build's sync list — night and storm are data.
   const sync = require('node:fs').readFileSync(path.join(ROOT, 'tools/sync_shared.js'), 'utf8');

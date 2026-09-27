@@ -15,6 +15,16 @@ of small fixes within a day.
 
 ---
 
+## 2026-09-27 - Arcade mode (steps 1-7): score, single-level skills, health carry, Rest, End scene, board, loop rules
+
+Implements the reviewed arcade plan (Claude Doc "Expeditions Arcade Mode Plan"). Gold is gone; a run scores points (regular 100, boss 500, +50 Finisher kill, +50 clean wave at >=75% hp, quest clear 300, x(1 + 0.25 per extra playthrough)). Every skill is owned from the start at one level (`X.purchasable = []`, `X.tappable`); God Aura is attack x1.35 only (`auraDef` 1 so the engine's divide-by-def stays neutral). The tutorial teaches Finisher (fight 1), Counter Attack (fight 2), God Aura (boss) and only holds on the first quest. Health carries across waves and quests (`run.hp` -> `ch.combatHp`); only the Finisher heal (35% on kill) and Rest at the inn restore it. Rest: full heal, 1,000 points doubling each use, refused at full health. Defeat ends the run; End Run sits in the pause menu behind one confirm. New End scene: score, playthrough, top-10 local board (`X.Board`, key `adventurer_expeditions_highscores_v1`), required name-shaped name (`X.validName`, 25 max), play again = fresh run. Loop 2+ (`Camp.loopEncounters`, seeded from `run.seed`): regular waves draw from a shuffled monster pool; enemy hp/atk x1.3 per playthrough, compounding, uncapped; boss wave rolls own / own x2 / own + another area's boss / three bosses with odds 60/20/20/0 (loop 2), 40/25/25/10 (loop 3), 25/25/25/25 (loop 4+); max three bosses. Crowded waves are placed by painted width (`spaceFoes`) and shrunk to no less than 0.82 (`Actor.rescale`). Defeat effects stay location-specific and play on any monster.
+
+Files: `js/expedition/{data,encounter,campaign,run,shim,scene,actors,hud,scenes_town,ui_common,beats,dev,battle_stage,painted}.js`, `index.html` (End scene registered, `?at=inn&score=N`, stamp xp8), `tools/levels_doc.js` (no Gold column), `package.json` (`test:arcade`), tests `test/{expedition_sim,expedition_recruit_gate,browser_expedition,browser_restart_dev}.js` rewritten for the arcade and new `test/browser_arcade.js` (32 checks incl. a fourth-playthrough three-boss wave). Save key is now `adventurer_expeditions_arcade_v1`; older saves are ignored. Commits `b2fb884`, `dfe3592`, and Arcade 6 (loop rules). No original website files changed.
+
+Validation: npm test green; browser_arcade 32/32, browser_finishers 10/10, ship journey and restart suites green in the build sandbox. Still to do: balance pass in the simulator, GDD sections for the inn/ending/loop rules, a new CrazyGames candidate, Facebook link and feedback destination. Hand-off prompt: `docs/HANDOFF_ARCADE_20260927.md`.
+
+---
+
 ## 2026-09-27 - Atmospheric parallax travel
 
 Supersedes the short-distance slow run below. Travel now scrolls newly painted distant scenery, ground and foreground at independent rates (0.07 / 1 / 1.5), with ground speed fixed at 420 world pixels/second. Hiro keeps the approved 16-frame, 800 ms run cycle. The existing obstacle action remains 1,490 ms with authored contact positions. Running on each side: forest/market 4,000 ms, rooftop 4,500 ms, swamp 5,000 ms; total including transition hold: 9,670 / 10,670 / 11,670 ms, formerly 7,670 ms. Weather remains active; the swamp adds fireflies and a slowly moving moonlit distance.
