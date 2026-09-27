@@ -62,6 +62,14 @@ async function test(name, fn) { await fn(); passed++; console.log('ok ' + name);
     s.time.paused = false; s.time.timeScale = 0.5; s.events.emit('update', 0, 100); assert.equal(candle.elapsed, elapsed + 50);
     v.destroy(); assert.equal(s.events.listenerCount('update'), 0);
   });
+  await test('Bram guest alternates after clears without recruiting or changing saves', () => {
+    const r = { roster: [], field: [], cycles: { rain: 1 } }, before = JSON.stringify(r);
+    assert.equal(X.InnArt.variant(r), 'inn-hiro-bram');
+    assert.equal(X.InnArt.variant(JSON.parse(before)), 'inn-hiro-bram');
+    assert.equal(JSON.stringify(r), before);
+    r.cycles.marsh = 1; assert.equal(X.InnArt.variant(r), 'inn-hiro-solo');
+    r.cycles.city = 1; assert.equal(X.InnArt.variant(r), 'inn-hiro-bram');
+  });
   await test('party changes replace effects and masks without accumulating listeners', () => {
     const s = scene(), v = X.InnArt.paint(s, solo), previous = v.effects.slice(), mask = previous[2].mask;
     assert.equal(v.setParty(party), true); assert.equal(v.variant, 'inn-hiro-bram'); assert.equal(v.effects.length, 4);

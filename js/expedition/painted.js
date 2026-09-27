@@ -42,7 +42,19 @@ P.preload = function (scene, ids) {
 P.sheet = function (scene, id) {
   const key = 'xp_' + id + '_sheet', j = scene.cache.json.get('xp_' + id + '_clips');
   if (!j || !scene.textures.exists(key)) return null;
-  return { key, clips: j.clips, canvas: j.canvas, standing: j.standing, actor: id, id, authoredFacing: j.authoredFacing || 1 };
+  // Release polish: hold anticipation, contact and recovery without slowing
+  // the rest of combat. Original frames/markers and source art stay intact.
+  let clips = j.clips;
+  if (id === 'alpha' || (X.monsterActors || []).includes(id)) {
+    clips = Object.fromEntries(Object.entries(j.clips).map(([name, c]) => {
+      if (!c.paired || !name.startsWith('hiro-')) return [name, c];
+      const times = c.frames.length === 8 ? [240,130,150,210,160,190,210,330]
+        : id === 'alpha' ? [260,180,140,220,240,360] : [260,140,220,210,250,340];
+      if (times.length !== c.frames.length) return [name, c];
+      return [name, Object.assign({}, c, { frameDurationsMs: times, durationMs: times.reduce((a,b) => a+b,0) })];
+    }));
+  }
+  return { key, clips, canvas: j.canvas, standing: j.standing, actor: id, id, authoredFacing: j.authoredFacing || 1 };
 };
 P.install = function (scene) {
   const j = scene.cache.json.get('xp_bram_clips');   // absent while Bram is not loaded: no recruit art registered, which is correct

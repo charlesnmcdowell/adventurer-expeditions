@@ -21,6 +21,7 @@ class ExpeditionScene extends Phaser.Scene {
     X.Painted.preload(this);
     X.UI.preloadBusts(this);
     X.DefeatFX.preload(this);
+    X.BattleStage.preload(this);
   }
 
   // The painted sheet descriptor for Actor, or null while the plates stand in.
@@ -54,7 +55,7 @@ class ExpeditionScene extends Phaser.Scene {
     this.phase = this.quest.phase || 'day';
     this.game_.quest = { travel: { weather: X.Campaign.weatherFor(this.quest, this.world, this.phase) } };
     this.buildTextures(); X.UI.installBusts(this);
-    this.env = A.BattleArt.paint(this, this.encs[this.run.wave].bg, this.phase);
+    this.env = X.BattleStage.paint(this, this.encs[this.run.wave].bg, this.phase);
     // The shared painted environment re-resolves ground weather, whose marsh
     // bias can override an explicitly clear quest. Keep the edition's declared
     // sky authoritative without changing the synced website renderer.

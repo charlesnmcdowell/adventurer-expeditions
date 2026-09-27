@@ -39,7 +39,8 @@
     "assets/anime/v2/runtime/marsh.webp",
     "assets/anime/travel/v1/runtime/marsh.webp",
     "assets/anime/v2/runtime/ruins.webp",
-    "assets/anime/travel/v1/runtime/ruins.webp"
+    "assets/anime/travel/v1/runtime/ruins.webp",
+    "js/expedition/battle_stage.js"
   ],
   "dirs": [
     "audio/sfx",
@@ -52,7 +53,8 @@
     "assets/expedition/spider",
     "assets/expedition/orc",
     "assets/expedition/travel",
-    "assets/expedition/effects"
+    "assets/expedition/effects",
+    "assets/expedition/stages"
   ],
   "partSheets": {
     "note": "Development-only portrait part sheets. They are needed only when baked busts are absent. The final build ships explicit ready-recruit and human-foe bust files and omits these source sheets.",

@@ -9,7 +9,7 @@
 //   node tools/release_check.js --json
 'use strict';
 const fs = require('node:fs'), path = require('node:path');
-const ROOT = path.join(__dirname, '..');
+const ROOT = process.env.EXPEDITIONS_TEST_ROOT || path.join(__dirname, '..');
 const read = rel => fs.readFileSync(path.join(ROOT, rel), 'utf8');
 const checks = [];
 const add = (name, ok, detail, fatal, note) => checks.push({ name, ok, detail, note, fatal: fatal !== false });
@@ -29,6 +29,11 @@ add('the panel is gated on that flag', /Dev\.attach\s*=\s*function[\s\S]{0,200}?
 let size = null;
 try {
   size = require('./size_check.js').report();
+  if (process.env.EXPEDITIONS_TEST_ROOT) {
+    const missing = size.files.filter(f => !fs.existsSync(path.join(ROOT,f.rel))).map(f=>f.rel);
+    const total = size.files.reduce((n,f)=>n+(missing.includes(f.rel)?0:fs.statSync(path.join(ROOT,f.rel)).size),0);
+    size = Object.assign({},size,{missing,total,over:total>=size.budget});
+  }
   add('build inside the size budget', !size.over && !size.missing.length,
     null, true, (size.total / 1e6).toFixed(2) + ' MB of ' + (size.budget / 1e6).toFixed(1) + ' MB' + (size.missing.length ? '; missing: ' + size.missing.join(', ') : ''));
 } catch (e) { add('build inside the size budget', false, String(e.message || e)); }
@@ -38,6 +43,7 @@ add('recruit busts baked', !!(size && size.baked), 'run node tools/bake_busts.js
 
 // 5. No debugging left switched on in the boot path.
 const html = read('index.html');
+add('CrazyGames build policy enabled', /target:\s*'crazygames'/.test(read('js/core/release_config.js')), 'build a frozen candidate with npm run package:crazygames; working copy stays in website mode');
 add('no forced entry point in index.html', !/\bat=inn\b/.test(html.replace(/params\.get\('at'\)[^\n]*/g, '')),
   'index.html still hard-codes a jump');
 

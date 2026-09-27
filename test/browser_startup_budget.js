@@ -6,7 +6,7 @@
 const fs = require('node:fs'), path = require('node:path'), http = require('node:http');
 const { chromium, devices } = require('playwright');
 const Size = require('../tools/size_check');
-const ROOT = path.resolve(__dirname, '..');
+const ROOT = process.env.EXPEDITIONS_TEST_ROOT || path.resolve(__dirname, '..');
 const reportName = process.env.STARTUP_REPORT_NAME || 'startup';
 if (!/^[a-z0-9][a-z0-9_-]{0,79}$/i.test(reportName)) throw new Error('Unsafe STARTUP_REPORT_NAME');
 const OUT = path.join(__dirname, 'reports', reportName);

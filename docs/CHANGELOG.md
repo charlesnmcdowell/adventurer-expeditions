@@ -15,6 +15,16 @@ of small fixes within a day.
 
 ---
 
+## 2026-09-27 - Release polish: readable finishers, grounded combat and inn guest
+
+Implemented the user-approved polish pass. Alpha finishers 665-780 ms -> 1,400-1,620 ms; later monster finishers 770 ms -> 1,420 ms. The same frames/markers are retained with longer setup, impact and recovery holds. Two new battle plates provide continuous level mountain/city footing. Bram's existing seated painting appears after odd-numbered quest clears without granting recruitment. Original website/shared files remain unchanged.
+
+Files: `js/expedition/{painted,inn_art,scene,battle_stage}.js`, `assets/expedition/stages/`, `index.html` (cache stamp xp2), `tools/{ship_manifest.json,build_battle_stages.py,package_crazygames.js,release_check.js}`, `package.json`, focused pacing/inn/browser tests and candidate-aware browser test paths. Source masters/prompts: `../adventurer-expeditions-source-art/astra-v3/release-polish/`.
+
+A separate verified CrazyGames candidate hides development tools and enables SDK policy only in the exported copy. Total approximately 38.80 MB / 255 files; measured startup including first action and audio 14.64 MB. Local automated tests and visual checks are recorded in `docs/RELEASE_POLISH_20260927.md`. User playtest approval, uploaded portal QA and physical-device testing remain; no public deployment or acceptance claim.
+
+---
+
 ## 2026-09-26 — Astra v3 art integrated: forest, swamp and city playable
 
 User authorized source creation, intake and runtime integration in this session. The original `adventurer/` and synced shared files were not edited. Source masters and generation/reference records are in `../adventurer-expeditions-source-art/astra-v3/`; this is a local playtest build, not a publication or final art approval.

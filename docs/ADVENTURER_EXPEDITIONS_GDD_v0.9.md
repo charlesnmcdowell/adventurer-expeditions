@@ -5,6 +5,8 @@ Version 0.9 · September 19, 2026 (rev. b) · Status reconciled September 20, 20
 
 This revision supersedes v0.8; v0.5 through v0.8 are kept in `docs/` for history.
 
+**Release polish - September 27, 2026.** All 17 Alpha-and-later finishers now have longer anticipation/contact/recovery holds; mountain and city combat use level fighting surfaces; Bram appears as a seated guest on alternate quest completions without recruitment. See `RELEASE_POLISH_20260927.md` for validation, candidate path and remaining portal QA. This updates presentation only, not the deferred skill/ending redesign.
+
 **Current implementation — September 26, 2026.** Three locations, all seven new monsters, 14 new paired finishers, four painted travel beats and location defeat effects are integrated and locally playable. Hiro remains the only hero. See CHANGELOG for verification and delivery paths. Final in-game art approval is pending.
 
 **Earlier status — September 22, 2026.** Hiro, after playing: *"the game is

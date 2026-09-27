@@ -26,8 +26,15 @@ Art.preload = function (scene) {
   scene.load.json(MANIFEST, BASE + 'inn.json');
 };
 
-Art.variant = run => X.Campaign.owns(run, 'bram') && X.Campaign.fielded(run, 'bram') && X.Campaign.recruitReady('bram')
-  ? 'inn-hiro-bram' : 'inn-hiro-solo';
+Art.variant = run => {
+  // Bram is also an occasional seated guest, not a newly recruited combatant.
+  // Derive it from completed quests: reloads keep the same painting and no
+  // extra persistent counter can accidentally change the party or save format.
+  const clears = Object.values(run.cycles || {}).reduce((n, v) => n + (Number.isFinite(v) ? Math.max(0, Math.floor(v)) : 0), 0);
+  const guest = clears > 0 && clears % 2 === 1;
+  const companion = X.Campaign.owns(run, 'bram') && X.Campaign.fielded(run, 'bram') && X.Campaign.recruitReady('bram');
+  return guest || companion ? 'inn-hiro-bram' : 'inn-hiro-solo';
+};
 
 Art.paint = function (scene, run) {
   const data = scene.cache.json.get(MANIFEST);

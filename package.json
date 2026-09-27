@@ -6,7 +6,7 @@
   "scripts": {
     "sync": "node tools/sync_shared.js",
     "sync:check": "node tools/sync_shared.js --check",
-    "test": "node test/expedition_sim.js && node test/expedition_recruit_gate.js && node test/actor_animation_lifecycle.js && node test/cinematic_scope.js && node test/portal_readiness.js && node test/inn_art_lifecycle.js && node test/art_registration.js && node test/ship_budget_contract.js && node tools/size_check.js && node tools/levels_doc.js --check",
+    "test": "node test/expedition_sim.js && node test/expedition_recruit_gate.js && node test/actor_animation_lifecycle.js && node test/cinematic_scope.js && node test/portal_readiness.js && node test/inn_art_lifecycle.js && node test/art_registration.js && node test/ship_budget_contract.js && node tools/size_check.js && node tools/levels_doc.js --check && node test/finisher_pacing.js",
     "test:browser": "node test/browser_expedition.js",
     "test:ship": "node test/browser_expedition.js --ship",
     "art:review": "node test/browser_art_review.js",
@@ -28,6 +28,8 @@
     "stamp": "node tools/stamp.js",
     "test:finishers": "node test/browser_finishers.js",
     "test:v3": "node test/browser_v3_art.js",
-    "art:build:v3": "python tools/build_v3_monsters.py && python tools/build_v3_travel.py"
+    "art:build:v3": "python tools/build_v3_monsters.py && python tools/build_v3_travel.py",
+    "test:polish": "node test/browser_release_polish.js",
+    "package:crazygames": "node tools/package_crazygames.js"
   }
 }

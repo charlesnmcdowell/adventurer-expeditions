@@ -9,10 +9,10 @@
 // Usage: node test/browser_expedition.js [--seed=N] [--headed] [--clears=N] [--at=inn [--gold=N]] [--width=375] [--ship]
 'use strict';
 const http = require('node:http'), fs = require('node:fs'), path = require('node:path');
-const ROOT = path.join(__dirname, '..');
+const ROOT = process.env.EXPEDITIONS_TEST_ROOT || path.join(__dirname, '..');
 const reportName = process.env.EXPEDITION_REPORT_NAME || 'expedition';
 if (!/^[a-z0-9][a-z0-9_-]{0,79}$/i.test(reportName)) throw new Error('Unsafe EXPEDITION_REPORT_NAME');
-const OUT = path.join(ROOT, 'test', 'reports', reportName);
+const OUT = path.join(__dirname, 'reports', reportName);
 fs.mkdirSync(OUT, { recursive: true });
 for (const f of fs.readdirSync(OUT)) if (f.endsWith('.png')) fs.unlinkSync(path.join(OUT, f));
 const args = Object.fromEntries(process.argv.slice(2).map(a => { const m = a.match(/^--([^=]+)(?:=(.*))?$/); return m ? [m[1], m[2] == null ? true : m[2]] : [a, true]; }));
