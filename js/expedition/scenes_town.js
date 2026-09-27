@@ -73,30 +73,58 @@ class InnScene extends Phaser.Scene {
   // Embark is the next finished location (rain, then city); Replay the road
   // stays as a quieter extra. The Next-quest control used to call embark(),
   // which then threw the player back onto the tutorial.
+  // Arcade inn (Hiro, 2026-09-27): Rest, High scores and Embark. Rest is a
+  // full heal for points, dearer each time, refused at full health. No hiring,
+  // no replay button — the loop itself is the replay.
   buildLocked() {
     const run = this.run;
     this.hud = new X.Hud(this, { run, hero: this.world.hero, portraitKey: 'xp_hiro_face', inn: true,
       onSkill: () => {}, onUpgrade: id => this.buyUpgrade(id), onArrow: () => {}, onPause: () => {} });
     this.hud.refresh();
     this.world.restoreIds();
-    const locked = (btn, label) => { btn.zone.disableInteractive(); btn.setAlpha(0.55); btn.label.setText(label + '  🔒'); this.lockedButtons.push(btn); return btn; };
     const next = X.Campaign.quest(X.Campaign.nextQuestId(run));
-    this.replayBtn = bigButton(this, W - 112, H - 230, 200, 100, '↻', 'Replay the road', () => this.replayRoad(), 0x5a4a34);
-    locked(bigButton(this, W - 336, H - 230, 200, 100, '☺', 'Unlock a hero', () => {}, 0x5a4a34), 'Unlock a hero');
+    this.hpBar = this.buildHpBar(24, 70);
+    this.restBtn = bigButton(this, W - 112, H - 230, 200, 100, '☾', 'Rest', () => this.rest(), 0x5a4a34);
+    this.boardBtn = bigButton(this, W - 336, H - 230, 200, 100, '★', 'High scores', () => { if (!this.__boardOpen) X.UI.boardPanel(this); }, 0x5a4a34);
     this.embarkBtn = bigButton(this, W - 112, H - 110, 200, 100, '⚔', next.title, () => this.embark(), 0xf2c94c);
     this.btn = this.embarkBtn;
+    this.refreshRest();
     this.guide();
   }
-  replayRoad() {
-    if (!this.isPortalReady() || this.ended) return;
-    this.ended = true;
-    const run = this.run;
-    run.questId = 'road'; run.phase = 'quest'; run.wave = 0; run.checkpoint = 0;
-    run.awarded = run.awarded.filter(id => !X.Campaign.questEncounters('road').some(e => e.id === id));   // the road pays again
-    X.Run.save(run);
-    this.scene.start('Expedition', { run, seed: this.seed + 1 });
+  // Hiro's health under the score: the number Rest is about.
+  buildHpBar(x, y) {
+    const c = this.add.container(x, y).setDepth(X.UI.DEPTH.hud);
+    const g = this.add.graphics(); g.fillStyle(0x14110d, 0.85); g.fillRoundedRect(0, 0, 170, 30, 8); g.lineStyle(2, 0x3a3128, 1); g.strokeRoundedRect(0, 0, 170, 30, 8);
+    const bar = this.add.graphics();
+    const t = T().text(this, 85, 15, '', { size: 13, ox: 0.5, oy: 0.5, color: '#f4eee0', display: true });
+    c.add([g, bar, t]); c.bar = bar; c.text = t;
+    c.paint = run => {
+      const max = run.hpMax || 1, hp = run.hp == null ? max : Math.min(max, run.hp), pct = Math.max(0, Math.min(1, hp / max));
+      bar.clear(); bar.fillStyle(pct > 0.5 ? 0x62c95a : pct > 0.25 ? 0xf2c94c : 0xd9433b, 1); bar.fillRoundedRect(6, 6, Math.max(4, 158 * pct), 18, 5);
+      t.setText(run.hp == null ? 'Health full' : 'Health ' + hp + ' / ' + max);
+    };
+    c.paint(this.run);
+    return c;
   }
-
+  refreshRest() {
+    const run = this.run, can = X.Encounter.canRest(run), cost = X.restCost(run);
+    if (this.hpBar) this.hpBar.paint(run);
+    if (this.restBtn) {
+      this.restBtn.label.setText(X.Encounter.atFullHp(run) ? 'Rest  ·  full health' : 'Rest  ·  ' + cost + ' ★');
+      this.restBtn.setAlpha(can.ok ? 1 : 0.55);
+    }
+    if (this.pill) this.pill.text.setText(String(run.score || 0));
+  }
+  rest() {
+    if (!this.isPortalReady() || this.ended) return;
+    const r = X.Encounter.rest(this.run);
+    if (!r.ok) { this.tweens.add({ targets: this.restBtn, x: this.restBtn.x + 5, duration: 40, yoyo: true, repeat: 3 }); return r; }
+    X.Run.save(this.run);
+    A.VFX.aura(this, 300, 540, 0x62c95a);
+    this.tweens.add({ targets: this.restBtn, scale: 1.06, duration: 120, yoyo: true });
+    this.refreshRest();
+    return r;
+  }
   // One recruit at the bar: bust, name, and either a price or the fielded ring.
   bust(d, x, bottom) {
     const ready = X.Campaign.recruitReady(d.key);
@@ -131,6 +159,7 @@ class InnScene extends Phaser.Scene {
     }
     this.pill.text.setText(String(run.score || 0));
     this.hud.setScore(run.score || 0);
+    this.refreshRest();
     if (this.env && this.env.setParty) this.env.setParty(run);
   }
 
@@ -321,6 +350,111 @@ class TravelScene extends Phaser.Scene {
   }
 }
 
+// ================================================================ END OF RUN (arcade, 2026-09-27)
+// Hiro fell, or the player ended the run. Score, playthrough, the board; a name
+// when the score makes the top ten (required, name-shaped, 25 characters); then
+// Play again, which is a true fresh start. The saved run is cleared here so
+// the next launch begins at the road.
+class EndScene extends Phaser.Scene {
+  constructor() { super('End'); }
+  init(d) { this.opts = d || {}; }
+  preload() { X.UI.preloadBusts(this); }
+  isPortalReady() { return true; }
+  create() {
+    this.run = this.opts.run || X.Run.load() || X.Run.fresh();
+    this.seed = this.opts.seed != null ? this.opts.seed : 1;
+    this.ended = false; this.paused = false; this.time.paused = false;
+    this.events.once('shutdown', () => { this.ended = true; this.removeInput(); });
+    try { A.Music.playStory(X.innMusic); } catch (e) {}
+    this.add.rectangle(W / 2, H / 2, W, H, 0x0b0908, 1);
+    const why = this.opts.why || this.run.over || 'defeat';
+    const score = this.run.score || 0, loop = this.run.loop || 1;
+    T().text(this, W / 2, 54, why === 'defeat' ? 'Hiro has fallen' : 'Run ended', { size: 34, ox: 0.5, oy: 0.5, display: true, color: '#f4eee0' });
+    T().text(this, W / 2, 104, '★ ' + score, { size: 40, ox: 0.5, oy: 0.5, display: true, color: '#ffe28a' });
+    T().text(this, W / 2, 140, 'Playthrough ' + loop + (why === 'defeat' ? '  ·  fell on ' + (X.Campaign.quest(this.run.questId) || {}).title : ''), { size: 15, ox: 0.5, oy: 0.5, color: '#c9c0b0' });
+    this.listY = 196;
+    this.place = this.run.scored ? -1 : X.Board.placeOf(score);
+    this.drawList(this.run.scoredPlace != null ? this.run.scoredPlace : null);
+    if (this.place >= 0 && !this.run.scored) this.askName(); else this.playAgainButton();
+    X.UI.corner(this);
+    if (this.corner && this.corner.restart) this.corner.restart.setVisible(false);
+    if (A.Portal && A.Portal.active) A.Portal.sync([this]);
+  }
+  drawList(highlight) {
+    if (this.list) this.list.destroy();
+    this.list = X.UI.boardList(this, W / 2, this.listY, 480, { highlight, depth: 10 });
+  }
+  // The name field is a real text input over the canvas, so phone keyboards
+  // work. It is validated on every change and on OK (X.validName).
+  askName() {
+    const y = this.listY + X.board.size * 30 + 22;
+    this.prompt = T().text(this, W / 2, y, 'You made the board — enter your name', { size: 17, ox: 0.5, oy: 0.5, color: '#ffe28a', display: true });
+    this.hint = T().text(this, W / 2, y + 74, '', { size: 13, ox: 0.5, oy: 0.5, color: '#d9433b' });
+    const bw = 120, bh = 40, bx = W / 2 + 160, by = y + 38;
+    const g = this.add.graphics(); g.fillStyle(0x62c95a, 1); g.fillRoundedRect(bx - bw / 2, by - bh / 2, bw, bh, 10);
+    const ok = T().text(this, bx, by, 'OK', { size: 18, ox: 0.5, oy: 0.5, color: '#0f2d0f', display: true });
+    this.okArt = [g, ok];
+    this.okZone = this.add.zone(bx, by, bw, bh).setInteractive({ useHandCursor: true });
+    this.okZone.on('pointerdown', () => this.submitName());
+    this.okRect = { x: bx - bw / 2, y: by - bh / 2, w: bw, h: bh };
+    this.fieldRect = { x: W / 2 - 240, y: by - 20, w: 300, h: 40 };
+    this.makeInput();
+  }
+  makeInput() {
+    if (typeof document === 'undefined') return;
+    this.removeInput();
+    const el = document.createElement('input');
+    el.id = 'xp-name'; el.type = 'text'; el.maxLength = X.nameRules.max; el.autocomplete = 'off'; el.spellcheck = false; el.placeholder = 'your name';
+    Object.assign(el.style, { position: 'fixed', zIndex: 20, font: '18px sans-serif', padding: '0 10px', border: '2px solid #f2c94c', borderRadius: '8px', background: '#1c1712', color: '#f4eee0', outline: 'none', boxSizing: 'border-box' });
+    document.body.appendChild(el);
+    this.input_ = el;
+    const place = () => {
+      const canvas = this.game.canvas, b = canvas.getBoundingClientRect(), sx = b.width / W, sy = b.height / H, r = this.fieldRect;
+      Object.assign(el.style, { left: (b.left + r.x * sx) + 'px', top: (b.top + r.y * sy) + 'px', width: (r.w * sx) + 'px', height: (r.h * sy) + 'px' });
+    };
+    place(); this.placeInput = place;
+    window.addEventListener('resize', place);
+    el.addEventListener('keydown', e => { if (e.key === 'Enter') this.submitName(); });
+    el.addEventListener('input', () => { const v = X.validName(el.value); this.hint.setText(el.value && !v.ok ? v.text : ''); });
+    setTimeout(() => { try { el.focus(); } catch (e) {} }, 50);
+  }
+  removeInput() {
+    if (this.placeInput) { try { window.removeEventListener('resize', this.placeInput); } catch (e) {} this.placeInput = null; }
+    if (this.input_) { try { this.input_.remove(); } catch (e) {} this.input_ = null; }
+  }
+  submitName(value) {
+    const raw = value != null ? value : (this.input_ ? this.input_.value : '');
+    const v = X.validName(raw);
+    if (!v.ok) { this.hint.setText(v.text); if (this.input_) this.tweens.add({ targets: this.prompt, x: this.prompt.x + 5, duration: 40, yoyo: true, repeat: 3 }); return v; }
+    const r = X.Board.insert({ name: v.name, score: this.run.score || 0, loop: this.run.loop || 1 });
+    this.run.scored = true; this.run.scoredPlace = r.ok ? r.place : -1; X.Run.save(this.run);
+    this.removeInput();
+    this.prompt.setText('Welcome to the board, ' + v.name); this.prompt.setColor('#62c95a');
+    this.hint.setText('');
+    this.okZone.disableInteractive(); this.okZone.setVisible(false); for (const o of this.okArt || []) o.setVisible(false);
+    this.drawList(r.ok ? r.place : null);
+    this.playAgainButton();
+    return { ok: true, place: r.place };
+  }
+  playAgainButton() {
+    const bw = 220, bh = 52, bx = W / 2, by = H - 60;
+    const g = this.add.graphics(); g.fillStyle(0xf2c94c, 1); g.fillRoundedRect(bx - bw / 2, by - bh / 2, bw, bh, 12);
+    T().text(this, bx, by, '↻   Play again', { size: 20, ox: 0.5, oy: 0.5, color: '#2d2409', display: true });
+    const z = this.add.zone(bx, by, bw, bh).setInteractive({ useHandCursor: true });
+    z.on('pointerdown', () => this.playAgain());
+    this.playRect = { x: bx - bw / 2, y: by - bh / 2, w: bw, h: bh };
+    if (!this.footer) this.footer = T().text(this, W / 2, H - 112, 'Part 2 with a new hero is coming — stay tuned. Follow Hiro on Facebook and send feedback from the pause menu.', { size: 13, ox: 0.5, oy: 0.5, color: '#8d8377' });
+  }
+  playAgain() {
+    if (this.ended) return;
+    this.ended = true;
+    this.removeInput();
+    X.Run.startOver();
+    if (X.UI.reloadFresh()) return;
+    this.scene.start('Expedition', { run: X.Run.fresh(), fresh: true, seed: this.seed + 1 });
+  }
+}
+
 // ================================================================ GRAVE (shelved, GDD §18)
 // Kept registered so an old save cannot strand; nothing routes here in the loop.
 class GraveScene extends Phaser.Scene {
@@ -334,7 +468,7 @@ class GraveScene extends Phaser.Scene {
   }
 }
 
-X.InnScene = InnScene; X.TravelScene = TravelScene; X.GraveScene = GraveScene;
-A.ExpeditionInnScene = InnScene; A.ExpeditionTravelScene = TravelScene; A.ExpeditionGraveScene = GraveScene;
+X.InnScene = InnScene; X.TravelScene = TravelScene; X.GraveScene = GraveScene; X.EndScene = EndScene;
+A.ExpeditionInnScene = InnScene; A.ExpeditionTravelScene = TravelScene; A.ExpeditionGraveScene = GraveScene; A.ExpeditionEndScene = EndScene;
 X.portalSceneKeys = ['Expedition', 'Travel', 'Inn', 'Grave'];
 })();

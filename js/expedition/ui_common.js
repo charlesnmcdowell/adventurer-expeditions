@@ -234,9 +234,100 @@ UI.pauseSettings = function (scene, ctl) {
     root.add([g, t, h, pill, pt, z]);
     drawn.push({ label: row.label, rect: { x: W2 / 2 + w / 2 - 92, y: H2 / 2 + 30 + y - 13, w: 76, h: 26 } });
   });
+  // Arcade (Hiro, 2026-09-27): two buttons under the settings — High scores
+  // shows the board; End run asks once, then ends the run and scores it.
+  const by = rows.length * rowH + 10, bw = 196, bh = 44;
+  const button = (cx, label, color, fg, onTap) => {
+    const g = scene.add.graphics(); g.fillStyle(color, 1); g.fillRoundedRect(cx - bw / 2, by - bh / 2, bw, bh, 10);
+    const t = T().text(scene, cx, by, label, { size: 15, ox: 0.5, oy: 0.5, color: fg, display: true });
+    const z = scene.add.zone(cx, by, bw, bh).setInteractive({ useHandCursor: true });
+    z.on('pointerdown', onTap);
+    root.add([g, t, z]);
+    return { x: W2 / 2 + cx - bw / 2, y: H2 / 2 + 30 + by - bh / 2, w: bw, h: bh };
+  };
+  const api = { root, rows: drawn };
+  api.boardRect = button(-w / 4 - 4, 'High scores', 0x3a3128, '#f4eee0', () => { if (!scene.__boardOpen) UI.boardPanel(scene); });
+  api.endRect = button(w / 4 + 4, 'End run', 0x7a1f1f, '#fff0ee', () => {
+    if (api.confirm) return;
+    // One confirm so a mis-tap never ends a run.
+    const cw = 300, ch = 84, cy = by + 70;
+    const c = scene.add.container(0, cy);
+    const g = scene.add.graphics(); g.fillStyle(0x1c1712, 0.98); g.fillRoundedRect(-cw / 2, -ch / 2, cw, ch, 10); g.lineStyle(2, 0xd9433b, 1); g.strokeRoundedRect(-cw / 2, -ch / 2, cw, ch, 10);
+    const t = T().text(scene, 0, -ch / 2 + 20, 'End this run and score it?', { size: 15, ox: 0.5, oy: 0.5, color: '#f4eee0', display: true });
+    const yes = scene.add.graphics(); yes.fillStyle(0xd9433b, 1); yes.fillRoundedRect(-cw / 2 + 16, 8, 120, 34, 8);
+    const yt = T().text(scene, -cw / 2 + 76, 25, 'End run', { size: 15, ox: 0.5, oy: 0.5, color: '#fff0ee', display: true });
+    const yz = scene.add.zone(-cw / 2 + 76, 25, 120, 34).setInteractive({ useHandCursor: true });
+    const no = scene.add.graphics(); no.fillStyle(0x3a3128, 1); no.fillRoundedRect(cw / 2 - 136, 8, 120, 34, 8);
+    const nt = T().text(scene, cw / 2 - 76, 25, 'Keep playing', { size: 15, ox: 0.5, oy: 0.5, color: '#c9c0b0', display: true });
+    const nz = scene.add.zone(cw / 2 - 76, 25, 120, 34).setInteractive({ useHandCursor: true });
+    nz.on('pointerdown', () => { c.destroy(); api.confirm = null; });
+    yz.on('pointerdown', () => { c.destroy(); api.confirm = null; if (ctl.paused) ctl.togglePause(); UI.endRun(scene, 'quit'); });
+    c.add([g, t, yes, yt, yz, no, nt, nz]);
+    root.add(c);
+    api.confirm = { root: c, yesRect: { x: W2 / 2 - cw / 2 + 16, y: H2 / 2 + 30 + cy + 8, w: 120, h: 34 } };
+    scene.__endConfirmRect = api.confirm.yesRect;
+  });
   scene.__settingRects = drawn;
-  const api = { root, rows: drawn, destroy: () => { try { root.destroy(); } catch (e) {} scene.__settingRects = null; } };
+  scene.__pauseButtons = { board: api.boardRect, end: api.endRect };
+  api.destroy = () => { try { root.destroy(); } catch (e) {} scene.__settingRects = null; scene.__pauseButtons = null; scene.__endConfirmRect = null; };
   return api;
+};
+
+// ---------------------------------------------------------------- arcade: the board and the end of a run
+// The top-10 board, drawn into a container at (x, y) with the given width.
+// `highlight` marks one row (the run that was just entered). Returns the
+// container with `.rows` (the data) and `.height`.
+UI.boardList = function (scene, x, y, w, opts) {
+  opts = opts || {};
+  const rows = opts.rows || X.Board.load();
+  const c = scene.add.container(x, y).setDepth(opts.depth != null ? opts.depth : D.hud + 6).setScrollFactor(0);
+  const rowH = opts.rowH || 30, n = X.board.size;
+  for (let i = 0; i < n; i++) {
+    const r = rows[i], ry = i * rowH, mine = opts.highlight != null && opts.highlight === i;
+    if (mine) { const g = scene.add.graphics(); g.fillStyle(0xf2c94c, 0.18); g.fillRoundedRect(-w / 2, ry - rowH / 2 + 2, w, rowH - 4, 6); c.add(g); }
+    const color = mine ? '#ffe28a' : r ? '#f4eee0' : '#5e564b';
+    c.add(T().text(scene, -w / 2 + 12, ry, String(i + 1) + '.', { size: 15, ox: 0, oy: 0.5, color, display: true }));
+    c.add(T().text(scene, -w / 2 + 48, ry, r ? r.name : '—', { size: 15, ox: 0, oy: 0.5, color, display: true }));
+    if (r) c.add(T().text(scene, w / 2 - 96, ry, 'x' + (r.loop || 1), { size: 12, ox: 1, oy: 0.5, color: mine ? '#ffe28a' : '#8d8377' }));
+    c.add(T().text(scene, w / 2 - 12, ry, r ? String(r.score) : '', { size: 15, ox: 1, oy: 0.5, color, display: true }));
+  }
+  c.rows = rows; c.height = n * rowH;
+  return c;
+};
+
+// A framed board panel with a close button, over any scene (pause menu, inn).
+UI.boardPanel = function (scene, onClose) {
+  const w = 460, h = 420, x = W / 2, y = H / 2;
+  const root = scene.add.container(x, y).setDepth(D.hand + 14).setScrollFactor(0);
+  const shade = scene.add.rectangle(0, 0, W, H, 0x000000, 0.45).setInteractive();
+  const g = scene.add.graphics(); g.fillStyle(0x14110d, 0.97); g.fillRoundedRect(-w / 2, -h / 2, w, h, 16); g.lineStyle(3, 0xf2c94c, 1); g.strokeRoundedRect(-w / 2, -h / 2, w, h, 16);
+  const title = T().text(scene, 0, -h / 2 + 30, 'High scores', { size: 24, ox: 0.5, oy: 0.5, display: true, color: '#f4eee0' });
+  const list = UI.boardList(scene, 0, -h / 2 + 76, w - 40, { depth: D.hand + 15 });
+  list.setDepth(0);
+  const bw = 160, bh = 40, by = h / 2 - 36;
+  const bg = scene.add.graphics(); bg.fillStyle(0x3a3128, 1); bg.fillRoundedRect(-bw / 2, by - bh / 2, bw, bh, 10);
+  const bt = T().text(scene, 0, by, 'Close', { size: 16, ox: 0.5, oy: 0.5, color: '#f4eee0', display: true });
+  const bz = scene.add.zone(0, by, bw, bh).setInteractive({ useHandCursor: true });
+  const close = () => { root.destroy(); scene.__boardOpen = false; if (onClose) onClose(); };
+  bz.on('pointerdown', close); shade.on('pointerdown', close);
+  root.add([shade, g, title, list, bg, bt, bz]);
+  scene.__boardOpen = true;
+  return { root, close, closeRect: { x: x - bw / 2, y: y + by - bh / 2, w: bw, h: bh } };
+};
+
+// End the run from any scene (Hiro, 2026-09-27: the End Run button). The run
+// is marked over and saved once, so a reload lands on the end screen, then
+// the End scene takes it from there.
+UI.endRun = function (scene, why) {
+  const run = scene.run || X.Run.load() || X.Run.fresh();
+  if (scene.hero && scene.hero.unit) X.Encounter.rememberHp(run, scene.hero.unit);
+  if (scene.ended != null) scene.ended = true;
+  UI.resetCamera(scene);
+  // A fight interrupted mid-beat must not finish its tweens and timers into a
+  // scene that is gone: kill them here, callbacks and all.
+  try { scene.time.paused = false; scene.tweens.killAll(); scene.time.removeAllEvents(); } catch (e) {}
+  run.over = why || 'quit'; run.phase = 'end'; X.Run.save(run);
+  scene.scene.start('End', { run, seed: scene.seed, why: why || 'quit' });
 };
 
 // Reload into a guaranteed-clean session. Returns false when there is no URL to

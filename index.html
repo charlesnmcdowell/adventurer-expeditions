@@ -125,7 +125,7 @@
 <script src="js/data/personality_travel.js?v=20260918-xp1"></script>
 <script src="js/data/personality_social.js?v=20260918-xp1"></script>
 <script src="js/data/campaign_story.js?v=20260918-xp1"></script>
-<script src="js/expedition/media_hashes.js?v=20260927-xp5"></script>
+<script src="js/expedition/media_hashes.js?v=20260927-xp6"></script>
 <script src="js/core/rng.js?v=20260918-xp1"></script>
 <script src="js/core/util.js?v=20260918-xp1"></script>
 <script src="js/core/skillsys.js?v=20260918-xp1"></script>
@@ -197,23 +197,23 @@
 <script src="js/ui/dialoguebox.js?v=20260918-xp1"></script>
 <script src="js/ui/cutscenes.js?v=20260918-xp1"></script>
 <script src="js/ui/portal.js?v=20260918-xp1"></script>
-<script src="js/expedition/data.js?v=20260927-xp5"></script>
-<script src="js/expedition/shim.js?v=20260927-xp5"></script>
-<script src="js/expedition/encounter.js?v=20260927-xp5"></script>
-<script src="js/expedition/run.js?v=20260927-xp5"></script>
-<script src="js/expedition/ui_common.js?v=20260927-xp5"></script>
-<script src="js/expedition/dev.js?v=20260927-xp5"></script>
-<script src="js/expedition/painted.js?v=20260927-xp5"></script>
-<script src="js/expedition/battle_stage.js?v=20260927-xp5"></script>
-<script src="js/expedition/inn_art.js?v=20260927-xp5"></script>
-<script src="js/expedition/actors.js?v=20260927-xp5"></script>
-<script src="js/expedition/defeat_fx.js?v=20260927-xp5"></script>
-<script src="js/expedition/beats.js?v=20260927-xp5"></script>
-<script src="js/expedition/hud.js?v=20260927-xp5"></script>
-<script src="js/expedition/campaign.js?v=20260927-xp5"></script>
-<script src="js/expedition/scene.js?v=20260927-xp5"></script>
-<script src="js/expedition/travel_art.js?v=20260927-xp5"></script>
-<script src="js/expedition/scenes_town.js?v=20260927-xp5"></script>
+<script src="js/expedition/data.js?v=20260927-xp6"></script>
+<script src="js/expedition/shim.js?v=20260927-xp6"></script>
+<script src="js/expedition/encounter.js?v=20260927-xp6"></script>
+<script src="js/expedition/run.js?v=20260927-xp6"></script>
+<script src="js/expedition/ui_common.js?v=20260927-xp6"></script>
+<script src="js/expedition/dev.js?v=20260927-xp6"></script>
+<script src="js/expedition/painted.js?v=20260927-xp6"></script>
+<script src="js/expedition/battle_stage.js?v=20260927-xp6"></script>
+<script src="js/expedition/inn_art.js?v=20260927-xp6"></script>
+<script src="js/expedition/actors.js?v=20260927-xp6"></script>
+<script src="js/expedition/defeat_fx.js?v=20260927-xp6"></script>
+<script src="js/expedition/beats.js?v=20260927-xp6"></script>
+<script src="js/expedition/hud.js?v=20260927-xp6"></script>
+<script src="js/expedition/campaign.js?v=20260927-xp6"></script>
+<script src="js/expedition/scene.js?v=20260927-xp6"></script>
+<script src="js/expedition/travel_art.js?v=20260927-xp6"></script>
+<script src="js/expedition/scenes_town.js?v=20260927-xp6"></script>
 <script>
 (async function () {
 await ADV.Portal.prepare();
@@ -232,6 +232,7 @@ window.__game = new Phaser.Game({
 window.__game.scene.add('Inn', ADV.ExpeditionInnScene, false);
 window.__game.scene.add('Travel', ADV.ExpeditionTravelScene, false);
 window.__game.scene.add('Grave', ADV.ExpeditionGraveScene, false);
+window.__game.scene.add('End', ADV.ExpeditionEndScene, false);
 window.__game.scene.add('Expedition', ADV.ExpeditionScene, false);
 // Resume where the run left off; a fresh run opens straight into the ambush.
 // ?fresh=1 is a true restart: the stored run is wiped, so nothing — least of all
@@ -243,7 +244,7 @@ if (params.get('at') === 'inn') {
   run = ADV.Expedition.Dev.innRun(params.has('score') ? Number(params.get('score')) : params.has('gold') ? Number(params.get('gold')) : 1500);
 }
 const phase = run ? run.phase : 'quest';
-const start = phase === 'inn' ? 'Inn' : phase === 'travel' ? 'Travel' : phase === 'grave' ? 'Grave' : 'Expedition';
+const start = phase === 'inn' ? 'Inn' : phase === 'travel' ? 'Travel' : phase === 'grave' ? 'Grave' : phase === 'end' ? 'End' : 'Expedition';
 window.__game.scene.start(start, { seed, fresh: params.has('fresh'), run: run || undefined, leg: run && run.travelLeg });
 // Start over reloads with ?fresh=1, so take it back out of the address bar once
 // it has done its job: otherwise every later refresh would wipe the run too.

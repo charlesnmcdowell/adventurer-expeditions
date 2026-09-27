@@ -214,6 +214,7 @@ class ExpeditionScene extends Phaser.Scene {
     // The road between fights is the travel panorama, party walking, a line of
     // banter — the same beat as the way out (§5.2). The next wave is the checkpoint.
     this.run.wave = this.run.wave + 1; this.run.checkpoint = this.run.wave;
+    if (this.hero.unit) X.Encounter.rememberHp(this.run, this.hero.unit);
     this.run.phase = 'travel'; this.run.travelLeg = 'midleg'; X.Run.save(this.run);
     X.UI.resetCamera(this);
     this.scene.start('Travel', { run: this.run, seed: this.seed, leg: 'midleg' });
@@ -269,8 +270,9 @@ class ExpeditionScene extends Phaser.Scene {
       this.hud.fired(cast.choice.action.skillId, this.hero.x, this.hero.y - this.hero.height * 0.55);
       this.hud.setQueued(null);
       await X.Beats.play(this, cast);
+      if (this.ended) return true;
       this.hud.setSkillStates(Enc.skillStates(enc));
-      if (cast.over || this.ended) return true;
+      if (cast.over) return true;
     }
     return false;
   }
@@ -284,6 +286,7 @@ class ExpeditionScene extends Phaser.Scene {
     while (!this.ended) {
       const pk = Enc.peek(enc);
       if (pk.events.length) await X.Beats.ticksOnly(this, pk.events);
+      if (this.ended) return;
       if (pk.over) break;
       this.hud.setSkillStates(Enc.skillStates(enc));
       // A tap made during the last animation fires here, before anyone's turn.
@@ -302,6 +305,7 @@ class ExpeditionScene extends Phaser.Scene {
       if (step.hero && step.choice && step.choice.how === 'request') this.hud.fired(step.choice.action.skillId, this.hero.x, this.hero.y - this.hero.height * 0.55);
       if (step.hero && !enc.request) this.hud.setQueued(null);
       await X.Beats.play(this, step);
+      if (this.ended) return;                        // the run was ended from the pause menu mid-beat
       this.hud.setSkillStates(Enc.skillStates(enc));
       if (step.over) break;
       // A beat of air between turns (Hiro, 2026-09-22: "turns are going by too
@@ -355,8 +359,13 @@ class ExpeditionScene extends Phaser.Scene {
   async victory() {
     const enc = this.enc;
     X.UI.resetCamera(this);                                                    // the fight ended: zoom/pan home before the payout (round 3 #1)
-    // Between fights hostile effects clear and Hiro recovers (GDD §11).
-    for (const a of this.actors.values()) if (a.side === 'a') { const u = a.unit; u.statuses = []; u.counter = 0; u.downed = false; u.chp = u.maxHp; a.alive = true; a.root.setVisible(true); a.img.setAlpha(1); a.plate.setVisible(true); a.refresh(); }
+    // Between fights hostile effects clear; health does NOT recover (Hiro,
+    // 2026-09-27: arcade — "maintain their health throughout the entire
+    // quest"). The Finisher's heal on a kill and Rest at the inn are the only
+    // ways back up. The run remembers the health so the next fight, and a
+    // reload, open on it.
+    for (const a of this.actors.values()) if (a.side === 'a') { const u = a.unit; u.statuses = []; u.counter = 0; a.refresh(); }
+    if (this.hero.unit) { X.Encounter.rememberHp(this.run, this.hero.unit); this.world.hero.combatHp = this.hero.unit.chp; }
     await this.hero.play('victory');
     const award = X.Encounter.award(enc);
     X.Run.save(this.run);
@@ -381,25 +390,27 @@ class ExpeditionScene extends Phaser.Scene {
     await this.hero.play('kneel');
     X.UI.resetCamera(this);                                                    // a kill cinematic must not survive into the defeat card (round 3 #1)
     await wait(this, 900);
-    // Retry the same fight with the same purchases and a new seed. No story, no
-    // grave (GDD v0.8 §18): losing costs time, never progress. The tutorial road
-    // simply goes again; a loop quest also offers the inn, keeping the gold from
-    // the fights already won, so a party that came under-manned is never stuck.
-    if (this.quest.tutorial) {
-      this.hud.banner('Again', 1200);
-      await wait(this, 700);
-      X.UI.resetCamera(this);
-      this.scene.restart({ seed: this.seed + 1 });
-      return;
-    }
-    this.hud.defeatCard({ title: this.world.companions.length ? 'The party falls back' : 'Down', sub: 'Score ' + (this.run.score || 0) },
-      () => { X.UI.resetCamera(this); this.scene.restart({ seed: this.seed + 1 }); },
-      () => { X.UI.resetCamera(this); this.run.phase = 'travel'; this.run.travelLeg = 'return'; this.run.wave = 0; X.Run.save(this.run); this.scene.start('Travel', { run: this.run, seed: this.seed, leg: 'return' }); });
+    // Arcade (Hiro, 2026-09-27): a fall ends the run. No retry, no retreat to
+    // the inn — the score is what it is, and the end screen takes it from here.
+    this.endRun('defeat');
+  }
+
+  // The run is over — Hiro fell, or the player ended it from the pause menu.
+  // The run is marked over and saved once, so a reload lands on the end screen
+  // rather than back in a fight, and the End scene takes over.
+  endRun(why) {
+    if (this.ended) return;
+    this.ended = true;
+    X.UI.resetCamera(this);
+    if (this.hero && this.hero.unit) X.Encounter.rememberHp(this.run, this.hero.unit);
+    this.run.over = why || 'defeat'; this.run.phase = 'end'; X.Run.save(this.run);
+    this.scene.start('End', { run: this.run, seed: this.seed, why: why || 'defeat' });
   }
 
   // Quest complete: sheathed Hiro, a compact card over the scene, Replay.
   async complete() {
     this.hud.setWave(this.encs.length); this.run.wave = 0;
+    if (this.hero.unit) X.Encounter.rememberHp(this.run, this.hero.unit);
     const clear = X.Encounter.awardQuest(this.run);                             // the quest itself pays, on top of its waves, at this loop's rate
     this.run.questsDone.push(this.quest.id);                                   // every clear counts: the loop cycles on it
     this.run.loop = X.Campaign.loopOf(this.run);

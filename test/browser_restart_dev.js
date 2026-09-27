@@ -66,10 +66,10 @@ const bad = (what, saw) => { checks.push({ ok: false, what, saw }); console.erro
   const state = page => page.evaluate(() => {
     const g = window.__game, key = g.scene.getScenes(true).map(s => s.sys.settings.key)[0], s = g.scene.getScene(key);
     const X = ADV.Expedition;
-    return { scene: key, run: s.run ? { gold: s.run.gold, levels: Object.assign({}, s.run.levels), questsDone: (s.run.questsDone || []).slice(), tutorial: Object.assign({}, s.run.tutorial) } : null,
+    return { scene: key, run: s.run ? { score: s.run.score, levels: Object.assign({}, s.run.levels), questsDone: (s.run.questsDone || []).slice(), tutorial: Object.assign({}, s.run.tutorial) } : null,
       stored: X.Run.load() ? Object.assign({}, X.Run.load().tutorial) : null,
       devButton: !!s.__devButton, devPanel: !!s.__devPanel, devEnabled: X.Dev.enabled(), devBuild: X.Dev.DEV_BUILD,
-      start: X.economy.start };
+      start: 0 };
   });
 
   // ---- 1. Start over is a true restart -------------------------------------
@@ -78,7 +78,7 @@ const bad = (what, saw) => { checks.push({ ok: false, what, saw }); console.erro
   await page.evaluate(() => {
     const X = ADV.Expedition, s = window.__game.scene.getScene('Expedition');
     Object.assign(s.run.tutorial, { arrowDone: true, finisherDone: true, purchases: 3, inspectDone: true, used: { finisher: true }, skipGuide: true });
-    s.run.gold = 250; s.run.levels.finisher = 2; s.run.questsDone = ['road'];
+    s.run.score = 2500; s.run.questsDone = ['rain']; s.run.hp = 40; s.run.hpMax = 344;
     X.Run.save(s.run);
   });
   const before = await state(page);
@@ -87,16 +87,15 @@ const bad = (what, saw) => { checks.push({ ok: false, what, saw }); console.erro
 
   await page.evaluate(() => window.__game.scene.getScene('Expedition').corner.startOver());
   // Start over reloads the page now, so the game disappears and comes back:
-  // the predicate has to survive a window with no __game in it. A fresh run also
-  // opens with X.economy.start in hand, so "fresh" is the starting purse rather
-  // than nothing at all.
+  // the predicate has to survive a window with no __game in it. A fresh arcade
+  // run opens with a score of 0, full health and nothing cleared.
   await page.waitForFunction(() => {
     const g = window.__game; if (!g || !g.scene || !g.scene.getScenes(true).length) return false;
-    const s = g.scene.getScene('Expedition'); const X = ADV.Expedition;
-    return !!(s && s.run && X && X.economy && s.run.gold === X.economy.start && !(s.run.questsDone || []).length);
+    const s = g.scene.getScene('Expedition');
+    return !!(s && s.run && s.run.score === 0 && !(s.run.questsDone || []).length);
   }, null, { timeout: 60000 });
   const after = await state(page);
-  const blankRun = after.run && after.run.gold === after.start && !after.run.questsDone.length && after.run.levels.finisher === 0;
+  const blankRun = after.run && after.run.score === 0 && !after.run.questsDone.length && after.run.levels.finisher === 1;
   const blankTut = after.run && armed(after.run.tutorial);
   const blankStored = after.stored === null || armed(after.stored);   // wiped outright, or armed
   if (blankRun) ok('Start over gives a blank run'); else bad('Start over gives a blank run', after.run);
@@ -113,79 +112,35 @@ const bad = (what, saw) => { checks.push({ ok: false, what, saw }); console.erro
   await page.screenshot({ path: path.join(OUT, '02-guidance-returned.png') });
   await ctx.close();
 
-  // ---- 1b. The tutorial happens before and during the fight ----------------
-  // The bug (Hiro, 2026-09-21): "it starts after the 3 wolves are killed". The
-  // player began with no gold and no skills, so the purchase guidance could not
-  // run until the first payout and the in-fight prompts had nothing to point at.
+  // ---- 1b. The tutorial teaches the Finisher in the first fight --------------
+  // Arcade (Hiro, 2026-09-27): every skill is owned, nothing is bought, and
+  // the first quest teaches Finisher, then Counter Attack, then God Aura, one
+  // hold per fight. The first hold is the Finisher, while enemies are still up
+  // and only once one of them is at or under half health.
   ({ ctx, page } = await open('http://127.0.0.1:' + port + '/index.html?fresh=1&seed=11&renderer=canvas'));
-  const firstGate = await page.waitForFunction(() => {
+  const owned = await page.waitForFunction(() => {
     const s = window.__game.scene.getScene('Expedition');
-    if (!s || !s.hud) return null;
-    const up = (s.hud.gateActive && s.hud.gateActive()) || !!s.hud._gateRect;
-    if (!up) return null;
-    const foes = [...(s.actors ? s.actors.values() : [])].filter(a => a.side === 'b');
-    return { gold: s.run.gold, purchases: (s.run.tutorial || {}).purchases || 0, chip: !!s.hud.chip,
-      foes: foes.length, alive: foes.filter(a => a.alive).length, awarded: (s.run.awarded || []).length };
+    return s && s.run && s.run.levels && s.run.levels.finisher === 1 && s.run.levels.god_aura === 1 && s.run.levels.counter_attack === 1 ? { score: s.run.score, levels: s.run.levels } : null;
   }, null, { timeout: 60000 }).then(h => h.jsonValue()).catch(() => null);
-
-  if (firstGate && firstGate.awarded === 0 && (firstGate.foes === 0 || firstGate.alive === firstGate.foes))
-    ok('the first guidance comes before anything has been killed', firstGate);
-  else bad('the first guidance comes before anything has been killed', firstGate);
-  // It is the purchase guidance: the hand is on a skill the player cannot yet
-  // use, and the money to buy it is in hand. (The first hold is on the icon;
-  // tapping it opens the buy chip, so `chip` is only set after that tap.)
-  if (firstGate && firstGate.gold >= 20 && firstGate.purchases === 0) ok('and it is the purchase, with the money in hand', { gold: firstGate.gold });
-  else bad('and it is the purchase, with the money in hand', firstGate);
-  await page.screenshot({ path: path.join(OUT, '00-first-guidance.png') });
-
-  // Follow it the way a player would — real taps on whatever the hand points at
-  // — until the skill is owned. Game coordinates map through the canvas.
-  for (let i = 0; i < 24; i++) {
-    const r = await page.evaluate(() => {
-      const s = window.__game.scene.getScene('Expedition');
-      if (!s || !s.hud || s.run.levels.finisher > 0) return null;
-      const rect = (s.hud.chip && s.hud.chip.confirmRect) || s.hud._gateRect;
-      return rect ? { x: rect.x, y: rect.y, w: rect.w, h: rect.h } : null;
-    });
-    if (!r) break;
-    const [px, py] = await toPage(r.x + r.w / 2, r.y + r.h / 2);
-    await page.mouse.click(px, py);
-    await page.waitForTimeout(350);
-  }
-  const bought = await page.evaluate(() => {
-    const s = window.__game.scene.getScene('Expedition');
-    return { finisher: s.run.levels.finisher, gold: s.run.gold, awarded: (s.run.awarded || []).length };
-  });
-  if (bought.finisher > 0 && bought.awarded === 0) ok('the skill is bought before any fight has paid out', bought);
-  else bad('the skill is bought before any fight has paid out', bought);
-
-  // After the buy the guide asks the player to hold the new icon and read what it
-  // does. Clear whatever it puts up — a press long enough to count as a hold —
-  // until the fight itself raises the "use it" gate.
+  if (owned && owned.score === 0) ok('a fresh run owns every skill and starts at a score of 0', owned);
+  else bad('a fresh run owns every skill and starts at a score of 0', owned);
   let useGate = null;
-  for (let i = 0; i < 40 && !useGate; i++) {
+  for (let i = 0; i < 60 && !useGate; i++) {
     const st = await page.evaluate(() => {
       const s = window.__game.scene.getScene('Expedition');
       if (!s || !s.hud) return null;
-      const rect = (s.hud.chip && s.hud.chip.confirmRect) || s.hud._gateRect;
       const foes = [...(s.actors ? s.actors.values() : [])].filter(a => a.side === 'b' && a.alive);
-      return { gateFor: s.hud._gateFor || null,
-        rect: rect ? { x: rect.x, y: rect.y, w: rect.w, h: rect.h } : null,
+      return { gateFor: s.hud._gateFor || null, awarded: (s.run.awarded || []).length,
         living: foes.length, atOrUnderHalf: foes.filter(a => a.unit && a.unit.chp / a.unit.maxHp <= 0.5).length,
         over: !!(s.enc && s.enc.st && s.enc.st.over) };
     });
     if (!st) break;
-    if (st.gateFor === 'use:finisher') { useGate = { living: st.living, atOrUnderHalf: st.atOrUnderHalf }; break; }
+    if (st.gateFor) { useGate = st; break; }
     if (st.over) break;                                    // the wave ended without the prompt
-    if (st.rect) {
-      const [px, py] = await toPage(st.rect.x + st.rect.w / 2, st.rect.y + st.rect.h / 2);
-      await page.mouse.move(px, py); await page.mouse.down();
-      await page.waitForTimeout(3400);                     // long enough to count as a hold
-      await page.mouse.up();
-    }
-    await page.waitForTimeout(600);
+    await page.waitForTimeout(500);
   }
-
+  if (useGate && useGate.gateFor === 'use:finisher' && useGate.awarded === 0) ok('the first guidance is the Finisher, before any fight has paid out', useGate);
+  else bad('the first guidance is the Finisher, before any fight has paid out', useGate);
   if (useGate && useGate.living > 0) ok('the fight pauses for the Finisher while enemies are still up', useGate);
   else bad('the fight pauses for the Finisher while enemies are still up', useGate);
   if (useGate && useGate.atOrUnderHalf > 0) ok('and only once something is at or under half health', useGate);
@@ -347,8 +302,8 @@ const bad = (what, saw) => { checks.push({ ok: false, what, saw }); console.erro
   await click('Jump to the inn');
   await page.waitForFunction(() => window.__game.scene.isActive('Inn'), null, { timeout: 60000 });
   const inn = await state(page);
-  if (inn.scene === 'Inn' && inn.run.gold === 150 && inn.run.questsDone.includes('road')) ok('“Jump to the inn” lands at the inn with the road behind it', { gold: inn.run.gold });
-  else bad('“Jump to the inn” lands at the inn with the road behind it', inn);
+  if (inn.scene === 'Inn' && inn.run.score === 1500 && inn.run.questsDone.includes('rain')) ok('“Jump to the inn” lands at the inn with the first quest behind it', { score: inn.run.score });
+  else bad('“Jump to the inn” lands at the inn with the first quest behind it', inn);
   await page.screenshot({ path: path.join(OUT, '04-jump-to-inn.png') });
 
   // The panel is still reachable in the new scene, and Fresh tutorial resets.
@@ -358,7 +313,7 @@ const bad = (what, saw) => { checks.push({ ok: false, what, saw }); console.erro
   const [fx, fy] = await toPage(fresh.x + fresh.w / 2, fresh.y + fresh.h / 2);
   await page.mouse.click(fx, fy);
   await page.waitForFunction(() => window.__game.scene.isActive('Expedition')
-    && window.__game.scene.getScene('Expedition').run.gold === ADV.Expedition.economy.start, null, { timeout: 60000 });
+    && window.__game.scene.getScene('Expedition').run.score === 0 && !window.__game.scene.getScene('Expedition').run.questsDone.length, null, { timeout: 60000 });
   const back = await state(page);
   if (back.scene === 'Expedition' && armed(back.run.tutorial)) ok('“Fresh tutorial” starts the road with the guidance back');
   else bad('“Fresh tutorial” starts the road with the guidance back', back);

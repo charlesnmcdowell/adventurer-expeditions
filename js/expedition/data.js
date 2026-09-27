@@ -118,6 +118,30 @@ X.loopBonus = loop => 1 + X.scoring.loopBonus * Math.max(0, (loop || 1) - 1);
 // Rest at the inn (Hiro, 2026-09-27): a full heal for points, the price
 // doubling with every use in the run, never at full health.
 X.rest = { cost: 1000, growth: 2 };
+// The high-score board (Hiro, 2026-09-27): ten rows, on this device, under its
+// own key. A name is required and must read like a name — no spaces, starts
+// with a letter, at least three letters and a vowel, no more than three
+// consonants in a row, no letter three times in a row; letters, digits and a
+// few symbols. tyler#2, tyler12 and tylertheman! pass; 12345, @#$skfsal,
+// adfskdlsfosl and uislllslsl@#@11221 do not. A spelling check, not a
+// dictionary: loosen `maxConsonants` if play shows real names refused.
+X.board = { size: 10, key: 'adventurer_expeditions_highscores_v1' };
+X.nameRules = { max: 25, symbols: '#!_-.@$', minLetters: 3, maxConsonants: 3, maxRepeat: 3 };
+X.validName = function (raw) {
+  const R = X.nameRules, name = String(raw == null ? '' : raw);
+  if (!name.length) return { ok: false, reason: 'empty', text: 'Type a name' };
+  if (name.length > R.max) return { ok: false, reason: 'long', text: 'At most ' + R.max + ' characters' };
+  if (/\s/.test(name)) return { ok: false, reason: 'space', text: 'No spaces' };
+  const allowed = new RegExp('^[A-Za-z0-9' + R.symbols.replace(/[-\]\\^]/g, '\\$&') + ']+$');
+  if (!allowed.test(name)) return { ok: false, reason: 'chars', text: 'Letters, digits and ' + R.symbols.split('').join(' ') + ' only' };
+  if (!/^[A-Za-z]/.test(name)) return { ok: false, reason: 'start', text: 'Start with a letter' };
+  const letters = name.replace(/[^A-Za-z]/g, '');
+  if (letters.length < R.minLetters) return { ok: false, reason: 'letters', text: 'At least ' + R.minLetters + ' letters' };
+  if (!/[AEIOUYaeiouy]/.test(letters)) return { ok: false, reason: 'vowel', text: 'Needs a vowel' };
+  if (new RegExp('[^AEIOUYaeiouy]{' + (R.maxConsonants + 1) + ',}').test(letters)) return { ok: false, reason: 'consonants', text: 'That does not read like a name' };
+  if (new RegExp('([A-Za-z])\\1{' + (R.maxRepeat - 1) + ',}', 'i').test(name)) return { ok: false, reason: 'repeat', text: 'That does not read like a name' };
+  return { ok: true, name };
+};
 X.restCost = run => Math.round(X.rest.cost * Math.pow(X.rest.growth, (run && run.rests) || 0));
 
 // Once Finisher first becomes usable the automatic policy leaves it alone for

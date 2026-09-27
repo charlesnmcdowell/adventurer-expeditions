@@ -24,7 +24,37 @@ Enc.makeHero = function (rng, run) {
   ch.expedition = run;               // the shim reads run.levels
   Enc.syncKit(ch, run);
   ch.inventory = ch.inventory || { gold: 0, items: [] };
+  // Arcade (Hiro, 2026-09-27): health carries through the whole run. The
+  // engine opens a unit at ch.combatHp when it is set, so a run that has
+  // remembered Hiro's health hands it to the next fight here.
+  if (run && Number.isFinite(run.hp)) ch.combatHp = Math.max(1, Math.floor(run.hp));
   return ch;
+};
+
+// Remember Hiro's health on the run, from a live unit or a character. Called
+// after every fight and before every scene change, so a reload lands on the
+// same health. `hpMax` is what the inn needs to draw the bar and refuse Rest.
+Enc.rememberHp = function (run, unit) {
+  if (!run || !unit) return run;
+  const chp = unit.chp != null ? unit.chp : unit.combatHp;
+  const max = unit.maxHp != null ? unit.maxHp : run.hpMax;
+  if (Number.isFinite(chp)) run.hp = Math.max(0, Math.floor(chp));
+  if (Number.isFinite(max)) run.hpMax = Math.max(1, Math.floor(max));
+  return run;
+};
+Enc.atFullHp = run => !run || run.hp == null || run.hpMax == null || run.hp >= run.hpMax;
+// Rest at the inn (X.rest): a full heal for points, dearer every time.
+Enc.canRest = function (run) {
+  if (!run || Enc.atFullHp(run)) return { ok: false, reason: 'full' };
+  const cost = X.restCost(run);
+  if ((run.score || 0) < cost) return { ok: false, reason: 'score', cost };
+  return { ok: true, cost };
+};
+Enc.rest = function (run) {
+  const c = Enc.canRest(run);
+  if (!c.ok) return c;
+  run.score -= c.cost; run.rests = (run.rests || 0) + 1; run.hp = run.hpMax;
+  return { ok: true, cost: c.cost, score: run.score, rests: run.rests };
 };
 
 // Hiro's live kit follows the run: locked skills are not in it at all (the auto

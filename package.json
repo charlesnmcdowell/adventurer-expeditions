@@ -30,6 +30,7 @@
     "test:v3": "node test/browser_v3_art.js",
     "art:build:v3": "python tools/build_v3_monsters.py && python tools/build_v3_travel.py",
     "test:polish": "node test/browser_release_polish.js",
-    "package:crazygames": "node tools/package_crazygames.js"
+    "package:crazygames": "node tools/package_crazygames.js",
+    "test:arcade": "node test/browser_arcade.js"
   }
 }

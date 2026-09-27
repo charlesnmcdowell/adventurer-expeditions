@@ -247,6 +247,7 @@ Camp.sanitizeRun = function (run) {
   run.score = Number.isFinite(run.score) ? Math.max(0, Math.floor(run.score)) : 0;
   run.loop = Camp.loopOf(run);                       // derived from questsDone, never trusted from the save
   run.rests = Number.isFinite(run.rests) ? Math.max(0, Math.floor(run.rests)) : 0;
+  if (!Number.isFinite(run.hp) || !Number.isFinite(run.hpMax)) { delete run.hp; delete run.hpMax; }   // no memory of health = full health
   run.questsDone = list(run.questsDone).filter(id => !!Camp.quest(id));
   run.awarded = unique(run.awarded).filter(id => !!Camp.encounter(id));
   run.tutorial = record(run.tutorial) ? run.tutorial : {};
@@ -261,7 +262,8 @@ Camp.sanitizeRun = function (run) {
     for (const [to, score] of Object.entries(tos)) if (validIdentity(to) && Number.isFinite(score)) rel[from][to] = Math.max(-100, Math.min(100, score));
   }
   run.rel = rel;
-  if (!['quest', 'travel', 'inn', 'grave'].includes(run.phase)) run.phase = 'quest';
+  if (!['quest', 'travel', 'inn', 'grave', 'end'].includes(run.phase)) run.phase = 'quest';
+  if (run.phase === 'end' && !run.over) run.phase = 'inn';
   // A save naming a quest that is not open is pulled back to the road — but
   // "open" means the whitelist, not literally the road (Hiro, 2026-09-21). This
   // used to test `recruitingLocked() && questId !== 'road'`, so every quest the

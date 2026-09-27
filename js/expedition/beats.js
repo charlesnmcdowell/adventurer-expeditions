@@ -63,7 +63,9 @@ function dmgColor(e) { return e.tag === 'dot' ? (e.visual && e.visual.dotKind ==
 // Impact presentation shared by every landed blow.
 function impact(scene, tgt, e, opts) {
   opts = opts || {};
-  if (!tgt) return;
+  // A beat can outlive its scene when the run is ended from the pause menu
+  // (UI.endRun): nothing to flash or shake once the scene is gone.
+  if (!tgt || scene.ended || (scene.cameras && !scene.cameras.main)) return;
   const p = tgt.chest();
   if (opts.arc) V().slashArc(scene, p.x, p.y, opts.arc);
   if (opts.burst) V().burst(scene, p.x, p.y, opts.burst, 8);
