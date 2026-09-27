@@ -1,7 +1,7 @@
 // Adventurer: Expeditions — headless simulation gate.
 // Runs the demo's first encounter through the shipped combat engine with the
 // Expedition overrides and checks: determinism, completion without tapping,
-// Finisher request integrity, purchase integrity, and that the shim never
+// Finisher request integrity, scoring integrity, and that the shim never
 // touches a non-Expedition character.
 'use strict';
 const assert = require('node:assert/strict');
@@ -42,32 +42,28 @@ test('shim leaves a website Hiro untouched', () => {
   assert.equal(m.data.target, 'allEnemies');
 });
 
-test('shim resolves an Expedition Hiro by level', () => {
+test('shim resolves an Expedition Hiro at the one arcade level', () => {
   const run = Enc.freshRun();
-  assert.deepEqual(run.levels, { katana_slash: 1, god_aura: 0, counter_attack: 0, finisher: 0 }, 'only Katana Slash is owned at start');
-  run.levels.finisher = 1; run.levels.counter_attack = 1;
+  // Arcade (Hiro, 2026-09-27): every skill is owned from the first second, one level each.
+  assert.deepEqual(run.levels, { katana_slash: 1, god_aura: 1, counter_attack: 1, finisher: 1 }, 'every skill is owned at start');
+  assert.equal(run.score, 0); assert.equal(run.loop, 1); assert.equal(run.rests, 0);
   const hero = Enc.makeHero(new A.RNG(5), run);
-  assert.ok(!hero.actives.some(a => a.skillId === 'god_aura'), 'locked skills are not in the kit');
+  for (const id of ['finisher', 'god_aura', 'counter_attack', 'katana_slash']) assert.ok(hero.actives.some(a => a.skillId === id), id + ' is in the kit');
   const entry = hero.actives.find(a => a.skillId === 'katana_slash');
-  let m = A.SkillSys.manifest(hero, entry);
+  const m = A.SkillSys.manifest(hero, entry);
   assert.equal(m.data.power, 1.3); assert.equal(m.data.autoKillPct, 0); assert.equal(m.data.target, 'enemy');
-  run.levels.katana_slash = 3;
-  m = A.SkillSys.manifest(hero, entry);
-  assert.equal(m.data.target, 'allEnemies'); assert.equal(m.level, 3);
   const fin = A.SkillSys.manifest(hero, hero.actives.find(a => a.skillId === 'finisher'));
-  assert.equal(fin.data.permStatGain, 0); assert.equal(fin.data.healOnKillPct, 0.25);
-  // Finisher has no cooldown at any level (Hiro, 2026-09-21): the health window is
-  // the only thing that gates it. A falsy value is what the engine reads as none.
-  for (const lvl of [1, 2, 3]) {
-    run.levels.finisher = lvl;
-    const f = A.SkillSys.manifest(hero, hero.actives.find(a => a.skillId === 'finisher'));
-    assert.ok(!f.data.cooldown, 'Finisher L' + lvl + ' must have no cooldown, saw ' + f.data.cooldown);
-  }
-  run.levels.finisher = 1;
+  assert.equal(fin.data.permStatGain, 0); assert.equal(fin.data.healOnKillPct, 0.35); assert.equal(fin.data.power, 2.8);
+  assert.ok(!fin.data.cooldown, 'Finisher has no cooldown, saw ' + fin.data.cooldown);
+  // God Aura raises attack, not defense (Hiro, 2026-09-24); the defense factor
+  // must be exactly 1 because the damage code divides by it.
+  const aura = A.SkillSys.manifest(hero, hero.actives.find(a => a.skillId === 'god_aura'));
+  assert.equal(aura.data.auraAtk, 1.35); assert.equal(aura.data.auraDef, 1); assert.equal(aura.data.auraEvade, 0);
   const rip = A.SkillSys.manifest(hero, hero.actives.find(a => a.skillId === X.riposte.id));
   assert.equal(rip.data.power, 1.4);
-  run.levels.counter_attack = 3;
-  assert.equal(A.SkillSys.manifest(hero, hero.actives.find(a => a.skillId === X.riposte.id)).data.power, 2.0);
+  // A save claiming other levels is ignored: level is not a thing any more.
+  run.levels.finisher = 3; run.levels.counter_attack = 0;
+  assert.equal(A.SkillSys.manifest(hero, hero.actives.find(a => a.skillId === 'finisher')).level, 1);
   assert.ok(!hero.perks.some(p => p.skillId === 'demigod'), 'demigod removed');
 });
 
@@ -134,12 +130,10 @@ test('a first Finisher window opens on the road without a tap', () => {
 });
 
 test('request on an invalid state is refused with a reason', () => {
-  let enc = Enc.create({ encounter: 'road_ambush', seed: 3 });
-  assert.equal(Enc.requestFinisher(enc).reason, 'locked');
-  const run = Enc.freshRun(); run.levels.finisher = 1;
-  enc = Enc.create({ encounter: 'road_ambush', seed: 3, run });
+  assert.equal(Enc.requestSkill(Enc.create({ encounter: 'road_ambush', seed: 3 }), 'no_such_skill').reason, 'unknown');
+  const enc = Enc.create({ encounter: 'road_ambush', seed: 3, run: Enc.freshRun() });
   const r = Enc.requestFinisher(enc);
-  assert.equal(r.ok, false); assert.equal(r.reason, 'no_target');
+  assert.equal(r.ok, false); assert.equal(r.reason, 'no_target', 'nobody is at half health when the fight opens');
 });
 
 test('a request whose target dies first is dropped, not stranded', () => {
@@ -387,33 +381,42 @@ test('in a boss wave the Finisher takes the wolf, never the boss above its line'
 });
 
 // ---------------------------------------------------------------- economy
-test('rewards pay once; upgrades deduct exactly once and change the next manifest', () => {
+test('score replaces gold: a wave pays from the table, once, and nothing can be bought', () => {
+  const S = X.scoring;
   const run = Enc.freshRun();
   const enc = Enc.create({ encounter: 'road_ambush', seed: 7, run });
   Enc.runToEnd(enc);
-  // The player starts with X.economy.start in hand (20 since 2026-09-21) so the
-  // tutorial's first beat can be a purchase, before any fighting.
-  assert.equal(X.economy.start, 20, 'the road opens with enough for the first skill');
-  assert.equal(Enc.award(enc).gold, 40); assert.equal(run.gold, X.economy.start + 40);
-  assert.equal(Enc.award(enc).gold, 0, 'second award pays nothing');
-  assert.equal(Enc.upgradeCost(run, 'katana_slash'), null, 'Katana Slash is not purchasable');
-  assert.ok(Enc.canUpgrade(run, 'finisher'));
-  assert.deepEqual(Enc.upgrade(run, 'finisher'), { ok: true, level: 1, cost: 20, unlocked: true });
-  // Stated against the starting purse rather than a fixed number, so the rule
-  // under test is "an unlock costs 20", not "the player began with nothing".
-  assert.equal(run.gold, X.economy.start + 40 - X.economy.costs[1]);
-  assert.equal(Enc.upgrade(run, 'god_aura').ok, true, 'the next first-tier unlock is affordable');
-  assert.equal(run.gold, X.economy.start + 40 - 2 * X.economy.costs[1]);
-  run.gold = 0;                                                 // an empty purse, however it got there
-  assert.equal(Enc.upgrade(run, 'counter_attack').ok, false, 'no gold, no unlock');
-  // The road pays 150, and the player starts with 20. Three guided unlocks
-  // (3 × 20) must still leave the first recruit's price.
-  assert.ok(X.economy.start + X.encounters.reduce((n, e) => n + e.gold, 0) - 3 * X.economy.costs[1] >= X.party.recruitCosts[0], 'the tutorial must fund the first recruit');
-  assert.equal(Enc.heroLevel(run), 3);
-  // The next encounter's Hiro owns Finisher and resolves it at level 1.
-  const enc2 = Enc.create({ encounter: 'road_ambush', seed: 8, run });
-  const m = A.SkillSys.manifest(enc2.hero, enc2.hero.actives.find(a => a.skillId === 'finisher'));
-  assert.equal(m.level, 1); assert.ok(m.data.executeBelow > X.finisherThresholds.normal && m.data.executeBelow <= 0.51);
+  assert.ok(Enc.won(enc));
+  const w = Enc.wavePoints(enc);
+  assert.equal(w.regular, 2); assert.equal(w.bosses, 0); assert.equal(w.mult, 1);
+  assert.equal(w.points, w.base, 'loop 1 has no bonus');
+  assert.equal(w.base, 2 * S.regular + w.finisherKills * S.finisherKill + (w.clean ? S.cleanWave : 0));
+  const a = Enc.award(enc);
+  assert.equal(a.points, w.points); assert.equal(run.score, w.points);
+  assert.equal(Enc.award(enc).points, 0, 'second award pays nothing');
+  assert.equal(run.score, w.points);
+  // The playthrough bonus multiplies the whole wave.
+  run.loop = 3; assert.equal(Enc.wavePoints(enc).points, Math.round(w.base * 1.5));
+  run.loop = 1;
+  // A boss pays as a boss, and a Finisher kill pays its extra.
+  const boss = Enc.create({ encounter: 'clearing', seed: 9, run });
+  Enc.runToEnd(boss, e => { if (Enc.finisherState(e).ready) Enc.requestFinisher(e); }, 800);
+  if (Enc.won(boss)) {
+    const wb = Enc.wavePoints(boss);
+    assert.equal(wb.bosses, 1); assert.equal(wb.regular, 0);
+    assert.ok(wb.base >= S.boss, 'a boss wave pays at least the boss price');
+  }
+  // The quest clear pays too, at the loop's rate.
+  const before = run.score; const q = Enc.awardQuest(run);
+  assert.equal(q.points, S.questClear); assert.equal(run.score, before + S.questClear);
+  // Nothing is for sale.
+  assert.equal(Enc.upgradeCost(run, 'finisher'), null);
+  assert.equal(Enc.canUpgrade(run, 'finisher'), false);
+  assert.equal(Enc.upgrade(run, 'finisher').ok, false);
+  for (const id of ['finisher', 'god_aura', 'counter_attack', 'katana_slash']) assert.ok(Enc.owned(run, id), id + ' owned');
+  assert.equal(Enc.heroLevel(run), 1, 'the level tag is the playthrough');
+  // Rest doubles from 1,000 and is counted per run.
+  assert.equal(X.restCost({ rests: 0 }), 1000); assert.equal(X.restCost({ rests: 1 }), 2000); assert.equal(X.restCost({ rests: 3 }), 8000);
 });
 
 // ------------------------------------------------- Finisher windows (GDD §7)
@@ -464,71 +467,59 @@ test('the Finisher takes a normal enemy at half health and a boss at a quarter',
   assert.ok(high.flag, 'the boss flag is restored after a non-execution');
 });
 
-test('every reachable build clears the road', () => {
-  // Slash-only (fight 1), each single unlock, and the two-purchase combinations reachable before the boss.
-  const builds = [{}, { finisher: 1 }, { god_aura: 1 }, { counter_attack: 1 }, { finisher: 2 }, { god_aura: 2 }, { counter_attack: 2 },
-    { finisher: 1, god_aura: 1 }, { finisher: 1, counter_attack: 1 }, { god_aura: 1, counter_attack: 1 }, { finisher: 3 }];
-  for (const b of builds) {
-    let wins = 0, rounds = 0, N = 100;
-    for (let s = 1; s <= N; s++) {
-      const run = Enc.freshRun(); Object.assign(run.levels, b);
-      const enc = Enc.create({ encounter: 'road_ambush', seed: 1000 + s, run });
-      Enc.runToEnd(enc); if (Enc.won(enc)) wins++; rounds += enc.st.round;
-    }
-    console.log('build', JSON.stringify(b), 'win', wins / N, 'avgRounds', rounds / N);
-    assert.ok(wins / N >= 0.85, JSON.stringify(b));
+test('the road is winnable without a tap with the full kit', () => {
+  let wins = 0, rounds = 0, N = 100;
+  for (let s = 1; s <= N; s++) {
+    const enc = Enc.create({ encounter: 'road_ambush', seed: 1000 + s, run: Enc.freshRun() });
+    Enc.runToEnd(enc); if (Enc.won(enc)) wins++; rounds += enc.st.round;
   }
+  console.log('full kit, no tap: win', wins / N, 'avgRounds', rounds / N);
+  assert.ok(wins / N >= 0.85);
 });
 
 // ---------------------------------------------------------------- the whole quest
-test('the full quest is winnable on the common purchase paths', () => {
-  function quest(seed, plan, tap) {
+test('the full first quest is winnable, tapped and untapped', () => {
+  function quest(seed, tap) {
     const run = Enc.freshRun(); const out = [];
     for (let w = 0; w < X.encounters.length; w++) {
       const enc = Enc.create({ encounter: X.encounters[w], seed: seed * 10 + w, run });
-      Enc.runToEnd(enc, tap ? e => { for (const id of X.purchasable) if (Enc.skillState(e, id).ready) Enc.requestSkill(e, id); } : null, 600);
+      Enc.runToEnd(enc, tap ? e => { for (const id of ['finisher', 'counter_attack', 'god_aura']) if (Enc.skillState(e, id).ready) Enc.requestSkill(e, id); } : null, 600);
       assert.ok(enc.st.over, 'wave ' + w + ' seed ' + seed + ' ended');
       out.push({ won: Enc.won(enc), rounds: enc.st.round, poison: enc.st.events.some(e => e.t === 'status' && e.uid === enc.heroUid && e.kind === 'poison') });
       if (!Enc.won(enc)) break;
       Enc.award(enc);
-      for (const id of (plan[w] || [])) assert.ok(Enc.upgrade(run, id).ok, 'could afford ' + id + ' after wave ' + w);
     }
     return out;
   }
-  const plans = { finAura: [['finisher'], ['god_aura']], finCounter: [['finisher'], ['counter_attack']], finFin: [['finisher'], ['finisher']], none: [[], []] };
-  const floor = { finAura: [0.95, 0.9, 0.9], finCounter: [0.95, 0.9, 0.9], finFin: [0.95, 0.9, 0.8], none: [0.95, 0.8, 0.7] };
-  for (const tap of [false, true]) for (const [name, plan] of Object.entries(plans)) {
+  const floor = { tap: [0.95, 0.9, 0.9], auto: [0.95, 0.8, 0.7] };
+  for (const tap of [false, true]) {
     const N = 100, agg = X.encounters.map(() => ({ n: 0, won: 0, rounds: 0, poison: 0 }));
-    for (let s = 1; s <= N; s++) for (const [w, o] of quest(s, plan, tap).entries()) { const a = agg[w]; a.n++; a.won += o.won ? 1 : 0; a.rounds += o.rounds; a.poison += o.poison ? 1 : 0; }
+    for (let s = 1; s <= N; s++) for (const [w, o] of quest(s, tap).entries()) { const a = agg[w]; a.n++; a.won += o.won ? 1 : 0; a.rounds += o.rounds; a.poison += o.poison ? 1 : 0; }
     const line = agg.map((a, w) => a.n ? 'w' + w + ' win ' + (a.won / a.n).toFixed(2) + ' r' + (a.rounds / a.n).toFixed(1) : 'w' + w + ' -').join(' | ');
-    console.log((tap ? 'tap  ' : 'auto ') + name.padEnd(10) + line);
-    // Skills are the player's to fire (X.manualSkills): an untapped run holds only the no-purchase floor whatever was bought.
-    const fl = tap || !X.manualSkills ? floor[name] : floor.none;
-    agg.forEach((a, w) => { if (a.n) assert.ok(a.won / a.n >= fl[w], name + ' wave ' + w + ' win ' + (a.won / a.n)); });
+    console.log((tap ? 'tap  ' : 'auto ') + line);
+    const fl = tap ? floor.tap : floor.auto;
+    agg.forEach((a, w) => { if (a.n) assert.ok(a.won / a.n >= fl[w], (tap ? 'tap' : 'auto') + ' wave ' + w + ' win ' + (a.won / a.n)); });
     assert.ok(agg[1].n === 0 || agg[1].poison / agg[1].n >= 0.9, 'the thicket shows Poison');
   }
 });
 
 // ---------------------------------------------------------------- mid-quest purchases
-test('a skill bought between fights works in the very next fight', () => {
+test('every skill fires from a tap and shows its effect', () => {
   const run = Enc.freshRun(); const w = X.Campaign.buildWorld(run);
   try {
-    let enc = Enc.create({ encounter: 'road_ambush', seed: 3, run, hero: w.hero }); Enc.runToEnd(enc); Enc.award(enc);
-    assert.ok(Enc.upgrade(run, 'finisher', w.hero).ok);
-    assert.ok(w.hero.actives.some(a => a.skillId === 'finisher'), 'live kit gained the skill');
+    assert.ok(w.hero.actives.some(a => a.skillId === 'finisher'), 'the live kit has the Finisher from the start');
     let fired = 0, glow = 0, errors = 0;
     for (let s = 1; s <= 30; s++) {
-      enc = Enc.create({ encounter: 'thicket', seed: 100 + s, run, hero: w.hero });
+      const enc = Enc.create({ encounter: 'thicket', seed: 100 + s, run, hero: w.hero });
       const steps = Enc.runToEnd(enc, e => { if (Enc.skillState(e, 'finisher').ready) { glow++; Enc.requestSkill(e, 'finisher'); } });
       for (const st of steps) if (st.hero && st.choice) { if (st.choice.how === 'request') fired++; if (st.choice.error) errors++; }
     }
-    console.log('post-purchase finisher: glow boundaries', glow, 'fired by tap', fired, 'engine errors', errors);
+    console.log('finisher: glow boundaries', glow, 'fired by tap', fired, 'engine errors', errors);
     assert.ok(fired > 0 && errors === 0);
-    // And every purchasable skill produces its signature events when owned.
     const sig = { finisher: 'execute', god_aura: e => e.t === 'status' && e.kind === 'aura', counter_attack: 'counter' };
-    for (const id of X.purchasable) {
-      const r2 = Enc.freshRun(); r2.levels[id] = 1; let seen = 0;
-      for (let s = 1; s <= 20; s++) { const e2 = Enc.create({ encounter: 'thicket', seed: 200 + s, run: r2 }); Enc.runToEnd(e2, e => { if (Enc.skillState(e, id).ready) Enc.requestSkill(e, id); }); seen += e2.st.events.filter(typeof sig[id] === 'string' ? ev => ev.t === sig[id] : sig[id]).length; }
+    for (const id of Object.keys(sig)) {
+      let seen = 0;
+      for (let s = 1; s <= 20; s++) { const e2 = Enc.create({ encounter: 'thicket', seed: 200 + s, run: Enc.freshRun() }); Enc.runToEnd(e2, e => { if (Enc.skillState(e, id).ready) Enc.requestSkill(e, id); }); seen += e2.st.events.filter(typeof sig[id] === 'string' ? ev => ev.t === sig[id] : sig[id]).length; }
       assert.ok(seen > 0, id + ' shows its effect');
     }
   } finally { w.restoreIds(); }
@@ -561,7 +552,7 @@ test('travel banter advances its round-robin across rebuilt worlds', () => {
   } finally { X.shipped = savedShipped; }
 });
 
-test('the retained loop uses only painted Bram; tutorial lock and earned upgrades are respected', () => {
+test('the retained loop uses only painted Bram; tutorial lock and scaling are respected', () => {
   const Camp = X.Campaign;
   // All four levels are open, in the order Hiro set (2026-09-21): a run starts
   // at Road in the Rain and goes marsh, city, ruins. "Clear the road" is retired
@@ -589,12 +580,12 @@ test('the retained loop uses only painted Bram; tutorial lock and earned upgrade
   // With the lock lifted, Bram is still refused while his art is out of the
   // build — the guard that stops the dev panel sending the loader after a file
   // the package does not have.
-  assert.equal(Camp.buy(Object.assign(Camp.freshRun(), { gold: 1000 }), 'bram').reason, 'art unavailable');
+  assert.equal(Camp.buy(Object.assign(Camp.freshRun(), { score: 1000 }), 'bram').reason, 'art unavailable');
   const savedShipped = X.shipped;
   X.shipped = Object.assign({}, X.shipped, { actors: (X.shipped.actors || []).concat('bram') });
   try {
   // Explicitly test the preserved future loop without changing the ship lock.
-  const run0 = Camp.freshRun(); run0.gold = 1000;
+  const run0 = Camp.freshRun(); run0.score = 1000;
   assert.equal(Camp.recruitCost(run0), 60);
   assert.equal(Camp.buy(run0, 'bram').ok, true); assert.equal(Camp.recruitCost(run0), 90);
   assert.equal(Camp.buy(run0, 'nyx').reason, 'art unavailable'); assert.equal(Camp.buy(run0, 'sable').reason, 'art unavailable');
@@ -609,14 +600,13 @@ test('the retained loop uses only painted Bram; tutorial lock and earned upgrade
   assert.equal(Camp.nextQuestId(r2), 'rain');
   r2.questsDone.push('rain', 'city', 'marsh', 'ruins'); assert.equal(Camp.nextQuestId(r2), 'rain');
   // Fights.
-  function quest(seed, qid, field, cycles, skillLevel = 1) {
+  function quest(seed, qid, field, cycles) {
     const run = Camp.freshRun(); run.roster = field.slice(); run.field = field.slice(); run.cycles = cycles || {};
-    Object.assign(run.levels, { finisher: skillLevel, god_aura: skillLevel, counter_attack: skillLevel });
     const w = Camp.buildWorld(run); const out = [];
     try {
       for (const encDef of Camp.questEncounters(qid)) {
         const enc = Enc.create({ encounter: encDef, seed: seed * 10 + out.length, run, hero: w.hero, allies: w.companions, scale: Camp.scaleFor(run, qid) });
-        Enc.runToEnd(enc, e => { for (const id of X.purchasable) if (Enc.skillState(e, id).ready) Enc.requestSkill(e, id); }, 800);
+        Enc.runToEnd(enc, e => { for (const id of ['finisher', 'counter_attack', 'god_aura']) if (Enc.skillState(e, id).ready) Enc.requestSkill(e, id); }, 800);
         assert.ok(enc.st.over, qid + ' seed ' + seed + ' ended');
         out.push({ won: Enc.won(enc), rounds: enc.st.round });
         if (!Enc.won(enc)) break;
@@ -633,10 +623,10 @@ test('the retained loop uses only painted Bram; tutorial lock and earned upgrade
     console.log('loop ' + q.id.padEnd(6) + ' first clear win ' + (wins / N).toFixed(2) + ' avgRounds ' + (rounds / n).toFixed(1));
     assert.ok(wins / N >= 0.8, q.id + ' first clear win ' + wins / N);
     let wins3 = 0;
-    for (let s = 1; s <= N; s++) { const r = quest(s, q.id, crew, { [q.id]: 3 }, 3); if (r.length === 3 && r.every(o => o.won)) wins3++; }
-    console.log('loop ' + q.id.padEnd(6) + ' fourth clear (earned L3 skills) win ' + (wins3 / N).toFixed(2));
+    for (let s = 1; s <= N; s++) { const r = quest(s, q.id, crew, { [q.id]: 3 }); if (r.length === 3 && r.every(o => o.won)) wins3++; }
+    console.log('loop ' + q.id.padEnd(6) + ' fourth clear win ' + (wins3 / N).toFixed(2));
     assert.ok(wins3 / N >= 0.4, q.id + ' fourth clear must stay beatable: ' + wins3 / N);
-    assert.equal(Camp.scaleFor({ cycles: { [q.id]: 3 } }, q.id), 1.9, 'enemy scaling is retained despite earned upgrades');
+    assert.equal(Camp.scaleFor({ cycles: { [q.id]: 3 } }, q.id), 1.9, 'enemy scaling is retained');
   }
   // Every quest's plates and panorama are in the build's sync list — night and storm are data.
   const sync = require('node:fs').readFileSync(path.join(ROOT, 'tools/sync_shared.js'), 'utf8');

@@ -61,7 +61,7 @@ Heroes.make = function (run) {
   ch.perks = hs.perks.map(e => ({ skillId: e.skillId, level: e.level, uses: e.uses || 0 }));
   for (const e of ch.actives.concat(ch.perks)) A.SkillSys.storeProgress(ch, e);
   ch.equippedSet = hs.equippedSet || null;
-  ch.inventory = { gold: run.gold, items: [] };
+  ch.inventory = { gold: run.score || 0, items: [] };
   ch.expeditionHero = d.key; ch.expeditionHeroState = hs;
   ch.autoOrder = ch.actives.map(a => ({ skillId: a.skillId, off: false })).concat([{ skillId: 'basic_attack', off: false }]);
   ch.autoAdopted = true; ch.autoRepeat = null; ch.autoAttack = false;
@@ -101,16 +101,16 @@ Heroes.offers = function (run) {
   const trainer = [], smith = [];
   const known = id => !!Sys.knownEntry(ch, id);
   const slotsLeft = kind => Sys.capFor(ch, kind) - Sys.slottedCount(ch, kind);
-  for (const id of d.trainer.actives) if (!known(id)) trainer.push({ kind: 'learn', slot: 'active', skillId: id, cost: X.shop.learn, can: run.gold >= X.shop.learn && slotsLeft('active') > 0, why: slotsLeft('active') > 0 ? null : 'full' });
-  for (const id of d.trainer.perks) if (!known(id)) trainer.push({ kind: 'learn', slot: 'perk', skillId: id, cost: X.shop.learn, can: run.gold >= X.shop.learn && slotsLeft('perk') > 0, why: slotsLeft('perk') > 0 ? null : 'full' });
+  for (const id of d.trainer.actives) if (!known(id)) trainer.push({ kind: 'learn', slot: 'active', skillId: id, cost: X.shop.learn, can: run.score >= X.shop.learn && slotsLeft('active') > 0, why: slotsLeft('active') > 0 ? null : 'full' });
+  for (const id of d.trainer.perks) if (!known(id)) trainer.push({ kind: 'learn', slot: 'perk', skillId: id, cost: X.shop.learn, can: run.score >= X.shop.learn && slotsLeft('perk') > 0, why: slotsLeft('perk') > 0 ? null : 'full' });
   for (const [slot, list] of [['active', ch.actives], ['perk', ch.perks]]) for (const e of list) {
     if (e.hidden) continue;
     const next = e.level < T.intermediate ? 'intermediate' : e.level < T.advanced ? 'advanced' : null;
     if (!next) continue;
     const cost = X.shop.tutor[next];
-    trainer.push({ kind: 'tutor', slot, skillId: e.skillId, tier: next, level: T[next], cost, can: run.gold >= cost });
+    trainer.push({ kind: 'tutor', slot, skillId: e.skillId, tier: next, level: T[next], cost, can: run.score >= cost });
   }
-  if (ch.equippedSet !== d.set) smith.push({ kind: 'set', setId: d.set, name: A.DATA.GEAR_SETS[d.set].name, cost: X.shop.set, can: run.gold >= X.shop.set, classes: A.DATA.GEAR_SETS[d.set].archetypes });
+  if (ch.equippedSet !== d.set) smith.push({ kind: 'set', setId: d.set, name: A.DATA.GEAR_SETS[d.set].name, cost: X.shop.set, can: run.score >= X.shop.set, classes: A.DATA.GEAR_SETS[d.set].archetypes });
   return { trainer, smith };
 };
 
@@ -119,7 +119,7 @@ Heroes.offers = function (run) {
 // tutoring sets the tier level exactly as SkillSys.tutor does.
 Heroes.buy = function (run, offer) {
   if (!run.hero || !offer) return { ok: false, reason: 'none' };
-  if (run.gold < offer.cost) return { ok: false, reason: 'gold' };
+  if (run.score < offer.cost) return { ok: false, reason: 'score' };
   const ch = Heroes.make(run), Sys = A.SkillSys;
   if (offer.kind === 'learn') {
     const r = Sys.learn(ch, offer.skillId, { free: true });
@@ -133,7 +133,7 @@ Heroes.buy = function (run, offer) {
     if (!A.DATA.GEAR_SETS[offer.setId]) return { ok: false, reason: 'unknown set' };
     ch.equippedSet = offer.setId;
   } else return { ok: false, reason: 'unknown' };
-  run.gold -= offer.cost;
+  run.score -= offer.cost;
   run.hero = Heroes.snapshot(ch);
   run.hero.purchases = (run.hero.purchases || 0) + 1;
   return { ok: true, offer };

@@ -102,20 +102,20 @@ Object.assign(X.encounterDefs = {}, Object.fromEntries(X.encounters.map(e => [e.
   // Road in the Rain is where a new player starts, so it keeps the tutorial's
   // curve: ordinary wolves, then wolves and lurkers, then the Alpha. The three
   // levels after it use the tougher _2 variants.
-  rain_boars:      { id: 'rain_boars',      enemies: ['dire_wolf', 'dire_wolf'],                    gold: 40 },
-  rain_bandits:    { id: 'rain_bandits',    enemies: ['dire_wolf', 'thorn_lurker', 'thorn_lurker'], gold: 50 },
-  rain_boar_boss:  { id: 'rain_boar_boss',  enemies: ['road_wolf_leader'], boss: true,              gold: 60 },
+  rain_boars:      { id: 'rain_boars',      enemies: ['dire_wolf', 'dire_wolf'] },
+  rain_bandits:    { id: 'rain_bandits',    enemies: ['dire_wolf', 'thorn_lurker', 'thorn_lurker'] },
+  rain_boar_boss:  { id: 'rain_boar_boss',  enemies: ['road_wolf_leader'], boss: true },
   // was: cave_boar_2 x2 / bandit, cutthroat, bandit_b / boar_boss + thorn_2
-  city_watch:      { id: 'city_watch',      enemies: ['thorn_2', 'dire_wolf_2'],                    gold: 40 },
-  city_bailiff:    { id: 'city_bailiff',    enemies: ['dire_wolf_2', 'dire_wolf_2', 'thorn_2'],     gold: 50 },
-  city_captain:    { id: 'city_captain',    enemies: ['alpha_2', 'dire_wolf_2'], boss: true,        gold: 70 },
+  city_watch:      { id: 'city_watch',      enemies: ['thorn_2', 'dire_wolf_2'] },
+  city_bailiff:    { id: 'city_bailiff',    enemies: ['dire_wolf_2', 'dire_wolf_2', 'thorn_2'] },
+  city_captain:    { id: 'city_captain',    enemies: ['alpha_2', 'dire_wolf_2'], boss: true },
   // was: town_watch x2 / town_watch + storm_bailiff / watch_captain + storm_bailiff
-  marsh_wolves:    { id: 'marsh_wolves',    enemies: ['dire_wolf_2', 'dire_wolf_2'],                gold: 40 },
-  marsh_lurkers:   { id: 'marsh_lurkers',   enemies: ['thorn_2', 'dire_wolf_2', 'thorn_2'],         gold: 50 },
-  marsh_alpha:     { id: 'marsh_alpha',     enemies: ['alpha_2', 'thorn_2'], boss: true,            gold: 60 },
-  ruins_lurkers:   { id: 'ruins_lurkers',   enemies: ['dire_wolf_2', 'thorn_2', 'thorn_2'],         gold: 40 },   // was cave_boar_2
-  ruins_mage:      { id: 'ruins_mage',      enemies: ['thorn_2', 'dire_wolf_2', 'thorn_2'],         gold: 50 },   // was bandit, hedge_mage, bandit_b
-  ruins_alpha:     { id: 'ruins_alpha',     enemies: ['alpha_2', 'dire_wolf_2'], boss: true,        gold: 70 },
+  marsh_wolves:    { id: 'marsh_wolves',    enemies: ['dire_wolf_2', 'dire_wolf_2'] },
+  marsh_lurkers:   { id: 'marsh_lurkers',   enemies: ['thorn_2', 'dire_wolf_2', 'thorn_2'] },
+  marsh_alpha:     { id: 'marsh_alpha',     enemies: ['alpha_2', 'thorn_2'], boss: true },
+  ruins_lurkers:   { id: 'ruins_lurkers',   enemies: ['dire_wolf_2', 'thorn_2', 'thorn_2'] },   // was cave_boar_2
+  ruins_mage:      { id: 'ruins_mage',      enemies: ['thorn_2', 'dire_wolf_2', 'thorn_2'] },   // was bandit, hedge_mage, bandit_b
+  ruins_alpha:     { id: 'ruins_alpha',     enemies: ['alpha_2', 'dire_wolf_2'], boss: true },
 });
 // Version 1: the later locations now have complete species-specific painted sets.
 // The original mini-boss templates supply their skills, but ordinary foes are
@@ -130,12 +130,12 @@ Object.assign(X.enemies, {
   orc: { base: 'orc_king', name: 'Ironjaw', level: 7, kind: 'boss', artActor: 'orc', height: 350, boss: true, actives: ['war_bellow', 'cleave'], perks: [], phase2At: 0.5, statMult: { hp: 1.6, atk: 0.75, def: 0.85 } },
 });
 Object.assign(X.encounterDefs, {
-  marsh_wolves: { id: 'marsh_wolves', enemies: ['serpent', 'beetle'], gold: 40 },
-  marsh_lurkers: { id: 'marsh_lurkers', enemies: ['moss_giant', 'serpent'], gold: 50 },
-  marsh_alpha: { id: 'marsh_alpha', enemies: ['hag'], boss: true, gold: 70 },
-  city_watch: { id: 'city_watch', enemies: ['goblin', 'spider'], gold: 40 },
-  city_bailiff: { id: 'city_bailiff', enemies: ['spider', 'goblin', 'goblin'], gold: 50 },
-  city_captain: { id: 'city_captain', enemies: ['orc'], boss: true, gold: 80 },
+  marsh_wolves: { id: 'marsh_wolves', enemies: ['serpent', 'beetle'] },
+  marsh_lurkers: { id: 'marsh_lurkers', enemies: ['moss_giant', 'serpent'] },
+  marsh_alpha: { id: 'marsh_alpha', enemies: ['hag'], boss: true },
+  city_watch: { id: 'city_watch', enemies: ['goblin', 'spider'] },
+  city_bailiff: { id: 'city_bailiff', enemies: ['spider', 'goblin', 'goblin'] },
+  city_captain: { id: 'city_captain', enemies: ['orc'], boss: true },
 });
 Object.assign(X.quests.find(q => q.id === 'city'), { title: 'The overrun city', done: 'City reclaimed' });
 Camp.encounter = id => X.encounterDefs[id];
@@ -176,6 +176,17 @@ Camp.nextQuestId = function (run) {
   const done = (run.questsDone || []).filter(id => open.includes(id));
   for (const id of open) if (!done.includes(id)) return id;
   return open[done.length % open.length];
+};
+// Which playthrough the run is on: 1 until every open quest has been cleared
+// once, 2 until each has been cleared twice, and so on. Arcade scoring and the
+// loop rules (shuffle, scaling, boss rolls) read this, never the per-quest
+// `cycles` count, so a run that cleared the forest twice is still on loop 1
+// until the city falls.
+Camp.loopOf = function (run) {
+  const open = Camp.openQuestIds();
+  if (!open.length) return 1;
+  const done = (run.questsDone || []).filter(id => open.includes(id)).length;
+  return 1 + Math.floor(done / open.length);
 };
 
 // ---------------------------------------------------------------- recruits
@@ -233,7 +244,9 @@ Camp.sanitizeRun = function (run) {
   delete run.hero; // Hiro is permanent; old hero-pick saves cannot change his kit.
   run.roster = unique(run.roster).filter(key => !!Camp.recruit(key));
   run.field = unique(run.field).filter(key => run.roster.includes(key) && Camp.recruitApproved(key)).slice(0, X.party.fieldMax);
-  run.gold = Number.isFinite(run.gold) ? Math.max(0, Math.floor(run.gold)) : 0;
+  run.score = Number.isFinite(run.score) ? Math.max(0, Math.floor(run.score)) : 0;
+  run.loop = Camp.loopOf(run);                       // derived from questsDone, never trusted from the save
+  run.rests = Number.isFinite(run.rests) ? Math.max(0, Math.floor(run.rests)) : 0;
   run.questsDone = list(run.questsDone).filter(id => !!Camp.quest(id));
   run.awarded = unique(run.awarded).filter(id => !!Camp.encounter(id));
   run.tutorial = record(run.tutorial) ? run.tutorial : {};
@@ -269,7 +282,7 @@ Camp.sanitizeRun = function (run) {
 Camp.recruitCost = run => X.party.recruitCosts[Math.min(X.party.recruitCosts.length - 1, (run.roster || []).length)];
 Camp.owns = (run, key) => (run.roster || []).includes(key);
 Camp.fielded = (run, key) => (run.field || []).includes(key);
-Camp.canBuy = (run, key) => !!Camp.recruit(key) && Camp.recruitReady(key) && !Camp.recruitingLocked() && !Camp.owns(run, key) && run.gold >= Camp.recruitCost(run);
+Camp.canBuy = (run, key) => !!Camp.recruit(key) && Camp.recruitReady(key) && !Camp.recruitingLocked() && !Camp.owns(run, key) && run.score >= Camp.recruitCost(run);
 Camp.buy = function (run, key) {
   if (!Camp.recruit(key)) return { ok: false, reason: 'unknown' };
   // The lock is checked before the art: while recruiting is shut a recruit's art
@@ -279,8 +292,8 @@ Camp.buy = function (run, key) {
   if (!Camp.recruitReady(key)) return { ok: false, reason: 'art unavailable' };
   if (Camp.owns(run, key)) return { ok: false, reason: 'owned' };
   const cost = Camp.recruitCost(run);
-  if (run.gold < cost) return { ok: false, reason: 'gold', cost };
-  run.gold -= cost; run.roster.push(key);
+  if (run.score < cost) return { ok: false, reason: 'score', cost };
+  run.score -= cost; run.roster.push(key);
   if (run.field.length < X.party.fieldMax) run.field.push(key);       // a new recruit rides along unless the party is full
   return { ok: true, cost, fielded: Camp.fielded(run, key) };
 };

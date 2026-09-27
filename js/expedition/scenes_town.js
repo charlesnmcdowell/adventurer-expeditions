@@ -52,7 +52,7 @@ class InnScene extends Phaser.Scene {
   build() {
     const run = this.run;
     this.world = X.Campaign.buildWorld(run);
-    this.pill = X.UI.goldPill(this, run.gold);
+    this.pill = X.UI.scorePill(this, run.score);
     if (X.slice && X.slice.firstLevelOnly) return this.buildLocked();
     // Hiro's skills, for levelling: the combat HUD in inn mode (portrait + icons only).
     this.hud = new X.Hud(this, { run, hero: this.world.hero, portraitKey: 'xp_hiro_face', inn: true,
@@ -129,8 +129,8 @@ class InnScene extends Phaser.Scene {
       if (can && !c.inviteTween) c.inviteTween = this.tweens.add({ targets: c.tag, scale: 1.1, duration: 480, yoyo: true, repeat: -1, ease: 'Sine.InOut' });
       if (!can && c.inviteTween) { c.inviteTween.stop(); c.inviteTween = null; c.tag.setScale(1); }
     }
-    this.pill.text.setText(String(run.gold));
-    this.hud.setGold(run.gold);
+    this.pill.text.setText(String(run.score || 0));
+    this.hud.setScore(run.score || 0);
     if (this.env && this.env.setParty) this.env.setParty(run);
   }
 
@@ -189,7 +189,7 @@ class InnScene extends Phaser.Scene {
     const r = X.Encounter.upgrade(this.run, id, this.world.hero);
     if (!r.ok) return r;
     X.Run.save(this.run);
-    this.hud.setGold(this.run.gold, true); this.hud.refresh(); this.refreshBusts();
+    this.hud.setScore(this.run.score, true); this.hud.refresh(); this.refreshBusts();
     A.VFX.aura(this, 300, 540, X.skillUi(id).color);
     this.releaseGate({ upgraded: id });
     return r;

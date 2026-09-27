@@ -192,10 +192,10 @@ class ExpeditionScene extends Phaser.Scene {
   tapFinisher() { this.tapSkill('finisher'); }
 
   buyUpgrade(id) {
-    const r = X.Encounter.upgrade(this.run, id, this.world.hero);
+    const r = X.Encounter.upgrade(this.run, id, this.world.hero);   // arcade: always refused, nothing to buy
     if (!r.ok) return r;
     X.Run.save(this.run);
-    this.hud.setGold(this.run.gold, true);
+    this.hud.setScore(this.run.score, true);
     this.hud.refresh();
     this.hero.setLevel(X.Encounter.heroLevel(this.run));
     A.VFX.aura(this, this.hero.x, this.hero.y - this.hero.height * 0.5, X.SKILL_UI[id].color);
@@ -221,16 +221,21 @@ class ExpeditionScene extends Phaser.Scene {
 
   togglePause() { if (this.corner) this.corner.togglePause(); }
 
-  // The first time each bought skill is ready the game holds (nothing steps
-  // while the gate is up) and points at its icon until it is tapped or skipped.
-  // Called both before a step and after a swing that first opened the window.
+  // The tutorial (Hiro, 2026-09-27): one lesson per fight on the first quest of
+  // a run — Finisher in the first fight, Counter Attack in the second, God Aura
+  // on the boss. The first time that fight's skill is ready the game holds
+  // (nothing steps while the gate is up) and points at its icon until it is
+  // tapped or skipped. Called both before a step and after a swing that first
+  // opened the window. Later quests, and later loops, never hold.
+  lessonFor(wave) { return this.run.questsDone.length === 0 ? (X.tutorialLessons || ['finisher', 'counter_attack', 'god_aura'])[wave] || null : null; }
   async guideSkillUse() {
     const enc = this.enc, Enc = X.Encounter;
     if (!enc || enc.request || this.ended) return;
     const t = this.run.tutorial; t.used = t.used || {};
     if (t.finisherDone) t.used.finisher = true;
+    const lesson = this.lessonFor(this.run.wave);
     for (const id of ['finisher', 'counter_attack', 'god_aura']) {
-      if (t.used[id] || !Enc.owned(this.run, id)) continue;
+      if (id !== lesson || t.used[id] || !Enc.owned(this.run, id)) continue;
       const st = Enc.skillState(enc, id); if (!st || !st.ready) continue;
       const icon = this.hud.icons[id]; if (!icon || !icon.rect) continue;
       this.hud._gateFor = 'use:' + id;
@@ -273,15 +278,8 @@ class ExpeditionScene extends Phaser.Scene {
   // ---------------------------------------------------------------- director
   async fight(first) {
     const enc = this.enc, Enc = X.Encounter;
-    // Buy, then fight (Hiro, 2026-09-21). The guided purchase used to run after
-    // the payout, which meant the first fight was fought with an empty kit: the
-    // in-fight prompts below skip any skill the player does not own, so three
-    // wolves died on their own and the tutorial only started once they were
-    // dead. Now each road fight is preceded by its purchase — Finisher before
-    // the first, then God Aura, then Counter Attack, each paid for by the
-    // previous fight's payout — and the fight itself holds for the first use.
-    await this.guidePurchase();
-    this.hud.closeChip();
+    // Arcade: nothing to buy before a fight. Every skill is owned, and the
+    // first quest teaches them one per fight inside the fight (guideSkillUse).
     await this.intro(first);
     while (!this.ended) {
       const pk = Enc.peek(enc);
@@ -362,47 +360,20 @@ class ExpeditionScene extends Phaser.Scene {
     await this.hero.play('victory');
     const award = X.Encounter.award(enc);
     X.Run.save(this.run);
-    if (award.gold) {
-      await new Promise(res => this.hud.payout(this.hero.x, this.hero.y - 200, award.gold, res));
-    } else this.hud.setGold(this.run.gold);
+    if (award.points) {
+      await new Promise(res => this.hud.payout(this.hero.x, this.hero.y - 200, award.points, res));
+    } else this.hud.setScore(this.run.score);
     this.hud.refresh();
     if (this.enc.def.boss) { await this.complete(); return; }
     // Forward.
     this.hud.showArrow();
     this.arrowArmed = true;
-    // On the tutorial road the arrow holds every time, so the beat the player is
-    // learning — buy, fight, use it, move on — repeats for all three skills.
-    if (this.quest.tutorial || !this.run.tutorial.arrowDone) {
+    // On the first quest the arrow holds every time, so the beat the player is
+    // learning — fight, use the skill, move on — repeats for all three lessons.
+    if (this.run.questsDone.length === 0 || !this.run.tutorial.arrowDone) {
       const r = await this.hud.gate(this.hud.arrow.rect, { skippable: false });
       if (this.ended) return;
       if (r && r.skipped) this.tapArrow();
-    }
-  }
-
-  // The next thing worth buying: an unowned skill in the recommended order, else the
-  // cheapest level-up. Holds on it, then on the chip's confirm. Three guided buys total.
-  async guidePurchase() {
-    const t = this.run.tutorial; t.purchases = t.purchases || 0;
-    if (this.run.hero || t.purchases >= 3 || t.skipGuide) return;     // a picked hero shops at the inn
-    const Enc = X.Encounter, run = this.run;
-    const order = ['finisher', 'god_aura', 'counter_attack'];
-    const pick = order.find(id => !Enc.owned(run, id) && Enc.canUpgrade(run, id)) || order.filter(id => Enc.canUpgrade(run, id)).sort((a, b) => Enc.upgradeCost(run, a) - Enc.upgradeCost(run, b))[0];
-    if (!pick) return;
-    const icon = this.hud.icons[pick];
-    const r1 = await this.hud.gateUntilChip(icon);
-    if (this.ended) return;
-    if (r1 && r1.skipped) { t.skipGuide = true; X.Run.save(run); return; }
-    if (!this.hud.chip) return;
-    const r2 = await this.hud.gate(this.hud.chip.confirmRect, { skippable: true });
-    if (this.ended) return;
-    if (r2 && r2.skipped) { t.skipGuide = true; this.hud.closeChip(); X.Run.save(run); return; }
-    t.purchases++; X.Run.save(run);
-    // A newly unlocked skill: hold on its icon until the player has held it and read what it does.
-    if (!t.inspectDone && Enc.owned(run, pick)) {
-      const r3 = await this.hud.gateUntilInspected(this.hud.icons[pick]);
-      if (this.ended) return;
-      t.inspectDone = true; X.Run.save(run);
-      if (r3 && r3.skipped) this.hud.closeInfo();
     }
   }
 
@@ -421,8 +392,7 @@ class ExpeditionScene extends Phaser.Scene {
       this.scene.restart({ seed: this.seed + 1 });
       return;
     }
-    const won = this.encs.slice(0, this.run.wave).reduce((n, e) => n + (this.run.awarded.includes(e.id) ? e.gold : 0), 0);
-    this.hud.defeatCard({ title: this.world.companions.length ? 'The party falls back' : 'Down', sub: won ? 'Gold kept: ' + won : 'Nothing lost but time' },
+    this.hud.defeatCard({ title: this.world.companions.length ? 'The party falls back' : 'Down', sub: 'Score ' + (this.run.score || 0) },
       () => { X.UI.resetCamera(this); this.scene.restart({ seed: this.seed + 1 }); },
       () => { X.UI.resetCamera(this); this.run.phase = 'travel'; this.run.travelLeg = 'return'; this.run.wave = 0; X.Run.save(this.run); this.scene.start('Travel', { run: this.run, seed: this.seed, leg: 'return' }); });
   }
@@ -430,14 +400,17 @@ class ExpeditionScene extends Phaser.Scene {
   // Quest complete: sheathed Hiro, a compact card over the scene, Replay.
   async complete() {
     this.hud.setWave(this.encs.length); this.run.wave = 0;
+    const clear = X.Encounter.awardQuest(this.run);                             // the quest itself pays, on top of its waves, at this loop's rate
     this.run.questsDone.push(this.quest.id);                                   // every clear counts: the loop cycles on it
+    this.run.loop = X.Campaign.loopOf(this.run);
     this.run.cycles = this.run.cycles || {}; this.run.cycles[this.quest.id] = (this.run.cycles[this.quest.id] || 0) + 1;
     if (this.world.companions.length) X.Campaign.afterQuest(this.run, true);
     this.run.phase = 'travel'; this.run.travelLeg = 'return';
     X.Run.save(this.run);
     X.UI.resetCamera(this);                                                    // the completion card always draws over an un-zoomed scene (round 3 #1)
+    this.hud.setScore(this.run.score, true);
     await wait(this, 400);
-    this.hud.completion(this.run, () => { X.UI.resetCamera(this); this.scene.start('Travel', { run: this.run, seed: this.seed, leg: 'return' }); }, { title: this.quest.done || 'Contract done', encounters: this.encs });
+    this.hud.completion(this.run, () => { X.UI.resetCamera(this); this.scene.start('Travel', { run: this.run, seed: this.seed, leg: 'return' }); }, { title: this.quest.done || 'Contract done', encounters: this.encs, points: clear.points });
   }
 
 }

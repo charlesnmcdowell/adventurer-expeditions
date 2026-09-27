@@ -246,7 +246,7 @@ UI.reloadFresh = function () {
     if (typeof location !== 'function' && !location.href) return false;
     const u = new URL(location.href);
     u.searchParams.set('fresh', '1');
-    for (const p of ['at', 'gold', 'seed']) u.searchParams.delete(p);   // a jump must not survive a restart
+    for (const p of ['at', 'gold', 'score', 'seed']) u.searchParams.delete(p);   // a jump must not survive a restart
     location.replace(u.toString());
     return true;
   } catch (e) { return false; }
@@ -350,14 +350,16 @@ UI.bigButton = function (scene, x, y, w, h, glyph, label, onTap, color) {
   return c;
 };
 
-UI.goldPill = function (scene, gold) {
+// The score pill (arcade): the same shape the gold purse had, a star for a coin.
+UI.scorePill = function (scene, score) {
   const pill = scene.add.container(24, 20).setDepth(D.hud).setScrollFactor(0);
-  const gbg = scene.add.graphics(); gbg.fillStyle(0x14110d, 0.85); gbg.fillRoundedRect(0, 0, 150, 40, 10); gbg.lineStyle(2, 0x3a3128, 1); gbg.strokeRoundedRect(0, 0, 150, 40, 10);
-  const text = T().text(scene, 100, 20, String(gold), { size: 20, ox: 1, oy: 0.5, display: true, color: '#f4eee0' });
-  pill.add([gbg, scene.add.circle(122, 20, 12, 0xf2c94c).setStrokeStyle(2, 0x9a7a1f), text]);
-  pill.text = text; pill.rect = { x: 24, y: 20, w: 150, h: 40 };
+  const gbg = scene.add.graphics(); gbg.fillStyle(0x14110d, 0.85); gbg.fillRoundedRect(0, 0, 170, 40, 10); gbg.lineStyle(2, 0x3a3128, 1); gbg.strokeRoundedRect(0, 0, 170, 40, 10);
+  const text = T().text(scene, 132, 20, String(score || 0), { size: 20, ox: 1, oy: 0.5, display: true, color: '#f4eee0' });
+  pill.add([gbg, T().text(scene, 152, 20, '★', { size: 20, ox: 0.5, oy: 0.5, display: true, color: '#f2c94c' }), text]);
+  pill.text = text; pill.rect = { x: 24, y: 20, w: 170, h: 40 };
   return pill;
 };
+UI.goldPill = UI.scorePill;
 
 // Baked recruit busts (tools/bake_busts.js → assets/expedition/busts/). Every
 // scene preloads them; installBusts turns each into the same canvas texture the

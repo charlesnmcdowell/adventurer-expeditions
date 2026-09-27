@@ -25,51 +25,51 @@ time of day. Change any of those and you have a different level.
 
 *storm day, travelling through the forest, to battle_origin.*
 
-| Wave | Background | Enemies | Gold | Art |
-|---|---|---|---|---|
-| 1 | forest | dire wolf, dire wolf | 40 | all reworked |
-| 2 | road | dire wolf, thorn lurker, thorn lurker | 50 | all reworked |
-| 3 **boss** | mountain | Alpha | 60 | all reworked |
+| Wave | Background | Enemies | Art |
+|---|---|---|---|
+| 1 | forest | dire wolf, dire wolf | all reworked |
+| 2 | road | dire wolf, thorn lurker, thorn lurker | all reworked |
+| 3 **boss** | mountain | Alpha | all reworked |
 
 ### level 2 — The reed marsh  `marsh`
 
 *clear night, travelling through the marsh, to night1.*
 
-| Wave | Background | Enemies | Gold | Art |
-|---|---|---|---|---|
-| 1 | marsh | Reed Serpent, Iron Beetle | 40 | all reworked |
-| 2 | marsh | Moss Giant, Reed Serpent | 50 | all reworked |
-| 3 **boss** | marsh | Mire Hag | 70 | all reworked |
+| Wave | Background | Enemies | Art |
+|---|---|---|---|
+| 1 | marsh | Reed Serpent, Iron Beetle | all reworked |
+| 2 | marsh | Moss Giant, Reed Serpent | all reworked |
+| 3 **boss** | marsh | Mire Hag | all reworked |
 
 ### level 3 — The overrun city  `city`
 
 *overcast day, travelling through the city, to battle_origin.*
 
-| Wave | Background | Enemies | Gold | Art |
-|---|---|---|---|---|
-| 1 | alley | Gutter Goblin, Glass Spider | 40 | all reworked |
-| 2 | alley | Glass Spider, Gutter Goblin, Gutter Goblin | 50 | all reworked |
-| 3 **boss** | alley | Ironjaw | 80 | all reworked |
+| Wave | Background | Enemies | Art |
+|---|---|---|---|
+| 1 | alley | Gutter Goblin, Glass Spider | all reworked |
+| 2 | alley | Glass Spider, Gutter Goblin, Gutter Goblin | all reworked |
+| 3 **boss** | alley | Ironjaw | all reworked |
 
 ### retired — Clear the road  `road`
 
 *clear day, travelling through the forest, to battle_origin.*
 
-| Wave | Background | Enemies | Gold | Art |
-|---|---|---|---|---|
-| 1 | forest | dire wolf, dire wolf | 40 | all reworked |
-| 2 | road | dire wolf, thorn lurker, thorn lurker | 50 | all reworked |
-| 3 **boss** | mountain | Alpha | 60 | all reworked |
+| Wave | Background | Enemies | Art |
+|---|---|---|---|
+| 1 | forest | dire wolf, dire wolf | all reworked |
+| 2 | road | dire wolf, thorn lurker, thorn lurker | all reworked |
+| 3 **boss** | mountain | Alpha | all reworked |
 
 ### retired — The old ruins  `ruins`
 
 *storm night, travelling through the ruins, to night1.*
 
-| Wave | Background | Enemies | Gold | Art |
-|---|---|---|---|---|
-| 1 | ruins | dire wolf 2, thorn 2, thorn 2 | 40 | all reworked |
-| 2 | ruins | thorn 2, dire wolf 2, thorn 2 | 50 | all reworked |
-| 3 **boss** | ruins | alpha 2, dire wolf 2 | 70 | all reworked |
+| Wave | Background | Enemies | Art |
+|---|---|---|---|
+| 1 | ruins | dire wolf 2, thorn 2, thorn 2 | all reworked |
+| 2 | ruins | thorn 2, dire wolf 2, thorn 2 | all reworked |
+| 3 **boss** | ruins | alpha 2, dire wolf 2 | all reworked |
 
 ## The creatures you can build a level from
 

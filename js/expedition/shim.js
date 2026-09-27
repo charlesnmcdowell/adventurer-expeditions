@@ -24,7 +24,7 @@ if (Sys && !Sys.__expeditionWrapped) {
     const levelOf = id === X.riposte.id ? 'counter_attack' : id;
     const table = X.skills[levelOf];
     if (!table && id !== X.riposte.id) return m;
-    const lvl = Math.max(1, Math.min(X.economy.maxLevel, (run.levels && run.levels[levelOf]) || 1));  // 0 (locked) is never used in combat
+    const lvl = 1;                                    // arcade: one level per skill (data.js X.skills)
     const tier = TIERS[lvl - 1];
     if (id === X.riposte.id) {
       const sk = X.riposte;

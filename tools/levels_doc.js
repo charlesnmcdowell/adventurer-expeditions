@@ -64,13 +64,13 @@ for (const q of inOrder) {
   L.push('');
   L.push('*' + q.weather + ' ' + q.phase + ', travelling through the ' + q.travel + ', to ' + q.music + '.*');
   L.push('');
-  L.push('| Wave | Background | Enemies | Gold | Art |');
-  L.push('|---|---|---|---|---|');
+  L.push('| Wave | Background | Enemies | Art |');
+  L.push('|---|---|---|---|');
   Camp.questEncounters(q.id).forEach((e, i) => {
     const arts = (e.enemies || []).map(artOf);
     const bad = arts.filter(a => !a.ok);
     L.push('| ' + (i + 1) + (e.boss ? ' **boss**' : '') + ' | ' + (ALIAS[e.bg] || e.bg) + ' | ' +
-      (e.enemies || []).map(name).join(', ') + ' | ' + (e.gold || 0) + ' | ' +
+      (e.enemies || []).map(name).join(', ') + ' | ' +
       (bad.length ? '⚠ ' + [...new Set(bad.map(b => b.note))].join('; ') : 'all reworked') + ' |');
   });
   L.push('');

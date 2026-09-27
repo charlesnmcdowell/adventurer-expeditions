@@ -7,8 +7,8 @@
 globalThis.ADV = globalThis.ADV || {};
 const X = ADV.Expedition = ADV.Expedition || {};
 
-X.VERSION = 'loop_v1';
-X.saveKey = 'adventurer_expeditions_loop_v1';
+X.VERSION = 'arcade_v1';
+X.saveKey = 'adventurer_expeditions_arcade_v1';
 
 // Hiro: same identity, a mortal body. Demigod (status immunity, extra turns,
 // uncapped overheal) and Rich (gold multiplier) are left out of the demo kit.
@@ -23,49 +23,43 @@ X.hero = {
 // Per-skill, per-level manifests. `base` overrides shipped base fields for every
 // level; numbered entries override per level. Level 1 is what the demo starts at.
 X.skills = {
+  // Arcade (Hiro, 2026-09-27): every skill is owned from the first second and
+  // has one set of numbers, taken from what used to be the middle level. Level
+  // 1 is the only level; nothing is bought or raised.
   katana_slash: {
     base: { autoKillPct: 0, noReflect: true, reach: 'any' },
     1: { power: 1.3, target: 'enemy',      status: { bleed: { power: 0.3, rounds: 3, stacks: true } } },
-    2: { power: 1.6, target: 'enemy',      status: { bleed: { power: 0.4, rounds: 3, stacks: true } } },
-    3: { power: 1.85, target: 'allEnemies', status: { bleed: { power: 0.5, rounds: 3, stacks: true } } },
   },
-  // `cooldown: 0` on purpose. Skills fire between turns now (Hiro,
-  // 2026-09-22), and a recovery counted in turns cannot be read by a player
-  // casting off-turn: the wedge would sit still because no turn had passed.
-  // The engine records a cooldown only when the manifest carries a truthy
-  // one, so zero here hands recovery to X.skillCooldownMs, on a clock.
+  // `cooldown: 0` on purpose. Skills fire between turns (Hiro, 2026-09-22), and
+  // a recovery counted in turns cannot be read by a player casting off-turn.
+  // The engine records a cooldown only when the manifest carries a truthy one,
+  // so zero here hands recovery to X.skillCooldownMs, on a clock.
+  //
+  // God Aura raises attack, not defense (Hiro, 2026-09-24: "counter attack
+  // already handles defense enough"). auraDef stays 1 because the damage code
+  // divides by it; a missing value would be NaN, not "no change".
   god_aura: {
     base: { target: 'party', power: 0 },
-    1: { auraAtk: 1.2, auraDef: 1.2, auraEvade: 0.10, rounds: 2, cooldown: 0 },
-    2: { auraAtk: 1.3, auraDef: 1.3, auraEvade: 0.15, rounds: 3, cooldown: 0 },
-    3: { auraAtk: 1.4, auraDef: 1.4, auraEvade: 0.20, rounds: 3, cooldown: 0 },
+    1: { auraAtk: 1.35, auraDef: 1, auraEvade: 0, rounds: 3, cooldown: 0 },
   },
   counter_attack: {
     base: { target: 'self', power: 0, counterRiposte: 'expedition_riposte' },
-    1: { counterNext: 1, counterRounds: 2, cooldown: 0 },
-    2: { counterNext: 2, counterRounds: 2, cooldown: 0 },
-    3: { counterNext: 3, counterRounds: 2, cooldown: 0 },
+    1: { counterNext: 2, counterRounds: 2, cooldown: 0 },
   },
   finisher: {
     // One rule the player can hold in their head (Hiro, round 3): a normal enemy
-    // is finished at half health or less, a boss at a quarter. Flat across levels —
-    // what levelling buys is the heal and the hit itself, not a wider window. The
-    // shared engine refuses to execute a boss at all, so the boss case is resolved
-    // in Enc.step (X.finisherThresholds), never by editing js/core.
+    // is finished at half health or less, a boss at a quarter. The shared engine
+    // refuses to execute a boss at all, so the boss case is resolved in Enc.step
+    // (X.finisherThresholds), never by editing js/core.
     //
     // No cooldown (Hiro, 2026-09-21): "it's already limited by having specific
-    // conditions it can be used under anyway." The health window *is* the cost —
-    // a second Finisher needs a second enemy softened below half — so a timer on
-    // top of it only took the tap away in the moment the window finally opened.
-    // The engine reads a falsy cooldown as none at all (combat.js), so 0 is the
-    // whole change; the HUD's wedge and the "Cooldown n" chip simply never fire.
+    // conditions it can be used under anyway." The health window *is* the cost.
+    // The engine reads a falsy cooldown as none at all (combat.js).
     base: { target: 'enemy', permStatGain: 0, questGain: false },
     // Core targeting is a strict `<`, so 0.51 is how "at or under half" is
     // actually offered. A wolf sitting on exactly 50% used to grey Finisher out
     // and the tutorial never paused.
-    1: { requireBelowPct: 0.51, executeBelow: 0.51, healOnKillPct: 0.25, cooldown: 0, power: 2.4 },
-    2: { requireBelowPct: 0.51, executeBelow: 0.51, healOnKillPct: 0.35, cooldown: 0, power: 2.8 },
-    3: { requireBelowPct: 0.51, executeBelow: 0.51, healOnKillPct: 0.50, cooldown: 0, power: 3.2 },
+    1: { requireBelowPct: 0.51, executeBelow: 0.51, healOnKillPct: 0.35, cooldown: 0, power: 2.8 },
   },
 };
 
@@ -96,21 +90,35 @@ X.enemies = {
 
 X.encounters = [
   // 150 in all: three guided unlocks (3 × 20) leave 90 — the first recruit (60) and change.
-  { id: 'road_ambush', bg: 'deep_wood',   enemies: ['dire_wolf', 'dire_wolf'],                 gold: 40 },
-  { id: 'thicket',     bg: 'bandit_road', enemies: ['dire_wolf', 'thorn_lurker', 'thorn_lurker'], gold: 50 },
-  { id: 'clearing',    bg: 'mountain',    enemies: ['road_wolf_leader'], boss: true,              gold: 60 },
+  { id: 'road_ambush', bg: 'deep_wood',   enemies: ['dire_wolf', 'dire_wolf'] },
+  { id: 'thicket',     bg: 'bandit_road', enemies: ['dire_wolf', 'thorn_lurker', 'thorn_lurker'] },
+  { id: 'clearing',    bg: 'mountain',    enemies: ['road_wolf_leader'], boss: true },
 ];
 
-// Katana Slash is what Hiro does by default: always owned, never shown, never
-// bought. The other three start locked (level 0) and are unlocked, then raised,
-// with gold. costs[n] is the price of reaching level n.
-X.purchasable = ['finisher', 'god_aura', 'counter_attack'];
-// Twenty in hand at the gate (Hiro, 2026-09-21). The tutorial's first beat is a
-// purchase, and a purchase needs money: with nothing to spend, the first fight
-// was played with an empty kit and the guidance had nothing to point at, so the
-// wolves died on their own and the tutorial only began at the first payout.
-// The road pays 40 + 50 + 60, so the player reaches the inn with 110.
-X.economy = { start: 20, costs: { 1: 20, 2: 30, 3: 40 }, maxLevel: 3 };
+// Arcade scoring (Hiro, 2026-09-27): score replaces gold. Nothing is bought;
+// every skill is owned from the start (X.purchasable is empty so every path
+// that asks "is it owned" says yes). Points come from one fixed table so two
+// players who clear the same fights earn the same score. `loopBonus` is the
+// multiplier step per completed playthrough: loop 2 pays 1.25x, loop 3 1.5x.
+X.purchasable = [];
+// The three tappable skills, in HUD order. Katana Slash is automatic and never shown as a button.
+X.tappable = ['finisher', 'god_aura', 'counter_attack'];
+// The first quest teaches one per fight, in this order (Hiro, 2026-09-27).
+X.tutorialLessons = ['finisher', 'counter_attack', 'god_aura'];
+X.scoring = {
+  regular: 100,          // any regular monster defeated, however it dies
+  boss: 500,             // per boss, so a triple-boss wave pays three times
+  finisherKill: 50,      // on top of the kill: the move the game is about
+  cleanWave: 50,         // wave cleared with Hiro above cleanWaveHp
+  cleanWaveHp: 0.75,
+  questClear: 300,       // paid when the quest's boss falls
+  loopBonus: 0.25,
+};
+X.loopBonus = loop => 1 + X.scoring.loopBonus * Math.max(0, (loop || 1) - 1);
+// Rest at the inn (Hiro, 2026-09-27): a full heal for points, the price
+// doubling with every use in the run, never at full health.
+X.rest = { cost: 1000, growth: 2 };
+X.restCost = run => Math.round(X.rest.cost * Math.pow(X.rest.growth, (run && run.rests) || 0));
 
 // Once Finisher first becomes usable the automatic policy leaves it alone for
 // this many of Hiro's turns so a beginner can tap it themselves.
@@ -198,12 +206,12 @@ X.pacing = { mode: 'normal', ms: { slow: 2000, normal: 1000, fast: 500 } };
 // 5/5/4 turns, Counter Attack 2/2/1 — read as roughly ten and five seconds.
 // Finisher is absent on purpose: its only gate is the health window.
 X.skillCooldownMs = {
-  god_aura:       { 1: 10000, 2: 10000, 3: 8000 },
-  counter_attack: { 1: 5000,  2: 5000,  3: 4000 },
+  god_aura:       { 1: 10000 },
+  counter_attack: { 1: 5000 },
 };
 X.cooldownMsFor = function (skillId, level) {
   const t = X.skillCooldownMs[skillId];
-  return t ? (t[Math.max(1, Math.min(3, level || 1))] || 0) : 0;
+  return t ? (t[1] || 0) : 0;
 };
 // One clock, so the simulation can hold time still while it checks the rules.
 X.now = () => Date.now();
@@ -221,8 +229,8 @@ X.hudIconR = 26;
 X.infoHoldMs = 3000;
 X.infoLingerMs = 3000;
 X.skillText = {
-  katana_slash:   { name: 'Katana Slash',  text: 'Hiro swings his sword at one enemy. At level 3 he hits all of them.' },
-  god_aura:       { name: 'God Aura',      text: 'A glowing shield. Hiro takes less damage for a while. Higher levels last longer.' },
+  katana_slash:   { name: 'Katana Slash',  text: 'Hiro swings his sword at one enemy. He does this on his own.' },
+  god_aura:       { name: 'God Aura',      text: 'A glowing aura. Hiro hits harder for a while.' },
   counter_attack: { name: 'Counter Attack', text: 'Hiro gets ready. When an enemy attacks him, he blocks it and strikes back.' },
   finisher:       { name: 'Finisher',      text: 'A big final strike. If a normal enemy is at half health or less, it is knocked out. Bosses have to be at a quarter. Hiro heals a little.' },
 };

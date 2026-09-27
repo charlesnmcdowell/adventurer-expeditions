@@ -31,7 +31,7 @@ Enc.makeHero = function (rng, run) {
 // policy cannot use them, the engine cannot target with them); a purchase adds
 // the skill at once so it works in the very next action, mid-quest included.
 Enc.syncKit = function (ch, run) {
-  const owned = id => !X.purchasable.includes(id) || ((run.levels && run.levels[id]) || 0) > 0;
+  const owned = id => Enc.owned(run, id);
   const maxLevel = A.DATA.CONST.TIER_THRESHOLDS.advanced;
   for (const id of Object.keys(X.skills)) {
     const has = ch.actives.some(a => a.skillId === id);
@@ -124,16 +124,16 @@ Enc.create = function (opts) {
 
 Enc.freshRun = function () {
   const levels = {};
-  for (const id of Object.keys(X.skills)) levels[id] = X.purchasable.includes(id) ? 0 : 1;
-  return { levels, gold: X.economy.start, wave: 0, awarded: [], tutorial: {} };
+  for (const id of Object.keys(X.skills)) levels[id] = 1;          // arcade: everything owned, one level
+  return { levels, score: 0, loop: 1, rests: 0, wave: 0, awarded: [], tutorial: {} };
 };
 
 Enc.heroUnit = enc => enc.st.units.find(u => u.uid === enc.heroUid);
 Enc.isHiro = ch => !!ch && ch.registryId === X.hero.registryId;
-// The kit the HUD shows and the request path accepts: Hiro's three purchasable
-// skills (locked ones shown locked), or a picked hero's actives + perks.
+// The kit the HUD shows and the request path accepts: Hiro's three tappable
+// skills, or a picked hero's actives + perks.
 Enc.kit = function (hero) {
-  if (Enc.isHiro(hero)) return { actives: X.purchasable.slice(), perks: [], hiro: true };
+  if (Enc.isHiro(hero)) return { actives: X.tappable.slice(), perks: [], hiro: true };
   // Any other tappable character (none in this slice; recruits auto-fight).
   return { actives: hero.actives.filter(a => !a.hidden && a.skillId !== 'basic_attack').slice(0, 3).map(a => a.skillId), perks: hero.perks.slice(0, 3).map(p => p.skillId), hiro: false };
 };
@@ -412,38 +412,46 @@ Enc.runToEnd = function (enc, policy, maxSteps) {
 };
 
 // ---------------------------------------------------------------- rewards
+// Arcade scoring (Hiro, 2026-09-27; X.scoring). Every fallen foe pays by what it
+// was, a Finisher kill pays a little more, a clean wave a little more again, and
+// the whole wave is multiplied by the playthrough bonus. Deterministic: the same
+// fights always earn the same score. `awarded` keeps a restarted fight from
+// paying twice; embarking clears it so a quest pays again on the next loop.
+Enc.wavePoints = function (enc) {
+  const S = X.scoring, st = enc.st, hero = Enc.heroUnit(enc);
+  const foes = st.units.filter(u => u.side === 'b');
+  const fallen = foes.filter(u => u.downed || u.chp <= 0);
+  const bosses = fallen.filter(u => u.ch && u.ch.boss).length;
+  const regular = fallen.length - bosses;
+  const finisherKills = st.events.filter(e => e.t === 'execute' && e.by === enc.heroUid && e.skillId === 'finisher').length;
+  const clean = !!hero && !hero.downed && hero.maxHp > 0 && hero.chp / hero.maxHp >= S.cleanWaveHp;
+  const base = regular * S.regular + bosses * S.boss + finisherKills * S.finisherKill + (clean ? S.cleanWave : 0);
+  const mult = X.loopBonus(enc.run.loop);
+  return { regular, bosses, finisherKills, clean, base, mult, points: Math.round(base * mult) };
+};
 Enc.award = function (enc) {
   const run = enc.run, id = enc.def.id;
-  if (run.awarded.includes(id)) return { gold: 0, repeated: true };
+  if (run.awarded.includes(id)) return { points: 0, repeated: true };
   run.awarded.push(id);
-  run.gold += enc.def.gold;
-  return { gold: enc.def.gold };
+  const w = Enc.wavePoints(enc);
+  run.score = (run.score || 0) + w.points;
+  return Object.assign({}, w, { score: run.score });
+};
+// The quest's boss fell: one more payment, multiplied the same way.
+Enc.awardQuest = function (run) {
+  const points = Math.round(X.scoring.questClear * X.loopBonus(run.loop));
+  run.score = (run.score || 0) + points;
+  return { points, score: run.score };
 };
 
-Enc.upgradeCost = function (run, skillId) {
-  if (run.hero || !X.purchasable.includes(skillId)) return null;      // a picked hero buys at the inn
-  const lvl = run.levels[skillId] || 0;
-  if (lvl >= X.economy.maxLevel) return null;
-  return X.economy.costs[lvl + 1];
-};
-Enc.owned = function (run, skillId) { return !!run.hero || !X.purchasable.includes(skillId) || (run.levels[skillId] || 0) > 0; };
-// Hero level tag: 1 plus every purchase made.
-Enc.heroLevel = function (run) { return run.hero ? 1 + (run.hero.purchases || 0) : 1 + X.purchasable.reduce((n, id) => n + (run.levels[id] || 0), 0); };
-
-Enc.canUpgrade = function (run, skillId) {
-  const cost = Enc.upgradeCost(run, skillId);
-  return cost != null && run.gold >= cost;
-};
-
-Enc.upgrade = function (run, skillId, hero) {
-  const cost = Enc.upgradeCost(run, skillId);
-  if (cost == null) return { ok: false, reason: 'max' };
-  if (run.gold < cost) return { ok: false, reason: 'gold' };
-  run.gold -= cost;
-  run.levels[skillId] = (run.levels[skillId] || 0) + 1;
-  if (hero) Enc.syncKit(hero, run);
-  return { ok: true, level: run.levels[skillId], cost, unlocked: run.levels[skillId] === 1 };
-};
+// Nothing is bought any more (arcade): every skill in X.skills is owned, and
+// the purchase API answers "no" so any old caller stays harmless.
+Enc.upgradeCost = function () { return null; };
+Enc.owned = function (run, skillId) { return !!X.skills[skillId] && !X.purchasable.includes(skillId); };
+// Hero level tag: the playthrough the run is on.
+Enc.heroLevel = function (run) { return Math.max(1, (run && run.loop) || 1); };
+Enc.canUpgrade = function () { return false; };
+Enc.upgrade = function () { return { ok: false, reason: 'arcade' }; };
 
 // Between encounters: hostile effects cleared, health restored, gold/levels kept.
 Enc.restore = function (hero) {

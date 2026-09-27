@@ -73,12 +73,12 @@ Dev.resetOverrides = function () {
 };
 
 // ---------------------------------------------------------------- runs
-// The inn shortcut, as a run: the road behind you, gold in hand, the tutorial's
-// combat guidance retired but the inn's own guidance still to come.
-Dev.innRun = function (gold) {
+// The inn shortcut, as a run: the first quest behind you, some score in hand,
+// the tutorial's combat guidance retired but the inn's own guidance still to come.
+Dev.innRun = function (score) {
   const run = X.Run.reset();
-  run.questsDone = ['road']; run.phase = 'inn';
-  run.gold = gold == null ? 150 : gold;
+  run.questsDone = ['rain']; run.phase = 'inn';
+  run.score = score == null ? 1500 : score;
   Object.assign(run.tutorial, { arrowDone: true, finisherDone: true, purchases: 3, used: { finisher: true, god_aura: true, counter_attack: true }, inspectDone: true, recruitDone: false, embarkDone: false });
   X.Run.save(run);
   return run;
@@ -90,8 +90,8 @@ const ITEMS = [
       const run = X.Run.reset(); X.Run.save(run);
       Dev.go(scene, 'Expedition', { run, fresh: true });
     } },
-  { label: 'Jump to the inn', hint: 'road cleared, 150 gold', run: scene => {
-      Dev.go(scene, 'Inn', { run: Dev.innRun(150) });
+  { label: 'Jump to the inn', hint: 'first quest cleared, 1500 points', run: scene => {
+      Dev.go(scene, 'Inn', { run: Dev.innRun(1500) });
     } },
   { label: 'Boss fight', hint: 'the road, last wave', run: scene => {
       const run = X.Run.reset();
@@ -101,18 +101,12 @@ const ITEMS = [
       X.Run.save(run);
       Dev.go(scene, 'Expedition', { run });
     } },
-  { label: '+100 gold', hint: '', keep: true, run: scene => {
+  { label: '+1000 score', hint: '', keep: true, run: scene => {
       if (!scene.run) return;
-      scene.run.gold += 100; X.Run.save(scene.run);
-      if (scene.hud) { scene.hud.setGold(scene.run.gold, true); scene.hud.refresh(); }
-      if (scene.pill) scene.pill.text.setText(String(scene.run.gold));
+      scene.run.score = (scene.run.score || 0) + 1000; X.Run.save(scene.run);
+      if (scene.hud) { scene.hud.setScore(scene.run.score, true); scene.hud.refresh(); }
+      if (scene.pill) scene.pill.text.setText(String(scene.run.score));
       if (scene.refreshBusts) scene.refreshBusts();
-    } },
-  { label: 'Unlock every skill', hint: 'level 3', keep: true, run: scene => {
-      if (!scene.run) return;
-      for (const id of X.purchasable) scene.run.levels[id] = 3;
-      X.Run.save(scene.run);
-      if (scene.hud) scene.hud.refresh();
     } },
   { label: 'Open every quest', hint: 'lifts the slice lock', keep: true, toggle: () => !(X.slice && X.slice.firstLevelOnly), run: () => {
       X.slice.firstLevelOnly = !X.slice.firstLevelOnly;
@@ -182,7 +176,7 @@ const previewItems = () => (X.quests || []).map(q => ({
     const run = X.Run.reset();
     run.phase = 'travel'; run.questId = q.id; run.wave = 0; run.checkpoint = 0; run.travelLeg = 'outbound';
     run.questsDone = q.tutorial ? [] : ['road'];
-    run.gold = 150;
+    run.score = 1500;
     Object.assign(run.levels, { finisher: 1, god_aura: 1, counter_attack: 1 });
     Object.assign(run.tutorial, { arrowDone: true, finisherDone: true, purchases: 3, inspectDone: true, skipGuide: true,
       used: { finisher: true, god_aura: true, counter_attack: true } });

@@ -6,7 +6,7 @@
 // levels a skill otherwise, then embarks. Screenshots land in test/reports/expedition/.
 // Fails on any page error or if the tutorial + one full cycle of the four loop
 // quests does not complete (5 clears) and return to the inn.
-// Usage: node test/browser_expedition.js [--seed=N] [--headed] [--clears=N] [--at=inn [--gold=N]] [--width=375] [--ship]
+// Usage: node test/browser_expedition.js [--seed=N] [--headed] [--clears=N] [--at=inn [--score=N]] [--width=375] [--ship]
 'use strict';
 const http = require('node:http'), fs = require('node:fs'), path = require('node:path');
 const ROOT = process.env.EXPEDITIONS_TEST_ROOT || path.join(__dirname, '..');
@@ -53,7 +53,7 @@ function serve() {
   page.on('pageerror', e => { errors.push(String(e && e.stack || e)); });
   page.on('console', m => { const t = m.text(); logs.push('[' + m.type() + '] ' + t); if (m.type() === 'error') errors.push(t); });
   const seed = args.seed || 11;
-  const entry = args.at ? '?at=' + args.at + (args.gold ? '&gold=' + args.gold : '') : '?fresh=1';
+  const entry = args.at ? '?at=' + args.at + (args.score ? '&score=' + args.score : '') : '?fresh=1';
   await page.goto('http://127.0.0.1:' + port + '/index.html' + entry + '&seed=' + seed + (args.headed ? '' : '&renderer=canvas'));
   let n = 0;
   const shot = async (label) => { n++; const f = path.join(OUT, String(n).padStart(2, '0') + '-' + label + '.png'); await page.screenshot({ path: f }); console.log('shot', f); };
@@ -66,7 +66,7 @@ function serve() {
       const r = sc && sc.run;
       const dialogue = !!(ADV.UI && ADV.UI.cardIs && ADV.UI.cardIs('dialogue'));
       const o = { scene: key, phase: r && r.phase, questId: r && r.questId, leg: sc && sc.opts && sc.opts.leg, dialogue,
-        done: r && r.questsDone ? r.questsDone.length : 0, gold: r && r.gold, gate: sc && sc.__gateRect || null, confirm: sc && sc.__confirmRect || null,
+        done: r && r.questsDone ? r.questsDone.length : 0, score: r && r.score, gate: sc && sc.__gateRect || null, confirm: sc && sc.__confirmRect || null,
         btn: sc && sc.btn && sc.btn.rect || null };
       if (key === 'Inn' && sc.busts && r) {
         const C = ADV.Expedition.Campaign;
@@ -74,7 +74,7 @@ function serve() {
         o.buyable = Object.values(sc.busts).filter(b => C.canBuy(r, b.key) && !C.owns(r, b.key)).map(b => ({ key: b.key, rect: b.rect }));
         const h = sc.hud;
         o.chip = h && h.chip ? h.chip.confirmRect : null;
-        o.upgrades = h ? Object.keys(h.icons).map(id => ({ id, rect: h.icons[id].rect, plusRect: h.icons[id].plusRect, owned: (r.levels[id] || 0) > 0, can: ADV.Expedition.Encounter.canUpgrade(r, id) })).filter(i => i.can) : [];
+        o.upgrades = [];                                                   // arcade: nothing to buy
       }
       return o;
     }
@@ -82,8 +82,8 @@ function serve() {
     if (!s || !s.enc || !s.hud) return { scene: key };
     const E = ADV.Expedition.Encounter, enc = s.enc, hud = s.hud;
     const glowing = Object.keys(hud.icons).filter(id => hud.icons[id].readyTween).map(id => ({ id, rect: hud.icons[id].rect }));
-    return { scene: 'Expedition', phase: s.run.phase, questId: s.run.questId, party: !!s.run.party, over: !!enc.st.over, wave: s.run.wave, round: enc.st.round, steps: enc.steps, gate: hud.gateActive(), gateFor: hud._gateFor,
-      gateRect: hud._gateRect || null, gold: s.run.gold, levels: s.run.levels, arrow: !!s.arrowArmed, arrowRect: hud.arrow.rect,
+    return { scene: 'Expedition', phase: s.run.phase, questId: s.run.questId, party: !!s.run.party, over: !!enc.st.over, done0: (s.run.questsDone || []).length, wave: s.run.wave, round: enc.st.round, steps: enc.steps, gate: hud.gateActive(), gateFor: hud._gateFor,
+      gateRect: hud._gateRect || null, score: s.run.score, levels: s.run.levels, arrow: !!s.arrowArmed, arrowRect: hud.arrow.rect,
       chip: hud.chip ? hud.chip.confirmRect : null, glowing, done: !!(hud.completionCard), replay: hud.completionCard ? hud.completionCard.replayRect : null,
       defeated: hud.defeatCardObj ? hud.defeatCardObj.againRect : null, tutorial: !!(s.quest && s.quest.tutorial),
       heroHp: E.heroUnit(enc) ? E.heroUnit(enc).chp : null, request: enc.request ? enc.request.skillId : null };
@@ -114,7 +114,7 @@ function serve() {
   const t0 = Date.now();
   const slice = await page.evaluate(() => !!(ADV.Expedition.slice && ADV.Expedition.slice.firstLevelOnly));
   const TARGET = Number(args.clears || (slice ? 2 : 5));   // slice: the road twice (Replay); loop: tutorial + one full cycle
-  let lastKey = '', lastShot = 0, s = null, tappedSkillAt = 0, inns = 0, dialogues = 0, recruits = 0, innBuys = 0, embarks = 0, innShots = 0, defeats = 0, inspectHolds = 0;
+  let lastKey = '', lastShot = 0, s = null, tappedSkillAt = 0, inns = 0, dialogues = 0, recruits = 0, innBuys = 0, embarks = 0, innShots = 0, defeats = 0, inspectHolds = 0, lessons = [];
   while (Date.now() - t0 < 900000) {
     await page.waitForTimeout(250);
     if (errors.length) throw new Error('Page error during journey: ' + errors.join('\n'));
@@ -143,14 +143,17 @@ function serve() {
       if (/^inspect:/.test(s.gateFor || '')) {   // hold the icon until the info box has opened
         const r = s.gateRect; console.log('hold', s.gateFor); const p = await point(r.x + r.w / 2, r.y + r.h / 2); await page.mouse.move(p.x, p.y); await page.mouse.down(); await page.waitForTimeout(3400); await shot(tag.replace(/:/g, '-') + '-info'); await page.mouse.up(); inspectHolds++; await page.waitForTimeout(400); continue;
       }
+      if (/^use:/.test(s.gateFor || '')) lessons.push(s.gateFor.slice(4));   // the tutorial's lesson holds, in the order they came
       await tap(s.gateRect, 'gate ' + s.gateFor); await page.waitForTimeout(400); continue;
     }
     if (s.chip) { await tap(s.chip, 'confirm'); await page.waitForTimeout(400); continue; }
     if (s.arrow) { await tap(s.arrowRect, 'arrow'); await page.waitForTimeout(600); continue; }
-    if (!s.over && s.glowing.length && !s.request && Date.now() - tappedSkillAt > 1500) { await tap(s.glowing[0].rect, 'skill ' + s.glowing[0].id); tappedSkillAt = Date.now(); continue; }
-    // On the tutorial road a beginner buys only what the guide holds on; the inn is where the rest is spent.
-    if (s.over && !s.gate && !s.chip && s.gold >= 20 && !s.tutorial) {
-      const icons = await page.evaluate(() => { const h = window.__game.scene.getScene('Expedition').hud; return Object.keys(h.icons).map(id => ({ id, rect: h.icons[id].rect, plusRect: h.icons[id].plusRect, owned: (h.run.levels[id] || 0) > 0, can: ADV.Expedition.Encounter.canUpgrade(h.run, id) })); });
+    // On the first quest a beginner waits to be shown each skill (the lesson
+    // holds); afterwards the journey taps whatever glows, like a player would.
+    if (!s.over && s.glowing.length && !s.request && s.done0 > 0 && Date.now() - tappedSkillAt > 1500) { await tap(s.glowing[0].rect, 'skill ' + s.glowing[0].id); tappedSkillAt = Date.now(); continue; }
+    // Arcade: nothing is bought between fights; every skill is owned from the start.
+    if (false) {
+      const icons = [];
       const pick = icons.find(i => i.can && !i.owned) || icons.find(i => i.can);
       if (pick) { await tap(pick.owned ? pick.plusRect : pick.rect, 'buy ' + pick.id); await page.waitForTimeout(400); continue; }
     }
@@ -158,8 +161,8 @@ function serve() {
   console.log('summary', JSON.stringify({ inns, dialogues, recruits, innBuys, embarks, defeats, last: s }));
   const evidence = await page.evaluate(() => {
     const X = ADV.Expedition, scene = window.__game.scene.getScene('Inn'), loaded = X.Run.load();
-    return { trace: window.__journeyTrace, saved: loaded && { gold: loaded.gold, levels: loaded.levels, questsDone: loaded.questsDone, phase: loaded.phase },
-      final: scene.run && { gold: scene.run.gold, levels: scene.run.levels, questsDone: scene.run.questsDone, phase: scene.run.phase },
+    return { trace: window.__journeyTrace, saved: loaded && { score: loaded.score, levels: loaded.levels, questsDone: loaded.questsDone, phase: loaded.phase },
+      final: scene.run && { score: scene.run.score, levels: scene.run.levels, questsDone: scene.run.questsDone, phase: scene.run.phase },
       camera: { zoom: scene.cameras.main.zoom, clock: scene.time.timeScale, animations: scene.anims.globalTimeScale } };
   });
   const manual = evidence.trace.heroChoices.filter(c => ['finisher', 'god_aura', 'counter_attack'].includes(c.skill));
@@ -168,11 +171,12 @@ function serve() {
   // button — what must never appear is a purchased skill the policy chose.
   const BY_TAP = ['request', 'cast'];
   if (slice && (!manual.length || manual.some(c => !BY_TAP.includes(c.how)))) errors.push('Purchased skills did not fire exclusively from player taps: ' + JSON.stringify(manual.map(c => c.skill + ':' + c.how)));
-  if (slice && !inspectHolds && !args.at) errors.push('Guided 3-second inspection hold was not exercised');
-  if (JSON.stringify(evidence.saved) !== JSON.stringify(evidence.final)) errors.push('Saved gold/upgrades/progress differs from final inn state');
+  // Arcade tutorial (2026-09-27): Finisher, then Counter Attack, then God Aura, one hold per fight of the first quest.
+  if (slice && !args.at && JSON.stringify(lessons) !== JSON.stringify(['finisher', 'counter_attack', 'god_aura'])) errors.push('Tutorial lessons were not taught in order: ' + JSON.stringify(lessons));
+  if (JSON.stringify(evidence.saved) !== JSON.stringify(evidence.final)) errors.push('Saved score/progress differs from final inn state');
   if (evidence.trace.restores.some(r => r.clock !== 1 || r.tweens !== 1 || r.animations !== 1)) errors.push('Cinematic speed did not restore');
   if (evidence.camera.zoom !== 1 || evidence.camera.clock !== 1 || evidence.camera.animations !== 1) errors.push('Final camera/time state did not restore');
-  fs.writeFileSync(path.join(OUT, 'verification.json'), JSON.stringify({ generatedAt: new Date().toISOString(), shipOnly: !!SHIP, slice, targetClears: TARGET, width: vw, inns, dialogues, recruits, innBuys, embarks, defeats, inspectHolds, last: s, evidence, errors }, null, 2) + '\n');
+  fs.writeFileSync(path.join(OUT, 'verification.json'), JSON.stringify({ generatedAt: new Date().toISOString(), shipOnly: !!SHIP, slice, targetClears: TARGET, width: vw, inns, dialogues, recruits, innBuys, embarks, defeats, inspectHolds, lessons, last: s, evidence, errors }, null, 2) + '\n');
   fs.writeFileSync(path.join(OUT, 'console.log'), logs.join('\n'));
   await browser.close(); srv.close();
   if (errors.length) { console.error('PAGE ERRORS:\n' + errors.join('\n')); process.exit(1); }

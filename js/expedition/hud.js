@@ -1,5 +1,5 @@
 // Adventurer: Expeditions — HUD and non-verbal guidance.
-// Top: gold and wave nodes. Bottom: portrait with an automatic Slash badge and
+// Top: score and wave nodes. Bottom: portrait with an automatic Slash badge and
 // three painted active controls with upgrade chips. Right: forward arrow.
 // Guidance is a pointing hand + pulsing ring over the one thing to tap, with an
 // input blocker behind it so the game holds until that thing is tapped.
@@ -83,13 +83,13 @@ class Hud {
       this.refresh();
       return;
     }
-    // Gold pill (top-left)
-    this.goldPill = s.add.container(24, 20).setDepth(D.hud).setScrollFactor(0);
-    const gbg = s.add.graphics(); gbg.fillStyle(0x14110d, 0.85); gbg.fillRoundedRect(0, 0, 150, 40, 10); gbg.lineStyle(2, 0x3a3128, 1); gbg.strokeRoundedRect(0, 0, 150, 40, 10);
-    const coin = s.add.circle(122, 20, 12, 0xf2c94c).setStrokeStyle(2, 0x9a7a1f);
-    this.goldText = T().text(s, 100, 20, String(this.run.gold), { size: 20, ox: 1, oy: 0.5, display: true, color: '#f4eee0' });
-    this.goldPill.add([gbg, coin, this.goldText]);
-    this.goldPillRect = { x: 24, y: 20, w: 150, h: 40 };
+    // Score pill (top-left): the arcade counter, replacing the gold purse.
+    this.scorePill = s.add.container(24, 20).setDepth(D.hud).setScrollFactor(0);
+    const gbg = s.add.graphics(); gbg.fillStyle(0x14110d, 0.85); gbg.fillRoundedRect(0, 0, 170, 40, 10); gbg.lineStyle(2, 0x3a3128, 1); gbg.strokeRoundedRect(0, 0, 170, 40, 10);
+    const star = T().text(s, 152, 20, '★', { size: 20, ox: 0.5, oy: 0.5, display: true, color: '#f2c94c' });
+    this.scoreText = T().text(s, 132, 20, String(this.run.score || 0), { size: 20, ox: 1, oy: 0.5, display: true, color: '#f4eee0' });
+    this.scorePill.add([gbg, star, this.scoreText]);
+    this.scorePillRect = { x: 24, y: 20, w: 170, h: 40 };
 
     // Wave nodes (top-center)
     this.nodes = [];
@@ -167,8 +167,8 @@ class Hud {
     return c;
   }
 
-  // One skill icon: painted art (or glyph), level pips, a + badge when an
-  // upgrade is affordable, a cooldown wedge, and a glow when ready to use.
+  // One skill icon: painted art (or glyph), a cooldown wedge, and a glow when
+  // ready to use. (The level pips and + badge are built but never shown: arcade.)
   buildIcon(id, x, y, kind) {
     const s = this.scene, u = ui(id), perk = kind === 'perk';
     const painted = !perk && PAINTED_SKILLS.has(id);
@@ -199,7 +199,7 @@ class Hud {
     // A tap: perk → what it does; locked active → the unlock chip; owned active → a request.
     // A hold of X.infoHoldMs: the info box, which lingers X.infoLingerMs after release.
     let holdTimer = null, held = false;
-    const tap = () => { if (perk) this.infoChip(id); else if (X.Encounter.owned(this.run, id)) this.onSkill(id); else this.openChip(id); };
+    const tap = () => { if (perk) this.infoChip(id); else this.onSkill(id); };
     zone.on('pointerdown', () => {
       held = false;
       if (holdTimer) holdTimer.remove(false);
@@ -241,24 +241,27 @@ class Hud {
     });
   }
 
-  setGold(n, animate) {
-    if (!this.goldText) return;
-    if (!animate) { this.goldText.setText(String(n)); return; }
-    const from = parseInt(this.goldText.text, 10) || 0;
+  setScore(n, animate) {
+    if (!this.scoreText) return;
+    if (!animate) { this.scoreText.setText(String(n)); return; }
+    const from = parseInt(this.scoreText.text, 10) || 0;
     const o = { v: from };
-    this.scene.tweens.add({ targets: o, v: n, duration: 600, ease: 'Sine.Out', onUpdate: () => this.goldText.setText(String(Math.round(o.v))) });
-    this.scene.tweens.add({ targets: this.goldPill, scale: 1.12, duration: 120, yoyo: true });
+    this.scene.tweens.add({ targets: o, v: n, duration: 600, ease: 'Sine.Out', onUpdate: () => this.scoreText.setText(String(Math.round(o.v))) });
+    this.scene.tweens.add({ targets: this.scorePill, scale: 1.12, duration: 120, yoyo: true });
   }
 
-  // Coins fly from a point to the pill, then the counter ticks up.
+  // Points fly from a point to the pill as sparks, then the counter ticks up.
   payout(fromX, fromY, amount, done) {
     const s = this.scene;
-    const n = Math.min(10, Math.max(4, Math.round(amount / 5)));
+    const n = Math.min(12, Math.max(4, Math.round(amount / 60)));
     for (let i = 0; i < n; i++) {
-      const c = s.add.circle(fromX + (Math.random() - 0.5) * 60, fromY + (Math.random() - 0.5) * 40, 8, 0xf2c94c).setStrokeStyle(2, 0x9a7a1f).setDepth(D.hud + 1);
-      s.tweens.add({ targets: c, x: 146, y: 40, duration: 520 + i * 60, delay: i * 40, ease: 'Sine.In', onComplete: () => c.destroy() });
+      const c = s.add.circle(fromX + (Math.random() - 0.5) * 60, fromY + (Math.random() - 0.5) * 40, 7, 0xf2c94c).setStrokeStyle(2, 0x9a7a1f).setDepth(D.hud + 1);
+      s.tweens.add({ targets: c, x: 176, y: 40, duration: 520 + i * 60, delay: i * 40, ease: 'Sine.In', onComplete: () => c.destroy() });
     }
-    s.time.delayedCall(560 + n * 60, () => { this.setGold(this.run.gold, true); if (done) done(); });
+    const label = T().text(s, fromX, fromY - 30, '+' + amount, { size: 26, ox: 0.5, oy: 0.5, display: true, color: '#ffe28a' }).setDepth(D.hud + 1);
+    label.setStroke('#000000', 5);
+    s.tweens.add({ targets: label, y: fromY - 90, alpha: 0, duration: 900, ease: 'Sine.Out', onComplete: () => label.destroy() });
+    s.time.delayedCall(560 + n * 60, () => { this.setScore(this.run.score || 0, true); if (done) done(); });
   }
 
   refresh() {
@@ -271,20 +274,18 @@ class Hud {
       }
       return;
     }
+    // Arcade: every skill is owned at one level, so an icon is simply lit —
+    // no lock, no level pips, no + badge, nothing to buy.
     for (const id of Object.keys(this.icons)) {
-      const c = this.icons[id], lvl = run.levels[id] || 0, owned = lvl > 0;
-      c.pips.list.forEach((p, i) => p.setFillStyle(i < lvl ? SKILL_UI[id].color : 0x3a3128));
-      c.lock.setVisible(!owned); c.glyph.setVisible(owned && !c.art);
-      if (c.art) c.art.setAlpha(owned ? 1 : 0.25);
-      c.disc.setStrokeStyle(3, owned ? SKILL_UI[id].color : 0x4a4036, 1);
-      c.fill.setFillStyle(SKILL_UI[id].color, owned ? 0.22 : 0.05);
-      const can = X.Encounter.canUpgrade(run, id);
-      // Owned + affordable: a + badge. Locked + affordable: the whole icon invites (gold pulse).
-      c.plus.setVisible(can && owned); c.plusZone.setVisible(can && owned);
-      if (can && owned && !c.plusTween) c.plusTween = this.scene.tweens.add({ targets: c.plus, scale: 1.18, duration: 420, yoyo: true, repeat: -1 });
-      if (!(can && owned) && c.plusTween) { c.plusTween.stop(); c.plusTween = null; c.plus.setScale(1); }
-      if (can && !owned && !c.inviteTween) { c.disc.setStrokeStyle(3, 0xf2c94c, 1); c.inviteTween = this.scene.tweens.add({ targets: c, scale: 1.12, duration: 480, yoyo: true, repeat: -1, ease: 'Sine.InOut' }); }
-      if (!(can && !owned) && c.inviteTween) { c.inviteTween.stop(); c.inviteTween = null; c.setScale(1); }
+      const c = this.icons[id];
+      c.pips.setVisible(false);
+      c.lock.setVisible(false); c.glyph.setVisible(!c.art);
+      if (c.art) c.art.setAlpha(1);
+      c.disc.setStrokeStyle(3, SKILL_UI[id].color, 1);
+      c.fill.setFillStyle(SKILL_UI[id].color, 0.22);
+      c.plus.setVisible(false); c.plusZone.setVisible(false);
+      if (c.plusTween) { c.plusTween.stop(); c.plusTween = null; c.plus.setScale(1); }
+      if (c.inviteTween) { c.inviteTween.stop(); c.inviteTween = null; c.setScale(1); }
     }
   }
 
@@ -403,40 +404,9 @@ class Hud {
   shakePortrait() { this.shakeIcon('finisher'); }
 
   // ---------------------------------------------------------------- upgrade chip
-  openChip(id) {
-    if (this.chip) this.closeChip();
-    const run = this.run;
-    const cost = X.Encounter.upgradeCost(run, id);
-    if (cost == null || run.gold < cost) { this.shakeIcon(id); return; }
-    const s = this.scene, icon = this.icons[id];
-    const w = 150, h = 108, x = Math.max(w / 2 + 8, icon.x + 30), y = icon.y - icon.r - h / 2 - 12;
-    const c = s.add.container(x, y).setDepth(D.hud + 2);
-    const g = s.add.graphics(); g.fillStyle(0x1c1712, 0.97); g.fillRoundedRect(-w / 2, -h / 2, w, h, 10); g.lineStyle(2, 0xf2c94c, 1); g.strokeRoundedRect(-w / 2, -h / 2, w, h, 10);
-    g.fillTriangle(-10, h / 2, 10, h / 2, 0, h / 2 + 10);
-    const cur = run.levels[id] || 0;
-    const lvl = T().text(s, -w / 2 + 12, -h / 2 + 10, SKILL_UI[id].glyph + '  ' + (cur === 0 ? '🔓' : 'Lv ' + cur + ' → ' + (cur + 1)), { size: 13, color: '#e8dfc8', display: true });
-    const coin = s.add.circle(w / 2 - 22, -h / 2 + 18, 9, 0xf2c94c).setStrokeStyle(2, 0x9a7a1f);
-    const price = T().text(s, w / 2 - 34, -h / 2 + 18, String(cost), { size: 14, ox: 1, oy: 0.5, color: '#f4eee0', display: true });
-    const bw = w - 24, bh = 48;
-    const bg = s.add.graphics(); bg.fillStyle(0x62c95a, 1); bg.fillRoundedRect(-bw / 2, 4, bw, bh, 8);
-    const check = T().text(s, 0, 4 + bh / 2, '✓', { size: 20, ox: 0.5, oy: 0.5, color: '#0f2d0f', display: true });
-    const zone = s.add.zone(0, 4 + bh / 2, bw, bh).setInteractive({ useHandCursor: true });
-    zone.on('pointerdown', () => { const r = this.onUpgrade(id); if (r && r.ok) this.closeChip(); });
-    c.add([g, lvl, coin, price, bg, check, zone]);
-    c.setScale(0.6); s.tweens.add({ targets: c, scale: 1, duration: 160, ease: 'Back.Out' });
-    this.chip = { root: c, id, zone, confirmRect: { x: x - bw / 2, y: y + 4, w: bw, h: bh } };
-    if (this.gateActive() && (this._gateFor === 'plus:' + id || this._gateFor === 'unlock:' + id)) this.releaseGate({ opened: id });
-    return this.chip;
-  }
-
-  // Hold on an icon (locked: the icon itself; owned: its + badge) until its chip opens.
-  gateUntilChip(icon) {
-    const id = icon.id, owned = X.Encounter.owned(this.run, id);
-    const p = this.gate(owned ? icon.plusRect : icon.rect, { skippable: true });
-    this._gateFor = (owned ? 'plus:' : 'unlock:') + id;
-    return p;
-  }
-
+  // Arcade: nothing is bought. The chip is gone; a tap on an icon is a request.
+  openChip(id) { this.shakeIcon(id); return null; }
+  gateUntilChip(icon) { return this.gate(icon.rect, { skippable: true }); }
   closeChip() { if (this.chip) { this.chip.root.destroy(); this.chip = null; } }
 
   // ---------------------------------------------------------------- arrow
@@ -457,7 +427,7 @@ class Hud {
   clearGate() { if (this._gate) { this._gate.clear(); } }
 
   // ---------------------------------------------------------------- overlays
-  // Quest-complete card: gold, the three skills at their final levels, Replay.
+  // Quest-complete card: the points this quest paid, the score, the three skills, onward.
   completion(run, onReplay, opts) {
     opts = opts || {};
     const s = this.scene;
@@ -466,24 +436,23 @@ class Hud {
     const shade = s.add.rectangle(0, 0, W, H, 0x000000, 0.35).setInteractive();
     const g = s.add.graphics(); g.fillStyle(0x14110d, 0.96); g.fillRoundedRect(-w / 2, -h / 2, w, h, 16); g.lineStyle(3, 0xf2c94c, 1); g.strokeRoundedRect(-w / 2, -h / 2, w, h, 16);
     const title = T().text(s, 0, -h / 2 + 34, opts.title || 'Contract done', { size: 28, ox: 0.5, oy: 0.5, display: true, color: '#f4eee0' });
-    const coin = s.add.circle(-30, -h / 2 + 84, 14, 0xf2c94c).setStrokeStyle(2, 0x9a7a1f);
-    const encs = opts.encounters || X.encounters;
-    const earned = encs.reduce((n, e) => n + (run.awarded.includes(e.id) ? e.gold : 0), 0);
-    const gold = T().text(s, -8, -h / 2 + 84, String(earned), { size: 22, ox: 0, oy: 0.5, display: true, color: '#f4eee0' });
-    const row = s.add.container(0, -h / 2 + 140);
+    const coin = T().text(s, -30, -h / 2 + 84, '★', { size: 24, ox: 0.5, oy: 0.5, display: true, color: '#f2c94c' });
+    const earned = opts.points != null ? opts.points : (run.score || 0);
+    const gold = T().text(s, -8, -h / 2 + 84, (opts.points != null ? '+' : '') + String(earned), { size: 22, ox: 0, oy: 0.5, display: true, color: '#f4eee0' });
+    const total = T().text(s, 0, -h / 2 + 112, 'Score ' + (run.score || 0) + '   ·   Playthrough ' + (run.loop || 1), { size: 14, ox: 0.5, oy: 0.5, color: '#c9c0b0' });
+    const row = s.add.container(0, -h / 2 + 150);
     this.kit.actives.forEach((id, i) => {
-      const u = ui(id), lvl = this.kit.hiro ? (run.levels[id] || 0) : tierIndex(this.hero, id), cx = (i - 1) * 96;
-      const disc = s.add.circle(cx, 0, 20, 0x14110d, 1).setStrokeStyle(3, lvl ? u.color : 0x4a4036, 1);
-      const glyph = T().text(s, cx, 0, lvl ? u.glyph : '', { size: 18, ox: 0.5, oy: 0.5, color: '#ffffff' });
+      const u = ui(id), cx = (i - 1) * 96;
+      const disc = s.add.circle(cx, 0, 20, 0x14110d, 1).setStrokeStyle(3, u.color, 1);
+      const glyph = T().text(s, cx, 0, u.glyph, { size: 18, ox: 0.5, oy: 0.5, color: '#ffffff' });
       row.add([disc, glyph]);
-      for (let k = 0; k < 3; k++) row.add(s.add.circle(cx + (k - 1) * 11, 28, 4, k < lvl ? u.color : 0x3a3128).setStrokeStyle(1, 0x000000));
     });
     const bw = 200, bh = 46, by = h / 2 - 44;
     const bg = s.add.graphics(); bg.fillStyle(0x62c95a, 1); bg.fillRoundedRect(-bw / 2, by - bh / 2, bw, bh, 10);
     const glyph = T().text(s, 0, by, '↻', { size: 28, ox: 0.5, oy: 0.5, color: '#0f2d0f', display: true });
     const zone = s.add.zone(0, by, bw, bh).setInteractive({ useHandCursor: true });
     zone.on('pointerdown', () => { if (onReplay) onReplay(); });
-    c.add([shade, g, title, coin, gold, row, bg, glyph, zone]);
+    c.add([shade, g, title, coin, gold, total, row, bg, glyph, zone]);
     c.setScale(0.7); s.tweens.add({ targets: c, scale: 1, duration: 260, ease: 'Back.Out' });
     this.completionCard = { root: c, replayRect: { x: x - bw / 2, y: y + by - bh / 2, w: bw, h: bh } };
     return this.completionCard;
