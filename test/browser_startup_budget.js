@@ -80,6 +80,23 @@ async function measure(browser, profile, url) {
   if (PORTAL_TEST) await page.route('https://sdk.crazygames.com/crazygames-sdk-v3.js', route => route.fulfill({ contentType: 'text/javascript', body: `window.CrazyGames={SDK:{init:async()=>{},game:Object.fromEntries(['loadingStart','loadingStop','gameplayStart','gameplayStop'].map(name=>[name,()=>window.__sdkCalls.push({name,at:performance.now(),epoch:performance.timeOrigin+performance.now(),state:window.__startupState()})]))}};` }));
   await page.goto(url + '/index.html?fresh=1&seed=11&renderer=canvas', { waitUntil: 'domcontentloaded' });
   try {
+    // The current onboarding waits for a purchase and a genuine inspection
+    // hold before the first turn. Exercise those controls rather than waiting
+    // for an automatic turn that is intentionally not allowed to happen.
+    for (let n = 0; n < 100; n++) {
+      const ui = await page.evaluate(() => {
+        const s = window.__game?.scene.getScene('Expedition'), h = s?.hud;
+        return { ready: !!s?.__presentationReady, stepped: (s?.enc?.steps || 0) > 0,
+          rect: h?.chip?.confirmRect || h?._gateRect, hold: !!h?._gateFor?.startsWith('inspect:') };
+      });
+      if (ui.stepped) break;
+      if (ui.ready && ui.rect) {
+        const b = await page.locator('canvas').first().boundingBox(), r = ui.rect;
+        await page.mouse.move(b.x + (r.x + r.w / 2) * b.width / 1280, b.y + (r.y + r.h / 2) * b.height / 760);
+        await page.mouse.down(); await page.waitForTimeout(ui.hold ? 3200 : 60); await page.mouse.up();
+      }
+      await page.waitForTimeout(250);
+    }
     await page.waitForFunction(() => window.__startupMarks.some(m => m.name === 'firstCombatStep'), null, { timeout: 45000 });
   } catch (error) {
     const diagnostic = await page.evaluate(() => ({ state: window.__startupState?.(), marks: window.__startupMarks, sdk: window.__sdkCalls, active: window.__game?.scene.getScenes(true).map(s => ({ key: s.sys.settings.key, sceneState: s.sys.settings.status, env: !!s.env, enc: !!s.enc, hero: !!s.hero, hud: !!s.hud, atlasReady: ADV.Expedition.Painted ? Object.fromEntries((ADV.Expedition.Painted.actors || ADV.Expedition.Painted.ids).map(id => [id, !!ADV.Expedition.Painted.sheet(s, id)])) : null })) }));

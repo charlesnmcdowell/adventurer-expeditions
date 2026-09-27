@@ -26,6 +26,8 @@
     "release:check": "node tools/release_check.js",
     "levels": "node tools/levels_doc.js",
     "stamp": "node tools/stamp.js",
-    "test:finishers": "node test/browser_finishers.js"
+    "test:finishers": "node test/browser_finishers.js",
+    "test:v3": "node test/browser_v3_art.js",
+    "art:build:v3": "python tools/build_v3_monsters.py && python tools/build_v3_travel.py"
   }
 }

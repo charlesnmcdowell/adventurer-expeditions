@@ -28,7 +28,7 @@ const server=http.createServer((req,res)=>{
     s.fight=async function(first){await this.intro(first);this.__artReviewReady=true;};
     X.TravelScene.prototype.play=function(){};
   });
-  for(const [q,w,ids] of [['marsh',0,['serpent','beetle']],['marsh',1,['moss_giant']],['marsh',2,['hag']],['city',0,['goblin','spider']],['city',2,['orc']]]){
+  for(const [q,w,ids] of (process.argv.includes('--travel-only')?[]:[['marsh',0,['serpent','beetle']],['marsh',1,['moss_giant']],['marsh',2,['hag']],['city',0,['goblin','spider']],['city',2,['orc']]])){
     await page.evaluate(([q,w])=>{
       const X=ADV.Expedition,s=window.__game.scene.getScenes(true)[0],r=X.Run.fresh();
       r.questId=q;r.wave=w;r.phase='quest';r.gold=200;
@@ -79,6 +79,6 @@ const server=http.createServer((req,res)=>{
     }
   }
   assert.deepEqual(errors,[]);
-  fs.writeFileSync(path.join(OUT,'verification.json'),JSON.stringify({results,errors},null,2));
-  await browser.close();server.close();console.log('v3 art: 14 paired finishers, 7 visible enemies, 4 painted travel beats passed');
+  fs.writeFileSync(path.join(OUT,process.argv.includes('--travel-only')?'travel-verification.json':'verification.json'),JSON.stringify({results,errors},null,2));
+  await browser.close();server.close();console.log(process.argv.includes('--travel-only')?'v3 art: 4 painted travel beats passed':'v3 art: 14 paired finishers, 7 visible enemies, 4 painted travel beats passed');
 })().catch(e=>{console.error(e);process.exit(1);});

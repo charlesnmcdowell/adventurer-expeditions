@@ -29,8 +29,9 @@ const srv = http.createServer((q, r) => {
 // [quest, wave, which enemy to finish, the painted set it must pair from]
 const CASES = [
   ['rain', 0, 'wolf', 'wolf'], ['rain', 1, 'plant', 'plant'], ['rain', 2, 'boss', 'alpha'],
-  ['marsh', 0, 'wolf', 'wolf'], ['marsh', 1, 'plant', 'plant'], ['marsh', 2, 'boss', 'alpha'],
-  ['city', 2, 'boss', 'alpha'], ['ruins', 1, 'plant', 'plant'], ['ruins', 2, 'boss', 'alpha'],
+  ['marsh', 0, 'serpent', 'serpent'], ['marsh', 0, 'beetle', 'beetle'],
+  ['marsh', 1, 'moss_giant', 'moss_giant'], ['marsh', 2, 'boss', 'hag'],
+  ['city', 0, 'goblin', 'goblin'], ['city', 0, 'spider', 'spider'], ['city', 2, 'boss', 'orc'],
 ];
 
 (async () => {
@@ -76,9 +77,9 @@ const CASES = [
       await new Promise(res => setTimeout(res, 2000));
       clearInterval(iv);
       return { target: mark.ch.expeditionKey, killed: !!(mark.downed || mark.chp <= 0),
-        paired: played.filter(k => /paired/.test(k)), plainDown: played.some(k => /:down$/.test(k)) };
+        paired: played.filter(k => /paired|:hiro-finisher-[12]$/.test(k)), plainDown: played.some(k => /:down$/.test(k)) };
     }, pick);
-    const pairedFromSet = r.paired && r.paired.some(k => set === 'alpha' ? /xp_alpha_sheet/.test(k) : true);
+    const pairedFromSet = r.paired && r.paired.some(k => ['wolf','plant'].includes(set) || k.includes('xp_' + set + '_sheet'));
     const ok = !r.missing && r.killed && r.paired.length > 0 && pairedFromSet && !errs.length;
     if (!ok) failed++;
     console.log((ok ? 'PASS ' : 'FAIL ') + (qid + ' w' + (wave + 1) + ' ' + pick).padEnd(18) +

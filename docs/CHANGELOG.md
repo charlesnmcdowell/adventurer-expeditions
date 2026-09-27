@@ -15,6 +15,26 @@ of small fixes within a day.
 
 ---
 
+## 2026-09-26 — Astra v3 art integrated: forest, swamp and city playable
+
+User authorized source creation, intake and runtime integration in this session. The original `adventurer/` and synced shared files were not edited. Source masters and generation/reference records are in `../adventurer-expeditions-source-art/astra-v3/`; this is a local playtest build, not a publication or final art approval.
+
+**Delivered.** Seven new monster atlases (serpent, beetle, moss giant, hag, goblin, spider, orc), each with idle, approach, attack, hit, down, threat/enrage and two unique Hiro paired finishers. Four scene-specific painted travel beats: forest carriage hop, swamp log slide, city market vault, city rooftop climb/run. Each has a clean plate, 12 registered action frames and environment loops. Swamp mud dissolution and city blue-flame defeat effects are loaded with their locations. Original music and existing battle plates are reused.
+
+**Runtime.** Open quest list changed from rain/marsh/city/ruins to rain/marsh/city (4 to 3). Hiro remains the only selectable hero; recruitment stays locked. Swamp and city encounter identities remain stable for saves but now resolve to the intended monsters. Hag and orc explicitly have `boss: true`; other new creatures explicitly have `boss: false`, preserving the flat 25% / 50% Finisher thresholds. Paired kills still require the player's Finisher; the two new variants alternate without requiring skill levels. Boss enrage tells play once below half HP. Travel waits for its authored beat before changing scenes. Approach clips loop so entrance movement completes; native left-facing art is not mirrored. Weather now follows each quest's explicit setting rather than the shared renderer's marsh rain bias.
+
+**Registration fixes.** Stable anatomical scale is retained throughout each sheet. Contact corrections translate frames rather than enlarge Hiro: market contact frames lowered 20 px; rooftop ledge frame anchor Y 560 → 630; rooftop bird loop scale 1 → 0.55. A complete-body ledge-grip frame replaces the source frame with cropped legs. Planted frames use the visible alpha baseline, avoiding floating feet.
+
+**Size.** Runtime package approximately 38.15 MB / 252 files. Source PNG masters do not ship. Separate total-package allowance is 250 MB; initial-gameplay target remains 20 MB. Cold-cache local Chromium tests measured approximately 14.64 MB through first combat and audio, on desktop and emulated portrait/landscape mobile. This is not a measurement inside CrazyGames or on physical iOS hardware.
+
+**Validation.** `npm test`; ship-allowlist browser run; complete three-quest ship run at 390 px width (three clears, zero defeats/errors); seven visible monster checks; all 14 new paired-finisher playback/contact/cleanup checks; all four travel beats sampled at five times; cold-cache startup test. Reports are under `test/reports/`. Final targeted Finisher test also covers actual skill execution for all ten creature sets (forest plus new locations).
+
+**Files.** `assets/expedition/{serpent,beetle,moss_giant,hag,goblin,spider,orc,travel,effects}/`; `js/expedition/{data,campaign,encounter,painted,scene,actors,beats,defeat_fx,travel_art,scenes_town}.js`; script stamps in `index.html`; `tools/{build_v3_monsters.py,build_v3_travel.py,ship_manifest.json}`; `test/{expedition_sim,browser_v3_art,browser_finishers,browser_startup_budget}.js`; `package.json`; GDD, this log and generated `docs/LEVELS.md`.
+
+**Still separate planned work.** September 24's skill-level removal, attack-only God Aura redesign and bespoke Part 2 ending screen were not part of this art/travel authorization and remain unimplemented. After the city, the current completion flow returns to the inn. Art is ready for Hiro's in-game approval; this entry does not certify platform acceptance.
+
+---
+
 ## 2026-09-24 — Version 1 content: three locations, new monsters, no skill levels
 
 Opus 5.5. Docs only; nothing built.

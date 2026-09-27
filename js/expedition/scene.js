@@ -55,6 +55,14 @@ class ExpeditionScene extends Phaser.Scene {
     this.game_.quest = { travel: { weather: X.Campaign.weatherFor(this.quest, this.world, this.phase) } };
     this.buildTextures(); X.UI.installBusts(this);
     this.env = A.BattleArt.paint(this, this.encs[this.run.wave].bg, this.phase);
+    // The shared painted environment re-resolves ground weather, whose marsh
+    // bias can override an explicitly clear quest. Keep the edition's declared
+    // sky authoritative without changing the synced website renderer.
+    if (A.WeatherFX) {
+      if (this.weatherFx && this.weatherFx.destroy) this.weatherFx.destroy();
+      A.WeatherFX.attach(this, this.game_.quest.travel.weather, this.phase,
+        { x: 0, y: 0, w: W, h: H }, { depth: -5, combat: true });
+    }
     this.buildBand();
 
     this.buildHero();

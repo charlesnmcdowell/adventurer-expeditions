@@ -5,7 +5,9 @@ Version 0.9 · September 19, 2026 (rev. b) · Status reconciled September 20, 20
 
 This revision supersedes v0.8; v0.5 through v0.8 are kept in `docs/` for history.
 
-**Current status — September 22, 2026.** Hiro, after playing: *"the game is
+**Current implementation — September 26, 2026.** Three locations, all seven new monsters, 14 new paired finishers, four painted travel beats and location defeat effects are integrated and locally playable. Hiro remains the only hero. See CHANGELOG for verification and delivery paths. Final in-game art approval is pending.
+
+**Earlier status — September 22, 2026.** Hiro, after playing: *"the game is
 playing much more smoothly now."*
 
 *Direction, decided 2026-09-22 (§2, §12c).* **Version 1 ships with Hiro as the
@@ -27,9 +29,9 @@ Every enemy gets **at least two unique Hiro finishing moves**; swamp monsters
 the forest keeps its sparkle ([ART_STANDARD.md](ART_STANDARD.md) §7). **Skill
 levelling is removed:** each skill is unlocked once with gold, each unlock
 costing moderately more, and **God Aura now raises attack instead of defense**.
-None of this is built yet.
+The location/art portion is now built (September 26). Skill-level removal, the God Aura redesign and bespoke Part 2 ending remain planned; current completion returns to the inn.
 
-*Playable.* Four levels in a fixed order — **Road in the Rain, the reed marsh,
+*Historical pre-v1 loop (superseded by the September 26 status above).* Four levels in a fixed order — **Road in the Rain, the reed marsh,
 the city watch, the old ruins** — then round again. "Clear the road" is retired
 from the rotation and survives only as a dev-panel preview. A new run starts in
 the rain with 20 gold, and the tutorial teaches in the fight: buy a skill, fight,
@@ -1849,6 +1851,9 @@ remains, in order:
 11. Retention instrumentation.
 
 ## 16. Open decisions for Hiro
+
+**Astra v3 implementation assumptions (2026-09-26), subject to playtest:** city outbound/early travel uses the market vault; late/return travel uses the rooftop route. Swamp uses the log slide for its travel legs. Two new paired finishers alternate independently of skill level. Hag/orc use one enrage tell at half HP. Existing encounter IDs are preserved for save compatibility; their displayed creatures are replaced. These choices do not implement the separate planned economy/ending redesign.
+
 
 *Round 3 answers (2026-09-21), from Hiro unless marked.* The Finisher's windows
 are **50 % for a normal enemy, 25 % for a boss, flat at every level** — levelling

@@ -4,7 +4,7 @@
   "height": 760,
   "canvas": {
     "w": 296,
-    "h": 332,
+    "h": 338,
     "pivot": {
       "x": 148,
       "y": 316
@@ -44,7 +44,7 @@
       "name": "travel/3",
       "ms": 160,
       "x": 1020,
-      "y": 520,
+      "y": 540,
       "cameraX": 370,
       "contact": true
     },
@@ -52,7 +52,7 @@
       "name": "travel/4",
       "ms": 210,
       "x": 1190,
-      "y": 475,
+      "y": 495,
       "cameraX": 540,
       "contact": false
     },
@@ -60,7 +60,7 @@
       "name": "travel/5",
       "ms": 240,
       "x": 1340,
-      "y": 475,
+      "y": 495,
       "cameraX": 690,
       "contact": false
     },
@@ -68,7 +68,7 @@
       "name": "travel/6",
       "ms": 210,
       "x": 1500,
-      "y": 470,
+      "y": 490,
       "cameraX": 725,
       "contact": false
     },
@@ -76,7 +76,7 @@
       "name": "travel/7",
       "ms": 180,
       "x": 1660,
-      "y": 555,
+      "y": 575,
       "cameraX": 725,
       "contact": false
     },
@@ -84,7 +84,7 @@
       "name": "travel/8",
       "ms": 180,
       "x": 1800,
-      "y": 620,
+      "y": 650,
       "cameraX": 725,
       "contact": true
     },
