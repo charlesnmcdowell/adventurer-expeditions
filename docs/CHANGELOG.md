@@ -15,6 +15,16 @@ of small fixes within a day.
 
 ---
 
+## 2026-09-27 - Travel recenter and arcade UI polish
+
+After an obstacle Hiro now eases from the authored exit position to screen x=650 over 400 ms, then remains centered. Run cadence, 420 px/s landscape speed, obstacle action and travel duration are unchanged. Added a regression assertion covering the second half of all four journeys.
+
+Score counters and the high-score panel now share a dark blue steel/gold frame. The board has alternating rows, three rank medals, and a highlighted best score when populated; the end screen retains its submitted-row highlight. The tutorial hand is a shaded glove with a purple/gold cuff and its existing tap/hold guidance. Next is a framed gold arrow with a readable label and gentler pulse (1.08/520 ms -> 1.035/720 ms). Hit targets and arcade scoring/progression remain unchanged. These are native graphics, adding no bitmap downloads.
+
+Files: `js/expedition/{travel_art,ui_common,hud}.js`, `test/browser_v3_art.js`, `index.html` (xp9), this log. Validation: npm test passed; all four travel checks passed; arcade browser suite 32/32 passed with no page errors. Board, pointer and Next screenshots reviewed in `test/reports/arcade/`. No original website/shared files edited; no new upload candidate or deployment in this pass. Playtest approval pending.
+
+---
+
 ## 2026-09-27 - Arcade mode (steps 1-7): score, single-level skills, health carry, Rest, End scene, board, loop rules
 
 Implements the reviewed arcade plan (Claude Doc "Expeditions Arcade Mode Plan"). Gold is gone; a run scores points (regular 100, boss 500, +50 Finisher kill, +50 clean wave at >=75% hp, quest clear 300, x(1 + 0.25 per extra playthrough)). Every skill is owned from the start at one level (`X.purchasable = []`, `X.tappable`); God Aura is attack x1.35 only (`auraDef` 1 so the engine's divide-by-def stays neutral). The tutorial teaches Finisher (fight 1), Counter Attack (fight 2), God Aura (boss) and only holds on the first quest. Health carries across waves and quests (`run.hp` -> `ch.combatHp`); only the Finisher heal (35% on kill) and Rest at the inn restore it. Rest: full heal, 1,000 points doubling each use, refused at full health. Defeat ends the run; End Run sits in the pause menu behind one confirm. New End scene: score, playthrough, top-10 local board (`X.Board`, key `adventurer_expeditions_highscores_v1`), required name-shaped name (`X.validName`, 25 max), play again = fresh run. Loop 2+ (`Camp.loopEncounters`, seeded from `run.seed`): regular waves draw from a shuffled monster pool; enemy hp/atk x1.3 per playthrough, compounding, uncapped; boss wave rolls own / own x2 / own + another area's boss / three bosses with odds 60/20/20/0 (loop 2), 40/25/25/10 (loop 3), 25/25/25/25 (loop 4+); max three bosses. Crowded waves are placed by painted width (`spaceFoes`) and shrunk to no less than 0.82 (`Actor.rescale`). Defeat effects stay location-specific and play on any monster.

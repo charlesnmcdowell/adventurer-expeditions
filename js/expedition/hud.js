@@ -85,7 +85,7 @@ class Hud {
     }
     // Score pill (top-left): the arcade counter, replacing the gold purse.
     this.scorePill = s.add.container(24, 20).setDepth(D.hud).setScrollFactor(0);
-    const gbg = s.add.graphics(); gbg.fillStyle(0x14110d, 0.85); gbg.fillRoundedRect(0, 0, 170, 40, 10); gbg.lineStyle(2, 0x3a3128, 1); gbg.strokeRoundedRect(0, 0, 170, 40, 10);
+    const gbg = X.UI.frame(s,0,0,170,40);
     const star = T().text(s, 152, 20, '★', { size: 20, ox: 0.5, oy: 0.5, display: true, color: '#f2c94c' });
     this.scoreText = T().text(s, 132, 20, String(this.run.score || 0), { size: 20, ox: 1, oy: 0.5, display: true, color: '#f4eee0' });
     this.scorePill.add([gbg, star, this.scoreText]);
@@ -222,12 +222,15 @@ class Hud {
   buildArrow(x, y) {
     const s = this.scene;
     const root = s.add.container(x, y).setDepth(D.hud).setScrollFactor(0);
-    const bg = s.add.circle(0, 0, 40, 0x14110d, 0.85).setStrokeStyle(3, 0x62c95a);
-    const tri = s.add.triangle(4, 0, -14, -22, -14, 22, 22, 0, 0x62c95a);
+    const bg = X.UI.frame(s,-40,-40,80,80);
+    const tri = s.add.graphics();
+    tri.fillStyle(0xe9c975);tri.fillPoints([{x:-23,y:-18},{x:2,y:-18},{x:2,y:-30},{x:27,y:-7},{x:2,y:16},{x:2,y:4},{x:-23,y:4}],true);
+    tri.lineStyle(2,0xffefbc);tri.lineBetween(-20,-16,1,-16);
+    const label=T().text(s,0,25,'Next',{size:16,ox:.5,oy:.5,display:true,color:'#fff0c9'});
     const zone = s.add.zone(0, 0, 90, 90).setInteractive({ useHandCursor: true });
     zone.on('pointerdown', () => this.onArrow());
-    root.add([bg, tri, zone]);
-    const pulse = s.tweens.add({ targets: root, scale: 1.08, duration: 520, yoyo: true, repeat: -1, ease: 'Sine.InOut' });
+    root.add([bg, tri, label, zone]);
+    const pulse = s.tweens.add({ targets: root, scale: 1.035, duration: 720, yoyo: true, repeat: -1, ease: 'Sine.InOut' });
     return { root, zone, pulse, rect: { x: x - 40, y: y - 40, w: 80, h: 80 } };
   }
 

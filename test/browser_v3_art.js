@@ -80,6 +80,7 @@ const server=http.createServer((req,res)=>{
       assert(info.texture!=='__MISSING');
       assert.equal(info.phase,ms<runMs?'run-in':ms>=duration-runMs?'run-out':'action');
       assert.equal(info.speed,420);
+      if(ms===duration-1500||ms===duration-1)assert.equal(info.x,650,'run-out recenters Hiro');
       if(ms===1500){assert.equal(info.distance,630);assert.equal(info.x,650);assert.deepEqual(info.layers.map(l=>l.factor),[.07,1,1.5]);}
       await page.waitForTimeout(50);await page.screenshot({path:path.join(OUT,info.id+'-'+ms+'.png')});results.push(info);
     }

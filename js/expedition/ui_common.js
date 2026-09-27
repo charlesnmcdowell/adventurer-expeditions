@@ -9,18 +9,31 @@ const W = 1280, H = 760;
 const UI = X.UI = {};
 const D = UI.DEPTH = { hud: 800, gate: 900, hand: 950 };
 
-// Draw the pointing hand (pending painted art). opts.tap === false leaves it
-// still so the caller can drive its motion.
+// Cel-shaded glove, drawn at native resolution for crisp mobile rendering.
 function hand(scene, x, y, opts) {
-  const c = scene.add.container(x, y).setDepth(D.hand);
-  const g = scene.add.graphics(); g.fillStyle(0xffffff, 1); g.lineStyle(3, 0x1a1512, 1);
-  g.fillRoundedRect(-14, -6, 36, 40, 12); g.strokeRoundedRect(-14, -6, 36, 40, 12);          // palm
-  g.fillRoundedRect(-6, -44, 14, 48, 7); g.strokeRoundedRect(-6, -44, 14, 48, 7);            // index finger
-  g.fillRoundedRect(10, -18, 12, 20, 6); g.strokeRoundedRect(10, -18, 12, 20, 6);            // knuckles
-  c.add(g); c.setAngle(-30);
-  if (!opts || opts.tap !== false) scene.tweens.add({ targets: c, x: x - 26, y: y - 30, duration: 460, yoyo: true, repeat: -1, ease: 'Sine.InOut' });
+  const c = scene.add.container(x, y).setDepth(D.hand),g=scene.add.graphics();
+  const shape=(x,y,w,h,r,fill)=>{g.fillStyle(fill);g.fillRoundedRect(x,y,w,h,r);g.lineStyle(2,0x191e30);g.strokeRoundedRect(x,y,w,h,r);};
+  shape(-17,-5,37,38,12,0xe9e3d3);shape(-13,-47,13,49,6,0xfff8e6);
+  shape(0,-17,11,24,5,0xd8d1c4);shape(10,-12,10,23,5,0xc4bdb1);shape(18,-4,9,22,4,0xa9a6a1);shape(-25,5,14,23,6,0xfff8e6);
+  g.lineStyle(2,0x9c958b);g.lineBetween(-7,8,12,13);g.lineBetween(-8,17,9,22);
+  shape(-15,29,34,16,3,0x252c49);g.lineStyle(3,0xd9b76c);g.lineBetween(-13,32,17,32);g.lineBetween(-13,42,17,42);
+  g.fillStyle(0x9c7dd7);g.fillTriangle(-3,34,4,34,0,40);
+  c.add(g);c.setAngle(-30);
+  if(!opts||opts.tap!==false)scene.tweens.add({targets:c,x:x-20,y:y-24,duration:460,yoyo:true,repeat:-1,ease:'Sine.InOut'});
   return c;
 }
+UI.frame=function(scene,x,y,w,h){
+  const g=scene.add.graphics();g.fillStyle(0x050912,.65);g.fillRoundedRect(x+4,y+6,w,h,12);
+  g.fillStyle(0x121a2c,.98);g.fillRoundedRect(x,y,w,h,12);g.lineStyle(3,0xb69556);g.strokeRoundedRect(x,y,w,h,12);
+  g.lineStyle(1,0x536079);g.strokeRoundedRect(x+6,y+6,w-12,h-12,8);
+  g.fillStyle(0x35425c,.35);g.fillRoundedRect(x+9,y+9,w-18,Math.min(38,h/3),6);
+  for(const px of [x+12,x+w-12])for(const py of [y+12,y+h-12]){g.fillStyle(0xf4d88d);g.fillCircle(px,py,2);}return g;
+};
+UI.medal=function(scene,x,y,rank){
+  const g=scene.add.graphics(),metal=[0xe5bd61,0xb9ccde,0xb88862][rank]||0x626c83;
+  g.fillStyle(0x68508d);g.fillTriangle(x-9,y+4,x-5,y+17,x,y+9);g.fillTriangle(x+9,y+4,x+5,y+17,x,y+9);
+  g.fillStyle(0x111827);g.fillCircle(x,y,12);g.fillStyle(metal);g.fillCircle(x,y,10);g.lineStyle(1,0xffecc2,.7);g.strokeCircle(x,y,8);return g;
+};
 UI.hand = hand;
 
 // An invitation over several controls at once, for a choice that belongs to the
@@ -284,9 +297,10 @@ UI.boardList = function (scene, x, y, w, opts) {
   const rowH = opts.rowH || 30, n = X.board.size;
   for (let i = 0; i < n; i++) {
     const r = rows[i], ry = i * rowH, mine = opts.highlight != null && opts.highlight === i;
-    if (mine) { const g = scene.add.graphics(); g.fillStyle(0xf2c94c, 0.18); g.fillRoundedRect(-w / 2, ry - rowH / 2 + 2, w, rowH - 4, 6); c.add(g); }
+    const stripe=scene.add.graphics();stripe.fillStyle(mine?0xc59b48:0x223149,mine?.30:(i%2?.52:.25));stripe.fillRoundedRect(-w/2,ry-rowH/2+1,w,rowH-2,4);c.add(stripe);
+    if(i<3)c.add(UI.medal(scene,-w/2+21,ry,i));
     const color = mine ? '#ffe28a' : r ? '#f4eee0' : '#5e564b';
-    c.add(T().text(scene, -w / 2 + 12, ry, String(i + 1) + '.', { size: 15, ox: 0, oy: 0.5, color, display: true }));
+    c.add(T().text(scene, -w / 2 + 21, ry, String(i + 1), { size: 15, ox: 0.5, oy: 0.5, color: i<3?'#141a28':color, display: true }));
     c.add(T().text(scene, -w / 2 + 48, ry, r ? r.name : '—', { size: 15, ox: 0, oy: 0.5, color, display: true }));
     if (r) c.add(T().text(scene, w / 2 - 96, ry, 'x' + (r.loop || 1), { size: 12, ox: 1, oy: 0.5, color: mine ? '#ffe28a' : '#8d8377' }));
     c.add(T().text(scene, w / 2 - 12, ry, r ? String(r.score) : '', { size: 15, ox: 1, oy: 0.5, color, display: true }));
@@ -300,9 +314,9 @@ UI.boardPanel = function (scene, onClose) {
   const w = 460, h = 420, x = W / 2, y = H / 2;
   const root = scene.add.container(x, y).setDepth(D.hand + 14).setScrollFactor(0);
   const shade = scene.add.rectangle(0, 0, W, H, 0x000000, 0.45).setInteractive();
-  const g = scene.add.graphics(); g.fillStyle(0x14110d, 0.97); g.fillRoundedRect(-w / 2, -h / 2, w, h, 16); g.lineStyle(3, 0xf2c94c, 1); g.strokeRoundedRect(-w / 2, -h / 2, w, h, 16);
+  const g = UI.frame(scene,-w/2,-h/2,w,h);
   const title = T().text(scene, 0, -h / 2 + 30, 'High scores', { size: 24, ox: 0.5, oy: 0.5, display: true, color: '#f4eee0' });
-  const list = UI.boardList(scene, 0, -h / 2 + 76, w - 40, { depth: D.hand + 15 });
+  const list = UI.boardList(scene, 0, -h / 2 + 76, w - 40, { depth: D.hand + 15, highlight: X.Board.load().length ? 0 : null });
   list.setDepth(0);
   const bw = 160, bh = 40, by = h / 2 - 36;
   const bg = scene.add.graphics(); bg.fillStyle(0x3a3128, 1); bg.fillRoundedRect(-bw / 2, by - bh / 2, bw, bh, 10);
@@ -444,7 +458,7 @@ UI.bigButton = function (scene, x, y, w, h, glyph, label, onTap, color) {
 // The score pill (arcade): the same shape the gold purse had, a star for a coin.
 UI.scorePill = function (scene, score) {
   const pill = scene.add.container(24, 20).setDepth(D.hud).setScrollFactor(0);
-  const gbg = scene.add.graphics(); gbg.fillStyle(0x14110d, 0.85); gbg.fillRoundedRect(0, 0, 170, 40, 10); gbg.lineStyle(2, 0x3a3128, 1); gbg.strokeRoundedRect(0, 0, 170, 40, 10);
+  const gbg = UI.frame(scene,0,0,170,40);
   const text = T().text(scene, 132, 20, String(score || 0), { size: 20, ox: 1, oy: 0.5, display: true, color: '#f4eee0' });
   pill.add([gbg, T().text(scene, 152, 20, '★', { size: 20, ox: 0.5, oy: 0.5, display: true, color: '#f2c94c' }), text]);
   pill.text = text; pill.rect = { x: 24, y: 20, w: 170, h: 40 };

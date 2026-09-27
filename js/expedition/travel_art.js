@@ -83,7 +83,10 @@ Travel.paint = function (scene) {
     const blend=before?Math.max(0,1-(runMs-t)/180):after?Math.max(0,1-(t-runMs-actionMs)/180):1;
     plate.setAlpha(blend);atmosphere.setAlpha(1);
     runner.setVisible(!inAction);shadow.setVisible(!inAction);hero.setVisible(inAction);
-    runner.setPosition(inAction?650:before?650:d.frames[9].x-d.frames[9].cameraX,612);
+    const settle = Math.min(1, Math.max(0, (t-runMs-actionMs)/400));
+    const ease = 1-Math.pow(1-settle,3);
+    const exitX = d.frames[9].x-d.frames[9].cameraX;
+    runner.setPosition(after ? exitX+(650-exitX)*ease : 650,612);
     if(!inAction&&id!=='city-rooftop-run')runner.y=before?d.frames[1].y:d.frames[9].y;
     shadow.setPosition(runner.x,runner.y+5);
     for(const l of loops){const since=local-(l.p.startMs||0);l.s.setVisible(inAction&&since>=0&&(l.p.continuous||since<(l.p.durationMs||600)));if(since>=0)l.s.setFrame(l.p.row*4+Math.floor(since/(l.p.frameMs||100))%4);}
