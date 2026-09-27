@@ -241,7 +241,7 @@ class InnScene extends Phaser.Scene {
 class TravelScene extends Phaser.Scene {
   constructor() { super('Travel'); }
   init(d) { this.opts = d || {}; }
-  preload() { X.Painted.preload(this); X.UI.preloadBusts(this); }
+  preload() { X.Painted.preload(this); X.UI.preloadBusts(this); X.TravelArt.preload(this); }
   isPortalReady() { return !!this.__presentationReady; }
   create() {
     this.__presentationReady = false; this.input.enabled = false;
@@ -255,7 +255,7 @@ class TravelScene extends Phaser.Scene {
     const world = this.world = X.Campaign.buildWorld(this.run);
     this.game_ = world.game;
     const phase = questContext(this, this.quest);
-    this.pano = A.TravelPanorama.view(this, this.quest.travel, phase);
+    this.pano = X.TravelArt.paint(this);
     this.pano.setDepth(-10);
     // The quest's weather over the panorama (the battle plates get it from BattleArt).
     try {
@@ -265,7 +265,7 @@ class TravelScene extends Phaser.Scene {
     try { A.Music.playStory(this.quest.music); } catch (e) {}
     // The walkers, bobbing in step.
     this.walkers = [];
-    const hiroWalk = X.UI.paintedFigure(this, 'hiro', 560, 690, 300, 100, 'walk');
+    const hiroWalk = null; // Hiro is painted into the authored contact timeline.
     if (hiroWalk) this.walkers.push(hiroWalk);
     world.companions.forEach((c, i) => {
       const walker = X.UI.paintedFigure(this, c.companionKey, 410 - i * 120, 675 - i * 22, 285, 98 - i, 'walk');
@@ -282,6 +282,15 @@ class TravelScene extends Phaser.Scene {
     X.Painted.present(this, this.pano, () => { this.moving = true; this.play(); });
   }
   async play() {
+    if (this.pano.durationMs) {
+      await wait(this, this.pano.durationMs + 180);
+      if (!this.scene.isActive()) return;
+      this.world.restoreIds();
+      this.run.phase = this.leg === 'return' ? 'inn' : 'quest';
+      X.Run.save(this.run);
+      this.scene.start(this.leg === 'return' ? 'Inn' : 'Expedition', { run: this.run, seed: this.seed });
+      return;
+    }
     await wait(this, this.leg === 'midleg' ? 900 : 1400);
     const run = this.run, world = this.world;
     const loc = this.quest.travel;

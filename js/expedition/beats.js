@@ -145,6 +145,7 @@ async function playDowns(scene, downs, events, byFinisher) {
         // A matching paired finisher already retired its victim. Unpaired art
         // keeps the correct creature visible and uses that creature's own down.
         if (target.alive) await target.play('down_fade');
+        else if (X.DefeatFX) X.DefeatFX.play(target);
       });
     } else await target.play('down_fade');
   }
@@ -258,7 +259,7 @@ async function enemyAction(scene, foe, g) {
   const riposteKill = g.after.find(x => x.t === 'execute' && x.uid === foe.uid);
   const poisoned = g.after.some(x => x.t === 'status' && onHero(x) && x.kind === 'poison');
 
-  if (kind === 'human') return humanAction(scene, foe, hero, g, { hit, evade, counter, riposte, riposteHit, riposteKill });
+  if (kind === 'human' || (X.paintedActorOf && (X.monsterActors || []).includes(X.paintedActorOf(foe)))) return humanAction(scene, foe, hero, g, { hit, evade, counter, riposte, riposteHit, riposteKill });
   // Approach: each kind closes the distance its own way.
   if (kind === 'boar') { sfx(scene, 'unarmed', 'use'); await foe.play('charge', { target: hero }); }
   else if (kind === 'plant') { sfx(scene, 'whip', 'use'); await foe.play('lash', { target: hero }); }
@@ -410,7 +411,7 @@ Beats.play = async function (scene, step) {
   for (const a of scene.actors.values()) if (a.alive) a.refresh();
   // Boss second wind: once, the first time it drops under its threshold.
   for (const a of scene.actors.values()) {
-    if (a.alive && a.kind === 'boss' && !a.enraged && a.phase2At && a.unit.chp / a.unit.maxHp < a.phase2At) { await a.play('enrage'); }
+    if (a.alive && a.kind === 'boss' && !a.enraged && a.phase2At && a.unit.chp / a.unit.maxHp < a.phase2At) { a.enraged = true; await a.play('enrage'); }
   }
   // Extra-turn markers and exposure bursts read as a small flourish only.
   for (const e of step.events) if (e.t === 'exposedBurst') { const t = actorOf(scene, e.uid); if (t) V().burst(scene, t.chest().x, t.chest().y, 0xf4c26b, 6); }

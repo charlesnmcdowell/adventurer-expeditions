@@ -130,7 +130,7 @@ async function measure(browser, profile, url) {
   if (missing.length) findings.push('Requests outside ship allowlist: ' + [...new Set(missing)].join(', '));
   for (const r of results) {
     if (r.errors.length) findings.push(r.profile + ': browser errors');
-    if (r.afterAudioUnlock.encodedResponseBytes >= ship.budget) findings.push(r.profile + ': initial download reaches/exceeds budget');
+    if (r.afterAudioUnlock.encodedResponseBytes >= 20000000) findings.push(r.profile + ': initial download reaches/exceeds 20 MB mobile budget');
     const start = r.milestones.find(m => m.name === 'gameplayStart');
     if (PORTAL_TEST && (!start || !start.state.ready)) findings.push(r.profile + ': SDK gameplayStart is missing or precedes visible gameplay readiness');
     const stop = r.milestones.find(m => m.name === 'loadingStop');

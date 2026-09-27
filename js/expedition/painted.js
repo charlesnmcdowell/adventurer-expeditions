@@ -3,7 +3,7 @@
 'use strict';
 const A = ADV, X = A.Expedition, UI = X.UI;
 const P = X.Painted = {};
-P.actors = ['hiro', 'bram', 'wolf', 'plant', 'alpha'];
+P.actors = ['hiro', 'bram', 'wolf', 'plant', 'alpha', ...(X.monsterActors || [])];
 
 // What a scene actually needs before it can run. Bram is ~2 MB and cannot be in
 // the party while recruiting is locked (X.slice.firstLevelOnly), so loading him
@@ -20,13 +20,15 @@ P.needed = function (scene) {
   const hireable = !(X.Campaign && X.Campaign.recruitingLocked && X.Campaign.recruitingLocked());
   const sceneKey = scene && scene.sys && scene.sys.settings && scene.sys.settings.key;
   const shipped = (X.shipped && X.shipped.actors) || null;
+  const quest = X.Campaign && X.Campaign.quest((run && run.questId) || X.Campaign.startQuestId());
+  const neededFoes = new Set(quest ? X.Campaign.questEncounters(quest).flatMap(e => e.enemies || []).map(k => X.paintedActorOfKey(k)) : ['wolf', 'plant', 'alpha']);
   return P.actors.filter(id => {
     // Never queue art the package does not carry, whatever the run says: a
     // missing atlas hangs the scene in preload (Hiro, 2026-09-21).
     if (shipped && !shipped.includes(id)) return false;
     if (id === 'bram') return hireable || owned.includes('bram');
-    if (id === 'alpha') return sceneKey === 'Expedition' || (scene && scene.__needsAlpha);
-    return true;
+    if (id === 'hiro') return true;
+    return (sceneKey === 'Expedition' || (scene && scene.__needsAlpha)) && neededFoes.has(id);
   });
 };
 P.preload = function (scene, ids) {
@@ -40,7 +42,7 @@ P.preload = function (scene, ids) {
 P.sheet = function (scene, id) {
   const key = 'xp_' + id + '_sheet', j = scene.cache.json.get('xp_' + id + '_clips');
   if (!j || !scene.textures.exists(key)) return null;
-  return { key, clips: j.clips, canvas: j.canvas, standing: j.standing, actor: id, id };
+  return { key, clips: j.clips, canvas: j.canvas, standing: j.standing, actor: id, id, authoredFacing: j.authoredFacing || 1 };
 };
 P.install = function (scene) {
   const j = scene.cache.json.get('xp_bram_clips');   // absent while Bram is not loaded: no recruit art registered, which is correct

@@ -20,6 +20,7 @@ class ExpeditionScene extends Phaser.Scene {
     this.__needsAlpha = true;
     X.Painted.preload(this);
     X.UI.preloadBusts(this);
+    X.DefeatFX.preload(this);
   }
 
   // The painted sheet descriptor for Actor, or null while the plates stand in.
@@ -33,7 +34,7 @@ class ExpeditionScene extends Phaser.Scene {
   create() {
     this.__presentationReady = false;
     X.Painted.install(this);
-    if (!X.Painted.require(this, ['hiro', 'wolf', 'plant', 'alpha'])) return;
+    if (!X.Painted.require(this, X.Painted.needed(this))) return;
     this.actors = new Map();
     this.paused = false; this.time.paused = false;
     this.ended = false;

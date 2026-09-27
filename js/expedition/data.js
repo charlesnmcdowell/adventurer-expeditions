@@ -133,7 +133,7 @@ X.finisherThresholds = { normal: 0.50, boss: 0.25 };
 // where a brand-new run begins. "Clear the road" is kept in the data as the
 // dev panel's preview and as the history of the tutorial, but nothing routes
 // to it any more.
-X.slice = { firstLevelOnly: true, startQuest: 'rain', openQuests: ['rain', 'marsh', 'city', 'ruins'] };
+X.slice = { firstLevelOnly: true, startQuest: 'rain', openQuests: ['rain', 'marsh', 'city'] };
 
 // What the package carries. A missing atlas does not degrade — Phaser parks the
 // scene in preload until a queued file arrives, so an absent one is a black
@@ -147,7 +147,8 @@ X.slice = { firstLevelOnly: true, startQuest: 'rain', openQuests: ['rain', 'mars
 // health bar and no body, and the fight could not resolve. The quests now field
 // wolf, plant and the Alpha only, so the boar is out of both lists; putting it
 // back means adding it here, in the manifest, and to a quest, together.
-X.shipped = { actors: ['hiro', 'wolf', 'plant', 'alpha'] };
+X.monsterActors = ['serpent', 'beetle', 'moss_giant', 'hag', 'goblin', 'spider', 'orc'];
+X.shipped = { actors: ['hiro', 'wolf', 'plant', 'alpha', ...X.monsterActors] };
 
 // Skills are the player's to fire (Hiro, 2026-09-20): Hiro auto-uses only
 // Katana Slash; God Aura, Counter Attack and Finisher wait for a tap. The

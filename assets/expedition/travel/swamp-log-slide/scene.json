@@ -1,0 +1,144 @@
+{
+  "id": "swamp-log-slide",
+  "width": 1900,
+  "height": 760,
+  "canvas": {
+    "w": 332,
+    "h": 332,
+    "pivot": {
+      "x": 166,
+      "y": 316
+    }
+  },
+  "pivot": {
+    "x": 166,
+    "y": 316
+  },
+  "heroScale": 1,
+  "frames": [
+    {
+      "name": "travel/0",
+      "ms": 160,
+      "x": 450,
+      "y": 625,
+      "cameraX": 0,
+      "contact": false
+    },
+    {
+      "name": "travel/1",
+      "ms": 150,
+      "x": 590,
+      "y": 625,
+      "cameraX": 0,
+      "contact": false
+    },
+    {
+      "name": "travel/2",
+      "ms": 160,
+      "x": 710,
+      "y": 625,
+      "cameraX": 60,
+      "contact": true
+    },
+    {
+      "name": "travel/3",
+      "ms": 160,
+      "x": 790,
+      "y": 625,
+      "cameraX": 140,
+      "contact": true
+    },
+    {
+      "name": "travel/4",
+      "ms": 210,
+      "x": 940,
+      "y": 625,
+      "cameraX": 290,
+      "contact": false
+    },
+    {
+      "name": "travel/5",
+      "ms": 240,
+      "x": 1130,
+      "y": 625,
+      "cameraX": 480,
+      "contact": false
+    },
+    {
+      "name": "travel/6",
+      "ms": 210,
+      "x": 1380,
+      "y": 625,
+      "cameraX": 620,
+      "contact": false
+    },
+    {
+      "name": "travel/7",
+      "ms": 180,
+      "x": 1540,
+      "y": 625,
+      "cameraX": 620,
+      "contact": false
+    },
+    {
+      "name": "travel/8",
+      "ms": 180,
+      "x": 1680,
+      "y": 625,
+      "cameraX": 620,
+      "contact": true
+    },
+    {
+      "name": "travel/9",
+      "ms": 160,
+      "x": 1770,
+      "y": 625,
+      "cameraX": 620,
+      "contact": false
+    },
+    {
+      "name": "travel/10",
+      "ms": 160,
+      "x": 1880,
+      "y": 625,
+      "cameraX": 620,
+      "contact": false
+    },
+    {
+      "name": "travel/11",
+      "ms": 160,
+      "x": 2010,
+      "y": 625,
+      "cameraX": 620,
+      "contact": false
+    }
+  ],
+  "loops": [
+    {
+      "row": 0,
+      "x": 800,
+      "y": 625,
+      "startMs": 470
+    },
+    {
+      "row": 1,
+      "x": 1120,
+      "y": 625,
+      "startMs": 650
+    },
+    {
+      "row": 1,
+      "x": 1560,
+      "y": 625,
+      "startMs": 1260
+    },
+    {
+      "row": 2,
+      "x": 450,
+      "y": 700,
+      "continuous": true,
+      "alpha": 0.65
+    }
+  ],
+  "source": "swamp-log-slide"
+}

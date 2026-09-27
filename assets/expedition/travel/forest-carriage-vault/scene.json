@@ -1,0 +1,143 @@
+{
+  "id": "forest-carriage-vault",
+  "width": 2560,
+  "height": 760,
+  "canvas": {
+    "w": 334,
+    "h": 334,
+    "pivot": {
+      "x": 167,
+      "y": 318
+    }
+  },
+  "pivot": {
+    "x": 167,
+    "y": 318
+  },
+  "heroScale": 1,
+  "frames": [
+    {
+      "name": "travel/0",
+      "ms": 160,
+      "x": 640,
+      "y": 610,
+      "cameraX": 0,
+      "contact": false
+    },
+    {
+      "name": "travel/1",
+      "ms": 150,
+      "x": 790,
+      "y": 610,
+      "cameraX": 140,
+      "contact": false
+    },
+    {
+      "name": "travel/2",
+      "ms": 160,
+      "x": 970,
+      "y": 610,
+      "cameraX": 320,
+      "contact": true
+    },
+    {
+      "name": "travel/3",
+      "ms": 160,
+      "x": 1090,
+      "y": 610,
+      "cameraX": 440,
+      "contact": true
+    },
+    {
+      "name": "travel/4",
+      "ms": 210,
+      "x": 1260,
+      "y": 500,
+      "cameraX": 610,
+      "contact": false
+    },
+    {
+      "name": "travel/5",
+      "ms": 240,
+      "x": 1440,
+      "y": 445,
+      "cameraX": 790,
+      "contact": false
+    },
+    {
+      "name": "travel/6",
+      "ms": 210,
+      "x": 1640,
+      "y": 445,
+      "cameraX": 990,
+      "contact": false
+    },
+    {
+      "name": "travel/7",
+      "ms": 180,
+      "x": 1840,
+      "y": 485,
+      "cameraX": 1190,
+      "contact": false
+    },
+    {
+      "name": "travel/8",
+      "ms": 180,
+      "x": 2080,
+      "y": 610,
+      "cameraX": 1280,
+      "contact": true
+    },
+    {
+      "name": "travel/9",
+      "ms": 160,
+      "x": 2170,
+      "y": 610,
+      "cameraX": 1280,
+      "contact": false
+    },
+    {
+      "name": "travel/10",
+      "ms": 160,
+      "x": 2260,
+      "y": 610,
+      "cameraX": 1280,
+      "contact": false
+    },
+    {
+      "name": "travel/11",
+      "ms": 160,
+      "x": 2390,
+      "y": 610,
+      "cameraX": 1280,
+      "contact": false
+    }
+  ],
+  "loops": [
+    {
+      "row": 0,
+      "x": 1090,
+      "y": 615,
+      "startMs": 470
+    },
+    {
+      "row": 1,
+      "x": 1090,
+      "y": 615,
+      "startMs": 470
+    },
+    {
+      "row": 2,
+      "x": 1500,
+      "y": 570,
+      "startMs": 680
+    },
+    {
+      "row": 1,
+      "x": 2080,
+      "y": 615,
+      "startMs": 1470
+    }
+  ],
+  "source": "forest-carriage-vault"
+}

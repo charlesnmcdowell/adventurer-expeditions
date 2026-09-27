@@ -1,0 +1,139 @@
+{
+  "id": "city-rooftop-run",
+  "width": 1920,
+  "height": 760,
+  "canvas": {
+    "w": 332,
+    "h": 380,
+    "pivot": {
+      "x": 166,
+      "y": 364
+    }
+  },
+  "pivot": {
+    "x": 166,
+    "y": 364
+  },
+  "heroScale": 1,
+  "frames": [
+    {
+      "name": "travel/0",
+      "ms": 160,
+      "x": 530,
+      "y": 530,
+      "cameraX": 0,
+      "contact": false
+    },
+    {
+      "name": "travel/1",
+      "ms": 150,
+      "x": 660,
+      "y": 530,
+      "cameraX": 10,
+      "contact": false
+    },
+    {
+      "name": "travel/2",
+      "ms": 160,
+      "x": 810,
+      "y": 480,
+      "cameraX": 160,
+      "contact": true
+    },
+    {
+      "name": "travel/3",
+      "ms": 160,
+      "x": 930,
+      "y": 450,
+      "cameraX": 280,
+      "contact": true
+    },
+    {
+      "name": "travel/4",
+      "ms": 210,
+      "x": 1000,
+      "y": 560,
+      "cameraX": 350,
+      "contact": false
+    },
+    {
+      "name": "travel/5",
+      "ms": 240,
+      "x": 1100,
+      "y": 390,
+      "cameraX": 450,
+      "contact": false
+    },
+    {
+      "name": "travel/6",
+      "ms": 210,
+      "x": 1240,
+      "y": 300,
+      "cameraX": 590,
+      "contact": false
+    },
+    {
+      "name": "travel/7",
+      "ms": 180,
+      "x": 1370,
+      "y": 290,
+      "cameraX": 640,
+      "contact": false
+    },
+    {
+      "name": "travel/8",
+      "ms": 180,
+      "x": 1480,
+      "y": 290,
+      "cameraX": 640,
+      "contact": true
+    },
+    {
+      "name": "travel/9",
+      "ms": 160,
+      "x": 1620,
+      "y": 280,
+      "cameraX": 640,
+      "contact": false
+    },
+    {
+      "name": "travel/10",
+      "ms": 160,
+      "x": 1770,
+      "y": 270,
+      "cameraX": 640,
+      "contact": false
+    },
+    {
+      "name": "travel/11",
+      "ms": 160,
+      "x": 1930,
+      "y": 255,
+      "cameraX": 640,
+      "contact": false
+    }
+  ],
+  "loops": [
+    {
+      "row": 0,
+      "x": 1450,
+      "y": 140,
+      "startMs": 850
+    },
+    {
+      "row": 1,
+      "x": 1120,
+      "y": 285,
+      "startMs": 850,
+      "scale": 0.6
+    },
+    {
+      "row": 2,
+      "x": 1000,
+      "y": 650,
+      "continuous": true,
+      "scale": 0.55
+    }
+  ],
+  "source": "city-rooftop-run"
+}

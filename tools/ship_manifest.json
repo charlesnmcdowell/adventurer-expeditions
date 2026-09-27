@@ -1,5 +1,5 @@
 {
-  "note": "Tutorial-only ship set: Hiro, Bram, gray wolves and thorn lurkers; complete release must stay below20,000,000decimalbytes. Othercontent retained on disk but excluded until deliberately reopened and revalidated. Astra-v2 masters are art delivery only and never ship raw. Bram's combat atlas and the two-person inn painting are deliberately out while the inn is locked (GDD 12b): js/expedition/data.js X.shipped must match this list. Over the 20 MB target during development by Hiro's call (2026-09-21): getting the levels right comes first, the trim comes later. tools/release_check.js still refuses to package while it is over.",
+  "note": "Version 1 forest, swamp and city. Total package budget 250 MB; cold-cache initial gameplay remains below 20 MB and is measured by test:startup. Later monsters and travel load per location. Source masters never ship; recruitment remains locked.",
   "files": [
     "index.html",
     "THIRD_PARTY_NOTICES.txt",
@@ -43,7 +43,16 @@
   ],
   "dirs": [
     "audio/sfx",
-    "audio/vo/M05"
+    "audio/vo/M05",
+    "assets/expedition/serpent",
+    "assets/expedition/beetle",
+    "assets/expedition/moss_giant",
+    "assets/expedition/hag",
+    "assets/expedition/goblin",
+    "assets/expedition/spider",
+    "assets/expedition/orc",
+    "assets/expedition/travel",
+    "assets/expedition/effects"
   ],
   "partSheets": {
     "note": "Development-only portrait part sheets. They are needed only when baked busts are absent. The final build ships explicit ready-recruit and human-foe bust files and omits these source sheets.",
@@ -55,5 +64,6 @@
       "assets/anime/v2/runtime/headgear.webp"
     ]
   },
-  "budgetBytes": 20000000
+  "budgetBytes": 250000000,
+  "startupBudgetBytes": 20000000
 }

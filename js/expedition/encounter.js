@@ -56,7 +56,7 @@ Enc.makeEnemy = function (rng, key, scale) {
   if (scale && scale !== 1) { ch.stats.hp = Math.round(ch.stats.hp * scale); ch.stats.atk = Math.round(ch.stats.atk * scale); }
   if (e.perks) ch.perks = ch.perks.filter(p => e.perks.includes(p.skillId));
   if (e.name) ch.name = e.name;
-  if (e.boss) ch.boss = true;
+  if (e.boss != null) { ch.boss = !!e.boss; ch.miniboss = !!e.boss; }
   if (e.hitStatus) ch.hitStatus = e.hitStatus;
   if (e.tint) ch.expeditionTint = e.tint;
   if (e.human) Enc.humanize(ch, e.human, key);

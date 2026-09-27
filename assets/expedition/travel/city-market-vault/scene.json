@@ -1,0 +1,139 @@
+{
+  "id": "city-market-vault",
+  "width": 2005,
+  "height": 760,
+  "canvas": {
+    "w": 296,
+    "h": 332,
+    "pivot": {
+      "x": 148,
+      "y": 316
+    }
+  },
+  "pivot": {
+    "x": 148,
+    "y": 316
+  },
+  "heroScale": 1,
+  "frames": [
+    {
+      "name": "travel/0",
+      "ms": 160,
+      "x": 550,
+      "y": 650,
+      "cameraX": 0,
+      "contact": false
+    },
+    {
+      "name": "travel/1",
+      "ms": 150,
+      "x": 700,
+      "y": 650,
+      "cameraX": 50,
+      "contact": false
+    },
+    {
+      "name": "travel/2",
+      "ms": 160,
+      "x": 830,
+      "y": 615,
+      "cameraX": 180,
+      "contact": true
+    },
+    {
+      "name": "travel/3",
+      "ms": 160,
+      "x": 1020,
+      "y": 520,
+      "cameraX": 370,
+      "contact": true
+    },
+    {
+      "name": "travel/4",
+      "ms": 210,
+      "x": 1190,
+      "y": 475,
+      "cameraX": 540,
+      "contact": false
+    },
+    {
+      "name": "travel/5",
+      "ms": 240,
+      "x": 1340,
+      "y": 475,
+      "cameraX": 690,
+      "contact": false
+    },
+    {
+      "name": "travel/6",
+      "ms": 210,
+      "x": 1500,
+      "y": 470,
+      "cameraX": 725,
+      "contact": false
+    },
+    {
+      "name": "travel/7",
+      "ms": 180,
+      "x": 1660,
+      "y": 555,
+      "cameraX": 725,
+      "contact": false
+    },
+    {
+      "name": "travel/8",
+      "ms": 180,
+      "x": 1800,
+      "y": 620,
+      "cameraX": 725,
+      "contact": true
+    },
+    {
+      "name": "travel/9",
+      "ms": 160,
+      "x": 1900,
+      "y": 650,
+      "cameraX": 725,
+      "contact": false
+    },
+    {
+      "name": "travel/10",
+      "ms": 160,
+      "x": 2020,
+      "y": 650,
+      "cameraX": 725,
+      "contact": false
+    },
+    {
+      "name": "travel/11",
+      "ms": 160,
+      "x": 2160,
+      "y": 650,
+      "cameraX": 725,
+      "contact": false
+    }
+  ],
+  "loops": [
+    {
+      "row": 0,
+      "x": 1560,
+      "y": 635,
+      "continuous": true,
+      "alpha": 0.65
+    },
+    {
+      "row": 1,
+      "x": 1330,
+      "y": 455,
+      "startMs": 630,
+      "scale": 0.65
+    },
+    {
+      "row": 2,
+      "x": 1830,
+      "y": 650,
+      "startMs": 1450
+    }
+  ],
+  "source": "city-market-vault"
+}

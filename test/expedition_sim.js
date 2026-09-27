@@ -251,7 +251,13 @@ test('a queued skill waits for its window instead of being silently dropped', ()
 // painted set that has finishing moves painted for it.
 test('every creature in an open quest has a finishing move', () => {
   const Camp = X.Campaign;
-  const FAMILIES = { wolf: 1, plant: 1, alpha: 1 };         // the sets with paired finishers
+  const FAMILIES = { wolf: 1, plant: 1, alpha: 1 };
+  for (const id of X.monsterActors || []) {
+    const atlas = JSON.parse(fs.readFileSync(path.join(ROOT, 'assets/expedition', id, id + '.json'), 'utf8'));
+    const pairs = Object.values(atlas.clips).filter(c => c.paired && c.opponentKeys.includes(id));
+    assert.ok(pairs.length >= 2, id + ' needs two species-specific paired finishers');
+    FAMILIES[id] = 1;
+  }
   const missing = [];
   for (const qid of ['road'].concat(X.slice.openQuests || [])) {
     if (!Camp.quest(qid)) continue;
@@ -560,20 +566,20 @@ test('the retained loop uses only painted Bram; tutorial lock and earned upgrade
   // All four levels are open, in the order Hiro set (2026-09-21): a run starts
   // at Road in the Rain and goes marsh, city, ruins. "Clear the road" is retired
   // from the rotation and survives only as the dev panel's preview.
-  assert.deepEqual(X.slice.openQuests, ['rain', 'marsh', 'city', 'ruins'], 'the four levels, in order');
+  assert.deepEqual(X.slice.openQuests, ['rain', 'marsh', 'city'], 'version 1 has three locations');
   assert.equal(X.slice.startQuest, 'rain', 'a new run starts in the rain');
   const r1 = Camp.freshRun();
   assert.equal(r1.questId, 'rain', 'a fresh run begins at the starting quest');
   assert.equal(Camp.nextQuestId(r1), 'rain');
   r1.questsDone.push('rain'); assert.equal(Camp.nextQuestId(r1), 'marsh', 'rain hands off to the marsh');
   r1.questsDone.push('marsh'); assert.equal(Camp.nextQuestId(r1), 'city', 'then the city');
-  r1.questsDone.push('city'); assert.equal(Camp.nextQuestId(r1), 'ruins', 'then the ruins');
-  r1.questsDone.push('ruins'); assert.ok(X.slice.openQuests.includes(Camp.nextQuestId(r1)), 'and then it cycles');
-  for (const id of ['rain', 'marsh', 'city', 'ruins']) assert.ok(Camp.questOpen(id), id + ' is open');
+  r1.questsDone.push('city'); assert.equal(Camp.nextQuestId(r1), 'rain', 'after city, return to replay');
+  for (const id of ['rain', 'marsh', 'city']) assert.ok(Camp.questOpen(id), id + ' is open');
+  assert.equal(Camp.questOpen('ruins'), false, 'ruins is out of version 1');
   assert.ok(Camp.questOpen('road'), 'the retired tutorial stays previewable');
   // A save naming a quest that is not open is pulled back to the starting one.
   const keep = Camp.sanitizeRun(Object.assign(Camp.freshRun(), { questId: 'ruins', phase: 'quest', wave: 0 }));
-  assert.equal(keep.questId, 'ruins', 'an open quest survives sanitation');
+  assert.equal(keep.questId, 'rain', 'a retired quest save returns safely to the open road');
   const bogus = Camp.sanitizeRun(Object.assign(Camp.freshRun(), { questId: 'nowhere', phase: 'quest', wave: 0 }));
   assert.equal(bogus.questId, Camp.startQuestId(), 'an unknown quest falls back to the start');
   // Bram's combat art is out of the package while the inn is locked, so he is

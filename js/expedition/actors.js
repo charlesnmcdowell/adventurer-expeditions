@@ -48,7 +48,7 @@ class Actor {
       this.img = scene.add.image(0, 0, opts.texture, opts.frame).setOrigin(0.5, 1);
       s = this.height / this.img.height;
     }
-    this._baseScaleX = s * (opts.flipX ? -1 : 1);
+    this._baseScaleX = s * ((this.sheet && this.sheet.authoredFacing === -1) ? 1 : (opts.flipX ? -1 : 1));
     this._baseScaleY = s;
     this.img.setScale(this._baseScaleX, this._baseScaleY);
     this._playback = null;
@@ -175,13 +175,21 @@ class Actor {
     // ruins: the paired frames were not found and the boss died with a plain
     // `down`. Any target drawn from the Alpha sheet now gets the Alpha's pair.
     const drawnFrom = X.paintedActorOf ? X.paintedActorOf(opts.target) : null;
-    if (clip === 'finisher' && (drawnFrom === 'alpha' || targetIdentity === 'tutorial-alpha') && X.Painted && X.Painted.sheet) {
-      const alpha = X.Painted.sheet(this.scene, 'alpha');
+    if (clip === 'finisher' && (drawnFrom === 'alpha' || (X.monsterActors || []).includes(drawnFrom) || targetIdentity === 'tutorial-alpha') && X.Painted && X.Painted.sheet) {
+      const alpha = X.Painted.sheet(this.scene, drawnFrom || 'alpha');
       if (alpha) { sheet = alpha; opts.sheet = alpha; }
+    }
+    if (clip === 'finisher' && (X.monsterActors || []).includes(drawnFrom)) {
+      if (opts.finisherVariant == null) {
+        opts.finisherVariant = (this._pairSequence || 0) % 2;
+        this._pairSequence = (this._pairSequence || 0) + 1;
+      }
+      const id = 'hiro-finisher-' + (opts.finisherVariant + 1);
+      if (sheet.clips[id] && this.canPair(sheet.clips[id], clip, opts)) return id;
     }
     const available = sheet.clips, level = Math.max(1, Math.min(3, opts.level || 1));
     const aliases = {
-      enter: ['walk', 'run', 'idle'], short_draw: ['short-draw', 'draw'],
+      enter: ['walk', 'run', 'approach', 'idle'], leap: ['approach', 'leap', 'attack'], short_draw: ['short-draw', 'draw'],
       slash: ['slash-l' + level, 'slash-l1', 'attack', 'attack-light', 'bite'],
       slash_wide: ['slash-l3', 'slash-l1', 'slash', 'attack'],
       hit_short: ['hit-short', 'hit-heavy', 'hit'], stagger: ['hit-short', 'hit-heavy', 'hit'],
@@ -189,7 +197,7 @@ class Actor {
       victory: ['victory-sheath', 'victory'], kneel: ['kneel', 'down'],
       aura: ['aura-l' + level, 'aura-l1', 'cast'],
       stance: ['intercept', 'cast', 'counter-l' + Math.max(2, level)],
-      cast: ['cast', 'aura-l1'], roll: ['roll', 'overshoot-land', 'land-tumble', 'hit-short'],
+      cast: ['cast', 'attack', 'aura-l1'], roll: ['roll', 'overshoot-land', 'land-tumble', 'hit-short'],
       finisher: ['finisher-l' + level + '-paired', 'finisher-' + (opts.target && ['wolf', 'boar'].includes(opts.target.kind) ? 'quadruped' : opts.target && opts.target.kind), 'slash-l' + level, 'slash-l1', 'slash', 'attack'],
       bite: ['bite', 'attack', 'hit'], charge: ['charge', 'run', 'leap'], pounce: ['pounce', 'approach-leap', 'leap', 'attack'],
       land_tumble: ['land-tumble', 'down', 'hit', 'idle'], overshoot_land: ['overshoot-land', 'land-tumble', 'hit', 'down'],
@@ -437,10 +445,12 @@ class Actor {
   flash(color) { V().tintFlash(this.scene, this.img, color); }
 
   async fadeOut() {
+    if (X.DefeatFX) X.DefeatFX.play(this);
     this.alive = false;
     this.plate.setVisible(false);
     for (const b of this.badges.values()) b.setVisible(false);
-    this.img.setTintFill(0xfff4d6);
+    const loc = X.DefeatFX && X.DefeatFX.location(this.scene.run);
+    this.img.setTintFill(loc === 'swamp' ? 0x715337 : loc === 'city' ? 0x63cfff : 0xfff4d6);
     await Promise.all([
       this.tweenImg({ alpha: 0, y: this.img.y - 30 }, 420, 'Power1'),
       new Promise(res => this.scene.tweens.add({ targets: this.shadow, alpha: 0, duration: 420, onComplete: res })),

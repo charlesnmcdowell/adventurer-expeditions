@@ -117,6 +117,27 @@ Object.assign(X.encounterDefs = {}, Object.fromEntries(X.encounters.map(e => [e.
   ruins_mage:      { id: 'ruins_mage',      enemies: ['thorn_2', 'dire_wolf_2', 'thorn_2'],         gold: 50 },   // was bandit, hedge_mage, bandit_b
   ruins_alpha:     { id: 'ruins_alpha',     enemies: ['alpha_2', 'dire_wolf_2'], boss: true,        gold: 70 },
 });
+// Version 1: the later locations now have complete species-specific painted sets.
+// The original mini-boss templates supply their skills, but ordinary foes are
+// explicitly demoted so the normal 50% Finisher window remains truthful.
+Object.assign(X.enemies, {
+  serpent: { base: 'river_serpent', name: 'Reed Serpent', level: 4, kind: 'serpent', artActor: 'serpent', height: 220, boss: false, actives: ['coil_crush', 'venom_fang'], perks: [], statMult: { hp: 0.70, atk: 0.65, def: 0.75 } },
+  beetle: { base: 'iron_beetle', name: 'Iron Beetle', level: 4, kind: 'beetle', artActor: 'beetle', height: 175, boss: false, actives: ['carapace_burst', 'sunder'], perks: [], statMult: { hp: 0.75, atk: 0.65, def: 0.75 } },
+  moss_giant: { base: 'moss_giant', name: 'Moss Giant', level: 5, kind: 'moss_giant', artActor: 'moss_giant', height: 330, boss: false, actives: ['treefall', 'cleave'], perks: [], statMult: { hp: 0.85, atk: 0.65, def: 0.8 } },
+  hag: { base: 'mire_hag', name: 'Mire Hag', level: 6, kind: 'boss', artActor: 'hag', height: 310, boss: true, actives: ['bog_curse', 'wither_touch'], perks: [], phase2At: 0.5, statMult: { hp: 1.45, atk: 0.75, def: 0.8 } },
+  goblin: { base: 'goblin_king', name: 'Gutter Goblin', level: 5, kind: 'goblin', artActor: 'goblin', height: 205, boss: false, actives: ['backstab', 'smoke_bomb'], perks: [], statMult: { hp: 0.7, atk: 0.7, def: 0.75 } },
+  spider: { base: 'crystal_spider', name: 'Glass Spider', level: 5, kind: 'spider', artActor: 'spider', height: 190, boss: false, actives: ['glass_web'], perks: [], statMult: { hp: 0.75, atk: 0.7, def: 0.75 } },
+  orc: { base: 'orc_king', name: 'Ironjaw', level: 7, kind: 'boss', artActor: 'orc', height: 350, boss: true, actives: ['war_bellow', 'cleave'], perks: [], phase2At: 0.5, statMult: { hp: 1.6, atk: 0.75, def: 0.85 } },
+});
+Object.assign(X.encounterDefs, {
+  marsh_wolves: { id: 'marsh_wolves', enemies: ['serpent', 'beetle'], gold: 40 },
+  marsh_lurkers: { id: 'marsh_lurkers', enemies: ['moss_giant', 'serpent'], gold: 50 },
+  marsh_alpha: { id: 'marsh_alpha', enemies: ['hag'], boss: true, gold: 70 },
+  city_watch: { id: 'city_watch', enemies: ['goblin', 'spider'], gold: 40 },
+  city_bailiff: { id: 'city_bailiff', enemies: ['spider', 'goblin', 'goblin'], gold: 50 },
+  city_captain: { id: 'city_captain', enemies: ['orc'], boss: true, gold: 80 },
+});
+Object.assign(X.quests.find(q => q.id === 'city'), { title: 'The overrun city', done: 'City reclaimed' });
 Camp.encounter = id => X.encounterDefs[id];
 Camp.quest = id => X.quests.find(q => q.id === id);
 // The quest's encounters with the plate the quest assigns to that wave.
