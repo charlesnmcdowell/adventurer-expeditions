@@ -2,6 +2,8 @@
 
 ## Playtest changes
 
+September 27 follow-up: all travel now lasts 7.67 seconds including its transition hold, with at least three seconds of running before and after the obstacle action. Uses the existing sixteen-frame run; no additional image downloads.
+
 - Alpha paired finishers: 665–780 ms became 1,400–1,620 ms of authored playback. Browser measurements including approach were about 1.93–2.15 seconds. Anticipation, contact and recovery receive longer holds; attack contact indices, release indices and artwork remain intact.
 - Fourteen later-monster finishers: 770 ms became 1,420 ms. Ordinary attacks, global combat speed and the disabled cinematic camera setting remain as configured. This pass retimes the existing frames; it does not claim additional in-between paintings were created.
 - Mountain and city battle paintings now have continuous horizontal ground at the fighters' feet. The shrine, mountains and city architecture retain the established finish. Edition-owned stage rendering preserves the quest weather and adds distant mountain haze. The source/shared backgrounds are untouched.
@@ -22,7 +24,7 @@ These are local Chromium measurements, not physical Safari/Android or CrazyGames
 
 ## Frozen upload candidate
 
-Folder: `dist/crazygames-20260927-polish/`.
+Folder: `dist/crazygames-20260927-travel/`.
 
 255 verified files, approximately 38.80 MB total. `index.html` is at its root. The separate adjacent manifest records every file's SHA-256. Upload the folder's **contents**, not a ZIP; keep the verification manifest outside the upload.
 

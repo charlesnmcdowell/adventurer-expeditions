@@ -26,6 +26,7 @@ const server=http.createServer((req,res)=>{
     // Isolate art playback from simulated turns, while using real scene setup,
     // entrance movement, registration and paired-target lifecycle.
     s.fight=async function(first){await this.intro(first);this.__artReviewReady=true;};
+    window.__travelPlay=X.TravelScene.prototype.play;
     X.TravelScene.prototype.play=function(){};
   });
   for(const [q,w,ids] of (process.argv.includes('--travel-only')?[]:[['marsh',0,['serpent','beetle']],['marsh',1,['moss_giant']],['marsh',2,['hag']],['city',0,['goblin','spider']],['city',2,['orc']]])){
@@ -69,15 +70,30 @@ const server=http.createServer((req,res)=>{
       const s=window.__game.scene.getScenes(true)[0];X.Dev.go(s,'Travel',{run:r,leg});
     },[q,w,leg]);
     await page.waitForFunction(()=>window.__game.scene.isActive('Travel')&&window.__game.scene.getScene('Travel').__presentationReady,null,{timeout:30000});
-    for(const ms of [0,660,1000,1450,1950]){
+    const duration=await page.evaluate(()=>__game.scene.getScene('Travel').pano.durationMs);
+    assert(duration>=6000&&duration<=8000);
+    for(const ms of [0,1500,2999,3500,4200,duration-2999,duration-1500,duration-1]){
       const info=await page.evaluate(ms=>{
         const s=window.__game.scene.getScene('Travel');s.paused=true;s.pano.seek(ms);
-        return {id:s.pano.artId,frame:s.pano.currentFrame,texture:s.pano.hero.texture.key,x:s.pano.hero.x+s.pano.x};
+        return {id:s.pano.artId,frame:s.pano.currentFrame,texture:s.pano.hero.texture.key,x:s.pano.hero.x+s.pano.x,phase:s.pano.phase};
       },ms);
       assert(info.texture!=='__MISSING');
+      assert.equal(info.phase,ms<3000?'run-in':ms>=duration-3000?'run-out':'action');
       await page.waitForTimeout(50);await page.screenshot({path:path.join(OUT,info.id+'-'+ms+'.png')});results.push(info);
     }
   }
+  // Exercise the real scene handoff: the longer presentation must not get
+  // cut short by the old transition timer.
+  await page.evaluate(()=>{
+    const X=ADV.Expedition;X.TravelScene.prototype.play=window.__travelPlay;
+    const r=X.Run.fresh();r.questId='city';r.wave=0;r.phase='travel';r.travelLeg='outbound';
+    X.Dev.go(__game.scene.getScenes(true)[0],'Travel',{run:r,leg:'outbound'});
+  });
+  await page.waitForFunction(()=>__game.scene.isActive('Travel')&&__game.scene.getScene('Travel').__presentationReady&&!__game.scene.getScene('Travel').paused);
+  const start=Date.now();await page.waitForTimeout(6100);
+  assert(await page.evaluate(()=>__game.scene.isActive('Travel')),'travel exited before both running beats');
+  await page.waitForFunction(()=>__game.scene.isActive('Expedition'),null,{timeout:10000});
+  assert(Date.now()-start>=7300,'travel presentation was cut short');
   assert.deepEqual(errors,[]);
   fs.writeFileSync(path.join(OUT,process.argv.includes('--travel-only')?'travel-verification.json':'verification.json'),JSON.stringify({results,errors},null,2));
   await browser.close();server.close();console.log(process.argv.includes('--travel-only')?'v3 art: 4 painted travel beats passed':'v3 art: 14 paired finishers, 7 visible enemies, 4 painted travel beats passed');

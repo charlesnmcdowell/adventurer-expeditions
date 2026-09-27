@@ -15,6 +15,12 @@ of small fixes within a day.
 
 ---
 
+## 2026-09-27 - Longer travel journeys
+
+Travel now includes 3,000 ms of the existing sixteen-frame Hiro run before the authored obstacle action and 3,000 ms afterward. The central action keeps its contact positions and original speed (1,490 ms); total animated journey 7,490 ms plus the existing 180 ms transition hold = 7,670 ms. All four forest/swamp/city beats use this schedule. No new art downloads. Updated `js/expedition/travel_art.js`, its browser phase/transition checks and the script cache stamp. The upload candidate is refreshed separately as `dist/crazygames-20260927-travel/`; the previous polish candidate is superseded.
+
+---
+
 ## 2026-09-27 - Release polish: readable finishers, grounded combat and inn guest
 
 Implemented the user-approved polish pass. Alpha finishers 665-780 ms -> 1,400-1,620 ms; later monster finishers 770 ms -> 1,420 ms. The same frames/markers are retained with longer setup, impact and recovery holds. Two new battle plates provide continuous level mountain/city footing. Bram's existing seated painting appears after odd-numbered quest clears without granting recruitment. Original website/shared files remain unchanged.
