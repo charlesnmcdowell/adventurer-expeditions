@@ -2,7 +2,7 @@
 
 ## Playtest changes
 
-September 27 follow-up: all travel now lasts 7.67 seconds including its transition hold, with at least three seconds of running before and after the obstacle action. Uses the existing sixteen-frame run; no additional image downloads.
+September 27 follow-up: travel uses three new parallax layers per scene, brisk ground scrolling and the existing sixteen-frame run. Forest/market last 9.67 seconds, rooftops 10.67, swamp 11.67, with four to five seconds of running on each side of the unchanged obstacle animation. These replace the rejected 7.67-second slow-distance version. Twelve WebP layers load on demand; masters and prompt records are in `../adventurer-expeditions-source-art/astra-v3/atmosphere/`, rebuilt with `python tools/build_travel_atmosphere.py`.
 
 - Alpha paired finishers: 665–780 ms became 1,400–1,620 ms of authored playback. Browser measurements including approach were about 1.93–2.15 seconds. Anticipation, contact and recovery receive longer holds; attack contact indices, release indices and artwork remain intact.
 - Fourteen later-monster finishers: 770 ms became 1,420 ms. Ordinary attacks, global combat speed and the disabled cinematic camera setting remain as configured. This pass retimes the existing frames; it does not claim additional in-between paintings were created.
@@ -24,9 +24,9 @@ These are local Chromium measurements, not physical Safari/Android or CrazyGames
 
 ## Frozen upload candidate
 
-Folder: `dist/crazygames-20260927-travel/`.
+Folder: `dist/crazygames-20260927-parallax/`.
 
-255 verified files, approximately 38.80 MB total. `index.html` is at its root. The separate adjacent manifest records every file's SHA-256. Upload the folder's **contents**, not a ZIP; keep the verification manifest outside the upload.
+267 files, approximately 42.43 MB total. `index.html` is at its root. The separate adjacent manifest records every file's SHA-256. Upload the folder's **contents**, not a ZIP; keep the verification manifest outside the upload. The parallax revision's local cold-cache check measured 13.60 MB to gameplay and 14.64 MB after audio unlock; the larger total package does not all load at startup.
 
 `npm run package:crazygames` creates a new candidate without changing the local game. It freezes the allowlisted source, rejects concurrent source changes, and verifies written bytes. Only inside the candidate it disables developer tools, enables the CrazyGames release policy and disables the developer inn-entry shortcut. Existing candidates are never overwritten.
 

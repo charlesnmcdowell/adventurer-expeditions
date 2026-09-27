@@ -15,6 +15,18 @@ of small fixes within a day.
 
 ---
 
+## 2026-09-27 - Atmospheric parallax travel
+
+Supersedes the short-distance slow run below. Travel now scrolls newly painted distant scenery, ground and foreground at independent rates (0.07 / 1 / 1.5), with ground speed fixed at 420 world pixels/second. Hiro keeps the approved 16-frame, 800 ms run cycle. The existing obstacle action remains 1,490 ms with authored contact positions. Running on each side: forest/market 4,000 ms, rooftop 4,500 ms, swamp 5,000 ms; total including transition hold: 9,670 / 10,670 / 11,670 ms, formerly 7,670 ms. Weather remains active; the swamp adds fireflies and a slowly moving moonlit distance.
+
+Files: `js/expedition/travel_art.js`, `index.html` (xp4 cache stamp), `test/browser_v3_art.js`, `tools/build_travel_atmosphere.py`, twelve `assets/expedition/travel/*/atmosphere-*.webp` layers, GDD and release notes. Masters, exact generation prompts, alpha corrections and packing regions are in `../adventurer-expeditions-source-art/astra-v3/atmosphere/`. No original website files changed.
+
+Validation: npm test passed; four-beat browser checks passed (run/action/run phases, fixed speed, separate layer rates and real return to combat). Screenshots reviewed and painted band edges/rooftop camera gap corrected. Cold-cache SDK-stub checks passed at desktop and emulated mobile portrait/landscape: 13.60 MB to gameplay, 14.64 MB after audio unlock. New scenery is loaded on demand; total ship set is 267 files / 42.43 MB. Physical-phone and hosted-portal QA remain outstanding. Candidate: `dist/crazygames-20260927-parallax/`.
+
+---
+
+Follow-up gate: `npm run test:ship` passed the guided forest and swamp quests, travel, upgrades, save state and return to the inn. The frozen 267-file candidate passed `release_check.js`. No hosted upload performed.
+
 ## 2026-09-27 - Longer travel journeys
 
 Travel now includes 3,000 ms of the existing sixteen-frame Hiro run before the authored obstacle action and 3,000 ms afterward. The central action keeps its contact positions and original speed (1,490 ms); total animated journey 7,490 ms plus the existing 180 ms transition hold = 7,670 ms. All four forest/swamp/city beats use this schedule. No new art downloads. Updated `js/expedition/travel_art.js`, its browser phase/transition checks and the script cache stamp. The upload candidate is refreshed separately as `dist/crazygames-20260927-travel/`; the previous polish candidate is superseded.

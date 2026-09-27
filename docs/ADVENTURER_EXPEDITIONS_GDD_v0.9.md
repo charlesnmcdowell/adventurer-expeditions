@@ -7,6 +7,8 @@ This revision supersedes v0.8; v0.5 through v0.8 are kept in `docs/` for history
 
 **Release polish - September 27, 2026.** All 17 Alpha-and-later finishers now have longer anticipation/contact/recovery holds; mountain and city combat use level fighting surfaces; Bram appears as a seated guest on alternate quest completions without recruitment. See `RELEASE_POLISH_20260927.md` for validation, candidate path and remaining portal QA. This updates presentation only, not the deferred skill/ending redesign.
 
+**Travel presentation — September 27, 2026.** Fast running with three separately scrolling painted layers replaces slow movement across a short plate. Forest/market journeys last 9.67 seconds, rooftop 10.67, swamp 11.67, including transition hold. Four to five seconds of running surround the unchanged 1.49-second obstacle beat. Ground speed is 420 pixels/second; distant landmarks move at 7% of that speed and foreground at 150%. Keep the approved run cadence, weather and obstacle contact animation. Extra scenery loads only when its travel scene is needed. Awaiting the user's playtest of this implementation.
+
 **Current implementation — September 26, 2026.** Three locations, all seven new monsters, 14 new paired finishers, four painted travel beats and location defeat effects are integrated and locally playable. Hiro remains the only hero. See CHANGELOG for verification and delivery paths. Final in-game art approval is pending.
 
 **Earlier status — September 22, 2026.** Hiro, after playing: *"the game is
