@@ -345,6 +345,12 @@ Both effects apply to the bosses too.
    defeats (§7.3).
 6. Whether the orc also appears as a regular in the city's waves or only as the
    boss (§7.1 reads it as boss only).
+7. **Arcade UI (2026-09-28).** The score pill's ★ and the End scene's plain
+   dark panel are placeholders. When art resumes: a small painted score mark
+   in the game's gold, and a background for the End scene (the inn at night,
+   or the road at dawn) in the same method as §3. The high-score frame, rank
+   medals and the tutorial glove are drawn in code (2026-09-27) and need no
+   bitmap; keep them unless a painted set is clearly better and still small.
 
 ---
 

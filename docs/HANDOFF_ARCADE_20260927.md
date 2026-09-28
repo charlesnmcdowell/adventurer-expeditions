@@ -1,5 +1,7 @@
 # Hand-off — Arcade mode, 2026-09-27 (end of Fable session)
 
+> **Status 2026-09-28:** steps 1–4 of "What is left" are done (verified on the PC, balance pass with two knobs, GDD/ART_STANDARD/CHANGELOG updated, candidate packaged — see CHANGELOG 2026-09-28). Remaining: the open questions below and the optional polish.
+
 Paste the block below into a new session as the opening prompt. Everything it
 refers to is committed in this folder; nothing lives only in a sandbox.
 

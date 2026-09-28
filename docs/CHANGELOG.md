@@ -15,6 +15,16 @@ of small fixes within a day.
 
 ---
 
+## 2026-09-28 - Arcade balance pass, docs and candidate
+
+New `tools/balance_arcade.js` plays whole runs headlessly (Hiro alone, health carrying, Rest by rule, scoring and loop rules as the game applies them) for four players: no taps, tutorial taps only, casual (half the ready skills), and every ready skill. Findings as rolled: a two-boss wave was won 40/12/4% (forest/swamp/city) by the best player and a three-boss wave never, so no run reached a fourth playthrough; a tutorial-only player reached the first boss at ~10 hp and lost it 57% of the time; Rest never changed how far a run went. Two knobs, both in `js/expedition/data.js` and one line to revert: `X.bossShare = {2: 0.7, 3: 0.5}` (every boss of a pack is scaled by the pack's share on top of the loop scale, applied in `Enc.create`) and `X.tutorialHeals = true` (on the first quest of a run each fight opens at full health; from the second quest health carries as designed, applied in `Enc.makeHero`). After: two-boss waves 92/80/36%, three-boss ~10%; the tutorial follower clears the forest every time; the best player's median run is two full playthroughs (~11,400 points), about half reach the third; a mixed board's #10 after 150 runs is ~14,500. Rest left as designed; finding recorded in the GDD §4. Point table, loop scale and boss odds unchanged.
+
+Docs: GDD v0.9 gains the arcade status paragraph, §4 (inn as built, Rest finding), §5.0 (End scene as built, name rules), new §5.0a (scoring, playthroughs, boss packs, balance table), §7.0 (skills as built), §16 and §17 entries; ART_STANDARD §8 item 7 (score mark and End-scene background as placeholders); `docs/HANDOFF_ARCADE_20260927.md` from the previous session. `test/browser_arcade.js` now covers both knobs (33 checks). Stamp xp1 of 2026-09-28.
+
+Validation: npm test green here and on Hiro's PC; browser_arcade 33/33, browser_expedition --ship, browser_restart_dev 23/23, browser_finishers 10/10, browser_v3_art green (the session VM on the PC cannot launch headless Chromium — missing libXdamage — so browser suites run from the build sandbox against byte-identical files). Candidate: `dist/crazygames-20260928-arcade/` — 267 files, 42.45 MB, `release_check` ready to ship (dev tools off in the candidate; run it with `EXPEDITIONS_TEST_ROOT` pointing at the folder); cold start 13.62 MB to gameplay, 14.67 MB after audio unlock on desktop and emulated mobile portrait/landscape. Not uploaded. Hiro's playtest of the balance knobs is the next gate.
+
+---
+
 ## 2026-09-27 - Travel recenter and arcade UI polish
 
 After an obstacle Hiro now eases from the authored exit position to screen x=650 over 400 ms, then remains centered. Run cadence, 420 px/s landscape speed, obstacle action and travel duration are unchanged. Added a regression assertion covering the second half of all four journeys.

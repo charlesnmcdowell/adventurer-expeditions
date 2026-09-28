@@ -5,6 +5,17 @@ Version 0.9 · September 19, 2026 (rev. b) · Status reconciled September 20, 20
 
 This revision supersedes v0.8; v0.5 through v0.8 are kept in `docs/` for history.
 
+**Arcade mode — built September 27, balanced September 28, 2026.** Gold is
+gone; a run scores points. Every skill is owned from the start at one level
+(§7.0); health carries through the run, restored only by the Finisher's kill
+heal and a paid Rest at the inn (§4); a fall ends the run on the End scene with
+a top-10 board and a name-shaped name (§5.0); from the second playthrough the
+monsters shuffle, scale ×1.3 per playthrough and the boss wave can roll a pack
+of two or three bosses (§5.0a). The balance pass in `tools/balance_arcade.js`
+set two knobs: boss packs share strength and the first quest heals between its
+fights (§5.0a, §17). Save key `adventurer_expeditions_arcade_v1`; the game
+always opens fresh. Open: the Facebook address and the feedback destination.
+
 **Release polish - September 27, 2026.** All 17 Alpha-and-later finishers now have longer anticipation/contact/recovery holds; mountain and city combat use level fighting surfaces; Bram appears as a seated guest on alternate quest completions without recruitment. See `RELEASE_POLISH_20260927.md` for validation, candidate path and remaining portal QA. This updates presentation only, not the deferred skill/ending redesign.
 
 **Travel presentation — September 27, 2026.** Fast running with three separately scrolling painted layers replaces slow movement across a short plate. Forest/market journeys last 9.67 seconds, rooftop 10.67, swamp 11.67, including transition hold. Four to five seconds of running surround the unchanged 1.49-second obstacle beat. Ground speed is 420 pixels/second; distant landmarks move at 7% of that speed and foreground at 150%. Keep the approved run cadence, weather and obstacle contact animation. Extra scenery loads only when its travel scene is needed. Awaiting the user's playtest of this implementation.
@@ -244,7 +255,26 @@ lacks, but nothing in the shipped slice should be reaching it.
 
 ## 4. The inn
 
-Two things to spend gold on, both on one screen, neither a scrolling list.
+**Arcade, as built (2026-09-27).** *Supersedes the gold economy below, which is
+kept for history.* The inn is three buttons and a health bar. **Rest** (☾)
+restores Hiro to full health for **1,000 points, doubling each use in the run**
+(1,000 → 2,000 → 4,000 …), and is refused at full health — the label shows the
+price or *full health*. **High scores** opens the top-10 board (§5.0).
+**Embark** goes to the next open quest in order (forest → swamp → city, then
+round again). Nothing is bought and nothing is levelled: every skill is owned
+from the first fight (§7.0), and recruiting stays locked for version 1. The
+score pill replaces the gold purse everywhere.
+
+*Balance finding (2026-09-28, `tools/balance_arcade.js`).* Rest rarely pays:
+runs end in burst waves — a pack of bosses, three shuffled monsters on the
+third playthrough — not from attrition, and the Finisher's 35 % kill heal keeps
+a tapping player healthy between fights. Over 150 simulated runs a player who
+never Rests clears as many quests as one who Rests below half health, and
+keeps the points. Rest stays as Hiro designed it — a safety the player can buy
+— and the price is a knob (`X.rest`) if play shows it should be cheaper.
+
+*History — the gold inn (2026-09-19 to 09-26).* Two things to spend gold on,
+both on one screen, neither a scrolling list.
 
 | Spend | Cost | Effect |
 |---|---|---|
@@ -326,6 +356,24 @@ separate game.
 Open: the Facebook page address, and where feedback goes (a form, an email, or
 Facebook messages).
 
+**As built — the End scene (2026-09-27).** Every run ends on one screen, the
+End scene, whether the city boss fell, Hiro fell, or the player chose *End run*
+in the pause menu (one confirm: *End this run and score it?*). It shows the
+score and the playthrough reached, the top-10 board, and — when the score
+makes the board — a name field. **A name is required, blank by default, 25
+characters at most, and must read like a name** (Hiro, 2026-09-27): no spaces;
+letters, digits and `# ! _ - . @ $`; starts with a letter; at least three
+letters and a vowel; no more than three consonants in a row; no letter three
+times in a row. `tyler#2`, `tyler12`, `tylertheman!` pass; `12345`, `2838`,
+`@#$skfsal`, `adfskdlsfosl`, `uislllslsl@#@11221` are refused with a hint.
+The board (`X.Board`) keeps ten rows on this device under its own storage
+key, a tie sitting below the older run. The footer carries the announcement:
+*Part 2 with a new hero is coming — stay tuned. Follow Hiro on Facebook and
+send feedback from the pause menu.* **Play again** starts a fresh run. The
+game always opens fresh (Hiro): a save survives only a reload mid-run, and a
+reload after a fall lands back on the End scene. The Facebook link and the
+feedback destination are still open (§16).
+
 **Open as of 2026-09-21: the road, Road in the Rain, and the City Watch.** A
 quest opens when the package carries everything it needs, and two separate
 things had been keeping the loop shut. The first was a bug: `sanitizeRun` pulled
@@ -383,6 +431,53 @@ Every battle plate and every travel panorama in that table is **already synced i
 the build**: deep wood, bandit road, mountain, alley, marsh, ruins for fights;
 forest, road, city, marsh, ruins for travel.
 
+### 5.0a Scoring and the loop (arcade, built 2026-09-27; balanced 2026-09-28)
+
+**Score** (`X.scoring`). A fallen regular monster pays **100**, a boss **500**,
+a kill by the Finisher **+50**, a clean wave (Hiro ends it at ≥ 75 % health)
+**+50**, and a cleared quest **+300** on top of its waves. Every payment is
+multiplied by the playthrough bonus **1 + 0.25 × (playthrough − 1)**. A wave
+pays once; a restarted fight cannot pay twice. Points are also the currency of
+Rest (§4). Nothing else spends them.
+
+**Playthroughs.** The three open quests are one playthrough; the run is on
+playthrough 2 once all three have been cleared once, and so on, without limit.
+From the second playthrough:
+
+- **Monsters shuffle.** Regular waves draw from the whole pool — dire wolf,
+  thorn lurker, serpent, beetle, moss giant, goblin, spider — seeded from the
+  run (`run.seed`), so a reload replays the same waves. Wave sizes stay the
+  quest's own.
+- **Everything is stronger.** Enemy health and attack scale **×1.3 per
+  playthrough, compounding, uncapped**: ×1.3 on the second, ×1.69 on the
+  third, ×2.20 on the fourth.
+- **The boss wave rolls a pack.** Own boss / two of the own boss / own boss
+  plus one from another location / three bosses (any mix, at most three).
+  Odds by playthrough: **2nd 60 / 20 / 20 / 0; 3rd 40 / 25 / 25 / 10; 4th
+  and later 25 / 25 / 25 / 25.** Crowded waves are placed by painted width and
+  shrunk a little, never below 0.82, so three bosses stand in a line.
+- **Defeat effects stay where they belong.** A swamp boss in the forest still
+  melts into mud; the effect follows the monster, not the location (Hiro).
+
+**Balance pass (2026-09-28, `tools/balance_arcade.js`).** The probe plays whole
+runs headlessly — Hiro alone, health carrying, Rest by a simple rule — for a
+player who never taps, one who taps only what the tutorial asks, a casual one
+who notices a ready skill half the time, and one who taps every skill the
+moment it is ready. Two findings, two knobs:
+
+| Finding, as rolled | Knob | After |
+|---|---|---|
+| A two-boss wave was won 40 / 12 / 4 % (forest / swamp / city) by the best player, a three-boss wave never; no run reached a fourth playthrough | `X.bossShare = {2: 0.7, 3: 0.5}` — every boss of a pack is scaled by the pack's share, on top of the loop scale | two-boss waves 92 / 80 / 36 %, three-boss ~10 %; a good player's median run is two full playthroughs (≈ 11,400 points), half reach the third, a few the fourth |
+| A player who tapped only what the hand asked reached the first boss at ~10 hp and lost 57 % of the time | `X.tutorialHeals = true` — on the first quest of a run every fight opens at full health; from the second quest on, health carries exactly as designed | the tutorial follower clears the forest every time and meets the swamp with a full bar |
+
+Reference numbers after the pass, 150 runs each: no taps at all ends in the
+swamp's first fight with ~500 points; the casual player ends on the second
+playthrough with ~7,500; the best player's tenth-best of 150 runs is ≈ 14,500,
+a mixed board's #1 ≈ 18,000. Regular waves hold up: on the third playthrough a
+three-monster wave is won 70 % of the time at full health, a two-monster wave
+97 %. Rest did not move any of these (§4). Both knobs are one line in
+`js/expedition/data.js` to revert.
+
 ### 5.1 Music
 
 Three tracks, one slot each.
@@ -436,9 +531,18 @@ with `ambush: true` and a rival's member list — the code for it is written.
 
 ### 7.0 Skill levelling removed; God Aura changes job (decided 2026-09-24)
 
-*Hiro, 2026-09-24: skill levelling "doesn't really add much to the game."* Not
-built. Everything below this subsection that describes levels 1–3 is history
-once this lands.
+*Hiro, 2026-09-24: skill levelling "doesn't really add much to the game."*
+**Built 2026-09-27, as the arcade** (the unlock-for-gold plan below was
+overtaken the same week): every skill is **owned from the first fight at its
+one level**, nothing is bought, and the HUD shows the three icons lit with no
+pips, plus or lock. Values as shipped: Katana Slash ×1.3; **God Aura attack
+×1.35 for 3 rounds, no defense, no evasion**, 10 s recovery; **Counter Attack**
+answers 2 attacks for 2 rounds, 5 s recovery; **Finisher** power 2.8, windows
+51 % (regular) / 25 % (boss), heals 35 % of full health on a kill, no cooldown.
+The tutorial teaches **Finisher (fight 1) → Counter Attack (fight 2) → God Aura
+(boss)** and holds only on the first quest. Hiro's unused level-2/3 clips ship
+as random variety. Everything below that describes levels 1–3 or unlock prices
+is history.
 
 - **One level per skill.** Finisher, God Aura and Counter Attack are each
   unlocked once with gold and never raised. Katana Slash stays Hiro's default,
@@ -1856,6 +1960,16 @@ remains, in order:
 
 ## 16. Open decisions for Hiro
 
+**Arcade (2026-09-28).** The **Facebook page address** and **where feedback
+goes** — a form, an email, or Facebook messages; the End scene footer and the
+pause menu name them but carry no link yet. Whether the high-score board
+should ever sync through the CrazyGames data API (version 1 is per device).
+Whether a pack of bosses deserves a short intro beat (today they walk in like
+any wave). End-scene background art (Astra; today a plain dark panel). The
+score icon ★ is a placeholder for Astra (ART_STANDARD). The two balance knobs
+(§5.0a) were set by simulation, not play — worth a look after the first real
+runs, together with the Rest price.
+
 **Astra v3 implementation assumptions (2026-09-26), subject to playtest:** city outbound/early travel uses the market vault; late/return travel uses the rooftop route. Swamp uses the log slide for its travel legs. Two new paired finishers alternate independently of skill level. Hag/orc use one enrage tell at half HP. Existing encounter IDs are preserved for save compatibility; their displayed creatures are replaced. These choices do not implement the separate planned economy/ending redesign.
 
 
@@ -1948,6 +2062,29 @@ foes' busts are baked from the part sheets like the recruits' (new).
 ---
 
 ## 17. Decisions
+
+**2026-09-28 (balance knobs).** Fable, from `tools/balance_arcade.js`, flagged
+for Hiro's review: boss packs share strength (`X.bossShare` 0.7 for two, 0.5
+for three) and the first quest heals between its fights (`X.tutorialHeals`).
+Reasons and numbers in §5.0a. Rest left as designed.
+
+**2026-09-27 (arcade mode).** Hiro, from the reviewed plan. **Score replaces
+gold**: regular 100, boss 500, Finisher kill +50, clean wave +50, quest clear
+300, ×1.25 per extra playthrough. **All skills unlocked from the start, no
+levels**; God Aura raises attack ×1.35 only. Tutorial order **Finisher →
+Counter Attack → God Aura**. **Health carries through the run**; only the
+Finisher heal and Rest restore it. **Rest** at the inn: full heal for 1,000
+points, doubling each use, never at full health. **Defeat ends the run**; an
+**End run** button sits in the pause menu behind one confirm. **Top-10 board**
+stored on the device; **name required, blank by default, 25 characters,
+name-shaped** (tyler#2, tyler12, tylertheman! in; 12345, 2838, @#$skfsal,
+adfskdlsfosl, uislllslsl@#@11221 out). **The game always starts fresh.** From
+the second playthrough monsters shuffle, enemies are ×1.3 stronger per
+playthrough with no cap, and the boss wave can be two of the own boss, the own
+boss plus one from another area, or from the third playthrough up to three
+bosses (odds §5.0a). Defeat effects stay location-specific and play on any
+monster. Hiro's unused L2/L3 clips ship as variety. After the ending, back to
+the inn and replay; Part 2 is a future add-on to this game.
 
 **2026-09-24 (version 1 content and skills).** Hiro. Version 1 is **forest,
 swamp, city, then an ending** announcing Part 2 with a new protagonist, with
