@@ -23,6 +23,14 @@ Presentation browser checks and focused unit checks passed; startup 14.74 MB aft
 
 ---
 
+## 2026-09-28 - Community links on the pause screen
+
+The End scene promised "Follow Hiro on Facebook and send feedback from the pause menu", and the pause menu had nothing. CrazyGames' gameplay requirements (docs.crazygames.com/requirements/gameplay, read today) forbid cross-promotion but allow community links (Discord, dev website and the like) on the game menu only, provided they do not lead to a playable web version. The pause screen is this game's menu, so it now carries a "Feedback and news" row with two buttons, the same two Facebook pages the website game's support panel uses (`adventurer/js/ui/support.js`): Hiro on Facebook and Neverendingnarratives. The website's donate link is deliberately not carried over; it is not a community link. Note that the website game's own support panel switches itself off entirely on a CrazyGames build, so this is the first time these links appear in the portal build.
+
+`X.links` in `js/expedition/data.js` (empty the list and the row disappears); `UI.openLink` in `js/expedition/ui_common.js` opens a new tab with no opener so the running game is never navigated; `scene.__pauseButtons.links` exposes the rects. Verified in the browser pane against the local server: the row renders under High scores / End run, a tap on the first button reaches `UI.openLink` with the Facebook URL, the game stays paused and on its page, no console errors. `test/browser_arcade.js` gains the same check (Playwright could not run on this PC). `.claude/launch.json` added for the desktop app's preview server. The End scene text is unchanged: a pointer to the menu, no link on the ending itself.
+
+---
+
 ## 2026-09-28 - Second balance pass: harder monsters, guaranteed boss packs, bosses in regular waves, permanent board
 
 Hiro's playtest of the first pass reached a fourth playthrough without ever meeting a two-boss wave (the 60% single-boss roll on the second playthrough), and asked for more bite. All knobs in `js/expedition/data.js` and `js/expedition/campaign.js`:

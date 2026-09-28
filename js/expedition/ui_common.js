@@ -280,8 +280,25 @@ UI.pauseSettings = function (scene, ctl) {
     api.confirm = { root: c, yesRect: { x: W2 / 2 - cw / 2 + 16, y: H2 / 2 + 30 + cy + 8, w: 120, h: 34 } };
     scene.__endConfirmRect = api.confirm.yesRect;
   });
+  // Feedback: the community links (X.links), each in a new tab that gets no
+  // opener, so the running game is never navigated away from.
+  api.linkRects = [];
+  const links = (X.links || []).filter(l => l && /^https:\/\//.test(l.url));
+  if (links.length) {
+    const ly = by + 150, lw = 196, lh = 36, gap = 16;
+    root.add(T().text(scene, 0, ly - 30, 'Feedback and news', { size: 12, ox: 0.5, oy: 0.5, color: '#8d8377' }));
+    links.slice(0, 2).forEach((l, i) => {
+      const cx = links.length === 1 ? 0 : (i === 0 ? -lw / 2 - gap / 2 : lw / 2 + gap / 2);
+      const g = scene.add.graphics(); g.fillStyle(0x27323f, 1); g.fillRoundedRect(cx - lw / 2, ly - lh / 2, lw, lh, 9);
+      const t = T().text(scene, cx, ly, l.label, { size: 14, ox: 0.5, oy: 0.5, color: '#dfe8f2', display: true });
+      const z = scene.add.zone(cx, ly, lw, lh).setInteractive({ useHandCursor: true });
+      z.on('pointerdown', () => UI.openLink(l.url));
+      root.add([g, t, z]);
+      api.linkRects.push({ id: l.id, url: l.url, x: W2 / 2 + cx - lw / 2, y: H2 / 2 + 30 + ly - lh / 2, w: lw, h: lh });
+    });
+  }
   scene.__settingRects = drawn;
-  scene.__pauseButtons = { board: api.boardRect, end: api.endRect };
+  scene.__pauseButtons = { board: api.boardRect, end: api.endRect, links: api.linkRects };
   api.destroy = () => { try { root.destroy(); } catch (e) {} scene.__settingRects = null; scene.__pauseButtons = null; scene.__endConfirmRect = null; };
   return api;
 };
@@ -308,6 +325,10 @@ UI.boardList = function (scene, x, y, w, opts) {
   c.rows = rows; c.height = n * rowH;
   return c;
 };
+
+// Open a community link outside the game (and outside the portal's iframe)
+// without handing the new tab an opener. Tests may stub this.
+UI.openLink = function (url) { try { window.open(url, '_blank', 'noopener,noreferrer'); } catch (e) {} };
 
 // A framed board panel with a close button, over any scene (pause menu, inn).
 UI.boardPanel = function (scene, onClose) {

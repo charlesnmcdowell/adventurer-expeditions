@@ -149,6 +149,16 @@ const OUT = path.join(__dirname, 'reports', 'arcade'); fs.mkdirSync(OUT, { recur
   await page.evaluate(() => { const s = window.__game.scene.getScene('Expedition'); s.run.score = 777; s.corner.togglePause(); });
   await page.waitForTimeout(300);
   const pb2 = await page.evaluate(() => window.__game.scene.getScene('Expedition').__pauseButtons);
+  // The community links sit on the pause screen only (CrazyGames: menu only), open in a new tab, and never navigate the game.
+  const linkTap = await page.evaluate(async () => {
+    const X = ADV.Expedition, opened = []; const orig = X.UI.openLink; X.UI.openLink = u => opened.push(u);
+    const s = window.__game.scene.getScene('Expedition'), r = s.__pauseButtons.links[0];
+    const walk = l => { for (const o of l) { if (o.type === 'Zone') { const wx = o.x + (o.parentContainer ? o.parentContainer.x : 0), wy = o.y + (o.parentContainer ? o.parentContainer.y : 0); if (Math.abs(wx - (r.x + r.w / 2)) < 2 && Math.abs(wy - (r.y + r.h / 2)) < 2) o.emit('pointerdown'); } if (o.list) walk(o.list); } };
+    walk(s.children.list);
+    X.UI.openLink = orig;
+    return { links: s.__pauseButtons.links.map(l => l.id), opened, url: location.href.split('?')[0], stillPaused: s.paused };
+  });
+  check(linkTap.links.length === 2 && linkTap.opened.length >= 1 && /facebook\.com/.test(linkTap.opened[0]) && linkTap.stillPaused, 'the pause screen offers two community links that open through UI.openLink and leave the game where it is', linkTap);
   await tap(pb2.end); await page.waitForTimeout(300);
   const conf2 = await page.evaluate(() => window.__game.scene.getScene('Expedition').__endConfirmRect);
   await tap(conf2);

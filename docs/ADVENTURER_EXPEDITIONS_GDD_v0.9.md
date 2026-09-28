@@ -379,6 +379,11 @@ added to `hall` by hand at the next update. Only this device's rows are ever
 written to storage. The footer carries the announcement:
 *Part 2 with a new hero is coming — stay tuned. Follow Hiro on Facebook and
 send feedback from the pause menu.* **Play again** starts a fresh run. The
+pause screen carries those two links (`X.links`: Hiro on Facebook and
+Neverendingnarratives, the website game's support pages) as of 2026-09-28,
+under a "Feedback and news" row. CrazyGames allows community links on the
+game menu only and never a cross-promotion, so the ending points at the menu
+and carries no link itself, and the website's donate link is left out. The
 game always opens fresh (Hiro): a save survives only a reload mid-run, and a
 reload after a fall lands back on the End scene. The Facebook link and the
 feedback destination are still open (§16).

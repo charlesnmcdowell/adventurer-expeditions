@@ -154,6 +154,16 @@ X.board = { size: 10, key: 'adventurer_expeditions_highscores_v1' };
 // next update and every copy of the game shows them, merged with the local
 // rows. One row per entry: { name, score, loop, date }.
 X.board.hall = [];
+// Community links (Hiro, 2026-09-28), the same two Facebook pages the website
+// game's support panel uses (adventurer/js/ui/support.js). CrazyGames' gameplay
+// rules allow community links on the game menu only, so they live on the pause
+// screen and nowhere else; the End scene only points there. The website's
+// donate link is left out on purpose: it is not a community link. Empty the
+// list and the buttons disappear.
+X.links = [
+  { id: 'hiro', label: 'Hiro on Facebook', url: 'https://www.facebook.com/charles.mcdowell.14268769' },
+  { id: 'narratives', label: 'Neverendingnarratives', url: 'https://www.facebook.com/neverendingnarratives' },
+];
 X.board.note = 'Made the top ten? Send a screenshot of this screen to Hiro on Facebook and your score goes on the permanent board in the next update.';
 X.nameRules = { max: 25, symbols: '#!_-.@$', minLetters: 3, maxConsonants: 3, maxRepeat: 3 };
 X.validName = function (raw) {
