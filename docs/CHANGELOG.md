@@ -15,6 +15,12 @@ of small fixes within a day.
 
 ---
 
+## 2026-09-28 - Expeditions Facebook marketing campaign
+
+- Added marketing/expeditions-facebook-20260928: a new Hiro cover and 70-second 1080 x 1920, 30 fps Facebook Reel. Sequence covers Hiro's entrance, three locations and finishers, travel, all five inn paintings, Alpha/orc bosses, victory and a four-second Facebook end card.
+- Music is the user-selected Cookie Relaxation 2, with no voiceover or game audio. Final MP4 is 25,865,525 bytes. Editable capture/compose scripts, exact image prompt, capture report, verification manifest, viewing page and suggested post are included. Upload copies saved to Downloads/Adventurer-Expeditions-Marketing-20260928.
+- Captures stage existing runtime animations in an isolated browser; no gameplay code changes. QA: zero capture page errors; video verified as H.264/AAC 1080 x 1920 at 30 fps, browser duration 70 seconds; Chrome playback at 390 x 844; sampled action/inn/end-card frames inspected; audio maximum -3.8 dBFS; marketing files confirmed excluded from game export. No deployment or Facebook publication.
+
 ## 2026-09-28 - Approved inn wardrobe edits integrated
 
 - Replaced two active paintings with approved revisions: warrior collar/undershirt, barmaid lidded empty tankards and dark hose; mage closed robe/full skirt and dancer full-length blue dress.
