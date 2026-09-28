@@ -23,6 +23,12 @@ Presentation browser checks and focused unit checks passed; startup 14.74 MB aft
 
 ---
 
+## 2026-09-28 - Level tags removed from the actors
+
+The "[Lvl.N]" tag over Hiro and every monster is gone (Hiro: "meaningless"). The plate is now the health bar alone, moved up 8 px so it sits where the tag's bar used to. `Actor.setLevel` still records the level for the clip picker and draws nothing; the HUD and scoring are untouched. File: `js/expedition/actors.js`. Verified in the browser pane against the local server.
+
+---
+
 ## 2026-09-28 - Community links on the pause screen
 
 The End scene promised "Follow Hiro on Facebook and send feedback from the pause menu", and the pause menu had nothing. CrazyGames' gameplay requirements (docs.crazygames.com/requirements/gameplay, read today) forbid cross-promotion but allow community links (Discord, dev website and the like) on the game menu only, provided they do not lead to a playable web version. The pause screen is this game's menu, so it now carries a "Feedback and news" row with two buttons, the same two Facebook pages the website game's support panel uses (`adventurer/js/ui/support.js`): Hiro on Facebook and Neverendingnarratives. The website's donate link is deliberately not carried over; it is not a community link. Note that the website game's own support panel switches itself off entirely on a CrazyGames build, so this is the first time these links appear in the portal build.

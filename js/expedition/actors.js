@@ -1,6 +1,6 @@
 // Adventurer: Expeditions — actors on the foreground band.
 // An Actor owns one sprite (a sheet, or a one-frame placeholder), its shadow,
-// floating level tag + HP bar, and status badges. It plays named clips and
+// floating HP bar (no level tag since 2026-09-28), and status badges. It plays named clips and
 // resolves a promise after the clip's recovery. With painted sheets the clip is a
 // frame animation with tagged contact frames; until then, the same clip names
 // are performed as motion on the placeholder (the website's portrait-motion
@@ -85,12 +85,12 @@ class Actor {
   buildPlates(scene) {
     const w = 132, top = -this.height - 42;
     const plate = scene.add.container(0, top);
-    this.tag = T().text(scene, 0, 0, '[Lvl.' + this.level + ']', { size: 12, ox: 0.5, color: '#f4eee0', display: true });
-    this.tag.setStroke('#000000', 3);
-    this.barBg = scene.add.rectangle(0, 18, w, 9, 0x1a1512, 0.9).setStrokeStyle(1, 0x000000, 0.9);
-    this.bar = scene.add.rectangle(-w / 2 + 1, 18, w - 2, 7, this.side === 'a' ? 0x62c95a : 0xd9433b).setOrigin(0, 0.5);
-    this.barHurt = scene.add.rectangle(-w / 2 + 1, 18, w - 2, 7, 0xf4eee0, 0.8).setOrigin(0, 0.5);
-    plate.add([this.tag, this.barBg, this.barHurt, this.bar]);
+    // No level tag (Hiro, 2026-09-28): the number meant nothing to the player.
+    // The plate is the health bar alone, sitting where the tag's bar used to.
+    this.barBg = scene.add.rectangle(0, 10, w, 9, 0x1a1512, 0.9).setStrokeStyle(1, 0x000000, 0.9);
+    this.bar = scene.add.rectangle(-w / 2 + 1, 10, w - 2, 7, this.side === 'a' ? 0x62c95a : 0xd9433b).setOrigin(0, 0.5);
+    this.barHurt = scene.add.rectangle(-w / 2 + 1, 10, w - 2, 7, 0xf4eee0, 0.8).setOrigin(0, 0.5);
+    plate.add([this.barBg, this.barHurt, this.bar]);
     this.plate = plate;
     this.root.add(plate);
     this.refresh(true);
@@ -148,7 +148,7 @@ class Actor {
     if (b) this.scene.tweens.add({ targets: b, scale: 1.45, duration: 90, yoyo: true });
   }
 
-  setLevel(n) { this.level = n; this.tag.setText('[Lvl.' + n + ']'); }
+  setLevel(n) { this.level = n; }   // kept for the clip picker; nothing is drawn
 
   // ---------------------------------------------------------------- geometry
   get x() { return this.root.x; }
