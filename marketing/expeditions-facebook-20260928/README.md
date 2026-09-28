@@ -12,6 +12,8 @@ Made September 28, 2026. User-requested 70-second vertical Facebook Reel and cov
 
 Hiro draws his katana, fights wolves, and performs his overhead finisher. Forest travel leads into serpent and moss-giant combat in the swamp, then city traversal, goblin and spider finishers. A five-scene inn montage shows Hiro alone, with Bram, mage/dancer, warrior/barmaid and ranger. The finale shows the Alpha and orc boss takedowns, Hiro's victory/sheathing animation, then fades to the cover with Neverendingnarratives branding and `facebook.com/neverendingnarratives`.
 
+Revision 2: removed all added titles, descriptive captions and branding during gameplay. The footage, edit timing, music and final cover/Facebook end card are unchanged. In-game interface text remains part of the actual capture.
+
 Audio uses only the first 70 seconds of the user-selected `cookie relaxation 2.wav`, normalized toward -16 LUFS with an opening fade and two-second closing fade. No voiceover and no captured game audio.
 
 ## Production and provenance

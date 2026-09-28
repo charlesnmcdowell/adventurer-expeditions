@@ -15,6 +15,10 @@ of small fixes within a day.
 
 ---
 
+## 2026-09-28 - Facebook Reel: gameplay and music only
+
+Removed all added text overlays during footage, including the descriptive chapter captions. Preserved all shots, music, 70-second duration and final four-second cover/Facebook end card. Updated the marketing compose script, video, preview cache version, README and verification report; refreshed Downloads copies. Verified fully transparent gameplay overlays, sampled output frame, and final video stream/duration checks. No runtime changes.
+
 ## 2026-09-28 - Expeditions Facebook marketing campaign
 
 - Added marketing/expeditions-facebook-20260928: a new Hiro cover and 70-second 1080 x 1920, 30 fps Facebook Reel. Sequence covers Hiro's entrance, three locations and finishers, travel, all five inn paintings, Alpha/orc bosses, victory and a four-second Facebook end card.

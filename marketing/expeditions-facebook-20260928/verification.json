@@ -1,12 +1,13 @@
 {
   "file": "Adventurer_Expeditions_Facebook_Reel_70s.mp4",
   "duration": "70.022000",
-  "bytes": 25865525,
-  "sha256": "44bbaa09fc3e0f6887dc480eecff37e0d4c1851c48274af96eb5d5d23e24b88a",
+  "bytes": 25552422,
+  "sha256": "89b2093dbbfcf5655077ffe41dcac7dc9e5d6a440342249a6791a9aa2addf93b",
   "music": "C:\\Users\\charl\\OneDrive\\Documents\\TTRPG\\Kenji\\music\\cookie relaxation 2.wav",
   "musicStartSeconds": 0,
   "voiceover": false,
   "gameAudio": false,
+  "gameplayTextOverlays": false,
   "cuts": [
     [
       "01-hiro-intro",
@@ -160,7 +161,7 @@
         "start_time": "0.000000",
         "duration_ts": 1075200,
         "duration": "70.000000",
-        "bit_rate": "2749548",
+        "bit_rate": "2713767",
         "bits_per_raw_sample": "8",
         "nb_frames": "2100",
         "disposition": {
@@ -234,8 +235,8 @@
       "format_long_name": "QuickTime / MOV",
       "start_time": "0.000000",
       "duration": "70.022000",
-      "size": "25865525",
-      "bit_rate": "2955131",
+      "size": "25552422",
+      "bit_rate": "2919359",
       "probe_score": 100,
       "tags": {
         "major_brand": "isom",

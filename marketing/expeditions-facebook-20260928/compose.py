@@ -49,13 +49,7 @@ def overlay(name,caption,end=False):
   center(d,1440,'NEVERENDINGNARRATIVES',40,'#edcd87',True)
   center(d,1508,'Follow the adventure on Facebook',38,'#fff6df')
   center(d,1570,'facebook.com/neverendingnarratives',38,'#ffffff',True)
- else:
-  center(d,198,'ADVENTURER',62,'#f2d08a',True,True)
-  center(d,280,'EXPEDITIONS',72,'#fff0c7',True,True)
-  d.line((220,393,860,393),fill=(222,188,113,190),width=2)
-  center(d,1340,caption,47,'#fff1d2',True)
-  center(d,1450,'NEVERENDINGNARRATIVES',31,'#d9bd84',True)
-  center(d,1504,'facebook.com/neverendingnarratives',29,'#e8e0ef')
+ # Gameplay is footage and music only. Branding is confined to the end card.
  path=WORK/(name+'-overlay.png');im.save(path);return path
 
 def encode(cut):
@@ -98,7 +92,7 @@ def main():
  assert len(probe['streams'])==2
  report={'file':OUT.name,'duration':probe['format']['duration'],'bytes':OUT.stat().st_size,
   'sha256':hashlib.sha256(OUT.read_bytes()).hexdigest(),'music':str(MUSIC),'musicStartSeconds':0,
-  'voiceover':False,'gameAudio':False,'cuts':CUTS,'endcardSeconds':4,'probe':probe}
+  'voiceover':False,'gameAudio':False,'gameplayTextOverlays':False,'cuts':CUTS,'endcardSeconds':4,'probe':probe}
  (ROOT/'verification.json').write_text(json.dumps(report,indent=2),encoding='utf-8')
  print('VERIFIED',OUT,OUT.stat().st_size,flush=True)
 if __name__=='__main__':main()
