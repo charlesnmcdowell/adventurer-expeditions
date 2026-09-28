@@ -192,18 +192,18 @@ class Actor {
       if (alpha) { sheet = alpha; opts.sheet = alpha; }
     }
     if (clip === 'finisher' && (X.monsterActors || []).includes(drawnFrom)) {
-      if (opts.finisherVariant == null) {
-        opts.finisherVariant = (this._pairSequence || 0) % 2;
-        this._pairSequence = (this._pairSequence || 0) + 1;
-      }
-      const id = 'hiro-finisher-' + (opts.finisherVariant + 1);
-      if (sheet.clips[id] && this.canPair(sheet.clips[id], clip, opts)) return id;
+      // Round robin per creature (Hiro, 2026-09-28): the next kill on this
+      // painted set gets the move it did not get last time. An explicit
+      // finisherVariant (tests, the dev panel) still wins.
+      const order = opts.finisherVariant != null ? ['hiro-finisher-' + (opts.finisherVariant + 1)]
+        : (X.finisherOrder ? X.finisherOrder(drawnFrom, ['hiro-finisher-1', 'hiro-finisher-2']) : ['hiro-finisher-1', 'hiro-finisher-2']);
+      for (const id of order) if (sheet.clips[id] && this.canPair(sheet.clips[id], clip, opts)) { if (X.finisherLast) X.finisherLast[drawnFrom] = id; return id; }
     }
     const available = sheet.clips, level = Math.max(1, Math.min(3, opts.level || 1));
     const aliases = {
       enter: ['walk', 'run', 'approach', 'idle'], leap: ['approach', 'leap', 'attack'], short_draw: ['short-draw', 'draw'],
       slash: ['slash-l' + level, 'slash-l1', 'attack', 'attack-light', 'bite'],
-      slash_wide: ['slash-l3', 'slash-l1', 'slash', 'attack'],
+      slash_wide: ['slash-l3', 'slash-l1', 'slash', 'attack'], lash: ['lash', 'attack'],
       hit_short: ['hit-short', 'hit-heavy', 'hit'], stagger: ['hit-short', 'hit-heavy', 'hit'],
       bite_grip: [opts.arm ? 'bite-arm-paired' : 'bite-leg-paired', opts.arm ? 'bite-arm' : 'bite-leg', 'bite-paired', 'hit-short', 'hit'],
       victory: ['victory-sheath', 'victory'], kneel: ['kneel', 'down'],
@@ -211,17 +211,21 @@ class Actor {
       stance: ['intercept', 'cast', 'counter-l' + Math.max(2, level)],
       cast: ['cast', 'attack', 'aura-l1'], roll: ['roll', 'overshoot-land', 'land-tumble', 'hit-short'],
       finisher: ['finisher-l' + level + '-paired', 'finisher-' + (opts.target && ['wolf', 'boar'].includes(opts.target.kind) ? 'quadruped' : opts.target && opts.target.kind), 'slash-l' + level, 'slash-l1', 'slash', 'attack'],
-      bite: ['bite', 'attack', 'hit'], charge: ['charge', 'run', 'leap'], pounce: ['pounce', 'approach-leap', 'leap', 'attack'],
+      bite: ['bite', 'attack', 'hit'], charge: ['charge', 'run', 'leap', 'attack'], pounce: ['pounce', 'approach-leap', 'leap', 'attack'],
       land_tumble: ['land-tumble', 'down', 'hit', 'idle'], overshoot_land: ['overshoot-land', 'land-tumble', 'hit', 'down'],
       land_beside: ['land-beside', 'land-tumble', 'hit', 'idle'], lash_back: ['recover', 'idle'],
       down_fade: ['down-fade', 'down'], enrage: ['enrage', 'idle'], stalk: ['stalk', 'idle'],
     };
-    const candidates = [clip, X.clipFor ? X.clipFor(clip, opts) : null, ...(aliases[clip] || [])];
+    // X.clipFor may answer with a list (the finisher families, in round-robin order).
+    const candidates = [clip].concat(X.clipFor ? (X.clipFor(clip, opts) || []) : [], aliases[clip] || []);
     for (const candidate of candidates) {
       if (!candidate) continue;
       for (const id of [candidate, candidate.replace(/_/g, '-'), candidate.replace(/-/g, '_')]) {
         const c = available[id];
-        if (c && (!c.paired || this.canPair(c, clip, opts))) return id;
+        if (c && (!c.paired || this.canPair(c, clip, opts))) {
+          if (clip === 'finisher' && c.paired && X.finisherLast) X.finisherLast[drawnFrom || (opts.target && opts.target.kind) || 'any'] = id;
+          return id;
+        }
       }
     }
     // Missing painted variants stay painted; do not deform a whole body as a
@@ -438,6 +442,13 @@ class Actor {
           if (opts.from != null) this.root.x = opts.from;
           const to = opts.x != null ? opts.x : clip === 'enter' ? this.home.x : this.root.x + 200;
           move(to, opts.duration || 700, 'Sine.InOut', () => { if (opts.thenIdle !== false) this.idle(); finish(false); });
+        } else if (opts.onContact && /^(slash|slash_wide|riposte|finisher|bite|lash|charge|pounce|leap|cast)$/.test(clip)) {
+          // An attack with no painted clip of its own (Hiro, 2026-09-28: a
+          // mob must never die to an invisible animation). Hold the pose,
+          // land the hit after a readable beat, then recover, instead of
+          // firing contact the instant the fallback idle starts.
+          const after = (ms, fn) => { if (scene.time && scene.time.delayedCall) scene.time.delayedCall(ms, () => { if (live()) fn(); }); else fn(); };
+          after(220, () => { opts.onContact(); if (!released && opts.onRelease) { released = true; opts.onRelease(); } after(200, () => finish(false)); });
         } else {
           if (opts.onContact) opts.onContact();
           if (!released && opts.onRelease) opts.onRelease();
@@ -476,6 +487,15 @@ class Actor {
 // ---------------------------------------------------------------- placeholder motion
 // Each entry: function(scene, opts, done). Uses only the placeholder image;
 // replaced by sheet clips of the same name when painted frames land.
+// Finisher round robin (Hiro, 2026-09-28): the last paired finisher played
+// against each painted set, and a family's clip list rotated so the move
+// after the last one comes first. Nothing repeats back to back on a creature.
+X.finisherLast = X.finisherLast || {};
+X.finisherOrder = function (family, list) {
+  const last = X.finisherLast[family], i = list.indexOf(last);
+  return i < 0 ? list.slice() : list.slice(i + 1).concat(list.slice(0, i + 1));
+};
+
 const P = Actor.PLACEHOLDER = {};
 const ms = (scene, t) => new Promise(r => scene.time.delayedCall(t, r));
 

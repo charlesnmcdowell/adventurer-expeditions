@@ -71,6 +71,13 @@ async function test(name, fn) { await fn(); passed++; console.log('ok ' + name);
     r.cycles.city = 1; assert.equal(X.InnArt.variant(r), 'inn-hiro-warrior');
     r.cycles.city = 2; assert.equal(X.InnArt.variant(r), 'inn-hiro-ranger');
     r.cycles.city = 3; assert.equal(X.InnArt.variant(r), 'inn-hiro-solo');
+    // Round robin with memory (2026-09-28): the same visit keeps its painting;
+    // a new run whose first visit would repeat the last painting shown skips it.
+    assert.equal(X.InnArt.variant(r), 'inn-hiro-solo', 'a reload of the same visit keeps the painting');
+    const fresh = { roster: [], field: [], seed: 99, cycles: {} };
+    assert.equal(X.InnArt.variant(fresh), 'inn-hiro-bram', 'a fresh run after a solo inn does not open on solo again');
+    assert.equal(X.InnArt.variant(fresh), 'inn-hiro-bram');
+    fresh.cycles.rain = 1; assert.equal(X.InnArt.variant(fresh), 'inn-hiro-mage', 'the next visit skips the bram it just showed');
   });
   await test('party changes replace effects and masks without accumulating listeners', () => {
     const s = scene(), v = X.InnArt.paint(s, solo), previous = v.effects.slice(), mask = previous[2].mask;

@@ -31,9 +31,22 @@ Art.variant = run => {
   // Derive it from completed quests: reloads keep the same painting and no
   // extra persistent counter can accidentally change the party or save format.
   const clears = Object.values(run.cycles || {}).reduce((n, v) => n + (Number.isFinite(v) ? Math.max(0, Math.floor(v)) : 0), 0);
-  const variant = ['inn-hiro-solo','inn-hiro-bram','inn-hiro-mage','inn-hiro-warrior','inn-hiro-ranger'][clears % 5];
+  const list = ['inn-hiro-solo', 'inn-hiro-bram', 'inn-hiro-mage', 'inn-hiro-warrior', 'inn-hiro-ranger'];
+  let variant = list[clears % list.length];
+  // Round robin with memory (Hiro, 2026-09-28): the painting shown at the
+  // last visit is remembered outside the save, so a new run's first visit,
+  // or a restart, never repeats the painting the player just saw. The same
+  // visit (a reload) keeps its painting.
+  const visit = String((run.seed != null ? run.seed : 0)) + ':' + clears;
+  const last = X.Run && X.Run.pref ? X.Run.pref('inn') : Art._lastShown;
+  if (last && last.visit === visit && list.includes(last.variant)) variant = last.variant;
+  else if (last && last.variant === variant) variant = list[(list.indexOf(variant) + 1) % list.length];
   const companion = X.Campaign.owns(run, 'bram') && X.Campaign.fielded(run, 'bram') && X.Campaign.recruitReady('bram');
-  return companion ? 'inn-hiro-bram' : variant;
+  const chosen = companion ? 'inn-hiro-bram' : variant;
+  // Remember the rotation's pick, not the companion override, so a visit's painting is stable.
+  const record = { visit, variant };
+  if (X.Run && X.Run.pref) X.Run.pref('inn', record); else Art._lastShown = record;
+  return chosen;
 };
 
 Art.paint = function (scene, run) {

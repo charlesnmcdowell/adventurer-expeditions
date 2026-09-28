@@ -319,8 +319,11 @@ X.clipFor = function (clip, opts) {
       plant: ['plant-stem-cut-paired', 'plant-vine-pin-paired', 'plant-crosscut-paired'],
     };
     const tgt = opts && opts.target;
-    const family = finishers[X.paintedActorOf(tgt) || (tgt && tgt.kind)];
-    return family ? family[lvl - 1] : 'slash-l' + lvl;
+    const key = X.paintedActorOf(tgt) || (tgt && tgt.kind), family = finishers[key];
+    // Every move of the family, the one after the last played first (Hiro,
+    // 2026-09-28: no finisher repeats back to back on a creature). Used to be
+    // one move per skill level; the arcade has one level.
+    return family ? (X.finisherOrder ? X.finisherOrder(key, family) : family.slice()) : 'slash-l' + lvl;
   }
   const M = { enter: 'walk', walk: 'walk', short_draw: 'short-draw', hit_short: 'hit-short', stagger: 'hit-short', victory: 'victory-sheath',
     slash: 'slash-l' + lvl, slash_wide: 'slash-l3', aura: 'aura-l' + lvl, stance: 'counter-l' + Math.max(2, lvl) };

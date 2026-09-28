@@ -31,6 +31,20 @@ Presentation browser checks and focused unit checks passed; startup 14.74 MB aft
 
 ---
 
+## 2026-09-28 - Finishers and inn paintings round robin; no instant hits from a missing clip
+
+Three requests from Hiro's playtest.
+
+**Finishing moves rotate per creature.** Hiro's paired finisher against a painted set now cycles through that set's moves, so the same move never plays twice in a row on the same creature. `X.finisherLast` (per painted set) and `X.finisherOrder` in `js/expedition/actors.js`; `X.clipFor('finisher')` in `data.js` now returns the family's whole list in rotation order instead of one move per skill level (the arcade has one level, so wolf, plant and Alpha kills had been playing their first move every time). The seven v3 monsters rotate their two moves per set instead of one global alternation across all monsters. An explicit `finisherVariant` still wins. The rotation lives in memory for the session, not in the save.
+
+**Inn paintings never repeat back to back.** `InnArt.variant` keeps the visit-by-visit cycle (solo, Bram, mage, warrior, ranger by quests cleared) and now remembers the last painting shown outside the save (`Run.pref('inn')`, key `adventurer_expeditions_prefs_v1`), so a new run's first visit, or a restart, skips the painting the player just saw; a reload of the same visit keeps its painting. New `Run.pref` helper in `run.js`.
+
+**Damage lands after the animation, always.** Audit: every attack clip in every shipped atlas carries contact frames, damage numbers and health bars update at the contact frame, and deaths play after the attacker's recovery, so the ordinary path was already right. The gap was the fallback: an attack the actor has no painted clip for (a boar's charge or a lurker's lash asked of a monster sheet that only has `attack`) fell back to the idle loop and fired contact the instant it started, an invisible hit. Now `charge` and `lash` alias to `attack`, and any offensive clip that still lands on the idle fallback holds 220 ms before contact and 200 ms after, so a hit is never instantaneous.
+
+Tests: `test/actor_animation_lifecycle.js` (rotation per family, the delayed fallback contact; the v2 tier test now expects rotation) 27/27; `test/inn_art_lifecycle.js` 6/6. `npm test` still stops at the known one-turn tutorial assertion; every other suite in the chain passes individually except `ship_budget_contract`, noted below.
+
+---
+
 ## 2026-09-28 - Level tags removed from the actors
 
 The "[Lvl.N]" tag over Hiro and every monster is gone (Hiro: "meaningless"). The plate is now the health bar alone, moved up 8 px so it sits where the tag's bar used to. `Actor.setLevel` still records the level for the clip picker and draws nothing; the HUD and scoring are untouched. File: `js/expedition/actors.js`. Verified in the browser pane against the local server.

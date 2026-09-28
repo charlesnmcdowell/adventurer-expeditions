@@ -80,6 +80,33 @@ test('destroy settles active playback and removes listeners', async () => {
   const a = actor(); let settled = false; a.play('slash').then(() => { settled = true; }); a.destroy(); await tick();
   assert.equal(settled, true); assert.equal(a.img.listenerCount('animationupdate'), 0); assert.equal(a.img.listenerCount('animationcomplete'), 0);
 });
+test('finishers rotate per creature family: never the same move twice in a row', () => {
+  X.finisherLast = {};
+  const fam = ['wolf-a-paired', 'wolf-b-paired', 'wolf-c-paired'];
+  const savedClipFor = X.clipFor;
+  X.clipFor = (c, o) => c === 'finisher' ? X.finisherOrder('wolf', fam) : savedClipFor(c, o);
+  try {
+    const a = actor(Object.fromEntries(fam.map(id => [id, clip(id, { paired: true, opponentKinds: ['wolf'] })])));
+    const target = { alive: true, kind: 'wolf', root: { visible: true, setVisible() {} }, img: {}, unit: { ch: {} } };
+    const seen = [];
+    for (let i = 0; i < 6; i++) seen.push(a.sheetClipFor('finisher', { target, lethal: true }));
+    assert.deepEqual(seen, ['wolf-a-paired', 'wolf-b-paired', 'wolf-c-paired', 'wolf-a-paired', 'wolf-b-paired', 'wolf-c-paired']);
+    for (let i = 1; i < seen.length; i++) assert.notEqual(seen[i], seen[i - 1]);
+    // Another family keeps its own place in the rotation.
+    X.finisherLast.plant = 'plant-b';
+    assert.deepEqual(X.finisherOrder('plant', ['plant-a', 'plant-b', 'plant-c']), ['plant-c', 'plant-a', 'plant-b']);
+    assert.deepEqual(X.finisherOrder('orc', ['hiro-finisher-1', 'hiro-finisher-2']), ['hiro-finisher-1', 'hiro-finisher-2']);
+  } finally { X.clipFor = savedClipFor; X.finisherLast = {}; }
+});
+test('an attack with no painted clip still lands its hit after a visible beat, never instantly', async () => {
+  const a = actor(); const fired = [];
+  a.scene.time = { delayedCall: (ms, fn) => { fired.push(ms); setTimeout(fn, 0); } };
+  let contact = false;
+  const p = a.play('charge', { target: { alive: true, kind: 'hero', root: { x: 400, visible: true, setVisible() {} }, height: 300 }, onContact: () => { contact = true; } });
+  assert.equal(contact, false, 'contact is not fired the instant the fallback idle starts');
+  await p;
+  assert.equal(contact, true); assert.deepEqual(fired, [220, 200]);
+});
 test('paired finishers require a matching identity and lethal outcome, including early wave kills', async () => {
   const a = actor({ 'finisher-l1-paired': clip('finisher-l1-paired', { paired: true, opponentKinds: ['wolf'], opponentKeys: ['dire_wolf'] }) });
   const target = actor(); target.kind = 'wolf'; target.unit = { ch: { expeditionKey: 'dire_wolf' } };
@@ -121,6 +148,9 @@ test('approved v2 finishers use the right creature and tier, with a live-target 
   vm.runInNewContext(fs.readFileSync(path.join(__dirname, '../js/expedition/data.js'), 'utf8'), live);
   const previous = X.clipFor;
   X.clipFor = live.ADV.Expedition.clipFor;
+  // data.js asks its own X for the rotation; point it at this harness's.
+  live.ADV.Expedition.finisherOrder = (f, l) => X.finisherOrder(f, l);
+  X.finisherLast = {};
   try {
     const sets = { wolf: ['wolf-cleave-paired', 'wolf-pin-paired', 'wolf-rising-cut-paired'],
       plant: ['plant-stem-cut-paired', 'plant-vine-pin-paired', 'plant-crosscut-paired'] };
@@ -131,9 +161,10 @@ test('approved v2 finishers use the right creature and tier, with a live-target 
     for (const [kind, ids] of Object.entries(sets)) {
       const target = actor(); target.kind = kind;
       target.unit = { ch: { expeditionKey: kind === 'wolf' ? 'dire_wolf' : 'thorn_lurker' } };
-      for (let level = 1; level <= 3; level++) {
-        assert.equal(a.sheetClipFor('finisher', { target, level, lethal: true }), ids[level - 1]);
-        const fallback = a.sheetClipFor('finisher', { target, level, lethal: false });
+      // One skill level (arcade): the family's moves rotate kill by kill, none twice in a row.
+      for (let n = 0; n < 4; n++) {
+        assert.equal(a.sheetClipFor('finisher', { target, level: 1, lethal: true }), ids[n % ids.length]);
+        const fallback = a.sheetClipFor('finisher', { target, level: 1, lethal: false });
         assert.equal(a.sheet.clips[fallback].paired, undefined, 'live target must never dissolve');
       }
       target.img.__baseTint = 0x00ff00;

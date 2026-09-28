@@ -38,6 +38,18 @@ Run.save = function (run) {
 
 Run.reset = function () { try { storage().removeItem(X.saveKey); } catch (e) {} return Run.fresh(); };
 
+// Small presentation preferences that outlive a run (which inn painting was
+// shown last), under their own key, never inside the save.
+Run.prefKey = 'adventurer_expeditions_prefs_v1';
+Run.pref = function (name, value) {
+  let all = {};
+  try { all = JSON.parse(storage().getItem(Run.prefKey) || '{}') || {}; } catch (e) { all = {}; }
+  if (value === undefined) return all[name];
+  all[name] = value;
+  try { storage().setItem(Run.prefKey, JSON.stringify(all)); } catch (e) {}
+  return value;
+};
+
 // ---------------------------------------------------------------- high scores
 // Ten rows on this device, newest-below on a tie. Same storage rules as the
 // run: one JSON string under its own key, memory when storage is refused.
