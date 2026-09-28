@@ -27,7 +27,8 @@ Enc.makeHero = function (rng, run) {
   // Arcade (Hiro, 2026-09-27): health carries through the whole run. The
   // engine opens a unit at ch.combatHp when it is set, so a run that has
   // remembered Hiro's health hands it to the next fight here.
-  if (run && Number.isFinite(run.hp)) ch.combatHp = Math.max(1, Math.floor(run.hp));
+  const firstQuest = !!(run && X.tutorialHeals && !(run.questsDone && run.questsDone.length));
+  if (run && Number.isFinite(run.hp) && !firstQuest) ch.combatHp = Math.max(1, Math.floor(run.hp));
   return ch;
 };
 
@@ -134,8 +135,11 @@ Enc.create = function (opts) {
     hero = opts.hero || Enc.makeHero(rng, run);
     if (Enc.isHiro(hero)) hero.expedition = run;      // the shim wraps Hiro alone
     const scale = opts.scale || 1;
+    // A pack of bosses (the loop rules) shares its strength: X.bossShare.
+    const bossCount = encDef.rival ? 0 : encDef.enemies.filter(k => X.enemies[k] && X.enemies[k].boss).length;
+    const share = (X.bossShare && X.bossShare[bossCount]) || 1;
     foes = encDef.rival ? X.Campaign.rival(encDef.rival).members.map((m, i) => Enc.makeRival(rng, encDef.rival, m, i))
-                        : encDef.enemies.map(k => Enc.makeEnemy(rng, k, scale));
+                        : encDef.enemies.map(k => Enc.makeEnemy(rng, k, X.enemies[k] && X.enemies[k].boss ? scale * share : scale));
   } finally { if (nextId != null && A.Character.resetIds) A.Character.resetIds(nextId); }
   for (const c of allies) { c.alive = true; }
   if (Enc.isHiro(hero)) Enc.syncKit(hero, run);

@@ -52,9 +52,17 @@ const OUT = path.join(__dirname, 'reports', 'arcade'); fs.mkdirSync(OUT, { recur
   await page.evaluate(() => { const s = window.__game.scene.getScene('Expedition'); s.tapArrow(); });
   await waitScene('Travel', 30000);
   await waitScene('Expedition', 60000);
-  await page.waitForFunction(() => { const s = window.__game.scene.getScene('Expedition'); return s.enc && s.run.wave === 1 && s.hero.unit && s.hero.unit.maxHp > 1 && s.enc.st.units.includes(s.hero.unit); }, null, { timeout: 60000 });
-  const wave2 = await page.evaluate(() => { const s = window.__game.scene.getScene('Expedition'); return { chp: s.hero.unit.chp, max: s.hero.unit.maxHp, run: s.run.hp }; });
-  check(wave2.chp === afterWave.hp && wave2.chp < wave2.max, 'the next fight opens on the carried health, not full', wave2);
+  await page.waitForFunction(() => { const s = window.__game.scene.getScene('Expedition'); return window.__game.scene.isActive('Expedition') && s.enc && !s.enc.st.over && s.run.wave === 1 && s.hero && s.hero.unit && s.hero.unit.maxHp > 1 && s.enc.st.units.includes(s.hero.unit); }, null, { timeout: 60000 });
+  const wave2 = await page.evaluate(() => { const s = window.__game.scene.getScene('Expedition'); return { chp: s.hero.unit.chp, max: s.hero.unit.maxHp, run: s.run.hp, first: s.run.questsDone.length === 0 }; });
+  check(wave2.first && wave2.chp === wave2.max && wave2.run < wave2.max, 'on the first quest the next fight opens at full health (X.tutorialHeals); the wound stays on the run', wave2);
+  // From the second quest on, health carries: make this the second quest and wound Hiro again.
+  await page.evaluate(() => { const s = window.__game.scene.getScene('Expedition'); s.run.questsDone = ['rain']; s.hero.unit.chp = Math.round(s.hero.unit.maxHp * 0.85); });
+  await page.waitForFunction(() => { const s = window.__game.scene.getScene('Expedition'); return s.enc && s.enc.st.over && s.arrowArmed; }, null, { timeout: 90000 });
+  await page.waitForTimeout(300);
+  await page.evaluate(() => { const s = window.__game.scene.getScene('Expedition'); s.tapArrow(); });
+  await page.waitForFunction(() => { const s = window.__game.scene.getScene('Expedition'); return window.__game.scene.isActive('Expedition') && s.enc && !s.enc.st.over && s.run.wave === 2 && s.hero && s.hero.unit && s.hero.unit.maxHp > 1 && s.enc.st.units.includes(s.hero.unit); }, null, { timeout: 120000 });
+  const wave3 = await page.evaluate(() => { const s = window.__game.scene.getScene('Expedition'); return { chp: s.hero.unit.chp, max: s.hero.unit.maxHp, run: s.run.hp }; });
+  check(wave3.chp === wave3.run && wave3.chp < wave3.max, 'from the second quest the next fight opens on the carried health, not full', wave3);
   // A fall ends the run: wound Hiro to a scratch.
   await page.evaluate(() => { const s = window.__game.scene.getScene('Expedition'); s.run.score = 2345; s.hero.unit.chp = 3; });
   await waitScene('End', 90000);

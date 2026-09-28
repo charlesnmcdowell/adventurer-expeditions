@@ -118,6 +118,18 @@ X.loopBonus = loop => 1 + X.scoring.loopBonus * Math.max(0, (loop || 1) - 1);
 // Rest at the inn (Hiro, 2026-09-27): a full heal for points, the price
 // doubling with every use in the run, never at full health.
 X.rest = { cost: 1000, growth: 2 };
+// Balance pass (2026-09-28, tools/balance_arcade.js). Two knobs, each one
+// line to revert:
+//  - A boss wave with more than one boss scales every boss by bossShare[k]
+//    on top of the loop scale. As rolled at full strength a two-boss wave was
+//    won 40/12/4% (forest/swamp/city) by a player tapping every skill, and a
+//    three-boss wave never; so no run ever saw a fourth playthrough.
+//  - The first quest of a run (the tutorial) opens every fight at full health;
+//    from the second quest on, health carries exactly as designed. A player
+//    who only tapped what the hand asked reached the first boss at ~10 hp and
+//    lost it 57% of the time.
+X.bossShare = { 2: 0.7, 3: 0.5 };
+X.tutorialHeals = true;
 // The high-score board (Hiro, 2026-09-27): ten rows, on this device, under its
 // own key. A name is required and must read like a name — no spaces, starts
 // with a letter, at least three letters and a vowel, no more than three
