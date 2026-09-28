@@ -160,21 +160,20 @@ async function heroAction(scene, hero, g, step) {
   const targetOf = ev => actorOf(scene, ev.uid);
   const hits = g.after.filter(x => x.t === 'damage' && x.tag !== 'dot' && x.by === hero.uid);
   const executes = g.after.filter(x => x.t === 'execute' && x.by === hero.uid);
-  const level = (scene.enc.run.levels[skill] || 1);
+  const level = 1;                               // arcade: one level for every skill
 
   if (skill === 'katana_slash' || skill === 'basic_attack') {
     const first = hits[0] ? targetOf(hits[0]) : actorOf(scene, e.target);
     // A lethal Katana Slash is a normal kill (GDD §7, Hiro round 3): the ordinary
     // slash, then the victim's own death. The finishing move belongs to the
     // Finisher the player tapped, and to nothing else.
-    const clip = level >= 3 && skill === 'katana_slash' ? 'slash_wide' : 'slash';
+    const clip = 'slash';
     const painted = hero.sheetClipFor ? hero.sheetClipFor(clip, { level, target: first, lethal: false }) : null;
     sfx(scene, 'slash', 'use');
-    await hero.play(clip, { target: first, level, lethal: false, hold: level >= 2 ? 200 : 140, onContact: () => {
+    await hero.play(clip, { target: first, level, lethal: false, hold: 140, onContact: () => {
       sfx(scene, 'slash', 'hit');
-      hits.forEach((h, i) => deferImpact(scene, i * 70, () => impact(scene, targetOf(h), h, { arc: level >= 2 ? 0xd9c2ff : 0xe8dfc8, hitStop: i === 0, shake: level >= 3 ? 0.004 : 0, clip: painted })));
+      hits.forEach((h, i) => deferImpact(scene, i * 70, () => impact(scene, targetOf(h), h, { arc: 0xe8dfc8, hitStop: i === 0, clip: painted })));
       if (!hits.length) { const t = first; if (t) { sfx(scene, 'miss', 'miss'); } }
-      if (level >= 2 && first) scene.time.delayedCall(90, () => V().slashArc(scene, first.chest().x + 20, first.chest().y - 10, 0xd9c2ff));
     } });
   } else if (skill === 'god_aura') {
     sfx(scene, 'guard', 'use');

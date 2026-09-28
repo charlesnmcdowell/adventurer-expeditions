@@ -33,21 +33,20 @@ const types={'.js':'text/javascript','.json':'application/json','.webp':'image/w
   const page=await browser.newPage({viewport:{width:1280,height:760}}),errors=[];
   page.on('pageerror',e=>errors.push(String(e.stack||e)));page.on('console',m=>{if(m.type()==='error')errors.push(m.text())});
   await page.goto('http://127.0.0.1:'+server.address().port+'/');await page.waitForFunction(()=>window.ready);
-  const before=await page.evaluate(()=>({ids:Object.keys(testScene.hud.icons),icons:Object.values(testScene.hud.icons).map(c=>({id:c.id,frame:c.art&&c.art.frame.name,width:c.art&&c.art.displayWidth,rect:c.rect,plusRect:c.plusRect})),autoInteractive:testScene.hud.portrait.autoSlashBadge.list.some(o=>o.input),frames:testScene.textures.get('xp_hiro_skill_icons').getFrameNames()}));
+  const before=await page.evaluate(()=>({ids:Object.keys(testScene.hud.icons),icons:Object.values(testScene.hud.icons).map(c=>({id:c.id,frame:c.art&&c.art.frame.name,width:c.art&&c.art.displayWidth,rect:c.rect})),autoInteractive:testScene.hud.portrait.autoSlashBadge.list.some(o=>o.input),frames:testScene.textures.get('xp_hiro_skill_icons').getFrameNames()}));
   assert.deepEqual(before.ids,['finisher','god_aura','counter_attack']);assert.equal(before.autoInteractive,false);assert.equal(before.frames.length,4);
-  for(const i of before.icons){assert.equal(i.frame,i.id);assert.equal(i.width,64);assert.ok(i.rect.w>=48&&i.rect.h>=48&&i.plusRect.w>=48&&i.plusRect.h>=48)}
+  for(const i of before.icons){assert.equal(i.frame,i.id);assert.equal(i.width,64);assert.ok(i.rect.w>=48&&i.rect.h>=48)}
   const overlap=(a,b)=>a.x<b.x+b.w&&a.x+a.w>b.x&&a.y<b.y+b.h&&a.y+a.h>b.y;
-  for(const a of before.icons)for(const b of before.icons)if(a!==b){assert.ok(!overlap(a.rect,b.rect),'main regions overlap');assert.ok(!overlap(a.plusRect,b.rect),'upgrade steals neighbor tap');}
+  for(const a of before.icons)for(const b of before.icons)if(a!==b){assert.ok(!overlap(a.rect,b.rect),'main regions overlap');}
   const center=r=>({x:r.x+r.w/2,y:r.y+r.h/2}),tap=async r=>{const p=center(r);await page.mouse.click(p.x,p.y);};
   const first=before.icons[0];await tap(first.rect);assert.deepEqual(await page.evaluate(()=>calls.skills),['finisher']);
   await page.evaluate(()=>{testScene.hud.gateUntilInspected(testScene.hud.icons.finisher);});
   const p=center(first.rect);await page.mouse.move(p.x,p.y);await page.mouse.down();await page.waitForTimeout(3200);await page.mouse.up();
   assert.equal(await page.evaluate(()=>testScene.hud.info&&testScene.hud.info.id),'finisher');assert.equal(await page.evaluate(()=>testScene.hud.gateActive()),false);assert.equal(await page.evaluate(()=>calls.skills.length),1);
-  await page.evaluate(()=>testScene.hud.closeInfo());await tap(first.plusRect);await page.waitForTimeout(200);
-  const confirm=await page.evaluate(()=>testScene.hud.chip.confirmRect);assert.ok(confirm.h>=48);await tap(confirm);assert.deepEqual(await page.evaluate(()=>calls.upgrades),['finisher']);
-  await page.evaluate(()=>{testScene.run.levels.god_aura=0;testScene.hud.refresh()});
-  const locked=await page.evaluate(()=>({lock:testScene.hud.icons.god_aura.lock.visible,alpha:testScene.hud.icons.god_aura.art.alpha}));assert.equal(locked.lock,true);assert.equal(locked.alpha,.25);
-  await tap(before.icons[1].rect);assert.equal(await page.evaluate(()=>testScene.hud.chip.id),'god_aura');await page.evaluate(()=>testScene.hud.closeChip());
+  await page.evaluate(()=>testScene.hud.closeInfo());
+  // Arcade (2026-09-28): no + badge, no lock, no upgrade chip on an icon; a tap is a request.
+  assert.deepEqual(await page.evaluate(()=>Object.values(testScene.hud.icons).map(c=>[c.plus,c.lock,c.pips,c.plusRect].every(v=>v===undefined))),[true,true,true]);
+  await tap(before.icons[1].rect);assert.deepEqual(await page.evaluate(()=>calls.skills),['finisher','god_aura']);assert.equal(await page.evaluate(()=>testScene.hud.chip),undefined);
   const fallback=await page.evaluate(()=>{const s=testScene,real=s.textures.exists;s.textures.exists=k=>k==='xp_hiro_skill_icons'?false:real.call(s.textures,k);const f=s.hud.buildIcon('finisher',600,620,'active');s.textures.exists=real;const other=s.hud.buildIcon('shield_wall',720,620,'active');return{art:!!f.art,glyph:f.glyph.visible,otherArt:!!other.art,otherGlyph:other.glyph.visible,otherWidth:other.rect.w}});
   assert.deepEqual(fallback,{art:false,glyph:true,otherArt:false,otherGlyph:true,otherWidth:60});
   await page.screenshot({path:path.join(OUT,'hud-icons.png')});assert.deepEqual(errors,[]);

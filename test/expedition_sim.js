@@ -409,10 +409,8 @@ test('score replaces gold: a wave pays from the table, once, and nothing can be 
   // The quest clear pays too, at the loop's rate.
   const before = run.score; const q = Enc.awardQuest(run);
   assert.equal(q.points, S.questClear); assert.equal(run.score, before + S.questClear);
-  // Nothing is for sale.
-  assert.equal(Enc.upgradeCost(run, 'finisher'), null);
-  assert.equal(Enc.canUpgrade(run, 'finisher'), false);
-  assert.equal(Enc.upgrade(run, 'finisher').ok, false);
+  // Nothing is for sale: the purchase API no longer exists.
+  assert.equal(Enc.upgradeCost, undefined); assert.equal(Enc.canUpgrade, undefined); assert.equal(Enc.upgrade, undefined); assert.equal(X.purchasable, undefined);
   for (const id of ['finisher', 'god_aura', 'counter_attack', 'katana_slash']) assert.ok(Enc.owned(run, id), id + ' owned');
   assert.equal(Enc.heroLevel(run), 1, 'the level tag is the playthrough');
   // Rest doubles from 1,000 and is counted per run.

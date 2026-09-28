@@ -54,9 +54,9 @@ class InnScene extends Phaser.Scene {
     this.world = X.Campaign.buildWorld(run);
     this.pill = X.UI.scorePill(this, run.score);
     if (X.slice && X.slice.firstLevelOnly) return this.buildLocked();
-    // Hiro's skills, for levelling: the combat HUD in inn mode (portrait + icons only).
+    // Hiro's skills, shown owned: the combat HUD in inn mode (portrait + icons only).
     this.hud = new X.Hud(this, { run, hero: this.world.hero, portraitKey: 'xp_hiro_face', inn: true,
-      onSkill: () => {}, onUpgrade: id => this.buyUpgrade(id), onArrow: () => {}, onPause: () => {} });
+      onSkill: () => {}, onArrow: () => {}, onPause: () => {} });
     this.hud.refresh();
     // The recruits along the bar.
     X.recruits.forEach((d, i) => this.busts[d.key] = this.bust(d, 470 + i * 118, 600 - (i % 2) * 8));
@@ -79,7 +79,7 @@ class InnScene extends Phaser.Scene {
   buildLocked() {
     const run = this.run;
     this.hud = new X.Hud(this, { run, hero: this.world.hero, portraitKey: 'xp_hiro_face', inn: true,
-      onSkill: () => {}, onUpgrade: id => this.buyUpgrade(id), onArrow: () => {}, onPause: () => {} });
+      onSkill: () => {}, onArrow: () => {}, onPause: () => {} });
     this.hud.refresh();
     this.world.restoreIds();
     const next = X.Campaign.quest(X.Campaign.nextQuestId(run));
@@ -211,16 +211,6 @@ class InnScene extends Phaser.Scene {
     this.tweens.add({ targets: c, scale: 1.1, duration: 160, yoyo: true });
     this.refreshBusts();
     this.releaseGate({ bought: key });
-    return r;
-  }
-  buyUpgrade(id) {
-    if (!this.isPortalReady()) return { ok: false, reason: 'loading' };
-    const r = X.Encounter.upgrade(this.run, id, this.world.hero);
-    if (!r.ok) return r;
-    X.Run.save(this.run);
-    this.hud.setScore(this.run.score, true); this.hud.refresh(); this.refreshBusts();
-    A.VFX.aura(this, 300, 540, X.skillUi(id).color);
-    this.releaseGate({ upgraded: id });
     return r;
   }
 
@@ -457,20 +447,10 @@ class EndScene extends Phaser.Scene {
   }
 }
 
-// ================================================================ GRAVE (shelved, GDD §18)
-// Kept registered so an old save cannot strand; nothing routes here in the loop.
-class GraveScene extends Phaser.Scene {
-  constructor() { super('Grave'); }
-  init(d) { this.opts = d || {}; }
-  isPortalReady() { return false; }
-  create() {
-    this.run = this.opts.run || X.Run.load() || X.Run.fresh();
-    this.run.phase = 'inn'; X.Run.save(this.run);
-    this.scene.start('Inn', { run: this.run, seed: this.opts.seed });
-  }
-}
+// The RPG-era Grave scene is gone (2026-09-28): the arcade save key ignores
+// every older save, so nothing can strand on it, and a fallen run ends on End.
 
-X.InnScene = InnScene; X.TravelScene = TravelScene; X.GraveScene = GraveScene; X.EndScene = EndScene;
-A.ExpeditionInnScene = InnScene; A.ExpeditionTravelScene = TravelScene; A.ExpeditionGraveScene = GraveScene; A.ExpeditionEndScene = EndScene;
-X.portalSceneKeys = ['Expedition', 'Travel', 'Inn', 'Grave'];
+X.InnScene = InnScene; X.TravelScene = TravelScene; X.EndScene = EndScene;
+A.ExpeditionInnScene = InnScene; A.ExpeditionTravelScene = TravelScene; A.ExpeditionEndScene = EndScene;
+X.portalSceneKeys = ['Expedition', 'Travel', 'Inn'];
 })();

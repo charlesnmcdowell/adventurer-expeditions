@@ -287,10 +287,10 @@ test('a tapped Finisher kill plays the finishing move on every victim it downs',
   } finally { X.UI = prev; }
 });
 
-test('a nonlethal tapped finisher preserves tier and cannot embed a dead victim', async () => {
-  const f = recoilFixture(); f.foe.sheet = null; f.scene.enc.run.levels.finisher = 2;
+test('a nonlethal tapped finisher plays at the arcade one level and cannot embed a dead victim', async () => {
+  const f = recoilFixture(); f.foe.sheet = null; f.scene.enc.run.levels.finisher = 2;   // a stale save value: the arcade ignores it
   await X.Beats.play(f.scene, { hero: true, choice: { how: 'request' }, events: [{ t: 'use', uid: 'hero', skillId: 'finisher', target: 'foe' }, { t: 'damage', uid: 'foe', by: 'hero', dmg: 1 }] });
-  assert.equal(f.heroPlayed[0].id, 'finisher'); assert.equal(f.heroPlayed[0].opts.level, 2); assert.equal(f.heroPlayed[0].opts.lethal, false);
+  assert.equal(f.heroPlayed[0].id, 'finisher'); assert.equal(f.heroPlayed[0].opts.level, 1); assert.equal(f.heroPlayed[0].opts.lethal, false);
   assert.equal(f.foe.alive, true); assert.deepEqual(f.played, []);
 });
 

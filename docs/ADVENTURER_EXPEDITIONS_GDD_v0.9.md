@@ -1489,8 +1489,9 @@ has been broken once (18 September, corrected the same day — see the change lo
   owns a copy of is `js/ui/portal.js`, which carries the Expedition scene key.
 - Everything this edition changes lives in `js/expedition/`: `data.js` (rules),
   `shim.js` (the only hooks into shared code), `encounter.js` (the simulation),
-  `heroes.js`, `campaign.js`, `run.js`, `ui_common.js`, `hud.js`, `actors.js`,
-  `beats.js`, `scene.js`, `scenes_town.js`.
+  `campaign.js`, `run.js`, `ui_common.js`, `hud.js`, `actors.js`, `beats.js`,
+  `scene.js`, `scenes_town.js` (`heroes.js`, the RPG hero pick, was deleted
+  2026-09-28).
 - `shim.js` is deliberately tiny: a `SkillSys.manifest` wrapper that fires only
   for an Expedition Hiro, the `expedition_riposte` skill as a new id,
   `BOSS_HIT_PCT` lowered for a solo demo, censorship forced on, and a clean-line
@@ -1868,8 +1869,8 @@ reopen as part of this repair. New v2 art is delivered but not yet intaken.
   Tutorial road → inn → recruit with gold → level Hiro's skills on the HUD →
   travel with banter → three fights with the panorama between → travel → inn →
   the next of four repeatable quests, enemies climbing +30 % per clear. Hero pick,
-  trainer, blacksmith, applications and the grave are gone; `heroes.js` is
-  unloaded, not deleted.
+  trainer, blacksmith, applications and the grave are gone; `heroes.js` was
+  unloaded then, and deleted with the Grave scene in the 2026-09-28 clean-up.
 - The corner control (mute, pause, Start over with confirm) in every scene; the
   defeat card (Again / Back to the inn keeping the gold won).
 - Guidance at the inn per §8: an invitation over every affordable recruit, a hold
@@ -2098,6 +2099,18 @@ foes' busts are baked from the part sheets like the recruits' (new).
 ---
 
 ## 17. Decisions
+
+**2026-09-28 (arcade clean-up).** Hiro asked for the RPG-era leftovers to go.
+Deleted: `heroes.js` (hero pick, trainer, blacksmith; unloaded since v0.8), the
+Grave scene and its route, the skill-upgrade path end to end (purchase API,
+HUD lock/pips/+ badge/upgrade chip, inn and fight `buyUpgrade`), the picked-hero
+HUD branches (Hiro is the only hero), the level-2/3 Katana Slash branches and
+the gold aliases. Kept on purpose, documented as the locked hero-pack path
+(§12c, §18): recruits, companions, rival parties and their tests; Bram's art.
+Still packed but unplayable: Hiro's slash/aura/counter level-2/3 clips in the
+atlas (a re-pack, not a code change). Filesystem: reference photos moved to
+source-art; build tarballs, superseded candidates and 560 MB of old test
+screenshots staged under `../_to_delete/expeditions-cleanup-20260928/`.
 
 **2026-09-28 (balance knobs).** Fable, from `tools/balance_arcade.js`, flagged
 for Hiro's review: boss packs share strength (`X.bossShare` 0.7 for two, 0.5

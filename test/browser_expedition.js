@@ -134,7 +134,6 @@ function serve() {
       continue;
     }
     if (s.scene === 'Travel') { if (s.dialogue) { dialogues++; await page.waitForTimeout(900); if (dialogues <= 6) await shot('travel-dialogue-' + dialogues); await tap({ x: 640, y: 660, w: 0, h: 0 }, 'dialogue'); } continue; }
-    if (s.scene === 'Grave') { if (s.btn) { await tap(s.btn, 'grave → inn'); await page.waitForTimeout(500); } continue; }
     if (s.scene !== 'Expedition' || s.over == null) continue;
     if (s.done && s.replay) { await page.waitForTimeout(400); await tap(s.replay, 'contract done →'); await page.waitForTimeout(600); continue; }
     if (s.defeated) { defeats++; await shot('defeat-' + defeats); await tap(s.defeated, 'again'); await page.waitForTimeout(600); continue; }

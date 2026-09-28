@@ -99,11 +99,10 @@ X.encounters = [
 ];
 
 // Arcade scoring (Hiro, 2026-09-27): score replaces gold. Nothing is bought;
-// every skill is owned from the start (X.purchasable is empty so every path
-// that asks "is it owned" says yes). Points come from one fixed table so two
+// every skill is owned from the start (Enc.owned says yes for anything in
+// X.skills; there is no purchase API). Points come from one fixed table so two
 // players who clear the same fights earn the same score. `loopBonus` is the
 // multiplier step per completed playthrough: loop 2 pays 1.25x, loop 3 1.5x.
-X.purchasable = [];
 // The three tappable skills, in HUD order. Katana Slash is automatic and never shown as a button.
 X.tappable = ['finisher', 'god_aura', 'counter_attack'];
 // The first quest teaches one per fight, in this order (Hiro, 2026-09-27).

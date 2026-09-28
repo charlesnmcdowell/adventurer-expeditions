@@ -372,7 +372,7 @@ UI.reloadFresh = function () {
     if (typeof location !== 'function' && !location.href) return false;
     const u = new URL(location.href);
     u.searchParams.set('fresh', '1');
-    for (const p of ['at', 'gold', 'score', 'seed']) u.searchParams.delete(p);   // a jump must not survive a restart
+    for (const p of ['at', 'score', 'seed']) u.searchParams.delete(p);   // a jump must not survive a restart
     location.replace(u.toString());
     return true;
   } catch (e) { return false; }
@@ -485,7 +485,6 @@ UI.scorePill = function (scene, score) {
   pill.text = text; pill.rect = { x: 24, y: 20, w: 170, h: 40 };
   return pill;
 };
-UI.goldPill = UI.scorePill;
 
 // Baked recruit busts (tools/bake_busts.js → assets/expedition/busts/). Every
 // scene preloads them; installBusts turns each into the same canvas texture the

@@ -5,7 +5,7 @@ const assert = require('node:assert/strict'), fs = require('node:fs'), path = re
   const calls = [];
   const SDK = { init: async () => {}, game: Object.fromEntries(['loadingStart', 'loadingStop', 'gameplayStart', 'gameplayStop'].map(name => [name, () => calls.push(name)])) };
   const context = vm.createContext({
-    ADV: { Release: { target: 'crazygames' }, Expedition: { portalSceneKeys: ['Expedition', 'Travel', 'Inn', 'Grave'] } },
+    ADV: { Release: { target: 'crazygames' }, Expedition: { portalSceneKeys: ['Expedition', 'Travel', 'Inn'] } },
     Phaser: { Scenes: { RUNNING: 5 } }, window: { CrazyGames: { SDK } },
     document: { createElement: () => ({}), head: { append: script => script.onload() } },
     setTimeout, clearTimeout, console,
@@ -23,7 +23,7 @@ const assert = require('node:assert/strict'), fs = require('node:fs'), path = re
   scene.paused = false; portal.sync([scene]); assert.equal(calls.at(-1), 'gameplayStart');
   presented = false; portal.sync([scene]); assert.equal(calls.at(-1), 'gameplayStop');
   const n = calls.length;
-  portal.sync([{ sys: { settings: { key: 'Grave', status: 5 } }, isPortalReady: () => false }]);
+  portal.sync([{ sys: { settings: { key: 'End', status: 5 } }, isPortalReady: () => false }]);
   assert.equal(calls.length, n, 'redirect/loading scenes cannot announce play');
   console.log('portal_readiness: 6 checks passed');
 })().catch(error => { console.error(error); process.exitCode = 1; });

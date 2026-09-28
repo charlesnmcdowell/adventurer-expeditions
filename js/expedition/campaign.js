@@ -1,10 +1,10 @@
-// Adventurer: Expeditions — the loop (GDD v0.8): tutorial → inn → recruit →
-// level a skill → travel → quest → travel → inn → repeat. Hiro is the permanent
-// first member and the only character the player taps; recruits are bought
-// with gold, ship finished, and fight on their own. Four repeatable quests come
-// from plates already in the build, graded to night and given weather.
-// Uses the shipped World / Character / Rel systems for the party so travel
-// banter comes from real relationship tiers, exactly as on the website.
+// Adventurer: Expeditions — the loop (arcade, GDD v0.9 §5.0a): tutorial road →
+// inn → travel → quest → travel → inn, three locations per playthrough, harder
+// each time round. Hiro is the only character the player taps. The recruit,
+// companion and rival-party code below is the locked hero-pack path (GDD §12c,
+// §18): nothing in the arcade reaches it, and it stays so a hero pack can
+// reopen it without a rewrite. Uses the shipped World / Character / Rel systems
+// for the party so travel banter comes from real relationship tiers.
 (function () {
 'use strict';
 const A = ADV, X = A.Expedition;

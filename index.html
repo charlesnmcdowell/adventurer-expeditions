@@ -231,7 +231,6 @@ window.__game = new Phaser.Game({
 });
 window.__game.scene.add('Inn', ADV.ExpeditionInnScene, false);
 window.__game.scene.add('Travel', ADV.ExpeditionTravelScene, false);
-window.__game.scene.add('Grave', ADV.ExpeditionGraveScene, false);
 window.__game.scene.add('End', ADV.ExpeditionEndScene, false);
 window.__game.scene.add('Expedition', ADV.ExpeditionScene, false);
 // Resume where the run left off; a fresh run opens straight into the ambush.
@@ -244,7 +243,7 @@ if (params.get('at') === 'inn') {
   run = ADV.Expedition.Dev.innRun(params.has('score') ? Number(params.get('score')) : params.has('gold') ? Number(params.get('gold')) : 1500);
 }
 const phase = run ? run.phase : 'quest';
-const start = phase === 'inn' ? 'Inn' : phase === 'travel' ? 'Travel' : phase === 'grave' ? 'Grave' : phase === 'end' ? 'End' : 'Expedition';
+const start = phase === 'inn' ? 'Inn' : phase === 'travel' ? 'Travel' : phase === 'end' ? 'End' : 'Expedition';
 window.__game.scene.start(start, { seed, fresh: params.has('fresh'), run: run || undefined, leg: run && run.travelLeg });
 // Start over reloads with ?fresh=1, so take it back out of the address bar once
 // it has done its job: otherwise every later refresh would wipe the run too.

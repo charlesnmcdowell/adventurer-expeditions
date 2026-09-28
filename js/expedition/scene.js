@@ -70,7 +70,6 @@ class ExpeditionScene extends Phaser.Scene {
     this.hud = new X.Hud(this, {
       run: this.run, hero: this.world.hero, portraitKey: this.hero.faceKey,
       onSkill: id => this.tapSkill(id),
-      onUpgrade: id => this.buyUpgrade(id),
       onArrow: () => this.tapArrow(),
       onPause: () => this.togglePause(),
     });
@@ -216,20 +215,6 @@ class ExpeditionScene extends Phaser.Scene {
     }
   }
   tapFinisher() { this.tapSkill('finisher'); }
-
-  buyUpgrade(id) {
-    const r = X.Encounter.upgrade(this.run, id, this.world.hero);   // arcade: always refused, nothing to buy
-    if (!r.ok) return r;
-    X.Run.save(this.run);
-    this.hud.setScore(this.run.score, true);
-    this.hud.refresh();
-    this.hero.setLevel(X.Encounter.heroLevel(this.run));
-    A.VFX.aura(this, this.hero.x, this.hero.y - this.hero.height * 0.5, X.SKILL_UI[id].color);
-    this.hero.flash(0xffffff);
-    this.hud.setSkillStates(X.Encounter.skillStates(this.enc));
-    this.hud.releaseGate({ tapped: true, upgraded: id });
-    return r;
-  }
 
   tapArrow() {
     if (!this.arrowArmed) return;

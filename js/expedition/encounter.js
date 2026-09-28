@@ -124,7 +124,7 @@ Enc.makeRival = function (rng, rivalKey, m, i) {
 };
 
 // ---------------------------------------------------------------- encounter
-// run: { levels:{skill:level}, gold, wave } — shared with the HUD/save.
+// run: { levels:{skill:1}, score, hp, wave } — shared with the HUD/save.
 Enc.create = function (opts) {
   const encDef = typeof opts.encounter === 'string' ? ((X.encounterDefs && X.encounterDefs[opts.encounter]) || X.encounters.find(e => e.id === opts.encounter)) : opts.encounter;
   if (!encDef) throw new Error('Expedition: unknown encounter');
@@ -185,7 +185,6 @@ Enc.lost = enc => !!enc.st.over && !Enc.won(enc);
 // usable then; it never adds a turn, never bypasses cooldown or targeting.
 Enc.skillState = function (enc, skillId) {
   const u = Enc.heroUnit(enc);
-  if (Enc.isHiro(enc.hero) && X.purchasable.includes(skillId) && !(enc.run.levels[skillId] > 0)) return { ready: false, reason: 'locked' };
   if (!enc.hero.actives.some(a => a.skillId === skillId)) return { ready: false, reason: 'locked' };
   if (!u || u.downed || enc.st.over) return { ready: false, reason: 'over' };
   // Recovery is wall-clock now that skills fire between turns (Hiro,
@@ -481,16 +480,12 @@ Enc.awardQuest = function (run) {
   return { points, score: run.score };
 };
 
-// Nothing is bought any more (arcade): every skill in X.skills is owned, and
-// the purchase API answers "no" so any old caller stays harmless.
-Enc.upgradeCost = function () { return null; };
-Enc.owned = function (run, skillId) { return !!X.skills[skillId] && !X.purchasable.includes(skillId); };
+// Arcade: every skill in X.skills is owned. There is no purchase API.
+Enc.owned = function (run, skillId) { return !!X.skills[skillId]; };
 // Hero level tag: the playthrough the run is on.
 Enc.heroLevel = function (run) { return Math.max(1, (run && run.loop) || 1); };
-Enc.canUpgrade = function () { return false; };
-Enc.upgrade = function () { return { ok: false, reason: 'arcade' }; };
 
-// Between encounters: hostile effects cleared, health restored, gold/levels kept.
+// Between encounters: hostile effects cleared; health carries on the run.
 Enc.restore = function (hero) {
   hero.bonusStats = hero.bonusStats || { hp: 0, atk: 0, def: 0, spd: 0 };
   hero.finisherGains = 0;

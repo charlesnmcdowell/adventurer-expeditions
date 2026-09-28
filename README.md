@@ -1,10 +1,12 @@
 # Adventurer: Expeditions (CrazyGames edition)
 
-A separate build of Adventurer for CrazyGames. Hiro starts in a guided road
-ambush, earns gold and unlocks skills during the quest. The current first-road
-slice ends at the animated inn with Replay; later quests and recruitment stay
-locked while the opening is tested. Fighting is automatic; players tap their
-purchased skills and buy upgrades.
+A separate build of Adventurer for CrazyGames, played as an arcade run: Hiro
+starts in a guided road ambush that teaches his three skills, then loops the
+forest, swamp and city, harder each playthrough, scoring points until he falls.
+Every skill is owned from the start at one level; nothing is bought. Fighting is
+automatic; the player taps Finisher, God Aura and Counter Attack. A run ends on
+the End scene with a top-ten board. Recruitment and companions stay locked for a
+later hero pack.
 
 Approved Astra v2 movement, finishers, idle, inn and icons are integrated.
 [Current integration and tests](docs/ASTRA_V2_INTEGRATION_20260920.md).
@@ -32,8 +34,8 @@ printed by the server.
 
 - `?fresh=1` wipes this edition's save (key: `adventurer_expeditions_loop_v1`)
 - `&seed=N` makes the fight repeatable
-- Hiro is permanent. Bram is the only art-ready companion; the first-road slice
-  keeps new recruitment locked. Other recruits remain unavailable.
+- Hiro is permanent and alone. Bram's art stays on disk as the hero-pack test
+  fixture; recruitment is locked in the arcade.
 
 ## Tests
 
@@ -74,7 +76,7 @@ Run browser checks after changing art. Review shared-file imports with
 ## Layout
 
     index.html            entry (the original's data+core script block, a UI subset, then js/expedition/*)
-    js/expedition/        quests, saves, recruitment, actors, combat presentation, HUD, inn and travel
+    js/expedition/        quests and the loop, saves and the board, actors, combat presentation, HUD, inn, travel, End
     js/data, js/core      reused engine copies (review changes; do not alter the original for offshoot-only work)
     js/ui/                synced UI helpers + this folder's portal.js
     assets/, audio/, lib/ synced subset actually used by the demo

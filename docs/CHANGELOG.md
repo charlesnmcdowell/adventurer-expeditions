@@ -31,6 +31,24 @@ Presentation browser checks and focused unit checks passed; startup 14.74 MB aft
 
 ---
 
+## 2026-09-28 - Arcade clean-up: RPG-era code and files removed
+
+Hiro asked for a refactor and a file-system clean-up of what no longer fits the arcade. Rule applied: delete what nothing reaches and nothing on the roadmap wants; keep what the GDD marks shelved for the hero-pack updates (§12c, §18) and say so in the code.
+
+**Deleted from the code.**
+- `js/expedition/heroes.js`: the RPG hero pick, trainer and blacksmith, unloaded since v0.8 and referenced by nothing.
+- The Grave scene (`scenes_town.js`), its registration and phase route in `index.html`, and its portal key. The arcade save key ignores every older save, so nothing can strand there; a fallen run ends on End.
+- The skill-upgrade path end to end: `Enc.upgradeCost/canUpgrade/upgrade` and `X.purchasable`; the fight scene's and inn's `buyUpgrade` and the HUD's `onUpgrade` hook; the HUD icon's lock, level pips, + badge and upgrade chip (`openChip`, `gateUntilChip`, `closeChip`), which were built every frame and never shown; the picked-hero branches (`tierIndex`, `tierName`, the `kit.hiro` forks) since Hiro is the only hero; the level-2/3 Katana Slash branches in `beats.js`; `UI.goldPill` and the `gold` URL flag. `Enc.owned` is now simply "is it in X.skills".
+- Header comments in `campaign.js`, `encounter.js` and `data.js` now describe the arcade; `campaign.js` states that its recruit, companion and rival code is the locked hero-pack path.
+
+**Kept on purpose.** Recruits, companions, rival parties, Bram's atlas and busts, `X.recruits` and `test/expedition_recruit_gate.js`: the GDD keeps hiring locked, not deleted, for hero packs. Also still there: Hiro's slash-l2/l3, aura-l2/l3 and counter-l2/l3 clips inside the packed atlas, playable by nothing; removing them is an atlas re-pack, listed for the next art pass.
+
+**Filesystem.** The four inn reference photos committed at the repo root moved to `../adventurer-expeditions-source-art/astra-v3/inn-swamp-20260928/references/`. Staged under `../_to_delete/expeditions-cleanup-20260928/` (nothing deleted outright): 29 build-sandbox sync tarballs and the three superseded 27 Sept candidates from `dist/` (221 MB), and every `test/reports/` folder except `arcade`, `release-polish` and `release-candidate` (560 MB of regenerable screenshots). `tools/__pycache__` removed. `dist/` is down from 265 MB to 44 MB and `test/reports/` from 611 MB to 61 MB. `assets/anime/` and the unloaded shared files (`js/core/contracts.js`, the data manifests) are synced copies and were left alone.
+
+Tests updated: `expedition_sim` (no purchase API), `portal_readiness` and `browser_expedition` (no Grave), `browser_skill_icons` (no + badge, lock or chip), `actor_animation_lifecycle` (one level). Every suite in the chain passes individually except the known one-turn tutorial assertion. Verified in the browser pane: the fight runs with the three icons intact and no console errors, no Grave scene registered, `X.Heroes` and `X.purchasable` gone. README rewritten for the arcade; GDD §12a, §15.1 and §17 annotated.
+
+---
+
 ## 2026-09-28 - Finishers and inn paintings round robin; no instant hits from a missing clip
 
 Three requests from Hiro's playtest.
