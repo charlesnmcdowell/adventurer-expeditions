@@ -1,0 +1,90 @@
+{
+  "clips": [
+    {
+      "name": "01-hiro-intro",
+      "seconds": 5,
+      "capturedSeconds": 5.401
+    },
+    {
+      "name": "02-wolf-exchange",
+      "seconds": 6,
+      "capturedSeconds": 6.481
+    },
+    {
+      "name": "03-wolf-finisher",
+      "seconds": 4,
+      "capturedSeconds": 4.684
+    },
+    {
+      "name": "04-forest-vault",
+      "seconds": 5,
+      "capturedSeconds": 5.8
+    },
+    {
+      "name": "05-swamp-serpent",
+      "seconds": 6,
+      "capturedSeconds": 6.46
+    },
+    {
+      "name": "06-moss-giant",
+      "seconds": 4,
+      "capturedSeconds": 4.482
+    },
+    {
+      "name": "07-city-vault",
+      "seconds": 4,
+      "capturedSeconds": 4.935
+    },
+    {
+      "name": "08-goblin-finisher",
+      "seconds": 4,
+      "capturedSeconds": 4.519
+    },
+    {
+      "name": "09-spider-finisher",
+      "seconds": 4,
+      "capturedSeconds": 4.646
+    },
+    {
+      "name": "10-inn-0",
+      "seconds": 1.6,
+      "capturedSeconds": 1.994
+    },
+    {
+      "name": "10-inn-1",
+      "seconds": 1.6,
+      "capturedSeconds": 2.021
+    },
+    {
+      "name": "10-inn-2",
+      "seconds": 1.6,
+      "capturedSeconds": 1.964
+    },
+    {
+      "name": "10-inn-3",
+      "seconds": 1.6,
+      "capturedSeconds": 2.005
+    },
+    {
+      "name": "10-inn-4",
+      "seconds": 1.6,
+      "capturedSeconds": 2.002
+    },
+    {
+      "name": "11-alpha-boss",
+      "seconds": 5,
+      "capturedSeconds": 5.986
+    },
+    {
+      "name": "12-orc-boss",
+      "seconds": 6,
+      "capturedSeconds": 6.686
+    },
+    {
+      "name": "13-victory",
+      "seconds": 5,
+      "capturedSeconds": 5.58
+    }
+  ],
+  "errors": []
+}
