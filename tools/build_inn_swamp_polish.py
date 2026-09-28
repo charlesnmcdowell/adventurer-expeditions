@@ -8,8 +8,11 @@ ROOT = Path(__file__).resolve().parents[1]
 SRC = ROOT.parent / 'adventurer-expeditions-source-art/astra-v3/inn-swamp-20260928'
 for name in ('inn-hiro-mage', 'inn-hiro-warrior', 'inn-hiro-ranger', 'swamp'):
     folder = 'stages' if name == 'swamp' else 'inn'
-    Image.open(SRC / (name + '.png')).convert('RGB').resize((1280, 760), Image.Resampling.LANCZOS).save(
-        ROOT / 'assets/expedition' / folder / (name + '.webp'), quality=86, method=6)
+    revised = name in ('inn-hiro-mage', 'inn-hiro-warrior')
+    source_name = name + ('-wardrobe-v2' if revised else '')
+    output_name = name + ('-v2' if revised else '')
+    Image.open(SRC / (source_name + '.png')).convert('RGB').resize((1280, 760), Image.Resampling.LANCZOS).save(
+        ROOT / 'assets/expedition' / folder / (output_name + '.webp'), quality=86, method=6)
 for actor in ('goblin', 'spider'):
     original = SRC.parent / 'monsters' / actor
     manifest = json.loads((SRC / (actor + '-manifest.json')).read_text(encoding='utf-8'))

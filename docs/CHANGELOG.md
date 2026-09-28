@@ -15,6 +15,14 @@ of small fixes within a day.
 
 ---
 
+## 2026-09-28 - Approved inn wardrobe edits integrated
+
+- Replaced two active paintings with approved revisions: warrior collar/undershirt, barmaid lidded empty tankards and dark hose; mage closed robe/full skirt and dancer full-length blue dress.
+- Five inn variants remain five; painting resolution remains 1280 x 760. Existing effect placements and rotation behavior are unchanged. New WebP payloads: warrior 137,274 bytes; mage 126,070 bytes.
+- Versioned asset names and manifest URL prevent stale cached paintings. Shipping allowlist now selects the revised files; repack tool uses the revised source masters. Original masters retained beside edited sources in the source-art folder, with exact prompts in wardrobe-prompts.json.
+- Files: assets/expedition/inn/inn.json, inn-hiro-mage-v2.webp, inn-hiro-warrior-v2.webp; js/expedition/inn_art.js; index.html; tools/ship_manifest.json; tools/build_inn_swamp_polish.py; this log.
+- Validation: inn lifecycle 6/6; browser release-polish checks passed using installed Chrome (battle floors, fixed crowd scale, Alpha finishers, all five inns at desktop and mobile widths). Visually inspected both revised scenes in-game. Full npm test was not rerun for these image edits; previously documented simulation balance-floor failure remains outside this change.
+
 ## 2026-09-28 - Stable enemy scale, three inn guests and swamp polish
 
 Removed crowd-dependent shrinking; goblin/spider are now 175/155 high against Hiro's 330, with four repainted matching finisher sheets. Added three inn paintings (mage+dancer, warrior+barmaid, ranger), stable five-scene rotation, level swamp battlefield and a one-shot 750 ms ground dust defeat effect. Existing inn loops reused. Files: actor spacing in `scene.js`, visual heights in `campaign.js`, `inn_art.js`, `battle_stage.js`, `defeat_fx.js`, goblin/spider atlases, inn manifest/paintings, swamp plate, ship manifest, xp12 cache stamp, browser/inn checks and `build_inn_swamp_polish.py`.

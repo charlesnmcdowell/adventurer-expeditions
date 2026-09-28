@@ -81,7 +81,7 @@
       "sourceSha256": "c37912cc8b7f8c5166ab761b7a0c18544209710b15c6763c092f104a5d86288a"
     },
     "inn-hiro-mage": {
-      "file": "inn-hiro-mage.webp",
+      "file": "inn-hiro-mage-v2.webp",
       "actors": [
         "hiro",
         "mage",
@@ -107,10 +107,11 @@
           "phaseOffsetMs": 800
         }
       ],
-      "source": "inn-hiro-mage.png"
+      "source": "inn-hiro-mage-wardrobe-v2.png",
+      "sourceSha256": "8b9ab7c2933fd9d45ffdfed48a82deb48d0d59f0741dca7130e074ca0477b046"
     },
     "inn-hiro-warrior": {
-      "file": "inn-hiro-warrior.webp",
+      "file": "inn-hiro-warrior-v2.webp",
       "actors": [
         "hiro",
         "warrior",
@@ -148,7 +149,8 @@
           }
         }
       ],
-      "source": "inn-hiro-warrior.png"
+      "source": "inn-hiro-warrior-wardrobe-v2.png",
+      "sourceSha256": "cf4e4190890269b2d417b1dbdaec4ad0f07c1a458a4602c06ee957ed3db6007c"
     },
     "inn-hiro-ranger": {
       "file": "inn-hiro-ranger.webp",
