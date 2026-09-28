@@ -444,6 +444,8 @@ class EndScene extends Phaser.Scene {
     z.on('pointerdown', () => this.playAgain());
     this.playRect = { x: bx - bw / 2, y: by - bh / 2, w: bw, h: bh };
     if (!this.footer) this.footer = T().text(this, W / 2, H - 112, 'Part 2 with a new hero is coming — stay tuned. Follow Hiro on Facebook and send feedback from the pause menu.', { size: 13, ox: 0.5, oy: 0.5, color: '#8d8377' });
+    // The board is this browser's only (X.board.hall): ask for a screenshot.
+    if (!this.hallNote) this.hallNote = T().text(this, W / 2, H - 134, X.board.note, { size: 13, ox: 0.5, oy: 0.5, color: '#c9b98a' });
   }
   playAgain() {
     if (this.ended) return;

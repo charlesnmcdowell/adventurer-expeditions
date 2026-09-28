@@ -169,8 +169,18 @@ Camp.loopPool = () => ({
 });
 // Boss wave odds by playthrough: [own boss alone, two of the own boss, own boss
 // plus one from another area, three bosses (own plus two from anywhere)].
-Camp.bossOdds = loop => loop <= 2 ? [60, 20, 20, 0] : loop === 3 ? [40, 25, 25, 10] : [25, 25, 25, 25];
+// Hiro (2026-09-28) played to a fourth playthrough without meeting a pack, so
+// the pack is now guaranteed: two bosses on the second playthrough, three from
+// the third on, and three is the most a boss wave holds. (Was 60/20/20/0,
+// 40/25/25/10, then 25/25/25/25.)
+Camp.bossOdds = loop => loop <= 1 ? [100, 0, 0, 0] : loop === 2 ? [0, 50, 50, 0] : [0, 0, 0, 100];
 Camp.maxBosses = 3;
+// From the third playthrough a regular wave can bring a boss along: odds of
+// [no boss, one boss, two bosses] by playthrough. The bosses come from any
+// location and stand at the front of the wave. A wave never holds more than
+// Camp.maxWave monsters, so the regulars make room for the bosses.
+Camp.waveBossOdds = loop => loop <= 2 ? [100, 0, 0] : loop === 3 ? [70, 30, 0] : [55, 30, 15];
+Camp.maxWave = 4;
 // A small deterministic generator, seeded from the run, the loop, the quest and
 // the wave, so a run replays the same in tests and a reload cannot re-roll.
 function loopRng(run, loop, questId, wave) {
@@ -186,9 +196,11 @@ Camp.loopEncounters = function (q, run, loop) {
   for (let w = 0; w < q.encounters.length; w++) {
     const rnd = loopRng(run, loop, q.id, w), id = q.id + '_L' + loop + '_w' + (w + 1);
     if (w < q.encounters.length - 1) {
-      const n = Math.max(1, Math.min(3, sizes[w] || 2)), enemies = [];
+      const all = Object.values(pool.bosses), bosses = pickWeighted(rnd, Camp.waveBossOdds(loop));
+      const n = Math.max(1, Math.min(3, sizes[w] || 2, Camp.maxWave - bosses)), enemies = [];
       for (let i = 0; i < n; i++) enemies.push(pool.regulars[Math.floor(rnd() * pool.regulars.length)]);
-      out.push({ id, enemies, generated: true });
+      for (let i = 0; i < bosses; i++) enemies.push(all[Math.floor(rnd() * all.length)]);
+      out.push({ id, enemies, generated: true, bosses });
     } else {
       const others = Object.entries(pool.bosses).filter(([k, v]) => k !== q.id && v !== own).map(([, v]) => v);
       const roll = pickWeighted(rnd, Camp.bossOdds(loop));

@@ -42,14 +42,23 @@ Run.reset = function () { try { storage().removeItem(X.saveKey); } catch (e) {} 
 // Ten rows on this device, newest-below on a tie. Same storage rules as the
 // run: one JSON string under its own key, memory when storage is refused.
 const Board = X.Board = {};
-Board.load = function () {
+const goodRow = r => r && typeof r.name === 'string' && Number.isFinite(r.score);
+// The rows this device has saved, without the permanent ones.
+Board.local = function () {
   try {
     const raw = storage().getItem(X.board.key);
     const rows = raw ? JSON.parse(raw) : [];
-    return Array.isArray(rows) ? rows.filter(r => r && typeof r.name === 'string' && Number.isFinite(r.score)).slice(0, X.board.size) : [];
+    return Array.isArray(rows) ? rows.filter(r => goodRow(r) && !r.hall).slice(0, X.board.size) : [];
   } catch (e) { return []; }
 };
-Board.save = function (rows) { try { storage().setItem(X.board.key, JSON.stringify(rows.slice(0, X.board.size))); return true; } catch (e) { return false; } };
+// The permanent rows shipped with the game (X.board.hall), merged with the
+// local ones, best first, a tie keeping the permanent row above.
+Board.load = function () {
+  const hall = ((X.board && X.board.hall) || []).filter(goodRow).map(r => Object.assign({}, r, { hall: true }));
+  const rows = hall.concat(Board.local()).map((r, i) => ({ r, i })).sort((a, b) => (b.r.score - a.r.score) || (a.i - b.i)).map(x => x.r);
+  return rows.slice(0, X.board.size);
+};
+Board.save = function (rows) { try { storage().setItem(X.board.key, JSON.stringify(rows.filter(r => !r.hall).slice(0, X.board.size))); return true; } catch (e) { return false; } };
 Board.clear = function () { try { storage().removeItem(X.board.key); } catch (e) {} };
 // Where a score would land, or -1 when it misses the board.
 Board.placeOf = function (score, rows) {
@@ -63,9 +72,12 @@ Board.insert = function (entry) {
   const rows = Board.load();
   const i = Board.placeOf(entry.score, rows);
   if (i < 0) return { ok: false, rows };
-  rows.splice(i, 0, { name: entry.name, score: Math.max(0, Math.floor(entry.score)), loop: entry.loop || 1, date: entry.date || new Date().toISOString().slice(0, 10) });
+  const row = { name: entry.name, score: Math.max(0, Math.floor(entry.score)), loop: entry.loop || 1, date: entry.date || new Date().toISOString().slice(0, 10) };
+  rows.splice(i, 0, row);
   const kept = rows.slice(0, X.board.size);
-  Board.save(kept);
+  // Only this device's rows are written; the permanent ones come from the game.
+  const local = Board.local(); let j = 0; while (j < local.length && local[j].score >= row.score) j++;
+  local.splice(j, 0, row); Board.save(local);
   return { ok: true, place: i, rows: kept };
 };
 

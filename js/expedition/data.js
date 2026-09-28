@@ -15,7 +15,10 @@ X.saveKey = 'adventurer_expeditions_arcade_v1';
 X.hero = {
   registryId: 'hiro',
   statMult: { hp: 2.2, atk: 1.4, def: 1.3, spd: 1.2 },
-  perks: ['lone_wolf'],
+  // Hiro (2026-09-28): one turn a round, like any fighter. Lone Wolf (the
+  // shared engine's three-turns-a-round perk) used to be here; bosses still
+  // take two turns a round, as the engine gives every boss.
+  perks: [],
   // Order the automatic policy rotates through when the player does nothing.
   autoOrder: ['katana_slash', 'god_aura', 'counter_attack', 'finisher'],
 };
@@ -59,7 +62,7 @@ X.skills = {
     // Core targeting is a strict `<`, so 0.51 is how "at or under half" is
     // actually offered. A wolf sitting on exactly 50% used to grey Finisher out
     // and the tutorial never paused.
-    1: { requireBelowPct: 0.51, executeBelow: 0.51, healOnKillPct: 0.35, cooldown: 0, power: 2.8 },
+    1: { requireBelowPct: 0.51, executeBelow: 0.51, healOnKillPct: 0.25, cooldown: 0, power: 2.8 },
   },
 };
 
@@ -130,6 +133,11 @@ X.rest = { cost: 1000, growth: 2 };
 //    lost it 57% of the time.
 X.bossShare = { 2: 0.7, 3: 0.5 };
 X.tutorialHeals = true;
+// Second pass (Hiro, 2026-09-28, after playing to a fourth playthrough): every
+// monster hits a little harder, bosses hit harder and last longer, and the
+// Finisher heals less (35% -> 25%, above). Applied to the first playthrough in
+// Enc.makeEnemy, under the loop scale, so later playthroughs compound on it.
+X.monsterMult = { regular: { hp: 1, atk: 1.1 }, boss: { hp: 1.25, atk: 1.25 } };
 // The high-score board (Hiro, 2026-09-27): ten rows, on this device, under its
 // own key. A name is required and must read like a name — no spaces, starts
 // with a letter, at least three letters and a vowel, no more than three
@@ -138,6 +146,15 @@ X.tutorialHeals = true;
 // adfskdlsfosl and uislllslsl@#@11221 do not. A spelling check, not a
 // dictionary: loosen `maxConsonants` if play shows real names refused.
 X.board = { size: 10, key: 'adventurer_expeditions_highscores_v1' };
+// The permanent board (Hiro, 2026-09-28). The local board lives in this
+// browser's storage and nowhere else: CrazyGames does not keep it for us, so
+// a cleared browser, another device or a strict private window starts from
+// nothing. Players who make the top ten are asked to send a screenshot of the
+// End screen to Hiro on Facebook; those scores are added here by hand at the
+// next update and every copy of the game shows them, merged with the local
+// rows. One row per entry: { name, score, loop, date }.
+X.board.hall = [];
+X.board.note = 'Made the top ten? Send a screenshot of this screen to Hiro on Facebook and your score goes on the permanent board in the next update.';
 X.nameRules = { max: 25, symbols: '#!_-.@$', minLetters: 3, maxConsonants: 3, maxRepeat: 3 };
 X.validName = function (raw) {
   const R = X.nameRules, name = String(raw == null ? '' : raw);

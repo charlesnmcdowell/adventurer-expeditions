@@ -53,7 +53,7 @@ test('shim resolves an Expedition Hiro at the one arcade level', () => {
   const m = A.SkillSys.manifest(hero, entry);
   assert.equal(m.data.power, 1.3); assert.equal(m.data.autoKillPct, 0); assert.equal(m.data.target, 'enemy');
   const fin = A.SkillSys.manifest(hero, hero.actives.find(a => a.skillId === 'finisher'));
-  assert.equal(fin.data.permStatGain, 0); assert.equal(fin.data.healOnKillPct, 0.35); assert.equal(fin.data.power, 2.8);
+  assert.equal(fin.data.permStatGain, 0); assert.equal(fin.data.healOnKillPct, 0.25); assert.equal(fin.data.power, 2.8);
   assert.ok(!fin.data.cooldown, 'Finisher has no cooldown, saw ' + fin.data.cooldown);
   // God Aura raises attack, not defense (Hiro, 2026-09-24); the defense factor
   // must be exactly 1 because the damage code divides by it.
@@ -552,9 +552,21 @@ test('from the second playthrough monsters shuffle, bosses roll, and it all repl
   assert.ok(seen.has('serpent') || seen.has('goblin') || seen.has('spider'), 'swamp and city monsters turn up on the forest road: ' + [...seen]);
   // Boss rolls: never more than three, never fewer than one, own boss always first; odds by loop.
   const tally = loop => { const t = [0, 0, 0, 0]; for (let s = 1; s <= 400; s++) { const e = Camp.questEncounters('city', at(loop, s))[2]; assert.ok(e.enemies.length >= 1 && e.enemies.length <= Camp.maxBosses, 'boss count'); assert.equal(e.enemies[0], 'orc'); for (const k of e.enemies) assert.ok(X.enemies[k].boss, k + ' is a boss'); t[e.roll]++; } return t.map(n => n / 400); };
-  const t2 = tally(2), t4 = tally(4);
-  assert.ok(t2[3] === 0 && t2[0] > 0.5, 'loop 2 never rolls three bosses and mostly one: ' + t2);
-  assert.ok(t4[3] > 0.15 && t4[0] < 0.35, 'loop 4 rolls three bosses often: ' + t4);
+  const t2 = tally(2), t3 = tally(3), t4 = tally(4);
+  // Hiro (2026-09-28): the pack is guaranteed, two on the second playthrough, three from the third.
+  assert.ok(t2[0] === 0 && t2[3] === 0 && t2[1] > 0.3 && t2[2] > 0.3, 'loop 2 always rolls exactly two bosses: ' + t2);
+  assert.ok(t3[3] === 1, 'loop 3 always rolls three bosses: ' + t3);
+  assert.ok(t4[3] === 1, 'loop 4 always rolls three bosses: ' + t4);
+  for (let s = 1; s <= 100; s++) assert.equal(Camp.questEncounters('marsh', at(2, s))[2].enemies.length, 2);
+  // Regular waves bring a boss along from the third playthrough, two from the fourth, never over Camp.maxWave.
+  const waveBosses = loop => { const t = [0, 0, 0]; for (let s = 1; s <= 300; s++) for (const e of Camp.questEncounters('rain', at(loop, s)).slice(0, 2)) {
+    const b = e.enemies.filter(k => X.enemies[k].boss).length; assert.equal(b, e.bosses); assert.ok(e.enemies.length <= Camp.maxWave, 'wave size'); assert.ok(e.enemies.length - b >= 1, 'a regular stays');
+    for (let i = 0; i < e.enemies.length; i++) assert.equal(!!X.enemies[e.enemies[i]].boss, i >= e.enemies.length - b, 'bosses stand last');
+    t[b]++; } return t.map(n => n / 600); };
+  const w2 = waveBosses(2), w3 = waveBosses(3), w4 = waveBosses(4);
+  assert.ok(w2[0] === 1, 'loop 2 regular waves have no boss: ' + w2);
+  assert.ok(w3[1] > 0.2 && w3[1] < 0.4 && w3[2] === 0, 'loop 3 regular waves bring one boss about 30% of the time: ' + w3);
+  assert.ok(w4[1] > 0.2 && w4[2] > 0.08 && w4[2] < 0.25, 'loop 4 regular waves bring one or two bosses: ' + w4);
   // Every generated fight is winnable in principle: it opens, runs, and pays.
   const r3 = at(3, 7); let bosses = 0;
   for (const encDef of Camp.questEncounters('city', r3)) {
@@ -565,6 +577,40 @@ test('from the second playthrough monsters shuffle, bosses roll, and it all repl
     if (Enc.won(enc)) { const w = Enc.wavePoints(enc); assert.equal(w.mult, 1.5); if (encDef.boss) assert.equal(w.bosses, bosses); }
   }
   assert.ok(bosses >= 1);
+});
+
+// ---------------------------------------------------------------- base tuning (2026-09-28)
+test('monsters hit a little harder, bosses harder and longer, under the loop scale', () => {
+  const saved = X.monsterMult;
+  try {
+    const stats = (key, scale) => { X.monsterMult = saved; const a = Enc.makeEnemy(new A.RNG(3), key, scale).stats; X.monsterMult = null; const b = Enc.makeEnemy(new A.RNG(3), key, scale).stats; return { a, b }; };
+    const wolf = stats('dire_wolf_2', 1), hag = stats('hag', 1);
+    assert.equal(wolf.a.atk, Math.round(wolf.b.atk * 1.1)); assert.equal(wolf.a.hp, wolf.b.hp);
+    assert.equal(hag.a.atk, Math.round(hag.b.atk * 1.25)); assert.equal(hag.a.hp, Math.round(hag.b.hp * 1.25));
+    const hag3 = stats('hag', 1.69);
+    assert.equal(hag3.a.hp, Math.round(Math.round(hag.b.hp * 1.25) * 1.69), 'the loop scale compounds on the base tuning');
+  } finally { X.monsterMult = saved; }
+});
+
+// ---------------------------------------------------------------- the permanent board (2026-09-28)
+test('the permanent board ships with the game and merges with the local rows', () => {
+  if (!X.Board) vm.runInThisContext(fs.readFileSync(path.join(ROOT, 'js/expedition/run.js'), 'utf8'), { filename: 'js/expedition/run.js' });
+  const B = X.Board, saved = X.board.hall;
+  try {
+    B.clear();
+    X.board.hall = [{ name: 'Hall', score: 9000, loop: 2, date: '2026-09-28' }, { name: 'bad' }];
+    assert.deepEqual(B.load().map(r => r.name + ':' + r.score + (r.hall ? '*' : '')), ['Hall:9000*'], 'a malformed permanent row is dropped');
+    assert.equal(B.placeOf(9000), 1, 'a tie sits below the permanent row');
+    const r = B.insert({ name: 'Me', score: 9500, loop: 2 });
+    assert.equal(r.place, 0); assert.deepEqual(r.rows.map(x => x.name), ['Me', 'Hall']);
+    assert.deepEqual(B.local().map(x => x.name), ['Me'], 'only this device\'s rows are stored');
+    for (let i = 0; i < 12; i++) B.insert({ name: 'Run' + i, score: 9100 + i, loop: 1 });
+    assert.equal(B.load().length, X.board.size); assert.equal(B.local().length, X.board.size);
+    assert.ok(!B.load().some(x => x.hall), 'a permanent row can be pushed off the top ten');
+    X.board.hall = [{ name: 'Top', score: 99999, loop: 5 }];
+    assert.equal(B.load()[0].name, 'Top', 'a new permanent row shows without touching storage');
+    assert.equal(B.local().length, X.board.size);
+  } finally { X.board.hall = saved; B.clear(); }
 });
 
 // ---------------------------------------------------------------- party campaign

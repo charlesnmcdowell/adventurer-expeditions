@@ -267,7 +267,7 @@ score pill replaces the gold purse everywhere.
 
 *Balance finding (2026-09-28, `tools/balance_arcade.js`).* Rest rarely pays:
 runs end in burst waves — a pack of bosses, three shuffled monsters on the
-third playthrough — not from attrition, and the Finisher's 35 % kill heal keeps
+third playthrough — not from attrition, and the Finisher's kill heal (35 % then, 25 % since the second pass) keeps
 a tapping player healthy between fights. Over 150 simulated runs a player who
 never Rests clears as many quests as one who Rests below half health, and
 keeps the points. Rest stays as Hiro designed it — a safety the player can buy
@@ -367,7 +367,14 @@ letters and a vowel; no more than three consonants in a row; no letter three
 times in a row. `tyler#2`, `tyler12`, `tylertheman!` pass; `12345`, `2838`,
 `@#$skfsal`, `adfskdlsfosl`, `uislllslsl@#@11221` are refused with a hint.
 The board (`X.Board`) keeps ten rows on this device under its own storage
-key, a tie sitting below the older run. The footer carries the announcement:
+key, a tie sitting below the older run. That storage is the browser's own —
+CrazyGames does not keep it — so a cleared browser, a strict private window or
+another device starts from nothing. The **permanent board** (Hiro, 2026-09-28)
+answers that: `X.board.hall` ships rows with the game, merged with the local
+ten, best first, a permanent row winning a tie; the End scene asks players who
+make the top ten to send a screenshot to Hiro on Facebook, and their scores are
+added to `hall` by hand at the next update. Only this device's rows are ever
+written to storage. The footer carries the announcement:
 *Part 2 with a new hero is coming — stay tuned. Follow Hiro on Facebook and
 send feedback from the pause menu.* **Play again** starts a fresh run. The
 game always opens fresh (Hiro): a save survives only a reload mid-run, and a
@@ -451,11 +458,19 @@ From the second playthrough:
 - **Everything is stronger.** Enemy health and attack scale **×1.3 per
   playthrough, compounding, uncapped**: ×1.3 on the second, ×1.69 on the
   third, ×2.20 on the fourth.
-- **The boss wave rolls a pack.** Own boss / two of the own boss / own boss
-  plus one from another location / three bosses (any mix, at most three).
-  Odds by playthrough: **2nd 60 / 20 / 20 / 0; 3rd 40 / 25 / 25 / 10; 4th
-  and later 25 / 25 / 25 / 25.** Crowded waves are placed by painted width and
-  shrunk a little, never below 0.82, so three bosses stand in a line.
+- **The boss wave is a pack, guaranteed** (Hiro, 2026-09-28, after playing to
+  a fourth playthrough without meeting one under the old odds). **2nd
+  playthrough: always two bosses** — two of the own boss or the own boss plus
+  another location's, 50 / 50. **3rd and later: always three** (own plus two
+  from anywhere), and three is the most a boss wave holds. Was 60 / 20 / 20 / 0,
+  40 / 25 / 25 / 10, then 25 / 25 / 25 / 25. Crowded waves are placed by
+  painted width and shrunk a little, never below 0.82, so three bosses stand in
+  a line.
+- **Bosses join the regular waves** from the third playthrough
+  (`Camp.waveBossOdds`, odds of none / one / two): **3rd 70 / 30 / 0; 4th and
+  later 55 / 30 / 15.** The boss comes from any location and stands at the
+  front. A wave never holds more than four monsters (`Camp.maxWave`) — the
+  regulars make room — and at least one regular always stays.
 - **Defeat effects stay where they belong.** A swamp boss in the forest still
   melts into mud; the effect follows the monster, not the location (Hiro).
 
@@ -470,7 +485,20 @@ moment it is ready. Two findings, two knobs:
 | A two-boss wave was won 40 / 12 / 4 % (forest / swamp / city) by the best player, a three-boss wave never; no run reached a fourth playthrough | `X.bossShare = {2: 0.7, 3: 0.5}` — every boss of a pack is scaled by the pack's share, on top of the loop scale | two-boss waves 92 / 80 / 36 %, three-boss ~10 %; a good player's median run is two full playthroughs (≈ 11,400 points), half reach the third, a few the fourth |
 | A player who tapped only what the hand asked reached the first boss at ~10 hp and lost 57 % of the time | `X.tutorialHeals = true` — on the first quest of a run every fight opens at full health; from the second quest on, health carries exactly as designed | the tutorial follower clears the forest every time and meets the swamp with a full bar |
 
-Reference numbers after the pass, 150 runs each: no taps at all ends in the
+**Second pass (Hiro, 2026-09-28).** The first playthrough is tuned harder and
+every later playthrough compounds on it (`X.monsterMult`, applied under the
+loop scale): every monster's attack **×1.1**, bosses' health and attack
+**×1.25**; the Finisher's kill heal **35 % → 25 %**. With the guaranteed packs
+above, the probe now reads (100 runs, before in parentheses): no taps ~300
+(500); tutorial taps only ~400 (1,400); casual median 4,200 (7,550), most runs
+ending on the second playthrough; the every-skill player median 5,850
+(11,200), 99 % ending on the second playthrough and over half of those on the
+forest's two-boss wave; a mixed board's #10 6,000 (14,000). No simulated
+player reaches the third playthrough; Hiro reached the fourth under the old
+rules, so his playtest decides whether `X.bossShare[2]` or the boss
+multiplier should ease. The numbers below are from the first pass.
+
+Reference numbers after the first pass, 150 runs each: no taps at all ends in the
 swamp's first fight with ~500 points; the casual player ends on the second
 playthrough with ~7,500; the best player's tenth-best of 150 runs is ≈ 14,500,
 a mixed board's #1 ≈ 18,000. Regular waves hold up: on the third playthrough a
@@ -538,7 +566,8 @@ one level**, nothing is bought, and the HUD shows the three icons lit with no
 pips, plus or lock. Values as shipped: Katana Slash ×1.3; **God Aura attack
 ×1.35 for 3 rounds, no defense, no evasion**, 10 s recovery; **Counter Attack**
 answers 2 attacks for 2 rounds, 5 s recovery; **Finisher** power 2.8, windows
-51 % (regular) / 25 % (boss), heals 35 % of full health on a kill, no cooldown.
+51 % (regular) / 25 % (boss), heals 25 % of full health on a kill (35 % until
+the second balance pass of 2026-09-28), no cooldown.
 The tutorial teaches **Finisher (fight 1) → Counter Attack (fight 2) → God Aura
 (boss)** and holds only on the first quest. Hiro's unused level-2/3 clips ship
 as random variety. Everything below that describes levels 1–3 or unlock prices

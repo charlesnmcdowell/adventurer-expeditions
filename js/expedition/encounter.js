@@ -83,6 +83,9 @@ Enc.makeEnemy = function (rng, key, scale) {
   if (e.artIdentity) ch.expeditionArtIdentity = e.artIdentity;
   if (e.actives) ch.actives = ch.actives.filter(a => e.actives.includes(a.skillId));
   if (e.statMult) for (const k of ['hp', 'atk', 'def', 'spd']) if (e.statMult[k] != null) ch.stats[k] = Math.round(ch.stats[k] * e.statMult[k]);
+  // The arcade's base tuning (X.monsterMult), then the loop scale on top of it.
+  const mult = X.monsterMult && X.monsterMult[e.boss ? 'boss' : 'regular'];
+  if (mult) for (const k of ['hp', 'atk']) if (mult[k] != null && mult[k] !== 1) ch.stats[k] = Math.round(ch.stats[k] * mult[k]);
   // Repeat scaling (Campaign.scaleFor): a cleared quest comes back harder.
   if (scale && scale !== 1) { ch.stats.hp = Math.round(ch.stats.hp * scale); ch.stats.atk = Math.round(ch.stats.atk * scale); }
   if (e.perks) ch.perks = ch.perks.filter(p => e.perks.includes(p.skillId));
