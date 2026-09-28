@@ -31,9 +31,9 @@ Art.variant = run => {
   // Derive it from completed quests: reloads keep the same painting and no
   // extra persistent counter can accidentally change the party or save format.
   const clears = Object.values(run.cycles || {}).reduce((n, v) => n + (Number.isFinite(v) ? Math.max(0, Math.floor(v)) : 0), 0);
-  const guest = clears > 0 && clears % 2 === 1;
+  const variant = ['inn-hiro-solo','inn-hiro-bram','inn-hiro-mage','inn-hiro-warrior','inn-hiro-ranger'][clears % 5];
   const companion = X.Campaign.owns(run, 'bram') && X.Campaign.fielded(run, 'bram') && X.Campaign.recruitReady('bram');
-  return guest || companion ? 'inn-hiro-bram' : 'inn-hiro-solo';
+  return companion ? 'inn-hiro-bram' : variant;
 };
 
 Art.paint = function (scene, run) {

@@ -37,11 +37,11 @@ function scene(cached = true) {
 let passed = 0;
 async function test(name, fn) { await fn(); passed++; console.log('ok ' + name); }
 (async () => {
-  await test('manifest cold-load queues exactly its five selected image assets', () => {
+  await test('manifest cold-load queues its five paintings and three effects', () => {
     const s = scene(false); s.loaded.clear(); X.InnArt.preload(s);
     assert.equal(s.load.queued.length, 1); assert.equal(s.load.queued[0][0], 'json');
     s.json.set('xp_inn_manifest', manifest); s.load.emit('filecomplete-json-xp_inn_manifest');
-    assert.equal(s.load.queued.filter(f => f[0] === 'image').length, 2);
+    assert.equal(s.load.queued.filter(f => f[0] === 'image').length, 5);
     assert.equal(s.load.queued.filter(f => f[0] === 'spritesheet').length, 3);
     s.events.emit('shutdown'); assert.equal(s.load.listenerCount('filecomplete-json-xp_inn_manifest'), 0);
     const warm = scene(); X.InnArt.preload(warm); assert.equal(warm.load.queued.length, 0);
@@ -67,8 +67,10 @@ async function test(name, fn) { await fn(); passed++; console.log('ok ' + name);
     assert.equal(X.InnArt.variant(r), 'inn-hiro-bram');
     assert.equal(X.InnArt.variant(JSON.parse(before)), 'inn-hiro-bram');
     assert.equal(JSON.stringify(r), before);
-    r.cycles.marsh = 1; assert.equal(X.InnArt.variant(r), 'inn-hiro-solo');
-    r.cycles.city = 1; assert.equal(X.InnArt.variant(r), 'inn-hiro-bram');
+    r.cycles.marsh = 1; assert.equal(X.InnArt.variant(r), 'inn-hiro-mage');
+    r.cycles.city = 1; assert.equal(X.InnArt.variant(r), 'inn-hiro-warrior');
+    r.cycles.city = 2; assert.equal(X.InnArt.variant(r), 'inn-hiro-ranger');
+    r.cycles.city = 3; assert.equal(X.InnArt.variant(r), 'inn-hiro-solo');
   });
   await test('party changes replace effects and masks without accumulating listeners', () => {
     const s = scene(), v = X.InnArt.paint(s, solo), previous = v.effects.slice(), mask = previous[2].mask;

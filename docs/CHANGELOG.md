@@ -15,6 +15,14 @@ of small fixes within a day.
 
 ---
 
+## 2026-09-28 - Stable enemy scale, three inn guests and swamp polish
+
+Removed crowd-dependent shrinking; goblin/spider are now 175/155 high against Hiro's 330, with four repainted matching finisher sheets. Added three inn paintings (mage+dancer, warrior+barmaid, ranger), stable five-scene rotation, level swamp battlefield and a one-shot 750 ms ground dust defeat effect. Existing inn loops reused. Files: actor spacing in `scene.js`, visual heights in `campaign.js`, `inn_art.js`, `battle_stage.js`, `defeat_fx.js`, goblin/spider atlases, inn manifest/paintings, swamp plate, ship manifest, xp12 cache stamp, browser/inn checks and `build_inn_swamp_polish.py`.
+
+Presentation browser checks and focused unit checks passed; startup 14.74 MB after audio unlock. Full npm test still fails the pre-existing balance win-rate floor, independently reproduced from the pre-art Git checkpoint. Details, source prompts, validation and limitations: `INN_SWAMP_POLISH_20260928.md`. No deployment; user playtest pending.
+
+---
+
 ## 2026-09-28 - Second balance pass: harder monsters, guaranteed boss packs, bosses in regular waves, permanent board
 
 Hiro's playtest of the first pass reached a fourth playthrough without ever meeting a two-boss wave (the 60% single-boss roll on the second playthrough), and asked for more bite. All knobs in `js/expedition/data.js` and `js/expedition/campaign.js`:

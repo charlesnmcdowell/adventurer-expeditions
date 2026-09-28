@@ -2,7 +2,7 @@
 (function () {
 'use strict';
 const A = ADV, X = A.Expedition, Stage = X.BattleStage = {};
-const plates = { mountain: 'mountain', alley: 'city' };
+const plates = { mountain: 'mountain', alley: 'city', marsh: 'swamp' };
 Stage.preload = scene => {
   const r = scene.opts?.run || X.Run.load() || X.Run.fresh();
   const q = X.Campaign.quest(r.questId) || X.quests[0];
@@ -19,14 +19,14 @@ Stage.paint = (scene, bg, phase) => {
   if (!scene.textures.exists(key)) { root.ready = Promise.resolve(false); return root; }
   const image = scene.add.image(0,0,key).setOrigin(0).setDisplaySize(1280,760);
   root.add(image);root.background=image;root.locationId=bg;
-  if (phase === 'night') image.setTint(0x748aba);
+  if (phase === 'night' && id !== 'swamp') image.setTint(0x748aba);
   const fx = scene.add.graphics();root.add(fx);
   let elapsed = 0;
   const tick = (_t,dt) => {
     if (scene.paused || scene.time.paused) return;
     elapsed += dt * scene.time.timeScale;fx.clear();
     // A thin distant haze leaves the solid fighting surface unobscured.
-    if (id === 'mountain') for(let i=0;i<5;i++) {
+    if (id === 'mountain' || id === 'swamp') for(let i=0;i<5;i++) {
       fx.fillStyle(0xd8e2ee,.025);
       fx.fillEllipse((i*310+elapsed*.008) % 1580-150,425+Math.sin(elapsed/2400+i)*8,360,22);
     }

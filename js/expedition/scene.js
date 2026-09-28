@@ -183,11 +183,10 @@ class ExpeditionScene extends Phaser.Scene {
     // Small waves keep the classic marks when they fit; anything wider is packed.
     if (!wide && foes.length <= FOE_X.length && total <= 300) { foes.forEach((a, i) => { a.home.x = FOE_X[i]; }); return; }
     if (wide) {
-      // A crowd: shrink everyone a touch (never below 0.82) and spread across a
-      // wider span, front-most last so the overlap reads as a line, not a pile.
-      const k = Math.max(0.82, Math.min(1, span * 1.6 / total));
+      // A crowd uses a wider span, front-most last for readable overlap.
+      // Keep authored scale: crowds use spacing and depth, never smaller bodies.
       const l2 = left - 40, r2 = right + 20, step = (r2 - l2) / foes.length;
-      foes.forEach((a, i) => { a.rescale(k); a.home.x = Math.round(l2 + step * (i + 0.5)); a.root.setDepth(100 + i); });
+      foes.forEach((a, i) => { a.home.x = Math.round(l2 + step * (i + 0.5)); a.root.setDepth(100 + i); });
       return;
     }
     const gap = (span - total) / (foes.length + 1);

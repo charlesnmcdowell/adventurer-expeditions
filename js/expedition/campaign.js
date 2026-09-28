@@ -125,8 +125,8 @@ Object.assign(X.enemies, {
   beetle: { base: 'iron_beetle', name: 'Iron Beetle', level: 4, kind: 'beetle', artActor: 'beetle', height: 175, boss: false, actives: ['carapace_burst', 'sunder'], perks: [], statMult: { hp: 0.75, atk: 0.65, def: 0.75 } },
   moss_giant: { base: 'moss_giant', name: 'Moss Giant', level: 5, kind: 'moss_giant', artActor: 'moss_giant', height: 330, boss: false, actives: ['treefall', 'cleave'], perks: [], statMult: { hp: 0.85, atk: 0.65, def: 0.8 } },
   hag: { base: 'mire_hag', name: 'Mire Hag', level: 6, kind: 'boss', artActor: 'hag', height: 310, boss: true, actives: ['bog_curse', 'wither_touch'], perks: [], phase2At: 0.5, statMult: { hp: 1.45, atk: 0.75, def: 0.8 } },
-  goblin: { base: 'goblin_king', name: 'Gutter Goblin', level: 5, kind: 'goblin', artActor: 'goblin', height: 205, boss: false, actives: ['backstab', 'smoke_bomb'], perks: [], statMult: { hp: 0.7, atk: 0.7, def: 0.75 } },
-  spider: { base: 'crystal_spider', name: 'Glass Spider', level: 5, kind: 'spider', artActor: 'spider', height: 190, boss: false, actives: ['glass_web'], perks: [], statMult: { hp: 0.75, atk: 0.7, def: 0.75 } },
+  goblin: { base: 'goblin_king', name: 'Gutter Goblin', level: 5, kind: 'goblin', artActor: 'goblin', height: 175, boss: false, actives: ['backstab', 'smoke_bomb'], perks: [], statMult: { hp: 0.7, atk: 0.7, def: 0.75 } },
+  spider: { base: 'crystal_spider', name: 'Glass Spider', level: 5, kind: 'spider', artActor: 'spider', height: 155, boss: false, actives: ['glass_web'], perks: [], statMult: { hp: 0.75, atk: 0.7, def: 0.75 } },
   orc: { base: 'orc_king', name: 'Ironjaw', level: 7, kind: 'boss', artActor: 'orc', height: 350, boss: true, actives: ['war_bellow', 'cleave'], perks: [], phase2At: 0.5, statMult: { hp: 1.6, atk: 0.75, def: 0.85 } },
 });
 Object.assign(X.encounterDefs, {

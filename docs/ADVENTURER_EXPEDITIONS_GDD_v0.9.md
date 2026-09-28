@@ -1,6 +1,8 @@
 # Adventurer: Expeditions
 ## CrazyGames edition — game design document
 
+**September 28 presentation update:** fixed enemy scale regardless of crowd count; small goblin/spider paired finishers; five inn paintings rotating with completed quests; level swamp causeway and one-shot earth defeat burst. See `INN_SWAMP_POLISH_20260928.md`. No combat balance changes in this art pass.
+
 Version 0.9 · September 19, 2026 (rev. b) · Status reconciled September 20, 2026 · Working title
 
 This revision supersedes v0.8; v0.5 through v0.8 are kept in `docs/` for history.
