@@ -1175,6 +1175,15 @@ Two consequences that need a call — see §16.
 
 ## 10. Art direction and animation method
 
+### Approved sprite cleanup workflow - September 28, 2026
+
+The user play-tested the three-case technical pilot and confirmed it was a success. Future GPT-6 Astra sessions should use [sprite-cleanup-pilot](skills/sprite-cleanup-pilot/SKILL.md) before proposing replacement sheets for frame bleed, matte boxes, ground-registration problems or finisher scale jumps. The skill is also installed as `$sprite-cleanup-pilot` in the personal Codex skills folder.
+
+Start with an inventory and a small representative pilot; preserve approved masters, contact timing and unaffected frames. Fix cropping, transparency, anchors and runtime transform transitions before spending on new artwork. Produce before/after playback and remeasure the initial mobile download. The successful pilot used no generated art. See [the case study](SPRITE_CLEANUP_PILOT_20260928.md) for reproducible tools and remaining limitations; do not blindly rerun its historical-baseline rebuild against newer assets.
+
+Approval applies to the completed plant/orc/Alpha-cleave pilot, not to all animation defects. Other paired proportions and travel-frame issues still require individual review. This section records a maintenance method; it does not change gameplay, animation timing or art direction.
+
+
 **Art standard, 2026-09-24:** [ART_STANDARD.md](ART_STANDARD.md) is now the
 binding reference for new art. Its core rule: because Hiro is the only playable
 character, non-interactive scenes (inn, travel) are painted with Hiro inside

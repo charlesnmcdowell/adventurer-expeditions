@@ -15,6 +15,10 @@ of small fixes within a day.
 
 ---
 
+## 2026-09-28 - Approved sprite cleanup workflow saved for future Astra sessions
+
+User confirmed the technical pilot was successful. Added reusable skill source at docs/skills/sprite-cleanup-pilot/SKILL.md and installed an identical personal Codex skill. Linked the workflow and pilot evidence from GDD section 10. Documents preserve the technical-first approach, rejected broad gray masking, normal/paired transform boundary, historical rebuild caveat, validation and remaining-art shortlist. Documentation only; no game or art changes. Skill frontmatter validated and installed/repository copies checked identical.
+
 ## 2026-09-28 - Technical sprite cleanup pilot (no generated art)
 
 - Corrected six plant lash crops/root anchors; removed gray matte from both orc pairs; adjusted Alpha cleave bodyScale 1 -> 1.306122 and pair distance 0.65 -> 0.94. Unaffected plant/orc frames retain identical visible pixels.
