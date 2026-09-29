@@ -1,0 +1,1051 @@
+[
+  {
+    "actor": "alpha",
+    "clip": "idle",
+    "frames": 4,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "alpha",
+    "clip": "approach-leap",
+    "frames": 6,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "alpha",
+    "clip": "attack",
+    "frames": 6,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "alpha",
+    "clip": "hit",
+    "frames": 3,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "alpha",
+    "clip": "enrage",
+    "frames": 3,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "alpha",
+    "clip": "down",
+    "frames": 3,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "alpha",
+    "clip": "hiro-alpha-cleave-paired",
+    "frames": 8,
+    "paired": true,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "alpha",
+    "clip": "hiro-alpha-pin-paired",
+    "frames": 6,
+    "paired": true,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "alpha",
+    "clip": "hiro-alpha-parry-paired",
+    "frames": 6,
+    "paired": true,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "beetle",
+    "clip": "idle",
+    "frames": 4,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "beetle",
+    "clip": "approach",
+    "frames": 4,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "beetle",
+    "clip": "attack",
+    "frames": 4,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "beetle",
+    "clip": "hit",
+    "frames": 4,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "beetle",
+    "clip": "down",
+    "frames": 4,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "beetle",
+    "clip": "enrage",
+    "frames": 4,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "beetle",
+    "clip": "hiro-finisher-1",
+    "frames": 6,
+    "paired": true,
+    "suspectCornerFrames": [
+      "hiro-finisher-1/0",
+      "hiro-finisher-1/1",
+      "hiro-finisher-1/2",
+      "hiro-finisher-1/3",
+      "hiro-finisher-1/4",
+      "hiro-finisher-1/5"
+    ],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "beetle",
+    "clip": "hiro-finisher-2",
+    "frames": 6,
+    "paired": true,
+    "suspectCornerFrames": [
+      "hiro-finisher-2/0",
+      "hiro-finisher-2/1",
+      "hiro-finisher-2/2",
+      "hiro-finisher-2/3",
+      "hiro-finisher-2/4",
+      "hiro-finisher-2/5"
+    ],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "boar",
+    "clip": "idle",
+    "frames": 1,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": false
+  },
+  {
+    "actor": "boar",
+    "clip": "run",
+    "frames": 6,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": false
+  },
+  {
+    "actor": "boar",
+    "clip": "charge",
+    "frames": 6,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": false
+  },
+  {
+    "actor": "boar",
+    "clip": "hit_short",
+    "frames": 3,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": false
+  },
+  {
+    "actor": "boar",
+    "clip": "down_fade",
+    "frames": 4,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": false
+  },
+  {
+    "actor": "bram",
+    "clip": "idle",
+    "frames": 4,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": false
+  },
+  {
+    "actor": "bram",
+    "clip": "walk",
+    "frames": 8,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": false
+  },
+  {
+    "actor": "bram",
+    "clip": "draw",
+    "frames": 8,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": false
+  },
+  {
+    "actor": "bram",
+    "clip": "short_draw",
+    "frames": 4,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": false
+  },
+  {
+    "actor": "bram",
+    "clip": "slash",
+    "frames": 6,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": false
+  },
+  {
+    "actor": "bram",
+    "clip": "hit_short",
+    "frames": 3,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": false
+  },
+  {
+    "actor": "bram",
+    "clip": "roll",
+    "frames": 6,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": false
+  },
+  {
+    "actor": "bram",
+    "clip": "intercept",
+    "frames": 5,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": false
+  },
+  {
+    "actor": "bram",
+    "clip": "riposte",
+    "frames": 6,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": false
+  },
+  {
+    "actor": "bram",
+    "clip": "cast",
+    "frames": 6,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": false
+  },
+  {
+    "actor": "bram",
+    "clip": "victory",
+    "frames": 8,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": false
+  },
+  {
+    "actor": "bram",
+    "clip": "kneel",
+    "frames": 4,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": false
+  },
+  {
+    "actor": "bram",
+    "clip": "bite_leg",
+    "frames": 10,
+    "paired": true,
+    "suspectCornerFrames": [],
+    "registrationRecorded": false
+  },
+  {
+    "actor": "bram",
+    "clip": "bite_arm",
+    "frames": 6,
+    "paired": true,
+    "suspectCornerFrames": [],
+    "registrationRecorded": false
+  },
+  {
+    "actor": "bram",
+    "clip": "finisher_quadruped",
+    "frames": 3,
+    "paired": true,
+    "suspectCornerFrames": [],
+    "registrationRecorded": false
+  },
+  {
+    "actor": "bram",
+    "clip": "finisher_plant",
+    "frames": 3,
+    "paired": true,
+    "suspectCornerFrames": [],
+    "registrationRecorded": false
+  },
+  {
+    "actor": "bram",
+    "clip": "finisher_human",
+    "frames": 3,
+    "paired": true,
+    "suspectCornerFrames": [],
+    "registrationRecorded": false
+  },
+  {
+    "actor": "bram",
+    "clip": "finisher_boss",
+    "frames": 3,
+    "paired": true,
+    "suspectCornerFrames": [],
+    "registrationRecorded": false
+  },
+  {
+    "actor": "goblin",
+    "clip": "idle",
+    "frames": 4,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "goblin",
+    "clip": "approach",
+    "frames": 4,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "goblin",
+    "clip": "attack",
+    "frames": 4,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "goblin",
+    "clip": "hit",
+    "frames": 4,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "goblin",
+    "clip": "down",
+    "frames": 4,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "goblin",
+    "clip": "enrage",
+    "frames": 4,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "goblin",
+    "clip": "hiro-finisher-1",
+    "frames": 6,
+    "paired": true,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "goblin",
+    "clip": "hiro-finisher-2",
+    "frames": 6,
+    "paired": true,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "hag",
+    "clip": "idle",
+    "frames": 4,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "hag",
+    "clip": "approach",
+    "frames": 4,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "hag",
+    "clip": "attack",
+    "frames": 4,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "hag",
+    "clip": "hit",
+    "frames": 4,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "hag",
+    "clip": "down",
+    "frames": 4,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "hag",
+    "clip": "enrage",
+    "frames": 4,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "hag",
+    "clip": "hiro-finisher-1",
+    "frames": 6,
+    "paired": true,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "hag",
+    "clip": "hiro-finisher-2",
+    "frames": 6,
+    "paired": true,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "hiro",
+    "clip": "idle",
+    "frames": 4,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "hiro",
+    "clip": "walk",
+    "frames": 16,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "hiro",
+    "clip": "draw",
+    "frames": 8,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "hiro",
+    "clip": "short-draw",
+    "frames": 4,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "hiro",
+    "clip": "slash-l1",
+    "frames": 6,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "hiro",
+    "clip": "slash-l2",
+    "frames": 6,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "hiro",
+    "clip": "slash-l3",
+    "frames": 6,
+    "paired": false,
+    "suspectCornerFrames": [
+      "slash-l3/1"
+    ],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "hiro",
+    "clip": "roll",
+    "frames": 6,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "hiro",
+    "clip": "victory-sheath",
+    "frames": 8,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "hiro",
+    "clip": "kneel",
+    "frames": 4,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "hiro",
+    "clip": "aura-l1",
+    "frames": 4,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "hiro",
+    "clip": "aura-l2",
+    "frames": 4,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "hiro",
+    "clip": "aura-l3",
+    "frames": 4,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "hiro",
+    "clip": "bite-leg-paired",
+    "frames": 10,
+    "paired": true,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "hiro",
+    "clip": "bite-arm-paired",
+    "frames": 10,
+    "paired": true,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "hiro",
+    "clip": "intercept",
+    "frames": 6,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "hiro",
+    "clip": "riposte",
+    "frames": 6,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "hiro",
+    "clip": "hit-short",
+    "frames": 3,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "hiro",
+    "clip": "counter-l2",
+    "frames": 6,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "hiro",
+    "clip": "counter-l3",
+    "frames": 6,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "hiro",
+    "clip": "idle-sheathed",
+    "frames": 4,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "hiro",
+    "clip": "wolf-cleave-paired",
+    "frames": 12,
+    "paired": true,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "hiro",
+    "clip": "wolf-pin-paired",
+    "frames": 6,
+    "paired": true,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "hiro",
+    "clip": "wolf-rising-cut-paired",
+    "frames": 6,
+    "paired": true,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "hiro",
+    "clip": "plant-stem-cut-paired",
+    "frames": 8,
+    "paired": true,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "hiro",
+    "clip": "plant-vine-pin-paired",
+    "frames": 6,
+    "paired": true,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "hiro",
+    "clip": "plant-crosscut-paired",
+    "frames": 6,
+    "paired": true,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "moss_giant",
+    "clip": "idle",
+    "frames": 4,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "moss_giant",
+    "clip": "approach",
+    "frames": 4,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "moss_giant",
+    "clip": "attack",
+    "frames": 4,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "moss_giant",
+    "clip": "hit",
+    "frames": 4,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "moss_giant",
+    "clip": "down",
+    "frames": 4,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "moss_giant",
+    "clip": "enrage",
+    "frames": 4,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "moss_giant",
+    "clip": "hiro-finisher-1",
+    "frames": 6,
+    "paired": true,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "moss_giant",
+    "clip": "hiro-finisher-2",
+    "frames": 6,
+    "paired": true,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "orc",
+    "clip": "idle",
+    "frames": 4,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "orc",
+    "clip": "approach",
+    "frames": 4,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "orc",
+    "clip": "attack",
+    "frames": 4,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "orc",
+    "clip": "hit",
+    "frames": 4,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "orc",
+    "clip": "down",
+    "frames": 4,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "orc",
+    "clip": "enrage",
+    "frames": 4,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "orc",
+    "clip": "hiro-finisher-1",
+    "frames": 6,
+    "paired": true,
+    "suspectCornerFrames": [
+      "hiro-finisher-1/0",
+      "hiro-finisher-1/1",
+      "hiro-finisher-1/2"
+    ],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "orc",
+    "clip": "hiro-finisher-2",
+    "frames": 6,
+    "paired": true,
+    "suspectCornerFrames": [
+      "hiro-finisher-2/0",
+      "hiro-finisher-2/1",
+      "hiro-finisher-2/2",
+      "hiro-finisher-2/3"
+    ],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "plant",
+    "clip": "idle",
+    "frames": 4,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": false
+  },
+  {
+    "actor": "plant",
+    "clip": "lash",
+    "frames": 6,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": false
+  },
+  {
+    "actor": "plant",
+    "clip": "hit_short",
+    "frames": 3,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": false
+  },
+  {
+    "actor": "plant",
+    "clip": "down_fade",
+    "frames": 4,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": false
+  },
+  {
+    "actor": "serpent",
+    "clip": "idle",
+    "frames": 4,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "serpent",
+    "clip": "approach",
+    "frames": 4,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "serpent",
+    "clip": "attack",
+    "frames": 4,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "serpent",
+    "clip": "hit",
+    "frames": 4,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "serpent",
+    "clip": "down",
+    "frames": 4,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "serpent",
+    "clip": "enrage",
+    "frames": 4,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "serpent",
+    "clip": "hiro-finisher-1",
+    "frames": 6,
+    "paired": true,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "serpent",
+    "clip": "hiro-finisher-2",
+    "frames": 6,
+    "paired": true,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "spider",
+    "clip": "idle",
+    "frames": 4,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "spider",
+    "clip": "approach",
+    "frames": 4,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "spider",
+    "clip": "attack",
+    "frames": 4,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "spider",
+    "clip": "hit",
+    "frames": 4,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "spider",
+    "clip": "down",
+    "frames": 4,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "spider",
+    "clip": "enrage",
+    "frames": 4,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "spider",
+    "clip": "hiro-finisher-1",
+    "frames": 6,
+    "paired": true,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "spider",
+    "clip": "hiro-finisher-2",
+    "frames": 6,
+    "paired": true,
+    "suspectCornerFrames": [],
+    "registrationRecorded": true
+  },
+  {
+    "actor": "wolf",
+    "clip": "idle",
+    "frames": 4,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": false
+  },
+  {
+    "actor": "wolf",
+    "clip": "run",
+    "frames": 6,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": false
+  },
+  {
+    "actor": "wolf",
+    "clip": "leap",
+    "frames": 5,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": false
+  },
+  {
+    "actor": "wolf",
+    "clip": "bite",
+    "frames": 4,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": false
+  },
+  {
+    "actor": "wolf",
+    "clip": "land_tumble",
+    "frames": 5,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": false
+  },
+  {
+    "actor": "wolf",
+    "clip": "overshoot_land",
+    "frames": 4,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": false
+  },
+  {
+    "actor": "wolf",
+    "clip": "land_beside",
+    "frames": 3,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": false
+  },
+  {
+    "actor": "wolf",
+    "clip": "hit_short",
+    "frames": 3,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": false
+  },
+  {
+    "actor": "wolf",
+    "clip": "down_fade",
+    "frames": 4,
+    "paired": false,
+    "suspectCornerFrames": [],
+    "registrationRecorded": false
+  }
+]

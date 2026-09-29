@@ -328,12 +328,16 @@ class Actor {
     this.img.anims.stop();
     const sheet = opts.sheet || this.sheet;
     const c = sheet.clips[id], scene = this.scene, key = this.animKey(id, sheet);
-    if (sheet !== this.sheet && sheet.canvas && sheet.canvas.pivot) {
-      const canvas = sheet.canvas;
-      const s = this.height / (sheet.standing || this.img.height);
-      this.img.setOrigin(canvas.pivot.x / canvas.w, canvas.pivot.y / canvas.h);
-      this.img.setScale(s * (this.facing < 0 ? -1 : 1), s);
-    }
+    const applySheetTransform = () => {
+      if (sheet !== this.sheet && sheet.canvas && sheet.canvas.pivot) {
+        const canvas = sheet.canvas;
+        // A paired clip can have its own measured hero body reference.
+        // Uniform scale preserves the painted contact between both figures.
+        const s = this.height / (sheet.standing || this.img.height) * (c.bodyScale || 1);
+        this.img.setOrigin(canvas.pivot.x / canvas.w, canvas.pivot.y / canvas.h);
+        this.img.setScale(s * (this.facing < 0 ? -1 : 1), s);
+      }
+    };
     const imp = (X.impact && X.impact[id]) || c.impact || {};
     const drift = !c.paired && imp.drift ? Number(imp.drift.distancePx) || 0 : 0;
     if (!['walk', 'enter', 'idle', 'victory'].includes(clip)) this._sheathed = false;
@@ -414,18 +418,21 @@ class Actor {
         if (anim.key !== key || !live()) return;
         at(c.frames.length - 1); detach();
         if (pairApproach) {
+          this.resetImageTransform();
           if (this.sheet.clips.walk) this.img.play(this.animKey('walk'), true);
           move(originX, Math.min(260, Math.abs(pairX - originX)), 'Sine.InOut', settle);
         } else if (drift || (approaching && attacking)) move(originX, 100, 'Sine.Out', settle); else settle();
       };
       const startClip = () => {
         if (!live()) return;
+        applySheetTransform();
         if (target) target.root.setVisible(false);
         this.img.on('animationstart', onStart); this.img.on('animationupdate', onUpdate); this.img.on('animationcomplete', onDone);
         this.img.play(key, false);
         this.syncPause();
       };
       if (pairApproach) {
+        this.resetImageTransform();
         if (this.sheet.clips.walk) this.img.play(this.animKey('walk'), true);
         move(pairX, Math.min(280, Math.max(120, Math.abs(pairX - originX))), 'Sine.InOut', startClip);
         this.syncPause();

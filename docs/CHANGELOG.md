@@ -15,6 +15,15 @@ of small fixes within a day.
 
 ---
 
+## 2026-09-28 - Technical sprite cleanup pilot (no generated art)
+
+- Corrected six plant lash crops/root anchors; removed gray matte from both orc pairs; adjusted Alpha cleave bodyScale 1 -> 1.306122 and pair distance 0.65 -> 0.94. Unaffected plant/orc frames retain identical visible pixels.
+- Fixed borrowed finisher scale leaking into Hiro's approach/return run. Browser checks now assert native walk scale and restored texture/scale.
+- Added targeted rebuild/inventory tool, browser regression capture, before/after review at docs/art/cleanup-pilot, and detailed scope/limitations in SPRITE_CLEANUP_PILOT_20260928.md. Scanned 128 clips; corner heuristic flags 5 -> 3 (not a full art-quality verdict).
+- Files: alpha/orc/plant metadata, two versioned cleaned atlases, actors.js, painted.js, index cache stamp, shipping allowlist and query-aware ship contract; tools/sprite_cleanup_pilot.py; test/browser_sprite_cleanup.js; documentation/review media.
+- Actor lifecycle 27/27, finisher pacing and shipping contract passed. Pilot browser cases passed with no page/resource errors. Cold startup across desktop/mobile orientations: ~14.35 MB visible gameplay, ~15.43 MB including audio unlock; below 20 MB locally. Lossless atlas sizes: plant 396,418 -> 1,084,504; orc 1,915,580 -> 4,635,720 bytes. Old atlases excluded from ship but preserved.
+- Scope remains three representative cases; other Alpha pairs, moss giant and travel need individual review. Original website game untouched; no image-generation credits used; no deployment. Checkpoint a0589af.
+
 ## 2026-09-28 - Facebook Reel: gameplay and music only
 
 Removed all added text overlays during footage, including the descriptive chapter captions. Preserved all shots, music, 70-second duration and final four-second cover/Facebook end card. Updated the marketing compose script, video, preview cache version, README and verification report; refreshed Downloads copies. Verified fully transparent gameplay overlays, sampled output frame, and final video stream/duration checks. No runtime changes.

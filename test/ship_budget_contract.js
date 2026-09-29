@@ -64,6 +64,7 @@ painted.preload({ sys: { settings: { key: 'Expedition' } }, __needsAlpha: true, 
 } });
 assert.deepEqual(loads.filter(l => l.kind === 'atlas').map(l => l.key.replace(/^xp_|_sheet$/g, '')).sort(), shippedActors.slice().sort(),
   'cold boot requests exactly the actors the package carries');
+for (const load of loads) load.file = load.file.split('?')[0];
 for (const load of loads) assert.ok(set.has(load.file), 'Cold boot requests an excluded file: ' + load.file);
 // Closure is required of what ships, not of the whole catalogue: an actor the
 // package leaves out has no metadata to be closed over.

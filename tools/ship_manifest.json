@@ -17,7 +17,9 @@
     "assets/expedition/wolf/wolf.json",
     "assets/expedition/wolf/wolf-0.webp",
     "assets/expedition/plant/plant.json",
-    "assets/expedition/plant/plant-0.webp",
+    "assets/expedition/plant/plant-clean-0.webp",
+    "assets/expedition/orc/orc.json",
+    "assets/expedition/orc/orc-clean-0.webp",
     "assets/expedition/alpha/alpha.json",
     "assets/expedition/alpha/alpha-0.webp",
     "assets/expedition/alpha/alpha-1.webp",
@@ -54,7 +56,6 @@
     "assets/expedition/hag",
     "assets/expedition/goblin",
     "assets/expedition/spider",
-    "assets/expedition/orc",
     "assets/expedition/travel",
     "assets/expedition/effects",
     "assets/expedition/stages"

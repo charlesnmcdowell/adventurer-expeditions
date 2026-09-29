@@ -35,8 +35,9 @@ P.preload = function (scene, ids) {
   if (X.Hud && X.Hud.preloadArt) X.Hud.preloadArt(scene);
   for (const id of (ids || P.needed(scene))) {
     const key = 'xp_' + id + '_sheet', base = 'assets/expedition/' + id + '/';
-    if (!scene.textures.exists(key)) scene.load.multiatlas(key, base + id + '.json', base);
-    if (!scene.cache.json.exists('xp_' + id + '_clips')) scene.load.json('xp_' + id + '_clips', base + id + '.json');
+    const revision = ['plant', 'orc', 'alpha'].includes(id) ? '?v=cleanup-pilot1' : '';
+    if (!scene.textures.exists(key)) scene.load.multiatlas(key, base + id + '.json' + revision, base);
+    if (!scene.cache.json.exists('xp_' + id + '_clips')) scene.load.json('xp_' + id + '_clips', base + id + '.json' + revision);
   }
 };
 P.sheet = function (scene, id) {
