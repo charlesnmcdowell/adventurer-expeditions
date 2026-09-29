@@ -61,5 +61,15 @@
       920
     ]
   ],
-  "source": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions\\marketing\\expeditions-facebook-20260928"
+  "source": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions\\marketing\\expeditions-facebook-20260928",
+  "landscapeRevision": {
+    "method": "Built-in image_gen, approved portrait reference; dedicated wide painting",
+    "master": "landscape-cover-master.png",
+    "prompt": "landscape-cover-prompt.txt",
+    "dimensions": [
+      1920,
+      1080
+    ],
+    "sha256": "2993147870947f8fd7ebd54254c3d6b3352bd9a11b5d8cff658301276af4bc55"
+  }
 }

@@ -43,41 +43,10 @@ save(master.crop((0, 0, W, ph)).resize((800, 1200), Image.LANCZOS), 'Adventurer_
 # Square from the top: title and Hiro's upper body.
 save(master.crop((0, 0, W, W)).resize((800, 800), Image.LANCZOS), 'Adventurer_Expeditions_Cover_800x800.png')
 
-# Landscape: the master painting itself, not a gameplay frame (a frame carries
-# HUD text, and only the title may be written on a cover). Hiro at full height
-# on the right, the same painting blurred and darkened as the fill behind him,
-# the painted title keyed out of the master and set on the left.
-# The fill is the master's own dusk landscape (castle, bridge, river), softened and dimmed, not the figure.
-fill = master.crop((575, 235, W, 441)).resize((1920, 1080), Image.LANCZOS)   # right of Hiro's head: sunset, castle, bridge
-fill = fill.filter(ImageFilter.GaussianBlur(3)).point(lambda v: int(v * 0.7))
-land = fill
-figure = master.crop((0, 130, W, H - 130))                                    # below the painted title, above the studio name
-figw = round(figure.size[0] * 1080 / figure.size[1])
-figure = figure.resize((figw, 1080), Image.LANCZOS)
-# Feather the figure's left edge into the fill so the join is not a hard cut.
-fade = Image.new('L', figure.size, 255); fp = fade.load()
-for x in range(90):
-    for y in range(1080): fp[x, y] = int(255 * x / 90)
-land.paste(figure, (1920 - figw, 0), fade)
-title = master.crop((40, 18, W - 70, 210))                                   # 'ADVENTURER' and 'EXPEDITIONS' as painted, nothing below
-tw, th = title.size
-scale = 1000 / tw
-title = title.resize((round(tw * scale), round(th * scale)), Image.LANCZOS)
-# Key: the lettering is warm and bright against a dusk sky; keep bright warm pixels.
-px = title.load(); alpha = Image.new('L', title.size, 0); ap = alpha.load()
-for y in range(title.size[1]):
-    for x in range(title.size[0]):
-        r, g, b = px[x, y]
-        warm = r - b
-        lum = 0.3 * r + 0.59 * g + 0.11 * b
-        a = max(0, min(255, int((lum - 120) * 3))) if warm > 25 else 0
-        ap[x, y] = a
-alpha = alpha.filter(ImageFilter.GaussianBlur(0.6))
-shadow = Image.new('RGB', title.size, (10, 6, 14))
-ty = (1080 - title.size[1]) // 2 - 60                                        # the title sits in the open left half, a little above centre
-land.paste(shadow, (64, ty + 6), alpha.filter(ImageFilter.GaussianBlur(4)))
-land.paste(title, (60, ty), alpha)
-save(land, 'Adventurer_Expeditions_Cover_1920x1080.png')
+# Landscape has a dedicated, coherent widescreen master matching the portrait.
+# Do not reconstruct it from blurred portrait crops or extract duplicate lettering.
+land = Image.open(ROOT / 'landscape-cover-master.png').convert('RGB')
+save(land.resize((1920, 1080), Image.LANCZOS), 'Adventurer_Expeditions_Cover_1920x1080.png')
 
 # ---------------------------------------------------------------- videos
 # (capture, seconds, crop x, crop width) — the same reframes the reel used, no captions.
