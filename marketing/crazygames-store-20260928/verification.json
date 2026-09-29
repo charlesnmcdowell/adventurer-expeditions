@@ -15,50 +15,41 @@
   },
   "videos": {
     "Adventurer_Expeditions_Preview_1920x1080.mp4": {
-      "seconds": 19.1,
-      "mb": 13.36
+      "seconds": 20.0,
+      "bytes": 13502310,
+      "audio": false
     },
     "Adventurer_Expeditions_Preview_1080x1920.mp4": {
-      "seconds": 19.1,
-      "mb": 8.41
+      "seconds": 20.0,
+      "bytes": 8131279,
+      "audio": false
     }
   },
   "cuts": [
     [
-      "02-wolf-exchange",
-      3.0,
-      200,
-      1080
-    ],
-    [
       "03-wolf-finisher",
-      4.0,
-      180,
-      1040
+      0,
+      4.0
     ],
     [
       "04-forest-vault",
-      3.0,
-      180,
-      1060
+      0.8,
+      4.0
     ],
     [
       "06-moss-giant",
-      3.0,
-      240,
-      1040
+      0,
+      2.5
     ],
     [
       "12-orc-boss",
-      4.0,
-      200,
-      1080
+      0,
+      6.0
     ],
     [
       "13-victory",
-      2.0,
-      140,
-      920
+      0,
+      3.5
     ]
   ],
   "source": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions\\marketing\\expeditions-facebook-20260928",
@@ -81,5 +72,22 @@
       800
     ],
     "sha256": "44d5102184b14e58fe6dd6e66e8a60906ba2312b1772a488b925eea931c10600"
+  },
+  "previewRevision": 2,
+  "framing": "Full game frame fitted in both orientations over soft scenery fill",
+  "timeline": "Wolf 0-4; travel 4-8; swamp 8-10.5; orc 10.5-16.5; victory 16.5-20",
+  "decodedPreviewChecks": {
+    "1920x1080": {
+      "frames": 600,
+      "seconds": 20,
+      "audioStreams": 0,
+      "bytes": 13502310
+    },
+    "1080x1920": {
+      "frames": 600,
+      "seconds": 20,
+      "audioStreams": 0,
+      "bytes": 8131279
+    }
   }
 }

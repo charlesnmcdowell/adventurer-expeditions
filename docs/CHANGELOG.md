@@ -15,6 +15,10 @@ of small fixes within a day.
 
 ---
 
+## 2026-09-29 - Silent store preview cuts and framing repaired
+
+Rebuilt the landscape and portrait CrazyGames previews as 20-second, 30fps silent edits using completed wolf/travel/swamp/orc/victory action beats. Original three-second travel cut interrupted the vault; portrait horizontal crops also excluded actors. Both versions now fit the entire game frame over soft scenery fill, with no foreground stretching. Added a local preview page and revision notes; updated build script with --videos-only and preserved cover provenance. Files are under marketing/crazygames-store-20260928. No runtime or cover changes.
+
 ## 2026-09-28 - New first-quest tutorial; CrazyGames store assets cut
 
 **Tutorial (Hiro's design).** On the first quest the game now holds and points at an icon: Counter Attack the first time it is ready (the first lesson), Finisher every time it becomes ready, Counter Attack every time Hiro is under half health (`X.tutorialLowHp` 0.5) with it ready, and God Aura once on the boss. One hold per readiness window, so a skipped hold does not nag next turn. After the first boss falls nothing holds. `ExpeditionScene.guideSkillUse` and `tutoring()` in `scene.js`; `X.tutorialLessons` retired. `run.tutorial.skipGuide` (the dev panel's flag) switches the holds off, and the arcade browser suite sets it where it skipped the lessons. Simulated: a player who does only what the hand asks wins the first fight 100 %, the second 82 % and the first boss 88 %, against 87 / 6 / 0 % under the old one-lesson-per-fight tutorial with one-turn Hiro. The balance probe's tutorial-follower policy and the simulator's first-quest test follow the new rules; that test passes again. One more assertion, on the shelved companion loop's third-playthrough win rate, was lowered from 30 % to "winnable", since that path is not tuned for the arcade; `npm test` is green end to end for the first time since the one-turn change.

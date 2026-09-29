@@ -8,7 +8,7 @@ no text, no black bars, no logo transitions, under 50 MB.
 Run from the Expeditions root: python marketing/crazygames-store-20260928/build_store_assets.py
 """
 from pathlib import Path
-import json, re, subprocess
+import json, re, subprocess, sys
 from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
 ROOT = Path(__file__).resolve().parent
@@ -29,63 +29,70 @@ def duration(path):
     h, m, s = times[-1]
     return int(h) * 3600 + int(m) * 60 + float(s)
 
-# ---------------------------------------------------------------- covers
-master = Image.open(SRC / 'cover-master.png').convert('RGB')   # 941 x 1672, title painted in, studio name at the foot
-W, H = master.size
-
-def save(im, name):
-    im.save(ROOT / name, optimize=True); print(name, im.size)
-
-# Portrait 2:3 from the top of the master: keeps the painted title and Hiro, drops
-# the studio name at the foot (only the game's title may appear).
-ph = round(W * 3 / 2)
-save(master.crop((0, 0, W, ph)).resize((800, 1200), Image.LANCZOS), 'Adventurer_Expeditions_Cover_800x1200.png')
-# Dedicated square composition keeps Hiro, the blade and title fully in frame.
-square = Image.open(ROOT / 'square-cover-master.png').convert('RGB')
-save(square.resize((800, 800), Image.LANCZOS), 'Adventurer_Expeditions_Cover_800x800.png')
-
-# Landscape has a dedicated, coherent widescreen master matching the portrait.
-# Do not reconstruct it from blurred portrait crops or extract duplicate lettering.
-land = Image.open(ROOT / 'landscape-cover-master.png').convert('RGB')
-save(land.resize((1920, 1080), Image.LANCZOS), 'Adventurer_Expeditions_Cover_1920x1080.png')
-
-# ---------------------------------------------------------------- videos
-# (capture, seconds, crop x, crop width) — the same reframes the reel used, no captions.
-CUTS = [('02-wolf-exchange', 3.0, 200, 1080), ('03-wolf-finisher', 4.0, 180, 1040), ('04-forest-vault', 3.0, 180, 1060),
-        ('06-moss-giant', 3.0, 240, 1040), ('12-orc-boss', 4.0, 200, 1080), ('13-victory', 2.0, 140, 920)]
-total = sum(c[1] for c in CUTS); assert 15 <= total <= 20, total
-for name, secs, x, w in CUTS:
-    assert duration(SRC / 'raw' / (name + '.webm')) >= secs, name
-
-def encode(out, graph, inputs):
-    args = [FF, '-y']
-    for i in inputs: args += ['-i', i]
-    args += ['-filter_complex', graph, '-map', '[v]', '-an', '-r', '30', '-c:v', 'libx264', '-preset', 'slow', '-crf', '20', '-pix_fmt', 'yuv420p', '-movflags', '+faststart', out]
-    run(args)
+if '--videos-only' not in sys.argv:
+    # ---------------------------------------------------------------- covers
+    master = Image.open(SRC / 'cover-master.png').convert('RGB')   # 941 x 1672, title painted in, studio name at the foot
+    W, H = master.size
+    
+    def save(im, name):
+        im.save(ROOT / name, optimize=True); print(name, im.size)
+    
+    # Portrait 2:3 from the top of the master: keeps the painted title and Hiro, drops
+    # the studio name at the foot (only the game's title may appear).
+    ph = round(W * 3 / 2)
+    save(master.crop((0, 0, W, ph)).resize((800, 1200), Image.LANCZOS), 'Adventurer_Expeditions_Cover_800x1200.png')
+    # Dedicated square composition keeps Hiro, the blade and title fully in frame.
+    square = Image.open(ROOT / 'square-cover-master.png').convert('RGB')
+    save(square.resize((800, 800), Image.LANCZOS), 'Adventurer_Expeditions_Cover_800x800.png')
+    
+    # Landscape has a dedicated, coherent widescreen master matching the portrait.
+    # Do not reconstruct it from blurred portrait crops or extract duplicate lettering.
+    land = Image.open(ROOT / 'landscape-cover-master.png').convert('RGB')
+    save(land.resize((1920, 1080), Image.LANCZOS), 'Adventurer_Expeditions_Cover_1920x1080.png')
+    
+# Complete action beats; start and duration in seconds, no speed changes.
+CUTS = [('03-wolf-finisher', 0, 4.0), ('04-forest-vault', 0.8, 4.0),
+        ('06-moss-giant', 0, 2.5), ('12-orc-boss', 0, 6.0), ('13-victory', 0, 3.5)]
+total = sum(c[2] for c in CUTS)
+assert total == 20
+WORK = ROOT / 'work' / 'preview-v2'
+WORK.mkdir(parents=True, exist_ok=True)
+for name, start, secs in CUTS:
+    assert duration(SRC / 'raw' / (name + '.webm')) >= start + secs, name
 
 parts = {'land': [], 'port': []}
-for name, secs, x, w in CUTS:
-    src = SRC / 'raw' / (name + '.webm')
-    # Landscape 1920x1080: scale the 1280x760 frame to 1920 wide and trim the 60 px the 16:9 frame cannot hold.
-    outL = WORK / (name + '-land.mp4')
-    encode(outL, f'[0:v]trim=0:{secs},setpts=PTS-STARTPTS,fps=30,scale=1920:1140:flags=lanczos,crop=1920:1080:0:30,setsar=1[v]', [src])
-    parts['land'].append(outL)
-    # Portrait 1080x1920: the action reframed to 1080 wide over a blurred fill of the same frame, as the reel did.
-    hgt = round(760 * 1080 / w / 2) * 2
-    outP = WORK / (name + '-port.mp4')
-    encode(outP, (f'[0:v]trim=0:{secs},setpts=PTS-STARTPTS,fps=30,split=2[b][f];'
-                  f'[b]scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,boxblur=24:2,eq=brightness=-0.12[bg];'
-                  f'[f]crop={w}:760:{x}:0,scale=1080:{hgt}:flags=lanczos[fg];'
-                  f'[bg][fg]overlay=0:(H-h)/2,setsar=1[v]'), [src])
-    parts['port'].append(outP)
+for key, width, height in [('land', 1920, 1080), ('port', 1080, 1920)]:
+    for name, start, secs in CUTS:
+        src = SRC / 'raw' / (name + '.webm')
+        dest = WORK / (name + '-' + key + '.mp4')
+        # Fit the complete game frame. Background fill never replaces or clips it.
+        graph = (f'[0:v]trim=start={start}:duration={secs},setpts=PTS-STARTPTS,fps=30,split=2[b][f];'
+                 f'[b]scale={width}:{height}:force_original_aspect_ratio=increase,crop={width}:{height},'
+                 'boxblur=24:2,eq=brightness=-0.3:saturation=0.7[bg];'
+                 f'[f]scale={width}:{height}:force_original_aspect_ratio=decrease:force_divisible_by=2[fg];'
+                 '[bg][fg]overlay=(W-w)/2:(H-h)/2,setsar=1,format=yuv420p[v]')
+        run([FF, '-v', 'error', '-y', '-i', src, '-filter_complex_threads', '1', '-filter_complex', graph,
+             '-map', '[v]', '-frames:v', str(round(secs*30)), '-an', '-r', '30', '-c:v', 'libx264',
+             '-preset', 'fast', '-crf', '20', '-threads', '2', '-video_track_timescale', '15360', dest])
+        parts[key].append(dest)
+        print('Encoded', key, name, flush=True)
 
+videos = {}
 for key, out in [('land', 'Adventurer_Expeditions_Preview_1920x1080.mp4'), ('port', 'Adventurer_Expeditions_Preview_1080x1920.mp4')]:
-    lst = WORK / (key + '.txt'); lst.write_text(''.join(f"file '{p.as_posix()}'\n" for p in parts[key]))
-    run([FF, '-y', '-f', 'concat', '-safe', '0', '-i', lst, '-c', 'copy', '-movflags', '+faststart', ROOT / out])
-    print(out, round(duration(ROOT / out), 2), 's', round((ROOT / out).stat().st_size / 1048576, 1), 'MB')
+    lst = WORK / (key + '.txt')
+    lst.write_text(''.join("file '" + p.as_posix() + "'\n" for p in parts[key]), encoding='utf-8')
+    run([FF, '-v', 'error', '-y', '-f', 'concat', '-safe', '0', '-i', lst, '-c', 'copy', '-an',
+         '-movflags', '+faststart', ROOT / out])
+    seconds = duration(ROOT / out)
+    assert abs(seconds - 20) < 0.1, seconds
+    assert (ROOT / out).stat().st_size < 50_000_000
+    videos[out] = {'seconds': seconds, 'bytes': (ROOT / out).stat().st_size, 'audio': False}
 
-report = {'covers': {n: Image.open(ROOT / n).size for n in ['Adventurer_Expeditions_Cover_1920x1080.png', 'Adventurer_Expeditions_Cover_800x1200.png', 'Adventurer_Expeditions_Cover_800x800.png']},
-          'videos': {n: {'seconds': round(duration(ROOT / n), 2), 'mb': round((ROOT / n).stat().st_size / 1048576, 2)} for n in ['Adventurer_Expeditions_Preview_1920x1080.mp4', 'Adventurer_Expeditions_Preview_1080x1920.mp4']},
-          'cuts': CUTS, 'source': str(SRC)}
-(ROOT / 'verification.json').write_text(json.dumps(report, indent=2))
-print(json.dumps(report, indent=1))
+# Preserve cover provenance when rebuilding video only.
+report_path = ROOT / 'verification.json'
+report = json.loads(report_path.read_text(encoding='utf-8')) if report_path.exists() else {}
+report.update(videos=videos, cuts=CUTS, source=str(SRC), previewRevision=2,
+              framing='Full game frame fitted in both orientations over soft scenery fill',
+              timeline='Wolf 0-4; travel 4-8; swamp 8-10.5; orc 10.5-16.5; victory 16.5-20')
+report_path.write_text(json.dumps(report, indent=2), encoding='utf-8')
+print('Verified two silent 20-second previews', flush=True)
