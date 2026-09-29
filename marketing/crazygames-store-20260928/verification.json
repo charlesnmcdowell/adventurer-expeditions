@@ -71,5 +71,15 @@
       1080
     ],
     "sha256": "2993147870947f8fd7ebd54254c3d6b3352bd9a11b5d8cff658301276af4bc55"
+  },
+  "squareRevision": {
+    "method": "Built-in image_gen; dedicated square composition matching landscape cover",
+    "master": "square-cover-master.png",
+    "prompt": "square-cover-prompt.txt",
+    "dimensions": [
+      800,
+      800
+    ],
+    "sha256": "44d5102184b14e58fe6dd6e66e8a60906ba2312b1772a488b925eea931c10600"
   }
 }

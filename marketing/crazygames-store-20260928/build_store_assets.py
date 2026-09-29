@@ -40,8 +40,9 @@ def save(im, name):
 # the studio name at the foot (only the game's title may appear).
 ph = round(W * 3 / 2)
 save(master.crop((0, 0, W, ph)).resize((800, 1200), Image.LANCZOS), 'Adventurer_Expeditions_Cover_800x1200.png')
-# Square from the top: title and Hiro's upper body.
-save(master.crop((0, 0, W, W)).resize((800, 800), Image.LANCZOS), 'Adventurer_Expeditions_Cover_800x800.png')
+# Dedicated square composition keeps Hiro, the blade and title fully in frame.
+square = Image.open(ROOT / 'square-cover-master.png').convert('RGB')
+save(square.resize((800, 800), Image.LANCZOS), 'Adventurer_Expeditions_Cover_800x800.png')
 
 # Landscape has a dedicated, coherent widescreen master matching the portrait.
 # Do not reconstruct it from blurred portrait crops or extract duplicate lettering.
