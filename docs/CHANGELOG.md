@@ -15,6 +15,10 @@ of small fixes within a day.
 
 ---
 
+## 2026-09-28 - Marketing Reel refreshed after approved sprite cleanup
+
+Recaptured all 17 staged gameplay/inn clips from the current Expeditions runtime, including cleaned orc finishers and corrected Alpha cleave/locomotion scaling. Rebuilt the same 70-second 1080 x 1920 music-only Reel with Cookie Relaxation 2, no gameplay captions, unchanged cover and four-second Facebook end card. Updated capture provenance, verification, preview cache version and README in marketing/expeditions-facebook-20260928; refreshed the Downloads upload copy. No runtime changes, art generation or Facebook publication.
+
 ## 2026-09-28 - Approved sprite cleanup workflow saved for future Astra sessions
 
 User confirmed the technical pilot was successful. Added reusable skill source at docs/skills/sprite-cleanup-pilot/SKILL.md and installed an identical personal Codex skill. Linked the workflow and pilot evidence from GDD section 10. Documents preserve the technical-first approach, rejected broad gray masking, normal/paired transform boundary, historical rebuild caveat, validation and remaining-art shortlist. Documentation only; no game or art changes. Skill frontmatter validated and installed/repository copies checked identical.

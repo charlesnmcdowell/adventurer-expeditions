@@ -14,6 +14,8 @@ Hiro draws his katana, fights wolves, and performs his overhead finisher. Forest
 
 Revision 2: removed all added titles, descriptive captions and branding during gameplay. The footage, edit timing, music and final cover/Facebook end card are unchanged. In-game interface text remains part of the actual capture.
 
+Revision 3: recaptured every gameplay and inn shot after the approved sprite cleanup (repair commit 5436d49). Includes the cleaned orc finisher and corrected Alpha cleave/approach scales. Same 70-second edit, music, cover and four-second end card; no new artwork or gameplay captions.
+
 Audio uses only the first 70 seconds of the user-selected `cookie relaxation 2.wav`, normalized toward -16 LUFS with an opening fade and two-second closing fade. No voiceover and no captured game audio.
 
 ## Production and provenance

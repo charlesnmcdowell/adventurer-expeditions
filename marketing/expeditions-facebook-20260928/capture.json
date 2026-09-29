@@ -3,88 +3,91 @@
     {
       "name": "01-hiro-intro",
       "seconds": 5,
-      "capturedSeconds": 5.401
+      "capturedSeconds": 5.446
     },
     {
       "name": "02-wolf-exchange",
       "seconds": 6,
-      "capturedSeconds": 6.481
+      "capturedSeconds": 6.447
     },
     {
       "name": "03-wolf-finisher",
       "seconds": 4,
-      "capturedSeconds": 4.684
+      "capturedSeconds": 4.616
     },
     {
       "name": "04-forest-vault",
       "seconds": 5,
-      "capturedSeconds": 5.8
+      "capturedSeconds": 5.582
     },
     {
       "name": "05-swamp-serpent",
       "seconds": 6,
-      "capturedSeconds": 6.46
+      "capturedSeconds": 6.564
     },
     {
       "name": "06-moss-giant",
       "seconds": 4,
-      "capturedSeconds": 4.482
+      "capturedSeconds": 4.391
     },
     {
       "name": "07-city-vault",
       "seconds": 4,
-      "capturedSeconds": 4.935
+      "capturedSeconds": 4.499
     },
     {
       "name": "08-goblin-finisher",
       "seconds": 4,
-      "capturedSeconds": 4.519
+      "capturedSeconds": 4.538
     },
     {
       "name": "09-spider-finisher",
       "seconds": 4,
-      "capturedSeconds": 4.646
+      "capturedSeconds": 4.547
     },
     {
       "name": "10-inn-0",
       "seconds": 1.6,
-      "capturedSeconds": 1.994
+      "capturedSeconds": 2.05
     },
     {
       "name": "10-inn-1",
       "seconds": 1.6,
-      "capturedSeconds": 2.021
+      "capturedSeconds": 2.003
     },
     {
       "name": "10-inn-2",
       "seconds": 1.6,
-      "capturedSeconds": 1.964
+      "capturedSeconds": 2.015
     },
     {
       "name": "10-inn-3",
       "seconds": 1.6,
-      "capturedSeconds": 2.005
+      "capturedSeconds": 2.019
     },
     {
       "name": "10-inn-4",
       "seconds": 1.6,
-      "capturedSeconds": 2.002
+      "capturedSeconds": 1.968
     },
     {
       "name": "11-alpha-boss",
       "seconds": 5,
-      "capturedSeconds": 5.986
+      "capturedSeconds": 5.456
     },
     {
       "name": "12-orc-boss",
       "seconds": 6,
-      "capturedSeconds": 6.686
+      "capturedSeconds": 6.491
     },
     {
       "name": "13-victory",
       "seconds": 5,
-      "capturedSeconds": 5.58
+      "capturedSeconds": 5.382
     }
   ],
-  "errors": []
+  "errors": [],
+  "revision": "3-cleanup",
+  "sourceCommit": "a936064dfc2580636fb2c4528c7b457da7250916",
+  "spriteCleanupCommit": "5436d49"
 }

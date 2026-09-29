@@ -1,8 +1,8 @@
 {
   "file": "Adventurer_Expeditions_Facebook_Reel_70s.mp4",
   "duration": "70.022000",
-  "bytes": 25552422,
-  "sha256": "89b2093dbbfcf5655077ffe41dcac7dc9e5d6a440342249a6791a9aa2addf93b",
+  "bytes": 25886981,
+  "sha256": "e26963228ae1b52ae1c1bd993b2ca4cae51bf3e0d3bfaa38c0bfe087ccb8b4d5",
   "music": "C:\\Users\\charl\\OneDrive\\Documents\\TTRPG\\Kenji\\music\\cookie relaxation 2.wav",
   "musicStartSeconds": 0,
   "voiceover": false,
@@ -161,7 +161,7 @@
         "start_time": "0.000000",
         "duration_ts": 1075200,
         "duration": "70.000000",
-        "bit_rate": "2713767",
+        "bit_rate": "2752001",
         "bits_per_raw_sample": "8",
         "nb_frames": "2100",
         "disposition": {
@@ -235,8 +235,8 @@
       "format_long_name": "QuickTime / MOV",
       "start_time": "0.000000",
       "duration": "70.022000",
-      "size": "25552422",
-      "bit_rate": "2919359",
+      "size": "25886981",
+      "bit_rate": "2957582",
       "probe_score": 100,
       "tags": {
         "major_brand": "isom",
@@ -245,5 +245,10 @@
         "encoder": "Lavf57.75.100"
       }
     }
-  }
+  },
+  "revision": "3-cleanup",
+  "spriteCleanupCommit": "5436d49",
+  "freshCaptureClips": 17,
+  "captureErrors": [],
+  "playbackCheck": "Installed Chrome, 390x844 viewport: 70s, 1080x1920, playback advanced; sampled boss scenes reviewed"
 }
