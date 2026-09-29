@@ -66,13 +66,15 @@ const median = a => { const s = a.slice().sort((x, y) => x - y); return s[Math.f
 console.log('arcade balance: ' + RUNS + ' runs per policy, Rest below ' + Math.round(REST_AT * 100) + '% hp, loop cap ' + MAX_LOOPS);
 console.log('scoring ' + JSON.stringify(X.scoring) + ' rest ' + JSON.stringify(X.rest) + ' scale x' + Camp.scaleFor({ questsDone: X.slice.openQuests.slice() }).toFixed(2) + ' per loop');
 // A first-timer who does what the tutorial hand asks on the first quest and
-// nothing after: Finisher once on fight 1, Counter once on fight 2, Aura once
-// on the boss. `enc.run.questsDone.length` tells the wave which quest it is on.
-const lessons = X.tutorialLessons || ['finisher', 'counter_attack', 'god_aura'];
+// nothing after (2026-09-28 rules): Counter the first time it is ready, Finisher
+// whenever it is ready, Counter whenever under half health, Aura once on the boss.
 const tutorialOnly = e => {
   if (e.run.questsDone.length) return;
-  const id = lessons[Math.min(lessons.length - 1, e.run.awarded.length)];
-  if (!e.__tapped && Enc.skillState(e, id).ready) { Enc.requestSkill(e, id); e.__tapped = true; }
+  const u = Enc.heroUnit(e); if (!u) return;
+  if (!e.run.__counterTaught && Enc.skillState(e, 'counter_attack').ready) { Enc.requestSkill(e, 'counter_attack'); e.run.__counterTaught = true; return; }
+  if (Enc.skillState(e, 'finisher').ready) { Enc.requestSkill(e, 'finisher'); return; }
+  if (u.chp / u.maxHp < (X.tutorialLowHp || 0.5) && Enc.skillState(e, 'counter_attack').ready) { Enc.requestSkill(e, 'counter_attack'); return; }
+  if (e.def && e.def.boss && !e.run.__auraTaught && Enc.skillState(e, 'god_aura').ready) { Enc.requestSkill(e, 'god_aura'); e.run.__auraTaught = true; }
 };
 // A casual player: notices a ready skill about half the time.
 let casualSeed = 1; const casualRng = () => { casualSeed = (casualSeed * 1103515245 + 12345) & 0x7fffffff; return casualSeed / 0x7fffffff; };

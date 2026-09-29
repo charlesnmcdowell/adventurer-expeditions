@@ -575,8 +575,14 @@ pips, plus or lock. Values as shipped: Katana Slash ×1.3; **God Aura attack
 answers 2 attacks for 2 rounds, 5 s recovery; **Finisher** power 2.8, windows
 51 % (regular) / 25 % (boss), heals 25 % of full health on a kill (35 % until
 the second balance pass of 2026-09-28), no cooldown.
-The tutorial teaches **Finisher (fight 1) → Counter Attack (fight 2) → God Aura
-(boss)** and holds only on the first quest. Hiro's unused level-2/3 clips ship
+The tutorial (revised 2026-09-28) holds the game and points at an icon, on the
+first quest only: **Counter Attack** the first time it is ready, **Finisher**
+every time it becomes ready, **Counter Attack** every time Hiro is under half
+health with it ready, **God Aura** once on the boss. One hold per readiness
+window, skippable. After the first boss falls nothing holds: knowing when is
+the player's job. Simulated, a player who does only what the hand asks beats
+the first boss 88 % of the time (was 0 % under the one-lesson-per-fight
+tutorial once Hiro dropped to one turn a round). Hiro's unused level-2/3 clips ship
 as random variety. Everything below that describes levels 1–3 or unlock prices
 is history.
 

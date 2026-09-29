@@ -105,8 +105,11 @@ X.encounters = [
 // multiplier step per completed playthrough: loop 2 pays 1.25x, loop 3 1.5x.
 // The three tappable skills, in HUD order. Katana Slash is automatic and never shown as a button.
 X.tappable = ['finisher', 'god_aura', 'counter_attack'];
-// The first quest teaches one per fight, in this order (Hiro, 2026-09-27).
-X.tutorialLessons = ['finisher', 'counter_attack', 'god_aura'];
+// The first-quest tutorial (Hiro, 2026-09-28): Counter Attack first, then the
+// game holds and points at Finisher whenever it is ready and at Counter Attack
+// whenever Hiro is under this share of his health, God Aura once on the boss.
+// Nothing holds after the first boss falls. Logic: ExpeditionScene.guideSkillUse.
+X.tutorialLowHp = 0.5;
 X.scoring = {
   regular: 100,          // any regular monster defeated, however it dies
   boss: 500,             // per boss, so a triple-boss wave pays three times

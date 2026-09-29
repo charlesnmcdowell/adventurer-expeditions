@@ -43,7 +43,7 @@ const OUT = path.join(__dirname, 'reports', 'arcade'); fs.mkdirSync(OUT, { recur
   await page.waitForFunction(() => window.__game.scene.getScene('Expedition').enc, null, { timeout: 30000 });
   await page.waitForTimeout(2000);
   // Skip the lessons: the fight plays on its own. Wound Hiro, let the wave end, and see the wound carried.
-  await page.evaluate(() => { const s = window.__game.scene.getScene('Expedition'); Object.assign(s.run.tutorial, { used: { finisher: true, counter_attack: true, god_aura: true }, finisherDone: true }); s.hero.unit.chp = Math.round(s.hero.unit.maxHp * 0.6); });
+  await page.evaluate(() => { const s = window.__game.scene.getScene('Expedition'); Object.assign(s.run.tutorial, { skipGuide: true, used: { finisher: true, counter_attack: true, god_aura: true }, finisherDone: true }); s.hero.unit.chp = Math.round(s.hero.unit.maxHp * 0.6); });
   await page.waitForFunction(() => { const s = window.__game.scene.getScene('Expedition'); return s.enc && s.enc.st.over && s.arrowArmed; }, null, { timeout: 90000 });
   await page.waitForTimeout(300);
   const afterWave = await page.evaluate(() => { const s = window.__game.scene.getScene('Expedition'); return { hp: s.run.hp, max: s.run.hpMax, unit: s.hero.unit.chp, umax: s.hero.unit.maxHp, arrow: !!s.arrowArmed }; });
@@ -185,7 +185,7 @@ const OUT = path.join(__dirname, 'reports', 'arcade'); fs.mkdirSync(OUT, { recur
       const e = Camp.questEncounters('rain', r)[2];
       if (e.enemies.length === 3) { run = r; run.questId = 'rain'; run.wave = 2; run.checkpoint = 2; run.phase = 'quest'; run.score = 9000; }
     }
-    Object.assign(run.tutorial, { used: { finisher: true, counter_attack: true, god_aura: true }, finisherDone: true, arrowDone: true });
+    Object.assign(run.tutorial, { skipGuide: true, used: { finisher: true, counter_attack: true, god_aura: true }, finisherDone: true, arrowDone: true });
     X.Run.save(run); X.Dev.go(s, 'Expedition', { run });
     return { seed: run.seed, loop: run.loop, enemies: Camp.questEncounters('rain', run)[2].enemies, scale: Camp.scaleFor(run) };
   });

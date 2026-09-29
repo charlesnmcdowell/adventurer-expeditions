@@ -233,27 +233,39 @@ class ExpeditionScene extends Phaser.Scene {
 
   togglePause() { if (this.corner) this.corner.togglePause(); }
 
-  // The tutorial (Hiro, 2026-09-27): one lesson per fight on the first quest of
-  // a run — Finisher in the first fight, Counter Attack in the second, God Aura
-  // on the boss. The first time that fight's skill is ready the game holds
-  // (nothing steps while the gate is up) and points at its icon until it is
-  // tapped or skipped. Called both before a step and after a swing that first
-  // opened the window. Later quests, and later loops, never hold.
-  lessonFor(wave) { return this.run.questsDone.length === 0 ? (X.tutorialLessons || ['finisher', 'counter_attack', 'god_aura'])[wave] || null : null; }
+  // The tutorial (Hiro, 2026-09-28): on the first quest of a run the game holds
+  // (nothing steps while the gate is up) and points at an icon:
+  //  - Counter Attack the first time it is ready: the first lesson.
+  //  - Finisher every time it becomes ready.
+  //  - Counter Attack every time Hiro is under half health with it ready.
+  //  - God Aura once, the first time it is ready on the boss.
+  // A hold happens once per readiness window: a skipped hold does not come
+  // back next turn, the skill has to lapse and be ready again. Called before a
+  // step and after a swing that opened a window. From the second quest on
+  // (the first boss beaten) nothing holds: knowing when is on the player.
+  tutoring() { return this.run.questsDone.length === 0 && !(this.run.tutorial && this.run.tutorial.skipGuide); }
   async guideSkillUse() {
     const enc = this.enc, Enc = X.Encounter;
-    if (!enc || enc.request || this.ended) return;
+    if (!enc || enc.request || this.ended || !this.tutoring()) return;
     const t = this.run.tutorial; t.used = t.used || {};
-    if (t.finisherDone) t.used.finisher = true;
-    const lesson = this.lessonFor(this.run.wave);
-    for (const id of ['finisher', 'counter_attack', 'god_aura']) {
-      if (id !== lesson || t.used[id] || !Enc.owned(this.run, id)) continue;
-      const st = Enc.skillState(enc, id); if (!st || !st.ready) continue;
+    const u = Enc.heroUnit(enc); if (!u || u.downed) return;
+    const armed = this.__guideArmed || (this.__guideArmed = {});
+    const ready = id => { const st = Enc.skillState(enc, id); return !!(st && st.ready); };
+    for (const id of X.tappable) if (!ready(id)) armed[id] = false;
+    const low = u.chp / u.maxHp < (X.tutorialLowHp != null ? X.tutorialLowHp : 0.5);
+    const want = [];
+    if (!t.used.counter_attack) want.push('counter_attack');
+    want.push('finisher');
+    if (low) want.push('counter_attack');
+    if (enc.def && enc.def.boss && !t.used.god_aura) want.push('god_aura');
+    for (const id of want) {
+      if (armed[id] || !ready(id)) continue;
       const icon = this.hud.icons[id]; if (!icon || !icon.rect) continue;
+      armed[id] = true;
       this.hud._gateFor = 'use:' + id;
       const r = await this.hud.gate(icon.rect, { skippable: true });
       if (this.ended) return;
-      if (r && r.skipped) { t.used[id] = true; X.Run.save(this.run); }
+      if (r && r.skipped && (id === 'god_aura' || !t.used.counter_attack)) { t.used[id] = true; X.Run.save(this.run); }
       break;
     }
   }
