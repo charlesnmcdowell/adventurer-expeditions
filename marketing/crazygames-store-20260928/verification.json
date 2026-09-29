@@ -1,0 +1,65 @@
+{
+  "covers": {
+    "Adventurer_Expeditions_Cover_1920x1080.png": [
+      1920,
+      1080
+    ],
+    "Adventurer_Expeditions_Cover_800x1200.png": [
+      800,
+      1200
+    ],
+    "Adventurer_Expeditions_Cover_800x800.png": [
+      800,
+      800
+    ]
+  },
+  "videos": {
+    "Adventurer_Expeditions_Preview_1920x1080.mp4": {
+      "seconds": 19.1,
+      "mb": 13.36
+    },
+    "Adventurer_Expeditions_Preview_1080x1920.mp4": {
+      "seconds": 19.1,
+      "mb": 8.41
+    }
+  },
+  "cuts": [
+    [
+      "02-wolf-exchange",
+      3.0,
+      200,
+      1080
+    ],
+    [
+      "03-wolf-finisher",
+      4.0,
+      180,
+      1040
+    ],
+    [
+      "04-forest-vault",
+      3.0,
+      180,
+      1060
+    ],
+    [
+      "06-moss-giant",
+      3.0,
+      240,
+      1040
+    ],
+    [
+      "12-orc-boss",
+      4.0,
+      200,
+      1080
+    ],
+    [
+      "13-victory",
+      2.0,
+      140,
+      920
+    ]
+  ],
+  "source": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions\\marketing\\expeditions-facebook-20260928"
+}

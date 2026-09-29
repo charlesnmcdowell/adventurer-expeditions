@@ -1,0 +1,6 @@
+file 'C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions/marketing/crazygames-store-20260928/work/02-wolf-exchange-land.mp4'
+file 'C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions/marketing/crazygames-store-20260928/work/03-wolf-finisher-land.mp4'
+file 'C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions/marketing/crazygames-store-20260928/work/04-forest-vault-land.mp4'
+file 'C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions/marketing/crazygames-store-20260928/work/06-moss-giant-land.mp4'
+file 'C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions/marketing/crazygames-store-20260928/work/12-orc-boss-land.mp4'
+file 'C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions/marketing/crazygames-store-20260928/work/13-victory-land.mp4'
