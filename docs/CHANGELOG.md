@@ -15,6 +15,12 @@ of small fixes within a day.
 
 ---
 
+## 2026-09-29 - Submitted to CrazyGames
+
+Hiro submitted the game on the CrazyGames developer portal (Basic Launch, category Adventure, game id 23bde8c7-e42a-4ad7-b48f-eca2908df4ff). Build: the frozen candidate `dist/crazygames-20260928-tutorial` (271 files, 45.6 MB, release check ready to ship), with the store covers and silent previews from `marketing/crazygames-store-20260928/`. Save progress declared as LocalStorage, mobile both orientations, no multiplayer, no SDK mute. QA checklist answered after browser and phone preview checks. Status: awaiting review.
+
+---
+
 ## 2026-09-29 - Silent store preview cuts and framing repaired
 
 Rebuilt the landscape and portrait CrazyGames previews as 20-second, 30fps silent edits using completed wolf/travel/swamp/orc/victory action beats. Original three-second travel cut interrupted the vault; portrait horizontal crops also excluded actors. Both versions now fit the entire game frame over soft scenery fill, with no foreground stretching. Added a local preview page and revision notes; updated build script with --videos-only and preserved cover provenance. Files are under marketing/crazygames-store-20260928. No runtime or cover changes.
