@@ -15,6 +15,20 @@ of small fixes within a day.
 
 ---
 
+## 2026-10-02 - Inn mage and warrior paintings back to the originals
+
+Hiro asked for the local game to show the original, more revealing mage and warrior inn paintings again. `assets/expedition/inn/inn.json` points the two variants back at `inn-hiro-mage.webp` and `inn-hiro-warrior.webp` (the 27 Sept paintings, with the dancer, the open robe, the barmaid's tankards and the warrior's bodice), the ship list selects them, and the inn manifest stamp is now `20261002-original` so a cached wardrobe manifest is not reused. The approved wardrobe files `inn-hiro-mage-v2.webp` and `inn-hiro-warrior-v2.webp` and their source masters stay on disk, unreferenced: a kid-safe portal build such as Poki should select those. Script stamp 20261002-xp1 via `tools/stamp.js`. `npm test` green. Verified in the browser pane: both originals load and display at their inn visits, no console errors.
+
+---
+
+## 2026-10-02 - CrazyGames rejection; game removed; Poki access requested
+
+CrazyGames rejected the 29 September submission with a bare "quality" reason and no detail, as it had the original Adventurer. Hiro chose not to appeal and removed the game from the CrazyGames developer portal, so nothing conflicts with Poki's web-exclusivity ask. A Poki developer-access request went in the same day; Poki replies within a few days, then runs a playtest. No code changed. The CrazyGames packager and candidates stay in place.
+
+Poki gaps found against its published rules, to be built as a separate `poki` release target: a 16:9 canvas (the game is 1280x760), Poki SDK adapter with gameplay start on first input and ad breaks with audio muted, no outgoing links (the Facebook buttons and the screenshot note), no external requests (the CrazyGames SDK), skippable travel, pause on Esc or Space, static and animated thumbnails. Open decision for Hiro: the free-text name box on the End screen, under Poki's player-safety rule on typed text.
+
+---
+
 ## 2026-09-29 - Submitted to CrazyGames
 
 Hiro submitted the game on the CrazyGames developer portal (Basic Launch, category Adventure, game id 23bde8c7-e42a-4ad7-b48f-eca2908df4ff). Build: the frozen candidate `dist/crazygames-20260928-tutorial` (271 files, 45.6 MB, release check ready to ship), with the store covers and silent previews from `marketing/crazygames-store-20260928/`. Save progress declared as LocalStorage, mobile both orientations, no multiplayer, no SDK mute. QA checklist answered after browser and phone preview checks. Status: awaiting review.

@@ -23,7 +23,7 @@ Art.preload = function (scene) {
   const event = 'filecomplete-json-' + MANIFEST;
   scene.load.once(event, queue);
   scene.events.once('shutdown', () => scene.load.off(event, queue));
-  scene.load.json(MANIFEST, BASE + 'inn.json?v=20260928-wardrobe2');
+  scene.load.json(MANIFEST, BASE + 'inn.json?v=20261002-original');
 };
 
 Art.variant = run => {
