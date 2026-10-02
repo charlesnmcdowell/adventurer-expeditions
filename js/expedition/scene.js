@@ -39,6 +39,7 @@ class ExpeditionScene extends Phaser.Scene {
     this.actors = new Map();
     this.paused = false; this.time.paused = false;
     this.ended = false;
+    this.__enemyFinishPresented = false;
     this.run = this.opts.run || (!this.opts.fresh && X.Run.load()) || X.Run.fresh();
     // Resume at the current quest's wave (pre-fight checkpoint). Anything else starts over.
     if (this.run.done || this.run.phase !== 'quest') this.run = X.Run.reset();
@@ -410,7 +411,7 @@ class ExpeditionScene extends Phaser.Scene {
   }
 
   async defeat() {
-    await this.hero.play('kneel');
+    if (!this.__enemyFinishPresented) await this.hero.play('kneel');
     X.UI.resetCamera(this);                                                    // a kill cinematic must not survive into the defeat card (round 3 #1)
     await wait(this, 900);
     // Arcade (Hiro, 2026-09-27): a fall ends the run. No retry, no retreat to

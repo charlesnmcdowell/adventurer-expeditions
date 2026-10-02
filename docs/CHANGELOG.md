@@ -15,6 +15,14 @@ of small fixes within a day.
 
 ---
 
+## 2026-10-02 - Focused smoother combat and optional Alpha defeat
+
+Local-edition pilot: Hiro slash 6 → 12 drawings / 590 ms, hit 3 → 6 / 350 ms; Alpha attack 6 → 12 / 570 ms, Hiro cleave pair 8 → 16 / 1,620 ms. Retained logical attack contact times and all unrelated clips. Added a 16-pose Alpha-on-Hiro fatal pair (2,110 ms + 180 ms approach) with blood/damaged armor, no separately generated blood-free version. Default-off persisted Pause setting; ordinary defeat when off. Actual lethal direct hits only, no combat stat changes. All non-website release targets deny the setting; CrazyGames export omits adult art entirely.
+
+Files: Hiro/Alpha manifests plus appended pilot pages, new `assets/expedition/adult/alpha-fatal/`, `enemy_finishers.js`, `painted.js`, `beats.js`, `scene.js`, `ui_common.js`, script stamps, ship manifest/export filter, focused intake tool, policy/browser tests, updated registration/pacing/browser tutorial assertions, package scripts, GDD/LEVELS and `COMBAT_ANIMATION_PILOT_20261002.md`. Source masters and prompts: sibling source-art `astra-v4/combat-20261002`; reproducible registrations/prompts also in `docs/art/combat-pilot-20261002`.
+
+Baseline/post-change automated checks and browser journey passed (installed Chrome; bundled Chromium missing). The baseline browser assertion was stale: September 28 Counter-first/repeated readiness reminders now match the test. Browser pilot covers fatal routing, pause, restart, disabling, normal death and portal preference denial/no adult downloads. Local startup ~18.68 MB after audio, portal profile ~17.78 MB; package ~48.86 MB from ~45.62 MB. Frozen export policy checked locally, nothing published. Original Adventurer/shared files untouched. Awaiting the user's visual playtest before expanding beyond Hiro/Alpha.
+
 ## 2026-10-02 - Inn mage and warrior paintings back to the originals
 
 Hiro asked for the local game to show the original, more revealing mage and warrior inn paintings again. `assets/expedition/inn/inn.json` points the two variants back at `inn-hiro-mage.webp` and `inn-hiro-warrior.webp` (the 27 Sept paintings, with the dancer, the open robe, the barmaid's tankards and the warrior's bodice), the ship list selects them, and the inn manifest stamp is now `20261002-original` so a cached wardrobe manifest is not reused. The approved wardrobe files `inn-hiro-mage-v2.webp` and `inn-hiro-warrior-v2.webp` and their source masters stay on disk, unreferenced: a kid-safe portal build such as Poki should select those. Script stamp 20261002-xp1 via `tools/stamp.js`. `npm test` green. Verified in the browser pane: both originals load and display at their inn visits, no console errors.

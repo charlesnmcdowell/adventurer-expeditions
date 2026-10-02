@@ -149,6 +149,9 @@ async function playDowns(scene, downs, events, byFinisher) {
         if (target.alive) await target.play('down_fade');
         else if (X.DefeatFX) X.DefeatFX.play(target);
       });
+    } else if (X.EnemyFinishers?.canPlay(scene, killer, target, events)) {
+      const shown = await X.EnemyFinishers.play(scene, killer, target);
+      if (!shown && !scene.ended && !target._destroyed) await target.play('down_fade');
     } else await target.play('down_fade');
   }
 }

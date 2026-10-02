@@ -8,7 +8,7 @@ if(!/^crazygames-[a-zA-Z0-9-]+$/.test(name))throw Error('Use a crazygames- name 
 const dest=path.join(ROOT,'dist',name);if(fs.existsSync(dest))throw Error('Candidate already exists; choose a new name');
 const sha=b=>crypto.createHash('sha256').update(b).digest('hex');
 // Freeze every source before writing anything. Refuse a concurrently changed tree.
-const frozen=size.files.map(({rel})=>({rel,body:fs.readFileSync(path.join(ROOT,rel))}));
+const frozen=size.files.filter(({rel})=>!rel.startsWith('assets/expedition/adult/')).map(({rel})=>({rel,body:fs.readFileSync(path.join(ROOT,rel))}));
 const replace=(rel,from,to)=>{const f=frozen.find(f=>f.rel===rel);if(!f||f.body.toString().split(from).length!==2)throw Error('Unexpected build policy: '+rel);f.body=Buffer.from(f.body.toString().replace(from,to));};
 const sourceHashes=new Map(frozen.map(f=>[f.rel,sha(f.body)]));
 replace('js/expedition/dev.js','Dev.DEV_BUILD = true;','Dev.DEV_BUILD = false;');

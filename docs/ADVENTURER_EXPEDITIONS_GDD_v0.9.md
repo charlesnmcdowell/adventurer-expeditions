@@ -1,6 +1,8 @@
 # Adventurer: Expeditions
 ## CrazyGames edition — game design document
 
+**October 2 local-edition animation pilot:** Hiro slash 12 frames, hit 6; Alpha attack 12 and cleave pair 16, with original attack/contact timing retained. Optional Alpha-on-Hiro fatal pair (16 frames) is local-only, off by default, and triggers only after an actual lethal direct hit. Pause → Enemy finishers persists across runs. Portal targets force it off and exports exclude its art; no blood-free paired variant is required. See `COMBAT_ANIMATION_PILOT_20261002.md` for exact registrations, policy, tests and source paths. Other monsters remain unchanged pending this focused playtest.
+
 **September 28 presentation update:** fixed enemy scale regardless of crowd count; small goblin/spider paired finishers; five inn paintings rotating with completed quests; level swamp causeway and one-shot earth defeat burst. See `INN_SWAMP_POLISH_20260928.md`. No combat balance changes in this art pass.
 
 Version 0.9 · September 19, 2026 (rev. b) · Status reconciled September 20, 2026 · Working title

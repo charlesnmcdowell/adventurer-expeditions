@@ -1,0 +1,43 @@
+{
+  "generator": "built-in image_gen",
+  "date": "2026-10-02",
+  "scope": "Focused animation pilot; no original Adventurer changes",
+  "references": [
+    "astra-v1/heroes/hiro/hiro-reference.png",
+    "astra-v1/heroes/hiro/slash-l1.png",
+    "astra-v1/heroes/hiro/hit-short-v2.png",
+    "astra-v2/beasts/alpha/attack.png",
+    "astra-v2/beasts/alpha/hiro-cleave-paired.png"
+  ],
+  "outputs": [
+    {
+      "file": "enemy-alpha.png",
+      "source": "exec-0904228c-544b-4362-9780-e980fec06b11.png",
+      "prompt": "Use case: stylized-concept sprite animation production. Build one 4 columns x 4 rows sprite sheet, exactly 16 equally sized cells, row-major chronological sequence, preferably 2048x2048. Transparent background. No text, grid lines or labels. Every cell contains the SAME TWO full-body characters together with space all around: Hiro (adult dark-skinned male cyber samurai, purple locs, black/gold armor and purple sash, katana) on LEFT facing right and giant Alpha gray/white wolf on RIGHT facing left. References establish exact character identity and polished cel-shaded art, not action. Wolf shoulder height approximately Hiro chest. Consistent camera, scale and groundline across every cell, no cropping. Create a continuous fatal monster finisher animation for an adult fantasy game: 1 wolf crouches and Hiro guards; 2 wolf coils to leap; 3 wolf leaps toward guard; 4 front paws strike Hiro sword guard; 5 Hiro leans back under force; 6 guard buckles; 7 wolf clamps jaws onto armored shoulder, blood spurts at contact; 8 Hiro is pushed downward, blood spots and torn shoulder armor; 9 wolf drives Hiro to one knee; 10 Hiro falls backward, sword falls aside; 11 wolf pins Hiro's upper torso on ground and bites shoulder again with red blood splash; 12 wolf pulls back head while holding shoulder; 13 releases grip; 14 withdraws one step, Hiro lifeless on ground; 15 wolf stands over fallen Hiro; 16 final settled victory pose, Hiro remains collapsed. Stylized visible red blood and damaged armor, fantasy game violence, no organs or dismemberment, no sexual content. Preserve individual limb anatomy, one head per character, four wolf legs, no duplicates or ghosting. Keep Hiro and wolf painted as a single paired interaction in EACH cell so contact reads as real weight. Groundline should be the same near cell bottom even when Hiro falls. Transparent negative space, no shadows forming rectangular backdrops."
+    },
+    {
+      "file": "hiro-slash.png",
+      "source": "exec-2097d0cb-e270-4e95-9152-9b4dfc0f073b.png",
+      "prompt": "Correct this sprite sheet for production. KEEP these same 12 Hiro poses and their chronology, armor, face, proportions and rendering. Exactly 4 columns x 3 rows equal-size cells on transparent background. IMPORTANT each complete figure INCLUDING ENTIRE SWORD must fit inside the CENTRAL 65 PERCENT of its own cell width and height, surrounded by large clear transparent gutters on ALL sides. Shrink/recompose the figures within the cells, not crop their weapons. Absolutely NO part crosses a cell boundary. Uniform scale matching head/torso size, all feet on the same local baseline in each cell. Fixed camera. The current sheet has sword tips intruding into adjacent cells and its first row is too tall; FIX BOTH. 12 poses full body all contained. Transparent alpha, no text lines or cell borders."
+    },
+    {
+      "file": "hiro-hit.png",
+      "source": "exec-60c3df45-b558-4ca2-8d05-2b572c24d251.png",
+      "prompt": "Edit ONLY the background of this six-pose game sprite sheet: replace every bit of the dark gradient backdrop with FLAT SOLID NEON GREEN RGB(0,255,0). No gradient, glow, shadow, texture. Keep the six characters entirely unchanged including dark armor, purple hair, skin, metal and sword edges. Flat chroma-key green must also fill all negative spaces between limbs and beneath the swords. Same dimensions and 3x2 layout. This is a technical chroma-key matte request, not a new art style."
+    },
+    {
+      "file": "alpha-attack.png",
+      "source": "exec-6a4d8682-ac76-4f19-8910-8b680e1f5738.png",
+      "prompt": "Production animation sheet of the giant Alpha wolf in the reference. 4 columns by 3 rows, exactly 12 equally sized cells chronological row-major. Transparent alpha. Wolf faces LEFT, same scarred gray/white heavy mane, dark back, white underside and powerful proportions. Smooth single lunge-bite and recovery: 1 idle, 2 lower body, 3 compress hind legs, 4 start leap, 5 full extension forward, 6 jaws bite contact, 7 jaws close and forepaws come down, 8 front paws land, 9 hindlegs follow, 10 recoil up, 11 settle, 12 idle. Fixed camera and anatomical size; preserve airborne elevation naturally, shared ground baseline. Every pose includes all four limbs tail ears and muzzle INSIDE CENTRAL 65% of each cell with generous empty gutters. Do not let any silhouette cross cell edges. Consistent cel shaded game quality. No text, labels, effects, blood or backdrop."
+    },
+    {
+      "file": "alpha-cleave.png",
+      "source": "exec-a5bd386a-c69f-4bbe-ae98-2541b56e1b18.png",
+      "prompt": "Production paired finisher animation sheet, 4 columns x 4 rows exactly 16 equally sized cells, transparent alpha. Hiro adult dark-skinned purple-loc cyber samurai LEFT facing RIGHT and huge scarred gray-white Alpha wolf RIGHT facing LEFT painted TOGETHER in each interaction. Match references' precise character identity and polished cel shading. Wolf shoulder at Hiro upper chest, consistent ratio/size in all 16 frames. Smooth overhead katana finisher, NOT graphic: 1 readyguard, 2 weight shifts, 3 katana raises, 4 both hands overhead, 5 swing starts, 6 descending sword, 7 slash CONTACT wolf midsection with violet light, 8 followthrough low, 9 wolf dissolves into violet sparks, 10 wolf half dissolved, 11 last violet fragments, 12 wolf entirely gone Hiro begins blade twirl, 13 blade twirl toward guard, 14 draws blade toward side, 15 settle ready, 16 drawn idle. No blood organs or gore. Fixed camera, same Hiro standing size and boot baseline in EVERY cell, crouches keep anatomy. ALL silhouettes and full swords fit INSIDE their own cells with WIDE TRANSPARENT GUTTERS. Do not include gridlines, labels, backgrounds, floor rectangles. Distinct painted intermediate poses. Preserve wolf size instead of shrinking in interaction. Hiro's blade remains attached to his hands; no extra limbs. 2048 square preferred."
+    }
+  ],
+  "initialPrompts": {
+    "slash": "Create a production animation sprite sheet of Hiro, using attached identity and the existing slash sheet as strict art/armor/pose references. Transparent alpha. Exactly 4 columns by 3 rows, 12 equally sized cells, chronological row-major. One full-body dark-skinned adult male cyber samurai with purple locs and black/gold armor per cell, facing RIGHT. Smooth continuous katana slash: frames 1-4 raising and coiling for overhead diagonal slash, frames 5-6 fast sword contact sweeping toward right, frames 7-8 follow through low to right, frames 9-12 recover to initial ready stance. New drawn in-between poses, consistent head and torso size, body proportions, fixed foot groundline and camera throughout. No duplicated limbs, no chopped sword tips, no cropping or touching cell boundaries: generous transparent margins. Same cel-shaded painterly finish as reference. No labels, no borders, no background, no blood. Keep character at identical physical size in each frame, planted on ground. 2048 square preferred.",
+    "hit": "Production sprite animation: exactly 3 columns x 2 rows = SIX poses chronological row-major, transparent background, uniform cells with WIDE empty gutters. Hiro adult dark-skinned cyber samurai purple locs black/gold armor, full body facing RIGHT exactly as references. Smooth minor hit reaction, not a major knockdown: 1 bracing as struck, 2 recoil shoulders slightly back shield face with forearm, 3 flex knees and hunch slightly, 4 regain footing, 5 straighten recovering, 6 upright ready guard. Fixed body scale across frames, feet on constant baseline, constant camera. His torso/limbs NEVER swell on impact, no squash/stretch. Preserve clothing and anatomy. No damage blood or effects. Complete sword fits inside cell; nothing crosses a cell edge. Match painterly cel-shaded game reference. Six distinct in-between poses."
+  }
+}

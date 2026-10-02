@@ -208,7 +208,9 @@ UI.cinematic = async function (scene, kind, focus, fn) {
 // it is always honest about what the game is doing.
 UI.pauseSettings = function (scene, ctl) {
   const D2 = UI.DEPTH, W2 = A.T.W, H2 = A.T.H;
-  const root = scene.add.container(W2 / 2, H2 / 2 + 30).setDepth(D2.hand + 12).setScrollFactor(0);
+  const showEnemyFinishers = X.EnemyFinishers && X.EnemyFinishers.allowed();
+  const rootY = H2 / 2 + 30 - (showEnemyFinishers ? 56 : 0);
+  const root = scene.add.container(W2 / 2, rootY).setDepth(D2.hand + 12).setScrollFactor(0);
   const w = 420, rowH = 56;
   const rows = [{
     label: 'Cinematic camera',
@@ -223,6 +225,10 @@ UI.pauseSettings = function (scene, ctl) {
     pick: v => { X.pacing = X.pacing || {}; X.pacing.mode = v; },
   }];
   const drawn = [];
+  if (showEnemyFinishers) rows.push({
+    label: 'Enemy finishers', hint: 'Graphic defeats — Alpha wolf pilot',
+    get: () => X.EnemyFinishers.enabled(), set: value => X.EnemyFinishers.setEnabled(value),
+  });
   rows.forEach((row, i) => {
     const y = i * rowH;
     const cycle = !!row.options;
@@ -245,7 +251,7 @@ UI.pauseSettings = function (scene, ctl) {
       paint(); pt.setText(shown());
     });
     root.add([g, t, h, pill, pt, z]);
-    drawn.push({ label: row.label, rect: { x: W2 / 2 + w / 2 - 92, y: H2 / 2 + 30 + y - 13, w: 76, h: 26 } });
+    drawn.push({ label: row.label, rect: { x: W2 / 2 + w / 2 - 92, y: rootY + y - 13, w: 76, h: 26 } });
   });
   // Arcade (Hiro, 2026-09-27): two buttons under the settings — High scores
   // shows the board; End run asks once, then ends the run and scores it.
@@ -256,7 +262,7 @@ UI.pauseSettings = function (scene, ctl) {
     const z = scene.add.zone(cx, by, bw, bh).setInteractive({ useHandCursor: true });
     z.on('pointerdown', onTap);
     root.add([g, t, z]);
-    return { x: W2 / 2 + cx - bw / 2, y: H2 / 2 + 30 + by - bh / 2, w: bw, h: bh };
+    return { x: W2 / 2 + cx - bw / 2, y: rootY + by - bh / 2, w: bw, h: bh };
   };
   const api = { root, rows: drawn };
   api.boardRect = button(-w / 4 - 4, 'High scores', 0x3a3128, '#f4eee0', () => { if (!scene.__boardOpen) UI.boardPanel(scene); });
@@ -277,7 +283,7 @@ UI.pauseSettings = function (scene, ctl) {
     yz.on('pointerdown', () => { c.destroy(); api.confirm = null; if (ctl.paused) ctl.togglePause(); UI.endRun(scene, 'quit'); });
     c.add([g, t, yes, yt, yz, no, nt, nz]);
     root.add(c);
-    api.confirm = { root: c, yesRect: { x: W2 / 2 - cw / 2 + 16, y: H2 / 2 + 30 + cy + 8, w: 120, h: 34 } };
+    api.confirm = { root: c, yesRect: { x: W2 / 2 - cw / 2 + 16, y: rootY + cy + 8, w: 120, h: 34 } };
     scene.__endConfirmRect = api.confirm.yesRect;
   });
   // Feedback: the community links (X.links), each in a new tab that gets no
@@ -294,7 +300,7 @@ UI.pauseSettings = function (scene, ctl) {
       const z = scene.add.zone(cx, ly, lw, lh).setInteractive({ useHandCursor: true });
       z.on('pointerdown', () => UI.openLink(l.url));
       root.add([g, t, z]);
-      api.linkRects.push({ id: l.id, url: l.url, x: W2 / 2 + cx - lw / 2, y: H2 / 2 + 30 + ly - lh / 2, w: lw, h: lh });
+      api.linkRects.push({ id: l.id, url: l.url, x: W2 / 2 + cx - lw / 2, y: rootY + ly - lh / 2, w: lw, h: lh });
     });
   }
   scene.__settingRects = drawn;

@@ -10,8 +10,9 @@ for(const id of ids){
  for(const [name,c]of Object.entries(j.clips)){
   if(!c.paired||!name.startsWith('hiro-')){assert.equal(s.clips[name],c);continue;}
   const next=s.clips[name];assert.equal(next.frames,c.frames);assert.equal(next.contact,c.contact);assert.equal(next.release,c.release);
-  assert.equal(next.durationMs,next.frameDurationsMs.reduce((a,b)=>a+b,0));assert(next.durationMs>=1400&&next.durationMs<=1700);assert(next.durationMs>c.durationMs);
-  assert(next.frameDurationsMs[0]>=240);assert(next.frameDurationsMs.at(-1)>=300);checked++;
+  assert.equal(next.durationMs,next.frameDurationsMs.reduce((a,b)=>a+b,0));assert(next.durationMs>=1400&&next.durationMs<=1700);
+  if(c.frames.length===16){assert.equal(next.durationMs,1620);assert.equal(next.contact[0],6);assert.equal(next.victimFullyGoneFrame,11);}
+  else{assert(next.durationMs>c.durationMs);assert(next.frameDurationsMs[0]>=240);assert(next.frameDurationsMs.at(-1)>=300);}checked++;
  }
  assert.equal(JSON.stringify(j),before,'pacing must not mutate cached/source metadata');
 }

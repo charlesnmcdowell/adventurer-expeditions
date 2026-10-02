@@ -45,7 +45,10 @@
     "js/expedition/battle_stage.js",
     "assets/expedition/inn/inn-hiro-mage.webp",
     "assets/expedition/inn/inn-hiro-warrior.webp",
-    "assets/expedition/inn/inn-hiro-ranger.webp"
+    "assets/expedition/inn/inn-hiro-ranger.webp",
+    "assets/expedition/hiro/hiro-pilot-0.webp",
+    "assets/expedition/alpha/alpha-pilot-0.webp",
+    "assets/expedition/alpha/alpha-pilot-1.webp"
   ],
   "dirs": [
     "audio/sfx",
@@ -58,7 +61,8 @@
     "assets/expedition/spider",
     "assets/expedition/travel",
     "assets/expedition/effects",
-    "assets/expedition/stages"
+    "assets/expedition/stages",
+    "assets/expedition/adult"
   ],
   "partSheets": {
     "note": "Development-only portrait part sheets. They are needed only when baked busts are absent. The final build ships explicit ready-recruit and human-foe bust files and omits these source sheets.",

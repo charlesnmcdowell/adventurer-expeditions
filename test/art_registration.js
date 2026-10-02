@@ -2,7 +2,7 @@
 'use strict';
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
 const root=path.resolve(__dirname,'..');
-const counts={hiro:175,bram:96,wolf:38,boar:20,plant:17,alpha:45};
+const counts={hiro:184,bram:96,wolf:38,boar:20,plant:17,alpha:59};
 for(const [id,count] of Object.entries(counts)){
   const dir=path.join(root,'assets/expedition',id);
   const m=JSON.parse(fs.readFileSync(path.join(dir,id+'.json'),'utf8'));
@@ -54,9 +54,9 @@ for(const [id,count] of Object.entries(counts)){
       }
     }
     for(const old of ['finisher-l1-paired','finisher-l2-paired','finisher-l3-paired'])assert(!m.clips[old],'obsolete victim art '+old);
-    const retained={idle:4,draw:8,'short-draw':4,'slash-l1':6,'slash-l2':6,'slash-l3':6,
+    const retained={idle:4,draw:8,'short-draw':4,'slash-l1':12,'slash-l2':6,'slash-l3':6,
       roll:6,'victory-sheath':8,kneel:4,'aura-l1':4,'aura-l2':4,'aura-l3':4,
-      'bite-leg-paired':10,'bite-arm-paired':10,intercept:6,riposte:6,'hit-short':3,'counter-l2':6,'counter-l3':6};
+      'bite-leg-paired':10,'bite-arm-paired':10,intercept:6,riposte:6,'hit-short':6,'counter-l2':6,'counter-l3':6};
     assert.deepEqual(Object.keys(m.clips).sort(),Object.keys({...retained,...required}).sort(),'delta must retain every unaffected v1 clip');
     for(const [name,n] of Object.entries(retained))assert.equal(m.clips[name].frames.length,n,'lost approved v1 poses: '+name);
     assert.deepEqual(m.clips['wolf-cleave-paired'].sources,['wolf-overhead-v4-a.png','wolf-overhead-v4-b.png']);
@@ -76,14 +76,14 @@ for(const [id,count] of Object.entries(counts)){
     assert.deepEqual(overhead.authoredAlphaFrames,[6,7,8,9,10,11],'twirl must keep original alpha');
   }
   if(id==='alpha'){
-    const required={idle:4,'approach-leap':6,attack:6,hit:3,enrage:3,down:3,
-      'hiro-alpha-cleave-paired':8,'hiro-alpha-pin-paired':6,'hiro-alpha-parry-paired':6};
+    const required={idle:4,'approach-leap':6,attack:12,hit:3,enrage:3,down:3,
+      'hiro-alpha-cleave-paired':16,'hiro-alpha-pin-paired':6,'hiro-alpha-parry-paired':6};
     for(const [name,n] of Object.entries(required)){
       const c=m.clips[name];assert(c,'missing Alpha clip '+name);assert.equal(c.frames.length,n,name);
       if(c.paired){
         assert.deepEqual(c.opponentKinds,['wolf','boss']);
         assert.deepEqual(c.opponentKeys,['road_wolf_leader']);
-        assert(c.contact.includes(3),'missing Alpha impact '+name);
+        assert(c.contact.includes(name==='hiro-alpha-cleave-paired'?6:3),'missing Alpha impact '+name);
         assert(c.victimFullyGoneFrame<=c.release,'Alpha victim must disappear before release '+name);
       }
     }
