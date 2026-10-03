@@ -15,6 +15,14 @@ of small fixes within a day.
 
 ---
 
+## 2026-10-02 - Local combat roster expansion and continuity review
+
+Nine remaining primary attacks expanded to 12 drawings, keeping Alpha's pilot 12; 15 Hiro paired finishers expanded to 12. All 24 clips retain total duration and logical contact time. Alpha pin/parry, both moss-giant pairs, plant crosscut and orc finisher 2 replacement drafts failed review; old approved clips remain. Corrected plant vine-pin's final extracted frame to exclude a duplicate neighboring Hiro. Preserved unrelated clips and original atlas pixels.
+
+Files: ten manifests, eleven appended roster WebP pages, intake tool, cache/script stamps, ship allowlist, atlas/pacing/browser tests and package command; LEVELS/GDD, COMBAT_ROSTER_20261002.md, gallery, prompt records and timing audit. Masters stay in sibling source-art. Original Adventurer/shared files untouched. Checkpoint c6d8871 precedes this work.
+
+Validation: npm test; all 23 live paired variants including cancellation; Alpha fatal policy/lifecycle; Chrome two-quest ship journey. Startup loads but FAILS unchanged 20 MB target: ~20.74 MB visible / ~21.82 MB with audio (pilot ~18.68 MB). Full package ~48.86 to 62.20 MB. Local playtest candidate, nothing published. Remaining monster-on-Hiro fatalities are NOT complete: image tool rejected the wolf request; pending user direction is documented.
+
 ## 2026-10-02 - Focused smoother combat and optional Alpha defeat
 
 Local-edition pilot: Hiro slash 6 → 12 drawings / 590 ms, hit 3 → 6 / 350 ms; Alpha attack 6 → 12 / 570 ms, Hiro cleave pair 8 → 16 / 1,620 ms. Retained logical attack contact times and all unrelated clips. Added a 16-pose Alpha-on-Hiro fatal pair (2,110 ms + 180 ms approach) with blood/damaged armor, no separately generated blood-free version. Default-off persisted Pause setting; ordinary defeat when off. Actual lethal direct hits only, no combat stat changes. All non-website release targets deny the setting; CrazyGames export omits adult art entirely.

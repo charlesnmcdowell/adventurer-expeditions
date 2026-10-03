@@ -32,6 +32,7 @@
     "test:polish": "node test/browser_release_polish.js",
     "package:crazygames": "node tools/package_crazygames.js",
     "test:arcade": "node test/browser_arcade.js",
-    "test:combat-pilot": "node test/browser_combat_pilot.js"
+    "test:combat-pilot": "node test/browser_combat_pilot.js",
+    "test:combat-roster": "node test/browser_combat_roster.js"
   }
 }

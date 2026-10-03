@@ -1,0 +1,5429 @@
+[
+  {
+    "actor": "wolf",
+    "id": "bite",
+    "frames": 12,
+    "sources": [
+      {
+        "file": "wolf-attack-0.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 0
+      },
+      {
+        "file": "wolf-attack-1.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 1
+      },
+      {
+        "file": "wolf-attack-2.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 2
+      },
+      {
+        "file": "wolf-attack-3.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 3
+      },
+      {
+        "file": "wolf-attack-4.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 4
+      },
+      {
+        "file": "wolf-attack-5.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 5
+      },
+      {
+        "file": "wolf-attack-6.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 6
+      },
+      {
+        "file": "wolf-attack-7.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 7
+      },
+      {
+        "file": "wolf-attack-8.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 8
+      },
+      {
+        "file": "wolf-attack-9.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 9
+      },
+      {
+        "file": "wolf-attack-10.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 10
+      },
+      {
+        "file": "wolf-attack-11.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 11
+      }
+    ],
+    "registration": {
+      "referenceHeight": 250.4950495049505,
+      "frames": [
+        {
+          "anchorX": 128.0,
+          "groundY": 253
+        },
+        {
+          "anchorX": 126.0,
+          "groundY": 227
+        },
+        {
+          "anchorX": 136.0,
+          "groundY": 222
+        },
+        {
+          "anchorX": 220.0,
+          "groundY": 225
+        },
+        {
+          "anchorX": 151.0,
+          "groundY": 226
+        },
+        {
+          "anchorX": 144.0,
+          "groundY": 216
+        },
+        {
+          "anchorX": 150.0,
+          "groundY": 211
+        },
+        {
+          "anchorX": 131.0,
+          "groundY": 249
+        },
+        {
+          "anchorX": 128.0,
+          "groundY": 254
+        },
+        {
+          "anchorX": 127.0,
+          "groundY": 242
+        },
+        {
+          "anchorX": 135.0,
+          "groundY": 247
+        },
+        {
+          "anchorX": 134.0,
+          "groundY": 252
+        }
+      ]
+    },
+    "durationsMs": [
+      20,
+      20,
+      20,
+      20,
+      36,
+      36,
+      37,
+      36,
+      36,
+      37,
+      36,
+      36
+    ],
+    "contactFramesZeroBased": [
+      4
+    ],
+    "releaseFrameZeroBased": 11,
+    "paired": false
+  },
+  {
+    "actor": "plant",
+    "id": "lash",
+    "frames": 12,
+    "sources": [
+      {
+        "file": "plant-attack-0.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 0
+      },
+      {
+        "file": "plant-attack-1.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 1
+      },
+      {
+        "file": "plant-attack-2.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 2
+      },
+      {
+        "file": "plant-attack-3.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 3
+      },
+      {
+        "file": "plant-attack-4.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 4
+      },
+      {
+        "file": "plant-attack-5.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 5
+      },
+      {
+        "file": "plant-attack-6.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 6
+      },
+      {
+        "file": "plant-attack-7.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 7
+      },
+      {
+        "file": "plant-attack-8.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 8
+      },
+      {
+        "file": "plant-attack-9.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 9
+      },
+      {
+        "file": "plant-attack-10.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 10
+      },
+      {
+        "file": "plant-attack-11.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 11
+      }
+    ],
+    "registration": {
+      "referenceHeight": 249.76525821596243,
+      "frames": [
+        {
+          "anchorX": 202.0,
+          "groundY": 266
+        },
+        {
+          "anchorX": 182.0,
+          "groundY": 306
+        },
+        {
+          "anchorX": 192.0,
+          "groundY": 308
+        },
+        {
+          "anchorX": 299.0,
+          "groundY": 249
+        },
+        {
+          "anchorX": 371.0,
+          "groundY": 224
+        },
+        {
+          "anchorX": 304.0,
+          "groundY": 233
+        },
+        {
+          "anchorX": 294.0,
+          "groundY": 223
+        },
+        {
+          "anchorX": 164.0,
+          "groundY": 243
+        },
+        {
+          "anchorX": 184.0,
+          "groundY": 258
+        },
+        {
+          "anchorX": 198.0,
+          "groundY": 270
+        },
+        {
+          "anchorX": 193.0,
+          "groundY": 268
+        },
+        {
+          "anchorX": 202.0,
+          "groundY": 270
+        }
+      ]
+    },
+    "durationsMs": [
+      88,
+      87,
+      87,
+      88,
+      39,
+      39,
+      38,
+      39,
+      39,
+      38,
+      39,
+      39
+    ],
+    "contactFramesZeroBased": [
+      4
+    ],
+    "releaseFrameZeroBased": 11,
+    "paired": false
+  },
+  {
+    "actor": "serpent",
+    "id": "attack",
+    "frames": 12,
+    "sources": [
+      {
+        "file": "serpent-attack-0.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 0
+      },
+      {
+        "file": "serpent-attack-1.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 1
+      },
+      {
+        "file": "serpent-attack-2.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 2
+      },
+      {
+        "file": "serpent-attack-3.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 3
+      },
+      {
+        "file": "serpent-attack-4.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 4
+      },
+      {
+        "file": "serpent-attack-5.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 5
+      },
+      {
+        "file": "serpent-attack-6.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 6
+      },
+      {
+        "file": "serpent-attack-7.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 7
+      },
+      {
+        "file": "serpent-attack-8.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 8
+      },
+      {
+        "file": "serpent-attack-9.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 9
+      },
+      {
+        "file": "serpent-attack-10.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 10
+      },
+      {
+        "file": "serpent-attack-11.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 11
+      }
+    ],
+    "registration": {
+      "referenceHeight": 272.0,
+      "frames": [
+        {
+          "anchorX": 157.0,
+          "groundY": 272
+        },
+        {
+          "anchorX": 156.0,
+          "groundY": 277
+        },
+        {
+          "anchorX": 161.0,
+          "groundY": 277
+        },
+        {
+          "anchorX": 232.0,
+          "groundY": 250
+        },
+        {
+          "anchorX": 369.0,
+          "groundY": 237
+        },
+        {
+          "anchorX": 272.0,
+          "groundY": 244
+        },
+        {
+          "anchorX": 223.0,
+          "groundY": 256
+        },
+        {
+          "anchorX": 157.0,
+          "groundY": 272
+        },
+        {
+          "anchorX": 160.0,
+          "groundY": 290
+        },
+        {
+          "anchorX": 158.0,
+          "groundY": 294
+        },
+        {
+          "anchorX": 156.0,
+          "groundY": 292
+        },
+        {
+          "anchorX": 158.0,
+          "groundY": 290
+        }
+      ]
+    },
+    "durationsMs": [
+      60,
+      60,
+      60,
+      60,
+      31,
+      31,
+      32,
+      31,
+      31,
+      32,
+      31,
+      31
+    ],
+    "contactFramesZeroBased": [
+      4
+    ],
+    "releaseFrameZeroBased": 11,
+    "paired": false
+  },
+  {
+    "actor": "beetle",
+    "id": "attack",
+    "frames": 12,
+    "sources": [
+      {
+        "file": "beetle-attack-0.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 0
+      },
+      {
+        "file": "beetle-attack-1.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 1
+      },
+      {
+        "file": "beetle-attack-2.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 2
+      },
+      {
+        "file": "beetle-attack-3.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 3
+      },
+      {
+        "file": "beetle-attack-4.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 4
+      },
+      {
+        "file": "beetle-attack-5.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 5
+      },
+      {
+        "file": "beetle-attack-6.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 6
+      },
+      {
+        "file": "beetle-attack-7.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 7
+      },
+      {
+        "file": "beetle-attack-8.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 8
+      },
+      {
+        "file": "beetle-attack-9.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 9
+      },
+      {
+        "file": "beetle-attack-10.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 10
+      },
+      {
+        "file": "beetle-attack-11.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 11
+      }
+    ],
+    "registration": {
+      "referenceHeight": 252.0,
+      "frames": [
+        {
+          "anchorX": 171.0,
+          "groundY": 252
+        },
+        {
+          "anchorX": 172.0,
+          "groundY": 218
+        },
+        {
+          "anchorX": 165.0,
+          "groundY": 174
+        },
+        {
+          "anchorX": 157.5,
+          "groundY": 187
+        },
+        {
+          "anchorX": 121.5,
+          "groundY": 189
+        },
+        {
+          "anchorX": 191.0,
+          "groundY": 208
+        },
+        {
+          "anchorX": 200.0,
+          "groundY": 243
+        },
+        {
+          "anchorX": 178.5,
+          "groundY": 228
+        },
+        {
+          "anchorX": 170.0,
+          "groundY": 254
+        },
+        {
+          "anchorX": 180.0,
+          "groundY": 262
+        },
+        {
+          "anchorX": 175.0,
+          "groundY": 258
+        },
+        {
+          "anchorX": 171.5,
+          "groundY": 263
+        }
+      ]
+    },
+    "durationsMs": [
+      60,
+      60,
+      60,
+      60,
+      31,
+      31,
+      32,
+      31,
+      31,
+      32,
+      31,
+      31
+    ],
+    "contactFramesZeroBased": [
+      4
+    ],
+    "releaseFrameZeroBased": 11,
+    "paired": false
+  },
+  {
+    "actor": "moss_giant",
+    "id": "attack",
+    "frames": 12,
+    "sources": [
+      {
+        "file": "moss_giant-attack-0.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 0
+      },
+      {
+        "file": "moss_giant-attack-1.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 1
+      },
+      {
+        "file": "moss_giant-attack-2.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 2
+      },
+      {
+        "file": "moss_giant-attack-3.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 3
+      },
+      {
+        "file": "moss_giant-attack-4.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 4
+      },
+      {
+        "file": "moss_giant-attack-5.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 5
+      },
+      {
+        "file": "moss_giant-attack-6.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 6
+      },
+      {
+        "file": "moss_giant-attack-7.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 7
+      },
+      {
+        "file": "moss_giant-attack-8.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 8
+      },
+      {
+        "file": "moss_giant-attack-9.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 9
+      },
+      {
+        "file": "moss_giant-attack-10.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 10
+      },
+      {
+        "file": "moss_giant-attack-11.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 11
+      }
+    ],
+    "registration": {
+      "referenceHeight": 317.0,
+      "frames": [
+        {
+          "anchorX": 234.0,
+          "groundY": 317
+        },
+        {
+          "anchorX": 279.0,
+          "groundY": 307
+        },
+        {
+          "anchorX": 265.0,
+          "groundY": 380
+        },
+        {
+          "anchorX": 278.5,
+          "groundY": 346
+        },
+        {
+          "anchorX": 295.0,
+          "groundY": 252
+        },
+        {
+          "anchorX": 282.0,
+          "groundY": 248
+        },
+        {
+          "anchorX": 290.0,
+          "groundY": 258
+        },
+        {
+          "anchorX": 275.0,
+          "groundY": 289
+        },
+        {
+          "anchorX": 256.0,
+          "groundY": 333
+        },
+        {
+          "anchorX": 226.0,
+          "groundY": 333
+        },
+        {
+          "anchorX": 219.0,
+          "groundY": 334
+        },
+        {
+          "anchorX": 224.0,
+          "groundY": 332
+        }
+      ]
+    },
+    "durationsMs": [
+      60,
+      60,
+      60,
+      60,
+      31,
+      31,
+      32,
+      31,
+      31,
+      32,
+      31,
+      31
+    ],
+    "contactFramesZeroBased": [
+      4
+    ],
+    "releaseFrameZeroBased": 11,
+    "paired": false
+  },
+  {
+    "actor": "hag",
+    "id": "attack",
+    "frames": 12,
+    "sources": [
+      {
+        "file": "hag-attack-0.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 0
+      },
+      {
+        "file": "hag-attack-1.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 1
+      },
+      {
+        "file": "hag-attack-2.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 2
+      },
+      {
+        "file": "hag-attack-3.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 3
+      },
+      {
+        "file": "hag-attack-4.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 4
+      },
+      {
+        "file": "hag-attack-5.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 5
+      },
+      {
+        "file": "hag-attack-6.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 6
+      },
+      {
+        "file": "hag-attack-7.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 7
+      },
+      {
+        "file": "hag-attack-8.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 8
+      },
+      {
+        "file": "hag-attack-9.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 9
+      },
+      {
+        "file": "hag-attack-10.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 10
+      },
+      {
+        "file": "hag-attack-11.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 11
+      }
+    ],
+    "registration": {
+      "referenceHeight": 306.0,
+      "frames": [
+        {
+          "anchorX": 214.0,
+          "groundY": 306
+        },
+        {
+          "anchorX": 190.0,
+          "groundY": 371
+        },
+        {
+          "anchorX": 230.5,
+          "groundY": 368
+        },
+        {
+          "anchorX": 313.0,
+          "groundY": 362
+        },
+        {
+          "anchorX": 337.0,
+          "groundY": 291
+        },
+        {
+          "anchorX": 332.0,
+          "groundY": 285
+        },
+        {
+          "anchorX": 324.0,
+          "groundY": 270
+        },
+        {
+          "anchorX": 263.0,
+          "groundY": 266
+        },
+        {
+          "anchorX": 265.0,
+          "groundY": 315
+        },
+        {
+          "anchorX": 217.0,
+          "groundY": 340
+        },
+        {
+          "anchorX": 226.0,
+          "groundY": 289
+        },
+        {
+          "anchorX": 217.0,
+          "groundY": 312
+        }
+      ]
+    },
+    "durationsMs": [
+      60,
+      60,
+      60,
+      60,
+      31,
+      31,
+      32,
+      31,
+      31,
+      32,
+      31,
+      31
+    ],
+    "contactFramesZeroBased": [
+      4
+    ],
+    "releaseFrameZeroBased": 11,
+    "paired": false
+  },
+  {
+    "actor": "goblin",
+    "id": "attack",
+    "frames": 12,
+    "sources": [
+      {
+        "file": "goblin-attack-0.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 0
+      },
+      {
+        "file": "goblin-attack-1.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 1
+      },
+      {
+        "file": "goblin-attack-2.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 2
+      },
+      {
+        "file": "goblin-attack-3.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 3
+      },
+      {
+        "file": "goblin-attack-4.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 4
+      },
+      {
+        "file": "goblin-attack-5.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 5
+      },
+      {
+        "file": "goblin-attack-6.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 6
+      },
+      {
+        "file": "goblin-attack-7.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 7
+      },
+      {
+        "file": "goblin-attack-8.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 8
+      },
+      {
+        "file": "goblin-attack-9.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 9
+      },
+      {
+        "file": "goblin-attack-10.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 10
+      },
+      {
+        "file": "goblin-attack-11.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 11
+      }
+    ],
+    "registration": {
+      "referenceHeight": 280.0,
+      "frames": [
+        {
+          "anchorX": 279.0,
+          "groundY": 280
+        },
+        {
+          "anchorX": 271.0,
+          "groundY": 252
+        },
+        {
+          "anchorX": 276.0,
+          "groundY": 273
+        },
+        {
+          "anchorX": 334.0,
+          "groundY": 281
+        },
+        {
+          "anchorX": 406.0,
+          "groundY": 261
+        },
+        {
+          "anchorX": 356.0,
+          "groundY": 262
+        },
+        {
+          "anchorX": 351.0,
+          "groundY": 262
+        },
+        {
+          "anchorX": 244.0,
+          "groundY": 268
+        },
+        {
+          "anchorX": 150.0,
+          "groundY": 273
+        },
+        {
+          "anchorX": 256.0,
+          "groundY": 291
+        },
+        {
+          "anchorX": 269.0,
+          "groundY": 282
+        },
+        {
+          "anchorX": 275.0,
+          "groundY": 285
+        }
+      ]
+    },
+    "durationsMs": [
+      60,
+      60,
+      60,
+      60,
+      31,
+      31,
+      32,
+      31,
+      31,
+      32,
+      31,
+      31
+    ],
+    "contactFramesZeroBased": [
+      4
+    ],
+    "releaseFrameZeroBased": 11,
+    "paired": false
+  },
+  {
+    "actor": "spider",
+    "id": "attack",
+    "frames": 12,
+    "sources": [
+      {
+        "file": "spider-attack-0.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 0
+      },
+      {
+        "file": "spider-attack-1.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 1
+      },
+      {
+        "file": "spider-attack-2.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 2
+      },
+      {
+        "file": "spider-attack-3.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 3
+      },
+      {
+        "file": "spider-attack-4.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 4
+      },
+      {
+        "file": "spider-attack-5.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 5
+      },
+      {
+        "file": "spider-attack-6.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 6
+      },
+      {
+        "file": "spider-attack-7.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 7
+      },
+      {
+        "file": "spider-attack-8.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 8
+      },
+      {
+        "file": "spider-attack-9.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 9
+      },
+      {
+        "file": "spider-attack-10.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 10
+      },
+      {
+        "file": "spider-attack-11.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 11
+      }
+    ],
+    "registration": {
+      "referenceHeight": 211.0,
+      "frames": [
+        {
+          "anchorX": 168.0,
+          "groundY": 211
+        },
+        {
+          "anchorX": 212.0,
+          "groundY": 214
+        },
+        {
+          "anchorX": 150.0,
+          "groundY": 220
+        },
+        {
+          "anchorX": 167.0,
+          "groundY": 208
+        },
+        {
+          "anchorX": 193.5,
+          "groundY": 206
+        },
+        {
+          "anchorX": 198.0,
+          "groundY": 217
+        },
+        {
+          "anchorX": 205.0,
+          "groundY": 214
+        },
+        {
+          "anchorX": 161.0,
+          "groundY": 214
+        },
+        {
+          "anchorX": 263.0,
+          "groundY": 216
+        },
+        {
+          "anchorX": 164.0,
+          "groundY": 213
+        },
+        {
+          "anchorX": 155.0,
+          "groundY": 212
+        },
+        {
+          "anchorX": 159.0,
+          "groundY": 214
+        }
+      ]
+    },
+    "durationsMs": [
+      60,
+      60,
+      60,
+      60,
+      31,
+      31,
+      32,
+      31,
+      31,
+      32,
+      31,
+      31
+    ],
+    "contactFramesZeroBased": [
+      4
+    ],
+    "releaseFrameZeroBased": 11,
+    "paired": false
+  },
+  {
+    "actor": "orc",
+    "id": "attack",
+    "frames": 12,
+    "sources": [
+      {
+        "file": "orc-attack-0.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 0
+      },
+      {
+        "file": "orc-attack-1.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 1
+      },
+      {
+        "file": "orc-attack-2.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 2
+      },
+      {
+        "file": "orc-attack-3.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 3
+      },
+      {
+        "file": "orc-attack-4.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 4
+      },
+      {
+        "file": "orc-attack-5.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 5
+      },
+      {
+        "file": "orc-attack-6.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 6
+      },
+      {
+        "file": "orc-attack-7.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 7
+      },
+      {
+        "file": "orc-attack-8.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 8
+      },
+      {
+        "file": "orc-attack-9.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 9
+      },
+      {
+        "file": "orc-attack-10.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 10
+      },
+      {
+        "file": "orc-attack-11.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 11
+      }
+    ],
+    "registration": {
+      "referenceHeight": 263.0,
+      "frames": [
+        {
+          "anchorX": 145.0,
+          "groundY": 263
+        },
+        {
+          "anchorX": 89.0,
+          "groundY": 336
+        },
+        {
+          "anchorX": 72.0,
+          "groundY": 346
+        },
+        {
+          "anchorX": 76.0,
+          "groundY": 351
+        },
+        {
+          "anchorX": 192.0,
+          "groundY": 255
+        },
+        {
+          "anchorX": 124.0,
+          "groundY": 245
+        },
+        {
+          "anchorX": 135.0,
+          "groundY": 258
+        },
+        {
+          "anchorX": 112.0,
+          "groundY": 259
+        },
+        {
+          "anchorX": 133.0,
+          "groundY": 309
+        },
+        {
+          "anchorX": 130.0,
+          "groundY": 285
+        },
+        {
+          "anchorX": 104.0,
+          "groundY": 285
+        },
+        {
+          "anchorX": 124.5,
+          "groundY": 268
+        }
+      ]
+    },
+    "durationsMs": [
+      60,
+      60,
+      60,
+      60,
+      31,
+      31,
+      32,
+      31,
+      31,
+      32,
+      31,
+      31
+    ],
+    "contactFramesZeroBased": [
+      4
+    ],
+    "releaseFrameZeroBased": 11,
+    "paired": false
+  },
+  {
+    "actor": "serpent",
+    "id": "hiro-finisher-1",
+    "frames": 12,
+    "sources": [
+      {
+        "file": "serpent-hiro-finisher-1-0.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 0
+      },
+      {
+        "file": "serpent-hiro-finisher-1-1.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 1
+      },
+      {
+        "file": "serpent-hiro-finisher-1-2.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 2
+      },
+      {
+        "file": "serpent-hiro-finisher-1-3.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 3
+      },
+      {
+        "file": "serpent-hiro-finisher-1-4.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 4
+      },
+      {
+        "file": "serpent-hiro-finisher-1-5.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 5
+      },
+      {
+        "file": "serpent-hiro-finisher-1-6.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 6
+      },
+      {
+        "file": "serpent-hiro-finisher-1-7.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 7
+      },
+      {
+        "file": "serpent-hiro-finisher-1-8.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 8
+      },
+      {
+        "file": "serpent-hiro-finisher-1-9.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 9
+      },
+      {
+        "file": "serpent-hiro-finisher-1-10.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 10
+      },
+      {
+        "file": "serpent-hiro-finisher-1-11.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 11
+      }
+    ],
+    "registration": {
+      "referenceHeight": 202.0,
+      "frames": [
+        {
+          "referenceHeight": 202.0,
+          "anchorX": 78.0,
+          "groundY": 247.0
+        },
+        {
+          "referenceHeight": 202.0,
+          "anchorX": 84.0,
+          "groundY": 268.0
+        },
+        {
+          "referenceHeight": 202.0,
+          "anchorX": 95.0,
+          "groundY": 266.0
+        },
+        {
+          "referenceHeight": 202.0,
+          "anchorX": 114.0,
+          "groundY": 274.0
+        },
+        {
+          "referenceHeight": 202.0,
+          "anchorX": 149.0,
+          "groundY": 279.0
+        },
+        {
+          "referenceHeight": 202.0,
+          "anchorX": 125.0,
+          "groundY": 285.0
+        },
+        {
+          "referenceHeight": 202.0,
+          "anchorX": 131.0,
+          "groundY": 297.0
+        },
+        {
+          "referenceHeight": 202.0,
+          "anchorX": 96.0,
+          "groundY": 289.0
+        },
+        {
+          "referenceHeight": 214.33333333333334,
+          "anchorX": 97.0,
+          "groundY": 303.0
+        },
+        {
+          "referenceHeight": 226.66666666666666,
+          "anchorX": 97.0,
+          "groundY": 286.0
+        },
+        {
+          "referenceHeight": 239.0,
+          "anchorX": 115.0,
+          "groundY": 261.0
+        },
+        {
+          "referenceHeight": 239.0,
+          "anchorX": 101.0,
+          "groundY": 245.0
+        }
+      ]
+    },
+    "durationsMs": [
+      80,
+      80,
+      80,
+      80,
+      80,
+      146,
+      145,
+      146,
+      146,
+      146,
+      145,
+      146
+    ],
+    "contactFramesZeroBased": [
+      5
+    ],
+    "releaseFrameZeroBased": 11,
+    "paired": true,
+    "opponentKinds": [
+      "serpent"
+    ],
+    "opponentKeys": [
+      "serpent"
+    ],
+    "primaryImpactFrameZeroBased": 5,
+    "victimFullyGoneFrameZeroBased": 9,
+    "pairTargetDistanceRatio": 0.7,
+    "finalState": "drawn-idle",
+    "review": {
+      "heroPresenceHeuristicPassed": true,
+      "rejectedSourceFrames": [],
+      "source": "serpent-hiro-finisher-1.png",
+      "regions": [
+        [
+          0,
+          0,
+          367,
+          320
+        ],
+        [
+          367,
+          0,
+          730,
+          320
+        ],
+        [
+          730,
+          0,
+          1093,
+          320
+        ],
+        [
+          1093,
+          0,
+          1448,
+          320
+        ],
+        [
+          0,
+          320,
+          367,
+          703
+        ],
+        [
+          367,
+          320,
+          730,
+          703
+        ],
+        [
+          730,
+          320,
+          1090,
+          703
+        ],
+        [
+          1090,
+          320,
+          1448,
+          703
+        ],
+        [
+          0,
+          703,
+          370,
+          1086
+        ],
+        [
+          370,
+          703,
+          736,
+          1086
+        ],
+        [
+          736,
+          703,
+          1109,
+          1086
+        ],
+        [
+          1109,
+          703,
+          1448,
+          1086
+        ]
+      ]
+    }
+  },
+  {
+    "actor": "serpent",
+    "id": "hiro-finisher-2",
+    "frames": 12,
+    "sources": [
+      {
+        "file": "serpent-hiro-finisher-2-0.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 0
+      },
+      {
+        "file": "serpent-hiro-finisher-2-1.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 1
+      },
+      {
+        "file": "serpent-hiro-finisher-2-2.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 2
+      },
+      {
+        "file": "serpent-hiro-finisher-2-3.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 3
+      },
+      {
+        "file": "serpent-hiro-finisher-2-4.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 4
+      },
+      {
+        "file": "serpent-hiro-finisher-2-5.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 5
+      },
+      {
+        "file": "serpent-hiro-finisher-2-6.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 6
+      },
+      {
+        "file": "serpent-hiro-finisher-2-7.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 7
+      },
+      {
+        "file": "serpent-hiro-finisher-2-8.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 8
+      },
+      {
+        "file": "serpent-hiro-finisher-2-9.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 9
+      },
+      {
+        "file": "serpent-hiro-finisher-2-10.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 10
+      },
+      {
+        "file": "serpent-hiro-finisher-2-11.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 11
+      }
+    ],
+    "registration": {
+      "referenceHeight": 239.0,
+      "frames": [
+        {
+          "referenceHeight": 239.0,
+          "anchorX": 90.0,
+          "groundY": 253.0
+        },
+        {
+          "referenceHeight": 239.0,
+          "anchorX": 93.0,
+          "groundY": 260.0
+        },
+        {
+          "referenceHeight": 239.0,
+          "anchorX": 83.0,
+          "groundY": 301.0
+        },
+        {
+          "referenceHeight": 239.0,
+          "anchorX": 87.0,
+          "groundY": 271.0
+        },
+        {
+          "referenceHeight": 239.0,
+          "anchorX": 102.0,
+          "groundY": 276.0
+        },
+        {
+          "referenceHeight": 239.0,
+          "anchorX": 100.0,
+          "groundY": 299.0
+        },
+        {
+          "referenceHeight": 239.0,
+          "anchorX": 95.0,
+          "groundY": 296.0
+        },
+        {
+          "referenceHeight": 239.0,
+          "anchorX": 90.0,
+          "groundY": 297.0
+        },
+        {
+          "referenceHeight": 243.66666666666666,
+          "anchorX": 96.0,
+          "groundY": 309.0
+        },
+        {
+          "referenceHeight": 248.33333333333334,
+          "anchorX": 94.0,
+          "groundY": 301.0
+        },
+        {
+          "referenceHeight": 253.0,
+          "anchorX": 105.0,
+          "groundY": 292.0
+        },
+        {
+          "referenceHeight": 253.0,
+          "anchorX": 97.0,
+          "groundY": 290.0
+        }
+      ]
+    },
+    "durationsMs": [
+      80,
+      80,
+      80,
+      80,
+      80,
+      146,
+      145,
+      146,
+      146,
+      146,
+      145,
+      146
+    ],
+    "contactFramesZeroBased": [
+      5
+    ],
+    "releaseFrameZeroBased": 11,
+    "paired": true,
+    "opponentKinds": [
+      "serpent"
+    ],
+    "opponentKeys": [
+      "serpent"
+    ],
+    "primaryImpactFrameZeroBased": 5,
+    "victimFullyGoneFrameZeroBased": 9,
+    "pairTargetDistanceRatio": 0.7,
+    "finalState": "drawn-idle",
+    "review": {
+      "heroPresenceHeuristicPassed": true,
+      "rejectedSourceFrames": [],
+      "source": "serpent-hiro-finisher-2.png",
+      "regions": [
+        [
+          0,
+          0,
+          369,
+          331
+        ],
+        [
+          369,
+          0,
+          723,
+          331
+        ],
+        [
+          723,
+          0,
+          1095,
+          331
+        ],
+        [
+          1095,
+          0,
+          1448,
+          331
+        ],
+        [
+          0,
+          331,
+          364,
+          679
+        ],
+        [
+          364,
+          331,
+          724,
+          679
+        ],
+        [
+          724,
+          331,
+          1089,
+          679
+        ],
+        [
+          1089,
+          331,
+          1448,
+          679
+        ],
+        [
+          0,
+          679,
+          369,
+          1086
+        ],
+        [
+          369,
+          679,
+          735,
+          1086
+        ],
+        [
+          735,
+          679,
+          1096,
+          1086
+        ],
+        [
+          1096,
+          679,
+          1448,
+          1086
+        ]
+      ]
+    }
+  },
+  {
+    "actor": "beetle",
+    "id": "hiro-finisher-1",
+    "frames": 12,
+    "sources": [
+      {
+        "file": "beetle-hiro-finisher-1-0.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 0
+      },
+      {
+        "file": "beetle-hiro-finisher-1-1.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 1
+      },
+      {
+        "file": "beetle-hiro-finisher-1-2.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 2
+      },
+      {
+        "file": "beetle-hiro-finisher-1-3.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 3
+      },
+      {
+        "file": "beetle-hiro-finisher-1-4.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 4
+      },
+      {
+        "file": "beetle-hiro-finisher-1-5.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 5
+      },
+      {
+        "file": "beetle-hiro-finisher-1-6.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 6
+      },
+      {
+        "file": "beetle-hiro-finisher-1-7.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 7
+      },
+      {
+        "file": "beetle-hiro-finisher-1-8.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 8
+      },
+      {
+        "file": "beetle-hiro-finisher-1-9.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 9
+      },
+      {
+        "file": "beetle-hiro-finisher-1-10.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 10
+      },
+      {
+        "file": "beetle-hiro-finisher-1-11.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 11
+      }
+    ],
+    "registration": {
+      "referenceHeight": 223.0,
+      "frames": [
+        {
+          "referenceHeight": 223.0,
+          "anchorX": 82.0,
+          "groundY": 229.0
+        },
+        {
+          "referenceHeight": 223.0,
+          "anchorX": 83.0,
+          "groundY": 295.0
+        },
+        {
+          "referenceHeight": 223.0,
+          "anchorX": 90.0,
+          "groundY": 274.0
+        },
+        {
+          "referenceHeight": 223.0,
+          "anchorX": 86.0,
+          "groundY": 275.0
+        },
+        {
+          "referenceHeight": 223.0,
+          "anchorX": 87.0,
+          "groundY": 280.0
+        },
+        {
+          "referenceHeight": 223.0,
+          "anchorX": 96.0,
+          "groundY": 254.0
+        },
+        {
+          "referenceHeight": 223.0,
+          "anchorX": 82.0,
+          "groundY": 248.0
+        },
+        {
+          "referenceHeight": 223.0,
+          "anchorX": 88.0,
+          "groundY": 249.0
+        },
+        {
+          "referenceHeight": 228.66666666666666,
+          "anchorX": 93.0,
+          "groundY": 274.0
+        },
+        {
+          "referenceHeight": 234.33333333333334,
+          "anchorX": 86.0,
+          "groundY": 299.0
+        },
+        {
+          "referenceHeight": 240.0,
+          "anchorX": 108.0,
+          "groundY": 250.0
+        },
+        {
+          "referenceHeight": 240.0,
+          "anchorX": 84.0,
+          "groundY": 246.0
+        }
+      ]
+    },
+    "durationsMs": [
+      80,
+      80,
+      80,
+      80,
+      80,
+      146,
+      145,
+      146,
+      146,
+      146,
+      145,
+      146
+    ],
+    "contactFramesZeroBased": [
+      5
+    ],
+    "releaseFrameZeroBased": 11,
+    "paired": true,
+    "opponentKinds": [
+      "beetle"
+    ],
+    "opponentKeys": [
+      "beetle"
+    ],
+    "primaryImpactFrameZeroBased": 5,
+    "victimFullyGoneFrameZeroBased": 9,
+    "pairTargetDistanceRatio": 0.7,
+    "finalState": "drawn-idle",
+    "review": {
+      "heroPresenceHeuristicPassed": true,
+      "rejectedSourceFrames": [],
+      "source": "beetle-hiro-finisher-1.png",
+      "regions": [
+        [
+          0,
+          0,
+          367,
+          340
+        ],
+        [
+          367,
+          0,
+          730,
+          340
+        ],
+        [
+          730,
+          0,
+          1085,
+          340
+        ],
+        [
+          1085,
+          0,
+          1448,
+          340
+        ],
+        [
+          0,
+          340,
+          358,
+          681
+        ],
+        [
+          358,
+          340,
+          722,
+          681
+        ],
+        [
+          722,
+          340,
+          1084,
+          681
+        ],
+        [
+          1084,
+          340,
+          1448,
+          681
+        ],
+        [
+          0,
+          681,
+          361,
+          1086
+        ],
+        [
+          361,
+          681,
+          727,
+          1086
+        ],
+        [
+          727,
+          681,
+          1085,
+          1086
+        ],
+        [
+          1085,
+          681,
+          1448,
+          1086
+        ]
+      ]
+    }
+  },
+  {
+    "actor": "beetle",
+    "id": "hiro-finisher-2",
+    "frames": 12,
+    "sources": [
+      {
+        "file": "beetle-hiro-finisher-2-0.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 0
+      },
+      {
+        "file": "beetle-hiro-finisher-2-1.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 1
+      },
+      {
+        "file": "beetle-hiro-finisher-2-2.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 2
+      },
+      {
+        "file": "beetle-hiro-finisher-2-3.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 3
+      },
+      {
+        "file": "beetle-hiro-finisher-2-4.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 4
+      },
+      {
+        "file": "beetle-hiro-finisher-2-5.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 5
+      },
+      {
+        "file": "beetle-hiro-finisher-2-6.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 6
+      },
+      {
+        "file": "beetle-hiro-finisher-2-7.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 7
+      },
+      {
+        "file": "beetle-hiro-finisher-2-8.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 8
+      },
+      {
+        "file": "beetle-hiro-finisher-2-9.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 9
+      },
+      {
+        "file": "beetle-hiro-finisher-2-10.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 10
+      },
+      {
+        "file": "beetle-hiro-finisher-2-11.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 11
+      }
+    ],
+    "registration": {
+      "referenceHeight": 222.0,
+      "frames": [
+        {
+          "referenceHeight": 222.0,
+          "anchorX": 84.0,
+          "groundY": 228.0
+        },
+        {
+          "referenceHeight": 222.0,
+          "anchorX": 113.0,
+          "groundY": 194.0
+        },
+        {
+          "referenceHeight": 222.0,
+          "anchorX": 97.0,
+          "groundY": 204.24
+        },
+        {
+          "referenceHeight": 222.0,
+          "anchorX": 87.0,
+          "groundY": 309.12
+        },
+        {
+          "referenceHeight": 222.0,
+          "anchorX": 125.0,
+          "groundY": 303.6
+        },
+        {
+          "referenceHeight": 222.0,
+          "anchorX": 137.0,
+          "groundY": 289.8
+        },
+        {
+          "referenceHeight": 222.0,
+          "anchorX": 105.0,
+          "groundY": 268.0
+        },
+        {
+          "referenceHeight": 222.0,
+          "anchorX": 90.0,
+          "groundY": 247.0
+        },
+        {
+          "referenceHeight": 229.33333333333334,
+          "anchorX": 80.0,
+          "groundY": 256.0
+        },
+        {
+          "referenceHeight": 236.66666666666666,
+          "anchorX": 90.0,
+          "groundY": 288.0
+        },
+        {
+          "referenceHeight": 244.0,
+          "anchorX": 122.0,
+          "groundY": 324.0
+        },
+        {
+          "referenceHeight": 244.0,
+          "anchorX": 87.0,
+          "groundY": 250.0
+        }
+      ]
+    },
+    "durationsMs": [
+      80,
+      80,
+      80,
+      80,
+      80,
+      146,
+      145,
+      146,
+      146,
+      146,
+      145,
+      146
+    ],
+    "contactFramesZeroBased": [
+      5
+    ],
+    "releaseFrameZeroBased": 11,
+    "paired": true,
+    "opponentKinds": [
+      "beetle"
+    ],
+    "opponentKeys": [
+      "beetle"
+    ],
+    "primaryImpactFrameZeroBased": 5,
+    "victimFullyGoneFrameZeroBased": 9,
+    "pairTargetDistanceRatio": 0.7,
+    "finalState": "drawn-idle",
+    "review": {
+      "heroPresenceHeuristicPassed": true,
+      "rejectedSourceFrames": [],
+      "source": "beetle-hiro-finisher-2.png",
+      "regions": [
+        [
+          0,
+          0,
+          378,
+          361
+        ],
+        [
+          378,
+          0,
+          740,
+          361
+        ],
+        [
+          740,
+          0,
+          1140,
+          361
+        ],
+        [
+          1140,
+          0,
+          1448,
+          361
+        ],
+        [
+          0,
+          361,
+          380,
+          706
+        ],
+        [
+          380,
+          361,
+          731,
+          706
+        ],
+        [
+          731,
+          361,
+          1085,
+          706
+        ],
+        [
+          1085,
+          361,
+          1448,
+          706
+        ],
+        [
+          0,
+          706,
+          373,
+          1086
+        ],
+        [
+          373,
+          706,
+          756,
+          1086
+        ],
+        [
+          756,
+          706,
+          1076,
+          1086
+        ],
+        [
+          1076,
+          706,
+          1448,
+          1086
+        ]
+      ]
+    }
+  },
+  {
+    "actor": "hag",
+    "id": "hiro-finisher-1",
+    "frames": 12,
+    "sources": [
+      {
+        "file": "hag-hiro-finisher-1-0.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 0
+      },
+      {
+        "file": "hag-hiro-finisher-1-1.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 1
+      },
+      {
+        "file": "hag-hiro-finisher-1-2.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 2
+      },
+      {
+        "file": "hag-hiro-finisher-1-3.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 3
+      },
+      {
+        "file": "hag-hiro-finisher-1-4.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 4
+      },
+      {
+        "file": "hag-hiro-finisher-1-5.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 5
+      },
+      {
+        "file": "hag-hiro-finisher-1-6.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 6
+      },
+      {
+        "file": "hag-hiro-finisher-1-7.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 7
+      },
+      {
+        "file": "hag-hiro-finisher-1-8.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 8
+      },
+      {
+        "file": "hag-hiro-finisher-1-9.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 9
+      },
+      {
+        "file": "hag-hiro-finisher-1-10.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 10
+      },
+      {
+        "file": "hag-hiro-finisher-1-11.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 11
+      }
+    ],
+    "registration": {
+      "referenceHeight": 219.0,
+      "frames": [
+        {
+          "referenceHeight": 219.0,
+          "anchorX": 93.0,
+          "groundY": 292.0
+        },
+        {
+          "referenceHeight": 219.0,
+          "anchorX": 96.0,
+          "groundY": 300.0
+        },
+        {
+          "referenceHeight": 219.0,
+          "anchorX": 104.0,
+          "groundY": 291.0
+        },
+        {
+          "referenceHeight": 219.0,
+          "anchorX": 97.0,
+          "groundY": 288.0
+        },
+        {
+          "referenceHeight": 219.0,
+          "anchorX": 102.0,
+          "groundY": 273.0
+        },
+        {
+          "referenceHeight": 219.0,
+          "anchorX": 102.0,
+          "groundY": 294.0
+        },
+        {
+          "referenceHeight": 219.0,
+          "anchorX": 106.0,
+          "groundY": 289.7390000000014
+        },
+        {
+          "referenceHeight": 219.0,
+          "anchorX": 105.0,
+          "groundY": 294.4170000000013
+        },
+        {
+          "referenceHeight": 222.0,
+          "anchorX": 90.0,
+          "groundY": 323.0
+        },
+        {
+          "referenceHeight": 225.0,
+          "anchorX": 92.0,
+          "groundY": 321.0
+        },
+        {
+          "referenceHeight": 228.0,
+          "anchorX": 96.0,
+          "groundY": 312.0
+        },
+        {
+          "referenceHeight": 228.0,
+          "anchorX": 97.0,
+          "groundY": 322.0
+        }
+      ]
+    },
+    "durationsMs": [
+      80,
+      80,
+      80,
+      80,
+      80,
+      146,
+      145,
+      146,
+      146,
+      146,
+      145,
+      146
+    ],
+    "contactFramesZeroBased": [
+      5
+    ],
+    "releaseFrameZeroBased": 11,
+    "paired": true,
+    "opponentKinds": [
+      "boss"
+    ],
+    "opponentKeys": [
+      "hag"
+    ],
+    "primaryImpactFrameZeroBased": 5,
+    "victimFullyGoneFrameZeroBased": 9,
+    "pairTargetDistanceRatio": 0.7,
+    "finalState": "drawn-idle",
+    "review": {
+      "heroPresenceHeuristicPassed": true,
+      "rejectedSourceFrames": [],
+      "source": "hag-hiro-finisher-1.png",
+      "regions": [
+        [
+          0,
+          0,
+          384,
+          339
+        ],
+        [
+          384,
+          0,
+          739,
+          339
+        ],
+        [
+          739,
+          0,
+          1091,
+          339
+        ],
+        [
+          1091,
+          0,
+          1448,
+          339
+        ],
+        [
+          0,
+          339,
+          372,
+          674
+        ],
+        [
+          372,
+          339,
+          732,
+          674
+        ],
+        [
+          732,
+          339,
+          1092,
+          674
+        ],
+        [
+          1092,
+          339,
+          1448,
+          674
+        ],
+        [
+          0,
+          674,
+          371,
+          1086
+        ],
+        [
+          371,
+          674,
+          735,
+          1086
+        ],
+        [
+          735,
+          674,
+          1098,
+          1086
+        ],
+        [
+          1098,
+          674,
+          1448,
+          1086
+        ]
+      ]
+    }
+  },
+  {
+    "actor": "hag",
+    "id": "hiro-finisher-2",
+    "frames": 12,
+    "sources": [
+      {
+        "file": "hag-hiro-finisher-2-0.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 0
+      },
+      {
+        "file": "hag-hiro-finisher-2-1.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 1
+      },
+      {
+        "file": "hag-hiro-finisher-2-2.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 2
+      },
+      {
+        "file": "hag-hiro-finisher-2-3.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 3
+      },
+      {
+        "file": "hag-hiro-finisher-2-4.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 4
+      },
+      {
+        "file": "hag-hiro-finisher-2-5.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 5
+      },
+      {
+        "file": "hag-hiro-finisher-2-6.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 6
+      },
+      {
+        "file": "hag-hiro-finisher-2-7.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 7
+      },
+      {
+        "file": "hag-hiro-finisher-2-8.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 8
+      },
+      {
+        "file": "hag-hiro-finisher-2-9.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 9
+      },
+      {
+        "file": "hag-hiro-finisher-2-10.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 10
+      },
+      {
+        "file": "hag-hiro-finisher-2-11.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 11
+      }
+    ],
+    "registration": {
+      "referenceHeight": 231.0,
+      "frames": [
+        {
+          "referenceHeight": 231.0,
+          "anchorX": 88.0,
+          "groundY": 279.0
+        },
+        {
+          "referenceHeight": 231.0,
+          "anchorX": 76.0,
+          "groundY": 301.0
+        },
+        {
+          "referenceHeight": 231.0,
+          "anchorX": 105.0,
+          "groundY": 292.0
+        },
+        {
+          "referenceHeight": 231.0,
+          "anchorX": 127.0,
+          "groundY": 289.0
+        },
+        {
+          "referenceHeight": 231.0,
+          "anchorX": 103.0,
+          "groundY": 301.0
+        },
+        {
+          "referenceHeight": 231.0,
+          "anchorX": 119.0,
+          "groundY": 310.0
+        },
+        {
+          "referenceHeight": 231.0,
+          "anchorX": 99.0,
+          "groundY": 309.0
+        },
+        {
+          "referenceHeight": 231.0,
+          "anchorX": 95.0,
+          "groundY": 310.0
+        },
+        {
+          "referenceHeight": 240.33333333333334,
+          "anchorX": 93.0,
+          "groundY": 313.0
+        },
+        {
+          "referenceHeight": 249.66666666666666,
+          "anchorX": 93.0,
+          "groundY": 291.0
+        },
+        {
+          "referenceHeight": 259.0,
+          "anchorX": 105.0,
+          "groundY": 266.0
+        },
+        {
+          "referenceHeight": 259.0,
+          "anchorX": 100.0,
+          "groundY": 266.0
+        }
+      ]
+    },
+    "durationsMs": [
+      80,
+      80,
+      80,
+      80,
+      80,
+      146,
+      145,
+      146,
+      146,
+      146,
+      145,
+      146
+    ],
+    "contactFramesZeroBased": [
+      5
+    ],
+    "releaseFrameZeroBased": 11,
+    "paired": true,
+    "opponentKinds": [
+      "boss"
+    ],
+    "opponentKeys": [
+      "hag"
+    ],
+    "primaryImpactFrameZeroBased": 5,
+    "victimFullyGoneFrameZeroBased": 9,
+    "pairTargetDistanceRatio": 0.7,
+    "finalState": "drawn-idle",
+    "review": {
+      "heroPresenceHeuristicPassed": true,
+      "rejectedSourceFrames": [],
+      "source": "hag-hiro-finisher-2.png",
+      "regions": [
+        [
+          0,
+          0,
+          370,
+          331
+        ],
+        [
+          370,
+          0,
+          729,
+          331
+        ],
+        [
+          729,
+          0,
+          1091,
+          331
+        ],
+        [
+          1091,
+          0,
+          1448,
+          331
+        ],
+        [
+          0,
+          331,
+          365,
+          689
+        ],
+        [
+          365,
+          331,
+          736,
+          689
+        ],
+        [
+          736,
+          331,
+          1104,
+          689
+        ],
+        [
+          1104,
+          331,
+          1448,
+          689
+        ],
+        [
+          0,
+          689,
+          370,
+          1086
+        ],
+        [
+          370,
+          689,
+          788,
+          1086
+        ],
+        [
+          788,
+          689,
+          1126,
+          1086
+        ],
+        [
+          1126,
+          689,
+          1448,
+          1086
+        ]
+      ]
+    }
+  },
+  {
+    "actor": "goblin",
+    "id": "hiro-finisher-1",
+    "frames": 12,
+    "sources": [
+      {
+        "file": "goblin-hiro-finisher-1-0.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 0
+      },
+      {
+        "file": "goblin-hiro-finisher-1-1.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 1
+      },
+      {
+        "file": "goblin-hiro-finisher-1-2.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 2
+      },
+      {
+        "file": "goblin-hiro-finisher-1-3.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 3
+      },
+      {
+        "file": "goblin-hiro-finisher-1-4.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 4
+      },
+      {
+        "file": "goblin-hiro-finisher-1-5.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 5
+      },
+      {
+        "file": "goblin-hiro-finisher-1-6.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 6
+      },
+      {
+        "file": "goblin-hiro-finisher-1-7.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 7
+      },
+      {
+        "file": "goblin-hiro-finisher-1-8.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 8
+      },
+      {
+        "file": "goblin-hiro-finisher-1-9.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 9
+      },
+      {
+        "file": "goblin-hiro-finisher-1-10.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 10
+      },
+      {
+        "file": "goblin-hiro-finisher-1-11.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 11
+      }
+    ],
+    "registration": {
+      "referenceHeight": 279.0,
+      "frames": [
+        {
+          "referenceHeight": 279.0,
+          "anchorX": 112.0,
+          "groundY": 285.0
+        },
+        {
+          "referenceHeight": 279.0,
+          "anchorX": 88.0,
+          "groundY": 325.0
+        },
+        {
+          "referenceHeight": 279.0,
+          "anchorX": 105.0,
+          "groundY": 295.0
+        },
+        {
+          "referenceHeight": 279.0,
+          "anchorX": 96.0,
+          "groundY": 293.0
+        },
+        {
+          "referenceHeight": 279.0,
+          "anchorX": 98.0,
+          "groundY": 275.0
+        },
+        {
+          "referenceHeight": 279.0,
+          "anchorX": 107.0,
+          "groundY": 274.0
+        },
+        {
+          "referenceHeight": 279.0,
+          "anchorX": 108.0,
+          "groundY": 273.0
+        },
+        {
+          "referenceHeight": 279.0,
+          "anchorX": 104.0,
+          "groundY": 275.0
+        },
+        {
+          "referenceHeight": 279.6666666666667,
+          "anchorX": 103.0,
+          "groundY": 292.0
+        },
+        {
+          "referenceHeight": 280.3333333333333,
+          "anchorX": 110.0,
+          "groundY": 288.0
+        },
+        {
+          "referenceHeight": 281.0,
+          "anchorX": 111.0,
+          "groundY": 290.0
+        },
+        {
+          "referenceHeight": 281.0,
+          "anchorX": 111.0,
+          "groundY": 288.0
+        }
+      ]
+    },
+    "durationsMs": [
+      80,
+      80,
+      80,
+      80,
+      80,
+      146,
+      145,
+      146,
+      146,
+      146,
+      145,
+      146
+    ],
+    "contactFramesZeroBased": [
+      5
+    ],
+    "releaseFrameZeroBased": 11,
+    "paired": true,
+    "opponentKinds": [
+      "goblin"
+    ],
+    "opponentKeys": [
+      "goblin"
+    ],
+    "primaryImpactFrameZeroBased": 5,
+    "victimFullyGoneFrameZeroBased": 9,
+    "pairTargetDistanceRatio": 0.7,
+    "finalState": "drawn-idle",
+    "review": {
+      "heroPresenceHeuristicPassed": true,
+      "rejectedSourceFrames": [],
+      "source": "goblin-hiro-finisher-1.png",
+      "regions": [
+        [
+          0,
+          0,
+          389,
+          346
+        ],
+        [
+          389,
+          0,
+          730,
+          346
+        ],
+        [
+          730,
+          0,
+          1082,
+          346
+        ],
+        [
+          1082,
+          0,
+          1448,
+          346
+        ],
+        [
+          0,
+          346,
+          375,
+          678
+        ],
+        [
+          375,
+          346,
+          727,
+          678
+        ],
+        [
+          727,
+          346,
+          1081,
+          678
+        ],
+        [
+          1081,
+          346,
+          1448,
+          678
+        ],
+        [
+          0,
+          678,
+          376,
+          1086
+        ],
+        [
+          376,
+          678,
+          731,
+          1086
+        ],
+        [
+          731,
+          678,
+          1085,
+          1086
+        ],
+        [
+          1085,
+          678,
+          1448,
+          1086
+        ]
+      ]
+    }
+  },
+  {
+    "actor": "goblin",
+    "id": "hiro-finisher-2",
+    "frames": 12,
+    "sources": [
+      {
+        "file": "goblin-hiro-finisher-2-0.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 0
+      },
+      {
+        "file": "goblin-hiro-finisher-2-1.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 1
+      },
+      {
+        "file": "goblin-hiro-finisher-2-2.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 2
+      },
+      {
+        "file": "goblin-hiro-finisher-2-3.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 3
+      },
+      {
+        "file": "goblin-hiro-finisher-2-4.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 4
+      },
+      {
+        "file": "goblin-hiro-finisher-2-5.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 5
+      },
+      {
+        "file": "goblin-hiro-finisher-2-6.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 6
+      },
+      {
+        "file": "goblin-hiro-finisher-2-7.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 7
+      },
+      {
+        "file": "goblin-hiro-finisher-2-8.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 8
+      },
+      {
+        "file": "goblin-hiro-finisher-2-9.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 9
+      },
+      {
+        "file": "goblin-hiro-finisher-2-10.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 10
+      },
+      {
+        "file": "goblin-hiro-finisher-2-11.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 11
+      }
+    ],
+    "registration": {
+      "referenceHeight": 272.0,
+      "frames": [
+        {
+          "referenceHeight": 272.0,
+          "anchorX": 109.0,
+          "groundY": 278.0
+        },
+        {
+          "referenceHeight": 272.0,
+          "anchorX": 98.0,
+          "groundY": 273.0
+        },
+        {
+          "referenceHeight": 272.0,
+          "anchorX": 85.0,
+          "groundY": 283.0
+        },
+        {
+          "referenceHeight": 272.0,
+          "anchorX": 129.0,
+          "groundY": 310.0
+        },
+        {
+          "referenceHeight": 272.0,
+          "anchorX": 114.0,
+          "groundY": 302.0
+        },
+        {
+          "referenceHeight": 272.0,
+          "anchorX": 120.0,
+          "groundY": 290.0
+        },
+        {
+          "referenceHeight": 272.0,
+          "anchorX": 98.0,
+          "groundY": 279.0
+        },
+        {
+          "referenceHeight": 272.0,
+          "anchorX": 101.0,
+          "groundY": 281.0
+        },
+        {
+          "referenceHeight": 278.6666666666667,
+          "anchorX": 107.0,
+          "groundY": 297.0
+        },
+        {
+          "referenceHeight": 285.3333333333333,
+          "anchorX": 113.0,
+          "groundY": 305.0
+        },
+        {
+          "referenceHeight": 292.0,
+          "anchorX": 114.0,
+          "groundY": 288.0
+        },
+        {
+          "referenceHeight": 292.0,
+          "anchorX": 112.0,
+          "groundY": 297.0
+        }
+      ]
+    },
+    "durationsMs": [
+      80,
+      80,
+      80,
+      80,
+      80,
+      146,
+      145,
+      146,
+      146,
+      146,
+      145,
+      146
+    ],
+    "contactFramesZeroBased": [
+      5
+    ],
+    "releaseFrameZeroBased": 11,
+    "paired": true,
+    "opponentKinds": [
+      "goblin"
+    ],
+    "opponentKeys": [
+      "goblin"
+    ],
+    "primaryImpactFrameZeroBased": 5,
+    "victimFullyGoneFrameZeroBased": 9,
+    "pairTargetDistanceRatio": 0.7,
+    "finalState": "drawn-idle",
+    "review": {
+      "heroPresenceHeuristicPassed": true,
+      "rejectedSourceFrames": [],
+      "source": "goblin-hiro-finisher-2.png",
+      "regions": [
+        [
+          0,
+          0,
+          362,
+          345
+        ],
+        [
+          362,
+          0,
+          728,
+          345
+        ],
+        [
+          728,
+          0,
+          1098,
+          345
+        ],
+        [
+          1098,
+          0,
+          1448,
+          345
+        ],
+        [
+          0,
+          345,
+          349,
+          694
+        ],
+        [
+          349,
+          345,
+          720,
+          694
+        ],
+        [
+          720,
+          345,
+          1084,
+          694
+        ],
+        [
+          1084,
+          345,
+          1448,
+          694
+        ],
+        [
+          0,
+          694,
+          369,
+          1086
+        ],
+        [
+          369,
+          694,
+          731,
+          1086
+        ],
+        [
+          731,
+          694,
+          1089,
+          1086
+        ],
+        [
+          1089,
+          694,
+          1448,
+          1086
+        ]
+      ]
+    }
+  },
+  {
+    "actor": "spider",
+    "id": "hiro-finisher-1",
+    "frames": 12,
+    "sources": [
+      {
+        "file": "spider-hiro-finisher-1-0.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 0
+      },
+      {
+        "file": "spider-hiro-finisher-1-1.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 1
+      },
+      {
+        "file": "spider-hiro-finisher-1-2.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 2
+      },
+      {
+        "file": "spider-hiro-finisher-1-3.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 3
+      },
+      {
+        "file": "spider-hiro-finisher-1-4.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 4
+      },
+      {
+        "file": "spider-hiro-finisher-1-5.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 5
+      },
+      {
+        "file": "spider-hiro-finisher-1-6.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 6
+      },
+      {
+        "file": "spider-hiro-finisher-1-7.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 7
+      },
+      {
+        "file": "spider-hiro-finisher-1-8.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 8
+      },
+      {
+        "file": "spider-hiro-finisher-1-9.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 9
+      },
+      {
+        "file": "spider-hiro-finisher-1-10.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 10
+      },
+      {
+        "file": "spider-hiro-finisher-1-11.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 11
+      }
+    ],
+    "registration": {
+      "referenceHeight": 239.0,
+      "frames": [
+        {
+          "referenceHeight": 239.0,
+          "anchorX": 72.0,
+          "groundY": 244.0
+        },
+        {
+          "referenceHeight": 239.0,
+          "anchorX": 80.0,
+          "groundY": 291.0
+        },
+        {
+          "referenceHeight": 239.0,
+          "anchorX": 86.0,
+          "groundY": 361.0
+        },
+        {
+          "referenceHeight": 239.0,
+          "anchorX": 81.0,
+          "groundY": 287.0
+        },
+        {
+          "referenceHeight": 239.0,
+          "anchorX": 74.0,
+          "groundY": 228.0
+        },
+        {
+          "referenceHeight": 239.0,
+          "anchorX": 102.0,
+          "groundY": 279.0
+        },
+        {
+          "referenceHeight": 239.0,
+          "anchorX": 94.0,
+          "groundY": 274.0
+        },
+        {
+          "referenceHeight": 239.0,
+          "anchorX": 84.0,
+          "groundY": 311.0
+        },
+        {
+          "referenceHeight": 241.33333333333334,
+          "anchorX": 73.0,
+          "groundY": 281.0
+        },
+        {
+          "referenceHeight": 243.66666666666666,
+          "anchorX": 75.0,
+          "groundY": 270.0
+        },
+        {
+          "referenceHeight": 246.0,
+          "anchorX": 82.0,
+          "groundY": 277.0
+        },
+        {
+          "referenceHeight": 246.0,
+          "anchorX": 84.0,
+          "groundY": 250.0
+        }
+      ]
+    },
+    "durationsMs": [
+      80,
+      80,
+      80,
+      80,
+      80,
+      146,
+      145,
+      146,
+      146,
+      146,
+      145,
+      146
+    ],
+    "contactFramesZeroBased": [
+      5
+    ],
+    "releaseFrameZeroBased": 11,
+    "paired": true,
+    "opponentKinds": [
+      "spider"
+    ],
+    "opponentKeys": [
+      "spider"
+    ],
+    "primaryImpactFrameZeroBased": 5,
+    "victimFullyGoneFrameZeroBased": 9,
+    "pairTargetDistanceRatio": 0.7,
+    "finalState": "drawn-idle",
+    "review": {
+      "heroPresenceHeuristicPassed": true,
+      "rejectedSourceFrames": [],
+      "source": "spider-hiro-finisher-1.png",
+      "regions": [
+        [
+          0,
+          0,
+          255,
+          480
+        ],
+        [
+          255,
+          0,
+          507,
+          480
+        ],
+        [
+          507,
+          0,
+          752,
+          480
+        ],
+        [
+          752,
+          0,
+          1024,
+          480
+        ],
+        [
+          0,
+          480,
+          253,
+          937
+        ],
+        [
+          253,
+          480,
+          504,
+          937
+        ],
+        [
+          504,
+          480,
+          761,
+          937
+        ],
+        [
+          761,
+          480,
+          1024,
+          937
+        ],
+        [
+          0,
+          937,
+          246,
+          1536
+        ],
+        [
+          246,
+          937,
+          510,
+          1536
+        ],
+        [
+          510,
+          937,
+          748,
+          1536
+        ],
+        [
+          748,
+          937,
+          1024,
+          1536
+        ]
+      ]
+    }
+  },
+  {
+    "actor": "spider",
+    "id": "hiro-finisher-2",
+    "frames": 12,
+    "sources": [
+      {
+        "file": "spider-hiro-finisher-2-0.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 0
+      },
+      {
+        "file": "spider-hiro-finisher-2-1.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 1
+      },
+      {
+        "file": "spider-hiro-finisher-2-2.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 2
+      },
+      {
+        "file": "spider-hiro-finisher-2-3.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 3
+      },
+      {
+        "file": "spider-hiro-finisher-2-4.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 4
+      },
+      {
+        "file": "spider-hiro-finisher-2-5.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 5
+      },
+      {
+        "file": "spider-hiro-finisher-2-6.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 6
+      },
+      {
+        "file": "spider-hiro-finisher-2-7.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 7
+      },
+      {
+        "file": "spider-hiro-finisher-2-8.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 8
+      },
+      {
+        "file": "spider-hiro-finisher-2-9.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 9
+      },
+      {
+        "file": "spider-hiro-finisher-2-10.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 10
+      },
+      {
+        "file": "spider-hiro-finisher-2-11.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 11
+      }
+    ],
+    "registration": {
+      "referenceHeight": 233.0,
+      "frames": [
+        {
+          "referenceHeight": 233.0,
+          "anchorX": 115.0,
+          "groundY": 238.0
+        },
+        {
+          "referenceHeight": 233.0,
+          "anchorX": 120.0,
+          "groundY": 238.0
+        },
+        {
+          "referenceHeight": 233.0,
+          "anchorX": 110.0,
+          "groundY": 269.0
+        },
+        {
+          "referenceHeight": 233.0,
+          "anchorX": 119.0,
+          "groundY": 235.0
+        },
+        {
+          "referenceHeight": 233.0,
+          "anchorX": 110.0,
+          "groundY": 241.0
+        },
+        {
+          "referenceHeight": 233.0,
+          "anchorX": 116.0,
+          "groundY": 234.0
+        },
+        {
+          "referenceHeight": 233.0,
+          "anchorX": 107.0,
+          "groundY": 233.0
+        },
+        {
+          "referenceHeight": 233.0,
+          "anchorX": 112.0,
+          "groundY": 235.20999999999913
+        },
+        {
+          "referenceHeight": 237.66666666666666,
+          "anchorX": 98.0,
+          "groundY": 251.0639999999985
+        },
+        {
+          "referenceHeight": 242.33333333333334,
+          "anchorX": 109.0,
+          "groundY": 252.0
+        },
+        {
+          "referenceHeight": 247.0,
+          "anchorX": 102.0,
+          "groundY": 251.0
+        },
+        {
+          "referenceHeight": 247.0,
+          "anchorX": 105.0,
+          "groundY": 253.0
+        }
+      ]
+    },
+    "durationsMs": [
+      80,
+      80,
+      80,
+      80,
+      80,
+      146,
+      145,
+      146,
+      146,
+      146,
+      145,
+      146
+    ],
+    "contactFramesZeroBased": [
+      5
+    ],
+    "releaseFrameZeroBased": 11,
+    "paired": true,
+    "opponentKinds": [
+      "spider"
+    ],
+    "opponentKeys": [
+      "spider"
+    ],
+    "primaryImpactFrameZeroBased": 5,
+    "victimFullyGoneFrameZeroBased": 9,
+    "pairTargetDistanceRatio": 0.7,
+    "finalState": "drawn-idle",
+    "review": {
+      "heroPresenceHeuristicPassed": true,
+      "rejectedSourceFrames": [],
+      "source": "spider-hiro-finisher-2.png",
+      "regions": [
+        [
+          0,
+          0,
+          379,
+          327
+        ],
+        [
+          379,
+          0,
+          744,
+          327
+        ],
+        [
+          744,
+          0,
+          1080,
+          327
+        ],
+        [
+          1080,
+          0,
+          1448,
+          327
+        ],
+        [
+          0,
+          327,
+          356,
+          653
+        ],
+        [
+          356,
+          327,
+          720,
+          653
+        ],
+        [
+          720,
+          327,
+          1072,
+          653
+        ],
+        [
+          1072,
+          327,
+          1448,
+          653
+        ],
+        [
+          0,
+          653,
+          351,
+          1086
+        ],
+        [
+          351,
+          653,
+          725,
+          1086
+        ],
+        [
+          725,
+          653,
+          1079,
+          1086
+        ],
+        [
+          1079,
+          653,
+          1448,
+          1086
+        ]
+      ]
+    }
+  },
+  {
+    "actor": "orc",
+    "id": "hiro-finisher-1",
+    "frames": 12,
+    "sources": [
+      {
+        "file": "orc-hiro-finisher-1-0.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 0
+      },
+      {
+        "file": "orc-hiro-finisher-1-1.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 1
+      },
+      {
+        "file": "orc-hiro-finisher-1-2.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 2
+      },
+      {
+        "file": "orc-hiro-finisher-1-3.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 3
+      },
+      {
+        "file": "orc-hiro-finisher-1-4.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 4
+      },
+      {
+        "file": "orc-hiro-finisher-1-5.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 5
+      },
+      {
+        "file": "orc-hiro-finisher-1-6.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 6
+      },
+      {
+        "file": "orc-hiro-finisher-1-7.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 7
+      },
+      {
+        "file": "orc-hiro-finisher-1-8.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 8
+      },
+      {
+        "file": "orc-hiro-finisher-1-9.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 9
+      },
+      {
+        "file": "orc-hiro-finisher-1-10.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 10
+      },
+      {
+        "file": "orc-hiro-finisher-1-11.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 11
+      }
+    ],
+    "registration": {
+      "referenceHeight": 195.0,
+      "frames": [
+        {
+          "referenceHeight": 195.0,
+          "anchorX": 87.0,
+          "groundY": 324.0
+        },
+        {
+          "referenceHeight": 195.0,
+          "anchorX": 102.0,
+          "groundY": 332.0
+        },
+        {
+          "referenceHeight": 195.0,
+          "anchorX": 94.0,
+          "groundY": 332.0
+        },
+        {
+          "referenceHeight": 195.0,
+          "anchorX": 80.0,
+          "groundY": 329.0
+        },
+        {
+          "referenceHeight": 195.0,
+          "anchorX": 97.0,
+          "groundY": 287.0
+        },
+        {
+          "referenceHeight": 195.0,
+          "anchorX": 93.0,
+          "groundY": 295.0
+        },
+        {
+          "referenceHeight": 195.0,
+          "anchorX": 92.0,
+          "groundY": 290.0
+        },
+        {
+          "referenceHeight": 195.0,
+          "anchorX": 88.0,
+          "groundY": 297.0
+        },
+        {
+          "referenceHeight": 204.66666666666666,
+          "anchorX": 84.0,
+          "groundY": 339.0
+        },
+        {
+          "referenceHeight": 214.33333333333334,
+          "anchorX": 86.0,
+          "groundY": 313.0
+        },
+        {
+          "referenceHeight": 224.0,
+          "anchorX": 102.0,
+          "groundY": 309.0
+        },
+        {
+          "referenceHeight": 224.0,
+          "anchorX": 100.0,
+          "groundY": 230.0
+        }
+      ]
+    },
+    "durationsMs": [
+      80,
+      80,
+      80,
+      80,
+      80,
+      146,
+      145,
+      146,
+      146,
+      146,
+      145,
+      146
+    ],
+    "contactFramesZeroBased": [
+      5
+    ],
+    "releaseFrameZeroBased": 11,
+    "paired": true,
+    "opponentKinds": [
+      "boss"
+    ],
+    "opponentKeys": [
+      "orc"
+    ],
+    "primaryImpactFrameZeroBased": 5,
+    "victimFullyGoneFrameZeroBased": 9,
+    "pairTargetDistanceRatio": 0.7,
+    "finalState": "drawn-idle",
+    "review": {
+      "heroPresenceHeuristicPassed": true,
+      "rejectedSourceFrames": [],
+      "source": "orc-hiro-finisher-1.png",
+      "regions": [
+        [
+          0,
+          0,
+          387,
+          353
+        ],
+        [
+          387,
+          0,
+          735,
+          353
+        ],
+        [
+          735,
+          0,
+          1096,
+          353
+        ],
+        [
+          1096,
+          0,
+          1448,
+          353
+        ],
+        [
+          0,
+          353,
+          368,
+          689
+        ],
+        [
+          368,
+          353,
+          722,
+          689
+        ],
+        [
+          722,
+          353,
+          1086,
+          689
+        ],
+        [
+          1086,
+          353,
+          1448,
+          689
+        ],
+        [
+          0,
+          689,
+          376,
+          1086
+        ],
+        [
+          376,
+          689,
+          739,
+          1086
+        ],
+        [
+          739,
+          689,
+          1109,
+          1086
+        ],
+        [
+          1109,
+          689,
+          1448,
+          1086
+        ]
+      ]
+    }
+  },
+  {
+    "actor": "hiro",
+    "id": "wolf-pin-paired",
+    "frames": 12,
+    "sources": [
+      {
+        "file": "hiro-wolf-pin-paired-0.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 0
+      },
+      {
+        "file": "hiro-wolf-pin-paired-1.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 1
+      },
+      {
+        "file": "hiro-wolf-pin-paired-2.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 2
+      },
+      {
+        "file": "hiro-wolf-pin-paired-3.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 3
+      },
+      {
+        "file": "hiro-wolf-pin-paired-4.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 4
+      },
+      {
+        "file": "hiro-wolf-pin-paired-5.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 5
+      },
+      {
+        "file": "hiro-wolf-pin-paired-6.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 6
+      },
+      {
+        "file": "hiro-wolf-pin-paired-7.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 7
+      },
+      {
+        "file": "hiro-wolf-pin-paired-8.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 8
+      },
+      {
+        "file": "hiro-wolf-pin-paired-9.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 9
+      },
+      {
+        "file": "hiro-wolf-pin-paired-10.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 10
+      },
+      {
+        "file": "hiro-wolf-pin-paired-11.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 11
+      }
+    ],
+    "registration": {
+      "referenceHeight": 235.0,
+      "frames": [
+        {
+          "referenceHeight": 235.0,
+          "anchorX": 66.0,
+          "groundY": 270.0
+        },
+        {
+          "referenceHeight": 235.0,
+          "anchorX": 83.0,
+          "groundY": 240.0
+        },
+        {
+          "referenceHeight": 235.0,
+          "anchorX": 97.0,
+          "groundY": 248.0
+        },
+        {
+          "referenceHeight": 235.0,
+          "anchorX": 111.0,
+          "groundY": 253.0
+        },
+        {
+          "referenceHeight": 235.0,
+          "anchorX": 79.0,
+          "groundY": 296.0
+        },
+        {
+          "referenceHeight": 235.0,
+          "anchorX": 109.0,
+          "groundY": 266.0
+        },
+        {
+          "referenceHeight": 235.0,
+          "anchorX": 97.0,
+          "groundY": 262.0
+        },
+        {
+          "referenceHeight": 235.0,
+          "anchorX": 93.0,
+          "groundY": 262.0
+        },
+        {
+          "referenceHeight": 242.33333333333334,
+          "anchorX": 77.0,
+          "groundY": 263.0
+        },
+        {
+          "referenceHeight": 249.66666666666666,
+          "anchorX": 84.0,
+          "groundY": 271.0
+        },
+        {
+          "referenceHeight": 257.0,
+          "anchorX": 83.0,
+          "groundY": 284.0
+        },
+        {
+          "referenceHeight": 257.0,
+          "anchorX": 90.0,
+          "groundY": 263.0
+        }
+      ]
+    },
+    "durationsMs": [
+      132,
+      132,
+      132,
+      132,
+      132,
+      134,
+      135,
+      134,
+      134,
+      134,
+      135,
+      134
+    ],
+    "contactFramesZeroBased": [
+      5
+    ],
+    "releaseFrameZeroBased": 11,
+    "paired": true,
+    "opponentKinds": [
+      "wolf"
+    ],
+    "opponentKeys": [
+      "dire_wolf"
+    ],
+    "primaryImpactFrameZeroBased": 5,
+    "victimFullyGoneFrameZeroBased": 9,
+    "pairTargetDistanceRatio": 0.72,
+    "finalState": "drawn-idle",
+    "review": {
+      "heroPresenceHeuristicPassed": true,
+      "rejectedSourceFrames": [],
+      "source": "hiro-wolf-pin-paired.png",
+      "regions": [
+        [
+          0,
+          0,
+          370,
+          337
+        ],
+        [
+          370,
+          0,
+          752,
+          337
+        ],
+        [
+          752,
+          0,
+          1108,
+          337
+        ],
+        [
+          1108,
+          0,
+          1448,
+          337
+        ],
+        [
+          0,
+          337,
+          378,
+          687
+        ],
+        [
+          378,
+          337,
+          733,
+          687
+        ],
+        [
+          733,
+          337,
+          1084,
+          687
+        ],
+        [
+          1084,
+          337,
+          1448,
+          687
+        ],
+        [
+          0,
+          687,
+          364,
+          1086
+        ],
+        [
+          364,
+          687,
+          730,
+          1086
+        ],
+        [
+          730,
+          687,
+          1076,
+          1086
+        ],
+        [
+          1076,
+          687,
+          1448,
+          1086
+        ]
+      ]
+    }
+  },
+  {
+    "actor": "hiro",
+    "id": "wolf-rising-cut-paired",
+    "frames": 12,
+    "sources": [
+      {
+        "file": "hiro-wolf-rising-cut-paired-0.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 0
+      },
+      {
+        "file": "hiro-wolf-rising-cut-paired-1.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 1
+      },
+      {
+        "file": "hiro-wolf-rising-cut-paired-2.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 2
+      },
+      {
+        "file": "hiro-wolf-rising-cut-paired-3.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 3
+      },
+      {
+        "file": "hiro-wolf-rising-cut-paired-4.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 4
+      },
+      {
+        "file": "hiro-wolf-rising-cut-paired-5.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 5
+      },
+      {
+        "file": "hiro-wolf-rising-cut-paired-6.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 6
+      },
+      {
+        "file": "hiro-wolf-rising-cut-paired-7.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 7
+      },
+      {
+        "file": "hiro-wolf-rising-cut-paired-8.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 8
+      },
+      {
+        "file": "hiro-wolf-rising-cut-paired-9.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 9
+      },
+      {
+        "file": "hiro-wolf-rising-cut-paired-10.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 10
+      },
+      {
+        "file": "hiro-wolf-rising-cut-paired-11.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 11
+      }
+    ],
+    "registration": {
+      "referenceHeight": 235.0,
+      "frames": [
+        {
+          "referenceHeight": 235.0,
+          "anchorX": 92.0,
+          "groundY": 288.0
+        },
+        {
+          "referenceHeight": 235.0,
+          "anchorX": 135.0,
+          "groundY": 307.0
+        },
+        {
+          "referenceHeight": 235.0,
+          "anchorX": 172.0,
+          "groundY": 299.0
+        },
+        {
+          "referenceHeight": 235.0,
+          "anchorX": 118.0,
+          "groundY": 313.0
+        },
+        {
+          "referenceHeight": 235.0,
+          "anchorX": 112.0,
+          "groundY": 316.0
+        },
+        {
+          "referenceHeight": 235.0,
+          "anchorX": 104.0,
+          "groundY": 290.0
+        },
+        {
+          "referenceHeight": 235.0,
+          "anchorX": 105.0,
+          "groundY": 286.0
+        },
+        {
+          "referenceHeight": 235.0,
+          "anchorX": 133.0,
+          "groundY": 292.0
+        },
+        {
+          "referenceHeight": 236.89400000000023,
+          "anchorX": 97.0,
+          "groundY": 305.0
+        },
+        {
+          "referenceHeight": 238.78800000000047,
+          "anchorX": 111.0,
+          "groundY": 289.0
+        },
+        {
+          "referenceHeight": 240.6820000000007,
+          "anchorX": 108.0,
+          "groundY": 260.0
+        },
+        {
+          "referenceHeight": 240.6820000000007,
+          "anchorX": 106.0,
+          "groundY": 273.6820000000007
+        }
+      ]
+    },
+    "durationsMs": [
+      173,
+      174,
+      173,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120,
+      120
+    ],
+    "contactFramesZeroBased": [
+      3
+    ],
+    "releaseFrameZeroBased": 11,
+    "paired": true,
+    "opponentKinds": [
+      "wolf"
+    ],
+    "opponentKeys": [
+      "dire_wolf"
+    ],
+    "primaryImpactFrameZeroBased": 3,
+    "victimFullyGoneFrameZeroBased": 9,
+    "pairTargetDistanceRatio": 0.78,
+    "finalState": "drawn-idle",
+    "review": {
+      "heroPresenceHeuristicPassed": true,
+      "rejectedSourceFrames": [],
+      "source": "hiro-wolf-rising-cut-paired.png",
+      "regions": [
+        [
+          0,
+          0,
+          391,
+          366
+        ],
+        [
+          391,
+          0,
+          720,
+          366
+        ],
+        [
+          720,
+          0,
+          1060,
+          366
+        ],
+        [
+          1060,
+          0,
+          1448,
+          366
+        ],
+        [
+          0,
+          366,
+          363,
+          704
+        ],
+        [
+          363,
+          366,
+          725,
+          704
+        ],
+        [
+          725,
+          366,
+          1053,
+          704
+        ],
+        [
+          1053,
+          366,
+          1448,
+          704
+        ],
+        [
+          0,
+          704,
+          365,
+          1086
+        ],
+        [
+          365,
+          704,
+          756,
+          1086
+        ],
+        [
+          756,
+          704,
+          1138,
+          1086
+        ],
+        [
+          1138,
+          704,
+          1448,
+          1086
+        ]
+      ]
+    }
+  },
+  {
+    "actor": "hiro",
+    "id": "plant-stem-cut-paired",
+    "frames": 12,
+    "sources": [
+      {
+        "file": "hiro-plant-stem-cut-paired-0.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 0
+      },
+      {
+        "file": "hiro-plant-stem-cut-paired-1.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 1
+      },
+      {
+        "file": "hiro-plant-stem-cut-paired-2.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 2
+      },
+      {
+        "file": "hiro-plant-stem-cut-paired-3.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 3
+      },
+      {
+        "file": "hiro-plant-stem-cut-paired-4.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 4
+      },
+      {
+        "file": "hiro-plant-stem-cut-paired-5.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 5
+      },
+      {
+        "file": "hiro-plant-stem-cut-paired-6.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 6
+      },
+      {
+        "file": "hiro-plant-stem-cut-paired-7.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 7
+      },
+      {
+        "file": "hiro-plant-stem-cut-paired-8.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 8
+      },
+      {
+        "file": "hiro-plant-stem-cut-paired-9.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 9
+      },
+      {
+        "file": "hiro-plant-stem-cut-paired-10.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 10
+      },
+      {
+        "file": "hiro-plant-stem-cut-paired-11.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 11
+      }
+    ],
+    "registration": {
+      "referenceHeight": 271.0,
+      "frames": [
+        {
+          "referenceHeight": 271.0,
+          "anchorX": 89.0,
+          "groundY": 309.0
+        },
+        {
+          "referenceHeight": 271.0,
+          "anchorX": 86.0,
+          "groundY": 310.0
+        },
+        {
+          "referenceHeight": 271.0,
+          "anchorX": 81.0,
+          "groundY": 310.0
+        },
+        {
+          "referenceHeight": 271.0,
+          "anchorX": 83.0,
+          "groundY": 309.0
+        },
+        {
+          "referenceHeight": 271.0,
+          "anchorX": 88.0,
+          "groundY": 307.0
+        },
+        {
+          "referenceHeight": 271.0,
+          "anchorX": 85.0,
+          "groundY": 330.0
+        },
+        {
+          "referenceHeight": 271.0,
+          "anchorX": 93.0,
+          "groundY": 320.0
+        },
+        {
+          "referenceHeight": 271.0,
+          "anchorX": 72.0,
+          "groundY": 294.0
+        },
+        {
+          "referenceHeight": 265.0,
+          "anchorX": 79.0,
+          "groundY": 263.0
+        },
+        {
+          "referenceHeight": 259.0,
+          "anchorX": 78.0,
+          "groundY": 251.0
+        },
+        {
+          "referenceHeight": 253.0,
+          "anchorX": 81.0,
+          "groundY": 258.0
+        },
+        {
+          "referenceHeight": 253.0,
+          "anchorX": 79.0,
+          "groundY": 259.0
+        }
+      ]
+    },
+    "durationsMs": [
+      128,
+      128,
+      128,
+      128,
+      128,
+      166,
+      165,
+      166,
+      166,
+      166,
+      165,
+      166
+    ],
+    "contactFramesZeroBased": [
+      5
+    ],
+    "releaseFrameZeroBased": 11,
+    "paired": true,
+    "opponentKinds": [
+      "plant"
+    ],
+    "opponentKeys": [
+      "thorn_lurker"
+    ],
+    "primaryImpactFrameZeroBased": 5,
+    "victimFullyGoneFrameZeroBased": 10,
+    "pairTargetDistanceRatio": 0.84,
+    "finalState": "drawn-idle",
+    "review": {
+      "heroPresenceHeuristicPassed": true,
+      "rejectedSourceFrames": [],
+      "source": "hiro-plant-stem-cut-paired.png",
+      "regions": [
+        [
+          0,
+          0,
+          321,
+          410
+        ],
+        [
+          321,
+          0,
+          613,
+          410
+        ],
+        [
+          613,
+          0,
+          908,
+          410
+        ],
+        [
+          908,
+          0,
+          1230,
+          410
+        ],
+        [
+          0,
+          410,
+          310,
+          811
+        ],
+        [
+          310,
+          410,
+          604,
+          811
+        ],
+        [
+          604,
+          410,
+          907,
+          811
+        ],
+        [
+          907,
+          410,
+          1230,
+          811
+        ],
+        [
+          0,
+          811,
+          338,
+          1278
+        ],
+        [
+          338,
+          811,
+          672,
+          1278
+        ],
+        [
+          672,
+          811,
+          915,
+          1278
+        ],
+        [
+          915,
+          811,
+          1230,
+          1278
+        ]
+      ]
+    }
+  },
+  {
+    "actor": "hiro",
+    "id": "plant-vine-pin-paired",
+    "frames": 12,
+    "sources": [
+      {
+        "file": "hiro-plant-vine-pin-paired-0.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 0
+      },
+      {
+        "file": "hiro-plant-vine-pin-paired-1.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 1
+      },
+      {
+        "file": "hiro-plant-vine-pin-paired-2.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 2
+      },
+      {
+        "file": "hiro-plant-vine-pin-paired-3.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 3
+      },
+      {
+        "file": "hiro-plant-vine-pin-paired-4.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 4
+      },
+      {
+        "file": "hiro-plant-vine-pin-paired-5.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 5
+      },
+      {
+        "file": "hiro-plant-vine-pin-paired-6.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 6
+      },
+      {
+        "file": "hiro-plant-vine-pin-paired-7.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 7
+      },
+      {
+        "file": "hiro-plant-vine-pin-paired-8.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 8
+      },
+      {
+        "file": "hiro-plant-vine-pin-paired-9.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 9
+      },
+      {
+        "file": "hiro-plant-vine-pin-paired-10.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 10
+      },
+      {
+        "file": "hiro-plant-vine-pin-paired-11.png",
+        "frames": 1,
+        "columns": 1,
+        "rows": 1,
+        "firstFrameZeroBased": 11
+      }
+    ],
+    "registration": {
+      "referenceHeight": 224.0,
+      "frames": [
+        {
+          "referenceHeight": 224.0,
+          "anchorX": 93.0,
+          "groundY": 250.0
+        },
+        {
+          "referenceHeight": 224.0,
+          "anchorX": 107.0,
+          "groundY": 259.0
+        },
+        {
+          "referenceHeight": 224.0,
+          "anchorX": 115.0,
+          "groundY": 291.0
+        },
+        {
+          "referenceHeight": 224.0,
+          "anchorX": 85.0,
+          "groundY": 291.0
+        },
+        {
+          "referenceHeight": 224.0,
+          "anchorX": 101.0,
+          "groundY": 272.0
+        },
+        {
+          "referenceHeight": 224.0,
+          "anchorX": 95.0,
+          "groundY": 250.0
+        },
+        {
+          "referenceHeight": 224.0,
+          "anchorX": 113.0,
+          "groundY": 264.0
+        },
+        {
+          "referenceHeight": 224.0,
+          "anchorX": 106.0,
+          "groundY": 263.0
+        },
+        {
+          "referenceHeight": 236.66666666666666,
+          "anchorX": 89.0,
+          "groundY": 280.0
+        },
+        {
+          "referenceHeight": 249.33333333333334,
+          "anchorX": 83.0,
+          "groundY": 278.0
+        },
+        {
+          "referenceHeight": 262.0,
+          "anchorX": 81.0,
+          "groundY": 261.0
+        },
+        {
+          "referenceHeight": 262.0,
+          "anchorX": 71.0,
+          "groundY": 270.0
+        }
+      ]
+    },
+    "durationsMs": [
+      132,
+      132,
+      132,
+      132,
+      132,
+      134,
+      135,
+      134,
+      134,
+      134,
+      135,
+      134
+    ],
+    "contactFramesZeroBased": [
+      5
+    ],
+    "releaseFrameZeroBased": 11,
+    "paired": true,
+    "opponentKinds": [
+      "plant"
+    ],
+    "opponentKeys": [
+      "thorn_lurker"
+    ],
+    "primaryImpactFrameZeroBased": 5,
+    "victimFullyGoneFrameZeroBased": 9,
+    "pairTargetDistanceRatio": 0.95,
+    "finalState": "drawn-idle",
+    "review": {
+      "heroPresenceHeuristicPassed": true,
+      "rejectedSourceFrames": [],
+      "source": "hiro-plant-vine-pin-paired-fixed.png",
+      "regions": [
+        [
+          0,
+          0,
+          372,
+          356
+        ],
+        [
+          372,
+          0,
+          730,
+          356
+        ],
+        [
+          730,
+          0,
+          1097,
+          356
+        ],
+        [
+          1097,
+          0,
+          1448,
+          356
+        ],
+        [
+          0,
+          356,
+          358,
+          690
+        ],
+        [
+          358,
+          356,
+          718,
+          690
+        ],
+        [
+          718,
+          356,
+          1089,
+          690
+        ],
+        [
+          1089,
+          356,
+          1448,
+          690
+        ],
+        [
+          0,
+          690,
+          350,
+          1086
+        ],
+        [
+          350,
+          690,
+          704,
+          1086
+        ],
+        [
+          704,
+          690,
+          1019,
+          1086
+        ],
+        [
+          1019,
+          690,
+          1448,
+          1086
+        ]
+      ]
+    }
+  }
+]

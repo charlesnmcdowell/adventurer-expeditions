@@ -1,5 +1,5 @@
 {
-  "note": "Version 1 forest, swamp and city. Total package budget 250 MB; cold-cache initial gameplay remains below 20 MB and is measured by test:startup. Later monsters and travel load per location. Source masters never ship; recruitment remains locked.",
+  "note": "Local-edition expanded combat. Total package budget 250 MB. Startup currently exceeds the historical 20 MB portal mobile target; see test:startup results. Later monsters/travel load per location. Source masters never ship; recruitment stays locked.",
   "files": [
     "index.html",
     "THIRD_PARTY_NOTICES.txt",
@@ -48,7 +48,24 @@
     "assets/expedition/inn/inn-hiro-ranger.webp",
     "assets/expedition/hiro/hiro-pilot-0.webp",
     "assets/expedition/alpha/alpha-pilot-0.webp",
-    "assets/expedition/alpha/alpha-pilot-1.webp"
+    "assets/expedition/alpha/alpha-pilot-1.webp",
+    "assets/expedition/wolf/wolf-roster-0.webp",
+    "assets/expedition/plant/plant-roster-0.webp",
+    "assets/expedition/serpent/serpent-0.webp",
+    "assets/expedition/serpent/serpent-roster-0.webp",
+    "assets/expedition/beetle/beetle-0.webp",
+    "assets/expedition/beetle/beetle-roster-0.webp",
+    "assets/expedition/moss_giant/moss_giant-0.webp",
+    "assets/expedition/moss_giant/moss_giant-roster-0.webp",
+    "assets/expedition/hag/hag-0.webp",
+    "assets/expedition/hag/hag-roster-0.webp",
+    "assets/expedition/goblin/goblin-0.webp",
+    "assets/expedition/goblin/goblin-roster-0.webp",
+    "assets/expedition/spider/spider-0.webp",
+    "assets/expedition/spider/spider-roster-0.webp",
+    "assets/expedition/orc/orc-roster-0.webp",
+    "assets/expedition/hiro/hiro-roster-0.webp",
+    "assets/expedition/hiro/hiro-roster-1.webp"
   ],
   "dirs": [
     "audio/sfx",

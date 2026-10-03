@@ -1,0 +1,194 @@
+[
+  {
+    "actor": "wolf",
+    "clip": "bite",
+    "beforeFrames": 4,
+    "afterFrames": 12,
+    "durationMs": 370,
+    "contactMs": 80
+  },
+  {
+    "actor": "plant",
+    "clip": "lash",
+    "beforeFrames": 6,
+    "afterFrames": 12,
+    "durationMs": 660,
+    "contactMs": 350
+  },
+  {
+    "actor": "serpent",
+    "clip": "attack",
+    "beforeFrames": 4,
+    "afterFrames": 12,
+    "durationMs": 490,
+    "contactMs": 240
+  },
+  {
+    "actor": "beetle",
+    "clip": "attack",
+    "beforeFrames": 4,
+    "afterFrames": 12,
+    "durationMs": 490,
+    "contactMs": 240
+  },
+  {
+    "actor": "moss_giant",
+    "clip": "attack",
+    "beforeFrames": 4,
+    "afterFrames": 12,
+    "durationMs": 490,
+    "contactMs": 240
+  },
+  {
+    "actor": "hag",
+    "clip": "attack",
+    "beforeFrames": 4,
+    "afterFrames": 12,
+    "durationMs": 490,
+    "contactMs": 240
+  },
+  {
+    "actor": "goblin",
+    "clip": "attack",
+    "beforeFrames": 4,
+    "afterFrames": 12,
+    "durationMs": 490,
+    "contactMs": 240
+  },
+  {
+    "actor": "spider",
+    "clip": "attack",
+    "beforeFrames": 4,
+    "afterFrames": 12,
+    "durationMs": 490,
+    "contactMs": 240
+  },
+  {
+    "actor": "orc",
+    "clip": "attack",
+    "beforeFrames": 4,
+    "afterFrames": 12,
+    "durationMs": 490,
+    "contactMs": 240
+  },
+  {
+    "actor": "serpent",
+    "clip": "hiro-finisher-1",
+    "beforeFrames": 6,
+    "afterFrames": 12,
+    "durationMs": 1420,
+    "contactMs": 400
+  },
+  {
+    "actor": "serpent",
+    "clip": "hiro-finisher-2",
+    "beforeFrames": 6,
+    "afterFrames": 12,
+    "durationMs": 1420,
+    "contactMs": 400
+  },
+  {
+    "actor": "beetle",
+    "clip": "hiro-finisher-1",
+    "beforeFrames": 6,
+    "afterFrames": 12,
+    "durationMs": 1420,
+    "contactMs": 400
+  },
+  {
+    "actor": "beetle",
+    "clip": "hiro-finisher-2",
+    "beforeFrames": 6,
+    "afterFrames": 12,
+    "durationMs": 1420,
+    "contactMs": 400
+  },
+  {
+    "actor": "hag",
+    "clip": "hiro-finisher-1",
+    "beforeFrames": 6,
+    "afterFrames": 12,
+    "durationMs": 1420,
+    "contactMs": 400
+  },
+  {
+    "actor": "hag",
+    "clip": "hiro-finisher-2",
+    "beforeFrames": 6,
+    "afterFrames": 12,
+    "durationMs": 1420,
+    "contactMs": 400
+  },
+  {
+    "actor": "goblin",
+    "clip": "hiro-finisher-1",
+    "beforeFrames": 6,
+    "afterFrames": 12,
+    "durationMs": 1420,
+    "contactMs": 400
+  },
+  {
+    "actor": "goblin",
+    "clip": "hiro-finisher-2",
+    "beforeFrames": 6,
+    "afterFrames": 12,
+    "durationMs": 1420,
+    "contactMs": 400
+  },
+  {
+    "actor": "spider",
+    "clip": "hiro-finisher-1",
+    "beforeFrames": 6,
+    "afterFrames": 12,
+    "durationMs": 1420,
+    "contactMs": 400
+  },
+  {
+    "actor": "spider",
+    "clip": "hiro-finisher-2",
+    "beforeFrames": 6,
+    "afterFrames": 12,
+    "durationMs": 1420,
+    "contactMs": 400
+  },
+  {
+    "actor": "orc",
+    "clip": "hiro-finisher-1",
+    "beforeFrames": 6,
+    "afterFrames": 12,
+    "durationMs": 1420,
+    "contactMs": 400
+  },
+  {
+    "actor": "hiro",
+    "clip": "wolf-pin-paired",
+    "beforeFrames": 6,
+    "afterFrames": 12,
+    "durationMs": 1600,
+    "contactMs": 660
+  },
+  {
+    "actor": "hiro",
+    "clip": "wolf-rising-cut-paired",
+    "beforeFrames": 6,
+    "afterFrames": 12,
+    "durationMs": 1600,
+    "contactMs": 520
+  },
+  {
+    "actor": "hiro",
+    "clip": "plant-stem-cut-paired",
+    "beforeFrames": 8,
+    "afterFrames": 12,
+    "durationMs": 1800,
+    "contactMs": 640
+  },
+  {
+    "actor": "hiro",
+    "clip": "plant-vine-pin-paired",
+    "beforeFrames": 6,
+    "afterFrames": 12,
+    "durationMs": 1600,
+    "contactMs": 660
+  }
+]

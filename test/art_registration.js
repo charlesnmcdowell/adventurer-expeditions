@@ -2,7 +2,7 @@
 'use strict';
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
 const root=path.resolve(__dirname,'..');
-const counts={hiro:184,bram:96,wolf:38,boar:20,plant:17,alpha:59};
+const counts={hiro:206,bram:96,wolf:46,boar:20,plant:23,alpha:59,serpent:56,beetle:56,moss_giant:44,hag:56,goblin:56,spider:56,orc:50};
 for(const [id,count] of Object.entries(counts)){
   const dir=path.join(root,'assets/expedition',id);
   const m=JSON.parse(fs.readFileSync(path.join(dir,id+'.json'),'utf8'));
@@ -41,8 +41,8 @@ for(const [id,count] of Object.entries(counts)){
   }
   if(id==='hiro'){
     const required={walk:16,'idle-sheathed':4,'wolf-cleave-paired':12,
-      'wolf-pin-paired':6,'wolf-rising-cut-paired':6,'plant-stem-cut-paired':8,
-      'plant-vine-pin-paired':6,'plant-crosscut-paired':6};
+      'wolf-pin-paired':12,'wolf-rising-cut-paired':12,'plant-stem-cut-paired':12,
+      'plant-vine-pin-paired':12,'plant-crosscut-paired':6};
     for(const [name,n] of Object.entries(required)){
       const c=m.clips[name];assert(c,'missing approved v2 clip '+name);assert.equal(c.frames.length,n,name);
       if(c.paired){

@@ -1,0 +1,559 @@
+[
+  {
+    "id": "wolf-fatal",
+    "actor": "wolf",
+    "kind": "fatal",
+    "args": {
+      "transparent_background": false,
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v1/heroes/hiro/hiro-reference.png",
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v1/beasts/wolf_reference.png"
+      ],
+      "prompt": "Production game animation sprite sheet, exactly 12 sequential distinct drawings, uniform 4 columns by 3 rows. Flat solid #808080 mid-gray background ONLY, no gradient or grid lines. Every cell includes the WHOLE action and full body, including weapons, limbs, effects. Keep at least 8% empty gray margin around EVERY cell. Camera and character scale fixed for all 12 poses. No zoom. No labels. Detailed anime cel-shaded painted finish matching references. Draw true in-between poses, NOT repeated poses or motion blur. Two ADULT fantasy combatants in each cell: Hiro on LEFT facing RIGHT, monster on RIGHT facing LEFT. Hiro is reference1: dark-skinned adult male with purple locs, black/gold samurai armor and purple sash, katana. Monster reference2: gray spiky wolf, amber eyes. Monster standing height roughly 0.7 times Hiro standing height, maintain relative scale THROUGHOUT. One dramatic fatal move performed BY MONSTER on Hiro, monster wins: leaps onto Hiro's sword arm, bites and drags him down. Hiro struggles, sword falls, wolf releases and stands over the defeated Hiro. Sequence frames1-2 both face each other,3-4 monster closes contact,5-6 forceful hit/contact and armor damage,7-9 followthrough/fall,10-12 monster withdraws and defeated Hiro stays on ground. Stylized small dark red blood spurts and a few blood spots for the local adult game, no exposed organs, no severed limbs, not photorealistic. Hiro never retaliates successfully and does not vanish. Clear anatomical contact. Keep Hiro's support point at left third of each cell, common floor at 88% of each cell."
+    },
+    "correction": null
+  },
+  {
+    "id": "plant-attack",
+    "actor": "plant",
+    "kind": "attack",
+    "args": {
+      "transparent_background": false,
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v1/beasts/thorn_lurker_idle.png"
+      ],
+      "prompt": "Production game animation sprite sheet, exactly 12 sequential distinct drawings, uniform 4 columns by 3 rows. Flat solid #808080 mid-gray background ONLY, no gradient or grid lines. Every cell includes the WHOLE action and full body, including weapons, limbs, effects. Keep at least 8% empty gray margin around EVERY cell. Camera and character scale fixed for all 12 poses. No zoom. No labels. Detailed anime cel-shaded painted finish matching references. Draw true in-between poses, NOT repeated poses or motion blur. Reference defines monster identity: thorn lurker carnivorous flower with toothed flower mouth and vine limbs. Monster faces LEFT in EVERY frame. One continuous attack: winds thorn vine back then lashes to the LEFT. Frames1-3 anticipation,4 approach toward contact,5 impact fully extended LEFT,6-8 follow-through,9-12 return to starting guard. Ground baseline at 85% of each cell. No target or other character, no scenery. Preserve same body proportions and model detail. Leave plenty of empty space for the lunge in each cell."
+    },
+    "correction": null
+  },
+  {
+    "id": "plant-fatal",
+    "actor": "plant",
+    "kind": "fatal",
+    "args": {
+      "transparent_background": false,
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v1/heroes/hiro/hiro-reference.png",
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v1/beasts/thorn_lurker_idle.png"
+      ],
+      "prompt": "Production game animation sprite sheet, exactly 12 sequential distinct drawings, uniform 4 columns by 3 rows. Flat solid #808080 mid-gray background ONLY, no gradient or grid lines. Every cell includes the WHOLE action and full body, including weapons, limbs, effects. Keep at least 8% empty gray margin around EVERY cell. Camera and character scale fixed for all 12 poses. No zoom. No labels. Detailed anime cel-shaded painted finish matching references. Draw true in-between poses, NOT repeated poses or motion blur. Two ADULT fantasy combatants in each cell: Hiro on LEFT facing RIGHT, monster on RIGHT facing LEFT. Hiro is reference1: dark-skinned adult male with purple locs, black/gold samurai armor and purple sash, katana. Monster reference2: thorn lurker carnivorous flower with toothed flower mouth and vine limbs. Monster standing height roughly 1.0 times Hiro standing height, maintain relative scale THROUGHOUT. One dramatic fatal move performed BY MONSTER on Hiro, monster wins: wraps Hiro's forearms with vines, pulls him off balance and slams him to the ground, mouth snaps his shoulder armor, then releases the motionless Hiro. Sequence frames1-2 both face each other,3-4 monster closes contact,5-6 forceful hit/contact and armor damage,7-9 followthrough/fall,10-12 monster withdraws and defeated Hiro stays on ground. Stylized small dark red blood spurts and a few blood spots for the local adult game, no exposed organs, no severed limbs, not photorealistic. Hiro never retaliates successfully and does not vanish. Clear anatomical contact. Keep Hiro's support point at left third of each cell, common floor at 88% of each cell."
+    },
+    "correction": null
+  },
+  {
+    "id": "serpent-attack",
+    "actor": "serpent",
+    "kind": "attack",
+    "args": {
+      "transparent_background": false,
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v3/monsters/serpent/turnaround.png"
+      ],
+      "prompt": "Production game animation sprite sheet, exactly 12 sequential distinct drawings, uniform 4 columns by 3 rows. Flat solid #808080 mid-gray background ONLY, no gradient or grid lines. Every cell includes the WHOLE action and full body, including weapons, limbs, effects. Keep at least 8% empty gray margin around EVERY cell. Camera and character scale fixed for all 12 poses. No zoom. No labels. Detailed anime cel-shaded painted finish matching references. Draw true in-between poses, NOT repeated poses or motion blur. Reference defines monster identity: emerald and gold hooded giant cobra. Monster faces LEFT in EVERY frame. One continuous attack: draws head back then lunges its head and tightens coils to the LEFT. Frames1-3 anticipation,4 approach toward contact,5 impact fully extended LEFT,6-8 follow-through,9-12 return to starting guard. Ground baseline at 85% of each cell. No target or other character, no scenery. Preserve same body proportions and model detail. Leave plenty of empty space for the lunge in each cell."
+    },
+    "correction": null
+  },
+  {
+    "id": "serpent-fatal",
+    "actor": "serpent",
+    "kind": "fatal",
+    "args": {
+      "transparent_background": false,
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v1/heroes/hiro/hiro-reference.png",
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v3/monsters/serpent/turnaround.png"
+      ],
+      "prompt": "Production game animation sprite sheet, exactly 12 sequential distinct drawings, uniform 4 columns by 3 rows. Flat solid #808080 mid-gray background ONLY, no gradient or grid lines. Every cell includes the WHOLE action and full body, including weapons, limbs, effects. Keep at least 8% empty gray margin around EVERY cell. Camera and character scale fixed for all 12 poses. No zoom. No labels. Detailed anime cel-shaded painted finish matching references. Draw true in-between poses, NOT repeated poses or motion blur. Two ADULT fantasy combatants in each cell: Hiro on LEFT facing RIGHT, monster on RIGHT facing LEFT. Hiro is reference1: dark-skinned adult male with purple locs, black/gold samurai armor and purple sash, katana. Monster reference2: emerald and gold hooded giant cobra. Monster standing height roughly 1.1 times Hiro standing height, maintain relative scale THROUGHOUT. One dramatic fatal move performed BY MONSTER on Hiro, monster wins: coils around Hiro's chest and arms, lifts and constricts, cracks his chest armor with a small blood spatter, drops the defeated Hiro and recoils. Sequence frames1-2 both face each other,3-4 monster closes contact,5-6 forceful hit/contact and armor damage,7-9 followthrough/fall,10-12 monster withdraws and defeated Hiro stays on ground. Stylized small dark red blood spurts and a few blood spots for the local adult game, no exposed organs, no severed limbs, not photorealistic. Hiro never retaliates successfully and does not vanish. Clear anatomical contact. Keep Hiro's support point at left third of each cell, common floor at 88% of each cell."
+    },
+    "correction": null
+  },
+  {
+    "id": "beetle-attack",
+    "actor": "beetle",
+    "kind": "attack",
+    "args": {
+      "transparent_background": false,
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v3/monsters/beetle/turnaround.png"
+      ],
+      "prompt": "Production game animation sprite sheet, exactly 12 sequential distinct drawings, uniform 4 columns by 3 rows. Flat solid #808080 mid-gray background ONLY, no gradient or grid lines. Every cell includes the WHOLE action and full body, including weapons, limbs, effects. Keep at least 8% empty gray margin around EVERY cell. Camera and character scale fixed for all 12 poses. No zoom. No labels. Detailed anime cel-shaded painted finish matching references. Draw true in-between poses, NOT repeated poses or motion blur. Reference defines monster identity: iridescent teal purple gold horned beetle. Monster faces LEFT in EVERY frame. One continuous attack: lowers horn and thrusts armored head LEFT in Carapace Burst. Frames1-3 anticipation,4 approach toward contact,5 impact fully extended LEFT,6-8 follow-through,9-12 return to starting guard. Ground baseline at 85% of each cell. No target or other character, no scenery. Preserve same body proportions and model detail. Leave plenty of empty space for the lunge in each cell."
+    },
+    "correction": null
+  },
+  {
+    "id": "beetle-fatal",
+    "actor": "beetle",
+    "kind": "fatal",
+    "args": {
+      "transparent_background": false,
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v1/heroes/hiro/hiro-reference.png",
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v3/monsters/beetle/turnaround.png"
+      ],
+      "prompt": "Production game animation sprite sheet, exactly 12 sequential distinct drawings, uniform 4 columns by 3 rows. Flat solid #808080 mid-gray background ONLY, no gradient or grid lines. Every cell includes the WHOLE action and full body, including weapons, limbs, effects. Keep at least 8% empty gray margin around EVERY cell. Camera and character scale fixed for all 12 poses. No zoom. No labels. Detailed anime cel-shaded painted finish matching references. Draw true in-between poses, NOT repeated poses or motion blur. Two ADULT fantasy combatants in each cell: Hiro on LEFT facing RIGHT, monster on RIGHT facing LEFT. Hiro is reference1: dark-skinned adult male with purple locs, black/gold samurai armor and purple sash, katana. Monster reference2: iridescent teal purple gold horned beetle. Monster standing height roughly 0.8 times Hiro standing height, maintain relative scale THROUGHOUT. One dramatic fatal move performed BY MONSTER on Hiro, monster wins: charges its horn into Hiro's chest armor, drives him backward, tips him down with forelegs and then backs off from defeated Hiro. Sequence frames1-2 both face each other,3-4 monster closes contact,5-6 forceful hit/contact and armor damage,7-9 followthrough/fall,10-12 monster withdraws and defeated Hiro stays on ground. Stylized small dark red blood spurts and a few blood spots for the local adult game, no exposed organs, no severed limbs, not photorealistic. Hiro never retaliates successfully and does not vanish. Clear anatomical contact. Keep Hiro's support point at left third of each cell, common floor at 88% of each cell."
+    },
+    "correction": null
+  },
+  {
+    "id": "moss_giant-attack",
+    "actor": "moss_giant",
+    "kind": "attack",
+    "args": {
+      "transparent_background": false,
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v3/monsters/moss_giant/turnaround.png"
+      ],
+      "prompt": "Production game animation sprite sheet, exactly 12 sequential distinct drawings, uniform 4 columns by 3 rows. Flat solid #808080 mid-gray background ONLY, no gradient or grid lines. Every cell includes the WHOLE action and full body, including weapons, limbs, effects. Keep at least 8% empty gray margin around EVERY cell. Camera and character scale fixed for all 12 poses. No zoom. No labels. Detailed anime cel-shaded painted finish matching references. Draw true in-between poses, NOT repeated poses or motion blur. Reference defines monster identity: huge moss covered tree humanoid with bark fists and leafy antlers. Monster faces LEFT in EVERY frame. One continuous attack: raises massive branch fist then brings it down and LEFT in Treefall. Frames1-3 anticipation,4 approach toward contact,5 impact fully extended LEFT,6-8 follow-through,9-12 return to starting guard. Ground baseline at 85% of each cell. No target or other character, no scenery. Preserve same body proportions and model detail. Leave plenty of empty space for the lunge in each cell."
+    },
+    "correction": null
+  },
+  {
+    "id": "moss_giant-fatal",
+    "actor": "moss_giant",
+    "kind": "fatal",
+    "args": {
+      "transparent_background": false,
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v1/heroes/hiro/hiro-reference.png",
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v3/monsters/moss_giant/turnaround.png"
+      ],
+      "prompt": "Production game animation sprite sheet, exactly 12 sequential distinct drawings, uniform 4 columns by 3 rows. Flat solid #808080 mid-gray background ONLY, no gradient or grid lines. Every cell includes the WHOLE action and full body, including weapons, limbs, effects. Keep at least 8% empty gray margin around EVERY cell. Camera and character scale fixed for all 12 poses. No zoom. No labels. Detailed anime cel-shaded painted finish matching references. Draw true in-between poses, NOT repeated poses or motion blur. Two ADULT fantasy combatants in each cell: Hiro on LEFT facing RIGHT, monster on RIGHT facing LEFT. Hiro is reference1: dark-skinned adult male with purple locs, black/gold samurai armor and purple sash, katana. Monster reference2: huge moss covered tree humanoid with bark fists and leafy antlers. Monster standing height roughly 1.65 times Hiro standing height, maintain relative scale THROUGHOUT. One dramatic fatal move performed BY MONSTER on Hiro, monster wins: catches Hiro by the torso in a branch hand, lifts him, slams him to the ground, withdraws fist and looms over defeated Hiro. Sequence frames1-2 both face each other,3-4 monster closes contact,5-6 forceful hit/contact and armor damage,7-9 followthrough/fall,10-12 monster withdraws and defeated Hiro stays on ground. Stylized small dark red blood spurts and a few blood spots for the local adult game, no exposed organs, no severed limbs, not photorealistic. Hiro never retaliates successfully and does not vanish. Clear anatomical contact. Keep Hiro's support point at left third of each cell, common floor at 88% of each cell."
+    },
+    "correction": null
+  },
+  {
+    "id": "hag-attack",
+    "actor": "hag",
+    "kind": "attack",
+    "args": {
+      "transparent_background": false,
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v3/monsters/hag/turnaround.png"
+      ],
+      "prompt": "Production game animation sprite sheet, exactly 12 sequential distinct drawings, uniform 4 columns by 3 rows. Flat solid #808080 mid-gray background ONLY, no gradient or grid lines. Every cell includes the WHOLE action and full body, including weapons, limbs, effects. Keep at least 8% empty gray margin around EVERY cell. Camera and character scale fixed for all 12 poses. No zoom. No labels. Detailed anime cel-shaded painted finish matching references. Draw true in-between poses, NOT repeated poses or motion blur. Reference defines monster identity: old green swamp monster hag in fungal moss cloak with skull staff. Monster faces LEFT in EVERY frame. One continuous attack: raises staff then claws left with Bog Curse magic. Frames1-3 anticipation,4 approach toward contact,5 impact fully extended LEFT,6-8 follow-through,9-12 return to starting guard. Ground baseline at 85% of each cell. No target or other character, no scenery. Preserve same body proportions and model detail. Leave plenty of empty space for the lunge in each cell."
+    },
+    "correction": null
+  },
+  {
+    "id": "hag-fatal",
+    "actor": "hag",
+    "kind": "fatal",
+    "args": {
+      "transparent_background": false,
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v1/heroes/hiro/hiro-reference.png",
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v3/monsters/hag/turnaround.png"
+      ],
+      "prompt": "Production game animation sprite sheet, exactly 12 sequential distinct drawings, uniform 4 columns by 3 rows. Flat solid #808080 mid-gray background ONLY, no gradient or grid lines. Every cell includes the WHOLE action and full body, including weapons, limbs, effects. Keep at least 8% empty gray margin around EVERY cell. Camera and character scale fixed for all 12 poses. No zoom. No labels. Detailed anime cel-shaded painted finish matching references. Draw true in-between poses, NOT repeated poses or motion blur. Two ADULT fantasy combatants in each cell: Hiro on LEFT facing RIGHT, monster on RIGHT facing LEFT. Hiro is reference1: dark-skinned adult male with purple locs, black/gold samurai armor and purple sash, katana. Monster reference2: old green swamp monster hag in fungal moss cloak with skull staff. Monster standing height roughly 1.0 times Hiro standing height, maintain relative scale THROUGHOUT. One dramatic fatal move performed BY MONSTER on Hiro, monster wins: hooks Hiro's guard with her staff, drains violet life energy from him as his armor cracks and blood spots appear, he drops to his knees then collapses, she withdraws. Sequence frames1-2 both face each other,3-4 monster closes contact,5-6 forceful hit/contact and armor damage,7-9 followthrough/fall,10-12 monster withdraws and defeated Hiro stays on ground. Stylized small dark red blood spurts and a few blood spots for the local adult game, no exposed organs, no severed limbs, not photorealistic. Hiro never retaliates successfully and does not vanish. Clear anatomical contact. Keep Hiro's support point at left third of each cell, common floor at 88% of each cell."
+    },
+    "correction": null
+  },
+  {
+    "id": "goblin-attack",
+    "actor": "goblin",
+    "kind": "attack",
+    "args": {
+      "transparent_background": false,
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v3/monsters/goblin/turnaround.png"
+      ],
+      "prompt": "Production game animation sprite sheet, exactly 12 sequential distinct drawings, uniform 4 columns by 3 rows. Flat solid #808080 mid-gray background ONLY, no gradient or grid lines. Every cell includes the WHOLE action and full body, including weapons, limbs, effects. Keep at least 8% empty gray margin around EVERY cell. Camera and character scale fixed for all 12 poses. No zoom. No labels. Detailed anime cel-shaded painted finish matching references. Draw true in-between poses, NOT repeated poses or motion blur. Reference defines monster identity: small green hooded goblin with curved dagger. Monster faces LEFT in EVERY frame. One continuous attack: crouches then stabs LEFT at hip height. Frames1-3 anticipation,4 approach toward contact,5 impact fully extended LEFT,6-8 follow-through,9-12 return to starting guard. Ground baseline at 85% of each cell. No target or other character, no scenery. Preserve same body proportions and model detail. Leave plenty of empty space for the lunge in each cell."
+    },
+    "correction": null
+  },
+  {
+    "id": "goblin-fatal",
+    "actor": "goblin",
+    "kind": "fatal",
+    "args": {
+      "transparent_background": false,
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v1/heroes/hiro/hiro-reference.png",
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v3/monsters/goblin/turnaround.png"
+      ],
+      "prompt": "Production game animation sprite sheet, exactly 12 sequential distinct drawings, uniform 4 columns by 3 rows. Flat solid #808080 mid-gray background ONLY, no gradient or grid lines. Every cell includes the WHOLE action and full body, including weapons, limbs, effects. Keep at least 8% empty gray margin around EVERY cell. Camera and character scale fixed for all 12 poses. No zoom. No labels. Detailed anime cel-shaded painted finish matching references. Draw true in-between poses, NOT repeated poses or motion blur. Two ADULT fantasy combatants in each cell: Hiro on LEFT facing RIGHT, monster on RIGHT facing LEFT. Hiro is reference1: dark-skinned adult male with purple locs, black/gold samurai armor and purple sash, katana. Monster reference2: small green hooded goblin with curved dagger. Monster standing height roughly 0.5 times Hiro standing height, maintain relative scale THROUGHOUT. One dramatic fatal move performed BY MONSTER on Hiro, monster wins: ducks under Hiro's sword, slashes his lower leg, climbs his bent back and strikes into a gap at his shoulder armor, jumps clear as Hiro collapses. Sequence frames1-2 both face each other,3-4 monster closes contact,5-6 forceful hit/contact and armor damage,7-9 followthrough/fall,10-12 monster withdraws and defeated Hiro stays on ground. Stylized small dark red blood spurts and a few blood spots for the local adult game, no exposed organs, no severed limbs, not photorealistic. Hiro never retaliates successfully and does not vanish. Clear anatomical contact. Keep Hiro's support point at left third of each cell, common floor at 88% of each cell."
+    },
+    "correction": null
+  },
+  {
+    "id": "spider-attack",
+    "actor": "spider",
+    "kind": "attack",
+    "args": {
+      "transparent_background": false,
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v3/monsters/spider/turnaround.png"
+      ],
+      "prompt": "Production game animation sprite sheet, exactly 12 sequential distinct drawings, uniform 4 columns by 3 rows. Flat solid #808080 mid-gray background ONLY, no gradient or grid lines. Every cell includes the WHOLE action and full body, including weapons, limbs, effects. Keep at least 8% empty gray margin around EVERY cell. Camera and character scale fixed for all 12 poses. No zoom. No labels. Detailed anime cel-shaded painted finish matching references. Draw true in-between poses, NOT repeated poses or motion blur. Reference defines monster identity: purple black eight legged giant spider with red markings and red eyes. Monster faces LEFT in EVERY frame. One continuous attack: draws front legs back then thrusts LEFT with web and fangs. Frames1-3 anticipation,4 approach toward contact,5 impact fully extended LEFT,6-8 follow-through,9-12 return to starting guard. Ground baseline at 85% of each cell. No target or other character, no scenery. Preserve same body proportions and model detail. Leave plenty of empty space for the lunge in each cell."
+    },
+    "correction": null
+  },
+  {
+    "id": "spider-fatal",
+    "actor": "spider",
+    "kind": "fatal",
+    "args": {
+      "transparent_background": false,
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v1/heroes/hiro/hiro-reference.png",
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v3/monsters/spider/turnaround.png"
+      ],
+      "prompt": "Production game animation sprite sheet, exactly 12 sequential distinct drawings, uniform 4 columns by 3 rows. Flat solid #808080 mid-gray background ONLY, no gradient or grid lines. Every cell includes the WHOLE action and full body, including weapons, limbs, effects. Keep at least 8% empty gray margin around EVERY cell. Camera and character scale fixed for all 12 poses. No zoom. No labels. Detailed anime cel-shaded painted finish matching references. Draw true in-between poses, NOT repeated poses or motion blur. Two ADULT fantasy combatants in each cell: Hiro on LEFT facing RIGHT, monster on RIGHT facing LEFT. Hiro is reference1: dark-skinned adult male with purple locs, black/gold samurai armor and purple sash, katana. Monster reference2: purple black eight legged giant spider with red markings and red eyes. Monster standing height roughly 0.5 times Hiro standing height, maintain relative scale THROUGHOUT. One dramatic fatal move performed BY MONSTER on Hiro, monster wins: casts glassy web over Hiro's arms, rushes in and bites his shoulder, Hiro sinks to his knees and collapses, spider retreats beside him. Sequence frames1-2 both face each other,3-4 monster closes contact,5-6 forceful hit/contact and armor damage,7-9 followthrough/fall,10-12 monster withdraws and defeated Hiro stays on ground. Stylized small dark red blood spurts and a few blood spots for the local adult game, no exposed organs, no severed limbs, not photorealistic. Hiro never retaliates successfully and does not vanish. Clear anatomical contact. Keep Hiro's support point at left third of each cell, common floor at 88% of each cell."
+    },
+    "correction": null
+  },
+  {
+    "id": "orc-attack",
+    "actor": "orc",
+    "kind": "attack",
+    "args": {
+      "transparent_background": false,
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v3/monsters/orc/turnaround.png"
+      ],
+      "prompt": "Production game animation sprite sheet, exactly 12 sequential distinct drawings, uniform 4 columns by 3 rows. Flat solid #808080 mid-gray background ONLY, no gradient or grid lines. Every cell includes the WHOLE action and full body, including weapons, limbs, effects. Keep at least 8% empty gray margin around EVERY cell. Camera and character scale fixed for all 12 poses. No zoom. No labels. Detailed anime cel-shaded painted finish matching references. Draw true in-between poses, NOT repeated poses or motion blur. Reference defines monster identity: large green tusked orc boss, topknot, spiked iron armor and heavy axe. Monster faces LEFT in EVERY frame. One continuous attack: heaves axe overhead then cleaves LEFT. Frames1-3 anticipation,4 approach toward contact,5 impact fully extended LEFT,6-8 follow-through,9-12 return to starting guard. Ground baseline at 85% of each cell. No target or other character, no scenery. Preserve same body proportions and model detail. Leave plenty of empty space for the lunge in each cell."
+    },
+    "correction": null
+  },
+  {
+    "id": "orc-fatal",
+    "actor": "orc",
+    "kind": "fatal",
+    "args": {
+      "transparent_background": false,
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v1/heroes/hiro/hiro-reference.png",
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v3/monsters/orc/turnaround.png"
+      ],
+      "prompt": "Production game animation sprite sheet, exactly 12 sequential distinct drawings, uniform 4 columns by 3 rows. Flat solid #808080 mid-gray background ONLY, no gradient or grid lines. Every cell includes the WHOLE action and full body, including weapons, limbs, effects. Keep at least 8% empty gray margin around EVERY cell. Camera and character scale fixed for all 12 poses. No zoom. No labels. Detailed anime cel-shaded painted finish matching references. Draw true in-between poses, NOT repeated poses or motion blur. Two ADULT fantasy combatants in each cell: Hiro on LEFT facing RIGHT, monster on RIGHT facing LEFT. Hiro is reference1: dark-skinned adult male with purple locs, black/gold samurai armor and purple sash, katana. Monster reference2: large green tusked orc boss, topknot, spiked iron armor and heavy axe. Monster standing height roughly 1.35 times Hiro standing height, maintain relative scale THROUGHOUT. One dramatic fatal move performed BY MONSTER on Hiro, monster wins: bats Hiro's katana aside with axe haft, slams axe into chest armor, pulls axe free with stylized blood spatter and Hiro collapses; orc stands victorious. Sequence frames1-2 both face each other,3-4 monster closes contact,5-6 forceful hit/contact and armor damage,7-9 followthrough/fall,10-12 monster withdraws and defeated Hiro stays on ground. Stylized small dark red blood spurts and a few blood spots for the local adult game, no exposed organs, no severed limbs, not photorealistic. Hiro never retaliates successfully and does not vanish. Clear anatomical contact. Keep Hiro's support point at left third of each cell, common floor at 88% of each cell."
+    },
+    "correction": null
+  },
+  {
+    "id": "alpha-hiro-alpha-pin-paired",
+    "actor": "alpha",
+    "clip": "hiro-alpha-pin-paired",
+    "kind": "pair",
+    "args": {
+      "transparent_background": false,
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v2/beasts/alpha/hiro-pin-paired.png",
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v1/heroes/hiro/hiro-reference.png"
+      ],
+      "prompt": "Production game animation sprite sheet, exactly 12 sequential distinct drawings, uniform 4 columns by 3 rows. Flat solid #808080 mid-gray background ONLY, no gradient or grid lines. Every cell includes the WHOLE action and full body, including weapons, limbs, effects. Keep at least 8% empty gray margin around EVERY cell. Camera and character scale fixed for all 12 poses. No zoom. No labels. Detailed anime cel-shaded painted finish matching references. Draw true in-between poses, NOT repeated poses or motion blur. Expand the reference's existing 6-pose choreography into 12 smoothly progressing drawings using REAL intermediate poses. Same characters, costumes and finish. Hiro LEFT facing RIGHT, monster RIGHT facing LEFT. Hiro redirects the giant wolf's leap down, pins its shoulders, plunges katana with a violet magical flash, wolf dissolves into sparkles. Alpha at shoulder height to Hiro; noticeably huge. Frames1-3 anticipation,4-5 contact approach,6 main magical impact,7-9 followthrough and dissolving monster,10 monster fully gone,11-12 Hiro alone in sword guard. No blood, no anatomical wounds. No new characters. Hiro standing height and foot baseline must stay constant within every cell, never normalize pair bounding box. Keep both bodies whole and the effects strictly inside each cell; smaller drawings and more margin are preferable to overlap. Flat #808080 gray background, NO shadows behind figures or gradients."
+    },
+    "correction": null
+  },
+  {
+    "id": "alpha-hiro-alpha-parry-paired",
+    "actor": "alpha",
+    "clip": "hiro-alpha-parry-paired",
+    "kind": "pair",
+    "args": {
+      "transparent_background": false,
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v2/beasts/alpha/hiro-parry-paired.png",
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v1/heroes/hiro/hiro-reference.png"
+      ],
+      "prompt": "Production game animation sprite sheet, exactly 12 sequential distinct drawings, uniform 4 columns by 3 rows. Flat solid #808080 mid-gray background ONLY, no gradient or grid lines. Every cell includes the WHOLE action and full body, including weapons, limbs, effects. Keep at least 8% empty gray margin around EVERY cell. Camera and character scale fixed for all 12 poses. No zoom. No labels. Detailed anime cel-shaded painted finish matching references. Draw true in-between poses, NOT repeated poses or motion blur. Expand the reference's existing 6-pose choreography into 12 smoothly progressing drawings using REAL intermediate poses. Same characters, costumes and finish. Hiro LEFT facing RIGHT, monster RIGHT facing LEFT. Hiro parries the huge wolf leap then sweeps an upward katana arc; wolf dissolves into golden violet sparkles without blood or gore. Alpha at shoulder height to Hiro, noticeably huge. Frames1-3 anticipation,4-5 contact approach,6 main magical impact,7-9 followthrough and dissolving monster,10 monster fully gone,11-12 Hiro alone in sword guard. No blood, no anatomical wounds. No new characters. Hiro standing height and foot baseline must stay constant within every cell, never normalize pair bounding box. Keep both bodies whole and the effects strictly inside each cell; smaller drawings and more margin are preferable to overlap. Flat #808080 gray background, NO shadows behind figures or gradients."
+    },
+    "correction": {
+      "transparent_background": false,
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v4/roster-20261002/alpha-hiro-alpha-parry-paired.png"
+      ],
+      "prompt": "Precise correction to this 4-column 3-row 12-frame game sprite sheet. There is an ERROR in the TOP RIGHT cell (frame index3): Hiro is missing! Repaint ONLY that top-right cell so it contains BOTH Hiro on left and the monster on right, in the next progressive pose after cell3. Hiro is the same adult dark-skinned purple-loc samurai in black gold armor visible in EVERY other cell. Keep him same scale as previous cell, same foot-ground line. For wolf: Hiro braced raising katana to meet incoming wolf paw. For flower: Hiro with foot pinning vine, raising katana for downward cut. Fit both complete figures entirely INSIDE that cell. Every other cell stays exactly unchanged. Same size, flat gray background, no labels. This is a NON-GRAPHIC fantasy game sword animation; preserve magic sparkles."
+    }
+  },
+  {
+    "id": "hiro-plant-vine-pin-paired",
+    "actor": "hiro",
+    "clip": "plant-vine-pin-paired",
+    "kind": "pair",
+    "args": {
+      "transparent_background": false,
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v2/heroes/hiro/plant-vine-pin-paired.png",
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v1/heroes/hiro/hiro-reference.png"
+      ],
+      "prompt": "Production game animation sprite sheet, exactly 12 sequential distinct drawings, uniform 4 columns by 3 rows. Flat solid #808080 mid-gray background ONLY, no gradient or grid lines. Every cell includes the WHOLE action and full body, including weapons, limbs, effects. Keep at least 8% empty gray margin around EVERY cell. Camera and character scale fixed for all 12 poses. No zoom. No labels. Detailed anime cel-shaded painted finish matching references. Draw true in-between poses, NOT repeated poses or motion blur. Expand the reference's existing 6-pose choreography into 12 smoothly progressing drawings using REAL intermediate poses. Same characters, costumes and finish. Hiro LEFT facing RIGHT, monster RIGHT facing LEFT. Hiro plants boot on attacking vine, pins it, raises katana and slices through the plant's stem. Plant turns to leaves and golden sparkles, Hiro returns sword to guard. Frames1-3 anticipation,4-5 contact approach,6 main magical impact,7-9 followthrough and dissolving monster,10 monster fully gone,11-12 Hiro alone in sword guard. No blood, no anatomical wounds. No new characters. Hiro standing height and foot baseline must stay constant within every cell, never normalize pair bounding box. Keep both bodies whole and the effects strictly inside each cell; smaller drawings and more margin are preferable to overlap. Flat #808080 gray background, NO shadows behind figures or gradients."
+    },
+    "correction": {
+      "transparent_background": false,
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v4/roster-20261002/hiro-plant-vine-pin-paired.png"
+      ],
+      "prompt": "Precise correction to this 4-column 3-row 12-frame game sprite sheet. There is an ERROR in the TOP RIGHT cell (frame index3): Hiro is missing! Repaint ONLY that top-right cell so it contains BOTH Hiro on left and the monster on right, in the next progressive pose after cell3. Hiro is the same adult dark-skinned purple-loc samurai in black gold armor visible in EVERY other cell. Keep him same scale as previous cell, same foot-ground line. For wolf: Hiro braced raising katana to meet incoming wolf paw. For flower: Hiro with foot pinning vine, raising katana for downward cut. Fit both complete figures entirely INSIDE that cell. Every other cell stays exactly unchanged. Same size, flat gray background, no labels. This is a NON-GRAPHIC fantasy game sword animation; preserve magic sparkles."
+    }
+  },
+  {
+    "id": "hiro-wolf-pin-paired",
+    "actor": "hiro",
+    "clip": "wolf-pin-paired",
+    "kind": "pair",
+    "args": {
+      "transparent_background": false,
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v2/heroes/hiro/wolf-pin-paired.png",
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v1/heroes/hiro/hiro-reference.png"
+      ],
+      "prompt": "Production game animation sprite sheet, exactly 12 sequential distinct drawings, uniform 4 columns by 3 rows. Flat solid #808080 mid-gray background ONLY, no gradient or grid lines. Every cell includes the WHOLE action and full body, including weapons, limbs, effects. Keep at least 8% empty gray margin around EVERY cell. Camera and character scale fixed for all 12 poses. No zoom. No labels. Detailed anime cel-shaded painted finish matching references. Draw true in-between poses, NOT repeated poses or motion blur. Expand reference1's existing finishing move into 12 chronological drawings, retaining the choreography but adding proper in-between poses. Hiro reference2, adult male dark skin purple locs black gold armor. Hiro LEFT facing RIGHT. Enemy RIGHT facing LEFT. Match relative body sizes in the reference. Hiro deflects wolf with a kick then pins it with a downward sword thrust; sparkles remove wolf. Frames1-3 preparation,4-5 incoming contact,6 decisive sword impact with MAGIC FLASH,7-9 follow-through and enemy dissolving,10 enemy entirely gone,11-12 Hiro recovers sword to guard, alone. No blood, no anatomical gore. Preserve constant Hiro anatomical height every frame; DO NOT shrink or enlarge after the enemy disappears. Root feet at the same ground line in every cell. No perspective/camera change. Keep ALL blades, particles and bodies well inside cell margins. Exact flat mid-gray background."
+    },
+    "correction": null
+  },
+  {
+    "id": "hiro-wolf-rising-cut-paired",
+    "actor": "hiro",
+    "clip": "wolf-rising-cut-paired",
+    "kind": "pair",
+    "args": {
+      "transparent_background": false,
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v2/heroes/hiro/wolf-rising-cut-paired.png",
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v1/heroes/hiro/hiro-reference.png"
+      ],
+      "prompt": "Production game animation sprite sheet, exactly 12 sequential distinct drawings, uniform 4 columns by 3 rows. Flat solid #808080 mid-gray background ONLY, no gradient or grid lines. Every cell includes the WHOLE action and full body, including weapons, limbs, effects. Keep at least 8% empty gray margin around EVERY cell. Camera and character scale fixed for all 12 poses. No zoom. No labels. Detailed anime cel-shaded painted finish matching references. Draw true in-between poses, NOT repeated poses or motion blur. Expand reference1's existing finishing move into 12 chronological drawings, retaining the choreography but adding proper in-between poses. Hiro reference2, adult male dark skin purple locs black gold armor. Hiro LEFT facing RIGHT. Enemy RIGHT facing LEFT. Match relative body sizes in the reference. Hiro ducks the flying wolf, then sweeps upward with katana under it; wolf turns to golden sparkles. Frames1-3 preparation,4-5 incoming contact,6 decisive sword impact with MAGIC FLASH,7-9 follow-through and enemy dissolving,10 enemy entirely gone,11-12 Hiro recovers sword to guard, alone. No blood, no anatomical gore. Preserve constant Hiro anatomical height every frame; DO NOT shrink or enlarge after the enemy disappears. Root feet at the same ground line in every cell. No perspective/camera change. Keep ALL blades, particles and bodies well inside cell margins. Exact flat mid-gray background."
+    },
+    "correction": null
+  },
+  {
+    "id": "hiro-plant-stem-cut-paired",
+    "actor": "hiro",
+    "clip": "plant-stem-cut-paired",
+    "kind": "pair",
+    "args": {
+      "transparent_background": false,
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v2/heroes/hiro/plant-stem-iaido-paired.png",
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v1/heroes/hiro/hiro-reference.png"
+      ],
+      "prompt": "Production game animation sprite sheet, exactly 12 sequential distinct drawings, uniform 4 columns by 3 rows. Flat solid #808080 mid-gray background ONLY, no gradient or grid lines. Every cell includes the WHOLE action and full body, including weapons, limbs, effects. Keep at least 8% empty gray margin around EVERY cell. Camera and character scale fixed for all 12 poses. No zoom. No labels. Detailed anime cel-shaded painted finish matching references. Draw true in-between poses, NOT repeated poses or motion blur. Expand reference1's existing finishing move into 12 chronological drawings, retaining the choreography but adding proper in-between poses. Hiro reference2, adult male dark skin purple locs black gold armor. Hiro LEFT facing RIGHT. Enemy RIGHT facing LEFT. Match relative body sizes in the reference. Hiro draws katana horizontally from the hip in proper iaido form, slicing through plant stem; stem tips and dissolves into leaves and golden sparkles. Frames1-3 preparation,4-5 incoming contact,6 decisive sword impact with MAGIC FLASH,7-9 follow-through and enemy dissolving,10 enemy entirely gone,11-12 Hiro recovers sword to guard, alone. No blood, no anatomical gore. Preserve constant Hiro anatomical height every frame; DO NOT shrink or enlarge after the enemy disappears. Root feet at the same ground line in every cell. No perspective/camera change. Keep ALL blades, particles and bodies well inside cell margins. Exact flat mid-gray background."
+    },
+    "correction": null
+  },
+  {
+    "id": "hiro-plant-crosscut-paired",
+    "actor": "hiro",
+    "clip": "plant-crosscut-paired",
+    "kind": "pair",
+    "args": {
+      "transparent_background": false,
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v2/heroes/hiro/plant-crosscut-paired.png",
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v1/heroes/hiro/hiro-reference.png"
+      ],
+      "prompt": "Production game animation sprite sheet, exactly 12 sequential distinct drawings, uniform 4 columns by 3 rows. Flat solid #808080 mid-gray background ONLY, no gradient or grid lines. Every cell includes the WHOLE action and full body, including weapons, limbs, effects. Keep at least 8% empty gray margin around EVERY cell. Camera and character scale fixed for all 12 poses. No zoom. No labels. Detailed anime cel-shaded painted finish matching references. Draw true in-between poses, NOT repeated poses or motion blur. Expand reference1's existing finishing move into 12 chronological drawings, retaining the choreography but adding proper in-between poses. Hiro reference2, adult male dark skin purple locs black gold armor. Hiro LEFT facing RIGHT. Enemy RIGHT facing LEFT. Match relative body sizes in the reference. Hiro cuts aside vine then makes two crossing cuts through flower stem; plant turns to leaves and sparkles. Frames1-3 preparation,4-5 incoming contact,6 decisive sword impact with MAGIC FLASH,7-9 follow-through and enemy dissolving,10 enemy entirely gone,11-12 Hiro recovers sword to guard, alone. No blood, no anatomical gore. Preserve constant Hiro anatomical height every frame; DO NOT shrink or enlarge after the enemy disappears. Root feet at the same ground line in every cell. No perspective/camera change. Keep ALL blades, particles and bodies well inside cell margins. Exact flat mid-gray background."
+    },
+    "correction": null
+  },
+  {
+    "id": "serpent-hiro-finisher-1",
+    "actor": "serpent",
+    "clip": "hiro-finisher-1",
+    "kind": "pair",
+    "args": {
+      "transparent_background": false,
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v3/monsters/serpent/hiro-finisher-1.png",
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v1/heroes/hiro/hiro-reference.png"
+      ],
+      "prompt": "Production game animation sprite sheet, exactly 12 sequential distinct drawings, uniform 4 columns by 3 rows. Flat solid #808080 mid-gray background ONLY, no gradient or grid lines. Every cell includes the WHOLE action and full body, including weapons, limbs, effects. Keep at least 8% empty gray margin around EVERY cell. Camera and character scale fixed for all 12 poses. No zoom. No labels. Detailed anime cel-shaded painted finish matching references. Draw true in-between poses, NOT repeated poses or motion blur. Expand reference1's existing finishing move into 12 chronological drawings, retaining the choreography but adding proper in-between poses. Hiro reference2, adult male dark skin purple locs black gold armor. Hiro LEFT facing RIGHT. Enemy RIGHT facing LEFT. Match relative body sizes in the reference. Hiro ducks the coil and slices free across serpent body. Monster dissolves into dry earthy particles and leaves. Frames1-3 preparation,4-5 incoming contact,6 decisive sword impact with MAGIC FLASH,7-9 follow-through and enemy dissolving,10 enemy entirely gone,11-12 Hiro recovers sword to guard, alone. No blood, no anatomical gore. Preserve constant Hiro anatomical height every frame; DO NOT shrink or enlarge after the enemy disappears. Root feet at the same ground line in every cell. No perspective/camera change. Keep ALL blades, particles and bodies well inside cell margins. Exact flat mid-gray background."
+    },
+    "correction": null
+  },
+  {
+    "id": "serpent-hiro-finisher-2",
+    "actor": "serpent",
+    "clip": "hiro-finisher-2",
+    "kind": "pair",
+    "args": {
+      "transparent_background": false,
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v3/monsters/serpent/hiro-finisher-2.png",
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v1/heroes/hiro/hiro-reference.png"
+      ],
+      "prompt": "Production game animation sprite sheet, exactly 12 sequential distinct drawings, uniform 4 columns by 3 rows. Flat solid #808080 mid-gray background ONLY, no gradient or grid lines. Every cell includes the WHOLE action and full body, including weapons, limbs, effects. Keep at least 8% empty gray margin around EVERY cell. Camera and character scale fixed for all 12 poses. No zoom. No labels. Detailed anime cel-shaded painted finish matching references. Draw true in-between poses, NOT repeated poses or motion blur. Expand reference1's existing finishing move into 12 chronological drawings, retaining the choreography but adding proper in-between poses. Hiro reference2, adult male dark skin purple locs black gold armor. Hiro LEFT facing RIGHT. Enemy RIGHT facing LEFT. Match relative body sizes in the reference. Hiro parries fangs then cuts horizontally through raised neck. Monster dissolves into dry earthy particles and leaves. Frames1-3 preparation,4-5 incoming contact,6 decisive sword impact with MAGIC FLASH,7-9 follow-through and enemy dissolving,10 enemy entirely gone,11-12 Hiro recovers sword to guard, alone. No blood, no anatomical gore. Preserve constant Hiro anatomical height every frame; DO NOT shrink or enlarge after the enemy disappears. Root feet at the same ground line in every cell. No perspective/camera change. Keep ALL blades, particles and bodies well inside cell margins. Exact flat mid-gray background."
+    },
+    "correction": null
+  },
+  {
+    "id": "beetle-hiro-finisher-1",
+    "actor": "beetle",
+    "clip": "hiro-finisher-1",
+    "kind": "pair",
+    "args": {
+      "transparent_background": false,
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v3/monsters/beetle/hiro-finisher-1.png",
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v1/heroes/hiro/hiro-reference.png"
+      ],
+      "prompt": "Production game animation sprite sheet, exactly 12 sequential distinct drawings, uniform 4 columns by 3 rows. Flat solid #808080 mid-gray background ONLY, no gradient or grid lines. Every cell includes the WHOLE action and full body, including weapons, limbs, effects. Keep at least 8% empty gray margin around EVERY cell. Camera and character scale fixed for all 12 poses. No zoom. No labels. Detailed anime cel-shaded painted finish matching references. Draw true in-between poses, NOT repeated poses or motion blur. Expand reference1's existing finishing move into 12 chronological drawings, retaining the choreography but adding proper in-between poses. Hiro reference2, adult male dark skin purple locs black gold armor. Hiro LEFT facing RIGHT. Enemy RIGHT facing LEFT. Match relative body sizes in the reference. Hiro raises blade and splits beetle shell with overhead cut. Monster dissolves into dry earthy particles and leaves. Frames1-3 preparation,4-5 incoming contact,6 decisive sword impact with MAGIC FLASH,7-9 follow-through and enemy dissolving,10 enemy entirely gone,11-12 Hiro recovers sword to guard, alone. No blood, no anatomical gore. Preserve constant Hiro anatomical height every frame; DO NOT shrink or enlarge after the enemy disappears. Root feet at the same ground line in every cell. No perspective/camera change. Keep ALL blades, particles and bodies well inside cell margins. Exact flat mid-gray background."
+    },
+    "correction": null
+  },
+  {
+    "id": "beetle-hiro-finisher-2",
+    "actor": "beetle",
+    "clip": "hiro-finisher-2",
+    "kind": "pair",
+    "args": {
+      "transparent_background": false,
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v3/monsters/beetle/hiro-finisher-2.png",
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v1/heroes/hiro/hiro-reference.png"
+      ],
+      "prompt": "Production game animation sprite sheet, exactly 12 sequential distinct drawings, uniform 4 columns by 3 rows. Flat solid #808080 mid-gray background ONLY, no gradient or grid lines. Every cell includes the WHOLE action and full body, including weapons, limbs, effects. Keep at least 8% empty gray margin around EVERY cell. Camera and character scale fixed for all 12 poses. No zoom. No labels. Detailed anime cel-shaded painted finish matching references. Draw true in-between poses, NOT repeated poses or motion blur. Expand reference1's existing finishing move into 12 chronological drawings, retaining the choreography but adding proper in-between poses. Hiro reference2, adult male dark skin purple locs black gold armor. Hiro LEFT facing RIGHT. Enemy RIGHT facing LEFT. Match relative body sizes in the reference. Hiro vaults over beetle horn and plunges katana through shell. Monster dissolves into dry earthy particles and leaves. Frames1-3 preparation,4-5 incoming contact,6 decisive sword impact with MAGIC FLASH,7-9 follow-through and enemy dissolving,10 enemy entirely gone,11-12 Hiro recovers sword to guard, alone. No blood, no anatomical gore. Preserve constant Hiro anatomical height every frame; DO NOT shrink or enlarge after the enemy disappears. Root feet at the same ground line in every cell. No perspective/camera change. Keep ALL blades, particles and bodies well inside cell margins. Exact flat mid-gray background."
+    },
+    "correction": null
+  },
+  {
+    "id": "moss_giant-hiro-finisher-1",
+    "actor": "moss_giant",
+    "clip": "hiro-finisher-1",
+    "kind": "pair",
+    "args": {
+      "transparent_background": false,
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v3/monsters/moss_giant/hiro-finisher-1.png",
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v1/heroes/hiro/hiro-reference.png"
+      ],
+      "prompt": "Production game animation sprite sheet, exactly 12 sequential distinct drawings, uniform 4 columns by 3 rows. Flat solid #808080 mid-gray background ONLY, no gradient or grid lines. Every cell includes the WHOLE action and full body, including weapons, limbs, effects. Keep at least 8% empty gray margin around EVERY cell. Camera and character scale fixed for all 12 poses. No zoom. No labels. Detailed anime cel-shaded painted finish matching references. Draw true in-between poses, NOT repeated poses or motion blur. Expand reference1's existing finishing move into 12 chronological drawings, retaining the choreography but adding proper in-between poses. Hiro reference2, adult male dark skin purple locs black gold armor. Hiro LEFT facing RIGHT. Enemy RIGHT facing LEFT. Giant stays 1.6x Hiro height. Hiro ducks sweeping branch arm and cuts across trunk. Monster dissolves into dry earthy particles and leaves. Frames1-3 preparation,4-5 incoming contact,6 decisive sword impact with MAGIC FLASH,7-9 follow-through and enemy dissolving,10 enemy entirely gone,11-12 Hiro recovers sword to guard, alone. No blood, no anatomical gore. Preserve constant Hiro anatomical height every frame; DO NOT shrink or enlarge after the enemy disappears. Root feet at the same ground line in every cell. No perspective/camera change. Keep ALL blades, particles and bodies well inside cell margins. Exact flat mid-gray background."
+    },
+    "correction": null
+  },
+  {
+    "id": "moss_giant-hiro-finisher-2",
+    "actor": "moss_giant",
+    "clip": "hiro-finisher-2",
+    "kind": "pair",
+    "args": {
+      "transparent_background": false,
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v3/monsters/moss_giant/hiro-finisher-2.png",
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v1/heroes/hiro/hiro-reference.png"
+      ],
+      "prompt": "Production game animation sprite sheet, exactly 12 sequential distinct drawings, uniform 4 columns by 3 rows. Flat solid #808080 mid-gray background ONLY, no gradient or grid lines. Every cell includes the WHOLE action and full body, including weapons, limbs, effects. Keep at least 8% empty gray margin around EVERY cell. Camera and character scale fixed for all 12 poses. No zoom. No labels. Detailed anime cel-shaded painted finish matching references. Draw true in-between poses, NOT repeated poses or motion blur. Expand reference1's existing finishing move into 12 chronological drawings, retaining the choreography but adding proper in-between poses. Hiro reference2, adult male dark skin purple locs black gold armor. Hiro LEFT facing RIGHT. Enemy RIGHT facing LEFT. Giant stays 1.6x Hiro height. Hiro parries massive branch fist then cuts diagonally across trunk. Monster dissolves into dry earthy particles and leaves. Frames1-3 preparation,4-5 incoming contact,6 decisive sword impact with MAGIC FLASH,7-9 follow-through and enemy dissolving,10 enemy entirely gone,11-12 Hiro recovers sword to guard, alone. No blood, no anatomical gore. Preserve constant Hiro anatomical height every frame; DO NOT shrink or enlarge after the enemy disappears. Root feet at the same ground line in every cell. No perspective/camera change. Keep ALL blades, particles and bodies well inside cell margins. Exact flat mid-gray background."
+    },
+    "correction": null
+  },
+  {
+    "id": "hag-hiro-finisher-1",
+    "actor": "hag",
+    "clip": "hiro-finisher-1",
+    "kind": "pair",
+    "args": {
+      "transparent_background": false,
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v3/monsters/hag/hiro-finisher-1.png",
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v1/heroes/hiro/hiro-reference.png"
+      ],
+      "prompt": "Production game animation sprite sheet, exactly 12 sequential distinct drawings, uniform 4 columns by 3 rows. Flat solid #808080 mid-gray background ONLY, no gradient or grid lines. Every cell includes the WHOLE action and full body, including weapons, limbs, effects. Keep at least 8% empty gray margin around EVERY cell. Camera and character scale fixed for all 12 poses. No zoom. No labels. Detailed anime cel-shaded painted finish matching references. Draw true in-between poses, NOT repeated poses or motion blur. Expand reference1's existing finishing move into 12 chronological drawings, retaining the choreography but adding proper in-between poses. Hiro reference2, adult male dark skin purple locs black gold armor. Hiro LEFT facing RIGHT. Enemy RIGHT facing LEFT. Match relative body sizes in the reference. Hiro parries hag staff then cuts across her guard. Monster dissolves into dry earthy particles and leaves. Frames1-3 preparation,4-5 incoming contact,6 decisive sword impact with MAGIC FLASH,7-9 follow-through and enemy dissolving,10 enemy entirely gone,11-12 Hiro recovers sword to guard, alone. No blood, no anatomical gore. Preserve constant Hiro anatomical height every frame; DO NOT shrink or enlarge after the enemy disappears. Root feet at the same ground line in every cell. No perspective/camera change. Keep ALL blades, particles and bodies well inside cell margins. Exact flat mid-gray background."
+    },
+    "correction": null
+  },
+  {
+    "id": "hag-hiro-finisher-2",
+    "actor": "hag",
+    "clip": "hiro-finisher-2",
+    "kind": "pair",
+    "args": {
+      "transparent_background": false,
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v3/monsters/hag/hiro-finisher-2.png",
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v1/heroes/hiro/hiro-reference.png"
+      ],
+      "prompt": "Production game animation sprite sheet, exactly 12 sequential distinct drawings, uniform 4 columns by 3 rows. Flat solid #808080 mid-gray background ONLY, no gradient or grid lines. Every cell includes the WHOLE action and full body, including weapons, limbs, effects. Keep at least 8% empty gray margin around EVERY cell. Camera and character scale fixed for all 12 poses. No zoom. No labels. Detailed anime cel-shaded painted finish matching references. Draw true in-between poses, NOT repeated poses or motion blur. Expand reference1's existing finishing move into 12 chronological drawings, retaining the choreography but adding proper in-between poses. Hiro reference2, adult male dark skin purple locs black gold armor. Hiro LEFT facing RIGHT. Enemy RIGHT facing LEFT. Match relative body sizes in the reference. Hiro ducks curse then answers with rising diagonal slash. Monster dissolves into dry earthy particles and leaves. Frames1-3 preparation,4-5 incoming contact,6 decisive sword impact with MAGIC FLASH,7-9 follow-through and enemy dissolving,10 enemy entirely gone,11-12 Hiro recovers sword to guard, alone. No blood, no anatomical gore. Preserve constant Hiro anatomical height every frame; DO NOT shrink or enlarge after the enemy disappears. Root feet at the same ground line in every cell. No perspective/camera change. Keep ALL blades, particles and bodies well inside cell margins. Exact flat mid-gray background."
+    },
+    "correction": null
+  },
+  {
+    "id": "goblin-hiro-finisher-1",
+    "actor": "goblin",
+    "clip": "hiro-finisher-1",
+    "kind": "pair",
+    "args": {
+      "transparent_background": false,
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v3/inn-swamp-20260928/goblin-finisher-1.png",
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v1/heroes/hiro/hiro-reference.png"
+      ],
+      "prompt": "Production game animation sprite sheet, exactly 12 sequential distinct drawings, uniform 4 columns by 3 rows. Flat solid #808080 mid-gray background ONLY, no gradient or grid lines. Every cell includes the WHOLE action and full body, including weapons, limbs, effects. Keep at least 8% empty gray margin around EVERY cell. Camera and character scale fixed for all 12 poses. No zoom. No labels. Detailed anime cel-shaded painted finish matching references. Draw true in-between poses, NOT repeated poses or motion blur. Expand reference1's existing finishing move into 12 chronological drawings, retaining the choreography but adding proper in-between poses. Hiro reference2, adult male dark skin purple locs black gold armor. Hiro LEFT facing RIGHT. Enemy RIGHT facing LEFT. Enemy stays HALF the height of Hiro. Hiro parries dagger and twists weapon aside then cuts downward. Monster dissolves into blue magical flame and tiny embers. Frames1-3 preparation,4-5 incoming contact,6 decisive sword impact with MAGIC FLASH,7-9 follow-through and enemy dissolving,10 enemy entirely gone,11-12 Hiro recovers sword to guard, alone. No blood, no anatomical gore. Preserve constant Hiro anatomical height every frame; DO NOT shrink or enlarge after the enemy disappears. Root feet at the same ground line in every cell. No perspective/camera change. Keep ALL blades, particles and bodies well inside cell margins. Exact flat mid-gray background."
+    },
+    "correction": null
+  },
+  {
+    "id": "goblin-hiro-finisher-2",
+    "actor": "goblin",
+    "clip": "hiro-finisher-2",
+    "kind": "pair",
+    "args": {
+      "transparent_background": false,
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v3/inn-swamp-20260928/goblin-finisher-2.png",
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v1/heroes/hiro/hiro-reference.png"
+      ],
+      "prompt": "Production game animation sprite sheet, exactly 12 sequential distinct drawings, uniform 4 columns by 3 rows. Flat solid #808080 mid-gray background ONLY, no gradient or grid lines. Every cell includes the WHOLE action and full body, including weapons, limbs, effects. Keep at least 8% empty gray margin around EVERY cell. Camera and character scale fixed for all 12 poses. No zoom. No labels. Detailed anime cel-shaded painted finish matching references. Draw true in-between poses, NOT repeated poses or motion blur. Expand reference1's existing finishing move into 12 chronological drawings, retaining the choreography but adding proper in-between poses. Hiro reference2, adult male dark skin purple locs black gold armor. Hiro LEFT facing RIGHT. Enemy RIGHT facing LEFT. Enemy stays HALF the height of Hiro. Hiro evades goblin lunge, turns and cuts down from overhead. Monster dissolves into blue magical flame and tiny embers. Frames1-3 preparation,4-5 incoming contact,6 decisive sword impact with MAGIC FLASH,7-9 follow-through and enemy dissolving,10 enemy entirely gone,11-12 Hiro recovers sword to guard, alone. No blood, no anatomical gore. Preserve constant Hiro anatomical height every frame; DO NOT shrink or enlarge after the enemy disappears. Root feet at the same ground line in every cell. No perspective/camera change. Keep ALL blades, particles and bodies well inside cell margins. Exact flat mid-gray background."
+    },
+    "correction": null
+  },
+  {
+    "id": "spider-hiro-finisher-1",
+    "actor": "spider",
+    "clip": "hiro-finisher-1",
+    "kind": "pair",
+    "args": {
+      "transparent_background": false,
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v3/inn-swamp-20260928/spider-finisher-1.png",
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v1/heroes/hiro/hiro-reference.png"
+      ],
+      "prompt": "Production game animation sprite sheet, exactly 12 sequential distinct drawings, uniform 4 columns by 3 rows. Flat solid #808080 mid-gray background ONLY, no gradient or grid lines. Every cell includes the WHOLE action and full body, including weapons, limbs, effects. Keep at least 8% empty gray margin around EVERY cell. Camera and character scale fixed for all 12 poses. No zoom. No labels. Detailed anime cel-shaded painted finish matching references. Draw true in-between poses, NOT repeated poses or motion blur. Expand reference1's existing finishing move into 12 chronological drawings, retaining the choreography but adding proper in-between poses. Hiro reference2, adult male dark skin purple locs black gold armor. Hiro LEFT facing RIGHT. Enemy RIGHT facing LEFT. Enemy stays HALF the height of Hiro. Hiro slices apart web then sweeps horizontally through spider. Monster dissolves into blue magical flame and tiny embers. Frames1-3 preparation,4-5 incoming contact,6 decisive sword impact with MAGIC FLASH,7-9 follow-through and enemy dissolving,10 enemy entirely gone,11-12 Hiro recovers sword to guard, alone. No blood, no anatomical gore. Preserve constant Hiro anatomical height every frame; DO NOT shrink or enlarge after the enemy disappears. Root feet at the same ground line in every cell. No perspective/camera change. Keep ALL blades, particles and bodies well inside cell margins. Exact flat mid-gray background."
+    },
+    "correction": null
+  },
+  {
+    "id": "spider-hiro-finisher-2",
+    "actor": "spider",
+    "clip": "hiro-finisher-2",
+    "kind": "pair",
+    "args": {
+      "transparent_background": false,
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v3/inn-swamp-20260928/spider-finisher-2.png",
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v1/heroes/hiro/hiro-reference.png"
+      ],
+      "prompt": "Production game animation sprite sheet, exactly 12 sequential distinct drawings, uniform 4 columns by 3 rows. Flat solid #808080 mid-gray background ONLY, no gradient or grid lines. Every cell includes the WHOLE action and full body, including weapons, limbs, effects. Keep at least 8% empty gray margin around EVERY cell. Camera and character scale fixed for all 12 poses. No zoom. No labels. Detailed anime cel-shaded painted finish matching references. Draw true in-between poses, NOT repeated poses or motion blur. Expand reference1's existing finishing move into 12 chronological drawings, retaining the choreography but adding proper in-between poses. Hiro reference2, adult male dark skin purple locs black gold armor. Hiro LEFT facing RIGHT. Enemy RIGHT facing LEFT. Enemy stays HALF the height of Hiro. Hiro parries spider foreleg and follows with an overhead cut. Monster dissolves into blue magical flame and tiny embers. Frames1-3 preparation,4-5 incoming contact,6 decisive sword impact with MAGIC FLASH,7-9 follow-through and enemy dissolving,10 enemy entirely gone,11-12 Hiro recovers sword to guard, alone. No blood, no anatomical gore. Preserve constant Hiro anatomical height every frame; DO NOT shrink or enlarge after the enemy disappears. Root feet at the same ground line in every cell. No perspective/camera change. Keep ALL blades, particles and bodies well inside cell margins. Exact flat mid-gray background."
+    },
+    "correction": null
+  },
+  {
+    "id": "orc-hiro-finisher-1",
+    "actor": "orc",
+    "clip": "hiro-finisher-1",
+    "kind": "pair",
+    "args": {
+      "transparent_background": false,
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v3/monsters/orc/hiro-finisher-1.png",
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v1/heroes/hiro/hiro-reference.png"
+      ],
+      "prompt": "Production game animation sprite sheet, exactly 12 sequential distinct drawings, uniform 4 columns by 3 rows. Flat solid #808080 mid-gray background ONLY, no gradient or grid lines. Every cell includes the WHOLE action and full body, including weapons, limbs, effects. Keep at least 8% empty gray margin around EVERY cell. Camera and character scale fixed for all 12 poses. No zoom. No labels. Detailed anime cel-shaded painted finish matching references. Draw true in-between poses, NOT repeated poses or motion blur. Expand reference1's existing finishing move into 12 chronological drawings, retaining the choreography but adding proper in-between poses. Hiro reference2, adult male dark skin purple locs black gold armor. Hiro LEFT facing RIGHT. Enemy RIGHT facing LEFT. Orc stays 1.3x Hiro height. Hiro blocks axe overhead then cuts diagonally across orc torso. Monster dissolves into blue magical flame and tiny embers. Frames1-3 preparation,4-5 incoming contact,6 decisive sword impact with MAGIC FLASH,7-9 follow-through and enemy dissolving,10 enemy entirely gone,11-12 Hiro recovers sword to guard, alone. No blood, no anatomical gore. Preserve constant Hiro anatomical height every frame; DO NOT shrink or enlarge after the enemy disappears. Root feet at the same ground line in every cell. No perspective/camera change. Keep ALL blades, particles and bodies well inside cell margins. Exact flat mid-gray background. CRITICAL: Hiro must be fully present in EVERY cell, including recovery."
+    },
+    "correction": null
+  },
+  {
+    "id": "orc-hiro-finisher-2",
+    "actor": "orc",
+    "clip": "hiro-finisher-2",
+    "kind": "pair",
+    "args": {
+      "transparent_background": false,
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v3/monsters/orc/hiro-finisher-2.png",
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v1/heroes/hiro/hiro-reference.png"
+      ],
+      "prompt": "Production game animation sprite sheet, exactly 12 sequential distinct drawings, uniform 4 columns by 3 rows. Flat solid #808080 mid-gray background ONLY, no gradient or grid lines. Every cell includes the WHOLE action and full body, including weapons, limbs, effects. Keep at least 8% empty gray margin around EVERY cell. Camera and character scale fixed for all 12 poses. No zoom. No labels. Detailed anime cel-shaded painted finish matching references. Draw true in-between poses, NOT repeated poses or motion blur. Expand reference1's existing finishing move into 12 chronological drawings, retaining the choreography but adding proper in-between poses. Hiro reference2, adult male dark skin purple locs black gold armor. Hiro LEFT facing RIGHT. Enemy RIGHT facing LEFT. Orc stays 1.3x Hiro height. Hiro ducks axe sweep and answers with a rising cut. Monster dissolves into blue magical flame and tiny embers. Frames1-3 preparation,4-5 incoming contact,6 decisive sword impact with MAGIC FLASH,7-9 follow-through and enemy dissolving,10 enemy entirely gone,11-12 Hiro recovers sword to guard, alone. No blood, no anatomical gore. Preserve constant Hiro anatomical height every frame; DO NOT shrink or enlarge after the enemy disappears. Root feet at the same ground line in every cell. No perspective/camera change. Keep ALL blades, particles and bodies well inside cell margins. Exact flat mid-gray background. CRITICAL: Hiro must be fully present in EVERY cell, including recovery."
+    },
+    "correction": null
+  }
+]

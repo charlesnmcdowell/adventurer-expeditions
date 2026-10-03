@@ -1,0 +1,19 @@
+<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Combat roster — frame review</title>
+<style>body{background:#14212e;color:#eef1ff;font:16px system-ui;max-width:1100px;margin:auto;padding:20px}select,button,input{font:inherit;padding:9px;margin:5px}canvas{width:100%;background:#334758;border:1px solid #717397}p{line-height:1.5}a{color:#b4cdff}</style>
+<h1>Combat animation review</h1>
+<p>Nine attacks and fifteen Hiro finishers expanded. Alpha pin/parry, both moss-giant pairs, plant crosscut and the second orc finisher retain their previous art. This viewer uses the game's packed frames. The game itself is the final scale/contact check.</p>
+<p><a href="../../../index.html?revision=combat-roster-20261002">Play the game</a></p>
+<select id="actor"></select><select id="clip"></select><button id="pause">Pause</button><label>Speed <select id="speed"><option value="1">Normal</option><option value="0.5">Half</option><option value="0.25">Quarter</option></select></label>
+<canvas id="view" width="1100" height="650"></canvas><p id="info"></p><input id="frame" type="range" min="0" value="0" style="width:90%">
+<script>
+const ids=['hiro','wolf','plant','alpha','serpent','beetle','moss_giant','hag','goblin','spider','orc'];
+const actor=document.querySelector('#actor'),clip=document.querySelector('#clip'),canvas=document.querySelector('#view'),ctx=canvas.getContext('2d'),scrub=document.querySelector('#frame');
+let doc,images=[],playing=true,elapsed=0,current=0,last=performance.now(),version=0;
+actor.innerHTML=ids.map(v=>`<option>${v}</option>`).join('');
+async function load(){const token=++version,id=actor.value,base='../../../assets/expedition/'+id+'/';const next=await(await fetch(base+id+'.json?v=combat-roster')).json();const pages=await Promise.all(next.textures.map(t=>new Promise((r,j)=>{const im=new Image();im.onload=()=>r(im);im.onerror=j;im.src=base+t.image;})));if(token!==version)return;doc=next;images=pages;clip.innerHTML=Object.entries(doc.clips).filter(([k,c])=>c.paired||['attack','bite','lash','slash-l1','hit-short'].includes(k)).map(([k])=>`<option>${k}</option>`).join('');choose();}
+function choose(){elapsed=0;current=0;scrub.max=doc.clips[clip.value].frames.length-1;}
+actor.onchange=load;clip.onchange=choose;document.querySelector('#pause').onclick=()=>{playing=!playing;document.querySelector('#pause').textContent=playing?'Pause':'Play';};scrub.oninput=()=>{playing=false;current=+scrub.value;document.querySelector('#pause').textContent='Play';};
+function draw(now){const dt=Math.min(now-last,100);last=now;if(doc){const c=doc.clips[clip.value];if(playing){elapsed+=dt*+document.querySelector('#speed').value;let total=c.frameDurationsMs.reduce((a,b)=>a+b,0),t=elapsed%total;current=0;while(current<c.frames.length-1&&t>=c.frameDurationsMs[current])t-=c.frameDurationsMs[current++];}const f=doc.frames[c.frames[current]],p=doc.canvas.pivot,s=240/doc.standing,x=330,y=510;ctx.clearRect(0,0,1100,650);ctx.strokeStyle='#759170';ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(1100,y);ctx.stroke();ctx.drawImage(images[f.page],f.frame.x,f.frame.y,f.frame.w,f.frame.h,x+(f.spriteSourceSize.x-p.x)*s,y+(f.spriteSourceSize.y-p.y)*s,f.frame.w*s,f.frame.h*s);scrub.value=current;document.querySelector('#info').textContent=`${actor.value} / ${clip.value} — frame ${current+1}/${c.frames.length}, ${c.durationMs} ms. Contact: ${c.contact.map(n=>n+1).join(', ')}. Ground line shown.`;}requestAnimationFrame(draw);}
+load();requestAnimationFrame(draw);
+</script>
