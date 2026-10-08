@@ -1,0 +1,29 @@
+{
+  "generator": "built-in image_gen",
+  "status": "Drafts require crop, registration and playback review; not in playable roster.",
+  "assets": [
+    {
+      "name": "hydra-combat-draft.png",
+      "prompt": "Production animation atlas for Adventurer Expeditions. Use ONLY the TOP RIGHT five-headed green hydra in reference. Exact 4 columns x6 rows,24 equal cells, transparent alpha. Full body five heads four legs tail, all left-facing, same scale. Each creature occupies at most65% cell width and75% height with clear gutters, never clips neighbors. Detailed cel shaded anime, no text/grid/scenery. Row1 four idle poses necks breathing. Row2 four approach steps. Row3 four attacks: necks recoil, lunge left with front head, jaws contact, recover. Row4 four hit recoil. Row5 four collapse poses, final all heads resting on ground. Row6 four enrage poses rising heads, open jaws glowing eyes, roar, return guard. Maintain exactly five heads and same anatomy throughout. Not the other creatures.",
+      "source": "exec-c2822c94-5204-4fd6-a99d-d81c45a2672e.png"
+    },
+    {
+      "name": "crab-pairs-draft.png",
+      "prompt": "Production paired finishing-move atlas for Adventurer Expeditions. Hiro identity reference1 dark brown skin purple locs black samurai armor katana, enemy reference2 BOTTOM LEFT blue tidal crab ONLY. TRUE TRANSPARENT PNG exact4columns x4rows 16 equal cells, two sequences8frames each. Full bodies, 15percent transparent gutter inside EVERY cell no clipping or neighboring spill. Hiro faces RIGHT and stays same body size in every cell, crab facesLEFT shell shoulder level below Hiro's waist. High polish painted anime cel shade. First8 cells row-major: Hiro draws sword, crab raises claw, Hiro ducks claw, Hiro vaults above claw, downward katana strike against exposed shell joint, crab falls intact, crab dissolves into pale sea spray motes, Hiro alone clearly visible sheathing sword. Second8cells: Hiro guards, crab lunges pincer, Hiro parries claw upward, sidesteps toward crab flank, clean low horizontal cut under shell, crab slumps, crab dissolves into pale sea spray, Hiro alone fully visible calm idle. No gore no text no scenery. Keep the blade inside every cell. NEVER make Hiro disappear; only monster disappears in final2poses each sequence. Consistent camera scale ground line. Distinct readable arcs with anticipation contact recovery.",
+      "source": "exec-f7f66866-2224-47ae-8137-dcc7ecc0cce4.png",
+      "issue": "Hiro missing from source14; cell-edge overflow. Do not intake."
+    },
+    {
+      "name": "crab-pairs-repair-draft.png",
+      "prompt": "Edit target is this 4x4 sprite atlas, NOT a poster. Technical cleanup ONLY: give EACH of the 16 equal cells a generous clean transparent margin, fit the entire contents of each cell inside it so no sword, foot, head or crab claw is cropped or crosses into another cell. Keep all 16 actions in same order, same designs, proportions, armor, poses, cel shading. In cell15 (zero-based14, bottom row third column), Hiro is missing: add Hiro visibly standing on LEFT facing RIGHT in the same low katana follow-through as prior cell, beside dissolving spray on RIGHT. Hiro must remain visible in every cell. Remove ALL backgrounds: true transparent alpha, no solid or gradient backing, no lines between cells. Do not add text. Preserve two 8pose finishing sequences. Keep consistent HERO size across all cells, let jumping pose move within cell but do not shrink his body individually. Repaint only as required to uncrop extremities and restore missing Hiro.",
+      "source": "exec-a5b4f0f6-464c-45a6-a46e-2ef5716a8bf9.png",
+      "issue": "Hiro restored but frame boundaries still need review."
+    },
+    {
+      "name": "crab-vault-eight-draft.png",
+      "prompt": "Create ONE animation sprite sheet, exactly TWO COLUMNS and FOUR ROWS, EIGHT equal landscape cells. TRUE TRANSPARENT background. Characters must occupy no more than60percent of each cell width and75percent cell height; leave extremely generous empty gutter all around. All figures and swords completely in cell; no text. Reference1 Hiro identity dark skin purple locs black samurai armor, katana; Reference2 ONLY blue crab bottomleft. Paint one continuous 8pose sequence: 1 Hiro standing LEFT facing RIGHT, blue crab RIGHT facing LEFT, crab body reaches Hiro's waist; 2 crab lifts pincer as Hiro readies sword;3 Hiro crouches to spring;4 Hiro vaults with knees tucked above low crab, katana held high;5 Hiro descends blade striking shell joint, contact flash;6 Hiro lands, crab collapses;7 crab dissolves into pale sea spray while Hiro is STILL FULLY VISIBLE;8 Hiro alone sheathing sword at LEFT. Side-on combat camera, constant HERO size, same floor for standing poses; jumping raises feet without changing anatomical size. No gore. Painted detailed anime cel shading. NOT a comic, no scenery no panels no ground, alpha only.",
+      "source": "exec-6d3bb9a7-a1f1-4649-a20f-707314eedb21.png",
+      "issue": "Eight-pose alternative, preserved for measured crop and body-scale review."
+    }
+  ]
+}

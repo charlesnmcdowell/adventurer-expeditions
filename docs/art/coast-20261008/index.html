@@ -1,0 +1,18 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><base href="../../../"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Shipwreck Coast — scenery review</title>
+<style>body{margin:0;background:#101824;color:#eee;font:16px system-ui}header{padding:12px 20px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}button{padding:10px 16px;min-height:44px;background:#28394f;color:white;border:1px solid #59708b;border-radius:6px;cursor:pointer}#game{max-width:1280px;margin:auto}p{margin:8px 20px;color:#b8c9da}canvas{max-width:100%;height:auto!important}</style></head><body>
+<header><strong>Shipwreck Coast · scenery review</strong><button data-sky="day">Day</button><button data-sky="evening">Sunset</button><button data-sky="night">Night</button><button data-sky="storm">Storm</button><button id="music">Play Coast music</button></header>
+<div id="game"></div><p>Three painted layers, moving water highlights and the game's weather renderer. Hiro shows the combat ground line. This is an art preview; the Coast quest and enemy roster are not yet unlocked.</p>
+<script src="lib/phaser.min.js"></script><script>window.ADV={Expedition:{},T:{W:1280,H:760}};</script><script src="js/ui/weather.js"></script><script src="js/expedition/battle_stage.js?v=coast-review-20261008"></script>
+<script>
+class CoastReview extends Phaser.Scene {
+ preload(){ADV.Expedition.BattleStage.preloadBackground(this,'coast');this.load.multiatlas('hiro','assets/expedition/hiro/hiro.json','assets/expedition/hiro/');this.load.json('hiro-clips','assets/expedition/hiro/hiro.json');}
+ create(){window.coastScene=this;this.setSky('day');const d=this.cache.json.get('hiro-clips'),c=d.clips.idle;
+ this.hero=this.add.sprite(400,612,'hiro',c.frames[0]).setOrigin(d.canvas.pivot.x/d.canvas.w,d.canvas.pivot.y/d.canvas.h).setScale(300/d.standing).setDepth(100);
+ this.add.ellipse(400,617,90,14,0x080f18,.3).setDepth(90);
+ this.anims.create({key:'coast-hiro-idle',frames:c.frames.map((f,i)=>({key:'hiro',frame:f,duration:c.frameDurationsMs[i]})),frameRate:1000,repeat:-1});this.hero.play('coast-hiro-idle');}
+ setSky(sky){if(this.env)this.env.destroy(true);if(this.weatherFx)this.weatherFx.destroy();const phase=sky==='storm'?'day':sky;this.env=ADV.Expedition.BattleStage.paint(this,'coast',phase);ADV.WeatherFX.attach(this,{kind:sky==='storm'?'storm':sky==='day'?'sunny':'clear',intensity:sky==='storm'?.9:0,wind:sky==='storm'?.8:.1},phase,{x:0,y:0,w:1280,h:760},{depth:-5,combat:true});}
+}
+window.coastGame=new Phaser.Game({type:Phaser.CANVAS,width:1280,height:760,parent:'game',backgroundColor:'#294958',scene:CoastReview,audio:{noAudio:true}});
+document.querySelectorAll('[data-sky]').forEach(b=>b.onclick=()=>window.coastScene?.setSky(b.dataset.sky));
+const music=new Audio('audio/music/coast_clove.mp3');music.loop=true;music.volume=.35;document.getElementById('music').onclick=async()=>{if(music.paused){try{await music.play();document.getElementById('music').textContent='Pause music';}catch(e){document.getElementById('music').textContent='Tap to retry music';}}else{music.pause();document.getElementById('music').textContent='Play Coast music';}};
+</script></body></html>

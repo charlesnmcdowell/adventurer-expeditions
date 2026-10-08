@@ -1,0 +1,29 @@
+[
+  {
+    "layer": "far",
+    "size": [
+      2068,
+      760
+    ],
+    "sourceSha256": "dd0fac1ce087155051ba835c448dcee83cceb131d40b3d1753f501f95e2e7332",
+    "bytes": 301622
+  },
+  {
+    "layer": "ground",
+    "size": [
+      2115,
+      743
+    ],
+    "sourceSha256": "c92171084d312bb15597b23bf92c1effef0cda83b00ba982ce6655e19a8186b0",
+    "bytes": 469860
+  },
+  {
+    "layer": "near",
+    "size": [
+      2172,
+      724
+    ],
+    "sourceSha256": "41cda79662d9e8365a2cf637083e54c3679f5293450fa8a4edca3075db95164e",
+    "bytes": 260912
+  }
+]

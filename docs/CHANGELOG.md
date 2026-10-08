@@ -15,6 +15,18 @@ of small fixes within a day.
 
 ---
 
+## 2026-10-08 - Coast scenery preview and combat-art continuation
+
+Continued the approved Coast expansion. Its three source paintings are now packed into assets/expedition/stages/coast (1,032,394 bytes total). BattleStage has a reusable preloadBackground entry point and Coast registration: distant sea/cliffs, fixed shore ground, foreground grass/rope/rocks. Added moving water highlights behind the ground. The Coast floor uses a 550 px middle-layer display height so Hiro's feet remain on the path at y=612. Existing stage mappings remain unchanged.
+
+Added docs/art/coast-20261008/index.html, a scenery-only preview with the real game's weather renderer, day/sunset/night/storm controls, Hiro's existing idle sprite for scale, and user-triggered playback of Cookie Blade of Clove Battle theme. This does NOT unlock a quest or field placeholder enemies. Music remains unwired to a playable Coast quest until that quest is complete. tools/build_coast_scenery.py reproduces the WebP packing from the saved masters; scenery-build.json records dimensions, source hashes and bytes.
+
+Art production: generated a 24-pose Hydra combat draft, a two-move crab/Hiro draft, a targeted repair, and an eight-pose alternative. Caught missing Hiro in source frame 14 of the first paired draft and cell-boundary overflow; never registered it into gameplay. Repair restores Hiro but remaining crop/scale review is required. Preserved all masters and exact prompts in sibling astra-v5/coast-20261008 and docs/art/coast-20261008/production-continuation.json. Do not regenerate these without reviewing the saved candidates. Existing crab/toad/vulture combat drafts reused, not regenerated.
+
+Validation: npm test passed; test/browser_coast_scenery.js passed in Chrome (three layers, fixed ground, moving far/near, four skies, stable update-listener count after repeated switching, music playback, zero page/network errors). Captures/results in test/reports/coast. Selected local ship set is 69.46 MB, previously 68.43 MB; this is total package size, not startup download. Coast layers are in the existing stages allowlist; source masters and preview documents are excluded.
+
+Still unfinished: measured combat-frame intake and smoothing, all four monsters' validated Hiro and enemy finishers, Coast travel obstacle animation/effects, quest/music/loop wiring, balance and full Coast journey QA. Coast remains locked and is NOT ready for a full playtest. Checkpoint ce16d29. No publication/export update; original Adventurer untouched.
+
 ## 2026-10-08 - Coast production started; layered existing battles and defeat routing
 
 User approved Shipwreck Coast only; Stormpeak Shrine and Cinderwood were declined. Coast is NOT playable yet. Remaining: Hydra art, complete validated combat sets, two Hiro pairs and one monster-on-Hiro pair for each of crab/toad/vulture/Hydra, Coast travel choreography/effects, encounter/loop registration, balance and full journey QA. Do not unlock or publish an incomplete roster.

@@ -4,21 +4,24 @@
 const A = ADV, X = A.Expedition, Stage = X.BattleStage = {};
 const sets = {
   deep_wood: 'forest-carriage-vault', bandit_road: 'forest-carriage-vault',
-  mountain: 'forest-carriage-vault', alley: 'city-market-vault', marsh: 'swamp-log-slide'
+  mountain: 'forest-carriage-vault', alley: 'city-market-vault', marsh: 'swamp-log-slide', coast: 'coast'
 };
 const names = ['far','ground','near'];
 Stage.preload = scene => {
   const r = scene.opts?.run || X.Run.load() || X.Run.fresh();
   const q = X.Campaign.quest(r.questId) || X.quests[0];
   const e = X.Campaign.questEncounters(q, r)[r.wave || 0];
-  const set = sets[e?.bg];
+  Stage.preloadBackground(scene,e?.bg);
+};
+Stage.preloadBackground = (scene,bg) => {
+  const set = sets[bg];
   if (!set) return;
   for (const layer of names) {
     const key = 'xp_battle_' + set + '_' + layer;
     if (!scene.textures.exists(key)) scene.load.image(key,
-      'assets/expedition/travel/' + set + '/atmosphere-' + layer + '.webp');
+      'assets/expedition/' + (set === 'coast' ? 'stages/' : 'travel/') + set + '/atmosphere-' + layer + '.webp');
   }
-  if (e.bg === 'mountain' && !scene.textures.exists('xp_battle_mountain_far'))
+  if (bg === 'mountain' && !scene.textures.exists('xp_battle_mountain_far'))
     scene.load.image('xp_battle_mountain_far','assets/anime/v2/runtime/mountain.webp');
 };
 Stage.paint = (scene, bg, phase) => {
@@ -28,7 +31,7 @@ Stage.paint = (scene, bg, phase) => {
   const nearRoot = scene.add.container(0,0).setDepth(160);
   const layers = names.map((name,i) => {
     const key = bg === 'mountain' && name === 'far' ? 'xp_battle_mountain_far' : 'xp_battle_'+set+'_'+name;
-    const height = name === 'ground' ? 1100 : name === 'near' ? 500 : 760;
+    const height = name === 'ground' ? (bg === 'coast' ? 550 : 1100) : name === 'near' ? 500 : 760;
     const img = scene.add.image(-500,760-height-(bg === 'alley' && name === 'ground' ? 60 : 0),key).setOrigin(0).setDisplaySize(2280,height);
     if (phase === 'night' && bg !== 'marsh') img.setTint(0x748aba);
     if (phase === 'evening') img.setTint(0xefbb95);
@@ -49,6 +52,12 @@ Stage.paint = (scene, bg, phase) => {
     for(let i=0;i<7;i++){
       haze.fillStyle(bg==='marsh'?0xa6cbd0:0xe3ebef,bg==='marsh'?.065:.04);
       haze.fillEllipse((i*270+elapsed*.014)%1680-180,160+i%3*75,280,24);
+    }
+    if(bg === 'coast') for(let i=0;i<24;i++) {
+      const x=(i*137+elapsed*(.006+i%3*.002))%1400-60;
+      const y=350+i%7*23+Math.sin(elapsed/1300+i)*2;
+      haze.lineStyle(1,0xd9ffff,.10+.06*Math.sin(elapsed/900+i));
+      haze.lineBetween(x,y,x+18+i%4*10,y);
     }
   };
   scene.events.on('update',tick);
