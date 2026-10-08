@@ -27,19 +27,29 @@ const CASES=[['rain',0,'wolf'],['rain',1,'plant'],['rain',2,'alpha'],['marsh',0,
     if(!clip)throw Error('Missing fatal atlas '+actor);
     const seen=new Set();let badVisibility=false;
     const watch=()=>{const p=s.__enemyFinishSprite;if(!p)return;seen.add(p.frame.name);if(h.root.visible||a.root.visible||!p.visible||p.alpha<.99)badVisibility=true;};
-    s.events.on('update',watch);h.unit.chp=0;
-    try{await X.Beats.ticksOnly(s,[{t:'damage',uid:h.uid,by:a.uid,dmg:99,tag:'hit'},{t:'down',uid:h.uid,by:a.uid}]);watch();}
+    s.events.on('update',watch);h.unit.chp=h.unit.maxHp*0.3;
+    try{await X.Beats.ticksOnly(s,[{t:'damage',uid:h.uid,by:a.uid,dmg:1,tag:'hit'}]);watch();}
     finally{s.events.off('update',watch);}
     if(!s.__enemyFinishPresented||h.alive||badVisibility)throw Error(actor+': defeat/visibility failed');
+    if(h.unit.chp!==0||!h.unit.downed||!s.enc.st.over||X.Encounter.won(s.enc))throw Error(actor+': execution did not end combat as defeat');
     if(seen.size!==clip.frames.length)throw Error(actor+': missed frames '+seen.size+'/'+clip.frames.length);
     if(s.__enemyFinishSprite.frame.name!==clip.frames.at(-1))throw Error(actor+': final pose not held');
-    return {actor,frames:seen.size,visible:true,lethalRouting:true,finalPoseHeld:true,zoom:s.cameras.main.zoom};
+    return {actor,frames:seen.size,visible:true,threshold:0.3,executionEndsCombat:true,finalPoseHeld:true,zoom:s.cameras.main.zoom};
    },actor);
    report.push(result);console.log(actor+': '+result.frames+' frames, lethal routing passed');
    await page.screenshot({path:path.join(OUT,actor+'-end.png')});
    const b64=await page.evaluate(()=>new Promise(resolve=>{const c=__recording;c.rec.onstop=()=>{c.stream.getTracks().forEach(t=>t.stop());const f=new FileReader();f.onload=()=>resolve(f.result.split(',')[1]);f.readAsDataURL(new Blob(c.chunks,{type:'video/webm'}));};c.rec.stop();}));
    fs.writeFileSync(path.join(OUT,actor+'.webm'),Buffer.from(b64,'base64'));
   }
+  // Restore the real director: an execution must reach End, not another turn.
+  await page.evaluate(()=>{
+   const X=ADV.Expedition,s=__game.scene.getScene('Expedition'),r=X.Run.fresh();
+   s.fight=Object.getPrototypeOf(s).fight;
+   const intro=s.intro;s.intro=async function(first){await intro.call(this,first);this.hero.unit.chp=this.hero.unit.maxHp*.3;};
+   r.questId='rain';r.wave=2;r.phase='quest';r.tutorial.skipGuide=true;
+   X.EnemyFinishers.setEnabled(true);X.Dev.go(s,'Expedition',{run:r,seed:9});
+  });
+  await page.waitForFunction(()=>__game.scene.isActive('End'),null,{timeout:60000});
   assert.deepEqual(errors,[]);fs.writeFileSync(path.join(OUT,'results.json'),JSON.stringify(report,null,2));
   console.log('browser_enemy_defeats: all ten local defeat clips pass');
  }finally{await browser.close();srv.close();}

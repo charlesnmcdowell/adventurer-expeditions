@@ -391,6 +391,7 @@ Beats.play = async function (scene, step) {
       await finishReactions(scene);
       await playTicks(scene, g.after);
       await playDowns(scene, g.down, step.events, finisherKill);
+      await X.EnemyFinishers?.tryLowHealth(scene, step.events);
     };
     // Cinematic rules (Hiro, round 3): a tapped skill gets the `cast` beat; only
     // a kill made *with the tapped Finisher* gets the heavier `kill` beat and a
@@ -421,5 +422,5 @@ Beats.play = async function (scene, step) {
   for (const e of step.events) if (e.t === 'exposedBurst') { const t = actorOf(scene, e.uid); if (t) V().burst(scene, t.chest().x, t.chest().y, 0xf4c26b, 6); }
 };
 
-Beats.ticksOnly = async function (scene, events) { await playTicks(scene, events); const downs = events.filter(e => e.t === 'down'); if (downs.length) await playDowns(scene, downs, events); };
+Beats.ticksOnly = async function (scene, events) { await playTicks(scene, events); const downs = events.filter(e => e.t === 'down'); if (downs.length) await playDowns(scene, downs, events); await X.EnemyFinishers?.tryLowHealth(scene, events); };
 })();

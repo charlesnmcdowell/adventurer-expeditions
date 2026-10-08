@@ -311,7 +311,7 @@ class ExpeditionScene extends Phaser.Scene {
       const pk = Enc.peek(enc);
       if (pk.events.length) await X.Beats.ticksOnly(this, pk.events);
       if (this.ended) return;
-      if (pk.over) break;
+      if (pk.over || enc.st.over) break;
       this.hud.setSkillStates(Enc.skillStates(enc));
       // A tap made during the last animation fires here, before anyone's turn.
       if (enc.request) { await this.drainCasts(); if (this.ended) return; if (enc.st.over) break; }
@@ -331,7 +331,7 @@ class ExpeditionScene extends Phaser.Scene {
       await X.Beats.play(this, step);
       if (this.ended) return;                        // the run was ended from the pause menu mid-beat
       this.hud.setSkillStates(Enc.skillStates(enc));
-      if (step.over) break;
+      if (step.over || enc.st.over) break;
       // A beat of air between turns (Hiro, 2026-09-22: "turns are going by too
       // quickly ... lets go with 2s to give me more time to click my skills").
       // It sits after the beats have played and the icons have been refreshed,

@@ -15,6 +15,12 @@ of small fixes within a day.
 
 ---
 
+## 2026-10-08 - Enemy finishers at 30% health
+
+Fixed the user's reported trigger mismatch: previously finishers were presentation-only after Hiro reached zero HP. When the local Enemy finishers setting is enabled, an eligible enemy's direct hit leaving Hiro at or below 30% max HP now starts its execution, even without a simulator down event. Successful completion sets HP to zero, marks him down, clears queued skills and ends combat as defeat. The director checks the updated encounter state before another turn. Cancelling the animation does not execute a still-living Hiro. Above 30%, DOT-only damage, disabled setting, missing assets and portal builds retain ordinary combat. Default remains off. Updated the stale Alpha-only pause-menu hint to explain the threshold.
+
+Files: enemy_finishers.js, beats.js, scene.js, ui_common.js, cache stamp 20261008-xp2, threshold and browser tests, review-gallery explanation, GDD and this log. No art regenerated. Checkpoint 08d3c3c. QA: npm test; 31%/30%/29% boundary assertions; all ten enemy executions at exactly 30%; existing Alpha pause/restart/disable/portal checks. Original Adventurer untouched.
+
 ## 2026-10-08 - Complete local enemy-defeat art roster
 
 User requested the art without a file-size constraint. Added nine unique monster-on-Hiro paired defeats: wolf, plant, serpent, beetle, moss giant, hag, goblin, spider and orc. The existing Alpha is retained, so coverage rises from 1 to 10 enemy types. New source sheets contain 12 poses each; omitted one clipped sword pose in serpent and beetle (11 usable each), giving 106 new runtime drawings. Seven clips run 2,150 ms; two run 2,000 ms, plus the existing 180 ms approach. All keep Hiro visible in the ending pose. New art uses stylized impacts/curses, intact bodies and limited blood; it is not a graphic-gore delivery. No combat balance or other animation changes.

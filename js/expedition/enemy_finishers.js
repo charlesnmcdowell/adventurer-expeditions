@@ -1,5 +1,5 @@
-// Local-edition paired defeats. Combat already decided the death; this module
-// never applies damage, executes a living hero, or changes the score.
+// Optional local-edition executions: a direct enemy hit can finish Hiro at
+// 30% health or below. Commit the defeat only after the animation completes.
 (function () {
 'use strict';
 const X = ADV.Expedition, F = X.EnemyFinishers = {};
@@ -29,11 +29,21 @@ F.preload = (scene, ids) => {
   }
 };
 F.canPlay = (scene, killer, target, events) => F.enabled() && !scene.ended &&
-  target === scene.hero && target.alive && !target._destroyed && target.unit.chp <= 0 &&
+  target === scene.hero && target.alive && !target._destroyed &&
+  (target.unit.chp <= 0 || (target.unit.maxHp > 0 && target.unit.chp / target.unit.maxHp <= 0.3)) &&
   killer?.side === 'b' && killer.alive && !killer._destroyed && READY.has(killer.sheet?.actor) &&
   [...(events || [])].reverse().find(e => e.t === 'damage' && e.uid === target.uid)?.by === killer.uid &&
   [...(events || [])].reverse().find(e => e.t === 'damage' && e.uid === target.uid)?.tag !== 'dot' &&
   scene.textures.exists(keyFor(killer.sheet.actor)) && !!scene.cache.json.get(keyFor(killer.sheet.actor) + '_clips');
+
+F.tryLowHealth = async (scene, events) => {
+  const hero = scene.hero;
+  if (!hero?.alive || hero.unit.chp <= 0) return false; // ordinary downs already handled
+  const hit = [...(events || [])].reverse().find(e => e.t === 'damage' && e.uid === hero.uid);
+  const killer = hit && scene.actors.get(hit.by);
+  if (!F.canPlay(scene, killer, hero, events)) return false;
+  return F.play(scene, killer, hero);
+};
 
 F.play = (scene, killer, hero) => new Promise(resolve => {
   const actor = killer.sheet?.actor, KEY = keyFor(actor);
@@ -81,6 +91,8 @@ F.play = (scene, killer, hero) => new Promise(resolve => {
       else done = true;
     }
     if (done) {
+      hero.unit.chp = 0; hero.unit.downed = true;
+      if (scene.enc) { scene.enc.st.over = true; scene.enc.request = null; }
       detach(); hero.alive = false; scene.__enemyFinishPresented = true;
       // Hold the final painted tableau through the normal defeat-card delay.
       settled = true; resolve(true);

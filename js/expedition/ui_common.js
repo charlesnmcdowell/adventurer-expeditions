@@ -226,7 +226,7 @@ UI.pauseSettings = function (scene, ctl) {
   }];
   const drawn = [];
   if (showEnemyFinishers) rows.push({
-    label: 'Enemy finishers', hint: 'Graphic defeats — Alpha wolf pilot',
+    label: 'Enemy finishers', hint: 'Enemy hits can finish Hiro at 30% health or less',
     get: () => X.EnemyFinishers.enabled(), set: value => X.EnemyFinishers.setEnabled(value),
   });
   rows.forEach((row, i) => {
