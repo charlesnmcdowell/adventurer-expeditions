@@ -26,7 +26,13 @@ const CASES=[['rain',0,'wolf'],['rain',1,'plant'],['rain',2,'alpha'],['marsh',0,
     const clips=Object.entries(sheet.clips).filter(([id,c])=>c.paired&&c.opponentKeys?.some(k=>X.paintedActorOfKey(k)===actor)&&/^(hiro-|wolf-|plant-)/.test(id));
     const results=[];
     const assertNative=()=>{if(hero.img.texture.key!==hero.sheet.key||Math.abs(hero.img.scaleY-hero._baseScaleY)>.001||!hero.root.visible||!hero.img.visible)throw Error(actor+': native state not restored');};
-    await foe.play(actor==='plant'?'lash':'bite');
+    const attackId=actor==='plant'?'lash':actor==='wolf'?'bite':'attack';
+    const attack=foe.sheet.clips[attackId],attackFrames=new Set();let attackContacts=0;
+    const watchAttack=()=>{if(foe.img.anims.currentAnim?.key.endsWith(':'+attackId))attackFrames.add(foe.img.frame.name);};
+    foe.img.on('animationstart',watchAttack);foe.img.on('animationupdate',watchAttack);
+    try{await foe.play(attackId,{onContact:()=>attackContacts++});}
+    finally{foe.img.off('animationstart',watchAttack);foe.img.off('animationupdate',watchAttack);}
+    if(attackFrames.size!==attack.frames.length||attackContacts!==1)throw Error(actor+': incomplete attack or wrong contact count');
     for(const [id,c] of clips){
      foe.alive=true;foe.unit.downed=false;foe.root.setVisible(true);foe.img.setVisible(true);foe.idle();
      const save=X.clipFor;X.clipFor=()=>[id];let invisible=false,contacts=0;const seen=new Set();
@@ -35,13 +41,15 @@ const CASES=[['rain',0,'wolf'],['rain',1,'plant'],['rain',2,'alpha'],['marsh',0,
      try{await hero.play('finisher',{target:foe,lethal:true,finisherVariant:id==='hiro-finisher-2'?1:0,onContact:()=>contacts++});}
      finally{X.clipFor=save;hero.img.off('animationupdate',watch);hero.img.off('animationstart',watch);}
      assertNative();if(invisible||seen.size!==c.frames.length)throw Error(actor+'/'+id+': visibility/frames '+seen.size+'/'+c.frames.length);
-     results.push({id,frames:seen.size,visible:true,nativeRestored:true});
+     if(contacts!==1)throw Error(actor+'/'+id+': expected exactly one logical contact, got '+contacts);
+     results.push({id,frames:seen.size,contacts,visible:true,nativeRestored:true});
     }
     // Cancellation before impact must not leave a borrowed atlas/scale active.
     foe.alive=true;foe.unit.downed=false;foe.root.setVisible(true);foe.img.setVisible(true);foe.idle();
     const pending=hero.play('finisher',{target:foe,lethal:true});
     await new Promise(r=>setTimeout(r,400));hero.cancelPlayback();await pending;hero.idle();assertNative();
-    return {actor,clips:results,cancellationRestored:true};
+    if(!foe.alive||!foe.root.visible||!foe.img.visible)throw Error(actor+': cancelled finisher left enemy hidden/dead');
+    return {actor,attack:{id:attackId,frames:attackFrames.size,contacts:attackContacts},clips:results,cancellationRestored:true};
    },actor);
    report.push(result);console.log(actor+': '+result.clips.length+' variants passed');
    const video=await page.evaluate(()=>new Promise(resolve=>{const c=__rosterRecording;c.rec.onstop=()=>{c.stream.getTracks().forEach(t=>t.stop());const f=new FileReader();f.onload=()=>resolve(f.result.split(',')[1]);f.readAsDataURL(new Blob(c.chunks,{type:'video/webm'}));};c.rec.stop();}));

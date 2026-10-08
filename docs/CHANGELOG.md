@@ -15,6 +15,14 @@ of small fixes within a day.
 
 ---
 
+## 2026-10-08 - Combat QA follow-up
+
+Rechecked the October 2 local build. npm test passed; Chrome ship journey passed through forest, inn, swamp and inn; live combat finisher routing passed for all 10 enemy types. The strengthened roster browser test now asserts all 12 attack frames and exactly one logical contact per attack, one logical contact per paired finisher, and a visible/live enemy after cancellation, in addition to Hiro's restored native sprite/scale. All 10 attacks and 23 paired variants passed. Optional Alpha fatal pause/restart/disable and portal policy checks passed. Reviewed sampled plant/goblin/spider browser captures; this does not certify every drawing or resolve the six retained replacement drafts.
+
+Fixed the review gallery to use Painted.sheet's actual runtime holds and paired body scale, rather than raw manifest timings: retained Alpha pin now previews at 1,400 ms. Corrected the atlas test's misleading hard-coded count from 6 to the actual 13. No gameplay stats, production art or fatal content changed; no image-generation credits spent. Files: test/browser_combat_roster.js, test/art_registration.js, gallery index, this log, and qa-20261008.json evidence. Checkpoint 4ad9c11.
+
+Cold-cache desktop/mobile portrait/mobile landscape load correctly, but the unchanged 20 MB startup gate still FAILS: 20,736,266 bytes visible / 21,816,310 with audio; selected package 62,205,030 bytes. Additional monster-on-Hiro finishers remain pending the user's content-direction choice after the image-tool rejection. Only Alpha is implemented. Nothing published; original Adventurer untouched.
+
 ## 2026-10-02 - Local combat roster expansion and continuity review
 
 Nine remaining primary attacks expanded to 12 drawings, keeping Alpha's pilot 12; 15 Hiro paired finishers expanded to 12. All 24 clips retain total duration and logical contact time. Alpha pin/parry, both moss-giant pairs, plant crosscut and orc finisher 2 replacement drafts failed review; old approved clips remain. Corrected plant vine-pin's final extracted frame to exclude a duplicate neighboring Hiro. Preserved unrelated clips and original atlas pixels.

@@ -1,0 +1,4088 @@
+{
+  "date": "2026-10-08",
+  "baseline": "67a0851",
+  "roster": [
+    {
+      "actor": "wolf",
+      "attack": {
+        "id": "bite",
+        "frames": 12,
+        "contacts": 1
+      },
+      "clips": [
+        {
+          "id": "wolf-cleave-paired",
+          "frames": 12,
+          "contacts": 1,
+          "visible": true,
+          "nativeRestored": true
+        },
+        {
+          "id": "wolf-pin-paired",
+          "frames": 12,
+          "contacts": 1,
+          "visible": true,
+          "nativeRestored": true
+        },
+        {
+          "id": "wolf-rising-cut-paired",
+          "frames": 12,
+          "contacts": 1,
+          "visible": true,
+          "nativeRestored": true
+        }
+      ],
+      "cancellationRestored": true
+    },
+    {
+      "actor": "plant",
+      "attack": {
+        "id": "lash",
+        "frames": 12,
+        "contacts": 1
+      },
+      "clips": [
+        {
+          "id": "plant-stem-cut-paired",
+          "frames": 12,
+          "contacts": 1,
+          "visible": true,
+          "nativeRestored": true
+        },
+        {
+          "id": "plant-vine-pin-paired",
+          "frames": 12,
+          "contacts": 1,
+          "visible": true,
+          "nativeRestored": true
+        },
+        {
+          "id": "plant-crosscut-paired",
+          "frames": 6,
+          "contacts": 1,
+          "visible": true,
+          "nativeRestored": true
+        }
+      ],
+      "cancellationRestored": true
+    },
+    {
+      "actor": "alpha",
+      "attack": {
+        "id": "attack",
+        "frames": 12,
+        "contacts": 1
+      },
+      "clips": [
+        {
+          "id": "hiro-alpha-cleave-paired",
+          "frames": 16,
+          "contacts": 1,
+          "visible": true,
+          "nativeRestored": true
+        },
+        {
+          "id": "hiro-alpha-pin-paired",
+          "frames": 6,
+          "contacts": 1,
+          "visible": true,
+          "nativeRestored": true
+        },
+        {
+          "id": "hiro-alpha-parry-paired",
+          "frames": 6,
+          "contacts": 1,
+          "visible": true,
+          "nativeRestored": true
+        }
+      ],
+      "cancellationRestored": true
+    },
+    {
+      "actor": "serpent",
+      "attack": {
+        "id": "attack",
+        "frames": 12,
+        "contacts": 1
+      },
+      "clips": [
+        {
+          "id": "hiro-finisher-1",
+          "frames": 12,
+          "contacts": 1,
+          "visible": true,
+          "nativeRestored": true
+        },
+        {
+          "id": "hiro-finisher-2",
+          "frames": 12,
+          "contacts": 1,
+          "visible": true,
+          "nativeRestored": true
+        }
+      ],
+      "cancellationRestored": true
+    },
+    {
+      "actor": "beetle",
+      "attack": {
+        "id": "attack",
+        "frames": 12,
+        "contacts": 1
+      },
+      "clips": [
+        {
+          "id": "hiro-finisher-1",
+          "frames": 12,
+          "contacts": 1,
+          "visible": true,
+          "nativeRestored": true
+        },
+        {
+          "id": "hiro-finisher-2",
+          "frames": 12,
+          "contacts": 1,
+          "visible": true,
+          "nativeRestored": true
+        }
+      ],
+      "cancellationRestored": true
+    },
+    {
+      "actor": "moss_giant",
+      "attack": {
+        "id": "attack",
+        "frames": 12,
+        "contacts": 1
+      },
+      "clips": [
+        {
+          "id": "hiro-finisher-1",
+          "frames": 6,
+          "contacts": 1,
+          "visible": true,
+          "nativeRestored": true
+        },
+        {
+          "id": "hiro-finisher-2",
+          "frames": 6,
+          "contacts": 1,
+          "visible": true,
+          "nativeRestored": true
+        }
+      ],
+      "cancellationRestored": true
+    },
+    {
+      "actor": "hag",
+      "attack": {
+        "id": "attack",
+        "frames": 12,
+        "contacts": 1
+      },
+      "clips": [
+        {
+          "id": "hiro-finisher-1",
+          "frames": 12,
+          "contacts": 1,
+          "visible": true,
+          "nativeRestored": true
+        },
+        {
+          "id": "hiro-finisher-2",
+          "frames": 12,
+          "contacts": 1,
+          "visible": true,
+          "nativeRestored": true
+        }
+      ],
+      "cancellationRestored": true
+    },
+    {
+      "actor": "goblin",
+      "attack": {
+        "id": "attack",
+        "frames": 12,
+        "contacts": 1
+      },
+      "clips": [
+        {
+          "id": "hiro-finisher-1",
+          "frames": 12,
+          "contacts": 1,
+          "visible": true,
+          "nativeRestored": true
+        },
+        {
+          "id": "hiro-finisher-2",
+          "frames": 12,
+          "contacts": 1,
+          "visible": true,
+          "nativeRestored": true
+        }
+      ],
+      "cancellationRestored": true
+    },
+    {
+      "actor": "spider",
+      "attack": {
+        "id": "attack",
+        "frames": 12,
+        "contacts": 1
+      },
+      "clips": [
+        {
+          "id": "hiro-finisher-1",
+          "frames": 12,
+          "contacts": 1,
+          "visible": true,
+          "nativeRestored": true
+        },
+        {
+          "id": "hiro-finisher-2",
+          "frames": 12,
+          "contacts": 1,
+          "visible": true,
+          "nativeRestored": true
+        }
+      ],
+      "cancellationRestored": true
+    },
+    {
+      "actor": "orc",
+      "attack": {
+        "id": "attack",
+        "frames": 12,
+        "contacts": 1
+      },
+      "clips": [
+        {
+          "id": "hiro-finisher-1",
+          "frames": 12,
+          "contacts": 1,
+          "visible": true,
+          "nativeRestored": true
+        },
+        {
+          "id": "hiro-finisher-2",
+          "frames": 6,
+          "contacts": 1,
+          "visible": true,
+          "nativeRestored": true
+        }
+      ],
+      "cancellationRestored": true
+    }
+  ],
+  "checks": {
+    "npmTest": "pass",
+    "browserShipJourney": "pass: forest and swamp with inn transitions",
+    "combatFinisherRouting": "10 passed",
+    "alphaFatalPilot": "pass",
+    "galleryRuntimeAlphaPinMs": 1400,
+    "startupBudget": "fail: exceeds unchanged 20 MB threshold"
+  },
+  "startup": {
+    "generatedAt": "2026-10-08T11:44:02.831Z",
+    "mode": "unmodified local ship-allowlist build",
+    "sceneryDelayMs": 0,
+    "limitations": [
+      "Headless Chromium, Canvas renderer; mobile device settings are emulated, not a physical iPhone/Safari measurement.",
+      "Local HTTP server sends uncompressed bodies. CDP encoded response bytes include HTTP response overhead, not TLS/IP overhead. Browser cache disabled; each profile uses a new context.",
+      "SDK stub bytes excluded. An uploaded CrazyGames preview is still needed for actual SDK/platform hosting measurements."
+    ],
+    "ship": {
+      "totalBytes": 62205030,
+      "limitBytes": 250000000,
+      "files": 288
+    },
+    "results": [
+      {
+        "profile": "desktop",
+        "viewport": {
+          "width": 1280,
+          "height": 760
+        },
+        "mobileEmulated": false,
+        "portal": {
+          "active": false,
+          "ready": false,
+          "error": null
+        },
+        "milestones": [
+          {
+            "name": "visibleGameplay",
+            "at": 1104.5,
+            "epoch": 1791459826364.7,
+            "state": {
+              "running": true,
+              "hero": true,
+              "foes": 2,
+              "scenery": true,
+              "controls": true,
+              "steps": 0,
+              "ready": true
+            },
+            "encodedResponseBytes": 20736266,
+            "completedRequests": 157,
+            "inFlightRequests": 0
+          },
+          {
+            "name": "firstCombatStep",
+            "at": 3068,
+            "epoch": 1791459828328.2,
+            "state": {
+              "running": true,
+              "hero": true,
+              "foes": 2,
+              "scenery": true,
+              "controls": true,
+              "steps": 1,
+              "ready": true
+            },
+            "encodedResponseBytes": 21816310,
+            "completedRequests": 200,
+            "inFlightRequests": 0
+          }
+        ],
+        "sceneryWaitSamples": 1,
+        "prematureCombat": [],
+        "afterAudioUnlock": {
+          "encodedResponseBytes": 21816310,
+          "completedRequests": 200,
+          "inFlightRequests": 0
+        },
+        "requested": [
+          {
+            "path": "/assets/expedition/hiro/hiro-roster-0.webp",
+            "bytes": 2444599,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/hiro/hiro-0.webp",
+            "bytes": 1964367,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/hiro/hiro-1.webp",
+            "bytes": 1930005,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/alpha/alpha-0.webp",
+            "bytes": 1665465,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/alpha/alpha-pilot-0.webp",
+            "bytes": 1662131,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/music/battle_origin.mp3",
+            "bytes": 1306006,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/lib/phaser.min.js?v=20260918-xp2",
+            "bytes": 1190517,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/plant/plant-clean-0.webp",
+            "bytes": 1084683,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/adult/alpha-fatal/alpha-fatal-0.webp",
+            "bytes": 889534,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/hiro/hiro-2.webp",
+            "bytes": 775964,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/wolf/wolf-0.webp",
+            "bytes": 616348,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/hiro/hiro-pilot-0.webp",
+            "bytes": 482514,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/anime/v2/runtime/forest.webp",
+            "bytes": 480484,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/alpha/alpha-1.webp",
+            "bytes": 352294,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/plant/plant-roster-0.webp",
+            "bytes": 275016,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/wolf/wolf-roster-0.webp",
+            "bytes": 211644,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/alpha/alpha-pilot-1.webp",
+            "bytes": 180496,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/campaign3_dialogue.js?v=20260918-xp2",
+            "bytes": 175189,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/hiro/hiro-roster-1.webp",
+            "bytes": 169394,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/portraits.js?v=20260918-xp2",
+            "bytes": 139354,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/dialogue_context.js?v=20260918-xp2",
+            "bytes": 108986,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/hiro/hiro.json?v=combat-roster-20261002",
+            "bytes": 105345,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/hiro/hiro.json?v=combat-roster-20261002",
+            "bytes": 105345,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/combat.js?v=20260918-xp2",
+            "bytes": 102500,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/dialogue_bonus.js?v=20260918-xp2",
+            "bytes": 68023,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/game.js?v=20260918-xp2",
+            "bytes": 65860,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/busts/bram.webp",
+            "bytes": 55655,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/campaign3_data.js?v=20260918-xp2",
+            "bytes": 49284,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/vfx.js?v=20260918-xp2",
+            "bytes": 49026,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/spell_fx.js?v=20260918-xp2",
+            "bytes": 46928,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/campaign3.js?v=20260918-xp2",
+            "bytes": 45833,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/dialogue.js?v=20260918-xp2",
+            "bytes": 45831,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/personality_travel.js?v=20260918-xp2",
+            "bytes": 42922,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/expedition/actors.js?v=20261003-xp1",
+            "bytes": 40896,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/skill_art.js?v=20260918-xp2",
+            "bytes": 39403,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/skills.js?v=20260918-xp2",
+            "bytes": 39256,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/world.js?v=20260918-xp2",
+            "bytes": 36021,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/app/icon-192.png",
+            "bytes": 35084,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/app/icon-192.png",
+            "bytes": 35084,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/campaign2_dialogue.js?v=20260918-xp2",
+            "bytes": 34518,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/expedition/ui_common.js?v=20261003-xp1",
+            "bytes": 34291,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/expedition/campaign.js?v=20261003-xp1",
+            "bytes": 33426,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/campaign_story.js?v=20260918-xp2",
+            "bytes": 33314,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/quests.js?v=20260918-xp2",
+            "bytes": 32874,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/tooltip.js?v=20260918-xp2",
+            "bytes": 32531,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/campaign2_data.js?v=20260918-xp2",
+            "bytes": 31844,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/campaign.js?v=20260918-xp2",
+            "bytes": 31795,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/campaign_skills.js?v=20260918-xp2",
+            "bytes": 31771,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/dialogue2.js?v=20260918-xp2",
+            "bytes": 30364,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/alpha/alpha.json?v=combat-roster-20261002",
+            "bytes": 30298,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/alpha/alpha.json?v=combat-roster-20261002",
+            "bytes": 30298,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/campaign2_skills.js?v=20260918-xp2",
+            "bytes": 29690,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/battle_art.js?v=20260918-xp2",
+            "bytes": 28881,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/combat_damage.js?v=20260918-xp2",
+            "bytes": 28012,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/anime_world.js?v=20260918-xp2",
+            "bytes": 27830,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/expedition/scenes_town.js?v=20261003-xp1",
+            "bytes": 27102,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/expedition/hud.js?v=20261003-xp1",
+            "bytes": 27093,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/expedition/encounter.js?v=20261003-xp1",
+            "bytes": 27040,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/campaign_dialogue.js?v=20260918-xp2",
+            "bytes": 26838,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/personality_events.js?v=20260918-xp2",
+            "bytes": 26772,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/campaign2.js?v=20260918-xp2",
+            "bytes": 25783,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/home_life.js?v=20260918-xp2",
+            "bytes": 25139,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/expedition/beats.js?v=20261003-xp1",
+            "bytes": 24884,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/acid_hit.mp3?v=7d7aa7cfeeee",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/acid_use.mp3?v=051f50d6afcf",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/arcane_hit.mp3?v=b3e10068d10b",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/arcane_use.mp3?v=6b2f083839fe",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/bite_hit.mp3?v=7b657795434c",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/bite_use.mp3?v=281f21736eaf",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/block.mp3?v=69242442c3e6",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/blunt_hit.mp3?v=7910acb8c363",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/blunt_use.mp3?v=36cd07996d13",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/claw_hit.mp3?v=74d3617e43dd",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/claw_use.mp3?v=f7391803e719",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/fire_hit.mp3?v=fb6b5b41c631",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/fire_use.mp3?v=25b94e09ee0d",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/guard_use.mp3?v=1aa2b88f4646",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/gun_hit.mp3?v=d75da61ef82c",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/gun_use.mp3?v=ce7114075062",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/heal_use.mp3?v=55958838561c",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/holy_hit.mp3?v=14981ff89269",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/holy_use.mp3?v=e8d6fb4a303c",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/ice_hit.mp3?v=5927dd8f431e",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/ice_use.mp3?v=fc46734f8f4d",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/lightning_hit.mp3?v=70adadcb3cc0",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/lightning_use.mp3?v=f46692f0eb86",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/miss.mp3?v=aa6b28dabfb7",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/nature_hit.mp3?v=5e1dac0f0611",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/nature_use.mp3?v=5b268f47885f",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/projectile_hit.mp3?v=c5f343601ece",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/projectile_use.mp3?v=2d577fbd71d4",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/revive_use.mp3?v=fa697d4ab912",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/shadow_hit.mp3?v=6e8c61e24fff",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/shadow_use.mp3?v=65e3586a570d",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/slash_hit.mp3?v=0f3353d579f4",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/slash_use.mp3?v=8b48d45978b1",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/stealth_use.mp3?v=35b7d246c0c4",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/support_use.mp3?v=bbc9d47ac0b2",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/thrust_hit.mp3?v=ca8168f4ca92",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/thrust_use.mp3?v=d14595cfac0b",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/transform_use.mp3?v=d751de9a006c",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/unarmed_hit.mp3?v=38e137491e9a",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/unarmed_use.mp3?v=2296afd262ba",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/whip_hit.mp3?v=8ffcd16d4987",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/whip_use.mp3?v=8d64a00916e9",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/home_art.js?v=20260918-xp2",
+            "bytes": 24151,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/expedition/data.js?v=20261003-xp1",
+            "bytes": 23753,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/expedition/scene.js?v=20261003-xp1",
+            "bytes": 23487,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/gate_epilogue_voice.js?v=20260918-xp2",
+            "bytes": 22603,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/character.js?v=20260918-xp2",
+            "bytes": 22165,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/party.js?v=20260918-xp2",
+            "bytes": 21900,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/wolf/wolf.json?v=combat-roster-20261002",
+            "bytes": 21599,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/wolf/wolf.json?v=combat-roster-20261002",
+            "bytes": 21599,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/cutscenes.js?v=20260918-xp2",
+            "bytes": 21311,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/gate_ambience.js?v=20260921-xp2",
+            "bytes": 20675,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/vault.js?v=20260918-xp2",
+            "bytes": 20281,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/music.js?v=20260918-xp2",
+            "bytes": 20138,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/icons/hiro-skills.webp",
+            "bytes": 19501,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/campaign_data.js?v=20260918-xp2",
+            "bytes": 19476,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/weather.js?v=20260918-xp2",
+            "bytes": 18669,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/gate_finale.js?v=20260918-xp2",
+            "bytes": 18281,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/skillsys.js?v=20260918-xp2",
+            "bytes": 18274,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/anime_art.js?v=20260918-xp2",
+            "bytes": 17816,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/relationships.js?v=20260918-xp2",
+            "bytes": 17800,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/monster_skills.js?v=20260918-xp2",
+            "bytes": 17634,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/divine.js?v=20260918-xp2",
+            "bytes": 17383,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/death.js?v=20260918-xp2",
+            "bytes": 17118,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/minibosses.js?v=20260918-xp2",
+            "bytes": 16146,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/uikit.js?v=20260918-xp2",
+            "bytes": 16001,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/index.html?fresh=1&seed=11&renderer=canvas",
+            "bytes": 15357,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/personality_social.js?v=20260918-xp2",
+            "bytes": 15035,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/difficulty.js?v=20260918-xp2",
+            "bytes": 14520,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/dialoguebox.js?v=20260918-xp2",
+            "bytes": 14252,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/expedition/dev.js?v=20261003-xp1",
+            "bytes": 14160,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/combat_presentation.js?v=20260918-xp2",
+            "bytes": 14034,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/anime_manifest.js?v=20260918-xp2",
+            "bytes": 13460,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/gate_finale.js?v=20260918-xp2",
+            "bytes": 13037,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/courtship.js?v=20260918-xp2",
+            "bytes": 12961,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/constants.js?v=20260918-xp2",
+            "bytes": 12034,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/anime_environments.js?v=20260918-xp2",
+            "bytes": 11407,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/plant/plant.json?v=combat-roster-20261002",
+            "bytes": 11203,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/plant/plant.json?v=combat-roster-20261002",
+            "bytes": 11203,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/busts/busts.json",
+            "bytes": 10971,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/combat_ai.js?v=20260918-xp2",
+            "bytes": 10784,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/enemies.js?v=20260918-xp2",
+            "bytes": 10735,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/tutorial.js?v=20260918-xp2",
+            "bytes": 10457,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/travel.js?v=20260918-xp2",
+            "bytes": 10415,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/combat_statuses.js?v=20260918-xp2",
+            "bytes": 10098,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/anime_identities.js?v=20260918-xp2",
+            "bytes": 9955,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/travel.js?v=20260918-xp2",
+            "bytes": 9661,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/skill_art_catalog.js?v=20260918-xp2",
+            "bytes": 9496,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/save.js?v=20260918-xp2",
+            "bytes": 8345,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/expedition/painted.js?v=20261003-xp1",
+            "bytes": 8268,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/personality_pairs.js?v=20260918-xp2",
+            "bytes": 7972,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/combat_healing.js?v=20260918-xp2",
+            "bytes": 7955,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/adult/alpha-fatal/alpha-fatal.json",
+            "bytes": 7637,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/expedition/travel_art.js?v=20261003-xp1",
+            "bytes": 7233,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/expedition/inn_art.js?v=20261003-xp1",
+            "bytes": 6859,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/hiro.js?v=20260918-xp2",
+            "bytes": 6624,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/combat_effects.js?v=20260918-xp2",
+            "bytes": 6453,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/survival.js?v=20260918-xp2",
+            "bytes": 5947,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/prefs.js?v=20260918-xp2",
+            "bytes": 5868,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/mobile.css?v=20260914-mobile2",
+            "bytes": 5776,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/campaign3_perk_combat.js?v=20260918-xp2",
+            "bytes": 5642,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/travel_panorama.js?v=20260918-xp2",
+            "bytes": 5582,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/travel_ambience.js?v=20260918-xp2",
+            "bytes": 5544,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/conversation.js?v=20260918-xp2",
+            "bytes": 5463,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/theme.js?v=20260918-xp2",
+            "bytes": 5431,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/save_store.js?v=20260918-xp2",
+            "bytes": 5275,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/expedition/run.js?v=20261003-xp1",
+            "bytes": 5267,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/censorship.js?v=20260918-xp2",
+            "bytes": 4946,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/util.js?v=20260918-xp2",
+            "bytes": 4822,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/combat_targeting.js?v=20260918-xp2",
+            "bytes": 4737,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/expedition/enemy_finishers.js?v=20261003-xp1",
+            "bytes": 4636,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/campaign3_perks.js?v=20260918-xp2",
+            "bytes": 4389,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/campaign3_perks.js?v=20260918-xp2",
+            "bytes": 3988,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/expedition/shim.js?v=20261003-xp1",
+            "bytes": 3523,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/combat_turns.js?v=20260918-xp2",
+            "bytes": 3493,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/housing.js?v=20260918-xp2",
+            "bytes": 3339,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/family_support.js?v=20260918-xp2",
+            "bytes": 3336,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/mobile_viewport.js?v=20260918-xp2",
+            "bytes": 3002,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/portal.js?v=20260918-xp2",
+            "bytes": 2920,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/expedition/defeat_fx.js?v=20261003-xp1",
+            "bytes": 2813,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/campaign_router.js?v=20260918-xp2",
+            "bytes": 2258,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/enemy_tactics.js?v=20260918-xp2",
+            "bytes": 2175,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/icons/hiro-skills.json",
+            "bytes": 2106,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/expedition/battle_stage.js?v=20261003-xp1",
+            "bytes": 2064,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/expedition/media_hashes.js?v=20261003-xp1",
+            "bytes": 2054,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/balance_support.js?v=20260918-xp2",
+            "bytes": 2051,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/asset_queue.js?v=20260918-xp2",
+            "bytes": 2035,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/travel_battle_art.js?v=20260918-xp2",
+            "bytes": 1968,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/registry.js?v=20260918-xp2",
+            "bytes": 1935,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/rng.js?v=20260918-xp2",
+            "bytes": 1880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/version.js?v=20260918-xp2",
+            "bytes": 1875,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/quest_lifecycle.js?v=20260918-xp2",
+            "bytes": 1869,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/dialogue_hiro.js?v=20260918-xp2",
+            "bytes": 1689,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/save-ui.css?v=20260914-audit1",
+            "bytes": 1521,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/names.js?v=20260918-xp2",
+            "bytes": 1169,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/release_config.js?v=20260918-xp2",
+            "bytes": 514,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/combat_events.js?v=20260918-xp2",
+            "bytes": 432,
+            "status": 200,
+            "cached": false
+          }
+        ],
+        "errors": []
+      },
+      {
+        "profile": "mobile-portrait",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "mobileEmulated": true,
+        "portal": {
+          "active": false,
+          "ready": false,
+          "error": null
+        },
+        "milestones": [
+          {
+            "name": "visibleGameplay",
+            "at": 807.1999999284744,
+            "epoch": 1791459832168.4,
+            "state": {
+              "running": true,
+              "hero": true,
+              "foes": 2,
+              "scenery": true,
+              "controls": true,
+              "steps": 0,
+              "ready": true
+            },
+            "encodedResponseBytes": 20736266,
+            "completedRequests": 157,
+            "inFlightRequests": 0
+          },
+          {
+            "name": "firstCombatStep",
+            "at": 2553.7999999523163,
+            "epoch": 1791459833915,
+            "state": {
+              "running": true,
+              "hero": true,
+              "foes": 2,
+              "scenery": true,
+              "controls": true,
+              "steps": 1,
+              "ready": true
+            },
+            "encodedResponseBytes": 21816310,
+            "completedRequests": 200,
+            "inFlightRequests": 0
+          }
+        ],
+        "sceneryWaitSamples": 1,
+        "prematureCombat": [],
+        "afterAudioUnlock": {
+          "encodedResponseBytes": 21816310,
+          "completedRequests": 200,
+          "inFlightRequests": 0
+        },
+        "requested": [
+          {
+            "path": "/assets/expedition/hiro/hiro-roster-0.webp",
+            "bytes": 2444599,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/hiro/hiro-0.webp",
+            "bytes": 1964367,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/hiro/hiro-1.webp",
+            "bytes": 1930005,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/alpha/alpha-0.webp",
+            "bytes": 1665465,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/alpha/alpha-pilot-0.webp",
+            "bytes": 1662131,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/music/battle_origin.mp3",
+            "bytes": 1306006,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/lib/phaser.min.js?v=20260918-xp2",
+            "bytes": 1190517,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/plant/plant-clean-0.webp",
+            "bytes": 1084683,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/adult/alpha-fatal/alpha-fatal-0.webp",
+            "bytes": 889534,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/hiro/hiro-2.webp",
+            "bytes": 775964,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/wolf/wolf-0.webp",
+            "bytes": 616348,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/hiro/hiro-pilot-0.webp",
+            "bytes": 482514,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/anime/v2/runtime/forest.webp",
+            "bytes": 480484,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/alpha/alpha-1.webp",
+            "bytes": 352294,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/plant/plant-roster-0.webp",
+            "bytes": 275016,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/wolf/wolf-roster-0.webp",
+            "bytes": 211644,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/alpha/alpha-pilot-1.webp",
+            "bytes": 180496,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/campaign3_dialogue.js?v=20260918-xp2",
+            "bytes": 175189,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/hiro/hiro-roster-1.webp",
+            "bytes": 169394,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/portraits.js?v=20260918-xp2",
+            "bytes": 139354,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/dialogue_context.js?v=20260918-xp2",
+            "bytes": 108986,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/hiro/hiro.json?v=combat-roster-20261002",
+            "bytes": 105345,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/hiro/hiro.json?v=combat-roster-20261002",
+            "bytes": 105345,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/combat.js?v=20260918-xp2",
+            "bytes": 102500,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/dialogue_bonus.js?v=20260918-xp2",
+            "bytes": 68023,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/game.js?v=20260918-xp2",
+            "bytes": 65860,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/busts/bram.webp",
+            "bytes": 55655,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/campaign3_data.js?v=20260918-xp2",
+            "bytes": 49284,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/vfx.js?v=20260918-xp2",
+            "bytes": 49026,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/spell_fx.js?v=20260918-xp2",
+            "bytes": 46928,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/campaign3.js?v=20260918-xp2",
+            "bytes": 45833,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/dialogue.js?v=20260918-xp2",
+            "bytes": 45831,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/personality_travel.js?v=20260918-xp2",
+            "bytes": 42922,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/expedition/actors.js?v=20261003-xp1",
+            "bytes": 40896,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/skill_art.js?v=20260918-xp2",
+            "bytes": 39403,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/skills.js?v=20260918-xp2",
+            "bytes": 39256,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/world.js?v=20260918-xp2",
+            "bytes": 36021,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/app/icon-192.png",
+            "bytes": 35084,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/app/icon-192.png",
+            "bytes": 35084,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/campaign2_dialogue.js?v=20260918-xp2",
+            "bytes": 34518,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/expedition/ui_common.js?v=20261003-xp1",
+            "bytes": 34291,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/expedition/campaign.js?v=20261003-xp1",
+            "bytes": 33426,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/campaign_story.js?v=20260918-xp2",
+            "bytes": 33314,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/quests.js?v=20260918-xp2",
+            "bytes": 32874,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/tooltip.js?v=20260918-xp2",
+            "bytes": 32531,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/campaign2_data.js?v=20260918-xp2",
+            "bytes": 31844,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/campaign.js?v=20260918-xp2",
+            "bytes": 31795,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/campaign_skills.js?v=20260918-xp2",
+            "bytes": 31771,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/dialogue2.js?v=20260918-xp2",
+            "bytes": 30364,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/alpha/alpha.json?v=combat-roster-20261002",
+            "bytes": 30298,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/alpha/alpha.json?v=combat-roster-20261002",
+            "bytes": 30298,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/campaign2_skills.js?v=20260918-xp2",
+            "bytes": 29690,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/battle_art.js?v=20260918-xp2",
+            "bytes": 28881,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/combat_damage.js?v=20260918-xp2",
+            "bytes": 28012,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/anime_world.js?v=20260918-xp2",
+            "bytes": 27830,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/expedition/scenes_town.js?v=20261003-xp1",
+            "bytes": 27102,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/expedition/hud.js?v=20261003-xp1",
+            "bytes": 27093,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/expedition/encounter.js?v=20261003-xp1",
+            "bytes": 27040,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/campaign_dialogue.js?v=20260918-xp2",
+            "bytes": 26838,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/personality_events.js?v=20260918-xp2",
+            "bytes": 26772,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/campaign2.js?v=20260918-xp2",
+            "bytes": 25783,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/home_life.js?v=20260918-xp2",
+            "bytes": 25139,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/expedition/beats.js?v=20261003-xp1",
+            "bytes": 24884,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/acid_hit.mp3?v=7d7aa7cfeeee",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/acid_use.mp3?v=051f50d6afcf",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/arcane_hit.mp3?v=b3e10068d10b",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/arcane_use.mp3?v=6b2f083839fe",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/bite_hit.mp3?v=7b657795434c",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/bite_use.mp3?v=281f21736eaf",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/block.mp3?v=69242442c3e6",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/blunt_hit.mp3?v=7910acb8c363",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/blunt_use.mp3?v=36cd07996d13",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/claw_hit.mp3?v=74d3617e43dd",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/claw_use.mp3?v=f7391803e719",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/fire_hit.mp3?v=fb6b5b41c631",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/fire_use.mp3?v=25b94e09ee0d",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/guard_use.mp3?v=1aa2b88f4646",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/gun_hit.mp3?v=d75da61ef82c",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/gun_use.mp3?v=ce7114075062",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/heal_use.mp3?v=55958838561c",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/holy_hit.mp3?v=14981ff89269",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/holy_use.mp3?v=e8d6fb4a303c",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/ice_hit.mp3?v=5927dd8f431e",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/ice_use.mp3?v=fc46734f8f4d",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/lightning_hit.mp3?v=70adadcb3cc0",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/lightning_use.mp3?v=f46692f0eb86",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/miss.mp3?v=aa6b28dabfb7",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/nature_hit.mp3?v=5e1dac0f0611",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/nature_use.mp3?v=5b268f47885f",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/projectile_hit.mp3?v=c5f343601ece",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/projectile_use.mp3?v=2d577fbd71d4",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/revive_use.mp3?v=fa697d4ab912",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/shadow_hit.mp3?v=6e8c61e24fff",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/shadow_use.mp3?v=65e3586a570d",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/slash_hit.mp3?v=0f3353d579f4",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/slash_use.mp3?v=8b48d45978b1",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/stealth_use.mp3?v=35b7d246c0c4",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/support_use.mp3?v=bbc9d47ac0b2",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/thrust_hit.mp3?v=ca8168f4ca92",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/thrust_use.mp3?v=d14595cfac0b",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/transform_use.mp3?v=d751de9a006c",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/unarmed_hit.mp3?v=38e137491e9a",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/unarmed_use.mp3?v=2296afd262ba",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/whip_hit.mp3?v=8ffcd16d4987",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/whip_use.mp3?v=8d64a00916e9",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/home_art.js?v=20260918-xp2",
+            "bytes": 24151,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/expedition/data.js?v=20261003-xp1",
+            "bytes": 23753,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/expedition/scene.js?v=20261003-xp1",
+            "bytes": 23487,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/gate_epilogue_voice.js?v=20260918-xp2",
+            "bytes": 22603,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/character.js?v=20260918-xp2",
+            "bytes": 22165,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/party.js?v=20260918-xp2",
+            "bytes": 21900,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/wolf/wolf.json?v=combat-roster-20261002",
+            "bytes": 21599,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/wolf/wolf.json?v=combat-roster-20261002",
+            "bytes": 21599,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/cutscenes.js?v=20260918-xp2",
+            "bytes": 21311,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/gate_ambience.js?v=20260921-xp2",
+            "bytes": 20675,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/vault.js?v=20260918-xp2",
+            "bytes": 20281,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/music.js?v=20260918-xp2",
+            "bytes": 20138,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/icons/hiro-skills.webp",
+            "bytes": 19501,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/campaign_data.js?v=20260918-xp2",
+            "bytes": 19476,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/weather.js?v=20260918-xp2",
+            "bytes": 18669,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/gate_finale.js?v=20260918-xp2",
+            "bytes": 18281,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/skillsys.js?v=20260918-xp2",
+            "bytes": 18274,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/anime_art.js?v=20260918-xp2",
+            "bytes": 17816,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/relationships.js?v=20260918-xp2",
+            "bytes": 17800,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/monster_skills.js?v=20260918-xp2",
+            "bytes": 17634,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/divine.js?v=20260918-xp2",
+            "bytes": 17383,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/death.js?v=20260918-xp2",
+            "bytes": 17118,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/minibosses.js?v=20260918-xp2",
+            "bytes": 16146,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/uikit.js?v=20260918-xp2",
+            "bytes": 16001,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/index.html?fresh=1&seed=11&renderer=canvas",
+            "bytes": 15357,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/personality_social.js?v=20260918-xp2",
+            "bytes": 15035,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/difficulty.js?v=20260918-xp2",
+            "bytes": 14520,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/dialoguebox.js?v=20260918-xp2",
+            "bytes": 14252,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/expedition/dev.js?v=20261003-xp1",
+            "bytes": 14160,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/combat_presentation.js?v=20260918-xp2",
+            "bytes": 14034,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/anime_manifest.js?v=20260918-xp2",
+            "bytes": 13460,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/gate_finale.js?v=20260918-xp2",
+            "bytes": 13037,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/courtship.js?v=20260918-xp2",
+            "bytes": 12961,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/constants.js?v=20260918-xp2",
+            "bytes": 12034,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/anime_environments.js?v=20260918-xp2",
+            "bytes": 11407,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/plant/plant.json?v=combat-roster-20261002",
+            "bytes": 11203,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/plant/plant.json?v=combat-roster-20261002",
+            "bytes": 11203,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/busts/busts.json",
+            "bytes": 10971,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/combat_ai.js?v=20260918-xp2",
+            "bytes": 10784,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/enemies.js?v=20260918-xp2",
+            "bytes": 10735,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/tutorial.js?v=20260918-xp2",
+            "bytes": 10457,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/travel.js?v=20260918-xp2",
+            "bytes": 10415,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/combat_statuses.js?v=20260918-xp2",
+            "bytes": 10098,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/anime_identities.js?v=20260918-xp2",
+            "bytes": 9955,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/travel.js?v=20260918-xp2",
+            "bytes": 9661,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/skill_art_catalog.js?v=20260918-xp2",
+            "bytes": 9496,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/save.js?v=20260918-xp2",
+            "bytes": 8345,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/expedition/painted.js?v=20261003-xp1",
+            "bytes": 8268,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/personality_pairs.js?v=20260918-xp2",
+            "bytes": 7972,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/combat_healing.js?v=20260918-xp2",
+            "bytes": 7955,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/adult/alpha-fatal/alpha-fatal.json",
+            "bytes": 7637,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/expedition/travel_art.js?v=20261003-xp1",
+            "bytes": 7233,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/expedition/inn_art.js?v=20261003-xp1",
+            "bytes": 6859,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/hiro.js?v=20260918-xp2",
+            "bytes": 6624,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/combat_effects.js?v=20260918-xp2",
+            "bytes": 6453,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/survival.js?v=20260918-xp2",
+            "bytes": 5947,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/prefs.js?v=20260918-xp2",
+            "bytes": 5868,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/mobile.css?v=20260914-mobile2",
+            "bytes": 5776,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/campaign3_perk_combat.js?v=20260918-xp2",
+            "bytes": 5642,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/travel_panorama.js?v=20260918-xp2",
+            "bytes": 5582,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/travel_ambience.js?v=20260918-xp2",
+            "bytes": 5544,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/conversation.js?v=20260918-xp2",
+            "bytes": 5463,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/theme.js?v=20260918-xp2",
+            "bytes": 5431,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/save_store.js?v=20260918-xp2",
+            "bytes": 5275,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/expedition/run.js?v=20261003-xp1",
+            "bytes": 5267,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/censorship.js?v=20260918-xp2",
+            "bytes": 4946,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/util.js?v=20260918-xp2",
+            "bytes": 4822,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/combat_targeting.js?v=20260918-xp2",
+            "bytes": 4737,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/expedition/enemy_finishers.js?v=20261003-xp1",
+            "bytes": 4636,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/campaign3_perks.js?v=20260918-xp2",
+            "bytes": 4389,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/campaign3_perks.js?v=20260918-xp2",
+            "bytes": 3988,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/expedition/shim.js?v=20261003-xp1",
+            "bytes": 3523,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/combat_turns.js?v=20260918-xp2",
+            "bytes": 3493,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/housing.js?v=20260918-xp2",
+            "bytes": 3339,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/family_support.js?v=20260918-xp2",
+            "bytes": 3336,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/mobile_viewport.js?v=20260918-xp2",
+            "bytes": 3002,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/portal.js?v=20260918-xp2",
+            "bytes": 2920,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/expedition/defeat_fx.js?v=20261003-xp1",
+            "bytes": 2813,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/campaign_router.js?v=20260918-xp2",
+            "bytes": 2258,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/enemy_tactics.js?v=20260918-xp2",
+            "bytes": 2175,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/icons/hiro-skills.json",
+            "bytes": 2106,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/expedition/battle_stage.js?v=20261003-xp1",
+            "bytes": 2064,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/expedition/media_hashes.js?v=20261003-xp1",
+            "bytes": 2054,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/balance_support.js?v=20260918-xp2",
+            "bytes": 2051,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/asset_queue.js?v=20260918-xp2",
+            "bytes": 2035,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/travel_battle_art.js?v=20260918-xp2",
+            "bytes": 1968,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/registry.js?v=20260918-xp2",
+            "bytes": 1935,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/rng.js?v=20260918-xp2",
+            "bytes": 1880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/version.js?v=20260918-xp2",
+            "bytes": 1875,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/quest_lifecycle.js?v=20260918-xp2",
+            "bytes": 1869,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/dialogue_hiro.js?v=20260918-xp2",
+            "bytes": 1689,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/save-ui.css?v=20260914-audit1",
+            "bytes": 1521,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/names.js?v=20260918-xp2",
+            "bytes": 1169,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/release_config.js?v=20260918-xp2",
+            "bytes": 514,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/combat_events.js?v=20260918-xp2",
+            "bytes": 432,
+            "status": 200,
+            "cached": false
+          }
+        ],
+        "errors": []
+      },
+      {
+        "profile": "mobile-landscape",
+        "viewport": {
+          "width": 844,
+          "height": 390
+        },
+        "mobileEmulated": true,
+        "portal": {
+          "active": false,
+          "ready": false,
+          "error": null
+        },
+        "milestones": [
+          {
+            "name": "visibleGameplay",
+            "at": 826.2000000476837,
+            "epoch": 1791459837685.5999,
+            "state": {
+              "running": true,
+              "hero": true,
+              "foes": 2,
+              "scenery": true,
+              "controls": true,
+              "steps": 0,
+              "ready": true
+            },
+            "encodedResponseBytes": 20736266,
+            "completedRequests": 157,
+            "inFlightRequests": 0
+          },
+          {
+            "name": "firstCombatStep",
+            "at": 2552.5,
+            "epoch": 1791459839411.9,
+            "state": {
+              "running": true,
+              "hero": true,
+              "foes": 2,
+              "scenery": true,
+              "controls": true,
+              "steps": 1,
+              "ready": true
+            },
+            "encodedResponseBytes": 21816310,
+            "completedRequests": 200,
+            "inFlightRequests": 0
+          }
+        ],
+        "sceneryWaitSamples": 1,
+        "prematureCombat": [],
+        "afterAudioUnlock": {
+          "encodedResponseBytes": 21816310,
+          "completedRequests": 200,
+          "inFlightRequests": 0
+        },
+        "requested": [
+          {
+            "path": "/assets/expedition/hiro/hiro-roster-0.webp",
+            "bytes": 2444599,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/hiro/hiro-0.webp",
+            "bytes": 1964367,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/hiro/hiro-1.webp",
+            "bytes": 1930005,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/alpha/alpha-0.webp",
+            "bytes": 1665465,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/alpha/alpha-pilot-0.webp",
+            "bytes": 1662131,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/music/battle_origin.mp3",
+            "bytes": 1306006,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/lib/phaser.min.js?v=20260918-xp2",
+            "bytes": 1190517,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/plant/plant-clean-0.webp",
+            "bytes": 1084683,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/adult/alpha-fatal/alpha-fatal-0.webp",
+            "bytes": 889534,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/hiro/hiro-2.webp",
+            "bytes": 775964,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/wolf/wolf-0.webp",
+            "bytes": 616348,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/hiro/hiro-pilot-0.webp",
+            "bytes": 482514,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/anime/v2/runtime/forest.webp",
+            "bytes": 480484,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/alpha/alpha-1.webp",
+            "bytes": 352294,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/plant/plant-roster-0.webp",
+            "bytes": 275016,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/wolf/wolf-roster-0.webp",
+            "bytes": 211644,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/alpha/alpha-pilot-1.webp",
+            "bytes": 180496,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/campaign3_dialogue.js?v=20260918-xp2",
+            "bytes": 175189,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/hiro/hiro-roster-1.webp",
+            "bytes": 169394,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/portraits.js?v=20260918-xp2",
+            "bytes": 139354,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/dialogue_context.js?v=20260918-xp2",
+            "bytes": 108986,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/hiro/hiro.json?v=combat-roster-20261002",
+            "bytes": 105345,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/hiro/hiro.json?v=combat-roster-20261002",
+            "bytes": 105345,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/combat.js?v=20260918-xp2",
+            "bytes": 102500,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/dialogue_bonus.js?v=20260918-xp2",
+            "bytes": 68023,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/game.js?v=20260918-xp2",
+            "bytes": 65860,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/busts/bram.webp",
+            "bytes": 55655,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/campaign3_data.js?v=20260918-xp2",
+            "bytes": 49284,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/vfx.js?v=20260918-xp2",
+            "bytes": 49026,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/spell_fx.js?v=20260918-xp2",
+            "bytes": 46928,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/campaign3.js?v=20260918-xp2",
+            "bytes": 45833,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/dialogue.js?v=20260918-xp2",
+            "bytes": 45831,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/personality_travel.js?v=20260918-xp2",
+            "bytes": 42922,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/expedition/actors.js?v=20261003-xp1",
+            "bytes": 40896,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/skill_art.js?v=20260918-xp2",
+            "bytes": 39403,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/skills.js?v=20260918-xp2",
+            "bytes": 39256,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/world.js?v=20260918-xp2",
+            "bytes": 36021,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/app/icon-192.png",
+            "bytes": 35084,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/app/icon-192.png",
+            "bytes": 35084,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/campaign2_dialogue.js?v=20260918-xp2",
+            "bytes": 34518,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/expedition/ui_common.js?v=20261003-xp1",
+            "bytes": 34291,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/expedition/campaign.js?v=20261003-xp1",
+            "bytes": 33426,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/campaign_story.js?v=20260918-xp2",
+            "bytes": 33314,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/quests.js?v=20260918-xp2",
+            "bytes": 32874,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/tooltip.js?v=20260918-xp2",
+            "bytes": 32531,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/campaign2_data.js?v=20260918-xp2",
+            "bytes": 31844,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/campaign.js?v=20260918-xp2",
+            "bytes": 31795,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/campaign_skills.js?v=20260918-xp2",
+            "bytes": 31771,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/dialogue2.js?v=20260918-xp2",
+            "bytes": 30364,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/alpha/alpha.json?v=combat-roster-20261002",
+            "bytes": 30298,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/alpha/alpha.json?v=combat-roster-20261002",
+            "bytes": 30298,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/campaign2_skills.js?v=20260918-xp2",
+            "bytes": 29690,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/battle_art.js?v=20260918-xp2",
+            "bytes": 28881,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/combat_damage.js?v=20260918-xp2",
+            "bytes": 28012,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/anime_world.js?v=20260918-xp2",
+            "bytes": 27830,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/expedition/scenes_town.js?v=20261003-xp1",
+            "bytes": 27102,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/expedition/hud.js?v=20261003-xp1",
+            "bytes": 27093,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/expedition/encounter.js?v=20261003-xp1",
+            "bytes": 27040,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/campaign_dialogue.js?v=20260918-xp2",
+            "bytes": 26838,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/personality_events.js?v=20260918-xp2",
+            "bytes": 26772,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/campaign2.js?v=20260918-xp2",
+            "bytes": 25783,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/home_life.js?v=20260918-xp2",
+            "bytes": 25139,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/expedition/beats.js?v=20261003-xp1",
+            "bytes": 24884,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/acid_hit.mp3?v=7d7aa7cfeeee",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/acid_use.mp3?v=051f50d6afcf",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/arcane_hit.mp3?v=b3e10068d10b",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/arcane_use.mp3?v=6b2f083839fe",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/bite_hit.mp3?v=7b657795434c",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/bite_use.mp3?v=281f21736eaf",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/block.mp3?v=69242442c3e6",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/blunt_hit.mp3?v=7910acb8c363",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/blunt_use.mp3?v=36cd07996d13",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/claw_hit.mp3?v=74d3617e43dd",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/claw_use.mp3?v=f7391803e719",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/fire_hit.mp3?v=fb6b5b41c631",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/fire_use.mp3?v=25b94e09ee0d",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/guard_use.mp3?v=1aa2b88f4646",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/gun_hit.mp3?v=d75da61ef82c",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/gun_use.mp3?v=ce7114075062",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/heal_use.mp3?v=55958838561c",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/holy_hit.mp3?v=14981ff89269",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/holy_use.mp3?v=e8d6fb4a303c",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/ice_hit.mp3?v=5927dd8f431e",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/ice_use.mp3?v=fc46734f8f4d",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/lightning_hit.mp3?v=70adadcb3cc0",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/lightning_use.mp3?v=f46692f0eb86",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/miss.mp3?v=aa6b28dabfb7",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/nature_hit.mp3?v=5e1dac0f0611",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/nature_use.mp3?v=5b268f47885f",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/projectile_hit.mp3?v=c5f343601ece",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/projectile_use.mp3?v=2d577fbd71d4",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/revive_use.mp3?v=fa697d4ab912",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/shadow_hit.mp3?v=6e8c61e24fff",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/shadow_use.mp3?v=65e3586a570d",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/slash_hit.mp3?v=0f3353d579f4",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/slash_use.mp3?v=8b48d45978b1",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/stealth_use.mp3?v=35b7d246c0c4",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/support_use.mp3?v=bbc9d47ac0b2",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/thrust_hit.mp3?v=ca8168f4ca92",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/thrust_use.mp3?v=d14595cfac0b",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/transform_use.mp3?v=d751de9a006c",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/unarmed_hit.mp3?v=38e137491e9a",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/unarmed_use.mp3?v=2296afd262ba",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/whip_hit.mp3?v=8ffcd16d4987",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/audio/sfx/whip_use.mp3?v=8d64a00916e9",
+            "bytes": 24880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/home_art.js?v=20260918-xp2",
+            "bytes": 24151,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/expedition/data.js?v=20261003-xp1",
+            "bytes": 23753,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/expedition/scene.js?v=20261003-xp1",
+            "bytes": 23487,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/gate_epilogue_voice.js?v=20260918-xp2",
+            "bytes": 22603,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/character.js?v=20260918-xp2",
+            "bytes": 22165,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/party.js?v=20260918-xp2",
+            "bytes": 21900,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/wolf/wolf.json?v=combat-roster-20261002",
+            "bytes": 21599,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/wolf/wolf.json?v=combat-roster-20261002",
+            "bytes": 21599,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/cutscenes.js?v=20260918-xp2",
+            "bytes": 21311,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/gate_ambience.js?v=20260921-xp2",
+            "bytes": 20675,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/vault.js?v=20260918-xp2",
+            "bytes": 20281,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/music.js?v=20260918-xp2",
+            "bytes": 20138,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/icons/hiro-skills.webp",
+            "bytes": 19501,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/campaign_data.js?v=20260918-xp2",
+            "bytes": 19476,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/weather.js?v=20260918-xp2",
+            "bytes": 18669,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/gate_finale.js?v=20260918-xp2",
+            "bytes": 18281,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/skillsys.js?v=20260918-xp2",
+            "bytes": 18274,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/anime_art.js?v=20260918-xp2",
+            "bytes": 17816,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/relationships.js?v=20260918-xp2",
+            "bytes": 17800,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/monster_skills.js?v=20260918-xp2",
+            "bytes": 17634,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/divine.js?v=20260918-xp2",
+            "bytes": 17383,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/death.js?v=20260918-xp2",
+            "bytes": 17118,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/minibosses.js?v=20260918-xp2",
+            "bytes": 16146,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/uikit.js?v=20260918-xp2",
+            "bytes": 16001,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/index.html?fresh=1&seed=11&renderer=canvas",
+            "bytes": 15357,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/personality_social.js?v=20260918-xp2",
+            "bytes": 15035,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/difficulty.js?v=20260918-xp2",
+            "bytes": 14520,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/dialoguebox.js?v=20260918-xp2",
+            "bytes": 14252,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/expedition/dev.js?v=20261003-xp1",
+            "bytes": 14160,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/combat_presentation.js?v=20260918-xp2",
+            "bytes": 14034,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/anime_manifest.js?v=20260918-xp2",
+            "bytes": 13460,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/gate_finale.js?v=20260918-xp2",
+            "bytes": 13037,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/courtship.js?v=20260918-xp2",
+            "bytes": 12961,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/constants.js?v=20260918-xp2",
+            "bytes": 12034,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/anime_environments.js?v=20260918-xp2",
+            "bytes": 11407,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/plant/plant.json?v=combat-roster-20261002",
+            "bytes": 11203,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/plant/plant.json?v=combat-roster-20261002",
+            "bytes": 11203,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/busts/busts.json",
+            "bytes": 10971,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/combat_ai.js?v=20260918-xp2",
+            "bytes": 10784,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/enemies.js?v=20260918-xp2",
+            "bytes": 10735,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/tutorial.js?v=20260918-xp2",
+            "bytes": 10457,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/travel.js?v=20260918-xp2",
+            "bytes": 10415,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/combat_statuses.js?v=20260918-xp2",
+            "bytes": 10098,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/anime_identities.js?v=20260918-xp2",
+            "bytes": 9955,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/travel.js?v=20260918-xp2",
+            "bytes": 9661,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/skill_art_catalog.js?v=20260918-xp2",
+            "bytes": 9496,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/save.js?v=20260918-xp2",
+            "bytes": 8345,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/expedition/painted.js?v=20261003-xp1",
+            "bytes": 8268,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/personality_pairs.js?v=20260918-xp2",
+            "bytes": 7972,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/combat_healing.js?v=20260918-xp2",
+            "bytes": 7955,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/adult/alpha-fatal/alpha-fatal.json",
+            "bytes": 7637,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/expedition/travel_art.js?v=20261003-xp1",
+            "bytes": 7233,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/expedition/inn_art.js?v=20261003-xp1",
+            "bytes": 6859,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/hiro.js?v=20260918-xp2",
+            "bytes": 6624,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/combat_effects.js?v=20260918-xp2",
+            "bytes": 6453,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/survival.js?v=20260918-xp2",
+            "bytes": 5947,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/prefs.js?v=20260918-xp2",
+            "bytes": 5868,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/mobile.css?v=20260914-mobile2",
+            "bytes": 5776,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/campaign3_perk_combat.js?v=20260918-xp2",
+            "bytes": 5642,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/travel_panorama.js?v=20260918-xp2",
+            "bytes": 5582,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/travel_ambience.js?v=20260918-xp2",
+            "bytes": 5544,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/conversation.js?v=20260918-xp2",
+            "bytes": 5463,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/theme.js?v=20260918-xp2",
+            "bytes": 5431,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/save_store.js?v=20260918-xp2",
+            "bytes": 5275,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/expedition/run.js?v=20261003-xp1",
+            "bytes": 5267,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/censorship.js?v=20260918-xp2",
+            "bytes": 4946,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/util.js?v=20260918-xp2",
+            "bytes": 4822,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/combat_targeting.js?v=20260918-xp2",
+            "bytes": 4737,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/expedition/enemy_finishers.js?v=20261003-xp1",
+            "bytes": 4636,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/campaign3_perks.js?v=20260918-xp2",
+            "bytes": 4389,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/campaign3_perks.js?v=20260918-xp2",
+            "bytes": 3988,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/expedition/shim.js?v=20261003-xp1",
+            "bytes": 3523,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/combat_turns.js?v=20260918-xp2",
+            "bytes": 3493,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/housing.js?v=20260918-xp2",
+            "bytes": 3339,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/family_support.js?v=20260918-xp2",
+            "bytes": 3336,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/mobile_viewport.js?v=20260918-xp2",
+            "bytes": 3002,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/portal.js?v=20260918-xp2",
+            "bytes": 2920,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/expedition/defeat_fx.js?v=20261003-xp1",
+            "bytes": 2813,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/campaign_router.js?v=20260918-xp2",
+            "bytes": 2258,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/enemy_tactics.js?v=20260918-xp2",
+            "bytes": 2175,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/expedition/icons/hiro-skills.json",
+            "bytes": 2106,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/expedition/battle_stage.js?v=20261003-xp1",
+            "bytes": 2064,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/expedition/media_hashes.js?v=20261003-xp1",
+            "bytes": 2054,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/balance_support.js?v=20260918-xp2",
+            "bytes": 2051,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/asset_queue.js?v=20260918-xp2",
+            "bytes": 2035,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/ui/travel_battle_art.js?v=20260918-xp2",
+            "bytes": 1968,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/registry.js?v=20260918-xp2",
+            "bytes": 1935,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/rng.js?v=20260918-xp2",
+            "bytes": 1880,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/version.js?v=20260918-xp2",
+            "bytes": 1875,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/quest_lifecycle.js?v=20260918-xp2",
+            "bytes": 1869,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/dialogue_hiro.js?v=20260918-xp2",
+            "bytes": 1689,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/assets/save-ui.css?v=20260914-audit1",
+            "bytes": 1521,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/data/names.js?v=20260918-xp2",
+            "bytes": 1169,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/release_config.js?v=20260918-xp2",
+            "bytes": 514,
+            "status": 200,
+            "cached": false
+          },
+          {
+            "path": "/js/core/combat_events.js?v=20260918-xp2",
+            "bytes": 432,
+            "status": 200,
+            "cached": false
+          }
+        ],
+        "errors": []
+      }
+    ],
+    "findings": [
+      "desktop: initial download reaches/exceeds 20 MB mobile budget",
+      "mobile-portrait: initial download reaches/exceeds 20 MB mobile budget",
+      "mobile-landscape: initial download reaches/exceeds 20 MB mobile budget"
+    ]
+  },
+  "remaining": [
+    "Six existing finishers retained; replacement drafts rejected",
+    "Additional monster-on-Hiro finishers awaiting content direction"
+  ]
+}

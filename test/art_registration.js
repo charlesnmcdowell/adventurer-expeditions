@@ -91,4 +91,4 @@ for(const [id,count] of Object.entries(counts)){
   }
   console.log('registered '+id+': '+count+' frames');
 }
-console.log('art_registration: 6 complete atlases, size-jump and frame contracts pass');
+console.log('art_registration: '+Object.keys(counts).length+' complete atlases, size-jump and frame contracts pass');
