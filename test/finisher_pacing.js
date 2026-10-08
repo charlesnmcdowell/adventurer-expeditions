@@ -8,6 +8,7 @@ for(const id of ids){
  const j=JSON.parse(fs.readFileSync(path.join(ROOT,'assets/expedition',id,id+'.json'),'utf8')),before=JSON.stringify(j);
  const s=X.Painted.sheet({cache:{json:{get:()=>j}},textures:{exists:()=>true}},id);
  for(const [name,c]of Object.entries(j.clips)){
+  if((X.Painted.retiredFinishers[id]||[]).includes(name)){assert.equal(s.clips[name],undefined,'retired clip must not be playable');continue;}
   if(!c.paired||!name.startsWith('hiro-')){assert.equal(s.clips[name],c);continue;}
   const next=s.clips[name];assert.equal(next.frames,c.frames);assert.equal(next.contact,c.contact);assert.equal(next.release,c.release);
   assert.equal(next.durationMs,next.frameDurationsMs.reduce((a,b)=>a+b,0));assert(next.durationMs>=1400&&next.durationMs<=1700);
@@ -17,4 +18,4 @@ for(const id of ids){
  }
  assert.equal(JSON.stringify(j),before,'pacing must not mutate cached/source metadata');
 }
-assert.equal(checked,17);console.log('finisher_pacing: 17 finishers retain frames/contact markers and gain readable holds');
+assert.equal(checked,12);console.log('finisher_pacing: 12 retained boss/swamp/city finishers preserve timing; retired clips excluded');

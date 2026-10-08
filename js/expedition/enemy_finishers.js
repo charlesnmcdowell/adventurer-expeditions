@@ -22,10 +22,11 @@ F.preload = (scene, ids) => {
   for (const actor of new Set(ids)) {
     if (!READY.has(actor)) continue;
     const key = keyFor(actor), base = 'assets/expedition/adult/' + actor + '-fatal/';
-    if (!scene.textures.exists(key)) scene.load.multiatlas(key, base + actor + '-fatal.json', base);
+    const url = base + actor + '-fatal.json?v=20261008-review-r2';
+    if (!scene.textures.exists(key)) scene.load.multiatlas(key, url, base);
     // Multiatlas queues an internal JSON under its texture key. A distinct
     // metadata key avoids Phaser deduplicating our clip data on a cold load.
-    if (!scene.cache.json.exists(key + '_clips')) scene.load.json(key + '_clips', base + actor + '-fatal.json');
+    if (!scene.cache.json.exists(key + '_clips')) scene.load.json(key + '_clips', url);
   }
 };
 F.canPlay = (scene, killer, target, events) => F.enabled() && !scene.ended &&

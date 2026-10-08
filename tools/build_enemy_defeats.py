@@ -13,6 +13,8 @@ ROOT=Path(__file__).resolve().parents[1]
 SRC=ROOT.parent/'adventurer-expeditions-source-art/astra-v4/enemy-defeats-20261008'
 AUDIT=ROOT/'docs/art/enemy-defeats-20261008'
 ACTORS=['wolf','plant','serpent','beetle','moss_giant','hag','goblin','spider','orc']
+OMITTED={'serpent':{2},'beetle':{1}}
+PACK_TAG=''
 
 def valley(profile,nominal,radius):
     lo=max(0,round(nominal-radius));hi=min(len(profile),round(nominal+radius))
@@ -45,8 +47,7 @@ def prepare():
         hero_top=float(np.quantile(yy,.01));ref=floors[0]-boxes[0][1]-hero_top
         hero_x=float(np.median(x))
         # These raised-sword poses clip the master edge; omit rather than ship.
-        omitted={'serpent':{2},'beetle':{1}}
-        indices=[i for i in range(12) if i not in omitted.get(actor,set())]
+        indices=[i for i in range(12) if i not in OMITTED.get(actor,set())]
         sources=[];guides=[];contact=4 if actor in ['wolf','beetle','moss_giant','hag','orc'] else 6
         board=Image.new('RGB',(1600,1200),(47,63,76));draw=ImageDraw.Draw(board)
         for k,i in enumerate(indices):
@@ -71,7 +72,14 @@ def apply():
     manifest=json.loads((SRC/'manifest.json').read_text(encoding='utf-8'))
     AUDIT.mkdir(parents=True,exist_ok=True)
     for c in manifest['clips']:
-        build(SRC,c['id'],ROOT/'assets/expedition/adult',height=320,manifest={'clips':[c]})
+        doc=build(SRC,c['id'],ROOT/'assets/expedition/adult',height=320,manifest={'clips':[c]})
+        if PACK_TAG:
+            out=ROOT/'assets/expedition/adult'/c['id']
+            for t in doc['textures']:
+                old=t['image'];new=Path(old).stem+'-'+PACK_TAG+'.webp'
+                (out/old).rename(out/new);t['image']=new
+            doc['meta']['pages']=[t['image'] for t in doc['textures']]
+            (out/(c['id']+'.json')).write_text(json.dumps(doc),encoding='utf-8')
     shutil.copyfile(SRC/'manifest.json',AUDIT/'registration.json')
     prompts={a:json.loads((SRC/(a+'-prompt.json')).read_text(encoding='utf-8')) for a in ACTORS if (SRC/(a+'-prompt.json')).exists()}
     (AUDIT/'prompts.json').write_text(json.dumps(prompts,indent=2),encoding='utf-8')

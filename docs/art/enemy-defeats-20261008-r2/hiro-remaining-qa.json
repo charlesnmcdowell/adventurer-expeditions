@@ -1,0 +1,231 @@
+[
+  {
+    "actor": "wolf",
+    "attack": {
+      "id": "bite",
+      "frames": 12,
+      "contacts": 1
+    },
+    "clips": [
+      {
+        "id": "wolf-cleave-paired",
+        "frames": 12,
+        "contacts": 1,
+        "visible": true,
+        "nativeRestored": true
+      },
+      {
+        "id": "wolf-pin-paired",
+        "frames": 12,
+        "contacts": 1,
+        "visible": true,
+        "nativeRestored": true
+      },
+      {
+        "id": "wolf-rising-cut-paired",
+        "frames": 12,
+        "contacts": 1,
+        "visible": true,
+        "nativeRestored": true
+      }
+    ],
+    "cancellationRestored": true
+  },
+  {
+    "actor": "plant",
+    "attack": {
+      "id": "lash",
+      "frames": 12,
+      "contacts": 1
+    },
+    "clips": [
+      {
+        "id": "plant-vine-pin-paired",
+        "frames": 12,
+        "contacts": 1,
+        "visible": true,
+        "nativeRestored": true
+      },
+      {
+        "id": "plant-crosscut-paired",
+        "frames": 6,
+        "contacts": 1,
+        "visible": true,
+        "nativeRestored": true
+      }
+    ],
+    "cancellationRestored": true
+  },
+  {
+    "actor": "alpha",
+    "attack": {
+      "id": "attack",
+      "frames": 12,
+      "contacts": 1
+    },
+    "clips": [
+      {
+        "id": "hiro-alpha-cleave-paired",
+        "frames": 16,
+        "contacts": 1,
+        "visible": true,
+        "nativeRestored": true
+      },
+      {
+        "id": "hiro-alpha-parry-paired",
+        "frames": 6,
+        "contacts": 1,
+        "visible": true,
+        "nativeRestored": true
+      }
+    ],
+    "cancellationRestored": true
+  },
+  {
+    "actor": "serpent",
+    "attack": {
+      "id": "attack",
+      "frames": 12,
+      "contacts": 1
+    },
+    "clips": [
+      {
+        "id": "hiro-finisher-1",
+        "frames": 12,
+        "contacts": 1,
+        "visible": true,
+        "nativeRestored": true
+      }
+    ],
+    "cancellationRestored": true
+  },
+  {
+    "actor": "beetle",
+    "attack": {
+      "id": "attack",
+      "frames": 12,
+      "contacts": 1
+    },
+    "clips": [
+      {
+        "id": "hiro-finisher-1",
+        "frames": 12,
+        "contacts": 1,
+        "visible": true,
+        "nativeRestored": true
+      }
+    ],
+    "cancellationRestored": true
+  },
+  {
+    "actor": "moss_giant",
+    "attack": {
+      "id": "attack",
+      "frames": 12,
+      "contacts": 1
+    },
+    "clips": [
+      {
+        "id": "hiro-finisher-1",
+        "frames": 6,
+        "contacts": 1,
+        "visible": true,
+        "nativeRestored": true
+      },
+      {
+        "id": "hiro-finisher-2",
+        "frames": 6,
+        "contacts": 1,
+        "visible": true,
+        "nativeRestored": true
+      }
+    ],
+    "cancellationRestored": true
+  },
+  {
+    "actor": "hag",
+    "attack": {
+      "id": "attack",
+      "frames": 12,
+      "contacts": 1
+    },
+    "clips": [
+      {
+        "id": "hiro-finisher-1",
+        "frames": 12,
+        "contacts": 1,
+        "visible": true,
+        "nativeRestored": true
+      },
+      {
+        "id": "hiro-finisher-2",
+        "frames": 12,
+        "contacts": 1,
+        "visible": true,
+        "nativeRestored": true
+      }
+    ],
+    "cancellationRestored": true
+  },
+  {
+    "actor": "goblin",
+    "attack": {
+      "id": "attack",
+      "frames": 12,
+      "contacts": 1
+    },
+    "clips": [
+      {
+        "id": "hiro-finisher-1",
+        "frames": 12,
+        "contacts": 1,
+        "visible": true,
+        "nativeRestored": true
+      }
+    ],
+    "cancellationRestored": true
+  },
+  {
+    "actor": "spider",
+    "attack": {
+      "id": "attack",
+      "frames": 12,
+      "contacts": 1
+    },
+    "clips": [
+      {
+        "id": "hiro-finisher-2",
+        "frames": 12,
+        "contacts": 1,
+        "visible": true,
+        "nativeRestored": true
+      }
+    ],
+    "cancellationRestored": true
+  },
+  {
+    "actor": "orc",
+    "attack": {
+      "id": "attack",
+      "frames": 12,
+      "contacts": 1
+    },
+    "clips": [
+      {
+        "id": "hiro-finisher-1",
+        "frames": 12,
+        "contacts": 1,
+        "visible": true,
+        "nativeRestored": true
+      },
+      {
+        "id": "hiro-finisher-2",
+        "frames": 6,
+        "contacts": 1,
+        "visible": true,
+        "nativeRestored": true
+      }
+    ],
+    "cancellationRestored": true
+  }
+]

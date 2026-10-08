@@ -1,0 +1,18 @@
+{
+  "wolf": {
+    "transparent_background": true,
+    "referenced_image_paths": [
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v1/heroes/hiro/hiro-reference.png",
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v1/beasts/wolf_reference.png"
+    ],
+    "prompt": "Create a production anime cel shaded game animation sprite sheet, transparent alpha background, exactly twelve separate sequential poses in a regular 4 column by 3 row grid. No labels. Broad empty gutters and outer margins, every full body and weapon fully inside its cell. Fixed camera, ground line, scale and identities. Each cell contains adult male Hiro on left facing right and the referenced monster on right facing left. Hiro has dark skin, purple dreadlocks, fully covered black/purple cyber samurai armor and katana, exactly the reference identity. This is a stylized fantasy battle defeat with visible red blood on armor and a few airborne red droplets, but intact bodies, no exposed organs, no exposed deep wound, no dismemberment. Hiro must remain fully visible through all frames including the final defeated pose. Full scene pairs, not isolated monster sprites. Clear anticipation, physical contact, follow through, then settle. Wolf sequence: 1 crouching wolf and guarded Hiro; 2 wolf launches; 3 jaws grab armored upper arm, red droplets; 4 pull twists Hiro; 5 wolf tackles him down; 6 Hiro lands on back, wolf on top; 7 wolf bites clothed shoulder, small blood splash; 8 wolf shakes its head still biting shoulder; 9 wolf releases and lifts head; 10 wolf steps back; 11 and 12 full intact Hiro lying defeated, blood stains on sleeve and chest armor, wolf standing next to him. Biting and dragging contact must read clearly. Do not make Hiro vanish or omit him behind wolf."
+  },
+  "orc": {
+    "transparent_background": true,
+    "referenced_image_paths": [
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v1/heroes/hiro/hiro-reference.png",
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v3/monsters/orc/turnaround.png"
+    ],
+    "prompt": "Create a production anime cel shaded game animation sprite sheet, transparent alpha background, exactly twelve separate sequential poses in a regular 4 column by 3 row grid. No labels. Broad empty gutters and outer margins, every full body and weapon fully inside its cell. Fixed camera, ground line, scale and identities. Each cell contains adult male Hiro on left facing right and the referenced monster on right facing left. Hiro has dark skin, purple dreadlocks, fully covered black/purple cyber samurai armor and katana, exactly the reference identity. This is a stylized fantasy battle defeat with visible red blood on armor and a few airborne red droplets, but intact bodies, no exposed organs, no exposed deep wound, no dismemberment. Hiro must remain fully visible through all frames including the final defeated pose. Full scene pairs, not isolated monster sprites. Clear anticipation, physical contact, follow through, then settle. Orc sequence: 1 orc squares up against Hiro; 2 raises two handed axe overhead with full blade inside cell; 3 axe starts downward arc; 4 axe blade visibly strikes Hiro across armored shoulder, stylized red splash; 5 axe follows through while Hiro recoils, blood on armor; 6 Hiro buckles to knees; 7 Hiro falls sideways; 8 lands intact; 9 orc withdraws axe with blood on blade; 10 settles into victorious stance; 11 and 12 holds axe lowered beside whole defeated Hiro, red blood stains on torso armor and small ground stain. The blade must deliver the blow, not the handle or pommel. Keep all bodies intact."
+  }
+}

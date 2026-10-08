@@ -1,0 +1,92 @@
+[
+  {
+    "actor": "wolf",
+    "frames": 11,
+    "visible": true,
+    "threshold": 0.3,
+    "executionEndsCombat": true,
+    "finalPoseHeld": true,
+    "zoom": 1
+  },
+  {
+    "actor": "plant",
+    "frames": 12,
+    "visible": true,
+    "threshold": 0.3,
+    "executionEndsCombat": true,
+    "finalPoseHeld": true,
+    "zoom": 1
+  },
+  {
+    "actor": "alpha",
+    "frames": 16,
+    "visible": true,
+    "threshold": 0.3,
+    "executionEndsCombat": true,
+    "finalPoseHeld": true,
+    "zoom": 1
+  },
+  {
+    "actor": "serpent",
+    "frames": 11,
+    "visible": true,
+    "threshold": 0.3,
+    "executionEndsCombat": true,
+    "finalPoseHeld": true,
+    "zoom": 1
+  },
+  {
+    "actor": "beetle",
+    "frames": 11,
+    "visible": true,
+    "threshold": 0.3,
+    "executionEndsCombat": true,
+    "finalPoseHeld": true,
+    "zoom": 1
+  },
+  {
+    "actor": "moss_giant",
+    "frames": 12,
+    "visible": true,
+    "threshold": 0.3,
+    "executionEndsCombat": true,
+    "finalPoseHeld": true,
+    "zoom": 1
+  },
+  {
+    "actor": "hag",
+    "frames": 12,
+    "visible": true,
+    "threshold": 0.3,
+    "executionEndsCombat": true,
+    "finalPoseHeld": true,
+    "zoom": 1
+  },
+  {
+    "actor": "goblin",
+    "frames": 12,
+    "visible": true,
+    "threshold": 0.3,
+    "executionEndsCombat": true,
+    "finalPoseHeld": true,
+    "zoom": 1
+  },
+  {
+    "actor": "spider",
+    "frames": 12,
+    "visible": true,
+    "threshold": 0.3,
+    "executionEndsCombat": true,
+    "finalPoseHeld": true,
+    "zoom": 1
+  },
+  {
+    "actor": "orc",
+    "frames": 12,
+    "visible": true,
+    "threshold": 0.3,
+    "executionEndsCombat": true,
+    "finalPoseHeld": true,
+    "zoom": 1
+  }
+]

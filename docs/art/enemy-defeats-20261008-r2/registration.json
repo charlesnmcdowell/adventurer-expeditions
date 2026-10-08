@@ -1,0 +1,513 @@
+{
+  "clips": [
+    {
+      "id": "wolf-fatal",
+      "frames": 11,
+      "sources": [
+        {
+          "file": "wolf-frame-00.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 0
+        },
+        {
+          "file": "wolf-frame-01.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 1
+        },
+        {
+          "file": "wolf-frame-02.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 2
+        },
+        {
+          "file": "wolf-frame-03.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 3
+        },
+        {
+          "file": "wolf-frame-04.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 4
+        },
+        {
+          "file": "wolf-frame-05.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 5
+        },
+        {
+          "file": "wolf-frame-06.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 6
+        },
+        {
+          "file": "wolf-frame-07.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 7
+        },
+        {
+          "file": "wolf-frame-08.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 8
+        },
+        {
+          "file": "wolf-frame-09.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 9
+        },
+        {
+          "file": "wolf-frame-10.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 10
+        }
+      ],
+      "paired": true,
+      "registration": {
+        "referenceHeight": 255.0,
+        "frames": [
+          {
+            "anchorX": 110.0,
+            "groundY": 363.0
+          },
+          {
+            "anchorX": 107.0,
+            "groundY": 363.0
+          },
+          {
+            "anchorX": 121.0,
+            "groundY": 363.0
+          },
+          {
+            "anchorX": 110.0,
+            "groundY": 287.0
+          },
+          {
+            "anchorX": 110.0,
+            "groundY": 287.0
+          },
+          {
+            "anchorX": 110.0,
+            "groundY": 287.0
+          },
+          {
+            "anchorX": 110.0,
+            "groundY": 287.0
+          },
+          {
+            "anchorX": 110.0,
+            "groundY": 290.0
+          },
+          {
+            "anchorX": 110.0,
+            "groundY": 290.0
+          },
+          {
+            "anchorX": 110.0,
+            "groundY": 290.0
+          },
+          {
+            "anchorX": 110.0,
+            "groundY": 290.0
+          }
+        ]
+      },
+      "durationsMs": [
+        180,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        220,
+        400
+      ],
+      "contactFramesZeroBased": [
+        3
+      ],
+      "releaseFrameZeroBased": 10,
+      "opponentKinds": [
+        "hero"
+      ],
+      "opponentKeys": [
+        "hiro"
+      ],
+      "finalState": "hero-down",
+      "pairTargetDistanceRatio": 0.73,
+      "review": {
+        "sourceRegions": [
+          [
+            0,
+            0,
+            387,
+            368
+          ],
+          [
+            387,
+            0,
+            769,
+            368
+          ],
+          [
+            769,
+            0,
+            1141,
+            368
+          ],
+          [
+            1141,
+            0,
+            1536,
+            368
+          ],
+          [
+            0,
+            368,
+            384,
+            683
+          ],
+          [
+            384,
+            368,
+            768,
+            683
+          ],
+          [
+            768,
+            368,
+            1152,
+            683
+          ],
+          [
+            1152,
+            368,
+            1536,
+            683
+          ],
+          [
+            0,
+            683,
+            384,
+            1024
+          ],
+          [
+            384,
+            683,
+            768,
+            1024
+          ],
+          [
+            768,
+            683,
+            1152,
+            1024
+          ],
+          [
+            1152,
+            683,
+            1536,
+            1024
+          ]
+        ],
+        "sourceIndices": [
+          0,
+          1,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "note": "Visual review required; alpha and grid diagnostics do not prove anatomy."
+      }
+    },
+    {
+      "id": "orc-fatal",
+      "frames": 12,
+      "sources": [
+        {
+          "file": "orc-frame-00.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 0
+        },
+        {
+          "file": "orc-frame-01.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 1
+        },
+        {
+          "file": "orc-frame-02.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 2
+        },
+        {
+          "file": "orc-frame-03.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 3
+        },
+        {
+          "file": "orc-frame-04.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 4
+        },
+        {
+          "file": "orc-frame-05.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 5
+        },
+        {
+          "file": "orc-frame-06.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 6
+        },
+        {
+          "file": "orc-frame-07.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 7
+        },
+        {
+          "file": "orc-frame-08.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 8
+        },
+        {
+          "file": "orc-frame-09.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 9
+        },
+        {
+          "file": "orc-frame-10.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 10
+        },
+        {
+          "file": "orc-frame-11.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 11
+        }
+      ],
+      "paired": true,
+      "registration": {
+        "referenceHeight": 225.0,
+        "frames": [
+          {
+            "anchorX": 102.0,
+            "groundY": 342.0
+          },
+          {
+            "anchorX": 53.0,
+            "groundY": 342.0
+          },
+          {
+            "anchorX": 101.0,
+            "groundY": 342.0
+          },
+          {
+            "anchorX": 85.0,
+            "groundY": 342.0
+          },
+          {
+            "anchorX": 102.0,
+            "groundY": 309.0
+          },
+          {
+            "anchorX": 73.0,
+            "groundY": 309.0
+          },
+          {
+            "anchorX": 102.0,
+            "groundY": 309.0
+          },
+          {
+            "anchorX": 84.0,
+            "groundY": 309.0
+          },
+          {
+            "anchorX": 102.0,
+            "groundY": 302.0
+          },
+          {
+            "anchorX": 88.0,
+            "groundY": 302.0
+          },
+          {
+            "anchorX": 91.0,
+            "groundY": 302.0
+          },
+          {
+            "anchorX": 75.0,
+            "groundY": 302.0
+          }
+        ]
+      },
+      "durationsMs": [
+        180,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        220,
+        400
+      ],
+      "contactFramesZeroBased": [
+        4
+      ],
+      "releaseFrameZeroBased": 11,
+      "opponentKinds": [
+        "hero"
+      ],
+      "opponentKeys": [
+        "hiro"
+      ],
+      "finalState": "hero-down",
+      "pairTargetDistanceRatio": 0.73,
+      "review": {
+        "sourceRegions": [
+          [
+            0,
+            0,
+            433,
+            349
+          ],
+          [
+            433,
+            0,
+            769,
+            349
+          ],
+          [
+            769,
+            0,
+            1169,
+            349
+          ],
+          [
+            1169,
+            0,
+            1536,
+            349
+          ],
+          [
+            0,
+            349,
+            413,
+            683
+          ],
+          [
+            413,
+            349,
+            768,
+            683
+          ],
+          [
+            768,
+            349,
+            1170,
+            683
+          ],
+          [
+            1170,
+            349,
+            1536,
+            683
+          ],
+          [
+            0,
+            683,
+            398,
+            1024
+          ],
+          [
+            398,
+            683,
+            779,
+            1024
+          ],
+          [
+            779,
+            683,
+            1179,
+            1024
+          ],
+          [
+            1179,
+            683,
+            1536,
+            1024
+          ]
+        ],
+        "sourceIndices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "note": "Visual review required; alpha and grid diagnostics do not prove anatomy."
+      }
+    }
+  ]
+}

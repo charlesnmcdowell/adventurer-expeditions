@@ -15,6 +15,16 @@ of small fixes within a day.
 
 ---
 
+## 2026-10-08 - Apply user's finisher removal list and wolf/orc remakes
+
+Removed six Hiro clips from playable sheet descriptors: plant-stem-cut-paired, hiro-alpha-pin-paired, serpent/hiro-finisher-2, beetle/hiro-finisher-2, goblin/hiro-finisher-2 and spider/hiro-finisher-1. Runtime filters also prevent explicit variant selection from reaching them. Original packed pixels and source masters remain recoverable. Active Hiro finishers: 23 → 17. Every creature retains at least one.
+
+Generated two replacement paired sheets with built-in image_gen using Hiro/wolf/orc identity references. Wolf now bites, tackles and mauls with blood; orc uses the axe blade with blood, rather than a handle strike. Intact bodies, no exposed organs or dismemberment. Omitted the wolf source's clipped pose 2, leaving 11 usable poses / 2,000 ms; orc has 12 / 2,150 ms. Both retain the 180 ms approach and optional local 30% execution rule. Preserved first-pass masters; new masters/prompts/extracted frames in sibling source-art/astra-v4/enemy-defeats-20261008-r2. New atlas filenames and JSON revision prevent stale cached art.
+
+Updated docs/FINISHER_REVIEW.html to 27 moves, retaining surviving IDs; fresh feedback key prevents old REMOVE M-WOLF/M-ORC markings from attaching to replacements. Files: painted.js, enemy_finishers.js, two fatal atlases, cache stamp 20261008-xp3, intake and gallery tools, template/gallery, tests, GDD and this log; reproducible prompt/registration/QA records in docs/art/enemy-defeats-20261008-r2. Checkpoint 6dc88e1.
+
+QA: npm test, removal assertions, all 17 remaining Hiro variants through real-browser contact/release/cancellation tests, all 10 enemy defeats at 30% including actual End transition, all 27 gallery animations loaded and retired IDs absent. Reviewed extracted replacement contact sheets and game ending captures. Nothing published; original Adventurer untouched. Replacements are ready for user visual review.
+
 ## 2026-10-08 - Enemy finishers at 30% health
 
 Fixed the user's reported trigger mismatch: previously finishers were presentation-only after Hiro reached zero HP. When the local Enemy finishers setting is enabled, an eligible enemy's direct hit leaving Hiro at or below 30% max HP now starts its execution, even without a simulator down event. Successful completion sets HP to zero, marks him down, clears queued skills and ends combat as defeat. The director checks the updated encounter state before another turn. Cancelling the animation does not execute a still-living Hiro. Above 30%, DOT-only damage, disabled setting, missing assets and portal builds retain ordinary combat. Default remains off. Updated the stale Alpha-only pause-menu hint to explain the threshold.

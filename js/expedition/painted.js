@@ -3,6 +3,12 @@
 'use strict';
 const A = ADV, X = A.Expedition, UI = X.UI;
 const P = X.Painted = {};
+// User review IDs remain stable; masters/atlas pixels are retained for recovery.
+P.retiredFinishers = {
+  hiro: ['plant-stem-cut-paired'], alpha: ['hiro-alpha-pin-paired'],
+  serpent: ['hiro-finisher-2'], beetle: ['hiro-finisher-2'],
+  goblin: ['hiro-finisher-2'], spider: ['hiro-finisher-1'],
+};
 P.actors = ['hiro', 'bram', 'wolf', 'plant', 'alpha', ...(X.monsterActors || [])];
 
 // What a scene actually needs before it can run. Bram is ~2 MB and cannot be in
@@ -47,9 +53,9 @@ P.sheet = function (scene, id) {
   if (!j || !scene.textures.exists(key)) return null;
   // Release polish: hold anticipation, contact and recovery without slowing
   // the rest of combat. Original frames/markers and source art stay intact.
-  let clips = j.clips;
+  let clips = Object.fromEntries(Object.entries(j.clips).filter(([name]) => !(P.retiredFinishers[id] || []).includes(name)));
   if (id === 'alpha' || (X.monsterActors || []).includes(id)) {
-    clips = Object.fromEntries(Object.entries(j.clips).map(([name, c]) => {
+    clips = Object.fromEntries(Object.entries(clips).map(([name, c]) => {
       if (!c.paired || !name.startsWith('hiro-')) return [name, c];
       const times = c.frames.length === 8 ? [240,130,150,210,160,190,210,330]
         : id === 'alpha' ? [260,180,140,220,240,360] : [260,140,220,210,250,340];
