@@ -23,7 +23,10 @@ for(const target of ['website','crazygames','poki',undefined]) {
  foe.sheet.actor='unknown';assert.equal(!!f.canPlay(scene,foe,hero,[hit]),false);
  foe.sheet.actor='alpha';
  scene.textures.exists=()=>false;assert.equal(!!f.canPlay(scene,foe,hero,[hit]),false);scene.textures.exists=()=>true;
- assert.equal(!!f.canPlay(scene,foe,hero,[{...hit,tag:'dot'}]),false);
+ assert.equal(!!f.canPlay(scene,foe,hero,[{...hit,tag:'dot'}]),local);
+ scene.actors=new Map([['hero',hero],['alpha',foe]]);
+ assert.equal(f.defeatKiller(scene,null,hero,[])===foe,local);
+ assert.equal(f.defeatKiller(scene,{...foe,alive:false},hero,[{...hit,tag:'dot'}])===foe,local);
  hero.unit.chp=1;assert.equal(!!f.canPlay(scene,foe,hero,[hit]),false);hero.unit.chp=0;
  hero.unit.maxHp=100;
  for(const hp of [31,30,29]) {hero.unit.chp=hp;assert.equal(!!f.canPlay(scene,foe,hero,[hit]),local&&hp<=30);}
@@ -31,4 +34,4 @@ for(const target of ['website','crazygames','poki',undefined]) {
  assert.equal(!!f.canPlay(scene,foe,hero,[]),false);
  f.setEnabled(false);assert.equal(!!f.canPlay(scene,foe,hero,[hit]),false);
 }
-console.log('enemy_finishers: preference, fail-closed profiles, lethal-only and DOT exclusion pass');
+console.log('enemy_finishers: preference, fail-closed profiles, 30% direct hits, fatal DOT and fallback attacker pass');

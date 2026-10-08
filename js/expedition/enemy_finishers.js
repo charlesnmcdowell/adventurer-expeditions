@@ -33,9 +33,18 @@ F.canPlay = (scene, killer, target, events) => F.enabled() && !scene.ended &&
   target === scene.hero && target.alive && !target._destroyed &&
   (target.unit.chp <= 0 || (target.unit.maxHp > 0 && target.unit.chp / target.unit.maxHp <= 0.3)) &&
   killer?.side === 'b' && killer.alive && !killer._destroyed && READY.has(killer.sheet?.actor) &&
-  [...(events || [])].reverse().find(e => e.t === 'damage' && e.uid === target.uid)?.by === killer.uid &&
-  [...(events || [])].reverse().find(e => e.t === 'damage' && e.uid === target.uid)?.tag !== 'dot' &&
+  (target.unit.chp <= 0 || (
+    [...(events || [])].reverse().find(e => e.t === 'damage' && e.uid === target.uid)?.by === killer.uid &&
+    [...(events || [])].reverse().find(e => e.t === 'damage' && e.uid === target.uid)?.tag !== 'dot')) &&
   scene.textures.exists(keyFor(killer.sheet.actor)) && !!scene.cache.json.get(keyFor(killer.sheet.actor) + '_clips');
+
+// A fatal tick may have no living source (poison outlives its caster). Let a
+// surviving enemy deliver the ending instead of silently skipping the clip.
+F.defeatKiller = (scene, preferred, target, events) => {
+  if (target !== scene.hero || target.unit.chp > 0) return null;
+  if (F.canPlay(scene, preferred, target, events)) return preferred;
+  return [...scene.actors.values()].find(a => F.canPlay(scene, a, target, events)) || null;
+};
 
 F.tryLowHealth = async (scene, events) => {
   const hero = scene.hero;

@@ -138,7 +138,8 @@ async function playDowns(scene, downs, events, byFinisher) {
     if (!target || !target.alive || target._destroyed) continue;
     if (target.__finisherPresented) { await target.play('down_fade'); continue; }
     const source = e.by || [...(events || [])].reverse().find(p => p.uid === e.uid && ['damage', 'execute'].includes(p.t))?.by;
-    const killer = actorOf(scene, source) || scene.hero;
+    const sourceActor = actorOf(scene, source);
+    const killer = X.EnemyFinishers?.defeatKiller(scene, sourceActor, target, events) || sourceActor || scene.hero;
     if (byFinisher && target.side === 'b' && killer && killer.side === 'a' && killer.alive && !killer._destroyed) {
       await cinematic(scene, 'kill', killer, target, async () => {
         sfx(scene, 'slash', 'use');

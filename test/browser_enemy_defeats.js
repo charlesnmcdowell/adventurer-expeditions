@@ -19,7 +19,7 @@ const CASES=[['rain',0,'wolf'],['rain',1,'plant'],['rain',2,'alpha'],['marsh',0,
    await page.evaluate(([quest,wave])=>{const X=ADV.Expedition,s=__game.scene.getScene('Expedition'),r=X.Run.fresh();r.questId=quest;r.wave=wave;r.phase='quest';r.tutorial.skipGuide=true;s.__fatalReady=false;X.Dev.go(s,'Expedition',{run:r,seed:9});},[quest,wave]);
    await page.waitForFunction(()=>__game.scene.getScene('Expedition').__fatalReady);
    await page.evaluate(()=>{const stream=__game.canvas.captureStream(60),chunks=[],rec=new MediaRecorder(stream,{mimeType:'video/webm;codecs=vp9',videoBitsPerSecond:5000000});rec.ondataavailable=e=>{if(e.data.size)chunks.push(e.data);};window.__recording={stream,chunks,rec};rec.start(100);});
-   const result=await page.evaluate(async actor=>{
+   const result=await page.evaluate(async ({actor,lethal,dot})=>{
     const X=ADV.Expedition,s=__game.scene.getScene('Expedition'),h=s.hero,a=[...s.actors.values()].find(a=>a.sheet?.actor===actor);
     if(!a)throw Error('Missing '+actor);
     X.EnemyFinishers.setEnabled(true);
@@ -27,15 +27,15 @@ const CASES=[['rain',0,'wolf'],['rain',1,'plant'],['rain',2,'alpha'],['marsh',0,
     if(!clip)throw Error('Missing fatal atlas '+actor);
     const seen=new Set();let badVisibility=false;
     const watch=()=>{const p=s.__enemyFinishSprite;if(!p)return;seen.add(p.frame.name);if(h.root.visible||a.root.visible||!p.visible||p.alpha<.99)badVisibility=true;};
-    s.events.on('update',watch);h.unit.chp=h.unit.maxHp*0.3;
-    try{await X.Beats.ticksOnly(s,[{t:'damage',uid:h.uid,by:a.uid,dmg:1,tag:'hit'}]);watch();}
+    s.events.on('update',watch);h.unit.chp=lethal?0:h.unit.maxHp*0.3;
+    try{await X.Beats.ticksOnly(s,[{t:'damage',uid:h.uid,by:a.uid,dmg:1,tag:dot?'dot':'hit'},...(lethal?[{t:'down',uid:h.uid}]:[])]);watch();}
     finally{s.events.off('update',watch);}
     if(!s.__enemyFinishPresented||h.alive||badVisibility)throw Error(actor+': defeat/visibility failed');
     if(h.unit.chp!==0||!h.unit.downed||!s.enc.st.over||X.Encounter.won(s.enc))throw Error(actor+': execution did not end combat as defeat');
     if(seen.size!==clip.frames.length)throw Error(actor+': missed frames '+seen.size+'/'+clip.frames.length);
     if(s.__enemyFinishSprite.frame.name!==clip.frames.at(-1))throw Error(actor+': final pose not held');
-    return {actor,frames:seen.size,visible:true,threshold:0.3,executionEndsCombat:true,finalPoseHeld:true,zoom:s.cameras.main.zoom};
-   },actor);
+    return {actor,frames:seen.size,visible:true,threshold:lethal?0:0.3,dot,executionEndsCombat:true,finalPoseHeld:true,zoom:s.cameras.main.zoom};
+   },{actor,lethal:process.argv.includes('--lethal'),dot:process.argv.includes('--dot')});
    report.push(result);console.log(actor+': '+result.frames+' frames, lethal routing passed');
    await page.screenshot({path:path.join(OUT,actor+'-end.png')});
    const b64=await page.evaluate(()=>new Promise(resolve=>{const c=__recording;c.rec.onstop=()=>{c.stream.getTracks().forEach(t=>t.stop());const f=new FileReader();f.onload=()=>resolve(f.result.split(',')[1]);f.readAsDataURL(new Blob(c.chunks,{type:'video/webm'}));};c.rec.stop();}));

@@ -15,6 +15,18 @@ of small fixes within a day.
 
 ---
 
+## 2026-10-08 - Coast production started; layered existing battles and defeat routing
+
+User approved Shipwreck Coast only; Stormpeak Shrine and Cinderwood were declined. Coast is NOT playable yet. Remaining: Hydra art, complete validated combat sets, two Hiro pairs and one monster-on-Hiro pair for each of crab/toad/vulture/Hydra, Coast travel choreography/effects, encounter/loop registration, balance and full journey QA. Do not unlock or publish an incomplete roster.
+
+User selected `Cookie Blade of Clove Battle theme.wav` from `C:/Users/charl/OneDrive/Documents/TTRPG/Kenji/music`. Prepared `audio/music/coast_clove.mp3` at 160 kbps (3,900,629 bytes), preserving the full track; not yet referenced by a playable quest or ship manifest. Intended for Coast travel and combat. Source art production drafts (far/ground/near and crab/toad/vulture combat) are preserved in sibling `adventurer-expeditions-source-art/astra-v5/coast-20261008`; generation prompt records are in `docs/art/coast-20261008-production.json`. Drafts are not shipped; inspect edge clipping and improve attack pose count before intake.
+
+Existing battle stages now use three actual painted layers, reusing the approved forest/swamp/city travel assets. Mountain retains its mountain distance plate. Far and near layers move subtly at different rates; middle ground stays fixed for actor contact; existing WeatherFX stays independent. City ground is translated 60 px upward to align the pavement without stretching buildings. Files: battle_stage.js and browser_battle_layers.js. Five existing wave backgrounds checked in Chrome with moving far/near, fixed ground and screenshots. This does not yet change the flat obstacle plates in travel.
+
+Enemy defeat routing now accepts fatal DOT and missing-source events; if the source has disappeared, a surviving enemy with loaded art delivers the finisher. Existing enabled preference, website-only policy and <=30% direct-hit execution remain. No random chance. Ordinary defeat remains the fallback when disabled, outside website profile, without art or without a surviving eligible enemy. Files: enemy_finishers.js, beats.js, enemy_finishers.js test and browser_enemy_defeats.js (new --lethal / --dot modes). All ten existing sets passed 30% and zero-HP DOT playback, frame and ending checks; missing/dead-source selection covered by unit tests. Do not describe this as a guarantee with missing assets or no surviving enemy.
+
+Checkpoint 0ce910d. Baseline npm test and ship journey passed in installed Chrome (bundled Playwright browser absent); post-change npm test, Chrome ship journey (forest and swamp returns to inn), and focused browser checks passed. Original Adventurer and synced shared files untouched. No publication or export update.
+
 ## 2026-10-08 - Apply user's finisher removal list and wolf/orc remakes
 
 Removed six Hiro clips from playable sheet descriptors: plant-stem-cut-paired, hiro-alpha-pin-paired, serpent/hiro-finisher-2, beetle/hiro-finisher-2, goblin/hiro-finisher-2 and spider/hiro-finisher-1. Runtime filters also prevent explicit variant selection from reaching them. Original packed pixels and source masters remain recoverable. Active Hiro finishers: 23 → 17. Every creature retains at least one.
