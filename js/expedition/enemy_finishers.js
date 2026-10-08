@@ -3,7 +3,9 @@
 (function () {
 'use strict';
 const X = ADV.Expedition, F = X.EnemyFinishers = {};
-const PREF = 'expeditions.enemyFinishers.v1', KEY = 'xp_alpha_fatal';
+const PREF = 'expeditions.enemyFinishers.v1';
+const READY = new Set(['alpha', 'wolf', 'plant', 'serpent', 'beetle', 'moss_giant', 'hag', 'goblin', 'spider', 'orc']);
+const keyFor = actor => 'xp_' + actor + '_fatal';
 let selected = false;
 try { selected = localStorage.getItem(PREF) === '1'; } catch (_) {}
 F.allowed = () => ADV.Release?.target === 'website';
@@ -16,29 +18,35 @@ F.setEnabled = value => {
 F.preload = (scene, ids) => {
   // Local-only preload permits switching the setting during this fight. Portal
   // targets never request these files, even with a local preference carried in.
-  if (!F.allowed() || !ids.includes('alpha')) return;
-  const base = 'assets/expedition/adult/alpha-fatal/';
-  if (!scene.textures.exists(KEY)) scene.load.multiatlas(KEY, base + 'alpha-fatal.json', base);
-  if (!scene.cache.json.exists(KEY)) scene.load.json(KEY, base + 'alpha-fatal.json');
+  if (!F.allowed()) return;
+  for (const actor of new Set(ids)) {
+    if (!READY.has(actor)) continue;
+    const key = keyFor(actor), base = 'assets/expedition/adult/' + actor + '-fatal/';
+    if (!scene.textures.exists(key)) scene.load.multiatlas(key, base + actor + '-fatal.json', base);
+    // Multiatlas queues an internal JSON under its texture key. A distinct
+    // metadata key avoids Phaser deduplicating our clip data on a cold load.
+    if (!scene.cache.json.exists(key + '_clips')) scene.load.json(key + '_clips', base + actor + '-fatal.json');
+  }
 };
 F.canPlay = (scene, killer, target, events) => F.enabled() && !scene.ended &&
   target === scene.hero && target.alive && !target._destroyed && target.unit.chp <= 0 &&
-  killer?.side === 'b' && killer.alive && !killer._destroyed && killer.sheet?.actor === 'alpha' &&
+  killer?.side === 'b' && killer.alive && !killer._destroyed && READY.has(killer.sheet?.actor) &&
   [...(events || [])].reverse().find(e => e.t === 'damage' && e.uid === target.uid)?.by === killer.uid &&
   [...(events || [])].reverse().find(e => e.t === 'damage' && e.uid === target.uid)?.tag !== 'dot' &&
-  scene.textures.exists(KEY) && !!scene.cache.json.get(KEY);
+  scene.textures.exists(keyFor(killer.sheet.actor)) && !!scene.cache.json.get(keyFor(killer.sheet.actor) + '_clips');
 
 F.play = (scene, killer, hero) => new Promise(resolve => {
-  const data = scene.cache.json.get(KEY), clip = data?.clips['alpha-fatal'];
+  const actor = killer.sheet?.actor, KEY = keyFor(actor);
+  const data = scene.cache.json.get(KEY + '_clips'), clip = data?.clips[actor + '-fatal'];
   if (!F.enabled() || !clip || scene.ended) { resolve(false); return; }
   const old = { hero: hero.root.visible, killer: killer.root.visible, x: killer.root.x };
   const origin = data.canvas.pivot, scale = hero.height / data.standing;
   let elapsed = 0, frame = 0, pair = null, done = false, settled = false;
-  const approachMs = 180, endX = hero.x + hero.height * 0.73;
+  const approachMs = 180, endX = hero.x + hero.height * (clip.pairTargetDistanceRatio || 0.73);
   hero.cancelPlayback(); killer.cancelPlayback();
   const startX = killer.x;
-  const approach = killer.sheet.clips['approach-leap'];
-  if (approach) killer.img.play(killer.animKey('approach-leap'));
+  const approach = ['approach-leap', 'approach', 'run'].find(id => killer.sheet.clips[id]);
+  if (approach) killer.img.play(killer.animKey(approach));
   const detach = () => scene.events.off('update', update);
   const cancel = () => {
     detach(); scene.events.off('shutdown', shutdown);

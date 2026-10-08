@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Adventurer: Expeditions — all finishers</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#141824;color:#f5eee5;font:16px/1.5 system-ui}main{max-width:1100px;margin:auto;padding:24px}header{position:sticky;top:0;background:#141824f2;padding:10px 0;z-index:2}h1{font-size:clamp(25px,4vw,38px);margin:8px 0}button,select,textarea{font:inherit;color:inherit;background:#2c3046;border:1px solid #686885;border-radius:7px;padding:10px}button{cursor:pointer;margin:4px}button:hover{background:#51426b}select{max-width:100%}canvas{width:100%;background:linear-gradient(#293542,#424b41);border-radius:10px}section{margin:30px 0;padding:18px;border:1px solid #505369;border-radius:12px}section.flagged{border:2px solid #ed8f88}h2{font-size:22px;margin:0 0 8px}code{color:#dbc0ff;overflow-wrap:anywhere}.controls{display:flex;flex-wrap:wrap;align-items:center;gap:8px}input[type=range]{width:100%}textarea{width:100%;min-height:65px;margin-top:8px}label{display:inline-block;padding:8px}.info{color:#b7bdcd;font-size:14px}.hidden{display:none}.review{color:#ffb4ac}
+</style>
+<main><h1>All finishing moves</h1>
+<p><b>33 active moves: 23 Hiro finishers and 10 monster-on-Hiro defeats.</b> Each has a permanent review ID. Tell me IDs such as <b>H-ALPHA-2</b> or <b>M-SPIDER</b>, or mark the ones you dislike and download your list. Marking a move here does not remove it from the game.</p>
+<p class="info">These are the current packed game frames, with runtime holds and body scale. In-game camera movement and cinematic slowdown are not reproduced. Normal attacks and non-fatal paired reactions are not listed. This file opens directly from the docs folder; keep it with the game's assets.</p>
+<header><div class="controls"><select id="filter"><option value="all">All 33 finishers</option><option value="hero">Hiro defeats monsters</option><option value="enemy">Monsters defeat Hiro</option></select><select id="jump"><option value="">Jump to a move…</option></select><button id="download">Download my removal list</button><span id="count"></span></div></header>
+<div id="cards"></div></main>
+<script>
+const entries=/* REVIEW_DATA */;
+const imageCache=new Map(),states=[],key='expeditions.finisherReview.20261008';
+let feedback={};try{feedback=JSON.parse(localStorage.getItem(key)||'{}');}catch(e){}
+function save(){try{localStorage.setItem(key,JSON.stringify(feedback));}catch(e){}document.querySelector('#count').textContent=Object.values(feedback).filter(v=>v.remove).length+' marked';}
+function image(url){if(!imageCache.has(url))imageCache.set(url,new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=()=>reject(Error('Cannot load '+url));im.src=url;}));return imageCache.get(url);}
+for(const e of entries){
+ const section=document.createElement('section');section.id=e.id;section.dataset.enemy=e.enemy;
+ section.innerHTML='<h2></h2><div class="info"></div><canvas width="1000" height="580"></canvas><div class="controls"><button class="play">Pause</button><button class="prev">Previous frame</button><button class="next">Next frame</button><button class="replay">Replay</button><select class="speed"><option value="1">Normal speed</option><option value="0.5">Half speed</option><option value="0.25">Quarter speed</option></select></div><input class="scrub" type="range" min="0" value="0"><div class="info position"></div><label class="review"><input class="remove" type="checkbox"> Mark for removal</label><textarea placeholder="Optional: what looks wrong?"></textarea>';
+ section.querySelector('h2').textContent=e.id+' — '+(e.enemy?e.actor.replaceAll('_',' ')+' defeats Hiro':'Hiro defeats '+e.actor.replaceAll('_',' '));
+ section.querySelector('.info').textContent=e.clipId+' • '+e.clip.frames.length+' drawings';
+ const canvas=section.querySelector('canvas'),ctx=canvas.getContext('2d'),scrub=section.querySelector('.scrub');
+ const s={e,section,ctx,frame:0,elapsed:0,playing:true,visible:false,images:null,loading:false,speed:1};states.push(s);
+ const f=feedback[e.id]||{};section.querySelector('.remove').checked=!!f.remove;section.querySelector('textarea').value=f.note||'';section.classList.toggle('flagged',!!f.remove);
+ const record=()=>{feedback[e.id]={remove:section.querySelector('.remove').checked,note:section.querySelector('textarea').value};section.classList.toggle('flagged',feedback[e.id].remove);save();};
+ section.querySelector('.remove').onchange=record;section.querySelector('textarea').oninput=record;
+ function paused(){s.playing=false;section.querySelector('.play').textContent='Play';}
+ section.querySelector('.play').onclick=()=>{s.playing=!s.playing;section.querySelector('.play').textContent=s.playing?'Pause':'Play';};
+ section.querySelector('.prev').onclick=()=>{paused();s.frame=(s.frame+e.clip.frames.length-1)%e.clip.frames.length;s.elapsed=0;};
+ section.querySelector('.next').onclick=()=>{paused();s.frame=(s.frame+1)%e.clip.frames.length;s.elapsed=0;};
+ section.querySelector('.replay').onclick=()=>{s.frame=0;s.elapsed=0;s.playing=true;section.querySelector('.play').textContent='Pause';};
+ section.querySelector('.speed').onchange=event=>s.speed=+event.target.value;
+ scrub.max=e.clip.frames.length-1;scrub.oninput=()=>{paused();s.frame=+scrub.value;s.elapsed=0;};
+ document.querySelector('#cards').append(section);
+ const option=document.createElement('option');option.value=e.id;option.textContent=section.querySelector('h2').textContent;document.querySelector('#jump').append(option);
+}
+const observer=new IntersectionObserver(rows=>rows.forEach(row=>{
+ const s=states.find(s=>s.section===row.target);s.visible=row.isIntersecting;
+ if(s.visible&&!s.loading){s.loading=true;Promise.all(s.e.textures.map(image)).then(images=>s.images=images).catch(e=>s.section.querySelector('.position').textContent=e.message);}
+}),{rootMargin:'200px'});
+states.forEach(s=>observer.observe(s.section));
+document.querySelector('#filter').onchange=event=>{const mode=event.target.value;states.forEach(s=>s.section.classList.toggle('hidden',mode==='hero'?s.e.enemy:mode==='enemy'?!s.e.enemy:false));};
+document.querySelector('#jump').onchange=event=>{if(!event.target.value)return;document.querySelector('#filter').value='all';states.forEach(s=>s.section.classList.remove('hidden'));document.getElementById(event.target.value).scrollIntoView({block:'center'});};
+document.querySelector('#download').onclick=()=>{
+ const lines=['Adventurer: Expeditions — finisher review','Markings request review; no game content has been removed.',''];
+ for(const e of entries){const f=feedback[e.id];if(f&&(f.remove||f.note))lines.push((f.remove?'REMOVE':'NOTE')+' '+e.id+' | '+e.clipId+'\n'+(f.note||'')+'\n');}
+ if(lines.length===3)lines.push('No moves marked yet.');
+ const url=URL.createObjectURL(new Blob([lines.join('\n')],{type:'text/plain'})),a=document.createElement('a');a.href=url;a.download='Adventurer-Expeditions-Finisher-Review.txt';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+};
+let last=0;
+function draw(now){
+ const dt=last?Math.min(80,now-last):0;last=now;
+ for(const s of states){
+  if(!s.visible||!s.images||s.section.classList.contains('hidden'))continue;
+  const e=s.e,c=e.clip;
+  if(s.playing){s.elapsed+=dt*s.speed;while(s.elapsed>=c.frameDurationsMs[s.frame]){s.elapsed-=c.frameDurationsMs[s.frame];s.frame++;if(s.frame===c.frames.length){s.frame=0;s.elapsed=-500;break;}}}
+  const f=e.frames[c.frames[s.frame]],r=f.frame,p=e.canvas.pivot,ss=f.spriteSourceSize;
+  const scale=Math.min(260/e.standing*(c.bodyScale||1),960/e.canvas.w,520/e.canvas.h);
+  const x=(1000-e.canvas.w*scale)/2+p.x*scale,y=540-(e.canvas.h-p.y)*scale;
+  s.ctx.clearRect(0,0,1000,580);s.ctx.strokeStyle='#84967c';s.ctx.beginPath();s.ctx.moveTo(0,y);s.ctx.lineTo(1000,y);s.ctx.stroke();
+  s.ctx.drawImage(s.images[f.page],r.x,r.y,r.w,r.h,x+(ss.x-p.x)*scale,y+(ss.y-p.y)*scale,r.w*scale,r.h*scale);
+  s.section.querySelector('.scrub').value=s.frame;
+  s.section.querySelector('.position').textContent='Frame '+(s.frame+1)+' / '+c.frames.length+' • Contact frames: '+c.contact.map(n=>n+1).join(', ');
+ }
+ requestAnimationFrame(draw);
+}
+save();requestAnimationFrame(draw);
+</script></html>

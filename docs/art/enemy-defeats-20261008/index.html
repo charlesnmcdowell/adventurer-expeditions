@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Enemy finishing moves — local edition</title>
+<style>body{background:#161a25;color:#f1e9df;font:17px/1.5 system-ui;margin:24px}main{max-width:1100px;margin:auto}canvas{width:100%;background:linear-gradient(#26313d,#485242);border-radius:12px}button,select,a{font:inherit;padding:10px;margin:6px;color:#eee;background:#483763;border:0;border-radius:6px}p{max-width:900px}</style>
+<main><h1>Enemy finishing moves</h1>
+<p>One defeat for each monster, including the existing Alpha. Hiro stays visible through the final pose. In the local game, enable <b>Pause → Enemy finishers</b>. These play only after a fatal enemy hit.</p>
+<a href="../../../index.html?revision=enemy-defeats-20261008">Play the game</a>
+<select id="actor"></select><button id="pause">Pause</button><button id="step">Next frame</button><button id="restart">Replay</button>
+<canvas id="art" width="1100" height="660"></canvas><p id="status"></p>
+</main><script>
+const actors=['wolf','plant','alpha','serpent','beetle','moss_giant','hag','goblin','spider','orc'];
+const select=document.querySelector('#actor'),canvas=document.querySelector('#art'),ctx=canvas.getContext('2d'),status=document.querySelector('#status');
+for(const id of actors){const o=document.createElement('option');o.value=id;o.textContent=id.replaceAll('_',' ');select.append(o);}
+let data,clip,pages={},frame=0,elapsed=0,paused=false,last=0,version=0;
+async function load(){
+ const token=++version;data=null;status.textContent='Loading…';const base='../../../assets/expedition/adult/'+select.value+'-fatal/';
+ const next=await (await fetch(base+select.value+'-fatal.json')).json(),images={};
+ for(const t of next.textures){const im=new Image();im.src=base+t.image;await im.decode();images[t.image]=im;}
+ if(token!==version)return;data=next;pages=images;clip=data.clips[select.value+'-fatal'];frame=0;elapsed=0;last=0;
+}
+function render(time){
+ const dt=last?Math.min(60,time-last):0;last=time;
+ if(data){
+  if(!paused){elapsed+=dt;while(elapsed>=clip.frameDurationsMs[frame]){elapsed-=clip.frameDurationsMs[frame];frame++;if(frame===clip.frames.length){frame=0;elapsed=-650;break;}}}
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  const entry=data.frames[clip.frames[frame]],r=entry.frame,s=entry.spriteSourceSize,p=data.canvas.pivot;
+  const scale=Math.min(1.35,1050/data.canvas.w,560/data.canvas.h);
+  const x=(canvas.width-data.canvas.w*scale)/2+p.x*scale,y=600-(data.canvas.h-p.y)*scale;
+  ctx.strokeStyle='#87937b';ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(1100,y);ctx.stroke();
+  ctx.drawImage(pages[data.textures[entry.page].image],r.x,r.y,r.w,r.h,x+(s.x-p.x)*scale,y+(s.y-p.y)*scale,r.w*scale,r.h*scale);
+  status.textContent=select.value.replaceAll('_',' ')+' • frame '+(frame+1)+' / '+clip.frames.length+' • '+(clip.frameDurationsMs.reduce((a,b)=>a+b,0)/1000).toFixed(2)+' seconds';
+ }
+ requestAnimationFrame(render);
+}
+select.onchange=()=>load().catch(e=>status.textContent=e.message);
+document.querySelector('#pause').onclick=()=>{paused=!paused;document.querySelector('#pause').textContent=paused?'Play':'Pause';};
+document.querySelector('#step').onclick=()=>{if(!clip)return;paused=true;frame=(frame+1)%clip.frames.length;elapsed=0;document.querySelector('#pause').textContent='Play';};
+document.querySelector('#restart').onclick=()=>{frame=0;elapsed=0;};
+load().catch(e=>status.textContent=e.message);requestAnimationFrame(render);
+</script></html>

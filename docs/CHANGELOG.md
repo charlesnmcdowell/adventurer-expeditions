@@ -15,6 +15,18 @@ of small fixes within a day.
 
 ---
 
+## 2026-10-08 - Complete local enemy-defeat art roster
+
+User requested the art without a file-size constraint. Added nine unique monster-on-Hiro paired defeats: wolf, plant, serpent, beetle, moss giant, hag, goblin, spider and orc. The existing Alpha is retained, so coverage rises from 1 to 10 enemy types. New source sheets contain 12 poses each; omitted one clipped sword pose in serpent and beetle (11 usable each), giving 106 new runtime drawings. Seven clips run 2,150 ms; two run 2,000 ms, plus the existing 180 ms approach. All keep Hiro visible in the ending pose. New art uses stylized impacts/curses, intact bodies and limited blood; it is not a graphic-gore delivery. No combat balance or other animation changes.
+
+Integrated into the existing default-off Pause → Enemy finishers setting, website target only. Fixed a first-visit loader bug: multiatlas's internal JSON and clip metadata now have distinct keys, preventing Phaser from deduplicating the clip-data request. Actual lethal direct-hit routing only; DOT and missing art use ordinary defeat. Portal policies and export exclusions remain in place. Whole local ship set is 68.45 MB (was 62.21 MB); this is not the initial download measurement. No 20 MB optimization or portal release claim in this pass.
+
+Files: nine new assets/expedition/adult/*-fatal directories; enemy_finishers.js; index.html cache stamp 20261008-xp1; tools/build_enemy_defeats.py; policy test and new browser_enemy_defeats.js/npm command; GDD; this log; docs/art/enemy-defeats-20261008/{index.html,registration.json,prompts.json,qa.json}. Source masters, extracted poses and visual contact sheets are preserved in sibling adventurer-expeditions-source-art/astra-v4/enemy-defeats-20261008. Checkpoint 1c1e53f precedes edits.
+
+QA: npm test passed; Chrome ship journey forest → inn → swamp → inn passed; all ten actual lethal-hit routes played every expected frame and held the final pose; Alpha pause/restart/disable/off-fallback and portal no-download checks passed. Reviewed all nine extracted source contact sheets and sampled game-rendered ending screenshots. All ten review-gallery clips loaded. User visual playtest remains the final art approval. Nothing published; original Adventurer untouched.
+
+User then requested one file showing every possible finisher for removal review. Added docs/FINISHER_REVIEW.html: all 23 active Hiro finishers and 10 enemy defeats, stable H-/M- IDs, pause/slow motion/frame stepping, removal checkboxes, notes and downloadable text feedback. Works directly from the docs folder without a server (metadata embedded; images reference local game atlases). tools/build_finisher_review.js and its HTML template reproduce the file using runtime timing overrides. Marking a move does not modify the game.
+
 ## 2026-10-08 - Combat QA follow-up
 
 Rechecked the October 2 local build. npm test passed; Chrome ship journey passed through forest, inn, swamp and inn; live combat finisher routing passed for all 10 enemy types. The strengthened roster browser test now asserts all 12 attack frames and exactly one logical contact per attack, one logical contact per paired finisher, and a visible/live enemy after cancellation, in addition to Hiro's restored native sprite/scale. All 10 attacks and 23 paired variants passed. Optional Alpha fatal pause/restart/disable and portal policy checks passed. Reviewed sampled plant/goblin/spider browser captures; this does not certify every drawing or resolve the six retained replacement drafts.

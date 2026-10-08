@@ -1,0 +1,2327 @@
+{
+  "clips": [
+    {
+      "id": "wolf-fatal",
+      "frames": 12,
+      "sources": [
+        {
+          "file": "wolf-frame-00.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 0
+        },
+        {
+          "file": "wolf-frame-01.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 1
+        },
+        {
+          "file": "wolf-frame-02.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 2
+        },
+        {
+          "file": "wolf-frame-03.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 3
+        },
+        {
+          "file": "wolf-frame-04.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 4
+        },
+        {
+          "file": "wolf-frame-05.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 5
+        },
+        {
+          "file": "wolf-frame-06.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 6
+        },
+        {
+          "file": "wolf-frame-07.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 7
+        },
+        {
+          "file": "wolf-frame-08.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 8
+        },
+        {
+          "file": "wolf-frame-09.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 9
+        },
+        {
+          "file": "wolf-frame-10.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 10
+        },
+        {
+          "file": "wolf-frame-11.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 11
+        }
+      ],
+      "paired": true,
+      "registration": {
+        "referenceHeight": 282.0,
+        "frames": [
+          {
+            "anchorX": 102.0,
+            "groundY": 349.0
+          },
+          {
+            "anchorX": 71.0,
+            "groundY": 349.0
+          },
+          {
+            "anchorX": 102.0,
+            "groundY": 349.0
+          },
+          {
+            "anchorX": 102.0,
+            "groundY": 349.0
+          },
+          {
+            "anchorX": 102.0,
+            "groundY": 324.0
+          },
+          {
+            "anchorX": 87.0,
+            "groundY": 324.0
+          },
+          {
+            "anchorX": 102.0,
+            "groundY": 324.0
+          },
+          {
+            "anchorX": 105.0,
+            "groundY": 324.0
+          },
+          {
+            "anchorX": 102.0,
+            "groundY": 295.0
+          },
+          {
+            "anchorX": 73.0,
+            "groundY": 295.0
+          },
+          {
+            "anchorX": 105.0,
+            "groundY": 295.0
+          },
+          {
+            "anchorX": 108.0,
+            "groundY": 295.0
+          }
+        ]
+      },
+      "durationsMs": [
+        180,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        220,
+        400
+      ],
+      "contactFramesZeroBased": [
+        4
+      ],
+      "releaseFrameZeroBased": 11,
+      "opponentKinds": [
+        "hero"
+      ],
+      "opponentKeys": [
+        "hiro"
+      ],
+      "finalState": "hero-down",
+      "pairTargetDistanceRatio": 0.73,
+      "review": {
+        "sourceRegions": [
+          [
+            0,
+            0,
+            415,
+            353
+          ],
+          [
+            415,
+            0,
+            768,
+            353
+          ],
+          [
+            768,
+            0,
+            1152,
+            353
+          ],
+          [
+            1152,
+            0,
+            1536,
+            353
+          ],
+          [
+            0,
+            353,
+            399,
+            683
+          ],
+          [
+            399,
+            353,
+            768,
+            683
+          ],
+          [
+            768,
+            353,
+            1149,
+            683
+          ],
+          [
+            1149,
+            353,
+            1536,
+            683
+          ],
+          [
+            0,
+            683,
+            413,
+            1024
+          ],
+          [
+            413,
+            683,
+            765,
+            1024
+          ],
+          [
+            765,
+            683,
+            1146,
+            1024
+          ],
+          [
+            1146,
+            683,
+            1536,
+            1024
+          ]
+        ],
+        "sourceIndices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "note": "Visual review required; alpha and grid diagnostics do not prove anatomy."
+      }
+    },
+    {
+      "id": "plant-fatal",
+      "frames": 12,
+      "sources": [
+        {
+          "file": "plant-frame-00.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 0
+        },
+        {
+          "file": "plant-frame-01.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 1
+        },
+        {
+          "file": "plant-frame-02.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 2
+        },
+        {
+          "file": "plant-frame-03.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 3
+        },
+        {
+          "file": "plant-frame-04.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 4
+        },
+        {
+          "file": "plant-frame-05.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 5
+        },
+        {
+          "file": "plant-frame-06.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 6
+        },
+        {
+          "file": "plant-frame-07.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 7
+        },
+        {
+          "file": "plant-frame-08.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 8
+        },
+        {
+          "file": "plant-frame-09.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 9
+        },
+        {
+          "file": "plant-frame-10.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 10
+        },
+        {
+          "file": "plant-frame-11.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 11
+        }
+      ],
+      "paired": true,
+      "registration": {
+        "referenceHeight": 261.0,
+        "frames": [
+          {
+            "anchorX": 93.0,
+            "groundY": 347.0
+          },
+          {
+            "anchorX": 93.0,
+            "groundY": 347.0
+          },
+          {
+            "anchorX": 93.0,
+            "groundY": 347.0
+          },
+          {
+            "anchorX": 93.0,
+            "groundY": 347.0
+          },
+          {
+            "anchorX": 93.0,
+            "groundY": 309.0
+          },
+          {
+            "anchorX": 91.0,
+            "groundY": 309.0
+          },
+          {
+            "anchorX": 93.0,
+            "groundY": 309.0
+          },
+          {
+            "anchorX": 93.0,
+            "groundY": 309.0
+          },
+          {
+            "anchorX": 93.0,
+            "groundY": 300.0
+          },
+          {
+            "anchorX": 93.0,
+            "groundY": 300.0
+          },
+          {
+            "anchorX": 93.0,
+            "groundY": 300.0
+          },
+          {
+            "anchorX": 93.0,
+            "groundY": 300.0
+          }
+        ]
+      },
+      "durationsMs": [
+        180,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        220,
+        400
+      ],
+      "contactFramesZeroBased": [
+        6
+      ],
+      "releaseFrameZeroBased": 11,
+      "opponentKinds": [
+        "hero"
+      ],
+      "opponentKeys": [
+        "hiro"
+      ],
+      "finalState": "hero-down",
+      "pairTargetDistanceRatio": 0.73,
+      "review": {
+        "sourceRegions": [
+          [
+            0,
+            0,
+            384,
+            353
+          ],
+          [
+            384,
+            0,
+            768,
+            353
+          ],
+          [
+            768,
+            0,
+            1152,
+            353
+          ],
+          [
+            1152,
+            0,
+            1536,
+            353
+          ],
+          [
+            0,
+            353,
+            386,
+            683
+          ],
+          [
+            386,
+            353,
+            768,
+            683
+          ],
+          [
+            768,
+            353,
+            1152,
+            683
+          ],
+          [
+            1152,
+            353,
+            1536,
+            683
+          ],
+          [
+            0,
+            683,
+            384,
+            1024
+          ],
+          [
+            384,
+            683,
+            768,
+            1024
+          ],
+          [
+            768,
+            683,
+            1152,
+            1024
+          ],
+          [
+            1152,
+            683,
+            1536,
+            1024
+          ]
+        ],
+        "sourceIndices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "note": "Visual review required; alpha and grid diagnostics do not prove anatomy."
+      }
+    },
+    {
+      "id": "serpent-fatal",
+      "frames": 11,
+      "sources": [
+        {
+          "file": "serpent-frame-00.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 0
+        },
+        {
+          "file": "serpent-frame-01.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 1
+        },
+        {
+          "file": "serpent-frame-02.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 2
+        },
+        {
+          "file": "serpent-frame-03.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 3
+        },
+        {
+          "file": "serpent-frame-04.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 4
+        },
+        {
+          "file": "serpent-frame-05.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 5
+        },
+        {
+          "file": "serpent-frame-06.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 6
+        },
+        {
+          "file": "serpent-frame-07.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 7
+        },
+        {
+          "file": "serpent-frame-08.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 8
+        },
+        {
+          "file": "serpent-frame-09.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 9
+        },
+        {
+          "file": "serpent-frame-10.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 10
+        }
+      ],
+      "paired": true,
+      "registration": {
+        "referenceHeight": 265.0,
+        "frames": [
+          {
+            "anchorX": 103.0,
+            "groundY": 362.0
+          },
+          {
+            "anchorX": 103.0,
+            "groundY": 362.0
+          },
+          {
+            "anchorX": 82.0,
+            "groundY": 362.0
+          },
+          {
+            "anchorX": 103.0,
+            "groundY": 319.0
+          },
+          {
+            "anchorX": 97.0,
+            "groundY": 319.0
+          },
+          {
+            "anchorX": 94.0,
+            "groundY": 319.0
+          },
+          {
+            "anchorX": 83.0,
+            "groundY": 319.0
+          },
+          {
+            "anchorX": 103.0,
+            "groundY": 295.0
+          },
+          {
+            "anchorX": 103.0,
+            "groundY": 295.0
+          },
+          {
+            "anchorX": 103.0,
+            "groundY": 295.0
+          },
+          {
+            "anchorX": 101.0,
+            "groundY": 295.0
+          }
+        ]
+      },
+      "durationsMs": [
+        180,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        220,
+        400
+      ],
+      "contactFramesZeroBased": [
+        5
+      ],
+      "releaseFrameZeroBased": 10,
+      "opponentKinds": [
+        "hero"
+      ],
+      "opponentKeys": [
+        "hiro"
+      ],
+      "finalState": "hero-down",
+      "pairTargetDistanceRatio": 0.73,
+      "review": {
+        "sourceRegions": [
+          [
+            0,
+            0,
+            384,
+            367
+          ],
+          [
+            384,
+            0,
+            768,
+            367
+          ],
+          [
+            768,
+            0,
+            1173,
+            367
+          ],
+          [
+            1173,
+            0,
+            1536,
+            367
+          ],
+          [
+            0,
+            367,
+            390,
+            690
+          ],
+          [
+            390,
+            367,
+            777,
+            690
+          ],
+          [
+            777,
+            367,
+            1172,
+            690
+          ],
+          [
+            1172,
+            367,
+            1536,
+            690
+          ],
+          [
+            0,
+            690,
+            384,
+            1024
+          ],
+          [
+            384,
+            690,
+            768,
+            1024
+          ],
+          [
+            768,
+            690,
+            1154,
+            1024
+          ],
+          [
+            1154,
+            690,
+            1536,
+            1024
+          ]
+        ],
+        "sourceIndices": [
+          0,
+          1,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "note": "Visual review required; alpha and grid diagnostics do not prove anatomy."
+      }
+    },
+    {
+      "id": "beetle-fatal",
+      "frames": 11,
+      "sources": [
+        {
+          "file": "beetle-frame-00.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 0
+        },
+        {
+          "file": "beetle-frame-01.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 1
+        },
+        {
+          "file": "beetle-frame-02.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 2
+        },
+        {
+          "file": "beetle-frame-03.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 3
+        },
+        {
+          "file": "beetle-frame-04.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 4
+        },
+        {
+          "file": "beetle-frame-05.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 5
+        },
+        {
+          "file": "beetle-frame-06.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 6
+        },
+        {
+          "file": "beetle-frame-07.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 7
+        },
+        {
+          "file": "beetle-frame-08.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 8
+        },
+        {
+          "file": "beetle-frame-09.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 9
+        },
+        {
+          "file": "beetle-frame-10.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 10
+        }
+      ],
+      "paired": true,
+      "registration": {
+        "referenceHeight": 276.0,
+        "frames": [
+          {
+            "anchorX": 109.0,
+            "groundY": 360.0
+          },
+          {
+            "anchorX": 105.0,
+            "groundY": 360.0
+          },
+          {
+            "anchorX": 109.0,
+            "groundY": 360.0
+          },
+          {
+            "anchorX": 109.0,
+            "groundY": 336.0
+          },
+          {
+            "anchorX": 106.0,
+            "groundY": 336.0
+          },
+          {
+            "anchorX": 120.0,
+            "groundY": 336.0
+          },
+          {
+            "anchorX": 109.0,
+            "groundY": 336.0
+          },
+          {
+            "anchorX": 109.0,
+            "groundY": 258.0
+          },
+          {
+            "anchorX": 86.0,
+            "groundY": 258.0
+          },
+          {
+            "anchorX": 104.0,
+            "groundY": 258.0
+          },
+          {
+            "anchorX": 108.0,
+            "groundY": 258.0
+          }
+        ]
+      },
+      "durationsMs": [
+        180,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        220,
+        400
+      ],
+      "contactFramesZeroBased": [
+        3
+      ],
+      "releaseFrameZeroBased": 10,
+      "opponentKinds": [
+        "hero"
+      ],
+      "opponentKeys": [
+        "hiro"
+      ],
+      "finalState": "hero-down",
+      "pairTargetDistanceRatio": 0.73,
+      "review": {
+        "sourceRegions": [
+          [
+            0,
+            0,
+            397,
+            369
+          ],
+          [
+            397,
+            0,
+            772,
+            369
+          ],
+          [
+            772,
+            0,
+            1152,
+            369
+          ],
+          [
+            1152,
+            0,
+            1536,
+            369
+          ],
+          [
+            0,
+            369,
+            387,
+            717
+          ],
+          [
+            387,
+            369,
+            757,
+            717
+          ],
+          [
+            757,
+            369,
+            1152,
+            717
+          ],
+          [
+            1152,
+            369,
+            1536,
+            717
+          ],
+          [
+            0,
+            717,
+            407,
+            1024
+          ],
+          [
+            407,
+            717,
+            773,
+            1024
+          ],
+          [
+            773,
+            717,
+            1153,
+            1024
+          ],
+          [
+            1153,
+            717,
+            1536,
+            1024
+          ]
+        ],
+        "sourceIndices": [
+          0,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "note": "Visual review required; alpha and grid diagnostics do not prove anatomy."
+      }
+    },
+    {
+      "id": "moss_giant-fatal",
+      "frames": 12,
+      "sources": [
+        {
+          "file": "moss_giant-frame-00.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 0
+        },
+        {
+          "file": "moss_giant-frame-01.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 1
+        },
+        {
+          "file": "moss_giant-frame-02.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 2
+        },
+        {
+          "file": "moss_giant-frame-03.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 3
+        },
+        {
+          "file": "moss_giant-frame-04.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 4
+        },
+        {
+          "file": "moss_giant-frame-05.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 5
+        },
+        {
+          "file": "moss_giant-frame-06.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 6
+        },
+        {
+          "file": "moss_giant-frame-07.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 7
+        },
+        {
+          "file": "moss_giant-frame-08.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 8
+        },
+        {
+          "file": "moss_giant-frame-09.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 9
+        },
+        {
+          "file": "moss_giant-frame-10.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 10
+        },
+        {
+          "file": "moss_giant-frame-11.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 11
+        }
+      ],
+      "paired": true,
+      "registration": {
+        "referenceHeight": 188.0,
+        "frames": [
+          {
+            "anchorX": 92.0,
+            "groundY": 337.0
+          },
+          {
+            "anchorX": 70.0,
+            "groundY": 337.0
+          },
+          {
+            "anchorX": 92.0,
+            "groundY": 337.0
+          },
+          {
+            "anchorX": 91.0,
+            "groundY": 337.0
+          },
+          {
+            "anchorX": 92.0,
+            "groundY": 325.0
+          },
+          {
+            "anchorX": 62.0,
+            "groundY": 325.0
+          },
+          {
+            "anchorX": 92.0,
+            "groundY": 325.0
+          },
+          {
+            "anchorX": 89.0,
+            "groundY": 325.0
+          },
+          {
+            "anchorX": 92.0,
+            "groundY": 319.0
+          },
+          {
+            "anchorX": 73.0,
+            "groundY": 319.0
+          },
+          {
+            "anchorX": 92.0,
+            "groundY": 319.0
+          },
+          {
+            "anchorX": 92.0,
+            "groundY": 319.0
+          }
+        ]
+      },
+      "durationsMs": [
+        180,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        220,
+        400
+      ],
+      "contactFramesZeroBased": [
+        4
+      ],
+      "releaseFrameZeroBased": 11,
+      "opponentKinds": [
+        "hero"
+      ],
+      "opponentKeys": [
+        "hiro"
+      ],
+      "finalState": "hero-down",
+      "pairTargetDistanceRatio": 0.73,
+      "review": {
+        "sourceRegions": [
+          [
+            0,
+            0,
+            406,
+            342
+          ],
+          [
+            406,
+            0,
+            768,
+            342
+          ],
+          [
+            768,
+            0,
+            1153,
+            342
+          ],
+          [
+            1153,
+            0,
+            1536,
+            342
+          ],
+          [
+            0,
+            342,
+            414,
+            676
+          ],
+          [
+            414,
+            342,
+            768,
+            676
+          ],
+          [
+            768,
+            342,
+            1155,
+            676
+          ],
+          [
+            1155,
+            342,
+            1536,
+            676
+          ],
+          [
+            0,
+            676,
+            403,
+            1024
+          ],
+          [
+            403,
+            676,
+            768,
+            1024
+          ],
+          [
+            768,
+            676,
+            1152,
+            1024
+          ],
+          [
+            1152,
+            676,
+            1536,
+            1024
+          ]
+        ],
+        "sourceIndices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "note": "Visual review required; alpha and grid diagnostics do not prove anatomy."
+      }
+    },
+    {
+      "id": "hag-fatal",
+      "frames": 12,
+      "sources": [
+        {
+          "file": "hag-frame-00.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 0
+        },
+        {
+          "file": "hag-frame-01.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 1
+        },
+        {
+          "file": "hag-frame-02.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 2
+        },
+        {
+          "file": "hag-frame-03.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 3
+        },
+        {
+          "file": "hag-frame-04.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 4
+        },
+        {
+          "file": "hag-frame-05.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 5
+        },
+        {
+          "file": "hag-frame-06.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 6
+        },
+        {
+          "file": "hag-frame-07.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 7
+        },
+        {
+          "file": "hag-frame-08.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 8
+        },
+        {
+          "file": "hag-frame-09.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 9
+        },
+        {
+          "file": "hag-frame-10.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 10
+        },
+        {
+          "file": "hag-frame-11.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 11
+        }
+      ],
+      "paired": true,
+      "registration": {
+        "referenceHeight": 286.0,
+        "frames": [
+          {
+            "anchorX": 121.0,
+            "groundY": 355.0
+          },
+          {
+            "anchorX": 101.0,
+            "groundY": 355.0
+          },
+          {
+            "anchorX": 116.0,
+            "groundY": 355.0
+          },
+          {
+            "anchorX": 118.0,
+            "groundY": 355.0
+          },
+          {
+            "anchorX": 121.0,
+            "groundY": 327.0
+          },
+          {
+            "anchorX": 99.0,
+            "groundY": 327.0
+          },
+          {
+            "anchorX": 113.0,
+            "groundY": 327.0
+          },
+          {
+            "anchorX": 107.0,
+            "groundY": 327.0
+          },
+          {
+            "anchorX": 121.0,
+            "groundY": 298.0
+          },
+          {
+            "anchorX": 98.0,
+            "groundY": 298.0
+          },
+          {
+            "anchorX": 98.0,
+            "groundY": 298.0
+          },
+          {
+            "anchorX": 104.0,
+            "groundY": 298.0
+          }
+        ]
+      },
+      "durationsMs": [
+        180,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        220,
+        400
+      ],
+      "contactFramesZeroBased": [
+        4
+      ],
+      "releaseFrameZeroBased": 11,
+      "opponentKinds": [
+        "hero"
+      ],
+      "opponentKeys": [
+        "hiro"
+      ],
+      "finalState": "hero-down",
+      "pairTargetDistanceRatio": 0.73,
+      "review": {
+        "sourceRegions": [
+          [
+            0,
+            0,
+            404,
+            360
+          ],
+          [
+            404,
+            0,
+            773,
+            360
+          ],
+          [
+            773,
+            0,
+            1155,
+            360
+          ],
+          [
+            1155,
+            0,
+            1536,
+            360
+          ],
+          [
+            0,
+            360,
+            406,
+            693
+          ],
+          [
+            406,
+            360,
+            776,
+            693
+          ],
+          [
+            776,
+            360,
+            1166,
+            693
+          ],
+          [
+            1166,
+            360,
+            1536,
+            693
+          ],
+          [
+            0,
+            693,
+            407,
+            1024
+          ],
+          [
+            407,
+            693,
+            791,
+            1024
+          ],
+          [
+            791,
+            693,
+            1169,
+            1024
+          ],
+          [
+            1169,
+            693,
+            1536,
+            1024
+          ]
+        ],
+        "sourceIndices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "note": "Visual review required; alpha and grid diagnostics do not prove anatomy."
+      }
+    },
+    {
+      "id": "goblin-fatal",
+      "frames": 12,
+      "sources": [
+        {
+          "file": "goblin-frame-00.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 0
+        },
+        {
+          "file": "goblin-frame-01.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 1
+        },
+        {
+          "file": "goblin-frame-02.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 2
+        },
+        {
+          "file": "goblin-frame-03.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 3
+        },
+        {
+          "file": "goblin-frame-04.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 4
+        },
+        {
+          "file": "goblin-frame-05.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 5
+        },
+        {
+          "file": "goblin-frame-06.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 6
+        },
+        {
+          "file": "goblin-frame-07.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 7
+        },
+        {
+          "file": "goblin-frame-08.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 8
+        },
+        {
+          "file": "goblin-frame-09.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 9
+        },
+        {
+          "file": "goblin-frame-10.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 10
+        },
+        {
+          "file": "goblin-frame-11.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 11
+        }
+      ],
+      "paired": true,
+      "registration": {
+        "referenceHeight": 302.0,
+        "frames": [
+          {
+            "anchorX": 112.0,
+            "groundY": 342.0
+          },
+          {
+            "anchorX": 116.0,
+            "groundY": 342.0
+          },
+          {
+            "anchorX": 112.0,
+            "groundY": 342.0
+          },
+          {
+            "anchorX": 112.0,
+            "groundY": 342.0
+          },
+          {
+            "anchorX": 112.0,
+            "groundY": 344.0
+          },
+          {
+            "anchorX": 112.0,
+            "groundY": 344.0
+          },
+          {
+            "anchorX": 107.0,
+            "groundY": 344.0
+          },
+          {
+            "anchorX": 112.0,
+            "groundY": 344.0
+          },
+          {
+            "anchorX": 112.0,
+            "groundY": 265.179999999993
+          },
+          {
+            "anchorX": 112.0,
+            "groundY": 265.179999999993
+          },
+          {
+            "anchorX": 112.0,
+            "groundY": 265.179999999993
+          },
+          {
+            "anchorX": 112.0,
+            "groundY": 265.179999999993
+          }
+        ]
+      },
+      "durationsMs": [
+        180,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        220,
+        400
+      ],
+      "contactFramesZeroBased": [
+        6
+      ],
+      "releaseFrameZeroBased": 11,
+      "opponentKinds": [
+        "hero"
+      ],
+      "opponentKeys": [
+        "hiro"
+      ],
+      "finalState": "hero-down",
+      "pairTargetDistanceRatio": 0.73,
+      "review": {
+        "sourceRegions": [
+          [
+            0,
+            0,
+            380,
+            348
+          ],
+          [
+            380,
+            0,
+            768,
+            348
+          ],
+          [
+            768,
+            0,
+            1152,
+            348
+          ],
+          [
+            1152,
+            0,
+            1536,
+            348
+          ],
+          [
+            0,
+            348,
+            384,
+            701
+          ],
+          [
+            384,
+            348,
+            773,
+            701
+          ],
+          [
+            773,
+            348,
+            1152,
+            701
+          ],
+          [
+            1152,
+            348,
+            1536,
+            701
+          ],
+          [
+            0,
+            701,
+            384,
+            1024
+          ],
+          [
+            384,
+            701,
+            768,
+            1024
+          ],
+          [
+            768,
+            701,
+            1152,
+            1024
+          ],
+          [
+            1152,
+            701,
+            1536,
+            1024
+          ]
+        ],
+        "sourceIndices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "note": "Visual review required; alpha and grid diagnostics do not prove anatomy."
+      }
+    },
+    {
+      "id": "spider-fatal",
+      "frames": 12,
+      "sources": [
+        {
+          "file": "spider-frame-00.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 0
+        },
+        {
+          "file": "spider-frame-01.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 1
+        },
+        {
+          "file": "spider-frame-02.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 2
+        },
+        {
+          "file": "spider-frame-03.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 3
+        },
+        {
+          "file": "spider-frame-04.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 4
+        },
+        {
+          "file": "spider-frame-05.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 5
+        },
+        {
+          "file": "spider-frame-06.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 6
+        },
+        {
+          "file": "spider-frame-07.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 7
+        },
+        {
+          "file": "spider-frame-08.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 8
+        },
+        {
+          "file": "spider-frame-09.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 9
+        },
+        {
+          "file": "spider-frame-10.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 10
+        },
+        {
+          "file": "spider-frame-11.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 11
+        }
+      ],
+      "paired": true,
+      "registration": {
+        "referenceHeight": 274.0,
+        "frames": [
+          {
+            "anchorX": 120.0,
+            "groundY": 363.0
+          },
+          {
+            "anchorX": 114.0,
+            "groundY": 363.0
+          },
+          {
+            "anchorX": 116.0,
+            "groundY": 363.0
+          },
+          {
+            "anchorX": 120.0,
+            "groundY": 363.0
+          },
+          {
+            "anchorX": 120.0,
+            "groundY": 316.0
+          },
+          {
+            "anchorX": 114.0,
+            "groundY": 316.0
+          },
+          {
+            "anchorX": 93.0,
+            "groundY": 316.0
+          },
+          {
+            "anchorX": 120.0,
+            "groundY": 316.0
+          },
+          {
+            "anchorX": 120.0,
+            "groundY": 268.0
+          },
+          {
+            "anchorX": 112.0,
+            "groundY": 268.0
+          },
+          {
+            "anchorX": 123.0,
+            "groundY": 268.0
+          },
+          {
+            "anchorX": 129.0,
+            "groundY": 268.0
+          }
+        ]
+      },
+      "durationsMs": [
+        180,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        220,
+        400
+      ],
+      "contactFramesZeroBased": [
+        6
+      ],
+      "releaseFrameZeroBased": 11,
+      "opponentKinds": [
+        "hero"
+      ],
+      "opponentKeys": [
+        "hiro"
+      ],
+      "finalState": "hero-down",
+      "pairTargetDistanceRatio": 0.73,
+      "review": {
+        "sourceRegions": [
+          [
+            0,
+            0,
+            390,
+            367
+          ],
+          [
+            390,
+            0,
+            772,
+            367
+          ],
+          [
+            772,
+            0,
+            1152,
+            367
+          ],
+          [
+            1152,
+            0,
+            1536,
+            367
+          ],
+          [
+            0,
+            367,
+            390,
+            688
+          ],
+          [
+            390,
+            367,
+            795,
+            688
+          ],
+          [
+            795,
+            367,
+            1152,
+            688
+          ],
+          [
+            1152,
+            367,
+            1536,
+            688
+          ],
+          [
+            0,
+            688,
+            392,
+            1024
+          ],
+          [
+            392,
+            688,
+            765,
+            1024
+          ],
+          [
+            765,
+            688,
+            1143,
+            1024
+          ],
+          [
+            1143,
+            688,
+            1536,
+            1024
+          ]
+        ],
+        "sourceIndices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "note": "Visual review required; alpha and grid diagnostics do not prove anatomy."
+      }
+    },
+    {
+      "id": "orc-fatal",
+      "frames": 12,
+      "sources": [
+        {
+          "file": "orc-frame-00.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 0
+        },
+        {
+          "file": "orc-frame-01.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 1
+        },
+        {
+          "file": "orc-frame-02.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 2
+        },
+        {
+          "file": "orc-frame-03.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 3
+        },
+        {
+          "file": "orc-frame-04.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 4
+        },
+        {
+          "file": "orc-frame-05.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 5
+        },
+        {
+          "file": "orc-frame-06.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 6
+        },
+        {
+          "file": "orc-frame-07.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 7
+        },
+        {
+          "file": "orc-frame-08.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 8
+        },
+        {
+          "file": "orc-frame-09.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 9
+        },
+        {
+          "file": "orc-frame-10.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 10
+        },
+        {
+          "file": "orc-frame-11.png",
+          "frames": 1,
+          "columns": 1,
+          "rows": 1,
+          "firstFrameZeroBased": 11
+        }
+      ],
+      "paired": true,
+      "registration": {
+        "referenceHeight": 215.0,
+        "frames": [
+          {
+            "anchorX": 122.0,
+            "groundY": 373.0
+          },
+          {
+            "anchorX": 101.0,
+            "groundY": 373.0
+          },
+          {
+            "anchorX": 101.0,
+            "groundY": 373.0
+          },
+          {
+            "anchorX": 115.0,
+            "groundY": 373.0
+          },
+          {
+            "anchorX": 122.0,
+            "groundY": 286.0
+          },
+          {
+            "anchorX": 108.0,
+            "groundY": 286.0
+          },
+          {
+            "anchorX": 123.0,
+            "groundY": 286.0
+          },
+          {
+            "anchorX": 119.0,
+            "groundY": 286.0
+          },
+          {
+            "anchorX": 122.0,
+            "groundY": 306.0
+          },
+          {
+            "anchorX": 118.0,
+            "groundY": 306.0
+          },
+          {
+            "anchorX": 117.0,
+            "groundY": 306.0
+          },
+          {
+            "anchorX": 110.0,
+            "groundY": 306.0
+          }
+        ]
+      },
+      "durationsMs": [
+        180,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        150,
+        220,
+        400
+      ],
+      "contactFramesZeroBased": [
+        4
+      ],
+      "releaseFrameZeroBased": 11,
+      "opponentKinds": [
+        "hero"
+      ],
+      "opponentKeys": [
+        "hiro"
+      ],
+      "finalState": "hero-down",
+      "pairTargetDistanceRatio": 0.73,
+      "review": {
+        "sourceRegions": [
+          [
+            0,
+            0,
+            405,
+            377
+          ],
+          [
+            405,
+            0,
+            789,
+            377
+          ],
+          [
+            789,
+            0,
+            1159,
+            377
+          ],
+          [
+            1159,
+            0,
+            1536,
+            377
+          ],
+          [
+            0,
+            377,
+            398,
+            678
+          ],
+          [
+            398,
+            377,
+            767,
+            678
+          ],
+          [
+            767,
+            377,
+            1155,
+            678
+          ],
+          [
+            1155,
+            377,
+            1536,
+            678
+          ],
+          [
+            0,
+            678,
+            388,
+            1024
+          ],
+          [
+            388,
+            678,
+            773,
+            1024
+          ],
+          [
+            773,
+            678,
+            1164,
+            1024
+          ],
+          [
+            1164,
+            678,
+            1536,
+            1024
+          ]
+        ],
+        "sourceIndices": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "note": "Visual review required; alpha and grid diagnostics do not prove anatomy."
+      }
+    }
+  ]
+}

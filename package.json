@@ -33,6 +33,7 @@
     "package:crazygames": "node tools/package_crazygames.js",
     "test:arcade": "node test/browser_arcade.js",
     "test:combat-pilot": "node test/browser_combat_pilot.js",
-    "test:combat-roster": "node test/browser_combat_roster.js"
+    "test:combat-roster": "node test/browser_combat_roster.js",
+    "test:enemy-defeats": "node test/browser_enemy_defeats.js"
   }
 }
