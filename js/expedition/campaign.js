@@ -138,6 +138,40 @@ Object.assign(X.encounterDefs, {
   city_captain: { id: 'city_captain', enemies: ['orc'], boss: true },
 });
 Object.assign(X.quests.find(q => q.id === 'city'), { title: 'The overrun city', done: 'City reclaimed' });
+// Local expansion. New identities reuse tested stat templates, not their kits.
+const citadelSkills = [
+  ['xp_arcane_volley','Arcane Volley',{power:.85,hits:3,elemental:true,element:'lightning',cooldown:2}],
+  ['xp_arcane_ward','Crystal Ward',{power:0,target:'self',heal:true,shieldHits:1,cooldown:4}],
+  ['xp_enchanted_arrow','Enchanted Arrow',{power:1.7,elemental:true,element:'ice',defStrip:4,cooldown:1}],
+  ['xp_evasive_step','Evasive Step',{power:0,target:'self',evadeNext:1,cooldown:4}],
+  ['xp_twin_cut','Twin Cut',{power:.85,hits:2,melee:true,cooldown:1}],
+  ['xp_blade_counter','Crossed Guard',{power:0,target:'self',counterNext:1,counterRounds:1,counterRiposte:'xp_twin_cut',cooldown:4}],
+  ['xp_binding_sigil','Binding Sigil',{power:1.35,rootRounds:1,elemental:true,element:'ice',cooldown:3}],
+  ['xp_waning_curse','Waning Curse',{power:1.25,withering:2,healcutRounds:1,cooldown:3}],
+];
+for(const [id,name,fields] of citadelSkills) A.DATA.SKILLS[id]=Object.assign({id,name,kind:'active',unique:true,noTierGrowth:true,power:1,target:'enemy',reach:'any',tiers:{basic:{name},intermediate:{name},advanced:{name}}},fields);
+Object.assign(X.enemies,{
+  crab:{base:'brine_crab',name:'Tidal Crab',level:5,kind:'crab',artActor:'crab',height:200,boss:false,actives:['pincer_lock','sunder'],perks:[],statMult:{hp:.72,atk:.42,def:.7}},
+  toad:{base:'maw_toad',name:'Brine Toad',level:5,kind:'toad',artActor:'toad',height:225,boss:false,actives:['tongue_lash','venom_fang'],perks:[],statMult:{hp:.75,atk:.42,def:.7}},
+  vulture:{base:'king_vulture',name:'Carrion Vulture',level:6,kind:'vulture',artActor:'vulture',height:260,boss:false,actives:['sky_pluck','umbral_rake'],perks:[],statMult:{hp:.7,atk:.42,def:.7}},
+  hydra:{base:'swamp_hydra',name:'Wreck Hydra',level:7,kind:'boss',artActor:'hydra',height:460,boss:true,actives:['tri_bite','venom_fang'],perks:[],phase2At:.5,statMult:{hp:1.15,atk:.3,def:.8}},
+  elven_wizard:{base:'hedge_mage',name:'Citadel Wizard',level:7,kind:'elven_wizard',artActor:'elven_wizard',height:300,boss:false,skillKit:['xp_arcane_volley','xp_arcane_ward'],perks:[],statMult:{hp:1.5,atk:.8,def:.85}},
+  elven_ranger:{base:'bandit',name:'Citadel Ranger',level:7,kind:'elven_ranger',artActor:'elven_ranger',height:290,boss:false,skillKit:['xp_enchanted_arrow','xp_evasive_step'],perks:[],statMult:{hp:1.5,atk:.8,def:.85}},
+  dark_swordswoman:{base:'town_watch',name:'Duskblade',level:7,kind:'dark_swordswoman',artActor:'dark_swordswoman',height:290,boss:false,skillKit:['xp_twin_cut','xp_blade_counter'],perks:[],statMult:{hp:1.5,atk:.8,def:.8}},
+  enchantress:{base:'hedge_mage',name:'The Enchantress',level:8,kind:'boss',artActor:'enchantress',height:305,boss:true,skillKit:['xp_binding_sigil','xp_waning_curse','xp_arcane_volley'],perks:[],phase2At:.5,statMult:{hp:3.2,atk:.8,def:.9}},
+});
+Object.assign(X.encounterDefs,{
+  coast_shore:{id:'coast_shore',enemies:['crab','toad']},
+  coast_wreck:{id:'coast_wreck',enemies:['vulture','crab']},
+  coast_hydra:{id:'coast_hydra',enemies:['hydra'],boss:true},
+  citadel_gate:{id:'citadel_gate',enemies:['elven_wizard','elven_ranger']},
+  citadel_court:{id:'citadel_court',enemies:['dark_swordswoman','elven_ranger']},
+  citadel_spire:{id:'citadel_spire',enemies:['enchantress'],boss:true},
+});
+X.quests.push(
+  {id:'coast',title:'Shipwreck Coast',done:'Coast cleared',plates:['coast','coast','coast'],phase:'day',weather:'clear',music:'coast_clove',travel:'coast',encounters:['coast_shore','coast_wreck','coast_hydra']},
+  {id:'citadel',title:'Arcane Citadel',done:'Citadel reclaimed',plates:['citadel','citadel','citadel'],phase:'night',weather:'clear',music:'citadel_ronin',travel:'citadel',encounters:['citadel_gate','citadel_court','citadel_spire']}
+);
 Camp.encounter = id => X.encounterDefs[id];
 Camp.quest = id => X.quests.find(q => q.id === id);
 // The quest's encounters with the plate the quest assigns to that wave.
@@ -164,8 +198,8 @@ Camp.scaleFor = run => Math.pow(1.3, Math.max(0, Camp.loopOf(run) - 1));
 // One pool of regular monsters, drawn from every open location, and one boss
 // per location. Waves 1 and 2 keep today's sizes (two, then two or three).
 Camp.loopPool = () => ({
-  regulars: ['dire_wolf_2', 'thorn_2', 'serpent', 'beetle', 'moss_giant', 'goblin', 'spider'].filter(k => X.enemies[k]),
-  bosses: { rain: 'road_wolf_leader', marsh: 'hag', city: 'orc' },
+  regulars: ['dire_wolf_2', 'thorn_2', 'serpent', 'beetle', 'moss_giant', 'goblin', 'spider','crab','toad','vulture','elven_wizard','elven_ranger','dark_swordswoman'].filter(k => X.enemies[k]),
+  bosses: { rain: 'road_wolf_leader', marsh: 'hag', city: 'orc', coast:'hydra', citadel:'enchantress' },
 });
 // Boss wave odds by playthrough: [own boss alone, two of the own boss, own boss
 // plus one from another area, three bosses (own plus two from anywhere)].

@@ -1,0 +1,434 @@
+{
+  "actor": "elven_wizard",
+  "clips": [
+    {
+      "id": "hiro-finisher-1",
+      "frames": 6,
+      "sources": [
+        {
+          "file": "registered-pairs/elven_wizard-hiro-one-corrected/00.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              522,
+              474
+            ]
+          ],
+          "firstFrameZeroBased": 0,
+          "sha256": "eeac6c52f06b1f926c459dfc8a2224214fe3d96b75363f6e98d3898b2c33e637"
+        },
+        {
+          "file": "registered-pairs/elven_wizard-hiro-one-corrected/01.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              464,
+              392
+            ]
+          ],
+          "firstFrameZeroBased": 1,
+          "sha256": "072ff9ee14d78282155f4c7760586f71efc726178eb2dd0c5723d7ac675fac98"
+        },
+        {
+          "file": "registered-pairs/elven_wizard-hiro-one-corrected/02.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              542,
+              463
+            ]
+          ],
+          "firstFrameZeroBased": 2,
+          "sha256": "5d0a3257ef3c1fc790d9d68f9eb73dcdaf1dddfca871991de780244186a51405"
+        },
+        {
+          "file": "registered-pairs/elven_wizard-hiro-one-corrected/03.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              503,
+              404
+            ]
+          ],
+          "firstFrameZeroBased": 3,
+          "sha256": "98a78213bd716de907b0dec847351f62bd87383fd1e1b453e4b3479e2f324f50"
+        },
+        {
+          "file": "registered-pairs/elven_wizard-hiro-one-corrected/04.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              520,
+              480
+            ]
+          ],
+          "firstFrameZeroBased": 4,
+          "sha256": "1945ff27503c7e56af76a14955ae4a7aa71b866c0650e7e1c9bb5e4bda11f349"
+        },
+        {
+          "file": "registered-pairs/elven_wizard-hiro-one-corrected/05.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              459,
+              478
+            ]
+          ],
+          "firstFrameZeroBased": 5,
+          "sha256": "0cc78c3caa433ea3d0aca3e31d93227a3b526c13eb5a437073d14b6283344cd2"
+        }
+      ],
+      "paired": true,
+      "loop": false,
+      "durationsMs": [
+        240,
+        180,
+        240,
+        250,
+        240,
+        350
+      ],
+      "contactFramesZeroBased": [
+        3
+      ],
+      "primaryImpactFrameZeroBased": 3,
+      "releaseFrameZeroBased": 5,
+      "opponentKinds": [
+        "elven_wizard"
+      ],
+      "opponentKeys": [
+        "elven_wizard"
+      ],
+      "finalState": "drawn-idle",
+      "pairTargetDistanceRatio": 0.75,
+      "registration": {
+        "referenceHeight": 407.04,
+        "frames": [
+          {
+            "anchorX": 29.0,
+            "groundY": 465
+          },
+          {
+            "anchorX": 27.0,
+            "groundY": 383,
+            "referenceHeight": 345.984
+          },
+          {
+            "anchorX": 32.0,
+            "groundY": 453
+          },
+          {
+            "anchorX": 20.0,
+            "groundY": 396
+          },
+          {
+            "anchorX": 37.0,
+            "groundY": 468
+          },
+          {
+            "anchorX": 209.0,
+            "groundY": 471
+          }
+        ]
+      },
+      "victimFullyGoneFrameZeroBased": 5
+    },
+    {
+      "id": "hiro-finisher-2",
+      "frames": 6,
+      "sources": [
+        {
+          "file": "registered-pairs/elven_wizard-hiro-two/00.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              588,
+              410
+            ]
+          ],
+          "firstFrameZeroBased": 0,
+          "sha256": "627dbfcc09278077c1d0ff121319b8c6d68aed6534d330bfe5ee3f540b71ea46"
+        },
+        {
+          "file": "registered-pairs/elven_wizard-hiro-two/01.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              589,
+              351
+            ]
+          ],
+          "firstFrameZeroBased": 1,
+          "sha256": "4b89c0529f057fe9f47ac48b6e23902276c851c9d6d820f8bbff8b8845b52c11"
+        },
+        {
+          "file": "registered-pairs/elven_wizard-hiro-two/02.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              612,
+              373
+            ]
+          ],
+          "firstFrameZeroBased": 2,
+          "sha256": "a4f1c119ae117f9c6d6332246f671091ba0d94161370e4801ec9b15f4492d43e"
+        },
+        {
+          "file": "registered-pairs/elven_wizard-hiro-two/03.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              557,
+              374
+            ]
+          ],
+          "firstFrameZeroBased": 3,
+          "sha256": "f8d30a68315f1f7baf7a64fd4466d17a365ed6146b8f4742411232e55a03ebf3"
+        },
+        {
+          "file": "registered-pairs/elven_wizard-hiro-two/04.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              546,
+              421
+            ]
+          ],
+          "firstFrameZeroBased": 4,
+          "sha256": "be3a19533510438a2355a1be21c691c31054bbdf1034a0565a9604020ce4c31f"
+        },
+        {
+          "file": "registered-pairs/elven_wizard-hiro-two/05.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              199,
+              412
+            ]
+          ],
+          "firstFrameZeroBased": 5,
+          "sha256": "5b6694a8a04742ed96a462eda08387685aaf69aa208e8c6f08bd4d39c1e1dc66"
+        }
+      ],
+      "paired": true,
+      "loop": false,
+      "durationsMs": [
+        240,
+        180,
+        240,
+        250,
+        240,
+        350
+      ],
+      "contactFramesZeroBased": [
+        3
+      ],
+      "primaryImpactFrameZeroBased": 3,
+      "releaseFrameZeroBased": 5,
+      "opponentKinds": [
+        "elven_wizard"
+      ],
+      "opponentKeys": [
+        "elven_wizard"
+      ],
+      "finalState": "drawn-idle",
+      "pairTargetDistanceRatio": 0.75,
+      "registration": {
+        "referenceHeight": 341.055,
+        "frames": [
+          {
+            "anchorX": 260.5,
+            "groundY": 401
+          },
+          {
+            "anchorX": 223.0,
+            "groundY": 341
+          },
+          {
+            "anchorX": 35.0,
+            "groundY": 362
+          },
+          {
+            "anchorX": 263.0,
+            "groundY": 361
+          },
+          {
+            "anchorX": 39.0,
+            "groundY": 402
+          },
+          {
+            "anchorX": 28.0,
+            "groundY": 402
+          }
+        ]
+      },
+      "victimFullyGoneFrameZeroBased": 5
+    },
+    {
+      "id": "elven_wizard-fatal",
+      "frames": 6,
+      "sources": [
+        {
+          "file": "registered-pairs/elven_wizard-fatal/00.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              529,
+              510
+            ]
+          ],
+          "firstFrameZeroBased": 0,
+          "sha256": "f8f657a4d0425e77f379a302bbda23d174c746befab445261170a5d43fbff9e4"
+        },
+        {
+          "file": "registered-pairs/elven_wizard-fatal/01.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              500,
+              518
+            ]
+          ],
+          "firstFrameZeroBased": 1,
+          "sha256": "71651e9acb4bcb3b6dc199ccd5de52e06112adcbf27676de84ec5771100ee437"
+        },
+        {
+          "file": "registered-pairs/elven_wizard-fatal/02.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              503,
+              458
+            ]
+          ],
+          "firstFrameZeroBased": 2,
+          "sha256": "5bf1b3d41ae91265c9360d54c5faf71ce81744f5ebb3ac072215392133d298d9"
+        },
+        {
+          "file": "registered-pairs/elven_wizard-fatal/03.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              514,
+              460
+            ]
+          ],
+          "firstFrameZeroBased": 3,
+          "sha256": "019c1550eeba815c6ec79e93ee49a51d08596953f15e54621c6d3b62be1f7bdf"
+        },
+        {
+          "file": "registered-pairs/elven_wizard-fatal/04.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              499,
+              514
+            ]
+          ],
+          "firstFrameZeroBased": 4,
+          "sha256": "371e2293cbfeee454fc9b04349dc603e4d570d8c234e2f351f55213ba46e7d72"
+        },
+        {
+          "file": "registered-pairs/elven_wizard-fatal/05.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              508,
+              505
+            ]
+          ],
+          "firstFrameZeroBased": 5,
+          "sha256": "61442c45fee1b015e6af378b1b465b92161813c50c9ac0995c128580ef1184b8"
+        }
+      ],
+      "paired": true,
+      "loop": false,
+      "durationsMs": [
+        240,
+        180,
+        240,
+        250,
+        240,
+        350
+      ],
+      "contactFramesZeroBased": [
+        2
+      ],
+      "primaryImpactFrameZeroBased": 2,
+      "releaseFrameZeroBased": 5,
+      "opponentKinds": [
+        "elven_wizard"
+      ],
+      "opponentKeys": [
+        "elven_wizard"
+      ],
+      "finalState": "hiro-down",
+      "pairTargetDistanceRatio": 0.75,
+      "registration": {
+        "referenceHeight": 407.04,
+        "frames": [
+          {
+            "anchorX": 218.0,
+            "groundY": 499
+          },
+          {
+            "anchorX": 26.0,
+            "groundY": 503
+          },
+          {
+            "anchorX": 37.0,
+            "groundY": 443
+          },
+          {
+            "anchorX": 245.0,
+            "groundY": 450
+          },
+          {
+            "anchorX": 224.0,
+            "groundY": 501
+          },
+          {
+            "anchorX": 242.0,
+            "groundY": 496
+          }
+        ]
+      }
+    }
+  ]
+}

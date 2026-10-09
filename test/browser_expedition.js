@@ -41,7 +41,7 @@ function serve() {
   const port = srv.address().port;
   // Software WebGL in headless Chromium runs ~10 fps; the Canvas renderer with the GPU
   // process off holds 60, which is what the timing assumes.
-  const browser = await pw.chromium.launch({ headless: !args.headed, args: args.headed ? [] : ['--disable-gpu'] });
+  const browser = await pw.chromium.launch({ channel:process.env.PLAYWRIGHT_CHANNEL || 'chrome', headless: !args.headed, args: args.headed ? [] : ['--disable-gpu'] });
   const vw = Number(args.width || 1280);
   const page = await browser.newPage({ viewport: { width: vw, height: Math.round(vw * 760 / 1280) } });
   const errors = [], logs = []; global.__logs = logs; global.__errors = errors;

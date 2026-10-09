@@ -1,7 +1,7 @@
 (function () {
 'use strict';
 const X = ADV.Expedition, FX = X.DefeatFX = {};
-FX.location = run => run && run.questId === 'marsh' ? 'swamp' : run && run.questId === 'city' ? 'city' : null;
+FX.location = run => ({marsh:'swamp',city:'city',coast:'coast',citadel:'citadel'})[run?.questId] || null;
 FX.preload = scene => {
   const loc = FX.location(scene.opts.run || X.Run.load());
   if (loc === 'city' && !scene.textures.exists('defeat_' + loc)) scene.load.spritesheet('defeat_' + loc, 'assets/expedition/effects/' + loc + '.webp', { frameWidth: 256, frameHeight: 256 });
@@ -10,6 +10,23 @@ FX.play = actor => {
   const scene = actor.scene, loc = FX.location(scene.run), key = 'defeat_' + loc;
   if (!loc || actor.side !== 'b' || actor.__defeatEffect || (loc === 'city' && !scene.textures.exists(key))) return;
   actor.__defeatEffect = true;
+  if (loc === 'coast' || loc === 'citadel') {
+    const g=scene.add.graphics().setDepth(222),x=actor.root.x,y=actor.root.y;
+    let age=0,disposed=false;
+    const stop=()=>{if(disposed)return;disposed=true;scene.events.off('update',tick);scene.events.off('shutdown',stop);g.destroy();};
+    const tick=(_t,dt)=>{
+      if(scene.paused||scene.time.paused)return;
+      age+=dt*scene.time.timeScale;const u=Math.min(1,age/850);g.clear();
+      for(let i=0;i<26;i++){
+        const v=i/25-.5,dx=v*actor.height*u,dy=loc==='coast'?-Math.sin(u*Math.PI)*(35+i%5*9):-u*(70+i%5*28);
+        g.fillStyle(loc==='coast'?(i%3?0xb6e9ec:0xdec59d):(i%3?0xaf80ff:0xe7d5ff),(1-u)*.7);
+        if(loc==='citadel')g.fillTriangle(x+dx,y+dy-4,x+dx-2,y+dy,x+dx+2,y+dy);
+        else g.fillCircle(x+dx,y+dy,1+i%3);
+      }
+      if(age>=850)stop();
+    };
+    scene.events.on('update',tick);scene.events.once('shutdown',stop);return;
+  }
   if (loc === 'swamp') {
     const g=scene.add.graphics().setDepth(222),width=Math.min(220,Math.max(100,actor.height*.65));
     const x=actor.root.x,y=actor.root.y;let age=0;

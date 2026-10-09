@@ -5,6 +5,8 @@
 const X = ADV.Expedition, Travel = X.TravelArt = {};
 Travel.select = function (run, leg) {
   const id = run && run.questId;
+  if (id === 'coast') return 'coast-mast-vault';
+  if (id === 'citadel') return 'citadel-bridge-leap';
   if (id === 'marsh') return 'swamp-log-slide';
   if (id === 'city') return leg === 'return' || (run.wave || 0) >= 2 ? 'city-rooftop-run' : 'city-market-vault';
   return 'forest-carriage-vault';
@@ -32,7 +34,7 @@ Travel.paint = function (scene) {
   const layers = ['far','ground','near'].map((name,index) => {
     const container = scene.add.container(0,0), factor = [0.07,1,1.5][index];
     atmosphere.add(container);
-    const height=name==='ground'?1100:name==='near'?500:760;
+    const height=name==='ground'?(d.groundLayerHeight||1100):name==='near'?500:760;
     for(let i=-1;i<=2;i++) container.add(scene.add.image(i*layerWidth,760-height,key+'_'+name).setOrigin(0).setDisplaySize(layerWidth,height));
     return {container,factor,name};
   });
@@ -87,10 +89,18 @@ Travel.paint = function (scene) {
     const ease = 1-Math.pow(1-settle,3);
     const exitX = d.frames[9].x-d.frames[9].cameraX;
     runner.setPosition(after ? exitX+(650-exitX)*ease : 650,612);
-    if(!inAction&&id!=='city-rooftop-run')runner.y=before?d.frames[1].y:d.frames[9].y;
+    if(!inAction&&!['city-rooftop-run','coast-mast-vault','citadel-bridge-leap'].includes(id))runner.y=before?d.frames[1].y:d.frames[9].y;
     shadow.setPosition(runner.x,runner.y+5);
     for(const l of loops){const since=local-(l.p.startMs||0);l.s.setVisible(inAction&&since>=0&&(l.p.continuous||since<(l.p.durationMs||600)));if(since>=0)l.s.setFrame(l.p.row*4+Math.floor(since/(l.p.frameMs||100))%4);}
     glints.clear();
+    if(id==='coast-mast-vault')for(let n=0;n<28;n++){
+      const x=((n*139-distance*.12)%1340+1340)%1340-30,y=350+n%7*25+Math.sin(t/1100+n)*3;
+      glints.lineStyle(1,0xdfffff,.18+.1*Math.sin(t/800+n));glints.lineBetween(x,y,x+24,y);
+    }
+    if(id==='citadel-bridge-leap')for(let n=0;n<22;n++){
+      const x=((n*173-distance*.28)%1340+1340)%1340-30,y=180+n%5*65+Math.sin(t/800+n)*15;
+      glints.fillStyle(n%3?0xb69aff:0xffd69a,.25+.18*Math.sin(t/700+n));glints.fillCircle(x,y,1.5);
+    }
     if(id==='swamp-log-slide')for(let n=0;n<16;n++){
       const x=((n*173-distance*.28)%1340+1340)%1340-30,y=420+Math.sin(t/800+n)*30+(n%4)*36;
       glints.fillStyle(0xcbdc6b,.18+.14*Math.sin(t/500+n));glints.fillCircle(x,y,2);

@@ -1,10 +1,10 @@
-// Optional local-edition executions: a direct enemy hit can finish Hiro at
-// 30% health or below. Commit the defeat only after the animation completes.
+// Optional local-edition defeat presentation, after Hiro reaches zero HP.
+// Hold the game-over transition until the paired animation completes.
 (function () {
 'use strict';
 const X = ADV.Expedition, F = X.EnemyFinishers = {};
 const PREF = 'expeditions.enemyFinishers.v1';
-const READY = new Set(['alpha', 'wolf', 'plant', 'serpent', 'beetle', 'moss_giant', 'hag', 'goblin', 'spider', 'orc']);
+const READY = new Set(['alpha', 'wolf', 'plant', 'serpent', 'beetle', 'moss_giant', 'hag', 'goblin', 'spider', 'orc', 'crab', 'toad', 'vulture', 'hydra', 'elven_wizard', 'elven_ranger', 'dark_swordswoman', 'enchantress']);
 const keyFor = actor => 'xp_' + actor + '_fatal';
 // Website players get the feature without having to discover the pause toggle.
 // Preserve an explicit opt-out; portal policy remains independently enforced.
@@ -33,11 +33,8 @@ F.preload = (scene, ids) => {
 };
 F.canPlay = (scene, killer, target, events) => F.enabled() && !scene.ended &&
   target === scene.hero && (target.alive || target.unit.chp <= 0) && !target._destroyed &&
-  (target.unit.chp <= 0 || (target.unit.maxHp > 0 && target.unit.chp / target.unit.maxHp <= 0.3)) &&
+  target.unit.chp <= 0 &&
   killer?.side === 'b' && killer.alive && !killer._destroyed && READY.has(killer.sheet?.actor) &&
-  (target.unit.chp <= 0 || (
-    [...(events || [])].reverse().find(e => e.t === 'damage' && e.uid === target.uid)?.by === killer.uid &&
-    [...(events || [])].reverse().find(e => e.t === 'damage' && e.uid === target.uid)?.tag !== 'dot')) &&
   scene.textures.exists(keyFor(killer.sheet.actor)) && !!scene.cache.json.get(keyFor(killer.sheet.actor) + '_clips');
 
 // A fatal tick may have no living source (poison outlives its caster). Let a
@@ -60,12 +57,9 @@ F.ensureDefeat = async scene => {
 };
 
 F.tryLowHealth = async (scene, events) => {
-  const hero = scene.hero;
-  if (!hero?.alive || hero.unit.chp <= 0) return false; // ordinary downs already handled
-  const hit = [...(events || [])].reverse().find(e => e.t === 'damage' && e.uid === hero.uid);
-  const killer = hit && scene.actors.get(hit.by);
-  if (!F.canPlay(scene, killer, hero, events)) return false;
-  return F.play(scene, killer, hero);
+  // Compatibility for the director's old hook. Finishers present a defeat;
+  // they must not discard the last 30% of a living hero's health.
+  return false;
 };
 
 F.play = (scene, killer, hero) => new Promise(resolve => {

@@ -1,0 +1,433 @@
+{
+  "actor": "enchantress",
+  "clips": [
+    {
+      "id": "hiro-finisher-1",
+      "frames": 6,
+      "sources": [
+        {
+          "file": "registered-pairs/enchantress-hiro-one/00.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              656,
+              399
+            ]
+          ],
+          "firstFrameZeroBased": 0,
+          "sha256": "b07f8eec3630ac0acebcb9d9a393f1d26a96b12f338958ea602b0f2f0f3c9559"
+        },
+        {
+          "file": "registered-pairs/enchantress-hiro-one/01.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              678,
+              419
+            ]
+          ],
+          "firstFrameZeroBased": 1,
+          "sha256": "cf9b71f17d98e99d9a16a7b05a22a5531c9b99c05d0153fba351e070d3af8bed"
+        },
+        {
+          "file": "registered-pairs/enchantress-hiro-one/02.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              687,
+              362
+            ]
+          ],
+          "firstFrameZeroBased": 2,
+          "sha256": "a8f24a4af4545f0b2f40088ba47ffe836d8b9f88f4f9ce723b00cd2335463da8"
+        },
+        {
+          "file": "registered-pairs/enchantress-hiro-one/03.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              668,
+              343
+            ]
+          ],
+          "firstFrameZeroBased": 3,
+          "sha256": "bd58bcc7f4394eab546a086def9adb222fae080415adbfeb67799ee0444a1033"
+        },
+        {
+          "file": "registered-pairs/enchantress-hiro-one/04.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              671,
+              385
+            ]
+          ],
+          "firstFrameZeroBased": 4,
+          "sha256": "e3ce0a7b3f6983c803307ab0844b95d84bc76469be66dc175155643ef3da6fb5"
+        },
+        {
+          "file": "registered-pairs/enchantress-hiro-one/05.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              446,
+              374
+            ]
+          ],
+          "firstFrameZeroBased": 5,
+          "sha256": "6cd5ddaa7c3b38aa0b8351ac99e5f4ee95bf5bf95c4451ced6954389030cddf3"
+        }
+      ],
+      "paired": true,
+      "loop": false,
+      "durationsMs": [
+        240,
+        180,
+        240,
+        250,
+        240,
+        350
+      ],
+      "contactFramesZeroBased": [
+        3
+      ],
+      "primaryImpactFrameZeroBased": 3,
+      "releaseFrameZeroBased": 5,
+      "opponentKinds": [
+        "boss"
+      ],
+      "opponentKeys": [
+        "enchantress"
+      ],
+      "finalState": "drawn-idle",
+      "pairTargetDistanceRatio": 1.4,
+      "registration": {
+        "referenceHeight": 350,
+        "frames": [
+          {
+            "anchorX": 304.0,
+            "groundY": 385
+          },
+          {
+            "anchorX": 282.0,
+            "groundY": 406
+          },
+          {
+            "anchorX": 24.0,
+            "groundY": 346
+          },
+          {
+            "anchorX": 29.5,
+            "groundY": 334
+          },
+          {
+            "anchorX": 28.0,
+            "groundY": 366
+          },
+          {
+            "anchorX": 282.0,
+            "groundY": 366
+          }
+        ]
+      },
+      "victimFullyGoneFrameZeroBased": 5
+    },
+    {
+      "id": "hiro-finisher-2",
+      "frames": 6,
+      "sources": [
+        {
+          "file": "registered-pairs/enchantress-hiro-two/00.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              509,
+              422
+            ]
+          ],
+          "firstFrameZeroBased": 0,
+          "sha256": "1df3c492c45b3b613f126c92c174a5a0064c08120c42b4dba724d974ff9698fe"
+        },
+        {
+          "file": "registered-pairs/enchantress-hiro-two/01.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              503,
+              402
+            ]
+          ],
+          "firstFrameZeroBased": 1,
+          "sha256": "578863281ae8be29f8c2f399a3d180e5b86efb800773882f917ca517630f0a09"
+        },
+        {
+          "file": "registered-pairs/enchantress-hiro-two/02.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              500,
+              513
+            ]
+          ],
+          "firstFrameZeroBased": 2,
+          "sha256": "bc995ce5495ae15c85ca9cf10ba7f8082506ef0076b78907633cde6d09e0066c"
+        },
+        {
+          "file": "registered-pairs/enchantress-hiro-two/03.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              498,
+              472
+            ]
+          ],
+          "firstFrameZeroBased": 3,
+          "sha256": "2ea41fb7e8a12b13c5a43843313039bfd570697000f0c2c2b6d2456dcb0a6d58"
+        },
+        {
+          "file": "registered-pairs/enchantress-hiro-two/04.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              544,
+              475
+            ]
+          ],
+          "firstFrameZeroBased": 4,
+          "sha256": "0cbd2952e7efa4a044dacebd8493791f7b9a09988b6c7328413d1418ed35f29b"
+        },
+        {
+          "file": "registered-pairs/enchantress-hiro-two/05.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              411,
+              454
+            ]
+          ],
+          "firstFrameZeroBased": 5,
+          "sha256": "c9be069f990de3b18df7634200aec60c496b1c060e5ba76de8cb15e44c5fabd7"
+        }
+      ],
+      "paired": true,
+      "loop": false,
+      "durationsMs": [
+        240,
+        180,
+        240,
+        250,
+        240,
+        350
+      ],
+      "contactFramesZeroBased": [
+        3
+      ],
+      "primaryImpactFrameZeroBased": 3,
+      "releaseFrameZeroBased": 5,
+      "opponentKinds": [
+        "boss"
+      ],
+      "opponentKeys": [
+        "enchantress"
+      ],
+      "finalState": "drawn-idle",
+      "pairTargetDistanceRatio": 0.75,
+      "registration": {
+        "referenceHeight": 419.32800000000003,
+        "frames": [
+          {
+            "anchorX": 25.0,
+            "groundY": 410
+          },
+          {
+            "anchorX": 175.0,
+            "groundY": 395
+          },
+          {
+            "anchorX": 207.0,
+            "groundY": 503
+          },
+          {
+            "anchorX": 185.0,
+            "groundY": 464
+          },
+          {
+            "anchorX": 25.0,
+            "groundY": 461
+          },
+          {
+            "anchorX": 188.0,
+            "groundY": 446
+          }
+        ]
+      },
+      "victimFullyGoneFrameZeroBased": 5
+    },
+    {
+      "id": "enchantress-fatal",
+      "frames": 6,
+      "sources": [
+        {
+          "file": "registered-pairs/enchantress-fatal/00.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              605,
+              481
+            ]
+          ],
+          "firstFrameZeroBased": 0,
+          "sha256": "0cf8ff1a6b9a4e1bec8eb47746c4c7afc11f8d52eb25b940e7b98432bf41182a"
+        },
+        {
+          "file": "registered-pairs/enchantress-fatal/01.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              573,
+              484
+            ]
+          ],
+          "firstFrameZeroBased": 1,
+          "sha256": "ef8cbbbd55a7d47328d81cfb0425e024b4f7218630a4208d671425b05c4e062c"
+        },
+        {
+          "file": "registered-pairs/enchantress-fatal/02.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              601,
+              420
+            ]
+          ],
+          "firstFrameZeroBased": 2,
+          "sha256": "c3492d5be84ba73880bd7ff17d0273379eeea778771d55d4f64aaa7f87f5d372"
+        },
+        {
+          "file": "registered-pairs/enchantress-fatal/03.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              581,
+              424
+            ]
+          ],
+          "firstFrameZeroBased": 3,
+          "sha256": "2a6b18ed77f3448ae5da37281b7a09e107424d0bea8605ecbd2b8b1ab264411a"
+        },
+        {
+          "file": "registered-pairs/enchantress-fatal/04.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              628,
+              430
+            ]
+          ],
+          "firstFrameZeroBased": 4,
+          "sha256": "9bffbcbe7583afdc82d4159c3130b17eef484ec586da8861f64c4121954f183f"
+        },
+        {
+          "file": "registered-pairs/enchantress-fatal/05.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              552,
+              430
+            ]
+          ],
+          "firstFrameZeroBased": 5,
+          "sha256": "e7fffa1b2dc8b10b5ff91f0f2d8f8a2b3519b0a6c9ccedac8dfd5aec419035ba"
+        }
+      ],
+      "paired": true,
+      "loop": false,
+      "durationsMs": [
+        240,
+        180,
+        240,
+        250,
+        240,
+        350
+      ],
+      "contactFramesZeroBased": [
+        2
+      ],
+      "primaryImpactFrameZeroBased": 2,
+      "releaseFrameZeroBased": 5,
+      "opponentKinds": [
+        "boss"
+      ],
+      "opponentKeys": [
+        "enchantress"
+      ],
+      "finalState": "hiro-down",
+      "pairTargetDistanceRatio": 0.75,
+      "registration": {
+        "referenceHeight": 365.274,
+        "frames": [
+          {
+            "anchorX": 264.0,
+            "groundY": 469
+          },
+          {
+            "anchorX": 205.0,
+            "groundY": 469
+          },
+          {
+            "anchorX": 47.0,
+            "groundY": 405
+          },
+          {
+            "anchorX": 193.0,
+            "groundY": 409
+          },
+          {
+            "anchorX": 246.0,
+            "groundY": 415
+          },
+          {
+            "anchorX": 234.0,
+            "groundY": 419
+          }
+        ]
+      }
+    }
+  ]
+}

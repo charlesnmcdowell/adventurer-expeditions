@@ -21,6 +21,7 @@ for(const actor of X.shipped.actors.filter(a=>!['hiro','bram'].includes(a))){
  const choices=Object.entries(d.clips).filter(([name,c])=>c.paired&&!name.startsWith('bite-')&&!(X.Painted.retiredFinishers[owner]||[]).includes(name)&&
   (['wolf','plant'].includes(actor)?(c.opponentKinds||[]).includes(actor):name.startsWith('hiro-')));
  assert(choices.length,actor+' has no active Hiro finisher');for(const [name,c] of choices)valid(d,c,actor+'/'+name);
+ if(X.expansionActors.includes(actor))assert(choices.length>=2,actor+' needs two unique Hiro finishers');
  const fatal=read(actor,true);assert(fatal.clips[actor+'-fatal'],actor+' lacks an enemy finisher');valid(fatal,fatal.clips[actor+'-fatal'],actor+'-fatal');
  const queued=[];probe.Expedition.EnemyFinishers.preload({textures:{exists:()=>false},cache:{json:{exists:()=>false}},load:{multiatlas:(...v)=>queued.push(v),json:(...v)=>queued.push(v)}},[actor]);
  assert.equal(queued.length,2,actor+' is missing from enemy-finisher loader registration');

@@ -14,7 +14,7 @@ const server=http.createServer((req,res)=>{
 });
 (async()=>{
   await new Promise(r=>server.listen(0,'127.0.0.1',r));
-  const browser=await chromium.launch({headless:true,args:['--disable-gpu']});
+  const browser=await chromium.launch({channel:'chrome',headless:true,args:['--disable-gpu']});
   const page=await browser.newPage({viewport:{width:1280,height:760}});
   const errors=[],results=[];
   page.on('pageerror',e=>errors.push(String(e)));
@@ -29,7 +29,9 @@ const server=http.createServer((req,res)=>{
     window.__travelPlay=X.TravelScene.prototype.play;
     X.TravelScene.prototype.play=function(){};
   });
-  for(const [q,w,ids] of (process.argv.includes('--travel-only')?[]:[['marsh',0,['serpent','beetle']],['marsh',1,['moss_giant']],['marsh',2,['hag']],['city',0,['goblin','spider']],['city',2,['orc']]])){
+  const expansion=process.argv.includes('--expansion');
+  const cases=expansion?[['coast',0,['crab','toad']],['coast',1,['vulture']],['coast',2,['hydra']],['citadel',0,['elven_wizard','elven_ranger']],['citadel',1,['dark_swordswoman']],['citadel',2,['enchantress']]]:[['marsh',0,['serpent','beetle']],['marsh',1,['moss_giant']],['marsh',2,['hag']],['city',0,['goblin','spider']],['city',2,['orc']]];
+  for(const [q,w,ids] of (process.argv.includes('--travel-only')?[]:cases)){
     await page.evaluate(([q,w])=>{
       const X=ADV.Expedition,s=window.__game.scene.getScenes(true)[0],r=X.Run.fresh();
       r.questId=q;r.wave=w;r.phase='quest';r.gold=200;
@@ -64,7 +66,7 @@ const server=http.createServer((req,res)=>{
       assert(r.gone&&r.heroTexture==='xp_hiro_sheet',JSON.stringify(r));results.push(r);
     }
   }
-  for(const [q,w,leg]of [['rain',1,'midleg'],['marsh',1,'midleg'],['city',0,'outbound'],['city',2,'midleg']]){
+  for(const [q,w,leg]of (expansion?[['coast',1,'midleg'],['citadel',1,'midleg']]:[['rain',1,'midleg'],['marsh',1,'midleg'],['city',0,'outbound'],['city',2,'midleg']])){
     await page.evaluate(([q,w,leg])=>{
       const X=ADV.Expedition,r=X.Run.fresh();r.questId=q;r.wave=w;r.phase='travel';r.travelLeg=leg;
       const s=window.__game.scene.getScenes(true)[0];X.Dev.go(s,'Travel',{run:r,leg});
@@ -98,6 +100,6 @@ const server=http.createServer((req,res)=>{
   await page.waitForFunction(()=>__game.scene.isActive('Expedition'),null,{timeout:10000});
   assert(Date.now()-start>=9300,'travel presentation was cut short');
   assert.deepEqual(errors,[]);
-  fs.writeFileSync(path.join(OUT,process.argv.includes('--travel-only')?'travel-verification.json':'verification.json'),JSON.stringify({results,errors},null,2));
-  await browser.close();server.close();console.log(process.argv.includes('--travel-only')?'v3 art: 4 painted travel beats passed':'v3 art: 14 paired finishers, 7 visible enemies, 4 painted travel beats passed');
+  fs.writeFileSync(path.join(OUT,expansion?'expansion-verification.json':process.argv.includes('--travel-only')?'travel-verification.json':'verification.json'),JSON.stringify({results,errors},null,2));
+  await browser.close();server.close();console.log(expansion?'expansion art: 16 paired finishers, 8 visible enemies, 2 painted travel beats passed':process.argv.includes('--travel-only')?'v3 art: 4 painted travel beats passed':'v3 art: 14 paired finishers, 7 visible enemies, 4 painted travel beats passed');
 })().catch(e=>{console.error(e);process.exit(1);});

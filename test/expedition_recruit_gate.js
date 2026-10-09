@@ -89,7 +89,7 @@ test('save reload keeps every skill owned and all existing quest identities', ()
   const run = X.Run.fresh(); X.Run.save(run); const saved = X.Run.load();
   assert.equal(saved.levels.katana_slash, 1);
   for (const key of X.tappable) assert.equal(saved.levels[key], 1);
-  assert.deepEqual(X.quests.map(q => q.id), ['road', 'rain', 'city', 'marsh', 'ruins']);
+  assert.deepEqual(X.quests.map(q => q.id), ['road', 'rain', 'city', 'marsh', 'ruins', 'coast', 'citadel']);
   assert.equal(X.enemies.cutthroat.human.sex, 'm'); assert.equal(X.enemies.hedge_mage.human.set, 'adept');
   assert.deepEqual(Camp.questEncounters('road').flatMap(enc => enc.enemies).map(id => X.enemies[id].kind), ['wolf', 'wolf', 'wolf', 'plant', 'plant', 'boss'], 'tutorial uses the dedicated Alpha boss on the final board');
   assert.equal(X.enemies.road_wolf_leader.artActor, 'alpha');

@@ -65,7 +65,9 @@
     "assets/expedition/spider/spider-roster-0.webp",
     "assets/expedition/orc/orc-roster-0.webp",
     "assets/expedition/hiro/hiro-roster-0.webp",
-    "assets/expedition/hiro/hiro-roster-1.webp"
+    "assets/expedition/hiro/hiro-roster-1.webp",
+    "audio/music/coast_clove.mp3",
+    "audio/music/citadel_ronin.mp3"
   ],
   "dirs": [
     "audio/sfx",
@@ -79,7 +81,15 @@
     "assets/expedition/travel",
     "assets/expedition/effects",
     "assets/expedition/stages",
-    "assets/expedition/adult"
+    "assets/expedition/adult",
+    "assets/expedition/crab",
+    "assets/expedition/toad",
+    "assets/expedition/vulture",
+    "assets/expedition/hydra",
+    "assets/expedition/elven_wizard",
+    "assets/expedition/elven_ranger",
+    "assets/expedition/dark_swordswoman",
+    "assets/expedition/enchantress"
   ],
   "partSheets": {
     "note": "Development-only portrait part sheets. They are needed only when baked busts are absent. The final build ships explicit ready-recruit and human-foe bust files and omits these source sheets.",

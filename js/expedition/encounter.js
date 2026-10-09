@@ -82,6 +82,11 @@ Enc.makeEnemy = function (rng, key, scale) {
   ch.expeditionKey = key;
   if (e.artIdentity) ch.expeditionArtIdentity = e.artIdentity;
   if (e.actives) ch.actives = ch.actives.filter(a => e.actives.includes(a.skillId));
+  // Edition-owned kits may contain new skills absent from the reused stat template.
+  if (e.skillKit) {
+    ch.actives = e.skillKit.map(skillId => ({ skillId, level: 1, uses: 0 }));
+    ch.autoOrder = e.skillKit.map(skillId => ({skillId,off:false}));ch.autoAdopted=true;
+  }
   if (e.statMult) for (const k of ['hp', 'atk', 'def', 'spd']) if (e.statMult[k] != null) ch.stats[k] = Math.round(ch.stats[k] * e.statMult[k]);
   // The arcade's base tuning (X.monsterMult), then the loop scale on top of it.
   const mult = X.monsterMult && X.monsterMult[e.boss ? 'boss' : 'regular'];
@@ -396,6 +401,18 @@ Enc.step = function (enc) {
     if (res && res.ok !== false && choice.action && choice.action.skillId) Enc.noteCast(enc, choice.action.skillId);
     if (res && res.ok === false) { A.Combat.act(st, u, { kind: 'hold' }); choice = { action: { kind: 'hold' }, how: 'hold', error: res.error }; }
   } else {
+    // Citadel tactics are edition-owned; shared combat remains the authority
+    // on costs, valid targets, damage and cooldowns.
+    if (u.ch.expeditionKey === 'enchantress' && !u.xpEmpowered && u.chp / u.maxHp <= .5) {
+      u.xpEmpowered = true;
+      u.ch.stats.atk = Math.round(u.ch.stats.atk * 1.2);
+      st.events.push({t:'xpEmpowered',uid:u.uid,mult:1.2});
+    }
+    if (u.ch.expeditionKey === 'elven_ranger' && !u.xpEvasionUsed && u.chp / u.maxHp <= .8 &&
+        !u.evade && !(u.cooldowns?.xp_evasive_step > 0) && A.Combat.validTargets(st,u,'xp_evasive_step',false).length) {
+      u.planned = {kind:'skill',skillId:'xp_evasive_step',targetUid:u.uid};
+      u.xpEvasionUsed = true;
+    }
     A.Combat.aiTakeTurn(st, u);
   }
   A.Combat.advance(st);

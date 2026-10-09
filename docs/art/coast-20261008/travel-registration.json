@@ -1,0 +1,391 @@
+{
+  "clip": {
+    "id": "travel",
+    "frames": 12,
+    "sources": [
+      {
+        "file": "registered-combat/travel-actions/00.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            336,
+            313
+          ]
+        ],
+        "firstFrameZeroBased": 0,
+        "sha256": "e8e197d29b0a86b51499eefdfaaa184d526bc10b329a7136c1147fdceefba1ce"
+      },
+      {
+        "file": "registered-combat/travel-actions/01.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            325,
+            326
+          ]
+        ],
+        "firstFrameZeroBased": 1,
+        "sha256": "3d82a50f1009074f773c8eea7a0a23873235c69644a0ffc56245e02f8d60e4ed"
+      },
+      {
+        "file": "registered-combat/travel-actions/02.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            323,
+            264
+          ]
+        ],
+        "firstFrameZeroBased": 2,
+        "sha256": "0a41a9ff660a86a621667ad596d51d0da1d9297c05a71e3d8826030fd7cc8297"
+      },
+      {
+        "file": "registered-combat/travel-actions/03.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            348,
+            263
+          ]
+        ],
+        "firstFrameZeroBased": 3,
+        "sha256": "085df4c98c5f75fcbf8ec6f6eca5c0b00aa4e23755e01610974bb63ab2897e6b"
+      },
+      {
+        "file": "registered-combat/travel-actions/04.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            322,
+            275
+          ]
+        ],
+        "firstFrameZeroBased": 4,
+        "sha256": "fba7df7149be64737ee1f207b9b5735ae4a8fc860f4ed24c9564ada062075e08"
+      },
+      {
+        "file": "registered-combat/travel-actions/05.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            278,
+            293
+          ]
+        ],
+        "firstFrameZeroBased": 5,
+        "sha256": "714d23aa6bb66b236230474809c81fd094dcdfbc2e8ab821bf9155e9fb6bc1c0"
+      },
+      {
+        "file": "registered-combat/travel-actions/06.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            321,
+            303
+          ]
+        ],
+        "firstFrameZeroBased": 6,
+        "sha256": "6ba17d7f41bd681a94ae6488beea0b4ef840d7f971c983157540d26ab663a62e"
+      },
+      {
+        "file": "registered-combat/travel-actions/07.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            319,
+            297
+          ]
+        ],
+        "firstFrameZeroBased": 7,
+        "sha256": "bd8fd587e82e2c20ec6b789d96506ce4fa673cb2425fbb850338277198508ce8"
+      },
+      {
+        "file": "registered-combat/travel-actions/08.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            297,
+            261
+          ]
+        ],
+        "firstFrameZeroBased": 8,
+        "sha256": "3397a4182ae2e02df3d7daca9bc6d768038d532de5201f4ba4b9fec032e9aa04"
+      },
+      {
+        "file": "registered-combat/travel-actions/09.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            311,
+            321
+          ]
+        ],
+        "firstFrameZeroBased": 9,
+        "sha256": "f438cf8ee31c6fe6890877c830082e14b6564c2f8b09b49e0a8b4e3de02d8eff"
+      },
+      {
+        "file": "registered-combat/travel-actions/10.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            351,
+            311
+          ]
+        ],
+        "firstFrameZeroBased": 10,
+        "sha256": "0697e65c8fe435aa643303c065210be1ccca43c2af629c4055345806281ccd0d"
+      },
+      {
+        "file": "registered-combat/travel-actions/11.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            355,
+            321
+          ]
+        ],
+        "firstFrameZeroBased": 11,
+        "sha256": "91dc13ba9d9ea9cea91c8d1248a1e6a5b95c3dacd95a90b6c4c002f29971bd9e"
+      }
+    ],
+    "durationsMs": [
+      110,
+      110,
+      130,
+      130,
+      170,
+      200,
+      180,
+      160,
+      130,
+      120,
+      110,
+      110
+    ],
+    "loop": false,
+    "contactFramesZeroBased": [
+      2,
+      4,
+      8
+    ],
+    "releaseFrameZeroBased": 11,
+    "registration": {
+      "referenceHeight": 370,
+      "frames": [
+        {
+          "anchorX": 17.0,
+          "groundY": 310
+        },
+        {
+          "anchorX": 268.0,
+          "groundY": 322
+        },
+        {
+          "anchorX": 274.0,
+          "groundY": 261
+        },
+        {
+          "anchorX": 146.5,
+          "groundY": 260
+        },
+        {
+          "anchorX": 264.0,
+          "groundY": 271
+        },
+        {
+          "anchorX": 254.5,
+          "groundY": 289
+        },
+        {
+          "anchorX": 300.0,
+          "groundY": 299
+        },
+        {
+          "anchorX": 249.0,
+          "groundY": 294
+        },
+        {
+          "anchorX": 241.0,
+          "groundY": 258
+        },
+        {
+          "anchorX": 236.0,
+          "groundY": 318
+        },
+        {
+          "anchorX": 283.0,
+          "groundY": 308
+        },
+        {
+          "anchorX": 291.0,
+          "groundY": 318
+        }
+      ]
+    }
+  },
+  "scene": {
+    "id": "coast-mast-vault",
+    "width": 1900,
+    "height": 760,
+    "canvas": {
+      "w": 518,
+      "h": 265,
+      "pivot": {
+        "x": 259,
+        "y": 261
+      }
+    },
+    "pivot": {
+      "x": 259,
+      "y": 261
+    },
+    "heroScale": 1,
+    "frames": [
+      {
+        "name": "travel/0",
+        "ms": 110,
+        "x": 342,
+        "y": 650,
+        "cameraX": 0,
+        "contact": false
+      },
+      {
+        "name": "travel/1",
+        "ms": 110,
+        "x": 513,
+        "y": 650,
+        "cameraX": 0,
+        "contact": false
+      },
+      {
+        "name": "travel/2",
+        "ms": 130,
+        "x": 665,
+        "y": 650,
+        "cameraX": 15,
+        "contact": true
+      },
+      {
+        "name": "travel/3",
+        "ms": 130,
+        "x": 760,
+        "y": 610,
+        "cameraX": 110,
+        "contact": false
+      },
+      {
+        "name": "travel/4",
+        "ms": 170,
+        "x": 893,
+        "y": 565,
+        "cameraX": 243,
+        "contact": true
+      },
+      {
+        "name": "travel/5",
+        "ms": 200,
+        "x": 1026,
+        "y": 500,
+        "cameraX": 376,
+        "contact": false
+      },
+      {
+        "name": "travel/6",
+        "ms": 180,
+        "x": 1159,
+        "y": 480,
+        "cameraX": 509,
+        "contact": false
+      },
+      {
+        "name": "travel/7",
+        "ms": 160,
+        "x": 1311,
+        "y": 530,
+        "cameraX": 620,
+        "contact": false
+      },
+      {
+        "name": "travel/8",
+        "ms": 130,
+        "x": 1463,
+        "y": 680,
+        "cameraX": 620,
+        "contact": true
+      },
+      {
+        "name": "travel/9",
+        "ms": 120,
+        "x": 1577,
+        "y": 680,
+        "cameraX": 620,
+        "contact": false
+      },
+      {
+        "name": "travel/10",
+        "ms": 110,
+        "x": 1710,
+        "y": 680,
+        "cameraX": 620,
+        "contact": false
+      },
+      {
+        "name": "travel/11",
+        "ms": 110,
+        "x": 1824,
+        "y": 680,
+        "cameraX": 620,
+        "contact": false
+      }
+    ],
+    "loops": [
+      {
+        "row": 0,
+        "x": 665,
+        "y": 650,
+        "startMs": 220,
+        "scale": 0.65
+      },
+      {
+        "row": 2,
+        "x": 893,
+        "y": 595,
+        "startMs": 480,
+        "scale": 0.65
+      },
+      {
+        "row": 0,
+        "x": 1463,
+        "y": 680,
+        "startMs": 1190,
+        "scale": 0.7
+      }
+    ],
+    "groundLayerHeight": 550,
+    "source": "coast-20261008"
+  }
+}

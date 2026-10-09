@@ -1,0 +1,433 @@
+{
+  "actor": "elven_ranger",
+  "clips": [
+    {
+      "id": "hiro-finisher-1",
+      "frames": 6,
+      "sources": [
+        {
+          "file": "registered-pairs/elven_ranger-hiro-one/00.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              503,
+              475
+            ]
+          ],
+          "firstFrameZeroBased": 0,
+          "sha256": "32b555aff4746c2c432108dd0615480c38574d7190aac8253b335b10271e50d8"
+        },
+        {
+          "file": "registered-pairs/elven_ranger-hiro-one/01.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              506,
+              472
+            ]
+          ],
+          "firstFrameZeroBased": 1,
+          "sha256": "43abb2e4104021d0bd990559964b5fe2f224bb3ce9c1c5269767116b7873582d"
+        },
+        {
+          "file": "registered-pairs/elven_ranger-hiro-one/02.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              514,
+              478
+            ]
+          ],
+          "firstFrameZeroBased": 2,
+          "sha256": "bf99fb1f95a5aa3a94f095e95fac565d253deab9e078e1fd3d4b9698aed5244f"
+        },
+        {
+          "file": "registered-pairs/elven_ranger-hiro-one/03.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              518,
+              442
+            ]
+          ],
+          "firstFrameZeroBased": 3,
+          "sha256": "5d978a5dbd3ef34ecafca98138e280cb56fa6c69f2af0cdec26a6e125ce27adb"
+        },
+        {
+          "file": "registered-pairs/elven_ranger-hiro-one/04.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              510,
+              482
+            ]
+          ],
+          "firstFrameZeroBased": 4,
+          "sha256": "44903e7727e80395f24a66b6cf6d087432137827c9c12480b39a9143d2b4be80"
+        },
+        {
+          "file": "registered-pairs/elven_ranger-hiro-one/05.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              223,
+              492
+            ]
+          ],
+          "firstFrameZeroBased": 5,
+          "sha256": "e086b7ef431a9f97151f171a8b41a60f59eeca87b16b34d4790e235851a116f4"
+        }
+      ],
+      "paired": true,
+      "loop": false,
+      "durationsMs": [
+        240,
+        180,
+        240,
+        250,
+        240,
+        350
+      ],
+      "contactFramesZeroBased": [
+        3
+      ],
+      "primaryImpactFrameZeroBased": 3,
+      "releaseFrameZeroBased": 5,
+      "opponentKinds": [
+        "elven_ranger"
+      ],
+      "opponentKeys": [
+        "elven_ranger"
+      ],
+      "finalState": "drawn-idle",
+      "pairTargetDistanceRatio": 0.75,
+      "registration": {
+        "referenceHeight": 410.112,
+        "frames": [
+          {
+            "anchorX": 214.0,
+            "groundY": 466
+          },
+          {
+            "anchorX": 32.0,
+            "groundY": 463
+          },
+          {
+            "anchorX": 28.0,
+            "groundY": 469
+          },
+          {
+            "anchorX": 244.0,
+            "groundY": 433
+          },
+          {
+            "anchorX": 34.0,
+            "groundY": 471
+          },
+          {
+            "anchorX": 198.0,
+            "groundY": 483
+          }
+        ]
+      },
+      "victimFullyGoneFrameZeroBased": 5
+    },
+    {
+      "id": "hiro-finisher-2",
+      "frames": 6,
+      "sources": [
+        {
+          "file": "registered-pairs/elven_ranger-hiro-two/00.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              522,
+              424
+            ]
+          ],
+          "firstFrameZeroBased": 0,
+          "sha256": "02379806d933fb297be74ae7301358edeff797e1e51b9c635ea00f1f52d089bc"
+        },
+        {
+          "file": "registered-pairs/elven_ranger-hiro-two/01.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              504,
+              400
+            ]
+          ],
+          "firstFrameZeroBased": 1,
+          "sha256": "db75944c779c924c7746d3c487f8e45dad28145229357e4700dc834d2d5f2bc8"
+        },
+        {
+          "file": "registered-pairs/elven_ranger-hiro-two/02.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              477,
+              500
+            ]
+          ],
+          "firstFrameZeroBased": 2,
+          "sha256": "27d3c89fdd5b733a004a8000eeb0f607d6742f5341ebc13fb9646f44470e18fa"
+        },
+        {
+          "file": "registered-pairs/elven_ranger-hiro-two/03.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              469,
+              500
+            ]
+          ],
+          "firstFrameZeroBased": 3,
+          "sha256": "25da2a2a1d0d54168c894a8555bdbfb11d31acf5a89dcad7e12d1df6d53f44ec"
+        },
+        {
+          "file": "registered-pairs/elven_ranger-hiro-two/04.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              573,
+              440
+            ]
+          ],
+          "firstFrameZeroBased": 4,
+          "sha256": "c35e5885f667b6ad27f63e5a9229f7fd29e5a9e1cf872d997a560bff7a3684bb"
+        },
+        {
+          "file": "registered-pairs/elven_ranger-hiro-two/05.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              441,
+              452
+            ]
+          ],
+          "firstFrameZeroBased": 5,
+          "sha256": "0436ac5abd3ac2a901c8cc919b90e02fcde57a00c96a78348e3f6da201e3fbd1"
+        }
+      ],
+      "paired": true,
+      "loop": false,
+      "durationsMs": [
+        240,
+        180,
+        240,
+        250,
+        240,
+        350
+      ],
+      "contactFramesZeroBased": [
+        3
+      ],
+      "primaryImpactFrameZeroBased": 3,
+      "releaseFrameZeroBased": 5,
+      "opponentKinds": [
+        "elven_ranger"
+      ],
+      "opponentKeys": [
+        "elven_ranger"
+      ],
+      "finalState": "drawn-idle",
+      "pairTargetDistanceRatio": 0.75,
+      "registration": {
+        "referenceHeight": 410.112,
+        "frames": [
+          {
+            "anchorX": 33.0,
+            "groundY": 415
+          },
+          {
+            "anchorX": 38.0,
+            "groundY": 389
+          },
+          {
+            "anchorX": 136.0,
+            "groundY": 492
+          },
+          {
+            "anchorX": 150.0,
+            "groundY": 490
+          },
+          {
+            "anchorX": 84.0,
+            "groundY": 429
+          },
+          {
+            "anchorX": 184.0,
+            "groundY": 442
+          }
+        ]
+      },
+      "victimFullyGoneFrameZeroBased": 5
+    },
+    {
+      "id": "elven_ranger-fatal",
+      "frames": 6,
+      "sources": [
+        {
+          "file": "registered-pairs/elven_ranger-fatal/00.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              565,
+              463
+            ]
+          ],
+          "firstFrameZeroBased": 0,
+          "sha256": "d944afd7db012f9ae6cbd36afdf7a0c1a4daff1f6dd501a46a783c82951cd3fb"
+        },
+        {
+          "file": "registered-pairs/elven_ranger-fatal/01.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              584,
+              464
+            ]
+          ],
+          "firstFrameZeroBased": 1,
+          "sha256": "2f168a7efd3b3e2d779fd5c670b593a07ca77b4256313552f1475fb91757bdcc"
+        },
+        {
+          "file": "registered-pairs/elven_ranger-fatal/02.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              574,
+              456
+            ]
+          ],
+          "firstFrameZeroBased": 2,
+          "sha256": "418a44bb546005e59766a5d7f30e11f6cda0be538666d0330234584463bb083d"
+        },
+        {
+          "file": "registered-pairs/elven_ranger-fatal/03.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              557,
+              457
+            ]
+          ],
+          "firstFrameZeroBased": 3,
+          "sha256": "7364a6ab573319e3e7737236cead8606c62bcf8770b6d093e9b37f6c8ef408ab"
+        },
+        {
+          "file": "registered-pairs/elven_ranger-fatal/04.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              554,
+              444
+            ]
+          ],
+          "firstFrameZeroBased": 4,
+          "sha256": "69b7703b015d207709e86c841775609033db165bcff92c2ac0777525e84b54ce"
+        },
+        {
+          "file": "registered-pairs/elven_ranger-fatal/05.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              551,
+              448
+            ]
+          ],
+          "firstFrameZeroBased": 5,
+          "sha256": "f9b957d88b09fa7705a9c0ea699b61e4a17a9b2728c209e6297158983fa7c397"
+        }
+      ],
+      "paired": true,
+      "loop": false,
+      "durationsMs": [
+        240,
+        180,
+        240,
+        250,
+        240,
+        350
+      ],
+      "contactFramesZeroBased": [
+        2
+      ],
+      "primaryImpactFrameZeroBased": 2,
+      "releaseFrameZeroBased": 5,
+      "opponentKinds": [
+        "elven_ranger"
+      ],
+      "opponentKeys": [
+        "elven_ranger"
+      ],
+      "finalState": "hiro-down",
+      "pairTargetDistanceRatio": 0.75,
+      "registration": {
+        "referenceHeight": 366.858,
+        "frames": [
+          {
+            "anchorX": 251.0,
+            "groundY": 455
+          },
+          {
+            "anchorX": 31.0,
+            "groundY": 455
+          },
+          {
+            "anchorX": 121.0,
+            "groundY": 447
+          },
+          {
+            "anchorX": 240.0,
+            "groundY": 448
+          },
+          {
+            "anchorX": 216.0,
+            "groundY": 436
+          },
+          {
+            "anchorX": 229.0,
+            "groundY": 441
+          }
+        ]
+      }
+    }
+  ]
+}

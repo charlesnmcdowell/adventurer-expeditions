@@ -2,7 +2,9 @@
 
 October 9, 2026. User approved continuing with this location after Coast.
 Order: forest → swamp → city → Shipwreck Coast → Arcane Citadel.
-Citadel is planned, not playable. Coast also remains in production.
+October 9 completion: Coast and Citadel are integrated and playable locally.
+See CHANGELOG.md for final art, balance and browser QA. Earlier production
+gates below are retained as the delivery brief.
 
 This explicitly expands the previous monsters-only art scope to adult elven
 humanoid opponents. Hiro remains the only playable hero. Original Adventurer
@@ -19,7 +21,8 @@ and all its assets are read-only; reuse copies/references in Expeditions.
 
 Avoid unavoidable permanent control, infinite evasion and self-sustaining
 healing loops. Validate numbers with the existing encounter simulations before
-unlocking. These move concepts are a production proposal, not implemented skills.
+unlocking. These moves are implemented as edition-owned skills. The ranger uses one
+early evasive step; the enchantress gains 20% attack once below half health.
 
 Every new opponent needs idle, approach, attack, hit and down animation;
 enchantress also needs an enrage/phase tell. Each needs two unique Hiro-on-enemy

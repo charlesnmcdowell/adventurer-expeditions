@@ -1,0 +1,108 @@
+[
+  {
+    "name": "far.png",
+    "location": "citadel-20261009",
+    "prompt": "Wide panoramic game background distant layer, 2280x760 composition. Arcane Citadel blends reference1 moonlit learned castle/library with reference2 samurai academy mountain temples. Painted polished anime cel shading, same game finish. Vast distant pale stone academy towers on cliffs, warm narrow library windows, tiled Japanese roofs, magical blue observatory dome, waterfalls, full moon high in blue night sky, layers of distant peaks, wisps of cloud. Horizontal side-view scenery for 2D game. NO foreground, NO path, NO close railings, no people or monsters, no text. Lower quarter distant dark mountain silhouettes. This is only the FAR layer; other ground/foreground layers will be placed over it. Beautiful believable architecture.",
+    "refs": [
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer/assets/anime/gate/v1/runtime/environment_lanternhold.webp",
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer/assets/anime/travel/v1/runtime/green.webp"
+    ],
+    "source": "exec-17fd6ea6-986e-45cd-b973-628b87078c59.png"
+  },
+  {
+    "name": "ground.png",
+    "location": "citadel-20261009",
+    "prompt": "Game parallax MIDDLE GROUND LAYER only, very wide 3:1 panorama. Transparent alpha above path. Horizontal side-on moonlit academy training courtyard walkway, worn pale flagstones with subtle violet inlaid runes, low mossy stone border and tiny grass tufts. Flat level walkable top surface goes STRAIGHT LEFT TO RIGHT through entire image, at 65 percent down the image. Deep solid earth/stone foundation fills lower third to bottom. Upper two-thirds EMPTY TRANSPARENT, no sky castles mountains trees tall props people. Broad unobstructed walking surface enough for two armies in sideview. Palette stone bluish moonlight with faint warm reflections consistent castle ref. Polished detailed anime cel shaded painting same game, no text no grid. Seamless left-right edges.",
+    "refs": [
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v5/citadel-20261009/far.png",
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer/assets/anime/travel/v1/runtime/green.webp"
+    ],
+    "source": "exec-ec84df8b-490e-4410-b3c6-30b183136e27.png"
+  },
+  {
+    "name": "near.png",
+    "location": "citadel-20261009",
+    "prompt": "Foreground framing overlay for moonlit Arcane Citadel game, wide 3:1 panorama with genuine transparent alpha. ONLY sparse bamboo leaves at extreme upper left and right corners, short dark blue-green grasses and ivy-covered broken stone at bottom left and bottom right, a few drifting petals. CENTER 80% completely EMPTY TRANSPARENT to avoid blocking fighters. No path, sky, buildings, people, ground plane or haze. Rich polished anime cel shaded paint, moonlit navy jade leaves silveredges, same style palette as reference paintings. Separate clusters minimal occupation, no text.",
+    "refs": [
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v5/citadel-20261009/far.png",
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v5/citadel-20261009/ground.png"
+    ],
+    "source": "exec-2ced4253-08b2-4cc9-a497-9c58a1995839.png"
+  },
+  {
+    "name": "travel-key.png",
+    "location": "coast-20261008",
+    "prompt": "Wide cinematic side-scrolling game key painting, 2560x760 composition, polished anime cel shaded same references. Hiro darkskin purple dreadlocks blackpurple samurai armor performs graceful ninja vault LEFT TO RIGHT over a broken ship's mast lying horizontally across a shore path. One hand planted on splintered wood, knees tucked, sheathed katana at hip, full body. Camera side-on horizontal path, not road receding into distance. Sunny windy coast, turquoise sea, white cliffs lighthouse, wrecked ship ribs right, gulls, sea grass, foam. Path ground at 80% image height, mast at center x55%, about knee high; Hiro naturally lit and physically contacts painted mast, kicked sand small. Long clear approach left and landing right for fast running. No text/UI.",
+    "refs": [
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v1/heroes/hiro/hiro-reference.png",
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v5/coast-20261008/far.png"
+    ],
+    "source": "exec-e5641ff8-5bff-4ec8-bd2d-79461fa4d874.png"
+  },
+  {
+    "name": "travel-plate.png",
+    "location": "coast-20261008",
+    "prompt": "Precise clean plate edit. Remove ONLY Hiro and his cast shadow and airborne sand kicked by him from this image. Reconstruct ocean grass path and wood behind him naturally. Keep the broken mast, rope, wreck ship, rocks, cliffs, sky, sea and camera exactly as painted, same wide image dimensions. No people. This will be the matching background for animated Hiro.",
+    "refs": [
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v5/coast-20261008/travel-key.png"
+    ],
+    "source": "exec-0449ced7-f15e-43e3-bc1a-4cdc66246e51.png"
+  },
+  {
+    "name": "travel-actions.png",
+    "location": "coast-20261008",
+    "prompt": "Twelve full-body Hiro action sprites FOUR COLUMNS THREE ROWS, transparent alpha. Reference1 gives exact sunny coast lighting, vault form and armor. Hiro dark skin purple locs blackpurple samurai, sheathed katana. Moving LEFT TO RIGHT throughout. Row1: fast run stride1, stride2, crouch plant foot, reach right hand toward knee-high mast. Row2: palm pressed on invisible mast surface, push up knees tuck, airborne knees over mast, extend landing leg. Row3: landing crouch, rise forward, runout stride1, stride2. ONLY Hiro, no mast no scenery no floor; hand contact y consistent vault reference. Whole head feet sword inside each cell with generous gutters. Consistent body scale all12. Full painted anatomy crisp anime cel shade. No text/grid.",
+    "refs": [
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v5/coast-20261008/travel-key.png",
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v1/heroes/hiro/hiro-reference.png"
+    ],
+    "source": "exec-8b20bfdb-d308-4715-907c-4cacdbbe26a4.png"
+  },
+  {
+    "name": "travel-key.png",
+    "location": "citadel-20261009",
+    "prompt": "Wide cinematic travel key painting 2560x760 composition. Detailed anime celshade game matching refs. Moonlit Arcane Citadel academy bridge, horizontal LEFT TO RIGHT side-scrolling direction. Hiro (darkskin purplelocs blackpurple samurai sheathed katana) nimble long leap across a small broken gap in the stone footbridge. Full body shown side profile facing RIGHT, legs split athletic leap, cape and locs flowing. Groundline 80% imageheight, gap at center only 12% width. Glowing runes on broken stones react as he jumps, small pebbles airborne. Distant pale castle with samurai roofed pavilions, moon waterfalls, warm paper lanterns, bamboo, violet wisps. Long clear level runup left and landing right. Hiro belongs in the scene with coherent moonlight shadows. No UI text. Wide establishing shot hero no taller than40% image.",
+    "refs": [
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v5/citadel-20261009/far.png",
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v1/heroes/hiro/hiro-reference.png"
+    ],
+    "source": "exec-2dd88e82-0316-40bd-813d-807acb87cdfa.png"
+  },
+  {
+    "name": "travel-plate.png",
+    "location": "citadel-20261009",
+    "prompt": "Precise clean plate edit: remove ONLY Hiro, his shadow, and airborne debris caused by his jump. Reconstruct the distant castle and waterfall behind him. Retain exact composition, moon, lanterns, bridge gap, runes, bamboo, stones, illumination, width and height. No characters, no text. This is matching empty background plate for the same animated jump.",
+    "refs": [
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v5/citadel-20261009/travel-key.png"
+    ],
+    "source": "exec-7c15586f-c505-4aba-a10b-1d65a6089ce0.png"
+  },
+  {
+    "name": "travel-actions.png",
+    "location": "citadel-20261009",
+    "prompt": "Twelve Hiro full body animation drawings FOUR COLUMNS THREE ROWS on transparent alpha. Darkskin purplelocs blackpurple samurai sheathed katana matching reference, blue moonlit highlights golden lantern edges. Moving LEFT TO RIGHT. Row1 runin stride1, stride2, preload crouch, powerful onefoot takeoff. Row2 jump rising knees tuck, leap stretched over gap, late flight legs extend, foot reaching landing. Row3 landing crouch, recover balance, runout stride1, stride2. Each entire body and sheathed katana inside its cell with generous blank gutters. No bridge background objects text grid or haze. Same anatomical body scale, crisp painted cel shade. Twelve separate silhouettes, no cell overlap.",
+    "refs": [
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v5/citadel-20261009/travel-key.png",
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v1/heroes/hiro/hiro-reference.png"
+    ],
+    "source": "exec-ef94c111-6c8e-4289-933a-dd8fbc080e72.png"
+  },
+  {
+    "name": "travel-loops.png",
+    "location": "coast-20261008",
+    "prompt": "Transparent game effects sheet, exactly12 separate small effects FOUR COLUMNS THREE ROWS. No characters background text. Row1 four sequential frames tiny tan sand puff from a running foot: compress burst expand dissipate. Row2 four sequential frames white turquoise sea spray low splash: rise spread fall fade. Row3 four sequential frames few small brown wood splinters shaking loose from mast: lift scatter drift settle. Crisp painted anime cel shade same sunny coast reference. Wide empty cell margins. Effects reusable, real transparent alpha, not rectangular haze.",
+    "refs": [
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v5/coast-20261008/travel-key.png"
+    ],
+    "source": "exec-70b72861-92f1-425a-92eb-9b8cd0a77368.png"
+  },
+  {
+    "name": "travel-loops.png",
+    "location": "citadel-20261009",
+    "prompt": "Transparent game environmental effects sprite sheet 12 cells FOUR COLUMNS THREE ROWS. Match moonlit magical academy art. Row1 four sequential frames small stone landing dust puff with silverblue edges: small burst expand fade. Row2 four sequential frames violet rune sparks flare arc release fade, short abstract diamond light flecks, not readable writing. Row3 four sequential frames pale fallen bamboo leaves drift swirl settle. Whole effect within every cell, generous empty margins. True transparent alpha no colored rectangular haze no scenery no characters no text. Crisp handpainted cel shade.",
+    "refs": [
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v5/citadel-20261009/travel-key.png"
+    ],
+    "source": "exec-bdc9017c-fde6-4f5f-8f75-7fcb6de89f3b.png"
+  }
+]

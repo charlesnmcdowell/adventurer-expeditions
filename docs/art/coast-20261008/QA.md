@@ -1,3 +1,7 @@
+# October 9 completion update
+
+Coast is now integrated and browser-tested end to end. The earlier preview-only findings below are historical; targeted repairs and final paired/travel intake are complete. See the October 9 completion entry in ../../CHANGELOG.md for scope, balance and QA evidence. User playtest is the final visual approval.
+
 # Coast combat QA — October 8, 2026
 
 Verdict: technical preview checks pass; visual release approval is withheld.

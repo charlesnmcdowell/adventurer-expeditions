@@ -1,7 +1,7 @@
 'use strict';
 const fs=require('fs'),path=require('path'),vm=require('vm');
 const root=path.resolve(__dirname,'..');
-const ids=['wolf','plant','alpha','serpent','beetle','moss_giant','hag','goblin','spider','orc'];
+const ids=['wolf','plant','alpha','serpent','beetle','moss_giant','hag','goblin','spider','orc','crab','toad','vulture','hydra','elven_wizard','elven_ranger','dark_swordswoman','enchantress'];
 const ADV={Expedition:{UI:{},monsterActors:ids.slice(3)}};
 vm.runInNewContext(fs.readFileSync(path.join(root,'js/expedition/painted.js'),'utf8'),{ADV});
 const entries=[];
@@ -25,7 +25,7 @@ function collect(actor,owner,enemy){
 }
 for(const id of ids)collect(id,['wolf','plant'].includes(id)?'hiro':id,false);
 for(const id of ids)collect(id,id+'-fatal',true);
-if(entries.length!==27)throw Error('Expected 17 Hiro and 10 enemy finishers, got '+entries.length);
+if(entries.length!==51)throw Error('Expected 33 Hiro and 18 enemy finishers, got '+entries.length);
 const html=fs.readFileSync(path.join(__dirname,'finisher_review.template.html'),'utf8').replace('/* REVIEW_DATA */',JSON.stringify(entries));
 fs.writeFileSync(path.join(root,'docs/FINISHER_REVIEW.html'),html);
 console.log('FINISHER_REVIEW.html: '+entries.length+' active finishing moves; opens locally without a server');

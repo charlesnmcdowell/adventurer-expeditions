@@ -146,5 +146,22 @@
       "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v5/citadel-20261009/enchantress-reference.png"
     ],
     "source": "exec-46c44990-079d-482f-accf-142c88a082eb.png"
+  },
+  {
+    "name": "dark_swordswoman-hiro-two-corrected.png",
+    "prompt": "Rebuild this sprite sequence as exactly SIX separate paired drawings in TWO COLUMNS and THREE ROWS. Image1 is identity/action reference, not layout. Hiro LEFT darkskinpurplelocs blackpurple samurai, woman RIGHT slatepurplewhitebob darkdualbladearmor. Top left: both full body ready. Top right: she swings both swords high, Hiro ducking low. Middle left: Hiro low roll UNDER her crossing blades, both characters visible whole. Middle right: Hiro rises overhead sword cuts her shoulder. Bottom left: she kneels dissolving violet motes Hiro stands. Bottom right: Hiro alone sheathing sword after she completely disappears. Keep SIX complete action moments, not four rows. Equal body scale. All full bodies full weapons, 20% empty cell margins. Transparent alpha, no backdrop/haze/grid/text. Detailed anime cel shading.",
+    "refs": [
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v5/citadel-20261009/dark_swordswoman-hiro-two.png",
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v1/heroes/hiro/hiro-reference.png"
+    ],
+    "source": "exec-f94d0295-f07d-4c6d-8a5c-9d9c5f7995e4.png"
+  },
+  {
+    "name": "elven_wizard-hiro-one-corrected.png",
+    "prompt": "Precise sprite sheet repair. Keep all six action moments and characters and style. Fix TOP RIGHT cell: Hiro's left boot/lower leg is missing behind the neighboring cell. Make this pair 15% smaller within its cell and paint Hiro's complete two legs/boots, no overlap with top-left wizard. Fix MIDDLE LEFT wizard's loose white hair: keep the whole hair silhouette attached to that wizard and fully inside middle-left cell, not detached in the adjacent cell. Keep all other poses, faces, armor, hands, weapons and magic unchanged. Genuine transparent background, six pairs two columns three rows same image size. Clear empty gutters, no cropped bodies.",
+    "refs": [
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v5/citadel-20261009/elven_wizard-hiro-one.png"
+    ],
+    "source": "exec-f2ca5b36-cec1-4779-a86a-c421904462f2.png"
   }
 ]

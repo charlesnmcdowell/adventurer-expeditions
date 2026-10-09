@@ -43,7 +43,7 @@ P.preload = function (scene, ids) {
   if (X.EnemyFinishers) X.EnemyFinishers.preload(scene, needed);
   for (const id of needed) {
     const key = 'xp_' + id + '_sheet', base = 'assets/expedition/' + id + '/';
-    const revision = id === 'bram' ? '' : '?v=combat-roster-20261002';
+    const revision = (X.expansionActors || []).includes(id) ? '?v=expansion-20261009' : id === 'bram' ? '' : '?v=combat-roster-20261002';
     if (!scene.textures.exists(key)) scene.load.multiatlas(key, base + id + '.json' + revision, base);
     if (!scene.cache.json.exists('xp_' + id + '_clips')) scene.load.json('xp_' + id + '_clips', base + id + '.json' + revision);
   }

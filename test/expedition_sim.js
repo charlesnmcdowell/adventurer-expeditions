@@ -191,9 +191,15 @@ test('every open quest has its music, plates and panorama in the build', () => {
     if (!open.has(q.id)) continue;
     checked++;
     assert.ok(set.has('audio/music/' + q.music + '.mp3'), q.id + ' is open but its music is not shipped: ' + q.music);
+    if (['coast','citadel'].includes(q.id)) {
+      for (const layer of ['far','ground','near']) assert.ok(set.has('assets/expedition/stages/'+q.id+'/atmosphere-'+layer+'.webp'),q.id+' missing '+layer);
+      const travel=q.id==='coast'?'coast-mast-vault':'citadel-bridge-leap';
+      for(const file of ['plate.webp','actions.json','scene.json','loops.webp']) assert.ok(set.has('assets/expedition/travel/'+travel+'/'+file),travel+' missing '+file);
+    } else {
     for (const p of new Set(q.plates))
       assert.ok(set.has('assets/anime/v2/runtime/' + (ALIAS[p] || p) + '.webp'), q.id + ' is open but a battle plate is missing: ' + p);
     assert.ok(set.has('assets/anime/travel/v1/runtime/' + q.travel + '.webp'), q.id + ' is open but its travel panorama is missing: ' + q.travel);
+    }
   }
   assert.ok(checked >= 2, 'the tutorial and at least one loop quest are open');
   // X.shipped is the list the runtime may queue: it must name exactly the actor
@@ -652,14 +658,16 @@ test('the retained loop uses only painted Bram; tutorial lock and scaling are re
   // All four levels are open, in the order Hiro set (2026-09-21): a run starts
   // at Road in the Rain and goes marsh, city, ruins. "Clear the road" is retired
   // from the rotation and survives only as the dev panel's preview.
-  assert.deepEqual(X.slice.openQuests, ['rain', 'marsh', 'city'], 'version 1 has three locations');
+  assert.deepEqual(X.slice.openQuests, ['rain', 'marsh', 'city', 'coast', 'citadel'], 'local expansion has five locations');
   assert.equal(X.slice.startQuest, 'rain', 'a new run starts in the rain');
   const r1 = Camp.freshRun();
   assert.equal(r1.questId, 'rain', 'a fresh run begins at the starting quest');
   assert.equal(Camp.nextQuestId(r1), 'rain');
   r1.questsDone.push('rain'); assert.equal(Camp.nextQuestId(r1), 'marsh', 'rain hands off to the marsh');
   r1.questsDone.push('marsh'); assert.equal(Camp.nextQuestId(r1), 'city', 'then the city');
-  r1.questsDone.push('city'); assert.equal(Camp.nextQuestId(r1), 'rain', 'after city, return to replay');
+  r1.questsDone.push('city'); assert.equal(Camp.nextQuestId(r1), 'coast');
+  r1.questsDone.push('coast'); assert.equal(Camp.nextQuestId(r1), 'citadel');
+  r1.questsDone.push('citadel'); assert.equal(Camp.nextQuestId(r1), 'rain', 'after citadel, return to replay');
   for (const id of ['rain', 'marsh', 'city']) assert.ok(Camp.questOpen(id), id + ' is open');
   assert.equal(Camp.questOpen('ruins'), false, 'ruins is out of version 1');
   assert.ok(Camp.questOpen('road'), 'the retired tutorial stays previewable');
@@ -693,7 +701,7 @@ test('the retained loop uses only painted Bram; tutorial lock and scaling are re
   // A run of its own — r1 above belongs to the locked-slice assertions.
   const r2 = Camp.freshRun(); r2.questsDone.push('road');
   assert.equal(Camp.nextQuestId(r2), 'rain');
-  r2.questsDone.push('rain', 'city', 'marsh', 'ruins'); assert.equal(Camp.nextQuestId(r2), 'rain');
+  r2.questsDone.push('rain', 'city', 'marsh', 'ruins','coast','citadel'); assert.equal(Camp.nextQuestId(r2), 'rain');
   // Fights.
   function quest(seed, qid, field, loop) {
     const run = Camp.freshRun(); run.roster = field.slice(); run.field = field.slice(); run.seed = seed;
@@ -730,6 +738,10 @@ test('the retained loop uses only painted Bram; tutorial lock and scaling are re
   // Every quest's plates and panorama are in the build's sync list — night and storm are data.
   const sync = require('node:fs').readFileSync(path.join(ROOT, 'tools/sync_shared.js'), 'utf8');
   for (const q of X.quests) {
+    if(['coast','citadel'].includes(q.id)) {
+      for(const layer of ['far','ground','near'])assert.ok(fs.existsSync(path.join(ROOT,'assets/expedition/stages',q.id,'atmosphere-'+layer+'.webp')));
+      assert.ok(fs.existsSync(path.join(ROOT,'audio/music',q.music+'.mp3')));continue;
+    }
     for (const p of q.plates) { const id = ({ deep_wood: 'forest', bandit_road: 'road' })[p] || p; assert.ok(sync.includes('v2/runtime/' + id + '.webp'), q.id + ' battle plate ' + id + ' not synced'); }
     assert.ok(sync.includes('travel/v1/runtime/' + q.travel + '.webp'), q.id + ' travel plate ' + q.travel + ' not synced');
     assert.ok(sync.includes(q.music + '.mp3'), q.id + ' music ' + q.music + ' not synced');

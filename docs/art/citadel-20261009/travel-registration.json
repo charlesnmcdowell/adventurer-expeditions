@@ -1,0 +1,391 @@
+{
+  "clip": {
+    "id": "travel",
+    "frames": 12,
+    "sources": [
+      {
+        "file": "registered-combat/travel-actions/00.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            387,
+            324
+          ]
+        ],
+        "firstFrameZeroBased": 0,
+        "sha256": "9c2942c996b86bdb7ae6f935c4256aa9ed10e035a26500280cb6389294489fa2"
+      },
+      {
+        "file": "registered-combat/travel-actions/01.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            352,
+            319
+          ]
+        ],
+        "firstFrameZeroBased": 1,
+        "sha256": "f1f6667fde6298bdb5473b0b23ca10c73a84bcfc3bae4649f93e8814d2d4909a"
+      },
+      {
+        "file": "registered-combat/travel-actions/02.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            326,
+            240
+          ]
+        ],
+        "firstFrameZeroBased": 2,
+        "sha256": "dc33d6511e3d7abf1a956d73ae50a55cd06f4897122e86fff9db9f0c5963c332"
+      },
+      {
+        "file": "registered-combat/travel-actions/03.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            327,
+            339
+          ]
+        ],
+        "firstFrameZeroBased": 3,
+        "sha256": "d9d2b30995a5ed43d76bfbb9b294c4e16052ab189fb2f4a68b7a9abc69cde7ae"
+      },
+      {
+        "file": "registered-combat/travel-actions/04.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            310,
+            273
+          ]
+        ],
+        "firstFrameZeroBased": 4,
+        "sha256": "5690ebd298e921512266466c6a27f31e151ea171809266de2bb384c45f29c2ae"
+      },
+      {
+        "file": "registered-combat/travel-actions/05.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            472,
+            288
+          ]
+        ],
+        "firstFrameZeroBased": 5,
+        "sha256": "96df22dfd3b5d44f89c3dd0bf434da7227243f14f281c4483dfa46370ec7e521"
+      },
+      {
+        "file": "registered-combat/travel-actions/06.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            368,
+            279
+          ]
+        ],
+        "firstFrameZeroBased": 6,
+        "sha256": "daadbb6fdbbfe6ab8c1241f8fe996dcdac21156a05a45d0f1aff9470e81642c5"
+      },
+      {
+        "file": "registered-combat/travel-actions/07.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            343,
+            314
+          ]
+        ],
+        "firstFrameZeroBased": 7,
+        "sha256": "cea4e4f9437897a0cbdaf6154b7bb89b528e40644e2523061b5947a919ee4604"
+      },
+      {
+        "file": "registered-combat/travel-actions/08.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            328,
+            257
+          ]
+        ],
+        "firstFrameZeroBased": 8,
+        "sha256": "b53415ef20706cabc0ff16418e92d95bcb13262adc4cdf93dfbc156e9c5eed3b"
+      },
+      {
+        "file": "registered-combat/travel-actions/09.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            310,
+            281
+          ]
+        ],
+        "firstFrameZeroBased": 9,
+        "sha256": "6b51a1355a9850723fd21e704b58216ac875bbb70bf86c20556046ccca8d1b60"
+      },
+      {
+        "file": "registered-combat/travel-actions/10.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            367,
+            333
+          ]
+        ],
+        "firstFrameZeroBased": 10,
+        "sha256": "2c49ff06d9bd8e0d9b197cd84e0d63de747451b79ba1942f3c834bcf1357d3d6"
+      },
+      {
+        "file": "registered-combat/travel-actions/11.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            361,
+            337
+          ]
+        ],
+        "firstFrameZeroBased": 11,
+        "sha256": "00a42ec10b5dea8df6c02780aa2f508d0e4f1b3f5e1c32d1fd675dae9969345b"
+      }
+    ],
+    "durationsMs": [
+      110,
+      110,
+      130,
+      130,
+      170,
+      200,
+      180,
+      160,
+      130,
+      120,
+      110,
+      110
+    ],
+    "loop": false,
+    "contactFramesZeroBased": [
+      2,
+      4,
+      8
+    ],
+    "releaseFrameZeroBased": 11,
+    "registration": {
+      "referenceHeight": 370,
+      "frames": [
+        {
+          "anchorX": 328.0,
+          "groundY": 320
+        },
+        {
+          "anchorX": 297.0,
+          "groundY": 315
+        },
+        {
+          "anchorX": 220.0,
+          "groundY": 236
+        },
+        {
+          "anchorX": 24.0,
+          "groundY": 335
+        },
+        {
+          "anchorX": 177.0,
+          "groundY": 270
+        },
+        {
+          "anchorX": 14.0,
+          "groundY": 284
+        },
+        {
+          "anchorX": 332.0,
+          "groundY": 276
+        },
+        {
+          "anchorX": 288.0,
+          "groundY": 310
+        },
+        {
+          "anchorX": 250.0,
+          "groundY": 254
+        },
+        {
+          "anchorX": 129.0,
+          "groundY": 277
+        },
+        {
+          "anchorX": 294.0,
+          "groundY": 329
+        },
+        {
+          "anchorX": 306.0,
+          "groundY": 334
+        }
+      ]
+    }
+  },
+  "scene": {
+    "id": "citadel-bridge-leap",
+    "width": 1900,
+    "height": 760,
+    "canvas": {
+      "w": 744,
+      "h": 276,
+      "pivot": {
+        "x": 372,
+        "y": 272
+      }
+    },
+    "pivot": {
+      "x": 372,
+      "y": 272
+    },
+    "heroScale": 1,
+    "frames": [
+      {
+        "name": "travel/0",
+        "ms": 110,
+        "x": 380,
+        "y": 520,
+        "cameraX": 0,
+        "contact": false
+      },
+      {
+        "name": "travel/1",
+        "ms": 110,
+        "x": 570,
+        "y": 520,
+        "cameraX": 0,
+        "contact": false
+      },
+      {
+        "name": "travel/2",
+        "ms": 130,
+        "x": 741,
+        "y": 520,
+        "cameraX": 91,
+        "contact": true
+      },
+      {
+        "name": "travel/3",
+        "ms": 130,
+        "x": 836,
+        "y": 500,
+        "cameraX": 186,
+        "contact": false
+      },
+      {
+        "name": "travel/4",
+        "ms": 170,
+        "x": 893,
+        "y": 440,
+        "cameraX": 243,
+        "contact": true
+      },
+      {
+        "name": "travel/5",
+        "ms": 200,
+        "x": 969,
+        "y": 390,
+        "cameraX": 319,
+        "contact": false
+      },
+      {
+        "name": "travel/6",
+        "ms": 180,
+        "x": 1064,
+        "y": 405,
+        "cameraX": 414,
+        "contact": false
+      },
+      {
+        "name": "travel/7",
+        "ms": 160,
+        "x": 1159,
+        "y": 455,
+        "cameraX": 509,
+        "contact": false
+      },
+      {
+        "name": "travel/8",
+        "ms": 130,
+        "x": 1254,
+        "y": 540,
+        "cameraX": 604,
+        "contact": true
+      },
+      {
+        "name": "travel/9",
+        "ms": 120,
+        "x": 1387,
+        "y": 540,
+        "cameraX": 620,
+        "contact": false
+      },
+      {
+        "name": "travel/10",
+        "ms": 110,
+        "x": 1520,
+        "y": 540,
+        "cameraX": 620,
+        "contact": false
+      },
+      {
+        "name": "travel/11",
+        "ms": 110,
+        "x": 1691,
+        "y": 540,
+        "cameraX": 620,
+        "contact": false
+      }
+    ],
+    "loops": [
+      {
+        "row": 0,
+        "x": 741,
+        "y": 520,
+        "startMs": 220,
+        "scale": 0.65
+      },
+      {
+        "row": 2,
+        "x": 893,
+        "y": 470,
+        "startMs": 480,
+        "scale": 0.65
+      },
+      {
+        "row": 0,
+        "x": 1254,
+        "y": 540,
+        "startMs": 1190,
+        "scale": 0.7
+      }
+    ],
+    "groundLayerHeight": 450,
+    "source": "citadel-20261009"
+  }
+}

@@ -1,0 +1,433 @@
+{
+  "actor": "dark_swordswoman",
+  "clips": [
+    {
+      "id": "hiro-finisher-1",
+      "frames": 6,
+      "sources": [
+        {
+          "file": "registered-pairs/dark_swordswoman-hiro-one/00.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              540,
+              424
+            ]
+          ],
+          "firstFrameZeroBased": 0,
+          "sha256": "12b8c9ac60afd2f63f87a1279a5e6664f4a0e1283f391f0673a1827e94bcde37"
+        },
+        {
+          "file": "registered-pairs/dark_swordswoman-hiro-one/01.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              491,
+              455
+            ]
+          ],
+          "firstFrameZeroBased": 1,
+          "sha256": "4b97b4ff307a8e2ba8a31d8016178e86a37fcad820518a1fd1d1b6ccedf85d56"
+        },
+        {
+          "file": "registered-pairs/dark_swordswoman-hiro-one/02.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              526,
+              461
+            ]
+          ],
+          "firstFrameZeroBased": 2,
+          "sha256": "fefc1f1775d6781edc0cdd0e0577cc8529864379b602cf6fefea449e09a27c78"
+        },
+        {
+          "file": "registered-pairs/dark_swordswoman-hiro-one/03.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              490,
+              450
+            ]
+          ],
+          "firstFrameZeroBased": 3,
+          "sha256": "23c2ac1428d2508bd2e486bea0c61b67c0352d1b961a313c3e08b54fb12577b7"
+        },
+        {
+          "file": "registered-pairs/dark_swordswoman-hiro-one/04.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              473,
+              477
+            ]
+          ],
+          "firstFrameZeroBased": 4,
+          "sha256": "9a242900083ebb608d1a15537a75f93170190d31663d91de5d863ed74c6a83e9"
+        },
+        {
+          "file": "registered-pairs/dark_swordswoman-hiro-one/05.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              421,
+              470
+            ]
+          ],
+          "firstFrameZeroBased": 5,
+          "sha256": "33f019a5ea87b1357f3c7314bd31b15314cee9a904e37f2aa959a956bb6d382e"
+        }
+      ],
+      "paired": true,
+      "loop": false,
+      "durationsMs": [
+        240,
+        180,
+        240,
+        250,
+        240,
+        350
+      ],
+      "contactFramesZeroBased": [
+        3
+      ],
+      "primaryImpactFrameZeroBased": 3,
+      "releaseFrameZeroBased": 5,
+      "opponentKinds": [
+        "dark_swordswoman"
+      ],
+      "opponentKeys": [
+        "dark_swordswoman"
+      ],
+      "finalState": "drawn-idle",
+      "pairTargetDistanceRatio": 0.75,
+      "registration": {
+        "referenceHeight": 422.40000000000003,
+        "frames": [
+          {
+            "anchorX": 24.5,
+            "groundY": 414
+          },
+          {
+            "anchorX": 23.0,
+            "groundY": 443
+          },
+          {
+            "anchorX": 25.0,
+            "groundY": 450
+          },
+          {
+            "anchorX": 27.0,
+            "groundY": 442
+          },
+          {
+            "anchorX": 23.0,
+            "groundY": 468
+          },
+          {
+            "anchorX": 219.0,
+            "groundY": 460
+          }
+        ]
+      },
+      "victimFullyGoneFrameZeroBased": 5
+    },
+    {
+      "id": "hiro-finisher-2",
+      "frames": 6,
+      "sources": [
+        {
+          "file": "registered-pairs/dark_swordswoman-hiro-two-corrected/00.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              606,
+              380
+            ]
+          ],
+          "firstFrameZeroBased": 0,
+          "sha256": "58b4eb80a135bd3409207dfa8ec420d0776a604db73b351c788dea3c0a517569"
+        },
+        {
+          "file": "registered-pairs/dark_swordswoman-hiro-two-corrected/01.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              444,
+              486
+            ]
+          ],
+          "firstFrameZeroBased": 1,
+          "sha256": "4a8fa3c4fae9f384ebbc3c16aac2665a77753383b40c140d2b2ccede69971cf1"
+        },
+        {
+          "file": "registered-pairs/dark_swordswoman-hiro-two-corrected/02.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              544,
+              364
+            ]
+          ],
+          "firstFrameZeroBased": 2,
+          "sha256": "c654bd7c4b7206b37e478e4d70bba4b95c26280f855f892b2ee98f39170196d2"
+        },
+        {
+          "file": "registered-pairs/dark_swordswoman-hiro-two-corrected/03.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              497,
+              483
+            ]
+          ],
+          "firstFrameZeroBased": 3,
+          "sha256": "ec9e3ae0913110bfb7b9487d8af7fce8976cefd40861dd6bc625c25b90dc9386"
+        },
+        {
+          "file": "registered-pairs/dark_swordswoman-hiro-two-corrected/04.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              593,
+              500
+            ]
+          ],
+          "firstFrameZeroBased": 4,
+          "sha256": "26fdac766eaee4050c098239cd57501329feda433c9c7889d9ea7532bb3a52e0"
+        },
+        {
+          "file": "registered-pairs/dark_swordswoman-hiro-two-corrected/05.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              453,
+              496
+            ]
+          ],
+          "firstFrameZeroBased": 5,
+          "sha256": "25acbb3f8024fb30c5349c75a1947b2c351182ce792cef4a9ede131722c8bb3a"
+        }
+      ],
+      "paired": true,
+      "loop": false,
+      "durationsMs": [
+        240,
+        180,
+        240,
+        250,
+        240,
+        350
+      ],
+      "contactFramesZeroBased": [
+        3
+      ],
+      "primaryImpactFrameZeroBased": 3,
+      "releaseFrameZeroBased": 5,
+      "opponentKinds": [
+        "dark_swordswoman"
+      ],
+      "opponentKeys": [
+        "dark_swordswoman"
+      ],
+      "finalState": "drawn-idle",
+      "pairTargetDistanceRatio": 0.75,
+      "registration": {
+        "referenceHeight": 422.40000000000003,
+        "frames": [
+          {
+            "anchorX": 18.0,
+            "groundY": 373
+          },
+          {
+            "anchorX": 185.0,
+            "groundY": 476
+          },
+          {
+            "anchorX": 33.0,
+            "groundY": 357
+          },
+          {
+            "anchorX": 29.0,
+            "groundY": 473
+          },
+          {
+            "anchorX": 34.0,
+            "groundY": 483
+          },
+          {
+            "anchorX": 178.0,
+            "groundY": 488
+          }
+        ]
+      },
+      "victimFullyGoneFrameZeroBased": 5
+    },
+    {
+      "id": "dark_swordswoman-fatal",
+      "frames": 6,
+      "sources": [
+        {
+          "file": "registered-pairs/dark_swordswoman-fatal/00.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              519,
+              495
+            ]
+          ],
+          "firstFrameZeroBased": 0,
+          "sha256": "1ea38643641782c26757a8dd3bd0d568d0f40143b43a03f564fcbc8bf3da7b21"
+        },
+        {
+          "file": "registered-pairs/dark_swordswoman-fatal/01.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              509,
+              473
+            ]
+          ],
+          "firstFrameZeroBased": 1,
+          "sha256": "8a3f0921af1e5828c23a8a428499690610af62e91ba2af6dbe78eea1ced063ae"
+        },
+        {
+          "file": "registered-pairs/dark_swordswoman-fatal/02.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              511,
+              477
+            ]
+          ],
+          "firstFrameZeroBased": 2,
+          "sha256": "ffe924951579596c5a0a6646c206e995a9507464a1e73dc15419c98a1d3499fa"
+        },
+        {
+          "file": "registered-pairs/dark_swordswoman-fatal/03.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              489,
+              426
+            ]
+          ],
+          "firstFrameZeroBased": 3,
+          "sha256": "06b87a905b41f4d0041b476465ca8980757bbd46f06c1721ae5d76fb619b7859"
+        },
+        {
+          "file": "registered-pairs/dark_swordswoman-fatal/04.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              504,
+              511
+            ]
+          ],
+          "firstFrameZeroBased": 4,
+          "sha256": "b04ea7bde96d870d79361fb1d6445dbb75733403343ff5b49ad25504b11aaa60"
+        },
+        {
+          "file": "registered-pairs/dark_swordswoman-fatal/05.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              490,
+              531
+            ]
+          ],
+          "firstFrameZeroBased": 5,
+          "sha256": "13463a29425ee99dae68ae4eb0a37f5d0b08cb737c1ac768e3e1c47e85189aeb"
+        }
+      ],
+      "paired": true,
+      "loop": false,
+      "durationsMs": [
+        240,
+        180,
+        240,
+        250,
+        240,
+        350
+      ],
+      "contactFramesZeroBased": [
+        2
+      ],
+      "primaryImpactFrameZeroBased": 2,
+      "releaseFrameZeroBased": 5,
+      "opponentKinds": [
+        "dark_swordswoman"
+      ],
+      "opponentKeys": [
+        "dark_swordswoman"
+      ],
+      "finalState": "hiro-down",
+      "pairTargetDistanceRatio": 0.75,
+      "registration": {
+        "referenceHeight": 422.40000000000003,
+        "frames": [
+          {
+            "anchorX": 34.0,
+            "groundY": 487
+          },
+          {
+            "anchorX": 231.0,
+            "groundY": 463
+          },
+          {
+            "anchorX": 50.0,
+            "groundY": 467
+          },
+          {
+            "anchorX": 199.0,
+            "groundY": 417
+          },
+          {
+            "anchorX": 222.0,
+            "groundY": 498
+          },
+          {
+            "anchorX": 191.0,
+            "groundY": 522
+          }
+        ]
+      }
+    }
+  ]
+}

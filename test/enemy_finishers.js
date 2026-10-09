@@ -35,9 +35,9 @@ for(const target of ['website','crazygames','poki',undefined]) {
  hero.alive=false;assert.equal(f.defeatKiller(scene,null,hero,[])===foe,local,'final defeat fallback after ordinary down');hero.alive=true;
  hero.unit.chp=1;assert.equal(!!f.canPlay(scene,foe,hero,[hit]),false);hero.unit.chp=0;
  hero.unit.maxHp=100;
- for(const hp of [31,30,29]) {hero.unit.chp=hp;assert.equal(!!f.canPlay(scene,foe,hero,[hit]),local&&hp<=30);}
+ for(const hp of [31,30,29,1]) {hero.unit.chp=hp;assert.equal(!!f.canPlay(scene,foe,hero,[hit]),false,'living Hiro must retain his remaining HP');}
  assert.equal(!!f.canPlay(scene,foe,hero,[{...hit,tag:'dot'}]),false);
  assert.equal(!!f.canPlay(scene,foe,hero,[]),false);
  f.setEnabled(false);assert.equal(!!f.canPlay(scene,foe,hero,[hit]),false);
 }
-console.log('enemy_finishers: preference, fail-closed profiles, 30% direct hits, fatal DOT and fallback attacker pass');
+console.log('enemy_finishers: preference, fail-closed profiles, defeat only, fatal DOT and fallback attacker pass');

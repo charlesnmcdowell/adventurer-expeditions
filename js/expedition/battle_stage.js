@@ -4,7 +4,7 @@
 const A = ADV, X = A.Expedition, Stage = X.BattleStage = {};
 const sets = {
   deep_wood: 'forest-carriage-vault', bandit_road: 'forest-carriage-vault',
-  mountain: 'forest-carriage-vault', alley: 'city-market-vault', marsh: 'swamp-log-slide', coast: 'coast'
+  mountain: 'forest-carriage-vault', alley: 'city-market-vault', marsh: 'swamp-log-slide', coast: 'coast', citadel: 'citadel'
 };
 const names = ['far','ground','near'];
 Stage.preload = scene => {
@@ -19,7 +19,7 @@ Stage.preloadBackground = (scene,bg) => {
   for (const layer of names) {
     const key = 'xp_battle_' + set + '_' + layer;
     if (!scene.textures.exists(key)) scene.load.image(key,
-      'assets/expedition/' + (set === 'coast' ? 'stages/' : 'travel/') + set + '/atmosphere-' + layer + '.webp');
+      'assets/expedition/' + (['coast','citadel'].includes(set) ? 'stages/' : 'travel/') + set + '/atmosphere-' + layer + '.webp');
   }
   if (bg === 'mountain' && !scene.textures.exists('xp_battle_mountain_far'))
     scene.load.image('xp_battle_mountain_far','assets/anime/v2/runtime/mountain.webp');
@@ -31,9 +31,9 @@ Stage.paint = (scene, bg, phase) => {
   const nearRoot = scene.add.container(0,0).setDepth(160);
   const layers = names.map((name,i) => {
     const key = bg === 'mountain' && name === 'far' ? 'xp_battle_mountain_far' : 'xp_battle_'+set+'_'+name;
-    const height = name === 'ground' ? (bg === 'coast' ? 550 : 1100) : name === 'near' ? 500 : 760;
+    const height = name === 'ground' ? (bg === 'coast' ? 550 : bg === 'citadel' ? 450 : 1100) : name === 'near' ? 500 : 760;
     const img = scene.add.image(-500,760-height-(bg === 'alley' && name === 'ground' ? 60 : 0),key).setOrigin(0).setDisplaySize(2280,height);
-    if (phase === 'night' && bg !== 'marsh') img.setTint(0x748aba);
+    if (phase === 'night' && !['marsh','citadel'].includes(bg)) img.setTint(0x748aba);
     if (phase === 'evening') img.setTint(0xefbb95);
     (i === 2 ? nearRoot : root).add(img);
     return img;
@@ -58,6 +58,11 @@ Stage.paint = (scene, bg, phase) => {
       const y=350+i%7*23+Math.sin(elapsed/1300+i)*2;
       haze.lineStyle(1,0xd9ffff,.10+.06*Math.sin(elapsed/900+i));
       haze.lineBetween(x,y,x+18+i%4*10,y);
+    }
+    if(bg === 'citadel') for(let i=0;i<20;i++) {
+      const x=(i*157+elapsed*.018)%1400-60,y=190+i%5*68+Math.sin(elapsed/950+i)*12;
+      haze.fillStyle(i%3?0xb694ff:0xffd79a,.25+.2*Math.sin(elapsed/700+i));
+      haze.fillCircle(x,y,1.5+i%2);
     }
   };
   scene.events.on('update',tick);

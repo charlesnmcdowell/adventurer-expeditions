@@ -2,11 +2,11 @@
   "name": "adventurer-expeditions",
   "version": "0.1.0",
   "private": true,
-  "description": "Adventurer: Expeditions \u2014 the CrazyGames edition of Adventurer (Hiro's loop: inn, recruit, quest, repeat). Separate from the website game.",
+  "description": "Adventurer: Expeditions — the CrazyGames edition of Adventurer (Hiro's loop: inn, recruit, quest, repeat). Separate from the website game.",
   "scripts": {
     "sync": "node tools/sync_shared.js",
     "sync:check": "node tools/sync_shared.js --check",
-    "test": "node test/expedition_sim.js && node test/expedition_recruit_gate.js && node test/actor_animation_lifecycle.js && node test/cinematic_scope.js && node test/portal_readiness.js && node test/inn_art_lifecycle.js && node test/art_registration.js && node test/ship_budget_contract.js && node tools/size_check.js && node tools/levels_doc.js --check && node test/finisher_pacing.js && node test/enemy_finishers.js && node test/finisher_removals.js && node test/finisher_coverage.js",
+    "test": "node test/expedition_sim.js && node test/expedition_recruit_gate.js && node test/actor_animation_lifecycle.js && node test/cinematic_scope.js && node test/portal_readiness.js && node test/inn_art_lifecycle.js && node test/art_registration.js && node test/ship_budget_contract.js && node tools/size_check.js && node tools/levels_doc.js --check && node test/finisher_pacing.js && node test/enemy_finishers.js && node test/finisher_removals.js && node test/finisher_coverage.js && node test/expansion_sim.js",
     "test:browser": "node test/browser_expedition.js",
     "test:ship": "node test/browser_expedition.js --ship",
     "art:review": "node test/browser_art_review.js",

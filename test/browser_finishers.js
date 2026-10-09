@@ -32,13 +32,15 @@ const CASES = [
   ['marsh', 0, 'serpent', 'serpent'], ['marsh', 0, 'beetle', 'beetle'],
   ['marsh', 1, 'moss_giant', 'moss_giant'], ['marsh', 2, 'boss', 'hag'],
   ['city', 0, 'goblin', 'goblin'], ['city', 0, 'spider', 'spider'], ['city', 2, 'boss', 'orc'],
+  ['coast',0,'crab','crab'],['coast',0,'toad','toad'],['coast',1,'vulture','vulture'],['coast',2,'boss','hydra'],
+  ['citadel',0,'elven_wizard','elven_wizard'],['citadel',0,'elven_ranger','elven_ranger'],['citadel',1,'dark_swordswoman','dark_swordswoman'],['citadel',2,'boss','enchantress'],
 ];
 
 (async () => {
   const pw = require('playwright');
   await new Promise(res => srv.listen(0, '127.0.0.1', res));
   const port = srv.address().port;
-  const browser = await pw.chromium.launch({ headless: true, args: ['--disable-gpu'] });
+  const browser = await pw.chromium.launch({ channel:'chrome', headless: true, args: ['--disable-gpu'] });
   let failed = 0;
   for (const [qid, wave, pick, set] of CASES) {
     const page = await (await browser.newContext({ viewport: { width: 1280, height: 760 } })).newPage();

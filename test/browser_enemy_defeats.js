@@ -6,6 +6,7 @@ fs.mkdirSync(OUT,{recursive:true});
 const mime={'.html':'text/html','.js':'text/javascript','.json':'application/json','.webp':'image/webp','.css':'text/css','.mp3':'audio/mpeg'};
 const srv=http.createServer((q,r)=>{const rel=q.url.split('?')[0].replace(/^\//,'')||'index.html',p=path.join(ROOT,rel);if(!p.startsWith(ROOT)||!fs.existsSync(p)){r.writeHead(404);return r.end();}r.setHeader('Content-Type',mime[path.extname(p)]||'application/octet-stream');fs.createReadStream(p).pipe(r);});
 const CASES=[['rain',0,'wolf'],['rain',1,'plant'],['rain',2,'alpha'],['marsh',0,'serpent'],['marsh',0,'beetle'],['marsh',1,'moss_giant'],['marsh',2,'hag'],['city',0,'goblin'],['city',0,'spider'],['city',2,'orc']];
+CASES.push(['coast',0,'crab'],['coast',0,'toad'],['coast',1,'vulture'],['coast',2,'hydra'],['citadel',0,'elven_wizard'],['citadel',0,'elven_ranger'],['citadel',1,'dark_swordswoman'],['citadel',2,'enchantress']);
 (async()=>{
  await new Promise(r=>srv.listen(0,'127.0.0.1',r));
  const browser=await require('playwright').chromium.launch({channel:'chrome',headless:true});
@@ -39,7 +40,7 @@ const CASES=[['rain',0,'wolf'],['rain',1,'plant'],['rain',2,'alpha'],['marsh',0,
     if(seen.size!==clip.frames.length)throw Error(actor+': missed frames '+seen.size+'/'+clip.frames.length);
     if(s.__enemyFinishSprite.frame.name!==clip.frames.at(-1))throw Error(actor+': final pose not held');
     return {actor,frames:seen.size,visible:true,threshold:lethal?0:0.3,dot,executionEndsCombat:true,finalPoseHeld:true,zoom:s.cameras.main.zoom};
-   },{actor,lethal:process.argv.includes('--lethal'),dot:process.argv.includes('--dot'),fallback:process.argv.includes('--fallback')});
+   },{actor,lethal:true,dot:process.argv.includes('--dot'),fallback:process.argv.includes('--fallback')});
    report.push(result);console.log(actor+': '+result.frames+' frames, lethal routing passed');
    await page.screenshot({path:path.join(OUT,actor+'-end.png')});
    const b64=await page.evaluate(()=>new Promise(resolve=>{const c=__recording;c.rec.onstop=()=>{c.stream.getTracks().forEach(t=>t.stop());const f=new FileReader();f.onload=()=>resolve(f.result.split(',')[1]);f.readAsDataURL(new Blob(c.chunks,{type:'video/webm'}));};c.rec.stop();}));
@@ -49,7 +50,7 @@ const CASES=[['rain',0,'wolf'],['rain',1,'plant'],['rain',2,'alpha'],['marsh',0,
   await page.evaluate(()=>{
    const X=ADV.Expedition,s=__game.scene.getScene('Expedition'),r=X.Run.fresh();
    s.fight=Object.getPrototypeOf(s).fight;
-   const intro=s.intro;s.intro=async function(first){await intro.call(this,first);this.hero.unit.chp=this.hero.unit.maxHp*.3;};
+   const intro=s.intro;s.intro=async function(first){await intro.call(this,first);this.hero.unit.chp=1;};
    r.questId='rain';r.wave=2;r.phase='quest';r.tutorial.skipGuide=true;
    X.EnemyFinishers.setEnabled(true);X.Dev.go(s,'Expedition',{run:r,seed:9});
   });
@@ -65,6 +66,6 @@ const CASES=[['rain',0,'wolf'],['rain',1,'plant'],['rain',2,'alpha'],['marsh',0,
   });
   await page.waitForFunction(()=>window.__rescuedDefeat===true&&__game.scene.isActive('End'),null,{timeout:60000});
   assert.deepEqual(errors,[]);fs.writeFileSync(path.join(OUT,'results.json'),JSON.stringify(report,null,2));
-  console.log('browser_enemy_defeats: all ten local defeat clips pass');
+  console.log('browser_enemy_defeats: '+CASES.length+' local defeat clips and actual End handoff pass');
  }finally{await browser.close();srv.close();}
 })().catch(e=>{console.error(e);process.exitCode=1;});

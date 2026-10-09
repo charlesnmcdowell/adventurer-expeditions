@@ -226,7 +226,7 @@ UI.pauseSettings = function (scene, ctl) {
   }];
   const drawn = [];
   if (showEnemyFinishers) rows.push({
-    label: 'Enemy finishers', hint: 'On defeat, or from an enemy hit at 30% health or less',
+    label: 'Enemy finishers', hint: 'Play an enemy finishing move when Hiro is defeated',
     get: () => X.EnemyFinishers.enabled(), set: value => X.EnemyFinishers.setEnabled(value),
   });
   rows.forEach((row, i) => {
