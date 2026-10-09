@@ -1,0 +1,1534 @@
+[
+  {
+    "actor": "crab",
+    "frames": 28,
+    "sources": [
+      {
+        "file": "crab-combat-draft.png",
+        "sha256": "c09e1c903e373e7eabfdb2fe4f3003d21a4d86adbd14ba3962964f3262439ff4",
+        "extraction": "Connected silhouette plus nearest authored alpha within 16px; no repaint",
+        "frames": [
+          {
+            "frame": 0,
+            "sourceBox": [
+              9,
+              63,
+              267,
+              208
+            ],
+            "solidPixels": 33424,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 1,
+            "sourceBox": [
+              283,
+              62,
+              269,
+              208
+            ],
+            "solidPixels": 33106,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 2,
+            "sourceBox": [
+              559,
+              58,
+              273,
+              212
+            ],
+            "solidPixels": 33827,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 3,
+            "sourceBox": [
+              832,
+              66,
+              290,
+              204
+            ],
+            "solidPixels": 33192,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 4,
+            "sourceBox": [
+              8,
+              319,
+              280,
+              203
+            ],
+            "solidPixels": 32485,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 5,
+            "sourceBox": [
+              284,
+              315,
+              277,
+              205
+            ],
+            "solidPixels": 32620,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 6,
+            "sourceBox": [
+              565,
+              317,
+              274,
+              214
+            ],
+            "solidPixels": 32741,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 7,
+            "sourceBox": [
+              840,
+              324,
+              282,
+              204
+            ],
+            "solidPixels": 30364,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 8,
+            "sourceBox": [
+              31,
+              545,
+              256,
+              280
+            ],
+            "solidPixels": 37192,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 9,
+            "sourceBox": [
+              298,
+              579,
+              248,
+              247
+            ],
+            "solidPixels": 34272,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 10,
+            "sourceBox": [
+              531,
+              630,
+              315,
+              200
+            ],
+            "solidPixels": 33452,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 11,
+            "sourceBox": [
+              846,
+              623,
+              276,
+              199
+            ],
+            "solidPixels": 31049,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 12,
+            "sourceBox": [
+              15,
+              887,
+              275,
+              205
+            ],
+            "solidPixels": 34138,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 13,
+            "sourceBox": [
+              317,
+              879,
+              238,
+              210
+            ],
+            "solidPixels": 31138,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 14,
+            "sourceBox": [
+              571,
+              892,
+              268,
+              200
+            ],
+            "solidPixels": 31159,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 15,
+            "sourceBox": [
+              850,
+              887,
+              259,
+              208
+            ],
+            "solidPixels": 32377,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 16,
+            "sourceBox": [
+              19,
+              1157,
+              256,
+              203
+            ],
+            "solidPixels": 30009,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 17,
+            "sourceBox": [
+              283,
+              1170,
+              267,
+              196
+            ],
+            "solidPixels": 29758,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 18,
+            "sourceBox": [
+              560,
+              1202,
+              278,
+              165
+            ],
+            "solidPixels": 25907,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 19,
+            "sourceBox": [
+              837,
+              1219,
+              280,
+              150
+            ],
+            "solidPixels": 24620,
+            "sourceEdgeContact": false
+          }
+        ]
+      },
+      {
+        "file": "crab-attack-twelve-draft.png",
+        "sha256": "eb0fd4fe988ee2df22ab71489804d0013677f6bca17a792f9c7f2040bbcec252",
+        "extraction": "Connected silhouette plus nearest authored alpha within 16px; no repaint",
+        "frames": [
+          {
+            "frame": 0,
+            "sourceBox": [
+              28,
+              152,
+              345,
+              224
+            ],
+            "solidPixels": 45904,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 1,
+            "sourceBox": [
+              382,
+              119,
+              362,
+              258
+            ],
+            "solidPixels": 44688,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 2,
+            "sourceBox": [
+              673,
+              57,
+              425,
+              320
+            ],
+            "solidPixels": 48596,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 3,
+            "sourceBox": [
+              11,
+              453,
+              360,
+              213
+            ],
+            "solidPixels": 39926,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 4,
+            "sourceBox": [
+              354,
+              466,
+              402,
+              202
+            ],
+            "solidPixels": 40264,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 5,
+            "sourceBox": [
+              707,
+              475,
+              403,
+              199
+            ],
+            "solidPixels": 37965,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 6,
+            "sourceBox": [
+              11,
+              782,
+              381,
+              205
+            ],
+            "solidPixels": 40201,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 7,
+            "sourceBox": [
+              390,
+              778,
+              372,
+              207
+            ],
+            "solidPixels": 39379,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 8,
+            "sourceBox": [
+              758,
+              773,
+              350,
+              216
+            ],
+            "solidPixels": 40787,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 9,
+            "sourceBox": [
+              20,
+              1101,
+              365,
+              220
+            ],
+            "solidPixels": 44069,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 10,
+            "sourceBox": [
+              425,
+              1103,
+              319,
+              219
+            ],
+            "solidPixels": 45216,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 11,
+            "sourceBox": [
+              781,
+              1100,
+              324,
+              227
+            ],
+            "solidPixels": 45327,
+            "sourceEdgeContact": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "actor": "toad",
+    "frames": 28,
+    "sources": [
+      {
+        "file": "toad-combat-draft.png",
+        "sha256": "2e863d64ccd93eecd385158d54541d120e7d6fd194af2f1a4708f1a77d7c05a7",
+        "extraction": "Connected silhouette plus nearest authored alpha within 16px; no repaint",
+        "frames": [
+          {
+            "frame": 0,
+            "sourceBox": [
+              9,
+              50,
+              262,
+              221
+            ],
+            "solidPixels": 37051,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 1,
+            "sourceBox": [
+              288,
+              42,
+              260,
+              232
+            ],
+            "solidPixels": 37915,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 2,
+            "sourceBox": [
+              571,
+              41,
+              259,
+              233
+            ],
+            "solidPixels": 39461,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 3,
+            "sourceBox": [
+              845,
+              48,
+              260,
+              226
+            ],
+            "solidPixels": 37058,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 4,
+            "sourceBox": [
+              14,
+              355,
+              262,
+              183
+            ],
+            "solidPixels": 29770,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 5,
+            "sourceBox": [
+              279,
+              298,
+              295,
+              236
+            ],
+            "solidPixels": 28534,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 6,
+            "sourceBox": [
+              565,
+              345,
+              265,
+              194
+            ],
+            "solidPixels": 31606,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 7,
+            "sourceBox": [
+              850,
+              348,
+              257,
+              193
+            ],
+            "solidPixels": 32817,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 8,
+            "sourceBox": [
+              29,
+              575,
+              247,
+              223
+            ],
+            "solidPixels": 35900,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 9,
+            "sourceBox": [
+              251,
+              582,
+              326,
+              216
+            ],
+            "solidPixels": 34780,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 10,
+            "sourceBox": [
+              574,
+              585,
+              275,
+              213
+            ],
+            "solidPixels": 32435,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 11,
+            "sourceBox": [
+              858,
+              575,
+              247,
+              223
+            ],
+            "solidPixels": 34653,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 12,
+            "sourceBox": [
+              18,
+              823,
+              257,
+              254
+            ],
+            "solidPixels": 36843,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 13,
+            "sourceBox": [
+              312,
+              840,
+              242,
+              238
+            ],
+            "solidPixels": 34879,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 14,
+            "sourceBox": [
+              568,
+              839,
+              248,
+              229
+            ],
+            "solidPixels": 35438,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 15,
+            "sourceBox": [
+              838,
+              868,
+              268,
+              209
+            ],
+            "solidPixels": 34311,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 16,
+            "sourceBox": [
+              16,
+              1121,
+              255,
+              226
+            ],
+            "solidPixels": 36161,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 17,
+            "sourceBox": [
+              286,
+              1151,
+              266,
+              186
+            ],
+            "solidPixels": 31843,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 18,
+            "sourceBox": [
+              562,
+              1174,
+              264,
+              156
+            ],
+            "solidPixels": 26978,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 19,
+            "sourceBox": [
+              827,
+              1196,
+              282,
+              130
+            ],
+            "solidPixels": 22176,
+            "sourceEdgeContact": false
+          }
+        ]
+      },
+      {
+        "file": "toad-attack-twelve-draft.png",
+        "sha256": "0e31c1f8e504201102204cb874607de7f0177bcd48d99fc2a8f9415512aec4da",
+        "extraction": "Connected silhouette plus nearest authored alpha within 16px; no repaint",
+        "frames": [
+          {
+            "frame": 0,
+            "sourceBox": [
+              265,
+              49,
+              308,
+              221
+            ],
+            "solidPixels": 42007,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 1,
+            "sourceBox": [
+              725,
+              50,
+              318,
+              224
+            ],
+            "solidPixels": 43769,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 2,
+            "sourceBox": [
+              1193,
+              43,
+              310,
+              226
+            ],
+            "solidPixels": 46854,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 3,
+            "sourceBox": [
+              275,
+              280,
+              300,
+              235
+            ],
+            "solidPixels": 45445,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 4,
+            "sourceBox": [
+              714,
+              287,
+              330,
+              229
+            ],
+            "solidPixels": 46080,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 5,
+            "sourceBox": [
+              1082,
+              288,
+              444,
+              227
+            ],
+            "solidPixels": 45212,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 6,
+            "sourceBox": [
+              26,
+              525,
+              591,
+              232
+            ],
+            "solidPixels": 50701,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 7,
+            "sourceBox": [
+              679,
+              524,
+              406,
+              234
+            ],
+            "solidPixels": 47045,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 8,
+            "sourceBox": [
+              1223,
+              522,
+              307,
+              234
+            ],
+            "solidPixels": 44133,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 9,
+            "sourceBox": [
+              294,
+              760,
+              329,
+              248
+            ],
+            "solidPixels": 49289,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 10,
+            "sourceBox": [
+              716,
+              777,
+              307,
+              231
+            ],
+            "solidPixels": 43795,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 11,
+            "sourceBox": [
+              1172,
+              778,
+              319,
+              229
+            ],
+            "solidPixels": 46019,
+            "sourceEdgeContact": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "actor": "vulture",
+    "frames": 28,
+    "sources": [
+      {
+        "file": "vulture-combat-draft.png",
+        "sha256": "af3870aa746631fd65dd9b5dd1b853fa196b23390eff9b65421f3f88ef0b2f91",
+        "extraction": "Connected silhouette plus nearest authored alpha within 16px; no repaint",
+        "frames": [
+          {
+            "frame": 0,
+            "sourceBox": [
+              50,
+              26,
+              262,
+              209
+            ],
+            "solidPixels": 26230,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 1,
+            "sourceBox": [
+              409,
+              24,
+              250,
+              212
+            ],
+            "solidPixels": 25261,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 2,
+            "sourceBox": [
+              738,
+              55,
+              274,
+              184
+            ],
+            "solidPixels": 25706,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 3,
+            "sourceBox": [
+              1120,
+              17,
+              243,
+              221
+            ],
+            "solidPixels": 26081,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 4,
+            "sourceBox": [
+              54,
+              240,
+              242,
+              222
+            ],
+            "solidPixels": 29946,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 5,
+            "sourceBox": [
+              398,
+              245,
+              275,
+              216
+            ],
+            "solidPixels": 30254,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 6,
+            "sourceBox": [
+              743,
+              268,
+              282,
+              174
+            ],
+            "solidPixels": 25643,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 7,
+            "sourceBox": [
+              1077,
+              297,
+              307,
+              153
+            ],
+            "solidPixels": 25056,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 8,
+            "sourceBox": [
+              51,
+              467,
+              278,
+              222
+            ],
+            "solidPixels": 29993,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 9,
+            "sourceBox": [
+              411,
+              476,
+              216,
+              197
+            ],
+            "solidPixels": 18702,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 10,
+            "sourceBox": [
+              720,
+              461,
+              308,
+              198
+            ],
+            "solidPixels": 34301,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 11,
+            "sourceBox": [
+              1091,
+              490,
+              287,
+              197
+            ],
+            "solidPixels": 28822,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 12,
+            "sourceBox": [
+              45,
+              697,
+              271,
+              208
+            ],
+            "solidPixels": 29046,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 13,
+            "sourceBox": [
+              382,
+              716,
+              275,
+              193
+            ],
+            "solidPixels": 26613,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 14,
+            "sourceBox": [
+              738,
+              714,
+              285,
+              190
+            ],
+            "solidPixels": 25865,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 15,
+            "sourceBox": [
+              1101,
+              720,
+              266,
+              182
+            ],
+            "solidPixels": 25632,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 16,
+            "sourceBox": [
+              46,
+              914,
+              275,
+              171
+            ],
+            "solidPixels": 24975,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 17,
+            "sourceBox": [
+              397,
+              928,
+              264,
+              156
+            ],
+            "solidPixels": 23398,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 18,
+            "sourceBox": [
+              708,
+              961,
+              321,
+              125
+            ],
+            "solidPixels": 21498,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 19,
+            "sourceBox": [
+              1063,
+              969,
+              319,
+              115
+            ],
+            "solidPixels": 19176,
+            "sourceEdgeContact": false
+          }
+        ]
+      },
+      {
+        "file": "vulture-attack-twelve-draft.png",
+        "sha256": "b80f2feda7c7e5c3b233b067441c78e9f3cee1bed800dffa0649b8c7dfb910c1",
+        "extraction": "Connected silhouette plus nearest authored alpha within 16px; no repaint",
+        "frames": [
+          {
+            "frame": 0,
+            "sourceBox": [
+              115,
+              17,
+              284,
+              226
+            ],
+            "solidPixels": 32860,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 1,
+            "sourceBox": [
+              593,
+              72,
+              326,
+              174
+            ],
+            "solidPixels": 32059,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 2,
+            "sourceBox": [
+              1039,
+              6,
+              370,
+              243
+            ],
+            "solidPixels": 49661,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 3,
+            "sourceBox": [
+              87,
+              238,
+              394,
+              292
+            ],
+            "solidPixels": 60854,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 4,
+            "sourceBox": [
+              510,
+              303,
+              554,
+              184
+            ],
+            "solidPixels": 51566,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 5,
+            "sourceBox": [
+              1140,
+              292,
+              315,
+              212
+            ],
+            "solidPixels": 31481,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 6,
+            "sourceBox": [
+              100,
+              533,
+              390,
+              235
+            ],
+            "solidPixels": 48045,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 7,
+            "sourceBox": [
+              533,
+              512,
+              468,
+              260
+            ],
+            "solidPixels": 62467,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 8,
+            "sourceBox": [
+              1062,
+              496,
+              392,
+              270
+            ],
+            "solidPixels": 52136,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 9,
+            "sourceBox": [
+              116,
+              775,
+              372,
+              227
+            ],
+            "solidPixels": 46504,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 10,
+            "sourceBox": [
+              556,
+              790,
+              443,
+              211
+            ],
+            "solidPixels": 51849,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 11,
+            "sourceBox": [
+              1116,
+              787,
+              306,
+              218
+            ],
+            "solidPixels": 34376,
+            "sourceEdgeContact": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "actor": "hydra",
+    "frames": 32,
+    "sources": [
+      {
+        "file": "hydra-combat-draft.png",
+        "sha256": "5e52e1396685f96b6c60cf30090b1b1ec6cbc8deafe96809fbfd161010e7389e",
+        "extraction": "Connected silhouette plus nearest authored alpha within 16px; no repaint",
+        "frames": [
+          {
+            "frame": 0,
+            "sourceBox": [
+              25,
+              14,
+              237,
+              231
+            ],
+            "solidPixels": 32973,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 1,
+            "sourceBox": [
+              270,
+              15,
+              241,
+              230
+            ],
+            "solidPixels": 32973,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 2,
+            "sourceBox": [
+              523,
+              14,
+              246,
+              230
+            ],
+            "solidPixels": 34320,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 3,
+            "sourceBox": [
+              782,
+              15,
+              242,
+              229
+            ],
+            "solidPixels": 34156,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 4,
+            "sourceBox": [
+              8,
+              266,
+              256,
+              228
+            ],
+            "solidPixels": 33621,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 5,
+            "sourceBox": [
+              260,
+              271,
+              255,
+              224
+            ],
+            "solidPixels": 33178,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 6,
+            "sourceBox": [
+              515,
+              267,
+              253,
+              228
+            ],
+            "solidPixels": 33885,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 7,
+            "sourceBox": [
+              764,
+              268,
+              260,
+              226
+            ],
+            "solidPixels": 33693,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 8,
+            "sourceBox": [
+              7,
+              515,
+              251,
+              228
+            ],
+            "solidPixels": 34298,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 9,
+            "sourceBox": [
+              264,
+              518,
+              253,
+              230
+            ],
+            "solidPixels": 31824,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 10,
+            "sourceBox": [
+              525,
+              539,
+              247,
+              207
+            ],
+            "solidPixels": 29539,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 11,
+            "sourceBox": [
+              776,
+              514,
+              242,
+              233
+            ],
+            "solidPixels": 33493,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 12,
+            "sourceBox": [
+              7,
+              771,
+              250,
+              240
+            ],
+            "solidPixels": 34659,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 13,
+            "sourceBox": [
+              259,
+              754,
+              266,
+              258
+            ],
+            "solidPixels": 37697,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 14,
+            "sourceBox": [
+              529,
+              761,
+              242,
+              253
+            ],
+            "solidPixels": 34640,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 15,
+            "sourceBox": [
+              776,
+              775,
+              247,
+              237
+            ],
+            "solidPixels": 34891,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 16,
+            "sourceBox": [
+              17,
+              1040,
+              241,
+              207
+            ],
+            "solidPixels": 31710,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 17,
+            "sourceBox": [
+              259,
+              1060,
+              252,
+              186
+            ],
+            "solidPixels": 29881,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 18,
+            "sourceBox": [
+              502,
+              1072,
+              268,
+              170
+            ],
+            "solidPixels": 24771,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 19,
+            "sourceBox": [
+              761,
+              1097,
+              263,
+              146
+            ],
+            "solidPixels": 22022,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 20,
+            "sourceBox": [
+              15,
+              1271,
+              252,
+              243
+            ],
+            "solidPixels": 36377,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 21,
+            "sourceBox": [
+              268,
+              1252,
+              248,
+              263
+            ],
+            "solidPixels": 38470,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 22,
+            "sourceBox": [
+              522,
+              1255,
+              249,
+              259
+            ],
+            "solidPixels": 38861,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 23,
+            "sourceBox": [
+              775,
+              1270,
+              249,
+              244
+            ],
+            "solidPixels": 36374,
+            "sourceEdgeContact": false
+          }
+        ]
+      },
+      {
+        "file": "hydra-attack-twelve-draft.png",
+        "sha256": "bdab423e0ac2b2fb2ee0231a53ad8aadf248c7e3f1d31c88af0e22e32afa9937",
+        "extraction": "Connected silhouette plus nearest authored alpha within 16px; no repaint",
+        "frames": [
+          {
+            "frame": 0,
+            "sourceBox": [
+              30,
+              17,
+              333,
+              304
+            ],
+            "solidPixels": 61465,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 1,
+            "sourceBox": [
+              366,
+              16,
+              356,
+              305
+            ],
+            "solidPixels": 63821,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 2,
+            "sourceBox": [
+              729,
+              17,
+              355,
+              304
+            ],
+            "solidPixels": 61444,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 3,
+            "sourceBox": [
+              10,
+              373,
+              354,
+              300
+            ],
+            "solidPixels": 58325,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 4,
+            "sourceBox": [
+              371,
+              375,
+              356,
+              299
+            ],
+            "solidPixels": 62382,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 5,
+            "sourceBox": [
+              729,
+              376,
+              357,
+              298
+            ],
+            "solidPixels": 60728,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 6,
+            "sourceBox": [
+              11,
+              732,
+              371,
+              301
+            ],
+            "solidPixels": 64734,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 7,
+            "sourceBox": [
+              388,
+              727,
+              339,
+              307
+            ],
+            "solidPixels": 60577,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 8,
+            "sourceBox": [
+              725,
+              722,
+              359,
+              315
+            ],
+            "solidPixels": 66851,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 9,
+            "sourceBox": [
+              16,
+              1086,
+              360,
+              319
+            ],
+            "solidPixels": 67279,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 10,
+            "sourceBox": [
+              369,
+              1083,
+              354,
+              323
+            ],
+            "solidPixels": 67687,
+            "sourceEdgeContact": false
+          },
+          {
+            "frame": 11,
+            "sourceBox": [
+              735,
+              1083,
+              347,
+              324
+            ],
+            "solidPixels": 67188,
+            "sourceEdgeContact": false
+          }
+        ]
+      }
+    ]
+  }
+]

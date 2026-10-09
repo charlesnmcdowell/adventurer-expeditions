@@ -1,0 +1,621 @@
+{
+  "actor": "vulture",
+  "authoredFacing": -1,
+  "clips": [
+    {
+      "id": "idle",
+      "frames": 4,
+      "sources": [
+        {
+          "file": "registered-combat/vulture/base-00.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              262,
+              209
+            ]
+          ],
+          "firstFrameZeroBased": 0,
+          "sha256": "82e2b4638633b107a44de1e9bec0da4d45435d3bdb4d582a609d21bd6701f404"
+        },
+        {
+          "file": "registered-combat/vulture/base-01.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              250,
+              212
+            ]
+          ],
+          "firstFrameZeroBased": 1,
+          "sha256": "94e0adefb4ca07aa4d4e0ed6a48625d4bad6535e584e3fa1f2ab130bfefb07a3"
+        },
+        {
+          "file": "registered-combat/vulture/base-02.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              274,
+              184
+            ]
+          ],
+          "firstFrameZeroBased": 2,
+          "sha256": "6a9c84635ba70959cf561dee38f0347b6d897e8bf5524a5f454e7466a35ca075"
+        },
+        {
+          "file": "registered-combat/vulture/base-03.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              243,
+              221
+            ]
+          ],
+          "firstFrameZeroBased": 3,
+          "sha256": "e0a407fb3e68fdd9ebc47c00eadbc9c24dab6b92396d067e96da4aca2dda89b7"
+        }
+      ],
+      "durationsMs": [
+        180,
+        180,
+        180,
+        180
+      ],
+      "contactFramesZeroBased": [],
+      "releaseFrameZeroBased": 3,
+      "loop": true,
+      "registration": {
+        "referenceHeight": 204,
+        "frames": [
+          {
+            "anchorX": 131.0,
+            "groundY": 206
+          },
+          {
+            "anchorX": 132.0,
+            "groundY": 210
+          },
+          {
+            "anchorX": 140.0,
+            "groundY": 181
+          },
+          {
+            "anchorX": 113.0,
+            "groundY": 219
+          }
+        ]
+      }
+    },
+    {
+      "id": "approach",
+      "frames": 4,
+      "sources": [
+        {
+          "file": "registered-combat/vulture/base-04.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              242,
+              222
+            ]
+          ],
+          "firstFrameZeroBased": 0,
+          "sha256": "cbbca906de96a4f5497d65104b8f1358b2000763eec2e5dd3305da717ea00bd8"
+        },
+        {
+          "file": "registered-combat/vulture/base-05.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              275,
+              216
+            ]
+          ],
+          "firstFrameZeroBased": 1,
+          "sha256": "38de47525b5f0cc731f219ea6c708ce4814806230a24d0a408ad58c45e676619"
+        },
+        {
+          "file": "registered-combat/vulture/base-06.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              282,
+              174
+            ]
+          ],
+          "firstFrameZeroBased": 2,
+          "sha256": "e05c76032806a7554edcecdc3001eaa9897c41d3cc9469c56316cc97e5fe8a03"
+        },
+        {
+          "file": "registered-combat/vulture/base-07.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              307,
+              153
+            ]
+          ],
+          "firstFrameZeroBased": 3,
+          "sha256": "40201a57bf25b5e56c6502b4416723553cbf3a0bc4d344529a16b0576beb1ecb"
+        }
+      ],
+      "durationsMs": [
+        100,
+        100,
+        100,
+        100
+      ],
+      "contactFramesZeroBased": [],
+      "releaseFrameZeroBased": 3,
+      "loop": true,
+      "registration": {
+        "referenceHeight": 204,
+        "frames": [
+          {
+            "anchorX": 179.0,
+            "groundY": 239
+          },
+          {
+            "anchorX": 187.0,
+            "groundY": 257
+          },
+          {
+            "anchorX": 190.0,
+            "groundY": 207
+          },
+          {
+            "anchorX": 186.0,
+            "groundY": 170
+          }
+        ]
+      }
+    },
+    {
+      "id": "attack",
+      "frames": 12,
+      "sources": [
+        {
+          "file": "registered-combat/vulture/attack-00.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              284,
+              226
+            ]
+          ],
+          "firstFrameZeroBased": 0,
+          "sha256": "62ff64011204981a5e850aae4c9957797ac58c3ae3c8771272b3097dfe58505f"
+        },
+        {
+          "file": "registered-combat/vulture/attack-01.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              326,
+              174
+            ]
+          ],
+          "firstFrameZeroBased": 1,
+          "sha256": "7f9376930504b75b518477517b2ccfc798ec70519ea68e440eee518f0f7ca319"
+        },
+        {
+          "file": "registered-combat/vulture/attack-02.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              370,
+              243
+            ]
+          ],
+          "firstFrameZeroBased": 2,
+          "sha256": "c863e53c6e00cf391eb32e88b1ab958a0ca2608beb302f94d8eda7a870ed43c9"
+        },
+        {
+          "file": "registered-combat/vulture/attack-03.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              394,
+              292
+            ]
+          ],
+          "firstFrameZeroBased": 3,
+          "sha256": "77007dd1ee270f52042375ae889fe78dfdd9f0e686b219c4103d8609dd0be2b7"
+        },
+        {
+          "file": "registered-combat/vulture/attack-04.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              554,
+              184
+            ]
+          ],
+          "firstFrameZeroBased": 4,
+          "sha256": "bf4ac0ac4e73038e2330268621dda4391f19e56fb9b7afc49aa8908ddbe9d6c2"
+        },
+        {
+          "file": "registered-combat/vulture/attack-05.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              315,
+              212
+            ]
+          ],
+          "firstFrameZeroBased": 5,
+          "sha256": "ebf2ffc66b50e8ceb959e7471fa291237b1b55de83f21aa31096dd4666751c81"
+        },
+        {
+          "file": "registered-combat/vulture/attack-06.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              390,
+              235
+            ]
+          ],
+          "firstFrameZeroBased": 6,
+          "sha256": "f3b792ed6608f33aeeb0cac0875d8e852d30d4c8d07ea10c90349bf44c7a69fb"
+        },
+        {
+          "file": "registered-combat/vulture/attack-07.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              468,
+              260
+            ]
+          ],
+          "firstFrameZeroBased": 7,
+          "sha256": "9d24bdd4b27986b24318ef81336ae4685b413203ff4bc20802871e5217a0f3fe"
+        },
+        {
+          "file": "registered-combat/vulture/attack-08.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              392,
+              270
+            ]
+          ],
+          "firstFrameZeroBased": 8,
+          "sha256": "26829187b3253fb117434c0b8c162df5af6d0e677c6087a2c4f8ee3078bed6ca"
+        },
+        {
+          "file": "registered-combat/vulture/attack-09.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              372,
+              227
+            ]
+          ],
+          "firstFrameZeroBased": 9,
+          "sha256": "317e8d96f0b9973e01630cf34249616be9ee31db9a9858ce8c66353bdf55160a"
+        },
+        {
+          "file": "registered-combat/vulture/attack-10.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              443,
+              211
+            ]
+          ],
+          "firstFrameZeroBased": 10,
+          "sha256": "ebba9f0545d0fe45fa15b3c67e339ddd5a3229599b2fad456675d5c624cf0b4e"
+        },
+        {
+          "file": "registered-combat/vulture/attack-11.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              306,
+              218
+            ]
+          ],
+          "firstFrameZeroBased": 11,
+          "sha256": "eda98da393c75a570fe5c30e7e4f219f169a2bf414cbd74da5a50288a1e647b2"
+        }
+      ],
+      "durationsMs": [
+        80,
+        65,
+        55,
+        45,
+        40,
+        40,
+        65,
+        45,
+        45,
+        55,
+        65,
+        90
+      ],
+      "contactFramesZeroBased": [
+        6
+      ],
+      "releaseFrameZeroBased": 11,
+      "loop": false,
+      "registration": {
+        "referenceHeight": 220,
+        "frames": [
+          {
+            "anchorX": 148.0,
+            "groundY": 223
+          },
+          {
+            "anchorX": 175.0,
+            "groundY": 171
+          },
+          {
+            "anchorX": 234.0,
+            "groundY": 241
+          },
+          {
+            "anchorX": 221.0,
+            "groundY": 315
+          },
+          {
+            "anchorX": 334.0,
+            "groundY": 221
+          },
+          {
+            "anchorX": 17.0,
+            "groundY": 265
+          },
+          {
+            "anchorX": 228.0,
+            "groundY": 262
+          },
+          {
+            "anchorX": 297.0,
+            "groundY": 308
+          },
+          {
+            "anchorX": 251.0,
+            "groundY": 307
+          },
+          {
+            "anchorX": 169.0,
+            "groundY": 250
+          },
+          {
+            "anchorX": 224.0,
+            "groundY": 208
+          },
+          {
+            "anchorX": 162.0,
+            "groundY": 216
+          }
+        ]
+      }
+    },
+    {
+      "id": "hit",
+      "frames": 4,
+      "sources": [
+        {
+          "file": "registered-combat/vulture/base-12.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              271,
+              208
+            ]
+          ],
+          "firstFrameZeroBased": 0,
+          "sha256": "1a0fbf05f7df4c7fcca9466466cbf4037077fd73ef1b63bd2de84cf4ad617a75"
+        },
+        {
+          "file": "registered-combat/vulture/base-13.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              275,
+              193
+            ]
+          ],
+          "firstFrameZeroBased": 1,
+          "sha256": "de0eaa54084ea0ba9f8167aff008ff5d28d099a3ce3bcf2bfb43619d66497c5a"
+        },
+        {
+          "file": "registered-combat/vulture/base-14.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              285,
+              190
+            ]
+          ],
+          "firstFrameZeroBased": 2,
+          "sha256": "d1412aeda48cc35d46a5c741ffd8c4533c7e77fc221c8502e9692a9e513ababe"
+        },
+        {
+          "file": "registered-combat/vulture/base-15.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              266,
+              182
+            ]
+          ],
+          "firstFrameZeroBased": 3,
+          "sha256": "545a235095336d6b860a01243f53d62e43833c1e259cc0c77203cba34842ebb3"
+        }
+      ],
+      "durationsMs": [
+        65,
+        75,
+        100,
+        100
+      ],
+      "contactFramesZeroBased": [],
+      "releaseFrameZeroBased": 3,
+      "loop": false,
+      "registration": {
+        "referenceHeight": 204,
+        "frames": [
+          {
+            "anchorX": 140.0,
+            "groundY": 206
+          },
+          {
+            "anchorX": 134.0,
+            "groundY": 190
+          },
+          {
+            "anchorX": 126.0,
+            "groundY": 188
+          },
+          {
+            "anchorX": 109.0,
+            "groundY": 179
+          }
+        ]
+      }
+    },
+    {
+      "id": "down",
+      "frames": 4,
+      "sources": [
+        {
+          "file": "registered-combat/vulture/base-16.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              275,
+              171
+            ]
+          ],
+          "firstFrameZeroBased": 0,
+          "sha256": "99be77e4422b92a75a24a9acd4f17a2f8d6943a660ce1e49d8c3c603d0bc8e5b"
+        },
+        {
+          "file": "registered-combat/vulture/base-17.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              264,
+              156
+            ]
+          ],
+          "firstFrameZeroBased": 1,
+          "sha256": "b07f356fe540d28b3165767d8d8246d8586ba59a3af7fcb98d78b46e02103faa"
+        },
+        {
+          "file": "registered-combat/vulture/base-18.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              321,
+              125
+            ]
+          ],
+          "firstFrameZeroBased": 2,
+          "sha256": "0ef380dd8870691eb7519f1230fc5eedef3f34be4dae04e0b9361d8c6fcd78c7"
+        },
+        {
+          "file": "registered-combat/vulture/base-19.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              319,
+              115
+            ]
+          ],
+          "firstFrameZeroBased": 3,
+          "sha256": "70376dfba3ba76e422cb9e719139a6e031d630a668fb7f932c53626b9b09f225"
+        }
+      ],
+      "durationsMs": [
+        100,
+        130,
+        170,
+        250
+      ],
+      "contactFramesZeroBased": [],
+      "releaseFrameZeroBased": 3,
+      "loop": false,
+      "registration": {
+        "referenceHeight": 204,
+        "frames": [
+          {
+            "anchorX": 139.0,
+            "groundY": 169
+          },
+          {
+            "anchorX": 116.0,
+            "groundY": 154
+          },
+          {
+            "anchorX": 181.0,
+            "groundY": 122
+          },
+          {
+            "anchorX": 161.0,
+            "groundY": 112
+          }
+        ]
+      }
+    }
+  ],
+  "status": "preview-only; anatomy/scale review and finishers pending"
+}

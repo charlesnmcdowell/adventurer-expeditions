@@ -1,0 +1,621 @@
+{
+  "actor": "toad",
+  "authoredFacing": -1,
+  "clips": [
+    {
+      "id": "idle",
+      "frames": 4,
+      "sources": [
+        {
+          "file": "registered-combat/toad/base-00.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              262,
+              221
+            ]
+          ],
+          "firstFrameZeroBased": 0,
+          "sha256": "1f1747941952d216d902e0de8e10dbbd5169c7689aa9e7b29efe855c6caac266"
+        },
+        {
+          "file": "registered-combat/toad/base-01.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              260,
+              232
+            ]
+          ],
+          "firstFrameZeroBased": 1,
+          "sha256": "40160d7a93e23930f39f801080632ebdb93406c7312afeb89a427d344f9b47e6"
+        },
+        {
+          "file": "registered-combat/toad/base-02.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              259,
+              233
+            ]
+          ],
+          "firstFrameZeroBased": 2,
+          "sha256": "95f955a8ab48cbde5e3f3a919d9e142af604b7247cae1122b4e0689f25858b56"
+        },
+        {
+          "file": "registered-combat/toad/base-03.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              260,
+              226
+            ]
+          ],
+          "firstFrameZeroBased": 3,
+          "sha256": "6e602aa95ef3482798cc832281652dad4d81c4251ce22e8e97f12559b37cb16c"
+        }
+      ],
+      "durationsMs": [
+        180,
+        180,
+        180,
+        180
+      ],
+      "contactFramesZeroBased": [],
+      "releaseFrameZeroBased": 3,
+      "loop": true,
+      "registration": {
+        "referenceHeight": 217,
+        "frames": [
+          {
+            "anchorX": 140.0,
+            "groundY": 219
+          },
+          {
+            "anchorX": 145.0,
+            "groundY": 230
+          },
+          {
+            "anchorX": 143.0,
+            "groundY": 231
+          },
+          {
+            "anchorX": 146.0,
+            "groundY": 224
+          }
+        ]
+      }
+    },
+    {
+      "id": "approach",
+      "frames": 4,
+      "sources": [
+        {
+          "file": "registered-combat/toad/base-04.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              262,
+              183
+            ]
+          ],
+          "firstFrameZeroBased": 0,
+          "sha256": "32d4e0dc5365f5edae1e611619d06301472c9a3553d9a7036d476138de296f6a"
+        },
+        {
+          "file": "registered-combat/toad/base-05.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              295,
+              236
+            ]
+          ],
+          "firstFrameZeroBased": 1,
+          "sha256": "504f726b0e0ed8eabbac71e302e68f409e7bb76b66c576889ae591e8872f7b75"
+        },
+        {
+          "file": "registered-combat/toad/base-06.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              265,
+              194
+            ]
+          ],
+          "firstFrameZeroBased": 2,
+          "sha256": "b3f1494ef9a21d97f12f06455aa2131cff4d8fdef695dcda09fd480954762600"
+        },
+        {
+          "file": "registered-combat/toad/base-07.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              257,
+              193
+            ]
+          ],
+          "firstFrameZeroBased": 3,
+          "sha256": "be29d90c8bee5f1b44f32168ac2548183f01b5750ad169defb13a12c5d5fd0bc"
+        }
+      ],
+      "durationsMs": [
+        100,
+        100,
+        100,
+        100
+      ],
+      "contactFramesZeroBased": [],
+      "releaseFrameZeroBased": 3,
+      "loop": true,
+      "registration": {
+        "referenceHeight": 217,
+        "frames": [
+          {
+            "anchorX": 128.0,
+            "groundY": 181
+          },
+          {
+            "anchorX": 262.0,
+            "groundY": 234
+          },
+          {
+            "anchorX": 73.0,
+            "groundY": 191
+          },
+          {
+            "anchorX": 131.0,
+            "groundY": 190
+          }
+        ]
+      }
+    },
+    {
+      "id": "attack",
+      "frames": 12,
+      "sources": [
+        {
+          "file": "registered-combat/toad/attack-00.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              308,
+              221
+            ]
+          ],
+          "firstFrameZeroBased": 0,
+          "sha256": "3c8ce8e63c3a99b96e62d1c45c3632334288004e6812fc12e7bc7c11a63f770e"
+        },
+        {
+          "file": "registered-combat/toad/attack-01.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              318,
+              224
+            ]
+          ],
+          "firstFrameZeroBased": 1,
+          "sha256": "b1ad0c75b54aeebb4dce74b2227e0c1a517ce05a05fd0aa614d32c6acdd77867"
+        },
+        {
+          "file": "registered-combat/toad/attack-02.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              310,
+              226
+            ]
+          ],
+          "firstFrameZeroBased": 2,
+          "sha256": "2e99d1a3c1a9f67e189d9c93437c15fc8f7cb6f9cdcbdee80a57791920994006"
+        },
+        {
+          "file": "registered-combat/toad/attack-03.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              300,
+              235
+            ]
+          ],
+          "firstFrameZeroBased": 3,
+          "sha256": "a17d72d0159ba2ebea71bcf97b160336f91b1503c8cf901d20ae3b195ef882ba"
+        },
+        {
+          "file": "registered-combat/toad/attack-04.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              330,
+              229
+            ]
+          ],
+          "firstFrameZeroBased": 4,
+          "sha256": "15afa3ce8e3a7fce2edc65c32c1108630364a772be7ceb19001e267f69593376"
+        },
+        {
+          "file": "registered-combat/toad/attack-05.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              444,
+              227
+            ]
+          ],
+          "firstFrameZeroBased": 5,
+          "sha256": "b9bfbaec7ce4ab79c192e0771bc97cc8cb92cb5de638d80c8dd1e8c5c59744c9"
+        },
+        {
+          "file": "registered-combat/toad/attack-06.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              591,
+              232
+            ]
+          ],
+          "firstFrameZeroBased": 6,
+          "sha256": "17cb21e185c1de64804c26f4f9f3aa89da20a4adbb4b09e960d8aa0c6f4679e4"
+        },
+        {
+          "file": "registered-combat/toad/attack-07.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              406,
+              234
+            ]
+          ],
+          "firstFrameZeroBased": 7,
+          "sha256": "3a025d6a52f956b0aa9813c70293c06816c991b9e20b31420917af4a004d9608"
+        },
+        {
+          "file": "registered-combat/toad/attack-08.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              307,
+              234
+            ]
+          ],
+          "firstFrameZeroBased": 8,
+          "sha256": "05935a8a4bad6d0f54ff74c221c73d7ebd5b27a65ebceca22ca607546ce3e973"
+        },
+        {
+          "file": "registered-combat/toad/attack-09.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              329,
+              248
+            ]
+          ],
+          "firstFrameZeroBased": 9,
+          "sha256": "759896fd7633b63301ca877f48ecbbaf8caa5a864e706808c437f76f10083462"
+        },
+        {
+          "file": "registered-combat/toad/attack-10.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              307,
+              231
+            ]
+          ],
+          "firstFrameZeroBased": 10,
+          "sha256": "859a194e13786655b52037fce4e898fc4a4eb7484b3811db6541a1374173c517"
+        },
+        {
+          "file": "registered-combat/toad/attack-11.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              319,
+              229
+            ]
+          ],
+          "firstFrameZeroBased": 11,
+          "sha256": "9eb9e5be028e5dd0cf13f38713c2e566d2c9223d335b58b5acc7cbc12da83579"
+        }
+      ],
+      "durationsMs": [
+        80,
+        65,
+        55,
+        45,
+        40,
+        40,
+        65,
+        45,
+        45,
+        55,
+        65,
+        90
+      ],
+      "contactFramesZeroBased": [
+        6
+      ],
+      "releaseFrameZeroBased": 11,
+      "loop": false,
+      "registration": {
+        "referenceHeight": 215,
+        "frames": [
+          {
+            "anchorX": 157.0,
+            "groundY": 219
+          },
+          {
+            "anchorX": 163.0,
+            "groundY": 222
+          },
+          {
+            "anchorX": 151.0,
+            "groundY": 224
+          },
+          {
+            "anchorX": 151.0,
+            "groundY": 233
+          },
+          {
+            "anchorX": 174.0,
+            "groundY": 227
+          },
+          {
+            "anchorX": 310.0,
+            "groundY": 225
+          },
+          {
+            "anchorX": 440.0,
+            "groundY": 230
+          },
+          {
+            "anchorX": 256.0,
+            "groundY": 231
+          },
+          {
+            "anchorX": 171.0,
+            "groundY": 232
+          },
+          {
+            "anchorX": 170.0,
+            "groundY": 246
+          },
+          {
+            "anchorX": 157.0,
+            "groundY": 228
+          },
+          {
+            "anchorX": 167.0,
+            "groundY": 226
+          }
+        ]
+      }
+    },
+    {
+      "id": "hit",
+      "frames": 4,
+      "sources": [
+        {
+          "file": "registered-combat/toad/base-12.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              257,
+              254
+            ]
+          ],
+          "firstFrameZeroBased": 0,
+          "sha256": "d3524ac8bf33393dda6c6e66f0ed549c4144dedf1db9d9b01a55bfc522337449"
+        },
+        {
+          "file": "registered-combat/toad/base-13.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              242,
+              238
+            ]
+          ],
+          "firstFrameZeroBased": 1,
+          "sha256": "b0e45ad7961620b5861fbedcef48e02554cdbb3aafc2a64a1fc6e6bfe041bcc6"
+        },
+        {
+          "file": "registered-combat/toad/base-14.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              248,
+              229
+            ]
+          ],
+          "firstFrameZeroBased": 2,
+          "sha256": "afe0404e10658e499f072d5eab516b6572e03545b536e9275081629a9e681526"
+        },
+        {
+          "file": "registered-combat/toad/base-15.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              268,
+              209
+            ]
+          ],
+          "firstFrameZeroBased": 3,
+          "sha256": "f4d2b6c99350644f006fb951708737907af7c4356a762b1ca632e5491d530895"
+        }
+      ],
+      "durationsMs": [
+        65,
+        75,
+        100,
+        100
+      ],
+      "contactFramesZeroBased": [],
+      "releaseFrameZeroBased": 3,
+      "loop": false,
+      "registration": {
+        "referenceHeight": 217,
+        "frames": [
+          {
+            "anchorX": 202.0,
+            "groundY": 252
+          },
+          {
+            "anchorX": 163.0,
+            "groundY": 235
+          },
+          {
+            "anchorX": 186.0,
+            "groundY": 227
+          },
+          {
+            "anchorX": 134.0,
+            "groundY": 207
+          }
+        ]
+      }
+    },
+    {
+      "id": "down",
+      "frames": 4,
+      "sources": [
+        {
+          "file": "registered-combat/toad/base-16.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              255,
+              226
+            ]
+          ],
+          "firstFrameZeroBased": 0,
+          "sha256": "6f2f183b07ec5547868067b22d62ac2d74ba40fa32bc6a7e0097a600359cb67f"
+        },
+        {
+          "file": "registered-combat/toad/base-17.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              266,
+              186
+            ]
+          ],
+          "firstFrameZeroBased": 1,
+          "sha256": "3a03630f3edb468b804cfccf4bbb964ad64a3f24e8ad9ca45e12106971b5f11a"
+        },
+        {
+          "file": "registered-combat/toad/base-18.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              264,
+              156
+            ]
+          ],
+          "firstFrameZeroBased": 2,
+          "sha256": "41f958d72129633f0bcd93d22a28aa1fbe6b3b333c26c0b11eaa7e640850da2c"
+        },
+        {
+          "file": "registered-combat/toad/base-19.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              282,
+              130
+            ]
+          ],
+          "firstFrameZeroBased": 3,
+          "sha256": "62aa1d8b0f96d23f742c1b6f43fc2a94e01a9c10b867e5b10d1abab7bc809cc6"
+        }
+      ],
+      "durationsMs": [
+        100,
+        130,
+        170,
+        250
+      ],
+      "contactFramesZeroBased": [],
+      "releaseFrameZeroBased": 3,
+      "loop": false,
+      "registration": {
+        "referenceHeight": 217,
+        "frames": [
+          {
+            "anchorX": 138.0,
+            "groundY": 224
+          },
+          {
+            "anchorX": 139.0,
+            "groundY": 184
+          },
+          {
+            "anchorX": 130.5,
+            "groundY": 154
+          },
+          {
+            "anchorX": 125.0,
+            "groundY": 128
+          }
+        ]
+      }
+    }
+  ],
+  "status": "preview-only; anatomy/scale review and finishers pending"
+}

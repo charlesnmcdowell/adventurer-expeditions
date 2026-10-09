@@ -1,0 +1,36 @@
+{
+  "generator": "built-in image_gen",
+  "status": "Preview intake only; source and playback review required before live registration",
+  "assets": [
+    {
+      "actor": "crab",
+      "file": "crab-attack-twelve-draft.png",
+      "source": "exec-3a6b3c36-5620-46c5-b387-ed651be06649.png",
+      "prompt": "Production animation sprite sheet, exact 3 COLUMNS by 4 ROWS = 12 poses of ONE blue barnacled Tidal Crab matching reference, no Hiro. TRANSPARENT alpha. Crab faces LEFT throughout, full shell and every leg and pincer remain inside each cell with generous 15 percent gutter. Same body scale and floor line, fixed side-on combat camera. ONE CONTINUOUS pincer attack: frames1-3 crouch and raise leftward attacking claw;4-6 extend the open claw LEFT, weight shifts onto forward legs;7 claw snaps shut at full extension (contact);8-9 retract closed claw;10-12 recover to reference guard. Other claw stays near body. Leg motion supports weight. Twelve DISTINCT drawings, smooth progression, no pose repetitions, no body size changes. Large armored blue claws pale worn edge, blue shell barnacles exactly as reference. Detailed hand-painted cel shaded anime style. No scene, ground, text, grid lines, particles, shadows outside cell, gore."
+    },
+    {
+      "actor": "toad",
+      "file": "toad-attack-twelve-draft.png",
+      "source": "exec-81665d73-e1c6-4a88-b17e-bc73e865a7db.png",
+      "prompt": "Production animation sprite sheet exact 3 COLUMNS x4 ROWS, 12 equal cells. ONE Brine Toad monster from reference, green warty skin yellow eyes cream throat, left-facing, same body size and fixed floor in every pose. Transparent alpha. Each full body and full tongue fits within own cell, ample gutters with no neighbor overlap. SINGLE continuous tongue-lash attack: frames1-3 inhale crouch puff throat;4 open mouth;5 tongue emerges LEFT;6 tongue extends;7 fully extended tongue contacts target to LEFT (no target drawn);8 tongue curls back;9 retract;10 swallow;11 settle;12 reference idle. Do NOT shrink toad body to fit tongue, reserve plenty of blank space LEFT throughout. Detailed cel shaded anime art identical polish to reference, crisp contour and painted shading. No ground, background, text, grids, gore. All12 poses distinct, plausible consistent four limbs and anatomy."
+    },
+    {
+      "actor": "vulture",
+      "file": "vulture-attack-twelve-draft.png",
+      "source": "exec-83c2588e-7698-465b-b4aa-97267f3dc4b9.png",
+      "prompt": "Production game animation atlas exact THREE columns FOUR rows =12 cells transparent alpha. Single Carrion Vulture matching reference: bald pink head hooked dark beak pale feather collar brown layered wings black talons. Facing LEFT. Twelve continuous distinct poses of a swooping talon attack, fixed camera consistent anatomical size:1 standing guard;2 crouch;3 wings lift;4 lift off;5 glide forward left;6 tuck wings for dive;7 talons strike down-left (contact, no victim drawn);8 wings flare braking;9 rising recovery;10 descend;11 feet land;12 wings folded idle. Full body wings tail and every feather inside own cell, generous empty margin 15 percent; don't shrink flying poses or stretch body. Main body same size as neutral, wings expand within preallocated whitespace. Painted anime cel-shaded quality identical to reference. No scene, ground, text, grid, gore or duplicate bird in any cell. Landing ground is fixed, airborne poses rise naturally above it."
+    },
+    {
+      "actor": "hydra",
+      "file": "hydra-attack-twelve-draft.png",
+      "source": "exec-78f2ecd7-088b-4910-967a-4a36a604c9ed.png",
+      "prompt": "Production sprite animation sheet exact THREE columns FOUR rows =12 equal cells, transparent alpha. ONE Wreck Hydra boss from reference: exactly FIVE long necks with five dragon heads, green scales cream undersides four short strong legs one long curled tail. Faces LEFT throughout, side-on battle camera. Same body and head sizes in every frame, every head tail foot completely contained inside cell, generous blank margins. Twelve DISTINCT sequential frames of a triple-neck bite:1 neutral guard;2 all necks recoil;3 front three heads pull back jaws open;4 front head lunges left;5 second head follows;6 third head follows;7 three front heads bite toward left at full extension (contact, no victim);8 front heads begin recoil;9 necks arch upward;10 heads settle;11 jaws close;12 neutral guard. Rear two heads watch throughout, exactly five heads every frame, do not add or remove necks. Main body stays grounded, weight shifts front paws. Detailed anime cel shaded painted game art matching reference. No background, no scenery, no text, no grid, no gore, no particles. Reserve enough space for extended necks without body shrink."
+    },
+    {
+      "actor": "toad",
+      "file": "toad-parry-eight-draft.png",
+      "source": "exec-2adcc140-b57c-4b4a-a07b-445a9bfe9d78.png",
+      "prompt": "Production animation sheet for Adventurer Expeditions. References: Hiro identity (dark brown skin, purple dreadlocks, black cyber samurai armor), and green coastal toad. EXACT 2 columns by 4 rows, 8 equal cells with very generous empty margins. Transparent background. A single paired finisher: Hiro LEFT facing RIGHT and toad RIGHT facing LEFT, toad head reaches Hiro waist. Side-on camera consistent anatomical sizes. 1 guard;2 toad extends tongue toward Hiro;3 Hiro parries tongue upward with flat of katana;4 Hiro steps close along toad flank;5 Hiro strikes downward with katana onto back, brief violet contact glint;6 toad collapses intact, Hiro recovering;7 toad dissolves into pale sea spray while Hiro stays fully visible;8 Hiro alone standing sheathing katana. ALL eight cells contain Hiro with same head/body proportions. Full body complete sword no clipping, no cell overlap. Detailed anime cel-shaded game production finish matching reference. No gore, scenery, panels, text or background. This is one move with anticipation, impact and recovery, not eight unrelated poses."
+    }
+  ]
+}

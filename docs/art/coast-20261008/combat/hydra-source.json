@@ -1,0 +1,713 @@
+{
+  "actor": "hydra",
+  "authoredFacing": -1,
+  "clips": [
+    {
+      "id": "idle",
+      "frames": 4,
+      "sources": [
+        {
+          "file": "registered-combat/hydra/base-00.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              237,
+              231
+            ]
+          ],
+          "firstFrameZeroBased": 0,
+          "sha256": "c26fba9383f7ac75536727cd1f8ed3f27fdd63ca99a669cd3488c49e8dad7fb3"
+        },
+        {
+          "file": "registered-combat/hydra/base-01.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              241,
+              230
+            ]
+          ],
+          "firstFrameZeroBased": 1,
+          "sha256": "3a078a6723cbf1e0a44dccf0c2b8c78a8f062a8a9c9090e8b00a71f68aa4a96e"
+        },
+        {
+          "file": "registered-combat/hydra/base-02.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              246,
+              230
+            ]
+          ],
+          "firstFrameZeroBased": 2,
+          "sha256": "0f8ac18c4dbd9c6c3459005e7e5bac9a67dd1984347838a302f7623f7d70c941"
+        },
+        {
+          "file": "registered-combat/hydra/base-03.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              242,
+              229
+            ]
+          ],
+          "firstFrameZeroBased": 3,
+          "sha256": "d941d855d93607441beaa15dfdb5fd8bc968791927028e603fb01b7911d776de"
+        }
+      ],
+      "durationsMs": [
+        180,
+        180,
+        180,
+        180
+      ],
+      "contactFramesZeroBased": [],
+      "releaseFrameZeroBased": 3,
+      "loop": true,
+      "registration": {
+        "referenceHeight": 226,
+        "frames": [
+          {
+            "anchorX": 109.0,
+            "groundY": 228
+          },
+          {
+            "anchorX": 107.5,
+            "groundY": 228
+          },
+          {
+            "anchorX": 110.0,
+            "groundY": 228
+          },
+          {
+            "anchorX": 101.0,
+            "groundY": 227
+          }
+        ]
+      }
+    },
+    {
+      "id": "approach",
+      "frames": 4,
+      "sources": [
+        {
+          "file": "registered-combat/hydra/base-04.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              256,
+              228
+            ]
+          ],
+          "firstFrameZeroBased": 0,
+          "sha256": "dc028259a61f40cb23d0399677f7154e8d86899625fb34ea3959c7858b8e48f0"
+        },
+        {
+          "file": "registered-combat/hydra/base-05.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              255,
+              224
+            ]
+          ],
+          "firstFrameZeroBased": 1,
+          "sha256": "f2bdb1b76f8ba9db1ebef12f1e193cf394480f68f23fb54c18d5f7f0c88c6100"
+        },
+        {
+          "file": "registered-combat/hydra/base-06.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              253,
+              228
+            ]
+          ],
+          "firstFrameZeroBased": 2,
+          "sha256": "3caa2214f6d063b64376d80fe0112f1a67228603ea3e9ccc81afa8fa51214a65"
+        },
+        {
+          "file": "registered-combat/hydra/base-07.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              260,
+              226
+            ]
+          ],
+          "firstFrameZeroBased": 3,
+          "sha256": "da1abca339caf2de5bbda8cb7791ac21e881cc6e92c1bdd113a97513622fca66"
+        }
+      ],
+      "durationsMs": [
+        100,
+        100,
+        100,
+        100
+      ],
+      "contactFramesZeroBased": [],
+      "releaseFrameZeroBased": 3,
+      "loop": true,
+      "registration": {
+        "referenceHeight": 226,
+        "frames": [
+          {
+            "anchorX": 125.0,
+            "groundY": 225
+          },
+          {
+            "anchorX": 115.0,
+            "groundY": 221
+          },
+          {
+            "anchorX": 113.0,
+            "groundY": 225
+          },
+          {
+            "anchorX": 118.0,
+            "groundY": 223
+          }
+        ]
+      }
+    },
+    {
+      "id": "attack",
+      "frames": 12,
+      "sources": [
+        {
+          "file": "registered-combat/hydra/attack-00.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              333,
+              304
+            ]
+          ],
+          "firstFrameZeroBased": 0,
+          "sha256": "41155bad019184897230a3eb19477333cf93665a94fe7e4e6074dcb6b61f24b7"
+        },
+        {
+          "file": "registered-combat/hydra/attack-01.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              356,
+              305
+            ]
+          ],
+          "firstFrameZeroBased": 1,
+          "sha256": "d09fedb7e60622e790c8aaf080377b51c002c5c5bab07cf42fc9b6c713e4af86"
+        },
+        {
+          "file": "registered-combat/hydra/attack-02.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              355,
+              304
+            ]
+          ],
+          "firstFrameZeroBased": 2,
+          "sha256": "ddd36446175c7b1fa4ddef007069db5a431dcd74b55e866ab22c5aa09f66c948"
+        },
+        {
+          "file": "registered-combat/hydra/attack-03.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              354,
+              300
+            ]
+          ],
+          "firstFrameZeroBased": 3,
+          "sha256": "2196ba5dd1bfa941ff1cdb0dd7abae97c7db1c8044034c8acb05c42fc50f2cd3"
+        },
+        {
+          "file": "registered-combat/hydra/attack-04.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              356,
+              299
+            ]
+          ],
+          "firstFrameZeroBased": 4,
+          "sha256": "d49c41464f7e9ca13487cd637d5b740dbdce3eb9d65f61c9a5cdb65c6be0f5e0"
+        },
+        {
+          "file": "registered-combat/hydra/attack-05.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              357,
+              298
+            ]
+          ],
+          "firstFrameZeroBased": 5,
+          "sha256": "10ced02ab07d0c3d2a46726f8f755d47f6682dbf55f9c0fea54459b572a02410"
+        },
+        {
+          "file": "registered-combat/hydra/attack-06.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              371,
+              301
+            ]
+          ],
+          "firstFrameZeroBased": 6,
+          "sha256": "6602f9f3c3dfcb107ddc7d702215ec8d479e1d06f63214ad5d3031771a80a8f9"
+        },
+        {
+          "file": "registered-combat/hydra/attack-07.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              339,
+              307
+            ]
+          ],
+          "firstFrameZeroBased": 7,
+          "sha256": "8590352c26d9a81b788b5a893898f122f4d4c35b456973655d78ae752b51b264"
+        },
+        {
+          "file": "registered-combat/hydra/attack-08.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              359,
+              315
+            ]
+          ],
+          "firstFrameZeroBased": 8,
+          "sha256": "7feb051641a6337a1290a7c7761ff50e1490cfc78580de0a7ac70270e84a297f"
+        },
+        {
+          "file": "registered-combat/hydra/attack-09.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              360,
+              319
+            ]
+          ],
+          "firstFrameZeroBased": 9,
+          "sha256": "82bfc356a1d88eccbf52962bc9b0985dc2df0a52650e402cf8e4f6220544489e"
+        },
+        {
+          "file": "registered-combat/hydra/attack-10.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              354,
+              323
+            ]
+          ],
+          "firstFrameZeroBased": 10,
+          "sha256": "ebcbe070821462d51056a0b85b57998def8a51a9d8715562715e0637c0f030a3"
+        },
+        {
+          "file": "registered-combat/hydra/attack-11.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              347,
+              324
+            ]
+          ],
+          "firstFrameZeroBased": 11,
+          "sha256": "88bbbd5af6db83437e53d02a049f73d9c86ada93b29bf18febe9af44d3fb46a5"
+        }
+      ],
+      "durationsMs": [
+        80,
+        65,
+        55,
+        45,
+        40,
+        40,
+        65,
+        45,
+        45,
+        55,
+        65,
+        90
+      ],
+      "contactFramesZeroBased": [
+        6
+      ],
+      "releaseFrameZeroBased": 11,
+      "loop": false,
+      "registration": {
+        "referenceHeight": 300,
+        "frames": [
+          {
+            "anchorX": 154.0,
+            "groundY": 302
+          },
+          {
+            "anchorX": 168.0,
+            "groundY": 303
+          },
+          {
+            "anchorX": 179.0,
+            "groundY": 302
+          },
+          {
+            "anchorX": 194.0,
+            "groundY": 298
+          },
+          {
+            "anchorX": 185.0,
+            "groundY": 297
+          },
+          {
+            "anchorX": 190.0,
+            "groundY": 296
+          },
+          {
+            "anchorX": 207.0,
+            "groundY": 299
+          },
+          {
+            "anchorX": 176.0,
+            "groundY": 305
+          },
+          {
+            "anchorX": 186.0,
+            "groundY": 312
+          },
+          {
+            "anchorX": 170.0,
+            "groundY": 316
+          },
+          {
+            "anchorX": 166.0,
+            "groundY": 321
+          },
+          {
+            "anchorX": 166.0,
+            "groundY": 322
+          }
+        ]
+      }
+    },
+    {
+      "id": "hit",
+      "frames": 4,
+      "sources": [
+        {
+          "file": "registered-combat/hydra/base-12.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              250,
+              240
+            ]
+          ],
+          "firstFrameZeroBased": 0,
+          "sha256": "78c9e2d710b2bbe4fa25d1da4c26d90fc376a652fc9c629efd68aa54a35acf23"
+        },
+        {
+          "file": "registered-combat/hydra/base-13.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              266,
+              258
+            ]
+          ],
+          "firstFrameZeroBased": 1,
+          "sha256": "9c5d5baeb6148daf294833864d7fdb0c8c3e5facae8d7c853584243203d19b81"
+        },
+        {
+          "file": "registered-combat/hydra/base-14.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              242,
+              253
+            ]
+          ],
+          "firstFrameZeroBased": 2,
+          "sha256": "ca51f6f78c39e8f093b018e68bc3ebcbd782f952a11e979814660058e7286c39"
+        },
+        {
+          "file": "registered-combat/hydra/base-15.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              247,
+              237
+            ]
+          ],
+          "firstFrameZeroBased": 3,
+          "sha256": "fa01e48d5c92b3416f70193a1e3e0993ffa5c118d6655787657c5614bd683874"
+        }
+      ],
+      "durationsMs": [
+        65,
+        75,
+        100,
+        100
+      ],
+      "contactFramesZeroBased": [],
+      "releaseFrameZeroBased": 3,
+      "loop": false,
+      "registration": {
+        "referenceHeight": 226,
+        "frames": [
+          {
+            "anchorX": 131.0,
+            "groundY": 237
+          },
+          {
+            "anchorX": 121.0,
+            "groundY": 255
+          },
+          {
+            "anchorX": 101.0,
+            "groundY": 251
+          },
+          {
+            "anchorX": 108.0,
+            "groundY": 234
+          }
+        ]
+      }
+    },
+    {
+      "id": "down",
+      "frames": 4,
+      "sources": [
+        {
+          "file": "registered-combat/hydra/base-16.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              241,
+              207
+            ]
+          ],
+          "firstFrameZeroBased": 0,
+          "sha256": "a73f71d96b1ee66c51e590cbf49757b76ab1a6a78f1ee94ccc652c0825087698"
+        },
+        {
+          "file": "registered-combat/hydra/base-17.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              252,
+              186
+            ]
+          ],
+          "firstFrameZeroBased": 1,
+          "sha256": "d4de9f4508466b8a9b3f723c34446de63889f3ab1b46fe5320559ca040bfd70e"
+        },
+        {
+          "file": "registered-combat/hydra/base-18.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              268,
+              170
+            ]
+          ],
+          "firstFrameZeroBased": 2,
+          "sha256": "bea1def917c37e57be149761aeea7d140e30041be87288c14fafb7d09e25578d"
+        },
+        {
+          "file": "registered-combat/hydra/base-19.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              263,
+              146
+            ]
+          ],
+          "firstFrameZeroBased": 3,
+          "sha256": "30876fe76bb8e8912299bcecd3f54e4899b48d1512e2f89b798f61d15581394b"
+        }
+      ],
+      "durationsMs": [
+        100,
+        130,
+        170,
+        250
+      ],
+      "contactFramesZeroBased": [],
+      "releaseFrameZeroBased": 3,
+      "loop": false,
+      "registration": {
+        "referenceHeight": 226,
+        "frames": [
+          {
+            "anchorX": 110.0,
+            "groundY": 204
+          },
+          {
+            "anchorX": 121.0,
+            "groundY": 183
+          },
+          {
+            "anchorX": 114.0,
+            "groundY": 166
+          },
+          {
+            "anchorX": 123.0,
+            "groundY": 142
+          }
+        ]
+      }
+    },
+    {
+      "id": "enrage",
+      "frames": 4,
+      "sources": [
+        {
+          "file": "registered-combat/hydra/base-20.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              252,
+              243
+            ]
+          ],
+          "firstFrameZeroBased": 0,
+          "sha256": "7940f20c88af76e9a261867d5186b709bd685667985fdc9d9778fad34d166bed"
+        },
+        {
+          "file": "registered-combat/hydra/base-21.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              248,
+              263
+            ]
+          ],
+          "firstFrameZeroBased": 1,
+          "sha256": "c6bae54384b20d3a4c19ce1cfbd59415631f91b4d36e968470fd85ad0795e60a"
+        },
+        {
+          "file": "registered-combat/hydra/base-22.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              249,
+              259
+            ]
+          ],
+          "firstFrameZeroBased": 2,
+          "sha256": "8961ff100816d402c89cbd3e6853edff84d9b84d59546cb051c04406d8bf4552"
+        },
+        {
+          "file": "registered-combat/hydra/base-23.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              249,
+              244
+            ]
+          ],
+          "firstFrameZeroBased": 3,
+          "sha256": "7657a6163d9ac555fb8acb57ba1ea66798272eb13746052df2aa6447c27c6982"
+        }
+      ],
+      "durationsMs": [
+        130,
+        140,
+        230,
+        160
+      ],
+      "contactFramesZeroBased": [],
+      "releaseFrameZeroBased": 3,
+      "loop": false,
+      "registration": {
+        "referenceHeight": 226,
+        "frames": [
+          {
+            "anchorX": 113.0,
+            "groundY": 240
+          },
+          {
+            "anchorX": 123.0,
+            "groundY": 260
+          },
+          {
+            "anchorX": 119.0,
+            "groundY": 256
+          },
+          {
+            "anchorX": 115.0,
+            "groundY": 241
+          }
+        ]
+      }
+    }
+  ],
+  "status": "preview-only; anatomy/scale review and finishers pending"
+}

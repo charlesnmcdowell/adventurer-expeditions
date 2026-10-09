@@ -15,6 +15,18 @@ of small fixes within a day.
 
 ---
 
+## 2026-10-08 - Coast combat atlas intake and twelve-pose attacks
+
+Continued the approved Coast production from checkpoint 4b25319. Added new twelve-pose attack masters for Tidal Crab (pincer snap), Brine Toad (tongue lash), Carrion Vulture (talon swoop), and Wreck Hydra (neck bite). Reused the saved four-pose idle/approach/hit/down sets and Hydra enrage. Review atlases now contain 116 frames total (28 crab, 28 toad, 28 vulture, 32 Hydra), replacing 16 draft attack drawings with 48. Attack preview timing is 690 ms, contact at zero-based frame 6. This has NOT changed live combat timing or balance.
+
+Added tools/build_coast_combat.py and docs/art/coast-20261008/combat.html. Initial rectangular crops exposed neighbor feet/feathers in the vulture attack and clipped long tongue previews. Fixed extraction by identifying each separate solid silhouette, retaining its authored alpha edge within 16 pixels and preserving one reference body scale per source sheet; no anatomy repaint and no per-frame fit-to-box. The extractor fails if it does not find exactly the expected number of bodies. Frame-step, pause and quarter-speed controls support review. The viewer uses one fit scale per actor across all its clips, not a changing frame scale. All 116 frames have atlas bounds/contact checks; no main silhouette touches the outer source edge. These technical checks are not approval of anatomy or in-game pair proportions.
+
+Also generated one eight-pose Hiro/toad tongue-parry finisher draft; Hiro is visible through all eight drawings. It remains unregistered pending paired scale/contact review. All five new source masters, plus extracted combat poses, are preserved in sibling source-art/astra-v5/coast-20261008. Exact prompts and generated source IDs are in combat-production.json. Each atlas has source manifests, hashes and extraction records under docs/art/coast-20261008/combat. Packed review images total about 5.83 MB and are documentation-only, excluded from shipping.
+
+Validation: npm test passed, including simulation, lifecycle, finisher policies/removals and shipping closure. test/browser_coast_combat.js passed in installed Chrome: four atlases, 116 visible nonempty frames, valid atlas bounds and contact indices, zero page/network errors. Inspected idle and contact captures after cleanup. Test evidence: test/reports/coast/combat-results.json and combat-*.png. Existing local ship set remains 69.46 MB; no live runtime files, original Adventurer files, exports or published site changed.
+
+Still unfinished: full visual review of every motion/scale (including Hydra neck continuity), the complete eight Hiro/four enemy paired finishers, Coast travel choreography/effects, quest/music/loop registration, balance and full journey QA. Coast is still locked and not ready for a full game playtest. The new page is an art review only.
+
 ## 2026-10-08 - Coast scenery preview and combat-art continuation
 
 Continued the approved Coast expansion. Its three source paintings are now packed into assets/expedition/stages/coast (1,032,394 bytes total). BattleStage has a reusable preloadBackground entry point and Coast registration: distant sea/cliffs, fixed shore ground, foreground grass/rope/rocks. Added moving water highlights behind the ground. The Coast floor uses a 550 px middle-layer display height so Hiro's feet remain on the path at y=612. Existing stage mappings remain unchanged.
