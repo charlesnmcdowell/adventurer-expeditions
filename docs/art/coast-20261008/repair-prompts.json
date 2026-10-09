@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-09",
+  "generator": "built-in image_gen",
+  "entries": [
+    {
+      "id": "hydraRepair",
+      "prompt": "Precise sprite anatomy repair. First reference is the target attack pose of a five-headed green Wreck Hydra, but it accidentally has only FOUR heads. Add the missing fifth head and its continuous neck, matching the second reference's five-headed identity. Keep the first reference's existing four heads, body, legs, feet, tail, pose, green scales, cream belly, golden horns and painted cel-shaded finish unchanged. Fifth neck rises behind the long forward left-facing attack neck, its head visible at upper left with clear separation from neighboring heads. Exactly FIVE heads with five traceable necks joined to the same torso. Full body isolated on actual transparent alpha, no floor, text, panels, effect, border or crop. Keep same camera and facing LEFT. Single sprite only with generous transparent padding.",
+      "result": "Generated images are saved to C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227 as C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227\\exec-302df233-72f3-453c-8d6f-a54cc2b40531.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+    },
+    {
+      "id": "hydraHit",
+      "prompt": "Repair first reference sprite only: this is the Wreck Hydra's recoiling hit reaction, with a missing fifth head. Add its fifth head and continuous cream-bellied green neck, maintaining five distinct readable heads as the second reference. Preserve first reference's body, feet, tail, backwards hit recoil, existing four heads, green scales, gold horns and anime cel-shaded rendering. Position added head slightly behind and to the upper right of the central neck, clearly separated, joined continuously into the same torso. Exactly five heads. Single full body creature faces LEFT on actual transparent alpha. Generous empty margin all sides, no cropping, no floor or shadows or lettering, no grid. This is one replacement animation pose, not a redesign.",
+      "result": "Generated images are saved to C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227 as C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227\\exec-3d02f3e0-2855-45b0-8238-4dbccdfbb40d.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+    },
+    {
+      "id": "crabBridge",
+      "prompt": "One inbetween animation drawing for this exact blue/gold Tidal Crab sprite. Reference1 raised attack claw; reference2 claw horizontal. Draw the halfway pose: its far attack claw is moving downward through a 25 degree up-left angle, halfway between those two poses. Preserve body shell size, eye stalks, legs, near lower claw, blue/gold shell surface, camera and LEFT facing. Full body no crop, generous transparent padding, actual alpha background. Precisely same painted game sprite style and anatomy. No motion blur, extra limbs, trails, water, floor, text, grid. Only one crab. This bridge frame must fit between the two supplied poses without a body scale jump.",
+      "result": "Generated images are saved to C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227 as C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227\\exec-c1a57499-6064-4d6c-9c08-abd92f16e045.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+    }
+  ]
+}

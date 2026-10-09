@@ -15,6 +15,14 @@ of small fixes within a day.
 
 ---
 
+## 2026-10-09 - Coast targeted animation repairs
+
+Repaired the two Hydra poses flagged by QA with single-pose imagegen edits: attack index 3 and hit index 2 now show five readable heads. Added one crab claw bridge drawing (attack 12 -> 13 frames), retaining 690 ms total and contact at 325 ms (index 6 -> 7). Toad approach now uses source-pixel hop offsets [0,35,16,0] instead of all-zero lift. Original source masters preserved; repair masters and prompt records saved. Preview-only, not an unlocked quest.
+
+Files: tools/build_coast_combat.py, docs/art/coast-20261008/combat generated atlas/metadata, repair-prompts.json, QA.md, test/browser_coast_combat.js. Source repairs live outside runtime in adventurer-expeditions-source-art/astra-v5/coast-20261008/repairs. New single-pose drawings use explicit scale registration against their original sprite width; no per-frame auto-fit. Registered comparison inspected at test/reports/coast/qa/repairs.jpg.
+
+Validation: npm test passed; browser Coast preview passed four atlases and 117 nonempty frames (previously 116), bounds/contact markers and no browser errors. Repairs improve the flagged poses; final Hiro-relative scale, paired contact and full journey acceptance remain pending. Coast still needs complete paired finishers, travel and quest integration; Citadel remains queued. No original Adventurer changes or publishing.
+
 ## 2026-10-09 - Defeat finisher reliability and fifth-location direction
 
 User reported that enemy finishers still did not play when Hiro was defeated. Found a default-state coverage gap: website preference started false when absent, while browser tests explicitly enabled it. Website default is now on; explicit saved off is preserved; restricted profiles remain disabled and never load adult assets. This confirms a fresh-profile problem, not the user's exact saved preference. Added EnemyFinishers.ensureDefeat at the final defeat boundary so missing down presentation or an already-down visual actor can still play an eligible loaded enemy's finisher before End. No random chance; do not replay an already-presented execution. Existing <=30% direct-hit execution remains unchanged. A missing/destroyed eligible enemy or missing art still uses ordinary defeat.

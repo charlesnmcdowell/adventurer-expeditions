@@ -54,6 +54,9 @@ def isolated_intake(actor, rows):
                 lift=([0,0,0,25,40,55,30,50,40,25,0,0][index] if kind=='attack'
                       else ([20,45,35,20][index%4] if 4<=index<12 else 0))
                 guide['groundY']+=lift
+            if actor=='toad' and kind=='base' and 4<=index<8:
+                # Authored hop, in source pixels: lift, apex, descending, land.
+                guide['groundY'] += [0, 35, 16, 0][index-4]
             frames.append(dict(file=name,frames=1,regions=[[0,0,x1-x0,y1-y0]],guide=guide,
                                bodyHeight=int(sy.max()-sy.min()+1)))
             audit.append(dict(frame=index,sourceBox=[x0,y0,x1-x0,y1-y0],solidPixels=int(sizes[label]),
@@ -62,22 +65,40 @@ def isolated_intake(actor, rows):
                            extraction='Connected silhouette plus nearest authored alpha within 16px; no repaint',frames=audit))
         return frames
     base=extract('base',4,rows*4);attack=extract('attack',3,12);clips=[]
+    def replacement(file, target, reference, width):
+        # Single-pose repairs use an explicitly measured size, never their
+        # generated canvas resolution as the actor's anatomical scale.
+        im=Image.open(SRC/file).convert('RGBA'); a=np.array(im)[:,:,3]
+        yy,xx=np.where(a>32)
+        scale=(xx.max()-xx.min()+1)/width
+        foot=xx[yy>=yy.max()-max(4,(yy.max()-yy.min())*.12)]
+        return dict(file=file,frames=1,regions=[[0,0,*im.size]],
+                    bodyHeight=target['bodyHeight'],guide=dict(
+                        referenceHeight=reference*scale,
+                        anchorX=float(np.median(foot)),groundY=int(yy.max())+1))
+    if actor=='hydra':
+        attack[3]=replacement('repairs/hydra-attack-03.png',attack[3],attack[0]['bodyHeight'],352)
+        base[14]=replacement('repairs/hydra-hit-02.png',base[14],base[0]['bodyHeight'],235)
+    if actor=='crab':
+        attack.insert(3,replacement('repairs/crab-attack-bridge.png',attack[2],attack[0]['bodyHeight'],420))
     for row,name in enumerate(['idle','approach','attack','hit','down','enrage'][:rows]):
         frames=attack if name=='attack' else base[row*4:row*4+4]
         reference=(attack if name=='attack' else base)[0]['bodyHeight']
         sources=[dict(file=f['file'],frames=1,regions=f['regions'],firstFrameZeroBased=i,
                       sha256=hashlib.sha256((SRC/f['file']).read_bytes()).hexdigest()) for i,f in enumerate(frames)]
+        attack_times=([80,65,30,35,35,40,40,65,45,45,55,65,90] if actor=='crab'
+                      else [80,65,55,45,40,40,65,45,45,55,65,90])
         clips.append(dict(id=name,frames=len(frames),sources=sources,
-            durationsMs={'idle':[180]*4,'approach':[100]*4,'attack':[80,65,55,45,40,40,65,45,45,55,65,90],
+            durationsMs={'idle':[180]*4,'approach':[100]*4,'attack':attack_times,
                          'hit':[65,75,100,100],'down':[100,130,170,250],'enrage':[130,140,230,160]}[name],
-            contactFramesZeroBased=[6] if name=='attack' else [],releaseFrameZeroBased=len(frames)-1,
+            contactFramesZeroBased=[7 if actor=='crab' else 6] if name=='attack' else [],releaseFrameZeroBased=len(frames)-1,
             loop=name in ('idle','approach'),registration=dict(referenceHeight=reference,frames=[f['guide'] for f in frames])))
     manifest=dict(actor=actor,authoredFacing=-1,clips=clips,status='preview-only; anatomy/scale review and finishers pending')
     OUT.mkdir(parents=True,exist_ok=True)
     (OUT/(actor+'-source.json')).write_text(json.dumps(manifest,indent=2),encoding='utf-8')
     doc=build(SRC,actor,OUT,height=300,quality=92,manifest=manifest);doc['authoredFacing']=-1
     (OUT/actor/(actor+'.json')).write_text(json.dumps(doc,separators=(',',':')),encoding='utf-8')
-    return dict(actor=actor,frames=rows*4+8,sources=audits)
+    return dict(actor=actor,frames=sum(c['frames'] for c in clips),sources=audits)
 
 
 if __name__=='__main__':

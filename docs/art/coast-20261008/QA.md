@@ -57,3 +57,7 @@ Coast Hiro/enemy finishers, travel choreography, quest registration, balance,
 and the complete journey remain unfinished and outside this pass's approval.
 Keep Coast locked. Repair the three specific animation findings, then review
 the actors beside Hiro before spending on broad replacement art.
+
+## October 9 repair follow-up
+
+Three targeted findings addressed in the preview: Hydra attack 3 and hit 2 repainted with five heads; crab bridge inserted (13 attack poses, unchanged 690 ms total and 325 ms contact); toad hop offsets authored. Four atlases now contain 117 frames. Browser checks and npm test pass. Registered adjacent-pose comparison inspected in test/reports/coast/qa/repairs.jpg. This does not approve unfinished pairs or unlock Coast.

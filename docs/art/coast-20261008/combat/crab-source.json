@@ -188,7 +188,7 @@
     },
     {
       "id": "attack",
-      "frames": 12,
+      "frames": 13,
       "sources": [
         {
           "file": "registered-combat/crab/attack-00.png",
@@ -233,6 +233,20 @@
           "sha256": "d08b0d159f501ce95085f68a0fb54d5051340b04b2dc952ea62cb0f7199430d1"
         },
         {
+          "file": "repairs/crab-attack-bridge.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              1525,
+              1031
+            ]
+          ],
+          "firstFrameZeroBased": 3,
+          "sha256": "0fae56558eb7051454c291fa97159f460ef0139aac0958642540028105ac336e"
+        },
+        {
           "file": "registered-combat/crab/attack-03.png",
           "frames": 1,
           "regions": [
@@ -243,7 +257,7 @@
               213
             ]
           ],
-          "firstFrameZeroBased": 3,
+          "firstFrameZeroBased": 4,
           "sha256": "1b1a5f3a709e2e8eeab80d12427019185f69f70e89695360ee0a558416b411bf"
         },
         {
@@ -257,7 +271,7 @@
               202
             ]
           ],
-          "firstFrameZeroBased": 4,
+          "firstFrameZeroBased": 5,
           "sha256": "715161654aefeb333c710ac0075caa5787b6c74671284e88a743389d8309f11a"
         },
         {
@@ -271,7 +285,7 @@
               199
             ]
           ],
-          "firstFrameZeroBased": 5,
+          "firstFrameZeroBased": 6,
           "sha256": "b8586b23e9e8abf067c806c2b4d3e691a94da883827a8c5157b6eda9e750c47a"
         },
         {
@@ -285,7 +299,7 @@
               205
             ]
           ],
-          "firstFrameZeroBased": 6,
+          "firstFrameZeroBased": 7,
           "sha256": "bfdd33e646332860d1baac31708a390e3cc857b2ae8b00658bb77215d8c8d039"
         },
         {
@@ -299,7 +313,7 @@
               207
             ]
           ],
-          "firstFrameZeroBased": 7,
+          "firstFrameZeroBased": 8,
           "sha256": "4f77c34815db9a619d7b6338e57d1e1315c4ccd15b419b097b2fc043dbca5bd5"
         },
         {
@@ -313,7 +327,7 @@
               216
             ]
           ],
-          "firstFrameZeroBased": 8,
+          "firstFrameZeroBased": 9,
           "sha256": "eef1aaf174b53d151953b0aab9b25751cfc42bf186c37c7315f0676ba23dba49"
         },
         {
@@ -327,7 +341,7 @@
               220
             ]
           ],
-          "firstFrameZeroBased": 9,
+          "firstFrameZeroBased": 10,
           "sha256": "030ee3b579c593009c044ef6770a715b9b0be60a29d9fa7c84799b9943bcf945"
         },
         {
@@ -341,7 +355,7 @@
               219
             ]
           ],
-          "firstFrameZeroBased": 10,
+          "firstFrameZeroBased": 11,
           "sha256": "e99d0dff5ff11773905033cf8f829f80fd0e38722b1a486c2ff2837efa9323e6"
         },
         {
@@ -355,15 +369,16 @@
               227
             ]
           ],
-          "firstFrameZeroBased": 11,
+          "firstFrameZeroBased": 12,
           "sha256": "c97e8ffc02cbebd22f91b13f8c78d11769448810245347d0575bcfcea5994198"
         }
       ],
       "durationsMs": [
         80,
         65,
-        55,
-        45,
+        30,
+        35,
+        35,
         40,
         40,
         65,
@@ -374,9 +389,9 @@
         90
       ],
       "contactFramesZeroBased": [
-        6
+        7
       ],
-      "releaseFrameZeroBased": 11,
+      "releaseFrameZeroBased": 12,
       "loop": false,
       "registration": {
         "referenceHeight": 220,
@@ -392,6 +407,11 @@
           {
             "anchorX": 248.0,
             "groundY": 318
+          },
+          {
+            "referenceHeight": 713.4285714285714,
+            "anchorX": 923.0,
+            "groundY": 977
           },
           {
             "anchorX": 174.0,

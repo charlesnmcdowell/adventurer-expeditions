@@ -25,12 +25,12 @@ const server=http.createServer((req,res)=>{
    });r.select.value='idle';r.index=0;draw(r);return {actor:r.actor,clips};
   }));
   assert.equal(report.length,4);
-  assert.equal(report.reduce((n,r)=>n+r.clips.reduce((s,c)=>s+c.count,0),0),116);
-  for(const actor of report){assert.equal(actor.clips.find(c=>c.name==='attack').count,12);for(const c of actor.clips){for(const f of c.samples){assert(f.inAtlas,actor.actor+'/'+f.frame);assert(f.visible>100,actor.actor+'/'+f.frame+' empty');}for(const contact of c.contact)assert(contact>=0&&contact<c.count);}}
+  assert.equal(report.reduce((n,r)=>n+r.clips.reduce((s,c)=>s+c.count,0),0),117);
+  for(const actor of report){assert.equal(actor.clips.find(c=>c.name==='attack').count,actor.actor==='crab'?13:12);for(const c of actor.clips){for(const f of c.samples){assert(f.inAtlas,actor.actor+'/'+f.frame);assert(f.visible>100,actor.actor+'/'+f.frame+' empty');}for(const contact of c.contact)assert(contact>=0&&contact<c.count);}}
   fs.mkdirSync(out,{recursive:true});await page.screenshot({path:path.join(out,'combat-idle.png'),fullPage:true});
-  await page.evaluate(()=>{for(const r of coastCombatReviews){r.select.value='attack';r.index=6;draw(r);}});
+  await page.evaluate(()=>{for(const r of coastCombatReviews){r.select.value='attack';r.index=r.d.clips.attack.contact[0];draw(r);}});
   await page.screenshot({path:path.join(out,'combat-contact.png'),fullPage:true});
   assert.deepEqual(errors,[]);fs.writeFileSync(path.join(out,'combat-results.json'),JSON.stringify({report,errors},null,2));
-  console.log('Coast combat preview: 4 atlases, 116 nonempty frames, contact markers and atlas bounds passed; art acceptance remains separate.');
+  console.log('Coast combat preview: 4 atlases, 117 nonempty frames, contact markers and atlas bounds passed; art acceptance remains separate.');
  }finally{await browser.close();server.close();}
 })().catch(e=>{console.error(e);server.close();process.exitCode=1;});

@@ -233,18 +233,18 @@
           "sha256": "ddd36446175c7b1fa4ddef007069db5a431dcd74b55e866ab22c5aa09f66c948"
         },
         {
-          "file": "registered-combat/hydra/attack-03.png",
+          "file": "repairs/hydra-attack-03.png",
           "frames": 1,
           "regions": [
             [
               0,
               0,
-              354,
-              300
+              1362,
+              1155
             ]
           ],
           "firstFrameZeroBased": 3,
-          "sha256": "2196ba5dd1bfa941ff1cdb0dd7abae97c7db1c8044034c8acb05c42fc50f2cd3"
+          "sha256": "bb6e024506abf86d9ef5481ecaed408938bf428e9099f4724b147e5e29838d35"
         },
         {
           "file": "registered-combat/hydra/attack-04.png",
@@ -394,8 +394,9 @@
             "groundY": 302
           },
           {
-            "anchorX": 194.0,
-            "groundY": 298
+            "referenceHeight": 1132.6704545454545,
+            "anchorX": 735.0,
+            "groundY": 1126
           },
           {
             "anchorX": 185.0,
@@ -465,18 +466,18 @@
           "sha256": "9c5d5baeb6148daf294833864d7fdb0c8c3e5facae8d7c853584243203d19b81"
         },
         {
-          "file": "registered-combat/hydra/base-14.png",
+          "file": "repairs/hydra-hit-02.png",
           "frames": 1,
           "regions": [
             [
               0,
               0,
-              242,
-              253
+              1322,
+              1190
             ]
           ],
           "firstFrameZeroBased": 2,
-          "sha256": "ca51f6f78c39e8f093b018e68bc3ebcbd782f952a11e979814660058e7286c39"
+          "sha256": "1a32fe116f189b5982da45d8ab74ad1215ab4eeed85e532a425bd6979dad3e71"
         },
         {
           "file": "registered-combat/hydra/base-15.png",
@@ -514,8 +515,9 @@
             "groundY": 255
           },
           {
-            "anchorX": 101.0,
-            "groundY": 251
+            "referenceHeight": 1023.2510638297873,
+            "anchorX": 581.0,
+            "groundY": 1153
           },
           {
             "anchorX": 108.0,
