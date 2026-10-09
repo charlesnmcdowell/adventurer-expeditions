@@ -15,6 +15,18 @@ of small fixes within a day.
 
 ---
 
+## 2026-10-09 - Defeat finisher reliability and fifth-location direction
+
+User reported that enemy finishers still did not play when Hiro was defeated. Found a default-state coverage gap: website preference started false when absent, while browser tests explicitly enabled it. Website default is now on; explicit saved off is preserved; restricted profiles remain disabled and never load adult assets. This confirms a fresh-profile problem, not the user's exact saved preference. Added EnemyFinishers.ensureDefeat at the final defeat boundary so missing down presentation or an already-down visual actor can still play an eligible loaded enemy's finisher before End. No random chance; do not replay an already-presented execution. Existing <=30% direct-hit execution remains unchanged. A missing/destroyed eligible enemy or missing art still uses ordinary defeat.
+
+Files: enemy_finishers.js, scene.js, ui_common.js, index.html cache stamp 20261009-xp2, enemy_finishers.js test and browser_enemy_defeats.js. Added test/finisher_coverage.js to npm test: all ten shipped enemy identities require an active Hiro pair (excluding retired and bite-response clips), an enemy-on-Hiro pair, valid frames/contact/timings/page files, and enemy loader registration. Current coverage: 17 Hiro finishers across ten species; ten enemy defeat clips. Future actors cannot enter the shipped list without this coverage passing.
+
+Validation: npm test passed. Browser enemy-defeat tests now start with the website default instead of forcing the option on. All ten passed the already-down/missing-down fallback; all ten passed fatal DOT routing. Actual defeat method with missing down presentation reached End after its finisher. Actual director also reached End after the existing low-health execution. browser_finishers.js passed actual Hiro Finisher kills against all ten current species in installed Chrome. Existing explicit-off and portal policy tests passed. Checkpoint b21e7f7.
+
+Expansion direction: user confirmed continuing with Arcane Citadel after Coast (fifth location). Recorded the adult elven wizard, ranger, dark-elven dual-sword warrior and enchantress boss, full combat sets, two Hiro pairs plus one enemy pair each, and three-layer scenery/travel requirements in docs/ARCANE_CITADEL_PLAN.md. This overrides the earlier monsters-only restriction for this new location. Prepared full Ronin battle theme 2 as audio/music/citadel_ronin.mp3, 160 kbps, 3,881,429 bytes; source/output hashes in docs/art/citadel-music.json. Track not yet in a playable quest or shipping allowlist.
+
+Still unfinished: Coast visual QA repairs, its complete paired art/travel/quest integration, and Citadel art/encounters. Neither new location is unlocked. Current finisher fix is ready for local playtest. No publication, portal export or original Adventurer changes.
+
 ## 2026-10-08 - Coast combat QA (review only)
 
 Reviewed all 116 packed Coast drawings and frame timing, reran npm test, browser_coast_combat.js and browser_coast_scenery.js; all automated checks passed in installed Chrome. Visual release approval withheld: Hydra attack frame 3 / hit frame 2 need five-head continuity repair; crab attack 2-to-3 needs a smoother raised-claw-to-extension transition; toad approach frame 1 needs a hop-height anchor rather than pinning its lowest toe to the floor. The per-species gallery fit is not proof of relative size beside Hiro or paired-finisher continuity. No neighbor-frame fragments or rectangular matte observed in the cleaned contact sheets.

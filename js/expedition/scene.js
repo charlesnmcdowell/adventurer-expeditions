@@ -411,6 +411,8 @@ class ExpeditionScene extends Phaser.Scene {
   }
 
   async defeat() {
+    await X.EnemyFinishers?.ensureDefeat(this);
+    if (this.ended) return;
     if (!this.__enemyFinishPresented) await this.hero.play('kneel');
     X.UI.resetCamera(this);                                                    // a kill cinematic must not survive into the defeat card (round 3 #1)
     await wait(this, 900);

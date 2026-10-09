@@ -6,8 +6,10 @@ const X = ADV.Expedition, F = X.EnemyFinishers = {};
 const PREF = 'expeditions.enemyFinishers.v1';
 const READY = new Set(['alpha', 'wolf', 'plant', 'serpent', 'beetle', 'moss_giant', 'hag', 'goblin', 'spider', 'orc']);
 const keyFor = actor => 'xp_' + actor + '_fatal';
-let selected = false;
-try { selected = localStorage.getItem(PREF) === '1'; } catch (_) {}
+// Website players get the feature without having to discover the pause toggle.
+// Preserve an explicit opt-out; portal policy remains independently enforced.
+let selected = true;
+try { selected = localStorage.getItem(PREF) !== '0'; } catch (_) {}
 F.allowed = () => ADV.Release?.target === 'website';
 F.enabled = () => F.allowed() && selected;
 F.setEnabled = value => {
@@ -30,7 +32,7 @@ F.preload = (scene, ids) => {
   }
 };
 F.canPlay = (scene, killer, target, events) => F.enabled() && !scene.ended &&
-  target === scene.hero && target.alive && !target._destroyed &&
+  target === scene.hero && (target.alive || target.unit.chp <= 0) && !target._destroyed &&
   (target.unit.chp <= 0 || (target.unit.maxHp > 0 && target.unit.chp / target.unit.maxHp <= 0.3)) &&
   killer?.side === 'b' && killer.alive && !killer._destroyed && READY.has(killer.sheet?.actor) &&
   (target.unit.chp <= 0 || (
@@ -44,6 +46,17 @@ F.defeatKiller = (scene, preferred, target, events) => {
   if (target !== scene.hero || target.unit.chp > 0) return null;
   if (F.canPlay(scene, preferred, target, events)) return preferred;
   return [...scene.actors.values()].find(a => F.canPlay(scene, a, target, events)) || null;
+};
+
+// Final director safeguard, including a missing down event or already-played
+// ordinary down. Never replay a completed execution or execute a living hero.
+F.ensureDefeat = async scene => {
+  if (scene.__enemyFinishPresented) return true;
+  if (!scene.hero || scene.hero.unit.chp > 0 || scene.ended || !F.enabled()) return false;
+  const events = scene.enc?.log || [];
+  const hit = [...events].reverse().find(e => e.uid === scene.hero.uid && ['damage', 'execute'].includes(e.t));
+  const killer = F.defeatKiller(scene, scene.actors.get(hit?.by), scene.hero, events);
+  return killer ? F.play(scene, killer, scene.hero) : false;
 };
 
 F.tryLowHealth = async (scene, events) => {

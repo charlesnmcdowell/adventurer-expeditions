@@ -1,6 +1,11 @@
 'use strict';
 const fs=require('fs'),vm=require('vm'),assert=require('assert/strict');
 const code=fs.readFileSync(require('path').join(__dirname,'../js/expedition/enemy_finishers.js'),'utf8');
+for(const value of [undefined,'0','1']) {
+ const ADV={Release:{target:'website'},Expedition:{}};
+ vm.runInNewContext(code,{ADV,localStorage:{getItem:()=>value,setItem:()=>{}}});
+ assert.equal(ADV.Expedition.EnemyFinishers.enabled(),value!=='0','fresh website default and explicit opt-out');
+}
 for(const target of ['website','crazygames','poki',undefined]) {
  const state=new Map([['expeditions.enemyFinishers.v1','1']]);
  const ADV={Release:{target},Expedition:{}};
@@ -27,6 +32,7 @@ for(const target of ['website','crazygames','poki',undefined]) {
  scene.actors=new Map([['hero',hero],['alpha',foe]]);
  assert.equal(f.defeatKiller(scene,null,hero,[])===foe,local);
  assert.equal(f.defeatKiller(scene,{...foe,alive:false},hero,[{...hit,tag:'dot'}])===foe,local);
+ hero.alive=false;assert.equal(f.defeatKiller(scene,null,hero,[])===foe,local,'final defeat fallback after ordinary down');hero.alive=true;
  hero.unit.chp=1;assert.equal(!!f.canPlay(scene,foe,hero,[hit]),false);hero.unit.chp=0;
  hero.unit.maxHp=100;
  for(const hp of [31,30,29]) {hero.unit.chp=hp;assert.equal(!!f.canPlay(scene,foe,hero,[hit]),local&&hp<=30);}
