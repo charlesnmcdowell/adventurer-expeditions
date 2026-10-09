@@ -1,0 +1,57 @@
+{
+  "generator": "built-in image_gen",
+  "date": "2026-10-09",
+  "status": "Source drafts only. Not shipped or counted as completed paired animations.",
+  "assets": [
+    {
+      "file": "crab-joint-cut-eight-draft.png",
+      "source": "exec-efec8de2-f4b9-4bc9-93fe-5a6411b7f6ae.png",
+      "prompt": "Production paired game animation sheet, TWO COLUMNS FOUR ROWS exactly EIGHT equal cells, row-major. One continuous Hiro-versus-Tidal-Crab finishing move. References: Hiro dark skin purple locs black purple samurai armor; second is prior paired move for identical creature and painted finish, DO NOT copy its choreography. NEW move: low sidestep and horizontal joint cut. 1 Hiro on LEFT facingRIGHT katana guard, crab onRIGHT facingLEFT. 2 crab extends claw leftward, Hiro lowers center of gravity. 3 Hiro steps inside claw line, blade drawn back at waist. 4 Hiro cuts horizontally rightwards THROUGH crab's front leg joint, precise contact. 5 follow through, crab buckles, Hiro grounded and visible. 6 crab collapses, Hiro withdraws blade. 7 crab breaks into subtle sea-spray particles, Hiro stands intact. 8 crab fully gone, Hiro sheaths katana with both hands, entire Hiro visible. Every cell contains Hiro with exact same human body proportions and scale, including last cell. Crab shell height half Hiro standing height; consistent size each frame. 15 percent blank margin inside each cell, full limbs blades locs NEVER cropped or crossing cell boundaries. Actual transparent alpha background, no painted background, no glow haze, no floor, no labels or grid lines. No blood. High polish cel-shaded anime game sprite art, crisp separate frames. 1536x2048 if possible.",
+      "status": "Needs edge/crop and registration review; Hiro visible all eight; do not ship.",
+      "references": [
+        "astra-v1/heroes/hiro/hiro-reference.png",
+        "astra-v5/coast-20261008/crab-vault-eight-draft.png"
+      ]
+    },
+    {
+      "file": "toad-intercept-eight-draft.png",
+      "source": "exec-b28338de-fdb7-49da-afa7-fe43aec7f9ae.png",
+      "prompt": "Eight-frame paired combat sprite sheet. Exactly 2 COLUMNS x 4 ROWS, equal 768x512 cells within 1536x2048 canvas, sequence row-major. ALL drawings stay at least 50px INSIDE each cell boundary, shrink composition to leave empty margins. Hiro identity from first reference; toad and polish from second. Hiro always on LEFT facing RIGHT, giant olive wart-covered toad RIGHT facing LEFT. New finisher LEAP INTERCEPT distinct from tongue parry: frame1 Hiro katana drawn in guard, toad crouches;2 toad jumps towards Hiro, Hiro brings katana overhead;3 Hiro steps forward and begins downward cut while toad airborne;4 katana contacts toad upper back with small sharp purple spark, no gore;5 toad forced onto ground, Hiro finishes downward cut;6 toad lies defeated, Hiro straightens;7 toad dissolves into a modest spray, Hiro visible whole;8 only Hiro whole body sheathing sword, toad gone. Consistent Hiro proportions and scale all frames; toad ground height 55 percent Hiro height. Transparent alpha, zero background haze, zero ground, no labels or borders. Full body including hair blade feet visible in every cell. Match detailed cel shaded anime art. Tight choreography grounded physical contact, graceful trained samurai action.",
+      "status": "Hiro visible all eight; needs registration and contact playback review.",
+      "references": [
+        "astra-v1/heroes/hiro/hiro-reference.png",
+        "astra-v5/coast-20261008/toad-parry-eight-draft.png"
+      ]
+    },
+    {
+      "file": "vulture-rising-cut-eight-draft.png",
+      "source": "exec-c8657641-fb4b-4986-b67b-f949480709c9.png",
+      "prompt": "Production game animation atlas: EXACT 2 columns x4 rows EIGHT paired frames, row-major. Hiro cyber samurai reference1 and giant brown vulture reference2. Hiro on LEFT facingRIGHT, vulture RIGHT facingLEFT, fixed profile camera. Hiro fully visible in ALL8 frames, dark brown skin purple dreadlocks black-purple armor one katana. Bird standing height60%Hiro, never changes size, wings only fold or open. Move: aerial dive parry into rising slash. 1 hero guard bird perched. 2 bird hops into air wings half open, Hiro draws blade back. 3 bird dives toward hero shoulder, hero leans back blade upward to intercept. 4 blade contacts outer wing leading edge in a sharp small purple spark, Hiro feet planted, bird wings swept back. 5 Hiro rising slash follow-through, bird spins backward with wings folded. 6 bird down on ground, Hiro recovers. 7 bird dissolves to sea spray, Hiro stands whole. 8 Hiro sheathing katana alone. Full bodies blade wings inside each cell, huge 20% cell margins. Actual transparent alpha. No scenery, matte, floor, shadow, letters, grid lines, extra people or gore. Same high polish painted anime cel shading as Hiro. Long coherent physical movement, eight distinct poses, constant human anatomy and wardrobe. Generous large canvas portrait sheet.",
+      "status": "Hiro visible all eight; needs registration, wing scale and contact review.",
+      "references": [
+        "astra-v1/heroes/hiro/hiro-reference.png",
+        "astra-v5/coast-20261008/registered-combat/vulture/base-00.png"
+      ]
+    },
+    {
+      "file": "vulture-side-cut-eight-draft.png",
+      "source": "exec-bfc737f9-c97a-42eb-b464-bb8d8eb0cfd2.png",
+      "prompt": "Game paired animation sprite sheet, EXACT 2 columns x4 rows, 8equal cells row-major. References define Hiro and vulture. NEW distinct cinematic finisher: feather-step side cut. 1 Hiro onLEFT facingRIGHT blade at waist; brown bald-headed vulture onRIGHT facingLEFT standing. 2 bird thrusts beak at chest; Hiro sidesteps toward viewer with low bent knees. 3 Hiro passes under raised wing, katana drawn behind hip. 4 horizontal katana contact at bird's flank with small purple spark. 5 follow-through rightward sword extended, bird staggering backwards wings spread. 6 bird lying defeated onground while Hiro returns guard. 7 bird fades to tiny sea-spray motes, Hiro fully visible. 8 Hiro alone sheathing katana, NOT disappearing. Fullbody eachframe, same Hiro body scale; bird standing 60% Hiro height. Blackpurple samurai armor dark brownskin purplelocs unchanged. Genuinely transparent alpha background; NO background color haze, shadows, floor, grid, labels or gore. Draw inside central70% of eachcell with plentiful empty space onALL sides so sword, hair and wings NEVER cross cell edges. Same polished anime painted cel shading as references. Coherent contact and clear anticipation recovery.",
+      "status": "Hiro visible all eight; needs registration, bird scale and contact review.",
+      "references": [
+        "astra-v1/heroes/hiro/hiro-reference.png",
+        "astra-v5/coast-20261008/registered-combat/vulture/base-00.png"
+      ]
+    },
+    {
+      "file": "hydra-overhead-eight-rejected.png",
+      "source": "exec-f0d8b388-7207-4dab-819e-e7bcc09293b9.png",
+      "prompt": "Paired game animation sheet TWO columns FOUR rows exactly8 equal cells row-major. Reference1 Hiro dark brownskin purplelocs blackpurple samurai armor. Reference2 fiveheaded green Hydra monster. Fixed side view, Hiro LEFT facingRIGHT, Hydra RIGHT facingLEFT. Hydra is a huge boss: standing fullheight 1.4times Hiro, body mass MUCH larger thanHiro. Same relative scale everyframe. Sequence 'neck feint overhead': 1 Hiro guards fiveheadedHydra. 2 Hydra frontmost neck lunges lowLEFT, four other heads behind remainreadable. 3 Hiro leaps up beside lungingneck with katana overhead. 4 Hiro lands an overhead cut on lungingneck root, smallviolet impactburst. 5 Hiro lands in low samurai stance, Hydra recoils allfive heads. 6 Hydra collapses allfive heads onto ground, Hiro standingfullbody. 7 Hydra dissolves into a LOW cluster of seaspray motes, Hiro stayswhole. 8 Hiro alone fullyvisible calmly sheaths katana. NO blood/gore. ALL FIVE heads retaineduntil dissolve. Enormous 20percent clear gutters EVERYCELL; fullbodies and swords inside cell, no cropping. Realtransparentalpha, no scene, haze, shadows, labels, panels or floor. Detailed celshaded paintedgameart asreferences. 2048x2048 or larger sheet for clearwidepairs, consistent anatomical size no portraitcloseups.",
+      "status": "REJECTED: extra head in recoil frame 4 (zero-based), edge crowding/cropping, scale not approved.",
+      "references": [
+        "astra-v1/heroes/hiro/hiro-reference.png",
+        "astra-v5/coast-20261008/registered-combat/hydra/base-00.png"
+      ]
+    }
+  ]
+}
