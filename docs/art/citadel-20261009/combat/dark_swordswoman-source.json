@@ -18,7 +18,7 @@
             ]
           ],
           "firstFrameZeroBased": 0,
-          "sha256": "5e782b4c39cc93d52769e8140173b794258f888dab149c9c29b911cbd05a63f2"
+          "sha256": "1b97ca9d0d8fe24e267035e819a32023996f7c8099b0c6f5600b6bf44068ac7e"
         },
         {
           "file": "registered-combat/dark_swordswoman-combat/01.png",
@@ -32,7 +32,7 @@
             ]
           ],
           "firstFrameZeroBased": 1,
-          "sha256": "f786876865b576b2d92cb40af3f486adeaac14b1be2762181ce9ab34910748fa"
+          "sha256": "da19c925fead3b4143adacbe56ecb8b602c08da90bd3e8f4ec521c313bc0863c"
         },
         {
           "file": "registered-combat/dark_swordswoman-combat/02.png",
@@ -46,7 +46,7 @@
             ]
           ],
           "firstFrameZeroBased": 2,
-          "sha256": "125bf54b9815194ef20d1d9b841f0619cd2f629c538400b506351430cf35b3ad"
+          "sha256": "479079812a9842bebb84edd315fa4420d2d95b279b79085a3fea59a1dd6b82c2"
         },
         {
           "file": "registered-combat/dark_swordswoman-combat/03.png",
@@ -60,7 +60,7 @@
             ]
           ],
           "firstFrameZeroBased": 3,
-          "sha256": "7b713fa37a8612e411628087a66fa28780f7aa683d9e265156012c84ca1035e5"
+          "sha256": "35b6faf7a13e3e3f5913a6d495b76386ccb8b59c9227975ddc991fff2da27333"
         }
       ],
       "durationsMs": [
@@ -76,19 +76,19 @@
         "referenceHeight": 254,
         "frames": [
           {
-            "anchorX": 48.0,
+            "anchorX": 184.0,
             "groundY": 258
           },
           {
-            "anchorX": 44.0,
+            "anchorX": 186.0,
             "groundY": 260
           },
           {
-            "anchorX": 48.0,
+            "anchorX": 165.0,
             "groundY": 258
           },
           {
-            "anchorX": 68.0,
+            "anchorX": 188.0,
             "groundY": 260
           }
         ]
@@ -300,7 +300,7 @@
             ]
           ],
           "firstFrameZeroBased": 7,
-          "sha256": "40751130644fbf1942b35927e08bb74a12b4cd9db7c0346276ab43c0a99a31c3"
+          "sha256": "db66a4029d269888081f597984abefed57933e1dc60382f881103d4204013e08"
         }
       ],
       "durationsMs": [
@@ -350,7 +350,7 @@
             "groundY": 243
           },
           {
-            "anchorX": 56.0,
+            "anchorX": 190.0,
             "groundY": 244
           }
         ]
@@ -414,7 +414,7 @@
             ]
           ],
           "firstFrameZeroBased": 3,
-          "sha256": "0a0f428872889a049dd0f4a30bf1b329cb141849b0271cc2cab01de7e7ea252c"
+          "sha256": "4ce146e5c73bfb80c8e256fa583cc95ad2f1195419efccbc298ff886b0337688"
         }
       ],
       "durationsMs": [
@@ -442,7 +442,7 @@
             "groundY": 200
           },
           {
-            "anchorX": 41.5,
+            "anchorX": 188.5,
             "groundY": 233
           }
         ]

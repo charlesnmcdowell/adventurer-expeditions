@@ -135,5 +135,7 @@
       "startMs": 1450
     }
   ],
-  "source": "city-market-vault"
+  "source": "city-market-vault",
+  "layeredPlate": true,
+  "plateRegistration": "20261009-approved-contact-plane"
 }

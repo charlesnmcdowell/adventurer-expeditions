@@ -35,20 +35,31 @@ Travel.paint = function (scene) {
     const container = scene.add.container(0,0), factor = [0.07,1,1.5][index];
     atmosphere.add(container);
     const height=name==='ground'?(d.groundLayerHeight||1100):name==='near'?500:760;
-    for(let i=-1;i<=2;i++) container.add(scene.add.image(i*layerWidth,760-height,key+'_'+name).setOrigin(0).setDisplaySize(layerWidth,height));
+    for(let i=-1;i<=2;i++) container.add(scene.add.image(i*layerWidth,760-height,key+'_'+name).setOrigin(0).setDisplaySize(layerWidth,height).setFlipX(name==='near'&&Math.abs(i%2)===1));
     return {container,factor,name};
+  });
+  const clouds=X.Atmosphere.create(scene,atmosphere,{night:id.includes('citadel')||id.includes('swamp')});
+  atmosphere.moveTo(clouds.graphics,1);
+  const anchorSet=X.lightAnchors?.['travel/'+id]||{};
+  const lamps=layers.slice(0,2).map((l,i)=>{
+    const pts=[],height=i===0?760:d.groundLayerHeight||1100;
+    for(let tile=-1;tile<=2;tile++)for(const [x,y,s]of anchorSet['atmosphere-'+l.name+'.webp']||[])pts.push([tile*2280+x*2280,760-height+y*height,s]);
+    return X.Atmosphere.lights(scene,l.container,pts);
   });
   const runSheet = X.Painted.sheet(scene,'hiro'), runClip = runSheet.clips.walk;
   const runner = scene.add.sprite(650,612,runSheet.key,runClip.frames[0]);
   runner.setOrigin(runSheet.canvas.pivot.x/runSheet.canvas.w,runSheet.canvas.pivot.y/runSheet.canvas.h).setScale(300/runSheet.standing);
   const shadow = scene.add.ellipse(650,617,92,15,0x070c12,.25);
   // Ground behind Hiro, close vegetation in front, all at separate scroll rates.
-  atmosphere.addAt(shadow,2);atmosphere.addAt(runner,3);
+  atmosphere.add([shadow,runner]);
   const glints=scene.add.graphics();atmosphere.add(glints);
-  const plate=scene.add.image(0,0,key+'_plate').setOrigin(0).setDisplaySize(d.width,760);
+  const plate=scene.add.image(0,d.plateY||0,key+'_plate').setOrigin(0).setDisplaySize(d.width,760);
   const hero=scene.add.sprite(0,0,key+'_actions',d.frames[0].name);
   hero.setOrigin(d.pivot.x/d.canvas.w,d.pivot.y/d.canvas.h).setScale(d.heroScale);
   actionWorld.add([plate,hero]);
+  const actionLights=X.Atmosphere.lights(scene,actionWorld,(anchorSet['plate.webp']||[]).map(([x,y,s])=>[x*d.width,y*760+(d.plateY||0),s]));
+  // Foreground is a real independent plane even while the obstacle is on screen.
+  root.add(layers[2].container);
   const loops=(d.loops||[]).map(p=>{
     const s=scene.add.sprite(p.x,p.y,key+'_loops',p.row*4).setOrigin(.5,1).setScale(p.scale||1).setAlpha(p.alpha==null?1:p.alpha);
     actionWorld.add(s);return {s,p};
@@ -56,7 +67,8 @@ Travel.paint = function (scene) {
   let elapsed=0,active=true,total=0;const starts=[];
   for(const f of d.frames){starts.push(total);total+=f.ms;}
   const runMs=id==='swamp-log-slide'?5000:id==='city-rooftop-run'?4500:4000;
-  const actionStart=starts[1],actionEnd=starts[9],actionMs=actionEnd-actionStart;
+  const startFrame=d.actionStartFrame??1,endFrame=d.actionEndFrame??9;
+  const actionStart=starts[startFrame],actionEnd=starts[endFrame],actionMs=actionEnd-actionStart;
   const journeyMs=runMs*2+actionMs;
   const runTimes=runClip.frameDurationsMs||runClip.frames.map(()=>runClip.frameMs||80);
   const runCycle=runTimes.reduce((sum,ms)=>sum+ms,0);
@@ -66,7 +78,8 @@ Travel.paint = function (scene) {
     const runningTime=before?t:runMs+Math.max(0,t-runMs-actionMs);
     // Distance is speed * time, never a tiny fixed distance stretched in time.
     const distance=t*runSpeed/1000;
-    for(const l of layers) l.container.x=-((distance*l.factor+(l.name==='far'?650:0))%layerWidth);
+    clouds.draw(t);lamps.forEach(l=>l.draw(t));actionLights.draw(t);
+    for(const l of layers) l.container.x=-((distance*l.factor+(l.name==='far'?650:0))%(l.name==='near'?layerWidth*2:layerWidth));
     let clock=runningTime%runCycle,frame=0;
     while(frame<runTimes.length-1&&clock>=runTimes[frame])clock-=runTimes[frame++];
     runner.setFrame(runClip.frames[frame]);
@@ -75,7 +88,8 @@ Travel.paint = function (scene) {
     for(let n=0;n<d.frames.length;n++)if(local<starts[n]+d.frames[n].ms){i=n;break;}
     const a=d.frames[i],b=d.frames[Math.min(i+1,d.frames.length-1)];
     const u=Math.max(0,Math.min(1,(local-starts[i])/a.ms));
-    const hx=a.x+(b.x-a.x)*u,hy=a.y+(b.y-a.y)*u;
+    const teleport=i===d.teleportAfterFrame;
+    const hx=teleport?a.x:a.x+(b.x-a.x)*u,hy=a.y+(b.y-a.y)*u;
     hero.setFrame(a.name).setPosition(hx,hy);
     actionWorld.x=-(a.cameraX+(b.cameraX-a.cameraX)*u);
     // The obstacle remains its authored full-frame camera shot. Translating
@@ -84,14 +98,16 @@ Travel.paint = function (scene) {
     // Brief scenery dissolve, not slow travel. One Hiro stays visible throughout.
     const blend=before?Math.max(0,1-(runMs-t)/180):after?Math.max(0,1-(t-runMs-actionMs)/180):1;
     plate.setAlpha(blend);atmosphere.setAlpha(1);
+    if(d.layeredPlate)layers[1].container.setAlpha(1-blend);
+    if(actionLights)actionLights.graphics.setAlpha(blend);
     runner.setVisible(!inAction);shadow.setVisible(!inAction);hero.setVisible(inAction);
     const settle = Math.min(1, Math.max(0, (t-runMs-actionMs)/400));
     const ease = 1-Math.pow(1-settle,3);
-    const exitX = d.frames[9].x-d.frames[9].cameraX;
+    const exitX = d.frames[endFrame].x-d.frames[endFrame].cameraX;
     runner.setPosition(after ? exitX+(650-exitX)*ease : 650,612);
     if(!inAction&&!['city-rooftop-run','coast-mast-vault','citadel-bridge-leap'].includes(id))runner.y=before?d.frames[1].y:d.frames[9].y;
     shadow.setPosition(runner.x,runner.y+5);
-    for(const l of loops){const since=local-(l.p.startMs||0);l.s.setVisible(inAction&&since>=0&&(l.p.continuous||since<(l.p.durationMs||600)));if(since>=0)l.s.setFrame(l.p.row*4+Math.floor(since/(l.p.frameMs||100))%4);}
+    for(const l of loops){const since=local-(l.p.startMs||0);l.s.setVisible(inAction&&since>=0&&(l.p.continuous||since<(l.p.durationMs||600)));if(since>=0){l.s.setFrame(l.p.row*4+Math.floor(since/(l.p.frameMs||100))%4);l.s.setPosition(l.p.x+(l.p.driftX||0)*since/1000,l.p.y+(l.p.driftY||0)*since/1000);}}
     glints.clear();
     if(id==='coast-mast-vault')for(let n=0;n<28;n++){
       const x=((n*139-distance*.12)%1340+1340)%1340-30,y=350+n%7*25+Math.sin(t/1100+n)*3;
@@ -109,6 +125,7 @@ Travel.paint = function (scene) {
     root.phase=before?'run-in':after?'run-out':'action';root.elapsedMs=t;
     root.hero=inAction?hero:runner;root.distance=distance;
     root.layerOffsets=layers.map(l=>({name:l.name,x:l.container.x,factor:l.factor}));
+    root.environment={clouds,lamps,actionLights};root.travelKind=d.travelKind||'vault';
   };
   root.durationMs=journeyMs;root.runInMs=root.runOutMs=runMs;root.runSpeed=runSpeed;
   root.advance=dt=>{if(!active)return;elapsed+=dt;sample(elapsed);};

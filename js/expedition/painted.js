@@ -40,10 +40,11 @@ P.needed = function (scene) {
 P.preload = function (scene, ids) {
   if (X.Hud && X.Hud.preloadArt) X.Hud.preloadArt(scene);
   const needed = ids || P.needed(scene);
+  if (X.HumanoidGore) X.HumanoidGore.preload(scene,needed);
   if (X.EnemyFinishers) X.EnemyFinishers.preload(scene, needed);
   for (const id of needed) {
     const key = 'xp_' + id + '_sheet', base = 'assets/expedition/' + id + '/';
-    const revision = (X.expansionActors || []).includes(id) ? '?v=expansion-20261009' : id === 'bram' ? '' : '?v=combat-roster-20261002';
+    const revision = (X.expansionActors || []).includes(id) ? '?v=polish-20261009' : id === 'bram' ? '' : '?v=combat-roster-20261002';
     if (!scene.textures.exists(key)) scene.load.multiatlas(key, base + id + '.json' + revision, base);
     if (!scene.cache.json.exists('xp_' + id + '_clips')) scene.load.json('xp_' + id + '_clips', base + id + '.json' + revision);
   }
@@ -56,7 +57,7 @@ P.sheet = function (scene, id) {
   let clips = Object.fromEntries(Object.entries(j.clips).filter(([name]) => !(P.retiredFinishers[id] || []).includes(name)));
   if (id === 'alpha' || (X.monsterActors || []).includes(id)) {
     clips = Object.fromEntries(Object.entries(clips).map(([name, c]) => {
-      if (!c.paired || !name.startsWith('hiro-')) return [name, c];
+      if (!c.paired || !name.startsWith('hiro-') || c.preserveTiming) return [name, c];
       const times = c.frames.length === 8 ? [240,130,150,210,160,190,210,330]
         : id === 'alpha' ? [260,180,140,220,240,360] : [260,140,220,210,250,340];
       if (times.length !== c.frames.length) return [name, c];

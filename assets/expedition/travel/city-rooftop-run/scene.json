@@ -116,10 +116,12 @@
   "loops": [
     {
       "row": 0,
-      "x": 1450,
-      "y": 140,
+      "x": 1650,
+      "y": 100,
       "startMs": 850,
-      "scale": 0.55
+      "scale": 0.55,
+      "driftX": 260,
+      "driftY": -55
     },
     {
       "row": 1,
@@ -136,5 +138,7 @@
       "scale": 0.55
     }
   ],
-  "source": "city-rooftop-run"
+  "source": "city-rooftop-run",
+  "layeredPlate": true,
+  "plateRegistration": "20261009-approved-contact-plane"
 }

@@ -47,6 +47,12 @@ const server=http.createServer((req,res)=>{
     assert(visible.every(a=>a.visible&&a.x<1280&&a.x>600&&a.scale>0),JSON.stringify(visible));
     await page.screenshot({path:path.join(OUT,q+'-'+w+'-enemies.png')});
     for(const id of ids)for(const variant of [0,1]){
+      const active=await page.evaluate(([id,v])=>{const a=[...__game.scene.getScene('Expedition').actors.values()].find(a=>ADV.Expedition.paintedActorOf(a)===id);return !!a.sheet.clips['hiro-finisher-'+(v+1)];},[id,variant]);
+      if(!active)continue; // User-retired moves are never resurrected for QA.
+      if(process.argv.includes('--record'))await page.evaluate(()=>{
+        const stream=__game.canvas.captureStream(60),chunks=[],rec=new MediaRecorder(stream,{mimeType:'video/webm;codecs=vp9',videoBitsPerSecond:6000000});
+        rec.ondataavailable=e=>{if(e.data.size)chunks.push(e.data);};window.__polishRecording={rec,chunks,stream};rec.start(100);
+      });
       await page.evaluate(([id,variant])=>{
         const X=ADV.Expedition,s=window.__game.scene.getScene('Expedition');
         const a=[...s.actors.values()].find(a=>X.paintedActorOf(a)===id);
@@ -64,6 +70,10 @@ const server=http.createServer((req,res)=>{
       await page.waitForFunction(()=>window.__game.scene.getScene('Expedition').__pairDone,null,{timeout:10000});
       const r=await page.evaluate(()=>window.__game.scene.getScene('Expedition').__pairResult);
       assert(r.gone&&r.heroTexture==='xp_hiro_sheet',JSON.stringify(r));results.push(r);
+      if(process.argv.includes('--record')){
+        const video=await page.evaluate(async()=>{const {rec,chunks,stream}=window.__polishRecording;await new Promise(resolve=>{rec.onstop=resolve;rec.stop();});stream.getTracks().forEach(t=>t.stop());return Array.from(new Uint8Array(await new Blob(chunks).arrayBuffer()));});
+        fs.writeFileSync(path.join(OUT,id+'-'+(variant+1)+'-normal-speed.webm'),Buffer.from(video));
+      }
     }
   }
   for(const [q,w,leg]of (expansion?[['coast',1,'midleg'],['citadel',1,'midleg']]:[['rain',1,'midleg'],['marsh',1,'midleg'],['city',0,'outbound'],['city',2,'midleg']])){
@@ -101,5 +111,5 @@ const server=http.createServer((req,res)=>{
   assert(Date.now()-start>=9300,'travel presentation was cut short');
   assert.deepEqual(errors,[]);
   fs.writeFileSync(path.join(OUT,expansion?'expansion-verification.json':process.argv.includes('--travel-only')?'travel-verification.json':'verification.json'),JSON.stringify({results,errors},null,2));
-  await browser.close();server.close();console.log(expansion?'expansion art: 16 paired finishers, 8 visible enemies, 2 painted travel beats passed':process.argv.includes('--travel-only')?'v3 art: 4 painted travel beats passed':'v3 art: 14 paired finishers, 7 visible enemies, 4 painted travel beats passed');
+  await browser.close();server.close();console.log(expansion?'expansion art: 16 paired finishers, 8 visible enemies, 2 painted travel beats passed':process.argv.includes('--travel-only')?'v3 art: 4 painted travel beats passed':'v3 art: '+results.filter(r=>r.variant!=null).length+' active paired finishers, 7 visible enemies, 4 painted travel beats passed');
 })().catch(e=>{console.error(e);process.exit(1);});

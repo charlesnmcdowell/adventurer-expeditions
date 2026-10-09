@@ -342,7 +342,7 @@ class Actor {
     const drift = !c.paired && imp.drift ? Number(imp.drift.distancePx) || 0 : 0;
     if (!['walk', 'enter', 'idle', 'victory'].includes(clip)) this._sheathed = false;
     return new Promise(resolve => {
-      let ended = false, released = false, hits = 0;
+      let ended = false, released = false, hits = 0, clearGore = null;
       const target = c.paired ? opts.target : null, targetVisible = target && target.root.visible;
       const originX = this.root.x;
       const pairedFinish = !!(target && /finisher/.test(clip) && opts.lethal);
@@ -365,6 +365,7 @@ class Actor {
       };
       const clean = () => {
         detach();
+        if(clearGore)clearGore();
         for (const t of motion) t.stop();
         motion.clear();
         if (target && !target._destroyed && target.alive) target.root.setVisible(targetVisible);
@@ -395,6 +396,7 @@ class Actor {
         while (contacts.length && i >= contacts[0]) {
           contacts.shift();
           if (hits++ === 0) {
+            if(pairedFinish && this.side==='a' && X.HumanoidGore)clearGore=X.HumanoidGore.play(scene,this,target,sheet,id);
             if (opts.onContact) opts.onContact();
             if (drift && live()) move(contactX + drift * this.facing, 70, imp.drift.ease || 'Quad.Out');
           } else if (opts.onHit) opts.onHit(hits - 1);

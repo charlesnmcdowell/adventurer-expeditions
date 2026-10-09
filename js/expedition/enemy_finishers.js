@@ -24,7 +24,7 @@ F.preload = (scene, ids) => {
   for (const actor of new Set(ids)) {
     if (!READY.has(actor)) continue;
     const key = keyFor(actor), base = 'assets/expedition/adult/' + actor + '-fatal/';
-    const url = base + actor + '-fatal.json?v=20261008-review-r2';
+    const url = base + actor + '-fatal.json?v=20261009-polish';
     if (!scene.textures.exists(key)) scene.load.multiatlas(key, url, base);
     // Multiatlas queues an internal JSON under its texture key. A distinct
     // metadata key avoids Phaser deduplicating our clip data on a cold load.

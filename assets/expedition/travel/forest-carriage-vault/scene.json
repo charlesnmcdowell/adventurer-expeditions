@@ -139,5 +139,7 @@
       "startMs": 1470
     }
   ],
-  "source": "forest-carriage-vault"
+  "source": "forest-carriage-vault",
+  "layeredPlate": true,
+  "plateRegistration": "20261009-approved-contact-plane"
 }

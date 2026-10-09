@@ -3,7 +3,7 @@ from pathlib import Path
 import json,hashlib
 import numpy as np
 from scipy import ndimage
-from PIL import Image
+from PIL import Image, ImageOps
 from art_intake_v2 import build
 ROOT=Path(__file__).resolve().parents[1]
 SRC=ROOT.parent/'adventurer-expeditions-source-art/astra-v5/citadel-20261009'
@@ -36,6 +36,13 @@ def main():
     OUT.mkdir(parents=True,exist_ok=True)
     for actor in ACTORS:
         frames=extract(actor+'-combat.png',24,actor=='enchantress')
+        # The source's neutral/recovery drawings look right, while its attacks
+        # look left. Correct only those poses, never the whole combat sheet.
+        if actor=='dark_swordswoman':
+            for i in [0,1,2,3,15,19]:
+                f=frames[i];p=SRC/f['file'];im=Image.open(p)
+                ImageOps.mirror(im).save(p)
+                f['guide']['anchorX']=im.width-f['guide']['anchorX']
         ref=frames[0]['height']
         if actor=='enchantress':
             repair=extract('enchantress-attack-release-four.png',4)
