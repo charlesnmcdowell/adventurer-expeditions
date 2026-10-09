@@ -1,0 +1,530 @@
+{
+  "actor": "toad",
+  "authoredFacing": 1,
+  "clips": [
+    {
+      "id": "hiro-finisher-1",
+      "frames": 8,
+      "sources": [
+        {
+          "file": "registered-pairs/toad-parry-eight-draft/00.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              497,
+              343
+            ]
+          ],
+          "firstFrameZeroBased": 0,
+          "sha256": "2bde8a1d909f15ca43ea75bf3aa761d875123b9a19e6c5970beb4c85cf3c2e28"
+        },
+        {
+          "file": "registered-pairs/toad-parry-eight-draft/01.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              490,
+              341
+            ]
+          ],
+          "firstFrameZeroBased": 1,
+          "sha256": "a251f13ed26213430b13e6bf39421213c76a4e577bb58b99fd03b52ee96c7c04"
+        },
+        {
+          "file": "registered-pairs/toad-parry-eight-draft/02.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              535,
+              387
+            ]
+          ],
+          "firstFrameZeroBased": 2,
+          "sha256": "92257546fd3e887baafeabdfa677a7b4fbeed2018247c7e44c313d24e5c989fa"
+        },
+        {
+          "file": "registered-pairs/toad-parry-eight-draft/03.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              483,
+              370
+            ]
+          ],
+          "firstFrameZeroBased": 3,
+          "sha256": "c872eab12f4209ce5715cd5a797accc423348a28a453a482fed828d87e71bad9"
+        },
+        {
+          "file": "registered-pairs/toad-parry-eight-draft/04.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              504,
+              372
+            ]
+          ],
+          "firstFrameZeroBased": 4,
+          "sha256": "eb254ef017a040aa4b2c962559a0793caaef64929f56d7cbf5ce543b3303a033"
+        },
+        {
+          "file": "registered-pairs/toad-parry-eight-draft/05.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              484,
+              370
+            ]
+          ],
+          "firstFrameZeroBased": 5,
+          "sha256": "65943219ccab50112742c5aeccde0f6b19bf9ed850a42b3ba3ef0693eef57304"
+        },
+        {
+          "file": "registered-pairs/toad-parry-eight-draft/06.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              621,
+              378
+            ]
+          ],
+          "firstFrameZeroBased": 6,
+          "sha256": "94c8da8a97251a12dfe393cff31f5850ecb1468bb51bee4a6870d0781462a4a5"
+        },
+        {
+          "file": "registered-pairs/toad-parry-eight-draft/07.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              431,
+              380
+            ]
+          ],
+          "firstFrameZeroBased": 7,
+          "sha256": "a328a753911703eff2e9129a72a58b17a36e0e435ea39836a4dd5d0a16a7c91e"
+        }
+      ],
+      "paired": true,
+      "loop": false,
+      "durationsMs": [
+        240,
+        130,
+        150,
+        210,
+        160,
+        190,
+        210,
+        330
+      ],
+      "contactFramesZeroBased": [
+        4
+      ],
+      "primaryImpactFrameZeroBased": 4,
+      "releaseFrameZeroBased": 7,
+      "opponentKinds": [
+        "toad"
+      ],
+      "opponentKeys": [
+        "toad"
+      ],
+      "finalState": "hero-standing",
+      "pairTargetDistanceRatio": 1.0,
+      "registration": {
+        "frames": [
+          {
+            "anchorX": 32.0,
+            "groundY": 332,
+            "referenceHeight": 330
+          },
+          {
+            "anchorX": 213.0,
+            "groundY": 331,
+            "referenceHeight": 330
+          },
+          {
+            "anchorX": 26.0,
+            "groundY": 373,
+            "referenceHeight": 330
+          },
+          {
+            "anchorX": 172.0,
+            "groundY": 355,
+            "referenceHeight": 330
+          },
+          {
+            "anchorX": 179.0,
+            "groundY": 357,
+            "referenceHeight": 330
+          },
+          {
+            "anchorX": 34.0,
+            "groundY": 358,
+            "referenceHeight": 330
+          },
+          {
+            "anchorX": 26.0,
+            "groundY": 367,
+            "referenceHeight": 330
+          },
+          {
+            "anchorX": 231.0,
+            "groundY": 372,
+            "referenceHeight": 330
+          }
+        ]
+      },
+      "victimFullyGoneFrameZeroBased": 7
+    },
+    {
+      "id": "hiro-finisher-2",
+      "frames": 8,
+      "sources": [
+        {
+          "file": "registered-pairs/toad-intercept-eight-draft/00.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              514,
+              345
+            ]
+          ],
+          "firstFrameZeroBased": 0,
+          "sha256": "9585b2102a5f502be59f81088c7e10a423a941f90057a1d9d52baef607b663c2"
+        },
+        {
+          "file": "registered-pairs/toad-intercept-eight-draft/01.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              497,
+              375
+            ]
+          ],
+          "firstFrameZeroBased": 1,
+          "sha256": "e4864212e374395f41f012eb7b6016f4b902cfb95f4a13391ae099a294bda604"
+        },
+        {
+          "file": "registered-pairs/toad-intercept-eight-draft/02.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              529,
+              367
+            ]
+          ],
+          "firstFrameZeroBased": 2,
+          "sha256": "c6740a3ef9290869d0818f407e1c840496575cb825be6ac48d4ecb449a1bac07"
+        },
+        {
+          "file": "registered-pairs/toad-intercept-eight-draft/03.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              494,
+              318
+            ]
+          ],
+          "firstFrameZeroBased": 3,
+          "sha256": "f7fe769542002c45a4e92efa2f02faa7325b10f073374e87aa6deb4672caefcb"
+        },
+        {
+          "file": "registered-pairs/toad-intercept-eight-draft/04.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              494,
+              351
+            ]
+          ],
+          "firstFrameZeroBased": 4,
+          "sha256": "1dad7c60a4415db10ea2054c062a3e8a06eccd3a03c823510506ff640cc7100f"
+        },
+        {
+          "file": "registered-pairs/toad-intercept-eight-draft/05.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              491,
+              373
+            ]
+          ],
+          "firstFrameZeroBased": 5,
+          "sha256": "04843109f8fc04dd2a192792d1242217657794ceffc44d2df70b25be34b5dfcc"
+        },
+        {
+          "file": "registered-pairs/toad-intercept-eight-draft/06.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              557,
+              384
+            ]
+          ],
+          "firstFrameZeroBased": 6,
+          "sha256": "1265bef10a95bb0fd9f2979856fdb30c45369dd10faecff45473562b7dff28e8"
+        },
+        {
+          "file": "registered-pairs/toad-intercept-eight-draft/07.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              363,
+              385
+            ]
+          ],
+          "firstFrameZeroBased": 7,
+          "sha256": "b90c96cf01e409cc0ba7a04646dcf41b4e93bd29dde0f280d16bd59f285e76fd"
+        }
+      ],
+      "paired": true,
+      "loop": false,
+      "durationsMs": [
+        240,
+        130,
+        150,
+        210,
+        160,
+        190,
+        210,
+        330
+      ],
+      "contactFramesZeroBased": [
+        3
+      ],
+      "primaryImpactFrameZeroBased": 3,
+      "releaseFrameZeroBased": 7,
+      "opponentKinds": [
+        "toad"
+      ],
+      "opponentKeys": [
+        "toad"
+      ],
+      "finalState": "hero-standing",
+      "pairTargetDistanceRatio": 1.0,
+      "registration": {
+        "frames": [
+          {
+            "anchorX": 35.0,
+            "groundY": 337,
+            "referenceHeight": 330
+          },
+          {
+            "anchorX": 26.0,
+            "groundY": 367,
+            "referenceHeight": 330
+          },
+          {
+            "anchorX": 23.0,
+            "groundY": 357,
+            "referenceHeight": 330
+          },
+          {
+            "anchorX": 22.0,
+            "groundY": 304,
+            "referenceHeight": 330
+          },
+          {
+            "anchorX": 22.5,
+            "groundY": 338,
+            "referenceHeight": 330
+          },
+          {
+            "anchorX": 158.0,
+            "groundY": 360,
+            "referenceHeight": 330
+          },
+          {
+            "anchorX": 23.0,
+            "groundY": 374,
+            "referenceHeight": 330
+          },
+          {
+            "anchorX": 152.0,
+            "groundY": 377,
+            "referenceHeight": 330
+          }
+        ]
+      },
+      "victimFullyGoneFrameZeroBased": 7
+    },
+    {
+      "id": "toad-fatal",
+      "frames": 6,
+      "sources": [
+        {
+          "file": "registered-pairs/toad-fatal-six-corrected/00.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              502,
+              449
+            ]
+          ],
+          "firstFrameZeroBased": 0,
+          "sha256": "a011781d65a474366596cf642ef4c081be2fd6f2cfdca0ac8a077fffb9babf17"
+        },
+        {
+          "file": "registered-pairs/toad-fatal-six-corrected/01.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              508,
+              468
+            ]
+          ],
+          "firstFrameZeroBased": 1,
+          "sha256": "a39bf83efe9ce5404aeb708633307efafc3e1bcc53c6be15767557b75d5972f7"
+        },
+        {
+          "file": "registered-pairs/toad-fatal-six-corrected/02.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              509,
+              376
+            ]
+          ],
+          "firstFrameZeroBased": 2,
+          "sha256": "4b44425c344b0d2bb57381501d0b1bd6e3a79531b2f3923855ec9bdbcbdd5729"
+        },
+        {
+          "file": "registered-pairs/toad-fatal-six-corrected/03.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              497,
+              363
+            ]
+          ],
+          "firstFrameZeroBased": 3,
+          "sha256": "add814313c0d702f6d3502ff36ded208faa360687d18edff1368bfd9f9588f3e"
+        },
+        {
+          "file": "registered-pairs/toad-fatal-six-corrected/04.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              486,
+              364
+            ]
+          ],
+          "firstFrameZeroBased": 4,
+          "sha256": "dcd8b2c2cc28deb34707a0c8b464d6b90fe347322130021710b3a55d1e9d574e"
+        },
+        {
+          "file": "registered-pairs/toad-fatal-six-corrected/05.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              489,
+              368
+            ]
+          ],
+          "firstFrameZeroBased": 5,
+          "sha256": "6b9dfc9a98bd0012c53c9dad767c745c5408febca2aea91edea29ddceec25ea8"
+        }
+      ],
+      "paired": true,
+      "loop": false,
+      "durationsMs": [
+        240,
+        180,
+        240,
+        250,
+        240,
+        350
+      ],
+      "contactFramesZeroBased": [
+        3
+      ],
+      "primaryImpactFrameZeroBased": 3,
+      "releaseFrameZeroBased": 5,
+      "opponentKinds": [
+        "toad"
+      ],
+      "opponentKeys": [
+        "toad"
+      ],
+      "finalState": "hiro-down",
+      "pairTargetDistanceRatio": 1.0,
+      "registration": {
+        "frames": [
+          {
+            "anchorX": 28.0,
+            "groundY": 438,
+            "referenceHeight": 430
+          },
+          {
+            "anchorX": 28.0,
+            "groundY": 457,
+            "referenceHeight": 430
+          },
+          {
+            "anchorX": 124.0,
+            "groundY": 363,
+            "referenceHeight": 390
+          },
+          {
+            "anchorX": 214.0,
+            "groundY": 349,
+            "referenceHeight": 430
+          },
+          {
+            "anchorX": 204.0,
+            "groundY": 349,
+            "referenceHeight": 430
+          },
+          {
+            "anchorX": 232.0,
+            "groundY": 358,
+            "referenceHeight": 430
+          }
+        ]
+      }
+    }
+  ],
+  "status": "preview; pair proportions require visual acceptance"
+}

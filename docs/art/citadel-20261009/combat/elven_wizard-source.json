@@ -1,0 +1,545 @@
+{
+  "actor": "elven_wizard",
+  "authoredFacing": -1,
+  "clips": [
+    {
+      "id": "idle",
+      "frames": 4,
+      "sources": [
+        {
+          "file": "registered-combat/elven_wizard-combat/00.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              228,
+              266
+            ]
+          ],
+          "firstFrameZeroBased": 0,
+          "sha256": "26b8b6678ee4e0e58242219384b522313927e12a4f29a4c045e1b6117e7f121c"
+        },
+        {
+          "file": "registered-combat/elven_wizard-combat/01.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              238,
+              269
+            ]
+          ],
+          "firstFrameZeroBased": 1,
+          "sha256": "43dd3956e94f80fee236d46f271b5a9be5457b4d3ac04b6a56ad5c1149713b93"
+        },
+        {
+          "file": "registered-combat/elven_wizard-combat/02.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              254,
+              269
+            ]
+          ],
+          "firstFrameZeroBased": 2,
+          "sha256": "1e64ff1a86ff5d7b38db4a3436ab5fa2fec1b2d10345a96e534c69b88982a013"
+        },
+        {
+          "file": "registered-combat/elven_wizard-combat/03.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              241,
+              270
+            ]
+          ],
+          "firstFrameZeroBased": 3,
+          "sha256": "eaf630148907287877af397e24bcd1812daabaabd604b3660ea5e3803e25ff4b"
+        }
+      ],
+      "durationsMs": [
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": true,
+      "contactFramesZeroBased": [],
+      "releaseFrameZeroBased": 3,
+      "registration": {
+        "referenceHeight": 258,
+        "frames": [
+          {
+            "anchorX": 70.0,
+            "groundY": 262
+          },
+          {
+            "anchorX": 65.0,
+            "groundY": 265
+          },
+          {
+            "anchorX": 72.0,
+            "groundY": 265
+          },
+          {
+            "anchorX": 68.0,
+            "groundY": 265
+          }
+        ]
+      }
+    },
+    {
+      "id": "approach",
+      "frames": 4,
+      "sources": [
+        {
+          "file": "registered-combat/elven_wizard-combat/04.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              239,
+              248
+            ]
+          ],
+          "firstFrameZeroBased": 0,
+          "sha256": "239d5031576e12fa8cceff6441bb7c3db7c1f7a0c96997a4e020ec0b7e0c5d3b"
+        },
+        {
+          "file": "registered-combat/elven_wizard-combat/05.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              254,
+              249
+            ]
+          ],
+          "firstFrameZeroBased": 1,
+          "sha256": "a61c0e2c2e6767d46a899f21da3ddcd081e12b555c961da533ebfb2dc9a71425"
+        },
+        {
+          "file": "registered-combat/elven_wizard-combat/06.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              264,
+              251
+            ]
+          ],
+          "firstFrameZeroBased": 2,
+          "sha256": "0283272d810a98cc62264959d2419bc1c36ca55636ec20cce7769a54fbbd32b0"
+        },
+        {
+          "file": "registered-combat/elven_wizard-combat/07.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              248,
+              250
+            ]
+          ],
+          "firstFrameZeroBased": 3,
+          "sha256": "8c9979faeeda5bbd98514e70b6c3ac49bd060ecce193d30e8754ccce62cc4780"
+        }
+      ],
+      "durationsMs": [
+        95,
+        95,
+        95,
+        95
+      ],
+      "loop": true,
+      "contactFramesZeroBased": [],
+      "releaseFrameZeroBased": 3,
+      "registration": {
+        "referenceHeight": 258,
+        "frames": [
+          {
+            "anchorX": 60.5,
+            "groundY": 245
+          },
+          {
+            "anchorX": 57.0,
+            "groundY": 246
+          },
+          {
+            "anchorX": 71.0,
+            "groundY": 247
+          },
+          {
+            "anchorX": 109.0,
+            "groundY": 246
+          }
+        ]
+      }
+    },
+    {
+      "id": "attack",
+      "frames": 8,
+      "sources": [
+        {
+          "file": "registered-combat/elven_wizard-combat/08.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              264,
+              248
+            ]
+          ],
+          "firstFrameZeroBased": 0,
+          "sha256": "06176c85c78340a577cba58062ec5be78a34341d46ce70965744039273261261"
+        },
+        {
+          "file": "registered-combat/elven_wizard-combat/09.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              271,
+              240
+            ]
+          ],
+          "firstFrameZeroBased": 1,
+          "sha256": "a8e5bcdda1f8f019b39a3dd291f68c5f0586c393fea7f5dc8f530bad3d7f8f6e"
+        },
+        {
+          "file": "registered-combat/elven_wizard-combat/10.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              268,
+              245
+            ]
+          ],
+          "firstFrameZeroBased": 2,
+          "sha256": "b82b18638530962fb5ab3c46e8ecc93156876f3ec814e01a60efff867ddae395"
+        },
+        {
+          "file": "registered-combat/elven_wizard-combat/11.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              262,
+              233
+            ]
+          ],
+          "firstFrameZeroBased": 3,
+          "sha256": "01d25c406dde615fe762fe42a2f4e2f2b38351143bec548f174fa906f5c17f78"
+        },
+        {
+          "file": "registered-combat/elven_wizard-combat/12.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              373,
+              248
+            ]
+          ],
+          "firstFrameZeroBased": 4,
+          "sha256": "c70616a47ad22132444d59fe9f925067d2f0272bf715298a2274af96ba9f3f28"
+        },
+        {
+          "file": "registered-combat/elven_wizard-combat/13.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              227,
+              248
+            ]
+          ],
+          "firstFrameZeroBased": 5,
+          "sha256": "bc6b261eeba402c053b01b5cdc527b62151b4cec7c63ec94d1d5376af7143add"
+        },
+        {
+          "file": "registered-combat/elven_wizard-combat/14.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              242,
+              275
+            ]
+          ],
+          "firstFrameZeroBased": 6,
+          "sha256": "ccf2a0f8f5c2a41456bbab115509ce7e615b0ced54c27586a42e556d7e2cdadd"
+        },
+        {
+          "file": "registered-combat/elven_wizard-combat/15.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              236,
+              258
+            ]
+          ],
+          "firstFrameZeroBased": 7,
+          "sha256": "d358fc2cae57bfdd9b7542edcb984b2ee0b4d4a66381c873c746af9a913e3fce"
+        }
+      ],
+      "durationsMs": [
+        90,
+        75,
+        65,
+        55,
+        90,
+        60,
+        70,
+        100
+      ],
+      "loop": false,
+      "contactFramesZeroBased": [
+        4
+      ],
+      "releaseFrameZeroBased": 7,
+      "registration": {
+        "referenceHeight": 258,
+        "frames": [
+          {
+            "anchorX": 38.0,
+            "groundY": 244
+          },
+          {
+            "anchorX": 39.0,
+            "groundY": 237
+          },
+          {
+            "anchorX": 59.0,
+            "groundY": 242
+          },
+          {
+            "anchorX": 70.0,
+            "groundY": 230
+          },
+          {
+            "anchorX": 119.0,
+            "groundY": 243
+          },
+          {
+            "anchorX": 41.0,
+            "groundY": 244
+          },
+          {
+            "anchorX": 46.0,
+            "groundY": 271
+          },
+          {
+            "anchorX": 71.0,
+            "groundY": 254
+          }
+        ]
+      }
+    },
+    {
+      "id": "hit",
+      "frames": 4,
+      "sources": [
+        {
+          "file": "registered-combat/elven_wizard-combat/16.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              237,
+              250
+            ]
+          ],
+          "firstFrameZeroBased": 0,
+          "sha256": "ca0844048499d45233bbb6754f6e839691a12aac134f13191a34775cf757fd49"
+        },
+        {
+          "file": "registered-combat/elven_wizard-combat/17.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              259,
+              228
+            ]
+          ],
+          "firstFrameZeroBased": 1,
+          "sha256": "3bf668fc69af6cd5428e3d7b8ca0e0fe5e778bf73c63801765560067511b4ea7"
+        },
+        {
+          "file": "registered-combat/elven_wizard-combat/18.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              212,
+              206
+            ]
+          ],
+          "firstFrameZeroBased": 2,
+          "sha256": "4b17c2faec758d19a24f42f090966d448bbd33fb8104b65f6a085bb8ae317f4b"
+        },
+        {
+          "file": "registered-combat/elven_wizard-combat/19.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              217,
+              252
+            ]
+          ],
+          "firstFrameZeroBased": 3,
+          "sha256": "7a310721f0972cba10f7b271925e25eca3cceb6624d6b8a313441373297f317d"
+        }
+      ],
+      "durationsMs": [
+        90,
+        100,
+        150,
+        220
+      ],
+      "loop": false,
+      "contactFramesZeroBased": [],
+      "releaseFrameZeroBased": 3,
+      "registration": {
+        "referenceHeight": 258,
+        "frames": [
+          {
+            "anchorX": 39.0,
+            "groundY": 246
+          },
+          {
+            "anchorX": 38.0,
+            "groundY": 225
+          },
+          {
+            "anchorX": 38.0,
+            "groundY": 203
+          },
+          {
+            "anchorX": 58.5,
+            "groundY": 247
+          }
+        ]
+      }
+    },
+    {
+      "id": "down",
+      "frames": 4,
+      "sources": [
+        {
+          "file": "registered-combat/elven_wizard-combat/20.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              233,
+              213
+            ]
+          ],
+          "firstFrameZeroBased": 0,
+          "sha256": "92487227667dee4c5c8a68b932b401b957b7724afad010a90af7e9d9774729f2"
+        },
+        {
+          "file": "registered-combat/elven_wizard-combat/21.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              230,
+              207
+            ]
+          ],
+          "firstFrameZeroBased": 1,
+          "sha256": "4495fd814862edcceb866fedb540bdf9ad7c5c80e15507aa23aa30823fc9cff7"
+        },
+        {
+          "file": "registered-combat/elven_wizard-combat/22.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              282,
+              108
+            ]
+          ],
+          "firstFrameZeroBased": 2,
+          "sha256": "4ad2ae61a9a85713c4ff7b627dd6a1c92775e3b69bc53d34fcde1ffc6efdb79e"
+        },
+        {
+          "file": "registered-combat/elven_wizard-combat/23.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              302,
+              99
+            ]
+          ],
+          "firstFrameZeroBased": 3,
+          "sha256": "3b60b56223d3d9e196772f624a1499b5838eb67fa96843f0b97b7ca9b5d8f159"
+        }
+      ],
+      "durationsMs": [
+        90,
+        100,
+        150,
+        220
+      ],
+      "loop": false,
+      "contactFramesZeroBased": [],
+      "releaseFrameZeroBased": 3,
+      "registration": {
+        "referenceHeight": 258,
+        "frames": [
+          {
+            "anchorX": 127.5,
+            "groundY": 210
+          },
+          {
+            "anchorX": 106.5,
+            "groundY": 203
+          },
+          {
+            "anchorX": 47.0,
+            "groundY": 104
+          },
+          {
+            "anchorX": 32.0,
+            "groundY": 95
+          }
+        ]
+      }
+    }
+  ],
+  "status": "combat preview; pairs and gameplay pending"
+}

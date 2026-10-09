@@ -1,0 +1,1924 @@
+[
+  {
+    "actor": "crab",
+    "clip": "hiro-finisher-1",
+    "master": "crab-vault-eight-draft.png",
+    "sha256": "b4ea390caceb7e46db9d68a46ae9355055e7977c93062df0c89e9645b34096ea",
+    "frames": [
+      {
+        "file": "registered-pairs/crab-vault-eight-draft/00.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            614,
+            284
+          ]
+        ],
+        "guide": {
+          "anchorX": 152.0,
+          "groundY": 278
+        },
+        "sourceBox": [
+          119,
+          8,
+          614,
+          284
+        ]
+      },
+      {
+        "file": "registered-pairs/crab-vault-eight-draft/01.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            609,
+            292
+          ]
+        ],
+        "guide": {
+          "anchorX": 22.0,
+          "groundY": 283
+        },
+        "sourceBox": [
+          832,
+          0,
+          609,
+          292
+        ]
+      },
+      {
+        "file": "registered-pairs/crab-vault-eight-draft/02.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            651,
+            172
+          ]
+        ],
+        "guide": {
+          "anchorX": 186.0,
+          "groundY": 164
+        },
+        "sourceBox": [
+          86,
+          387,
+          651,
+          172
+        ]
+      },
+      {
+        "file": "registered-pairs/crab-vault-eight-draft/03.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            470,
+            293
+          ]
+        ],
+        "guide": {
+          "anchorX": 163.0,
+          "groundY": 285
+        },
+        "sourceBox": [
+          973,
+          269,
+          470,
+          293
+        ]
+      },
+      {
+        "file": "registered-pairs/crab-vault-eight-draft/04.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            448,
+            260
+          ]
+        ],
+        "guide": {
+          "anchorX": 33.0,
+          "groundY": 251
+        },
+        "sourceBox": [
+          165,
+          536,
+          448,
+          260
+        ]
+      },
+      {
+        "file": "registered-pairs/crab-vault-eight-draft/05.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            608,
+            213
+          ]
+        ],
+        "guide": {
+          "anchorX": 208.0,
+          "groundY": 205
+        },
+        "sourceBox": [
+          833,
+          581,
+          608,
+          213
+        ]
+      },
+      {
+        "file": "registered-pairs/crab-vault-eight-draft/06.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            507,
+            243
+          ]
+        ],
+        "guide": {
+          "anchorX": 117.0,
+          "groundY": 232
+        },
+        "sourceBox": [
+          176,
+          781,
+          507,
+          243
+        ]
+      },
+      {
+        "file": "registered-pairs/crab-vault-eight-draft/07.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            424,
+            260
+          ]
+        ],
+        "guide": {
+          "anchorX": 107.0,
+          "groundY": 254
+        },
+        "sourceBox": [
+          956,
+          760,
+          424,
+          260
+        ]
+      }
+    ]
+  },
+  {
+    "actor": "crab",
+    "clip": "hiro-finisher-2",
+    "master": "crab-joint-cut-eight-draft.png",
+    "sha256": "6e0d442ea38056e6a20ce695a719cc627659ddb326e14beb7dd845e943306b34",
+    "frames": [
+      {
+        "file": "registered-pairs/crab-joint-cut-eight-draft/00.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            537,
+            299
+          ]
+        ],
+        "guide": {
+          "anchorX": 207.0,
+          "groundY": 291
+        },
+        "sourceBox": [
+          7,
+          63,
+          537,
+          299
+        ]
+      },
+      {
+        "file": "registered-pairs/crab-joint-cut-eight-draft/01.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            518,
+            211
+          ]
+        ],
+        "guide": {
+          "anchorX": 203.0,
+          "groundY": 203
+        },
+        "sourceBox": [
+          558,
+          159,
+          518,
+          211
+        ]
+      },
+      {
+        "file": "registered-pairs/crab-joint-cut-eight-draft/02.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            544,
+            273
+          ]
+        ],
+        "guide": {
+          "anchorX": 21.0,
+          "groundY": 263
+        },
+        "sourceBox": [
+          15,
+          433,
+          544,
+          273
+        ]
+      },
+      {
+        "file": "registered-pairs/crab-joint-cut-eight-draft/03.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            531,
+            278
+          ]
+        ],
+        "guide": {
+          "anchorX": 233.0,
+          "groundY": 271
+        },
+        "sourceBox": [
+          551,
+          423,
+          531,
+          278
+        ]
+      },
+      {
+        "file": "registered-pairs/crab-joint-cut-eight-draft/04.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            561,
+            265
+          ]
+        ],
+        "guide": {
+          "anchorX": 22.0,
+          "groundY": 256
+        },
+        "sourceBox": [
+          8,
+          768,
+          561,
+          265
+        ]
+      },
+      {
+        "file": "registered-pairs/crab-joint-cut-eight-draft/05.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            524,
+            311
+          ]
+        ],
+        "guide": {
+          "anchorX": 190.0,
+          "groundY": 303
+        },
+        "sourceBox": [
+          556,
+          744,
+          524,
+          311
+        ]
+      },
+      {
+        "file": "registered-pairs/crab-joint-cut-eight-draft/06.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            490,
+            337
+          ]
+        ],
+        "guide": {
+          "anchorX": 148.0,
+          "groundY": 329
+        },
+        "sourceBox": [
+          50,
+          1075,
+          490,
+          337
+        ]
+      },
+      {
+        "file": "registered-pairs/crab-joint-cut-eight-draft/07.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            222,
+            338
+          ]
+        ],
+        "guide": {
+          "anchorX": 37.0,
+          "groundY": 331
+        },
+        "sourceBox": [
+          622,
+          1077,
+          222,
+          338
+        ]
+      }
+    ]
+  },
+  {
+    "actor": "crab",
+    "clip": "crab-fatal",
+    "master": "crab-fatal-six.png",
+    "sha256": "954e2e33e3aa53a993a040e6882298cf518450cad370d75d4a14ddcdae8d51ba",
+    "frames": [
+      {
+        "file": "registered-pairs/crab-fatal-six/00.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            527,
+            397
+          ]
+        ],
+        "guide": {
+          "anchorX": 228.5,
+          "groundY": 388
+        },
+        "sourceBox": [
+          0,
+          137,
+          527,
+          397
+        ]
+      },
+      {
+        "file": "registered-pairs/crab-fatal-six/01.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            492,
+            435
+          ]
+        ],
+        "guide": {
+          "anchorX": 211.0,
+          "groundY": 425
+        },
+        "sourceBox": [
+          525,
+          105,
+          492,
+          435
+        ]
+      },
+      {
+        "file": "registered-pairs/crab-fatal-six/02.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            502,
+            433
+          ]
+        ],
+        "guide": {
+          "anchorX": 22.0,
+          "groundY": 424
+        },
+        "sourceBox": [
+          18,
+          593,
+          502,
+          433
+        ]
+      },
+      {
+        "file": "registered-pairs/crab-fatal-six/03.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            512,
+            346
+          ]
+        ],
+        "guide": {
+          "anchorX": 171.0,
+          "groundY": 326
+        },
+        "sourceBox": [
+          512,
+          664,
+          512,
+          346
+        ]
+      },
+      {
+        "file": "registered-pairs/crab-fatal-six/04.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            522,
+            314
+          ]
+        ],
+        "guide": {
+          "anchorX": 195.0,
+          "groundY": 302
+        },
+        "sourceBox": [
+          15,
+          1139,
+          522,
+          314
+        ]
+      },
+      {
+        "file": "registered-pairs/crab-fatal-six/05.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            468,
+            371
+          ]
+        ],
+        "guide": {
+          "anchorX": 184.0,
+          "groundY": 358
+        },
+        "sourceBox": [
+          543,
+          1094,
+          468,
+          371
+        ]
+      }
+    ]
+  },
+  {
+    "actor": "toad",
+    "clip": "hiro-finisher-1",
+    "master": "toad-parry-eight-draft.png",
+    "sha256": "6fe76e70f6a1ffe30acfc9dd7f0693decb1005101f1b20373a18a1684ac5724a",
+    "frames": [
+      {
+        "file": "registered-pairs/toad-parry-eight-draft/00.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            497,
+            343
+          ]
+        ],
+        "guide": {
+          "anchorX": 32.0,
+          "groundY": 332
+        },
+        "sourceBox": [
+          14,
+          31,
+          497,
+          343
+        ]
+      },
+      {
+        "file": "registered-pairs/toad-parry-eight-draft/01.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            490,
+            341
+          ]
+        ],
+        "guide": {
+          "anchorX": 213.0,
+          "groundY": 331
+        },
+        "sourceBox": [
+          522,
+          33,
+          490,
+          341
+        ]
+      },
+      {
+        "file": "registered-pairs/toad-parry-eight-draft/02.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            535,
+            387
+          ]
+        ],
+        "guide": {
+          "anchorX": 26.0,
+          "groundY": 373
+        },
+        "sourceBox": [
+          16,
+          369,
+          535,
+          387
+        ]
+      },
+      {
+        "file": "registered-pairs/toad-parry-eight-draft/03.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            483,
+            370
+          ]
+        ],
+        "guide": {
+          "anchorX": 172.0,
+          "groundY": 355
+        },
+        "sourceBox": [
+          532,
+          388,
+          483,
+          370
+        ]
+      },
+      {
+        "file": "registered-pairs/toad-parry-eight-draft/04.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            504,
+            372
+          ]
+        ],
+        "guide": {
+          "anchorX": 179.0,
+          "groundY": 357
+        },
+        "sourceBox": [
+          11,
+          767,
+          504,
+          372
+        ]
+      },
+      {
+        "file": "registered-pairs/toad-parry-eight-draft/05.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            484,
+            370
+          ]
+        ],
+        "guide": {
+          "anchorX": 34.0,
+          "groundY": 358
+        },
+        "sourceBox": [
+          527,
+          764,
+          484,
+          370
+        ]
+      },
+      {
+        "file": "registered-pairs/toad-parry-eight-draft/06.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            621,
+            378
+          ]
+        ],
+        "guide": {
+          "anchorX": 26.0,
+          "groundY": 367
+        },
+        "sourceBox": [
+          30,
+          1133,
+          621,
+          378
+        ]
+      },
+      {
+        "file": "registered-pairs/toad-parry-eight-draft/07.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            431,
+            380
+          ]
+        ],
+        "guide": {
+          "anchorX": 231.0,
+          "groundY": 372
+        },
+        "sourceBox": [
+          503,
+          1136,
+          431,
+          380
+        ]
+      }
+    ]
+  },
+  {
+    "actor": "toad",
+    "clip": "hiro-finisher-2",
+    "master": "toad-intercept-eight-draft.png",
+    "sha256": "10a61edc85f2d7851614f95e15e93ccda1a5f055f8418830d6fa6a6fc33ce6ac",
+    "frames": [
+      {
+        "file": "registered-pairs/toad-intercept-eight-draft/00.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            514,
+            345
+          ]
+        ],
+        "guide": {
+          "anchorX": 35.0,
+          "groundY": 337
+        },
+        "sourceBox": [
+          8,
+          37,
+          514,
+          345
+        ]
+      },
+      {
+        "file": "registered-pairs/toad-intercept-eight-draft/01.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            497,
+            375
+          ]
+        ],
+        "guide": {
+          "anchorX": 26.0,
+          "groundY": 367
+        },
+        "sourceBox": [
+          527,
+          7,
+          497,
+          375
+        ]
+      },
+      {
+        "file": "registered-pairs/toad-intercept-eight-draft/02.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            529,
+            367
+          ]
+        ],
+        "guide": {
+          "anchorX": 23.0,
+          "groundY": 357
+        },
+        "sourceBox": [
+          9,
+          397,
+          529,
+          367
+        ]
+      },
+      {
+        "file": "registered-pairs/toad-intercept-eight-draft/03.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            494,
+            318
+          ]
+        ],
+        "guide": {
+          "anchorX": 22.0,
+          "groundY": 304
+        },
+        "sourceBox": [
+          526,
+          453,
+          494,
+          318
+        ]
+      },
+      {
+        "file": "registered-pairs/toad-intercept-eight-draft/04.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            494,
+            351
+          ]
+        ],
+        "guide": {
+          "anchorX": 22.5,
+          "groundY": 338
+        },
+        "sourceBox": [
+          21,
+          796,
+          494,
+          351
+        ]
+      },
+      {
+        "file": "registered-pairs/toad-intercept-eight-draft/05.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            491,
+            373
+          ]
+        ],
+        "guide": {
+          "anchorX": 158.0,
+          "groundY": 360
+        },
+        "sourceBox": [
+          524,
+          771,
+          491,
+          373
+        ]
+      },
+      {
+        "file": "registered-pairs/toad-intercept-eight-draft/06.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            557,
+            384
+          ]
+        ],
+        "guide": {
+          "anchorX": 23.0,
+          "groundY": 374
+        },
+        "sourceBox": [
+          23,
+          1136,
+          557,
+          384
+        ]
+      },
+      {
+        "file": "registered-pairs/toad-intercept-eight-draft/07.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            363,
+            385
+          ]
+        ],
+        "guide": {
+          "anchorX": 152.0,
+          "groundY": 377
+        },
+        "sourceBox": [
+          502,
+          1137,
+          363,
+          385
+        ]
+      }
+    ]
+  },
+  {
+    "actor": "toad",
+    "clip": "toad-fatal",
+    "master": "toad-fatal-six-corrected.png",
+    "sha256": "08f9dd910815c72b64ee505f582cad53cde2f118321d410b65d5495a4e10f8ec",
+    "frames": [
+      {
+        "file": "registered-pairs/toad-fatal-six-corrected/00.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            502,
+            449
+          ]
+        ],
+        "guide": {
+          "anchorX": 28.0,
+          "groundY": 438
+        },
+        "sourceBox": [
+          14,
+          70,
+          502,
+          449
+        ]
+      },
+      {
+        "file": "registered-pairs/toad-fatal-six-corrected/01.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            508,
+            468
+          ]
+        ],
+        "guide": {
+          "anchorX": 28.0,
+          "groundY": 457
+        },
+        "sourceBox": [
+          516,
+          52,
+          508,
+          468
+        ]
+      },
+      {
+        "file": "registered-pairs/toad-fatal-six-corrected/02.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            509,
+            376
+          ]
+        ],
+        "guide": {
+          "anchorX": 124.0,
+          "groundY": 363
+        },
+        "sourceBox": [
+          7,
+          586,
+          509,
+          376
+        ]
+      },
+      {
+        "file": "registered-pairs/toad-fatal-six-corrected/03.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            497,
+            363
+          ]
+        ],
+        "guide": {
+          "anchorX": 214.0,
+          "groundY": 349
+        },
+        "sourceBox": [
+          519,
+          613,
+          497,
+          363
+        ]
+      },
+      {
+        "file": "registered-pairs/toad-fatal-six-corrected/04.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            486,
+            364
+          ]
+        ],
+        "guide": {
+          "anchorX": 204.0,
+          "groundY": 349
+        },
+        "sourceBox": [
+          11,
+          1087,
+          486,
+          364
+        ]
+      },
+      {
+        "file": "registered-pairs/toad-fatal-six-corrected/05.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            489,
+            368
+          ]
+        ],
+        "guide": {
+          "anchorX": 232.0,
+          "groundY": 358
+        },
+        "sourceBox": [
+          527,
+          1114,
+          489,
+          368
+        ]
+      }
+    ]
+  },
+  {
+    "actor": "vulture",
+    "clip": "hiro-finisher-1",
+    "master": "vulture-rising-cut-eight-draft.png",
+    "sha256": "ceed0c283be0a9499ec404072575c78a49b12a5087fdf28e95a99fdb3fd67f56",
+    "frames": [
+      {
+        "file": "registered-pairs/vulture-rising-cut-eight-draft/00.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            482,
+            355
+          ]
+        ],
+        "guide": {
+          "anchorX": 35.0,
+          "groundY": 346
+        },
+        "sourceBox": [
+          21,
+          20,
+          482,
+          355
+        ]
+      },
+      {
+        "file": "registered-pairs/vulture-rising-cut-eight-draft/01.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            485,
+            371
+          ]
+        ],
+        "guide": {
+          "anchorX": 19.0,
+          "groundY": 361
+        },
+        "sourceBox": [
+          529,
+          5,
+          485,
+          371
+        ]
+      },
+      {
+        "file": "registered-pairs/vulture-rising-cut-eight-draft/02.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            407,
+            403
+          ]
+        ],
+        "guide": {
+          "anchorX": 21.0,
+          "groundY": 395
+        },
+        "sourceBox": [
+          76,
+          383,
+          407,
+          403
+        ]
+      },
+      {
+        "file": "registered-pairs/vulture-rising-cut-eight-draft/03.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            463,
+            399
+          ]
+        ],
+        "guide": {
+          "anchorX": 21.0,
+          "groundY": 391
+        },
+        "sourceBox": [
+          551,
+          388,
+          463,
+          399
+        ]
+      },
+      {
+        "file": "registered-pairs/vulture-rising-cut-eight-draft/04.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            430,
+            340
+          ]
+        ],
+        "guide": {
+          "anchorX": 22.0,
+          "groundY": 334
+        },
+        "sourceBox": [
+          54,
+          789,
+          430,
+          340
+        ]
+      },
+      {
+        "file": "registered-pairs/vulture-rising-cut-eight-draft/05.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            503,
+            313
+          ]
+        ],
+        "guide": {
+          "anchorX": 60.0,
+          "groundY": 306
+        },
+        "sourceBox": [
+          513,
+          824,
+          503,
+          313
+        ]
+      },
+      {
+        "file": "registered-pairs/vulture-rising-cut-eight-draft/06.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            484,
+            372
+          ]
+        ],
+        "guide": {
+          "anchorX": 40.0,
+          "groundY": 362
+        },
+        "sourceBox": [
+          49,
+          1150,
+          484,
+          372
+        ]
+      },
+      {
+        "file": "registered-pairs/vulture-rising-cut-eight-draft/07.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            332,
+            376
+          ]
+        ],
+        "guide": {
+          "anchorX": 159.0,
+          "groundY": 370
+        },
+        "sourceBox": [
+          500,
+          1146,
+          332,
+          376
+        ]
+      }
+    ]
+  },
+  {
+    "actor": "vulture",
+    "clip": "hiro-finisher-2",
+    "master": "vulture-side-cut-eight-draft.png",
+    "sha256": "a31166c17ac6da54e13cbbc2d7438b798f3040a849738f346610e2ddd8ab665c",
+    "frames": [
+      {
+        "file": "registered-pairs/vulture-side-cut-eight-draft/00.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            483,
+            351
+          ]
+        ],
+        "guide": {
+          "anchorX": 29.0,
+          "groundY": 343
+        },
+        "sourceBox": [
+          25,
+          36,
+          483,
+          351
+        ]
+      },
+      {
+        "file": "registered-pairs/vulture-side-cut-eight-draft/01.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            467,
+            353
+          ]
+        ],
+        "guide": {
+          "anchorX": 25.5,
+          "groundY": 343
+        },
+        "sourceBox": [
+          545,
+          36,
+          467,
+          353
+        ]
+      },
+      {
+        "file": "registered-pairs/vulture-side-cut-eight-draft/02.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            476,
+            347
+          ]
+        ],
+        "guide": {
+          "anchorX": 174.0,
+          "groundY": 338
+        },
+        "sourceBox": [
+          22,
+          407,
+          476,
+          347
+        ]
+      },
+      {
+        "file": "registered-pairs/vulture-side-cut-eight-draft/03.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            485,
+            343
+          ]
+        ],
+        "guide": {
+          "anchorX": 23.0,
+          "groundY": 334
+        },
+        "sourceBox": [
+          526,
+          396,
+          485,
+          343
+        ]
+      },
+      {
+        "file": "registered-pairs/vulture-side-cut-eight-draft/04.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            513,
+            324
+          ]
+        ],
+        "guide": {
+          "anchorX": 18.0,
+          "groundY": 316
+        },
+        "sourceBox": [
+          15,
+          782,
+          513,
+          324
+        ]
+      },
+      {
+        "file": "registered-pairs/vulture-side-cut-eight-draft/05.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            489,
+            338
+          ]
+        ],
+        "guide": {
+          "anchorX": 179.0,
+          "groundY": 330
+        },
+        "sourceBox": [
+          525,
+          787,
+          489,
+          338
+        ]
+      },
+      {
+        "file": "registered-pairs/vulture-side-cut-eight-draft/06.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            416,
+            355
+          ]
+        ],
+        "guide": {
+          "anchorX": 31.0,
+          "groundY": 347
+        },
+        "sourceBox": [
+          57,
+          1150,
+          416,
+          355
+        ]
+      },
+      {
+        "file": "registered-pairs/vulture-side-cut-eight-draft/07.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            218,
+            374
+          ]
+        ],
+        "guide": {
+          "anchorX": 23.0,
+          "groundY": 366
+        },
+        "sourceBox": [
+          643,
+          1138,
+          218,
+          374
+        ]
+      }
+    ]
+  },
+  {
+    "actor": "vulture",
+    "clip": "vulture-fatal",
+    "master": "vulture-fatal-six.png",
+    "sha256": "43bb9caf242df4623bf16cf4ef30e2976eb07c79f2ec2d645ae9a0819323f580",
+    "frames": [
+      {
+        "file": "registered-pairs/vulture-fatal-six/00.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            935,
+            425
+          ]
+        ],
+        "guide": {
+          "anchorX": 315.0,
+          "groundY": 416
+        },
+        "sourceBox": [
+          49,
+          8,
+          935,
+          425
+        ]
+      },
+      {
+        "file": "registered-pairs/vulture-fatal-six/01.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            992,
+            428
+          ]
+        ],
+        "guide": {
+          "anchorX": 494.0,
+          "groundY": 413
+        },
+        "sourceBox": [
+          17,
+          429,
+          992,
+          428
+        ]
+      },
+      {
+        "file": "registered-pairs/vulture-fatal-six/02.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            526,
+            378
+          ]
+        ],
+        "guide": {
+          "anchorX": 285.0,
+          "groundY": 362
+        },
+        "sourceBox": [
+          81,
+          827,
+          526,
+          378
+        ]
+      },
+      {
+        "file": "registered-pairs/vulture-fatal-six/03.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            474,
+            325
+          ]
+        ],
+        "guide": {
+          "anchorX": 210.0,
+          "groundY": 315
+        },
+        "sourceBox": [
+          11,
+          1195,
+          474,
+          325
+        ]
+      },
+      {
+        "file": "registered-pairs/vulture-fatal-six/04.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            503,
+            282
+          ]
+        ],
+        "guide": {
+          "anchorX": 202.0,
+          "groundY": 274
+        },
+        "sourceBox": [
+          511,
+          1221,
+          503,
+          282
+        ]
+      }
+    ]
+  },
+  {
+    "actor": "hydra",
+    "clip": "hiro-finisher-1",
+    "master": "hydra-diagonal-six-corrected.png",
+    "sha256": "75bdcd6b807ed8572314e08869340a216206af101dcc993ce143b1a7747bb955",
+    "frames": [
+      {
+        "file": "registered-pairs/hydra-diagonal-six-corrected/00.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            646,
+            420
+          ]
+        ],
+        "guide": {
+          "anchorX": 211.5,
+          "groundY": 410
+        },
+        "sourceBox": [
+          0,
+          7,
+          646,
+          420
+        ]
+      },
+      {
+        "file": "registered-pairs/hydra-diagonal-six-corrected/01.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            643,
+            414
+          ]
+        ],
+        "guide": {
+          "anchorX": 251.0,
+          "groundY": 401
+        },
+        "sourceBox": [
+          628,
+          15,
+          643,
+          414
+        ]
+      },
+      {
+        "file": "registered-pairs/hydra-diagonal-six-corrected/02.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            630,
+            430
+          ]
+        ],
+        "guide": {
+          "anchorX": 235.0,
+          "groundY": 407
+        },
+        "sourceBox": [
+          14,
+          420,
+          630,
+          430
+        ]
+      },
+      {
+        "file": "registered-pairs/hydra-diagonal-six-corrected/03.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            648,
+            286
+          ]
+        ],
+        "guide": {
+          "anchorX": 250.0,
+          "groundY": 277
+        },
+        "sourceBox": [
+          622,
+          555,
+          648,
+          286
+        ]
+      },
+      {
+        "file": "registered-pairs/hydra-diagonal-six-corrected/04.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            692,
+            394
+          ]
+        ],
+        "guide": {
+          "anchorX": 186.0,
+          "groundY": 382
+        },
+        "sourceBox": [
+          7,
+          829,
+          692,
+          394
+        ]
+      },
+      {
+        "file": "registered-pairs/hydra-diagonal-six-corrected/05.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            211,
+            360
+          ]
+        ],
+        "guide": {
+          "anchorX": 25.0,
+          "groundY": 354
+        },
+        "sourceBox": [
+          839,
+          865,
+          211,
+          360
+        ]
+      }
+    ]
+  },
+  {
+    "actor": "hydra",
+    "clip": "hiro-finisher-2",
+    "master": "hydra-slide-six.png",
+    "sha256": "d430bbeb627435152848f98dba97ed40842fb4821a7a287825440def537c7c8c",
+    "frames": [
+      {
+        "file": "registered-pairs/hydra-slide-six/00.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            637,
+            387
+          ]
+        ],
+        "guide": {
+          "anchorX": 202.0,
+          "groundY": 375
+        },
+        "sourceBox": [
+          18,
+          63,
+          637,
+          387
+        ]
+      },
+      {
+        "file": "registered-pairs/hydra-slide-six/01.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            590,
+            380
+          ]
+        ],
+        "guide": {
+          "anchorX": 154.0,
+          "groundY": 370
+        },
+        "sourceBox": [
+          675,
+          69,
+          590,
+          380
+        ]
+      },
+      {
+        "file": "registered-pairs/hydra-slide-six/02.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            597,
+            365
+          ]
+        ],
+        "guide": {
+          "anchorX": 200.0,
+          "groundY": 353
+        },
+        "sourceBox": [
+          65,
+          499,
+          597,
+          365
+        ]
+      },
+      {
+        "file": "registered-pairs/hydra-slide-six/03.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            579,
+            255
+          ]
+        ],
+        "guide": {
+          "anchorX": 180.5,
+          "groundY": 245
+        },
+        "sourceBox": [
+          682,
+          608,
+          579,
+          255
+        ]
+      },
+      {
+        "file": "registered-pairs/hydra-slide-six/04.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            668,
+            329
+          ]
+        ],
+        "guide": {
+          "anchorX": 168.0,
+          "groundY": 320
+        },
+        "sourceBox": [
+          17,
+          880,
+          668,
+          329
+        ]
+      },
+      {
+        "file": "registered-pairs/hydra-slide-six/05.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            409,
+            257
+          ]
+        ],
+        "guide": {
+          "anchorX": 265.0,
+          "groundY": 250
+        },
+        "sourceBox": [
+          634,
+          945,
+          409,
+          257
+        ]
+      }
+    ]
+  },
+  {
+    "actor": "hydra",
+    "clip": "hydra-fatal",
+    "master": "hydra-fatal-six-corrected.png",
+    "sha256": "23cc2df84c9f179e5741d05dd7f10eef09063191ec82975816411c0717109d75",
+    "frames": [
+      {
+        "file": "registered-pairs/hydra-fatal-six-corrected/00.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            645,
+            420
+          ]
+        ],
+        "guide": {
+          "anchorX": 218.5,
+          "groundY": 407
+        },
+        "sourceBox": [
+          14,
+          32,
+          645,
+          420
+        ]
+      },
+      {
+        "file": "registered-pairs/hydra-fatal-six-corrected/01.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            593,
+            405
+          ]
+        ],
+        "guide": {
+          "anchorX": 34.0,
+          "groundY": 393
+        },
+        "sourceBox": [
+          669,
+          48,
+          593,
+          405
+        ]
+      },
+      {
+        "file": "registered-pairs/hydra-fatal-six-corrected/02.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            518,
+            380
+          ]
+        ],
+        "guide": {
+          "anchorX": 40.0,
+          "groundY": 368
+        },
+        "sourceBox": [
+          123,
+          453,
+          518,
+          380
+        ]
+      },
+      {
+        "file": "registered-pairs/hydra-fatal-six-corrected/03.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            614,
+            338
+          ]
+        ],
+        "guide": {
+          "anchorX": 171.0,
+          "groundY": 326
+        },
+        "sourceBox": [
+          653,
+          495,
+          614,
+          338
+        ]
+      },
+      {
+        "file": "registered-pairs/hydra-fatal-six-corrected/04.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            643,
+            392
+          ]
+        ],
+        "guide": {
+          "anchorX": 161.0,
+          "groundY": 379
+        },
+        "sourceBox": [
+          14,
+          836,
+          643,
+          392
+        ]
+      },
+      {
+        "file": "registered-pairs/hydra-fatal-six-corrected/05.png",
+        "frames": 1,
+        "regions": [
+          [
+            0,
+            0,
+            600,
+            376
+          ]
+        ],
+        "guide": {
+          "anchorX": 186.0,
+          "groundY": 359
+        },
+        "sourceBox": [
+          667,
+          860,
+          600,
+          376
+        ]
+      }
+    ]
+  }
+]

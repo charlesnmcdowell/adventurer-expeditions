@@ -1,0 +1,510 @@
+{
+  "actor": "vulture",
+  "authoredFacing": 1,
+  "clips": [
+    {
+      "id": "hiro-finisher-1",
+      "frames": 8,
+      "sources": [
+        {
+          "file": "registered-pairs/vulture-rising-cut-eight-draft/00.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              482,
+              355
+            ]
+          ],
+          "firstFrameZeroBased": 0,
+          "sha256": "d0fd2fbe6577f8b7bf4bea915628b9816f29de96a359f5903510c47738aab886"
+        },
+        {
+          "file": "registered-pairs/vulture-rising-cut-eight-draft/01.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              485,
+              371
+            ]
+          ],
+          "firstFrameZeroBased": 1,
+          "sha256": "1327d3bd48c19334ffb8d1672a63673fa3123b154b71338ff27ff3b6b7d93f71"
+        },
+        {
+          "file": "registered-pairs/vulture-rising-cut-eight-draft/02.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              407,
+              403
+            ]
+          ],
+          "firstFrameZeroBased": 2,
+          "sha256": "6bbd0a1745019a42091e8a8ab6d37917d6b355a1cb0137fe9f475c512a018f32"
+        },
+        {
+          "file": "registered-pairs/vulture-rising-cut-eight-draft/03.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              463,
+              399
+            ]
+          ],
+          "firstFrameZeroBased": 3,
+          "sha256": "9b7f982393b2083b76e3920d98cf5eecdc26f1cc6133868850746da68a1fc0c4"
+        },
+        {
+          "file": "registered-pairs/vulture-rising-cut-eight-draft/04.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              430,
+              340
+            ]
+          ],
+          "firstFrameZeroBased": 4,
+          "sha256": "0f344e6613d83437c837b20cb96f267ef1ee156a805ce156293e2197aa19de65"
+        },
+        {
+          "file": "registered-pairs/vulture-rising-cut-eight-draft/05.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              503,
+              313
+            ]
+          ],
+          "firstFrameZeroBased": 5,
+          "sha256": "2e50dcf62cc31210b8b3762f095a24b86a29bf7e19c0e6cfcc90845859fff675"
+        },
+        {
+          "file": "registered-pairs/vulture-rising-cut-eight-draft/06.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              484,
+              372
+            ]
+          ],
+          "firstFrameZeroBased": 6,
+          "sha256": "d5427b242922ccd5e2d0fcb31e9eac222de849413f65ed250fdf1bff38dc76c4"
+        },
+        {
+          "file": "registered-pairs/vulture-rising-cut-eight-draft/07.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              332,
+              376
+            ]
+          ],
+          "firstFrameZeroBased": 7,
+          "sha256": "4186ee03b37e376c6a88da4669ed93e578ab4664deb64377f0c94a84b1f10322"
+        }
+      ],
+      "paired": true,
+      "loop": false,
+      "durationsMs": [
+        240,
+        130,
+        150,
+        210,
+        160,
+        190,
+        210,
+        330
+      ],
+      "contactFramesZeroBased": [
+        3
+      ],
+      "primaryImpactFrameZeroBased": 3,
+      "releaseFrameZeroBased": 7,
+      "opponentKinds": [
+        "vulture"
+      ],
+      "opponentKeys": [
+        "vulture"
+      ],
+      "finalState": "hero-standing",
+      "pairTargetDistanceRatio": 1.0,
+      "registration": {
+        "frames": [
+          {
+            "anchorX": 35.0,
+            "groundY": 346,
+            "referenceHeight": 330
+          },
+          {
+            "anchorX": 19.0,
+            "groundY": 361,
+            "referenceHeight": 330
+          },
+          {
+            "anchorX": 21.0,
+            "groundY": 395,
+            "referenceHeight": 330
+          },
+          {
+            "anchorX": 21.0,
+            "groundY": 391,
+            "referenceHeight": 330
+          },
+          {
+            "anchorX": 22.0,
+            "groundY": 334,
+            "referenceHeight": 330
+          },
+          {
+            "anchorX": 60.0,
+            "groundY": 306,
+            "referenceHeight": 330
+          },
+          {
+            "anchorX": 40.0,
+            "groundY": 362,
+            "referenceHeight": 330
+          },
+          {
+            "anchorX": 159.0,
+            "groundY": 370,
+            "referenceHeight": 330
+          }
+        ]
+      },
+      "victimFullyGoneFrameZeroBased": 7
+    },
+    {
+      "id": "hiro-finisher-2",
+      "frames": 8,
+      "sources": [
+        {
+          "file": "registered-pairs/vulture-side-cut-eight-draft/00.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              483,
+              351
+            ]
+          ],
+          "firstFrameZeroBased": 0,
+          "sha256": "edff1588d90d41297e9d18459a9d4110bda245c68a58f5eb59b75d92ff0daa78"
+        },
+        {
+          "file": "registered-pairs/vulture-side-cut-eight-draft/01.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              467,
+              353
+            ]
+          ],
+          "firstFrameZeroBased": 1,
+          "sha256": "8f0d5b7dc515986f8d1d535e322ffda3740fa726adc2b627b5e038881fa12b91"
+        },
+        {
+          "file": "registered-pairs/vulture-side-cut-eight-draft/02.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              476,
+              347
+            ]
+          ],
+          "firstFrameZeroBased": 2,
+          "sha256": "5a3fd70e7ce84bd39ffcf4920e6a20047281a6df71bf36d94924540dd5fd2656"
+        },
+        {
+          "file": "registered-pairs/vulture-side-cut-eight-draft/03.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              485,
+              343
+            ]
+          ],
+          "firstFrameZeroBased": 3,
+          "sha256": "bf9fd1fd7fb3c588694bee16b75cef74ae7b36174fbd714b6f84745268fcd96f"
+        },
+        {
+          "file": "registered-pairs/vulture-side-cut-eight-draft/04.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              513,
+              324
+            ]
+          ],
+          "firstFrameZeroBased": 4,
+          "sha256": "fe8f1b50c809f26705f9003eadcd50f84be59b8370301d6765b3e00bf0dd4dee"
+        },
+        {
+          "file": "registered-pairs/vulture-side-cut-eight-draft/05.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              489,
+              338
+            ]
+          ],
+          "firstFrameZeroBased": 5,
+          "sha256": "8499fb5cebca5d8538648cf3e31ccbc6b290497c7b32dddbda29edc53ab85702"
+        },
+        {
+          "file": "registered-pairs/vulture-side-cut-eight-draft/06.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              416,
+              355
+            ]
+          ],
+          "firstFrameZeroBased": 6,
+          "sha256": "1a46a2e1f3afd28e6c9ea38a2d013d811eb52f26e872ee40b320ac1ffe17e27f"
+        },
+        {
+          "file": "registered-pairs/vulture-side-cut-eight-draft/07.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              218,
+              374
+            ]
+          ],
+          "firstFrameZeroBased": 7,
+          "sha256": "a4919f7e3ed57d21e1d0971b19152cd5e6d813775a82dafbd2f7b33d6f1b6ab5"
+        }
+      ],
+      "paired": true,
+      "loop": false,
+      "durationsMs": [
+        240,
+        130,
+        150,
+        210,
+        160,
+        190,
+        210,
+        330
+      ],
+      "contactFramesZeroBased": [
+        3
+      ],
+      "primaryImpactFrameZeroBased": 3,
+      "releaseFrameZeroBased": 7,
+      "opponentKinds": [
+        "vulture"
+      ],
+      "opponentKeys": [
+        "vulture"
+      ],
+      "finalState": "hero-standing",
+      "pairTargetDistanceRatio": 1.0,
+      "registration": {
+        "frames": [
+          {
+            "anchorX": 29.0,
+            "groundY": 343,
+            "referenceHeight": 330
+          },
+          {
+            "anchorX": 25.5,
+            "groundY": 343,
+            "referenceHeight": 330
+          },
+          {
+            "anchorX": 174.0,
+            "groundY": 338,
+            "referenceHeight": 330
+          },
+          {
+            "anchorX": 23.0,
+            "groundY": 334,
+            "referenceHeight": 330
+          },
+          {
+            "anchorX": 18.0,
+            "groundY": 316,
+            "referenceHeight": 330
+          },
+          {
+            "anchorX": 179.0,
+            "groundY": 330,
+            "referenceHeight": 330
+          },
+          {
+            "anchorX": 31.0,
+            "groundY": 347,
+            "referenceHeight": 330
+          },
+          {
+            "anchorX": 23.0,
+            "groundY": 366,
+            "referenceHeight": 330
+          }
+        ]
+      },
+      "victimFullyGoneFrameZeroBased": 7
+    },
+    {
+      "id": "vulture-fatal",
+      "frames": 5,
+      "sources": [
+        {
+          "file": "registered-pairs/vulture-fatal-six/00.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              935,
+              425
+            ]
+          ],
+          "firstFrameZeroBased": 0,
+          "sha256": "c38afe5247f6f5fdabbb9c1d8a87b7befd7b2d377c810c5c72c4647dd7e38d39"
+        },
+        {
+          "file": "registered-pairs/vulture-fatal-six/01.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              992,
+              428
+            ]
+          ],
+          "firstFrameZeroBased": 1,
+          "sha256": "d88093bb59522be4b0a69e6acee9743d1c8ddc9a0b38ebb83e0badb7248ad0e0"
+        },
+        {
+          "file": "registered-pairs/vulture-fatal-six/02.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              526,
+              378
+            ]
+          ],
+          "firstFrameZeroBased": 2,
+          "sha256": "cbf7037005d37082959ee64ed521a9c194305a86656a1cc560d5521769f4c755"
+        },
+        {
+          "file": "registered-pairs/vulture-fatal-six/03.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              474,
+              325
+            ]
+          ],
+          "firstFrameZeroBased": 3,
+          "sha256": "61641afbbda5dcf3d6cfed6e665c70825365ac30cbc24d635d1c9955b8992755"
+        },
+        {
+          "file": "registered-pairs/vulture-fatal-six/04.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              503,
+              282
+            ]
+          ],
+          "firstFrameZeroBased": 4,
+          "sha256": "3e7f9ac162c8fe2697b8de6ed4adb0b972e532f9e3074cc579c63e4e70595169"
+        }
+      ],
+      "paired": true,
+      "loop": false,
+      "durationsMs": [
+        240,
+        220,
+        300,
+        280,
+        420
+      ],
+      "contactFramesZeroBased": [
+        2
+      ],
+      "primaryImpactFrameZeroBased": 2,
+      "releaseFrameZeroBased": 4,
+      "opponentKinds": [
+        "vulture"
+      ],
+      "opponentKeys": [
+        "vulture"
+      ],
+      "finalState": "hiro-down",
+      "pairTargetDistanceRatio": 1.0,
+      "registration": {
+        "frames": [
+          {
+            "anchorX": 315.0,
+            "groundY": 416,
+            "referenceHeight": 400
+          },
+          {
+            "anchorX": 494.0,
+            "groundY": 413,
+            "referenceHeight": 400
+          },
+          {
+            "anchorX": 285.0,
+            "groundY": 362,
+            "referenceHeight": 400
+          },
+          {
+            "anchorX": 210.0,
+            "groundY": 315,
+            "referenceHeight": 400
+          },
+          {
+            "anchorX": 202.0,
+            "groundY": 274,
+            "referenceHeight": 400
+          }
+        ]
+      }
+    }
+  ],
+  "status": "preview; pair proportions require visual acceptance"
+}

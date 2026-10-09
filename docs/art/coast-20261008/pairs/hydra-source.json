@@ -1,0 +1,450 @@
+{
+  "actor": "hydra",
+  "authoredFacing": 1,
+  "clips": [
+    {
+      "id": "hiro-finisher-1",
+      "frames": 6,
+      "sources": [
+        {
+          "file": "registered-pairs/hydra-diagonal-six-corrected/00.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              646,
+              420
+            ]
+          ],
+          "firstFrameZeroBased": 0,
+          "sha256": "06a4b446f6ae6f8c6eae4258b351420d181d0dcad59c6f2ffc8a77aae79f1968"
+        },
+        {
+          "file": "registered-pairs/hydra-diagonal-six-corrected/01.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              643,
+              414
+            ]
+          ],
+          "firstFrameZeroBased": 1,
+          "sha256": "8d133aa196bbc7c754e860744b1608893d25ca02fdac627adac92d2475cc39bc"
+        },
+        {
+          "file": "registered-pairs/hydra-diagonal-six-corrected/02.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              630,
+              430
+            ]
+          ],
+          "firstFrameZeroBased": 2,
+          "sha256": "29ebd7e64121f00b2f19ed9b614186b729622cd8bebe12836eab1463a4cf47c5"
+        },
+        {
+          "file": "registered-pairs/hydra-diagonal-six-corrected/03.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              648,
+              286
+            ]
+          ],
+          "firstFrameZeroBased": 3,
+          "sha256": "d188a0ade89fd0ab13851f4e0e51ecffa38c816abbecd6963a698a9697b2cf1b"
+        },
+        {
+          "file": "registered-pairs/hydra-diagonal-six-corrected/04.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              692,
+              394
+            ]
+          ],
+          "firstFrameZeroBased": 4,
+          "sha256": "a295a1bb1ec0e8f80ab2f0cb472b87d86948d1093f47d5713ac7690a25a7671a"
+        },
+        {
+          "file": "registered-pairs/hydra-diagonal-six-corrected/05.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              211,
+              360
+            ]
+          ],
+          "firstFrameZeroBased": 5,
+          "sha256": "53356f91c3b75370cf44b7c1c9d3e4d8b6f87556dfbc4a5c6739564b138722be"
+        }
+      ],
+      "paired": true,
+      "loop": false,
+      "durationsMs": [
+        240,
+        180,
+        240,
+        250,
+        240,
+        350
+      ],
+      "contactFramesZeroBased": [
+        2
+      ],
+      "primaryImpactFrameZeroBased": 2,
+      "releaseFrameZeroBased": 5,
+      "opponentKinds": [
+        "boss"
+      ],
+      "opponentKeys": [
+        "hydra"
+      ],
+      "finalState": "hero-standing",
+      "pairTargetDistanceRatio": 1.0,
+      "registration": {
+        "frames": [
+          {
+            "anchorX": 211.5,
+            "groundY": 410,
+            "referenceHeight": 280
+          },
+          {
+            "anchorX": 251.0,
+            "groundY": 401,
+            "referenceHeight": 280
+          },
+          {
+            "anchorX": 235.0,
+            "groundY": 407,
+            "referenceHeight": 280
+          },
+          {
+            "anchorX": 250.0,
+            "groundY": 277,
+            "referenceHeight": 280
+          },
+          {
+            "anchorX": 186.0,
+            "groundY": 382,
+            "referenceHeight": 300
+          },
+          {
+            "anchorX": 25.0,
+            "groundY": 354,
+            "referenceHeight": 330
+          }
+        ]
+      },
+      "victimFullyGoneFrameZeroBased": 5
+    },
+    {
+      "id": "hiro-finisher-2",
+      "frames": 6,
+      "sources": [
+        {
+          "file": "registered-pairs/hydra-slide-six/00.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              637,
+              387
+            ]
+          ],
+          "firstFrameZeroBased": 0,
+          "sha256": "32e07b01f89d922136be9b7b4bb60eb6ead74f551f70e96daedf41fa20d28cd0"
+        },
+        {
+          "file": "registered-pairs/hydra-slide-six/01.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              590,
+              380
+            ]
+          ],
+          "firstFrameZeroBased": 1,
+          "sha256": "b8958efa95057d6176194f3dd6245bb85c1197532bfb932b3c8132580f27c30e"
+        },
+        {
+          "file": "registered-pairs/hydra-slide-six/02.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              597,
+              365
+            ]
+          ],
+          "firstFrameZeroBased": 2,
+          "sha256": "86b909d6faea697cea180396a30c535be005e79e30b6ec92bb6200f675b85839"
+        },
+        {
+          "file": "registered-pairs/hydra-slide-six/03.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              579,
+              255
+            ]
+          ],
+          "firstFrameZeroBased": 3,
+          "sha256": "a996ce166cb6576d934f564582d4f3413ad39459d450dcadd2da87f12d1e3535"
+        },
+        {
+          "file": "registered-pairs/hydra-slide-six/04.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              668,
+              329
+            ]
+          ],
+          "firstFrameZeroBased": 4,
+          "sha256": "1441a187b38fa93c0860c46c24d1ab369d29f2afd4cdf59b01ded3c01d2a11be"
+        },
+        {
+          "file": "registered-pairs/hydra-slide-six/05.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              409,
+              257
+            ]
+          ],
+          "firstFrameZeroBased": 5,
+          "sha256": "b63faf55d22a6207225c70a0d1b58da5de579f35133b30c91b3fe0894e5b7db5"
+        }
+      ],
+      "paired": true,
+      "loop": false,
+      "durationsMs": [
+        240,
+        180,
+        240,
+        250,
+        240,
+        350
+      ],
+      "contactFramesZeroBased": [
+        2
+      ],
+      "primaryImpactFrameZeroBased": 2,
+      "releaseFrameZeroBased": 5,
+      "opponentKinds": [
+        "boss"
+      ],
+      "opponentKeys": [
+        "hydra"
+      ],
+      "finalState": "hero-standing",
+      "pairTargetDistanceRatio": 1.0,
+      "registration": {
+        "frames": [
+          {
+            "anchorX": 202.0,
+            "groundY": 375,
+            "referenceHeight": 250
+          },
+          {
+            "anchorX": 154.0,
+            "groundY": 370,
+            "referenceHeight": 250
+          },
+          {
+            "anchorX": 200.0,
+            "groundY": 353,
+            "referenceHeight": 250
+          },
+          {
+            "anchorX": 180.5,
+            "groundY": 245,
+            "referenceHeight": 250
+          },
+          {
+            "anchorX": 168.0,
+            "groundY": 320,
+            "referenceHeight": 250
+          },
+          {
+            "anchorX": 265.0,
+            "groundY": 250,
+            "referenceHeight": 250
+          }
+        ]
+      },
+      "victimFullyGoneFrameZeroBased": 5
+    },
+    {
+      "id": "hydra-fatal",
+      "frames": 6,
+      "sources": [
+        {
+          "file": "registered-pairs/hydra-fatal-six-corrected/00.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              645,
+              420
+            ]
+          ],
+          "firstFrameZeroBased": 0,
+          "sha256": "2ec850c948ddb7945000ff07570d76014d5aae2e1cef20f708265e3311ad4878"
+        },
+        {
+          "file": "registered-pairs/hydra-fatal-six-corrected/01.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              593,
+              405
+            ]
+          ],
+          "firstFrameZeroBased": 1,
+          "sha256": "a665c2406c94b9a2d6683e10316a27e2af51b85a34871c9d1438507872940cda"
+        },
+        {
+          "file": "registered-pairs/hydra-fatal-six-corrected/02.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              518,
+              380
+            ]
+          ],
+          "firstFrameZeroBased": 2,
+          "sha256": "c35c84d720858088e8bb4aeade50cb35c5679d93314b15c0e27f2f389d2294c0"
+        },
+        {
+          "file": "registered-pairs/hydra-fatal-six-corrected/03.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              614,
+              338
+            ]
+          ],
+          "firstFrameZeroBased": 3,
+          "sha256": "b44d0dde69fbc2320bb9fce0b29ed30144f82701952031d7b8b172f91ec4c23a"
+        },
+        {
+          "file": "registered-pairs/hydra-fatal-six-corrected/04.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              643,
+              392
+            ]
+          ],
+          "firstFrameZeroBased": 4,
+          "sha256": "e70898d1acb15853f921fb73e8164772c2034cebe896fe79ebe9bf40cf4b5a30"
+        },
+        {
+          "file": "registered-pairs/hydra-fatal-six-corrected/05.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              600,
+              376
+            ]
+          ],
+          "firstFrameZeroBased": 5,
+          "sha256": "19227bf90d03591ccf759506901caf279e52228854b2214401421d72ed58abc4"
+        }
+      ],
+      "paired": true,
+      "loop": false,
+      "durationsMs": [
+        240,
+        180,
+        240,
+        250,
+        240,
+        350
+      ],
+      "contactFramesZeroBased": [
+        2
+      ],
+      "primaryImpactFrameZeroBased": 2,
+      "releaseFrameZeroBased": 5,
+      "opponentKinds": [
+        "boss"
+      ],
+      "opponentKeys": [
+        "hydra"
+      ],
+      "finalState": "hiro-down",
+      "pairTargetDistanceRatio": 1.0,
+      "registration": {
+        "frames": [
+          {
+            "anchorX": 218.5,
+            "groundY": 407,
+            "referenceHeight": 290
+          },
+          {
+            "anchorX": 34.0,
+            "groundY": 393,
+            "referenceHeight": 290
+          },
+          {
+            "anchorX": 40.0,
+            "groundY": 368,
+            "referenceHeight": 290
+          },
+          {
+            "anchorX": 171.0,
+            "groundY": 326,
+            "referenceHeight": 290
+          },
+          {
+            "anchorX": 161.0,
+            "groundY": 379,
+            "referenceHeight": 290
+          },
+          {
+            "anchorX": 186.0,
+            "groundY": 359,
+            "referenceHeight": 290
+          }
+        ]
+      }
+    }
+  ],
+  "status": "preview; pair proportions require visual acceptance"
+}

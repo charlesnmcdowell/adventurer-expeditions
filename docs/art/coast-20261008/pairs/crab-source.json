@@ -1,0 +1,530 @@
+{
+  "actor": "crab",
+  "authoredFacing": 1,
+  "clips": [
+    {
+      "id": "hiro-finisher-1",
+      "frames": 8,
+      "sources": [
+        {
+          "file": "registered-pairs/crab-vault-eight-draft/00.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              614,
+              284
+            ]
+          ],
+          "firstFrameZeroBased": 0,
+          "sha256": "b497d73b7c65f601796648b56cfbb0666e3c758f29b44f8d56b2f6bf0bcd4531"
+        },
+        {
+          "file": "registered-pairs/crab-vault-eight-draft/01.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              609,
+              292
+            ]
+          ],
+          "firstFrameZeroBased": 1,
+          "sha256": "ec0a44696194f92e9db0a30139b00dc07d4e9c4fe6c2bcff0c402b6f1d53f182"
+        },
+        {
+          "file": "registered-pairs/crab-vault-eight-draft/02.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              651,
+              172
+            ]
+          ],
+          "firstFrameZeroBased": 2,
+          "sha256": "7729bd5daea26003f2b4892535416c0cb3e710dbee6e328f3a9e5fd38a1218e1"
+        },
+        {
+          "file": "registered-pairs/crab-vault-eight-draft/03.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              470,
+              293
+            ]
+          ],
+          "firstFrameZeroBased": 3,
+          "sha256": "9046a30e6de6784d1b3a12295603aa0c2163cd93e8cad6e2eb85bf12abcda186"
+        },
+        {
+          "file": "registered-pairs/crab-vault-eight-draft/04.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              448,
+              260
+            ]
+          ],
+          "firstFrameZeroBased": 4,
+          "sha256": "953832df5e16a8a8be31f4744b93823cf1e17b730dcd2b66e485f75c97848c83"
+        },
+        {
+          "file": "registered-pairs/crab-vault-eight-draft/05.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              608,
+              213
+            ]
+          ],
+          "firstFrameZeroBased": 5,
+          "sha256": "c649c20b8bef4072c9fb09db8ddcc46fd7b069933676fd4aeea46fe87c42a041"
+        },
+        {
+          "file": "registered-pairs/crab-vault-eight-draft/06.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              507,
+              243
+            ]
+          ],
+          "firstFrameZeroBased": 6,
+          "sha256": "776cc2fee4bb3afc8a79d265074f6a222174e16b3471ebd3c51925e64d010a0e"
+        },
+        {
+          "file": "registered-pairs/crab-vault-eight-draft/07.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              424,
+              260
+            ]
+          ],
+          "firstFrameZeroBased": 7,
+          "sha256": "5b8cf7cfe1c157d8afe73f868202b70efb2d4168303703efd68250e847d2207e"
+        }
+      ],
+      "paired": true,
+      "loop": false,
+      "durationsMs": [
+        240,
+        130,
+        150,
+        210,
+        160,
+        190,
+        210,
+        330
+      ],
+      "contactFramesZeroBased": [
+        4
+      ],
+      "primaryImpactFrameZeroBased": 4,
+      "releaseFrameZeroBased": 7,
+      "opponentKinds": [
+        "crab"
+      ],
+      "opponentKeys": [
+        "crab"
+      ],
+      "finalState": "hero-standing",
+      "pairTargetDistanceRatio": 1.0,
+      "registration": {
+        "frames": [
+          {
+            "anchorX": 152.0,
+            "groundY": 278,
+            "referenceHeight": 300
+          },
+          {
+            "anchorX": 22.0,
+            "groundY": 283,
+            "referenceHeight": 290
+          },
+          {
+            "anchorX": 186.0,
+            "groundY": 164,
+            "referenceHeight": 300
+          },
+          {
+            "anchorX": 163.0,
+            "groundY": 285,
+            "referenceHeight": 300
+          },
+          {
+            "anchorX": 33.0,
+            "groundY": 251,
+            "referenceHeight": 285
+          },
+          {
+            "anchorX": 208.0,
+            "groundY": 205,
+            "referenceHeight": 250
+          },
+          {
+            "anchorX": 117.0,
+            "groundY": 232,
+            "referenceHeight": 215
+          },
+          {
+            "anchorX": 107.0,
+            "groundY": 254,
+            "referenceHeight": 215
+          }
+        ]
+      },
+      "victimFullyGoneFrameZeroBased": 7
+    },
+    {
+      "id": "hiro-finisher-2",
+      "frames": 8,
+      "sources": [
+        {
+          "file": "registered-pairs/crab-joint-cut-eight-draft/00.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              537,
+              299
+            ]
+          ],
+          "firstFrameZeroBased": 0,
+          "sha256": "a07da39a3186c7fb7c880ae2e18573897125536c7217761ef3a2a5b15eb22070"
+        },
+        {
+          "file": "registered-pairs/crab-joint-cut-eight-draft/01.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              518,
+              211
+            ]
+          ],
+          "firstFrameZeroBased": 1,
+          "sha256": "44551db189108caa5063aa85888da4a87ced5107696b369a7611f319a790bd7e"
+        },
+        {
+          "file": "registered-pairs/crab-joint-cut-eight-draft/02.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              544,
+              273
+            ]
+          ],
+          "firstFrameZeroBased": 2,
+          "sha256": "976a83f4d3187b69eedebf5f432dd15ecb0f7b647a48554f9c4174ffb695384f"
+        },
+        {
+          "file": "registered-pairs/crab-joint-cut-eight-draft/03.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              531,
+              278
+            ]
+          ],
+          "firstFrameZeroBased": 3,
+          "sha256": "476b0926739c9fa1cd1084dd14281dcd72df048bcb10ff17583f7042a3ee32d3"
+        },
+        {
+          "file": "registered-pairs/crab-joint-cut-eight-draft/04.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              561,
+              265
+            ]
+          ],
+          "firstFrameZeroBased": 4,
+          "sha256": "40abd556acbaa4ce3427e29b4bf5b4b4b7eeffbaf43d966121d00e90b32ac35a"
+        },
+        {
+          "file": "registered-pairs/crab-joint-cut-eight-draft/05.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              524,
+              311
+            ]
+          ],
+          "firstFrameZeroBased": 5,
+          "sha256": "a143153e78405db0c18260f61f1f307c85500a06774fa66ffa95a78806d64130"
+        },
+        {
+          "file": "registered-pairs/crab-joint-cut-eight-draft/06.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              490,
+              337
+            ]
+          ],
+          "firstFrameZeroBased": 6,
+          "sha256": "3e2511b0e09a4a5607aa3f40aa4d305f3bae6d46119087b10f5adb805bef0dc9"
+        },
+        {
+          "file": "registered-pairs/crab-joint-cut-eight-draft/07.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              222,
+              338
+            ]
+          ],
+          "firstFrameZeroBased": 7,
+          "sha256": "3eaffca7bcf27b19b3dc2623dade97430185104d15b710779df2330e44e509b1"
+        }
+      ],
+      "paired": true,
+      "loop": false,
+      "durationsMs": [
+        240,
+        130,
+        150,
+        210,
+        160,
+        190,
+        210,
+        330
+      ],
+      "contactFramesZeroBased": [
+        3
+      ],
+      "primaryImpactFrameZeroBased": 3,
+      "releaseFrameZeroBased": 7,
+      "opponentKinds": [
+        "crab"
+      ],
+      "opponentKeys": [
+        "crab"
+      ],
+      "finalState": "hero-standing",
+      "pairTargetDistanceRatio": 1.0,
+      "registration": {
+        "frames": [
+          {
+            "anchorX": 207.0,
+            "groundY": 291,
+            "referenceHeight": 300
+          },
+          {
+            "anchorX": 203.0,
+            "groundY": 203,
+            "referenceHeight": 300
+          },
+          {
+            "anchorX": 21.0,
+            "groundY": 263,
+            "referenceHeight": 300
+          },
+          {
+            "anchorX": 233.0,
+            "groundY": 271,
+            "referenceHeight": 300
+          },
+          {
+            "anchorX": 22.0,
+            "groundY": 256,
+            "referenceHeight": 300
+          },
+          {
+            "anchorX": 190.0,
+            "groundY": 303,
+            "referenceHeight": 300
+          },
+          {
+            "anchorX": 148.0,
+            "groundY": 329,
+            "referenceHeight": 300
+          },
+          {
+            "anchorX": 37.0,
+            "groundY": 331,
+            "referenceHeight": 300
+          }
+        ]
+      },
+      "victimFullyGoneFrameZeroBased": 7
+    },
+    {
+      "id": "crab-fatal",
+      "frames": 6,
+      "sources": [
+        {
+          "file": "registered-pairs/crab-fatal-six/00.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              527,
+              397
+            ]
+          ],
+          "firstFrameZeroBased": 0,
+          "sha256": "ec9eb180b10033604b095701a5c1ce6ce0b81b02796fb869a4e2a5e305c188a0"
+        },
+        {
+          "file": "registered-pairs/crab-fatal-six/01.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              492,
+              435
+            ]
+          ],
+          "firstFrameZeroBased": 1,
+          "sha256": "ddc88b14130599f12c4498f897b4ffe797753cb67059898d4de2d4ce880ec948"
+        },
+        {
+          "file": "registered-pairs/crab-fatal-six/02.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              502,
+              433
+            ]
+          ],
+          "firstFrameZeroBased": 2,
+          "sha256": "286d6792e6d3190349da6f3b35cbba33cc43e4fb485fe9156ed8aa70d950e951"
+        },
+        {
+          "file": "registered-pairs/crab-fatal-six/03.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              512,
+              346
+            ]
+          ],
+          "firstFrameZeroBased": 3,
+          "sha256": "d532de98ce95ebf6e795bb8f74cffef6b8322665dbf50d7b679c578d83dba0e7"
+        },
+        {
+          "file": "registered-pairs/crab-fatal-six/04.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              522,
+              314
+            ]
+          ],
+          "firstFrameZeroBased": 4,
+          "sha256": "c506021ef5420b34ef94c8aa837a4ce4a81a96bdb9026da04c1a373029dfc3fe"
+        },
+        {
+          "file": "registered-pairs/crab-fatal-six/05.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              468,
+              371
+            ]
+          ],
+          "firstFrameZeroBased": 5,
+          "sha256": "4e3348f5cbe9decd8026c8276f689b4a2288d1dfdd66c642014871e374f964c4"
+        }
+      ],
+      "paired": true,
+      "loop": false,
+      "durationsMs": [
+        240,
+        180,
+        240,
+        250,
+        240,
+        350
+      ],
+      "contactFramesZeroBased": [
+        2
+      ],
+      "primaryImpactFrameZeroBased": 2,
+      "releaseFrameZeroBased": 5,
+      "opponentKinds": [
+        "crab"
+      ],
+      "opponentKeys": [
+        "crab"
+      ],
+      "finalState": "hiro-down",
+      "pairTargetDistanceRatio": 1.0,
+      "registration": {
+        "frames": [
+          {
+            "anchorX": 228.5,
+            "groundY": 388,
+            "referenceHeight": 390
+          },
+          {
+            "anchorX": 211.0,
+            "groundY": 425,
+            "referenceHeight": 390
+          },
+          {
+            "anchorX": 22.0,
+            "groundY": 424,
+            "referenceHeight": 390
+          },
+          {
+            "anchorX": 171.0,
+            "groundY": 326,
+            "referenceHeight": 390
+          },
+          {
+            "anchorX": 195.0,
+            "groundY": 302,
+            "referenceHeight": 390
+          },
+          {
+            "anchorX": 184.0,
+            "groundY": 358,
+            "referenceHeight": 390
+          }
+        ]
+      }
+    }
+  ],
+  "status": "preview; pair proportions require visual acceptance"
+}

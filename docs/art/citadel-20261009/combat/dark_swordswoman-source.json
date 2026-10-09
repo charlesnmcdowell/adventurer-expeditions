@@ -1,0 +1,545 @@
+{
+  "actor": "dark_swordswoman",
+  "authoredFacing": -1,
+  "clips": [
+    {
+      "id": "idle",
+      "frames": 4,
+      "sources": [
+        {
+          "file": "registered-combat/dark_swordswoman-combat/00.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              232,
+              262
+            ]
+          ],
+          "firstFrameZeroBased": 0,
+          "sha256": "5e782b4c39cc93d52769e8140173b794258f888dab149c9c29b911cbd05a63f2"
+        },
+        {
+          "file": "registered-combat/dark_swordswoman-combat/01.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              230,
+              263
+            ]
+          ],
+          "firstFrameZeroBased": 1,
+          "sha256": "f786876865b576b2d92cb40af3f486adeaac14b1be2762181ce9ab34910748fa"
+        },
+        {
+          "file": "registered-combat/dark_swordswoman-combat/02.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              213,
+              261
+            ]
+          ],
+          "firstFrameZeroBased": 2,
+          "sha256": "125bf54b9815194ef20d1d9b841f0619cd2f629c538400b506351430cf35b3ad"
+        },
+        {
+          "file": "registered-combat/dark_swordswoman-combat/03.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              256,
+              263
+            ]
+          ],
+          "firstFrameZeroBased": 3,
+          "sha256": "7b713fa37a8612e411628087a66fa28780f7aa683d9e265156012c84ca1035e5"
+        }
+      ],
+      "durationsMs": [
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": true,
+      "contactFramesZeroBased": [],
+      "releaseFrameZeroBased": 3,
+      "registration": {
+        "referenceHeight": 254,
+        "frames": [
+          {
+            "anchorX": 48.0,
+            "groundY": 258
+          },
+          {
+            "anchorX": 44.0,
+            "groundY": 260
+          },
+          {
+            "anchorX": 48.0,
+            "groundY": 258
+          },
+          {
+            "anchorX": 68.0,
+            "groundY": 260
+          }
+        ]
+      }
+    },
+    {
+      "id": "approach",
+      "frames": 4,
+      "sources": [
+        {
+          "file": "registered-combat/dark_swordswoman-combat/04.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              273,
+              242
+            ]
+          ],
+          "firstFrameZeroBased": 0,
+          "sha256": "bf576679a3321ae728f7ba4c6878e68a46eb9312594aad05faf3c83b17074f5a"
+        },
+        {
+          "file": "registered-combat/dark_swordswoman-combat/05.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              274,
+              241
+            ]
+          ],
+          "firstFrameZeroBased": 1,
+          "sha256": "19071fd198cf8510c97c00d20ec476e04307c11f48d3ecb4bc3494755b6a86f2"
+        },
+        {
+          "file": "registered-combat/dark_swordswoman-combat/06.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              259,
+              228
+            ]
+          ],
+          "firstFrameZeroBased": 2,
+          "sha256": "6dc89b69c2dacd4678023240908b1baeb47a8ca964aa5edecc7ef738b4e4e0fa"
+        },
+        {
+          "file": "registered-combat/dark_swordswoman-combat/07.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              269,
+              235
+            ]
+          ],
+          "firstFrameZeroBased": 3,
+          "sha256": "3e68cd46845f2499c9c0a60f671d39817f6fa7dfa92d7889e39094c6bbe65002"
+        }
+      ],
+      "durationsMs": [
+        95,
+        95,
+        95,
+        95
+      ],
+      "loop": true,
+      "contactFramesZeroBased": [],
+      "releaseFrameZeroBased": 3,
+      "registration": {
+        "referenceHeight": 254,
+        "frames": [
+          {
+            "anchorX": 72.0,
+            "groundY": 238
+          },
+          {
+            "anchorX": 88.0,
+            "groundY": 236
+          },
+          {
+            "anchorX": 79.0,
+            "groundY": 225
+          },
+          {
+            "anchorX": 66.0,
+            "groundY": 232
+          }
+        ]
+      }
+    },
+    {
+      "id": "attack",
+      "frames": 8,
+      "sources": [
+        {
+          "file": "registered-combat/dark_swordswoman-combat/08.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              270,
+              259
+            ]
+          ],
+          "firstFrameZeroBased": 0,
+          "sha256": "aa19b05100bdb60b50cbf6ef08de4039465a085f3cd404119eeac5ae59bb8ab9"
+        },
+        {
+          "file": "registered-combat/dark_swordswoman-combat/09.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              235,
+              233
+            ]
+          ],
+          "firstFrameZeroBased": 1,
+          "sha256": "f64a4b3b339819439e14878236661d151f45221b81b529e814b396bac1b91994"
+        },
+        {
+          "file": "registered-combat/dark_swordswoman-combat/10.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              267,
+              237
+            ]
+          ],
+          "firstFrameZeroBased": 2,
+          "sha256": "f7a333fbe45a9319bb1797ce0c8c01b956ce03db2f7ee9f847add77f633db115"
+        },
+        {
+          "file": "registered-combat/dark_swordswoman-combat/11.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              295,
+              240
+            ]
+          ],
+          "firstFrameZeroBased": 3,
+          "sha256": "339475f83547e0196a52690523d5efb4f1325b5d2940c1c2246df24e85fa8c68"
+        },
+        {
+          "file": "registered-combat/dark_swordswoman-combat/12.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              255,
+              243
+            ]
+          ],
+          "firstFrameZeroBased": 4,
+          "sha256": "bf691e8cccb47c73c95075c92138721736c07c7468e6bec687850c3e392d4279"
+        },
+        {
+          "file": "registered-combat/dark_swordswoman-combat/13.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              374,
+              247
+            ]
+          ],
+          "firstFrameZeroBased": 5,
+          "sha256": "e81fa72b924d84c8f5cf6d9ae2449605d4e07081fff13c279fc9febf4173005c"
+        },
+        {
+          "file": "registered-combat/dark_swordswoman-combat/14.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              217,
+              247
+            ]
+          ],
+          "firstFrameZeroBased": 6,
+          "sha256": "e929cdeb4c9d31bf57187c9d14e3fda02ba69f559b0d443d5854fe69ab9fee56"
+        },
+        {
+          "file": "registered-combat/dark_swordswoman-combat/15.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              246,
+              248
+            ]
+          ],
+          "firstFrameZeroBased": 7,
+          "sha256": "40751130644fbf1942b35927e08bb74a12b4cd9db7c0346276ab43c0a99a31c3"
+        }
+      ],
+      "durationsMs": [
+        90,
+        75,
+        65,
+        55,
+        90,
+        60,
+        70,
+        100
+      ],
+      "loop": false,
+      "contactFramesZeroBased": [
+        4
+      ],
+      "releaseFrameZeroBased": 7,
+      "registration": {
+        "referenceHeight": 254,
+        "frames": [
+          {
+            "anchorX": 77.0,
+            "groundY": 255
+          },
+          {
+            "anchorX": 34.0,
+            "groundY": 230
+          },
+          {
+            "anchorX": 74.0,
+            "groundY": 233
+          },
+          {
+            "anchorX": 101.5,
+            "groundY": 237
+          },
+          {
+            "anchorX": 61.0,
+            "groundY": 240
+          },
+          {
+            "anchorX": 109.0,
+            "groundY": 243
+          },
+          {
+            "anchorX": 38.0,
+            "groundY": 243
+          },
+          {
+            "anchorX": 56.0,
+            "groundY": 244
+          }
+        ]
+      }
+    },
+    {
+      "id": "hit",
+      "frames": 4,
+      "sources": [
+        {
+          "file": "registered-combat/dark_swordswoman-combat/16.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              258,
+              250
+            ]
+          ],
+          "firstFrameZeroBased": 0,
+          "sha256": "55b47f4acf9da14a8f27da9d893916c121da7e2a01c76e28c47f1cde04d6c232"
+        },
+        {
+          "file": "registered-combat/dark_swordswoman-combat/17.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              247,
+              243
+            ]
+          ],
+          "firstFrameZeroBased": 1,
+          "sha256": "45bad7a7881c9e81a27ef76507abd05edfb0666f8dd61e9bf2592f65c501b4ca"
+        },
+        {
+          "file": "registered-combat/dark_swordswoman-combat/18.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              265,
+              203
+            ]
+          ],
+          "firstFrameZeroBased": 2,
+          "sha256": "071b36c15578cccdac07eff93b3bece1f3c6c6cf44d1eff61f268437c013e2e9"
+        },
+        {
+          "file": "registered-combat/dark_swordswoman-combat/19.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              230,
+              236
+            ]
+          ],
+          "firstFrameZeroBased": 3,
+          "sha256": "0a0f428872889a049dd0f4a30bf1b329cb141849b0271cc2cab01de7e7ea252c"
+        }
+      ],
+      "durationsMs": [
+        90,
+        100,
+        150,
+        220
+      ],
+      "loop": false,
+      "contactFramesZeroBased": [],
+      "releaseFrameZeroBased": 3,
+      "registration": {
+        "referenceHeight": 254,
+        "frames": [
+          {
+            "anchorX": 64.0,
+            "groundY": 246
+          },
+          {
+            "anchorX": 180.0,
+            "groundY": 239
+          },
+          {
+            "anchorX": 62.0,
+            "groundY": 200
+          },
+          {
+            "anchorX": 41.5,
+            "groundY": 233
+          }
+        ]
+      }
+    },
+    {
+      "id": "down",
+      "frames": 4,
+      "sources": [
+        {
+          "file": "registered-combat/dark_swordswoman-combat/20.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              257,
+              213
+            ]
+          ],
+          "firstFrameZeroBased": 0,
+          "sha256": "49ff5e70fe26aa31f920c5a232c2a982687f2bc0a0fc889051803be4a2cf5b8c"
+        },
+        {
+          "file": "registered-combat/dark_swordswoman-combat/21.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              228,
+              205
+            ]
+          ],
+          "firstFrameZeroBased": 1,
+          "sha256": "f36946e5550706cb487a4f1079b9bbad19e3440fe53027a3c21a650a2162cd77"
+        },
+        {
+          "file": "registered-combat/dark_swordswoman-combat/22.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              266,
+              139
+            ]
+          ],
+          "firstFrameZeroBased": 2,
+          "sha256": "9e88ef50c4c91638ea448c7a7401af2f2635b7bb68e252d2f08f4b62e377316f"
+        },
+        {
+          "file": "registered-combat/dark_swordswoman-combat/23.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              255,
+              102
+            ]
+          ],
+          "firstFrameZeroBased": 3,
+          "sha256": "effd7626554cd7bb2f990989da8af31e895875b03d9a61886ee2138c3d688fb9"
+        }
+      ],
+      "durationsMs": [
+        90,
+        100,
+        150,
+        220
+      ],
+      "loop": false,
+      "contactFramesZeroBased": [],
+      "releaseFrameZeroBased": 3,
+      "registration": {
+        "referenceHeight": 254,
+        "frames": [
+          {
+            "anchorX": 207.0,
+            "groundY": 210
+          },
+          {
+            "anchorX": 104.0,
+            "groundY": 201
+          },
+          {
+            "anchorX": 153.0,
+            "groundY": 134
+          },
+          {
+            "anchorX": 163.0,
+            "groundY": 98
+          }
+        ]
+      }
+    }
+  ],
+  "status": "combat preview; pairs and gameplay pending"
+}

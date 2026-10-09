@@ -1,0 +1,78 @@
+[
+  {
+    "name": "hydra-diagonal-six.png",
+    "prompt": "Six-frame animation sheet for a videogame, 2 columns by 3 rows, six equal spacious cells. Hiro from reference1 LEFT facingRIGHT, Wreck Hydra from reference2 RIGHT facingLEFT. Exactly FIVE HEADS at every visible hydra pose. Hero standingheight 250 units, Hydra headheight350units, never dwarfs Hiro beyond1.4xheight. Consistent scale camera and groundline. Hiro wins: 1 katana atguard beside fiveheadedHydra. 2 Hiro steps inside the foremost low lungingneck, draws katana over his shoulder. 3 precise strong diagonal downward slash at the neckbase, small purple impactflash, Hydra's FIVE heads recoil together. 4 Hiro low followthrough, Hydra collapsed five heads onground. 5 Hydra dissolving to pale seafoam particles, Hiro standsintact. 6 Hiro ALONE fullbody sheathing sword. No gore, no blood. Detailed celshaded polished anime paintings like refs, purplelocs darkskin blackpurple samuraiarmor. ACTUAL transparentalpha, no haze or background, no text. Every cell has 20% clear gutter everyedge, keep entire figures swordtailsfeet fully inside. Anatomical clarity exactly5heads and 5necks. No extra head, no extra Hiro, no disappearing hero.",
+    "refs": [
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v1/heroes/hiro/hiro-reference.png",
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v5/coast-20261008/registered-combat/hydra/base-00.png"
+    ],
+    "source": "exec-ae7b1256-b3de-4548-97b4-a85beba0dcd1.png"
+  },
+  {
+    "name": "hydra-diagonal-six-corrected.png",
+    "prompt": "Precise local correction of this SIX-cell animation sheet. Keep all six drawings exactly as they are, same canvas, same Hiro, hydra body, legs, sword, effects and positions. Change ONLY the hydra in the MIDDLE LEFT cell: it has six heads by mistake. Remove the far upper-right extra head and its neck, restoring transparent negative space there. It must have exactly FIVE heads, matching the upper-left creature's five-head arrangement. Reconnect remaining five necks naturally to unchanged torso. No other changes. Preserve actual transparent alpha and all other cells. Do not regenerate poses or redesign anything.",
+    "refs": [
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v5/coast-20261008/hydra-diagonal-six.png"
+    ],
+    "source": "exec-2be4e89f-3e8b-48e5-81ba-ee05f05cfb2b.png"
+  },
+  {
+    "name": "hydra-slide-six.png",
+    "prompt": "New paired animation sheet in EXACT same Hiro/Hydra designs and relative sizes as reference. TWO columns THREE rows =6 frames. New move is LOW SLIDE AND THRUST, entirely different from reference slash. 1 Hiro left ready, FIVE-headed Hydra right. 2 Hiro slides low below Hydra's biting necks, blade pointed right, all FIVE heads stay readable above. 3 Hiro plants front foot in low lunge and thrusts katana into armored torso just behind foreleg, brief small purple spark, no blood; five heads recoil. 4 Hiro withdraws katana and rises while Hydra slumps allfive heads down. 5 Hydra dissolves into soft seafoam particles, Hiro stands intact holding blade. 6 Hiro alone returns swordtosheath, fullbody visible. Detailed painted anime blackpurple armor darkskin purpledreads greencream Hydra with goldenhorns. Fixedcamera consistent relative sizes. Exactlyfive heads, never six. Huge transparent gutters eachcell, no touching neighboringframes, nothingcropped. Actual transparentalpha, no background or matte or text. Draw each pair SMALLER within its cell than the reference so there is room for every sword tip and tail.",
+    "refs": [
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v5/coast-20261008/hydra-diagonal-six-corrected.png"
+    ],
+    "source": "exec-4b4d691a-b2b9-46bd-8c1e-23d29df8bcaa.png"
+  },
+  {
+    "name": "crab-fatal-six.png",
+    "prompt": "Production paired defeat sprite sheet, SIX frames 2columns x3rows. Hiro darkskin purplelocs blackpurple cyber-samurai left facingright, blue golden barnacled Tidal Crab right facingleft. Same detailed painted celshaded anime style and fullbodycamera. This time CRAB WINS and Hiro is defeated. 1 Hiro tired guard facingcrab;2 crab advances withpincer open, Hiro tries parry;3 pincer clamps Hiro's armored sword forearm, blade tilts upward, brief modest red impactflecks;4 crab pulls him offbalance and slams him onto ground leftward, strong physical contact, no severing;5 Hiro lies on side motionless sword besidehim, crab claw releasesarm;6 crab stands over defeated Hiro who REMAINS fullyvisible onground. Do not dissolve Hiro or crab, no extra people. Six distinct motion poses consistent scale: crab shell half Hiro standing height. Visible anticipation, grip, throw, release, settle. Transparent background truealpha, no floor scenery, no haze, no text. 20percent clear margins inside eachcell, full limbs andblade fullyinside, no celloverlap. Preserve sameHirooutfitallframes.",
+    "refs": [
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v1/heroes/hiro/hiro-reference.png",
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v5/coast-20261008/registered-combat/crab/base-00.png"
+    ],
+    "source": "exec-b620e3a5-a631-42a5-8f06-6a083b399a2d.png"
+  },
+  {
+    "name": "toad-fatal-six.png",
+    "prompt": "Game paired defeat animation 2columns x3rows SIXequalcells. Darkbrownskin purplelocs blackpurple samurai Hiro onLEFT facingRIGHT; olivegreen wartcovered Brine Toad onRIGHT facingLEFT. Exact reference designs polished celshaded anime. Toad standingheight60%Hiro. Creature WINS: 1 Hiro exhaustedguard withkatana, toad crouched;2 toad shoots longtongue around Hiro's swordwrist;3 tongue pulls Hiro forward offbalance, feet skid;4 toad leaps into his torso, knocking him backwards onto ground, modest red impactflecks;5 toad lands nextto Hiro and retractstongue;6 Hiro lies motionless fullbody visible swordbesidehim, toad settled in guard. No swallowing, disappearing body, dismemberment or nudity. Fullfigure readable contact. Transparentalpha, no scenery/haze/floor/text. Keep 20percent clear gutters in eachcell, limbs andbladeinside, same scale throughout, six distinct sequentialposes. Hiro staysvisible in allsix.",
+    "refs": [
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v1/heroes/hiro/hiro-reference.png",
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v5/coast-20261008/registered-combat/toad/base-00.png"
+    ],
+    "source": "exec-773eca48-9b9e-4fd7-9093-69376bf7db26.png"
+  },
+  {
+    "name": "vulture-fatal-six.png",
+    "prompt": "Six frame paired creature-wins videogame sprite sheet EXACT2columns3rows. All figures use only middle65percent of each equalcell, wideemptygutters. Hiro darkskin purplelocsblackpurple samurai onLEFT facingRIGHT, brown baldheaded vulture RIGHT facingLEFT, standingbird60percentheroheight. 1 Hiro tired guard, bird crouches. 2 bird openswings and leaps towardsHiro. 3 talons seizeHiro shoulders, Hiro's katana arm knockedaside, modest red flecks. 4 bird drives Hiro backward toground, both clearlytouching, Hirofullbody visible. 5 bird settles nextto fallenHiro, claws release. 6 vulture folds wings over motionless defeated Hiro with sword besidehim. No dismemberment,no disappearance, no extrafigures. Same anatomyoutfit proportionsallframes. Clear anticipationcontactrecovery. Polished detailedanimecelshadedpainting fromrefs. Actual transparentalpha no backgroundhaze floor shadow text orgrid. Everybladewingfoot hairtip fullyinsidecell. Entire sheet balancedspacing.",
+    "refs": [
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v1/heroes/hiro/hiro-reference.png",
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v5/coast-20261008/registered-combat/vulture/base-00.png"
+    ],
+    "source": "exec-3e91610d-6053-4624-8d3f-5498908b09be.png"
+  },
+  {
+    "name": "hydra-fatal-six.png",
+    "prompt": "Create NEW six-frame CREATURE-WINS defeat sequence from reference identities. EXACTLY SIX PAIRS arranged 2columns3rows, BOTH Hiro and Hydra appear TOGETHER inside EACH cell. Left Hiro darkskin purplelocs blackpurple samurai, right FIVE-headed greenHydra samebossbody ratio. 1 Hiro tiredguard against Hydra. 2 two lower Hydraheads lunge around Hiro's swordguard, three upperheads stayback. 3 closest jaws seize armoredshoulder with modest redflecks, secondhead crowds bladeaside, allfiveheads identifiable. 4 Hydra knocks Hiro onto hisback, heads follow downward, Hirobodyfullyvisible and intact. 5 allfive heads rise, Hiro liesmotionless onground belowleft withkatanafallen. 6 Hydra in calmguard over fallenHiro, both fullyvisible. No dismemberment, no swallowing, no disappearinghero. Exactly5heads untilend. Samebody sizes alldrawings, fullbody camera, highpolish animecelshade. Eachpair centered in middle70% cell, generous clear transparentgutters, no crop or overlap. Actualtransparentalpha no backgroundhaze floor labels orgrid.",
+    "refs": [
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v5/coast-20261008/hydra-slide-six.png"
+    ],
+    "source": "exec-9c515e7d-aff8-419d-a05d-4674b93565ad.png"
+  },
+  {
+    "name": "hydra-fatal-six-corrected.png",
+    "prompt": "Precise anatomical correction of existing six-cell sprite sheet. Keep all composition, Hiro and body poses, scale, color, transparency unchanged. Fix ONLY neck/head counts in TWO cells: MIDDLE LEFT cell has FOUR heads; add one rear head with continuous neck behind the two upper heads, clearly visible separated. BOTTOM LEFT cell has SIX heads; remove its far upper-right extra head and that neck completely, leaving FIVE natural heads connected to body. Toprow and middleright and bottomright already haveFIVE heads, preserve unchanged. Exactlyfiveheadsin allsixcells. No newpose, no recrop, no text, no neweffect.",
+    "refs": [
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v5/coast-20261008/hydra-fatal-six.png"
+    ],
+    "source": "exec-09433d58-6da8-4f62-adde-957eca5a3aed.png"
+  },
+  {
+    "name": "toad-fatal-six-corrected.png",
+    "prompt": "Precise repair of SIX frame paired sprite sheet. Change ONLY middle LEFT drawing: toad's rear body and foot are abruptly cut off at the right boundary of its cell. Repaint that one pair within the same cell with both characters moved slightly left and about10percent smaller, restoring the toad's COMPLETE rear body and rightmost leg, leaving transparent gutter before next cell. Preserve same tongue pulling pose and bothHiro/toad designs, their relative scale. All other five cells completelyunchanged. No newpose, no labels. True transparentalpha preserved. Do not crop swordfeet or toad.",
+    "refs": [
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v5/coast-20261008/toad-fatal-six.png"
+    ],
+    "source": "exec-6a900ca9-41ad-41bc-a914-9358b09859a4.png"
+  }
+]

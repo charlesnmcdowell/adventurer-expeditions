@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Citadel combat art — intake review</title>
+<style>body{background:#121b26;color:#eee;font:16px system-ui;margin:20px}button,select{font:inherit;padding:10px;margin:4px;background:#263c50;color:white;border:1px solid #6a8295;border-radius:6px}main{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,480px),1fr));gap:16px}article{background:#243442;padding:12px;border-radius:8px}canvas{width:100%;background:repeating-conic-gradient(#405562 0 25%,#394c59 0 50%) 0/32px 32px}p{color:#c5d4df}a{color:#9ed9ff}small{display:block}</style>
+</head><body><h1>Citadel combat art</h1><p>Measured source intake preview: eight-pose attacks and four-pose supporting clips. Not finished combat or a playable Citadel quest. Inspect each frame for clipped extremities and grounding before acceptance.</p>
+<p><a href="../coast-20261008/pairs.html">Coast paired review</a></p>
+<button id="play">Pause</button><button id="step">Next frame</button><label>Speed <select id="speed"><option value="1">Normal</option><option value="0.25">Quarter speed</option></select></label>
+<main></main><p id="status">Loading four atlases…</p>
+<script>
+const names={elven_wizard:'Elven Wizard',elven_ranger:'Elven Ranger',dark_swordswoman:'Dark-elven Swordswoman',enchantress:'Enchantress'};
+const reviews=[];let playing=true,last=performance.now();
+async function add(actor){
+ const base='combat/'+actor+'/',d=await (await fetch(base+actor+'.json')).json();
+ const pages=await Promise.all(d.textures.map(t=>new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=reject;im.src=base+t.image;})));
+ const article=document.createElement('article');article.style.order=Object.keys(names).indexOf(actor);article.innerHTML='<h2>'+names[actor]+'</h2><select aria-label="'+actor+' clip"></select><canvas width="640" height="450"></canvas><small></small>';
+ document.querySelector('main').append(article);const select=article.querySelector('select');
+ Object.keys(d.clips).forEach(k=>select.add(new Option(k,k)));
+ const extent=Object.values(d.frames).reduce((a,f)=>({x:Math.max(a.x,Math.abs(f.spriteSourceSize.x-d.canvas.pivot.x),Math.abs(f.spriteSourceSize.x+f.frame.w-d.canvas.pivot.x)),y:Math.max(a.y,d.canvas.pivot.y-f.spriteSourceSize.y)}),{x:1,y:1});
+ const review={actor,d,pages,select,scale:Math.min(actor==='hydra'?1.08:.78,305/extent.x,385/extent.y),canvas:article.querySelector('canvas'),label:article.querySelector('small'),elapsed:0,index:0};
+ select.onchange=()=>{review.elapsed=0;review.index=0;draw(review);};reviews.push(review);draw(review);
+}
+function draw(r){const c=r.d.clips[r.select.value],f=r.d.frames[c.frames[r.index]],ctx=r.canvas.getContext('2d'),scale=r.scale;
+ ctx.clearRect(0,0,640,450);ctx.strokeStyle='#a4d4ba';ctx.beginPath();ctx.moveTo(0,405);ctx.lineTo(640,405);ctx.stroke();
+ const x=320+(f.spriteSourceSize.x-r.d.canvas.pivot.x)*scale,y=405+(f.spriteSourceSize.y-r.d.canvas.pivot.y)*scale;
+ ctx.drawImage(r.pages[f.page],f.frame.x,f.frame.y,f.frame.w,f.frame.h,x,y,f.frame.w*scale,f.frame.h*scale);
+ r.label.textContent='Frame '+(r.index+1)+' / '+c.frames.length+' · '+c.durationMs+' ms · shared body scale';}
+function tick(now){const delta=Math.min(now-last,100);last=now;if(playing)for(const r of reviews){const c=r.d.clips[r.select.value];r.elapsed+=delta*Number(document.querySelector('#speed').value);while(r.elapsed>=c.frameDurationsMs[r.index]){r.elapsed-=c.frameDurationsMs[r.index];r.index=(r.index+1)%c.frames.length;}draw(r);}requestAnimationFrame(tick);}
+document.querySelector('#play').onclick=()=>{playing=!playing;document.querySelector('#play').textContent=playing?'Pause':'Play';};
+document.querySelector('#step').onclick=()=>{playing=false;document.querySelector('#play').textContent='Play';for(const r of reviews){r.index=(r.index+1)%r.d.clips[r.select.value].frames.length;r.elapsed=0;draw(r);}};
+Promise.all(Object.keys(names).map(add)).then(()=>{document.querySelector('#status').textContent='All four atlases loaded. Green line marks the ground.';window.coastCombatReady=true;requestAnimationFrame(tick);}).catch(e=>{document.querySelector('#status').textContent='Load failed: '+e;});
+window.coastCombatReviews=reviews;
+</script></body></html>

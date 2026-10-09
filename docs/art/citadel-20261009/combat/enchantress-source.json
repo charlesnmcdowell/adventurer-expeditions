@@ -1,0 +1,641 @@
+{
+  "actor": "enchantress",
+  "authoredFacing": -1,
+  "clips": [
+    {
+      "id": "idle",
+      "frames": 4,
+      "sources": [
+        {
+          "file": "registered-combat/enchantress-combat/00.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              209,
+              229
+            ]
+          ],
+          "firstFrameZeroBased": 0,
+          "sha256": "5c75386d19bc043b8ce617dc21d06a7f2cf7ac4c6b221897bc4571853500a6a6"
+        },
+        {
+          "file": "registered-combat/enchantress-combat/01.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              210,
+              234
+            ]
+          ],
+          "firstFrameZeroBased": 1,
+          "sha256": "3dcc0cd1b6a5ec161a6547c2924e58792336df17093539c5812d95c1d255f473"
+        },
+        {
+          "file": "registered-combat/enchantress-combat/02.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              216,
+              235
+            ]
+          ],
+          "firstFrameZeroBased": 2,
+          "sha256": "fce4131e18d627d1d8fc85540d7328e132bee301bdbf9dc06786ff05056e3e3c"
+        },
+        {
+          "file": "registered-combat/enchantress-combat/03.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              208,
+              234
+            ]
+          ],
+          "firstFrameZeroBased": 3,
+          "sha256": "e7d33de29284094186a163a30653fe1e06319cdd20c5fbd509c2747c3e7b87a4"
+        }
+      ],
+      "durationsMs": [
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": true,
+      "contactFramesZeroBased": [],
+      "releaseFrameZeroBased": 3,
+      "registration": {
+        "referenceHeight": 223,
+        "frames": [
+          {
+            "anchorX": 116.5,
+            "groundY": 226
+          },
+          {
+            "anchorX": 113.0,
+            "groundY": 230
+          },
+          {
+            "anchorX": 117.0,
+            "groundY": 229
+          },
+          {
+            "anchorX": 115.0,
+            "groundY": 229
+          }
+        ]
+      }
+    },
+    {
+      "id": "approach",
+      "frames": 4,
+      "sources": [
+        {
+          "file": "registered-combat/enchantress-combat/04.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              217,
+              212
+            ]
+          ],
+          "firstFrameZeroBased": 0,
+          "sha256": "88edd6c0bb31ea785cb9135f9fb3c12f46b10641a9d58a8a25bd0d583d445457"
+        },
+        {
+          "file": "registered-combat/enchantress-combat/05.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              215,
+              214
+            ]
+          ],
+          "firstFrameZeroBased": 1,
+          "sha256": "4a95b131f08a2ab2d915a1d03f10a1cb2aeead81d6e7f49ab8945560cd2d26e2"
+        },
+        {
+          "file": "registered-combat/enchantress-combat/06.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              206,
+              223
+            ]
+          ],
+          "firstFrameZeroBased": 2,
+          "sha256": "68469cfd02b291280149bf019b853d0be1daf42d9049032fe1a75bd5f6f9fa79"
+        },
+        {
+          "file": "registered-combat/enchantress-combat/07.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              210,
+              214
+            ]
+          ],
+          "firstFrameZeroBased": 3,
+          "sha256": "e6fbf22efa3a192e9fa1283457bf783a70502f93025c3f0f61e5cbf3b5ad6954"
+        }
+      ],
+      "durationsMs": [
+        95,
+        95,
+        95,
+        95
+      ],
+      "loop": true,
+      "contactFramesZeroBased": [],
+      "releaseFrameZeroBased": 3,
+      "registration": {
+        "referenceHeight": 223,
+        "frames": [
+          {
+            "anchorX": 55.0,
+            "groundY": 208
+          },
+          {
+            "anchorX": 46.0,
+            "groundY": 210
+          },
+          {
+            "anchorX": 55.0,
+            "groundY": 211
+          },
+          {
+            "anchorX": 46.0,
+            "groundY": 211
+          }
+        ]
+      }
+    },
+    {
+      "id": "attack",
+      "frames": 8,
+      "sources": [
+        {
+          "file": "registered-combat/enchantress-combat/08.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              249,
+              270
+            ]
+          ],
+          "firstFrameZeroBased": 0,
+          "sha256": "7e2af2657caa6845f68ca5a6c7eb1f2c7146994732b7f97308c1b928d0dc4d20"
+        },
+        {
+          "file": "registered-combat/enchantress-combat/09.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              195,
+              274
+            ]
+          ],
+          "firstFrameZeroBased": 1,
+          "sha256": "1b26e41e17a1f4b6e2b1c423399841ee5a4c9671fd3c9cf65d3d1bdb2eea11a2"
+        },
+        {
+          "file": "registered-combat/enchantress-combat/10.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              212,
+              278
+            ]
+          ],
+          "firstFrameZeroBased": 2,
+          "sha256": "3c33129d778afc120d6a7e04366c911a94692720acbe5829ae88aaf79351be6f"
+        },
+        {
+          "file": "registered-combat/enchantress-combat/11.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              243,
+              259
+            ]
+          ],
+          "firstFrameZeroBased": 3,
+          "sha256": "8ba841324bc65270fcd12539dbc26c461181ae296f5f980de90deda97f20c996"
+        },
+        {
+          "file": "registered-combat/enchantress-attack-release-four/00.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              666,
+              571
+            ]
+          ],
+          "firstFrameZeroBased": 4,
+          "sha256": "2b3ba75ef14b8ca2f34508bc78e266cd9b73ffafe59ca7696e18a8da32e80156"
+        },
+        {
+          "file": "registered-combat/enchantress-attack-release-four/01.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              576,
+              573
+            ]
+          ],
+          "firstFrameZeroBased": 5,
+          "sha256": "41b30b0f69b817d070f3ca5df6b0e890c834996cc22753aacc63df18fe9944dd"
+        },
+        {
+          "file": "registered-combat/enchantress-attack-release-four/02.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              605,
+              729
+            ]
+          ],
+          "firstFrameZeroBased": 6,
+          "sha256": "931723eca90f091893bb67cd4782eed583b75a42cff3277a682fc018bf763b25"
+        },
+        {
+          "file": "registered-combat/enchantress-attack-release-four/03.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              404,
+              637
+            ]
+          ],
+          "firstFrameZeroBased": 7,
+          "sha256": "f6bf3aeec3c07e47ea279ef70a3dd66f0120dc70553b7ee144914062a1bf9639"
+        }
+      ],
+      "durationsMs": [
+        90,
+        75,
+        65,
+        55,
+        90,
+        60,
+        70,
+        100
+      ],
+      "loop": false,
+      "contactFramesZeroBased": [
+        4
+      ],
+      "releaseFrameZeroBased": 7,
+      "registration": {
+        "referenceHeight": 223,
+        "frames": [
+          {
+            "anchorX": 57.0,
+            "groundY": 219
+          },
+          {
+            "anchorX": 42.5,
+            "groundY": 224
+          },
+          {
+            "anchorX": 54.0,
+            "groundY": 230
+          },
+          {
+            "anchorX": 102.0,
+            "groundY": 210
+          },
+          {
+            "anchorX": 267.0,
+            "groundY": 567,
+            "referenceHeight": 630
+          },
+          {
+            "anchorX": 503.0,
+            "groundY": 569,
+            "referenceHeight": 630
+          },
+          {
+            "anchorX": 505.0,
+            "groundY": 726,
+            "referenceHeight": 630
+          },
+          {
+            "anchorX": 109.5,
+            "groundY": 633,
+            "referenceHeight": 630
+          }
+        ]
+      }
+    },
+    {
+      "id": "hit",
+      "frames": 4,
+      "sources": [
+        {
+          "file": "registered-combat/enchantress-combat/12.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              204,
+              252
+            ]
+          ],
+          "firstFrameZeroBased": 0,
+          "sha256": "e2662eb721bf647db5b1ceb6e62461aecbfc7fbc7acf36ecdc31ea1f812ed640"
+        },
+        {
+          "file": "registered-combat/enchantress-combat/13.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              249,
+              271
+            ]
+          ],
+          "firstFrameZeroBased": 1,
+          "sha256": "41503c9976d77100f95059093b6978b3512bd0fe3020a158a5759646048d87f0"
+        },
+        {
+          "file": "registered-combat/enchantress-combat/14.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              246,
+              260
+            ]
+          ],
+          "firstFrameZeroBased": 2,
+          "sha256": "e88ddbf361f76831c1e4ec11ebbb585a6031cc4be49f8623353bedd8e012cd18"
+        },
+        {
+          "file": "registered-combat/enchantress-combat/15.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              206,
+              269
+            ]
+          ],
+          "firstFrameZeroBased": 3,
+          "sha256": "b17407e2242ff41c0abfb2310fde2f1db122ad00a6e42a7c369815b9f72023f1"
+        }
+      ],
+      "durationsMs": [
+        90,
+        100,
+        150,
+        220
+      ],
+      "loop": false,
+      "contactFramesZeroBased": [],
+      "releaseFrameZeroBased": 3,
+      "registration": {
+        "referenceHeight": 223,
+        "frames": [
+          {
+            "anchorX": 76.0,
+            "groundY": 248
+          },
+          {
+            "anchorX": 129.0,
+            "groundY": 266
+          },
+          {
+            "anchorX": 139.0,
+            "groundY": 255
+          },
+          {
+            "anchorX": 68.0,
+            "groundY": 264
+          }
+        ]
+      }
+    },
+    {
+      "id": "down",
+      "frames": 4,
+      "sources": [
+        {
+          "file": "registered-combat/enchantress-combat/16.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              227,
+              208
+            ]
+          ],
+          "firstFrameZeroBased": 0,
+          "sha256": "9dc770ed9e53c794a58a35ad9de81d814067e9f6f8e7da8b5095e4ea7135c06e"
+        },
+        {
+          "file": "registered-combat/enchantress-combat/17.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              202,
+              209
+            ]
+          ],
+          "firstFrameZeroBased": 1,
+          "sha256": "defe8daf77f9b208ee4a56f347a25d685edef90583cdb7023ec116d1a2204502"
+        },
+        {
+          "file": "registered-combat/enchantress-combat/18.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              255,
+              151
+            ]
+          ],
+          "firstFrameZeroBased": 2,
+          "sha256": "a2574eea6bf35c601589ed09afc81a536fefcc7533806d06ffeed088836ef670"
+        },
+        {
+          "file": "registered-combat/enchantress-combat/19.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              253,
+              104
+            ]
+          ],
+          "firstFrameZeroBased": 3,
+          "sha256": "dcc25323ddcf2d2f9e7fd3ee5c49a93a8cb17067e3968f9ee208268740c621a3"
+        }
+      ],
+      "durationsMs": [
+        90,
+        100,
+        150,
+        220
+      ],
+      "loop": false,
+      "contactFramesZeroBased": [],
+      "releaseFrameZeroBased": 3,
+      "registration": {
+        "referenceHeight": 223,
+        "frames": [
+          {
+            "anchorX": 122.0,
+            "groundY": 204
+          },
+          {
+            "anchorX": 117.5,
+            "groundY": 206
+          },
+          {
+            "anchorX": 198.0,
+            "groundY": 142
+          },
+          {
+            "anchorX": 222.0,
+            "groundY": 96
+          }
+        ]
+      }
+    },
+    {
+      "id": "enrage",
+      "frames": 4,
+      "sources": [
+        {
+          "file": "registered-combat/enchantress-combat/20.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              230,
+              253
+            ]
+          ],
+          "firstFrameZeroBased": 0,
+          "sha256": "186dd254be2e9a3b012839ffe61ce7b2a619d3aa7874b23ced262823c22c9731"
+        },
+        {
+          "file": "registered-combat/enchantress-combat/21.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              252,
+              253
+            ]
+          ],
+          "firstFrameZeroBased": 1,
+          "sha256": "1e76a3c7fc5a55de924f3cf7d29fe94da24b1a05f31b2e00272ba445e24a4ced"
+        },
+        {
+          "file": "registered-combat/enchantress-combat/22.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              263,
+              271
+            ]
+          ],
+          "firstFrameZeroBased": 2,
+          "sha256": "4580a53ff52a671bca178945095175d75953a733ccc5242a6bede790558f2500"
+        },
+        {
+          "file": "registered-combat/enchantress-combat/23.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              218,
+              253
+            ]
+          ],
+          "firstFrameZeroBased": 3,
+          "sha256": "29e2179d9e33f4bd47f0c046a7bd369edb63904e6e9d8cb51affcf89abe56041"
+        }
+      ],
+      "durationsMs": [
+        90,
+        100,
+        150,
+        220
+      ],
+      "loop": false,
+      "contactFramesZeroBased": [],
+      "releaseFrameZeroBased": 3,
+      "registration": {
+        "referenceHeight": 223,
+        "frames": [
+          {
+            "anchorX": 135.0,
+            "groundY": 248
+          },
+          {
+            "anchorX": 81.0,
+            "groundY": 250
+          },
+          {
+            "anchorX": 75.0,
+            "groundY": 267
+          },
+          {
+            "anchorX": 75.0,
+            "groundY": 249
+          }
+        ]
+      }
+    }
+  ],
+  "status": "combat preview; pairs and gameplay pending"
+}

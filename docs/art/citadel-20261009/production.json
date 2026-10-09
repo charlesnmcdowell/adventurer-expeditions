@@ -1,0 +1,150 @@
+[
+  {
+    "name": "elven_wizard-combat.png",
+    "prompt": "Production combat sprite sheet, exact4COLUMNS x6ROWS =24 separate fullbody poses of this exact adult male elven wizard. All faceLEFT, fixedsideview samebodysize inEVERYcell. Whiteponytail pointedears sapphiregoldrobe carvedbluecrystalstaff. Row1 frames0-3: four quiet idleguard breathingposes smallclothmotion. Row2 frames4-7: four walkingapproach steps LEFT staffsteady, alternatingfeet. Rows3AND4 frames8-15: one continuous EIGHTpose ARCANE VOLLEY:8 staffdrawsback;9 freehand circles;10 bluecharge gathers;11 stafftiltsleft;12 stafffiresleft smallbrightarcane flash;13 recoil;14 staffrises;15 returnguard. Row5 frames16-19: four hitreaction poses leanback, staggerbackfoot, recover, guard. Row6 frames20-23: four defeatposes buckle knees, fallontoknee, collapse side, lie prone withstaff besidebody. Everyposefullbody no cutfeetstaff tips. Ward disc onlysmall freehandsized inidle, remove duringfall. 20percent transparentgutters eachcell, no overlap, no text grids or floor, ACTUALTRANSPARENTalpha zero haze. Exactdesign detailed polished animecelshade. Cleanfullsilhouettes. Large portrait sheet.",
+    "refs": [
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v5/citadel-20261009/elven_wizard-reference.png"
+    ],
+    "source": "exec-5c6fe0e2-8bf6-40a9-9beb-fa537fa55776.png"
+  },
+  {
+    "name": "elven_ranger-combat.png",
+    "prompt": "Exact4columns x6rows =24-frame combat sprite atlas of this adult brownskin female elvenranger, facingLEFT throughout. Same green cloak leatherarmor silverwoodlongbow darkbraidedponytail. Fixedsidecamera SAMEbodyheight inEVERYframe. Put each figure in CENTRAL60% of cell with broadtransparentmargins, bowsarrowscape mustNOTcrosscells. Row1 four quiet idleposes loweredbow breathing. Row2 four agile walkingstepsleft. Rows3+4 eight sequentialattackposes: hand reachesquiver, nocksarrow, raisesbowleft, drawsstring, RELEASE glowinggreenarrow LEFT, recoil and sidestep, lowersbow, returnsready. Row5 four hitstaggerposes backlean regainfooting guard. Row6 four downposes falltoknee bowlowered, crumple, lieonside, settleddefeated wholebody bowbeside. Fullyclothedadult athleticfemininefigure pointedears sameface. No extraarms no mergedarrowhands. ACTUALtransparentalpha no backdrop/haze/floor/grid/text. Crispdetailedanimecelshade samepolishasreference. Fullbody feetbowtipsalwaysvisible.",
+    "refs": [
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v5/citadel-20261009/elven_ranger-reference.png"
+    ],
+    "source": "exec-b21235f1-6be2-4b5b-b625-fc2bde4f5564.png"
+  },
+  {
+    "name": "dark_swordswoman-combat.png",
+    "prompt": "24frame combat spritesheet exact4columns6rows of this adult darkelven woman withtwo swords. IMPORTANT all poses FACELEFT, opposite ref's head direction. Deep slatepurple skin silverwhitebob blacksilver fullplate violetcloth pointedears exactlyreference. Fixed sidecamera samebodyheightallcells. Row1 fourready idles both curvedswords heldguard;Row2 four agileadvance stepsLEFT. Rows3+4 one8pose two-swordcombo: drawrightarmback, rotatehip, firstblade slashleft, firstfollowthrough, offhandblade cutsleft onsecondbeat, bothbladesextend, recovercrossguard, settle. Row5 four hitrecoil poses chestback, stagger, kneebend, recoverguard. Row6 fourdownposes knees buckle, kneels swordtipsdown, fallside, liesdefeatedtwo swordsbeside. BOTHswords visible allframes unlessonfloorlast. Anatomicallycorrect twoarms twohands, no extraweapons, no largeeffects obscuringblades. Fullbodyweaponstipswithin central60% eachcell, hugeguttersnooverlap. Transparentalpha no floorhaze labelsbackground. Highqualitypaintedcelshaded anime exactlyref.",
+    "refs": [
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v5/citadel-20261009/dark_swordswoman-reference.png"
+    ],
+    "source": "exec-1a0c781f-07a5-4d18-b6db-b664a454e3ed.png"
+  },
+  {
+    "name": "enchantress-combat.png",
+    "prompt": "Production combat atlas EXACT4columns7rows =28 fullbody drawings, one adult elven Enchantress BOSS identicalreference goldbrownskin longblackhair goldcirclet plumgold fullcoverage silkrobe goldvioletstaff. ALLposesfaceLEFT (reverse reference facing), samebodysize samecamera, figuresoccupy central60percent eachcell leavewidetransparentgutters. Row1 fouridle breathingposes. Row2 four elegantwalkingstepsleft. Rows3+4 eightposebindingcurse attack: handdrawsback, draws smallvioletsigil, sigilgrows, staffaimsleft, launches violet bindingribbonsLEFT, wristfollowthrough, robe settles, guardreturns. Row5 fourhitposes recoil/stagger/regainfooting/guard. Row6 fourdownposes kneesbuckle/kneels/fallsontoside/settledprone staffbesideher. Row7 four empoweredphase poses: staffplanted, raisesfreehand, violetcrownandeyesflare robesflutter, returnsregalguard withsmallglow. No explodingmassiveeffects coveringher, no extraarms, anatomyandwardrobeconstant. Feetstaffhair entirelyinsideEVERYcell, no cropping or overlap. Truealpha transparent no backgroundhaze floor grid text. Detailedpolished paintedanimecelshade asreference.",
+    "refs": [
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v5/citadel-20261009/enchantress-reference.png"
+    ],
+    "source": "exec-3a49d218-dcab-48e1-ae79-8d272880e91c.png"
+  },
+  {
+    "name": "enchantress-attack-release-four.png",
+    "prompt": "A repair strip for a game attack animation, EXACTLY4COLUMNS1ROW four separated fullbody drawings of the same adult elven enchantress reference. FacesLEFT allfour, plumgold robe longblackhair goldstaff pointedears. SAMEscale eachpose. Pose1 staffextended LEFT smallvioletbinding flash tightlyaroundstafftip. Pose2 wristfollowthrough robe settles slightly. Pose3 staffrises and freehand opens. Pose4 idle standingguard staffvertical. Fullbody everycell feetcloakstaffvisible 20percent clear transparentmargins, no projectile trails crossingcellboundaries, no interconnecting ribbons. No textgridfloorbackground. Truealpha. Matchreferencepolishedcelshade exactly. Horizontalwide canvas 2048x768.",
+    "refs": [
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v5/citadel-20261009/enchantress-reference.png"
+    ],
+    "source": "exec-2bf9bf0c-7233-4fed-a3f5-b998cd1c16cc.png"
+  },
+  {
+    "name": "elven_wizard-hiro-one.png",
+    "prompt": "SIX paired game-animation drawings EXACT2columns3rows. BOTHfigures inEVERYCELL untilenemy dissolves. Hero Hiro darkbrownskin purplelocs blackpurple samurai onLEFT facingRIGHT, adult maleelf whiteponytail sapphiregoldrobe staff onRIGHT facingLEFT. Sameheight/proportions consistently. Hiro winning finisher WARD BREAK:1 katana guard vs wizardsmallbluehandward;2 Hiro closesdistance katana overhead, wizardraisesward;3 Hiro diagonal sword CONTACT shatters ward into SMALLblueglasssparkles, wizardrecoils;4 Hiro follows horizontalcutacrosswizard torsoarmor, no blood, wizardbuckles;5 wizard kneeling dissolves to faintvioletmotes,Hiro standsintact;6 Hiro ALONE fullbody calmly sheathsword. Fixedsidecamera allbodiesfeetbladefullyinsidecells with broad20percenttransparentgutters. No floorhaze scenerylabelsgrid. Actualtransparentalpha. Same detailedpolishedcelshadedanimeasrefs. Exactcharacteridentity andscale no missingHiro.",
+    "refs": [
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v1/heroes/hiro/hiro-reference.png",
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v5/citadel-20261009/elven_wizard-reference.png"
+    ],
+    "source": "exec-a2229677-f296-4a87-9e3e-26811f0236cb.png"
+  },
+  {
+    "name": "elven_wizard-hiro-two.png",
+    "prompt": "Six-frame paired animation sheet for game. EXACT2columns3rows. Inside EVERYcell leave a large EMPTY BORDER aboutonequarter cellwidth eachside. Both complete figures must fitinside; no limbmaytouchborder. Hiro left facesright darkskinpurplelocsblackpurplearmor, adultmale elfwizardright facesleft whiteponytail bluegoldrobe staff. Hiro wins with STAFF DEFLECTION THRUST:1 bothready,2 wizard aimsstafflow andHiro stepsoutside it bladeacrossbody,3 Hiro'skatana pushesstaffaside atphysicalcontact,4 Hiro lunges thrustto wizard's armoredtorso smallvioletflash nogore wizardrecoils,5 wizard falls dissolving to smallvioletmotes Hirostandstogether,6 onlyHiro sheathing fullbody. Same adultheights bothroughlyequal allframes. Sharp readable separateposes preciseanatomy. No labels sceneryfloor gridhaze. True transparentalpha. Matchpainted detailedcelshadingreferences. Do not crop any boots or katana, leave moreemptyspace ratherthanfillcells.",
+    "refs": [
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v1/heroes/hiro/hiro-reference.png",
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v5/citadel-20261009/elven_wizard-reference.png"
+    ],
+    "source": "exec-a7a4b78c-e81f-45a6-adcb-b1754fd42c2e.png"
+  },
+  {
+    "name": "elven_wizard-fatal.png",
+    "prompt": "6 paired sprites EXACT2columns3rows everycell bothfullbody characters, transparentalpha. HeroHiro LEFT facRIGHT darkskinpurplelocsblackpurplearmor; maleelvenwizard RIGHT facLEFT whiteponytail bluegoldrobe staff. Wizard WINS:1 Hiro exhausted guard wizard chargesbluehand;2 wizard castsblue bands around Hiro's armoredarms, Hirostruggles katana lowered;3 wizardstaffcontacts Hirobreastplate with contained blueburst;4 Hiroknocked backward falling onto back, wizardremainsstanding;5 Hiroon ground wizardlowersstaff;6 Hiro motionless defeatedfullyvisible katana besidehim, wizardquietguard. Samecharacterssize throughout, no disappearinghero, no dismemberment, no nudity. Sixclear poses anticipationcontactrelease. Bothfeetandweapontips insideeachcell with 25percent empty margins. Polished celshadedanimepainting reference fidelity. No scene floor text hazebackground.",
+    "refs": [
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v1/heroes/hiro/hiro-reference.png",
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v5/citadel-20261009/elven_wizard-reference.png"
+    ],
+    "source": "exec-678c1073-129f-4713-a0bd-3d95f0d21395.png"
+  },
+  {
+    "name": "elven_ranger-hiro-one.png",
+    "prompt": "Six fullbody paired sprites2columns3rows samebodyheight allframes. Hiro LEFT facRIGHT darkskin purplelocs blackpurple samurai; adultfemale elvenranger RIGHT facLEFT brownskin braidedhair greenleafarmor bow reference. Bothfiguresinsideeverycelluntilrangerdisappears. Hiro wins ARROW PARRY RUSH:1 ranger aimslowarrow Hiroguard;2 arrow releases left Hiro liftskatana;3 Hiro deflects arrow with blade smallgreencontactspark;4 Hiro closesgap cutting horizontally acrossranger's armoredtorso, she staggersback holdingbow no gore;5 ranger kneels anddissolves small violetmotes Hirostandsintact;6 onlyHiro fullbody sheaths. Veryclear physicalcontact and anticipatorymotion. Actualtransparentalpha no backdrophaze floorlabels. Largeemptyquarterwidthmargins insidecells, nobodycrossescellboundaries. Everyboot bladebowtipvisible. Polishedanimecelshading referencesexactfacesoutfits.",
+    "refs": [
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v1/heroes/hiro/hiro-reference.png",
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v5/citadel-20261009/elven_ranger-reference.png"
+    ],
+    "source": "exec-6cd83403-7c6e-4879-b65b-ee2d6315db15.png"
+  },
+  {
+    "name": "elven_ranger-hiro-two.png",
+    "prompt": "Gamefinisher sequence SIXdistinct pairs 2columns3rows. Hiro LEFT facingRIGHT, adultelvenranger RIGHT facingLEFT references exactdarkskinpurplelocsblackarmor vs brownskinbraidsgreenleafarmorsilverwoodbow. Newfinisher BOW VAULT:1 Hiro ready ranger bowheldacrossbody;2 ranger swingsbowasstaff Hiroducks;3 Hiro steps on loweredbow and vaults above it katanaoverhead, both bodieswhole;4 Hiro lands overheadslash at her armoredshoulder smallpurpleimpact no blood, rangerbuckles;5 rangerkneels dissolvingvioletmotes,Hiro stands;6 Hiro ALONE fullbody sheathing. Same adultbodyproportions and sizes allframes; accuratehandgripsfootcontact. Fullweaponfullfeet insideeachcell, 25percent empty gutters generouswhitespace. Transparentalpha no haze/sceneryfloorgridtext. Detailedpolishedanimecelshade asrefs. Hirovisibleeveryframe nevercropped.",
+    "refs": [
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v1/heroes/hiro/hiro-reference.png",
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v5/citadel-20261009/elven_ranger-reference.png"
+    ],
+    "source": "exec-472bca97-4010-455f-bd38-e2504fef016d.png"
+  },
+  {
+    "name": "elven_ranger-fatal.png",
+    "prompt": "Production game paired sprite animation. Exactly SIX distinct drawings in 2 columns by 3 rows, row-major. References define exact characters. Hiro dark skin purple locs black purple samurai armor LEFT facing RIGHT; referenced adult elf RIGHT facing LEFT. Ranger wins: 1 both ready; 2 ranger draws glowing arrow while Hiro advances; 3 arrow strikes Hiro armored chest with emerald flash; 4 Hiro staggers backward dropping sword; 5 Hiro falls on his side full body visible; 6 ranger lowers bow beside defeated Hiro who stays fully visible. Consistent anatomical size throughout, full head feet weapons inside every cell. Each pair small enough for 20% empty transparent gutters. No overlapping cells. Detailed polished anime cel shading. Actual transparent alpha, no colored background haze, no floor, no text/grid. Hiro must remain visible in every drawing. No blood, no extra characters.",
+    "refs": [
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v1/heroes/hiro/hiro-reference.png",
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v5/citadel-20261009/elven_ranger-reference.png"
+    ],
+    "source": "exec-c4e9b533-5671-4549-b1f8-d1b0ec309bb3.png"
+  },
+  {
+    "name": "dark_swordswoman-hiro-one.png",
+    "prompt": "Production paired sprite animation. Exactly SIX drawings, 2 columns 3 rows row-major. Reference characters exact. Hiro dark skin purple locs black purple samurai armor LEFT facing RIGHT; adult elf RIGHT facing LEFT. Hiro wins: 1 both guards; 2 woman crosses twin swords attacking; 3 Hiro binds both blades with his katana at chest height; 4 Hiro steps inside and cuts across her armored torso violet flash; 5 woman kneels dissolving purple motes; 6 Hiro alone sheaths. Consistent anatomical size throughout, full head feet weapons entirely inside every cell. Pair occupies only central 70% of cell, generous EMPTY transparent gutters. No overlapping cells. Polished anime cel shading. Real transparent alpha, no haze floor text grid. Hiro visible every drawing. No blood.",
+    "refs": [
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v1/heroes/hiro/hiro-reference.png",
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v5/citadel-20261009/dark_swordswoman-reference.png"
+    ],
+    "source": "exec-8e030c98-7b7f-446b-afd9-f30919640800.png"
+  },
+  {
+    "name": "dark_swordswoman-hiro-two.png",
+    "prompt": "Game paired sprite animation. Exactly SIX drawings, 2 columns 3 rows. Reference characters exact. Hiro darkskin purple locs blackpurple samurai armor LEFT facing RIGHT; adult elf RIGHT facing LEFT. Hiro wins: 1 both ready; 2 woman lunges both blades; 3 Hiro low rolls under the blades, both entire bodies visible; 4 Hiro rises with overhead katana cut at her shoulder; 5 woman falls dissolving violet motes; 6 Hiro alone sheaths. Same body size each drawing. Full bodies weapons inside each cell with large empty gutters. Each pair occupies central 65% cell only. No overlap or clipping. Anime cel shaded finish matching references. True transparent alpha, no background glow/haze/floor/grid/text. Hiro visible every drawing. No blood.",
+    "refs": [
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v1/heroes/hiro/hiro-reference.png",
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v5/citadel-20261009/dark_swordswoman-reference.png"
+    ],
+    "source": "exec-1da33bcb-3ab2-4e82-a5a6-8bc933cd44a4.png"
+  },
+  {
+    "name": "dark_swordswoman-fatal.png",
+    "prompt": "Sprite sheet six animation cells, TWO COLUMNS THREE ROWS. Each cell contains BOTH characters, never single character separated from opponent. Hiro on left darkskin purplelocs blackpurple samurai; adult female darkelf on right whitebob slate skin blacksilverarmor two swords. Woman wins: 1 guards; 2 Hiro swings katana; 3 woman parries katana with left sword and strikes his armored torso with right sword bright contact flash; 4 she pivots for second diagonal cut as Hiro staggers; 5 Hiro collapses full body intact visible; 6 woman stands swords lowered beside Hiro fully visible on ground. Equal anatomical scale and same groundline within each cell. Whole body feet weapon visible. Wide transparent margins. Detailed anime cel shade like references. Transparent background no glows except small bladecontact, no labels. Six complete pairs, Hiro visible every cell.",
+    "refs": [
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v1/heroes/hiro/hiro-reference.png",
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v5/citadel-20261009/dark_swordswoman-reference.png"
+    ],
+    "source": "exec-bc88da6f-1ae8-4129-88f6-0925554ad709.png"
+  },
+  {
+    "name": "enchantress-hiro-one.png",
+    "prompt": "Exactly six paired action sprites in 2 columns 3 rows, each cell a complete two-person scene. Detailed polished anime cel shaded cutouts on TRANSPARENT background. Hiro LEFT (darkskin purplelocs blackpurple samurai) and adult enchantress RIGHT (goldbrownskin blackhair goldcirclet plumgoldrobe staff) match references. Hiro wins: 1 guards; 2 enchantress raises purple circular ward; 3 Hiro katana strikes and breaks ward; 4 Hiro follows through diagonal slash against armored robe shoulder small purple flash; 5 enchantress sinks to knees dissolving motes; 6 Hiro alone sheaths. Generous blank margins around each pair, full heads feet weapons, do not crop. Uniform body sizes. Separate every pair, no labels/background/haze. Hiro stays visible every frame.",
+    "refs": [
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v1/heroes/hiro/hiro-reference.png",
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v5/citadel-20261009/enchantress-reference.png"
+    ],
+    "source": "exec-394a8769-0d49-4510-9a99-300257ff49b9.png"
+  },
+  {
+    "name": "enchantress-hiro-two.png",
+    "prompt": "Exactly SIX paired game animation frames in a TWO COLUMN THREE ROW grid. Each cell contains the entire paired action. Reference1 Hiro darkskin purplelocs blackpurple samurai LEFT. Reference2 adult enchantress goldbrownskin blackhair plumgoldrobe staff RIGHT. Hiro wins: 1 guards; 2 enchantress sweeps staff low; 3 Hiro leaps above staff with katana overhead, both full bodies; 4 Hiro lands downward cut across her raised staff breaking its crystal in violet flash; 5 enchantress collapses dissolving purple motes; 6 Hiro alone sheaths. Polished cel shaded anime. FULL figures weapons feet WITHIN each cell with 25% empty gutters. Consistent scale. No cropped parts, no scene backgrounds, no haze, actual transparent background. No text. Hiro visible every cell.",
+    "refs": [
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v1/heroes/hiro/hiro-reference.png",
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v5/citadel-20261009/enchantress-reference.png"
+    ],
+    "source": "exec-814dfcdd-d16e-430f-8367-1cb4d9af87b6.png"
+  },
+  {
+    "name": "enchantress-fatal.png",
+    "prompt": "Exactly SIX paired game animation drawings, TWO COLUMNS THREE ROWS. Both adult characters in each cell: Hiro LEFT darkskin purplelocs blackpurple samurai; enchantress RIGHT goldbrownskin blackhair plumgoldrobe staff. Match reference identities. Enchantress wins: 1 guards; 2 she casts violet ribbons binding Hiro arms; 3 staff blast strikes his armored chest, Hiro body fully visible; 4 Hiro knocked backward full body; 5 Hiro falls prone fully visible; 6 enchantress lowers staff beside defeated Hiro who remains fully visible. Uniform anatomical size, complete bodies feet weapons always inside cell. Very generous transparent margins, absolutely no clipped body parts. Cel shaded anime polish. Actual transparent background no scenery haze or labels. Hiro visible even final frame. No blood.",
+    "refs": [
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v1/heroes/hiro/hiro-reference.png",
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v5/citadel-20261009/enchantress-reference.png"
+    ],
+    "source": "exec-46c44990-079d-482f-accf-142c88a082eb.png"
+  }
+]

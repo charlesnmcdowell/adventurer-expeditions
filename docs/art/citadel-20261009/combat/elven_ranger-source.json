@@ -1,0 +1,545 @@
+{
+  "actor": "elven_ranger",
+  "authoredFacing": -1,
+  "clips": [
+    {
+      "id": "idle",
+      "frames": 4,
+      "sources": [
+        {
+          "file": "registered-combat/elven_ranger-combat/00.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              202,
+              269
+            ]
+          ],
+          "firstFrameZeroBased": 0,
+          "sha256": "1bdfad450fb376b1a1740785737445fe04e94b44cc364b65b6cd5898da4f6405"
+        },
+        {
+          "file": "registered-combat/elven_ranger-combat/01.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              205,
+              269
+            ]
+          ],
+          "firstFrameZeroBased": 1,
+          "sha256": "abcc1ce479b9e9d3cfd72bcf0c35a1deeb85b2eabf59f1aab9963c1f8b7a8caa"
+        },
+        {
+          "file": "registered-combat/elven_ranger-combat/02.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              191,
+              265
+            ]
+          ],
+          "firstFrameZeroBased": 2,
+          "sha256": "b93c6cf4796b6c010508ac180bb569b83fd1721070e3ca315bd21b5727608e39"
+        },
+        {
+          "file": "registered-combat/elven_ranger-combat/03.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              183,
+              265
+            ]
+          ],
+          "firstFrameZeroBased": 3,
+          "sha256": "c8ee6843619b39cf49b30e565e381a4b4c02e2bdf0af95c3224f2687a2dd80c9"
+        }
+      ],
+      "durationsMs": [
+        180,
+        180,
+        180,
+        180
+      ],
+      "loop": true,
+      "contactFramesZeroBased": [],
+      "releaseFrameZeroBased": 3,
+      "registration": {
+        "referenceHeight": 260,
+        "frames": [
+          {
+            "anchorX": 63.0,
+            "groundY": 264
+          },
+          {
+            "anchorX": 64.0,
+            "groundY": 265
+          },
+          {
+            "anchorX": 43.0,
+            "groundY": 260
+          },
+          {
+            "anchorX": 46.0,
+            "groundY": 261
+          }
+        ]
+      }
+    },
+    {
+      "id": "approach",
+      "frames": 4,
+      "sources": [
+        {
+          "file": "registered-combat/elven_ranger-combat/04.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              235,
+              243
+            ]
+          ],
+          "firstFrameZeroBased": 0,
+          "sha256": "eabe5eb467891a2949a28eb6dd6ba21f946bc755c6c5b76767fdee43ef9c671c"
+        },
+        {
+          "file": "registered-combat/elven_ranger-combat/05.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              224,
+              244
+            ]
+          ],
+          "firstFrameZeroBased": 1,
+          "sha256": "24570f40227a1e7878bab90070f56c5c268f49d36a3deca9dd10300cf1dd138a"
+        },
+        {
+          "file": "registered-combat/elven_ranger-combat/06.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              240,
+              244
+            ]
+          ],
+          "firstFrameZeroBased": 2,
+          "sha256": "a154a5a46d1919d5075a784da08ac884bdfc313c2fd50092520d57e293e076e9"
+        },
+        {
+          "file": "registered-combat/elven_ranger-combat/07.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              202,
+              245
+            ]
+          ],
+          "firstFrameZeroBased": 3,
+          "sha256": "3aeb282339066fdbcc689b2384b326b88b14230ae4024adf1a78116260b3f839"
+        }
+      ],
+      "durationsMs": [
+        95,
+        95,
+        95,
+        95
+      ],
+      "loop": true,
+      "contactFramesZeroBased": [],
+      "releaseFrameZeroBased": 3,
+      "registration": {
+        "referenceHeight": 260,
+        "frames": [
+          {
+            "anchorX": 116.0,
+            "groundY": 240
+          },
+          {
+            "anchorX": 126.0,
+            "groundY": 240
+          },
+          {
+            "anchorX": 41.0,
+            "groundY": 241
+          },
+          {
+            "anchorX": 133.0,
+            "groundY": 242
+          }
+        ]
+      }
+    },
+    {
+      "id": "attack",
+      "frames": 8,
+      "sources": [
+        {
+          "file": "registered-combat/elven_ranger-combat/08.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              240,
+              255
+            ]
+          ],
+          "firstFrameZeroBased": 0,
+          "sha256": "cd1c36c7fa88baf19ebcab6a4c1de0930b76e3faa8714d1c685b1d072e6c1888"
+        },
+        {
+          "file": "registered-combat/elven_ranger-combat/09.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              234,
+              256
+            ]
+          ],
+          "firstFrameZeroBased": 1,
+          "sha256": "75d5f8232e775d27ddf558989e2737dfc7151823068391c59897ec5091eca50d"
+        },
+        {
+          "file": "registered-combat/elven_ranger-combat/10.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              272,
+              271
+            ]
+          ],
+          "firstFrameZeroBased": 2,
+          "sha256": "2a86d7331392b3e65c617b7d138c9b6dc78efe666dad556a9b8f8312dc931e8e"
+        },
+        {
+          "file": "registered-combat/elven_ranger-combat/11.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              242,
+              270
+            ]
+          ],
+          "firstFrameZeroBased": 3,
+          "sha256": "520cc3a793e311b41ef9f08997bcfb7546e8b02044cc58d2f44f49449f0ef123"
+        },
+        {
+          "file": "registered-combat/elven_ranger-combat/12.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              330,
+              305
+            ]
+          ],
+          "firstFrameZeroBased": 4,
+          "sha256": "638e705de1af273ce3655549cde09645782ed126f1479a45dace65b158d89801"
+        },
+        {
+          "file": "registered-combat/elven_ranger-combat/13.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              243,
+              260
+            ]
+          ],
+          "firstFrameZeroBased": 5,
+          "sha256": "3f84a1072e9052de01ceb4d880879c3b137da241a238377eb165bfa5cb8ad56a"
+        },
+        {
+          "file": "registered-combat/elven_ranger-combat/14.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              228,
+              254
+            ]
+          ],
+          "firstFrameZeroBased": 6,
+          "sha256": "a9e3cad6fb9e96093a34576fa88ecfea352e461c7f3e375efa86c0b98d36bd9b"
+        },
+        {
+          "file": "registered-combat/elven_ranger-combat/15.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              185,
+              254
+            ]
+          ],
+          "firstFrameZeroBased": 7,
+          "sha256": "c7c32a3a0ec661daad516ff297607a16bd832463907f4474b53c0868a607f47a"
+        }
+      ],
+      "durationsMs": [
+        90,
+        75,
+        65,
+        55,
+        90,
+        60,
+        70,
+        100
+      ],
+      "loop": false,
+      "contactFramesZeroBased": [
+        4
+      ],
+      "releaseFrameZeroBased": 7,
+      "registration": {
+        "referenceHeight": 260,
+        "frames": [
+          {
+            "anchorX": 36.0,
+            "groundY": 251
+          },
+          {
+            "anchorX": 60.0,
+            "groundY": 252
+          },
+          {
+            "anchorX": 75.0,
+            "groundY": 267
+          },
+          {
+            "anchorX": 191.0,
+            "groundY": 267
+          },
+          {
+            "anchorX": 104.0,
+            "groundY": 268
+          },
+          {
+            "anchorX": 29.0,
+            "groundY": 256
+          },
+          {
+            "anchorX": 36.0,
+            "groundY": 251
+          },
+          {
+            "anchorX": 45.0,
+            "groundY": 251
+          }
+        ]
+      }
+    },
+    {
+      "id": "hit",
+      "frames": 4,
+      "sources": [
+        {
+          "file": "registered-combat/elven_ranger-combat/16.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              254,
+              229
+            ]
+          ],
+          "firstFrameZeroBased": 0,
+          "sha256": "21d7630aef51ef749bf507bce26f92415f3fa89268e3bbfdc49597d3b73459b7"
+        },
+        {
+          "file": "registered-combat/elven_ranger-combat/17.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              264,
+              228
+            ]
+          ],
+          "firstFrameZeroBased": 1,
+          "sha256": "4e000bb13a62dbcddb3bb18d90ea6a62de047cbfbe52dabe4e3be5f9466f95bc"
+        },
+        {
+          "file": "registered-combat/elven_ranger-combat/18.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              202,
+              210
+            ]
+          ],
+          "firstFrameZeroBased": 2,
+          "sha256": "3696be776d507274cdb65556061486ea0f949f6a05adb05a12bcf4e0e8b8a351"
+        },
+        {
+          "file": "registered-combat/elven_ranger-combat/19.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              203,
+              222
+            ]
+          ],
+          "firstFrameZeroBased": 3,
+          "sha256": "839821c8ec4d86164015ebcce9678c0053c6cc2e2ff984464c23491fa2be85e4"
+        }
+      ],
+      "durationsMs": [
+        90,
+        100,
+        150,
+        220
+      ],
+      "loop": false,
+      "contactFramesZeroBased": [],
+      "releaseFrameZeroBased": 3,
+      "registration": {
+        "referenceHeight": 260,
+        "frames": [
+          {
+            "anchorX": 33.0,
+            "groundY": 225
+          },
+          {
+            "anchorX": 33.0,
+            "groundY": 224
+          },
+          {
+            "anchorX": 36.0,
+            "groundY": 206
+          },
+          {
+            "anchorX": 172.0,
+            "groundY": 218
+          }
+        ]
+      }
+    },
+    {
+      "id": "down",
+      "frames": 4,
+      "sources": [
+        {
+          "file": "registered-combat/elven_ranger-combat/20.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              217,
+              203
+            ]
+          ],
+          "firstFrameZeroBased": 0,
+          "sha256": "e81ce84f4e3438947ef737b9516290954bfd0c9330a1cf082a4120618f205ef6"
+        },
+        {
+          "file": "registered-combat/elven_ranger-combat/21.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              244,
+              167
+            ]
+          ],
+          "firstFrameZeroBased": 1,
+          "sha256": "7cf7cbf26d772e752b3bba90cab0b6c0d04dfe0b013f44742142042f59fe1077"
+        },
+        {
+          "file": "registered-combat/elven_ranger-combat/22.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              247,
+              120
+            ]
+          ],
+          "firstFrameZeroBased": 2,
+          "sha256": "649b3a1470ec68d3b0b23631cebbdbd287d0089e24aa46490deb1597a7d195e1"
+        },
+        {
+          "file": "registered-combat/elven_ranger-combat/23.png",
+          "frames": 1,
+          "regions": [
+            [
+              0,
+              0,
+              240,
+              107
+            ]
+          ],
+          "firstFrameZeroBased": 3,
+          "sha256": "2582292ed1f6c8242bf7082340ba336e55fe7d9051a5ec695e62f9b06fac3fab"
+        }
+      ],
+      "durationsMs": [
+        90,
+        100,
+        150,
+        220
+      ],
+      "loop": false,
+      "contactFramesZeroBased": [],
+      "releaseFrameZeroBased": 3,
+      "registration": {
+        "referenceHeight": 260,
+        "frames": [
+          {
+            "anchorX": 116.0,
+            "groundY": 199
+          },
+          {
+            "anchorX": 108.0,
+            "groundY": 164
+          },
+          {
+            "anchorX": 111.0,
+            "groundY": 94
+          },
+          {
+            "anchorX": 107.0,
+            "groundY": 77
+          }
+        ]
+      }
+    }
+  ],
+  "status": "combat preview; pairs and gameplay pending"
+}
