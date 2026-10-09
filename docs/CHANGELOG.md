@@ -15,6 +15,12 @@ of small fixes within a day.
 
 ---
 
+## 2026-10-08 - Coast combat QA (review only)
+
+Reviewed all 116 packed Coast drawings and frame timing, reran npm test, browser_coast_combat.js and browser_coast_scenery.js; all automated checks passed in installed Chrome. Visual release approval withheld: Hydra attack frame 3 / hit frame 2 need five-head continuity repair; crab attack 2-to-3 needs a smoother raised-claw-to-extension transition; toad approach frame 1 needs a hop-height anchor rather than pinning its lowest toe to the floor. The per-species gallery fit is not proof of relative size beside Hiro or paired-finisher continuity. No neighbor-frame fragments or rectangular matte observed in the cleaned contact sheets.
+
+Added docs/art/coast-20261008/QA.md with findings, limits and targeted repair order. Contact sheets and metrics in test/reports/coast/qa. No gameplay/art changes, regeneration, deployment or quest unlock. Coast remains unfinished. Checkpoint 53bc274.
+
 ## 2026-10-08 - Coast combat atlas intake and twelve-pose attacks
 
 Continued the approved Coast production from checkpoint 4b25319. Added new twelve-pose attack masters for Tidal Crab (pincer snap), Brine Toad (tongue lash), Carrion Vulture (talon swoop), and Wreck Hydra (neck bite). Reused the saved four-pose idle/approach/hit/down sets and Hydra enrage. Review atlases now contain 116 frames total (28 crab, 28 toad, 28 vulture, 32 Hydra), replacing 16 draft attack drawings with 48. Attack preview timing is 690 ms, contact at zero-based frame 6. This has NOT changed live combat timing or balance.
