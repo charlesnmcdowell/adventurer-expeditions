@@ -15,6 +15,16 @@ of small fixes within a day.
 
 ---
 
+## 2026-10-09 — Unified visual review workspace
+
+Added docs/ART_REVIEW.html: one selectable player for 71 items (33 Hiro finishers, 18 enemy finishers, six complete travel scenes, six obstacle action sheets, seven battle settings, and Hiro's normal run). Uses current runtime travel/scenery renderers; pose/finisher inspection uses packed atlases and authored timing with a fixed camera. Raw pose mode intentionally omits the cinematic camera and separate blood overlay, and labels that limitation. No art or gameplay changes.
+
+Controls include location/type filters, play/pause/replay, quarter/half speed, timeline scrubbing, individual frame stepping, previous-pose ghosting, weather previews, frame screenshots, stable item links, and browser-saved rework/removal notes with copy/download export. A separate action view exposes every pose, including poses outside the playable travel action range. Game scenes never boot; review notes use their own storage key. Existing FINISHER_REVIEW.html now links here and its stale 27-item heading correctly says 51.
+
+User finding confirmed, not silently fixed: Citadel portal entrance/exit/run-out repeats the same leading-leg extension and can read as a long sliding step. It is explicitly flagged on both Citadel review views, awaiting the user's consolidated rework list.
+
+Files: tools/build_art_review.js, tools/art_review.template.html, docs/art_review.js, docs/ART_REVIEW.html, tools/finisher_review.template.html, docs/FINISHER_REVIEW.html, test/browser_visual_review.js. Browser QA loads all 71 items, verifies their distinct atlas identifiers and last-frame access, weather and filters, note export, desktop/390px layout, and preservation of sentinel save/preferences. Evidence: test/reports/visual-review. Rebuild with node tools/build_art_review.js after changing runtime art/modules. No live Adventurer writes, publishing, or added runtime download bytes.
+
 ## 2026-10-09 — Combat and layered travel polish (local edition)
 
 Corrected the dark-elven swordswoman's four idle poses and two recovery poses to face Hiro. Mirrored only those source derivatives and their anchors; attacks and paired art retain their authored directions.
