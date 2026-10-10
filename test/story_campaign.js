@@ -20,6 +20,17 @@ assert.equal(S.nextPhase(s),'opener');
 s.record.queue=[];S.nextPhase(s);assert.equal(s.record.phase,'combat');
 assert.throws(()=>S.beginFight(s),/art not ready/,'never pass portraits off as complete animated opponents');
 for(const id of S.opponentIds(s))S.bindings[id]={combatReady:true,enemyFinisherReady:true,hiroFinishersReady:2,humanoid:true,minDistinctFrames:16,goreBothDirections:true};
+// A readiness declaration cannot quietly waive the user's doubled-frame rule.
+const checkedId=S.opponentIds(s)[0],readyBinding={...S.bindings[checkedId]};
+for(const patch of [{hiroFinishersReady:undefined},{hiroFinishersReady:1},{minDistinctFrames:undefined},{minDistinctFrames:NaN},{minDistinctFrames:15},
+  {goreBothDirections:false},{goreBothDirections:'yes'},{plannedFrames:12,minDistinctFrames:23},
+  {plannedFrames:0},{plannedFrames:'12'}]){
+  S.bindings[checkedId]={...readyBinding,...patch};
+  assert(S.readiness(s).includes(checkedId),'unverified humanoid finisher must remain gated: '+JSON.stringify(patch));
+}
+S.bindings[checkedId]={...readyBinding,plannedFrames:12,minDistinctFrames:24};
+assert(!S.readiness(s).includes(checkedId),'12 planned drawings require 24 distinct drawings');
+S.bindings[checkedId]=readyBinding;
 assert.equal(S.beginFight(s).tutorial,true);assert.deepEqual(S.beginFight(s).allies,[]);
 s.record.completed=[1];s.record.run.score=900;s.hero.inventory.gold=10;
 S.defeat(s);const loaded=S.open(S.load());S.retry(loaded);

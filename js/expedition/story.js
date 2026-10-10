@@ -49,8 +49,13 @@ S.opponentIds=function(session){
 };
 S.readiness=function(session){
   return S.opponentIds(session).flatMap(id=>{const b=S.bindings[id];
-    if(!b||!b.combatReady||!b.enemyFinisherReady||b.hiroFinishersReady<2)return [id];
-    if(b.humanoid&&(b.minDistinctFrames<Math.max(16,2*(b.plannedFrames||8))||!b.goreBothDirections))return [id];
+    if(!b||b.combatReady!==true||b.enemyFinisherReady!==true||!Number.isInteger(b.hiroFinishersReady)||b.hiroFinishersReady<2)return [id];
+    // Missing frame evidence must fail closed, not pass via undefined < N.
+    if(b.humanoid){
+      const baseline=b.plannedFrames===undefined?8:b.plannedFrames;
+      if(!Number.isInteger(baseline)||baseline<1||!Number.isInteger(b.minDistinctFrames)||
+        b.minDistinctFrames<Math.max(16,2*baseline)||b.goreBothDirections!==true)return [id];
+    }
     return [];
   });
 };

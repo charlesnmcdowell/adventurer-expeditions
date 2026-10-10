@@ -16,6 +16,7 @@ Updated 9 October 2026. This is an unfinished expansion, not a release candidate
 
 - Humanoid finishers contain gore in BOTH directions: Hiro against the enemy, and enemy against Hiro.
 - Double the planned number of distinct drawings. Minimum 16 per new humanoid move; a planned 12-frame clip requires 24. Repeated images, interpolated holds and playback slowdowns do not count as additional drawings.
+- Intake readiness rejects missing/invalid frame counts and missing gore confirmation. These declarations still require visual frame-by-frame review; a number in a manifest is not proof of animation quality.
 - At least two matching Hiro pairs and one enemy-on-Hiro pair for every campaign enemy identity. Every pair must preserve both identities, relative body scale and hand/weapon contact through impact and recovery.
 - Use the approved sprite-cleanup pilot: inspect neighboring-cell bleed, alpha/mattes, foot anchors, fixed anatomical scale, distinct poses, correct facing, complete visible bodies and final-state continuity before runtime intake.
 - Escaping/spared named opponents keep the source's survival outcome. A lethal dismemberment cannot run before later dialogue with that same character. The adapter retains `noEscape` choice overrides; final combat integration must respect them.
