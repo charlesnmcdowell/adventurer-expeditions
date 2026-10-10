@@ -239,6 +239,7 @@ class Actor {
     if (!target || !target.alive || target._destroyed) return false;
     // Sep20: every resolved kill may finish, not only the wave's last foe.
     if (/finisher/.test(clip) && !opts.lethal) return false;
+    if (/finisher/.test(clip) && target.unit?.ch?.campaignExit) return false;
     if (!Array.isArray(c.opponentKinds) || !c.opponentKinds.includes(target.kind)) return false;
     // The pair is eligible when the target is the creature in the painting —
     // the same painted SET, not the same entity id (Hiro, 2026-09-22: "why is

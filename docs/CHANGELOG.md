@@ -15,6 +15,18 @@ of small fixes within a day.
 
 ---
 
+## 2026-10-09 — First playable story battle and campaign media continuation
+
+The development campaign now enters Nib's actual Expeditions battle, teaches the first-fight controls, plays either of two Hiro finishers or Nib's defeat finisher, retries with checkpoint health after a loss, and returns to the next original story beat after a win. The browser played opening choices → tutorial fight → victory arrow → next encounter's dialogue and verified reload preserves the result. Main `index.html` remains Arcade; the full campaign is NOT finished.
+
+Nib's 36 ordinary poses and three 16-drawing pairs are registered and intaken (84 drawings total). Repaired clipped/neighbor-overlapping drafts before intake. Both Hiro pairs and the enemy pair have painted blood, measured anchors and authored timing. Browser playback verified all sixteen frames per pair, native-atlas restoration, lethal-DOT defeat presentation, camera zoom 1 and retry. This is a development-playtest candidate, not approval of all campaign enemies. Cobb's next source set has begun; the first approach sheet is held for repeated leading-leg poses and is not enabled.
+
+Copied/hash-verified all 974 referenced original campaign media files into edition-owned storage (43 opening assets previously). Original dialogue and recordings remain unchanged. Added original scene/still routing and chapter/battle music selection. Added an edition combat adapter preserving the authored opponent kits, branches and source escape flags; all 55 default encounter slots plus three branch variants map to identified opponents. Only Nib currently passes art readiness. Campaign-owned run saves now intercept inherited HUD/director saves so they cannot overwrite Arcade. Escaping characters cannot use a lethal paired finisher while their survival flag is set.
+
+Files: story state/combat/art/presentation/scene modules; additive `encounter.js` prepared-foes support; actor escape guard; enemy-finisher actor registration; story preview/templates/import/build tools; Nib build tool, source records, runtime atlases and review page; tests `story_combat`, `browser_story_art`, `browser_story_fight`, expanded `browser_story_preview`. Existing original-game files and the unrelated `docs/ART_REVIEW_20261009.md` are untouched. No publishing or new voice generation.
+
+Validation: `npm test` and `npm run test:ship` pass. Story simulation/identity tests, first-battle lifecycle browser test, raw art inspection and original-dialogue-to-battle browser flow pass. The whole 14-chapter campaign, later art, solo balance, complete cutscene presentation and final title boot still require work; see `STORY_CAMPAIGN_PRODUCTION.md`.
+
 ## 2026-10-09 — Portal repair and story-campaign foundation (campaign not complete)
 
 Latest art requirement recorded: humanoid finishers have gore in both directions and double the planned distinct drawings (8 → 16; 12 → 24). Story readiness now rejects absent/invalid frame evidence and finisher counts, insufficient doubled counts, and absent gore confirmation. Regression checks pass; this is an intake safeguard, not a claim that the unfinished finisher drawings have passed visual QA.

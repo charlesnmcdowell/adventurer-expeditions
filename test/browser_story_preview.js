@@ -23,11 +23,32 @@ const server=http.createServer((req,res)=>{const rel=decodeURIComponent(req.url.
     await page.getByText('The road ahead',{exact:true}).waitFor();await page.screenshot({path:path.join(OUT,'pending-combat.png')});
     await page.reload();await button('Continue campaign preview').waitFor();
     await button('Continue campaign preview').click();await page.getByText('The road ahead',{exact:true}).waitFor();
+    await button('Begin fight').click();const frame=await page.locator('iframe').elementHandle().then(e=>e.contentFrame());
+    await frame.waitForFunction(()=>window.storyGame?.scene.getScene('StoryBattle')?.hero);
+    const lessons=new Set();let won=false;
+    for(let start=Date.now();Date.now()-start<180000;){
+      await page.waitForTimeout(180);
+      const state=await frame.evaluate(()=>{const s=storyGame.scene.getScene('StoryBattle'),h=s.hud;return{phase:s.story.record.phase,gate:h._gateFor,rect:h._gateRect,arrow:s.arrowArmed,arrowRect:h.arrow.rect,hp:s.hero.unit.chp};});
+      if(state.phase==='defeat')throw Error('Opening tutorial lost before completion');
+      const rect=state.arrow?state.arrowRect:state.rect;
+      if(rect){const canvas=await frame.locator('canvas').boundingBox();const x=canvas.x+(rect.x+rect.w/2)*canvas.width/1280,y=canvas.y+(rect.y+rect.h/2)*canvas.height/760;
+        if(state.gate?.startsWith('use:'))lessons.add(state.gate);
+        await page.mouse.click(x,y);await page.waitForTimeout(250);
+        if(state.arrow){won=true;break;}
+      }
+    }
+    assert(won,'first fight must return through its actual victory arrow');
+    assert(lessons.has('use:counter_attack'),'first actual battle teaches Counter Attack');
+    await page.waitForFunction(()=>!document.querySelector('iframe')&&window.storyPreview?.record.encounter===1);
+    await page.screenshot({path:path.join(OUT,'after-first-fight.png')});
+    assert.equal(await page.evaluate(()=>storyPreview.record.outcomes['1:0']),'combat');
+    await page.reload();await button('Continue campaign preview').click();
+    assert.equal(await page.evaluate(()=>storyPreview.record.encounter),1,'reload keeps the won fight');
     await button('Title').click();
     for(const width of [375,390]){await page.setViewportSize({width,height:width===375?667:844});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);await page.screenshot({path:path.join(OUT,'title-'+width+'.png')});}
     assert(media.some(u=>u.includes('q1_wake_1.mp3')),'original opening recording requested');assert(media.some(u=>u.includes('vg_lanternhold.mp3')),'original quest music requested');
     assert.equal(await page.evaluate(()=>localStorage.getItem('adv:sentinel')),'keep');assert.equal(await page.evaluate(()=>localStorage.getItem('adventurer_expeditions_arcade_v1')),'keep arcade');
-    assert.deepEqual(errors,[]);fs.writeFileSync(path.join(OUT,'verification.json'),JSON.stringify({errors,media,viewports:[1280,375,390],combat:'deliberately blocked pending art'},null,2));
-    console.log('story preview: title, original voice/music, ask/reply choices, resume, art gate and mobile layout passed');
+    assert.deepEqual(errors,[]);fs.writeFileSync(path.join(OUT,'verification.json'),JSON.stringify({errors,media,viewports:[1280,375,390],combat:'Nib won through actual tutorial and returned to the story',lessons:[...lessons]},null,2));
+    console.log('story preview: original dialogue/audio, first battle tutorial and win, return to story, reload and mobile layout passed');
   }finally{await browser.close();server.close();}
 })().catch(e=>{console.error(e);server.close();process.exitCode=1;});

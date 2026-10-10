@@ -146,7 +146,7 @@ Enc.create = function (opts) {
     // A pack of bosses (the loop rules) shares its strength: X.bossShare.
     const bossCount = encDef.rival ? 0 : encDef.enemies.filter(k => X.enemies[k] && X.enemies[k].boss).length;
     const share = (X.bossShare && X.bossShare[bossCount]) || 1;
-    foes = encDef.rival ? X.Campaign.rival(encDef.rival).members.map((m, i) => Enc.makeRival(rng, encDef.rival, m, i))
+    foes = opts.foes ? opts.foes : encDef.rival ? X.Campaign.rival(encDef.rival).members.map((m, i) => Enc.makeRival(rng, encDef.rival, m, i))
                         : encDef.enemies.map(k => Enc.makeEnemy(rng, k, X.enemies[k] && X.enemies[k].boss ? scale * share : scale));
   } finally { if (nextId != null && A.Character.resetIds) A.Character.resetIds(nextId); }
   for (const c of allies) { c.alive = true; }

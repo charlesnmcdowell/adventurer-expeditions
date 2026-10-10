@@ -6,6 +6,8 @@ const X = ADV.Expedition, F = X.EnemyFinishers = {};
 const PREF = 'expeditions.enemyFinishers.v1';
 const READY = new Set(['alpha', 'wolf', 'plant', 'serpent', 'beetle', 'moss_giant', 'hag', 'goblin', 'spider', 'orc', 'crab', 'toad', 'vulture', 'hydra', 'elven_wizard', 'elven_ranger', 'dark_swordswoman', 'enchantress']);
 const keyFor = actor => 'xp_' + actor + '_fatal';
+// Edition-owned campaign intake can register an additional completed actor set.
+F.registerActor = actor => {if(!/^[a-z0-9_]+$/.test(actor))throw Error('Invalid finisher actor');READY.add(actor);};
 // Website players get the feature without having to discover the pause toggle.
 // Preserve an explicit opt-out; portal policy remains independently enforced.
 let selected = true;

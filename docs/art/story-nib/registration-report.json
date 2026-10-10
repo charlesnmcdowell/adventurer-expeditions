@@ -1,0 +1,10 @@
+{
+  "status": "review-only",
+  "ordinaryFrames": 36,
+  "hiroFinisherFrames": [
+    16,
+    16
+  ],
+  "enemyFinisherFrames": 16,
+  "warnings": []
+}

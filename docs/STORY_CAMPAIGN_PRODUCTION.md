@@ -9,8 +9,9 @@ Updated 9 October 2026. This is an unfinished expansion, not a release candidate
 - Edition-owned story adapter reuses the existing, source-identical `ADV.Campaign3` and `ADV.GateFinale` functions. It does not flatten branching dialogue, discard their late-game history hooks, or replace the original core files.
 - Independent save `adventurer_expeditions_story_v1`; only a marked story world is intercepted by the save adapter. Arcade and original `adv:*` saves are unaffected.
 - Pre-fight checkpoint, retry, completed chapters, actual encounter outcomes, first-real-fight tutorial marker and explicit empty combat-allies list. The source story company remains available to dialogue conditions.
-- Separate development title/prologue/choice preview, with original Lanternhold music and recordings. It stops explicitly before unfinished combat. Default `index.html` remains the existing playable Arcade; the new main campaign boot awaits finished combat content.
-- Nib identity reference reconciles his named dialogue portrait/clothing with a new full body. 36 ordinary combat drawings drafted (4 idle, 8 approach, 12 attack, 4 hit, 8 down), not packed or combat-ready yet.
+- Separate development title/prologue/choice preview, with original Lanternhold music and recordings. Nib's first fight is now playable; later unready fights still stop explicitly. Default `index.html` remains the existing playable Arcade; the new main campaign boot awaits finished combat content.
+- Nib's 36 ordinary combat drawings and three 16-drawing paired finishers are registered and intaken (84 total). The browser verifies both Hiro pairs, lethal-DOT enemy finisher, camera reset and retry. Raw review is at `docs/art/story-nib/`.
+- All 974 original media files copied and hash-verified in edition-owned storage, with original scene/still and chapter/combat music routing. Source skills and identity mapping verified across 55 encounter slots and three branch variants. Later fights still require their own art and solo balance.
 
 ## Binding art requirements
 
@@ -24,9 +25,9 @@ Updated 9 October 2026. This is an unfinished expansion, not a release candidate
 
 ## Next work, in dependency order
 
-1. Finish Nib's paired moves and register the ordinary set. The first eight-frame overhead-pair draft is on QA hold: uneven gutters and a clipped far-right opponent. It has NOT been packed or substituted into the game.
+1. Nib first-fight art/intake and tutorial/return/retry flow are complete for development playtest. Keep the rejected early pair drafts out of runtime. Continue Cobb's ordinary/pair sets; first approach draft is held for repeated leg poses.
 2. Finish the other prologue opponents (Cobb, Hired Knife, Consortium Mage). Bind their source skills to the Expeditions simulation with solo-Hiro balance, correct name/art and explicit art-readiness checks. No portrait or unrelated-enemy fallback.
-3. Integrate first battle tutorial, cutscene → combat → cutscene routing, pre-fight health/cooldown restore, victory history and full defeat-finisher → retry presentation. The current unit tests cover the state adapter, not a playable campaign battle.
+3. First battle tutorial, dialogue → combat → dialogue, victory history and defeat-finisher → retry are browser-tested. Extend those checks to multi-opponent fights, peaceful bypass of the first encounter, chapter transitions and later irreversible events as their art becomes available.
 4. Complete original character/cutscene presentation. The preview currently demonstrates dialogue/choices over the opening setting; it is not the complete original scene renderer. Preserve letter-reading, father death, prison, dreams, mine outcomes, Hiwot's soul event and both finale choices.
 5. Build remaining enemy sets by chapter using `STORY_CAMPAIGN_INVENTORY.md`. Review shared creature reuse individually; original portraits are references, not finished combat animation. Do not interpret 59 identity entries as 59 newly approved art sets.
 6. Adapt original locations to grounded side-view combat; preserve distance → animated scenery/weather → character/contact ground, no foreground obstruction. Keep indoor weather appropriate. Reuse original music per chapter and named battle cues.

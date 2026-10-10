@@ -6,6 +6,8 @@ const A=ADV,X=A.Expedition,C=A.Campaign3;
 const S=X.Story={version:1,saveKey:'adventurer_expeditions_story_v1',bindings:{}};
 const copy=x=>JSON.parse(JSON.stringify(x));
 let memory=null;
+const runSessions=new WeakMap(),arcadeSave=X.Run.save;
+X.Run.save=function(run){const session=run&&runSessions.get(run);return session?{ok:S.save(session)}:arcadeSave.call(this,run);};
 function storage(){try{if(typeof localStorage!=='undefined')return localStorage;}catch(_){}return null;}
 S.save=function(session){
   if(!session)return false;
@@ -32,6 +34,7 @@ S.open=function(record){
   const world=X.Campaign.buildWorld(r.run);world.restoreIds();
   const session={record:r,game:world.game,hero:world.hero};
   session.game.meta.c3=r.c3;session.game.__expeditionStory=session;
+  runSessions.set(r.run,session);
   session.hero.inventory.gold=r.gold||0;
   S.syncQuest(session);return session;
 };
@@ -67,7 +70,7 @@ S.beats=function(session){
   if(r.phase==='opener')beats=C.openerBeats(g,q,r.encounter);
   if(r.phase==='closing')beats=C.closingBeats(g,q);
   if(r.phase==='arrival')beats=C.arrivalBeats(g,r.chapter);
-  r.queue=copy(beats);S.save(session);return r.queue;
+  r.queue=copy(S.Presentation?.data?S.Presentation.annotate(session,beats):beats);S.save(session);return r.queue;
 };
 S.applyBeat=function(session,beat){C.applyBeat(session.game,beat);S.save(session);};
 S.options=(session,choice)=>C.options(session.game,choice);
@@ -116,7 +119,7 @@ S.retry=function(session){
   r.chapter=c.chapter;r.encounter=c.encounter;r.run=copy(c.run);r.c3=copy(c.c3);r.gold=c.gold;r.phase='combat';r.queue=null;
   session.game.meta.c3=r.c3;session.hero.inventory.gold=r.gold;
   // Retry with at least the pre-fight health; never turn a loss into a new run.
-  const rebuilt=S.open(r);Object.assign(session,rebuilt);session.game.__expeditionStory=session;
+  const rebuilt=S.open(r);Object.assign(session,rebuilt);session.game.__expeditionStory=session;runSessions.set(session.record.run,session);
   S.save(session);return session;
 };
 S.victory=function(session,units=[]){

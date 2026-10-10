@@ -14,6 +14,13 @@ function collect(){
   // Extract only literal route tables. Do not execute source rendering hooks.
   const literal=name=>{const m=artCode.match(new RegExp('const '+name+'=G\\.'+name+'=(\\{[\\s\\S]*?\\n\\});'));if(!m)throw Error('Missing route table '+name);return vm.runInNewContext('('+m[1]+')',{}, {timeout:1000});};
   const routes=literal('encounterRoutes'),journeys=literal('journeys');
+  const cinema=fs.readFileSync(path.join(SOURCE,'js/ui/gate_cinema.js'),'utf8');
+  const presentation={};
+  for(const name of ['departures','arrivals','changes','phases']){
+    const match=cinema.match(new RegExp('const '+name+'=(.+);'));
+    if(!match)throw Error('Missing scene routing '+name);
+    presentation[name]=vm.runInNewContext('('+match[1]+')',{}, {timeout:1000});
+  }
   const art=A.GateManifest;
   art.environments.morrak_realm={file:'assets/anime/gate/v1/runtime/environment_morrak_realm.webp',width:1774,height:887,indoor:true};
   for(const id of ['hiwot_sacrifice','hiwot_bound'])art.stills[id]={file:'assets/anime/gate/v1/runtime/still_'+id+'.webp',width:1536,height:1024};
@@ -32,7 +39,7 @@ function collect(){
     chapters:D.CAMPAIGN3_QUESTS,scripts:D.CAMPAIGN3_SCRIPT,choices:D.CAMPAIGN3_CHOICES,dialogue:D.CAMPAIGN3_DIALOGUE.gate,
     characters:D.CAMPAIGN_CHARS,enemies:D.CAMPAIGN_ENEMIES,minibosses:D.CAMPAIGN_MINIBOSSES,music:D.CAMPAIGN3_MUSIC,
     endings:D.CAMPAIGN3_ENDINGS,epilogue:D.CAMPAIGN3_EPILOGUE,epilogueVoice:D.GATE_EPILOGUE_VO,courtship:D.CAMPAIGN3_COURTSHIP,
-    art,routes,journeys,combatRoster:[...foes.values()],assets:[...assets.values()],provenance};
+    art,routes,journeys,presentation,combatRoster:[...foes.values()],assets:[...assets.values()],provenance};
   return JSON.parse(JSON.stringify(result));
 }
 function main(){
