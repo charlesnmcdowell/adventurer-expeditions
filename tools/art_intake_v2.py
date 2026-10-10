@@ -111,7 +111,7 @@ def pack_pages(frames,max_w,max_h,pad=2):
         positions[k]=(pi,x+pad,y+pad)
     return pages,positions
 
-def build(src,hero,out,height=360,quality=82,manifest=None,clip_ids=None,max_w=2048,max_h=4096,tolerance=22):
+def build(src,hero,out,height=360,quality=82,manifest=None,clip_ids=None,max_w=2048,max_h=4096,tolerance=22,lossless=False):
     src=Path(src);out=Path(out)/hero
     man=manifest if isinstance(manifest,dict) else json.loads(Path(manifest or src/'manifest.json').read_text(encoding='utf-8-sig'))
     clips=[c for c in man['clips'] if not clip_ids or c['id'] in clip_ids]
@@ -138,8 +138,9 @@ def build(src,hero,out,height=360,quality=82,manifest=None,clip_ids=None,max_w=2
                 w=round((co+1)*sheet.width/cols)-x;h=round((r+1)*sheet.height/rows)-y
             if min(x,y)<0 or min(w,h)<=0 or x+w>sheet.width or y+h>sheet.height:raise ValueError(f'{hero}/{c["id"]}: invalid source rectangle')
             cell=sheet.crop((x,y,x+w,y+h))
-            authored_alpha=sum(cell.getchannel('A').histogram()[:20])>w*h*.01
-            rgba,box=key_cell(cell,source.get('matteTolerance',c.get('matteTolerance',tolerance)),
+            preserve=bool(source.get('preservePixels'))
+            authored_alpha=preserve or sum(cell.getchannel('A').histogram()[:20])>w*h*.01
+            rgba,box=(cell.convert('RGBA'),(0,0,w,h)) if preserve else key_cell(cell,source.get('matteTolerance',c.get('matteTolerance',tolerance)),
                 source.get('enclosedMatteTolerance',c.get('enclosedMatteTolerance',7)))
             polygons=source.get('sourceClipPolygons')
             polygon=polygons[i] if polygons else (c.get('sourceClipPolygons') or [None]*c['frames'])[ix]
@@ -147,7 +148,7 @@ def build(src,hero,out,height=360,quality=82,manifest=None,clip_ids=None,max_w=2
             # must never trick the alpha test into skipping RGB-board keying.
             rgba=clip_polygon(rgba,polygon)
             if not authored_alpha and not polygon:rgba=discard_neighbor_fragments(rgba)
-            box=rgba.getchannel('A').getbbox()
+            box=(0,0,w,h) if preserve else rgba.getchannel('A').getbbox()
             if not box:raise ValueError(f'{hero}/{c["id"]}/{ix}: empty foreground')
             guides=guides_list[ix]
             ref=guides.get('referenceHeight',source.get('referenceHeight',reg.get('referenceHeight')))
@@ -203,7 +204,7 @@ def build(src,hero,out,height=360,quality=82,manifest=None,clip_ids=None,max_w=2
     # written JSON after a failed source validation or WebP encode.
     with tempfile.TemporaryDirectory(prefix=hero+'-intake-') as tmp:
         temp=Path(tmp)
-        for tex,im in zip(textures,images):im.save(temp/tex['image'],'WEBP',quality=quality,method=6)
+        for tex,im in zip(textures,images):im.save(temp/tex['image'],'WEBP',quality=quality,method=6,lossless=lossless)
         (temp/f'{hero}.json').write_text(json.dumps(doc,separators=(',',':')),encoding='utf-8')
         for tex in textures:shutil.copyfile(temp/tex['image'],out/tex['image'])
         shutil.copyfile(temp/f'{hero}.json',out/f'{hero}.json')

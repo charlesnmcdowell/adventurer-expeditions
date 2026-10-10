@@ -19,23 +19,23 @@ Travel.preload = function (scene) {
   if (!scene.cache.json.exists(key)) scene.load.json(key, base + 'scene.json');
   if (!scene.textures.exists(key + '_plate')) scene.load.image(key + '_plate', base + 'plate.webp');
   if (!scene.textures.exists(key + '_actions')) scene.load.multiatlas(key + '_actions', base + 'actions.json', base);
-  for (const layer of ['far','ground','near']) if (!scene.textures.exists(key + '_' + layer)) scene.load.image(key + '_' + layer, base + 'atmosphere-' + layer + '.webp');
+  for (const layer of ['far','ground']) if (!scene.textures.exists(key + '_' + layer)) scene.load.image(key + '_' + layer, base + 'atmosphere-' + layer + '.webp');
   if (!scene.textures.exists(key + '_loops')) scene.load.spritesheet(key + '_loops', base + 'loops.webp', { frameWidth: 256, frameHeight: 192 });
 };
 Travel.paint = function (scene) {
   const id = scene.__travelArtId, key = 'travel_' + id, d = scene.cache.json.get(key);
-  if (!d || ['actions','plate','far','ground','near'].some(layer => !scene.textures.exists(key + '_' + layer))) {
+  if (!d || ['actions','plate','far','ground'].some(layer => !scene.textures.exists(key + '_' + layer))) {
     X.Painted.failed(scene, 'Travel artwork could not load.'); return { ready: Promise.resolve(false), setDepth() {} };
   }
   const root = scene.add.container(0, 0).setDepth(-10);
   const atmosphere = scene.add.container(0,0), actionWorld = scene.add.container(0,0);
   root.add([atmosphere,actionWorld]);
   const layerWidth = 2280, runSpeed = 420;
-  const layers = ['far','ground','near'].map((name,index) => {
-    const container = scene.add.container(0,0), factor = [0.07,1,1.5][index];
+  const layers = ['far','ground'].map((name,index) => {
+    const container = scene.add.container(0,0), factor = [0.07,1][index];
     atmosphere.add(container);
-    const height=name==='ground'?(d.groundLayerHeight||1100):name==='near'?500:760;
-    for(let i=-1;i<=2;i++) container.add(scene.add.image(i*layerWidth,760-height,key+'_'+name).setOrigin(0).setDisplaySize(layerWidth,height).setFlipX(name==='near'&&Math.abs(i%2)===1));
+    const height=name==='ground'?(d.groundLayerHeight||1100):760;
+    for(let i=-1;i<=2;i++) container.add(scene.add.image(i*layerWidth,760-height,key+'_'+name).setOrigin(0).setDisplaySize(layerWidth,height));
     return {container,factor,name};
   });
   const clouds=X.Atmosphere.create(scene,atmosphere,{night:id.includes('citadel')||id.includes('swamp')});
@@ -50,16 +50,17 @@ Travel.paint = function (scene) {
   const runner = scene.add.sprite(650,612,runSheet.key,runClip.frames[0]);
   runner.setOrigin(runSheet.canvas.pivot.x/runSheet.canvas.w,runSheet.canvas.pivot.y/runSheet.canvas.h).setScale(300/runSheet.standing);
   const shadow = scene.add.ellipse(650,617,92,15,0x070c12,.25);
-  // Ground behind Hiro, close vegetation in front, all at separate scroll rates.
+  // The front plane belongs to Hiro and his contact surface. No scenery crosses it.
   atmosphere.add([shadow,runner]);
-  const glints=scene.add.graphics();atmosphere.add(glints);
+  const glints=scene.add.graphics();atmosphere.addAt(glints,atmosphere.getIndex(layers[1].container));
   const plate=scene.add.image(0,d.plateY||0,key+'_plate').setOrigin(0).setDisplaySize(d.width,760);
   const hero=scene.add.sprite(0,0,key+'_actions',d.frames[0].name);
   hero.setOrigin(d.pivot.x/d.canvas.w,d.pivot.y/d.canvas.h).setScale(d.heroScale);
   actionWorld.add([plate,hero]);
   const actionLights=X.Atmosphere.lights(scene,actionWorld,(anchorSet['plate.webp']||[]).map(([x,y,s])=>[x*d.width,y*760+(d.plateY||0),s]));
-  // Foreground is a real independent plane even while the obstacle is on screen.
-  root.add(layers[2].container);
+  // Weather lives between distance and contact art, including during obstacles.
+  root.mountWeather=handle=>{if(handle?.container)atmosphere.addAt(handle.container,atmosphere.getIndex(layers[1].container));};
+  root.layerOrder=['distance','weather-scenery','hero-ground'];
   const loops=(d.loops||[]).map(p=>{
     const s=scene.add.sprite(p.x,p.y,key+'_loops',p.row*4).setOrigin(.5,1).setScale(p.scale||1).setAlpha(p.alpha==null?1:p.alpha);
     actionWorld.add(s);return {s,p};
@@ -79,7 +80,7 @@ Travel.paint = function (scene) {
     // Distance is speed * time, never a tiny fixed distance stretched in time.
     const distance=t*runSpeed/1000;
     clouds.draw(t);lamps.forEach(l=>l.draw(t));actionLights.draw(t);
-    for(const l of layers) l.container.x=-((distance*l.factor+(l.name==='far'?650:0))%(l.name==='near'?layerWidth*2:layerWidth));
+    for(const l of layers) l.container.x=-((distance*l.factor+(l.name==='far'?650:0))%layerWidth);
     let clock=runningTime%runCycle,frame=0;
     while(frame<runTimes.length-1&&clock>=runTimes[frame])clock-=runTimes[frame++];
     runner.setFrame(runClip.frames[frame]);

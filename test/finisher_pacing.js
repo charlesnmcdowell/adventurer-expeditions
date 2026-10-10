@@ -12,7 +12,8 @@ for(const id of ids){
   if(!c.paired||!name.startsWith('hiro-')){assert.equal(s.clips[name],c);continue;}
   const next=s.clips[name];assert.equal(next.frames,c.frames);assert.equal(next.contact,c.contact);assert.equal(next.release,c.release);
   assert.equal(next.durationMs,next.frameDurationsMs.reduce((a,b)=>a+b,0));assert(next.durationMs>=1400&&next.durationMs<=1700);
-  if(c.frames.length===16){assert.equal(next.durationMs,1620);assert.equal(next.contact[0],6);assert.equal(next.victimFullyGoneFrame,11);}
+  if(c.preserveTiming){assert.equal(next.durationMs,c.durationMs);assert.deepEqual(next.frameDurationsMs,c.frameDurationsMs);}
+  else if(c.frames.length===16){assert.equal(next.durationMs,1620);assert.equal(next.contact[0],6);assert.equal(next.victimFullyGoneFrame,11);}
   else if(c.frames.length===12){assert.equal(next.durationMs,c.durationMs);assert(next.frameDurationsMs.every(v=>v>0));assert(c.contact.includes(c.primaryImpactFrame));}
   else{assert(next.durationMs>c.durationMs);assert(next.frameDurationsMs[0]>=240);assert(next.frameDurationsMs.at(-1)>=300);}checked++;
  }

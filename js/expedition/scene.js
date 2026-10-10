@@ -64,6 +64,7 @@ class ExpeditionScene extends Phaser.Scene {
       if (this.weatherFx && this.weatherFx.destroy) this.weatherFx.destroy();
       A.WeatherFX.attach(this, this.game_.quest.travel.weather, this.phase,
         { x: 0, y: 0, w: W, h: H }, { depth: -5, combat: true });
+      this.env.mountWeather?.(this.weatherFx);
     }
     this.buildBand();
 

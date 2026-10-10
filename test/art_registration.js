@@ -2,8 +2,8 @@
 'use strict';
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
 const root=path.resolve(__dirname,'..');
-const counts={hiro:206,bram:96,wolf:46,boar:20,plant:23,alpha:59,serpent:56,beetle:56,moss_giant:44,hag:56,goblin:56,spider:56,orc:50};
-Object.assign(counts,{crab:45,toad:44,vulture:44,hydra:47,elven_wizard:40,elven_ranger:40,dark_swordswoman:40,enchantress:44});
+const counts={hiro:206,bram:96,wolf:46,boar:20,plant:23,alpha:59,serpent:56,beetle:56,moss_giant:46,hag:56,goblin:56,spider:56,orc:50};
+Object.assign(counts,{crab:45,toad:44,vulture:44,hydra:48,elven_wizard:56,elven_ranger:56,dark_swordswoman:56,enchantress:60});
 for(const [id,count] of Object.entries(counts)){
   const dir=path.join(root,'assets/expedition',id);
   const m=JSON.parse(fs.readFileSync(path.join(dir,id+'.json'),'utf8'));

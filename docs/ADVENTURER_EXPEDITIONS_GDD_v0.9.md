@@ -1,5 +1,7 @@
 # Adventurer: Expeditions
 
+**October 9 finisher replacement / scenery-order revision (supersedes the foreground notes below):** replaced moss giant pair one and all sixteen Coast/Citadel Hiro finishers. Eight elf clips now have sixteen drawings each, with 2.36–2.42-second authored timelines; nine creature clips have eight drawings and 1.50-second timelines, before cinematic scaling. All travel/battle settings put distant art behind moving weather/scenery, with Hiro and the contact ground in front. No separate foreground decoration crosses Hiro. Existing fast running and centered exits remain. Review scope, source/rebuild records and remaining portal-pose limitation: `FINISHER_REPLACEMENTS_20261009.md`. Final visual approval awaits playtest.
+
 **October 9 local visual polish:** Coast travel now uses hang-gliding; Citadel uses portal jutsu. Six travel scenes and seven active battle settings keep three painted depth planes plus moving clouds, anchored flickering lights and existing weather. Travel lasts 8–12 seconds with fast running and a centered exit. Dark-swordswoman idle/recovery faces left. Nineteen added bridge drawings and authored timing polish the new Hiro pairs; local humanoid finishers include blood impacts and elf follow-through blood. Retired moves remain retired, 51 active moves total. Full details and measured limitations: `VISUAL_POLISH_20261009.md` and latest changelog. This local artwork is not a new kids-site export.
 
 **October 9 local expansion completed:** Forest → Swamp → City → Shipwreck Coast → Arcane Citadel. Both new locations are playable, each with two group fights, a boss, three painted background planes, environmental animation, a fast-running obstacle journey and its selected music. Hiro remains the only playable hero; recruit locks remain intact. Coast adds crab, toad, vulture and Hydra; Citadel adds the approved adult elven wizard, ranger, dark-elven swordswoman and enchantress boss. Each has a full combat set, two Hiro finishing moves and one defeat finisher against Hiro. 51 active finishing moves total (33 Hiro, 18 enemy). See `ARCANE_CITADEL_PLAN.md`, `LEVELS.md` and the latest `CHANGELOG.md` entry.
@@ -1265,6 +1267,8 @@ art.** A hit-stop tuned against a placeholder rectangle is a number that will ha
 to be thrown away, and worse, it trains everyone's eye on the wrong timing.
 
 ### 10.2 Finishing moves
+
+**2026-10-09 local replacement decision:** extra humanoid drawings must receive extra playback time, not be squeezed into the previous duration. The eight new elf Hiro pairs use sixteen poses and fixed per-clip body scale. Preserve ordinary combat pixels, frame metadata, contact/release cleanup and opponent-family matching during repacking. See the current top status and `FINISHER_REPLACEMENTS_20261009.md`; historical timing examples below describe earlier deliveries.
 
 **Current rule, round 3 (2026-09-20):** a finishing move plays only when the
 player spent the Finisher on the kill (§7). Any other lethal blow — Katana

@@ -280,6 +280,7 @@ class TravelScene extends Phaser.Scene {
     try {
       const wx = X.Campaign.weatherFor(this.quest, world, phase);   // one resolution for battle and travel (§5)
       this.pano.weather = A.WeatherFX.attach(this, wx, phase, { x: 0, y: 0, w: W, h: H }, { depth: -5 });
+      this.pano.mountWeather?.(this.pano.weather);
     } catch (e) {}
     try { A.Music.playStory(this.quest.music); } catch (e) {}
     // The walkers, bobbing in step.

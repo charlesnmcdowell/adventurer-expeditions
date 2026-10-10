@@ -16,6 +16,9 @@ const contacts={
 };
 G.contacts=contacts;
 G.play=(scene,hero,target,sheet,clipId)=>{
+  // Replacement pairs paint blood at their own sword contact. Do not overlay
+  // the old composition's measured point on top of a differently staged pair.
+  if(sheet.clips[clipId]?.embeddedBlood)return ()=>{};
   if(ADV.Release?.target!=='website'||!ids.has(target.sheet?.actor)||!scene.textures.exists('xp_blood_slash'))return ()=>{};
   const point=contacts[target.sheet.actor]?.[clipId.endsWith('-2')?1:0];
   if(!point)return ()=>{};

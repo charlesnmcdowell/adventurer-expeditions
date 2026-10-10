@@ -17,9 +17,11 @@ const fs=require('fs'),path=require('path'),assert=require('assert/strict');
  const end=await p.evaluate(()=>__game.scene.getScene('Expedition').env.layers.map(l=>({x:l.x,y:l.y,key:l.texture.key})));
  const cloudEnd=await p.evaluate(()=>__game.scene.getScene('Expedition').env.environment.clouds.graphics.list.map(c=>c.x));
  assert.notDeepEqual(cloudStart,cloudEnd,'clouds must move');
- assert.equal(start.length,3);assert.equal(start[1].x,end[1].x);assert.equal(start[1].y,end[1].y);assert.notEqual(start[0].x,end[0].x);assert.notEqual(start[2].x,end[2].x);
+ assert.equal(start.length,2);assert.equal(start[1].x,end[1].x);assert.equal(start[1].y,end[1].y);assert.notEqual(start[0].x,end[0].x);
+ const depth=await p.evaluate(()=>{const s=__game.scene.getScene('Expedition'),r=s.env;return {order:r.layerOrder,wx:s.weatherFx.container.parentContainer===r.weatherPlane,behind:r.getIndex(r.weatherPlane)<r.getIndex(r.layers[1]),foreground:!!r.foreground};});
+ assert.deepEqual(depth.order,['distance','weather-scenery','hero-ground']);assert(depth.wx&&depth.behind&&!depth.foreground,'weather/scenery must remain behind the fighting floor');
  await p.screenshot({path:`test/reports/battle-layers/${q}-${w}.png`});report.push({q,w,layers:end});
  }
- assert.deepEqual(errors,[]);fs.writeFileSync('test/reports/battle-layers/results.json',JSON.stringify(report,null,2));console.log('seven battle stages: three layers, moving far/near, fixed ground, no page errors');
+ assert.deepEqual(errors,[]);fs.writeFileSync('test/reports/battle-layers/results.json',JSON.stringify(report,null,2));console.log('seven battle stages: distance + moving weather/scenery + fixed hero ground, no foreground, no page errors');
  } finally{await b.close();}
 })().catch(e=>{console.error(e);process.exitCode=1});

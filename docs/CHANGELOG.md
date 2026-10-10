@@ -15,6 +15,18 @@ of small fixes within a day.
 
 ---
 
+## 2026-10-09 — Replaced rejected finishers; doubled elf poses; removed foreground scenery
+
+Replaced 17 Hiro moves: moss giant pair one, both Coast pairs for crab/toad/vulture/Hydra, and both Citadel pairs for wizard/ranger/dark swordswoman/enchantress. Eight elf clips go from 8 to 16 painted poses and from roughly 1265–1380 ms to 2360–2420 ms authored playback. Nine creature replacements have 8 poses at 1500 ms; their prior clips had 6–8 poses. Cinematic scaling remains separate. Clear preparation, contact and recovery holds accompany the new drawings. Review IDs and the 51-move active roster stay stable. No enemy-on-Hiro moves, combat rules or retired clips changed.
+
+Fixed registration uses one horizontal anchor and anatomical reference per clip, rather than following the pair's changing silhouette. Removed generated border rules before measuring feet. Reordered Hydra collapse/dissolve and the swordswoman parry; matched ranger contact to the first visible injury. Preserved boss-family matching after a browser test caught Hydra falling back to a normal slash. Retained ordinary frames bypass matte extraction and are losslessly packed, with a separate pixel/alpha/root-offset baseline check. New elf blood is painted into the pair; the old generic overlay is suppressed only there.
+
+All six travel presentations and seven battle settings now draw distance → animated weather/scenery → Hiro/contact ground. Former near/foreground decorations are neither loaded nor drawn. Clouds, weather, flickering lamps and location effects remain behind Hiro. Travel speed/duration and centered run-out are unchanged. This supersedes the earlier foreground-at-150% direction. Citadel's previously flagged repeated-leg portal drawing remains a separate known rework.
+
+Files: nine actor atlas sets; tools/build_v7_pairs.py, tools/verify_v7_pairs.py, tools/art_intake_v2.py; battle_stage.js, travel_art.js, scene.js, scenes_town.js, gore_fx.js, painted.js; index.html cache stamp; review pages/renderer, registration/pacing/visual/layer tests, GDD and FINISHER_REPLACEMENTS_20261009.md. Source masters, rejected drafts and prompt/reference records: sibling adventurer-expeditions-source-art/astra-v7/finisher-replacements-20261009. Local edition only; original Adventurer untouched; no publishing.
+
+Validation: npm test, npm run test:ship, all 26 earlier/expansion pair playback cases, six journeys, seven battle settings and all 71 review entries passed. Verified 255 retained frames pixel/alpha/root-identical. Atlas images now use content-hashed filenames so cached images cannot conflict with new rectangles; removed the obsolete explicit moss page from the ship allowlist. Cold startup measures 23.40 MB after audio unlock on desktop/portrait/landscape, still above the historical 20 MB portal gate for this size-waived local build. Total 103.23 → 147.03 MB / 250 MB. Details/evidence: FINISHER_REPLACEMENTS_20261009.md. Final artistic approval remains with the user's playtest.
+
 ## 2026-10-09 — Unified visual review workspace
 
 Added docs/ART_REVIEW.html: one selectable player for 71 items (33 Hiro finishers, 18 enemy finishers, six complete travel scenes, six obstacle action sheets, seven battle settings, and Hiro's normal run). Uses current runtime travel/scenery renderers; pose/finisher inspection uses packed atlases and authored timing with a fixed camera. Raw pose mode intentionally omits the cinematic camera and separate blood overlay, and labels that limitation. No art or gameplay changes.

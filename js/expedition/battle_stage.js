@@ -6,7 +6,7 @@ const sets = {
   deep_wood: 'forest-carriage-vault', bandit_road: 'forest-carriage-vault',
   mountain: 'forest-carriage-vault', alley: 'city-market-vault', marsh: 'swamp-log-slide', coast: 'coast', citadel: 'citadel'
 };
-const names = ['far','ground','near'];
+const names = ['far','ground'];
 Stage.preload = scene => {
   const r = scene.opts?.run || X.Run.load() || X.Run.fresh();
   const q = X.Campaign.quest(r.questId) || X.quests[0];
@@ -28,21 +28,23 @@ Stage.paint = (scene, bg, phase) => {
   const set = sets[bg];
   if (!set) return A.BattleArt.paint(scene,bg,phase);
   const root = scene.add.container(0,0).setDepth(-10);
-  const nearRoot = scene.add.container(0,0).setDepth(160);
+  const weatherPlane = scene.add.container(0,0);
   const layers = names.map((name,i) => {
     const key = bg === 'mountain' && name === 'far' ? 'xp_battle_mountain_far' : 'xp_battle_'+set+'_'+name;
-    const height = name === 'ground' ? (bg === 'coast' ? 550 : bg === 'citadel' ? 450 : 1100) : name === 'near' ? 500 : 760;
+    const height = name === 'ground' ? (bg === 'coast' ? 550 : bg === 'citadel' ? 450 : 1100) : 760;
     const img = scene.add.image(-500,760-height-(bg === 'alley' && name === 'ground' ? 60 : 0),key).setOrigin(0).setDisplaySize(2280,height);
     if (phase === 'night' && !['marsh','citadel'].includes(bg)) img.setTint(0x748aba);
     if (phase === 'evening') img.setTint(0xefbb95);
-    (i === 2 ? nearRoot : root).add(img);
+    root.add(img);
     return img;
   });
-  // Ambient particles inhabit the space behind the fighters; weather remains
-  // the scene's independent WeatherFX layer. Do not slide the contact surface.
-  const haze = scene.add.graphics();root.addAt(haze,1);
-  const clouds=X.Atmosphere.create(scene,root,{night:phase==='night'||bg==='citadel'||bg==='marsh'});
-  root.moveTo(clouds.graphics,1);
+  // Back to front: distance, moving atmosphere, fixed contact surface and actors.
+  // No independent foreground vegetation is allowed to occlude the combat.
+  root.addAt(weatherPlane,1);
+  const haze = scene.add.graphics();weatherPlane.add(haze);
+  const clouds=X.Atmosphere.create(scene,weatherPlane,{night:phase==='night'||bg==='citadel'||bg==='marsh'});
+  root.mountWeather=handle=>{if(handle?.container)weatherPlane.addAt(handle.container,0);};
+  root.layerOrder=['distance','weather-scenery','hero-ground'];
   const anchorSet=X.lightAnchors?.[(['coast','citadel'].includes(set)?'stages/':'travel/')+set]||{};
   const lampSets=layers.slice(0,2).map((img,i)=>X.Atmosphere.lights(scene,root,(anchorSet['atmosphere-'+names[i]+'.webp']||[]).map(([x,y,s])=>[img.x+x*img.displayWidth,img.y+y*img.displayHeight,s])));
   let elapsed=0;
@@ -52,7 +54,6 @@ Stage.paint = (scene, bg, phase) => {
     clouds.draw(elapsed);lampSets.forEach(l=>l.draw(elapsed));
     const focus=(scene.cameras.main.scrollX||0);
     layers[0].x=-500+focus*.06+Math.sin(elapsed/10000)*6;
-    layers[2].x=-500-focus*.025+Math.sin(elapsed/3300)*3;
     lampSets[0].graphics.x=layers[0].x+500;
     haze.clear();
     for(let i=0;i<7;i++){
@@ -74,8 +75,8 @@ Stage.paint = (scene, bg, phase) => {
   scene.events.on('update',tick);
   const stop=()=>root.destroy(true);
   scene.events.once('shutdown',stop);
-  root.once('destroy',()=>{scene.events.off('update',tick);scene.events.off('shutdown',stop);nearRoot.destroy(true);});
-  root.layers=layers;root.foreground=nearRoot;root.background=layers[0];root.locationId=bg;
+  root.once('destroy',()=>{scene.events.off('update',tick);scene.events.off('shutdown',stop);});
+  root.layers=layers;root.weatherPlane=weatherPlane;root.background=layers[0];root.locationId=bg;
   root.environment={clouds,lamps:lampSets};
   root.ready=Promise.resolve(true);scene.battleArt=root;return root;
 };

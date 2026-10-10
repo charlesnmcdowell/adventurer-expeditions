@@ -46,11 +46,12 @@ function step(direction){if(!ready)return;pause();
 const startsFor=(frames,index)=>frames.slice(0,index).reduce((n,f)=>n+f.ms,0);
 function render(){if(!ready||!scene)return;const e=selected;
  if(e.clip){frame=starts.findLastIndex(t=>t<=clock);frame=Math.max(0,Math.min(e.clip.frames.length-1,frame));scene.sprite.setFrame(e.clip.frames[frame]);scene.ghost.setFrame(e.clip.frames[Math.max(0,frame-1)]).setVisible($('ghost').checked&&frame>0);$('scrub').max=e.clip.frames.length-1;$('scrub').value=frame;$('position').textContent='Frame '+(frame+1)+' / '+e.clip.frames.length+' · index '+frame+' · '+e.clip.frameDurationsMs[frame]+' ms hold'+((e.clip.contact||[]).includes(frame)?' · CONTACT':'')+' · '+Math.round(Math.min(clock,duration))+' / '+duration+' ms';}
- else{$('scrub').max=duration-1;$('scrub').value=Math.min(clock,duration-1);if(scene.pano){scene.pano.seek(Math.min(clock,duration-1));$('position').textContent=(clock/1000).toFixed(2)+' / '+(duration/1000).toFixed(2)+' s · '+scene.pano.phase+(scene.pano.phase==='action'?' · action frame '+(scene.pano.currentFrame+1):'');}else $('position').textContent=(clock/1000).toFixed(2)+' s · far / ground / near + atmosphere';}
+ else{$('scrub').max=duration-1;$('scrub').value=Math.min(clock,duration-1);if(scene.pano){scene.pano.seek(Math.min(clock,duration-1));$('position').textContent=(clock/1000).toFixed(2)+' / '+(duration/1000).toFixed(2)+' s · '+scene.pano.phase+(scene.pano.phase==='action'?' · action frame '+(scene.pano.currentFrame+1):'');}else $('position').textContent=(clock/1000).toFixed(2)+' s · distance / weather + scenery / hero ground';}
 }
 function weather(){if(!scene||selected.clip)return;const q=X.Campaign.quest(selected.quest),phase=q?.phase||'day',choice=$('weather').value;
  const wx=choice==='authored'?X.Campaign.weatherFor(q,{seed:17,questClock:0},phase):{kind:choice,intensity:choice==='clear'?0:.75,wind:.4};
- ADV.WeatherFX.attach(scene,wx,phase,{x:0,y:0,w:1280,h:760},{depth:20});
+ const handle=ADV.WeatherFX.attach(scene,wx,phase,{x:0,y:0,w:1280,h:760},{depth:-5});
+ (scene.pano||scene.battleArt)?.mountWeather?.(handle);
 }
 class Review extends Phaser.Scene{
  constructor(){super('Review');}
