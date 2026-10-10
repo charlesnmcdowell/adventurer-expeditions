@@ -9,6 +9,10 @@ S.bindings['enemy:hired_knife']={actor:'story_hired_knife',height:315,humanoid:t
   enemyFinisherReady:true,hiroFinishersReady:2,plannedFrames:8,minDistinctFrames:16,goreBothDirections:true};
 S.bindings['enemy:consortium_mage']={actor:'story_consortium_mage',height:330,humanoid:true,combatReady:true,
   enemyFinisherReady:true,hiroFinishersReady:2,plannedFrames:8,minDistinctFrames:16,goreBothDirections:true};
+S.bindings['named:morwin']={actor:'story_merle',height:310,humanoid:true,combatReady:true,
+  enemyFinisherReady:true,hiroFinishersReady:2,plannedFrames:8,minDistinctFrames:16,goreBothDirections:true};
+S.bindings['named:lessa']={actor:'story_lurleen',height:310,humanoid:true,combatReady:true,
+  enemyFinisherReady:true,hiroFinishersReady:2,plannedFrames:8,minDistinctFrames:16,goreBothDirections:true};
 // Original Road Wolf is a gray wolf. Reuse the approved gray wolf and its
 // three Hiro-owned pairs; no tint or unrelated creature substitution.
 S.bindings['enemy:road_wolf']={actor:'wolf',height:250,reuse:true,combatReady:true,

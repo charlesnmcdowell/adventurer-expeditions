@@ -1,6 +1,6 @@
 # Campaign adaptation — production tracker
 
-Updated 9 October 2026. This is an unfinished expansion, not a release candidate.
+Updated 10 October 2026. This is an unfinished expansion, not a release candidate. The live registration checklist is [STORY_CAMPAIGN_STATUS.md](STORY_CAMPAIGN_STATUS.md), regenerated with `node tools/story_status.js`.
 
 ## Implemented this pass
 
@@ -9,9 +9,13 @@ Updated 9 October 2026. This is an unfinished expansion, not a release candidate
 - Edition-owned story adapter reuses the existing, source-identical `ADV.Campaign3` and `ADV.GateFinale` functions. It does not flatten branching dialogue, discard their late-game history hooks, or replace the original core files.
 - Independent save `adventurer_expeditions_story_v1`; only a marked story world is intercepted by the save adapter. Arcade and original `adv:*` saves are unaffected.
 - Pre-fight checkpoint, retry, completed chapters, actual encounter outcomes, first-real-fight tutorial marker and explicit empty combat-allies list. The source story company remains available to dialogue conditions.
-- Separate development title/prologue/choice preview, with original Lanternhold music and recordings. Nib's first fight is now playable; later unready fights still stop explicitly. Default `index.html` remains the existing playable Arcade; the new main campaign boot awaits finished combat content.
+- Separate development title/prologue/choice preview, with original Lanternhold music and recordings. Chapters 1–2 now pass a complete browser playthrough through all six actual battles. Lurleen's chapter-three opener is registered too. Later unready fights stop explicitly. Default `index.html` remains the existing playable Arcade; the new main campaign boot awaits finished combat content.
 - Nib's 36 ordinary combat drawings and three 16-drawing paired finishers are registered and intaken (84 total). The browser verifies both Hiro pairs, lethal-DOT enemy finisher, camera reset and retry. Raw review is at `docs/art/story-nib/`.
 - All 974 original media files copied and hash-verified in edition-owned storage, with original scene/still and chapter/combat music routing. Source skills and identity mapping verified across 55 encounter slots and three branch variants. Later fights still require their own art and solo balance.
+- Cobb, Hired Knife, Consortium Mage, Merle and Lurleen now have full combat and three 16-drawing pairs apiece. Road Wolf reuses the approved gray wolf and its Hiro-owned pairs. Actual multi-enemy browser checks cover both Hiro variants, lethal-DOT enemy finishers, all frames, native-atlas restoration and zoom reset. Lurleen's backward lunge and Merle's touching atlas cells were repaired before intake. Lurleen's translucent ordinary-sheet matte has an explicit, reproducible alpha correction preserving the high-alpha silhouette.
+- Original speaker portraits, chapter-specific paintings and authored fire/water/cloth/weather layers are wired to the development story renderer. Title and dialogue use a separate animated backdrop canvas that sleeps during combat. All seven ending branches use their original text and Tesfaye narration; browser checks include mobile layout and returning to title.
+- Campaign gifts and acknowledged notifications now survive save/reload. Chapter payouts are awarded once, chapter returns recover health, and retry restores full health while retaining completed chapters and reverting current-fight choices to the checkpoint. No new dialogue recording was needed.
+- Sealed skills now report unavailable to manual requests and the tutorial; Hiro falls back to Basic Attack instead of losing every turn to an engine-rejected cast. The simulation audit now exercises between-turn casts, matching the browser rather than replacing Hiro's normal attacks with buttons.
 
 ## Binding art requirements
 
@@ -25,10 +29,10 @@ Updated 9 October 2026. This is an unfinished expansion, not a release candidate
 
 ## Next work, in dependency order
 
-1. Nib first-fight art/intake and tutorial/return/retry flow are complete for development playtest. Keep the rejected early pair drafts out of runtime. Continue Cobb's ordinary/pair sets; first approach draft is held for repeated leg poses.
-2. Finish the other prologue opponents (Cobb, Hired Knife, Consortium Mage). Bind their source skills to the Expeditions simulation with solo-Hiro balance, correct name/art and explicit art-readiness checks. No portrait or unrelated-enemy fallback.
-3. First battle tutorial, dialogue → combat → dialogue, victory history and defeat-finisher → retry are browser-tested. Extend those checks to multi-opponent fights, peaceful bypass of the first encounter, chapter transitions and later irreversible events as their art becomes available.
-4. Complete original character/cutscene presentation. The preview currently demonstrates dialogue/choices over the opening setting; it is not the complete original scene renderer. Preserve letter-reading, father death, prison, dreams, mine outcomes, Hiwot's soul event and both finale choices.
+1. Finish the chapter-three river and fortress enemies, including the alternate Bahadır encounter. New Gnoll Raider and Bandit Archer source sheets are in progress; they remain unavailable until all matching pairs and QA are complete.
+2. Extend actual chapter playthrough coverage beyond chapter two as art becomes available. Verify first-fight tutorial when Nib is spared and later irreversible events; unit coverage alone is not a completed browser campaign.
+3. Audit every original scene transition and travel beat in context. Original scene selection, portraits, ending cards and ambience are wired, but all fourteen chapters have not been visually played through.
+4. Tune later solo encounters with the corrected between-turn casting audit and actual browser play. A winning seed is a minimum gate, not a satisfactory difficulty curve. The weakest late-game win rates still need attention.
 5. Build remaining enemy sets by chapter using `STORY_CAMPAIGN_INVENTORY.md`. Review shared creature reuse individually; original portraits are references, not finished combat animation. Do not interpret 59 identity entries as 59 newly approved art sets.
 6. Adapt original locations to grounded side-view combat; preserve distance → animated scenery/weather → character/contact ground, no foreground obstruction. Keep indoor weather appropriate. Reuse original music per chapter and named battle cues.
 7. Add optional, geographically coherent extra encounters from the existing five locations. In particular, friendly Lanternhold must not randomly attack Hiro with Citadel elves without a story reason. Write/voice connective lines only where necessary; do not rewrite recorded campaign dialogue.
@@ -37,12 +41,16 @@ Updated 9 October 2026. This is an unfinished expansion, not a release candidate
 
 ## Source masters and rebuilds
 
-- Source: sibling `adventurer-expeditions-source-art/astra-v8/portal-story-20261009` and `astra-v8/story-enemies/nib`. Built-in image_gen; prompts/references retained per request. No original art masters overwritten.
+- Source: sibling `adventurer-expeditions-source-art/astra-v8/portal-story-20261009` and `astra-v8/story-enemies/`. Built-in image_gen; prompts/references retained per request. No original art masters overwritten.
 - `python tools/build_portal_v8.py`
 - `node tools/import_story_campaign.js`
 - `node tools/build_story_preview.js`
 - `node tools/build_art_review.js`
 - `npm run test:story`
+- `node test/browser_story_chapters.js` (actual first two chapters)
+- `node test/browser_story_roster.js` (actual registered actors and defeat routing)
+- `node test/browser_story_endings.js`
+- `node test/story_balance.js --gate` (55 slots, fixture art only; never enables unfinished opponents)
 
 ## Verification so far
 

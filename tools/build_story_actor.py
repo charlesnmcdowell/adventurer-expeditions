@@ -5,6 +5,8 @@ Source art/configuration stays in sibling source-art. No runtime mutation unless
 """
 from pathlib import Path
 import argparse, hashlib, json
+import numpy as np
+from PIL import Image
 import build_citadel_combat as extraction
 import build_story_nib as pairs
 from art_intake_v2 import build
@@ -21,7 +23,16 @@ def main():
     actor = cfg['actor']; out = ROOT/'docs/art'/('story-'+args.source)
     out.mkdir(parents=True, exist_ok=True)
     extraction.SRC = src; pairs.SRC = src
-    fs = extraction.extract(cfg.get('combatFile','combat.png'),24)
+    combat_file = cfg.get('combatFile','combat.png')
+    # Opt-in correction for a measured translucent matte. Preserve source
+    # masters and every visible RGB value; never threshold coat/armor color.
+    # The high-alpha silhouette is unchanged, only low-alpha backing fades.
+    if cfg.get('combatAlphaFloor'):
+        floor,full=cfg['combatAlphaFloor'];arr=np.array(Image.open(src/combat_file).convert('RGBA'))
+        alpha=arr[:,:,3].astype(float)
+        arr[:,:,3]=np.where(alpha>=full,alpha,np.clip((alpha-floor)/(full-floor),0,1)*full).astype('uint8')
+        combat_file='combat-alpha-clean.png';Image.fromarray(arr).save(src/combat_file)
+    fs = extraction.extract(combat_file,24,seed_alpha=cfg.get('seedAlpha',64))
     ref = cfg['bodyReferenceHeight']
     clips=[]; warnings=[]
     for name,start,end in [('idle',0,4),('approach',4,8),('attack',8,16),('hit',16,20),('down',20,24)]:
@@ -31,7 +42,7 @@ def main():
         clips.append(dict(id=name,frames=len(poses),sources=[dict(file=f['file'],frames=1,
             regions=f['regions'],firstFrameZeroBased=i,preservePixels=True,
             sha256=hashlib.sha256((src/f['file']).read_bytes()).hexdigest()) for i,f in enumerate(poses)],
-            durationsMs=times,loop=name in ['idle','approach'],contactFramesZeroBased=[4] if name=='attack' else [],
+            durationsMs=times,loop=name in ['idle','approach'],contactFramesZeroBased=cfg.get('attackContacts',[4]) if name=='attack' else [],
             releaseFrameZeroBased=len(poses)-1,registration=dict(referenceHeight=cfg.get('clipBodyReferences',{}).get(name,ref),frames=[f['guide'] for f in poses])))
     fatal=None
     for spec in cfg['pairs']:

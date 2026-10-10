@@ -4,7 +4,7 @@ const fs=require('fs'),vm=require('vm'),assert=require('node:assert/strict');
 const A=require('./harness').load();
 for(const name of ['data','shim','encounter','campaign','run','story','story_combat'])vm.runInThisContext(fs.readFileSync('js/expedition/'+name+'.js','utf8'));
 const X=A.Expedition,S=X.Story,E=X.Encounter,report=[];let clock=0;X.now=()=>clock;
-if(process.env.STORY_DAMAGE)S.Combat.tuning.foeDamage=Number(process.env.STORY_DAMAGE);
+if(process.env.STORY_DAMAGE)S.Combat.tuning.foeDamage=S.Combat.tuning.laterFoeDamage=Number(process.env.STORY_DAMAGE);
 const data=JSON.parse(fs.readFileSync('assets/expedition/story/campaign.json'));
 for(const e of data.combatRoster)S.bindings[e.kind+':'+e.id]={actor:'SIMULATION_ONLY',combatReady:true,hiroFinishersReady:2,enemyFinisherReady:true};
 const trials=Number(process.env.STORY_TRIALS)||20;
@@ -17,7 +17,14 @@ for(const q of A.DATA.CAMPAIGN3_QUESTS.filter(q=>!process.env.STORY_CHAPTERS||q.
     state.choices.q4_dream='reject';state.choices.q7_dream='reject';state.choices.q10_dream='reject';
     A.GatePerks.reconcile(s.game);S.syncQuest(s);
     const e=S.Combat.create(s,seed);stats=e.st.units.map(u=>({name:u.ch.name,hp:u.maxHp,atk:u.atk,def:u.def}));
-    E.runToEnd(e,()=>{clock+=1500;E.tapPolicy(e);},1200);
+    // Browser buttons fire between turns (drainCasts), without replacing
+    // Katana Slash. The old turn-only policy falsely reported unwinnable
+    // fights, so it must not be used to tune the campaign.
+    const tap=()=>{for(const id of ['finisher','counter_attack','god_aura']){
+      if(e.st.over)break;
+      if(E.skillState(e,id).ready){E.requestSkill(e,id);E.castNow(e);}
+    }};
+    while(!e.st.over&&e.steps<1200){clock+=3500;tap();if(!e.st.over)E.step(e);tap();}
     if(!e.st.over)stalls++;if(E.won(e))wins++;steps=Math.max(steps,e.steps);rounds+=e.st.round;
     assert(Number.isFinite(E.heroUnit(e).chp),'non-finite hero health');
     for(const ev of e.st.events)if(ev.t==='use'&&ev.uid!==e.heroUid)skills.add(ev.skillId);

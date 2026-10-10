@@ -10,9 +10,9 @@ SRC=ROOT.parent/'adventurer-expeditions-source-art/astra-v5/citadel-20261009'
 OUT=ROOT/'docs/art/citadel-20261009/combat'
 ACTORS=['elven_wizard','elven_ranger','dark_swordswoman','enchantress']
 
-def extract(file,count,skip_release=False):
+def extract(file,count,skip_release=False,seed_alpha=64):
     arr=np.array(Image.open(SRC/file).convert('RGBA'));h,w=arr.shape[:2]
-    labels,_=ndimage.label(arr[:,:,3]>64);sizes=np.bincount(labels.ravel());sizes[0]=0
+    labels,_=ndimage.label(arr[:,:,3]>seed_alpha);sizes=np.bincount(labels.ravel());sizes[0]=0
     boxes=ndimage.find_objects(labels);ids=list(np.where(sizes>5000)[0]);removed=[]
     if skip_release:
         removed=[n for n in ids if .42<(boxes[n-1][0].start+boxes[n-1][0].stop)/2/h<.56]

@@ -192,6 +192,16 @@ Enc.skillState = function (enc, skillId) {
   const u = Enc.heroUnit(enc);
   if (!enc.hero.actives.some(a => a.skillId === skillId)) return { ready: false, reason: 'locked' };
   if (!u || u.downed || enc.st.over) return { ready: false, reason: 'over' };
+  // Target availability does not imply the engine can cast a skill. A sealed
+  // button previously stayed lit, so repeated tutorial/tap requests displaced
+  // the legal Basic Attack with a rejected cast and then a hold every turn.
+  const entry = enc.hero.actives.find(a => a.skillId === skillId);
+  const manifest = A.SkillSys.manifest(enc.hero, entry);
+  const seal = u.statuses.find(s => s.kind === 'sealed');
+  if (skillId !== 'basic_attack' && seal && (seal.tiers || []).includes(manifest.tier))
+    return { ready: false, reason: 'sealed' };
+  if (manifest.data.interrupt && u.statuses.some(s => s.kind === 'shock'))
+    return { ready: false, reason: 'shocked' };
   // Recovery is wall-clock now that skills fire between turns (Hiro,
   // 2026-09-22). The engine's own counter is left at zero in X.skills, so this
   // is the only gate; `left` is seconds for a player and `leftMs` drives the

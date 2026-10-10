@@ -32,6 +32,25 @@ function summary(enc) {
 }
 
 // ---------------------------------------------------------------- shim scope
+test('sealed skills never steal the universal attack or consume a cooldown', () => {
+  const enc = Enc.create({ encounter: 'road_ambush', seed: 20 });
+  const hero = Enc.heroUnit(enc);
+  assert(Enc.requestSkill(enc, 'counter_attack').ok, 'queue before the seal arrives');
+  hero.statuses.push({ kind: 'sealed', tiers: ['basic', 'intermediate', 'advanced'], rounds: 20 });
+  assert.equal(Enc.skillState(enc, 'counter_attack').reason, 'sealed');
+  assert.equal(Enc.requestSkill(enc, 'counter_attack').ok, false);
+  assert.equal(Enc.castNow(enc), null, 'revalidate a cast queued before silence');
+  assert.equal(Enc.cooldownLeftMs(enc, 'counter_attack'), 0);
+  for (let i=0;i<20&&!enc.st.over;i++) {
+    const turn=Enc.peek(enc); if (!turn.over) Enc.step(enc);
+    if(enc.st.events.some(e=>e.t==='use'&&e.uid===hero.uid&&e.skillId==='basic_attack'))break;
+  }
+  assert(enc.st.events.some(e=>e.t==='use'&&e.uid===hero.uid&&e.skillId==='basic_attack'), 'sealed Hiro still attacks');
+  assert(!enc.log.some(e=>e.t==='castFailed'), 'no engine-rejected manual casts');
+  hero.statuses=hero.statuses.filter(s=>s.kind!=='sealed');
+  assert(Enc.skillState(enc, 'counter_attack').ready, 'button recovers when seal expires');
+});
+
 test('shim leaves a website Hiro untouched', () => {
   const rng = new A.RNG(5);
   const ch = A.Character.makeRegistry(rng, 'hiro', 'Hiro', false);

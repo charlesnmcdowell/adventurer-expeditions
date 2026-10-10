@@ -43,7 +43,7 @@ function title(){stopVoice();session=null;reply=null;sceneContext=null;playMusic
   const buttons=text('div','',box,'buttons');if(S.load())button('Continue campaign preview',()=>open(S.load()),buttons);
   button('Begin campaign preview',()=>{if(S.load()){panel.replaceChildren();text('p','Start a new campaign preview? Your Arcade run stays as it is.',panel);button('Start new campaign',()=>open(S.fresh()));button('Cancel',title);}else open(S.fresh());},buttons);
   button('Play Arcade',()=>location.href='index.html',buttons);
-  text('p','Development preview: the prologue battles and road wolves are playable with original story and recordings. Later fights remain locked while their combat art is completed.',box,'notice');
+  text('p','Development preview: the first two chapters and the third chapter’s inn fight are playable with original story and recordings. Later fights remain locked while their combat art is completed.',box,'notice');
 }
 function render(){
   stopVoice();panel.replaceChildren();const r=session.record;

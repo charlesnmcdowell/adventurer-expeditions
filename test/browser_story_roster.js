@@ -5,7 +5,9 @@ const OUT='test/reports/story-roster';fs.mkdirSync(OUT,{recursive:true});
 const cases=[{chapter:1,encounter:1,actor:'story_cobb'},
   {chapter:1,encounter:1,actor:'story_hired_knife'},
   {chapter:1,encounter:2,actor:'story_consortium_mage'},
-  {chapter:2,encounter:0,actor:'wolf'}];
+  {chapter:2,encounter:0,actor:'wolf'},
+  {chapter:2,encounter:2,actor:'story_merle'},
+  {chapter:3,encounter:0,actor:'story_lurleen'}];
 (async()=>{const browser=await chromium.launch({channel:'chrome',headless:true});try{
  const page=await browser.newPage({viewport:{width:1280,height:760}}),errors=[],report=[];
  page.on('pageerror',e=>errors.push(String(e)));
