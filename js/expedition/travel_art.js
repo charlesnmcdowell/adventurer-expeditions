@@ -16,9 +16,10 @@ Travel.preload = function (scene) {
   const id = Travel.select(run, scene.opts.leg || run.travelLeg);
   scene.__travelArtId = id;
   const base = 'assets/expedition/travel/' + id + '/', key = 'travel_' + id;
-  if (!scene.cache.json.exists(key)) scene.load.json(key, base + 'scene.json');
+  const revision=id==='citadel-bridge-leap'?'?v=portal-v8-20261009':'';
+  if (!scene.cache.json.exists(key)) scene.load.json(key, base + 'scene.json'+revision);
   if (!scene.textures.exists(key + '_plate')) scene.load.image(key + '_plate', base + 'plate.webp');
-  if (!scene.textures.exists(key + '_actions')) scene.load.multiatlas(key + '_actions', base + 'actions.json', base);
+  if (!scene.textures.exists(key + '_actions')) scene.load.multiatlas(key + '_actions', base + 'actions.json'+revision, base);
   for (const layer of ['far','ground']) if (!scene.textures.exists(key + '_' + layer)) scene.load.image(key + '_' + layer, base + 'atmosphere-' + layer + '.webp');
   if (!scene.textures.exists(key + '_loops')) scene.load.spritesheet(key + '_loops', base + 'loops.webp', { frameWidth: 256, frameHeight: 192 });
 };

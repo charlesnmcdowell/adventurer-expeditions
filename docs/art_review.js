@@ -22,7 +22,7 @@ function select(e){
  const f=feedback[e.id]||{};$('rework').checked=!!f.rework;$('remove').checked=!!f.remove;$('note').value=f.note||'';
  const isClip=!!e.clip;$('ghostLabel').hidden=!isClip;$('weatherLabel').hidden=isClip;$('related').hidden=!['travel','action'].includes(e.kind);
  $('related').textContent=e.kind==='travel'?'Inspect action poses':'View full journey';
- $('known').hidden=!e.id.startsWith('T-CITADEL');$('known').textContent='Flagged for rework: the portal poses repeat the leading leg. The entrance/exit reads as one long step, rather than an alternating run cycle. Current art is shown unchanged.';
+ $('known').hidden=!e.id.startsWith('T-CITADEL');$('known').textContent='Portal rework: twelve replacement poses, passing legs, planted casting, tucked crossing and a bent-knee landing. Inspect the run-in/action/run-out transitions at normal speed; final visual approval remains yours.';
  $('modeNote').textContent=e.kind==='travel'?'Live game travel renderer, including parallax, action placement and weather. Use “Inspect action poses” to inspect all twelve source poses individually.':e.kind==='background'?'Live game battle scenery and environmental motion. The fighting surface stays fixed. Weather can be changed for review.':'Current packed frames with authored holds and registration. Fixed review camera; in-game cinematic zoom, slowdown and separate blood overlay are not simulated. Frame numbers below are 1-based.';
  $('file').textContent=e.meta||e.artId||'Battle background: '+e.bg;
  history.replaceState(null,'','#'+e.id);list();

@@ -3,119 +3,119 @@
   "width": 1900,
   "height": 760,
   "canvas": {
-    "w": 590,
-    "h": 324,
+    "w": 412,
+    "h": 347,
     "pivot": {
-      "x": 295,
-      "y": 314
+      "x": 206,
+      "y": 336
     }
   },
   "pivot": {
-    "x": 295,
-    "y": 314
+    "x": 206,
+    "y": 336
   },
   "heroScale": 1,
   "frames": [
     {
       "name": "travel/0",
-      "ms": 160,
-      "x": 620,
+      "ms": 95,
+      "x": 650,
       "y": 612,
       "cameraX": 0,
       "contact": false
     },
     {
       "name": "travel/1",
-      "ms": 150,
-      "x": 680,
+      "ms": 95,
+      "x": 690,
       "y": 612,
-      "cameraX": 0,
+      "cameraX": 40,
       "contact": false
     },
     {
       "name": "travel/2",
-      "ms": 250,
-      "x": 730,
+      "ms": 170,
+      "x": 725,
       "y": 612,
-      "cameraX": 30,
+      "cameraX": 75,
       "contact": true
     },
     {
       "name": "travel/3",
-      "ms": 240,
-      "x": 760,
+      "ms": 200,
+      "x": 725,
       "y": 612,
-      "cameraX": 80,
-      "contact": false
+      "cameraX": 75,
+      "contact": true
     },
     {
       "name": "travel/4",
-      "ms": 230,
-      "x": 800,
+      "ms": 130,
+      "x": 765,
       "y": 612,
-      "cameraX": 150,
+      "cameraX": 115,
       "contact": false
     },
     {
       "name": "travel/5",
-      "ms": 190,
-      "x": 835,
+      "ms": 120,
+      "x": 825,
       "y": 612,
-      "cameraX": 190,
+      "cameraX": 175,
       "contact": false
     },
     {
       "name": "travel/6",
-      "ms": 140,
-      "x": 1115,
+      "ms": 110,
+      "x": 1145,
       "y": 612,
-      "cameraX": 190,
+      "cameraX": 495,
       "contact": false
     },
     {
       "name": "travel/7",
-      "ms": 180,
+      "ms": 125,
       "x": 1190,
       "y": 612,
-      "cameraX": 270,
-      "contact": false
+      "cameraX": 540,
+      "contact": true
     },
     {
       "name": "travel/8",
-      "ms": 170,
-      "x": 1250,
+      "ms": 90,
+      "x": 1230,
       "y": 612,
-      "cameraX": 350,
+      "cameraX": 580,
       "contact": false
     },
     {
       "name": "travel/9",
-      "ms": 180,
-      "x": 1320,
+      "ms": 90,
+      "x": 1270,
       "y": 612,
-      "cameraX": 430,
-      "contact": true
-    },
-    {
-      "name": "travel/10",
-      "ms": 160,
-      "x": 1400,
-      "y": 612,
-      "cameraX": 510,
+      "cameraX": 620,
       "contact": false
     },
     {
-      "name": "travel/11",
-      "ms": 160,
-      "x": 1490,
+      "name": "travel/10",
+      "ms": 95,
+      "x": 1310,
       "y": 612,
-      "cameraX": 600,
+      "cameraX": 620,
+      "contact": true
+    },
+    {
+      "name": "travel/11",
+      "ms": 95,
+      "x": 1350,
+      "y": 612,
+      "cameraX": 620,
       "contact": false
     }
   ],
   "loops": [],
   "groundLayerHeight": 450,
-  "source": "astra-v6/polish-20261009",
+  "source": "astra-v8/portal-story-20261009",
   "actionStartFrame": 0,
   "actionEndFrame": 11,
   "layeredPlate": true,
