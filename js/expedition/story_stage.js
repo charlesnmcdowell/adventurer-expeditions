@@ -1,0 +1,36 @@
+// Reuse each original painting and its authored ambience. The lower contact
+// surface stays fixed while the distant plate and weather move behind actors.
+(function(){
+'use strict';const A=ADV,S=A.Expedition.Story;
+S.Stage={paint(scene,id,key,phase){
+  const def=S.Presentation.data.art.environments[id],profile=A.GateAmbience.environments[id];
+  const source=scene.textures.get(key).getSourceImage(),sw=source.width,sh=source.height;
+  const scale=Math.max(1280/sw,760/sh),root=scene.add.container(0,0).setDepth(-10);
+  const bg=scene.add.image(640,380,key).setScale(scale);root.add(bg);root.background=bg;
+  const ambience=A.GateAmbience.attach(scene,root,bg,profile);
+  // A technical crop of existing pixels, not a new painted floor. Feathering
+  // avoids a seam between the small distant drift and the fixed ground.
+  const groundKey=key+'_contact';
+  if(!scene.textures.exists(groundKey)){
+    const tex=scene.textures.createCanvas(groundKey,sw,sh),ctx=tex.context;
+    ctx.drawImage(source,0,0);ctx.globalCompositeOperation='destination-in';
+    const mask=ctx.createLinearGradient(0,sh*.58,0,sh*.67);mask.addColorStop(0,'transparent');mask.addColorStop(1,'white');
+    ctx.fillStyle=mask;ctx.fillRect(0,0,sw,sh);ctx.globalCompositeOperation='source-over';tex.refresh();
+  }
+  const weather=A.Weather.at(scene.game_.world,{phase,override:{kind:'clear',intensity:0,wind:.15}});
+  const fx=A.GateAmbience.weather(scene,root,profile,!!def.indoor,weather,phase,{depth:-9,combat:true});
+  if(fx?.container)root.add(fx.container);
+  const ground=scene.add.image(640,380,groundKey).setScale(scale);root.add(ground);
+  root.layers=[bg,ground];root.layerOrder=['distance','weather-scenery','hero-ground'];
+  root.locationId=id;root.ready=Promise.resolve(true);scene.battleArt=root;
+  if(ambience)scene.events.off('update',ambience.update);
+  let elapsed=0;const tick=(t,dt)=>{
+    if(scene.paused||scene.time.paused)return;
+    elapsed+=Math.min(dt,50)*scene.time.timeScale;
+    bg.x=640+Math.sin(elapsed/13000)*2+(scene.cameras.main.scrollX||0)*.035;
+    ambience?.update(t,Math.min(dt,50)*scene.time.timeScale);
+  };
+  scene.events.on('update',tick);scene.events.once('shutdown',()=>{scene.events.off('update',tick);root.destroy(true);});
+  return root;
+}};
+})();

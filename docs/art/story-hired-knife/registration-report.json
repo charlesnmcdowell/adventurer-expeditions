@@ -1,0 +1,10 @@
+{
+  "actor": "story_hired_knife",
+  "ordinaryFrames": 24,
+  "hiroFinisherFrames": [
+    16,
+    16
+  ],
+  "enemyFinisherFrames": 16,
+  "warnings": []
+}

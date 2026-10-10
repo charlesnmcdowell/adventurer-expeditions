@@ -6,16 +6,17 @@ let battleFrame=null;
 const d=await fetch('assets/expedition/story/campaign.json').then(r=>{if(!r.ok)throw Error('Campaign manifest failed');return r.json();});
 P.configure(d);let sceneContext=null,musicId=null;
 const available=new Set(await fetch('assets/expedition/story/preview-media.json').then(r=>r.json()));
+const portraits=await fetch('assets/expedition/story/portraits/portraits.json').then(r=>{if(!r.ok)throw Error('Story portraits missing');return r.json();});
 const url=path=>'assets/expedition/story/media/'+path;
-function stopVoice(){if(voice){voice.pause();voice.src='';voice=null;}}
+function stopVoice(){if(voice){voice.onended=null;voice.onerror=null;voice.pause();voice.src='';voice=null;}}
 function button(label,action,parent=panel){const b=document.createElement('button');b.textContent=label;b.onclick=action;parent.append(b);return b;}
 function text(tag,content,parent,cls){const e=document.createElement(tag);e.textContent=content;if(cls)e.className=cls;parent.append(e);return e;}
-function playMusic(){const id=session?P.music(session):'vg_lanternhold';if(id!==musicId){music?.pause();music=new Audio(url('audio/music/'+id+'.mp3'));music.loop=true;music.volume=.17;musicId=id;}if(!muted)music.play().catch(()=>{});}
+function playMusic(beat){const id=session?P.music(session,false,beat):'vg_lanternhold';if(id!==musicId){music?.pause();music=new Audio(url('audio/music/'+id+'.mp3'));music.loop=true;music.volume=.17;musicId=id;}if(!muted)music.play().catch(()=>{});}
 function say(beat){stopVoice();if(muted)return;const rows=beat.lines||C.lines('gate',beat.who,beat.key),row=rows[line];if(!row)return;
   const file=P.voice(beat,line);
   if(!available.has(file))return;voice=new Audio(url(file));voice.volume=.9;voice.play().catch(()=>{});
 }
-$('sound').onclick=()=>{muted=!muted;$('sound').textContent=muted?'Sound on':'Mute';if(muted){stopVoice();music?.pause();}else{playMusic();const beat=reply||session&&S.beats(session)[0];if(beat)say(beat);}};
+$('sound').onclick=()=>{muted=!muted;$('sound').textContent=muted?'Sound on':'Mute';if(muted){stopVoice();music?.pause();}else{const beat=reply||session&&S.beats(session)[0];playMusic(beat);if(beat)say(beat);}};
 $('home').onclick=()=>{stopVoice();battleFrame?.remove();battleFrame=null;session=null;reply=null;title();};
 window.addEventListener('message',event=>{
   if(event.origin!==location.origin||event.source!==battleFrame?.contentWindow||event.data?.type!=='expeditions-story-battle')return;
@@ -26,7 +27,7 @@ function battle(){
   battleFrame=document.createElement('iframe');battleFrame.title='Campaign battle';battleFrame.src='docs/STORY_FIGHT_PREVIEW.html?muted='+(muted?'1':'0');
   battleFrame.style.cssText='position:fixed;inset:0;width:100%;height:100%;border:0;background:#070a12;z-index:6';document.body.append(battleFrame);
 }
-function open(record){session=S.open(record);window.storyPreview=session;reply=null;line=0;applied=null;sceneContext=null;playMusic();render();}
+function open(record){session=S.open(record);window.storyPreview=session;reply=session.record.reply||null;line=session.record.line||0;applied=null;sceneContext=null;playMusic();render();}
 function showScene(beat){
   const spec=P.scene(session,beat,sceneContext);if(!spec)return;sceneContext=spec;
   const art=d.art[spec.kind]?.[spec.id];if(!art)return;
@@ -43,6 +44,7 @@ function title(){stopVoice();session=null;reply=null;sceneContext=null;playMusic
 }
 function render(){
   stopVoice();panel.replaceChildren();const r=session.record;
+  if(r.phase==='complete')return ending();
   if(r.phase==='combat'||r.phase==='defeat'){
     const box=text('section','',panel,'menu');text('h1','The road ahead',box);text('p',session.game.quest.quest.encounters[r.encounter]?.label||'Encounter',box,'speaker');
     if(!S.readiness(session).length){
@@ -53,22 +55,35 @@ function render(){
     text('p','Pending: '+S.readiness(session).join(', '),box,'notice error');button('Back to title',title,box);return;
   }
   let beat=reply||S.beats(session)[0];
-  if(!beat){S.nextPhase(session);if(r.phase==='complete'){text('p','Campaign complete',panel);return;}return render();}
+  if(!beat){S.nextPhase(session);return render();}
   const identity=r.chapter+':'+r.encounter+':'+r.phase+':'+beat.who+':'+beat.key;
   if(applied!==identity){S.applyBeat(session,beat);applied=identity;}
-  showScene(beat);playMusic();
+  showScene(beat);playMusic(beat);
   const box=text('section','',panel);box.id='dialogue';text('div',ADV.DATA.CAMPAIGN_CHARS[beat.who]?.name||beat.who,box,'speaker');
+  const portrait=portraits.portraits[P.portrait(beat)];
+  if(portrait&&sceneContext?.kind!=='stills'){const img=document.createElement('img');img.className='speaker-portrait';img.alt='';img.width=portrait.width;img.height=portrait.height;img.src='assets/expedition/story/portraits/'+portrait.file;box.append(img);}
   if(beat.caption)text('div',beat.caption,box,'caption');
   const rows=beat.lines||C.lines('gate',beat.who,beat.key);line=Math.min(line,Math.max(0,rows.length-1));
   const raw=rows[line]?.t||beat.promptText||'';
   const target=beat.to&&beat.to!=='player'?ADV.DATA.CAMPAIGN_CHARS[beat.to]?.name||'':session.hero.name;
   text('p',raw.replace(/\[[^\]]+\]/g,'').replaceAll('{target}',target).trim(),box,'speech');
   const choices=text('div','',box,'choices');
-  if(line<rows.length-1)button('Continue',()=>{line++;render();},choices);
+  if(line<rows.length-1)button('Continue',()=>{line++;r.line=line;S.save(session);render();},choices);
   else if(beat.choice){const opts=S.options(session,beat.choice);for(const o of opts)button(o.text,()=>{reply=S.choose(session,beat,o.id);line=0;applied=null;if(!reply)S.shiftBeat(session);render();},choices);if(!opts.length)button('Continue',advance,choices);}
   else button('Continue',advance,choices);
   function advance(){if(reply)reply=null;S.shiftBeat(session);line=0;applied=null;render();}
   say(beat);
+}
+function ending(){
+  const end=P.ending(session),box=text('section','',panel);box.id='epilogue';
+  const art=d.art.stills[end.art];if(art){const bg=document.querySelector('.backdrop');bg.style.backgroundImage='url("'+url(art.file)+'")';bg.classList.add('story-still');$('weather').hidden=true;}
+  playMusic();text('h1',end.title,box);text('p',end.line,box,'caption');
+  const scroll=text('div','',box,'ending-scroll'),rows=end.paragraphs.map(p=>text('p',p,scroll));
+  const controls=text('div','',box,'buttons');let at=-1,active=false;
+  const read=button('Read aloud',()=>{if(active){active=false;stopVoice();read.textContent='Read aloud';return;}muted=false;$('sound').textContent='Mute';playMusic();active=true;at=-1;next();},controls);
+  function next(){stopVoice();if(!active||!box.isConnected||muted)return;const row=end.narration[++at];rows.forEach(p=>p.classList.remove('reading'));if(!row){active=false;read.textContent='Read again';return;}
+    const el=rows[row.paragraph];if(el){el.classList.add('reading');el.scrollIntoView({block:'nearest'});}read.textContent='Stop narration';voice=new Audio(url(row.file));voice.onended=next;voice.onerror=next;voice.play().catch(()=>{active=false;read.textContent='Read aloud';});}
+  button('Back to title',title,controls);button('Play Arcade',()=>location.href='index.html',controls);
 }
 // Separate animated atmosphere on the reused panorama, never in front of UI.
 const canvas=$('weather'),ctx=canvas.getContext('2d');let w=0,h=0;
@@ -78,6 +93,6 @@ function draw(t){if(w!==innerWidth||h!==innerHeight){w=canvas.width=innerWidth;h
     for(let i=0;i<3;i++){const x=((t*.009+i*w*.42)%(w*1.6))-w*.3,y=h*(.15+i*.055);const g=ctx.createRadialGradient(x,y,1,x,y,w*.23);g.addColorStop(0,'rgba(145,168,195,.045)');g.addColorStop(1,'rgba(145,168,195,0)');ctx.fillStyle=g;ctx.fillRect(x-w*.3,y-h*.15,w*.6,h*.3);}
   }requestAnimationFrame(draw);
 }
-document.addEventListener('visibilitychange',()=>{if(document.hidden){stopVoice();music?.pause();}else if(!muted&&session)playMusic();});
+document.addEventListener('visibilitychange',()=>{if(document.hidden){stopVoice();music?.pause();}else if(!muted&&session)playMusic(reply||S.beats(session)[0]);});
 requestAnimationFrame(draw);title();
 })().catch(e=>{document.getElementById('panel').textContent='Preview could not load: '+e.message;console.error(e);});

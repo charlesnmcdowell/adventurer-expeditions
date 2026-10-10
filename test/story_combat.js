@@ -30,6 +30,15 @@ const p=S.Presentation;
 assert.equal(p.scene(s,{key:'q1_death'}).id,'death');assert.equal(p.scene(s,{key:'q14_final_taken'}).id,'hiwot_sacrifice');
 assert.equal(p.scene(s,{key:'q14_final_soul'}).id,'hiwot_bound');assert.equal(p.scene(s,{key:'q10_letter',artPrison:true}).id,'catacombs');
 assert.equal(p.voice({who:'aldric',key:'q1_wake'},0),'audio/vo/campaign/aldric/q1_wake_1.mp3');
+assert.equal(p.portrait({who:'korvath',key:'q1_death'}),'korvath_helmet');
+assert.equal(p.portrait({who:'sarn',key:'q9_offer'}),'sarn');
+assert.equal(p.music(s,false,{dream:true}),d.music.dream);
+for(const id of Object.keys(d.endings)){
+  const endSession=S.open();C.state(endSession.game).ending=id;endSession.record.phase='complete';
+  const end=p.ending(endSession);assert(end.paragraphs.length);assert(d.art.stills[end.art]);assert(end.narration.length);
+  for(const row of end.narration)assert(d.assets.some(a=>a.file===row.file&&a.exists),row.file);
+  assert.equal(p.music(endSession),d.music.ending);
+}
 for(let n=1;n<=14;n++){s.record.chapter=n;s.record.encounter=0;s.record.phase='departure';S.syncQuest(s);
   const beats=p.annotate(s,C.departureBeats(s.game,s.game.quest.quest));let context=null;
   for(const beat of beats){context=p.scene(s,beat,context);if(context)assert(d.art[context.kind][context.id]);}

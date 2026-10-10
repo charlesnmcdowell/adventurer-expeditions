@@ -12,6 +12,10 @@ assert(imported.assets.every(a=>a.exists),'all source media found');
 const s=S.open();assert.equal(s.game.world.characters.length,1);assert.equal(s.hero.name,'Hiro');
 assert.equal(S.beats(s)[0].key,'q1_wake');
 const beat=S.beats(s)[0],reply=S.choose(s,beat,'why');assert.equal(reply.choice,'q1_wake');assert(!S.options(s,'q1_wake').some(o=>o.id==='why'));
+// A reload in an answer must not jump back to the question or lose its line.
+s.record.line=1;S.save(s);const resumedReply=S.open(S.load());
+assert.deepEqual(resumedReply.record.reply,reply);assert.equal(resumedReply.record.line,1);
+S.shiftBeat(resumedReply);assert.equal(resumedReply.record.reply,null);assert.equal(resumedReply.record.line,0);
 C.recruit(s.game,'wren_ward');assert.equal(s.game.world.characters.length,1,'story companion cannot become combat ally');assert(C.inCompany(s.game,'wren_ward'));
 // First encounter can be spared; tutorial must wait for first actual fight.
 s.record.phase='opener';s.record.queue=[];

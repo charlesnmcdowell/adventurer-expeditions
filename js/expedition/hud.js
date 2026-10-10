@@ -81,7 +81,7 @@ class Hud {
 
     // Wave nodes (top-center)
     this.nodes = [];
-    const n = X.encounters.length, cx = W / 2, gap = 74;
+    const n = opts.waveCount || X.encounters.length, cx = W / 2, gap = 74;
     this.nodeBar = s.add.container(0, 0).setDepth(D.hud).setScrollFactor(0);
     const bar = s.add.rectangle(cx, 40, gap * (n - 1) + 10, 6, 0x2a2420).setStrokeStyle(1, 0x000000, 0.6);
     this.nodeBar.add(bar);

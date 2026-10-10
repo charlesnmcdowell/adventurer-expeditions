@@ -5,6 +5,11 @@ const A=ADV,S=A.Expedition.Story,C=A.Campaign3;
 const P=S.Presentation={};
 P.configure=d=>{P.data=d;};
 P.media=path=>'assets/expedition/story/media/'+path;
+P.portrait=function(beat){
+  if(beat.who==='korvath'&&beat.key?.startsWith('q1_'))return 'korvath_helmet';
+  if(beat.who==='amara'&&beat.key?.startsWith('q11_'))return 'amara_docks';
+  return beat.who;
+};
 P.voice=function(beat,line){
   const rows=beat.lines||C.lines('gate',beat.who,beat.key),row=rows[line];
   if(!row)return null;
@@ -39,8 +44,18 @@ P.scene=function(session,beat,context){
   id=beat.artLocation||d.routes[n]?.[session.record.encounter];
   return id&&d.art.environments[id]?{kind:'environments',id,phase:beat.artPhase||context?.phase||'day'}:null;
 };
-P.music=function(session,combat=false){
+P.music=function(session,combat=false,beat=null){
   const n=session.record.chapter,m=P.data.music;
+  if(!combat&&session.record.phase==='complete')return m.ending;
+  if(!combat&&beat?.dream)return m.dream;
   return combat?(n===14?m.boss:m.combatByQuest?.[n]||m.combat[n>=m.cityFrom?'city':'road']):m.quest[n];
+};
+P.ending=function(session){
+  const state=C.state(session.game),id=state.ending,heading=P.data.endings[id]||{title:'The End',line:''};
+  const paragraphs=C.endCardParagraphs(session.game),vo=P.data.epilogueVoice;
+  const keys=new Map(vo.entries.map(row=>[row.text,row.key]));
+  const text=[heading.title+'. '+heading.line,...paragraphs];
+  return {...heading,paragraphs,art:({hero:'ending_hero',monster:'ending_vengeance',usurper:'ending_usurper',mercy:'ending_mercy',ascetic:'ending_empty',restored:'ending_hero',ascended:'ending_usurper'})[id],
+    narration:text.map((t,i)=>({text:t,paragraph:i-1,file:keys.has(t)?'audio/vo/campaign/'+vo.speaker+'/'+keys.get(t)+'_1.mp3':null})).filter(row=>row.file)};
 };
 })();

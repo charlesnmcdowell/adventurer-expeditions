@@ -1,0 +1,301 @@
+{
+  "schema": 1,
+  "portraits": {
+    "aldric": {
+      "file": "aldric-335eb18a755f.webp",
+      "width": 440,
+      "height": 560,
+      "sha256": "335eb18a755fb8a9b74b8eed59658304cfd846dea8e754540cd162aed7a34acc"
+    },
+    "nib": {
+      "file": "nib-ef57bd9004e7.webp",
+      "width": 440,
+      "height": 560,
+      "sha256": "ef57bd9004e78575f9b9684b183f3eecf71b1d96b8cfe5ca55e60e380a3aae5b"
+    },
+    "korvath": {
+      "file": "korvath-e4d0f4a27d81.webp",
+      "width": 440,
+      "height": 560,
+      "sha256": "e4d0f4a27d813927bb0fee7502c0f2d8c8f21736e8185e42def8d96fbf101c3a"
+    },
+    "wren_ward": {
+      "file": "wren_ward-e97bbed3f85d.webp",
+      "width": 440,
+      "height": 560,
+      "sha256": "e97bbed3f85d9b074e0d2e77e9082908d1452b24866cfe5015a1e8aef207fbaf"
+    },
+    "vess": {
+      "file": "vess-bfe7082047db.webp",
+      "width": 440,
+      "height": 560,
+      "sha256": "bfe7082047dbfdf636c75067d8173ff7a4987ca43b550a9355e5f4b629cab4a1"
+    },
+    "fennick": {
+      "file": "fennick-63c3b17080a3.webp",
+      "width": 440,
+      "height": 560,
+      "sha256": "63c3b17080a388ae86225628e88ba55960b492d0bc581dba5472c3ddf267931b"
+    },
+    "cassian": {
+      "file": "cassian-972b2c7069b6.webp",
+      "width": 440,
+      "height": 560,
+      "sha256": "972b2c7069b6aca53a21e34efa5b99f9a26b131aa198ac0fde4e74c313a11ea0"
+    },
+    "morwin": {
+      "file": "morwin-f1c99412c3ce.webp",
+      "width": 440,
+      "height": 560,
+      "sha256": "f1c99412c3ce7b3326f59586461ffad434d487bc1ce0a2c63842ebdcde10d23a"
+    },
+    "dorran": {
+      "file": "dorran-b318632df621.webp",
+      "width": 440,
+      "height": 560,
+      "sha256": "b318632df621e8f6dcaccd6b0f5e5fbbf6506c987a5ed556007dabfaf3d73541"
+    },
+    "selene": {
+      "file": "selene-cd5271ff3fc4.webp",
+      "width": 440,
+      "height": 560,
+      "sha256": "cd5271ff3fc47a9abbbfdb9d0fdb98bb778de5e33d3a7a348427000bb1f16143"
+    },
+    "ithrel": {
+      "file": "ithrel-c1ace0731ad2.webp",
+      "width": 440,
+      "height": 560,
+      "sha256": "c1ace0731ad25e06408700eed76bfd9bb02db9830250af11c61f407565f005f0"
+    },
+    "lessa": {
+      "file": "lessa-38a445c6c7f7.webp",
+      "width": 440,
+      "height": 560,
+      "sha256": "38a445c6c7f76c1cabe847edb4c40314bf23ea9e9005b481d113e905ce94e142"
+    },
+    "bramm": {
+      "file": "bramm-442deca2b469.webp",
+      "width": 440,
+      "height": 560,
+      "sha256": "442deca2b4693d83e54899c27c7d38b1184122292961b8a63d95306495117f9b"
+    },
+    "aurelius": {
+      "file": "aurelius-b49cc3b415b7.webp",
+      "width": 440,
+      "height": 560,
+      "sha256": "b49cc3b415b76206d5016d7a3db971be7d1f07e8ae48dba71bea4366a44ea0d1"
+    },
+    "ysolde": {
+      "file": "ysolde-54554ccfecae.webp",
+      "width": 440,
+      "height": 560,
+      "sha256": "54554ccfecaeb38edb016bb5e6df8d8f4f08cce03fec8403fb5e0b5f71ca9b8b"
+    },
+    "tollan": {
+      "file": "tollan-18de7e9d6ba4.webp",
+      "width": 440,
+      "height": 560,
+      "sha256": "18de7e9d6ba47dcc14119a016dafd539a66350e3c27c423e668c992e8559d9bc"
+    },
+    "grukhar": {
+      "file": "grukhar-b1c03573fec5.webp",
+      "width": 440,
+      "height": 560,
+      "sha256": "b1c03573fec5953684c4f06b2e217fc9f62b8993451128e8cb6de4237b8f59f7"
+    },
+    "torvald": {
+      "file": "torvald-f2e2e5bd180d.webp",
+      "width": 440,
+      "height": 560,
+      "sha256": "f2e2e5bd180d726d7ab6bb495b950f045fb89e6f2475526fc184827c429ad17e"
+    },
+    "verlan": {
+      "file": "verlan-6ad5e4453e3e.webp",
+      "width": 440,
+      "height": 560,
+      "sha256": "6ad5e4453e3ecbdeb5f206080a0c9c09785fb8b5e5ba65a0047398c93a5c3091"
+    },
+    "ilvara": {
+      "file": "ilvara-a03e53629501.webp",
+      "width": 440,
+      "height": 560,
+      "sha256": "a03e53629501063fc26d474536714be7cf22f200619a20077d7cae92490e1f12"
+    },
+    "cael": {
+      "file": "cael-1fd91abee2fc.webp",
+      "width": 440,
+      "height": 560,
+      "sha256": "1fd91abee2fc52b6c4553820397798c7b56911228cc131eee3c11339a4b15e3b"
+    },
+    "gorruk": {
+      "file": "gorruk-31429f395480.webp",
+      "width": 440,
+      "height": 560,
+      "sha256": "31429f395480b60034a4b56bcdb1352d52fbf1194a32bb18513f5e4602873f0c"
+    },
+    "faelen": {
+      "file": "faelen-b87c1696e4f5.webp",
+      "width": 440,
+      "height": 560,
+      "sha256": "b87c1696e4f591dc3e19ef833220942a6ff1e2af7471b4ee025014d513619121"
+    },
+    "nettle": {
+      "file": "nettle-748ce4ea2342.webp",
+      "width": 440,
+      "height": 560,
+      "sha256": "748ce4ea2342012e744976c582e02eb0dec27262fd55d1dc68b9fe30c260863c"
+    },
+    "thornwise": {
+      "file": "thornwise-7a7d0728df4a.webp",
+      "width": 440,
+      "height": 560,
+      "sha256": "7a7d0728df4a83334186b541f1913319d1800826117e0c79bc3823d518258c51"
+    },
+    "durnik": {
+      "file": "durnik-1d90b501dd6a.webp",
+      "width": 440,
+      "height": 560,
+      "sha256": "1d90b501dd6a7a3b44f7545d63115e7eab9c01f69690339db81866c91fb64d2d"
+    },
+    "malvane": {
+      "file": "malvane-7d73a471ec33.webp",
+      "width": 440,
+      "height": 560,
+      "sha256": "7d73a471ec3311c1001fbecf08c4947eb5b7a87123a8aac27e88cb9bd6b2bf9d"
+    },
+    "halloran": {
+      "file": "halloran-e06e92cf8b9a.webp",
+      "width": 440,
+      "height": 560,
+      "sha256": "e06e92cf8b9a68c51b1350142a56bf13f2fcf7af8ed0021da9fac9809e4a99fe"
+    },
+    "halvard": {
+      "file": "halvard-a9c70b49877d.webp",
+      "width": 440,
+      "height": 560,
+      "sha256": "a9c70b49877dbb3d64a4af703ea7eac7647e888868cd3f34a087fe38f82fbfa8"
+    },
+    "sarn": {
+      "file": "sarn-149f54cf8261.webp",
+      "width": 440,
+      "height": 560,
+      "sha256": "149f54cf8261d90a6f9af4602abfdbbaf49a18a7b1bed610cb4f601fe5f222a5"
+    },
+    "lysandra": {
+      "file": "lysandra-44642502f6a7.webp",
+      "width": 440,
+      "height": 560,
+      "sha256": "44642502f6a7930c8497a951680ac126349962703dec9280116a02bf1370ab84"
+    },
+    "amara": {
+      "file": "amara-105953304edf.webp",
+      "width": 440,
+      "height": 560,
+      "sha256": "105953304edf1a571e61be10dbf1b96f02444f357c37d6380199c93490452c4a"
+    },
+    "hadrian": {
+      "file": "hadrian-5f6aef13edf1.webp",
+      "width": 440,
+      "height": 560,
+      "sha256": "5f6aef13edf160ad141840f7c77ba630d789e39021d37ed2689c883587522bba"
+    },
+    "ambrose": {
+      "file": "ambrose-4c575355dd16.webp",
+      "width": 440,
+      "height": 560,
+      "sha256": "4c575355dd1653000d3cc0dbf22dfaff7d9161d6e570cb3bfa68e9b838694a53"
+    },
+    "maddox": {
+      "file": "maddox-8f4eb092ee20.webp",
+      "width": 440,
+      "height": 560,
+      "sha256": "8f4eb092ee206a87bcddba0ada293dc4b1162945344f553096f221914596d30c"
+    },
+    "vask": {
+      "file": "vask-ef26791f9668.webp",
+      "width": 440,
+      "height": 560,
+      "sha256": "ef26791f966863238e76f5193a617d4bbd62453beab6a39b75745af03d1bdda2"
+    },
+    "grell": {
+      "file": "grell-a7dbb10aef4e.webp",
+      "width": 440,
+      "height": 560,
+      "sha256": "a7dbb10aef4e191d5cd5e3966268b900d158a046c40cb90c22eb5c864bd6189e"
+    },
+    "ostwin": {
+      "file": "ostwin-ade0e4094605.webp",
+      "width": 440,
+      "height": 560,
+      "sha256": "ade0e40946051a93c39282aa99a52dcc26439300e2d8d07bc1e804d4e51ee12d"
+    },
+    "idris": {
+      "file": "idris-134095a43408.webp",
+      "width": 440,
+      "height": 560,
+      "sha256": "134095a43408f70465b6d8d3dd8e2603fcbda32e8a646e42d0ba172240bb6463"
+    },
+    "ravel": {
+      "file": "ravel-e8ee2c331ab8.webp",
+      "width": 440,
+      "height": 560,
+      "sha256": "e8ee2c331ab87e37d92a25fbd525ae6756d1d3eb28e63f7fd2e4d83e13b728e1"
+    },
+    "kessa": {
+      "file": "kessa-5f8b5f70dbd8.webp",
+      "width": 440,
+      "height": 560,
+      "sha256": "5f8b5f70dbd8f5b0c7125bc77ffc1e871e0ec13b8959a57b79c7a1c83b3ffa57"
+    },
+    "fen": {
+      "file": "fen-7faff656245f.webp",
+      "width": 440,
+      "height": 560,
+      "sha256": "7faff656245f0f6cee3c5f60e0aa6c0bf575b51fa5a0a761b81218417dfb1c99"
+    },
+    "orlan": {
+      "file": "orlan-0fba1b71a408.webp",
+      "width": 440,
+      "height": 560,
+      "sha256": "0fba1b71a4084584e2da69ffa4da9a7b14bdd527067f5602c078ee326f96e37a"
+    },
+    "mira": {
+      "file": "mira-ccb9ed97cb48.webp",
+      "width": 440,
+      "height": 560,
+      "sha256": "ccb9ed97cb4857caa6b25e9b9b80e1fb06dcce70c707c977d58fe0e06ff3d6ca"
+    },
+    "jarem": {
+      "file": "jarem-fcf31c8ba05e.webp",
+      "width": 440,
+      "height": 560,
+      "sha256": "fcf31c8ba05e97862bc1247d2a450548346055ae97ac7077e2ab7ac92d80ee1a"
+    },
+    "lucan": {
+      "file": "lucan-4c76e78ae832.webp",
+      "width": 440,
+      "height": 560,
+      "sha256": "4c76e78ae832a2c9ed95ce0552d34bc17e75945e4650f0ea0865efac331be745"
+    },
+    "korvath_helmet": {
+      "file": "korvath_helmet-c6ad62b28fc2.webp",
+      "width": 440,
+      "height": 560,
+      "sha256": "c6ad62b28fc2473caea6a01d852b6d7e5168b4750a7f0da63bffc43aefbd66c3"
+    },
+    "amara_docks": {
+      "file": "amara_docks-9aca35f52e1c.webp",
+      "width": 440,
+      "height": 560,
+      "sha256": "9aca35f52e1cfc14d2a7b8e9db242e3ce9aa25de3fbb2a75019c8c328ed831e1"
+    }
+  },
+  "source": "Original Adventurer portrait compositor",
+  "sourceModules": {
+    "js/ui/anime_world.js": "b5290616e470c24373c69971ae30faa85fc347bf7a6b480181437f352b45e28f",
+    "js/ui/anime_art.js": "d5c146719c269dcb3de55ddf360bf4140508cd1646e633abd544276d0af1e907",
+    "js/ui/gate_art.js": "c8af34a694da9e1c56321a70824611fc854993a7b1ab693503207f978055af16",
+    "js/ui/gate_manifest.js": "bb542673b8ce7501de75cf895ba8d2bf2bd584b52526a5defd04e228cf94a1c5",
+    "js/ui/anime_identities.js": "bd53ca4280c0970b5eefedb13462a5de12603bed9db8a572f1dddede491771fc"
+  }
+}

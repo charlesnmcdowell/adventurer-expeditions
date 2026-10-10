@@ -7,7 +7,6 @@ class StoryBattle extends X.Scene{
     this.artIds=['hiro',...new Set(S.opponentIds(this.story).map(id=>S.bindings[id]?.actor).filter(Boolean))];}
   preload(){
     X.Painted.preload(this,this.artIds);X.UI.preloadBusts(this);X.DefeatFX.preload(this);
-    X.BattleStage.preloadBackground(this,'citadel');
     const r=this.story.record,d=S.Presentation.data,id=d.routes[r.chapter][r.encounter];
     this.location=id;this.storyBackground='story_bg_'+id;
     this.load.image(this.storyBackground,S.Presentation.media(d.art.environments[id].file));
@@ -16,15 +15,15 @@ class StoryBattle extends X.Scene{
     this.__presentationReady=false;if(!X.Painted.require(this,this.artIds))return;
     this.actors=new Map();this.paused=false;this.time.paused=false;this.ended=false;this.__enemyFinishPresented=false;
     this.world={game:this.story.game,hero:this.story.hero,companions:[]};this.game_=this.story.game;
-    this.seed=this.opts.seed||Math.floor(Date.now()%100000);this.phase='night';
+    this.seed=this.opts.seed||Math.floor(Date.now()%100000);this.phase=this.story.record.chapter===1?'night':'day';
     this.quest={title:this.game_.quest.quest.name,music:S.Presentation.music(this.story,true)};
     this.enc=S.Combat.create(this.story,this.seed);this.encs=[this.enc.def];
     this.buildTextures();X.UI.installBusts(this);
-    this.env=X.BattleStage.paint(this,'citadel',this.phase);
-    this.env.layers[0].setTexture(this.storyBackground).setDisplaySize(2280,760);
+    this.env=S.Stage.paint(this,this.location,this.storyBackground,this.phase);
     this.buildBand();this.buildHero();
     this.hero.unit=X.Encounter.heroUnit(this.enc);this.hero.uid=this.hero.unit.uid;this.actors.set(this.hero.uid,this.hero);this.hero.refresh(true);this.spawnFoes();
-    this.hud=new X.Hud(this,{run:this.run,hero:this.story.hero,portraitKey:this.hero.faceKey,
+    this.run.wave=this.story.record.encounter;
+    this.hud=new X.Hud(this,{run:this.run,hero:this.story.hero,portraitKey:this.hero.faceKey,waveCount:this.game_.quest.quest.encounters.length,
       onSkill:id=>this.tapSkill(id),onArrow:()=>this.returnToStory('victory'),onPause:()=>this.togglePause()});
     this.hud.refresh();this.hud.setSkillStates(X.Encounter.skillStates(this.enc));
     const controls=[['Story',()=>this.returnToStory('leave')],['Pause',()=>this.togglePause()],['Sound',()=>{this.opts.muted=!this.opts.muted;this.opts.muted?this.music?.pause():this.music?.play().catch(()=>{});this.game.sound.mute=this.opts.muted;}]];

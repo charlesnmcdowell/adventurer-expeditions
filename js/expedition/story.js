@@ -82,10 +82,12 @@ S.choose=function(session,beat,optionId){
   if(result?.error)throw Error(result.error);
   if(opt.noEscape){r.noEscape=r.noEscape||{};r.noEscape[r.chapter+':'+before]=true;}
   if(g.quest.encIdx!==before){r.outcomes[r.chapter+':'+before]='bypass';r.encounter=g.quest.encIdx;r.bypassed=true;}
-  const reply=opt.reply?C.replyBeat(opt.reply,beat.who,g,opt,beat.choice):null;
+  const reply=opt.reply?{...C.replyBeat(opt.reply,beat.who,g,opt,beat.choice),
+      ...(beat.dream?{dream:true}:{}),...(beat.artLocation?{artLocation:beat.artLocation}:{}),...(beat.artPhase?{artPhase:beat.artPhase}:{})}:null;
+  r.reply=copy(reply);r.line=0;
   S.save(session);return reply;
 };
-S.shiftBeat=function(session){session.record.queue?.shift();S.save(session);};
+S.shiftBeat=function(session){session.record.queue?.shift();session.record.reply=null;session.record.line=0;S.save(session);};
 S.nextPhase=function(session){
   const r=session.record;
   if(r.queue?.length)throw Error('Dialogue must finish before advancing');
