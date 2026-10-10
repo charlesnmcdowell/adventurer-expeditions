@@ -49,7 +49,7 @@ class StoryBattle extends X.Scene{
     await X.EnemyFinishers.ensureDefeat(this);if(this.ended)return;
     if(!this.__enemyFinishPresented)await this.hero.play('kneel');X.UI.resetCamera(this);
     S.Combat.lose(this.story,this.enc);this.hud.banner('Defeated — your chapter progress is saved',2000);
-    const button=A.T.button(this,475,310,330,62,'Retry this fight',()=>{S.retry(this.story);this.scene.restart({...this.opts,record:this.story.record});},{size:22});
+    const button=A.T.button(this,475,310,330,62,'Retry — full health',()=>{S.retry(this.story);this.scene.restart({...this.opts,record:this.story.record});},{size:22});
     for(const item of [button.g,button.txt,button.zone]){item.setDepth(X.UI.DEPTH.hud+50);if(this.hudCam)this.cameras.main.ignore(item);}
   }
   returnToStory(outcome){if(this.ended)return;this.ended=true;X.UI.resetCamera(this);this.music?.pause();S.save(this.story);

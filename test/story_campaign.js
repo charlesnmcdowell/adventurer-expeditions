@@ -40,6 +40,22 @@ s.record.completed=[1];s.record.run.score=900;s.hero.inventory.gold=10;
 S.defeat(s);const loaded=S.open(S.load());S.retry(loaded);
 assert.equal(loaded.record.encounter,1);assert.deepEqual(loaded.record.completed,[1]);assert.equal(loaded.record.phase,'combat');assert.equal(loaded.record.run.score,0);
 assert.equal(loaded.game.world.characters.length,1);
+assert.equal(S.beginFight(loaded).tutorial,true,'first-fight tutorial remains available on retry');
+assert(!Number.isFinite(loaded.record.run.hp),'retry restores full health, not a trapped low-HP checkpoint');
+// Earned perks and acknowledged notices survive reload, not just source flags.
+const reward=S.open();C.state(reward.game).stage=4;C.state(reward.game).choices.q4_dream='reject';
+A.GatePerks.reconcile(reward.game);assert(A.GatePerks.has(reward.hero,'cure'));
+assert(A.GatePerks.state(reward.game).pending.some(n=>n.id==='gate_cure'));
+A.GatePerks.acknowledge(reward.game,A.GatePerks.state(reward.game).pending.slice());
+const rewardReload=S.open(S.load());assert(A.GatePerks.has(rewardReload.hero,'cure'));
+assert.equal(A.GatePerks.state(rewardReload.game).pending.length,0,'no repeated gift popup after reload');
+const completion=S.open();completion.record.chapter=1;completion.record.phase='arrival';completion.record.queue=[];
+completion.record.run.hp=9;completion.hero.combatHp=9;
+const pay=S.syncQuest(completion).payout;S.nextPhase(completion);
+assert.equal(completion.hero.inventory.gold,pay,'authored payout funds later paid dialogue options');
+assert.equal(completion.record.chapterRewardDue.gold,pay);assert.equal(completion.record.chapter,2);
+assert(!Number.isFinite(completion.hero.combatHp),'chapter return recovers health');
+assert.equal(S.open(S.load()).hero.inventory.gold,pay,'reload cannot award chapter twice');
 assert.equal(localStorage.getItem('adv:sentinel'),'keep');assert.equal(localStorage.getItem('adventurer_expeditions_arcade_v1'),'arcade sentinel');
 assert.deepEqual(Object.keys(localStorage._m).sort(),['adv:sentinel','adventurer_expeditions_arcade_v1',S.saveKey].sort(),'only story namespace written');
 // Borrow the actual finale hooks: ritual is not omitted from data-only imports.

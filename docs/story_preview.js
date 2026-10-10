@@ -7,6 +7,7 @@ const d=await fetch('assets/expedition/story/campaign.json').then(r=>{if(!r.ok)t
 P.configure(d);let sceneContext=null,musicId=null;
 const available=new Set(await fetch('assets/expedition/story/preview-media.json').then(r=>r.json()));
 const portraits=await fetch('assets/expedition/story/portraits/portraits.json').then(r=>{if(!r.ok)throw Error('Story portraits missing');return r.json();});
+const backdrop=S.Backdrop('animated-background',()=>$('stage').classList.add('rendered'));window.storyBackdrop=backdrop;
 const url=path=>'assets/expedition/story/media/'+path;
 function stopVoice(){if(voice){voice.onended=null;voice.onerror=null;voice.pause();voice.src='';voice=null;}}
 function button(label,action,parent=panel){const b=document.createElement('button');b.textContent=label;b.onclick=action;parent.append(b);return b;}
@@ -20,16 +21,17 @@ $('sound').onclick=()=>{muted=!muted;$('sound').textContent=muted?'Sound on':'Mu
 $('home').onclick=()=>{stopVoice();battleFrame?.remove();battleFrame=null;session=null;reply=null;title();};
 window.addEventListener('message',event=>{
   if(event.origin!==location.origin||event.source!==battleFrame?.contentWindow||event.data?.type!=='expeditions-story-battle')return;
-  battleFrame.remove();battleFrame=null;open(S.load());
+  battleFrame.remove();battleFrame=null;backdrop.pause(false);open(S.load());
 });
 function battle(){
-  stopVoice();music?.pause();S.save(session);panel.replaceChildren();
+  stopVoice();music?.pause();backdrop.pause(true);S.save(session);panel.replaceChildren();
   battleFrame=document.createElement('iframe');battleFrame.title='Campaign battle';battleFrame.src='docs/STORY_FIGHT_PREVIEW.html?muted='+(muted?'1':'0');
   battleFrame.style.cssText='position:fixed;inset:0;width:100%;height:100%;border:0;background:#070a12;z-index:6';document.body.append(battleFrame);
 }
 function open(record){session=S.open(record);window.storyPreview=session;reply=session.record.reply||null;line=session.record.line||0;applied=null;sceneContext=null;playMusic();render();}
 function showScene(beat){
   const spec=P.scene(session,beat,sceneContext);if(!spec)return;sceneContext=spec;
+  backdrop.show(spec);
   const art=d.art[spec.kind]?.[spec.id];if(!art)return;
   const bg=document.querySelector('.backdrop');bg.style.backgroundImage='url("'+url(art.file)+'")';
   bg.dataset.location=spec.id;bg.dataset.kind=spec.kind;
@@ -37,18 +39,29 @@ function showScene(beat){
   $('weather').hidden=spec.kind==='stills'||!!art.indoor;
 }
 function title(){stopVoice();session=null;reply=null;sceneContext=null;playMusic();const bg=document.querySelector('.backdrop');bg.style.backgroundImage='url("'+url(d.art.environments.lanternhold.file)+'")';bg.dataset.location='lanternhold';bg.dataset.kind='environments';bg.classList.remove('story-still');$('weather').hidden=false;panel.replaceChildren();const box=text('section','',panel,'menu');text('h1','ADVENTURER',box);text('h1','',box).innerHTML='<small>EXPEDITIONS</small>';
+  backdrop.pause(false);backdrop.show({kind:'environments',id:'lanternhold',phase:'night'});
   const buttons=text('div','',box,'buttons');if(S.load())button('Continue campaign preview',()=>open(S.load()),buttons);
   button('Begin campaign preview',()=>{if(S.load()){panel.replaceChildren();text('p','Start a new campaign preview? Your Arcade run stays as it is.',panel);button('Start new campaign',()=>open(S.fresh()));button('Cancel',title);}else open(S.fresh());},buttons);
   button('Play Arcade',()=>location.href='index.html',buttons);
-  text('p','Development preview: original story and recordings, with the opening Nib battle playable. Later fights remain locked while their combat art is completed.',box,'notice');
+  text('p','Development preview: the prologue battles and road wolves are playable with original story and recordings. Later fights remain locked while their combat art is completed.',box,'notice');
 }
 function render(){
   stopVoice();panel.replaceChildren();const r=session.record;
+  const perks=ADV.GatePerks?.state(session.game);
+  if(perks?.pending.length){
+    const notices=perks.pending.slice(),box=text('section','',panel,'menu');text('h1','Campaign gifts',box);
+    for(const notice of notices){const skill=ADV.DATA.SKILLS[notice.id];text('h2',skill.name,box);text('p',ADV.GatePerks.description(session.game,notice.id),box);}
+    button('Continue',()=>{ADV.GatePerks.acknowledge(session.game,notices);render();},box);return;
+  }
+  if(r.chapterRewardDue){const reward=r.chapterRewardDue,box=text('section','',panel,'menu');
+    text('h1','Chapter complete',box);text('h2',reward.name,box);text('p',reward.gold+' gold earned. Your progress is saved.',box);
+    button('Continue',()=>{delete r.chapterRewardDue;S.save(session);render();},box);return;
+  }
   if(r.phase==='complete')return ending();
   if(r.phase==='combat'||r.phase==='defeat'){
     const box=text('section','',panel,'menu');text('h1','The road ahead',box);text('p',session.game.quest.quest.encounters[r.encounter]?.label||'Encounter',box,'speaker');
     if(!S.readiness(session).length){
-      text('p',r.phase==='defeat'?'Your chapter progress is safe. Retry from the start of this fight.':'Ready to fight. Hiro battles alone; your companions remain part of the story.',box,'notice');
+      text('p',r.phase==='defeat'?'Your chapter progress is safe. Retry this fight with full health.':'Ready to fight. Hiro battles alone; your companions remain part of the story.',box,'notice');
       button(r.phase==='defeat'?'Retry fight':'Begin fight',()=>{if(r.phase==='defeat')S.retry(session);battle();},box);button('Back to title',title,box);return;
     }
     text('p','This fight is not ready to play. The campaign needs its own approved full-body enemies and finishers before combat can open. Your dialogue choices have been saved.',box,'notice');
@@ -76,6 +89,7 @@ function render(){
 }
 function ending(){
   const end=P.ending(session),box=text('section','',panel);box.id='epilogue';
+  backdrop.show({kind:'stills',id:end.art});
   const art=d.art.stills[end.art];if(art){const bg=document.querySelector('.backdrop');bg.style.backgroundImage='url("'+url(art.file)+'")';bg.classList.add('story-still');$('weather').hidden=true;}
   playMusic();text('h1',end.title,box);text('p',end.line,box,'caption');
   const scroll=text('div','',box,'ending-scroll'),rows=end.paragraphs.map(p=>text('p',p,scroll));

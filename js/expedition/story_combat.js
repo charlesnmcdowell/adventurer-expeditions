@@ -8,6 +8,9 @@ const copy=x=>JSON.parse(JSON.stringify(x));
 // Source encounters expect party recovery and multi-target defenses. The story
 // edition is solo. Keep authored kits but scope numerical tuning to tagged foes.
 B.tuning={foeDamage:.60,percentHitCap:.28};
+// The opening knife teaches three controls; the first mage boss introduces
+// spell pressure. Retain their kits without party-sized burst on solo Hiro.
+B.enemyDamage={'mini:nib':.30,'named:morwin':.35};
 const originalManifest=A.SkillSys.manifest;
 A.SkillSys.manifest=function(ch,entry){
   const m=originalManifest.call(this,ch,entry);
@@ -38,7 +41,7 @@ B.spawn=function(session){
     const id=B.identity(ch,spec),b=S.bindings[id];
     ch.storyOpponent=id;ch.expeditionKey='story:'+id;
     ch.expeditionStoryFoe=true;
-    ch.c3FoeDmg=(ch.c3FoeDmg??1)*B.tuning.foeDamage;
+    ch.c3FoeDmg=(ch.c3FoeDmg??1)*(B.enemyDamage[id]??B.tuning.foeDamage);
     ch.expeditionArtIdentity=b?.actor||id;
     ch.noCombatVoice=true;delete ch.personalityId;
     if(ch.campaignExit&&spec.escapes===false)ch.campaignExit=false;

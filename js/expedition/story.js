@@ -13,6 +13,7 @@ S.save=function(session){
   if(!session)return false;
   const g=session.game;
   session.record.c3=copy(C.state(g));session.record.gold=A.Game.player(g)?.inventory.gold||0;
+  if(A.GatePerks)session.record.perkLedger=copy(A.GatePerks.state(g));
   const raw=JSON.stringify(session.record);memory=raw;
   try{storage()?.setItem(S.saveKey,raw);return true;}catch(_){return false;}
 };
@@ -34,9 +35,10 @@ S.open=function(record){
   const world=X.Campaign.buildWorld(r.run);world.restoreIds();
   const session={record:r,game:world.game,hero:world.hero};
   session.game.meta.c3=r.c3;session.game.__expeditionStory=session;
+  session.game.meta.gatePerks=copy(r.perkLedger||{earned:{},pending:[],seen:{}});
   runSessions.set(r.run,session);
   session.hero.inventory.gold=r.gold||0;
-  S.syncQuest(session);return session;
+  S.syncQuest(session);A.GatePerks?.reconcile(session.game);return session;
 };
 S.syncQuest=function(session){
   const r=session.record,g=session.game,q=C.buildQuest(g,r.chapter);
@@ -99,16 +101,27 @@ S.nextPhase=function(session){
   }else if(r.phase==='closing')r.phase='arrival';
   else if(r.phase==='arrival'){
     const q=session.game.quest.quest;
-    if(!r.completed.includes(r.chapter)){C.onQuestDone(session.game,q);r.completed.push(r.chapter);C.takeBeats(session.game);}
-    if(r.chapter===14)r.phase='complete';else{r.chapter++;r.encounter=0;r.phase='departure';S.syncQuest(session);}
+    if(!r.completed.includes(r.chapter)){
+      C.onQuestDone(session.game,q);r.completed.push(r.chapter);C.takeBeats(session.game);
+      const pay={gold:q.payout||0,wage:0};session.hero.inventory.gold+=pay.gold;
+      A.GatePerks?.questBonus(session.game,q,pay);
+      r.chapterRewardDue={chapter:r.chapter,name:q.name,gold:pay.gold};
+    }
+    if(r.chapter===14)r.phase='complete';else{
+      // A chapter return replaces the website's home recovery. Arcade keeps
+      // its separate endurance rules; story cannot carry an unrecoverable HP
+      // checkpoint through fourteen chapters without the original home UI.
+      r.run.hp=null;delete session.hero.combatHp;
+      r.chapter++;r.encounter=0;r.phase='departure';S.syncQuest(session);
+    }
   }
   S.save(session);return r.phase;
 };
 S.beginFight=function(session){
   const r=session.record;if(r.phase!=='combat')throw Error('Not at a story fight');
   const missing=S.readiness(session);if(missing.length)throw Error('Campaign combat art not ready: '+missing.join(', '));
-  const tutorial=!r.tutorialFightStarted;
-  if(!r.checkpoint)r.checkpoint=copy({chapter:r.chapter,encounter:r.encounter,run:r.run,c3:C.state(session.game),gold:session.hero.inventory.gold});
+  const tutorial=!r.tutorialFightStarted||r.checkpoint?.tutorial===true;
+  if(!r.checkpoint)r.checkpoint=copy({chapter:r.chapter,encounter:r.encounter,run:r.run,c3:C.state(session.game),gold:session.hero.inventory.gold,perkLedger:A.GatePerks?.state(session.game)||null,tutorial});
   r.tutorialFightStarted=true;S.save(session);
   return {tutorial,allies:[],opponents:S.opponentIds(session),spec:S.currentSpec(session)};
 };
@@ -119,8 +132,12 @@ S.defeat=function(session){
 S.retry=function(session){
   const r=session.record,c=r.checkpoint;if(!c)throw Error('Missing pre-fight checkpoint');
   r.chapter=c.chapter;r.encounter=c.encounter;r.run=copy(c.run);r.c3=copy(c.c3);r.gold=c.gold;r.phase='combat';r.queue=null;
+  if(c.perkLedger)r.perkLedger=copy(c.perkLedger);
+  // Full health on retry avoids a saved low-health checkpoint trapping the
+  // player. Inventory, choices, score and completed fights still roll back.
+  r.run.hp=null;r.reply=null;r.line=0;
   session.game.meta.c3=r.c3;session.hero.inventory.gold=r.gold;
-  // Retry with at least the pre-fight health; never turn a loss into a new run.
+  // Rebuild only this fight; never turn a loss into a new campaign.
   const rebuilt=S.open(r);Object.assign(session,rebuilt);session.game.__expeditionStory=session;runSessions.set(session.record.run,session);
   S.save(session);return session;
 };
