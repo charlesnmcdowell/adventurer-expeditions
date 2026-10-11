@@ -13,7 +13,10 @@ const cases=[{chapter:1,encounter:1,actor:'story_cobb'},
   {chapter:3,encounter:2,actor:'story_snarl'},
   {chapter:3,encounter:2,actor:'story_bahadir',branch:'aurelius'},
   {chapter:4,encounter:0,actor:'story_tunnel_kobold'},
-  {chapter:4,encounter:1,actor:'story_kobold_shaman'}].filter(c=>!process.env.STORY_ACTORS||process.env.STORY_ACTORS.split(',').includes(c.actor));
+  {chapter:4,encounter:1,actor:'story_kobold_shaman'},
+  {chapter:4,encounter:2,actor:'story_kobold_chief'},
+  {chapter:4,encounter:2,actor:'story_veylan_acolyte'},
+  {chapter:4,encounter:3,actor:'story_grukhar'}].filter(c=>!process.env.STORY_ACTORS||process.env.STORY_ACTORS.split(',').includes(c.actor));
 (async()=>{const browser=await chromium.launch({channel:'chrome',headless:true});try{
  const page=await browser.newPage({viewport:{width:1280,height:760}}),errors=[],report=[];
  page.on('pageerror',e=>{errors.push(String(e));console.error('Story page error:',String(e));});

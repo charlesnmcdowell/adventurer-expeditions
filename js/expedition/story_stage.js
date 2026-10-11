@@ -2,7 +2,10 @@
 // surface stays fixed while the distant plate and weather move behind actors.
 (function(){
 'use strict';const A=ADV,S=A.Expedition.Story;
-S.Stage={paint(scene,id,key,phase){
+S.Stage={
+// Edition-owned combat adaptation. Dialogue keeps the original painting.
+files:{dunmere_mine:'assets/expedition/story/stages/dunmere-mine-combat.webp'},
+paint(scene,id,key,phase){
   const def=S.Presentation.data.art.environments[id],profile=A.GateAmbience.environments[id];
   const source=scene.textures.get(key).getSourceImage(),sw=source.width,sh=source.height;
   const scale=Math.max(1280/sw,760/sh),root=scene.add.container(0,0).setDepth(-10);

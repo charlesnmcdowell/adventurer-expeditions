@@ -43,7 +43,7 @@ function title(){stopVoice();session=null;reply=null;sceneContext=null;playMusic
   const buttons=text('div','',box,'buttons');if(S.load())button('Continue campaign preview',()=>open(S.load()),buttons);
   button('Begin campaign preview',()=>{if(S.load()){panel.replaceChildren();text('p','Start a new campaign preview? Your Arcade run stays as it is.',panel);button('Start new campaign',()=>open(S.fresh()));button('Cancel',title);}else open(S.fresh());},buttons);
   button('Play Arcade',()=>location.href='index.html',buttons);
-  text('p','Development preview: chapters 1–3 are playable with original story and recordings. Chapter 4 onward remains locked while its combat art is completed. This is not the finished campaign.',box,'notice');
+  text('p','Development preview: chapters 1–4 are playable with original story and recordings. Chapter 5 onward remains locked while its combat art is completed. This is not the finished campaign.',box,'notice');
 }
 function render(){
   stopVoice();panel.replaceChildren();const r=session.record;

@@ -15,10 +15,19 @@ const choices={q1_wake:'go',q1_wake_seen:'nobody',q1_nib:'draw',q1_cobb:'nothing
  await page.goto('http://127.0.0.1:8742/docs/STORY_CAMPAIGN_PREVIEW.html');
  if(firstChapter>1){
   await page.waitForFunction(()=>window.ADV?.Expedition?.Story?.Presentation?.data);
-  await page.evaluate(n=>{const S=ADV.Expedition.Story,s=S.open();s.record.chapter=n;s.record.completed=Array.from({length:n-1},(_,i)=>i+1);s.record.run.tutorial.skipGuide=true;S.syncQuest(s);S.save(s);},firstChapter);
+  // A chapter-only extension resumes the verified previous playthrough, with
+  // its actual skills, rewards and irreversible choices. Do not fabricate
+  // completion flags on a brand-new hero and call that campaign coverage.
+  const previous=process.env.STORY_CHECKPOINT||'test/reports/story-chapters-'+(firstChapter-1)+'/verification.json';
+  const saved=JSON.parse(fs.readFileSync(previous)).result.record;
+  assert.equal(saved.chapter,firstChapter,'Prior playthrough checkpoint');
+  assert.deepEqual(saved.completed,Array.from({length:firstChapter-1},(_,i)=>i+1));
+  await page.evaluate(record=>{const S=ADV.Expedition.Story,s=S.open(record);S.save(s);},saved);
   await page.reload();await page.getByRole('button',{name:'Continue campaign preview',exact:true}).click();
  }else await page.getByRole('button',{name:'Begin campaign preview',exact:true}).click();
  if(branch==='bahadir')choices.q3_bramm='coin';
+ choices.q4_grukhar=branch==='grukhar-spared'?'walk':'kill';
+ choices.q4_dream='reject';
  for(const start=Date.now();Date.now()-start<1200000;){
   if(errors.length)throw Error(errors.join('\n'));
   const el=await page.locator('iframe').count()?await page.locator('iframe').elementHandle():null;
@@ -26,7 +35,9 @@ const choices={q1_wake:'go',q1_wake_seen:'nobody',q1_nib:'draw',q1_cobb:'nothing
    const frame=await el.contentFrame();
    const state=await frame.evaluate(()=>{const s=window.storyGame?.scene.getScene('StoryBattle');if(!s?.hero)return null;
     const h=s.hud,E=ADV.Expedition.Encounter;
-    return {id:s.story.record.chapter+':'+s.story.record.encounter,phase:s.story.record.phase,arrow:s.arrowArmed,
+    // Victory advances the saved encounter before its arrow is clicked.
+    // Identify the fight on screen, not that already-advanced checkpoint.
+    return {id:s.enc.def.id.replace(/^story-(\d+)-(\d+)$/,'$1:$2'),phase:s.story.record.phase,arrow:s.arrowArmed,
      rect:s.arrowArmed?h.arrow.rect:h._gateRect,ready:['finisher','counter_attack','god_aura'].filter(id=>E.skillState(s.enc,id).ready).map(id=>h.icons[id].rect)};});
    if(state){
     if(!fights.has(state.id)){fights.add(state.id);console.log('story fight',state.id);}
@@ -51,7 +62,11 @@ const choices={q1_wake:'go',q1_wake_seen:'nobody',q1_nib:'draw',q1_cobb:'nothing
  assert.equal(result.record.chapter,chapters+1);assert.deepEqual(result.record.completed,Array.from({length:chapters},(_,i)=>i+1));
  for(let c=firstChapter;c<=chapters;c++){
   const chapter=campaign.chapters.find(ch=>ch.n===c);assert(chapter,'Unknown chapter '+c);
-  for(let e=0;e<chapter.enc.length;e++)assert.equal(result.record.outcomes[c+':'+e],'combat',c+':'+e);
+  for(let e=0;e<chapter.enc.length;e++){
+   const bypass=c===4&&e===3&&branch==='grukhar-spared';
+   assert.equal(result.record.outcomes[c+':'+e],bypass?'bypass':'combat',c+':'+e);
+   assert.equal(fights.has(c+':'+e),!bypass,'Actual fight coverage '+c+':'+e);
+  }
  }
  assert(result.record.gold>0);assert(result.backdrop);
  await page.reload();await page.getByRole('button',{name:'Continue campaign preview',exact:true}).click();

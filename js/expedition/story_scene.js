@@ -9,7 +9,7 @@ class StoryBattle extends X.Scene{
     X.Painted.preload(this,this.artIds);X.UI.preloadBusts(this);X.DefeatFX.preload(this);
     const r=this.story.record,d=S.Presentation.data,id=d.routes[r.chapter][r.encounter];
     this.location=id;this.storyBackground='story_bg_'+id;
-    this.load.image(this.storyBackground,S.Presentation.media(d.art.environments[id].file));
+    this.load.image(this.storyBackground,S.Stage.files[id]||S.Presentation.media(d.art.environments[id].file));
   }
   create(){
     this.__presentationReady=false;if(!X.Painted.require(this,this.artIds))return;

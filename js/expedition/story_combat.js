@@ -11,9 +11,10 @@ B.tuning={foeDamage:.60,laterFoeDamage:.35,percentHitCap:.28,recoveryMax:.25};
 // The opening knife teaches three controls; the first mage boss introduces
 // spell pressure. Retain their kits without party-sized burst on solo Hiro.
 B.enemyDamage={'mini:nib':.30,'named:morwin':.35};
-// Grukhar's four-caster room was built for a party. Shorten its combined
-// health pool rather than removing its poison, healer or ranged tactics.
-B.encounterHealth={'4:3':.60};
+// Mine caster groups were built for a party. Shorten their combined health
+// pools while preserving poison, healing, curses and ranged tactics.
+B.encounterHealth={'4:1':.65,'4:2':.70,'4:3':.40};
+B.encounterDamage={'4:1':.16,'4:2':.16,'4:3':.15};
 const originalManifest=A.SkillSys.manifest;
 A.SkillSys.manifest=function(ch,entry){
   const m=originalManifest.call(this,ch,entry);
@@ -44,7 +45,7 @@ B.spawn=function(session){
     const id=B.identity(ch,spec),b=S.bindings[id];
     ch.storyOpponent=id;ch.expeditionKey='story:'+id;
     ch.expeditionStoryFoe=true;
-    ch.c3FoeDmg=(ch.c3FoeDmg??1)*(B.enemyDamage[id]??(r.chapter>=4?B.tuning.laterFoeDamage:B.tuning.foeDamage));
+    ch.c3FoeDmg=(ch.c3FoeDmg??1)*(B.enemyDamage[id]??B.encounterDamage[r.chapter+':'+r.encounter]??(r.chapter>=4?B.tuning.laterFoeDamage:B.tuning.foeDamage));
     // The source supplies a party with anti-healing companions. Here Hiro is
     // the only fighter: retain every healer's kit, but share a finite recovery
     // budget across healing, drains and overheal instead of restoring a whole

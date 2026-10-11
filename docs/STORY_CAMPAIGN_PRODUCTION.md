@@ -6,7 +6,7 @@ Updated 11 October 2026. This is an unfinished expansion, not a release candidat
 
 The main route through chapters 1–3 passed nine real battles, original choices/scenes, rewards and reload into chapter four with zero retries and no page errors. All eleven opponent identities for these chapters are now registered, including Snarl and the alternate Bahadır set. Bahadır has two explicitly nonlethal Hiro disarms and one lethal enemy pair; his source survival outcome takes precedence over lethal imagery. His recovery strip was replaced after visual review caught connected poses causing missing/duplicate Hiro figures. The optional branch has separate browser coverage; see the dated changelog for its final result.
 
-The original import was regenerated unchanged: 14 chapters, 55 encounter slots, 59 identities, 974 media files. Sparing Nib now has a dedicated real-browser tutorial/defeat/reload/retry check. Story survivors no longer receive ordinary defeat knockback. The physics-owned modules remain unchanged. Tunnel Kobold and Kobold Shaman are also registered and have passed actual multi-enemy finisher playback: 13/59 identities, 46 remain. The local launcher opens the three-chapter story preview; direct index.html remains Arcade. Chapter four onward still needs complete art and chapter playthroughs.
+The original import was regenerated unchanged: 14 chapters, 55 encounter slots, 59 identities, 974 media files. Sparing Nib now has a dedicated real-browser tutorial/defeat/reload/retry check. Story survivors no longer receive ordinary defeat knockback. The physics-owned modules remain unchanged. Tunnel Kobold and Kobold Shaman are also registered and have passed actual multi-enemy finisher playback: 16/59 identities, 43 remain. The local launcher opens the four-chapter story preview; direct index.html remains Arcade. Chapter five onward still needs complete art and chapter playthroughs.
 
 ## Implemented this pass
 
@@ -35,7 +35,7 @@ The original import was regenerated unchanged: 14 chapters, 55 encounter slots, 
 
 ## Next work, in dependency order
 
-1. Continue chapter four: Tunnel Kobold and Kobold Shaman are intaken and battle-tested. Kobold Chief is in source production; Acolyte of Veylan and Grukhar remain. Chapter three's main and alternate-branch playthroughs passed. The public development preview still ends after chapter three; later unready fights stay gated.
+1. Chapter-four main and spare branch QA passed. Build chapter-five Femi, Burning Gauntlet Soldier, Skarn, Hobgoblin Sergeant, Road Bandit and Gorruk. All five mine identities are intaken and battle-tested. Chapter three's main and alternate-branch playthroughs passed. The public development preview now ends after chapter four; later unready fights stay gated.
 2. Extend actual chapter playthrough coverage beyond chapter two as art becomes available. Verify first-fight tutorial when Nib is spared and later irreversible events; unit coverage alone is not a completed browser campaign.
 3. Audit every original scene transition and travel beat in context. Original scene selection, portraits, ending cards and ambience are wired, but all fourteen chapters have not been visually played through.
 4. Tune later solo encounters with the corrected between-turn casting audit and actual browser play. A winning seed is a minimum gate, not a satisfactory difficulty curve. The weakest late-game win rates still need attention.
