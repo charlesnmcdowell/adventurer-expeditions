@@ -1,0 +1,10 @@
+{
+  "actor": "story_gnoll_raider",
+  "ordinaryFrames": 24,
+  "hiroFinisherFrames": [
+    16,
+    16
+  ],
+  "enemyFinisherFrames": 16,
+  "warnings": []
+}

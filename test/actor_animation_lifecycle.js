@@ -120,6 +120,16 @@ test('paired finishers require a matching identity and lethal outcome, including
   assert.equal(target.root.visible, false); assert.equal(target.alive, false);
   target.alive = true; target.unit.ch.expeditionKey = 'blight_wolf'; assert.notEqual(a.sheetClipFor('finisher', opts), 'finisher-l1-paired');
 });
+test('story survivors reject lethal pairs and accept only authored nonlethal disarms', () => {
+  const c=clip('finisher-l1-paired',{paired:true,opponentKinds:['wolf'],opponentKeys:['dire_wolf']});
+  const a=actor({'finisher-l1-paired':c}),target=actor();
+  target.kind='wolf';target.unit={ch:{expeditionKey:'dire_wolf',campaignExit:true}};
+  assert.equal(a.canPair(c,'finisher',{target,lethal:true}),false);
+  c.nonlethal=true;
+  assert.equal(a.canPair(c,'finisher',{target,lethal:true}),true);
+  assert.equal(a.canPair(c,'finisher',{target,lethal:false}),false,'surviving a hit is not an encounter-ending disarm');
+  assert.equal(target.unit.ch.campaignExit,true,'presentation never clears the story survival flag');
+});
 test('Bram paired clips and Alpha hit vocabulary resolve to their own art', () => {
   const a = actor(); a.sheet.clips = { idle: clip('idle'), bite_arm: clip('bite_arm', { paired: true, opponentKinds: ['wolf'] }), finisher_quadruped: clip('finisher_quadruped', { paired: true, opponentKinds: ['wolf'] }) };
   const target = actor(); target.kind = 'wolf'; target.unit = { ch: { expeditionKey: 'dire_wolf' } };

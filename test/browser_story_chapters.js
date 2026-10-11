@@ -2,8 +2,9 @@
 // Authored dialogue, actual fights, checkpoint retry, chapter rewards and
 // moving original scenery. No synthetic victories or fixture actor bindings.
 const {chromium}=require('playwright'),fs=require('node:fs'),assert=require('node:assert/strict');
-const OUT='test/reports/story-chapters';fs.mkdirSync(OUT,{recursive:true});
-const choices={q1_wake:'go',q1_wake_seen:'nobody',q1_nib:'draw',q1_cobb:'nothing',q1_wren:'kind',q2_pair_where:'truth',q2_pair:'yes',q2_cassian:'join',q2_morwin:'kill',q2_selene_how:'armour',q2_selene:'trust'};
+const chapters=Number(process.env.STORY_CHAPTERS)||2;
+const OUT='test/reports/story-chapters-'+chapters;fs.mkdirSync(OUT,{recursive:true});
+const choices={q1_wake:'go',q1_wake_seen:'nobody',q1_nib:'draw',q1_cobb:'nothing',q1_wren:'kind',q2_pair_where:'truth',q2_pair:'yes',q2_cassian:'join',q2_morwin:'kill',q2_selene_how:'armour',q2_selene:'trust',q3_ithrel:'yes',q3_lessa:'fight',q3_bramm:'rescue',q3_ysolde:'nothing',q3_tollan:'yes'};
 (async()=>{const browser=await chromium.launch({channel:'chrome',headless:true});try{
  const page=await browser.newPage({viewport:{width:1280,height:760}}),errors=[],locations=new Set(),fights=new Set();let retries=0;
  page.on('pageerror',e=>errors.push(String(e)));
@@ -30,7 +31,7 @@ const choices={q1_wake:'go',q1_wake_seen:'nobody',q1_nib:'draw',q1_cobb:'nothing
    return{chapter:r.chapter,phase:r.phase,choice:b?.choice,options:b?.choice?S.options(s,b.choice):[],location:document.querySelector('.backdrop').dataset.location};});
   if(!state){await page.waitForTimeout(100);continue;}
   if(state.location)locations.add(state.location);
-  if(state.chapter===3){await page.screenshot({path:OUT+'/chapter-3.png'});break;}
+  if(state.chapter===chapters+1){await page.screenshot({path:OUT+'/next-chapter.png'});break;}
   const labels=await page.locator('#panel button').allTextContents();
   let label=labels.includes('Continue')?'Continue':labels.includes('Begin fight')?'Begin fight':state.options.find(o=>o.id===choices[state.choice])?.text;
   if(!label)throw Error('Unhandled story panel '+JSON.stringify({state,labels}));
@@ -38,11 +39,11 @@ const choices={q1_wake:'go',q1_wake_seen:'nobody',q1_nib:'draw',q1_cobb:'nothing
   await page.getByRole('button',{name:label,exact:true}).click();await page.waitForTimeout(130);
  }
  const result=await page.evaluate(()=>({record:storyPreview.record,backdrop:storyBackdrop.state()}));
- assert.equal(result.record.chapter,3);assert.deepEqual(result.record.completed,[1,2]);
- for(const key of ['1:0','1:1','1:2','2:0','2:1','2:2'])assert.equal(result.record.outcomes[key],'combat',key);
+ assert.equal(result.record.chapter,chapters+1);assert.deepEqual(result.record.completed,Array.from({length:chapters},(_,i)=>i+1));
+ for(let c=1;c<=chapters;c++)for(let e=0;e<3;e++)assert.equal(result.record.outcomes[c+':'+e],'combat',c+':'+e);
  assert(result.record.gold>0);assert(result.backdrop);
  await page.reload();await page.getByRole('button',{name:'Continue campaign preview',exact:true}).click();
- assert.equal(await page.evaluate(()=>storyPreview.record.chapter),3);
+ assert.equal(await page.evaluate(()=>storyPreview.record.chapter),chapters+1);
  assert.deepEqual(errors,[]);fs.writeFileSync(OUT+'/verification.json',JSON.stringify({fights:[...fights],locations:[...locations],retries,result,errors},null,2));
- console.log('First two story chapters: six real fights, original scenes/choices, gold, checkpoint retry and reload passed');
+ console.log('First '+chapters+' story chapters: real fights, original scenes/choices, gold, checkpoint retry and reload passed');
 }finally{await browser.close();}})().catch(e=>{console.error(e);process.exitCode=1;});

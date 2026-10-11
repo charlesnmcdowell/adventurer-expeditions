@@ -164,7 +164,10 @@ class Actor {
     const sheetClip = this.sheet ? this.sheetClipFor(clip, opts) : null;
     if (sheetClip) {
       const playing = this.playSheet(sheetClip, clip, opts);
-      return clip === 'down_fade' ? playing.then(() => this._destroyed ? undefined : this.fadeOut()) : playing;
+      if (clip !== 'down_fade') return playing;
+      // An ordinary enemy death is thrown back by the blow (X.Knockback) while its fall plays.
+      const thrown = this.side === 'b' && !this.__finisherPresented && X.Knockback && X.Knockback.enabled ? X.Knockback.play(this) : null;
+      return Promise.all([playing, thrown]).then(() => this._destroyed ? undefined : this.fadeOut());
     }
     const fn = Actor.PLACEHOLDER[clip];
     if (!fn) return Promise.resolve();
@@ -239,7 +242,9 @@ class Actor {
     if (!target || !target.alive || target._destroyed) return false;
     // Sep20: every resolved kill may finish, not only the wave's last foe.
     if (/finisher/.test(clip) && !opts.lethal) return false;
-    if (/finisher/.test(clip) && target.unit?.ch?.campaignExit) return false;
+    // Story survivors may only use a pair explicitly painted as a nonlethal
+    // disarm. The combat unit can be down while the story character survives.
+    if (/finisher/.test(clip) && target.unit?.ch?.campaignExit && c.nonlethal !== true) return false;
     if (!Array.isArray(c.opponentKinds) || !c.opponentKinds.includes(target.kind)) return false;
     // The pair is eligible when the target is the creature in the painting —
     // the same painted SET, not the same entity id (Hiro, 2026-09-22: "why is

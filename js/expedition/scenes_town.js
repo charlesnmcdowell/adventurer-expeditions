@@ -26,7 +26,7 @@ function questContext(scene, quest) {
 class InnScene extends Phaser.Scene {
   constructor() { super('Inn'); }
   init(d) { this.opts = d || {}; }
-  preload() { X.Painted.preload(this); X.UI.preloadBusts(this); X.InnArt.preload(this); }
+  preload() { if (X.Memory) X.Memory.trim(this); X.Painted.preload(this); X.UI.preloadBusts(this); X.InnArt.preload(this); }
   isPortalReady() { return !!this.__presentationReady; }
   create() {
     this.__presentationReady = false; this.input.enabled = false;
@@ -260,7 +260,7 @@ class InnScene extends Phaser.Scene {
 class TravelScene extends Phaser.Scene {
   constructor() { super('Travel'); }
   init(d) { this.opts = d || {}; }
-  preload() { X.Painted.preload(this); X.UI.preloadBusts(this); X.TravelArt.preload(this); }
+  preload() { if (X.Memory) X.Memory.trim(this); X.Painted.preload(this); X.UI.preloadBusts(this); X.TravelArt.preload(this); }
   isPortalReady() { return !!this.__presentationReady; }
   create() {
     this.__presentationReady = false; this.input.enabled = false;
@@ -349,7 +349,7 @@ class TravelScene extends Phaser.Scene {
 class EndScene extends Phaser.Scene {
   constructor() { super('End'); }
   init(d) { this.opts = d || {}; }
-  preload() { X.UI.preloadBusts(this); }
+  preload() { if (X.Memory) X.Memory.trim(this); X.UI.preloadBusts(this); }
   isPortalReady() { return true; }
   create() {
     this.run = this.opts.run || X.Run.load() || X.Run.fresh();

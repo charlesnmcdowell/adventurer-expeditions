@@ -35,6 +35,26 @@ class StoryBattle extends X.Scene{
   }
   startMusic(){if(this.music)return;this.music=new Audio(S.Presentation.media('audio/music/'+this.quest.music+'.mp3'));this.music.loop=true;this.music.volume=.16;
     if(!this.opts.muted)this.music.play().catch(()=>{});}
+  spaceFoes(foes){
+    // Atlas canvases include wide paired finishers. Use the visible ordinary
+    // idle silhouettes, not that canvas width, to keep the back-rank archer
+    // inside the screen without shrinking the gnolls to fit the crowd.
+    if(!foes.length)return;
+    const left=565,right=1252,span=right-left;
+    const boxes=foes.map(a=>{
+      const pivot=a.sheet.canvas.pivot.x,scale=Math.abs(a._baseScaleX);
+      const frames=a.sheet.clips.idle.frames.map(id=>{
+        const f=this.textures.getFrame(a.sheet.key,id);
+        return {x:f.x,w:f.width};
+      });
+      const lo=Math.min(...frames.map(f=>f.x)),hi=Math.max(...frames.map(f=>f.x+f.w));
+      return {left:(lo-pivot)*scale,width:(hi-lo)*scale};
+    });
+    const total=boxes.reduce((v,b)=>v+b.width,0);
+    const gap=foes.length>1?(span-total)/(foes.length-1):0;
+    let x=foes.length===1?right-boxes[0].width:left;
+    foes.forEach((a,i)=>{a.home.x=Math.round(x-boxes[i].left);a.root.setDepth(100+i);x+=boxes[i].width+gap;});
+  }
   tutoring(){return this.enc.storyTutorial&&!this.run.tutorial.skipGuide;}
   togglePause(){this.paused=!this.paused;this.time.paused=this.paused;this.music&&(this.paused?this.music.pause():!this.opts.muted&&this.music.play().catch(()=>{}));}
   async victory(){

@@ -6,6 +6,7 @@ const sets = {
   deep_wood: 'forest-carriage-vault', bandit_road: 'forest-carriage-vault',
   mountain: 'forest-carriage-vault', alley: 'city-market-vault', marsh: 'swamp-log-slide', coast: 'coast', citadel: 'citadel'
 };
+Stage.sets = sets;   // read by X.Memory to keep the current location's layers
 const names = ['far','ground'];
 Stage.preload = scene => {
   const r = scene.opts?.run || X.Run.load() || X.Run.fresh();
@@ -14,6 +15,7 @@ Stage.preload = scene => {
   Stage.preloadBackground(scene,e?.bg);
 };
 Stage.preloadBackground = (scene,bg) => {
+  if (X.Props) X.Props.preload(scene, bg);
   const set = sets[bg];
   if (!set) return;
   for (const layer of names) {

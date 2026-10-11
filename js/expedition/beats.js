@@ -72,6 +72,8 @@ function impact(scene, tgt, e, opts) {
   V().damageNumber(scene, p.x + (Math.random() - 0.5) * 30, p.y - 20, e.dmg, dmgColor(e));
   tgt.refresh();
   recoil(scene, tgt, e);
+  // Battlefield props near the blow get knocked away from it (X.Props).
+  if (X.Props && tgt.unit && tgt.unit.maxHp) X.Props.blast(scene, tgt.root.x, tgt.root.y - 40, tgt.side === 'b' ? 1 : -1, 6 + 10 * Math.min(1, (e.dmg || 0) / tgt.unit.maxHp));
   // A painted clip brings its own impact parameters (X.impact, GDD §10.1);
   // placeholder motion keeps the timing table's single hit-stop.
   const im = opts.clip && X.impact && X.impact[opts.clip];

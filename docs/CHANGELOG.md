@@ -15,6 +15,18 @@ of small fixes within a day.
 
 ---
 
+## 2026-10-11 — Physics step 2: battlefield props engine and the art brief for the next steps
+
+The remaining physics and open-road steps need new art, so this pass builds what the art plugs into and writes the brief for it.
+
+**Art brief.** New `docs/PHYSICS_ART_BRIEF_20261011.md` for Astra: prop sheets per location (7 props each with sizes, breakables and debris cells, prompt skeleton), the segmented ragdoll pilot (wolf in 8 pieces, elven ranger in 12, overlapping rounded joints, assembled reference), the world map (2560 x 1440, five sites, roads, three future sites, no text), the forest road-segment kit (three layers that join at y = 612, plus traced ground lines) and five road-event vignettes, with an approval order.
+
+**Props engine.** New `js/expedition/props.js`. The fight scene now runs Matter.js (bundled in Phaser, no download) with gravity; with no props it holds zero bodies. Once a location's sheet is delivered and listed in `X.Props.available`, its `props.json` atlas loads with the battle stage, the props stand on the combat floor with floor and side walls, blows push nearby props away from the hit (`beats.js` impact), a body thrown by the knockback shoves props it lands among, and breakables shatter into four debris pieces that fade after 2.4 s once they move faster than a heavy blow. Matter freezes with pause, clock and hit-stop and follows cinematic slow motion. Presentation only. `X.Memory` frees a location's props with its other art. Manifests are validated before anything spawns. Nothing is loaded or drawn today: no location has prop art, and the no-placeholder rule stands.
+
+Verified in the browser with a test-only canvas texture created in the page (not shipped): props rest exactly on the floor, a blow rolls a heavy rock about 125 px, a close heavy hit shatters a crate, and a thrown wolf shoved a crate from 860 to 1104 px. No console errors. Matter world idle with zero bodies in normal fights. `test/physics_memory.js` gains props dormancy, manifest validation and memory checks (10 checks). `npm test` green. Script stamp 20261011-xp2.
+
+---
+
 ## 2026-10-10 — Campaign continuation: first two chapters, art intake and honest readiness gates
 
 The original `adventurer/` remains read-only. The new campaign is **not finished or published**. Chapters 1–2 now pass an actual browser playthrough through all six fights, source dialogue/choices, scene changes, chapter rewards and reload into chapter three. Default `index.html` remains Arcade. The separate development title is `docs/STORY_CAMPAIGN_PREVIEW.html`.

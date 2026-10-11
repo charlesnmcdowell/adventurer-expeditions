@@ -2,7 +2,7 @@
 
 Generated from the imported campaign inventory, runtime bindings and atlas file existence. A registered set still needs visual playtest; this is not a release certificate.
 
-**7 of 59 opponent identities registered. 52 remain.**
+**9 of 59 opponent identities registered. 50 remain.**
 
 | Enemy | First chapter | Runtime art | State |
 | --- | ---: | --- | --- |
@@ -13,8 +13,8 @@ Generated from the imported campaign inventory, runtime bindings and atlas file 
 | Road Wolf (enemy:road_wolf) | 2 | wolf | Registered reuse |
 | Merle (named:morwin) | 2 | story_merle | Registered |
 | Lurleen (named:lessa) | 3 | story_lurleen | Registered |
-| Gnoll Raider (enemy:gnoll_raider) | 3 | — | Pending |
-| Bandit Archer (enemy:bandit_archer) | 3 | — | Pending |
+| Gnoll Raider (enemy:gnoll_raider) | 3 | story_gnoll_raider | Registered |
+| Bandit Archer (enemy:bandit_archer) | 3 | story_bandit_archer | Registered |
 | Snarl, Gnoll Warleader (mini:gnoll_warleader) | 3 | — | Pending |
 | Bahadır (named:bramm) | 3 | — | Pending |
 | Tunnel Kobold (enemy:tunnel_kobold) | 4 | — | Pending |

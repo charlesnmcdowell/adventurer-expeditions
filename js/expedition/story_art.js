@@ -13,6 +13,10 @@ S.bindings['named:morwin']={actor:'story_merle',height:310,humanoid:true,combatR
   enemyFinisherReady:true,hiroFinishersReady:2,plannedFrames:8,minDistinctFrames:16,goreBothDirections:true};
 S.bindings['named:lessa']={actor:'story_lurleen',height:310,humanoid:true,combatReady:true,
   enemyFinisherReady:true,hiroFinishersReady:2,plannedFrames:8,minDistinctFrames:16,goreBothDirections:true};
+S.bindings['enemy:gnoll_raider']={actor:'story_gnoll_raider',height:350,humanoid:true,combatReady:true,
+  enemyFinisherReady:true,hiroFinishersReady:2,plannedFrames:8,minDistinctFrames:16,goreBothDirections:true};
+S.bindings['enemy:bandit_archer']={actor:'story_bandit_archer',height:305,humanoid:true,combatReady:true,
+  enemyFinisherReady:true,hiroFinishersReady:2,plannedFrames:8,minDistinctFrames:16,goreBothDirections:true};
 // Original Road Wolf is a gray wolf. Reuse the approved gray wolf and its
 // three Hiro-owned pairs; no tint or unrelated creature substitution.
 S.bindings['enemy:road_wolf']={actor:'wolf',height:250,reuse:true,combatReady:true,

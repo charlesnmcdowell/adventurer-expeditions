@@ -47,6 +47,33 @@ def main():
     fatal=None
     for spec in cfg['pairs']:
         clip,flags=pairs.paired(spec['id'],[spec['file']],4,4,[spec['hiroReferenceHeight']],spec['contacts'],spec.get('fatal',False))
+        for repair in spec.get('replacementSheets',[]):
+            indices=repair['frames']
+            replacement,repair_flags=pairs.paired(spec['id']+'-repair',
+                [repair['file']],repair['columns'],repair['rows'],
+                [repair['hiroReferenceHeight']],[],spec.get('fatal',False))
+            source_indices=repair.get('sourceFrames',list(range(len(replacement['sources']))))
+            if len(indices)!=len(source_indices) or len(set(indices))!=len(indices):
+                raise ValueError('Replacement frame mapping is not one-to-one')
+            if any(i<0 or i>=len(replacement['sources']) for i in source_indices):
+                raise ValueError('Replacement source frame outside sheet')
+            if any(i<0 or i>=len(clip['sources']) for i in indices):
+                raise ValueError('Replacement frame outside clip')
+            flags=[f for f in flags if f['frame'] not in indices]
+            remap=dict(zip(source_indices,indices))
+            flags.extend(dict(f,frame=remap[f['frame']]) for f in repair_flags if f['frame'] in remap)
+            for i,dest in enumerate(indices):
+                source_index=source_indices[i]
+                clip['sources'][dest]=dict(replacement['sources'][source_index],firstFrameZeroBased=dest)
+                clip['registration']['frames'][dest]=replacement['registration']['frames'][source_index]
+        # Authored contact measurements override the opaque-pixel floor when
+        # a dropped sword or blood lies below the feet. These are per-pose
+        # source coordinates, not runtime resizing of a kneeling body.
+        for index,guide in spec.get('registrationOverrides',{}).items():
+            i=int(index)
+            if i<0 or i>=len(clip['registration']['frames']):
+                raise ValueError('Invalid paired registration index '+index)
+            clip['registration']['frames'][i].update(guide)
         clip.update(opponentKinds=[actor],opponentKeys=['story:'+cfg['identity']])
         warnings.extend(dict(clip=spec['id'],**f) for f in flags)
         if spec.get('fatal'):fatal=clip
@@ -57,6 +84,9 @@ def main():
     doc=build(src,actor,out,300,95,manifest,lossless=True);doc['authoredFacing']=-1
     for c in doc['clips'].values():
         if c.get('paired'):c.update(embeddedBlood=True,preserveTiming=True)
+    for spec in cfg['pairs']:
+        if spec.get('nonlethal') and not spec.get('fatal'):
+            doc['clips'][spec['id']].update(nonlethal=True,finalState='opponent-survives')
     (out/actor/(actor+'.json')).write_text(json.dumps(doc,separators=(',',':')))
     fatalid=actor+'-fatal'
     build(src,fatalid,out,300,95,dict(clips=[fatal]),lossless=True)
