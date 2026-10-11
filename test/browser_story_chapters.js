@@ -3,13 +3,21 @@
 // moving original scenery. No synthetic victories or fixture actor bindings.
 const {chromium}=require('playwright'),fs=require('node:fs'),assert=require('node:assert/strict');
 const chapters=Number(process.env.STORY_CHAPTERS)||2;
-const OUT='test/reports/story-chapters-'+chapters;fs.mkdirSync(OUT,{recursive:true});
+const firstChapter=Number(process.env.STORY_FROM)||1,branch=process.env.STORY_BRANCH||'';
+const OUT='test/reports/story-chapters-'+chapters+(branch?'-'+branch:'');fs.mkdirSync(OUT,{recursive:true});
 const choices={q1_wake:'go',q1_wake_seen:'nobody',q1_nib:'draw',q1_cobb:'nothing',q1_wren:'kind',q2_pair_where:'truth',q2_pair:'yes',q2_cassian:'join',q2_morwin:'kill',q2_selene_how:'armour',q2_selene:'trust',q3_ithrel:'yes',q3_lessa:'fight',q3_bramm:'rescue',q3_ysolde:'nothing',q3_tollan:'yes'};
 (async()=>{const browser=await chromium.launch({channel:'chrome',headless:true});try{
  const page=await browser.newPage({viewport:{width:1280,height:760}}),errors=[],locations=new Set(),fights=new Set();let retries=0;
- page.on('pageerror',e=>errors.push(String(e)));
+ page.on('pageerror',e=>{errors.push(String(e));console.error('Story page error:',String(e));});
+ page.on('console',m=>{if(m.type()==='error')console.error('Story console:',m.text());});
+ page.on('requestfailed',r=>console.error('Story request:',r.url(),r.failure()?.errorText));
  await page.goto('http://127.0.0.1:8742/docs/STORY_CAMPAIGN_PREVIEW.html');
- await page.getByRole('button',{name:'Begin campaign preview',exact:true}).click();
+ if(firstChapter>1){
+  await page.waitForFunction(()=>window.ADV?.Expedition?.Story?.Presentation?.data);
+  await page.evaluate(n=>{const S=ADV.Expedition.Story,s=S.open();s.record.chapter=n;s.record.completed=Array.from({length:n-1},(_,i)=>i+1);s.record.run.tutorial.skipGuide=true;S.syncQuest(s);S.save(s);},firstChapter);
+  await page.reload();await page.getByRole('button',{name:'Continue campaign preview',exact:true}).click();
+ }else await page.getByRole('button',{name:'Begin campaign preview',exact:true}).click();
+ if(branch==='bahadir')choices.q3_bramm='coin';
  for(const start=Date.now();Date.now()-start<1200000;){
   if(errors.length)throw Error(errors.join('\n'));
   const el=await page.locator('iframe').count()?await page.locator('iframe').elementHandle():null;
@@ -40,10 +48,10 @@ const choices={q1_wake:'go',q1_wake_seen:'nobody',q1_nib:'draw',q1_cobb:'nothing
  }
  const result=await page.evaluate(()=>({record:storyPreview.record,backdrop:storyBackdrop.state()}));
  assert.equal(result.record.chapter,chapters+1);assert.deepEqual(result.record.completed,Array.from({length:chapters},(_,i)=>i+1));
- for(let c=1;c<=chapters;c++)for(let e=0;e<3;e++)assert.equal(result.record.outcomes[c+':'+e],'combat',c+':'+e);
+ for(let c=firstChapter;c<=chapters;c++)for(let e=0;e<3;e++)assert.equal(result.record.outcomes[c+':'+e],'combat',c+':'+e);
  assert(result.record.gold>0);assert(result.backdrop);
  await page.reload();await page.getByRole('button',{name:'Continue campaign preview',exact:true}).click();
  assert.equal(await page.evaluate(()=>storyPreview.record.chapter),chapters+1);
- assert.deepEqual(errors,[]);fs.writeFileSync(OUT+'/verification.json',JSON.stringify({fights:[...fights],locations:[...locations],retries,result,errors},null,2));
- console.log('First '+chapters+' story chapters: real fights, original scenes/choices, gold, checkpoint retry and reload passed');
+ assert.deepEqual(errors,[]);fs.writeFileSync(OUT+'/verification.json',JSON.stringify({firstChapter,lastChapter:chapters,branch,fights:[...fights],locations:[...locations],retries,result,errors},null,2));
+ console.log('Story chapters '+firstChapter+'–'+chapters+' '+branch+': real fights, original scenes/choices, gold, checkpoint retry and reload passed');
 }finally{await browser.close();}})().catch(e=>{console.error(e);process.exitCode=1;});

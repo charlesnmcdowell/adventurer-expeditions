@@ -48,9 +48,9 @@ def main():
     for spec in cfg['pairs']:
         replaced={i for repair in spec.get('replacementSheets',[]) for i in repair['frames']}
         clip,flags=pairs.paired(spec['id'],[spec['file']],4,4,[spec['hiroReferenceHeight']],spec['contacts'],spec.get('fatal',False),omit_frames=replaced)
-        for repair in spec.get('replacementSheets',[]):
+        for repair_index,repair in enumerate(spec.get('replacementSheets',[])):
             indices=repair['frames']
-            replacement,repair_flags=pairs.paired(spec['id']+'-repair',
+            replacement,repair_flags=pairs.paired(spec['id']+'-repair-'+str(repair_index),
                 [repair['file']],repair['columns'],repair['rows'],
                 [repair['hiroReferenceHeight']],[],spec.get('fatal',False))
             source_indices=repair.get('sourceFrames',list(range(len(replacement['sources']))))

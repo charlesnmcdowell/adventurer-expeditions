@@ -2,7 +2,7 @@
 
 Generated from the imported campaign inventory, runtime bindings and atlas file existence. A registered set still needs visual playtest; this is not a release certificate.
 
-**9 of 59 opponent identities registered. 50 remain.**
+**11 of 59 opponent identities registered. 48 remain.**
 
 | Enemy | First chapter | Runtime art | State |
 | --- | ---: | --- | --- |
@@ -15,8 +15,8 @@ Generated from the imported campaign inventory, runtime bindings and atlas file 
 | Lurleen (named:lessa) | 3 | story_lurleen | Registered |
 | Gnoll Raider (enemy:gnoll_raider) | 3 | story_gnoll_raider | Registered |
 | Bandit Archer (enemy:bandit_archer) | 3 | story_bandit_archer | Registered |
-| Snarl, Gnoll Warleader (mini:gnoll_warleader) | 3 | — | Pending |
-| Bahadır (named:bramm) | 3 | — | Pending |
+| Snarl, Gnoll Warleader (mini:gnoll_warleader) | 3 | story_snarl | Registered |
+| Bahadır (named:bramm) | 3 | story_bahadir | Registered |
 | Tunnel Kobold (enemy:tunnel_kobold) | 4 | — | Pending |
 | Kobold Shaman (enemy:kobold_shaman) | 4 | — | Pending |
 | Kobold Chief (mini:kobold_chief) | 4 | — | Pending |

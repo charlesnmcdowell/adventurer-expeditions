@@ -1,6 +1,12 @@
 # Campaign adaptation — production tracker
 
-Updated 10 October 2026. This is an unfinished expansion, not a release candidate. The live registration checklist is [STORY_CAMPAIGN_STATUS.md](STORY_CAMPAIGN_STATUS.md), regenerated with `node tools/story_status.js`.
+Updated 11 October 2026. This is an unfinished expansion, not a release candidate. The live registration checklist is [STORY_CAMPAIGN_STATUS.md](STORY_CAMPAIGN_STATUS.md), regenerated with `node tools/story_status.js`.
+
+### October 11 continuation
+
+The main route through chapters 1–3 passed nine real battles, original choices/scenes, rewards and reload into chapter four with zero retries and no page errors. All eleven opponent identities for these chapters are now registered, including Snarl and the alternate Bahadır set. Bahadır has two explicitly nonlethal Hiro disarms and one lethal enemy pair; his source survival outcome takes precedence over lethal imagery. His recovery strip was replaced after visual review caught connected poses causing missing/duplicate Hiro figures. The optional branch has separate browser coverage; see the dated changelog for its final result.
+
+The original import was regenerated unchanged: 14 chapters, 55 encounter slots, 59 identities, 974 media files. Sparing Nib now has a dedicated real-browser tutorial/defeat/reload/retry check. Story survivors no longer receive ordinary defeat knockback. The physics-owned modules remain unchanged. Default boot remains Arcade; 48 identities and chapters 4–14 still need art and visual playthroughs.
 
 ## Implemented this pass
 
@@ -29,7 +35,7 @@ Updated 10 October 2026. This is an unfinished expansion, not a release candidat
 
 ## Next work, in dependency order
 
-1. Finish the chapter-three river and fortress enemies, including the alternate Bahadır encounter. New Gnoll Raider and Bandit Archer source sheets are in progress; they remain unavailable until all matching pairs and QA are complete.
+1. Start chapter four: Tunnel Kobold, Kobold Shaman, Kobold Chief, Acolyte of Veylan and Grukhar. Chapter three's main and alternate-branch playthroughs passed; Gnoll Raider, Bandit Archer, Snarl and Bahadır have registered sets. Later fights stay gated.
 2. Extend actual chapter playthrough coverage beyond chapter two as art becomes available. Verify first-fight tutorial when Nib is spared and later irreversible events; unit coverage alone is not a completed browser campaign.
 3. Audit every original scene transition and travel beat in context. Original scene selection, portraits, ending cards and ambience are wired, but all fourteen chapters have not been visually played through.
 4. Tune later solo encounters with the corrected between-turn casting audit and actual browser play. A winning seed is a minimum gate, not a satisfactory difficulty curve. The weakest late-game win rates still need attention.
@@ -47,7 +53,8 @@ Updated 10 October 2026. This is an unfinished expansion, not a release candidat
 - `node tools/build_story_preview.js`
 - `node tools/build_art_review.js`
 - `npm run test:story`
-- `node test/browser_story_chapters.js` (actual first two chapters)
+- `STORY_CHAPTERS=3 node test/browser_story_chapters.js` (actual first three chapters; set environment variables using your shell)
+- `node test/browser_story_spared.js` (spared Nib, guide at Cobb, defeat/reload/retry)
 - `node test/browser_story_roster.js` (actual registered actors and defeat routing)
 - `node test/browser_story_endings.js`
 - `node test/story_balance.js --gate` (55 slots, fixture art only; never enables unfinished opponents)

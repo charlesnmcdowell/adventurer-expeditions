@@ -15,6 +15,24 @@ of small fixes within a day.
 
 ---
 
+## 2026-10-11 — Campaign chapter three, survival-safe animation and branch QA
+
+Campaign work only; original Adventurer and all synced shared files remain untouched. Re-ran the original importer: no content differences, 14 chapters / 55 encounter slots / 59 identities, all 974 referenced media still available. The normal boot remains Arcade because chapters 4–14 are unfinished. `docs/STORY_CAMPAIGN_PREVIEW.html` now correctly describes the playable first three chapters.
+
+**Art / intake.** Registered count 9 → 11: Snarl's existing set is bound at height 385; Bahadır's 24 ordinary poses, two 16-drawing Hiro disarms and 16-drawing enemy finisher are intaken at height 350. His mandatory survival uses explicit `nonlethal` paired metadata. Repaired clipped boots and the leg-cut recovery strip after visual inspection found merged neighbor poses and a missing Hiro. Every recovery frame now contains both characters. Source masters, rejected sheets and built-in image_gen prompts remain in sibling `astra-v8/story-enemies/bahadir/`; no voices were generated. The paired builder can omit only frames with declared replacements, requires every hole to be filled, and keeps multiple repair strips in separate paths so their hashes cannot overwrite each other. The original disarm source standing reference changed 230 → 260 to reduce its scale jump.
+
+**Survival / physics.** `Actor.play('down_fade')` now excludes `campaignExit` opponents from defeat knockback. Regression covers both a survivor (no throw) and an ordinary opponent (throw remains). No changes to the other session's knockback, memory or props modules. Rebuilt the development previews to include the current props script; Matter remains dormant with zero bodies when there is no prop art.
+
+**Verified.** Main chapters 1–3: nine actual fights, zero retries, original scenery/choices, gold rewards and reload into chapter four, no page errors. A separate chapter-three run chose Devendra's payment route and played Bahadır's alternate fight through to chapter four successfully. Raw review and actual battle checks exercised all sixteen frames of both Hiro variants and the enemy fatal, with camera reset and native-atlas restoration. New `browser_story_spared.js` takes the original Nib bypass, verifies the first guide appears at Cobb, forces a defeat presentation, reloads the story, clicks Retry and verifies full health (344/344) plus the same bypass outcome/tutorial. `npm test`, `npm run test:story`, `npm run test:ship` passed. The 55-slot between-turn balance gate passes without stalls, but several late fights remain only 1/20 wins and are not balance-approved.
+
+**Files.** `story_art.js`, `actors.js`, actor lifecycle regression, paired builders, Bahadır runtime/review atlases, generated preview pages, preview notice, chapter/roster browser tests, spared-Nib browser test, GDD/production/status documentation. Survival guard and Snarl binding were captured during the work in checkpoint `4f756d4`. No publishing or portal export.
+
+**Still unfinished.** 48 opponent identities; chapter-four mine sets are next. Later chapters need per-location floor/weather review, complete scene and irreversible-event browser coverage, stronger solo balance, geographically appropriate supplemental encounters, then the main Campaign/Arcade title and lazy-loading/package audit. This entry is not completion of the requested campaign.
+
+Full registered-roster playback and all seven ending-card/narration checks also passed after the repairs. `sync:check` still reports the pre-existing `js/ui/gate_ambience.js` drift (239 in sync, one drift); it was left untouched. Superseded Bahadır atlas pages were archived into its sibling source-art `retired-runtime/` folder, not deleted. Chapter-four Tunnel Kobold source production has begun using its original goblin portrait identity; its existing Arcade pairs have only twelve drawings, so they cannot silently satisfy this campaign's sixteen-drawing rule.
+
+---
+
 ## 2026-10-11 — Physics step 2: battlefield props engine and the art brief for the next steps
 
 The remaining physics and open-road steps need new art, so this pass builds what the art plugs into and writes the brief for it.
