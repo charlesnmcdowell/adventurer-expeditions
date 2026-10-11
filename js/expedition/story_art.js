@@ -33,6 +33,10 @@ S.bindings['enemy:veylan_acolyte']={actor:'story_veylan_acolyte',height:315,huma
   enemyFinisherReady:true,hiroFinishersReady:2,plannedFrames:8,minDistinctFrames:16,goreBothDirections:true};
 S.bindings['named:grukhar']={actor:'story_grukhar',height:340,humanoid:true,combatReady:true,
   enemyFinisherReady:true,hiroFinishersReady:2,plannedFrames:8,minDistinctFrames:16,goreBothDirections:true};
+// Original named portrait/dialogue identify Femi as a male merchant; the old
+// mini thumbnail depicts a different character and is not his animation model.
+S.bindings['mini:verlan']={actor:'story_femi',height:315,humanoid:true,combatReady:true,
+  enemyFinisherReady:true,hiroFinishersReady:2,plannedFrames:8,minDistinctFrames:16,goreBothDirections:true};
 // Original Road Wolf is a gray wolf. Reuse the approved gray wolf and its
 // three Hiro-owned pairs; no tint or unrelated creature substitution.
 S.bindings['enemy:road_wolf']={actor:'wolf',height:250,reuse:true,combatReady:true,
