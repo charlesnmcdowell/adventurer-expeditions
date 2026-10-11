@@ -37,7 +37,7 @@ def normal():
             loop=name in ['idle','approach'],registration=dict(frames=guides)))
     return clips
 
-def paired(name,files,columns,rows,refs,contacts,fatal=False,omit_frames=()):
+def paired(name,files,columns,rows,refs,contacts,fatal=False,omit_frames=(),region_owners=()):
     frames=[];warnings=[]
     for file,ref in zip(files,refs):
         image=Image.open(SRC/file).convert('RGBA');w,h=image.size
@@ -50,6 +50,15 @@ def paired(name,files,columns,rows,refs,contacts,fatal=False,omit_frames=()):
         body=owners[labels]>=0
         distance,near=ndimage.distance_transform_edt(~body,return_indices=True)
         assigned=owners[labels[near[0],near[1]]]
+        # Detached props can cross a nominal row boundary. A measured source
+        # rectangle assigns the existing pixels to the correct pose; it never
+        # paints, duplicates or deletes the prop.
+        for region in region_owners:
+            if region['file']!=file:continue
+            x0,y0,x1,y1=region['rect']; owner=region['cell']
+            if not (0<=x0<x1<=w and 0<=y0<y1<=h and 0<=owner<columns*rows):
+                raise ValueError('Invalid paired prop ownership region')
+            assigned[y0:y1,x0:x1]=owner
         for n in range(columns*rows):
             # A reviewed replacement may supersede a damaged source cell.
             # Leave an explicit hole; the caller must fill it before packing.

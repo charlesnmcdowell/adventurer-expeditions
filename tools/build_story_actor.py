@@ -47,7 +47,10 @@ def main():
     fatal=None
     for spec in cfg['pairs']:
         replaced={i for repair in spec.get('replacementSheets',[]) for i in repair['frames']}
-        clip,flags=pairs.paired(spec['id'],[spec['file']],4,4,[spec['hiroReferenceHeight']],spec['contacts'],spec.get('fatal',False),omit_frames=replaced)
+        files=spec.get('files') or [spec['file']]
+        refs=spec.get('hiroReferenceHeights') or [spec['hiroReferenceHeight']]*len(files)
+        if len(refs)!=len(files):raise ValueError('Every paired sheet needs its anatomical reference')
+        clip,flags=pairs.paired(spec['id'],files,spec.get('columns',4),spec.get('rows',4),refs,spec['contacts'],spec.get('fatal',False),omit_frames=replaced,region_owners=spec.get('regionOwners',[]))
         for repair_index,repair in enumerate(spec.get('replacementSheets',[])):
             indices=repair['frames']
             replacement,repair_flags=pairs.paired(spec['id']+'-repair-'+str(repair_index),

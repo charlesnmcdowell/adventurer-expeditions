@@ -23,6 +23,8 @@ S.bindings['mini:gnoll_warleader']={actor:'story_snarl',height:385,humanoid:true
 // nonlethal arm/leg disarms; his own defeat-Hiro pair remains lethal.
 S.bindings['named:bramm']={actor:'story_bahadir',height:350,humanoid:true,combatReady:true,
   enemyFinisherReady:true,hiroFinishersReady:2,plannedFrames:8,minDistinctFrames:16,goreBothDirections:true};
+S.bindings['enemy:tunnel_kobold']={actor:'story_tunnel_kobold',height:210,humanoid:true,combatReady:true,
+  enemyFinisherReady:true,hiroFinishersReady:2,plannedFrames:8,minDistinctFrames:16,goreBothDirections:true};
 // Original Road Wolf is a gray wolf. Reuse the approved gray wolf and its
 // three Hiro-owned pairs; no tint or unrelated creature substitution.
 S.bindings['enemy:road_wolf']={actor:'wolf',height:250,reuse:true,combatReady:true,
