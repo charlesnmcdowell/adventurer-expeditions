@@ -39,6 +39,18 @@ const tick = () => new Promise(r => setImmediate(r));
 const cases = [];
 const test = (name, fn) => cases.push([name, fn]);
 
+test('story survivors are not thrown by ordinary defeat knockback', async () => {
+  const previous=X.Knockback;let thrown=0;
+  X.Knockback={enabled:true,play:async()=>{thrown++;}};
+  try {
+    for(const survivor of [true,false]) {
+      const a=actor({down:clip('down')});a.side='b';a.unit={ch:{campaignExit:survivor}};
+      a.playSheet=async()=>{};a.fadeOut=async()=>{};
+      await a.play('down_fade');assert.equal(thrown,survivor?0:1);
+    }
+  } finally {X.Knockback=previous;}
+});
+
 test('direct actor clips take precedence over Hiro aliases', () => {
   const a = actor(); assert.equal(a.sheetClipFor('slash', {}), 'slash');
   a.sheet.clips.hit_short = clip('hit_short'); assert.equal(a.sheetClipFor('hit_short', {}), 'hit_short');

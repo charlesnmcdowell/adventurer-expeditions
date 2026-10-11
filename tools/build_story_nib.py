@@ -37,7 +37,7 @@ def normal():
             loop=name in ['idle','approach'],registration=dict(frames=guides)))
     return clips
 
-def paired(name,files,columns,rows,refs,contacts,fatal=False):
+def paired(name,files,columns,rows,refs,contacts,fatal=False,omit_frames=()):
     frames=[];warnings=[]
     for file,ref in zip(files,refs):
         image=Image.open(SRC/file).convert('RGBA');w,h=image.size
@@ -51,6 +51,11 @@ def paired(name,files,columns,rows,refs,contacts,fatal=False):
         distance,near=ndimage.distance_transform_edt(~body,return_indices=True)
         assigned=owners[labels[near[0],near[1]]]
         for n in range(columns*rows):
+            # A reviewed replacement may supersede a damaged source cell.
+            # Leave an explicit hole; the caller must fill it before packing.
+            if len(frames) in omit_frames:
+                frames.append(None)
+                continue
             x0=round(n%columns*w/columns);x1=round((n%columns+1)*w/columns)
             y0=round(n//columns*h/rows);y1=round((n//columns+1)*h/rows)
             # The paintings are not a mathematically exact grid. Assign whole
@@ -71,9 +76,10 @@ def paired(name,files,columns,rows,refs,contacts,fatal=False):
             frames.append(dict(file=str(p.relative_to(SRC)),frames=1,regions=[[0,0,cell.width,cell.height]],
                 guide=dict(anchorX=x0+(w/columns)*.27-left,groundY=int(np.quantile(yy,.999))+1,referenceHeight=ref)))
     times=[150,100,100,130,100,90,200,140,140,120,120,130,140,130,140,260]
-    clip=dict(id=name,frames=len(frames),sources=sources(frames),durationsMs=times,
+    resolved=[None if f is None else dict(sources([f])[0],firstFrameZeroBased=i) for i,f in enumerate(frames)]
+    clip=dict(id=name,frames=len(frames),sources=resolved,durationsMs=times,
         contactFramesZeroBased=contacts,releaseFrameZeroBased=len(frames)-1,paired=True,loop=False,
-        registration=dict(frames=[f['guide'] for f in frames]),
+        registration=dict(frames=[f['guide'] if f else None for f in frames]),
         opponentKinds=['story_nib'],opponentKeys=['story:mini:nib'],
         pairTargetDistanceRatio=.72,embeddedBlood=True,preserveTiming=True,
         finalState='hero-defeated' if fatal else 'hero-standing')

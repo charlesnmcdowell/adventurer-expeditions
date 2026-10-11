@@ -166,7 +166,7 @@ class Actor {
       const playing = this.playSheet(sheetClip, clip, opts);
       if (clip !== 'down_fade') return playing;
       // An ordinary enemy death is thrown back by the blow (X.Knockback) while its fall plays.
-      const thrown = this.side === 'b' && !this.__finisherPresented && X.Knockback && X.Knockback.enabled ? X.Knockback.play(this) : null;
+      const thrown = this.side === 'b' && !this.unit?.ch?.campaignExit && !this.__finisherPresented && X.Knockback && X.Knockback.enabled ? X.Knockback.play(this) : null;
       return Promise.all([playing, thrown]).then(() => this._destroyed ? undefined : this.fadeOut());
     }
     const fn = Actor.PLACEHOLDER[clip];

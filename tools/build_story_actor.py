@@ -46,7 +46,8 @@ def main():
             releaseFrameZeroBased=len(poses)-1,registration=dict(referenceHeight=cfg.get('clipBodyReferences',{}).get(name,ref),frames=[f['guide'] for f in poses])))
     fatal=None
     for spec in cfg['pairs']:
-        clip,flags=pairs.paired(spec['id'],[spec['file']],4,4,[spec['hiroReferenceHeight']],spec['contacts'],spec.get('fatal',False))
+        replaced={i for repair in spec.get('replacementSheets',[]) for i in repair['frames']}
+        clip,flags=pairs.paired(spec['id'],[spec['file']],4,4,[spec['hiroReferenceHeight']],spec['contacts'],spec.get('fatal',False),omit_frames=replaced)
         for repair in spec.get('replacementSheets',[]):
             indices=repair['frames']
             replacement,repair_flags=pairs.paired(spec['id']+'-repair',
@@ -66,6 +67,8 @@ def main():
                 source_index=source_indices[i]
                 clip['sources'][dest]=dict(replacement['sources'][source_index],firstFrameZeroBased=dest)
                 clip['registration']['frames'][dest]=replacement['registration']['frames'][source_index]
+        if any(s is None for s in clip['sources']) or any(g is None for g in clip['registration']['frames']):
+            raise ValueError('Unfilled replacement pose in '+spec['id'])
         # Authored contact measurements override the opaque-pixel floor when
         # a dropped sword or blood lies below the feet. These are per-pose
         # source coordinates, not runtime resizing of a kneeling body.
