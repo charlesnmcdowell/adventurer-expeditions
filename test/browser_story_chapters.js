@@ -3,6 +3,7 @@
 // moving original scenery. No synthetic victories or fixture actor bindings.
 const {chromium}=require('playwright'),fs=require('node:fs'),assert=require('node:assert/strict');
 const chapters=Number(process.env.STORY_CHAPTERS)||2;
+const campaign=JSON.parse(fs.readFileSync('assets/expedition/story/campaign.json'));
 const firstChapter=Number(process.env.STORY_FROM)||1,branch=process.env.STORY_BRANCH||'';
 const OUT='test/reports/story-chapters-'+chapters+(branch?'-'+branch:'');fs.mkdirSync(OUT,{recursive:true});
 const choices={q1_wake:'go',q1_wake_seen:'nobody',q1_nib:'draw',q1_cobb:'nothing',q1_wren:'kind',q2_pair_where:'truth',q2_pair:'yes',q2_cassian:'join',q2_morwin:'kill',q2_selene_how:'armour',q2_selene:'trust',q3_ithrel:'yes',q3_lessa:'fight',q3_bramm:'rescue',q3_ysolde:'nothing',q3_tollan:'yes'};
@@ -48,7 +49,10 @@ const choices={q1_wake:'go',q1_wake_seen:'nobody',q1_nib:'draw',q1_cobb:'nothing
  }
  const result=await page.evaluate(()=>({record:storyPreview.record,backdrop:storyBackdrop.state()}));
  assert.equal(result.record.chapter,chapters+1);assert.deepEqual(result.record.completed,Array.from({length:chapters},(_,i)=>i+1));
- for(let c=firstChapter;c<=chapters;c++)for(let e=0;e<3;e++)assert.equal(result.record.outcomes[c+':'+e],'combat',c+':'+e);
+ for(let c=firstChapter;c<=chapters;c++){
+  const chapter=campaign.chapters.find(ch=>ch.n===c);assert(chapter,'Unknown chapter '+c);
+  for(let e=0;e<chapter.enc.length;e++)assert.equal(result.record.outcomes[c+':'+e],'combat',c+':'+e);
+ }
  assert(result.record.gold>0);assert(result.backdrop);
  await page.reload();await page.getByRole('button',{name:'Continue campaign preview',exact:true}).click();
  assert.equal(await page.evaluate(()=>storyPreview.record.chapter),chapters+1);

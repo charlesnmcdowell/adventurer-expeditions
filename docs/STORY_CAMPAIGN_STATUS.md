@@ -2,7 +2,7 @@
 
 Generated from the imported campaign inventory, runtime bindings and atlas file existence. A registered set still needs visual playtest; this is not a release certificate.
 
-**12 of 59 opponent identities registered. 47 remain.**
+**13 of 59 opponent identities registered. 46 remain.**
 
 | Enemy | First chapter | Runtime art | State |
 | --- | ---: | --- | --- |
@@ -18,7 +18,7 @@ Generated from the imported campaign inventory, runtime bindings and atlas file 
 | Snarl, Gnoll Warleader (mini:gnoll_warleader) | 3 | story_snarl | Registered |
 | Bahadır (named:bramm) | 3 | story_bahadir | Registered |
 | Tunnel Kobold (enemy:tunnel_kobold) | 4 | story_tunnel_kobold | Registered |
-| Kobold Shaman (enemy:kobold_shaman) | 4 | — | Pending |
+| Kobold Shaman (enemy:kobold_shaman) | 4 | story_kobold_shaman | Registered |
 | Kobold Chief (mini:kobold_chief) | 4 | — | Pending |
 | Acolyte of Veylan (enemy:veylan_acolyte) | 4 | — | Pending |
 | Grukhar (named:grukhar) | 4 | — | Pending |

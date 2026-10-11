@@ -25,6 +25,8 @@ S.bindings['named:bramm']={actor:'story_bahadir',height:350,humanoid:true,combat
   enemyFinisherReady:true,hiroFinishersReady:2,plannedFrames:8,minDistinctFrames:16,goreBothDirections:true};
 S.bindings['enemy:tunnel_kobold']={actor:'story_tunnel_kobold',height:210,humanoid:true,combatReady:true,
   enemyFinisherReady:true,hiroFinishersReady:2,plannedFrames:8,minDistinctFrames:16,goreBothDirections:true};
+S.bindings['enemy:kobold_shaman']={actor:'story_kobold_shaman',height:210,humanoid:true,combatReady:true,
+  enemyFinisherReady:true,hiroFinishersReady:2,plannedFrames:8,minDistinctFrames:16,goreBothDirections:true};
 // Original Road Wolf is a gray wolf. Reuse the approved gray wolf and its
 // three Hiro-owned pairs; no tint or unrelated creature substitution.
 S.bindings['enemy:road_wolf']={actor:'wolf',height:250,reuse:true,combatReady:true,
