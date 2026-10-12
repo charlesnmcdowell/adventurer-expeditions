@@ -4,9 +4,21 @@
 'use strict';const A=ADV,S=A.Expedition.Story;
 S.Stage={
 // Edition-owned combat adaptation. Dialogue keeps the original painting.
-files:{dunmere_mine:'assets/expedition/story/stages/dunmere-mine-combat.webp'},
+files:{dunmere_mine:'assets/expedition/story/stages/dunmere-mine-combat.webp',
+  dunmere:'assets/expedition/story/stages/dunmere-combat-20261011.webp',
+  ford:'assets/expedition/story/stages/ford-combat-20261011.webp'},
+// These combat compositions have different landmarks from the dialogue plates.
+// Keep water behind the bank and attach smoke/cloth/lights to their new positions.
+profiles:{
+  dunmere:{smoke:[[.244,.332,.14],[.294,.372,.12]],
+    lights:[[.141,.385],[.388,.485],[.667,.473],[.676,.469]],
+    cloth:[[.522,.155,.021,.102],[.642,.155,.018,.108]],
+    fires:[[.874,.507,.016,.036],[.972,.5,.016,.036]],sky:[[.25,.003,.29,.10]]},
+  ford:{water:[[.285,.526,.64,.032]],falls:[[.348,.252,.021,.162],[.289,.285,.01,.075]],
+    cloth:[[.575,.202,.024,.105],[.855,.176,.024,.099]],sky:[[.29,.002,.22,.087]],birds:true}
+},
 paint(scene,id,key,phase){
-  const def=S.Presentation.data.art.environments[id],profile=A.GateAmbience.environments[id];
+  const def=S.Presentation.data.art.environments[id],profile=this.profiles[id]||A.GateAmbience.environments[id];
   const source=scene.textures.get(key).getSourceImage(),sw=source.width,sh=source.height;
   const scale=Math.max(1280/sw,760/sh),root=scene.add.container(0,0).setDepth(-10);
   const bg=scene.add.image(640,380,key).setScale(scale);root.add(bg);root.background=bg;

@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-11",
+  "generator": "Built-in image_gen",
+  "jobs": [
+    {
+      "id": "dunmere",
+      "prompt": "Use case: stylized-concept. Produce a dedicated 2D side-view combat background plate, 1280x768 landscape, no people, no creatures, no UI or text. Use the attached painting as the design/style/location reference. Keep its polished detailed anime fantasy painted aesthetic and daylight. Recompose camera at a low side-on combat height, NOT an aerial establishing view. The player sprites are 330 pixels tall and their feet sit around y=618 of this image: the complete horizontal strip x=100..1250 y=580..665 must be unobstructed solid walkable ground at ONE depth, with believable scale for those sprites. Ground continues to the bottom edge. Midground scenery behind that strip, then distant mountains and sky. No objects in front of the combat strip. No painted character shadows. Dunmere village: retain recognizable slate-roof stone mining town, mountain keep with blue banners, distant mine scaffold, temple, golden window lights. Move the village well and buildings back behind the combat lane (all bases above y=460), make the immediate foreground a broad level damp cobblestone village street viewed side-on. Large nearby cobbles, subtle shallow puddles only away from foot strip. The rear houses must be large enough to be houses compared to 330px humans; avoid a tiny model village. Keep distant keep on rocky hill, light chimney smoke. Ground occupies bottom 40 percent, clear horizontal foot lane at 80 percent height."
+    },
+    {
+      "id": "ford",
+      "prompt": "Use case: stylized-concept. Produce a dedicated 2D side-view combat background plate, 1280x768 landscape, no people, no creatures, no UI or text. Use the attached painting as the design/style/location reference. Keep its polished detailed anime fantasy painted aesthetic and daylight. Recompose camera at a low side-on combat height, NOT an aerial establishing view. The player sprites are 330 pixels tall and their feet sit around y=618 of this image: the complete horizontal strip x=100..1250 y=580..665 must be unobstructed solid walkable ground at ONE depth, with believable scale for those sprites. Ground continues to the bottom edge. Midground scenery behind that strip, then distant mountains and sky. No objects in front of the combat strip. No painted character shadows. River ford: retain the rocky forested gorge, waterfalls, gnoll wooden palisade with red skull banners and watch towers on the far bank. Recompose the near bank as a broad flat continuous compacted earth and gravel combat terrace occupying the bottom 40 percent, entire width. Water is behind the terrace only, between about y=320 and y=440, with a clear shore boundary well behind all fighters. NO water, large rocks, stakes, logs or plants in the horizontal fighter foot strip y=580..665. Use small embedded gravel and dry firm earth under fighters. Preserve distant rushing river and waterfalls, pine valley and palisade so location is identifiable. Eye-level side-on view, not looking steeply down."
+    }
+  ],
+  "outputs": {
+    "dunmere": "exec-5bfa6fe9-bcd1-43bd-aa49-f0dc3e3e25a0.png",
+    "ford": "exec-521a0e26-d820-49f9-ae28-a587a61845c1.png"
+  }
+}

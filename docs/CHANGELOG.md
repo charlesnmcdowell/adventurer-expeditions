@@ -15,6 +15,16 @@ of small fixes within a day.
 
 ---
 
+## 2026-10-11 — Dunmere and river-ford combat ground repair (Astra)
+
+Replaced two establishing-view battle paintings with dedicated combat plates. Dunmere now has a wide level cobblestone lane with the well and buildings behind it. The ford now has a continuous firm gravel bank across the combat area; the moving river sits behind all fighters. Both runtime plates are 1280 × 760 (492,464 and 547,020 bytes). Fighter scale and foot positions are unchanged (Hiro 330 px tall; combat baseline y 612). Original dialogue/travel paintings are untouched. This resolves the two "fighters off the ground" items in the chapter-one demo entry below.
+
+`js/expedition/story_stage.js` routes only these two combat environments to the new plates and provides separately measured smoke, lights, cloth, river and waterfall anchors. It keeps the fixed contact plane, moving distance and weather/scenery layer. Built-in image_gen painted both; runtime processing only resized/encoded the outputs. Masters and original prompts remain in sibling `adventurer-expeditions-source-art/astra-v8/story-stages/grounding-20261011/`; a prompt record is also saved at `docs/art/story-grounding/prompts.json`.
+
+Validation: `node test/browser_story_grounding.js` exercises both real chapter-three encounters, confirms original dialogue asset routing, native fighter size, feet within the ground band, river effects behind the bank, moving distance and fixed ground, and no page errors. Desktop 1280×760 and phone 390×844 screenshots were visually inspected (phone retains the existing letterboxed battlefield). Evidence: `test/reports/story-grounding/`. `npm test`, `npm run test:story` and `npm run test:ship` passed. No original Adventurer, shared file, publishing or portal export changed.
+
+---
+
 ## 2026-10-11 — Campaign chapter three, survival-safe animation and branch QA
 
 Campaign work only; original Adventurer and all synced shared files remain untouched. Re-ran the original importer: no content differences, 14 chapters / 55 encounter slots / 59 identities, all 974 referenced media still available. The normal boot remains Arcade because chapters 4–14 are unfinished. `docs/STORY_CAMPAIGN_PREVIEW.html` now correctly describes the playable first three chapters.
