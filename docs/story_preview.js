@@ -1,14 +1,28 @@
 (async function(){
 'use strict';
 const S=ADV.Expedition.Story,P=S.Presentation,C=ADV.Campaign3,$=id=>document.getElementById(id),panel=$('panel');
-let session=null,muted=true,voice=null,music=null,reply=null,line=0,applied=null;
+// Sound starts on and the player's choice is remembered; the fight page reads
+// and writes the same key, so one setting covers story and battle (2026-10-11).
+const MUTE_KEY='adventurer_expeditions_story_muted';
+const storedMute=()=>{try{return localStorage.getItem(MUTE_KEY)==='1';}catch(_){return false;}};
+let session=null,muted=storedMute(),voice=null,music=null,reply=null,line=0,applied=null;
 let battleFrame=null;
+// Demo (Hiro, 2026-10-11): chapter one, then a coming-soon card. Raise
+// DEMO_THROUGH as chapters are finished; a local server can play further with
+// ?through=N for testing.
+const DEMO_THROUGH=1,localHost=/^(localhost|127\.0\.0\.1)$/.test(location.hostname);
+const askedThrough=Number(new URLSearchParams(location.search).get('through'));
+const PLAYABLE_THROUGH=localHost&&askedThrough>=1&&askedThrough<=14?askedThrough:DEMO_THROUGH;
+// The original's fallback caption for a death beat without its own (campaign3_ui.js).
+const DEATH_CAPTION='The sword goes through him. You run because he told you to.';
 const d=await fetch('assets/expedition/story/campaign.json').then(r=>{if(!r.ok)throw Error('Campaign manifest failed');return r.json();});
 P.configure(d);let sceneContext=null,musicId=null;
 const available=new Set(await fetch('assets/expedition/story/preview-media.json').then(r=>r.json()));
 const portraits=await fetch('assets/expedition/story/portraits/portraits.json').then(r=>{if(!r.ok)throw Error('Story portraits missing');return r.json();});
 const backdrop=S.Backdrop('animated-background',()=>$('stage').classList.add('rendered'));window.storyBackdrop=backdrop;
 const url=path=>'assets/expedition/story/media/'+path;
+function setMuted(value){muted=value;try{localStorage.setItem(MUTE_KEY,value?'1':'0');}catch(_){}$('sound').textContent=muted?'Sound on':'Mute';}
+$('sound').textContent=muted?'Sound on':'Mute';
 function stopVoice(){if(voice){voice.onended=null;voice.onerror=null;voice.pause();voice.src='';voice=null;}}
 function button(label,action,parent=panel){const b=document.createElement('button');b.textContent=label;b.onclick=action;parent.append(b);return b;}
 function text(tag,content,parent,cls){const e=document.createElement(tag);e.textContent=content;if(cls)e.className=cls;parent.append(e);return e;}
@@ -17,11 +31,46 @@ function say(beat){stopVoice();if(muted)return;const rows=beat.lines||C.lines('g
   const file=P.voice(beat,line);
   if(!available.has(file))return;voice=new Audio(url(file));voice.volume=.9;voice.play().catch(()=>{});
 }
-$('sound').onclick=()=>{muted=!muted;$('sound').textContent=muted?'Sound on':'Mute';if(muted){stopVoice();music?.pause();}else{const beat=reply||session&&S.beats(session)[0];playMusic(beat);if(beat)say(beat);}};
+// Replay the current line's recording on request, even while muted (2026-10-11).
+function lineFile(beat){const file=P.voice(beat,line);return file&&available.has(file)?file:null;}
+function replay(beat){const file=lineFile(beat);if(!file)return;stopVoice();voice=new Audio(url(file));voice.volume=.9;voice.play().catch(()=>{});}
+// Joins and full-company seat offers, worded and ordered as the original's
+// announceJoins/offerSeats (campaign3_ui.js). Diffed around each beat and choice.
+function company(){const g=session.game;return {roster:C.roster(g),riding:C.companyIds(g)};}
+function names(ids){const n=ids.map(C.charName);return n.length<3?n.join(' and '):n.slice(0,-1).join(', ')+', and '+n.at(-1);}
+function toast(msg){const t=text('div',msg,document.body,'story-toast');setTimeout(()=>t.classList.add('gone'),3200);setTimeout(()=>t.remove(),4200);}
+function noteSeats(before){
+  const after=company(),r=session.record;
+  const joined=after.riding.filter(id=>!before.riding.includes(id));
+  const waiting=after.roster.filter(id=>!before.roster.includes(id)&&!after.riding.includes(id));
+  if(joined.length)toast(names(joined)+(joined.length===1?' rides with you.':' ride with you.'));
+  if(waiting.length){r.seatOffer=[...(r.seatOffer||[]),...waiting];S.save(session);}
+}
+function seatMenu(){
+  const r=session.record,g=session.game;
+  r.seatOffer=r.seatOffer.filter(id=>C.isRecruited(g,id)&&!C.inCompany(g,id));
+  const who=r.seatOffer[0];if(!who){delete r.seatOffer;S.save(session);return false;}
+  const done=msg=>{r.seatOffer.shift();if(!r.seatOffer.length)delete r.seatOffer;S.save(session);if(msg)toast(msg);render();};
+  if(C.seat(g,who)){done(C.charName(who)+' rides with you.');return true;}
+  const name=C.charName(who),box=text('section','',panel,'menu');text('h1','The company is full',box);
+  text('p',name+' wants to ride, but only '+(C.MAX_COMPANY+1)+' can. Who stays at the inn?',box);
+  const list=text('div','',box,'buttons seat-list');
+  for(const id of C.companyIds(g))button('Send '+C.charName(id)+' back — '+name+' rides',()=>{C.replaceCompany(g,id,who);done(name+' rides. '+C.charName(id)+' waits at the inn.');},list);
+  button('Leave '+name+' at the inn',()=>done(name+' waits at the inn.'),list);
+  return true;
+}
+// Each chapter opens on its title over the departure scene, like the original's
+// chapter plates (gate_cinema.js). Shown once per chapter per save.
+function chapterCard(){
+  const r=session.record,first=S.beats(session)[0];if(first)showScene(first);playMusic(first);
+  const box=text('section','',panel,'menu chapter-card');text('div','Chapter '+r.chapter,box,'chapter-number');text('h1',session.game.quest.quest.name,box);
+  const go=button('Continue',()=>{r.titleCards=[...(r.titleCards||[]),r.chapter];S.save(session);render();},box);go.hidden=true;setTimeout(()=>{go.hidden=false;},1800);
+}
+$('sound').onclick=()=>{setMuted(!muted);if(muted){stopVoice();music?.pause();}else{const beat=reply||session&&S.beats(session)[0];playMusic(beat);if(beat)say(beat);}};
 $('home').onclick=()=>{stopVoice();battleFrame?.remove();battleFrame=null;session=null;reply=null;title();};
 window.addEventListener('message',event=>{
   if(event.origin!==location.origin||event.source!==battleFrame?.contentWindow||event.data?.type!=='expeditions-story-battle')return;
-  battleFrame.remove();battleFrame=null;backdrop.pause(false);open(S.load());
+  battleFrame.remove();battleFrame=null;setMuted(storedMute());backdrop.pause(false);open(S.load());
 });
 function battle(){
   stopVoice();music?.pause();backdrop.pause(true);S.save(session);panel.replaceChildren();
@@ -30,20 +79,29 @@ function battle(){
 }
 function open(record){session=S.open(record);window.storyPreview=session;reply=session.record.reply||null;line=session.record.line||0;applied=null;sceneContext=null;playMusic();render();}
 function showScene(beat){
-  const spec=P.scene(session,beat,sceneContext);if(!spec)return;sceneContext=spec;
+  const spec=P.scene(session,beat,sceneContext);if(!spec)return null;
+  const changed=JSON.stringify(spec)!==JSON.stringify(sceneContext);sceneContext=spec;
   backdrop.show(spec);
-  const art=d.art[spec.kind]?.[spec.id];if(!art)return;
+  const art=d.art[spec.kind]?.[spec.id];if(!art)return null;
   const bg=document.querySelector('.backdrop');bg.style.backgroundImage='url("'+url(art.file)+'")';
   bg.dataset.location=spec.id;bg.dataset.kind=spec.kind;
   bg.classList.toggle('story-still',spec.kind==='stills');
   $('weather').hidden=spec.kind==='stills'||!!art.indoor;
+  return changed?url(art.file):null;
 }
+// Like the original's withScene, a new painting shows on its own first: the
+// box waits until the image has loaded and then a beat more.
+function holdForScene(box,file,then){
+  box.classList.add('scene-hold');
+  const reveal=()=>setTimeout(()=>{if(!box.isConnected)return;box.classList.remove('scene-hold');then();},1200);
+  const img=new Image();img.onload=img.onerror=reveal;img.src=file;
+}
+function flash(){const f=text('div','',document.body,'story-flash');setTimeout(()=>f.remove(),900);}
 function title(){stopVoice();session=null;reply=null;sceneContext=null;playMusic();const bg=document.querySelector('.backdrop');bg.style.backgroundImage='url("'+url(d.art.environments.lanternhold.file)+'")';bg.dataset.location='lanternhold';bg.dataset.kind='environments';bg.classList.remove('story-still');$('weather').hidden=false;panel.replaceChildren();const box=text('section','',panel,'menu');text('h1','ADVENTURER',box);text('h1','',box).innerHTML='<small>EXPEDITIONS</small>';
   backdrop.pause(false);backdrop.show({kind:'environments',id:'lanternhold',phase:'night'});
-  const buttons=text('div','',box,'buttons');if(S.load())button('Continue campaign preview',()=>open(S.load()),buttons);
-  button('Begin campaign preview',()=>{if(S.load()){panel.replaceChildren();text('p','Start a new campaign preview? Your Arcade run stays as it is.',panel);button('Start new campaign',()=>open(S.fresh()));button('Cancel',title);}else open(S.fresh());},buttons);
-  button('Play Arcade',()=>location.href='index.html',buttons);
-  text('p','Development preview: chapters 1–4 are playable with original story and recordings. Chapter 5 onward remains locked while its combat art is completed. This is not the finished campaign.',box,'notice');
+  const buttons=text('div','',box,'buttons');if(S.load())button('Continue story',()=>open(S.load()),buttons);
+  button('Begin story',()=>{if(S.load()){panel.replaceChildren();text('p','Start over from chapter one? This replaces your current save.',panel);button('Start over',()=>open(S.fresh()));button('Cancel',title);}else open(S.fresh());},buttons);
+  text('p',PLAYABLE_THROUGH===1?'Demo: chapter one of the story. More chapters are on the way.':'Chapters 1–'+PLAYABLE_THROUGH+' are playable.',box,'notice');
 }
 function render(){
   stopVoice();panel.replaceChildren();const r=session.record;
@@ -54,10 +112,11 @@ function render(){
     button('Continue',()=>{ADV.GatePerks.acknowledge(session.game,notices);render();},box);return;
   }
   if(r.chapterRewardDue){const reward=r.chapterRewardDue,box=text('section','',panel,'menu');
-    text('h1','Chapter complete',box);text('h2',reward.name,box);text('p',reward.gold+' gold earned. Your progress is saved.',box);
+    text('h1','Chapter complete',box);text('h2',reward.name,box);text('p','Score: '+(r.run.score||0)+' points. Your progress is saved.',box);
     button('Continue',()=>{delete r.chapterRewardDue;S.save(session);render();},box);return;
   }
   if(r.phase==='complete')return ending();
+  if(r.chapter>PLAYABLE_THROUGH&&(r.completed||[]).includes(PLAYABLE_THROUGH))return toBeContinued();
   if(r.phase==='combat'||r.phase==='defeat'){
     const box=text('section','',panel,'menu');text('h1','The road ahead',box);text('p',session.game.quest.quest.encounters[r.encounter]?.label||'Encounter',box,'speaker');
     if(!S.readiness(session).length){
@@ -67,25 +126,47 @@ function render(){
     text('p','This fight is not ready to play. The campaign needs its own approved full-body enemies and finishers before combat can open. Your dialogue choices have been saved.',box,'notice');
     text('p','Pending: '+S.readiness(session).join(', '),box,'notice error');button('Back to title',title,box);return;
   }
+  if(r.seatOffer?.length&&!reply&&applied===null&&seatMenu())return;
+  if(r.phase==='departure'&&!reply&&applied===null&&line===0&&!(r.titleCards||[]).includes(r.chapter))return chapterCard();
   let beat=reply||S.beats(session)[0];
   if(!beat){S.nextPhase(session);return render();}
   const identity=r.chapter+':'+r.encounter+':'+r.phase+':'+beat.who+':'+beat.key;
-  if(applied!==identity){S.applyBeat(session,beat);applied=identity;}
-  showScene(beat);playMusic(beat);
+  if(applied!==identity){const before=company();S.applyBeat(session,beat);applied=identity;noteSeats(before);}
+  const sceneFile=showScene(beat);playMusic(beat);
   const box=text('section','',panel);box.id='dialogue';text('div',ADV.DATA.CAMPAIGN_CHARS[beat.who]?.name||beat.who,box,'speaker');
   const portrait=portraits.portraits[P.portrait(beat)];
   if(portrait&&sceneContext?.kind!=='stills'){const img=document.createElement('img');img.className='speaker-portrait';img.alt='';img.width=portrait.width;img.height=portrait.height;img.src='assets/expedition/story/portraits/'+portrait.file;box.append(img);}
-  if(beat.caption)text('div',beat.caption,box,'caption');
+  const caption=beat.death?beat.caption||ADV.DATA.STORY_DEATH_CAPTIONS?.gate||DEATH_CAPTION:beat.caption;
+  if(caption)text('div',caption,box,'caption');
   const rows=beat.lines||C.lines('gate',beat.who,beat.key);line=Math.min(line,Math.max(0,rows.length-1));
   const raw=rows[line]?.t||beat.promptText||'';
   const target=beat.to&&beat.to!=='player'?ADV.DATA.CAMPAIGN_CHARS[beat.to]?.name||'':session.hero.name;
   text('p',raw.replace(/\[[^\]]+\]/g,'').replaceAll('{target}',target).trim(),box,'speech');
   const choices=text('div','',box,'choices');
   if(line<rows.length-1)button('Continue',()=>{line++;r.line=line;S.save(session);render();},choices);
-  else if(beat.choice){const opts=S.options(session,beat.choice);for(const o of opts)button(o.text,()=>{reply=S.choose(session,beat,o.id);line=0;applied=null;if(!reply)S.shiftBeat(session);render();},choices);if(!opts.length)button('Continue',advance,choices);}
+  else if(beat.choice){const opts=S.options(session,beat.choice);for(const o of opts)button(o.text,()=>{const before=company();reply=S.choose(session,beat,o.id);noteSeats(before);line=0;applied=null;if(!reply)S.shiftBeat(session);render();},choices);if(!opts.length)button('Continue',advance,choices);}
   else button('Continue',advance,choices);
-  function advance(){if(reply)reply=null;S.shiftBeat(session);line=0;applied=null;render();}
-  say(beat);
+  if(lineFile(beat))button('Replay line',()=>replay(beat),choices).classList.add('replay');
+  // A death keeps the original's red flash and short hold before the story moves on.
+  function advance(){if(beat.death&&!reply){choices.querySelectorAll('button').forEach(b=>b.disabled=true);flash();setTimeout(step,600);}else step();}
+  function step(){if(!box.isConnected)return;if(reply)reply=null;S.shiftBeat(session);line=0;applied=null;render();}
+  if(sceneFile)holdForScene(box,sceneFile,()=>say(beat));else say(beat);
+}
+function toBeContinued(){
+  stopVoice();const r=session.record,X=ADV.Expedition,score=r.run.score||0,box=text('section','',panel,'menu demo-end');
+  text('h1','Chapter '+(PLAYABLE_THROUGH+1)+' is coming soon',box);
+  text('p',"That's as far as the story goes for now. Your save picks up right here when the next chapter lands.",box,'notice');
+  text('h2','Score: '+score+' points',box);
+  const board=text('div','',box,'story-board');
+  const list=()=>{board.replaceChildren();X.Board.load().forEach((row,i)=>text('div',(i+1)+'. '+row.name+' — '+row.score,board,'board-row'));};
+  if(!r.boardEntered&&score>0&&X.Board.qualifies(score)){
+    const form=document.createElement('form');form.className='board-entry';box.insertBefore(form,board);
+    const name=document.createElement('input');name.maxLength=16;name.placeholder='Your name';name.setAttribute('aria-label','Your name');form.append(name);
+    const save=document.createElement('button');save.textContent='Save score';form.append(save);
+    form.onsubmit=e=>{e.preventDefault();const n=name.value.trim().slice(0,16)||'Hiro';X.Board.insert({name:n,score,loop:1});r.boardEntered=true;S.save(session);form.remove();list();};
+  }
+  list();if(X.board.note)text('p',X.board.note,box,'caption');
+  const buttons=text('div','',box,'buttons');button('Back to title',title,buttons);
 }
 function ending(){
   const end=P.ending(session),box=text('section','',panel);box.id='epilogue';
@@ -94,10 +175,10 @@ function ending(){
   playMusic();text('h1',end.title,box);text('p',end.line,box,'caption');
   const scroll=text('div','',box,'ending-scroll'),rows=end.paragraphs.map(p=>text('p',p,scroll));
   const controls=text('div','',box,'buttons');let at=-1,active=false;
-  const read=button('Read aloud',()=>{if(active){active=false;stopVoice();read.textContent='Read aloud';return;}muted=false;$('sound').textContent='Mute';playMusic();active=true;at=-1;next();},controls);
+  const read=button('Read aloud',()=>{if(active){active=false;stopVoice();read.textContent='Read aloud';return;}setMuted(false);playMusic();active=true;at=-1;next();},controls);
   function next(){stopVoice();if(!active||!box.isConnected||muted)return;const row=end.narration[++at];rows.forEach(p=>p.classList.remove('reading'));if(!row){active=false;read.textContent='Read again';return;}
     const el=rows[row.paragraph];if(el){el.classList.add('reading');el.scrollIntoView({block:'nearest'});}read.textContent='Stop narration';voice=new Audio(url(row.file));voice.onended=next;voice.onerror=next;voice.play().catch(()=>{active=false;read.textContent='Read aloud';});}
-  button('Back to title',title,controls);button('Play Arcade',()=>location.href='index.html',controls);
+  button('Back to title',title,controls);
 }
 // Separate animated atmosphere on the reused panorama, never in front of UI.
 const canvas=$('weather'),ctx=canvas.getContext('2d');let w=0,h=0;

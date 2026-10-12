@@ -73,6 +73,10 @@ async function adventurerAt(port) {
   } catch (e) { return false; }
 }
 
+// The story campaign is the front door while it is being playtested; its title
+// has no Arcade any more; /index.html sends players here too (?arcade=1 for dev).
+const START = '/docs/STORY_CAMPAIGN_PREVIEW.html';
+
 function openBrowser(url) {
   spawn('cmd', ['/c', 'start', '', url], { detached: true, stdio: 'ignore', windowsHide: true }).unref();
 }
@@ -82,7 +86,7 @@ function openBrowser(url) {
   let server = await listen(port);
   if (!server) {
     if (await adventurerAt(port)) {
-      const url = 'http://' + HOST + ':' + port + '/index.html';
+      const url = 'http://' + HOST + ':' + port + START;
       console.log('Adventurer is already running at ' + url);
       if (process.env.ADV_NO_BROWSER !== '1') openBrowser(url);
       return;
@@ -93,7 +97,7 @@ function openBrowser(url) {
     }
   }
   if (!server) throw new Error('No free local port near ' + PREFERRED);
-  const url = 'http://' + HOST + ':' + port + '/index.html';
+  const url = 'http://' + HOST + ':' + port + START;
   console.log('Adventurer is at ' + url);
   console.log('Leave this window open while you play. Close it to stop.');
   if (process.env.ADV_NO_BROWSER !== '1') openBrowser(url);

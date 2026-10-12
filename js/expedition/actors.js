@@ -215,7 +215,9 @@ class Actor {
       cast: ['cast', 'attack', 'aura-l1'], roll: ['roll', 'overshoot-land', 'land-tumble', 'hit-short'],
       finisher: ['finisher-l' + level + '-paired', 'finisher-' + (opts.target && ['wolf', 'boar'].includes(opts.target.kind) ? 'quadruped' : opts.target && opts.target.kind), 'slash-l' + level, 'slash-l1', 'slash', 'attack'],
       bite: ['bite', 'attack', 'hit'], charge: ['charge', 'run', 'leap', 'attack'], pounce: ['pounce', 'approach-leap', 'leap', 'attack'],
-      land_tumble: ['land-tumble', 'down', 'hit', 'idle'], overshoot_land: ['overshoot-land', 'land-tumble', 'hit', 'down'],
+      // Landings never fall back to a collapse or a hurt flinch: an actor
+      // without landing drawings (the Alpha) simply settles to idle.
+      land_tumble: ['land-tumble', 'idle'], overshoot_land: ['overshoot-land', 'land-tumble', 'idle'],
       land_beside: ['land-beside', 'land-tumble', 'hit', 'idle'], lash_back: ['recover', 'idle'],
       down_fade: ['down-fade', 'down'], enrage: ['enrage', 'idle'], stalk: ['stalk', 'idle'],
     };

@@ -17,12 +17,13 @@ const cases=[{chapter:1,encounter:1,actor:'story_cobb'},
   {chapter:4,encounter:2,actor:'story_kobold_chief'},
   {chapter:4,encounter:2,actor:'story_veylan_acolyte'},
   {chapter:4,encounter:3,actor:'story_grukhar'},
-  {chapter:5,encounter:0,actor:'story_femi'}].filter(c=>!process.env.STORY_ACTORS||process.env.STORY_ACTORS.split(',').includes(c.actor));
+  {chapter:5,encounter:0,actor:'story_femi'},
+  {chapter:5,encounter:1,actor:'story_gauntlet_soldier'}].filter(c=>!process.env.STORY_ACTORS||process.env.STORY_ACTORS.split(',').includes(c.actor));
 (async()=>{const browser=await chromium.launch({channel:'chrome',headless:true});try{
  const page=await browser.newPage({viewport:{width:1280,height:760}}),errors=[],report=[];
  page.on('pageerror',e=>{errors.push(String(e));console.error('Story page error:',String(e));});
  for(const spec of cases){
-  await page.goto('http://127.0.0.1:8742/docs/STORY_CAMPAIGN_PREVIEW.html');
+  await page.goto('http://127.0.0.1:8742/docs/STORY_CAMPAIGN_PREVIEW.html?through=14');
   await page.waitForFunction(()=>window.ADV?.Expedition?.Story?.Presentation?.data);
   await page.evaluate(spec=>{const X=ADV.Expedition,S=X.Story,s=S.open();Object.assign(s.record,{chapter:spec.chapter,encounter:spec.encounter,phase:'combat'});s.record.run.tutorial.skipGuide=true;if(spec.branch)ADV.Campaign3.setFlag(s.game,spec.branch);S.syncQuest(s);S.save(s);},spec);
   await page.goto('http://127.0.0.1:8742/docs/STORY_FIGHT_PREVIEW.html');

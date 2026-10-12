@@ -2,7 +2,7 @@
 
 Generated from the imported campaign inventory, runtime bindings and atlas file existence. A registered set still needs visual playtest; this is not a release certificate.
 
-**17 of 59 opponent identities registered. 42 remain.**
+**18 of 59 opponent identities registered. 41 remain.**
 
 | Enemy | First chapter | Runtime art | State |
 | --- | ---: | --- | --- |
@@ -23,7 +23,7 @@ Generated from the imported campaign inventory, runtime bindings and atlas file 
 | Acolyte of Veylan (enemy:veylan_acolyte) | 4 | story_veylan_acolyte | Registered |
 | Grukhar (named:grukhar) | 4 | story_grukhar | Registered |
 | Femi (mini:verlan) | 5 | story_femi | Registered |
-| Burning Gauntlet Soldier (enemy:gauntlet_soldier) | 5 | — | Pending |
+| Burning Gauntlet Soldier (enemy:gauntlet_soldier) | 5 | story_gauntlet_soldier | Registered |
 | Skarn Maul (mini:skarn) | 5 | — | Pending |
 | Hobgoblin Sergeant (enemy:hob_sergeant) | 5 | — | Pending |
 | Road Bandit (enemy:gate_bandit) | 5 | — | Pending |

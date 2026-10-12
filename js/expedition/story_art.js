@@ -37,6 +37,8 @@ S.bindings['named:grukhar']={actor:'story_grukhar',height:340,humanoid:true,comb
 // mini thumbnail depicts a different character and is not his animation model.
 S.bindings['mini:verlan']={actor:'story_femi',height:315,humanoid:true,combatReady:true,
   enemyFinisherReady:true,hiroFinishersReady:2,plannedFrames:8,minDistinctFrames:16,goreBothDirections:true};
+S.bindings['enemy:gauntlet_soldier']={actor:'story_gauntlet_soldier',height:320,humanoid:true,combatReady:true,
+  enemyFinisherReady:true,hiroFinishersReady:2,plannedFrames:8,minDistinctFrames:16,goreBothDirections:true};
 // Original Road Wolf is a gray wolf. Reuse the approved gray wolf and its
 // three Hiro-owned pairs; no tint or unrelated creature substitution.
 S.bindings['enemy:road_wolf']={actor:'wolf',height:250,reuse:true,combatReady:true,

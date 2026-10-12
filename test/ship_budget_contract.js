@@ -125,17 +125,14 @@ assert.ok(![...set].some(f => /(?:^|\/)astra-v\d+(?:\/|$)/.test(f)), 'Source mas
 // sim asserts the other half of this: nothing an open quest fights may lack art.
 assert.ok(![...set].some(f => /^assets\/expedition\/boar\//.test(f)), 'The boar atlas stays out while no open quest fields a boar');
 assert.ok(![...set].some(f => /^assets\/expedition\/busts\/(foe_|nyx\.|sable\.|aera\.|ren\.)/.test(f)), 'Off-scope human/recruit portraits must stay excluded');
-// All four levels are open (2026-09-22), so every one of them must carry its
-// own plates, panorama and track — including `night1` for the two night levels,
-// which Hiro kept rather than substituting a track that already shipped.
-for (const f of [
-  'assets/anime/v2/runtime/alley.webp', 'assets/anime/travel/v1/runtime/city.webp',
-  'assets/anime/v2/runtime/marsh.webp', 'assets/anime/travel/v1/runtime/marsh.webp',
-  'assets/anime/v2/runtime/ruins.webp', 'assets/anime/travel/v1/runtime/ruins.webp',
-  'audio/music/night1.mp3',
-]) assert.ok(set.has(f), 'An open quest must carry its own art: ' + f);
-// The retired tutorial's own plates ride along because the rain reuses them.
-assert.ok(set.has('assets/anime/v2/runtime/forest.webp') && set.has('assets/anime/v2/runtime/road.webp'));
+// Battles and travel use the painted travel scenery (2026-10-11). The old shared
+// battle plates and panoramas are never loaded, so they no longer ship; only the
+// mountain far plate is still drawn. Night levels keep their own track.
+assert.ok(set.has('audio/music/night1.mp3') && set.has('assets/anime/v2/runtime/mountain.webp'));
+for (const f of ['alley', 'forest', 'marsh', 'road', 'ruins', 'tavern'].map(n => 'assets/anime/v2/runtime/' + n + '.webp')
+  .concat(['city', 'forest', 'marsh', 'ruins'].map(n => 'assets/anime/travel/v1/runtime/' + n + '.webp'), ['assets/expedition/effects/swamp.webp']))
+  assert.ok(!set.has(f), 'Unused art must not ship: ' + f);
+assert.ok(![...set].some(f => f.startsWith('assets/expedition/stages/')), 'Battle stages use the travel files; the old stage copies must not ship');
 
 // The open quests' own assets are checked in test/expedition_sim.js, where the
 // real X.Campaign is loaded rather than a bare vm context.

@@ -210,14 +210,13 @@ test('every open quest has its music, plates and panorama in the build', () => {
     if (!open.has(q.id)) continue;
     checked++;
     assert.ok(set.has('audio/music/' + q.music + '.mp3'), q.id + ' is open but its music is not shipped: ' + q.music);
-    if (['coast','citadel'].includes(q.id)) {
-      for (const layer of ['far','ground','near']) assert.ok(set.has('assets/expedition/stages/'+q.id+'/atmosphere-'+layer+'.webp'),q.id+' missing '+layer);
-      const travel=q.id==='coast'?'coast-mast-vault':'citadel-bridge-leap';
-      for(const file of ['plate.webp','actions.json','scene.json','loops.webp']) assert.ok(set.has('assets/expedition/travel/'+travel+'/'+file),travel+' missing '+file);
-    } else {
-    for (const p of new Set(q.plates))
-      assert.ok(set.has('assets/anime/v2/runtime/' + (ALIAS[p] || p) + '.webp'), q.id + ' is open but a battle plate is missing: ' + p);
-    assert.ok(set.has('assets/anime/travel/v1/runtime/' + q.travel + '.webp'), q.id + ' is open but its travel panorama is missing: ' + q.travel);
+    // Battles use their location's travel scenery (2026-10-11); the mountain keeps its far plate.
+    const STAGE = { deep_wood: 'forest-carriage-vault', bandit_road: 'forest-carriage-vault', mountain: 'forest-carriage-vault', alley: 'city-market-vault', marsh: 'swamp-log-slide', coast: 'coast-mast-vault', citadel: 'citadel-bridge-leap' };
+    for (const p of new Set(q.plates)) {
+      assert.ok(STAGE[p], q.id + ' plate ' + p + ' has no battle stage');
+      for (const layer of ['far', 'ground']) assert.ok(set.has('assets/expedition/travel/' + STAGE[p] + '/atmosphere-' + layer + '.webp'), q.id + ' battle layer missing: ' + STAGE[p] + ' ' + layer);
+      if (p === 'mountain') assert.ok(set.has('assets/anime/v2/runtime/mountain.webp'), 'the mountain far plate ships');
+      for (const file of ['plate.webp', 'actions.json', 'scene.json', 'loops.webp']) assert.ok(set.has('assets/expedition/travel/' + STAGE[p] + '/' + file), STAGE[p] + ' missing ' + file);
     }
   }
   assert.ok(checked >= 2, 'the tutorial and at least one loop quest are open');
@@ -758,7 +757,8 @@ test('the retained loop uses only painted Bram; tutorial lock and scaling are re
   const sync = require('node:fs').readFileSync(path.join(ROOT, 'tools/sync_shared.js'), 'utf8');
   for (const q of X.quests) {
     if(['coast','citadel'].includes(q.id)) {
-      for(const layer of ['far','ground','near'])assert.ok(fs.existsSync(path.join(ROOT,'assets/expedition/stages',q.id,'atmosphere-'+layer+'.webp')));
+      const travel=q.id==='coast'?'coast-mast-vault':'citadel-bridge-leap';
+      for(const layer of ['far','ground'])assert.ok(fs.existsSync(path.join(ROOT,'assets/expedition/travel',travel,'atmosphere-'+layer+'.webp')));
       assert.ok(fs.existsSync(path.join(ROOT,'audio/music',q.music+'.mp3')));continue;
     }
     for (const p of q.plates) { const id = ({ deep_wood: 'forest', bandit_road: 'road' })[p] || p; assert.ok(sync.includes('v2/runtime/' + id + '.webp'), q.id + ' battle plate ' + id + ' not synced'); }

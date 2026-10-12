@@ -298,22 +298,38 @@ async function enemyAction(scene, foe, g) {
       await foe.play('lash_back');
     } else if (heavy) {
       // Tusks or the Alpha's weight: Hiro is knocked a step back.
-      sfx(scene, kind === 'boar' ? 'unarmed' : 'bite', 'hit');
-      impact(scene, hero, hit, { burst: 0xc0392b, hitStop: true, shake: 0.006 });
-      await Promise.all([hero.play('stagger'), foe.play('bite')]);
+      // The damage, burst and stagger wait for the bite's contact frame.
+      let reacting = null;
+      const land = () => {
+        if (reacting) return;
+        sfx(scene, kind === 'boar' ? 'unarmed' : 'bite', 'hit');
+        impact(scene, hero, hit, { burst: 0xc0392b, hitStop: true, shake: 0.006 });
+        reacting = hero.play('stagger');
+      };
+      await foe.play('bite', { onContact: land });
+      land(); await reacting;
       await foe.play('land_tumble');
     } else {
       // Contact: jaws on the boot, grimace, shake-off, wolf tumbles back.
-      sfx(scene, 'bite', 'hit');
-      impact(scene, hero, hit, { burst: 0xc0392b, hitStop: true, shake: 0.004 });
       const grip = { target: foe, arm: hit.dmg >= hero.unit.maxHp * 0.2 };
       const id = hero.sheetClipFor && hero.sheetClipFor('bite_grip', grip);
       const paired = id && hero.sheet && hero.sheet.clips[id].paired;
       if (paired) {
+        // The paired drawing shows the bite itself, so it lands with the clip.
+        sfx(scene, 'bite', 'hit');
+        impact(scene, hero, hit, { burst: 0xc0392b, hitStop: true, shake: 0.004 });
         await hero.play('bite_grip', grip);
         await foe.play('land_beside');
       } else {
-        await Promise.all([hero.play('hit_short'), foe.play('bite')]);
+        let reacting = null;
+        const land = () => {
+          if (reacting) return;
+          sfx(scene, 'bite', 'hit');
+          impact(scene, hero, hit, { burst: 0xc0392b, hitStop: true, shake: 0.004 });
+          reacting = hero.play('hit_short');
+        };
+        await foe.play('bite', { onContact: land });
+        land(); await reacting;
         await foe.play('land_tumble');
       }
     }

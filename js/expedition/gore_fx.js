@@ -29,7 +29,8 @@ G.play=(scene,hero,target,sheet,clipId)=>{
   let elapsed=0,done=false;
   const destroy=()=>{if(done)return;done=true;scene.events.off('update',tick);scene.events.off('shutdown',destroy);sprite.destroy();};
   const tick=(_t,dt)=>{
-    if(scene.paused||scene.time.paused)return;
+    // Holds through the finisher's painted hit-stop like the actors do.
+    if(scene.paused||scene.time.paused||scene.__paintedHitStopCount>0||scene.time.now<(scene.__paintedHitStopUntil||0))return;
     elapsed+=dt*scene.time.timeScale;
     const frame=Math.min(7,Math.floor(elapsed/75));sprite.setFrame(frame);
     if(frame>=4)sprite.y=y+(target.y-y)*Math.min(1,(elapsed-300)/250);

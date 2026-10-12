@@ -12,7 +12,7 @@ class StoryBattle extends X.Scene{
     this.load.image(this.storyBackground,S.Stage.files[id]||S.Presentation.media(d.art.environments[id].file));
   }
   create(){
-    this.__presentationReady=false;if(!X.Painted.require(this,this.artIds))return;
+    this.__presentationReady=false;this.__paintedHitStopCount=0;if(!X.Painted.require(this,this.artIds))return;
     this.actors=new Map();this.paused=false;this.time.paused=false;this.ended=false;this.__enemyFinishPresented=false;
     this.world={game:this.story.game,hero:this.story.hero,companions:[]};this.game_=this.story.game;
     this.seed=this.opts.seed||Math.floor(Date.now()%100000);this.phase=this.story.record.chapter===1?'night':'day';
@@ -26,7 +26,7 @@ class StoryBattle extends X.Scene{
     this.hud=new X.Hud(this,{run:this.run,hero:this.story.hero,portraitKey:this.hero.faceKey,waveCount:this.game_.quest.quest.encounters.length,
       onSkill:id=>this.tapSkill(id),onArrow:()=>this.returnToStory('victory'),onPause:()=>this.togglePause()});
     this.hud.refresh();this.hud.setSkillStates(X.Encounter.skillStates(this.enc));
-    const controls=[['Story',()=>this.returnToStory('leave')],['Pause',()=>this.togglePause()],['Sound',()=>{this.opts.muted=!this.opts.muted;this.opts.muted?this.music?.pause():this.music?.play().catch(()=>{});this.game.sound.mute=this.opts.muted;}]];
+    const controls=[['Story',()=>this.returnToStory('leave')],['Pause',()=>this.togglePause()],['Sound',()=>{this.opts.muted=!this.opts.muted;try{localStorage.setItem('adventurer_expeditions_story_muted',this.opts.muted?'1':'0');}catch(_){}this.opts.muted?this.music?.pause():this.music?.play().catch(()=>{});this.game.sound.mute=this.opts.muted;}]];
     controls.forEach(([label,click],i)=>{const b=A.T.button(this,965+i*99,16,94,44,label,click,{size:15});for(const item of [b.g,b.txt,b.zone])item.setDepth(X.UI.DEPTH.hand+20);});
     this.game.sound.mute=!!this.opts.muted;X.UI.splitCameras(this);
     this.cooldownTicker=this.time.addEvent({delay:100,loop:true,callback:()=>{if(!this.ended&&!this.enc.st.over)this.hud.setSkillStates(X.Encounter.skillStates(this.enc));}});
@@ -55,7 +55,11 @@ class StoryBattle extends X.Scene{
     let x=foes.length===1?right-boxes[0].width:left;
     foes.forEach((a,i)=>{a.home.x=Math.round(x-boxes[i].left);a.root.setDepth(100+i);x+=boxes[i].width+gap;});
   }
-  tutoring(){return this.enc.storyTutorial&&!this.run.tutorial.skipGuide;}
+  // The first two fights the player actually fights hold for the lessons
+  // (Counter, Finisher, God Aura on a boss); a bypassed fight, such as sparing
+  // Nib, doesn't use one up. Retries of those fights keep them (Hiro, 2026-10-12).
+  tutoring(){const won=Object.values(this.story.record.outcomes||{}).filter(v=>v==='combat').length;
+    return won<2&&!this.run.tutorial.skipGuide;}
   togglePause(){this.paused=!this.paused;this.time.paused=this.paused;this.music&&(this.paused?this.music.pause():!this.opts.muted&&this.music.play().catch(()=>{}));}
   async victory(){
     X.UI.resetCamera(this);await this.hero.play('victory');if(this.ended)return;
@@ -74,7 +78,7 @@ class StoryBattle extends X.Scene{
   }
   returnToStory(outcome){if(this.ended)return;this.ended=true;X.UI.resetCamera(this);this.music?.pause();S.save(this.story);
     if(window.parent!==window)window.parent.postMessage({type:'expeditions-story-battle',outcome},location.origin);
-    else location.href='STORY_CAMPAIGN_PREVIEW.html';}
+    else location.href='docs/STORY_CAMPAIGN_PREVIEW.html';}
   endRun(){this.returnToStory('leave');}
 }
 X.StoryBattle=StoryBattle;

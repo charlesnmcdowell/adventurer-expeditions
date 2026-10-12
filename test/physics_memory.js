@@ -37,26 +37,26 @@ const keepFor = (questId, sceneKey) => {
   return M.keepFor({ sys: { settings: { key: sceneKey } }, opts: { run } });
 };
 const KEYS = ['__DEFAULT', 'xp_hiro_sheet', 'xp_hiro_face', 'xp_hiro_skill_icons', 'xp_wolf_sheet', 'xp_plant_sheet', 'xp_alpha_sheet', 'xp_crab_sheet', 'xp_hydra_sheet',
-  'xp_wolf_fatal', 'xp_crab_fatal', 'xp_battle_forest-carriage-vault_far', 'xp_battle_coast_far', 'xp_battle_coast_ground', 'xp_battle_mountain_far',
+  'xp_wolf_fatal', 'xp_crab_fatal', 'travel_forest-carriage-vault_far', 'travel_coast-mast-vault_far', 'travel_coast-mast-vault_ground', 'xp_battle_mountain_far',
   'travel_forest-carriage-vault_plate', 'travel_coast-mast-vault_plate', 'travel_coast-mast-vault_actions', 'defeat_city', 'xp_inn-hiro-solo', 'xp_bust_bram', 'story_bg'];
 const INN = new Set(['xp_inn-hiro-solo']);
 
 test('in a Coast fight, the forest is freed and the Coast is kept', () => {
   const gone = new Set(M.releasable(KEYS, keepFor('coast', 'Expedition'), INN));
-  for (const k of ['xp_wolf_sheet', 'xp_plant_sheet', 'xp_alpha_sheet', 'xp_wolf_fatal', 'xp_battle_forest-carriage-vault_far', 'xp_battle_mountain_far', 'travel_forest-carriage-vault_plate', 'defeat_city', 'xp_inn-hiro-solo'])
+  for (const k of ['xp_wolf_sheet', 'xp_plant_sheet', 'xp_alpha_sheet', 'xp_wolf_fatal', 'travel_forest-carriage-vault_far', 'xp_battle_mountain_far', 'travel_forest-carriage-vault_plate', 'defeat_city', 'xp_inn-hiro-solo'])
     assert.ok(gone.has(k), k + ' freed');
-  for (const k of ['__DEFAULT', 'xp_hiro_sheet', 'xp_hiro_face', 'xp_hiro_skill_icons', 'xp_crab_sheet', 'xp_hydra_sheet', 'xp_crab_fatal', 'xp_battle_coast_far', 'xp_battle_coast_ground', 'travel_coast-mast-vault_plate', 'travel_coast-mast-vault_actions', 'xp_bust_bram', 'story_bg'])
+  for (const k of ['__DEFAULT', 'xp_hiro_sheet', 'xp_hiro_face', 'xp_hiro_skill_icons', 'xp_crab_sheet', 'xp_hydra_sheet', 'xp_crab_fatal', 'travel_coast-mast-vault_far', 'travel_coast-mast-vault_ground', 'travel_coast-mast-vault_plate', 'travel_coast-mast-vault_actions', 'xp_bust_bram', 'story_bg'])
     assert.ok(!gone.has(k), k + ' kept');
 });
 test('in the forest, its own monsters, stages and travel stay loaded', () => {
   const gone = new Set(M.releasable(KEYS, keepFor('rain', 'Travel'), INN));
-  for (const k of ['xp_wolf_sheet', 'xp_plant_sheet', 'xp_alpha_sheet', 'xp_wolf_fatal', 'xp_battle_forest-carriage-vault_far', 'xp_battle_mountain_far', 'travel_forest-carriage-vault_plate'])
+  for (const k of ['xp_wolf_sheet', 'xp_plant_sheet', 'xp_alpha_sheet', 'xp_wolf_fatal', 'travel_forest-carriage-vault_far', 'xp_battle_mountain_far', 'travel_forest-carriage-vault_plate'])
     assert.ok(!gone.has(k), k + ' kept');
-  assert.ok(gone.has('xp_crab_sheet') && gone.has('xp_battle_coast_far'));
+  assert.ok(gone.has('xp_crab_sheet') && gone.has('travel_coast-mast-vault_far'));
 });
 test('at the inn, every location is freed but the inn paintings stay', () => {
   const gone = new Set(M.releasable(KEYS, keepFor('coast', 'Inn'), INN));
-  assert.ok(gone.has('xp_crab_sheet') && gone.has('travel_coast-mast-vault_plate') && gone.has('xp_battle_coast_far'));
+  assert.ok(gone.has('xp_crab_sheet') && gone.has('travel_coast-mast-vault_plate') && gone.has('travel_coast-mast-vault_far'));
   assert.ok(!gone.has('xp_inn-hiro-solo') && !gone.has('xp_hiro_sheet'));
 });
 test('a later playthrough keeps every shuffled monster the quest can field', () => {
@@ -77,7 +77,7 @@ test('a prop manifest is checked before anything spawns', () => {
   assert.equal(P.validate(bad).length, 5);
 });
 test('a location props are freed with its other art', () => {
-  const gone = new Set(M.releasable(['xp_props_forest-carriage-vault', 'xp_props_coast'], keepFor('coast', 'Expedition'), new Set()));
-  assert.ok(gone.has('xp_props_forest-carriage-vault') && !gone.has('xp_props_coast'));
+  const gone = new Set(M.releasable(['xp_props_forest-carriage-vault', 'xp_props_coast-mast-vault'], keepFor('coast', 'Expedition'), new Set()));
+  assert.ok(gone.has('xp_props_forest-carriage-vault') && !gone.has('xp_props_coast-mast-vault'));
 });
 console.log('physics_memory: ' + passed + ' checks passed');

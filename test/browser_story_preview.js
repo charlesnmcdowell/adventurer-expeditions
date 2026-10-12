@@ -11,9 +11,9 @@ const server=http.createServer((req,res)=>{const rel=decodeURIComponent(req.url.
     await page.addInitScript(()=>{localStorage.setItem('adv:sentinel','keep');localStorage.setItem('adventurer_expeditions_arcade_v1','keep arcade');});
     await page.goto('http://127.0.0.1:'+server.address().port+'/docs/STORY_CAMPAIGN_PREVIEW.html');
     const button=name=>page.getByRole('button',{name,exact:true});
-    await button('Begin campaign preview').waitFor();await page.screenshot({path:path.join(OUT,'title.png')});
-    await button('Begin campaign preview').click();await page.getByText('Tesfaye',{exact:true}).waitFor();
-    await button('Sound on').click();await page.waitForTimeout(1200);await page.screenshot({path:path.join(OUT,'opening.png')});
+    await button('Begin story').waitFor();await page.screenshot({path:path.join(OUT,'title.png')});
+    await button('Begin story').click();await page.getByText('Chapter 1',{exact:true}).waitFor();await page.getByRole('heading',{name:'The Road from Lanternhold'}).waitFor();await button('Continue').click();await page.getByText('Tesfaye',{exact:true}).waitFor();
+    assert.equal(await button('Mute').count(),1,'sound starts on');await page.waitForTimeout(1200);await page.screenshot({path:path.join(OUT,'opening.png')});
     await button('Continue').click();await button('Why tonight? What has happened?').click();
     assert.equal(await button('Why tonight? What has happened?').count(),0,'asked question removed');
     await button('I will get my things.').click();await button('Continue').click();
@@ -21,8 +21,8 @@ const server=http.createServer((req,res)=>{const rel=decodeURIComponent(req.url.
     assert.equal(await page.locator('.speaker').textContent(),'Nib');await button('Continue').click();
     await button('You have picked the wrong storehouse.').click();await button('Continue').click();
     await page.getByText('The road ahead',{exact:true}).waitFor();await page.screenshot({path:path.join(OUT,'pending-combat.png')});
-    await page.reload();await button('Continue campaign preview').waitFor();
-    await button('Continue campaign preview').click();await page.getByText('The road ahead',{exact:true}).waitFor();
+    await page.reload();await button('Continue story').waitFor();
+    await button('Continue story').click();await page.getByText('The road ahead',{exact:true}).waitFor();
     await button('Begin fight').click();const frame=await page.locator('iframe').elementHandle().then(e=>e.contentFrame());
     await frame.waitForFunction(()=>window.storyGame?.scene.getScene('StoryBattle')?.hero);
     const lessons=new Set();let won=false;
@@ -42,7 +42,7 @@ const server=http.createServer((req,res)=>{const rel=decodeURIComponent(req.url.
     await page.waitForFunction(()=>!document.querySelector('iframe')&&window.storyPreview?.record.encounter===1);
     await page.screenshot({path:path.join(OUT,'after-first-fight.png')});
     assert.equal(await page.evaluate(()=>storyPreview.record.outcomes['1:0']),'combat');
-    await page.reload();await button('Continue campaign preview').click();
+    await page.reload();await button('Continue story').click();
     assert.equal(await page.evaluate(()=>storyPreview.record.encounter),1,'reload keeps the won fight');
     await button('Title').click();
     for(const width of [375,390]){await page.setViewportSize({width,height:width===375?667:844});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);await page.screenshot({path:path.join(OUT,'title-'+width+'.png')});}

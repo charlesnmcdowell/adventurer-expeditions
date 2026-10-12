@@ -16,18 +16,18 @@ if %errorlevel%==0 (
 
 where py >nul 2>&1
 if %errorlevel%==0 (
-  echo Opening http://127.0.0.1:8735/index.html
+  echo Opening http://127.0.0.1:8735/docs/STORY_CAMPAIGN_PREVIEW.html
   echo Leave this window open while you play. Close it to stop.
-  start "" cmd /c "timeout /t 1 /nobreak >nul && start http://127.0.0.1:8735/index.html"
+  start "" cmd /c "timeout /t 1 /nobreak >nul && start http://127.0.0.1:8735/docs/STORY_CAMPAIGN_PREVIEW.html"
   py -m http.server 8735 --bind 127.0.0.1
   goto done
 )
 
 where python >nul 2>&1
 if %errorlevel%==0 (
-  echo Opening http://127.0.0.1:8735/index.html
+  echo Opening http://127.0.0.1:8735/docs/STORY_CAMPAIGN_PREVIEW.html
   echo Leave this window open while you play. Close it to stop.
-  start "" cmd /c "timeout /t 1 /nobreak >nul && start http://127.0.0.1:8735/index.html"
+  start "" cmd /c "timeout /t 1 /nobreak >nul && start http://127.0.0.1:8735/docs/STORY_CAMPAIGN_PREVIEW.html"
   python -m http.server 8735 --bind 127.0.0.1
   goto done
 )

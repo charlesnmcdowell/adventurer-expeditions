@@ -502,8 +502,11 @@ UI.bustsOff = () => /[?&]busts=0/.test(location.search);
 UI.preloadBusts = function (scene) {
   if (UI.bustsOff()) return;
   scene.load.json('xp_busts', UI.BUSTS + 'busts.json');
-  scene.load.on('filecomplete-json-xp_busts', (key, type, data) => {
-    for (const [k, b] of Object.entries((data && data.busts) || {})) if (k === 'bram' && !scene.textures.exists('xp_bust_' + k)) scene.load.image('xp_bust_img_' + k, UI.BUSTS + b.file);
+  // Bram's bust only matters once he can be hired (2026-10-11: it loaded in every
+  // first fight). `once`, so a restarted scene does not stack listeners.
+  const hireable = !(X.Campaign && X.Campaign.recruitingLocked && X.Campaign.recruitingLocked());
+  scene.load.once('filecomplete-json-xp_busts', (key, type, data) => {
+    for (const [k, b] of Object.entries((data && data.busts) || {})) if (k === 'bram' && hireable && !scene.textures.exists('xp_bust_' + k)) scene.load.image('xp_bust_img_' + k, UI.BUSTS + b.file);
   });
 };
 UI.installBusts = function (scene) {

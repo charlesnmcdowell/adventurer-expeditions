@@ -142,6 +142,21 @@ test('story survivors reject lethal pairs and accept only authored nonlethal dis
   assert.equal(a.canPair(c,'finisher',{target,lethal:false}),false,'surviving a hit is not an encounter-ending disarm');
   assert.equal(target.unit.ch.campaignExit,true,'presentation never clears the story survival flag');
 });
+test('a landing never borrows a collapse or hurt clip (the Alpha has no landing drawings)', () => {
+  const a = actor();
+  a.sheet.clips = { idle: clip('idle', { loop: true, contact: [] }), 'approach-leap': clip('approach-leap'), attack: clip('attack'), hit: clip('hit'), enrage: clip('enrage'), down: clip('down', { contact: [] }) };
+  for (const landing of ['land_tumble', 'overshoot_land']) assert.equal(a.sheetClipFor(landing, {}), 'idle', landing + ' settles to idle');
+  a.sheet.clips['land-tumble'] = clip('land-tumble'); assert.equal(a.sheetClipFor('land_tumble', {}), 'land-tumble', 'real tumble art still wins');
+});
+test('defeat and blood effects hold through the painted hit-stop', () => {
+  const ctx = { ADV: { Expedition: {} } };
+  vm.runInNewContext(fs.readFileSync(path.join(__dirname, '../js/expedition/defeat_fx.js'), 'utf8'), ctx);
+  const held = ctx.ADV.Expedition.DefeatFX.held, scene = (o = {}) => Object.assign({ paused: false, time: { paused: false, now: 0 } }, o);
+  assert.equal(held(scene()), false);
+  assert.equal(held(scene({ __paintedHitStopCount: 1 })), true);
+  assert.equal(held(scene({ paused: true })), true);
+  assert.equal(held(scene({ time: { paused: true, now: 0 } })), true);
+});
 test('Bram paired clips and Alpha hit vocabulary resolve to their own art', () => {
   const a = actor(); a.sheet.clips = { idle: clip('idle'), bite_arm: clip('bite_arm', { paired: true, opponentKinds: ['wolf'] }), finisher_quadruped: clip('finisher_quadruped', { paired: true, opponentKinds: ['wolf'] }) };
   const target = actor(); target.kind = 'wolf'; target.unit = { ch: { expeditionKey: 'dire_wolf' } };
@@ -335,6 +350,15 @@ test('paired wolf grip receives its target and does not play a second separate b
   f.scene.hero.sheet = { clips: { pair: { paired: true } } }; f.scene.hero.sheetClipFor = () => 'pair';
   await X.Beats.play(f.scene, { hero: false, events: [{ t: 'use', uid: 'foe', skillId: 'bite', target: 'hero' }, { t: 'damage', uid: 'hero', by: 'foe', dmg: 10 }] });
   assert.deepEqual(f.played, ['leap', 'land_beside']); assert.equal(f.heroPlayed[0].id, 'bite_grip'); assert.equal(f.heroPlayed[0].opts.target, f.foe);
+});
+
+test('the Alpha heavy bite: Hiro staggers on the bite contact frame, not before the strike', async () => {
+  const f = recoilFixture(), log = [];
+  f.foe.kind = 'boss'; f.foe.play = async (id, opts) => { log.push('foe:' + id); if (opts && opts.onContact) { log.push('contact'); opts.onContact(); } };
+  f.scene.hero.unit = { maxHp: 100 }; f.scene.hero.chest = () => ({ x: 300, y: 350 });
+  f.scene.hero.play = async id => { log.push('hero:' + id); };
+  await X.Beats.play(f.scene, { hero: false, events: [{ t: 'use', uid: 'foe', skillId: 'pounce', target: 'hero' }, { t: 'damage', uid: 'hero', by: 'foe', dmg: 30 }] });
+  assert.deepEqual(log, ['foe:pounce', 'foe:bite', 'contact', 'hero:stagger', 'foe:land_tumble']);
 });
 
 (async () => {

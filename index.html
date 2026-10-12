@@ -17,6 +17,10 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <title>Adventurer: Expeditions</title>
+<!-- Arcade is retired (Hiro, 2026-10-12): the story campaign is the game, so a
+     player opening index.html goes straight to it. The Arcade engine still runs
+     every story fight; automated tests and ?arcade=1 still reach these screens. -->
+<script>(function(){try{if(new URLSearchParams(location.search).get('arcade')==='1'||navigator.webdriver)return;location.replace('docs/STORY_CAMPAIGN_PREVIEW.html');}catch(e){}})();</script>
 <!-- live-9 20260915T2356 -->
 <style>
   html, body {
@@ -125,7 +129,7 @@
 <script src="js/data/personality_travel.js?v=20260918-xp2"></script>
 <script src="js/data/personality_social.js?v=20260918-xp2"></script>
 <script src="js/data/campaign_story.js?v=20260918-xp2"></script>
-<script src="js/expedition/media_hashes.js?v=20261011-xp2"></script>
+<script src="js/expedition/media_hashes.js?v=20261012-xp3"></script>
 <script src="js/core/rng.js?v=20260918-xp2"></script>
 <script src="js/core/util.js?v=20260918-xp2"></script>
 <script src="js/core/skillsys.js?v=20260918-xp2"></script>
@@ -197,30 +201,30 @@
 <script src="js/ui/dialoguebox.js?v=20260918-xp2"></script>
 <script src="js/ui/cutscenes.js?v=20260918-xp2"></script>
 <script src="js/ui/portal.js?v=20260918-xp2"></script>
-<script src="js/expedition/data.js?v=20261011-xp2"></script>
-<script src="js/expedition/shim.js?v=20261011-xp2"></script>
-<script src="js/expedition/encounter.js?v=20261011-xp2"></script>
-<script src="js/expedition/run.js?v=20261011-xp2"></script>
-<script src="js/expedition/ui_common.js?v=20261011-xp2"></script>
-<script src="js/expedition/dev.js?v=20261011-xp2"></script>
-<script src="js/expedition/enemy_finishers.js?v=20261011-xp2"></script>
-<script src="js/expedition/gore_fx.js?v=20261011-xp2"></script>
-<script src="js/expedition/painted.js?v=20261011-xp2"></script>
-<script src="js/expedition/light_anchors.js?v=20261011-xp2"></script>
-<script src="js/expedition/atmosphere.js?v=20261011-xp2"></script>
-<script src="js/expedition/battle_stage.js?v=20261011-xp2"></script>
-<script src="js/expedition/inn_art.js?v=20261011-xp2"></script>
-<script src="js/expedition/actors.js?v=20261011-xp2"></script>
-<script src="js/expedition/defeat_fx.js?v=20261011-xp2"></script>
-<script src="js/expedition/knockback.js?v=20261011-xp2"></script>
-<script src="js/expedition/props.js?v=20261011-xp2"></script>
-<script src="js/expedition/beats.js?v=20261011-xp2"></script>
-<script src="js/expedition/hud.js?v=20261011-xp2"></script>
-<script src="js/expedition/campaign.js?v=20261011-xp2"></script>
-<script src="js/expedition/scene.js?v=20261011-xp2"></script>
-<script src="js/expedition/travel_art.js?v=20261011-xp2"></script>
-<script src="js/expedition/scenes_town.js?v=20261011-xp2"></script>
-<script src="js/expedition/memory.js?v=20261011-xp2"></script>
+<script src="js/expedition/data.js?v=20261012-xp3"></script>
+<script src="js/expedition/shim.js?v=20261012-xp3"></script>
+<script src="js/expedition/encounter.js?v=20261012-xp3"></script>
+<script src="js/expedition/run.js?v=20261012-xp3"></script>
+<script src="js/expedition/ui_common.js?v=20261012-xp3"></script>
+<script src="js/expedition/dev.js?v=20261012-xp3"></script>
+<script src="js/expedition/enemy_finishers.js?v=20261012-xp3"></script>
+<script src="js/expedition/gore_fx.js?v=20261012-xp3"></script>
+<script src="js/expedition/painted.js?v=20261012-xp3"></script>
+<script src="js/expedition/light_anchors.js?v=20261012-xp3"></script>
+<script src="js/expedition/atmosphere.js?v=20261012-xp3"></script>
+<script src="js/expedition/battle_stage.js?v=20261012-xp3"></script>
+<script src="js/expedition/inn_art.js?v=20261012-xp3"></script>
+<script src="js/expedition/actors.js?v=20261012-xp3"></script>
+<script src="js/expedition/defeat_fx.js?v=20261012-xp3"></script>
+<script src="js/expedition/knockback.js?v=20261012-xp3"></script>
+<script src="js/expedition/props.js?v=20261012-xp3"></script>
+<script src="js/expedition/beats.js?v=20261012-xp3"></script>
+<script src="js/expedition/hud.js?v=20261012-xp3"></script>
+<script src="js/expedition/campaign.js?v=20261012-xp3"></script>
+<script src="js/expedition/scene.js?v=20261012-xp3"></script>
+<script src="js/expedition/travel_art.js?v=20261012-xp3"></script>
+<script src="js/expedition/scenes_town.js?v=20261012-xp3"></script>
+<script src="js/expedition/memory.js?v=20261012-xp3"></script>
 <script>
 (async function () {
 await ADV.Portal.prepare();

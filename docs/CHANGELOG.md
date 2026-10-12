@@ -25,6 +25,104 @@ Validation: `node test/browser_story_grounding.js` exercises both real chapter-t
 
 ---
 
+## 2026-10-12 — Arcade retired; tutorial covers the first two fights
+
+Hiro: "the tutorial is not working on the first quest. arcade mode should be disabled it's no longer a thing, just the campaign."
+
+- **The tutorial covers the first two fights.** Hiro changed this from "all of chapter one" to "just the first 2 fights".
+  - **Before:** story fights held for lessons only in the first fight opened (`enc.storyTutorial` flips off once `tutorialFightStarted` is set). The second and third fights of chapter one ran with no prompts, so the Finisher and God Aura lessons only showed if they happened to be ready in fight one. Arcade tutors its whole first quest.
+  - **Now:** `StoryBattle.tutoring()` holds while fewer than two fights have been won (outcomes recorded as `combat`). A bypassed fight, such as sparing Nib, doesn't use up a lesson fight, and a retry keeps its lessons. The lessons are the same Arcade ones: Counter the first time it's ready, the Finisher whenever ready, Counter under half health, and God Aura once on a boss. The "already taught" flags live in the story save, so nothing repeats needlessly.
+  - **Verified in the fight page:**
+    - second fight after one win: tutoring on;
+    - Cobb's fight after sparing Nib: tutoring on;
+    - Griffon Road after two wins: tutoring off.
+    Before, the second fight had `storyTutorial` false and no prompts.
+- **Arcade is no longer a mode.**
+  - `index.html` sends players straight to the story campaign.
+  - Every Play Arcade button is gone: title, demo end card and ending.
+  - The Start over prompt no longer mentions an Arcade run.
+  - The Arcade code stays because every story fight runs on its director, actors and HUD. Automated browsers (`navigator.webdriver`) and `?arcade=1` still reach the old screens, so the art and combat test suites keep working.
+  - Not yet decided: the high-score board is still shared with the old Arcade rows on this device; packaging comes later.
+- **Story fight fallback link fixed.** It opened `/STORY_CAMPAIGN_PREVIEW.html` (a 404, because of the page's `<base href="../">`). It now opens `docs/STORY_CAMPAIGN_PREVIEW.html`. This was bug review item "fallback link points at a missing file".
+- **Story pages aren't cached.** Both story page templates get index.html's no-cache meta tags. The browser pane kept showing a removed button from a cached copy of the page, with old script stamps. Stamp bumped to 20261012-xp2 and pages rebuilt.
+
+---
+
+## 2026-10-12 — Animation fixes before new art: Alpha landing, bite timing, effects in hit-stop
+
+From the 11 October bug review (docs/BUG_REVIEW_20261011.md, now marked fixed there). Code only, no art.
+
+- **The Alpha played its collapse after attacking.** `land_tumble` and `overshoot_land` fell back to `down` (and `hit`) because the Alpha has no tumble or landing drawings. Landings now try `land-tumble`/`overshoot-land` and otherwise settle to `idle`, never a collapse or a hurt flinch. `land_beside` keeps its `hit` fallback: reeling after a parry is right. (`actors.js`)
+- **The Alpha's damage showed before its strike.** In the heavy branch, the damage number, burst, shake and Hiro's stagger fired before the `bite` clip began. They now fire on the bite's contact frame (the Alpha's `attack` clip, frame 4), with a fallback after the clip if it has no contact. The plain wolf bite (unpaired) had the same order and is fixed the same way; the paired grip drawing shows the bite itself, so it is unchanged. (`beats.js`)
+- **Blood and defeat effects ignored cinematic holds.**
+  - New `DefeatFX.held(scene)`, the same rule as `Actor.syncPause`: menu pause, scene pause and the painted finisher hit-stop freeze an effect, and slow motion slows it.
+  - The blood slash (`gore_fx.js`) and all three defeat effects (coast/citadel sparks, swamp puffs, city sheet) use it.
+  - The city sheet used to ignore slow motion and hit-stop and left a `shutdown` listener behind per kill. It now scales by `timeScale` and removes its listener.
+- **Hit-stop softlock (review item 1).** `scene.js` and `story_scene.js` `create()` reset `__paintedHitStopCount`. Leaving a fight mid hit-stop used to freeze the next fight's painted animations, because the scene object is reused.
+- **Tests:** test/actor_animation_lifecycle.js gains three checks:
+  - the Alpha's landings resolve to idle, and real tumble art still wins;
+  - effects hold during hit-stop and pause;
+  - the Alpha's heavy bite order is pounce → bite → contact → Hiro staggers → landing. The old code fails this check.
+  Suite: 32 passed. Stamp bumped to 20261012-xp1 (`tools/stamp.js`); the story pages were rebuilt to match.
+
+---
+
+## 2026-10-11 — Chapter one demo: sound on, scene-first dialogue, death beat, points
+
+From Hiro's chapter-one playtest. Files: `docs/story_preview.js`, `tools/story_preview.template.html` (and the regenerated `docs/STORY_CAMPAIGN_PREVIEW.html` / `STORY_FIGHT_PREVIEW.html`), `tools/build_story_preview.js`, `js/expedition/story_scene.js` (Sound button only), and the story browser tests.
+
+1. **Voice played only on Replay.** The story started muted; `say()` skipped every line and Replay ignored the mute. Sound now starts on and the choice is remembered (`adventurer_expeditions_story_muted`). The fight page's Sound button writes the same key, and the story re-reads it after a fight, so one setting covers both. Verified: on a fresh load the button reads Mute, and Tesfaye's lines and `q1_death_1.mp3` were fetched without pressing Sound or Replay.
+2. **Text boxes covered the paintings.** The box is compact and docked at the bottom:
+   - smaller name, caption and type;
+   - a 92 px portrait;
+   - the line scrolls after about four rows;
+   - Replay sits beside Continue.
+   As in the original's `withScene`, a new painting now shows on its own until it has loaded plus 1.2 s; then the box fades in and the voice starts. Verified: the whole Tesfaye death still is visible above the box.
+3. **Death beats.** Restored the original's fallback caption ("The sword goes through him. You run because he told you to.") when a death beat has none. On Continue there's a red flash and a 600 ms hold with the buttons disabled. Verified on q1_death.
+4. **Gold → points.** The chapter reward screen shows the run's arcade score ("Score: N points"), which story fights already add through `Encounter.award`. Gold is still tracked inside the save because the original's perks read it, but it isn't shown.
+5. **Chapter one is the demo.**
+   - `DEMO_THROUGH = 1`. After chapter one's reward screen, a "Chapter 2 is coming soon" card shows the score, a name entry when it makes the top ten (the Arcade board, `X.Board`, shared with Arcade), the board, the Facebook screenshot note, Back to title and Play Arcade.
+   - On localhost, `?through=N` plays further; the story browser tests use `?through=14`.
+   - Removed player-visible dev wording: the "CAMPAIGN DEVELOPMENT PREVIEW" tag, the preview notice and title. Buttons now read Begin story, Continue story and Start over.
+   - Verified with a save at chapter 2 departure: the reward screen showed 1840 points, the card appeared, and saving a name put it on the board. Test data was removed afterwards.
+6. **Story scripts are cache-stamped.** `build_story_preview.js` adds index.html's release stamp to the story scripts on both story pages, so returning players don't run a stale cached `story_preview.js` (it happened in the browser pane during this pass). The template now carries this session's page edits; it had been behind the page.
+
+**Not fixed: fighters off the ground (Astra, needs art).** The battle paintings are scaled to cover the stage, so fighters' feet (stage y 612) land at about y 515 of each 640-px painting:
+- **Dunmere (chapter 3, first fight):** the foot line falls at the well's base in the middle distance, so the 330-px fighters look like giants floating over the village.
+- **River ford (chapter 3):** the enemies stand on the water.
+- **Gnoll fort:** fine.
+These need combat crops or ground plates like the mine's `dunmere-mine-combat.webp`. Shifting the existing paintings would leave a gap at the bottom of the stage or zoom in about 1.9×.
+
+---
+
+## 2026-10-11 — Campaign: chapter cards, join and seat notices, voice replay
+
+From the comparison with the original Varenholm Gate (docs/STORY_COMPARISON_20261011.md). All in `docs/story_preview.js` and the preview page's styles; Astra's story scripts are untouched.
+
+- **Chapter title cards.** Each chapter's departure opens on "Chapter N" and the chapter's original name over its departure scene, with that chapter's music. Continue appears after 1.8 s, as on the original plates. Shown once per chapter per save (`record.titleCards`). Numbering follows the campaign's 14 chapters, not the original's eight acts.
+- **Join and seat notices.** The company is compared before and after each beat and choice. Recruits who join show "X rides with you." When the company is full (5 companions, 6 with Hiro, `Campaign3.MAX_COMPANY`), the original's seat choice appears before the next beat: send someone back to the inn or leave the newcomer there. Pending offers are saved (`record.seatOffer`) so a reload still asks. Before this, overflow recruits were left at the inn silently.
+- **Replay line.** Voiced lines get a Replay line button. It plays the recording even while muted.
+- **Test.** test/browser_story_preview.js steps through the chapter-one card.
+
+Verified in the browser pane: chapter 1 and chapter 2 cards; Hiwot's join toast; with a forced full company, the seat menu, swapping Winston out and the save afterwards; replay fetched `wren_ward/q1_catchup_1.mp3` while muted. `node test/browser_story_preview.js` passes.
+
+**Ally and enemy limits on screen (research only).** The combat sim takes any number of units. The stage layout limits it:
+- **Allies:** 2 beside Hiro (`spawnCompanions` has two marks behind him, kept clear of the HUD; `X.party.fieldMax = 2`).
+- **Enemies:** 4 per wave (`Camp.maxWave`). Three sit on fixed marks; larger or wider groups are packed across x 750–1230 at full scale.
+- **Original campaign:** fights field 3 foes in 34 of 55 encounters and 4 in 9, so 4 covers it. The original's company is up to 6 people, so party fights would need about three more ally marks, or packing like the foes.
+
+**Still open (Astra):** sound starts muted and isn't remembered; death beats lack the original's caption, red flash and pause. The backdrop logs "Texture key already in use" when beats are clicked through faster than the scene image loads.
+
+---
+
+## 2026-10-11 — Campaign is the front door for playtesting; download fixes
+
+**Campaign start and end (Hiro: start at chapter 1, To be continued after chapter 3).** `Play Expeditions.bat` and `play_local.js` now open `docs/STORY_CAMPAIGN_PREVIEW.html`, whose title offers Begin (chapter 1), Continue and Play Arcade; `/index.html` still opens Arcade directly, so every Arcade test and the battle frame are unchanged. In `docs/story_preview.js`, `PLAYABLE_THROUGH = 3`: once chapter 3 is complete (after its reward screen) the campaign shows a To be continued screen with Back to title and Play Arcade, instead of opening chapter four's dialogue and stopping at its unready fight. The save still records chapter four, so raising the constant as chapters land lets Continue pick up there; test/browser_story_chapters.js's chapter-four assertions still hold. Verified in the browser: Begin opens chapter 1's first line; a save past chapter 3 shows the screen; the launcher serves the page; no errors. Test saves removed afterwards.
+
+**Download fixes (from the 9 Oct review).** Battle backdrops now load their location's travel scenery under the travel scene's own texture keys (`battle_stage.js`: Coast and Citadel map to coast-mast-vault and citadel-bridge-leap), so each file downloads once and is held once; the byte-identical `stages/coast` and `stages/citadel` copies are no longer used, and their battle-specific lamp anchors are kept. Ship list drops what nothing loads: the shared battle plates alley/forest/marsh/road/ruins/tavern, the four v1 travel panoramas, the pre-layer `stages/` folder and the code-drawn swamp defeat sheet (the mountain far plate and the city defeat sheet stay). Bram's bust loads only while he can be hired, and the bust preload listener is now `once` so scene restarts no longer stack listeners. Ship set 166.80 → 162.32 MB. Kept on purpose: Bram's 12 voice lines (hero-pack path, pinned by the media-hash contract). Not done: loading only the shown inn painting (saves ~0.6 MB per visit but a mid-visit guest change would show nothing). Files on disk are untouched. `expedition_sim` and `ship_budget_contract` now assert the travel-based layers ship and the retired plates do not; `docs/LEVELS.md` regenerated; `physics_memory` keys updated; props folders are named by stage set (brief updated). `npm test` green. Browser: Coast, Citadel and forest fights use the shared travel keys, no request to `stages/`, no Bram bust, only the mountain plate from `assets/anime`, no errors. Script stamp 20261011-xp3.
+
+---
+
 ## 2026-10-11 — Campaign chapter three, survival-safe animation and branch QA
 
 Campaign work only; original Adventurer and all synced shared files remain untouched. Re-ran the original importer: no content differences, 14 chapters / 55 encounter slots / 59 identities, all 974 referenced media still available. The normal boot remains Arcade because chapters 4–14 are unfinished. `docs/STORY_CAMPAIGN_PREVIEW.html` now correctly describes the playable first three chapters.

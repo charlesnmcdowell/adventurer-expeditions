@@ -1,6 +1,9 @@
 (function () {
 'use strict';
 const X = ADV.Expedition, FX = X.DefeatFX = {};
+// Same hold rule as painted actors (Actor.syncPause): menu pause, scene pause
+// and the finisher hit-stop freeze an effect; slow motion slows it.
+FX.held = scene => !!(scene.paused || scene.time.paused || scene.__paintedHitStopCount > 0 || scene.time.now < (scene.__paintedHitStopUntil || 0));
 FX.location = run => ({marsh:'swamp',city:'city',coast:'coast',citadel:'citadel'})[run?.questId] || null;
 FX.preload = scene => {
   const loc = FX.location(scene.opts.run || X.Run.load());
@@ -15,7 +18,7 @@ FX.play = actor => {
     let age=0,disposed=false;
     const stop=()=>{if(disposed)return;disposed=true;scene.events.off('update',tick);scene.events.off('shutdown',stop);g.destroy();};
     const tick=(_t,dt)=>{
-      if(scene.paused||scene.time.paused)return;
+      if(FX.held(scene))return;
       age+=dt*scene.time.timeScale;const u=Math.min(1,age/850);g.clear();
       for(let i=0;i<26;i++){
         const v=i/25-.5,dx=v*actor.height*u,dy=loc==='coast'?-Math.sin(u*Math.PI)*(35+i%5*9):-u*(70+i%5*28);
@@ -30,9 +33,10 @@ FX.play = actor => {
   if (loc === 'swamp') {
     const g=scene.add.graphics().setDepth(222),width=Math.min(220,Math.max(100,actor.height*.65));
     const x=actor.root.x,y=actor.root.y;let age=0;
-    const stop=()=>{scene.events.off('update',tick);scene.events.off('shutdown',stop);g.destroy();};
+    let disposed=false;
+    const stop=()=>{if(disposed)return;disposed=true;scene.events.off('update',tick);scene.events.off('shutdown',stop);g.destroy();};
     const tick=(_t,dt)=>{
-      if(scene.paused||scene.time.paused)return;
+      if(FX.held(scene))return;
       age+=dt*scene.time.timeScale;const u=Math.min(1,age/750);g.clear();
       // Low, expanding ochre puffs and tiny earth flecks; no falling sheet or loop.
       for(let i=0;i<11;i++){
@@ -53,14 +57,14 @@ FX.play = actor => {
     s.setDisplaySize(Math.max(180, actor.height), row === 1 && loc === 'swamp' ? 100 : actor.height);
     return s;
   });
-  let elapsed = 0;
+  let elapsed = 0, disposed = false;
   const update = (t, dt) => {
-    if (scene.paused) return;
-    elapsed += dt;
+    if (FX.held(scene)) return;
+    elapsed += dt * scene.time.timeScale;
     effects.forEach((s, row) => { s.setFrame(row * 4 + Math.min(3, Math.floor(elapsed / 120) % 4)); s.setAlpha(Math.max(0, 1 - Math.max(0, elapsed - 500) / 350)); });
     if (elapsed >= 850) dispose();
   };
-  const dispose = () => { scene.events.off('update', update); effects.forEach(s => s.destroy()); };
+  const dispose = () => { if (disposed) return; disposed = true; scene.events.off('update', update); scene.events.off('shutdown', dispose); effects.forEach(s => s.destroy()); };
   scene.events.on('update', update); scene.events.once('shutdown', dispose);
 };
 })();

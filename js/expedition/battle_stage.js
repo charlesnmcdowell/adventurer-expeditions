@@ -4,8 +4,14 @@
 const A = ADV, X = A.Expedition, Stage = X.BattleStage = {};
 const sets = {
   deep_wood: 'forest-carriage-vault', bandit_road: 'forest-carriage-vault',
-  mountain: 'forest-carriage-vault', alley: 'city-market-vault', marsh: 'swamp-log-slide', coast: 'coast', citadel: 'citadel'
+  mountain: 'forest-carriage-vault', alley: 'city-market-vault', marsh: 'swamp-log-slide', coast: 'coast-mast-vault', citadel: 'citadel-bridge-leap'
 };
+// Every battle backdrop is its location's travel scenery, loaded under the travel
+// scene's own keys so the file downloads once and sits in memory once (2026-10-11:
+// the Coast and Citadel used byte-identical copies under stages/). Lamp anchors
+// for those two keep their battle-specific positions.
+const layerKey = (set, layer) => 'travel_' + set + '_' + layer;
+const anchorKey = (bg, set) => (['coast', 'citadel'].includes(bg) ? 'stages/' + bg : 'travel/' + set);
 Stage.sets = sets;   // read by X.Memory to keep the current location's layers
 const names = ['far','ground'];
 Stage.preload = scene => {
@@ -19,9 +25,8 @@ Stage.preloadBackground = (scene,bg) => {
   const set = sets[bg];
   if (!set) return;
   for (const layer of names) {
-    const key = 'xp_battle_' + set + '_' + layer;
-    if (!scene.textures.exists(key)) scene.load.image(key,
-      'assets/expedition/' + (['coast','citadel'].includes(set) ? 'stages/' : 'travel/') + set + '/atmosphere-' + layer + '.webp');
+    const key = layerKey(set, layer);
+    if (!scene.textures.exists(key)) scene.load.image(key, 'assets/expedition/travel/' + set + '/atmosphere-' + layer + '.webp');
   }
   if (bg === 'mountain' && !scene.textures.exists('xp_battle_mountain_far'))
     scene.load.image('xp_battle_mountain_far','assets/anime/v2/runtime/mountain.webp');
@@ -32,7 +37,7 @@ Stage.paint = (scene, bg, phase) => {
   const root = scene.add.container(0,0).setDepth(-10);
   const weatherPlane = scene.add.container(0,0);
   const layers = names.map((name,i) => {
-    const key = bg === 'mountain' && name === 'far' ? 'xp_battle_mountain_far' : 'xp_battle_'+set+'_'+name;
+    const key = bg === 'mountain' && name === 'far' ? 'xp_battle_mountain_far' : layerKey(set, name);
     const height = name === 'ground' ? (bg === 'coast' ? 550 : bg === 'citadel' ? 450 : 1100) : 760;
     const img = scene.add.image(-500,760-height-(bg === 'alley' && name === 'ground' ? 60 : 0),key).setOrigin(0).setDisplaySize(2280,height);
     if (phase === 'night' && !['marsh','citadel'].includes(bg)) img.setTint(0x748aba);
@@ -47,7 +52,7 @@ Stage.paint = (scene, bg, phase) => {
   const clouds=X.Atmosphere.create(scene,weatherPlane,{night:phase==='night'||bg==='citadel'||bg==='marsh'});
   root.mountWeather=handle=>{if(handle?.container)weatherPlane.addAt(handle.container,0);};
   root.layerOrder=['distance','weather-scenery','hero-ground'];
-  const anchorSet=X.lightAnchors?.[(['coast','citadel'].includes(set)?'stages/':'travel/')+set]||{};
+  const anchorSet=X.lightAnchors?.[anchorKey(bg,set)]||{};
   const lampSets=layers.slice(0,2).map((img,i)=>X.Atmosphere.lights(scene,root,(anchorSet['atmosphere-'+names[i]+'.webp']||[]).map(([x,y,s])=>[img.x+x*img.displayWidth,img.y+y*img.displayHeight,s])));
   let elapsed=0;
   const tick=(_t,dt)=>{

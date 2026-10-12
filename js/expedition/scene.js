@@ -36,6 +36,9 @@ class ExpeditionScene extends Phaser.Scene {
   // ---------------------------------------------------------------- create
   create() {
     this.__presentationReady = false;
+    // The scene object is reused: a fight left mid hit-stop must not freeze
+    // the next one's painted animations (bug review 2026-10-11, item 1).
+    this.__paintedHitStopCount = 0;
     X.Painted.install(this);
     if (!X.Painted.require(this, X.Painted.needed(this))) return;
     this.actors = new Map();

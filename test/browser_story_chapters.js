@@ -12,7 +12,7 @@ const choices={q1_wake:'go',q1_wake_seen:'nobody',q1_nib:'draw',q1_cobb:'nothing
  page.on('pageerror',e=>{errors.push(String(e));console.error('Story page error:',String(e));});
  page.on('console',m=>{if(m.type()==='error')console.error('Story console:',m.text());});
  page.on('requestfailed',r=>console.error('Story request:',r.url(),r.failure()?.errorText));
- await page.goto('http://127.0.0.1:8742/docs/STORY_CAMPAIGN_PREVIEW.html');
+ await page.goto('http://127.0.0.1:8742/docs/STORY_CAMPAIGN_PREVIEW.html?through=14');
  if(firstChapter>1){
   await page.waitForFunction(()=>window.ADV?.Expedition?.Story?.Presentation?.data);
   // A chapter-only extension resumes the verified previous playthrough, with
@@ -23,8 +23,8 @@ const choices={q1_wake:'go',q1_wake_seen:'nobody',q1_nib:'draw',q1_cobb:'nothing
   assert.equal(saved.chapter,firstChapter,'Prior playthrough checkpoint');
   assert.deepEqual(saved.completed,Array.from({length:firstChapter-1},(_,i)=>i+1));
   await page.evaluate(record=>{const S=ADV.Expedition.Story,s=S.open(record);S.save(s);},saved);
-  await page.reload();await page.getByRole('button',{name:'Continue campaign preview',exact:true}).click();
- }else await page.getByRole('button',{name:'Begin campaign preview',exact:true}).click();
+  await page.reload();await page.getByRole('button',{name:'Continue story',exact:true}).click();
+ }else await page.getByRole('button',{name:'Begin story',exact:true}).click();
  if(branch==='bahadir')choices.q3_bramm='coin';
  choices.q4_grukhar=branch==='grukhar-spared'?'walk':'kill';
  choices.q4_dream='reject';
@@ -54,6 +54,8 @@ const choices={q1_wake:'go',q1_wake_seen:'nobody',q1_nib:'draw',q1_cobb:'nothing
   if(state.chapter===chapters+1){await page.screenshot({path:OUT+'/next-chapter.png'});break;}
   const labels=await page.locator('#panel button').allTextContents();
   let label=labels.includes('Continue')?'Continue':labels.includes('Begin fight')?'Begin fight':state.options.find(o=>o.id===choices[state.choice])?.text;
+  // A full company asks who stays at the inn; keep the riders, as before seat offers existed.
+  if(!label)label=labels.find(l=>/^Leave .+ at the inn$/.test(l));
   if(!label)throw Error('Unhandled story panel '+JSON.stringify({state,labels}));
   if(['death','letter'].some(x=>(state.location||'').includes(x)))await page.screenshot({path:OUT+'/'+state.location+'.png'});
   await page.getByRole('button',{name:label,exact:true}).click();await page.waitForTimeout(130);
@@ -69,7 +71,7 @@ const choices={q1_wake:'go',q1_wake_seen:'nobody',q1_nib:'draw',q1_cobb:'nothing
   }
  }
  assert(result.record.gold>0);assert(result.backdrop);
- await page.reload();await page.getByRole('button',{name:'Continue campaign preview',exact:true}).click();
+ await page.reload();await page.getByRole('button',{name:'Continue story',exact:true}).click();
  assert.equal(await page.evaluate(()=>storyPreview.record.chapter),chapters+1);
  assert.deepEqual(errors,[]);fs.writeFileSync(OUT+'/verification.json',JSON.stringify({firstChapter,lastChapter:chapters,branch,fights:[...fights],locations:[...locations],retries,result,errors},null,2));
  console.log('Story chapters '+firstChapter+'–'+chapters+' '+branch+': real fights, original scenes/choices, gold, checkpoint retry and reload passed');

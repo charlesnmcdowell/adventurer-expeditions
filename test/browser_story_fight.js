@@ -4,7 +4,7 @@ const OUT='test/reports/story-fight';fs.mkdirSync(OUT,{recursive:true});
 (async()=>{const browser=await chromium.launch({channel:'chrome',headless:true});try{
   const page=await browser.newPage({viewport:{width:1280,height:760}}),errors=[];
   page.on('pageerror',e=>errors.push(String(e)));
-  await page.goto('http://127.0.0.1:8742/docs/STORY_CAMPAIGN_PREVIEW.html');
+  await page.goto('http://127.0.0.1:8742/docs/STORY_CAMPAIGN_PREVIEW.html?through=14');
   await page.waitForFunction(()=>ADV.Expedition.Story.Presentation.data);
   await page.evaluate(()=>{const X=ADV.Expedition,S=X.Story,s=S.open();s.record.phase='combat';s.record.run.tutorial.skipGuide=true;S.save(s);localStorage.setItem(X.saveKey,'arcade-preserve');localStorage.setItem('adv:sentinel','original-preserve');});
   await page.goto('http://127.0.0.1:8742/docs/STORY_FIGHT_PREVIEW.html');
