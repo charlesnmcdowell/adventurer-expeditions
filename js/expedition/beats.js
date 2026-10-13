@@ -157,6 +157,7 @@ async function playDowns(scene, downs, events, byFinisher) {
       if (!shown && !scene.ended && !target._destroyed) await target.play('down_fade');
     } else await target.play('down_fade');
   }
+  if(downs.some(e=>actorOf(scene,e.uid)?.side==='b'))await scene.reformFoes?.();
 }
 
 // ---------------------------------------------------------------- hero actions
@@ -376,14 +377,19 @@ async function humanAction(scene, foe, hero, g, r) {
     else if (r.hit) { sfx(scene, 'slash', 'hit'); impact(scene, hero, r.hit, { burst: color, hitStop: true, shake: 0.004 }); await hero.play('hit_short'); }
   };
   if (!r.hit && !r.evade && !r.counter && (sk.target === 'self' || sk.target === 'party')) {
+    if(scene.story&&X.StoryEffects?.supports(g.use.skillId)){
+      await foe.play('cast');const at={x:foe.x,y:foe.y-100};
+      await X.StoryEffects.play(scene,g.use.skillId,at,at);if(!scene.ended)foe.refresh();return;
+    }
     sfx(scene, 'heal', 'use'); await foe.play('cast'); V().aura(scene, foe.x, foe.y - foe.height * 0.5, color); foe.refresh(); return;
   }
   if (ranged) {
     sfx(scene, sk.elemental ? 'magic' : 'projectile', 'use');
     await foe.play('cast');
     const from = foe.chest(), to = hero.chest();
-    await new Promise(res => { const bolt = scene.add.circle(from.x, from.y, sk.elemental ? 12 : 6, color, 0.95).setDepth(650); scene.tweens.add({ targets: bolt, x: to.x, y: to.y, duration: 220, ease: 'Power2', onComplete: () => { bolt.destroy(); res(); } }); });
-    await answer();
+    if(scene.story&&X.StoryEffects?.supports(g.use.skillId))await X.StoryEffects.play(scene,g.use.skillId,from,to);
+    else await new Promise(res => { const bolt = scene.add.circle(from.x, from.y, sk.elemental ? 12 : 6, color, 0.95).setDepth(650); scene.tweens.add({ targets: bolt, x: to.x, y: to.y, duration: 220, ease: 'Power2', onComplete: () => { bolt.destroy(); res(); } }); });
+    if(!scene.ended)await answer();
     return;
   }
   sfx(scene, 'slash', 'use');

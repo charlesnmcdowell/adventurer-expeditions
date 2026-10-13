@@ -1,0 +1,32 @@
+{
+  "date": "2026-10-12",
+  "generator": "builtin image_gen",
+  "jobs": [
+    {
+      "id": "cobb",
+      "args": {
+        "referenced_image_paths": [
+          "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v8/story-enemies/cobb/cobb-attack-v2.png"
+        ],
+        "transparent_background": false,
+        "prompt": "Use case: identity-preserve. Game sprite animation sheet replacement: ONLY the ordinary axe attack of the bald adult bandit in the reference. Keep identical muscular build, black beard, tattered gray cloak, leather belts, dark trousers, boots and two-handed single-bladed steel axe. CRITICAL change: all 12 frames must show him facing LEFT in strict side/three-quarter-side profile, nose looking LEFT at his enemy, never toward the viewer. His shoulders, pelvis, knees and axe swing are oriented LEFT. Enemy is off canvas to LEFT. Draw a proper two-handed diagonal overhead axe chop: 0 left-profile guard, 1 rotate shoulders back while looking left, 2 raise axe to right behind shoulder, 3 loaded high behind head, 4 initiate chop, 5 strong diagonal left-down chop, 6 blade contact to LEFT at enemy torso height NOT floor, 7 follow-through, 8 low-left follow-through, 9 draw axe back, 10 recover into side guard, 11 calm side guard. Twelve distinct anatomically coherent full-body drawings. 3 columns by 4 rows EXACTLY in row-major order on flat uniform mid-gray background. Each entire pose AND complete axe stays inside its own equal cell with 10% clear margin. Uniform human body scale across cells, feet at same baseline except intentional weight shift, no translation across cells. Same detailed anime cel-shaded game art, no text, labels, gridlines, contact victim, blood or extra people. Square sheet. Not a finisher."
+      }
+    },
+    {
+      "id": "effects",
+      "args": {
+        "transparent_background": true,
+        "prompt": "Use case: stylized-concept. Production 2D fantasy game VFX sprite sheet with TRUE TRANSPARENT alpha background. EXACT 4 columns x 4 rows, 16 equal separate cells on a square 1536x1536 canvas. No text or grid. Each cell object fully inside its cell with wide transparent margins. Rich detailed anime cel-shaded hand-painted effects to fit polished fantasy game. Row1 four animation frames of a pointed orange-gold FIRE BOLT traveling LEFT: bright tapered molten core at LEFT, curled flame tail trailing RIGHT; no circular ball, four changing flame shapes, same center and length. Row2 four frames of PRISMATIC MAGIC LANCE traveling LEFT: sharp long faceted violet/cyan crystal-energy spearpoint at LEFT with layered rainbow violet-blue streak trailing RIGHT, four shimmer phases, same size/center. Row3 four frames of a RED KNIFE TARGET MARK, stationary sigil: stylized downward-pointing dagger silhouette inside angular interrupted crimson diamond rune, appear then pulse then fade, readable at 80px, no letters or pseudo-text. Row4 four chronological frames of SMOKE BOMB effect: a small dark ceramic smoke pellet dropping into a curling blue-gray smoke plume, plume expands at center then dissipates wispy, no explosion/fire, readable detailed painterly transparent smoke. All effects isolated with genuinely transparent surrounds, no ground, no cast shadows, no colored rectangles, no matte, no characters. Maintain crisp core silhouettes plus smooth translucent luminous edges. No interface buttons or icon frames."
+      }
+    }
+  ],
+  "outputs": {
+    "cobb": "exec-f6e17ee3-dcb2-45bb-b84a-c39727024ed5.png",
+    "effects": "exec-f8293c2d-153e-46c3-b499-84a5447a3879.png"
+  },
+  "spacingRepair": {
+    "prompt": "Precise production sprite-sheet correction of the supplied sheet. Retain all sixteen effects and the same 4 columns by 4 rows layout and same art designs, colors and phase order. Each of the 16 effects MUST be reduced to occupy no more than the central 65 percent of the width AND height of its equal cell. Leave completely transparent empty 17.5 percent gutters on every edge of EVERY cell. No effect or glow may touch a cell boundary. This prevents neighbor-frame bleed in game. Keep genuine alpha transparency. Fire and prismatic spears point left, knife marks stay upright, smoke stays upright. NO labels, grid, borders, backgrounds or added effects. Four rows remain fire, prismatic, knife mark, smoke. Do not let row 2 touch row 3. Square canvas 1536x1536.",
+    "output": "exec-c7e65a21-732b-4b4d-a9e6-1219dd5a8508.png",
+    "reason": "Separate animation cells to avoid neighboring effects."
+  }
+}

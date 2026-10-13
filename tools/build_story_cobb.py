@@ -16,6 +16,17 @@ def cells(file,cols,rows):
         x0=round(i%cols*im.width/cols);x1=round((i%cols+1)*im.width/cols)
         y0=round(i//cols*im.height/rows);y1=round((i//cols+1)*im.height/rows)
         cell,box=key_cell(im.crop((x0,y0,x1,y1)),tol=12,enclosed_tol=3)
+        if file=='cobb-attack-left-20261012.png':
+            cell=discard_neighbor_fragments(cell)
+            # The new sheet paints a neutral gray floor shadow between the
+            # brown boots. Remove only that ten-pixel foot band, never cloak,
+            # axe steel, or the rest of the gray palette.
+            a=np.array(cell);rgb=a[:,:,:3].astype(int);yy=np.indices(a.shape[:2])[0]
+            boot=(a[:,:,3]>200)&(yy>cell.height*.65)&(rgb[:,:,0]>rgb[:,:,1]+8)&(rgb[:,:,1]>rgb[:,:,2]+3)
+            if boot.any():
+                floor=np.where(boot)[0].max()
+                shadow=(yy>=floor-10)&(np.ptp(rgb,axis=2)<7)&(rgb.min(2)>55)&(rgb.max(2)<170)
+                a[shadow,3]=0;cell=Image.fromarray(a)
         cell=discard_neighbor_fragments(cell);box=cell.getchannel('A').getbbox()
         if not box:raise ValueError('Empty pose '+file+'/'+str(i))
         p=SRC/'registered-combat'/Path(file).stem/f'{i:02}.png';p.parent.mkdir(parents=True,exist_ok=True);cell.save(p)
@@ -26,7 +37,9 @@ def cells(file,cols,rows):
 def main():
     motion=cells('cobb-motion-draft.png',3,4)[:4]
     run=cells('cobb-run.png',4,2)
-    attack=cells('cobb-attack-v2.png',3,4)
+    # October 12: authored left-facing shoulders/head throughout the axe chop.
+    # Original front-facing attack master remains in source art for rollback.
+    attack=cells('cobb-attack-left-20261012.png',3,4)
     down=cells('cobb-down.png',4,3)
     clips=[]
     for name,frames,ref,times,contact in [

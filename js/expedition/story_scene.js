@@ -6,7 +6,7 @@ class StoryBattle extends X.Scene{
   init(opts){this.opts=opts||{};this.story=S.open(this.opts.record||S.load());this.run=this.story.record.run;
     this.artIds=['hiro',...new Set(S.opponentIds(this.story).map(id=>S.bindings[id]?.actor).filter(Boolean))];}
   preload(){
-    X.Painted.preload(this,this.artIds);X.UI.preloadBusts(this);X.DefeatFX.preload(this);
+    X.Painted.preload(this,this.artIds);X.UI.preloadBusts(this);X.DefeatFX.preload(this);X.StoryEffects.preload(this);
     const r=this.story.record,d=S.Presentation.data,id=d.routes[r.chapter][r.encounter];
     this.location=id;this.storyBackground='story_bg_'+id;
     this.load.image(this.storyBackground,S.Stage.files[id]||S.Presentation.media(d.art.environments[id].file));
@@ -35,6 +35,25 @@ class StoryBattle extends X.Scene{
   }
   startMusic(){if(this.music)return;this.music=new Audio(S.Presentation.media('audio/music/'+this.quest.music+'.mp3'));this.music.loop=true;this.music.volume=.16;
     if(!this.opts.muted)this.music.play().catch(()=>{});}
+  spawnFoes(){
+    super.spawnFoes();
+    this.foeSlots=[...this.actors.values()].filter(a=>a.side==='b').map(a=>({...a.home})).sort((a,b)=>a.x-b.x);
+  }
+  async reformFoes(){
+    if(this.ended||!this.hero?.alive||this.hero.unit.chp<=0||!this.foeSlots)return;
+    const alive=[...this.actors.values()].filter(a=>a.side==='b'&&a.alive&&!a._destroyed&&a.unit.chp>0)
+      .sort((a,b)=>a.home.x-b.home.x);
+    // Fill original rear slots; never add an offset repeatedly or shrink foes.
+    const slots=this.foeSlots.slice(-alive.length);
+    await Promise.all(alive.map(async(a,i)=>{
+      const slot=slots[i],pivot=a.sheet.canvas.pivot.x,scale=Math.abs(a._baseScaleX);
+      const right=Math.max(...a.sheet.clips.idle.frames.map(id=>{
+        const f=this.textures.getFrame(a.sheet.key,id);return(f.x+f.width-pivot)*scale;
+      }));
+      a.home.x=Math.max(a.home.x,Math.min(slot.x,1252-right));
+      if(Math.abs(a.root.x-a.home.x)>1)await a.play('walk',{x:a.home.x,duration:340});
+    }));
+  }
   spaceFoes(foes){
     // Atlas canvases include wide paired finishers. Use the visible ordinary
     // idle silhouettes, not that canvas width, to keep the back-rank archer
