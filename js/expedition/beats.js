@@ -60,6 +60,34 @@ function recoil(scene, target, event) {
 
 function dmgColor(e) { return e.tag === 'dot' ? (e.visual && e.visual.dotKind === 'poison' ? '#9be79b' : '#ff8a80') : '#f4eee0'; }
 
+function outcome(scene,target,kind,label){
+  if(!target||scene.ended||target._destroyed)return;
+  const p=target.chest();
+  V().damageNumber(scene,p.x,p.y-45,label,kind==='evade'?'#d7eaf3':'#bce5ff');
+  if(kind!=='evade')V().burst(scene,p.x,p.y,0xbce5ff,8);
+  sfx(scene,kind==='evade'?'miss':'block',kind==='evade'?'miss':'block');
+  trackImpact(scene,target.reactOutcome?target.reactOutcome(kind):target.play('hit_short'));
+}
+
+// Resolved defensive events are just as visible as damage. Ward events have
+// no `by` field; they belong to the action grouped by splitEvents.
+function showDefences(scene,actor,g){
+  const targets=new Set([g.use.target]);
+  for(const e of g.after)if(['damage','evade','counter','ward','shieldAbsorb','blocked','immune'].includes(e.t)&&(!e.by||e.by===actor.uid))targets.add(e.uid);
+  for(const uid of targets){
+    const target=actorOf(scene,uid);if(!target||target.side===actor.side)continue;
+    const events=g.after.filter(e=>e.uid===uid&&e.tag!=='dot'&&(!e.by||e.by===actor.uid));
+    const hit=events.find(e=>e.t==='damage');
+    if(events.some(e=>e.t==='execute'))continue;
+    if(events.some(e=>e.t==='evade'))outcome(scene,target,'evade','Miss');
+    else if(events.some(e=>e.t==='ward'||e.t==='shieldAbsorb'))outcome(scene,target,'guard','Shielded');
+    else if(events.some(e=>e.t==='counter'||e.t==='blocked'))outcome(scene,target,'guard','Blocked');
+    else if(!hit||hit.dmg<=0)outcome(scene,target,'resist',hit?'0':'Resisted');
+  }
+  // Reflected/counter damage is not one of Hiro's outgoing hit events.
+  for(const e of g.after)if(e.t==='damage'&&e.uid===actor.uid&&e.by!==actor.uid&&e.tag!=='dot')impact(scene,actor,e,{});
+}
+
 // Impact presentation shared by every landed blow.
 function impact(scene, tgt, e, opts) {
   opts = opts || {};
@@ -180,7 +208,7 @@ async function heroAction(scene, hero, g, step) {
     await hero.play(clip, { target: first, level, lethal: false, hold: 140, onContact: () => {
       sfx(scene, 'slash', 'hit');
       hits.forEach((h, i) => deferImpact(scene, i * 70, () => impact(scene, targetOf(h), h, { arc: 0xe8dfc8, hitStop: i === 0, clip: painted })));
-      if (!hits.length) { const t = first; if (t) { sfx(scene, 'miss', 'miss'); } }
+      showDefences(scene,hero,g);
     } });
   } else if (skill === 'god_aura') {
     sfx(scene, 'guard', 'use');
@@ -204,6 +232,7 @@ async function heroAction(scene, hero, g, step) {
       V().flashOverlay(scene, 0xffffff, 0.22);
       if (executes[0] && tgt) { V().slashArc(scene, tgt.chest().x, tgt.chest().y, 0xfff4d6); V().burst(scene, tgt.chest().x, tgt.chest().y, 0xd9c2ff, 14); hitStop(scene, TM().hitStop * 2); tgt.unit && tgt.refresh(); }
       for (const h of hits) impact(scene, targetOf(h), h, { arc: 0xfff4d6, hitStop: true, shake: 0.006 });
+      showDefences(scene,hero,g);
     } });
     if (lethalTarget(g, tgt) && tgt.alive) tgt.__finisherPresented = true;
     const heal = g.after.find(x => x.t === 'heal' && x.uid === hero.uid);
@@ -243,16 +272,20 @@ async function kitAction(scene, actor, g) {
     });
     sfx(scene, 'slash', 'hit');
     hits.forEach((h, i) => deferImpact(scene, i * 60, () => impact(scene, targetOf(h), h, { burst: color, hitStop: i === 0 })));
+    showDefences(scene,actor,g);
     if (sk.elemental) V().burst(scene, to.x, to.y, color, 14);
     await new Promise(res => scene.time.delayedCall(220, res));
     return;
   }
   sfx(scene, 'slash', 'use');
-  await actor.play('slash', { target: first, onContact: () => { sfx(scene, 'slash', 'hit'); hits.forEach((h, i) => deferImpact(scene, i * 60, () => impact(scene, targetOf(h), h, { arc: 0xe8dfc8, hitStop: i === 0 }))); } });
+  await actor.play('slash', { target: first, onContact: () => { sfx(scene, 'slash', 'hit'); hits.forEach((h, i) => deferImpact(scene, i * 60, () => impact(scene, targetOf(h), h, { arc: 0xe8dfc8, hitStop: i === 0 }))); showDefences(scene,actor,g); } });
 }
 
 // ---------------------------------------------------------------- enemy actions
 async function enemyAction(scene, foe, g) {
+  if(scene.story){
+    V().damageNumber(scene,foe.x,foe.y-foe.height-65,g.use.name||A.DATA.SKILLS[g.use.skillId]?.name||g.use.skillId,'#f5dca4');
+  }
   const kind = foe.kind || 'wolf';
   // The victim is whoever the sim resolved against (Hiro or a companion).
   const victimEv = g.after.find(x => ['damage', 'evade', 'counter'].includes(x.t) && x.tag !== 'dot' && x.by === foe.uid && actorOf(scene, x.uid) && actorOf(scene, x.uid).side === 'a')
@@ -368,23 +401,38 @@ async function humanAction(scene, foe, hero, g, r) {
   const ranged = sk.elemental || (sk.reach === 'any' && !sk.melee && !sk.katana && sk.target && sk.target !== 'self');
   const color = ELEMENT_COLOR[sk.element] || 0xe8dfc8;
   const answer = async () => {
+    if(scene.ended||foe._destroyed||hero._destroyed||scene.actors.get(foe.uid)!==foe)return;
     if (r.counter) {
       sfx(scene, 'block', 'block');
+      V().damageNumber(scene,hero.x,hero.y-hero.height*.65,'Blocked','#bce5ff');
       await hero.play('intercept', { onContact: () => { const c = hero.contactPoint(foe); V().burst(scene, c.x, c.y - 40, 0xfff2b0, 10); hitStop(scene, TM().hitStop); } });
       if (r.riposte) { sfx(scene, 'slash', 'use'); await hero.play('riposte', { target: foe, onContact: () => { sfx(scene, 'slash', 'hit'); if (r.riposteHit) impact(scene, foe, r.riposteHit, { arc: 0xe8dfc8, hitStop: true }); if (r.riposteKill) V().burst(scene, foe.chest().x, foe.chest().y, 0xd9c2ff, 12); } }); }
       if (r.hit) impact(scene, hero, r.hit, {});
-    } else if (r.evade) { sfx(scene, 'miss', 'miss'); await hero.play('roll'); }
+    } else if (r.evade) { sfx(scene, 'miss', 'miss'); V().damageNumber(scene,hero.x,hero.y-hero.height*.6,'Miss','#d7eaf3'); await hero.play('roll'); }
     else if (r.hit) { sfx(scene, 'slash', 'hit'); impact(scene, hero, r.hit, { burst: color, hitStop: true, shake: 0.004 }); await hero.play('hit_short'); }
+    else showDefences(scene,foe,g);
   };
-  if (!r.hit && !r.evade && !r.counter && (sk.target === 'self' || sk.target === 'party')) {
+  if (!r.hit && !r.evade && !r.counter && ['self','party','ally','deadAlly'].includes(sk.target)) {
     if(scene.story&&X.StoryEffects?.supports(g.use.skillId)){
       await foe.play('cast');const at={x:foe.x,y:foe.y-100};
-      await X.StoryEffects.play(scene,g.use.skillId,at,at);if(!scene.ended)foe.refresh();return;
+      await X.StoryEffects.play(scene,g.use.skillId,at,at);if(!scene.ended){foe.refresh();if(g.use.skillId==='smoke_bomb')V().damageNumber(scene,foe.x,foe.y-foe.height*.65,'Evasion up','#d7eaf3');}return;
     }
-    sfx(scene, 'heal', 'use'); await foe.play('cast'); V().aura(scene, foe.x, foe.y - foe.height * 0.5, color); foe.refresh(); return;
+    sfx(scene, 'heal', 'use');
+    await foe.play('cast',{onRelease:()=>{for(const e of g.after.filter(e=>e.t==='heal'||e.t==='status')){const a=actorOf(scene,e.uid);if(a)V().healSparkle(scene,a.x,a.y-a.height*.5);}}});
+    V().aura(scene, foe.x, foe.y - foe.height * 0.5, color); foe.refresh(); return;
   }
   if (ranged) {
     sfx(scene, sk.elemental ? 'magic' : 'projectile', 'use');
+    if(scene.story&&X.StoryEffects?.supports(g.use.skillId)){
+      let flight=null;
+      await foe.play('cast',{holdRelease:true,onRelease:(from,clip)=>{
+        flight=X.StoryEffects.play(scene,g.use.skillId,from,hero.chest(),{height:foe.height,clip})
+          .then(async()=>{if(!scene.ended)await answer();});
+        return flight;
+      }});
+      if(flight)await flight;
+      return;
+    }
     await foe.play('cast');
     const from = foe.chest(), to = hero.chest();
     if(scene.story&&X.StoryEffects?.supports(g.use.skillId))await X.StoryEffects.play(scene,g.use.skillId,from,to);

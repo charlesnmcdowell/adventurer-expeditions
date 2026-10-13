@@ -1,7 +1,8 @@
 // Painted opening-chapter effects. Damage and status rules remain in the sim.
 (function(){
 'use strict';const X=ADV.Expedition,KEY='story_chapter_one_effects';
-const clips={fire_bolt:0,prismatic_bolt:4,marked_for_the_knife:8,smoke_bomb:12};
+const clips={fire_bolt:0,prismatic_bolt:4,marked_for_the_knife:8,smoke_bomb:12,
+  spark:4,ember_lash:0,ashfall:0,cinder_charge:0,bog_curse:4,blood_pact:4};
 const F=X.StoryEffects={
   supports:id=>Object.hasOwn(clips,id),
   preload(scene){
@@ -12,15 +13,18 @@ const F=X.StoryEffects={
         {frameWidth:data.frameWidth,frameHeight:data.frameHeight});
     });
   },
-  play(scene,id,from,to){
+  play(scene,id,from,to,opts={}){
     if(!F.supports(id))return Promise.resolve(false);
     if(!scene.textures.exists(KEY))throw Error('Chapter-one effect art missing: '+id);
-    const missile=id==='fire_bolt'||id==='prismatic_bolt',smoke=id==='smoke_bomb';
+    const missile=!['marked_for_the_knife','smoke_bomb'].includes(id),smoke=id==='smoke_bomb';
     const duration=missile?360:smoke?800:650;
     const start=missile?from:to;
+    const size=missile?(opts.height||300)*(opts.clip?.releaseAnchor?.sizeRatio||.4):smoke?230:110;
     const sprite=scene.add.image(start.x,start.y,KEY,clips[id]).setDepth(650)
-      .setDisplaySize(missile?190:smoke?230:110,missile?190:smoke?230:110)
+      .setDisplaySize(size,size)
       .setName('story_effect_'+id);
+    if(id==='spark')sprite.setTint(0xffeda3);
+    if(id==='bog_curse'||id==='blood_pact')sprite.setTint(0x79dc83);
     if(missile)sprite.setRotation(Math.atan2(to.y-from.y,to.x-from.x)-Math.PI);
     return new Promise(resolve=>{
       let elapsed=0,done=false;

@@ -15,6 +15,35 @@ B.enemyDamage={'mini:nib':.30,'named:morwin':.35};
 // pools while preserving poison, healing, curses and ranged tactics.
 B.encounterHealth={'4:1':.65,'4:2':.70,'4:3':.40};
 B.encounterDamage={'4:1':.16,'4:2':.16,'4:3':.15};
+// These hostile casts stop after placing a status/hazard or stripping buffs.
+// Zero-power executions, percentage strikes and Paid in Full already hurt;
+// self buffs (including Smoke Bomb) are deliberately not in this list.
+B.statusStrikes=new Set(['marked_for_the_knife','contract_mark','ashfall','ranging_ward','taunt','dispel']);
+B.statusStrikeRatio=.60;
+const originalAct=A.Combat.act;
+A.Combat.act=function(st,u,action){
+  const start=st.events.length,id=action?.skillId;
+  const shields=st.units.some(t=>t.ch?.expeditionStoryFoe)?st.units.filter(t=>t.tempHp>0).map(t=>[t,t.tempHp]):[];
+  const target=st.units.find(t=>t.uid===action?.targetUid);
+  const eligible=u.ch?.expeditionStoryFoe&&B.statusStrikes.has(id)&&target&&target.side!==u.side;
+  // Measure before the new mark changes defence, at basic-attack tier/level.
+  const basic=eligible?A.SkillSys.manifest(u.ch,{skillId:'basic_attack',level:1}):null;
+  const amount=basic?Math.max(1,Math.round(A.Combat._internals.computeDamage(st,u,target,basic)*B.statusStrikeRatio)):0;
+  const result=originalAct.call(this,st,u,action);
+  const events=st.events.slice(start),use=events.find(e=>e.t==='use'&&e.uid===u.uid&&e.skillId===id);
+  if(eligible&&result?.ok!==false&&use&&!st.over&&!target.downed&&!u.downed&&
+      !events.some(e=>e.t==='interrupted'||e.t==='damage'&&e.by===u.uid&&e.uid===target.uid)){
+    const skill=A.DATA.SKILLS[id];
+    A.Combat._internals.dealDamage(st,u,target,amount,skill.elemental?'spell':'attack',
+      {element:skill.element,melee:!!skill.melee,power:basic.data.power*B.statusStrikeRatio});
+  }
+  for(const [t,before]of shields){
+    const absorbed=before-(t.tempHp||0);
+    if(absorbed>0&&st.events.slice(start).some(e=>e.t==='damage'&&e.uid===t.uid))
+      st.events.push({t:'shieldAbsorb',uid:t.uid,by:u.uid,absorbed,temporary:true});
+  }
+  return result;
+};
 const originalManifest=A.SkillSys.manifest;
 A.SkillSys.manifest=function(ch,entry){
   const m=originalManifest.call(this,ch,entry);

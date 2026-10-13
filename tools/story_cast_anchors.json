@@ -1,0 +1,47 @@
+{
+  "consortium-mage": {
+    "frame": 4,
+    "x": 357,
+    "y": 217,
+    "sizeRatio": 0.4,
+    "frames": [
+      0,
+      1,
+      2,
+      3,
+      5,
+      6,
+      7
+    ]
+  },
+  "merle": {
+    "frame": 4,
+    "x": 397,
+    "y": 249,
+    "sizeRatio": 0.4
+  },
+  "kobold-shaman": {
+    "frame": 3,
+    "x": 100,
+    "y": 168,
+    "sizeRatio": 0.45
+  },
+  "kobold-chief": {
+    "frame": 3,
+    "x": 150,
+    "y": 196,
+    "sizeRatio": 0.4
+  },
+  "grukhar": {
+    "frame": 3,
+    "x": 206,
+    "y": 136,
+    "sizeRatio": 0.4
+  },
+  "veylan-acolyte": {
+    "frame": 3,
+    "x": 105,
+    "y": 122,
+    "sizeRatio": 0.4
+  }
+}

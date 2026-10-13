@@ -88,6 +88,26 @@ def main():
     manifest=dict(actor=actor,authoredFacing=-1,clips=clips,status='registered review; visual approval required')
     (src/'combat-manifest.json').write_text(json.dumps(manifest,indent=2))
     doc=build(src,actor,out,300,95,manifest,lossless=True);doc['authoredFacing']=-1
+    # Measured on the registered runtime canvas (Oct 12 readability review).
+    # Rebuilds retain cast release timing and hand/staff attachment points.
+    anchors=json.loads((ROOT/'tools/story_cast_anchors.json').read_text())
+    if args.source in anchors:
+        anchor=anchors[args.source]
+        cast=json.loads(json.dumps(doc['clips']['attack']))
+        indices=anchor.get('frames',list(range(len(cast['frames']))))
+        cast['frames']=[cast['frames'][i] for i in indices]
+        cast['frameDurationsMs']=[cast['frameDurationsMs'][i] for i in indices]
+        cast['durationMs']=sum(cast['frameDurationsMs'])
+        cast['sources']=[cast['sources'][i] for i in indices]
+        registration=cast.get('sourceRegistration',{})
+        if 'referenceHeights' in registration:
+            registration['referenceHeights']=[registration['referenceHeights'][i] for i in indices]
+        for field in ['maskedFrames','authoredAlphaFrames']:
+            if field in registration:
+                registration[field]=[i for i,j in enumerate(indices) if j in registration[field]]
+        cast['contact']=[anchor['frame']];cast['release']=anchor['frame']
+        cast['releaseAnchor']={k:v for k,v in anchor.items() if k not in ['frame','frames']}
+        doc['clips']['cast']=cast
     for c in doc['clips'].values():
         if c.get('paired'):c.update(embeddedBlood=True,preserveTiming=True)
     for spec in cfg['pairs']:

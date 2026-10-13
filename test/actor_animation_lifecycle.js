@@ -14,6 +14,7 @@ X.timing = { hitStop: 60 };
 class Image extends EventEmitter {
   constructor() { super(); this.scaleX = this.scaleY = 1; this.x = this.y = this.angle = 0; this.alpha = 1; this.visible = true; this.anims = { stop: () => { this.stopped = true; }, pause() { this.isPaused = true; }, resume() { this.isPaused = false; } }; }
   setScale(x, y = x) { this.scaleX = x; this.scaleY = y; return this; }
+  setOrigin(x,y) { this.originX=x;this.originY=y;return this; }
   setPosition(x, y) { this.x = x; this.y = y; return this; }
   setAngle(n) { this.angle = n; return this; }
   setAlpha(n) { this.alpha = n; return this; }
@@ -359,6 +360,46 @@ test('the Alpha heavy bite: Hiro staggers on the bite contact frame, not before 
   f.scene.hero.play = async id => { log.push('hero:' + id); };
   await X.Beats.play(f.scene, { hero: false, events: [{ t: 'use', uid: 'foe', skillId: 'pounce', target: 'hero' }, { t: 'damage', uid: 'hero', by: 'foe', dmg: 30 }] });
   assert.deepEqual(log, ['foe:pounce', 'foe:bite', 'contact', 'hero:stagger', 'foe:land_tumble']);
+});
+
+test('every defensive outcome reacts visibly for Katana Slash and generic attacks',async()=>{
+  const old=ADV.VFX,labels=[];
+  ADV.VFX=new Proxy({damageNumber:(s,x,y,v)=>labels.push(String(v))},{get:(o,k)=>o[k]||(()=>{})});
+  try{
+    for(const skill of ['katana_slash','test_melee'])for(const [event,label]of [
+      [{t:'evade'},'Miss'],[{t:'counter'},'Blocked'],[{t:'ward',blocked:20},'Shielded'],
+      [{t:'shieldAbsorb',absorbed:20},'Shielded'],[{t:'damage',dmg:0},'0'],[{t:'immune'},'Resisted']]){
+      const f=recoilFixture();f.foe.unit.chp=100;
+      f.foe.play=async id=>f.played.push(id);
+      await X.Beats.play(f.scene,{hero:true,events:[{t:'use',uid:'hero',target:'foe',skillId:skill},{uid:'foe',by:'hero',...event}]});
+      assert(labels.includes(label),skill+' displays '+label);assert(f.played.includes('hit_short'),'fallback flinch played');labels.length=0;
+    }
+  }finally{ADV.VFX=old;}
+});
+
+test('cast release holds its pose during flight, then recovers; cancellation releases the wait',async()=>{
+  const a=actor({cast:clip('cast',{releaseAnchor:{x:80,y:70}})});a.sheet.canvas={w:200,h:300,pivot:{x:100,y:300}};
+  a.scene.time={paused:false,now:0};let land,point,done=false;
+  const p=a.play('cast',{holdRelease:true,onRelease:where=>{point=where;return new Promise(r=>land=r);}}).then(()=>done=true);
+  emit(a,'animationupdate','cast',1);assert.equal(point.x,80);assert.equal(point.y,70);
+  assert.equal(a.img.anims.isPaused,true);assert.equal(done,false);
+  land();await tick();assert.equal(a.img.anims.isPaused,false);
+  emit(a,'animationcomplete','cast',2);await p;
+  const p2=a.play('cast',{holdRelease:true,onRelease:()=>new Promise(()=>{})});emit(a,'animationupdate','cast',1);
+  a.cancelPlayback();await p2;assert.equal(a._playback,null);
+});
+
+test('story bolt launches at release and damage waits for its arrival',async()=>{
+  const f=recoilFixture(),log=[],oldFX=X.StoryEffects,oldData=ADV.DATA.SKILLS;
+  f.scene.story={};f.foe.kind='human';f.foe.height=300;f.foe.x=600;f.foe.y=600;
+  f.scene.hero.chest=()=>({x:300,y:300});f.scene.hero.unit={maxHp:100};
+  ADV.DATA.SKILLS={fire_bolt:{elemental:true,element:'fire',target:'enemy'}};
+  X.StoryEffects={supports:()=>true,play:async(s,id,from)=>{assert.equal(from.x,510);log.push('flight');}};
+  f.foe.play=async(id,opts)=>{log.push('cast');await opts.onRelease({x:510,y:310},{});log.push('recovery');};
+  f.scene.hero.play=async()=>log.push('hit');
+  try{await X.Beats.play(f.scene,{events:[{t:'use',uid:'foe',target:'hero',skillId:'fire_bolt'},{t:'damage',uid:'hero',by:'foe',dmg:8}]});
+    assert.deepEqual(log,['cast','flight','hit','recovery']);
+  }finally{X.StoryEffects=oldFX;ADV.DATA.SKILLS=oldData;}
 });
 
 (async () => {

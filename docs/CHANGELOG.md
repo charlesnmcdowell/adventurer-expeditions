@@ -15,6 +15,58 @@ of small fixes within a day.
 
 ---
 
+## 2026-10-12 — Story combat readability (Astra)
+
+Local Expeditions changes only. Original Adventurer and synced `js/core`, `js/data`, `js/ui` unchanged; nothing published or exported. No image generation or new atlas pixels. Existing chapter-one axe contact, rear-slot formation, bite contact timing, landing fallback, hit-stop effects and two-fight tutorial remain intact.
+
+**Status attack inventory: all 55 encounter slots and three source variants across 14 chapters.** The following six enemy casts now retain their original effects and add a strike calculated from **60% of basic-attack damage**, before shared mitigation, counters and campaign scaling. Failed/interrupted casts do not hit. Scope is tagged story foes only, not shared tables or Hiro.
+
+| Skill | Chapters | Enemies |
+|---|---|---|
+| Marked for the Knife (`marked_for_the_knife`) | 1, 3, 5, 9, 10, 13 | Cobb, Hired Knife · Road Cloak, Hired Knife · Ash Cloak, Lurleen, Hired Knife · Wet Cloak, The Umbral Hand 2 |
+| Ashfall (`ashfall`) | 2, 11, 13, 14 | Merle, Gauntlet Turncoat · Marr's Own, Kolade — the Unbound |
+| Taunt (`taunt`) | 3, 5, 6, 7, 8, 9, 13, 14 | Snarl, Gnoll Warleader, Gnoll Raider · Grey, Burning Gauntlet Soldier · Night Watch, Hobgoblin Sergeant · Frostbite Company, Gorruk, Hobgoblin Sergeant · Ashtalon Company, Kestrel, Consortium Guard · Mine Detail, Consortium Guard · Black Livery, The Ogre Under the Docks, Captain of the Tower, Hobgoblin Sergeant · Deserter, Segun Marr, Kolade Adeyinka |
+| Contract Mark (`contract_mark`) | 7, 10 | Slave Driver · Chain Hand, Adigun Adeyinka |
+| Ranging Ward (`ranging_ward`) | 7, 9 | Olamide, Consortium Mage · Seal Cowl |
+| Dispel (`dispel`) | 10 | Rotimi |
+
+Other zero-power hostile actives deliberately **unchanged**: Paid in Full already spends stored damage; Reaving Arc, Unbound Arc and The Strongest Among You already deal percentage-HP damage; Finisher already executes. Smoke Bomb targets its caster, so it still provides evasion/stealth rather than attacking Hiro. Venom Fang, Bog Curse, Snare and other positive-power debuffs already hit.
+
+**Readability:** enemy skill names float at use. Live status badges include readable Marked, Marked+, Taunted and Evasion labels, plus poison/burn/shock/seal/withering/heal reduction and generic coverage for other engine statuses. Lane hazards and remaining evade charges also show; badges disappear with their actual status/charge/hazard. Smoke Bomb announces Evasion up. Enemy evades step back with Miss; counters/blocks flinch with Blocked and a spark; wards/shields show Shielded, including consumed temporary health; zero/no-damage outcomes show 0/Resisted. Reflected damage is presented too. These reactions apply to ordinary Katana Slash and generic skills, not just finishers.
+
+**Tutorial sampling:** 100 seeds per opening encounter, normal auto swings plus between-turn button use. Fight 1: 17 dodges in 128 swings (13.3%); fight 2: 0 in 263 (0%). No evasion nerf was warranted; the existing rogue defence is now visible. Both encounters still win all 20 balance-gate trials.
+
+**Casting:** six measured hand/staff anchors in `tools/story_cast_anchors.json`, separate cast clips in runtime/review manifests, and builder support so regeneration preserves them. Consortium Mage, Merle, Kobold Shaman, Kobold Chief, Grukhar and Veylan Acolyte checked. Hostile painted effects launch on the release frame, scale to 40% of actor height (Shaman 45%), hold the follow-through through flight/impact, then recover. Fire/ember/ash/cinder reuse the flame row; Spark uses the existing prismatic row with a warm tint; Grukhar uses its green tint. Healing remains an ally action with no bolt aimed at Hiro.
+
+The consortium mage cast uses seven existing distinct poses instead of eight: skips the hard-cropped beam drawing, releases on its clean follow-through flare, and retains the original ordinary attack frames. Wide casting poses step inside the right edge and return to their original slot, preserving body scale. New release-hold cleanup respects pause, hit-stop, interruption and destroyed actors.
+
+**Balance comparison:** `node test/story_balance.js --gate`, 20 identical seeds per encounter. Percentages below aggregate independent encounter trials per chapter, not a complete campaign survival probability. All 55 encounters have at least one winning seed and zero stalls before and after. Added physical strikes can trigger Hiro counter damage, so some fights become easier.
+
+| Chapter | Trials | Before wins | After wins | Before | After |
+|---|---:|---:|---:|---:|---:|
+| 1 | 60 | 60 | 60 | 100% | 100% |
+| 2 | 60 | 60 | 60 | 100% | 100% |
+| 3 | 60 | 60 | 60 | 100% | 100% |
+| 4 | 80 | 64 | 64 | 80% | 80% |
+| 5 | 80 | 79 | 76 | 98.75% | 95% |
+| 6 | 80 | 70 | 70 | 87.5% | 87.5% |
+| 7 | 100 | 83 | 90 | 83% | 90% |
+| 8 | 80 | 59 | 58 | 73.75% | 72.5% |
+| 9 | 80 | 79 | 80 | 98.75% | 100% |
+| 10 | 100 | 100 | 100 | 100% | 100% |
+| 11 | 80 | 67 | 66 | 83.75% | 82.5% |
+| 12 | 60 | 60 | 60 | 100% | 100% |
+| 13 | 100 | 81 | 81 | 81% | 81% |
+| 14 | 80 | 40 | 40 | 50% | 50% |
+
+**Art still absent:** dedicated enemy dodge/guard drawings. All current story sets rely on their existing hit clip for guard/resist and a short native-scale step for dodge: Nib, Cobb, Hired Knife, Consortium Mage, Merle, Lurleen, Gnoll Raider, Bandit Archer, Snarl, Bahadir, Tunnel Kobold, Kobold Shaman, Kobold Chief, Veylan Acolyte, Grukhar, Femi, Gauntlet Soldier and reused Road Wolf. These are explicit visual fallbacks, not newly painted parries. Later unregistered opponents remain gated; this work does not mark their art ready. Chapters 13/14 still contain encounters winning only 1/20 baseline seeds; broader late-game tuning remains separate.
+
+**Verification:** `npm test`; `npm run test:story` (now includes `test/story_readability.js`); `npm run test:ship`; `node test/browser_story_chapters.js` (actual chapters 1–2, six battles); `browser_story_spared.js`; `browser_story_endings.js`; `browser_story_chapter_one_polish.js`; `browser_story_readability.js`. New lifecycle tests cover evade, block, zero, immune, ward, pool shield, projectile release/arrival/hold, recovery and cancellation. Story tests cover six real skill kits, unchanged source behavior, interrupted casts, temporary-health shields and the tutorial miss sample. Browser evidence: `test/reports/readability/` (nine actual hostile casts, Acolyte heal, defensive outcomes, Marked expiry); previous opening axe/formation checks also passed.
+
+**Files:** edition `actors.js`, `beats.js`, `story_combat.js`, `story_effects.js`; six caster runtime + review manifests; `tools/story_cast_anchors.json`, `tools/build_story_actor.py`; `test/actor_animation_lifecycle.js`, `test/story_readability.js`, `test/browser_story_readability.js`; `package.json`, cache stamp in `index.html`, this log. Master paintings and atlas images unchanged.
+
+---
+
 ## 2026-10-12 — Chapter-one axe facing, rear formation and painted projectiles (Astra)
 
 - **Cobb:** replaced only his 12-frame ordinary axe attack with a left-facing two-handed chop. He looks at Hiro through the wind-up, contact and recovery. Idle may still face the viewer. Kept contact frame 6 and the existing 1,285 ms timing; all 56 other ordinary/paired frames are pixel-identical. A measured neutral floor-shadow band in the new sheet was removed without thresholding his gray cloak or axe. Active ordinary atlas bytes: 8,356,768 → 8,502,720. Superseded pages and drafts are archived with source masters.

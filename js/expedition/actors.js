@@ -16,6 +16,17 @@ const STATUS_STYLE = {
   poison:  { color: 0x5cb85c, glyph: '~' },
   aura:    { color: 0xa66bff, glyph: '◈' },
   counter: { color: 0xe8c86a, glyph: '⟲' },
+  marked: { color: 0xc65369, glyph: 'Marked' },
+  contractMark: { color: 0xbe5982, glyph: 'Marked+' },
+  taunted: { color: 0xd57643, glyph: 'Taunted' },
+  burn: { color: 0xdb762f, glyph: 'F' },
+  shocked: { color: 0xc4a72e, glyph: 'Z' },
+  sealed: { color: 0x9268bf, glyph: 'X' },
+  withering: { color: 0x7e8b41, glyph: 'W' },
+  healcut: { color: 0xa65767, glyph: '-+' },
+  evasion: { color: 0x518ca4, glyph: 'Evasion' },
+  stealth: { color: 0x606783, glyph: 'S' },
+  hazard: { color: 0xd9813e, glyph: '!' },
 };
 
 class Actor {
@@ -107,8 +118,16 @@ class Actor {
     }
     // Badges follow the unit's live statuses.
     const kinds = new Set();
-    for (const s of u.statuses || []) if (STATUS_STYLE[s.kind]) kinds.add(s.kind);
+    for (const s of u.statuses || []) {
+      // evadeS is a bookkeeping marker; the actual charge counter expires it.
+      if(s.kind==='evadeS')continue;
+      if(!STATUS_STYLE[s.kind])STATUS_STYLE[s.kind]={color:0x827599,glyph:s.kind.slice(0,2).toUpperCase()};
+      kinds.add(s.kind);
+    }
     if (u.counter > 0) kinds.add('counter');
+    if(u.evade>0||u.statuses?.some(s=>s.evadePct>0))kinds.add('evasion');
+    if(u.stealth||u.untargetable>0)kinds.add('stealth');
+    if(this.scene.enc?.st?.hazards?.some(h=>h.side===u.side&&h.lane===u.lane&&h.rounds>0&&!h.heal))kinds.add('hazard');
     for (const k of kinds) if (!this.badges.has(k)) this.addBadge(k);
     this.setOutline(kinds.has('aura') ? 0xa66bff : kinds.has('counter') ? 0xe8c86a : null);
     for (const [k, b] of this.badges) if (!kinds.has(k)) { b.destroy(); this.badges.delete(k); }
@@ -130,7 +149,8 @@ class Actor {
   addBadge(kind) {
     const st = STATUS_STYLE[kind];
     const c = this.scene.add.container(0, 0);
-    const bg = this.scene.add.circle(0, 0, 11, st.color, 0.95).setStrokeStyle(2, 0x000000, 0.8);
+    c.__badgeWidth=Math.max(22,st.glyph.length*8+10);
+    const bg = this.scene.add.rectangle(0,0,c.__badgeWidth,22,st.color,0.95).setStrokeStyle(2,0x000000,.8);
     const g = T().text(this.scene, 0, 0, st.glyph, { size: 12, ox: 0.5, oy: 0.5, color: '#ffffff' });
     c.add([bg, g]);
     c.setScale(0); this.scene.tweens.add({ targets: c, scale: 1, duration: 180, ease: 'Back.Out' });
@@ -139,13 +159,32 @@ class Actor {
   }
 
   layoutBadges() {
-    let i = 0;
-    for (const b of this.badges.values()) { b.setPosition(-this.height * 0.28 + i * 26, -this.height - 64); i++; }
+    let x=-this.height*.28;
+    for(const b of this.badges.values()){const w=b.__badgeWidth||22;b.setPosition(x+w/2,-this.height-64);x+=w+4;}
   }
 
   pulseBadge(kind) {
     const b = this.badges.get(kind);
     if (b) this.scene.tweens.add({ targets: b, scale: 1.45, duration: 90, yoyo: true });
+  }
+
+  // A reaction without dedicated art still moves visibly, at native body scale.
+  async reactOutcome(kind) {
+    const names=kind==='evade'?['dodge','evade','step-back']:['guard','parry','block'];
+    const clip=names.find(id=>this.sheet?.clips[id]&&!this.sheet.clips[id].paired);
+    if(clip)return this.play(clip);
+    if(kind!=='evade')return this.play('hit_short');
+    const origin=this.root.x;
+    await this.tween({x:origin-28*this.facing},110,'Sine.Out');
+    if(this._destroyed||this.scene.ended)return;
+    await this.tween({x:origin},150,'Sine.In');
+  }
+
+  releasePoint(clip) {
+    const anchor=clip?.releaseAnchor,canvas=this.sheet?.canvas;
+    if(!anchor||!canvas)return this.chest();
+    return {x:this.root.x+(anchor.x-canvas.pivot.x)*this._baseScaleX,
+      y:this.root.y+(anchor.y-canvas.pivot.y)*this._baseScaleY};
   }
 
   setLevel(n) { this.level = n; }   // kept for the clip picker; nothing is drawn
@@ -278,7 +317,7 @@ class Actor {
   syncPause() {
     if (this._destroyed || !this.img.anims) return;
     const clock = this.scene.time;
-    const paused = !!(this.scene.paused || (clock && clock.paused) || this.scene.__paintedHitStopCount > 0 || (clock && clock.now < (this.scene.__paintedHitStopUntil || 0)));
+    const paused = !!(this._playback?.releaseHeld || this.scene.paused || (clock && clock.paused) || this.scene.__paintedHitStopCount > 0 || (clock && clock.now < (this.scene.__paintedHitStopUntil || 0)));
     if (paused) {
       if (!this.img.anims.isPaused) { this.img.anims.pause(); this._pausedByScene = true; }
     } else if (this._pausedByScene) { this.img.anims.resume(); this._pausedByScene = false; }
@@ -353,6 +392,14 @@ class Actor {
       let ended = false, released = false, hits = 0, clearGore = null;
       const target = c.paired ? opts.target : null, targetVisible = target && target.root.visible;
       const originX = this.root.x;
+      // Wide cast poses can extend beyond their idle footprint in the rear
+      // slot. Step into a visible casting position, then return at native scale.
+      const casting=clip==='cast'&&c.releaseAnchor&&scene.textures;
+      let castX=originX;
+      if(casting){
+        const right=Math.max(...c.frames.map(name=>{const f=scene.textures.getFrame(sheet.key,name);return (f.x+f.width-sheet.canvas.pivot.x)*Math.abs(this._baseScaleX);}));
+        castX=Math.min(originX,1252-right);
+      }
       const pairedFinish = !!(target && /finisher/.test(clip) && opts.lethal);
       // Pair canvases are registered on the hero. Close to the embedded foe's
       // authored offset before replacing the separate actor, rather than making
@@ -390,7 +437,7 @@ class Actor {
         }
         ended = true; clean();
         if (this._playback === playback) this._playback = null;
-        if (cancelled && (drift || approaching || returning || pairApproach)) this.root.x = originX;
+        if (cancelled && (drift || approaching || returning || pairApproach || casting)) this.root.x = originX;
         resolve();
       };
       const playback = this._playback = { cancel: () => finish(true) };
@@ -410,7 +457,15 @@ class Actor {
           } else if (opts.onHit) opts.onHit(hits - 1);
           if (!live()) return;
         }
-        if (!released && i >= release) { released = true; if (opts.onRelease) opts.onRelease(); }
+        if (!released && i >= release) {
+          released = true;
+          const flight=opts.onRelease?.(this.releasePoint(c),c);
+          if(opts.holdRelease&&flight?.then){
+            playback.releaseHeld=true;this.syncPause();
+            const resume=()=>{if(live()){playback.releaseHeld=false;this.syncPause();}};
+            Promise.resolve(flight).then(resume,resume);
+          }
+        }
       };
       const onStart = (anim, frame) => { if (anim.key === key) at(frame.index - 1); };
       const onUpdate = (anim, frame) => { if (anim.key === key) at(frame.index - 1); };
@@ -431,7 +486,7 @@ class Actor {
           this.resetImageTransform();
           if (this.sheet.clips.walk) this.img.play(this.animKey('walk'), true);
           move(originX, Math.min(260, Math.abs(pairX - originX)), 'Sine.InOut', settle);
-        } else if (drift || (approaching && attacking)) move(originX, 100, 'Sine.Out', settle); else settle();
+        } else if (drift || (approaching && attacking) || castX!==originX) move(originX, 100, 'Sine.Out', settle); else settle();
       };
       const startClip = () => {
         if (!live()) return;
@@ -446,7 +501,8 @@ class Actor {
         if (this.sheet.clips.walk) this.img.play(this.animKey('walk'), true);
         move(pairX, Math.min(280, Math.max(120, Math.abs(pairX - originX))), 'Sine.InOut', startClip);
         this.syncPause();
-      } else startClip();
+      } else if(castX!==originX)move(castX,120,'Sine.Out',startClip);
+      else startClip();
       if (!c.loop && approaching) {
         const first = contacts.length ? contacts[0] : Math.floor(c.frames.length / 2);
         const leadMs = (c.durationMs || 600) * first / c.frames.length;
