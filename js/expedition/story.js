@@ -23,15 +23,21 @@ for(const name of ['saveMeta','saveGame']){
   const prior=A.Save[name];
   A.Save[name]=function(game,...args){if(game?.__expeditionStory)return S.save(game.__expeditionStory);return prior.apply(this,[game,...args]);};
 }
-S.fresh=function(){return {version:1,mode:'story',chapter:1,encounter:0,phase:'departure',queue:null,
+S.fresh=function(){return {version:1,innVersion:1,mode:'story',chapter:1,encounter:0,phase:'departure',queue:null,
   run:X.Run.fresh(),c3:C.fresh(),gold:0,completed:[],outcomes:{},checkpoint:null,tutorialFightStarted:false};};
 S.load=function(){
   let raw;try{raw=storage()?.getItem(S.saveKey)||memory;}catch(_){raw=memory;}
   if(!raw)return null;
-  try{const r=JSON.parse(raw);if(r.version!==1||r.mode!=='story'||!r.c3||!r.run||!Number.isInteger(r.chapter)||r.chapter<1||r.chapter>14||!Number.isInteger(r.encounter)||r.encounter<0||r.encounter>A.DATA.CAMPAIGN3_QUESTS[r.chapter-1].enc.length||!['departure','opener','combat','defeat','closing','arrival','complete'].includes(r.phase))return null;return r;}catch(_){return null;}
+  try{const r=JSON.parse(raw);if(r.version!==1||r.mode!=='story'||!r.c3||!r.run||!Number.isInteger(r.chapter)||r.chapter<1||r.chapter>14||!Number.isInteger(r.encounter)||r.encounter<0||r.encounter>A.DATA.CAMPAIGN3_QUESTS[r.chapter-1].enc.length||!['departure','opener','combat','defeat','closing','arrival','inn','complete'].includes(r.phase))return null;return r;}catch(_){return null;}
 };
 S.open=function(record){
   const r=copy(record||S.fresh());r.run.field=[];r.run.roster=[];
+  // Old chapter-one demo saves stopped at the next departure. Give those saves
+  // the inn visit once, without resetting choices, dialogue or earned rewards.
+  if(r.innVersion!==1){
+    if(r.phase==='departure'&&r.encounter===0&&r.completed.includes(r.chapter-1))r.phase='inn';
+    r.innVersion=1;
+  }
   const world=X.Campaign.buildWorld(r.run);world.restoreIds();
   const session={record:r,game:world.game,hero:world.hero};
   session.game.meta.c3=r.c3;session.game.__expeditionStory=session;
@@ -66,6 +72,7 @@ S.readiness=function(session){
 };
 S.beats=function(session){
   const r=session.record,g=session.game,q=g.quest.quest;
+  if(r.phase==='inn')return [];
   if(r.queue)return r.queue;
   let beats=[];
   if(r.phase==='departure')beats=C.departureBeats(g,q);
@@ -92,6 +99,7 @@ S.choose=function(session,beat,optionId){
 S.shiftBeat=function(session){session.record.queue?.shift();session.record.reply=null;session.record.line=0;S.save(session);};
 S.nextPhase=function(session){
   const r=session.record;
+  if(r.phase==='inn')throw Error('Choose Continue story to leave the inn');
   if(r.queue?.length)throw Error('Dialogue must finish before advancing');
   r.queue=null;
   if(r.phase==='departure')r.phase='opener';
@@ -108,15 +116,23 @@ S.nextPhase=function(session){
       r.chapterRewardDue={chapter:r.chapter,name:q.name,gold:pay.gold};
     }
     if(r.chapter===14)r.phase='complete';else{
-      // A chapter return replaces the website's home recovery. Arcade keeps
-      // its separate endurance rules; story cannot carry an unrecoverable HP
-      // checkpoint through fourteen chapters without the original home UI.
-      r.run.hp=null;delete session.hero.combatHp;
-      r.chapter++;r.encounter=0;r.phase='departure';S.syncQuest(session);
+      // Health carries to the inn. Rest uses the established Arcade score cost;
+      // retry still restores full health, so a poor run cannot lock progression.
+      r.chapter++;r.encounter=0;r.phase='inn';S.syncQuest(session);
     }
   }
   S.save(session);return r.phase;
 };
+S.leaveInn=function(session){
+  const r=session.record;if(r.phase!=='inn'||r.restScenePending)return false;
+  r.phase='departure';S.save(session);return true;
+};
+S.rest=function(session){
+  const r=session.record;if(r.phase!=='inn'||r.restScenePending)return {ok:false,reason:'phase'};
+  const result=X.Encounter.rest(r.run);if(!result.ok)return result;
+  session.hero.combatHp=r.run.hp;r.restScenePending=true;S.save(session);return result;
+};
+S.finishRest=function(session){delete session.record.restScenePending;S.save(session);};
 S.beginFight=function(session){
   const r=session.record;if(r.phase!=='combat')throw Error('Not at a story fight');
   const missing=S.readiness(session);if(missing.length)throw Error('Campaign combat art not ready: '+missing.join(', '));

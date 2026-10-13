@@ -64,6 +64,12 @@ function build() {
   const write = (rel, body) => { const out = path.join(OUT, rel); fs.mkdirSync(path.dirname(out), { recursive: true }); fs.writeFileSync(out, body); bytes += body.length; };
   for (const rel of files) {
     let body = fs.readFileSync(path.join(ROOT, rel));
+    // The public demo only ships chapter-one media. Never inherit the broader
+    // local development cap or allow QA query parameters to request absent art.
+    if(rel==='docs/story_preview.js'){
+      const s=body.toString();if(!/const DEMO_THROUGH=\d+/.test(s))throw Error('Story chapter cap moved');
+      body=Buffer.from(s.replace(/const DEMO_THROUGH=\d+/,'const DEMO_THROUGH=1').replace('const PLAYABLE_THROUGH=localHost&&askedThrough>=1&&askedThrough<=14?askedThrough:DEMO_THROUGH;','const PLAYABLE_THROUGH=DEMO_THROUGH;'));
+    }
     if (rel === 'js/expedition/dev.js') {
       const s = body.toString(); if (!s.includes('Dev.DEV_BUILD = true;')) throw Error('dev.js switch moved');
       body = Buffer.from(s.replace('Dev.DEV_BUILD = true;', 'Dev.DEV_BUILD = false;'));

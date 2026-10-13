@@ -116,13 +116,18 @@ class InnScene extends Phaser.Scene {
     if (this.pill) this.pill.text.setText(String(run.score || 0));
   }
   rest() {
-    if (!this.isPortalReady() || this.ended) return;
+    if (!this.isPortalReady() || this.ended || this.bathhouseView) return;
     const r = X.Encounter.rest(this.run);
     if (!r.ok) { this.tweens.add({ targets: this.restBtn, x: this.restBtn.x + 5, duration: 40, yoyo: true, repeat: 3 }); return r; }
     X.Run.save(this.run);
     A.VFX.aura(this, 300, 540, 0x62c95a);
     this.tweens.add({ targets: this.restBtn, scale: 1.06, duration: 120, yoyo: true });
     this.refreshRest();
+    if(X.Bathhouse){
+      this.input.enabled=false;this.paused=true;
+      const view=X.Bathhouse.open({onClose:()=>{this.bathhouseView=null;if(!this.ended){this.input.enabled=true;this.paused=false;}}});
+      this.bathhouseView=view;this.events.once('shutdown',()=>{if(this.bathhouseView===view)view.close();});
+    }
     return r;
   }
   // One recruit at the bar: bust, name, and either a price or the fielded ring.

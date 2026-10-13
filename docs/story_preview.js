@@ -10,7 +10,7 @@ let battleFrame=null;
 // Demo (Hiro, 2026-10-11): chapter one, then a coming-soon card. Raise
 // DEMO_THROUGH as chapters are finished; a local server can play further with
 // ?through=N for testing.
-const DEMO_THROUGH=1,localHost=/^(localhost|127\.0\.0\.1)$/.test(location.hostname);
+const DEMO_THROUGH=4,localHost=/^(localhost|127\.0\.0\.1)$/.test(location.hostname);
 const askedThrough=Number(new URLSearchParams(location.search).get('through'));
 const PLAYABLE_THROUGH=localHost&&askedThrough>=1&&askedThrough<=14?askedThrough:DEMO_THROUGH;
 // The original's fallback caption for a death beat without its own (campaign3_ui.js).
@@ -26,7 +26,7 @@ $('sound').textContent=muted?'Sound on':'Mute';
 function stopVoice(){if(voice){voice.onended=null;voice.onerror=null;voice.pause();voice.src='';voice=null;}}
 function button(label,action,parent=panel){const b=document.createElement('button');b.textContent=label;b.onclick=action;parent.append(b);return b;}
 function text(tag,content,parent,cls){const e=document.createElement(tag);e.textContent=content;if(cls)e.className=cls;parent.append(e);return e;}
-function playMusic(beat){const id=session?P.music(session,false,beat):'vg_lanternhold';if(id!==musicId){music?.pause();music=new Audio(url('audio/music/'+id+'.mp3'));music.loop=true;music.volume=.17;musicId=id;}if(!muted)music.play().catch(()=>{});}
+function playMusic(beat){const atInn=session?.record.phase==='inn',id=atInn?ADV.Expedition.innMusic:session?P.music(session,false,beat):'vg_lanternhold';if(id!==musicId){music?.pause();music=new Audio(atInn?'audio/music/'+id+'.mp3':url('audio/music/'+id+'.mp3'));music.loop=true;music.volume=.17;musicId=id;}if(!muted)music.play().catch(()=>{});}
 function say(beat){stopVoice();if(muted)return;const rows=beat.lines||C.lines('gate',beat.who,beat.key),row=rows[line];if(!row)return;
   const file=P.voice(beat,line);
   if(!available.has(file))return;voice=new Audio(url(file));voice.volume=.9;voice.play().catch(()=>{});
@@ -116,6 +116,7 @@ function render(){
     button('Continue',()=>{delete r.chapterRewardDue;S.save(session);render();},box);return;
   }
   if(r.phase==='complete')return ending();
+  if(r.phase==='inn')return inn();
   if(r.chapter>PLAYABLE_THROUGH&&(r.completed||[]).includes(PLAYABLE_THROUGH))return toBeContinued();
   if(r.phase==='combat'||r.phase==='defeat'){
     const box=text('section','',panel,'menu');text('h1','The road ahead',box);text('p',session.game.quest.quest.encounters[r.encounter]?.label||'Encounter',box,'speaker');
@@ -151,6 +152,27 @@ function render(){
   function advance(){if(beat.death&&!reply){choices.querySelectorAll('button').forEach(b=>b.disabled=true);flash();setTimeout(step,600);}else step();}
   function step(){if(!box.isConnected)return;if(reply)reply=null;S.shiftBeat(session);line=0;applied=null;render();}
   if(sceneFile)holdForScene(box,sceneFile,()=>say(beat));else say(beat);
+}
+function inn(){
+  const X=ADV.Expedition,r=session.record,run=r.run;
+  sceneContext=null;backdrop.pause(false);
+  // Reuse the five existing inn paintings and their registered candle/steam/fire
+  // loops. Each chapter return counts as one visit; reloading keeps its painting.
+  backdrop.show({kind:'inn',id:'inn',visit:r.chapter,run:{...run,cycles:{story:r.completed.length}}});
+  document.querySelector('.backdrop').style.backgroundImage='url("assets/expedition/inn/inn-hiro-solo.webp")';
+  $('weather').hidden=true;playMusic();
+  const box=text('section','',panel,'menu inn-menu');box.id='story-inn';
+  text('h1','The inn',box);text('p','Next: Chapter '+r.chapter+' — '+session.game.quest.quest.name,box,'inn-next');
+  const hp=run.hp??run.hpMax;const stats=text('p','Health: '+(hp==null?'full':hp+' / '+run.hpMax)+' · Score: '+(run.score||0)+' points',box);stats.id='inn-stats';
+  const actions=text('div','',box,'buttons'),can=X.Encounter.canRest(run),cost=X.restCost(run);
+  const rest=button(X.Encounter.atFullHp(run)?'Rest — full health':'Rest to heal — '+cost.toLocaleString()+' points',()=>{
+    const result=S.rest(session);if(result.ok)render();
+  },actions);rest.id='story-rest';rest.disabled=!can.ok;
+  button('Continue story',()=>{if(S.leaveInn(session))render();},actions).id='story-embark';
+  text('p',can.reason==='score'?'You need '+cost.toLocaleString()+' points to rest. You can continue with your current health; a lost fight can be retried at full health.':can.reason==='full'?'You are fully healed and ready to travel.':'Rest restores all health. The point cost doubles each time.',box,'notice');
+  if(r.restScenePending){
+    backdrop.pause(true);X.Bathhouse.open({onClose:()=>{S.finishRest(session);backdrop.pause(false);render();}});
+  }
 }
 function toBeContinued(){
   stopVoice();const r=session.record,X=ADV.Expedition,score=r.run.score||0,box=text('section','',panel,'menu demo-end');

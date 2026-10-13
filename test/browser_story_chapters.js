@@ -30,7 +30,8 @@ const choices={q1_wake:'go',q1_wake_seen:'nobody',q1_nib:'draw',q1_cobb:'nothing
  choices.q4_dream='reject';
  for(const start=Date.now();Date.now()-start<1200000;){
   if(errors.length)throw Error(errors.join('\n'));
-  const el=await page.locator('iframe').count()?await page.locator('iframe').elementHandle():null;
+  if(await page.locator('.bathhouse-dialog').count()){await page.getByRole('button',{name:'Return to inn',exact:true}).click();continue;}
+  const el=await page.locator('iframe[title="Campaign battle"]').count()?await page.locator('iframe[title="Campaign battle"]').elementHandle():null;
   if(el){
    const frame=await el.contentFrame();
    const state=await frame.evaluate(()=>{const s=window.storyGame?.scene.getScene('StoryBattle');if(!s?.hero)return null;
@@ -53,7 +54,9 @@ const choices={q1_wake:'go',q1_wake_seen:'nobody',q1_nib:'draw',q1_cobb:'nothing
   if(state.location)locations.add(state.location);
   if(state.chapter===chapters+1){await page.screenshot({path:OUT+'/next-chapter.png'});break;}
   const labels=await page.locator('#panel button').allTextContents();
+  if(state.phase==='inn'&&await page.locator('#story-rest:enabled').count()){await page.locator('#story-rest').click();continue;}
   let label=labels.includes('Continue')?'Continue':labels.includes('Begin fight')?'Begin fight':state.options.find(o=>o.id===choices[state.choice])?.text;
+  if(!label&&labels.includes('Continue story'))label='Continue story';
   // A full company asks who stays at the inn; keep the riders, as before seat offers existed.
   if(!label)label=labels.find(l=>/^Leave .+ at the inn$/.test(l));
   if(!label)throw Error('Unhandled story panel '+JSON.stringify({state,labels}));
