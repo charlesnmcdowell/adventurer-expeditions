@@ -16,7 +16,8 @@ const OUT='test/reports/readability';fs.mkdirSync(OUT,{recursive:true});
  }
  for(const [chapter,encounterIndex,actor,skill]of [[1,2,'story_consortium_mage','fire_bolt'],[1,2,'story_consortium_mage','prismatic_bolt'],
   [2,2,'story_merle','spark'],[2,2,'story_merle','ember_lash'],[2,2,'story_merle','ashfall'],
-  [4,1,'story_kobold_shaman','cinder_charge'],[4,2,'story_kobold_chief','fire_bolt'],[4,3,'story_grukhar','bog_curse'],[4,3,'story_grukhar','blood_pact']]){
+  [4,1,'story_kobold_shaman','cinder_charge'],[4,2,'story_kobold_chief','fire_bolt'],[4,3,'story_grukhar','bog_curse'],[4,3,'story_grukhar','blood_pact'],
+  [5,3,'story_gorruk','fire_bolt']]){
   await encounter(chapter,encounterIndex);
   await page.evaluate(({actor,skill})=>{
    const X=ADV.Expedition,s=storyGame.scene.getScene('StoryBattle'),a=[...s.actors.values()].find(a=>a.sheet?.actor===actor);
@@ -39,6 +40,14 @@ const OUT='test/reports/readability';fs.mkdirSync(OUT,{recursive:true});
   assert.deepEqual(final.flightPoses,[release.frame],'casting follow-through stays held throughout the moving bolt');
   casts.push({actor,skill,release,final});
  }
+ await encounter(5,1);
+ const closed=await page.evaluate(async()=>{
+  const X=ADV.Expedition,s=storyGame.scene.getScene('StoryBattle'),a=[...s.actors.values()].find(a=>a.side==='b');
+  a.unit.ch.actives=[{skillId:'close_order',level:1}];const start=s.enc.st.events.length;
+  const r=ADV.Combat.act(s.enc.st,a.unit,{kind:'skill',skillId:'close_order',targetUid:a.uid});
+  if(r.ok===false)throw Error('Close Order rejected');await X.Beats.play(s,{hero:false,events:s.enc.st.events.slice(start)});
+  a.refresh();return{badge:a.badges.has('closed'),status:a.unit.statuses.some(s=>s.kind==='closed'&&s.rounds>0)};
+ });assert(closed.badge&&closed.status,'patrol Close Order animates without badge crash');
  await encounter(4,2);
  const healer=await page.evaluate(async()=>{
   const X=ADV.Expedition,s=storyGame.scene.getScene('StoryBattle'),a=[...s.actors.values()].find(a=>a.sheet?.actor==='story_veylan_acolyte');

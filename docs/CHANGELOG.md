@@ -15,6 +15,22 @@ of small fixes within a day.
 
 ---
 
+## 2026-10-13 — Chapter five: The Bandit Camp (Astra)
+
+**Playable locally:** chapter limit **4 → 5**. Completed Skarn, Hobgoblin Sergeant, Road Bandit and Gorruk; campaign registration **18/59 → 22/59**. Femi, Gauntlet patrol, archer and hired knife reuse their existing finished sets. Original chapter dialogue, choices, voices, scenery and music are unchanged. Chapter five returns to the inn; chapter six remains gated. The website demo stays at chapter one. Nothing published.
+
+**Art and intake:** four combat sets, eight Hiro pairs and four enemy-on-Hiro pairs; every pair has **16 distinct drawings**, with contact/release markers, transparent packing and fixed body references. 292 drawings registered across the four sets, including Gorruk's separate four-pose spell cast. Reused the complete hobgoblin set and existing Skarn/Road Bandit ordinary sheets. 22 image-generation requests produced the missing sheets and two clipped-weapon repairs. Corrected the Skarn hammer-counter recovery's cell ownership so his fallen body stays visible instead of appearing in a neighboring frame. Gorruk's two Hiro disarms are nonlethal to preserve his authored escape; the source Itsuki choice still determines whether Gorruk survives. His Fire Blast launches from his palm on cast frame 2, rather than from an axe swing. Source masters and exact requests: `../adventurer-expeditions-source-art/astra-v8/story-enemies/`; see `CHAPTER_FIVE_ART_QA.md`.
+
+**Bug found during actual play:** Gauntlet Close Order supplied a nested lane status where the generic engine expects `{kind, rounds}`. This produced an unnamed status and crashed the new badge display. The edition-owned story adapter now flattens that one effect; the HUD also ignores unnamed/null statuses. Shared skill definitions remain unchanged. Added simulation and browser regression coverage. Story pages now request the existing game icon instead of a missing favicon.
+
+**QA:** four actual main-route battles passed, plus quiet entry and both Itsuki choices (shoot/hold) with the previously recruited companion seated at the inn. Checked both prisoner/letters rescue orders, bypass outcomes, Gorruk survival/death flags, Itsuki's departure, rewards and save reload. Every new actor passed both Hiro finishers and a lethal-DOT enemy finisher in a real multi-enemy battle, all frames, atlas restoration and camera reset. Gorruk's spell flight/release and patrol status badges passed. Default entry, chapter-four inn → chapter five and chapter-five inn → chapter-six coming-soon/reload passed. Full 55-encounter simulation: no unwinnable seeds across the required floor, no stalls; chapter-five 20-seed win rates **80%, 100%, 100%, 100%**, with no balance retuning. These are automated-player results, not a difficulty guarantee.
+
+**Checks:** baseline `npm test` and `npm run test:ship`; final `npm test`, `npm run test:story`, `npm run test:ship`; `node test/story_balance.js --gate`; chapter/roster/art/readability/boundary browser checks. `sync:check` still reports two pre-existing differences (`play_local.js`, `js/ui/gate_ambience.js`); neither was changed here. No original-game writes, shared-file changes or publishing.
+
+**Files:** four `assets/expedition/story_*` actor directories and matching `adult/*-fatal` directories; three new `docs/art/story-*` review pages; `js/expedition/{story_art,story_combat,actors}.js`; `tools/build_story_actor.py`; story templates/generated pages and stamped `index.html`; `docs/story_preview.js`; actor lifecycle/story readability/art/roster/chapter/boundary tests; production tracker, status checklist, GDD, this log and chapter-five QA note. Chapters **6–14** and **37** remaining identities are still production work.
+
+---
+
 ## 2026-10-12 — Chapter inns, corrected bathhouse and website marketing (Astra)
 
 **Rest and progression:** each chapter return now visits the existing animated inn instead of jumping straight to the next departure and granting free recovery. Carried health remains; Rest uses the unchanged Arcade cost of 1,000 points, doubling per purchase, heals fully and opens the animated bathhouse. Full health or insufficient points never charges; Continue story remains available. Defeat still retries at full health. A pending rest survives reload without a second charge, and old chapter-boundary saves get an inn visit without changing choices. Arcade Rest also opens the scene and restores canvas input on close.

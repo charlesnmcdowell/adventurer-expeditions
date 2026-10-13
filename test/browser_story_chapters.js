@@ -9,7 +9,8 @@ const OUT='test/reports/story-chapters-'+chapters+(branch?'-'+branch:'');fs.mkdi
 const choices={q1_wake:'go',q1_wake_seen:'nobody',q1_nib:'draw',q1_cobb:'nothing',q1_wren:'kind',q2_pair_where:'truth',q2_pair:'yes',q2_cassian:'join',q2_morwin:'kill',q2_selene_how:'armour',q2_selene:'trust',q3_ithrel:'yes',q3_lessa:'fight',q3_bramm:'rescue',q3_ysolde:'nothing',q3_tollan:'yes'};
 (async()=>{const browser=await chromium.launch({channel:'chrome',headless:true});try{
  const page=await browser.newPage({viewport:{width:1280,height:760}}),errors=[],locations=new Set(),fights=new Set();let retries=0;
- page.on('pageerror',e=>{errors.push(String(e));console.error('Story page error:',String(e));});
+ page.on('pageerror',e=>{errors.push(e.stack||String(e));console.error('Story page error:',e.stack||String(e));});
+ page.on('response',r=>{if(r.status()>=400)console.error('Story HTTP:',r.status(),r.url());});
  page.on('console',m=>{if(m.type()==='error')console.error('Story console:',m.text());});
  page.on('requestfailed',r=>console.error('Story request:',r.url(),r.failure()?.errorText));
  await page.goto('http://127.0.0.1:8742/docs/STORY_CAMPAIGN_PREVIEW.html?through=14');
@@ -22,12 +23,23 @@ const choices={q1_wake:'go',q1_wake_seen:'nobody',q1_nib:'draw',q1_cobb:'nothing
   const saved=JSON.parse(fs.readFileSync(previous)).result.record;
   assert.equal(saved.chapter,firstChapter,'Prior playthrough checkpoint');
   assert.deepEqual(saved.completed,Array.from({length:firstChapter-1},(_,i)=>i+1));
-  await page.evaluate(record=>{const S=ADV.Expedition.Story,s=S.open(record);S.save(s);},saved);
+  await page.evaluate(({record,branch})=>{const S=ADV.Expedition.Story,s=S.open(record);
+   // Select an already recruited companion at the chapter-boundary inn. Do not
+   // invent recruitment flags or replace the verified previous playthrough.
+   if(branch.startsWith('camp-quiet-')){
+    const C=ADV.Campaign3;if(!C.isRecruited(s.game,'ithrel'))throw Error('Itsuki must already be recruited');
+    if(!C.replaceCompany(s.game,'fennick','ithrel'))throw Error('Could not seat Itsuki');
+   }
+   S.save(s);},{record:saved,branch});
   await page.reload();await page.getByRole('button',{name:'Continue story',exact:true}).click();
  }else await page.getByRole('button',{name:'Begin story',exact:true}).click();
  if(branch==='bahadir')choices.q3_bramm='coin';
  choices.q4_grukhar=branch==='grukhar-spared'?'walk':'kill';
  choices.q4_dream='reject';
+ Object.assign(choices,{q5_torvald_test:'word',q5_torvald:'help',q5_verlan:'beat',
+  q5_ilvara:'defend',q5_camp:'storm',q5_ithrel_shot:'hold',q5_rescue:'free_first'});
+ if(branch.startsWith('camp-quiet'))Object.assign(choices,{q5_verlan:'pay',q5_ilvara:'walk',
+  q5_camp:'quiet',q5_ithrel_shot:branch.endsWith('-hold')?'hold':'shoot',q5_rescue:'letters_first'});
  for(const start=Date.now();Date.now()-start<1200000;){
   if(errors.length)throw Error(errors.join('\n'));
   if(await page.locator('.bathhouse-dialog').count()){await page.getByRole('button',{name:'Return to inn',exact:true}).click();continue;}
@@ -68,10 +80,15 @@ const choices={q1_wake:'go',q1_wake_seen:'nobody',q1_nib:'draw',q1_cobb:'nothing
  for(let c=firstChapter;c<=chapters;c++){
   const chapter=campaign.chapters.find(ch=>ch.n===c);assert(chapter,'Unknown chapter '+c);
   for(let e=0;e<chapter.enc.length;e++){
-   const bypass=c===4&&e===3&&branch==='grukhar-spared';
+   const bypass=c===4&&e===3&&branch==='grukhar-spared'||c===5&&e<3&&branch.startsWith('camp-quiet');
    assert.equal(result.record.outcomes[c+':'+e],bypass?'bypass':'combat',c+':'+e);
    assert.equal(fights.has(c+':'+e),!bypass,'Actual fight coverage '+c+':'+e);
   }
+ }
+ if(firstChapter<=5&&chapters>=5){
+  const c=result.record.c3;assert(c.flags.caelFreed);assert(c.flags.lettersRecovered);
+  if(branch==='camp-quiet-shoot'){assert(c.flags.gorrukDead);assert.equal(c.choices.q5_ithrel_shot,'shoot');}
+  if(branch==='camp-quiet-hold'){assert(c.flags.ithrelHeld);assert(!c.flags.gorrukDead);assert(c.gone.includes('ithrel'));}
  }
  assert(result.record.gold>0);assert(result.backdrop);
  await page.reload();await page.getByRole('button',{name:'Continue story',exact:true}).click();

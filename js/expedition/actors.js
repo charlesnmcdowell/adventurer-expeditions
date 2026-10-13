@@ -119,13 +119,16 @@ class Actor {
     // Badges follow the unit's live statuses.
     const kinds = new Set();
     for (const s of u.statuses || []) {
+      // Legacy status containers may not have a displayable kind. They must
+      // never crash the battle HUD; adapters normalize known authored effects.
+      if(!s||typeof s.kind!=='string'||!s.kind)continue;
       // evadeS is a bookkeeping marker; the actual charge counter expires it.
       if(s.kind==='evadeS')continue;
       if(!STATUS_STYLE[s.kind])STATUS_STYLE[s.kind]={color:0x827599,glyph:s.kind.slice(0,2).toUpperCase()};
       kinds.add(s.kind);
     }
     if (u.counter > 0) kinds.add('counter');
-    if(u.evade>0||u.statuses?.some(s=>s.evadePct>0))kinds.add('evasion');
+    if(u.evade>0||u.statuses?.some(s=>s?.evadePct>0))kinds.add('evasion');
     if(u.stealth||u.untargetable>0)kinds.add('stealth');
     if(this.scene.enc?.st?.hazards?.some(h=>h.side===u.side&&h.lane===u.lane&&h.rounds>0&&!h.heal))kinds.add('hazard');
     for (const k of kinds) if (!this.badges.has(k)) this.addBadge(k);

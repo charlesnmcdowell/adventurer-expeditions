@@ -1,6 +1,12 @@
 # Campaign adaptation — production tracker
 
-Updated 12 October 2026. This is an unfinished expansion, not a release candidate. The live registration checklist is [STORY_CAMPAIGN_STATUS.md](STORY_CAMPAIGN_STATUS.md), regenerated with `node tools/story_status.js`.
+Updated 13 October 2026. This is an unfinished expansion, not a release candidate. The live registration checklist is [STORY_CAMPAIGN_STATUS.md](STORY_CAMPAIGN_STATUS.md), regenerated with `node tools/story_status.js`.
+
+### October 13 chapter-five completion — current
+
+Chapter five, The Bandit Camp, is playable locally. **22/59 identities registered; 37 remain.** New Skarn, Hobgoblin Sergeant, Road Bandit and Gorruk sets complete its roster alongside existing Femi, Gauntlet Soldier, archer and hired knife. All four actual main-route fights passed; quiet entry and both Itsuki/Gorruk choices passed, with both prisoner/letters rescue orders covered. Original story/media remain unchanged. Every new pair has sixteen distinct drawings and passed actual battle lifecycle checks. The patrol Close Order badge crash is fixed locally. Chapter-four inn continues to chapter five; chapter-five inn reaches the chapter-six coming-soon card, retaining progress through reload. The public demo remains chapter one. No publishing. See `CHAPTER_FIVE_ART_QA.md` and the October 13 changelog for evidence and source masters.
+
+**Next chapter is six.** Chapters 6–14 need their remaining identities, visual intake, actual branch playthroughs and later solo balance work. Earlier progress paragraphs below are historical snapshots.
 
 ### October 12 inn and demo verification
 
@@ -41,7 +47,7 @@ The original import was regenerated unchanged: 14 chapters, 55 encounter slots, 
 
 ## Next work, in dependency order
 
-1. Chapter-four main and spare branch QA passed. Femi is intaken and battle-tested. Complete chapter-five Burning Gauntlet Soldier, Skarn, Hobgoblin Sergeant, Road Bandit and Gorruk; the first four ordinary sheets are drafted but their pairs and intake remain unfinished. All five mine identities are intaken and battle-tested. Chapter three's main and alternate-branch playthroughs passed. The public development preview now ends after chapter four; later unready fights stay gated.
+1. Start chapter six: inventory missing identities and available original art before generating anything. Chapters 1–5 are locally enabled; later unready fights stay gated. Chapter-five art/intake and actual main/quiet/Itsuki branch QA are complete. Public website demo remains chapter one.
 2. Extend actual chapter playthrough coverage beyond chapter two as art becomes available. Verify first-fight tutorial when Nib is spared and later irreversible events; unit coverage alone is not a completed browser campaign.
 3. Audit every original scene transition and travel beat in context. Original scene selection, portraits, ending cards and ambience are wired, but all fourteen chapters have not been visually played through.
 4. Tune later solo encounters with the corrected between-turn casting audit and actual browser play. A winning seed is a minimum gate, not a satisfactory difficulty curve. The weakest late-game win rates still need attention.

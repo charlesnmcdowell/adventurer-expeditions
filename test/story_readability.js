@@ -35,6 +35,15 @@ for(const id of B.statusStrikes){
 }
 const tutorials=[];let clock=0;X.now=()=>clock;
 {
+ const enc=B.create(session(5,1),12),u=enc.st.units.find(u=>u.side==='b');
+ u.ch.actives=[{skillId:'close_order',level:1}];
+ const r=A.Combat.act(enc.st,u,{kind:'skill',skillId:'close_order',targetUid:u.uid});
+ assert.notEqual(r.ok,false);assert(u.statuses.some(s=>s.kind==='closed'&&s.rounds>0));
+ assert(u.statuses.every(s=>typeof s.kind==='string'),'patrol statuses have names and expiry');
+ const original=A.SkillSys.manifest({...u.ch,expeditionStoryFoe:false},{skillId:'close_order',level:1});
+ assert(original.data.laneStatus.closed,'shared skill definition stays unchanged');
+}
+{
  const enc=B.create(session(1,1),12),u=enc.st.units.find(u=>u.side==='b'),hero=E.heroUnit(enc);
  hero.tempHp=1000;hero.counter=0;hero.evade=0;const from=enc.st.events.length;
  A.Combat.act(enc.st,u,{kind:'skill',skillId:'marked_for_the_knife',targetUid:hero.uid});

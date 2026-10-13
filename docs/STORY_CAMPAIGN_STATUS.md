@@ -2,7 +2,7 @@
 
 Generated from the imported campaign inventory, runtime bindings and atlas file existence. A registered set still needs visual playtest; this is not a release certificate.
 
-**18 of 59 opponent identities registered. 41 remain.**
+**22 of 59 opponent identities registered. 37 remain.**
 
 | Enemy | First chapter | Runtime art | State |
 | --- | ---: | --- | --- |
@@ -24,10 +24,10 @@ Generated from the imported campaign inventory, runtime bindings and atlas file 
 | Grukhar (named:grukhar) | 4 | story_grukhar | Registered |
 | Femi (mini:verlan) | 5 | story_femi | Registered |
 | Burning Gauntlet Soldier (enemy:gauntlet_soldier) | 5 | story_gauntlet_soldier | Registered |
-| Skarn Maul (mini:skarn) | 5 | — | Pending |
-| Hobgoblin Sergeant (enemy:hob_sergeant) | 5 | — | Pending |
-| Road Bandit (enemy:gate_bandit) | 5 | — | Pending |
-| Gorruk (named:gorruk) | 5 | — | Pending |
+| Skarn Maul (mini:skarn) | 5 | story_skarn | Registered |
+| Hobgoblin Sergeant (enemy:hob_sergeant) | 5 | story_hob_sergeant | Registered |
+| Road Bandit (enemy:gate_bandit) | 5 | story_road_bandit | Registered |
+| Gorruk (named:gorruk) | 5 | story_gorruk | Registered |
 | Silksa, Spider Queen (mini:silksa) | 6 | — | Pending |
 | Giant Spider (enemy:web_spider) | 6 | — | Pending |
 | Mzee Kamau (named:thornwise) | 6 | — | Pending |

@@ -7,10 +7,10 @@ const MUTE_KEY='adventurer_expeditions_story_muted';
 const storedMute=()=>{try{return localStorage.getItem(MUTE_KEY)==='1';}catch(_){return false;}};
 let session=null,muted=storedMute(),voice=null,music=null,reply=null,line=0,applied=null;
 let battleFrame=null;
-// Demo (Hiro, 2026-10-11): chapter one, then a coming-soon card. Raise
-// DEMO_THROUGH as chapters are finished; a local server can play further with
+// Local chapter limit; the website packager independently forces chapter one.
+// Raise DEMO_THROUGH as chapters are finished; a local server can play further with
 // ?through=N for testing.
-const DEMO_THROUGH=4,localHost=/^(localhost|127\.0\.0\.1)$/.test(location.hostname);
+const DEMO_THROUGH=5,localHost=/^(localhost|127\.0\.0\.1)$/.test(location.hostname);
 const askedThrough=Number(new URLSearchParams(location.search).get('through'));
 const PLAYABLE_THROUGH=localHost&&askedThrough>=1&&askedThrough<=14?askedThrough:DEMO_THROUGH;
 // The original's fallback caption for a death beat without its own (campaign3_ui.js).

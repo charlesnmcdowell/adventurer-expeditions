@@ -39,6 +39,11 @@ const emit = (a, event, id, i = 0) => a.img.emit(event, { key: 'hero:' + id }, {
 const tick = () => new Promise(r => setImmediate(r));
 const cases = [];
 const test = (name, fn) => cases.push([name, fn]);
+test('legacy unnamed statuses cannot crash actor badges', () => {
+ const a=actor();a.unit={chp:100,maxHp:100,statuses:[null,{}, {closed:{rounds:3}}]};
+ a.bar={};a.barHurt={};a.setOutline=()=>{};a.layoutBadges=()=>{};
+ assert.doesNotThrow(()=>a.refresh(true));assert.equal(a.badges.size,0);
+});
 
 test('story survivors are not thrown by ordinary defeat knockback', async () => {
   const previous=X.Knockback;let thrown=0;

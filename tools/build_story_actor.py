@@ -44,6 +44,16 @@ def main():
             sha256=hashlib.sha256((src/f['file']).read_bytes()).hexdigest()) for i,f in enumerate(poses)],
             durationsMs=times,loop=name in ['idle','approach'],contactFramesZeroBased=cfg.get('attackContacts',[4]) if name=='attack' else [],
             releaseFrameZeroBased=len(poses)-1,registration=dict(referenceHeight=cfg.get('clipBodyReferences',{}).get(name,ref),frames=[f['guide'] for f in poses])))
+    # Optional authored cast strip. Keep hand-release poses separate from a
+    # melee swing; the runtime projectile reads this clip's release anchor.
+    if cfg.get('cast'):
+        cast=cfg['cast']; poses=extraction.extract(cast['file'],cast['frames'])
+        clips.append(dict(id='cast',frames=len(poses),sources=[dict(file=f['file'],frames=1,
+            regions=f['regions'],firstFrameZeroBased=i,preservePixels=True,
+            sha256=hashlib.sha256((src/f['file']).read_bytes()).hexdigest()) for i,f in enumerate(poses)],
+            durationsMs=cast.get('durationsMs',[150,120,180,180]),loop=False,
+            contactFramesZeroBased=[cast['contact']],releaseFrameZeroBased=cast['contact'],
+            registration=dict(referenceHeight=cast['bodyReferenceHeight'],frames=[f['guide'] for f in poses])))
     fatal=None
     for spec in cfg['pairs']:
         replaced={i for repair in spec.get('replacementSheets',[]) for i in repair['frames']}
@@ -84,7 +94,7 @@ def main():
         warnings.extend(dict(clip=spec['id'],**f) for f in flags)
         if spec.get('fatal'):fatal=clip
         else:clips.append(clip)
-    if len(clips)!=7 or fatal is None:raise ValueError('Need two Hiro pairs and one enemy pair')
+    if len(clips)!=(8 if cfg.get('cast') else 7) or fatal is None:raise ValueError('Need two Hiro pairs and one enemy pair')
     manifest=dict(actor=actor,authoredFacing=-1,clips=clips,status='registered review; visual approval required')
     (src/'combat-manifest.json').write_text(json.dumps(manifest,indent=2))
     doc=build(src,actor,out,300,95,manifest,lossless=True);doc['authoredFacing']=-1
@@ -108,6 +118,8 @@ def main():
         cast['contact']=[anchor['frame']];cast['release']=anchor['frame']
         cast['releaseAnchor']={k:v for k,v in anchor.items() if k not in ['frame','frames']}
         doc['clips']['cast']=cast
+    if cfg.get('cast'):
+        doc['clips']['cast']['releaseAnchor']=cfg['cast']['releaseAnchor']
     for c in doc['clips'].values():
         if c.get('paired'):c.update(embeddedBlood=True,preserveTiming=True)
     for spec in cfg['pairs']:

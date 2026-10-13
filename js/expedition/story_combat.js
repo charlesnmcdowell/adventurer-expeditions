@@ -46,7 +46,12 @@ A.Combat.act=function(st,u,action){
 };
 const originalManifest=A.SkillSys.manifest;
 A.SkillSys.manifest=function(ch,entry){
-  const m=originalManifest.call(this,ch,entry);
+  let m=originalManifest.call(this,ch,entry);
+  // The shared Close Order definition wraps closed in laneStatus, while its
+  // generic application expects {kind, rounds}. Normalize only story enemies;
+  // otherwise the patrol creates an unnamed, non-expiring status.
+  if(ch?.expeditionStoryFoe&&entry.skillId==='close_order'&&m?.data.laneStatus?.closed)
+    m={...m,data:{...m.data,laneStatus:{kind:'closed',...m.data.laneStatus.closed}}};
   if(!m||!ch?.expeditionStoryFoe||!Number.isFinite(m.data.pctMaxHp))return m;
   return {...m,data:{...m.data,pctMaxHp:Math.min(m.data.pctMaxHp,B.tuning.percentHitCap)}};
 };

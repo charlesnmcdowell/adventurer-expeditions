@@ -18,7 +18,11 @@ const cases=[{chapter:1,encounter:1,actor:'story_cobb'},
   {chapter:4,encounter:2,actor:'story_veylan_acolyte'},
   {chapter:4,encounter:3,actor:'story_grukhar'},
   {chapter:5,encounter:0,actor:'story_femi'},
-  {chapter:5,encounter:1,actor:'story_gauntlet_soldier'}].filter(c=>!process.env.STORY_ACTORS||process.env.STORY_ACTORS.split(',').includes(c.actor));
+  {chapter:5,encounter:1,actor:'story_gauntlet_soldier'},
+  {chapter:5,encounter:2,actor:'story_skarn'},
+  {chapter:5,encounter:2,actor:'story_hob_sergeant'},
+  {chapter:5,encounter:2,actor:'story_road_bandit'},
+  {chapter:5,encounter:3,actor:'story_gorruk'}].filter(c=>!process.env.STORY_ACTORS||process.env.STORY_ACTORS.split(',').includes(c.actor));
 (async()=>{const browser=await chromium.launch({channel:'chrome',headless:true});try{
  const page=await browser.newPage({viewport:{width:1280,height:760}}),errors=[],report=[];
  page.on('pageerror',e=>{errors.push(String(e));console.error('Story page error:',String(e));});
