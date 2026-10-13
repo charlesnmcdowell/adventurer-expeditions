@@ -42,6 +42,15 @@ const OUT='test/reports/story-inn';fs.mkdirSync(OUT,{recursive:true});
  assert(await page.locator('#story-rest').isDisabled());assert(await page.locator('#story-embark').isEnabled());
  await page.screenshot({path:OUT+'/inn-phone.png'});
  await page.locator('#story-embark').click();assert.equal(await page.evaluate(()=>storyPreview.record.phase),'departure');
+ // Arcade uses the same paid-rest scene; its input must resume after closing.
+ await page.setViewportSize({width:1280,height:760});
+ await page.goto('http://127.0.0.1:8742/index.html?arcade=1&at=inn&score=7000');
+ await page.waitForFunction(()=>window.__game?.scene.isActive('Inn')&&__game.scene.getScene('Inn').restBtn);
+ await page.evaluate(()=>{const s=__game.scene.getScene('Inn');s.run.hp=100;s.run.hpMax=344;s.refreshRest();s.rest();});
+ await page.locator('.bathhouse-dialog').waitFor();
+ assert.equal(await page.evaluate(()=>__game.scene.getScene('Inn').input.enabled),false);
+ await page.getByRole('button',{name:'Return to inn',exact:true}).click();
+ assert.deepEqual(await page.evaluate(()=>{const s=__game.scene.getScene('Inn');return[s.run.hp,s.run.rests,s.input.enabled,s.paused];}),[344,1,true,false]);
  assert.deepEqual(errors,[]);fs.writeFileSync(OUT+'/qa.json',JSON.stringify({passed:true,checks:['arrival inn','health carried','paid heal','bathhouse repeat','reload no duplicate charge','full-health disabled','chapter-two unlocked','insufficient points can continue','mobile fit','pause'],errors},null,2));
  console.log('Story inn: heal, cost, repeated scene, saved rest, chapter unlock, mobile and low-score exit passed');
 }finally{await browser.close();}})().catch(e=>{console.error(e);process.exitCode=1;});

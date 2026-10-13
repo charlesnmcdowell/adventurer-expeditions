@@ -14,8 +14,17 @@
 // opponents only. The dev tools are switched off. The demo itself stops after
 // chapter one (DEMO_THROUGH in docs/story_preview.js; ?through only works on a
 // local server), so nothing past it is playable from the site.
-const fs = require('node:fs'), path = require('node:path'), http = require('node:http');
+const fs = require('node:fs'), path = require('node:path'), http = require('node:http'), crypto = require('node:crypto');
 const ROOT = path.resolve(__dirname, '..'), OUT = path.join(ROOT, 'dist', 'site-demo');
+const RECEIPT = path.join(ROOT, 'dist', 'site-demo-verified.json');
+const sha = file => crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex');
+function frozenFiles(dir=OUT, prefix='') {
+  return fs.readdirSync(dir,{withFileTypes:true}).flatMap(e=>{
+    const rel=prefix+e.name,full=path.join(dir,e.name);
+    if(e.isSymbolicLink())throw Error('Refusing linked package entry: '+rel);
+    return e.isDirectory()?frozenFiles(full,rel+'/'):[{file:rel,bytes:fs.statSync(full).size,sha256:sha(full)}];
+  }).sort((a,b)=>a.file.localeCompare(b.file));
+}
 const TOP = ['js', 'lib', 'audio', 'assets'];
 const PAGES = ['docs/STORY_CAMPAIGN_PREVIEW.html', 'docs/STORY_FIGHT_PREVIEW.html', 'docs/story_preview.js'];
 // The four chapter-one opponents' art (story_art.js bindings for Nib, Cobb, the
@@ -59,6 +68,8 @@ function walk(dir, out) {
 function build() {
   const media = chapterOneMedia();
   const files = [...TOP.flatMap(t => walk(t, [])), ...PAGES].filter(f => !skip(f, media));
+  if(path.resolve(OUT)!==path.resolve(ROOT,'dist','site-demo'))throw Error('Unsafe build target');
+  fs.rmSync(RECEIPT,{force:true});
   fs.rmSync(OUT, { recursive: true, force: true });
   let bytes = 0;
   const write = (rel, body) => { const out = path.join(OUT, rel); fs.mkdirSync(path.dirname(out), { recursive: true }); fs.writeFileSync(out, body); bytes += body.length; };
@@ -90,6 +101,8 @@ function build() {
 async function verify() {
   const root = path.resolve(OUT);
   if (!fs.existsSync(path.join(root, 'index.html'))) throw Error('Build first');
+  fs.rmSync(RECEIPT,{force:true});
+  const frozen=frozenFiles();
   const missing = new Set();
   const server = http.createServer((req, res) => {
     const rel = decodeURIComponent(req.url.split('?')[0]).replace(/^\/+/, '') || 'index.html', file = path.resolve(root, rel);
@@ -117,10 +130,16 @@ async function verify() {
       await page.waitForTimeout(4000);
       console.log('chapter-one fight ' + (encounter + 1) + ': loaded');
     }
-    // The demo end: chapter one finished, chapter two departure.
+    // Chapter one returns to the inn. A paid rest must load its actual scene
+    // from the frozen package before Continue reaches the demo boundary.
     await page.evaluate(() => { const S = ADV.Expedition.Story, s = S.open(S.fresh()), r = s.record;
-      r.chapter = 2; r.phase = 'departure'; r.completed = [1]; r.titleCards = [1]; S.syncQuest(s); S.save(s); });
+      r.chapter = 2; r.phase = 'inn'; r.completed = [1]; r.titleCards = [1]; r.run.hp=80;r.run.hpMax=344;r.run.score=2000;S.syncQuest(s); S.save(s); });
     await page.goto(base + '/'); await page.getByRole('button', { name: 'Continue story', exact: true }).click();
+    await page.locator('#story-rest').click();
+    const bath=await page.locator('iframe[title="Moonlit bathhouse"]').elementHandle().then(e=>e.contentFrame());
+    await bath.waitForFunction(()=>window.bathhouse?.ready);
+    await page.getByRole('button',{name:'Return to inn',exact:true}).click();
+    await page.locator('#story-embark').click();
     const card = await page.locator('.demo-end h1').textContent({ timeout: 15000 });
     if (!/coming soon/i.test(card)) throw Error('Unexpected end card: ' + card);
     console.log('demo end card: "' + card.trim() + '"');
@@ -131,10 +150,30 @@ async function verify() {
   } finally { await browser.close(); server.close(); }
   if (errors.length) throw Error('Page errors:\n' + errors.join('\n'));
   if (missing.size) throw Error('Missing from the package:\n' + [...missing].join('\n'));
+  if(JSON.stringify(frozen)!==JSON.stringify(frozenFiles()))throw Error('Package changed during verification');
+  fs.writeFileSync(RECEIPT,JSON.stringify({verifiedAt:new Date().toISOString(),files:frozen},null,2));
   console.log('Site demo verified: nothing missing, no page errors.');
 }
 
+// Publish only the exact tested bytes into the website checkout. Git remains
+// the deployment transport; this command neither commits nor pushes anything.
+function stage() {
+  const site=path.resolve(process.argv[3]||'');
+  if(!process.argv[3]||!fs.existsSync(path.join(site,'.git'))||!fs.existsSync(path.join(site,'CNAME')))throw Error('Pass the website Git checkout');
+  if(fs.readFileSync(path.join(site,'CNAME'),'utf8').trim()!=='neverendingnarratives.com')throw Error('Wrong website');
+  const receipt=JSON.parse(fs.readFileSync(RECEIPT,'utf8'));
+  if(JSON.stringify(receipt.files)!==JSON.stringify(frozenFiles()))throw Error('Package is not the verified copy; run verify');
+  const dest=path.resolve(site,'expeditions');
+  if(path.dirname(dest)!==site||dest===ROOT)throw Error('Unsafe stage target');
+  if(fs.existsSync(dest)&&fs.lstatSync(dest).isSymbolicLink())throw Error('Refusing linked destination');
+  const allowed=new Set(receipt.files.map(f=>f.file));
+  // No blanket deletion. Unexpected pre-existing files require manual review.
+  if(fs.existsSync(dest))for(const f of frozenFiles(dest))if(!allowed.has(f.file))throw Error('Unexpected destination file: '+f.file);
+  for(const f of receipt.files){const to=path.join(dest,f.file);fs.mkdirSync(path.dirname(to),{recursive:true});fs.copyFileSync(path.join(OUT,f.file),to);if(sha(to)!==f.sha256)throw Error('Staged hash mismatch: '+f.file);}
+  console.log('Staged '+receipt.files.length+' verified files -> '+dest);
+}
+
 const cmd = process.argv[2];
-const run = { build, verify }[cmd];
-if (!run) { console.log('Usage: node tools/site_demo.js build|verify'); process.exitCode = 1; }
+const run = { build, verify, stage }[cmd];
+if (!run) { console.log('Usage: node tools/site_demo.js build|verify|stage <website-checkout>'); process.exitCode = 1; }
 else Promise.resolve(run()).catch(e => { console.error(e.message || e); process.exitCode = 1; });

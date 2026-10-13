@@ -27,7 +27,7 @@ const OUT = path.join(__dirname, 'reports', 'arcade'); fs.mkdirSync(OUT, { recur
   const pw = require('playwright');
   await new Promise(res => srv.listen(0, '127.0.0.1', res));
   const port = srv.address().port, base = 'http://127.0.0.1:' + port + '/index.html';
-  const browser = await pw.chromium.launch({ headless: true, args: ['--disable-gpu'] });
+  const browser = await pw.chromium.launch({ channel: process.env.PW_CHANNEL || 'chrome', headless: true, args: ['--disable-gpu'] });
   const ctx = await browser.newContext({ viewport: { width: 1280, height: 760 } });
   const page = await ctx.newPage();
   const errs = [];
@@ -113,9 +113,13 @@ const OUT = path.join(__dirname, 'reports', 'arcade'); fs.mkdirSync(OUT, { recur
   check(rest.r.ok === false && rest.r.reason === 'full' && rest.score === 1500 && /full health/.test(rest.label), 'Rest is refused at full health', rest);
   rest = await page.evaluate(() => { const s = window.__game.scene.getScene('Inn'); s.run.hp = 100; s.run.hpMax = 334; s.refreshRest(); const before = s.restBtn.label.text; const r = s.rest(); s.run.hp = 100; s.refreshRest(); return { before, r, score: s.run.score, rests: s.run.rests, label: s.restBtn.label.text }; });
   check(/1000/.test(rest.before) && rest.r.ok && rest.r.cost === 1000 && rest.score === 500 && rest.rests === 1 && /2000/.test(rest.label), 'Rest heals to full for 1,000 and the next one costs 2,000', rest);
+  await page.getByRole('button',{name:'Return to inn',exact:true}).click();
   rest = await page.evaluate(() => { const s = window.__game.scene.getScene('Inn'); return { r: s.rest(), score: s.run.score, hp: s.run.hp }; });
   check(rest.r.ok === false && rest.r.reason === 'score' && rest.score === 500 && rest.hp === 100, 'Rest is refused when the score cannot pay', rest);
-  rest = await page.evaluate(() => { const s = window.__game.scene.getScene('Inn'); s.run.score = 7000; s.refreshRest(); const a = s.rest(); s.run.hp = 10; s.refreshRest(); const b = s.rest(); return { a, b, score: s.run.score, rests: s.run.rests }; });
+  const second = await page.evaluate(() => { const s = window.__game.scene.getScene('Inn'); s.run.score = 7000; s.refreshRest(); return s.rest(); });
+  await page.getByRole('button',{name:'Return to inn',exact:true}).click();
+  rest = await page.evaluate(a => { const s = window.__game.scene.getScene('Inn'); s.run.hp = 10; s.refreshRest(); const b = s.rest(); return { a, b, score: s.run.score, rests: s.run.rests }; },second);
+  await page.getByRole('button',{name:'Return to inn',exact:true}).click();
   check(rest.a.ok && rest.a.cost === 2000 && rest.b.ok && rest.b.cost === 4000 && rest.score === 1000 && rest.rests === 3, 'second and third rests cost 2,000 and 4,000', rest);
   await page.screenshot({ path: path.join(OUT, '03-inn-rest.png') });
   const innButtons = await page.evaluate(() => { const s = window.__game.scene.getScene('Inn'); return { rest: !!s.restBtn, board: !!s.boardBtn, embark: !!s.embarkBtn, replay: !!s.replayBtn, locked: s.lockedButtons.length }; });

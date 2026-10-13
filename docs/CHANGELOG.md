@@ -15,6 +15,20 @@ of small fixes within a day.
 
 ---
 
+## 2026-10-12 — Chapter inns, corrected bathhouse and website marketing (Astra)
+
+**Rest and progression:** each chapter return now visits the existing animated inn instead of jumping straight to the next departure and granting free recovery. Carried health remains; Rest uses the unchanged Arcade cost of 1,000 points, doubling per purchase, heals fully and opens the animated bathhouse. Full health or insufficient points never charges; Continue story remains available. Defeat still retries at full health. A pending rest survives reload without a second charge, and old chapter-boundary saves get an inn visit without changing choices. Arcade Rest also opens the scene and restores canvas input on close.
+
+**Art:** one image-generation edit separated the kneeling attendant's knees from Hiro's leg. No new voices/music. Static characters, moving water/steam/leaves/light, 24-second loop, reduced-motion and pause retained. Source preview updated to the corrected painting, with the original preserved. `docs/BATHHOUSE_INTEGRATION.md` records source/provenance. Local chapter cap 1 → 4; all 13 main-route battles across chapters 1–4 passed. Chapter 4 was already built, so no duplicate art was created. Runtime status: 18/59 campaign identities; later chapters remain unfinished.
+
+**Website:** the separate Neverending Narratives checkout now uses approved cover art for both games, direct Play links, complete-game versus chapter-one-demo labels, personal feedback copy and direct Facebook links. Donation copy explains the purpose, links to the existing Cash App recipient and offers copy-to-clipboard. Recorded support ($425), goals ($1,000/$5,000), book prices and payment recipient are retained. Fixed phone text overflow. Original Adventurer files are untouched.
+
+**Packaging:** public demo remains chapter one even though the local build supports four. `tools/site_demo.js` forces that limit with no query bypass, verifies title/three fights/inn/Rest/bathhouse/end card/mobile title, records SHA-256 hashes, and stages only the tested bytes into the website repo. Package: 593 files, approximately 225 MB total; that is a website package size, not an initial-download or CrazyGames eligibility claim. Verified the actual `/expeditions/` subpath separately, including combat, with no missing requests/page errors. Only the verified demo and homepage marketing changes are intended for website deployment.
+
+**Checks:** `npm test`, `npm run test:story`, `npm run test:ship`, four-chapter real-browser main route, `node test/browser_story_inn.js`, corrected-plate pixel/loop check, frozen site-demo verification, and website checks at 1440×1000, 390×844 and 375×667 passed. Website checks cover art loading, both game links, mobile navigation, donation destination, copying the recipient and preserved total. The older standalone `test:arcade` test timed out at its first tutorial fight before reaching Rest; it is not counted as a pass. Paid Arcade Rest/input restoration has a separate passing check in `browser_story_inn.js`; the two-quest ship gate passed.
+
+**Files:** `js/expedition/{story,bathhouse,story_backdrop,scenes_town}.js`; `assets/expedition/bathhouse/`; `docs/story_preview.js`; story HTML template/generated pages; stamped `index.html`; story/inn/Arcade/website browser tests; `tools/site_demo.js`; this log, GDD, production tracker and bathhouse note. Website edits live separately in `C:/Users/charl/OneDrive/Documents/Neverendingnarratives`: `index.html`, `sitemap.xml`, two cover WebPs and the verified `expeditions/` demo. The core inn work was captured by the other tool in commit `e03880e` while this verification was running; no overwrite was needed.
+
 ## 2026-10-12 — Story combat readability (Astra)
 
 Local Expeditions changes only. Original Adventurer and synced `js/core`, `js/data`, `js/ui` unchanged; nothing published or exported. No image generation or new atlas pixels. Existing chapter-one axe contact, rear-slot formation, bite contact timing, landing fallback, hit-stop effects and two-fight tutorial remain intact.

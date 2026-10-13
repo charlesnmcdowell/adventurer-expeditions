@@ -1,6 +1,12 @@
 # Campaign adaptation — production tracker
 
-Updated 11 October 2026. This is an unfinished expansion, not a release candidate. The live registration checklist is [STORY_CAMPAIGN_STATUS.md](STORY_CAMPAIGN_STATUS.md), regenerated with `node tools/story_status.js`.
+Updated 12 October 2026. This is an unfinished expansion, not a release candidate. The live registration checklist is [STORY_CAMPAIGN_STATUS.md](STORY_CAMPAIGN_STATUS.md), regenerated with `node tools/story_status.js`.
+
+### October 12 inn and demo verification
+
+Current registration is 18/59 identities. Chapters 1–4 passed their 13 actual main-route fights, original dialogue/choices, rewards, checkpoint handling and reload. Chapter 4 already has its required mine art and fights; no duplicate production was needed. The normal local entry opens the story with four chapters enabled. Chapter returns now visit the existing animated inn with health carried: Rest pays 1,000 points initially (doubling each use) and opens the corrected animated bathhouse, or Continue story leaves immediately. Retry still restores full health. Save migration, rest/reload without duplicate payment, insufficient points, repeat visits, pause and phone layout have browser coverage. Older statements below describing automatic chapter healing or default Arcade boot are historical.
+
+The public website demo is independently capped after chapter one. `tools/site_demo.js build`, then `verify`, then `stage <website-checkout>` stages only the exact hash-verified files. The public copy includes the inn and bathhouse but excludes chapter-two and later story media/art. Chapters 5–14, their remaining 41 opponent identities, later balance and optional supplemental encounters remain production work.
 
 ### October 11 continuation
 
