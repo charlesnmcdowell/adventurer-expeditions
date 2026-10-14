@@ -1,0 +1,132 @@
+[
+  {
+    "slug": "nettle",
+    "file": "hiro-finisher-1-wide-b.png",
+    "kind": "hiro",
+    "nonlethal": true,
+    "args": {
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v8/story-enemies/nettle/hiro-finisher-1-wide-a.png"
+      ],
+      "prompt": "Use case: stylized-concept. Continuation animation sheet for the exact two fictional adult game characters in the reference. Produce EXACTLY EIGHT distinct incremental recovery/fall poses in TWO COLUMNS FOUR ROWS on transparent background. This is the second half (frames8–15) of the animation. Continue directly from the LAST BOTTOM RIGHT pose of the reference, NOT from the opening stance. opponent remains wounded but clearly ALIVE on one knee, head lifted and supporting weight, no death. Hiro lowers his katana into a controlled guard. Eight gradual changing poses, both characters fully painted in every single cell, consistent full-size anatomy and costume. Keep the same polished anime cel shading, side camera, body scale ratio, face, hair, armor and weapon. No scenery, labels, grid, boxes or cropped limbs/weapons/wings/tails. Fit the entire pair including all fallen bodies and extended weapons with generous 40px transparent margins on every side of every cell. Fixed ground and camera. Persistent stylized blood already on the injury. Each pose must preserve both complete characters: nobody vanishes or teleports. Final frame is BOTH victor and fallen/yielding opponent. For large winged creatures fold wings naturally while falling; never clip wings to the grid. Show the entire weapon, head, feet and tail."
+    }
+  },
+  {
+    "slug": "wyvern-matriarch",
+    "file": "hiro-finisher-1-wide-b.png",
+    "kind": "hiro",
+    "nonlethal": false,
+    "args": {
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v8/story-enemies/wyvern-matriarch/hiro-finisher-1-wide-a.png"
+      ],
+      "prompt": "Use case: stylized-concept. Continuation animation sheet for the exact two fictional adult game characters in the reference. Produce EXACTLY EIGHT distinct incremental recovery/fall poses in TWO COLUMNS FOUR ROWS on transparent background. This is the second half (frames8–15) of the animation. Continue directly from the LAST BOTTOM RIGHT pose of the reference, NOT from the opening stance. opponent drops from the hit onto its knees or forelimbs, then rolls/lies fully defeated RIGHT, Hiro recovers and returns to guard LEFT. Eight gradual changing poses, both characters fully painted in every single cell, consistent full-size anatomy and costume. Keep the same polished anime cel shading, side camera, body scale ratio, face, hair, armor and weapon. No scenery, labels, grid, boxes or cropped limbs/weapons/wings/tails. Fit the entire pair including all fallen bodies and extended weapons with generous 40px transparent margins on every side of every cell. Fixed ground and camera. Persistent stylized blood already on the injury. Each pose must preserve both complete characters: nobody vanishes or teleports. Final frame is BOTH victor and fallen/yielding opponent. For large winged creatures fold wings naturally while falling; never clip wings to the grid. Show the entire weapon, head, feet and tail."
+    }
+  },
+  {
+    "slug": "wyvern-matriarch",
+    "file": "hiro-finisher-2-wide-b.png",
+    "kind": "hiro",
+    "nonlethal": false,
+    "args": {
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v8/story-enemies/wyvern-matriarch/hiro-finisher-2-wide-a.png"
+      ],
+      "prompt": "Use case: stylized-concept. Continuation animation sheet for the exact two fictional adult game characters in the reference. Produce EXACTLY EIGHT distinct incremental recovery/fall poses in TWO COLUMNS FOUR ROWS on transparent background. This is the second half (frames8–15) of the animation. Continue directly from the LAST BOTTOM RIGHT pose of the reference, NOT from the opening stance. opponent drops from the hit onto its knees or forelimbs, then rolls/lies fully defeated RIGHT, Hiro recovers and returns to guard LEFT. Eight gradual changing poses, both characters fully painted in every single cell, consistent full-size anatomy and costume. Keep the same polished anime cel shading, side camera, body scale ratio, face, hair, armor and weapon. No scenery, labels, grid, boxes or cropped limbs/weapons/wings/tails. Fit the entire pair including all fallen bodies and extended weapons with generous 40px transparent margins on every side of every cell. Fixed ground and camera. Persistent stylized blood already on the injury. Each pose must preserve both complete characters: nobody vanishes or teleports. Final frame is BOTH victor and fallen/yielding opponent. For large winged creatures fold wings naturally while falling; never clip wings to the grid. Show the entire weapon, head, feet and tail."
+    }
+  },
+  {
+    "slug": "wyvern",
+    "file": "hiro-finisher-2-wide-b.png",
+    "kind": "hiro",
+    "nonlethal": false,
+    "args": {
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v8/story-enemies/wyvern/hiro-finisher-2-wide-a.png"
+      ],
+      "prompt": "Use case: stylized-concept. Continuation animation sheet for the exact two fictional adult game characters in the reference. Produce EXACTLY EIGHT distinct incremental recovery/fall poses in TWO COLUMNS FOUR ROWS on transparent background. This is the second half (frames8–15) of the animation. Continue directly from the LAST BOTTOM RIGHT pose of the reference, NOT from the opening stance. opponent drops from the hit onto its knees or forelimbs, then rolls/lies fully defeated RIGHT, Hiro recovers and returns to guard LEFT. Eight gradual changing poses, both characters fully painted in every single cell, consistent full-size anatomy and costume. Keep the same polished anime cel shading, side camera, body scale ratio, face, hair, armor and weapon. No scenery, labels, grid, boxes or cropped limbs/weapons/wings/tails. Fit the entire pair including all fallen bodies and extended weapons with generous 40px transparent margins on every side of every cell. Fixed ground and camera. Persistent stylized blood already on the injury. Each pose must preserve both complete characters: nobody vanishes or teleports. Final frame is BOTH victor and fallen/yielding opponent. For large winged creatures fold wings naturally while falling; never clip wings to the grid. Show the entire weapon, head, feet and tail."
+    }
+  },
+  {
+    "slug": "sewer-ogre-mage",
+    "file": "hiro-finisher-1-wide-b.png",
+    "kind": "hiro",
+    "nonlethal": false,
+    "args": {
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v8/story-enemies/sewer-ogre-mage/hiro-finisher-1-wide-a.png"
+      ],
+      "prompt": "Use case: stylized-concept. Continuation animation sheet for the exact two fictional adult game characters in the reference. Produce EXACTLY EIGHT distinct incremental recovery/fall poses in TWO COLUMNS FOUR ROWS on transparent background. This is the second half (frames8–15) of the animation. Continue directly from the LAST BOTTOM RIGHT pose of the reference, NOT from the opening stance. opponent drops from the hit onto its knees or forelimbs, then rolls/lies fully defeated RIGHT, Hiro recovers and returns to guard LEFT. Eight gradual changing poses, both characters fully painted in every single cell, consistent full-size anatomy and costume. Keep the same polished anime cel shading, side camera, body scale ratio, face, hair, armor and weapon. No scenery, labels, grid, boxes or cropped limbs/weapons/wings/tails. Fit the entire pair including all fallen bodies and extended weapons with generous 40px transparent margins on every side of every cell. Fixed ground and camera. Persistent stylized blood already on the injury. Each pose must preserve both complete characters: nobody vanishes or teleports. Final frame is BOTH victor and fallen/yielding opponent. For large winged creatures fold wings naturally while falling; never clip wings to the grid. Show the entire weapon, head, feet and tail."
+    }
+  },
+  {
+    "slug": "sewer-ogre-mage",
+    "file": "hiro-finisher-2-wide-b.png",
+    "kind": "hiro",
+    "nonlethal": false,
+    "args": {
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v8/story-enemies/sewer-ogre-mage/hiro-finisher-2-wide-a.png"
+      ],
+      "prompt": "Use case: stylized-concept. Continuation animation sheet for the exact two fictional adult game characters in the reference. Produce EXACTLY EIGHT distinct incremental recovery/fall poses in TWO COLUMNS FOUR ROWS on transparent background. This is the second half (frames8–15) of the animation. Continue directly from the LAST BOTTOM RIGHT pose of the reference, NOT from the opening stance. opponent drops from the hit onto its knees or forelimbs, then rolls/lies fully defeated RIGHT, Hiro recovers and returns to guard LEFT. Eight gradual changing poses, both characters fully painted in every single cell, consistent full-size anatomy and costume. Keep the same polished anime cel shading, side camera, body scale ratio, face, hair, armor and weapon. No scenery, labels, grid, boxes or cropped limbs/weapons/wings/tails. Fit the entire pair including all fallen bodies and extended weapons with generous 40px transparent margins on every side of every cell. Fixed ground and camera. Persistent stylized blood already on the injury. Each pose must preserve both complete characters: nobody vanishes or teleports. Final frame is BOTH victor and fallen/yielding opponent. For large winged creatures fold wings naturally while falling; never clip wings to the grid. Show the entire weapon, head, feet and tail."
+    }
+  },
+  {
+    "slug": "sewer-ogre-mage",
+    "file": "enemy-fatal-wide-b.png",
+    "kind": "fatal",
+    "nonlethal": false,
+    "args": {
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v8/story-enemies/sewer-ogre-mage/enemy-fatal-wide-a.png"
+      ],
+      "prompt": "Use case: stylized-concept. Continuation animation sheet for the exact two fictional adult game characters in the reference. Produce EXACTLY EIGHT distinct incremental recovery/fall poses in TWO COLUMNS FOUR ROWS on transparent background. This is the second half (frames8–15) of the animation. Continue directly from the LAST BOTTOM RIGHT pose of the reference, NOT from the opening stance. Hiro sinks from kneeling to the ground, rolls onto his side and lies defeated LEFT, enemy recovers its weapon and stands RIGHT. Eight gradual changing poses, both characters fully painted in every single cell, consistent full-size anatomy and costume. Keep the same polished anime cel shading, side camera, body scale ratio, face, hair, armor and weapon. No scenery, labels, grid, boxes or cropped limbs/weapons/wings/tails. Fit the entire pair including all fallen bodies and extended weapons with generous 40px transparent margins on every side of every cell. Fixed ground and camera. Persistent stylized blood already on the injury. Each pose must preserve both complete characters: nobody vanishes or teleports. Final frame is BOTH victor and fallen/yielding opponent. For large winged creatures fold wings naturally while falling; never clip wings to the grid. Show the entire weapon, head, feet and tail."
+    }
+  },
+  {
+    "slug": "korvath",
+    "file": "hiro-finisher-1-wide-b.png",
+    "kind": "hiro",
+    "nonlethal": true,
+    "args": {
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v8/story-enemies/korvath/hiro-finisher-1-wide-a.png"
+      ],
+      "prompt": "Use case: stylized-concept. Continuation animation sheet for the exact two fictional adult game characters in the reference. Produce EXACTLY EIGHT distinct incremental recovery/fall poses in TWO COLUMNS FOUR ROWS on transparent background. This is the second half (frames8–15) of the animation. Continue directly from the LAST BOTTOM RIGHT pose of the reference, NOT from the opening stance. opponent remains wounded but clearly ALIVE on one knee, head lifted and supporting weight, no death. Hiro lowers his katana into a controlled guard. Eight gradual changing poses, both characters fully painted in every single cell, consistent full-size anatomy and costume. Keep the same polished anime cel shading, side camera, body scale ratio, face, hair, armor and weapon. No scenery, labels, grid, boxes or cropped limbs/weapons/wings/tails. Fit the entire pair including all fallen bodies and extended weapons with generous 40px transparent margins on every side of every cell. Fixed ground and camera. Persistent stylized blood already on the injury. Each pose must preserve both complete characters: nobody vanishes or teleports. Final frame is BOTH victor and fallen/yielding opponent. For large winged creatures fold wings naturally while falling; never clip wings to the grid. Show the entire weapon, head, feet and tail."
+    }
+  },
+  {
+    "slug": "korvath",
+    "file": "hiro-finisher-2-wide-b.png",
+    "kind": "hiro",
+    "nonlethal": true,
+    "args": {
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v8/story-enemies/korvath/hiro-finisher-2-wide-a.png"
+      ],
+      "prompt": "Use case: stylized-concept. Continuation animation sheet for the exact two fictional adult game characters in the reference. Produce EXACTLY EIGHT distinct incremental recovery/fall poses in TWO COLUMNS FOUR ROWS on transparent background. This is the second half (frames8–15) of the animation. Continue directly from the LAST BOTTOM RIGHT pose of the reference, NOT from the opening stance. opponent remains wounded but clearly ALIVE on one knee, head lifted and supporting weight, no death. Hiro lowers his katana into a controlled guard. Eight gradual changing poses, both characters fully painted in every single cell, consistent full-size anatomy and costume. Keep the same polished anime cel shading, side camera, body scale ratio, face, hair, armor and weapon. No scenery, labels, grid, boxes or cropped limbs/weapons/wings/tails. Fit the entire pair including all fallen bodies and extended weapons with generous 40px transparent margins on every side of every cell. Fixed ground and camera. Persistent stylized blood already on the injury. Each pose must preserve both complete characters: nobody vanishes or teleports. Final frame is BOTH victor and fallen/yielding opponent. For large winged creatures fold wings naturally while falling; never clip wings to the grid. Show the entire weapon, head, feet and tail."
+    }
+  },
+  {
+    "slug": "korvath",
+    "file": "enemy-fatal-wide-b.png",
+    "kind": "fatal",
+    "nonlethal": false,
+    "args": {
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v8/story-enemies/korvath/enemy-fatal-wide-a.png"
+      ],
+      "prompt": "Use case: stylized-concept. Continuation animation sheet for the exact two fictional adult game characters in the reference. Produce EXACTLY EIGHT distinct incremental recovery/fall poses in TWO COLUMNS FOUR ROWS on transparent background. This is the second half (frames8–15) of the animation. Continue directly from the LAST BOTTOM RIGHT pose of the reference, NOT from the opening stance. Hiro sinks from kneeling to the ground, rolls onto his side and lies defeated LEFT, enemy recovers its weapon and stands RIGHT. Eight gradual changing poses, both characters fully painted in every single cell, consistent full-size anatomy and costume. Keep the same polished anime cel shading, side camera, body scale ratio, face, hair, armor and weapon. No scenery, labels, grid, boxes or cropped limbs/weapons/wings/tails. Fit the entire pair including all fallen bodies and extended weapons with generous 40px transparent margins on every side of every cell. Fixed ground and camera. Persistent stylized blood already on the injury. Each pose must preserve both complete characters: nobody vanishes or teleports. Final frame is BOTH victor and fallen/yielding opponent. For large winged creatures fold wings naturally while falling; never clip wings to the grid. Show the entire weapon, head, feet and tail."
+    }
+  }
+]

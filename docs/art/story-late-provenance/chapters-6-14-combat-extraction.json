@@ -1,0 +1,184 @@
+[
+  {
+    "slug": "silksa",
+    "seedAlpha": 64,
+    "heightEstimate": 181
+  },
+  {
+    "slug": "web-spider",
+    "seedAlpha": 64,
+    "heightEstimate": 156
+  },
+  {
+    "slug": "thornwise",
+    "seedAlpha": 64,
+    "heightEstimate": 254
+  },
+  {
+    "slug": "umbra-druid",
+    "seedAlpha": 64,
+    "heightEstimate": 262
+  },
+  {
+    "slug": "nettle",
+    "seedAlpha": 64,
+    "heightEstimate": 252
+  },
+  {
+    "slug": "wyvern-matriarch",
+    "seedAlpha": 64,
+    "heightEstimate": 215
+  },
+  {
+    "slug": "wyvern",
+    "seedAlpha": 64,
+    "heightEstimate": 222
+  },
+  {
+    "slug": "kestrel",
+    "seedAlpha": 64,
+    "heightEstimate": 267
+  },
+  {
+    "slug": "consortium-guard",
+    "seedAlpha": 64,
+    "heightEstimate": 250
+  },
+  {
+    "slug": "slave-driver",
+    "seedAlpha": 64,
+    "heightEstimate": 274
+  },
+  {
+    "slug": "malvane",
+    "seedAlpha": 64,
+    "heightEstimate": 248
+  },
+  {
+    "slug": "sewer-ogre-mage",
+    "error": "combat.png: 23 bodies, expected 24"
+  },
+  {
+    "slug": "sewer-crawler",
+    "seedAlpha": 64,
+    "heightEstimate": 150
+  },
+  {
+    "slug": "shadow-double",
+    "seedAlpha": 64,
+    "heightEstimate": 298
+  },
+  {
+    "slug": "lantern-master",
+    "error": "combat.png: 23 bodies, expected 24"
+  },
+  {
+    "slug": "umbral-pair",
+    "seedAlpha": 64,
+    "heightEstimate": 253
+  },
+  {
+    "slug": "tower-captain",
+    "seedAlpha": 64,
+    "heightEstimate": 289
+  },
+  {
+    "slug": "maddox",
+    "seedAlpha": 128,
+    "heightEstimate": 263
+  },
+  {
+    "slug": "vask",
+    "seedAlpha": 64,
+    "heightEstimate": 267
+  },
+  {
+    "slug": "rennick",
+    "seedAlpha": 64,
+    "heightEstimate": 301
+  },
+  {
+    "slug": "grell",
+    "seedAlpha": 64,
+    "heightEstimate": 297
+  },
+  {
+    "slug": "family-double",
+    "seedAlpha": 64,
+    "heightEstimate": 282
+  },
+  {
+    "slug": "phase-spider",
+    "seedAlpha": 64,
+    "heightEstimate": 185
+  },
+  {
+    "slug": "tomb-ghoul",
+    "seedAlpha": 64,
+    "heightEstimate": 256
+  },
+  {
+    "slug": "gauntlet-traitor",
+    "seedAlpha": 180,
+    "heightEstimate": 263
+  },
+  {
+    "slug": "idris",
+    "seedAlpha": 64,
+    "heightEstimate": 272
+  },
+  {
+    "slug": "amara",
+    "seedAlpha": 64,
+    "heightEstimate": 259
+  },
+  {
+    "slug": "ravel",
+    "error": "combat.png: 23 bodies, expected 24"
+  },
+  {
+    "slug": "kessa",
+    "seedAlpha": 64,
+    "heightEstimate": 294
+  },
+  {
+    "slug": "hall-doubles",
+    "seedAlpha": 64,
+    "heightEstimate": 266
+  },
+  {
+    "slug": "palace-doppelganger",
+    "seedAlpha": 64,
+    "heightEstimate": 271
+  },
+  {
+    "slug": "jarem",
+    "seedAlpha": 64,
+    "heightEstimate": 263
+  },
+  {
+    "slug": "morrak-cultist",
+    "seedAlpha": 64,
+    "heightEstimate": 268
+  },
+  {
+    "slug": "lucan",
+    "seedAlpha": 64,
+    "heightEstimate": 256
+  },
+  {
+    "slug": "altar-keepers",
+    "seedAlpha": 64,
+    "heightEstimate": 257
+  },
+  {
+    "slug": "your-own-faces",
+    "seedAlpha": 64,
+    "heightEstimate": 321
+  },
+  {
+    "slug": "korvath",
+    "seedAlpha": 64,
+    "heightEstimate": 253
+  }
+]

@@ -1,0 +1,58 @@
+{
+  "actor": "story_web_spider",
+  "name": "Giant Spider",
+  "identity": "enemy:web_spider",
+  "bodyReferenceHeight": 156,
+  "seedAlpha": 64,
+  "attackContacts": [
+    4
+  ],
+  "pairs": [
+    {
+      "id": "hiro-finisher-1",
+      "files": [
+        "hiro-finisher-1.png"
+      ],
+      "columns": 4,
+      "rows": 4,
+      "hiroReferenceHeights": [
+        240
+      ],
+      "contacts": [
+        6
+      ],
+      "seedErosion": 2
+    },
+    {
+      "id": "hiro-finisher-2",
+      "files": [
+        "hiro-finisher-2.png"
+      ],
+      "columns": 4,
+      "rows": 4,
+      "hiroReferenceHeights": [
+        279
+      ],
+      "contacts": [
+        6
+      ],
+      "seedErosion": 3
+    },
+    {
+      "id": "story_web_spider-fatal",
+      "files": [
+        "enemy-fatal.png"
+      ],
+      "columns": 4,
+      "rows": 4,
+      "hiroReferenceHeights": [
+        255
+      ],
+      "contacts": [
+        6
+      ],
+      "fatal": true,
+      "seedErosion": 2
+    }
+  ]
+}

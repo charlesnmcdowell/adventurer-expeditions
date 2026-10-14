@@ -1,0 +1,58 @@
+{
+  "actor": "story_palace_doppelganger",
+  "name": "Palace Guard",
+  "identity": "enemy:palace_doppelganger",
+  "bodyReferenceHeight": 271,
+  "seedAlpha": 64,
+  "attackContacts": [
+    4
+  ],
+  "pairs": [
+    {
+      "id": "hiro-finisher-1",
+      "files": [
+        "hiro-finisher-1.png"
+      ],
+      "columns": 4,
+      "rows": 4,
+      "hiroReferenceHeights": [
+        215
+      ],
+      "contacts": [
+        6
+      ],
+      "seedErosion": 2
+    },
+    {
+      "id": "hiro-finisher-2",
+      "files": [
+        "hiro-finisher-2.png"
+      ],
+      "columns": 4,
+      "rows": 4,
+      "hiroReferenceHeights": [
+        229
+      ],
+      "contacts": [
+        6
+      ],
+      "seedErosion": 2
+    },
+    {
+      "id": "story_palace_doppelganger-fatal",
+      "files": [
+        "enemy-fatal.png"
+      ],
+      "columns": 4,
+      "rows": 4,
+      "hiroReferenceHeights": [
+        217
+      ],
+      "contacts": [
+        6
+      ],
+      "fatal": true,
+      "seedErosion": 2
+    }
+  ]
+}

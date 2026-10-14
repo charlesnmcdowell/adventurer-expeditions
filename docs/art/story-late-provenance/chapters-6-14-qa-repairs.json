@@ -1,0 +1,40 @@
+[
+  {
+    "slug": "slave-driver",
+    "file": "hiro-finisher-1-qa-repair.png",
+    "frames": [
+      4,
+      6,
+      7
+    ],
+    "refs": [
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v8/story-enemies/slave-driver/hiro-finisher-1.png"
+    ],
+    "prompt": "Create exactly THREE separate paired combat animation poses in a single horizontal strip of 3 equal wide cells. Transparent background. Use reference identity and precise anime painted finish. In EACH cell show BOTH full body Hiro on left (dark skin purple locs black purple samurai armor katana) AND same masked stocky bald jailer on right in beige rolled sleeve shirt leather apron carrying chain flail and lantern. Generous empty gutters. NO duplicate Hiro within any cell. Pose1: Hiro blocks the incoming chain flail at chest height with two-handed katana; jailer fully visible holding chain handle. Pose2: Hiro closes in and traps the jailer's weapon wrist, his katana drawn back for a controlled cut. Pose3: Hiro starts a diagonal torso cut while jailer recoils; no missing body, both feet visible. These replace frames 4,6,7, not a whole timeline. Same character scale across all3. Entire weapons, feet, lantern included with margins. No labels grid text or background.",
+    "output": "Generated images are saved to C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227 as C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227\\exec-d358e74b-98d8-46e4-b6c7-198dbee2f24e.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  {
+    "slug": "korvath",
+    "file": "hiro-finisher-1-qa-repair.png",
+    "frames": [
+      5
+    ],
+    "refs": [
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v8/story-enemies/korvath/hiro-finisher-1-wide-a.png"
+    ],
+    "prompt": "Repaint ONLY the paired pose in row3 column2 of reference as ONE standalone full-body paired combat pose with transparent background and generous margins. Hiro left purple locs darkskin blackpurple samurai armor katana, huge bald black man Kolade right black spiked plate red cape greatsword. Hiro low powerful thrust into side armor as Kolade recoils, blood at side wound but alive and intact. Match source gesture, character designs, anime painted style exactly. Fix right cape clipping: whole cape and both entire figures and all weapons must be fully contained. No other poses, labels, text or background.",
+    "output": "Generated images are saved to C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227 as C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227\\exec-a6bce404-3f66-4f04-b6e7-63bb4834e062.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  {
+    "slug": "korvath",
+    "file": "hiro-finisher-2-qa-repair.png",
+    "frames": [
+      1
+    ],
+    "refs": [
+      "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v8/story-enemies/korvath/hiro-finisher-2-wide-a.png"
+    ],
+    "prompt": "Repaint ONLY paired pose row1 column2 of reference as ONE standalone full-body paired combat pose transparent background. Hiro darkskin purple locs blackpurple samurai armor left dips into a low advancing guard; huge bald Kolade black spiked plate red cape right raises greatsword overhead diagonally. Keep exact identities anime painted finish gesture and relative size. Entire greatsword tip and cape and both figures fully inside canvas with generous transparent margins. Fix clipped sword tip. No injury in this anticipation pose. No other poses labels or text.",
+    "output": "Generated images are saved to C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227 as C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227\\exec-46143bf5-3b20-4ae9-9fc6-5f066b7800a7.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  }
+]

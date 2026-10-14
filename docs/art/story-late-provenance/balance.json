@@ -1,0 +1,1909 @@
+[
+  {
+    "chapter": 1,
+    "encounter": 0,
+    "wins": 12,
+    "trials": 12,
+    "stalls": 0,
+    "maxSteps": 5,
+    "avgRounds": 1.5,
+    "stats": [
+      {
+        "name": "Hiro",
+        "hp": 344
+      },
+      {
+        "name": "Nib",
+        "hp": 264
+      }
+    ],
+    "enemySkills": [
+      "backstab",
+      "silenced_step",
+      "smoke_bomb",
+      "basic_attack"
+    ]
+  },
+  {
+    "chapter": 1,
+    "encounter": 1,
+    "wins": 12,
+    "trials": 12,
+    "stalls": 0,
+    "maxSteps": 10,
+    "avgRounds": 3,
+    "stats": [
+      {
+        "name": "Hiro",
+        "hp": 344
+      },
+      {
+        "name": "Cobb",
+        "hp": 282
+      },
+      {
+        "name": "Hired Knife · Road Cloak",
+        "hp": 142
+      }
+    ],
+    "enemySkills": [
+      "backstab",
+      "venom_fang",
+      "marked_for_the_knife",
+      "basic_attack"
+    ]
+  },
+  {
+    "chapter": 1,
+    "encounter": 2,
+    "wins": 12,
+    "trials": 12,
+    "stalls": 0,
+    "maxSteps": 9,
+    "avgRounds": 2.8,
+    "stats": [
+      {
+        "name": "Hiro",
+        "hp": 344
+      },
+      {
+        "name": "Hired Knife · Ash Cloak",
+        "hp": 140
+      },
+      {
+        "name": "Hired Knife · Wet Cloak",
+        "hp": 148
+      },
+      {
+        "name": "Consortium Mage · Seal Cowl",
+        "hp": 152
+      }
+    ],
+    "enemySkills": [
+      "basic_attack",
+      "fire_bolt",
+      "venom_fang",
+      "marked_for_the_knife",
+      "prismatic_bolt"
+    ]
+  },
+  {
+    "chapter": 2,
+    "encounter": 0,
+    "wins": 12,
+    "trials": 12,
+    "stalls": 0,
+    "maxSteps": 8,
+    "avgRounds": 2.8,
+    "stats": [
+      {
+        "name": "Hiro",
+        "hp": 344
+      },
+      {
+        "name": "Road Wolf · Grey",
+        "hp": 134
+      },
+      {
+        "name": "Road Wolf · Grey",
+        "hp": 126
+      }
+    ],
+    "enemySkills": [
+      "pack_snap",
+      "cleave",
+      "basic_attack"
+    ]
+  },
+  {
+    "chapter": 2,
+    "encounter": 1,
+    "wins": 12,
+    "trials": 12,
+    "stalls": 0,
+    "maxSteps": 8,
+    "avgRounds": 2,
+    "stats": [
+      {
+        "name": "Hiro",
+        "hp": 344
+      },
+      {
+        "name": "Road Wolf · Scarred",
+        "hp": 128
+      },
+      {
+        "name": "Road Wolf · Grey",
+        "hp": 146
+      },
+      {
+        "name": "Road Wolf · Grey",
+        "hp": 132
+      }
+    ],
+    "enemySkills": [
+      "pack_snap",
+      "cleave",
+      "pack_frenzy",
+      "basic_attack"
+    ]
+  },
+  {
+    "chapter": 2,
+    "encounter": 2,
+    "wins": 12,
+    "trials": 12,
+    "stalls": 0,
+    "maxSteps": 12,
+    "avgRounds": 3.7,
+    "stats": [
+      {
+        "name": "Hiro",
+        "hp": 344
+      },
+      {
+        "name": "Merle",
+        "hp": 212
+      },
+      {
+        "name": "Hired Knife · Wet Cloak",
+        "hp": 134
+      }
+    ],
+    "enemySkills": [
+      "ember_lash",
+      "spark",
+      "smoke_bomb",
+      "basic_attack",
+      "ashfall",
+      "fire_bolt"
+    ]
+  },
+  {
+    "chapter": 3,
+    "encounter": 0,
+    "wins": 12,
+    "trials": 12,
+    "stalls": 0,
+    "maxSteps": 13,
+    "avgRounds": 2.8,
+    "stats": [
+      {
+        "name": "Hiro",
+        "hp": 344
+      },
+      {
+        "name": "Lurleen",
+        "hp": 222
+      },
+      {
+        "name": "Hired Knife · Ash Cloak",
+        "hp": 152
+      }
+    ],
+    "enemySkills": [
+      "marked_for_the_knife",
+      "venom_fang",
+      "blood_price",
+      "basic_attack",
+      "backstab"
+    ]
+  },
+  {
+    "chapter": 3,
+    "encounter": 1,
+    "wins": 12,
+    "trials": 12,
+    "stalls": 0,
+    "maxSteps": 8,
+    "avgRounds": 2.1,
+    "stats": [
+      {
+        "name": "Hiro",
+        "hp": 344
+      },
+      {
+        "name": "Gnoll Raider · Yellow",
+        "hp": 142
+      },
+      {
+        "name": "Gnoll Raider · Yellow",
+        "hp": 150
+      },
+      {
+        "name": "Bandit Archer · Ridge",
+        "hp": 140
+      }
+    ],
+    "enemySkills": [
+      "aimed_shot",
+      "war_bellow",
+      "rending_talons",
+      "basic_attack",
+      "venom_fang"
+    ]
+  },
+  {
+    "chapter": 3,
+    "encounter": 2,
+    "wins": 10,
+    "trials": 12,
+    "stalls": 0,
+    "maxSteps": 11,
+    "avgRounds": 2,
+    "stats": [
+      {
+        "name": "Hiro",
+        "hp": 344
+      },
+      {
+        "name": "Snarl, Gnoll Warleader",
+        "hp": 274
+      },
+      {
+        "name": "Gnoll Raider · Grey",
+        "hp": 138
+      },
+      {
+        "name": "Gnoll Raider · Grey",
+        "hp": 150
+      }
+    ],
+    "enemySkills": [
+      "taunt",
+      "cleave",
+      "war_bellow",
+      "rending_talons",
+      "basic_attack"
+    ]
+  },
+  {
+    "chapter": 4,
+    "encounter": 0,
+    "wins": 12,
+    "trials": 12,
+    "stalls": 0,
+    "maxSteps": 6,
+    "avgRounds": 1.5,
+    "stats": [
+      {
+        "name": "Hiro",
+        "hp": 344
+      },
+      {
+        "name": "Tunnel Kobold · Poison Team",
+        "hp": 148
+      },
+      {
+        "name": "Tunnel Kobold · Poison Team",
+        "hp": 148
+      },
+      {
+        "name": "Tunnel Kobold · Poison Team",
+        "hp": 146
+      }
+    ],
+    "enemySkills": [
+      "aimed_shot",
+      "sand_sting",
+      "basic_attack"
+    ]
+  },
+  {
+    "chapter": 4,
+    "encounter": 1,
+    "wins": 10,
+    "trials": 12,
+    "stalls": 0,
+    "maxSteps": 10,
+    "avgRounds": 2.5,
+    "stats": [
+      {
+        "name": "Hiro",
+        "hp": 344
+      },
+      {
+        "name": "Tunnel Kobold · Poison Team",
+        "hp": 90
+      },
+      {
+        "name": "Kobold Shaman · Ore Mask",
+        "hp": 86
+      },
+      {
+        "name": "Tunnel Kobold · Pick Team",
+        "hp": 90
+      }
+    ],
+    "enemySkills": [
+      "cinder_charge",
+      "aimed_shot",
+      "spark",
+      "snare",
+      "basic_attack",
+      "fire_bolt"
+    ]
+  },
+  {
+    "chapter": 4,
+    "encounter": 2,
+    "wins": 6,
+    "trials": 12,
+    "stalls": 0,
+    "maxSteps": 8,
+    "avgRounds": 2.3,
+    "stats": [
+      {
+        "name": "Hiro",
+        "hp": 344
+      },
+      {
+        "name": "Kobold Chief",
+        "hp": 96
+      },
+      {
+        "name": "Tunnel Kobold · Pick Team",
+        "hp": 90
+      },
+      {
+        "name": "Acolyte of Veylan · Bone Cowl",
+        "hp": 90
+      }
+    ],
+    "enemySkills": [
+      "mend",
+      "snare",
+      "aimed_shot",
+      "fire_bolt",
+      "spark",
+      "venom_fang",
+      "basic_attack",
+      "wither_touch"
+    ]
+  },
+  {
+    "chapter": 4,
+    "encounter": 3,
+    "wins": 7,
+    "trials": 12,
+    "stalls": 0,
+    "maxSteps": 13,
+    "avgRounds": 2.5,
+    "stats": [
+      {
+        "name": "Hiro",
+        "hp": 344
+      },
+      {
+        "name": "Grukhar",
+        "hp": 93
+      },
+      {
+        "name": "Acolyte of Veylan · Bone Cowl",
+        "hp": 60
+      },
+      {
+        "name": "Tunnel Kobold · Poison Team",
+        "hp": 61
+      },
+      {
+        "name": "Tunnel Kobold · Pick Team",
+        "hp": 57
+      }
+    ],
+    "enemySkills": [
+      "bog_curse",
+      "basic_attack",
+      "mend",
+      "aimed_shot",
+      "blood_pact",
+      "raise",
+      "wither_touch",
+      "snare"
+    ]
+  },
+  {
+    "chapter": 5,
+    "encounter": 0,
+    "wins": 12,
+    "trials": 12,
+    "stalls": 0,
+    "maxSteps": 8,
+    "avgRounds": 2.9,
+    "stats": [
+      {
+        "name": "Hiro",
+        "hp": 344
+      },
+      {
+        "name": "Femi",
+        "hp": 280
+      },
+      {
+        "name": "Hired Knife · Wet Cloak",
+        "hp": 148
+      }
+    ],
+    "enemySkills": [
+      "marked_for_the_knife",
+      "chain_lightning",
+      "fire_bolt",
+      "prismatic_bolt",
+      "basic_attack",
+      "frost_touch"
+    ]
+  },
+  {
+    "chapter": 5,
+    "encounter": 1,
+    "wins": 3,
+    "trials": 12,
+    "stalls": 0,
+    "maxSteps": 16,
+    "avgRounds": 2.8,
+    "stats": [
+      {
+        "name": "Hiro",
+        "hp": 344
+      },
+      {
+        "name": "Burning Gauntlet Soldier · Night Watch",
+        "hp": 134
+      },
+      {
+        "name": "Burning Gauntlet Soldier · Ash Tabard",
+        "hp": 138
+      },
+      {
+        "name": "Burning Gauntlet Soldier · Night Watch",
+        "hp": 152
+      }
+    ],
+    "enemySkills": [
+      "taunt",
+      "basic_attack",
+      "crossing_guard",
+      "shield_wall",
+      "close_order"
+    ]
+  },
+  {
+    "chapter": 5,
+    "encounter": 2,
+    "wins": 12,
+    "trials": 12,
+    "stalls": 0,
+    "maxSteps": 14,
+    "avgRounds": 2.7,
+    "stats": [
+      {
+        "name": "Hiro",
+        "hp": 344
+      },
+      {
+        "name": "Skarn Maul",
+        "hp": 302
+      },
+      {
+        "name": "Hobgoblin Sergeant · Frostbite Company",
+        "hp": 148
+      },
+      {
+        "name": "Road Bandit · Frostbite",
+        "hp": 128
+      },
+      {
+        "name": "Bandit Archer · Ford",
+        "hp": 154
+      }
+    ],
+    "enemySkills": [
+      "dual_swords",
+      "shield_wall",
+      "aimed_shot",
+      "line_advance",
+      "cleave",
+      "basic_attack",
+      "suppressing_volley",
+      "sunder",
+      "taunt",
+      "stone_stance"
+    ]
+  },
+  {
+    "chapter": 5,
+    "encounter": 3,
+    "wins": 12,
+    "trials": 12,
+    "stalls": 0,
+    "maxSteps": 11,
+    "avgRounds": 1.7,
+    "stats": [
+      {
+        "name": "Hiro",
+        "hp": 344
+      },
+      {
+        "name": "Gorruk",
+        "hp": 312
+      },
+      {
+        "name": "Hobgoblin Sergeant · Ashtalon Company",
+        "hp": 128
+      },
+      {
+        "name": "Bandit Archer · Ridge",
+        "hp": 152
+      },
+      {
+        "name": "Road Bandit · Ashtalon",
+        "hp": 142
+      }
+    ],
+    "enemySkills": [
+      "fire_bolt",
+      "cleave",
+      "basic_attack",
+      "aimed_shot",
+      "dual_swords",
+      "war_bellow",
+      "taunt",
+      "sunder",
+      "veterans_cut",
+      "kunai_line",
+      "stone_stance"
+    ]
+  },
+  {
+    "chapter": 6,
+    "encounter": 0,
+    "wins": 8,
+    "trials": 12,
+    "stalls": 0,
+    "maxSteps": 14,
+    "avgRounds": 2.8,
+    "stats": [
+      {
+        "name": "Hiro",
+        "hp": 344
+      },
+      {
+        "name": "Silksa, Spider Queen",
+        "hp": 260
+      },
+      {
+        "name": "Giant Spider · Web-Black",
+        "hp": 134
+      },
+      {
+        "name": "Giant Spider · Web-Black",
+        "hp": 138
+      }
+    ],
+    "enemySkills": [
+      "backstab",
+      "glass_web",
+      "snare",
+      "tongue_lash",
+      "venom_fang",
+      "basic_attack"
+    ]
+  },
+  {
+    "chapter": 6,
+    "encounter": 1,
+    "wins": 7,
+    "trials": 12,
+    "stalls": 0,
+    "maxSteps": 23,
+    "avgRounds": 4.7,
+    "stats": [
+      {
+        "name": "Hiro",
+        "hp": 344
+      },
+      {
+        "name": "Mzee Kamau",
+        "hp": 226
+      },
+      {
+        "name": "Umbra Druid · Moss Robe",
+        "hp": 128
+      },
+      {
+        "name": "Umbra Druid · Bark Robe",
+        "hp": 136
+      },
+      {
+        "name": "Wanjiru",
+        "hp": 952
+      }
+    ],
+    "enemySkills": [
+      "treefall",
+      "thorn_lash",
+      "wither_touch",
+      "grove_raise",
+      "growth_field",
+      "basic_attack",
+      "snare",
+      "thorn_skin"
+    ]
+  },
+  {
+    "chapter": 6,
+    "encounter": 2,
+    "wins": 9,
+    "trials": 12,
+    "stalls": 0,
+    "maxSteps": 7,
+    "avgRounds": 1.9,
+    "stats": [
+      {
+        "name": "Hiro",
+        "hp": 344
+      },
+      {
+        "name": "Wyvern Matriarch",
+        "hp": 320
+      },
+      {
+        "name": "Wyvern · Grey",
+        "hp": 154
+      }
+    ],
+    "enemySkills": [
+      "raptor_shred",
+      "rime_breath",
+      "venom_fang",
+      "basic_attack"
+    ]
+  },
+  {
+    "chapter": 6,
+    "encounter": 3,
+    "wins": 8,
+    "trials": 12,
+    "stalls": 0,
+    "maxSteps": 16,
+    "avgRounds": 3.4,
+    "stats": [
+      {
+        "name": "Hiro",
+        "hp": 344
+      },
+      {
+        "name": "Kestrel",
+        "hp": 280
+      },
+      {
+        "name": "Consortium Guard · Iron Livery",
+        "hp": 146
+      },
+      {
+        "name": "Consortium Mage · Ash Cowl",
+        "hp": 128
+      }
+    ],
+    "enemySkills": [
+      "fire_bolt",
+      "bulwark_formation",
+      "shield_breaker",
+      "hold_the_road",
+      "basic_attack",
+      "taunt",
+      "prismatic_bolt",
+      "shield_wall"
+    ]
+  },
+  {
+    "chapter": 7,
+    "encounter": 0,
+    "wins": 12,
+    "trials": 12,
+    "stalls": 0,
+    "maxSteps": 22,
+    "avgRounds": 4.5,
+    "stats": [
+      {
+        "name": "Hiro",
+        "hp": 344
+      },
+      {
+        "name": "Consortium Guard · Iron Livery",
+        "hp": 138
+      },
+      {
+        "name": "Slave Driver · Chain Hand",
+        "hp": 150
+      },
+      {
+        "name": "Consortium Guard · Mine Detail",
+        "hp": 148
+      }
+    ],
+    "enemySkills": [
+      "basic_attack",
+      "bulwark_formation",
+      "contract_mark",
+      "chain_and_weight",
+      "shield_wall"
+    ]
+  },
+  {
+    "chapter": 7,
+    "encounter": 1,
+    "wins": 12,
+    "trials": 12,
+    "stalls": 0,
+    "maxSteps": 5,
+    "avgRounds": 1.1,
+    "stats": [
+      {
+        "name": "Hiro",
+        "hp": 344
+      },
+      {
+        "name": "Slave Driver · Whip Hand",
+        "hp": 128
+      },
+      {
+        "name": "Slave Driver · Whip Hand",
+        "hp": 132
+      },
+      {
+        "name": "Consortium Mage · Ash Cowl",
+        "hp": 148
+      }
+    ],
+    "enemySkills": [
+      "chain_and_weight",
+      "flanking_pay",
+      "fire_bolt",
+      "cleave",
+      "basic_attack",
+      "frost_touch"
+    ]
+  },
+  {
+    "chapter": 7,
+    "encounter": 2,
+    "wins": 12,
+    "trials": 12,
+    "stalls": 0,
+    "maxSteps": 22,
+    "avgRounds": 6.4,
+    "stats": [
+      {
+        "name": "Hiro",
+        "hp": 344
+      },
+      {
+        "name": "Consortium Guard · Black Livery",
+        "hp": 128
+      },
+      {
+        "name": "Consortium Mage · Ash Cowl",
+        "hp": 130
+      },
+      {
+        "name": "Acolyte of Veylan · Rust Cowl",
+        "hp": 150
+      }
+    ],
+    "enemySkills": [
+      "basic_attack",
+      "mend",
+      "frost_touch",
+      "bulwark_formation",
+      "fire_bolt",
+      "shield_wall",
+      "restorative_circle"
+    ]
+  },
+  {
+    "chapter": 7,
+    "encounter": 3,
+    "wins": 1,
+    "trials": 12,
+    "stalls": 0,
+    "maxSteps": 14,
+    "avgRounds": 2.4,
+    "stats": [
+      {
+        "name": "Hiro",
+        "hp": 344
+      },
+      {
+        "name": "Olamide",
+        "hp": 212
+      },
+      {
+        "name": "Consortium Guard · Mine Detail",
+        "hp": 128
+      },
+      {
+        "name": "Consortium Guard · Black Livery",
+        "hp": 152
+      },
+      {
+        "name": "Consortium Mage · Seal Cowl",
+        "hp": 148
+      }
+    ],
+    "enemySkills": [
+      "coven_rime",
+      "rime_grasp",
+      "taunt",
+      "fire_bolt",
+      "basic_attack",
+      "frost_touch",
+      "ranging_ward",
+      "shield_wall",
+      "chain_lightning"
+    ]
+  },
+  {
+    "chapter": 7,
+    "encounter": 4,
+    "wins": 12,
+    "trials": 12,
+    "stalls": 0,
+    "maxSteps": 15,
+    "avgRounds": 4,
+    "stats": [
+      {
+        "name": "Hiro",
+        "hp": 344
+      },
+      {
+        "name": "Consortium Guard · Mine Detail",
+        "hp": 134
+      },
+      {
+        "name": "Consortium Guard · Iron Livery",
+        "hp": 134
+      },
+      {
+        "name": "Consortium Mage · Seal Cowl",
+        "hp": 128
+      },
+      {
+        "name": "Slave Driver · Chain Hand",
+        "hp": 148
+      }
+    ],
+    "enemySkills": [
+      "basic_attack",
+      "chain_and_weight",
+      "fire_bolt",
+      "shield_breaker",
+      "bulwark_formation",
+      "frost_touch",
+      "shield_wall",
+      "contract_mark"
+    ]
+  },
+  {
+    "chapter": 8,
+    "encounter": 0,
+    "wins": 8,
+    "trials": 12,
+    "stalls": 0,
+    "maxSteps": 8,
+    "avgRounds": 1.9,
+    "stats": [
+      {
+        "name": "Hiro",
+        "hp": 344
+      },
+      {
+        "name": "The Ogre Under the Docks",
+        "hp": 352
+      },
+      {
+        "name": "Sewer Crawler · Pale",
+        "hp": 130
+      },
+      {
+        "name": "Sewer Crawler · Wet",
+        "hp": 134
+      }
+    ],
+    "enemySkills": [
+      "pincer_lock",
+      "fault_line",
+      "taunt",
+      "cleave",
+      "mace_swing",
+      "snare",
+      "basic_attack"
+    ]
+  },
+  {
+    "chapter": 8,
+    "encounter": 1,
+    "wins": 12,
+    "trials": 12,
+    "stalls": 0,
+    "maxSteps": 13,
+    "avgRounds": 3.9,
+    "stats": [
+      {
+        "name": "Hiro",
+        "hp": 344
+      },
+      {
+        "name": "Consortium Guard · Black Livery",
+        "hp": 150
+      },
+      {
+        "name": "Hired Knife · Ash Cloak",
+        "hp": 142
+      }
+    ],
+    "enemySkills": [
+      "basic_attack",
+      "venom_fang",
+      "shield_wall",
+      "bulwark_formation"
+    ]
+  },
+  {
+    "chapter": 8,
+    "encounter": 2,
+    "wins": 12,
+    "trials": 12,
+    "stalls": 0,
+    "maxSteps": 12,
+    "avgRounds": 3.6,
+    "stats": [
+      {
+        "name": "Hiro",
+        "hp": 344
+      },
+      {
+        "name": "Shape-Thief · Half-Turned",
+        "hp": 136
+      },
+      {
+        "name": "Shape-Thief · Wearing a Face",
+        "hp": 134
+      },
+      {
+        "name": "Hired Knife · Ash Cloak",
+        "hp": 142
+      }
+    ],
+    "enemySkills": [
+      "silenced_step",
+      "bell_silence",
+      "basic_attack",
+      "ghoststep"
+    ]
+  },
+  {
+    "chapter": 8,
+    "encounter": 3,
+    "wins": 12,
+    "trials": 12,
+    "stalls": 0,
+    "maxSteps": 43,
+    "avgRounds": 6.1,
+    "stats": [
+      {
+        "name": "Hiro",
+        "hp": 344
+      },
+      {
+        "name": "The Master of Lanterns",
+        "hp": 286
+      },
+      {
+        "name": "Shape-Thief · Between Faces",
+        "hp": 132
+      },
+      {
+        "name": "Shape-Thief · Half-Turned",
+        "hp": 138
+      }
+    ],
+    "enemySkills": [
+      "bell_silence",
+      "ward_thief",
+      "backstab",
+      "basic_attack",
+      "ghoststep"
+    ]
+  },
+  {
+    "chapter": 9,
+    "encounter": 0,
+    "wins": 3,
+    "trials": 12,
+    "stalls": 0,
+    "maxSteps": 9,
+    "avgRounds": 2.8,
+    "stats": [
+      {
+        "name": "Hiro",
+        "hp": 344
+      },
+      {
+        "name": "Consortium Guard · Mine Detail",
+        "hp": 144
+      },
+      {
+        "name": "Consortium Guard · Iron Livery",
+        "hp": 134
+      }
+    ],
+    "enemySkills": [
+      "taunt",
+      "basic_attack",
+      "shield_wall",
+      "hold_the_road"
+    ]
+  },
+  {
+    "chapter": 9,
+    "encounter": 1,
+    "wins": 3,
+    "trials": 12,
+    "stalls": 0,
+    "maxSteps": 22,
+    "avgRounds": 3.3,
+    "stats": [
+      {
+        "name": "Hiro",
+        "hp": 344
+      },
+      {
+        "name": "Consortium Guard · Black Livery",
+        "hp": 128
+      },
+      {
+        "name": "Consortium Mage · Seal Cowl",
+        "hp": 152
+      },
+      {
+        "name": "Consortium Guard · Black Livery",
+        "hp": 140
+      }
+    ],
+    "enemySkills": [
+      "fire_bolt",
+      "taunt",
+      "bulwark_formation",
+      "shield_wall",
+      "basic_attack",
+      "ranging_ward"
+    ]
+  },
+  {
+    "chapter": 9,
+    "encounter": 2,
+    "wins": 12,
+    "trials": 12,
+    "stalls": 0,
+    "maxSteps": 13,
+    "avgRounds": 3.8,
+    "stats": [
+      {
+        "name": "Hiro",
+        "hp": 344
+      },
+      {
+        "name": "Consortium Mage · Ledger Cowl",
+        "hp": 152
+      },
+      {
+        "name": "Consortium Guard · Black Livery",
+        "hp": 144
+      },
+      {
+        "name": "Hired Knife · Road Cloak",
+        "hp": 150
+      }
+    ],
+    "enemySkills": [
+      "basic_attack",
+      "venom_fang",
+      "fire_bolt",
+      "bulwark_formation",
+      "frost_touch",
+      "shield_wall"
+    ]
+  },
+  {
+    "chapter": 9,
+    "encounter": 3,
+    "wins": 12,
+    "trials": 12,
+    "stalls": 0,
+    "maxSteps": 16,
+    "avgRounds": 2.4,
+    "stats": [
+      {
+        "name": "Hiro",
+        "hp": 344
+      },
+      {
+        "name": "Captain of the Tower",
+        "hp": 264
+      },
+      {
+        "name": "Consortium Mage · Seal Cowl",
+        "hp": 142
+      },
+      {
+        "name": "Consortium Mage · Seal Cowl",
+        "hp": 130
+      },
+      {
+        "name": "Consortium Guard · Iron Livery",
+        "hp": 152
+      }
+    ],
+    "enemySkills": [
+      "hold_the_road",
+      "bulwark_formation",
+      "fire_bolt",
+      "shield_breaker",
+      "ranging_ward",
+      "taunt",
+      "basic_attack",
+      "shield_wall",
+      "chain_lightning"
+    ]
+  },
+  {
+    "chapter": 10,
+    "encounter": 0,
+    "wins": 12,
+    "trials": 12,
+    "stalls": 0,
+    "maxSteps": 9,
+    "avgRounds": 1.7,
+    "stats": [
+      {
+        "name": "Hiro",
+        "hp": 344
+      },
+      {
+        "name": "Consortium Guard · Mine Detail",
+        "hp": 136
+      },
+      {
+        "name": "Consortium Guard · Black Livery",
+        "hp": 152
+      },
+      {
+        "name": "Hired Knife · Ash Cloak",
+        "hp": 128
+      }
+    ],
+    "enemySkills": [
+      "shield_breaker",
+      "silenced_step",
+      "basic_attack",
+      "shield_wall"
+    ]
+  },
+  {
+    "chapter": 10,
+    "encounter": 1,
+    "wins": 12,
+    "trials": 12,
+    "stalls": 0,
+    "maxSteps": 16,
+    "avgRounds": 3.8,
+    "stats": [
+      {
+        "name": "Hiro",
+        "hp": 344
+      },
+      {
+        "name": "Adigun Adeyinka",
+        "hp": 228
+      },
+      {
+        "name": "Bankole",
+        "hp": 230
+      },
+      {
+        "name": "Rotimi",
+        "hp": 222
+      },
+      {
+        "name": "Consortium Guard · Mine Detail",
+        "hp": 136
+      }
+    ],
+    "enemySkills": [
+      "basic_attack",
+      "cleave",
+      "mace_swing",
+      "contract_mark",
+      "bulwark_formation",
+      "spark",
+      "line_advance",
+      "chain_and_weight",
+      "shield_wall",
+      "frost_touch",
+      "shield_breaker",
+      "dispel",
+      "sunder"
+    ]
+  },
+  {
+    "chapter": 10,
+    "encounter": 2,
+    "wins": 12,
+    "trials": 12,
+    "stalls": 0,
+    "maxSteps": 13,
+    "avgRounds": 3.4,
+    "stats": [
+      {
+        "name": "Hiro",
+        "hp": 344
+      },
+      {
+        "name": "Gbenga",
+        "hp": 238
+      },
+      {
+        "name": "Hired Knife · Ash Cloak",
+        "hp": 152
+      },
+      {
+        "name": "Hired Knife · Wet Cloak",
+        "hp": 146
+      }
+    ],
+    "enemySkills": [
+      "backstab",
+      "marked_for_the_knife",
+      "smoke_bomb",
+      "basic_attack",
+      "silenced_step",
+      "aimed_shot",
+      "killing_angle"
+    ]
+  },
+  {
+    "chapter": 10,
+    "encounter": 3,
+    "wins": 12,
+    "trials": 12,
+    "stalls": 0,
+    "maxSteps": 17,
+    "avgRounds": 4.3,
+    "stats": [
+      {
+        "name": "Hiro",
+        "hp": 344
+      },
+      {
+        "name": "A Face You Know 1",
+        "hp": 128
+      },
+      {
+        "name": "A Face You Know 2",
+        "hp": 126
+      },
+      {
+        "name": "Shape-Thief · Between Faces",
+        "hp": 146
+      }
+    ],
+    "enemySkills": [
+      "ghoststep",
+      "bell_silence",
+      "ward_thief",
+      "basic_attack"
+    ]
+  },
+  {
+    "chapter": 10,
+    "encounter": 4,
+    "wins": 12,
+    "trials": 12,
+    "stalls": 0,
+    "maxSteps": 6,
+    "avgRounds": 1.8,
+    "stats": [
+      {
+        "name": "Hiro",
+        "hp": 344
+      },
+      {
+        "name": "Phase Spider · Blue",
+        "hp": 168
+      },
+      {
+        "name": "Tomb Ghoul · Dust",
+        "hp": 192
+      },
+      {
+        "name": "Tomb Ghoul · Split",
+        "hp": 202
+      }
+    ],
+    "enemySkills": [
+      "soul_bay",
+      "glass_web",
+      "venom_fang",
+      "basic_attack",
+      "wither_touch"
+    ]
+  },
+  {
+    "chapter": 11,
+    "encounter": 0,
+    "wins": 12,
+    "trials": 12,
+    "stalls": 0,
+    "maxSteps": 19,
+    "avgRounds": 5.3,
+    "stats": [
+      {
+        "name": "Hiro",
+        "hp": 344
+      },
+      {
+        "name": "Burning Gauntlet Soldier · Ash Tabard",
+        "hp": 126
+      },
+      {
+        "name": "Burning Gauntlet Soldier · Ash Tabard",
+        "hp": 142
+      },
+      {
+        "name": "Gauntlet Turncoat · Marr's Own",
+        "hp": 152
+      }
+    ],
+    "enemySkills": [
+      "cleave",
+      "basic_attack",
+      "crossing_guard",
+      "paid_in_full",
+      "sunder",
+      "shield_wall"
+    ]
+  },
+  {
+    "chapter": 11,
+    "encounter": 1,
+    "wins": 12,
+    "trials": 12,
+    "stalls": 0,
+    "maxSteps": 19,
+    "avgRounds": 4.3,
+    "stats": [
+      {
+        "name": "Hiro",
+        "hp": 344
+      },
+      {
+        "name": "Idris",
+        "hp": 228
+      },
+      {
+        "name": "Shape-Thief · Half-Turned",
+        "hp": 134
+      },
+      {
+        "name": "Gauntlet Turncoat · Marr's Own",
+        "hp": 148
+      }
+    ],
+    "enemySkills": [
+      "cleave",
+      "bell_silence",
+      "backstab",
+      "ashfall",
+      "ghoststep",
+      "blood_lotus",
+      "basic_attack",
+      "sunder",
+      "mend",
+      "wither_touch",
+      "ward_thief"
+    ]
+  },
+  {
+    "chapter": 11,
+    "encounter": 2,
+    "wins": 11,
+    "trials": 12,
+    "stalls": 0,
+    "maxSteps": 11,
+    "avgRounds": 2.2,
+    "stats": [
+      {
+        "name": "Hiro",
+        "hp": 344
+      },
+      {
+        "name": "Amara",
+        "hp": 856
+      }
+    ],
+    "enemySkills": [
+      "cleave",
+      "dual_swords",
+      "counter_attack",
+      "basic_attack"
+    ]
+  },
+  {
+    "chapter": 11,
+    "encounter": 3,
+    "wins": 12,
+    "trials": 12,
+    "stalls": 0,
+    "maxSteps": 9,
+    "avgRounds": 1.8,
+    "stats": [
+      {
+        "name": "Hiro",
+        "hp": 344
+      },
+      {
+        "name": "Rasheed",
+        "hp": 230
+      },
+      {
+        "name": "Kemi",
+        "hp": 218
+      },
+      {
+        "name": "Hired Knife · Road Cloak",
+        "hp": 138
+      }
+    ],
+    "enemySkills": [
+      "backstab",
+      "storm_shape",
+      "arcane_cascade",
+      "silenced_step",
+      "basic_attack",
+      "butchers_tempo",
+      "chain_lightning",
+      "dual_swords",
+      "spark",
+      "smoke_bomb"
+    ]
+  },
+  {
+    "chapter": 12,
+    "encounter": 0,
+    "wins": 12,
+    "trials": 12,
+    "stalls": 0,
+    "maxSteps": 38,
+    "avgRounds": 8.8,
+    "stats": [
+      {
+        "name": "Hiro",
+        "hp": 344
+      },
+      {
+        "name": "Ducal Guard 1",
+        "hp": 148
+      },
+      {
+        "name": "Ducal Guard 2",
+        "hp": 140
+      },
+      {
+        "name": "Palace Guard · Gate Livery",
+        "hp": 146
+      }
+    ],
+    "enemySkills": [
+      "smoke_step",
+      "basic_attack",
+      "cloak_of_shadows",
+      "countersign"
+    ]
+  },
+  {
+    "chapter": 12,
+    "encounter": 1,
+    "wins": 12,
+    "trials": 12,
+    "stalls": 0,
+    "maxSteps": 17,
+    "avgRounds": 5.3,
+    "stats": [
+      {
+        "name": "Hiro",
+        "hp": 344
+      },
+      {
+        "name": "Palace Guard · Gate Livery",
+        "hp": 132
+      },
+      {
+        "name": "Palace Guard · Ducal Livery",
+        "hp": 148
+      },
+      {
+        "name": "Shape-Thief · Between Faces",
+        "hp": 146
+      }
+    ],
+    "enemySkills": [
+      "smoke_step",
+      "cloak_of_shadows",
+      "bell_silence",
+      "ward_thief",
+      "basic_attack"
+    ]
+  },
+  {
+    "chapter": 12,
+    "encounter": 2,
+    "wins": 12,
+    "trials": 12,
+    "stalls": 0,
+    "maxSteps": 6,
+    "avgRounds": 1.3,
+    "stats": [
+      {
+        "name": "Hiro",
+        "hp": 344
+      },
+      {
+        "name": "Consortium Mage · Ash Cowl",
+        "hp": 140
+      },
+      {
+        "name": "Consortium Mage · Ash Cowl",
+        "hp": 148
+      },
+      {
+        "name": "Hired Knife · Ash Cloak",
+        "hp": 136
+      }
+    ],
+    "enemySkills": [
+      "fire_bolt",
+      "silenced_step",
+      "prismatic_bolt",
+      "basic_attack",
+      "frost_touch"
+    ]
+  },
+  {
+    "chapter": 13,
+    "encounter": 0,
+    "wins": 12,
+    "trials": 12,
+    "stalls": 0,
+    "maxSteps": 8,
+    "avgRounds": 2.8,
+    "stats": [
+      {
+        "name": "Hiro",
+        "hp": 344
+      },
+      {
+        "name": "Hired Knife · Wet Cloak",
+        "hp": 150
+      },
+      {
+        "name": "Hired Knife · Wet Cloak",
+        "hp": 142
+      },
+      {
+        "name": "Bandit Archer · Ford",
+        "hp": 128
+      }
+    ],
+    "enemySkills": [
+      "basic_attack",
+      "venom_fang",
+      "aimed_shot",
+      "marked_for_the_knife"
+    ]
+  },
+  {
+    "chapter": 13,
+    "encounter": 1,
+    "wins": 11,
+    "trials": 12,
+    "stalls": 0,
+    "maxSteps": 11,
+    "avgRounds": 2.2,
+    "stats": [
+      {
+        "name": "Hiro",
+        "hp": 344
+      },
+      {
+        "name": "Amara",
+        "hp": 856
+      }
+    ],
+    "enemySkills": [
+      "cleave",
+      "dual_swords",
+      "counter_attack",
+      "basic_attack"
+    ]
+  },
+  {
+    "chapter": 13,
+    "encounter": 2,
+    "wins": 12,
+    "trials": 12,
+    "stalls": 0,
+    "maxSteps": 20,
+    "avgRounds": 4.5,
+    "stats": [
+      {
+        "name": "Hiro",
+        "hp": 344
+      },
+      {
+        "name": "Jelani",
+        "hp": 216
+      },
+      {
+        "name": "Cultist of Morrak · Blood Cowl",
+        "hp": 142
+      },
+      {
+        "name": "Cultist of Morrak · Skull Cowl",
+        "hp": 142
+      }
+    ],
+    "enemySkills": [
+      "prismatic_bolt",
+      "blood_pact",
+      "raise",
+      "siege_flame",
+      "poison_spray",
+      "basic_attack",
+      "fire_ship",
+      "soul_bay",
+      "ember_lash"
+    ]
+  },
+  {
+    "chapter": 13,
+    "encounter": 3,
+    "wins": 3,
+    "trials": 12,
+    "stalls": 0,
+    "maxSteps": 7,
+    "avgRounds": 1.3,
+    "stats": [
+      {
+        "name": "Hiro",
+        "hp": 344
+      },
+      {
+        "name": "Gorruk",
+        "hp": 312
+      },
+      {
+        "name": "Hobgoblin Sergeant · Deserter",
+        "hp": 128
+      },
+      {
+        "name": "Hobgoblin Sergeant · Deserter",
+        "hp": 144
+      }
+    ],
+    "enemySkills": [
+      "fire_bolt",
+      "cleave",
+      "dual_swords",
+      "war_bellow",
+      "taunt",
+      "sunder",
+      "basic_attack"
+    ]
+  },
+  {
+    "chapter": 13,
+    "encounter": 4,
+    "wins": 8,
+    "trials": 12,
+    "stalls": 0,
+    "maxSteps": 17,
+    "avgRounds": 3.1,
+    "stats": [
+      {
+        "name": "Hiro",
+        "hp": 344
+      },
+      {
+        "name": "Segun Marr",
+        "hp": 236
+      },
+      {
+        "name": "Gauntlet Turncoat · Marr's Own",
+        "hp": 128
+      },
+      {
+        "name": "Gauntlet Turncoat · Marr's Own",
+        "hp": 146
+      }
+    ],
+    "enemySkills": [
+      "taunt",
+      "close_order",
+      "cleave",
+      "shield_wall",
+      "paid_in_full",
+      "sunder",
+      "basic_attack",
+      "ashfall",
+      "disciplined_advance"
+    ]
+  },
+  {
+    "chapter": 14,
+    "encounter": 0,
+    "wins": 12,
+    "trials": 12,
+    "stalls": 0,
+    "maxSteps": 23,
+    "avgRounds": 4.8,
+    "stats": [
+      {
+        "name": "Hiro",
+        "hp": 344
+      },
+      {
+        "name": "Keepers of the Altar 1",
+        "hp": 146
+      },
+      {
+        "name": "Keepers of the Altar 2",
+        "hp": 152
+      },
+      {
+        "name": "Cultist of Morrak · Ash Cowl",
+        "hp": 132
+      }
+    ],
+    "enemySkills": [
+      "blood_pact",
+      "bog_curse",
+      "raise",
+      "poison_spray",
+      "soul_bay",
+      "basic_attack"
+    ]
+  },
+  {
+    "chapter": 14,
+    "encounter": 1,
+    "wins": 12,
+    "trials": 12,
+    "stalls": 0,
+    "maxSteps": 20,
+    "avgRounds": 4.7,
+    "stats": [
+      {
+        "name": "Hiro",
+        "hp": 344
+      },
+      {
+        "name": "Your Own Faces 1",
+        "hp": 130
+      },
+      {
+        "name": "Your Own Faces 2",
+        "hp": 142
+      },
+      {
+        "name": "Your Own Faces 3",
+        "hp": 150
+      }
+    ],
+    "enemySkills": [
+      "ghoststep",
+      "bell_silence",
+      "ward_thief",
+      "basic_attack"
+    ]
+  },
+  {
+    "chapter": 14,
+    "encounter": 2,
+    "wins": 12,
+    "trials": 12,
+    "stalls": 0,
+    "maxSteps": 13,
+    "avgRounds": 2.4,
+    "stats": [
+      {
+        "name": "Hiro",
+        "hp": 344
+      },
+      {
+        "name": "Kolade Adeyinka",
+        "hp": 284
+      },
+      {
+        "name": "Cultist of Morrak · Blood Cowl",
+        "hp": 138
+      },
+      {
+        "name": "Cultist of Morrak · Blood Cowl",
+        "hp": 128
+      },
+      {
+        "name": "Consortium Mage · Ash Cowl",
+        "hp": 128
+      }
+    ],
+    "enemySkills": [
+      "reaving_arc",
+      "cleave",
+      "blood_pact",
+      "fire_bolt",
+      "soul_bay",
+      "bog_curse",
+      "basic_attack",
+      "chain_lightning",
+      "sunder",
+      "poison_spray",
+      "taunt",
+      "shield_wall",
+      "warding_stance"
+    ]
+  },
+  {
+    "chapter": 14,
+    "encounter": 3,
+    "wins": 12,
+    "trials": 12,
+    "stalls": 0,
+    "maxSteps": 2,
+    "avgRounds": 1,
+    "stats": [
+      {
+        "name": "Hiro",
+        "hp": 344
+      },
+      {
+        "name": "Kolade — the Unbound",
+        "hp": 213
+      }
+    ],
+    "enemySkills": [
+      "the_strongest_among_you",
+      "unbound_arc"
+    ]
+  }
+]

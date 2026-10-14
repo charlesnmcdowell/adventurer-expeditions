@@ -1,0 +1,26 @@
+[
+  {
+    "slug": "slave-driver",
+    "exit": 0,
+    "actor": "story_slave_driver",
+    "ordinaryFrames": 24,
+    "hiroFinisherFrames": [
+      16,
+      16
+    ],
+    "enemyFinisherFrames": 16,
+    "warnings": []
+  },
+  {
+    "slug": "korvath",
+    "exit": 0,
+    "actor": "story_korvath",
+    "ordinaryFrames": 24,
+    "hiroFinisherFrames": [
+      16,
+      16
+    ],
+    "enemyFinisherFrames": 16,
+    "warnings": []
+  }
+]

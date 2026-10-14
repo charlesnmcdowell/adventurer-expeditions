@@ -1,0 +1,1997 @@
+[
+  {
+    "enemy": "enemy:hired_knife",
+    "skill": "backstab",
+    "name": "Backstab",
+    "target": "enemy",
+    "melee": true,
+    "reach": "any",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:hired_knife",
+    "skill": "smoke_bomb",
+    "name": "Smoke Bomb",
+    "target": "self",
+    "reach": "any",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:hired_knife",
+    "skill": "venom_fang",
+    "name": "Venom Fang",
+    "target": "enemy",
+    "melee": true,
+    "reach": "front",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:hired_knife",
+    "skill": "marked_for_the_knife",
+    "name": "Marked for the Knife",
+    "target": "enemy",
+    "reach": "any",
+    "ranged": true,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:hired_knife",
+    "skill": "silenced_step",
+    "name": "Silenced Step",
+    "target": "enemy",
+    "reach": "front",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:consortium_mage",
+    "skill": "fire_bolt",
+    "name": "Fire Bolt",
+    "element": "fire",
+    "target": "enemy",
+    "reach": "any",
+    "ranged": true,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:consortium_mage",
+    "skill": "frost_touch",
+    "name": "Frost Touch",
+    "element": "ice",
+    "target": "enemy",
+    "reach": "any",
+    "ranged": true,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:consortium_mage",
+    "skill": "ranging_ward",
+    "name": "Ranging Ward",
+    "target": "enemy",
+    "reach": "any",
+    "ranged": true,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:consortium_mage",
+    "skill": "prismatic_bolt",
+    "name": "Prismatic Bolt",
+    "element": "prismatic",
+    "target": "enemy",
+    "reach": "any",
+    "ranged": true,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:consortium_mage",
+    "skill": "chain_lightning",
+    "name": "Chain Lightning",
+    "element": "lightning",
+    "target": "enemy",
+    "reach": "any",
+    "ranged": true,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:bandit_archer",
+    "skill": "aimed_shot",
+    "name": "Aimed Shot",
+    "target": "enemy",
+    "reach": "any",
+    "ranged": true,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:bandit_archer",
+    "skill": "ranged_discipline",
+    "name": "Ranged Discipline",
+    "target": "enemy",
+    "reach": "any",
+    "ranged": true,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:bandit_archer",
+    "skill": "suppressing_volley",
+    "name": "Suppressing Volley",
+    "target": "enemyLane",
+    "reach": "any",
+    "ranged": true,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:bandit_archer",
+    "skill": "kunai_line",
+    "name": "Kunai Line",
+    "target": "enemy",
+    "reach": "any",
+    "ranged": true,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:bandit_archer",
+    "skill": "venom_fang",
+    "name": "Venom Fang",
+    "target": "enemy",
+    "melee": true,
+    "reach": "front",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:veylan_acolyte",
+    "skill": "mend",
+    "name": "Mend",
+    "target": "ally",
+    "reach": "any",
+    "ranged": true,
+    "heal": true
+  },
+  {
+    "enemy": "enemy:veylan_acolyte",
+    "skill": "restorative_circle",
+    "name": "Restorative Circle",
+    "target": "allyLane",
+    "reach": "any",
+    "ranged": true,
+    "heal": true
+  },
+  {
+    "enemy": "enemy:veylan_acolyte",
+    "skill": "vital_anchor",
+    "name": "Vital Anchor",
+    "target": "ally",
+    "reach": "any",
+    "ranged": true,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:veylan_acolyte",
+    "skill": "blood_lotus",
+    "name": "Blood Lotus",
+    "target": "enemy",
+    "reach": "any",
+    "ranged": true,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:veylan_acolyte",
+    "skill": "wither_touch",
+    "name": "Wither Touch",
+    "target": "enemy",
+    "reach": "front",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:gauntlet_soldier",
+    "skill": "shield_wall",
+    "name": "Shield Wall",
+    "target": "self",
+    "reach": "any",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:gauntlet_soldier",
+    "skill": "fire_barrier",
+    "name": "Fire Barrier",
+    "target": "party",
+    "reach": "any",
+    "ranged": true,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:gauntlet_soldier",
+    "skill": "close_order",
+    "name": "Close Order",
+    "target": "self",
+    "reach": "any",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:gauntlet_soldier",
+    "skill": "crossing_guard",
+    "name": "Crossing Guard",
+    "target": "ally",
+    "reach": "any",
+    "ranged": true,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:gauntlet_soldier",
+    "skill": "taunt",
+    "name": "Taunt",
+    "target": "enemy",
+    "reach": "any",
+    "ranged": true,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:hob_sergeant",
+    "skill": "dual_swords",
+    "name": "Dual Swords",
+    "target": "enemy",
+    "reach": "front",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:hob_sergeant",
+    "skill": "shield_wall",
+    "name": "Shield Wall",
+    "target": "self",
+    "reach": "any",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:hob_sergeant",
+    "skill": "line_advance",
+    "name": "Line Advance",
+    "target": "enemy",
+    "reach": "front",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:hob_sergeant",
+    "skill": "stone_stance",
+    "name": "Stone Stance",
+    "target": "self",
+    "reach": "any",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:hob_sergeant",
+    "skill": "taunt",
+    "name": "Taunt",
+    "target": "enemy",
+    "reach": "any",
+    "ranged": true,
+    "heal": false
+  },
+  {
+    "enemy": "named:gorruk",
+    "skill": "cleave",
+    "name": "Cleave",
+    "target": "enemy",
+    "reach": "front",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "named:gorruk",
+    "skill": "sunder",
+    "name": "Sunder",
+    "target": "enemy",
+    "reach": "front",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "named:gorruk",
+    "skill": "war_bellow",
+    "name": "War Bellow",
+    "target": "enemy",
+    "melee": true,
+    "reach": "front",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "named:gorruk",
+    "skill": "fire_bolt",
+    "name": "Fire Bolt",
+    "element": "fire",
+    "target": "enemy",
+    "reach": "any",
+    "ranged": true,
+    "heal": false
+  },
+  {
+    "enemy": "named:gorruk",
+    "skill": "taunt",
+    "name": "Taunt",
+    "target": "enemy",
+    "reach": "any",
+    "ranged": true,
+    "heal": false
+  },
+  {
+    "enemy": "mini:silksa",
+    "skill": "glass_web",
+    "name": "Glass Web",
+    "element": "ice",
+    "target": "enemy",
+    "reach": "any",
+    "ranged": true,
+    "heal": false
+  },
+  {
+    "enemy": "mini:silksa",
+    "skill": "tongue_lash",
+    "name": "Tongue Lash",
+    "target": "enemy",
+    "melee": true,
+    "reach": "any",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "mini:silksa",
+    "skill": "venom_fang",
+    "name": "Venom Fang",
+    "target": "enemy",
+    "melee": true,
+    "reach": "front",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "mini:silksa",
+    "skill": "snare",
+    "name": "Snare",
+    "target": "enemy",
+    "reach": "any",
+    "ranged": true,
+    "heal": false
+  },
+  {
+    "enemy": "mini:silksa",
+    "skill": "backstab",
+    "name": "Backstab",
+    "target": "enemy",
+    "melee": true,
+    "reach": "any",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:web_spider",
+    "skill": "glass_web",
+    "name": "Glass Web",
+    "element": "ice",
+    "target": "enemy",
+    "reach": "any",
+    "ranged": true,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:web_spider",
+    "skill": "tongue_lash",
+    "name": "Tongue Lash",
+    "target": "enemy",
+    "melee": true,
+    "reach": "any",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:web_spider",
+    "skill": "venom_fang",
+    "name": "Venom Fang",
+    "target": "enemy",
+    "melee": true,
+    "reach": "front",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:web_spider",
+    "skill": "snare",
+    "name": "Snare",
+    "target": "enemy",
+    "reach": "any",
+    "ranged": true,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:web_spider",
+    "skill": "backstab",
+    "name": "Backstab",
+    "target": "enemy",
+    "melee": true,
+    "reach": "any",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "named:thornwise",
+    "skill": "thorn_lash",
+    "name": "Thorn Lash",
+    "target": "enemy",
+    "melee": true,
+    "reach": "front",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "named:thornwise",
+    "skill": "treefall",
+    "name": "Treefall",
+    "target": "enemy",
+    "melee": true,
+    "reach": "front",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "named:thornwise",
+    "skill": "grove_raise",
+    "name": "Grove Rise",
+    "target": "ally",
+    "reach": "any",
+    "ranged": true,
+    "heal": true
+  },
+  {
+    "enemy": "named:thornwise",
+    "skill": "beast_shape",
+    "name": "Beast Shape",
+    "target": "self",
+    "reach": "any",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "named:thornwise",
+    "skill": "thorn_skin",
+    "name": "Thorn Skin",
+    "target": "self",
+    "reach": "any",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:umbra_druid",
+    "skill": "thorn_lash",
+    "name": "Thorn Lash",
+    "target": "enemy",
+    "melee": true,
+    "reach": "front",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:umbra_druid",
+    "skill": "fox_form",
+    "name": "Fox Form",
+    "target": "self",
+    "reach": "any",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:umbra_druid",
+    "skill": "growth_field",
+    "name": "Growth Field",
+    "target": "ally",
+    "reach": "any",
+    "ranged": true,
+    "heal": true
+  },
+  {
+    "enemy": "enemy:umbra_druid",
+    "skill": "crow_sight",
+    "name": "Crow Sight",
+    "target": "self",
+    "reach": "any",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:umbra_druid",
+    "skill": "snare",
+    "name": "Snare",
+    "target": "enemy",
+    "reach": "any",
+    "ranged": true,
+    "heal": false
+  },
+  {
+    "enemy": "named:nettle",
+    "skill": "beast_shape",
+    "name": "Beast Shape",
+    "target": "self",
+    "reach": "any",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "named:nettle",
+    "skill": "thorn_skin",
+    "name": "Thorn Skin",
+    "target": "self",
+    "reach": "any",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "named:nettle",
+    "skill": "grove_raise",
+    "name": "Grove Rise",
+    "target": "ally",
+    "reach": "any",
+    "ranged": true,
+    "heal": true
+  },
+  {
+    "enemy": "named:nettle",
+    "skill": "wither_touch",
+    "name": "Wither Touch",
+    "target": "enemy",
+    "reach": "front",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "mini:wyvern_matriarch",
+    "skill": "raptor_shred",
+    "name": "Raptor Shred",
+    "target": "enemy",
+    "melee": true,
+    "reach": "front",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "mini:wyvern_matriarch",
+    "skill": "rot_wing",
+    "name": "Rot Wing",
+    "target": "enemy",
+    "reach": "any",
+    "ranged": true,
+    "heal": false
+  },
+  {
+    "enemy": "mini:wyvern_matriarch",
+    "skill": "rime_breath",
+    "name": "Rime Breath",
+    "element": "ice",
+    "target": "enemy",
+    "reach": "any",
+    "ranged": true,
+    "heal": false
+  },
+  {
+    "enemy": "mini:wyvern_matriarch",
+    "skill": "venom_fang",
+    "name": "Venom Fang",
+    "target": "enemy",
+    "melee": true,
+    "reach": "front",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "mini:wyvern_matriarch",
+    "skill": "counter_attack",
+    "name": "Counter Attack",
+    "target": "self",
+    "reach": "any",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:wyvern",
+    "skill": "raptor_shred",
+    "name": "Raptor Shred",
+    "target": "enemy",
+    "melee": true,
+    "reach": "front",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:wyvern",
+    "skill": "rot_wing",
+    "name": "Rot Wing",
+    "target": "enemy",
+    "reach": "any",
+    "ranged": true,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:wyvern",
+    "skill": "rime_breath",
+    "name": "Rime Breath",
+    "element": "ice",
+    "target": "enemy",
+    "reach": "any",
+    "ranged": true,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:wyvern",
+    "skill": "venom_fang",
+    "name": "Venom Fang",
+    "target": "enemy",
+    "melee": true,
+    "reach": "front",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:wyvern",
+    "skill": "counter_attack",
+    "name": "Counter Attack",
+    "target": "self",
+    "reach": "any",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "mini:kestrel",
+    "skill": "shield_wall",
+    "name": "Shield Wall",
+    "target": "self",
+    "reach": "any",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "mini:kestrel",
+    "skill": "taunt",
+    "name": "Taunt",
+    "target": "enemy",
+    "reach": "any",
+    "ranged": true,
+    "heal": false
+  },
+  {
+    "enemy": "mini:kestrel",
+    "skill": "hold_the_road",
+    "name": "Hold the Road",
+    "target": "self",
+    "reach": "any",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "mini:kestrel",
+    "skill": "shield_breaker",
+    "name": "Shield Breaker",
+    "target": "enemy",
+    "reach": "front",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "mini:kestrel",
+    "skill": "bulwark_formation",
+    "name": "Bulwark Formation",
+    "target": "self",
+    "reach": "any",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "mini:kestrel",
+    "skill": "sunder",
+    "name": "Sunder",
+    "target": "enemy",
+    "reach": "front",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:consortium_guard",
+    "skill": "shield_wall",
+    "name": "Shield Wall",
+    "target": "self",
+    "reach": "any",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:consortium_guard",
+    "skill": "taunt",
+    "name": "Taunt",
+    "target": "enemy",
+    "reach": "any",
+    "ranged": true,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:consortium_guard",
+    "skill": "hold_the_road",
+    "name": "Hold the Road",
+    "target": "self",
+    "reach": "any",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:consortium_guard",
+    "skill": "shield_breaker",
+    "name": "Shield Breaker",
+    "target": "enemy",
+    "reach": "front",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:consortium_guard",
+    "skill": "bulwark_formation",
+    "name": "Bulwark Formation",
+    "target": "self",
+    "reach": "any",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:slave_driver",
+    "skill": "chain_and_weight",
+    "name": "Chain-and-Weight",
+    "target": "enemy",
+    "melee": true,
+    "reach": "front",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:slave_driver",
+    "skill": "contract_mark",
+    "name": "Contract Mark",
+    "target": "enemy",
+    "reach": "any",
+    "ranged": true,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:slave_driver",
+    "skill": "flanking_pay",
+    "name": "Flanking Pay",
+    "target": "enemy",
+    "reach": "front",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:slave_driver",
+    "skill": "mace_swing",
+    "name": "Mace Swing",
+    "target": "enemy",
+    "reach": "front",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:slave_driver",
+    "skill": "cleave",
+    "name": "Cleave",
+    "target": "enemy",
+    "reach": "front",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "named:malvane",
+    "skill": "frost_touch",
+    "name": "Frost Touch",
+    "element": "ice",
+    "target": "enemy",
+    "reach": "any",
+    "ranged": true,
+    "heal": false
+  },
+  {
+    "enemy": "named:malvane",
+    "skill": "rime_grasp",
+    "name": "Rime Grasp",
+    "element": "ice",
+    "target": "enemy",
+    "reach": "any",
+    "ranged": true,
+    "heal": false
+  },
+  {
+    "enemy": "named:malvane",
+    "skill": "coven_rime",
+    "name": "Coven Rime",
+    "element": "ice",
+    "target": "enemy",
+    "reach": "any",
+    "ranged": true,
+    "heal": false
+  },
+  {
+    "enemy": "named:malvane",
+    "skill": "ranging_ward",
+    "name": "Ranging Ward",
+    "target": "enemy",
+    "reach": "any",
+    "ranged": true,
+    "heal": false
+  },
+  {
+    "enemy": "mini:sewer_ogre_mage",
+    "skill": "boulder_smash",
+    "name": "Boulder Smash",
+    "target": "enemy",
+    "melee": true,
+    "reach": "front",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "mini:sewer_ogre_mage",
+    "skill": "fault_line",
+    "name": "Fault Line",
+    "target": "enemy",
+    "melee": true,
+    "reach": "front",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "mini:sewer_ogre_mage",
+    "skill": "cleave",
+    "name": "Cleave",
+    "target": "enemy",
+    "reach": "front",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "mini:sewer_ogre_mage",
+    "skill": "mace_swing",
+    "name": "Mace Swing",
+    "target": "enemy",
+    "reach": "front",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "mini:sewer_ogre_mage",
+    "skill": "taunt",
+    "name": "Taunt",
+    "target": "enemy",
+    "reach": "any",
+    "ranged": true,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:sewer_crawler",
+    "skill": "pincer_lock",
+    "name": "Pincer Lock",
+    "target": "enemy",
+    "melee": true,
+    "reach": "front",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:sewer_crawler",
+    "skill": "carapace_burst",
+    "name": "Carapace Burst",
+    "target": "enemy",
+    "melee": true,
+    "reach": "front",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:sewer_crawler",
+    "skill": "venom_fang",
+    "name": "Venom Fang",
+    "target": "enemy",
+    "melee": true,
+    "reach": "front",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:sewer_crawler",
+    "skill": "backstab",
+    "name": "Backstab",
+    "target": "enemy",
+    "melee": true,
+    "reach": "any",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:sewer_crawler",
+    "skill": "snare",
+    "name": "Snare",
+    "target": "enemy",
+    "reach": "any",
+    "ranged": true,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:shadow_double",
+    "skill": "backstab",
+    "name": "Backstab",
+    "target": "enemy",
+    "melee": true,
+    "reach": "any",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:shadow_double",
+    "skill": "shadow_rise",
+    "name": "Shadow Rise",
+    "target": "self",
+    "reach": "any",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:shadow_double",
+    "skill": "ghoststep",
+    "name": "Ghoststep",
+    "target": "self",
+    "reach": "any",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:shadow_double",
+    "skill": "ward_thief",
+    "name": "Ward Thief",
+    "target": "enemy",
+    "reach": "front",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:shadow_double",
+    "skill": "bell_silence",
+    "name": "Bell-Silence",
+    "target": "enemy",
+    "reach": "any",
+    "ranged": true,
+    "heal": false
+  },
+  {
+    "enemy": "mini:lantern_master",
+    "skill": "backstab",
+    "name": "Backstab",
+    "target": "enemy",
+    "melee": true,
+    "reach": "any",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "mini:lantern_master",
+    "skill": "shadow_rise",
+    "name": "Shadow Rise",
+    "target": "self",
+    "reach": "any",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "mini:lantern_master",
+    "skill": "ghoststep",
+    "name": "Ghoststep",
+    "target": "self",
+    "reach": "any",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "mini:lantern_master",
+    "skill": "ward_thief",
+    "name": "Ward Thief",
+    "target": "enemy",
+    "reach": "front",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "mini:lantern_master",
+    "skill": "bell_silence",
+    "name": "Bell-Silence",
+    "target": "enemy",
+    "reach": "any",
+    "ranged": true,
+    "heal": false
+  },
+  {
+    "enemy": "mini:umbral_pair",
+    "skill": "backstab",
+    "name": "Backstab",
+    "target": "enemy",
+    "melee": true,
+    "reach": "any",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "mini:umbral_pair",
+    "skill": "smoke_bomb",
+    "name": "Smoke Bomb",
+    "target": "self",
+    "reach": "any",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "mini:umbral_pair",
+    "skill": "venom_fang",
+    "name": "Venom Fang",
+    "target": "enemy",
+    "melee": true,
+    "reach": "front",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "mini:umbral_pair",
+    "skill": "marked_for_the_knife",
+    "name": "Marked for the Knife",
+    "target": "enemy",
+    "reach": "any",
+    "ranged": true,
+    "heal": false
+  },
+  {
+    "enemy": "mini:umbral_pair",
+    "skill": "silenced_step",
+    "name": "Silenced Step",
+    "target": "enemy",
+    "reach": "front",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "mini:tower_captain",
+    "skill": "shield_wall",
+    "name": "Shield Wall",
+    "target": "self",
+    "reach": "any",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "mini:tower_captain",
+    "skill": "taunt",
+    "name": "Taunt",
+    "target": "enemy",
+    "reach": "any",
+    "ranged": true,
+    "heal": false
+  },
+  {
+    "enemy": "mini:tower_captain",
+    "skill": "hold_the_road",
+    "name": "Hold the Road",
+    "target": "self",
+    "reach": "any",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "mini:tower_captain",
+    "skill": "shield_breaker",
+    "name": "Shield Breaker",
+    "target": "enemy",
+    "reach": "front",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "mini:tower_captain",
+    "skill": "bulwark_formation",
+    "name": "Bulwark Formation",
+    "target": "self",
+    "reach": "any",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "named:maddox",
+    "skill": "contract_mark",
+    "name": "Contract Mark",
+    "target": "enemy",
+    "reach": "any",
+    "ranged": true,
+    "heal": false
+  },
+  {
+    "enemy": "named:maddox",
+    "skill": "chain_and_weight",
+    "name": "Chain-and-Weight",
+    "target": "enemy",
+    "melee": true,
+    "reach": "front",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "named:maddox",
+    "skill": "mace_swing",
+    "name": "Mace Swing",
+    "target": "enemy",
+    "reach": "front",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "named:maddox",
+    "skill": "cleave",
+    "name": "Cleave",
+    "target": "enemy",
+    "reach": "front",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "named:vask",
+    "skill": "line_advance",
+    "name": "Line Advance",
+    "target": "enemy",
+    "reach": "front",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "named:vask",
+    "skill": "shield_breaker",
+    "name": "Shield Breaker",
+    "target": "enemy",
+    "reach": "front",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "named:vask",
+    "skill": "cleave",
+    "name": "Cleave",
+    "target": "enemy",
+    "reach": "front",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "named:vask",
+    "skill": "sunder",
+    "name": "Sunder",
+    "target": "enemy",
+    "reach": "front",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "named:rennick",
+    "skill": "spark",
+    "name": "Spark",
+    "element": "lightning",
+    "target": "enemy",
+    "reach": "any",
+    "ranged": true,
+    "heal": false
+  },
+  {
+    "enemy": "named:rennick",
+    "skill": "frost_touch",
+    "name": "Frost Touch",
+    "element": "ice",
+    "target": "enemy",
+    "reach": "any",
+    "ranged": true,
+    "heal": false
+  },
+  {
+    "enemy": "named:rennick",
+    "skill": "dispel",
+    "name": "Dispel",
+    "target": "enemy",
+    "reach": "any",
+    "ranged": true,
+    "heal": false
+  },
+  {
+    "enemy": "named:grell",
+    "skill": "killing_angle",
+    "name": "Killing Angle",
+    "target": "enemy",
+    "reach": "any",
+    "ranged": true,
+    "heal": false
+  },
+  {
+    "enemy": "named:grell",
+    "skill": "aimed_shot",
+    "name": "Aimed Shot",
+    "target": "enemy",
+    "reach": "any",
+    "ranged": true,
+    "heal": false
+  },
+  {
+    "enemy": "named:grell",
+    "skill": "silenced_step",
+    "name": "Silenced Step",
+    "target": "enemy",
+    "reach": "front",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "named:grell",
+    "skill": "backstab",
+    "name": "Backstab",
+    "target": "enemy",
+    "melee": true,
+    "reach": "any",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "named:grell",
+    "skill": "smoke_bomb",
+    "name": "Smoke Bomb",
+    "target": "self",
+    "reach": "any",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "mini:family_double",
+    "skill": "backstab",
+    "name": "Backstab",
+    "target": "enemy",
+    "melee": true,
+    "reach": "any",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "mini:family_double",
+    "skill": "shadow_rise",
+    "name": "Shadow Rise",
+    "target": "self",
+    "reach": "any",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "mini:family_double",
+    "skill": "ghoststep",
+    "name": "Ghoststep",
+    "target": "self",
+    "reach": "any",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "mini:family_double",
+    "skill": "ward_thief",
+    "name": "Ward Thief",
+    "target": "enemy",
+    "reach": "front",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "mini:family_double",
+    "skill": "bell_silence",
+    "name": "Bell-Silence",
+    "target": "enemy",
+    "reach": "any",
+    "ranged": true,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:phase_spider",
+    "skill": "glass_web",
+    "name": "Glass Web",
+    "element": "ice",
+    "target": "enemy",
+    "reach": "any",
+    "ranged": true,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:phase_spider",
+    "skill": "coil_crush",
+    "name": "Coil Crush",
+    "target": "enemy",
+    "melee": true,
+    "reach": "front",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:phase_spider",
+    "skill": "shadow_rise",
+    "name": "Shadow Rise",
+    "target": "self",
+    "reach": "any",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:phase_spider",
+    "skill": "venom_fang",
+    "name": "Venom Fang",
+    "target": "enemy",
+    "melee": true,
+    "reach": "front",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:phase_spider",
+    "skill": "smoke_bomb",
+    "name": "Smoke Bomb",
+    "target": "self",
+    "reach": "any",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:tomb_ghoul",
+    "skill": "soul_bay",
+    "name": "Soul Bay",
+    "target": "enemy",
+    "reach": "any",
+    "ranged": true,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:tomb_ghoul",
+    "skill": "mire_tusk",
+    "name": "Mire Tusk",
+    "target": "enemy",
+    "melee": true,
+    "reach": "front",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:tomb_ghoul",
+    "skill": "wither_touch",
+    "name": "Wither Touch",
+    "target": "enemy",
+    "reach": "front",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:tomb_ghoul",
+    "skill": "venom_fang",
+    "name": "Venom Fang",
+    "target": "enemy",
+    "melee": true,
+    "reach": "front",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:tomb_ghoul",
+    "skill": "snare",
+    "name": "Snare",
+    "target": "enemy",
+    "reach": "any",
+    "ranged": true,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:gauntlet_traitor",
+    "skill": "cleave",
+    "name": "Cleave",
+    "target": "enemy",
+    "reach": "front",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:gauntlet_traitor",
+    "skill": "paid_in_full",
+    "name": "Paid in Full",
+    "target": "enemy",
+    "melee": true,
+    "reach": "any",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:gauntlet_traitor",
+    "skill": "disciplined_advance",
+    "name": "Disciplined Advance",
+    "target": "enemy",
+    "reach": "front",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:gauntlet_traitor",
+    "skill": "ashfall",
+    "name": "Ashfall",
+    "element": "fire",
+    "target": "enemy",
+    "reach": "any",
+    "ranged": true,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:gauntlet_traitor",
+    "skill": "sunder",
+    "name": "Sunder",
+    "target": "enemy",
+    "reach": "front",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "named:idris",
+    "skill": "blood_lotus",
+    "name": "Blood Lotus",
+    "target": "enemy",
+    "reach": "any",
+    "ranged": true,
+    "heal": false
+  },
+  {
+    "enemy": "named:idris",
+    "skill": "wither_touch",
+    "name": "Wither Touch",
+    "target": "enemy",
+    "reach": "front",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "named:idris",
+    "skill": "mend",
+    "name": "Mend",
+    "target": "ally",
+    "reach": "any",
+    "ranged": true,
+    "heal": true
+  },
+  {
+    "enemy": "named:idris",
+    "skill": "ward_thief",
+    "name": "Ward Thief",
+    "target": "enemy",
+    "reach": "front",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "named:idris",
+    "skill": "backstab",
+    "name": "Backstab",
+    "target": "enemy",
+    "melee": true,
+    "reach": "any",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "named:amara",
+    "skill": "dual_swords",
+    "name": "Dual Swords",
+    "target": "enemy",
+    "reach": "front",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "named:amara",
+    "skill": "counter_attack",
+    "name": "Counter Attack",
+    "target": "self",
+    "reach": "any",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "named:amara",
+    "skill": "defiant_stand",
+    "name": "Defiant Stand",
+    "target": "self",
+    "reach": "any",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "named:amara",
+    "skill": "cleave",
+    "name": "Cleave",
+    "target": "enemy",
+    "reach": "front",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "named:ravel",
+    "skill": "dual_swords",
+    "name": "Dual Swords",
+    "target": "enemy",
+    "reach": "front",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "named:ravel",
+    "skill": "cutlass_work",
+    "name": "Cutlass Work",
+    "target": "enemy",
+    "melee": true,
+    "reach": "front",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "named:ravel",
+    "skill": "butchers_tempo",
+    "name": "Butcher's Tempo",
+    "target": "enemy",
+    "reach": "front",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "named:ravel",
+    "skill": "backstab",
+    "name": "Backstab",
+    "target": "enemy",
+    "melee": true,
+    "reach": "any",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "named:ravel",
+    "skill": "smoke_bomb",
+    "name": "Smoke Bomb",
+    "target": "self",
+    "reach": "any",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "named:kessa",
+    "skill": "chain_lightning",
+    "name": "Chain Lightning",
+    "element": "lightning",
+    "target": "enemy",
+    "reach": "any",
+    "ranged": true,
+    "heal": false
+  },
+  {
+    "enemy": "named:kessa",
+    "skill": "arcane_cascade",
+    "name": "Arcane Cascade",
+    "element": "arcane",
+    "target": "enemy",
+    "reach": "any",
+    "ranged": true,
+    "heal": false
+  },
+  {
+    "enemy": "named:kessa",
+    "skill": "storm_shape",
+    "name": "Storm Shape",
+    "target": "self",
+    "reach": "any",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "named:kessa",
+    "skill": "spark",
+    "name": "Spark",
+    "element": "lightning",
+    "target": "enemy",
+    "reach": "any",
+    "ranged": true,
+    "heal": false
+  },
+  {
+    "enemy": "mini:hall_doubles",
+    "skill": "backstab",
+    "name": "Backstab",
+    "target": "enemy",
+    "melee": true,
+    "reach": "any",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "mini:hall_doubles",
+    "skill": "shadow_rise",
+    "name": "Shadow Rise",
+    "target": "self",
+    "reach": "any",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "mini:hall_doubles",
+    "skill": "smoke_step",
+    "name": "Smoke Step",
+    "target": "self",
+    "reach": "any",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "mini:hall_doubles",
+    "skill": "cloak_of_shadows",
+    "name": "Cloak of Shadows",
+    "target": "self",
+    "reach": "any",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "mini:hall_doubles",
+    "skill": "countersign",
+    "name": "Countersign",
+    "target": "self",
+    "reach": "any",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:palace_doppelganger",
+    "skill": "backstab",
+    "name": "Backstab",
+    "target": "enemy",
+    "melee": true,
+    "reach": "any",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:palace_doppelganger",
+    "skill": "shadow_rise",
+    "name": "Shadow Rise",
+    "target": "self",
+    "reach": "any",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:palace_doppelganger",
+    "skill": "smoke_step",
+    "name": "Smoke Step",
+    "target": "self",
+    "reach": "any",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:palace_doppelganger",
+    "skill": "cloak_of_shadows",
+    "name": "Cloak of Shadows",
+    "target": "self",
+    "reach": "any",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:palace_doppelganger",
+    "skill": "countersign",
+    "name": "Countersign",
+    "target": "self",
+    "reach": "any",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "named:jarem",
+    "skill": "siege_flame",
+    "name": "Siege Flame",
+    "element": "fire",
+    "target": "enemyLane",
+    "reach": "any",
+    "ranged": true,
+    "heal": false
+  },
+  {
+    "enemy": "named:jarem",
+    "skill": "fire_ship",
+    "name": "Fire Ship",
+    "element": "fire",
+    "target": "enemyLane",
+    "reach": "any",
+    "ranged": true,
+    "heal": false
+  },
+  {
+    "enemy": "named:jarem",
+    "skill": "prismatic_bolt",
+    "name": "Prismatic Bolt",
+    "element": "prismatic",
+    "target": "enemy",
+    "reach": "any",
+    "ranged": true,
+    "heal": false
+  },
+  {
+    "enemy": "named:jarem",
+    "skill": "ember_lash",
+    "name": "Ember Lash",
+    "element": "fire",
+    "target": "enemy",
+    "reach": "any",
+    "ranged": true,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:morrak_cultist",
+    "skill": "blood_pact",
+    "name": "Blood Pact",
+    "target": "enemy",
+    "reach": "any",
+    "ranged": true,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:morrak_cultist",
+    "skill": "raise",
+    "name": "Raise",
+    "target": "ally",
+    "reach": "any",
+    "ranged": true,
+    "heal": true
+  },
+  {
+    "enemy": "enemy:morrak_cultist",
+    "skill": "poison_spray",
+    "name": "Poison Spray",
+    "element": "acid",
+    "target": "enemyLane",
+    "reach": "any",
+    "ranged": true,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:morrak_cultist",
+    "skill": "bog_curse",
+    "name": "Bog Curse",
+    "target": "enemy",
+    "reach": "any",
+    "ranged": true,
+    "heal": false
+  },
+  {
+    "enemy": "enemy:morrak_cultist",
+    "skill": "soul_bay",
+    "name": "Soul Bay",
+    "target": "enemy",
+    "reach": "any",
+    "ranged": true,
+    "heal": false
+  },
+  {
+    "enemy": "named:lucan",
+    "skill": "cleave",
+    "name": "Cleave",
+    "target": "enemy",
+    "reach": "front",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "named:lucan",
+    "skill": "shield_wall",
+    "name": "Shield Wall",
+    "target": "self",
+    "reach": "any",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "named:lucan",
+    "skill": "paid_in_full",
+    "name": "Paid in Full",
+    "target": "enemy",
+    "melee": true,
+    "reach": "any",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "named:lucan",
+    "skill": "close_order",
+    "name": "Close Order",
+    "target": "self",
+    "reach": "any",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "named:lucan",
+    "skill": "taunt",
+    "name": "Taunt",
+    "target": "enemy",
+    "reach": "any",
+    "ranged": true,
+    "heal": false
+  },
+  {
+    "enemy": "mini:altar_keepers",
+    "skill": "blood_pact",
+    "name": "Blood Pact",
+    "target": "enemy",
+    "reach": "any",
+    "ranged": true,
+    "heal": false
+  },
+  {
+    "enemy": "mini:altar_keepers",
+    "skill": "raise",
+    "name": "Raise",
+    "target": "ally",
+    "reach": "any",
+    "ranged": true,
+    "heal": true
+  },
+  {
+    "enemy": "mini:altar_keepers",
+    "skill": "poison_spray",
+    "name": "Poison Spray",
+    "element": "acid",
+    "target": "enemyLane",
+    "reach": "any",
+    "ranged": true,
+    "heal": false
+  },
+  {
+    "enemy": "mini:altar_keepers",
+    "skill": "bog_curse",
+    "name": "Bog Curse",
+    "target": "enemy",
+    "reach": "any",
+    "ranged": true,
+    "heal": false
+  },
+  {
+    "enemy": "mini:altar_keepers",
+    "skill": "soul_bay",
+    "name": "Soul Bay",
+    "target": "enemy",
+    "reach": "any",
+    "ranged": true,
+    "heal": false
+  },
+  {
+    "enemy": "mini:your_own_faces",
+    "skill": "backstab",
+    "name": "Backstab",
+    "target": "enemy",
+    "melee": true,
+    "reach": "any",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "mini:your_own_faces",
+    "skill": "shadow_rise",
+    "name": "Shadow Rise",
+    "target": "self",
+    "reach": "any",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "mini:your_own_faces",
+    "skill": "ghoststep",
+    "name": "Ghoststep",
+    "target": "self",
+    "reach": "any",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "mini:your_own_faces",
+    "skill": "ward_thief",
+    "name": "Ward Thief",
+    "target": "enemy",
+    "reach": "front",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "mini:your_own_faces",
+    "skill": "bell_silence",
+    "name": "Bell-Silence",
+    "target": "enemy",
+    "reach": "any",
+    "ranged": true,
+    "heal": false
+  },
+  {
+    "enemy": "named:korvath",
+    "skill": "cleave",
+    "name": "Cleave",
+    "target": "enemy",
+    "reach": "front",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "named:korvath",
+    "skill": "reaving_arc",
+    "name": "Reaving Arc",
+    "target": "enemyFront",
+    "melee": true,
+    "reach": "any",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "named:korvath",
+    "skill": "sunder",
+    "name": "Sunder",
+    "target": "enemy",
+    "reach": "front",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "named:korvath",
+    "skill": "shield_wall",
+    "name": "Shield Wall",
+    "target": "self",
+    "reach": "any",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "named:korvath",
+    "skill": "warding_stance",
+    "name": "Warding Stance",
+    "target": "self",
+    "reach": "any",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "named:korvath",
+    "skill": "finisher",
+    "name": "Finisher",
+    "target": "enemy",
+    "reach": "any",
+    "ranged": false,
+    "heal": false
+  },
+  {
+    "enemy": "named:korvath",
+    "skill": "taunt",
+    "name": "Taunt",
+    "target": "enemy",
+    "reach": "any",
+    "ranged": true,
+    "heal": false
+  }
+]

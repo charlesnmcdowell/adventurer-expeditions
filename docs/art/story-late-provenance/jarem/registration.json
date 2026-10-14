@@ -1,0 +1,58 @@
+{
+  "actor": "story_jarem",
+  "name": "Jelani",
+  "identity": "named:jarem",
+  "bodyReferenceHeight": 263,
+  "seedAlpha": 64,
+  "attackContacts": [
+    4
+  ],
+  "pairs": [
+    {
+      "id": "hiro-finisher-1",
+      "files": [
+        "hiro-finisher-1.png"
+      ],
+      "columns": 4,
+      "rows": 4,
+      "hiroReferenceHeights": [
+        216
+      ],
+      "contacts": [
+        6
+      ],
+      "seedErosion": 2
+    },
+    {
+      "id": "hiro-finisher-2",
+      "files": [
+        "hiro-finisher-2.png"
+      ],
+      "columns": 4,
+      "rows": 4,
+      "hiroReferenceHeights": [
+        203
+      ],
+      "contacts": [
+        6
+      ],
+      "seedErosion": 2
+    },
+    {
+      "id": "story_jarem-fatal",
+      "files": [
+        "enemy-fatal.png"
+      ],
+      "columns": 4,
+      "rows": 4,
+      "hiroReferenceHeights": [
+        229
+      ],
+      "contacts": [
+        6
+      ],
+      "fatal": true,
+      "seedErosion": 2
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "actor": "story_kestrel",
+  "name": "Kestrel",
+  "identity": "mini:kestrel",
+  "bodyReferenceHeight": 267,
+  "seedAlpha": 64,
+  "attackContacts": [
+    4
+  ],
+  "pairs": [
+    {
+      "id": "hiro-finisher-1",
+      "files": [
+        "hiro-finisher-1.png"
+      ],
+      "columns": 4,
+      "rows": 4,
+      "hiroReferenceHeights": [
+        217
+      ],
+      "contacts": [
+        6
+      ],
+      "seedErosion": 2,
+      "replacementSheets": [
+        {
+          "file": "hiro-finisher-1-repair.png",
+          "frames": [
+            14,
+            15
+          ],
+          "columns": 2,
+          "rows": 1,
+          "hiroReferenceHeight": 528
+        },
+        {
+          "file": "hiro-finisher-1-edge-repair.png",
+          "frames": [
+            3
+          ],
+          "columns": 1,
+          "rows": 1,
+          "hiroReferenceHeight": 624
+        }
+      ]
+    },
+    {
+      "id": "hiro-finisher-2",
+      "files": [
+        "hiro-finisher-2.png"
+      ],
+      "columns": 4,
+      "rows": 4,
+      "hiroReferenceHeights": [
+        219
+      ],
+      "contacts": [
+        6
+      ],
+      "seedErosion": 3
+    },
+    {
+      "id": "story_kestrel-fatal",
+      "files": [
+        "enemy-fatal.png"
+      ],
+      "columns": 4,
+      "rows": 4,
+      "hiroReferenceHeights": [
+        229
+      ],
+      "contacts": [
+        6
+      ],
+      "fatal": true,
+      "seedErosion": 2,
+      "replacementSheets": [
+        {
+          "file": "enemy-fatal-edge-repair.png",
+          "frames": [
+            7
+          ],
+          "columns": 1,
+          "rows": 1,
+          "hiroReferenceHeight": 668
+        }
+      ]
+    }
+  ]
+}

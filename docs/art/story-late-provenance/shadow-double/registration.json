@@ -1,0 +1,58 @@
+{
+  "actor": "story_shadow_double",
+  "name": "Shape-Thief",
+  "identity": "enemy:shadow_double",
+  "bodyReferenceHeight": 298,
+  "seedAlpha": 64,
+  "attackContacts": [
+    4
+  ],
+  "pairs": [
+    {
+      "id": "hiro-finisher-1",
+      "files": [
+        "hiro-finisher-1.png"
+      ],
+      "columns": 4,
+      "rows": 4,
+      "hiroReferenceHeights": [
+        229
+      ],
+      "contacts": [
+        6
+      ],
+      "seedErosion": 2
+    },
+    {
+      "id": "hiro-finisher-2",
+      "files": [
+        "hiro-finisher-2.png"
+      ],
+      "columns": 4,
+      "rows": 4,
+      "hiroReferenceHeights": [
+        223
+      ],
+      "contacts": [
+        6
+      ],
+      "seedErosion": 2
+    },
+    {
+      "id": "story_shadow_double-fatal",
+      "files": [
+        "enemy-fatal.png"
+      ],
+      "columns": 4,
+      "rows": 4,
+      "hiroReferenceHeights": [
+        248
+      ],
+      "contacts": [
+        6
+      ],
+      "fatal": true,
+      "seedErosion": 2
+    }
+  ]
+}

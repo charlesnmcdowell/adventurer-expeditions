@@ -1,0 +1,88 @@
+{
+  "actor": "story_korvath",
+  "name": "Kolade Adeyinka",
+  "identity": "named:korvath",
+  "bodyReferenceHeight": 253,
+  "seedAlpha": 64,
+  "attackContacts": [
+    4
+  ],
+  "pairs": [
+    {
+      "id": "hiro-finisher-1",
+      "files": [
+        "hiro-finisher-1-wide-a.png",
+        "hiro-finisher-1-wide-b.png"
+      ],
+      "columns": 2,
+      "rows": 4,
+      "hiroReferenceHeights": [
+        257,
+        284
+      ],
+      "contacts": [
+        5
+      ],
+      "nonlethal": true,
+      "seedErosion": 2,
+      "replacementSheets": [
+        {
+          "file": "hiro-finisher-1-qa-repair.png",
+          "columns": 1,
+          "rows": 1,
+          "frames": [
+            5
+          ],
+          "hiroReferenceHeight": 720
+        }
+      ]
+    },
+    {
+      "id": "hiro-finisher-2",
+      "files": [
+        "hiro-finisher-2-wide-a.png",
+        "hiro-finisher-2-wide-b.png"
+      ],
+      "columns": 2,
+      "rows": 4,
+      "hiroReferenceHeights": [
+        267,
+        296
+      ],
+      "contacts": [
+        5
+      ],
+      "nonlethal": true,
+      "seedErosion": 2,
+      "replacementSheets": [
+        {
+          "file": "hiro-finisher-2-qa-repair.png",
+          "columns": 1,
+          "rows": 1,
+          "frames": [
+            1
+          ],
+          "hiroReferenceHeight": 720
+        }
+      ]
+    },
+    {
+      "id": "story_korvath-fatal",
+      "files": [
+        "enemy-fatal-wide-a.png",
+        "enemy-fatal-wide-b.png"
+      ],
+      "columns": 2,
+      "rows": 4,
+      "hiroReferenceHeights": [
+        261,
+        267.86842105263156
+      ],
+      "contacts": [
+        5
+      ],
+      "fatal": true,
+      "seedErosion": 2
+    }
+  ]
+}

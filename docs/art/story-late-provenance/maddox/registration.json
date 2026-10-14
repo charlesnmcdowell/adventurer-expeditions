@@ -1,0 +1,69 @@
+{
+  "actor": "story_maddox",
+  "name": "Adigun Adeyinka",
+  "identity": "named:maddox",
+  "bodyReferenceHeight": 263,
+  "seedAlpha": 128,
+  "attackContacts": [
+    4
+  ],
+  "pairs": [
+    {
+      "id": "hiro-finisher-1",
+      "files": [
+        "hiro-finisher-1.png"
+      ],
+      "columns": 4,
+      "rows": 4,
+      "hiroReferenceHeights": [
+        223
+      ],
+      "contacts": [
+        6
+      ],
+      "seedErosion": 2
+    },
+    {
+      "id": "hiro-finisher-2",
+      "files": [
+        "hiro-finisher-2.png"
+      ],
+      "columns": 4,
+      "rows": 4,
+      "hiroReferenceHeights": [
+        236
+      ],
+      "contacts": [
+        6
+      ],
+      "seedErosion": 2
+    },
+    {
+      "id": "story_maddox-fatal",
+      "files": [
+        "enemy-fatal.png"
+      ],
+      "columns": 4,
+      "rows": 4,
+      "hiroReferenceHeights": [
+        226
+      ],
+      "contacts": [
+        6
+      ],
+      "fatal": true,
+      "seedErosion": 2,
+      "replacementSheets": [
+        {
+          "file": "enemy-fatal-repair.png",
+          "frames": [
+            10
+          ],
+          "columns": 1,
+          "rows": 1,
+          "hiroReferenceHeight": 731
+        }
+      ]
+    }
+  ]
+}

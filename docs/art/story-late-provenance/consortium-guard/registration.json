@@ -1,0 +1,58 @@
+{
+  "actor": "story_consortium_guard",
+  "name": "Consortium Guard",
+  "identity": "enemy:consortium_guard",
+  "bodyReferenceHeight": 250,
+  "seedAlpha": 64,
+  "attackContacts": [
+    4
+  ],
+  "pairs": [
+    {
+      "id": "hiro-finisher-1",
+      "files": [
+        "hiro-finisher-1.png"
+      ],
+      "columns": 4,
+      "rows": 4,
+      "hiroReferenceHeights": [
+        204
+      ],
+      "contacts": [
+        6
+      ],
+      "seedErosion": 2
+    },
+    {
+      "id": "hiro-finisher-2",
+      "files": [
+        "hiro-finisher-2.png"
+      ],
+      "columns": 4,
+      "rows": 4,
+      "hiroReferenceHeights": [
+        209
+      ],
+      "contacts": [
+        6
+      ],
+      "seedErosion": 6
+    },
+    {
+      "id": "story_consortium_guard-fatal",
+      "files": [
+        "enemy-fatal.png"
+      ],
+      "columns": 4,
+      "rows": 4,
+      "hiroReferenceHeights": [
+        208
+      ],
+      "contacts": [
+        6
+      ],
+      "fatal": true,
+      "seedErosion": 2
+    }
+  ]
+}

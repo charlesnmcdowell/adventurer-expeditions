@@ -52,6 +52,44 @@ S.bindings['named:gorruk']={actor:'story_gorruk',height:420,humanoid:true,combat
 // three Hiro-owned pairs; no tint or unrelated creature substitution.
 S.bindings['enemy:road_wolf']={actor:'wolf',height:250,reuse:true,combatReady:true,
   enemyFinisherReady:true,hiroFinishersReady:3};
+// Chapters 6–14: authored ordinary sets and three 16-drawing pairs per identity.
+S.bindings['mini:silksa']={actor:'story_silksa',"height":270,"humanoid":false,"combatReady":true,"enemyFinisherReady":true,"hiroFinishersReady":2,"plannedFrames":8,"minDistinctFrames":16,"goreBothDirections":true};
+S.bindings['enemy:web_spider']={actor:'story_web_spider',"height":165,"humanoid":false,"combatReady":true,"enemyFinisherReady":true,"hiroFinishersReady":2,"plannedFrames":8,"minDistinctFrames":16,"goreBothDirections":true};
+S.bindings['named:thornwise']={actor:'story_thornwise',"height":315,"humanoid":true,"combatReady":true,"enemyFinisherReady":true,"hiroFinishersReady":2,"plannedFrames":8,"minDistinctFrames":16,"goreBothDirections":true};
+S.bindings['enemy:umbra_druid']={actor:'story_umbra_druid',"height":315,"humanoid":true,"combatReady":true,"enemyFinisherReady":true,"hiroFinishersReady":2,"plannedFrames":8,"minDistinctFrames":16,"goreBothDirections":true};
+S.bindings['named:nettle']={actor:'story_nettle',"height":315,"humanoid":true,"combatReady":true,"enemyFinisherReady":true,"hiroFinishersReady":2,"plannedFrames":8,"minDistinctFrames":16,"goreBothDirections":true};
+S.bindings['mini:wyvern_matriarch']={actor:'story_wyvern_matriarch',"height":450,"humanoid":false,"combatReady":true,"enemyFinisherReady":true,"hiroFinishersReady":2,"plannedFrames":8,"minDistinctFrames":16,"goreBothDirections":true};
+S.bindings['enemy:wyvern']={actor:'story_wyvern',"height":420,"humanoid":false,"combatReady":true,"enemyFinisherReady":true,"hiroFinishersReady":2,"plannedFrames":8,"minDistinctFrames":16,"goreBothDirections":true};
+S.bindings['mini:kestrel']={actor:'story_kestrel',"height":330,"humanoid":true,"combatReady":true,"enemyFinisherReady":true,"hiroFinishersReady":2,"plannedFrames":8,"minDistinctFrames":16,"goreBothDirections":true};
+S.bindings['enemy:consortium_guard']={actor:'story_consortium_guard',"height":315,"humanoid":true,"combatReady":true,"enemyFinisherReady":true,"hiroFinishersReady":2,"plannedFrames":8,"minDistinctFrames":16,"goreBothDirections":true};
+S.bindings['enemy:slave_driver']={actor:'story_slave_driver',"height":315,"humanoid":true,"combatReady":true,"enemyFinisherReady":true,"hiroFinishersReady":2,"plannedFrames":8,"minDistinctFrames":16,"goreBothDirections":true};
+S.bindings['named:malvane']={actor:'story_malvane',"height":315,"humanoid":true,"combatReady":true,"enemyFinisherReady":true,"hiroFinishersReady":2,"plannedFrames":8,"minDistinctFrames":16,"goreBothDirections":true};
+S.bindings['mini:sewer_ogre_mage']={actor:'story_sewer_ogre_mage',"height":390,"humanoid":true,"combatReady":true,"enemyFinisherReady":true,"hiroFinishersReady":2,"plannedFrames":8,"minDistinctFrames":16,"goreBothDirections":true};
+S.bindings['enemy:sewer_crawler']={actor:'story_sewer_crawler',"height":165,"humanoid":false,"combatReady":true,"enemyFinisherReady":true,"hiroFinishersReady":2,"plannedFrames":8,"minDistinctFrames":16,"goreBothDirections":true};
+S.bindings['enemy:shadow_double']={actor:'story_shadow_double',"height":315,"humanoid":true,"combatReady":true,"enemyFinisherReady":true,"hiroFinishersReady":2,"plannedFrames":8,"minDistinctFrames":16,"goreBothDirections":true};
+S.bindings['mini:lantern_master']={actor:'story_lantern_master',"height":315,"humanoid":true,"combatReady":true,"enemyFinisherReady":true,"hiroFinishersReady":2,"plannedFrames":8,"minDistinctFrames":16,"goreBothDirections":true};
+S.bindings['mini:umbral_pair']={actor:'story_umbral_pair',"height":315,"humanoid":true,"combatReady":true,"enemyFinisherReady":true,"hiroFinishersReady":2,"plannedFrames":8,"minDistinctFrames":16,"goreBothDirections":true};
+S.bindings['mini:tower_captain']={actor:'story_tower_captain',"height":345,"humanoid":true,"combatReady":true,"enemyFinisherReady":true,"hiroFinishersReady":2,"plannedFrames":8,"minDistinctFrames":16,"goreBothDirections":true};
+S.bindings['named:maddox']={actor:'story_maddox',"height":315,"humanoid":true,"combatReady":true,"enemyFinisherReady":true,"hiroFinishersReady":2,"plannedFrames":8,"minDistinctFrames":16,"goreBothDirections":true};
+S.bindings['named:vask']={actor:'story_vask',"height":315,"humanoid":true,"combatReady":true,"enemyFinisherReady":true,"hiroFinishersReady":2,"plannedFrames":8,"minDistinctFrames":16,"goreBothDirections":true};
+S.bindings['named:rennick']={actor:'story_rennick',"height":315,"humanoid":true,"combatReady":true,"enemyFinisherReady":true,"hiroFinishersReady":2,"plannedFrames":8,"minDistinctFrames":16,"goreBothDirections":true};
+S.bindings['named:grell']={actor:'story_grell',"height":315,"humanoid":true,"combatReady":true,"enemyFinisherReady":true,"hiroFinishersReady":2,"plannedFrames":8,"minDistinctFrames":16,"goreBothDirections":true};
+S.bindings['mini:family_double']={actor:'story_family_double',"height":315,"humanoid":true,"combatReady":true,"enemyFinisherReady":true,"hiroFinishersReady":2,"plannedFrames":8,"minDistinctFrames":16,"goreBothDirections":true};
+S.bindings['enemy:phase_spider']={actor:'story_phase_spider',"height":195,"humanoid":false,"combatReady":true,"enemyFinisherReady":true,"hiroFinishersReady":2,"plannedFrames":8,"minDistinctFrames":16,"goreBothDirections":true};
+S.bindings['enemy:tomb_ghoul']={actor:'story_tomb_ghoul',"height":315,"humanoid":true,"combatReady":true,"enemyFinisherReady":true,"hiroFinishersReady":2,"plannedFrames":8,"minDistinctFrames":16,"goreBothDirections":true};
+S.bindings['enemy:gauntlet_traitor']={actor:'story_gauntlet_traitor',"height":315,"humanoid":true,"combatReady":true,"enemyFinisherReady":true,"hiroFinishersReady":2,"plannedFrames":8,"minDistinctFrames":16,"goreBothDirections":true};
+S.bindings['named:idris']={actor:'story_idris',"height":315,"humanoid":true,"combatReady":true,"enemyFinisherReady":true,"hiroFinishersReady":2,"plannedFrames":8,"minDistinctFrames":16,"goreBothDirections":true};
+S.bindings['named:amara']={actor:'story_amara',"height":315,"humanoid":true,"combatReady":true,"enemyFinisherReady":true,"hiroFinishersReady":2,"plannedFrames":8,"minDistinctFrames":16,"goreBothDirections":true};
+S.bindings['named:ravel']={actor:'story_ravel',"height":315,"humanoid":true,"combatReady":true,"enemyFinisherReady":true,"hiroFinishersReady":2,"plannedFrames":8,"minDistinctFrames":16,"goreBothDirections":true};
+S.bindings['named:kessa']={actor:'story_kessa',"height":315,"humanoid":true,"combatReady":true,"enemyFinisherReady":true,"hiroFinishersReady":2,"plannedFrames":8,"minDistinctFrames":16,"goreBothDirections":true};
+S.bindings['mini:hall_doubles']={actor:'story_hall_doubles',"height":315,"humanoid":true,"combatReady":true,"enemyFinisherReady":true,"hiroFinishersReady":2,"plannedFrames":8,"minDistinctFrames":16,"goreBothDirections":true};
+S.bindings['enemy:palace_doppelganger']={actor:'story_palace_doppelganger',"height":315,"humanoid":true,"combatReady":true,"enemyFinisherReady":true,"hiroFinishersReady":2,"plannedFrames":8,"minDistinctFrames":16,"goreBothDirections":true};
+S.bindings['named:jarem']={actor:'story_jarem',"height":315,"humanoid":true,"combatReady":true,"enemyFinisherReady":true,"hiroFinishersReady":2,"plannedFrames":8,"minDistinctFrames":16,"goreBothDirections":true};
+S.bindings['enemy:morrak_cultist']={actor:'story_morrak_cultist',"height":315,"humanoid":true,"combatReady":true,"enemyFinisherReady":true,"hiroFinishersReady":2,"plannedFrames":8,"minDistinctFrames":16,"goreBothDirections":true};
+S.bindings['named:lucan']={actor:'story_lucan',"height":315,"humanoid":true,"combatReady":true,"enemyFinisherReady":true,"hiroFinishersReady":2,"plannedFrames":8,"minDistinctFrames":16,"goreBothDirections":true};
+S.bindings['mini:altar_keepers']={actor:'story_altar_keepers',"height":315,"humanoid":true,"combatReady":true,"enemyFinisherReady":true,"hiroFinishersReady":2,"plannedFrames":8,"minDistinctFrames":16,"goreBothDirections":true};
+S.bindings['mini:your_own_faces']={actor:'story_your_own_faces',"height":315,"humanoid":true,"combatReady":true,"enemyFinisherReady":true,"hiroFinishersReady":2,"plannedFrames":8,"minDistinctFrames":16,"goreBothDirections":true};
+S.bindings['named:korvath']={actor:'story_korvath',"height":360,"humanoid":true,"combatReady":true,"enemyFinisherReady":true,"hiroFinishersReady":2,"plannedFrames":8,"minDistinctFrames":16,"goreBothDirections":true};
 for(const [id,b]of Object.entries(S.bindings)){
   if(!b.reuse&&!X.monsterActors.includes(b.actor))X.monsterActors.push(b.actor);
   if(!X.Painted.actors.includes(b.actor))X.Painted.actors.push(b.actor);

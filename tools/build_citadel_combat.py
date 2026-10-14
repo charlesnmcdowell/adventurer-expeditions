@@ -10,9 +10,16 @@ SRC=ROOT.parent/'adventurer-expeditions-source-art/astra-v5/citadel-20261009'
 OUT=ROOT/'docs/art/citadel-20261009/combat'
 ACTORS=['elven_wizard','elven_ranger','dark_swordswoman','enchantress']
 
-def extract(file,count,skip_release=False,seed_alpha=64):
+def extract(file,count,skip_release=False,seed_alpha=64,seed_erosion=0,seed_cuts=()):
     arr=np.array(Image.open(SRC/file).convert('RGBA'));h,w=arr.shape[:2]
-    labels,_=ndimage.label(arr[:,:,3]>seed_alpha);sizes=np.bincount(labels.ravel());sizes[0]=0
+    seed_mask=arr[:,:,3]>seed_alpha
+    # Optional seed separation for narrowly touching painted poses. This only
+    # separates ownership seeds; the original RGBA pixels are recovered below.
+    if seed_erosion:seed_mask=ndimage.binary_erosion(seed_mask,iterations=seed_erosion)
+    for x0,y0,x1,y1 in seed_cuts:
+        if not (0<=x0<x1<=w and 0<=y0<y1<=h):raise ValueError('Invalid ownership seed cut')
+        seed_mask[y0:y1,x0:x1]=False
+    labels,_=ndimage.label(seed_mask);sizes=np.bincount(labels.ravel());sizes[0]=0
     boxes=ndimage.find_objects(labels);ids=list(np.where(sizes>5000)[0]);removed=[]
     if skip_release:
         removed=[n for n in ids if .42<(boxes[n-1][0].start+boxes[n-1][0].stop)/2/h<.56]

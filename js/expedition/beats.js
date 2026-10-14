@@ -404,9 +404,10 @@ async function allyAction(scene, ally, g) {
 // The party's answers (evade, parry + riposte) are the same as against a beast.
 // A countered arrow or spell (Hiro, 2026-10-13): knocked off the blade and
 // back into the shooter, who takes the bounced damage, before the riposte.
-async function deflect(scene, hero, foe, color, back) {
+async function deflect(scene, hero, foe, color, back, skillId) {
   const from = hero.contactPoint ? hero.contactPoint(foe) : hero.chest(), to = foe.chest();
-  await new Promise(res => {
+  if(scene.story&&X.StoryEffects?.supports(skillId))await X.StoryEffects.play(scene,skillId,from,to,{height:hero.height,reflected:true});
+  else await new Promise(res => {
     const bolt = scene.add.circle(from.x, from.y - 40, 9, color, 0.95).setDepth(650);
     scene.tweens.add({ targets: bolt, x: to.x, y: to.y, duration: 260, ease: 'Quad.In', onComplete: () => { bolt.destroy(); res(); } });
   });
@@ -426,7 +427,7 @@ async function humanAction(scene, foe, hero, g, r) {
       sfx(scene, 'block', 'block');
       V().damageNumber(scene,hero.x,hero.y-hero.height*.65,'Blocked','#bce5ff');
       await hero.play(ranged ? 'deflect' : 'intercept', { onContact: () => { const c = hero.contactPoint(foe); V().burst(scene, c.x, c.y - 40, 0xfff2b0, 10); hitStop(scene, TM().hitStop); } });
-      if (ranged) await deflect(scene, hero, foe, color, g.after.find(x => x.t === 'damage' && x.uid === foe.uid && x.tag === 'reflect'));
+      if (ranged) await deflect(scene, hero, foe, color, g.after.find(x => x.t === 'damage' && x.uid === foe.uid && x.tag === 'reflect'),g.use.skillId);
       if (r.riposte) { sfx(scene, 'slash', 'use'); await hero.play('riposte', { target: foe, onContact: () => { sfx(scene, 'slash', 'hit'); if (r.riposteHit) impact(scene, foe, r.riposteHit, { arc: 0xe8dfc8, hitStop: true }); if (r.riposteKill) V().burst(scene, foe.chest().x, foe.chest().y, 0xd9c2ff, 12); } }); }
       if (r.hit) impact(scene, hero, r.hit, {});
     } else if (r.evade) { sfx(scene, 'miss', 'miss'); V().damageNumber(scene,hero.x,hero.y-hero.height*.6,'Miss','#d7eaf3'); await hero.play('roll'); }

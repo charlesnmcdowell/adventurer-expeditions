@@ -1,0 +1,62 @@
+{
+  "actor": "story_wyvern_matriarch",
+  "name": "Wyvern Matriarch",
+  "identity": "mini:wyvern_matriarch",
+  "bodyReferenceHeight": 215,
+  "seedAlpha": 64,
+  "attackContacts": [
+    4
+  ],
+  "pairs": [
+    {
+      "id": "hiro-finisher-1",
+      "files": [
+        "hiro-finisher-1-wide-a.png",
+        "hiro-finisher-1-wide-b.png"
+      ],
+      "columns": 2,
+      "rows": 4,
+      "hiroReferenceHeights": [
+        194,
+        203
+      ],
+      "contacts": [
+        5
+      ],
+      "seedErosion": 2
+    },
+    {
+      "id": "hiro-finisher-2",
+      "files": [
+        "hiro-finisher-2-wide-a.png",
+        "hiro-finisher-2-wide-b.png"
+      ],
+      "columns": 2,
+      "rows": 4,
+      "hiroReferenceHeights": [
+        187,
+        231
+      ],
+      "contacts": [
+        5
+      ],
+      "seedErosion": 2
+    },
+    {
+      "id": "story_wyvern_matriarch-fatal",
+      "files": [
+        "enemy-fatal.png"
+      ],
+      "columns": 4,
+      "rows": 4,
+      "hiroReferenceHeights": [
+        130
+      ],
+      "contacts": [
+        6
+      ],
+      "fatal": true,
+      "seedErosion": 2
+    }
+  ]
+}

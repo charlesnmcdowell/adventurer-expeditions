@@ -1,0 +1,69 @@
+{
+  "actor": "story_vask",
+  "name": "Bankole",
+  "identity": "named:vask",
+  "bodyReferenceHeight": 267,
+  "seedAlpha": 64,
+  "attackContacts": [
+    4
+  ],
+  "pairs": [
+    {
+      "id": "hiro-finisher-1",
+      "files": [
+        "hiro-finisher-1.png"
+      ],
+      "columns": 4,
+      "rows": 4,
+      "hiroReferenceHeights": [
+        228
+      ],
+      "contacts": [
+        6
+      ],
+      "seedErosion": 2,
+      "replacementSheets": [
+        {
+          "file": "hiro-finisher-1-repair.png",
+          "frames": [
+            7
+          ],
+          "columns": 1,
+          "rows": 1,
+          "hiroReferenceHeight": 748
+        }
+      ]
+    },
+    {
+      "id": "hiro-finisher-2",
+      "files": [
+        "hiro-finisher-2.png"
+      ],
+      "columns": 4,
+      "rows": 4,
+      "hiroReferenceHeights": [
+        224
+      ],
+      "contacts": [
+        6
+      ],
+      "seedErosion": 2
+    },
+    {
+      "id": "story_vask-fatal",
+      "files": [
+        "enemy-fatal.png"
+      ],
+      "columns": 4,
+      "rows": 4,
+      "hiroReferenceHeights": [
+        240
+      ],
+      "contacts": [
+        6
+      ],
+      "fatal": true,
+      "seedErosion": 2
+    }
+  ]
+}

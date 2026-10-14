@@ -43,5 +43,203 @@
     "x": 105,
     "y": 122,
     "sizeRatio": 0.4
+  },
+  "umbra-druid": {
+    "frame": 4,
+    "x": 131,
+    "y": 229,
+    "sizeRatio": 0.4
+  },
+  "nettle": {
+    "frame": 2,
+    "x": 430,
+    "y": 212,
+    "sizeRatio": 0.4
+  },
+  "wyvern-matriarch": {
+    "frame": 4,
+    "x": 545,
+    "y": 373,
+    "sizeRatio": 0.4
+  },
+  "wyvern": {
+    "frame": 4,
+    "x": 724,
+    "y": 395,
+    "sizeRatio": 0.4
+  },
+  "malvane": {
+    "frame": 4,
+    "x": 264,
+    "y": 157,
+    "sizeRatio": 0.4
+  },
+  "sewer-ogre-mage": {
+    "frame": 4,
+    "x": 536,
+    "y": 201,
+    "sizeRatio": 0.4
+  },
+  "rennick": {
+    "frame": 6,
+    "x": 119,
+    "y": 200,
+    "sizeRatio": 0.4
+  },
+  "grell": {
+    "frame": 4,
+    "x": 449,
+    "y": 179,
+    "sizeRatio": 0.4
+  },
+  "idris": {
+    "frame": 4,
+    "x": 285,
+    "y": 215,
+    "sizeRatio": 0.4
+  },
+  "kessa": {
+    "frame": 4,
+    "x": 304,
+    "y": 238,
+    "sizeRatio": 0.4
+  },
+  "jarem": {
+    "frame": 4,
+    "x": 279,
+    "y": 214,
+    "sizeRatio": 0.4
+  },
+  "morrak-cultist": {
+    "frame": 4,
+    "x": 444,
+    "y": 255,
+    "sizeRatio": 0.4
+  },
+  "altar-keepers": {
+    "frame": 4,
+    "x": 243,
+    "y": 306,
+    "sizeRatio": 0.4
+  },
+  "silksa": {
+    "frame": 4,
+    "x": 379,
+    "y": 227,
+    "sizeRatio": 0.4
+  },
+  "web-spider": {
+    "frame": 4,
+    "x": 205,
+    "y": 248,
+    "sizeRatio": 0.4
+  },
+  "phase-spider": {
+    "frame": 4,
+    "x": 372,
+    "y": 323,
+    "sizeRatio": 0.4
+  },
+  "thornwise": {
+    "frame": 4,
+    "x": 495,
+    "y": 303,
+    "sizeRatio": 0.4
+  },
+  "kestrel": {
+    "frame": 4,
+    "x": 483,
+    "y": 349,
+    "sizeRatio": 0.4
+  },
+  "consortium-guard": {
+    "frame": 4,
+    "x": 534,
+    "y": 323,
+    "sizeRatio": 0.4
+  },
+  "slave-driver": {
+    "frame": 4,
+    "x": 318,
+    "y": 276,
+    "sizeRatio": 0.4
+  },
+  "sewer-crawler": {
+    "frame": 4,
+    "x": 317,
+    "y": 275,
+    "sizeRatio": 0.4
+  },
+  "shadow-double": {
+    "frame": 4,
+    "x": 314,
+    "y": 248,
+    "sizeRatio": 0.4
+  },
+  "lantern-master": {
+    "frame": 4,
+    "x": 342,
+    "y": 271,
+    "sizeRatio": 0.4
+  },
+  "umbral-pair": {
+    "frame": 4,
+    "x": 532,
+    "y": 354,
+    "sizeRatio": 0.4
+  },
+  "tower-captain": {
+    "frame": 4,
+    "x": 354,
+    "y": 320,
+    "sizeRatio": 0.4
+  },
+  "maddox": {
+    "frame": 4,
+    "x": 289,
+    "y": 253,
+    "sizeRatio": 0.4
+  },
+  "family-double": {
+    "frame": 4,
+    "x": 368,
+    "y": 405,
+    "sizeRatio": 0.4
+  },
+  "tomb-ghoul": {
+    "frame": 4,
+    "x": 314,
+    "y": 263,
+    "sizeRatio": 0.4
+  },
+  "gauntlet-traitor": {
+    "frame": 4,
+    "x": 351,
+    "y": 292,
+    "sizeRatio": 0.4
+  },
+  "lucan": {
+    "frame": 4,
+    "x": 499,
+    "y": 248,
+    "sizeRatio": 0.4
+  },
+  "your-own-faces": {
+    "frame": 4,
+    "x": 255,
+    "y": 225,
+    "sizeRatio": 0.4
+  },
+  "korvath": {
+    "frame": 4,
+    "x": 415,
+    "y": 411,
+    "sizeRatio": 0.4
+  },
+  "bandit-archer": {
+    "frame": 4,
+    "x": 365,
+    "y": 131,
+    "sizeRatio": 0.4
   }
 }

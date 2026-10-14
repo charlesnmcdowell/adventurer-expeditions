@@ -37,11 +37,11 @@ def normal():
             loop=name in ['idle','approach'],registration=dict(frames=guides)))
     return clips
 
-def paired(name,files,columns,rows,refs,contacts,fatal=False,omit_frames=(),region_owners=()):
+def paired(name,files,columns,rows,refs,contacts,fatal=False,omit_frames=(),region_owners=(),seed_erosion=2):
     frames=[];warnings=[]
     for file,ref in zip(files,refs):
         image=Image.open(SRC/file).convert('RGBA');w,h=image.size
-        arr=np.array(image);labels,_=ndimage.label(ndimage.binary_erosion(arr[:,:,3]>180,iterations=2))
+        arr=np.array(image);labels,_=ndimage.label(ndimage.binary_erosion(arr[:,:,3]>180,iterations=seed_erosion))
         sizes=np.bincount(labels.ravel());sizes[0]=0
         owners=np.full(len(sizes),-1,dtype=int)
         for lab in np.where(sizes>600)[0]:

@@ -1,0 +1,122 @@
+[
+  {
+    "slug": "malvane",
+    "skill": "frost_touch",
+    "from": {
+      "x": 581.55,
+      "y": 351.8
+    },
+    "release": 4,
+    "anchor": {
+      "x": 264,
+      "y": 157,
+      "sizeRatio": 0.4
+    },
+    "texture": "story_effects_frost"
+  },
+  {
+    "slug": "grell",
+    "skill": "aimed_shot",
+    "from": {
+      "x": 541.95,
+      "y": 382.25
+    },
+    "release": 4,
+    "anchor": {
+      "x": 449,
+      "y": 179,
+      "sizeRatio": 0.4
+    },
+    "texture": "story_effects_weapons"
+  },
+  {
+    "slug": "kessa",
+    "skill": "chain_lightning",
+    "from": {
+      "x": 870.15,
+      "y": 414.5
+    },
+    "release": 4,
+    "anchor": {
+      "x": 304,
+      "y": 238,
+      "sizeRatio": 0.4
+    },
+    "texture": "story_effects_storm"
+  },
+  {
+    "slug": "idris",
+    "skill": "blood_lotus",
+    "from": {
+      "x": 543.55,
+      "y": 414.79999999999995
+    },
+    "release": 4,
+    "anchor": {
+      "x": 285,
+      "y": 215,
+      "sizeRatio": 0.4
+    },
+    "texture": "story_effects_occult"
+  },
+  {
+    "slug": "jarem",
+    "skill": "siege_flame",
+    "from": {
+      "x": 500.35,
+      "y": 363.35
+    },
+    "release": 4,
+    "anchor": {
+      "x": 279,
+      "y": 214,
+      "sizeRatio": 0.4
+    },
+    "texture": "story_effects_fire"
+  },
+  {
+    "slug": "altar-keepers",
+    "skill": "poison_spray",
+    "from": {
+      "x": 538.05,
+      "y": 410.6
+    },
+    "release": 4,
+    "anchor": {
+      "x": 243,
+      "y": 306,
+      "sizeRatio": 0.4
+    },
+    "texture": "story_effects_nature"
+  },
+  {
+    "slug": "wyvern-matriarch",
+    "skill": "rime_breath",
+    "from": {
+      "x": 561,
+      "y": 392
+    },
+    "release": 4,
+    "anchor": {
+      "x": 545,
+      "y": 373,
+      "sizeRatio": 0.4
+    },
+    "texture": "story_effects_frost"
+  },
+  {
+    "slug": "silksa",
+    "skill": "glass_web",
+    "from": {
+      "x": 784.8,
+      "y": 420.79999999999995
+    },
+    "release": 4,
+    "anchor": {
+      "x": 379,
+      "y": 227,
+      "sizeRatio": 0.4
+    },
+    "texture": "story_effects_nature"
+  }
+]

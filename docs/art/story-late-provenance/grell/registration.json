@@ -1,0 +1,69 @@
+{
+  "actor": "story_grell",
+  "name": "Gbenga",
+  "identity": "named:grell",
+  "bodyReferenceHeight": 297,
+  "seedAlpha": 64,
+  "attackContacts": [
+    4
+  ],
+  "pairs": [
+    {
+      "id": "hiro-finisher-1",
+      "files": [
+        "hiro-finisher-1.png"
+      ],
+      "columns": 4,
+      "rows": 4,
+      "hiroReferenceHeights": [
+        227
+      ],
+      "contacts": [
+        6
+      ],
+      "seedErosion": 2
+    },
+    {
+      "id": "hiro-finisher-2",
+      "files": [
+        "hiro-finisher-2.png"
+      ],
+      "columns": 4,
+      "rows": 4,
+      "hiroReferenceHeights": [
+        256
+      ],
+      "contacts": [
+        6
+      ],
+      "seedErosion": 10,
+      "replacementSheets": [
+        {
+          "file": "hiro-finisher-2-repair.png",
+          "frames": [
+            15
+          ],
+          "columns": 1,
+          "rows": 1,
+          "hiroReferenceHeight": 737
+        }
+      ]
+    },
+    {
+      "id": "story_grell-fatal",
+      "files": [
+        "enemy-fatal.png"
+      ],
+      "columns": 4,
+      "rows": 4,
+      "hiroReferenceHeights": [
+        212
+      ],
+      "contacts": [
+        6
+      ],
+      "fatal": true,
+      "seedErosion": 2
+    }
+  ]
+}

@@ -1,0 +1,653 @@
+[
+  {
+    "slug": "silksa",
+    "file": "hiro-finisher-1.png",
+    "referenceCandidate": 217,
+    "warnings": []
+  },
+  {
+    "slug": "silksa",
+    "file": "hiro-finisher-2.png",
+    "referenceCandidate": 210,
+    "warnings": []
+  },
+  {
+    "slug": "silksa",
+    "file": "enemy-fatal.png",
+    "referenceCandidate": 221,
+    "warnings": []
+  },
+  {
+    "slug": "web-spider",
+    "file": "hiro-finisher-1.png",
+    "referenceCandidate": 244,
+    "warnings": []
+  },
+  {
+    "slug": "web-spider",
+    "file": "hiro-finisher-2.png",
+    "referenceCandidate": 282,
+    "warnings": []
+  },
+  {
+    "slug": "web-spider",
+    "file": "enemy-fatal.png",
+    "referenceCandidate": 257,
+    "warnings": []
+  },
+  {
+    "slug": "thornwise",
+    "file": "hiro-finisher-1.png",
+    "referenceCandidate": 245,
+    "warnings": [
+      {
+        "frame": 3,
+        "issue": "opaque pixels touch cell boundary"
+      }
+    ]
+  },
+  {
+    "slug": "thornwise",
+    "file": "hiro-finisher-2.png",
+    "referenceCandidate": 228,
+    "warnings": []
+  },
+  {
+    "slug": "thornwise",
+    "file": "enemy-fatal.png",
+    "referenceCandidate": 244,
+    "warnings": []
+  },
+  {
+    "slug": "umbra-druid",
+    "file": "hiro-finisher-1.png",
+    "referenceCandidate": 233,
+    "warnings": []
+  },
+  {
+    "slug": "umbra-druid",
+    "file": "hiro-finisher-2.png",
+    "referenceCandidate": 224,
+    "warnings": []
+  },
+  {
+    "slug": "umbra-druid",
+    "file": "enemy-fatal.png",
+    "referenceCandidate": 241,
+    "warnings": []
+  },
+  {
+    "slug": "nettle",
+    "file": "hiro-finisher-1.png",
+    "error": "Missing paired pose hiro-finisher-1.png/1"
+  },
+  {
+    "slug": "nettle",
+    "file": "hiro-finisher-2.png",
+    "referenceCandidate": 239,
+    "warnings": []
+  },
+  {
+    "slug": "nettle",
+    "file": "enemy-fatal.png",
+    "referenceCandidate": 254,
+    "warnings": []
+  },
+  {
+    "slug": "wyvern-matriarch",
+    "file": "hiro-finisher-1.png",
+    "referenceCandidate": 157,
+    "warnings": []
+  },
+  {
+    "slug": "wyvern-matriarch",
+    "file": "hiro-finisher-2.png",
+    "referenceCandidate": 157,
+    "warnings": []
+  },
+  {
+    "slug": "wyvern-matriarch",
+    "file": "enemy-fatal.png",
+    "referenceCandidate": 142,
+    "warnings": []
+  },
+  {
+    "slug": "wyvern",
+    "file": "hiro-finisher-1.png",
+    "referenceCandidate": 185,
+    "warnings": []
+  },
+  {
+    "slug": "wyvern",
+    "file": "hiro-finisher-2.png",
+    "referenceCandidate": 181,
+    "warnings": [
+      {
+        "frame": 3,
+        "issue": "opaque pixels touch cell boundary"
+      },
+      {
+        "frame": 7,
+        "issue": "opaque pixels touch cell boundary"
+      }
+    ]
+  },
+  {
+    "slug": "wyvern",
+    "file": "enemy-fatal.png",
+    "referenceCandidate": 165,
+    "warnings": []
+  },
+  {
+    "slug": "kestrel",
+    "file": "hiro-finisher-1.png",
+    "referenceCandidate": 219,
+    "warnings": [
+      {
+        "frame": 3,
+        "issue": "opaque pixels touch cell boundary"
+      }
+    ]
+  },
+  {
+    "slug": "kestrel",
+    "file": "hiro-finisher-2.png",
+    "referenceCandidate": 222,
+    "warnings": []
+  },
+  {
+    "slug": "kestrel",
+    "file": "enemy-fatal.png",
+    "referenceCandidate": 232,
+    "warnings": [
+      {
+        "frame": 7,
+        "issue": "opaque pixels touch cell boundary"
+      }
+    ]
+  },
+  {
+    "slug": "consortium-guard",
+    "file": "hiro-finisher-1.png",
+    "referenceCandidate": 207,
+    "warnings": []
+  },
+  {
+    "slug": "consortium-guard",
+    "file": "hiro-finisher-2.png",
+    "referenceCandidate": 211,
+    "warnings": []
+  },
+  {
+    "slug": "consortium-guard",
+    "file": "enemy-fatal.png",
+    "referenceCandidate": 210,
+    "warnings": []
+  },
+  {
+    "slug": "slave-driver",
+    "file": "hiro-finisher-1.png",
+    "referenceCandidate": 228,
+    "warnings": []
+  },
+  {
+    "slug": "slave-driver",
+    "file": "hiro-finisher-2.png",
+    "referenceCandidate": 219,
+    "warnings": []
+  },
+  {
+    "slug": "slave-driver",
+    "file": "enemy-fatal.png",
+    "referenceCandidate": 230,
+    "warnings": []
+  },
+  {
+    "slug": "malvane",
+    "file": "hiro-finisher-1.png",
+    "referenceCandidate": 231,
+    "warnings": []
+  },
+  {
+    "slug": "malvane",
+    "file": "hiro-finisher-2.png",
+    "referenceCandidate": 231,
+    "warnings": []
+  },
+  {
+    "slug": "malvane",
+    "file": "enemy-fatal.png",
+    "referenceCandidate": 240,
+    "warnings": []
+  },
+  {
+    "slug": "sewer-crawler",
+    "file": "hiro-finisher-1.png",
+    "referenceCandidate": 226,
+    "warnings": []
+  },
+  {
+    "slug": "sewer-crawler",
+    "file": "hiro-finisher-2.png",
+    "referenceCandidate": 223,
+    "warnings": []
+  },
+  {
+    "slug": "sewer-crawler",
+    "file": "enemy-fatal.png",
+    "referenceCandidate": 248,
+    "warnings": []
+  },
+  {
+    "slug": "shadow-double",
+    "file": "hiro-finisher-1.png",
+    "referenceCandidate": 232,
+    "warnings": []
+  },
+  {
+    "slug": "shadow-double",
+    "file": "hiro-finisher-2.png",
+    "referenceCandidate": 226,
+    "warnings": []
+  },
+  {
+    "slug": "shadow-double",
+    "file": "enemy-fatal.png",
+    "referenceCandidate": 252,
+    "warnings": []
+  },
+  {
+    "slug": "lantern-master",
+    "file": "hiro-finisher-1.png",
+    "referenceCandidate": 216,
+    "warnings": []
+  },
+  {
+    "slug": "lantern-master",
+    "file": "hiro-finisher-2.png",
+    "referenceCandidate": 222,
+    "warnings": []
+  },
+  {
+    "slug": "lantern-master",
+    "file": "enemy-fatal.png",
+    "referenceCandidate": 200,
+    "warnings": []
+  },
+  {
+    "slug": "umbral-pair",
+    "file": "hiro-finisher-1.png",
+    "referenceCandidate": 224,
+    "warnings": []
+  },
+  {
+    "slug": "umbral-pair",
+    "file": "hiro-finisher-2.png",
+    "referenceCandidate": 207,
+    "warnings": []
+  },
+  {
+    "slug": "umbral-pair",
+    "file": "enemy-fatal.png",
+    "referenceCandidate": 225,
+    "warnings": []
+  },
+  {
+    "slug": "tower-captain",
+    "file": "hiro-finisher-1.png",
+    "referenceCandidate": 219,
+    "warnings": []
+  },
+  {
+    "slug": "tower-captain",
+    "file": "hiro-finisher-2.png",
+    "referenceCandidate": 199,
+    "warnings": []
+  },
+  {
+    "slug": "tower-captain",
+    "file": "enemy-fatal.png",
+    "referenceCandidate": 192,
+    "warnings": []
+  },
+  {
+    "slug": "maddox",
+    "file": "hiro-finisher-1.png",
+    "referenceCandidate": 224,
+    "warnings": []
+  },
+  {
+    "slug": "maddox",
+    "file": "hiro-finisher-2.png",
+    "referenceCandidate": 238,
+    "warnings": []
+  },
+  {
+    "slug": "maddox",
+    "file": "enemy-fatal.png",
+    "referenceCandidate": 228,
+    "warnings": []
+  },
+  {
+    "slug": "vask",
+    "file": "hiro-finisher-1.png",
+    "referenceCandidate": 230,
+    "warnings": []
+  },
+  {
+    "slug": "vask",
+    "file": "hiro-finisher-2.png",
+    "referenceCandidate": 227,
+    "warnings": []
+  },
+  {
+    "slug": "vask",
+    "file": "enemy-fatal.png",
+    "referenceCandidate": 242,
+    "warnings": []
+  },
+  {
+    "slug": "rennick",
+    "file": "hiro-finisher-1.png",
+    "referenceCandidate": 246,
+    "warnings": []
+  },
+  {
+    "slug": "rennick",
+    "file": "hiro-finisher-2.png",
+    "referenceCandidate": 228,
+    "warnings": []
+  },
+  {
+    "slug": "rennick",
+    "file": "enemy-fatal.png",
+    "referenceCandidate": 224,
+    "warnings": []
+  },
+  {
+    "slug": "grell",
+    "file": "hiro-finisher-1.png",
+    "referenceCandidate": 229,
+    "warnings": []
+  },
+  {
+    "slug": "grell",
+    "file": "hiro-finisher-2.png",
+    "error": "Missing paired pose hiro-finisher-2.png/5"
+  },
+  {
+    "slug": "grell",
+    "file": "enemy-fatal.png",
+    "referenceCandidate": 214,
+    "warnings": []
+  },
+  {
+    "slug": "family-double",
+    "file": "hiro-finisher-1.png",
+    "error": "Missing paired pose hiro-finisher-1.png/2"
+  },
+  {
+    "slug": "family-double",
+    "file": "hiro-finisher-2.png",
+    "error": "Missing paired pose hiro-finisher-2.png/7"
+  },
+  {
+    "slug": "family-double",
+    "file": "enemy-fatal.png",
+    "referenceCandidate": 198,
+    "warnings": []
+  },
+  {
+    "slug": "phase-spider",
+    "file": "hiro-finisher-1.png",
+    "referenceCandidate": 225,
+    "warnings": []
+  },
+  {
+    "slug": "phase-spider",
+    "file": "hiro-finisher-2.png",
+    "referenceCandidate": 218,
+    "warnings": []
+  },
+  {
+    "slug": "phase-spider",
+    "file": "enemy-fatal.png",
+    "referenceCandidate": 250,
+    "warnings": []
+  },
+  {
+    "slug": "tomb-ghoul",
+    "file": "hiro-finisher-1.png",
+    "referenceCandidate": 212,
+    "warnings": []
+  },
+  {
+    "slug": "tomb-ghoul",
+    "file": "hiro-finisher-2.png",
+    "referenceCandidate": 238,
+    "warnings": []
+  },
+  {
+    "slug": "tomb-ghoul",
+    "file": "enemy-fatal.png",
+    "referenceCandidate": 221,
+    "warnings": []
+  },
+  {
+    "slug": "gauntlet-traitor",
+    "file": "hiro-finisher-1.png",
+    "referenceCandidate": 219,
+    "warnings": []
+  },
+  {
+    "slug": "gauntlet-traitor",
+    "file": "hiro-finisher-2.png",
+    "referenceCandidate": 202,
+    "warnings": []
+  },
+  {
+    "slug": "gauntlet-traitor",
+    "file": "enemy-fatal.png",
+    "referenceCandidate": 205,
+    "warnings": []
+  },
+  {
+    "slug": "idris",
+    "file": "hiro-finisher-1.png",
+    "referenceCandidate": 239,
+    "warnings": []
+  },
+  {
+    "slug": "idris",
+    "file": "hiro-finisher-2.png",
+    "referenceCandidate": 229,
+    "warnings": []
+  },
+  {
+    "slug": "idris",
+    "file": "enemy-fatal.png",
+    "referenceCandidate": 241,
+    "warnings": []
+  },
+  {
+    "slug": "amara",
+    "file": "hiro-finisher-1.png",
+    "error": "Missing paired pose hiro-finisher-1.png/3"
+  },
+  {
+    "slug": "amara",
+    "file": "hiro-finisher-2.png",
+    "referenceCandidate": 215,
+    "warnings": []
+  },
+  {
+    "slug": "amara",
+    "file": "enemy-fatal.png",
+    "referenceCandidate": 234,
+    "warnings": []
+  },
+  {
+    "slug": "ravel",
+    "file": "hiro-finisher-1.png",
+    "error": "Missing paired pose hiro-finisher-1.png/5"
+  },
+  {
+    "slug": "ravel",
+    "file": "hiro-finisher-2.png",
+    "referenceCandidate": 225,
+    "warnings": []
+  },
+  {
+    "slug": "ravel",
+    "file": "enemy-fatal.png",
+    "referenceCandidate": 234,
+    "warnings": []
+  },
+  {
+    "slug": "kessa",
+    "file": "hiro-finisher-1.png",
+    "referenceCandidate": 240,
+    "warnings": []
+  },
+  {
+    "slug": "kessa",
+    "file": "hiro-finisher-2.png",
+    "referenceCandidate": 240,
+    "warnings": []
+  },
+  {
+    "slug": "kessa",
+    "file": "enemy-fatal.png",
+    "error": "Missing paired pose enemy-fatal.png/4"
+  },
+  {
+    "slug": "hall-doubles",
+    "file": "hiro-finisher-1.png",
+    "referenceCandidate": 193,
+    "warnings": []
+  },
+  {
+    "slug": "hall-doubles",
+    "file": "hiro-finisher-2.png",
+    "referenceCandidate": 201,
+    "warnings": [
+      {
+        "frame": 3,
+        "issue": "opaque pixels touch cell boundary"
+      }
+    ]
+  },
+  {
+    "slug": "hall-doubles",
+    "file": "enemy-fatal.png",
+    "referenceCandidate": 208,
+    "warnings": []
+  },
+  {
+    "slug": "palace-doppelganger",
+    "file": "hiro-finisher-1.png",
+    "referenceCandidate": 218,
+    "warnings": []
+  },
+  {
+    "slug": "palace-doppelganger",
+    "file": "hiro-finisher-2.png",
+    "referenceCandidate": 232,
+    "warnings": []
+  },
+  {
+    "slug": "palace-doppelganger",
+    "file": "enemy-fatal.png",
+    "referenceCandidate": 220,
+    "warnings": []
+  },
+  {
+    "slug": "jarem",
+    "file": "hiro-finisher-1.png",
+    "referenceCandidate": 218,
+    "warnings": []
+  },
+  {
+    "slug": "jarem",
+    "file": "hiro-finisher-2.png",
+    "referenceCandidate": 206,
+    "warnings": []
+  },
+  {
+    "slug": "jarem",
+    "file": "enemy-fatal.png",
+    "referenceCandidate": 231,
+    "warnings": []
+  },
+  {
+    "slug": "morrak-cultist",
+    "file": "hiro-finisher-1.png",
+    "referenceCandidate": 228,
+    "warnings": []
+  },
+  {
+    "slug": "morrak-cultist",
+    "file": "hiro-finisher-2.png",
+    "referenceCandidate": 226,
+    "warnings": []
+  },
+  {
+    "slug": "morrak-cultist",
+    "file": "enemy-fatal.png",
+    "referenceCandidate": 230,
+    "warnings": []
+  },
+  {
+    "slug": "lucan",
+    "file": "hiro-finisher-1.png",
+    "error": "Missing paired pose hiro-finisher-1.png/4"
+  },
+  {
+    "slug": "lucan",
+    "file": "hiro-finisher-2.png",
+    "referenceCandidate": 226,
+    "warnings": []
+  },
+  {
+    "slug": "lucan",
+    "file": "enemy-fatal.png",
+    "referenceCandidate": 210,
+    "warnings": []
+  },
+  {
+    "slug": "altar-keepers",
+    "file": "hiro-finisher-1.png",
+    "referenceCandidate": 203,
+    "warnings": []
+  },
+  {
+    "slug": "altar-keepers",
+    "file": "hiro-finisher-2.png",
+    "referenceCandidate": 226,
+    "warnings": []
+  },
+  {
+    "slug": "altar-keepers",
+    "file": "enemy-fatal.png",
+    "referenceCandidate": 225,
+    "warnings": []
+  },
+  {
+    "slug": "your-own-faces",
+    "file": "hiro-finisher-1.png",
+    "referenceCandidate": 248,
+    "warnings": []
+  },
+  {
+    "slug": "your-own-faces",
+    "file": "hiro-finisher-2.png",
+    "referenceCandidate": 235,
+    "warnings": []
+  },
+  {
+    "slug": "your-own-faces",
+    "file": "enemy-fatal.png",
+    "referenceCandidate": 231,
+    "warnings": []
+  }
+]

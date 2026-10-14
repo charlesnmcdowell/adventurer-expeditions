@@ -1,0 +1,88 @@
+[
+  {
+    "slug": "kestrel",
+    "file": "hiro-finisher-1.png",
+    "frames": [
+      14,
+      15
+    ],
+    "text": "TWO final recovery poses in ONE ROW, TWO COLUMNS. Hiro stands LEFT facing right recovering his katana to low guard; the defeated masked Kestrel lies fully visible RIGHT. Pose1 Hiro returning his hands to guard; pose2 slightly more settled. Both complete bodies in EACH of two wide cells.",
+    "out": "hiro-finisher-1-repair.png",
+    "args": {
+      "prompt": "Use case: precise-object-edit. Repair animation poses from reference1, retaining exact adult character identities, costume, art style, proportions and side camera. Create ONLY the specified replacement pose(s) on transparent background, no other frames. TWO final recovery poses in ONE ROW, TWO COLUMNS. Hiro stands LEFT facing right recovering his katana to low guard; the defeated masked Kestrel lies fully visible RIGHT. Pose1 Hiro returning his hands to guard; pose2 slightly more settled. Both complete bodies in EACH of two wide cells. Match reference1 ground line and relative body scales. Include both characters, all hair, feet, weapons and prone bodies with generous transparent padding. No labels, text, grid or scenery. Match the stylized blood already shown; no added dismemberment.",
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v8/story-enemies/kestrel/hiro-finisher-1.png"
+      ],
+      "transparent_background": true
+    },
+    "output": "Generated images are saved to C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227 as C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227\\exec-90256437-783a-4aed-896c-d930be8f4ce3.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  {
+    "slug": "umbral-pair",
+    "file": "enemy-fatal.png",
+    "frames": [
+      11
+    ],
+    "text": "ONE complete paired pose: Hiro LEFT drops from kneeling onto both hands, badly wounded, katana rests on floor next to him. Dreadlocked gray-cloaked dual-dagger opponent remains standing RIGHT, lowering both blades. BOTH characters fully visible.",
+    "out": "enemy-fatal-repair.png",
+    "args": {
+      "prompt": "Use case: precise-object-edit. Repair animation poses from reference1, retaining exact adult character identities, costume, art style, proportions and side camera. Create ONLY the specified replacement pose(s) on transparent background, no other frames. ONE complete paired pose: Hiro LEFT drops from kneeling onto both hands, badly wounded, katana rests on floor next to him. Dreadlocked gray-cloaked dual-dagger opponent remains standing RIGHT, lowering both blades. BOTH characters fully visible. Match reference1 ground line and relative body scales. Include both characters, all hair, feet, weapons and prone bodies with generous transparent padding. No labels, text, grid or scenery. Match the stylized blood already shown; no added dismemberment.",
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v8/story-enemies/umbral-pair/enemy-fatal.png"
+      ],
+      "transparent_background": true
+    },
+    "output": "Generated images are saved to C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227 as C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227\\exec-824713e2-5c71-4e73-b68b-7f52b77842c1.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  {
+    "slug": "maddox",
+    "file": "enemy-fatal.png",
+    "frames": [
+      10
+    ],
+    "text": "ONE complete paired pose: Hiro LEFT crouches on one knee with one hand going down to ground, wounded from mace strike. Elderly navy-gold-robed mace opponent stays standing RIGHT pulling his gold mace back to guard. BOTH characters fully visible.",
+    "out": "enemy-fatal-repair.png",
+    "args": {
+      "prompt": "Use case: precise-object-edit. Repair animation poses from reference1, retaining exact adult character identities, costume, art style, proportions and side camera. Create ONLY the specified replacement pose(s) on transparent background, no other frames. ONE complete paired pose: Hiro LEFT crouches on one knee with one hand going down to ground, wounded from mace strike. Elderly navy-gold-robed mace opponent stays standing RIGHT pulling his gold mace back to guard. BOTH characters fully visible. Match reference1 ground line and relative body scales. Include both characters, all hair, feet, weapons and prone bodies with generous transparent padding. No labels, text, grid or scenery. Match the stylized blood already shown; no added dismemberment.",
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v8/story-enemies/maddox/enemy-fatal.png"
+      ],
+      "transparent_background": true
+    },
+    "output": "Generated images are saved to C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227 as C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227\\exec-7b38cdda-fe40-4053-8306-54209fcb77a6.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  {
+    "slug": "vask",
+    "file": "hiro-finisher-1.png",
+    "frames": [
+      7
+    ],
+    "text": "ONE complete paired pose immediately after sword impact: Hiro LEFT with katana fully extended horizontally to right at waist height, BOTH hands on hilt. Red-gold-coat swordsman RIGHT recoils with bloody waist wound, still upright and off-balance, chin thrown back. BOTH characters fully visible.",
+    "out": "hiro-finisher-1-repair.png",
+    "args": {
+      "prompt": "Use case: precise-object-edit. Repair animation poses from reference1, retaining exact adult character identities, costume, art style, proportions and side camera. Create ONLY the specified replacement pose(s) on transparent background, no other frames. ONE complete paired pose immediately after sword impact: Hiro LEFT with katana fully extended horizontally to right at waist height, BOTH hands on hilt. Red-gold-coat swordsman RIGHT recoils with bloody waist wound, still upright and off-balance, chin thrown back. BOTH characters fully visible. Match reference1 ground line and relative body scales. Include both characters, all hair, feet, weapons and prone bodies with generous transparent padding. No labels, text, grid or scenery. Match the stylized blood already shown; no added dismemberment.",
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v8/story-enemies/vask/hiro-finisher-1.png"
+      ],
+      "transparent_background": true
+    },
+    "output": "Generated images are saved to C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227 as C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227\\exec-a97b2244-c214-476b-8dfb-beb0f584f999.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  {
+    "slug": "grell",
+    "file": "hiro-finisher-2.png",
+    "frames": [
+      15
+    ],
+    "text": "ONE complete paired final pose: Hiro standing LEFT with katana low guard facing right. Black-red-leather crossbowman lies fully visible dead RIGHT in exactly the preceding frame14 composition. BOTH characters fully visible.",
+    "out": "hiro-finisher-2-repair.png",
+    "args": {
+      "prompt": "Use case: precise-object-edit. Repair animation poses from reference1, retaining exact adult character identities, costume, art style, proportions and side camera. Create ONLY the specified replacement pose(s) on transparent background, no other frames. ONE complete paired final pose: Hiro standing LEFT with katana low guard facing right. Black-red-leather crossbowman lies fully visible dead RIGHT in exactly the preceding frame14 composition. BOTH characters fully visible. Match reference1 ground line and relative body scales. Include both characters, all hair, feet, weapons and prone bodies with generous transparent padding. No labels, text, grid or scenery. Match the stylized blood already shown; no added dismemberment.",
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v8/story-enemies/grell/hiro-finisher-2.png"
+      ],
+      "transparent_background": true
+    },
+    "output": "Generated images are saved to C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227 as C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227\\exec-d4039481-dbbf-4cd3-9ac7-688dd0a285cd.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  }
+]

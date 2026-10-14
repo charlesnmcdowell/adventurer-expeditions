@@ -15,6 +15,20 @@ of small fixes within a day.
 
 ---
 
+## 2026-10-14 — Remaining campaign enemy art and painted projectiles (Astra)
+
+**Enemy-art coverage 22/59 → 59/59.** Added the remaining 37 opponent identities for chapters 6–14: 24 ordinary drawings per set and 111 paired finishing clips (two Hiro moves and one enemy-on-Hiro move per identity), each with 16 distinct drawings and a 2,190 ms base timeline. Nonlethal Hiro endings preserve Thornwise, Nettle, Amara and Kolade's story branches. Wide source sheets, targeted pose repairs and fixed body references correct clipped weapons, disappearing/doubled Hiro poses and neighboring-frame ownership. All 37 registration reports have zero boundary warnings.
+
+**Projectiles:** added six transparent four-frame effect atlases, 24 authored clips; the catalog and explicit aliases cover all 37 ranged/ward/summon skill IDs in the campaign and encounter variants. Arrows, magic and breaths launch at measured hand/staff/mouth anchors; wards appear at their recipient. Counter reflects the same painted effect instead of a placeholder circle. Added cast metadata for the reused bandit archer. Fixed effect preload so cached chapter-one textures cannot skip later groups. Pause, hit-stop and shutdown cleanup are covered.
+
+**Files:** 37 `assets/expedition/story_*` sets and 37 corresponding `adult/*-fatal` sets; six `story/effects` atlases; matching review pages under `docs/art/story-*`; `story_art.js`, `story_effects.js`, `beats.js`; actor/extraction/effect builders and `story_cast_anchors.json`; art/lifecycle/browser tests and package script; GDD, production status, `STORY_LATE_ART_REVIEW.html`, `STORY_LATE_ART_QA_20261014.md` and provenance records. Packed runtime addition approximately **342.74 MB actors + 4.625 MB effects**. Source PNGs remain in the sibling source-art folder, outside this repository; packed art and copied generation/configuration records are in Git.
+
+**Validation:** `npm test`, `npm run test:ship`, story campaign/combat/readability checks, existing real story-fight browser regression and mobile/tutorial preview passed. All 37 new opponents played both Hiro pairs and their lethal-DOT defeat pair in Chrome: 111 moves, 16 frames observed per move, normal actor restored. Eight representative ranged/caster releases passed browser capture checks. Full 12-seed balance sweep: zero unwinnable encounters, zero stalls; chapter 7 encounter index 3 remains especially hard at 1/12 wins. The UI tutorial test now uses a reproducible seed and uses ready skills between prompts instead of passively ignoring Iaido Draw; production difficulty was not changed.
+
+**Limits preserved:** local chapter cap 5, website packaging cap 2; Counter's two blocks/reflection, Iaido Draw and the other session's damage multipliers unchanged. No original Adventurer edits, website publication or portal export. Later chapters still need full progression QA and suitable combat ground plates: wyvern cliff, sewer water and consortium office furniture currently misalign with fighters. This completes enemy art, not a claim that chapters 6–14 are ready to unlock. Review and detailed evidence are linked in `STORY_LATE_ART_QA_20261014.md`.
+
+---
+
 ## 2026-10-13 — Harder fights, Counter answers projectiles, Iaido Draw replaces God Aura; site demo opens chapter two
 
 Hiro: "unlock chapter 2 but lock chapter 3, make the game a bit harder, hiro to die in 3 to 4 direct hits, counter to only work on two attacks at a time, remove the purple and yellow circle, counter needs to also work on projectiles … his second move to become an ieyasu drawing style attack that targets multiple enemies for heavy damage but has a long cool down."

@@ -1,0 +1,742 @@
+[
+  {
+    "identity": "mini:umbral_pair",
+    "actor": "story_umbral_pair",
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "restored": true
+      }
+    ],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "mini:tower_captain",
+    "actor": "story_tower_captain",
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "restored": true
+      }
+    ],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "named:maddox",
+    "actor": "story_maddox",
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "restored": true
+      }
+    ],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "named:vask",
+    "actor": "story_vask",
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "restored": true
+      }
+    ],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "named:rennick",
+    "actor": "story_rennick",
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "restored": true
+      }
+    ],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "named:grell",
+    "actor": "story_grell",
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "restored": true
+      }
+    ],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "mini:family_double",
+    "actor": "story_family_double",
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "restored": true
+      }
+    ],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "enemy:phase_spider",
+    "actor": "story_phase_spider",
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "restored": true
+      }
+    ],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "enemy:tomb_ghoul",
+    "actor": "story_tomb_ghoul",
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "restored": true
+      }
+    ],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "enemy:gauntlet_traitor",
+    "actor": "story_gauntlet_traitor",
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "restored": true
+      }
+    ],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "named:idris",
+    "actor": "story_idris",
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "restored": true
+      }
+    ],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "named:amara",
+    "actor": "story_amara",
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "restored": true
+      }
+    ],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "named:ravel",
+    "actor": "story_ravel",
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "restored": true
+      }
+    ],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "named:kessa",
+    "actor": "story_kessa",
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "restored": true
+      }
+    ],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "mini:hall_doubles",
+    "actor": "story_hall_doubles",
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "restored": true
+      }
+    ],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "enemy:palace_doppelganger",
+    "actor": "story_palace_doppelganger",
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "restored": true
+      }
+    ],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "named:jarem",
+    "actor": "story_jarem",
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "restored": true
+      }
+    ],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "enemy:morrak_cultist",
+    "actor": "story_morrak_cultist",
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "restored": true
+      }
+    ],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "named:lucan",
+    "actor": "story_lucan",
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "restored": true
+      }
+    ],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "mini:altar_keepers",
+    "actor": "story_altar_keepers",
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "restored": true
+      }
+    ],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "mini:your_own_faces",
+    "actor": "story_your_own_faces",
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "restored": true
+      }
+    ],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "named:korvath",
+    "actor": "story_korvath",
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "restored": true
+      }
+    ],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "mini:silksa",
+    "actor": "story_silksa",
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "restored": true
+      }
+    ],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "enemy:web_spider",
+    "actor": "story_web_spider",
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "restored": true
+      }
+    ],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "named:thornwise",
+    "actor": "story_thornwise",
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "restored": true
+      }
+    ],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "enemy:umbra_druid",
+    "actor": "story_umbra_druid",
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "restored": true
+      }
+    ],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "named:nettle",
+    "actor": "story_nettle",
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "restored": true
+      }
+    ],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "mini:wyvern_matriarch",
+    "actor": "story_wyvern_matriarch",
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "restored": true
+      }
+    ],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "enemy:wyvern",
+    "actor": "story_wyvern",
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "restored": true
+      }
+    ],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "mini:kestrel",
+    "actor": "story_kestrel",
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "restored": true
+      }
+    ],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "enemy:consortium_guard",
+    "actor": "story_consortium_guard",
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "restored": true
+      }
+    ],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "enemy:slave_driver",
+    "actor": "story_slave_driver",
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "restored": true
+      }
+    ],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "named:malvane",
+    "actor": "story_malvane",
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "restored": true
+      }
+    ],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "mini:sewer_ogre_mage",
+    "actor": "story_sewer_ogre_mage",
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "restored": true
+      }
+    ],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "enemy:sewer_crawler",
+    "actor": "story_sewer_crawler",
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "restored": true
+      }
+    ],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "enemy:shadow_double",
+    "actor": "story_shadow_double",
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "restored": true
+      }
+    ],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "mini:lantern_master",
+    "actor": "story_lantern_master",
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "restored": true
+      }
+    ],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  }
+]

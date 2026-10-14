@@ -1,0 +1,69 @@
+{
+  "actor": "story_lucan",
+  "name": "Segun Marr",
+  "identity": "named:lucan",
+  "bodyReferenceHeight": 256,
+  "seedAlpha": 64,
+  "attackContacts": [
+    4
+  ],
+  "pairs": [
+    {
+      "id": "hiro-finisher-1",
+      "files": [
+        "hiro-finisher-1.png"
+      ],
+      "columns": 4,
+      "rows": 4,
+      "hiroReferenceHeights": [
+        222
+      ],
+      "contacts": [
+        6
+      ],
+      "seedErosion": 6,
+      "replacementSheets": [
+        {
+          "file": "hiro-finisher-1-repair-late.png",
+          "frames": [
+            15
+          ],
+          "columns": 1,
+          "rows": 1,
+          "hiroReferenceHeight": 704
+        }
+      ]
+    },
+    {
+      "id": "hiro-finisher-2",
+      "files": [
+        "hiro-finisher-2.png"
+      ],
+      "columns": 4,
+      "rows": 4,
+      "hiroReferenceHeights": [
+        224
+      ],
+      "contacts": [
+        6
+      ],
+      "seedErosion": 2
+    },
+    {
+      "id": "story_lucan-fatal",
+      "files": [
+        "enemy-fatal.png"
+      ],
+      "columns": 4,
+      "rows": 4,
+      "hiroReferenceHeights": [
+        207
+      ],
+      "contacts": [
+        6
+      ],
+      "fatal": true,
+      "seedErosion": 2
+    }
+  ]
+}

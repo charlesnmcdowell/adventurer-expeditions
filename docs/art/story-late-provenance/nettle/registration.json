@@ -1,0 +1,62 @@
+{
+  "actor": "story_nettle",
+  "name": "Wanjiru",
+  "identity": "named:nettle",
+  "bodyReferenceHeight": 252,
+  "seedAlpha": 64,
+  "attackContacts": [
+    4
+  ],
+  "pairs": [
+    {
+      "id": "hiro-finisher-1",
+      "files": [
+        "hiro-finisher-1-wide-a.png",
+        "hiro-finisher-1-wide-b.png"
+      ],
+      "columns": 2,
+      "rows": 4,
+      "hiroReferenceHeights": [
+        281,
+        291
+      ],
+      "contacts": [
+        5
+      ],
+      "nonlethal": true,
+      "seedErosion": 2
+    },
+    {
+      "id": "hiro-finisher-2",
+      "files": [
+        "hiro-finisher-2.png"
+      ],
+      "columns": 4,
+      "rows": 4,
+      "hiroReferenceHeights": [
+        235
+      ],
+      "contacts": [
+        6
+      ],
+      "nonlethal": true,
+      "seedErosion": 2
+    },
+    {
+      "id": "story_nettle-fatal",
+      "files": [
+        "enemy-fatal.png"
+      ],
+      "columns": 4,
+      "rows": 4,
+      "hiroReferenceHeights": [
+        252
+      ],
+      "contacts": [
+        6
+      ],
+      "fatal": true,
+      "seedErosion": 8
+    }
+  ]
+}

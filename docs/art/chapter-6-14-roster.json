@@ -1,0 +1,544 @@
+[
+  {
+    "slug": "silksa",
+    "identity": "mini:silksa",
+    "appearances": [
+      {
+        "chapter": 6,
+        "encounter": 0
+      }
+    ]
+  },
+  {
+    "slug": "web-spider",
+    "identity": "enemy:web_spider",
+    "appearances": [
+      {
+        "chapter": 6,
+        "encounter": 0
+      },
+      {
+        "chapter": 6,
+        "encounter": 0
+      }
+    ]
+  },
+  {
+    "slug": "thornwise",
+    "identity": "named:thornwise",
+    "appearances": [
+      {
+        "chapter": 6,
+        "encounter": 1
+      }
+    ]
+  },
+  {
+    "slug": "umbra-druid",
+    "identity": "enemy:umbra_druid",
+    "appearances": [
+      {
+        "chapter": 6,
+        "encounter": 1
+      },
+      {
+        "chapter": 6,
+        "encounter": 1
+      }
+    ]
+  },
+  {
+    "slug": "nettle",
+    "identity": "named:nettle",
+    "appearances": [
+      {
+        "chapter": 6,
+        "encounter": 1
+      }
+    ]
+  },
+  {
+    "slug": "wyvern-matriarch",
+    "identity": "mini:wyvern_matriarch",
+    "appearances": [
+      {
+        "chapter": 6,
+        "encounter": 2
+      }
+    ]
+  },
+  {
+    "slug": "wyvern",
+    "identity": "enemy:wyvern",
+    "appearances": [
+      {
+        "chapter": 6,
+        "encounter": 2
+      }
+    ]
+  },
+  {
+    "slug": "kestrel",
+    "identity": "mini:kestrel",
+    "appearances": [
+      {
+        "chapter": 6,
+        "encounter": 3
+      }
+    ]
+  },
+  {
+    "slug": "consortium-guard",
+    "identity": "enemy:consortium_guard",
+    "appearances": [
+      {
+        "chapter": 6,
+        "encounter": 3
+      },
+      {
+        "chapter": 7,
+        "encounter": 0
+      },
+      {
+        "chapter": 7,
+        "encounter": 0
+      },
+      {
+        "chapter": 7,
+        "encounter": 2
+      },
+      {
+        "chapter": 7,
+        "encounter": 3
+      },
+      {
+        "chapter": 7,
+        "encounter": 3
+      },
+      {
+        "chapter": 7,
+        "encounter": 4
+      },
+      {
+        "chapter": 7,
+        "encounter": 4
+      },
+      {
+        "chapter": 8,
+        "encounter": 1
+      },
+      {
+        "chapter": 9,
+        "encounter": 0
+      },
+      {
+        "chapter": 9,
+        "encounter": 0
+      },
+      {
+        "chapter": 9,
+        "encounter": 1
+      },
+      {
+        "chapter": 9,
+        "encounter": 1
+      },
+      {
+        "chapter": 9,
+        "encounter": 1
+      },
+      {
+        "chapter": 9,
+        "encounter": 2
+      },
+      {
+        "chapter": 9,
+        "encounter": 3
+      },
+      {
+        "chapter": 10,
+        "encounter": 0
+      },
+      {
+        "chapter": 10,
+        "encounter": 0
+      },
+      {
+        "chapter": 10,
+        "encounter": 1
+      },
+      {
+        "chapter": 13,
+        "encounter": 3
+      }
+    ]
+  },
+  {
+    "slug": "slave-driver",
+    "identity": "enemy:slave_driver",
+    "appearances": [
+      {
+        "chapter": 7,
+        "encounter": 0
+      },
+      {
+        "chapter": 7,
+        "encounter": 1
+      },
+      {
+        "chapter": 7,
+        "encounter": 1
+      },
+      {
+        "chapter": 7,
+        "encounter": 4
+      }
+    ]
+  },
+  {
+    "slug": "malvane",
+    "identity": "named:malvane",
+    "appearances": [
+      {
+        "chapter": 7,
+        "encounter": 3
+      }
+    ]
+  },
+  {
+    "slug": "sewer-ogre-mage",
+    "identity": "mini:sewer_ogre_mage",
+    "appearances": [
+      {
+        "chapter": 8,
+        "encounter": 0
+      }
+    ]
+  },
+  {
+    "slug": "sewer-crawler",
+    "identity": "enemy:sewer_crawler",
+    "appearances": [
+      {
+        "chapter": 8,
+        "encounter": 0
+      },
+      {
+        "chapter": 8,
+        "encounter": 0
+      }
+    ]
+  },
+  {
+    "slug": "shadow-double",
+    "identity": "enemy:shadow_double",
+    "appearances": [
+      {
+        "chapter": 8,
+        "encounter": 2
+      },
+      {
+        "chapter": 8,
+        "encounter": 2
+      },
+      {
+        "chapter": 8,
+        "encounter": 3
+      },
+      {
+        "chapter": 8,
+        "encounter": 3
+      },
+      {
+        "chapter": 10,
+        "encounter": 3
+      },
+      {
+        "chapter": 11,
+        "encounter": 1
+      },
+      {
+        "chapter": 12,
+        "encounter": 1
+      }
+    ]
+  },
+  {
+    "slug": "lantern-master",
+    "identity": "mini:lantern_master",
+    "appearances": [
+      {
+        "chapter": 8,
+        "encounter": 3
+      }
+    ]
+  },
+  {
+    "slug": "umbral-pair",
+    "identity": "mini:umbral_pair",
+    "appearances": [
+      {
+        "chapter": 9,
+        "encounter": 1
+      }
+    ]
+  },
+  {
+    "slug": "tower-captain",
+    "identity": "mini:tower_captain",
+    "appearances": [
+      {
+        "chapter": 9,
+        "encounter": 3
+      }
+    ]
+  },
+  {
+    "slug": "maddox",
+    "identity": "named:maddox",
+    "appearances": [
+      {
+        "chapter": 10,
+        "encounter": 1
+      }
+    ]
+  },
+  {
+    "slug": "vask",
+    "identity": "named:vask",
+    "appearances": [
+      {
+        "chapter": 10,
+        "encounter": 1
+      }
+    ]
+  },
+  {
+    "slug": "rennick",
+    "identity": "named:rennick",
+    "appearances": [
+      {
+        "chapter": 10,
+        "encounter": 1
+      }
+    ]
+  },
+  {
+    "slug": "grell",
+    "identity": "named:grell",
+    "appearances": [
+      {
+        "chapter": 10,
+        "encounter": 2
+      }
+    ]
+  },
+  {
+    "slug": "family-double",
+    "identity": "mini:family_double",
+    "appearances": [
+      {
+        "chapter": 10,
+        "encounter": 3
+      }
+    ]
+  },
+  {
+    "slug": "phase-spider",
+    "identity": "enemy:phase_spider",
+    "appearances": [
+      {
+        "chapter": 10,
+        "encounter": 4
+      }
+    ]
+  },
+  {
+    "slug": "tomb-ghoul",
+    "identity": "enemy:tomb_ghoul",
+    "appearances": [
+      {
+        "chapter": 10,
+        "encounter": 4
+      },
+      {
+        "chapter": 10,
+        "encounter": 4
+      }
+    ]
+  },
+  {
+    "slug": "gauntlet-traitor",
+    "identity": "enemy:gauntlet_traitor",
+    "appearances": [
+      {
+        "chapter": 11,
+        "encounter": 0
+      },
+      {
+        "chapter": 11,
+        "encounter": 1
+      },
+      {
+        "chapter": 13,
+        "encounter": 4
+      },
+      {
+        "chapter": 13,
+        "encounter": 4
+      }
+    ]
+  },
+  {
+    "slug": "idris",
+    "identity": "named:idris",
+    "appearances": [
+      {
+        "chapter": 11,
+        "encounter": 1
+      }
+    ]
+  },
+  {
+    "slug": "amara",
+    "identity": "named:amara",
+    "appearances": [
+      {
+        "chapter": 11,
+        "encounter": 2
+      },
+      {
+        "chapter": 13,
+        "encounter": 1
+      }
+    ]
+  },
+  {
+    "slug": "ravel",
+    "identity": "named:ravel",
+    "appearances": [
+      {
+        "chapter": 11,
+        "encounter": 3
+      }
+    ]
+  },
+  {
+    "slug": "kessa",
+    "identity": "named:kessa",
+    "appearances": [
+      {
+        "chapter": 11,
+        "encounter": 3
+      }
+    ]
+  },
+  {
+    "slug": "hall-doubles",
+    "identity": "mini:hall_doubles",
+    "appearances": [
+      {
+        "chapter": 12,
+        "encounter": 0
+      }
+    ]
+  },
+  {
+    "slug": "palace-doppelganger",
+    "identity": "enemy:palace_doppelganger",
+    "appearances": [
+      {
+        "chapter": 12,
+        "encounter": 0
+      },
+      {
+        "chapter": 12,
+        "encounter": 1
+      },
+      {
+        "chapter": 12,
+        "encounter": 1
+      }
+    ]
+  },
+  {
+    "slug": "jarem",
+    "identity": "named:jarem",
+    "appearances": [
+      {
+        "chapter": 13,
+        "encounter": 2
+      }
+    ]
+  },
+  {
+    "slug": "morrak-cultist",
+    "identity": "enemy:morrak_cultist",
+    "appearances": [
+      {
+        "chapter": 13,
+        "encounter": 2
+      },
+      {
+        "chapter": 13,
+        "encounter": 2
+      },
+      {
+        "chapter": 14,
+        "encounter": 0
+      },
+      {
+        "chapter": 14,
+        "encounter": 2
+      },
+      {
+        "chapter": 14,
+        "encounter": 2
+      }
+    ]
+  },
+  {
+    "slug": "lucan",
+    "identity": "named:lucan",
+    "appearances": [
+      {
+        "chapter": 13,
+        "encounter": 4
+      }
+    ]
+  },
+  {
+    "slug": "altar-keepers",
+    "identity": "mini:altar_keepers",
+    "appearances": [
+      {
+        "chapter": 14,
+        "encounter": 0
+      }
+    ]
+  },
+  {
+    "slug": "your-own-faces",
+    "identity": "mini:your_own_faces",
+    "appearances": [
+      {
+        "chapter": 14,
+        "encounter": 1
+      }
+    ]
+  },
+  {
+    "slug": "korvath",
+    "identity": "named:korvath",
+    "appearances": [
+      {
+        "chapter": 14,
+        "encounter": 2
+      },
+      {
+        "chapter": 14,
+        "encounter": 3
+      }
+    ]
+  }
+]

@@ -1,0 +1,473 @@
+[
+  {
+    "slug": "silksa",
+    "file": "combat.png",
+    "args": {
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\silksa\\mini-silksa-reference.png"
+      ],
+      "prompt": "Use case: stylized-concept. Production animation sprite sheet, polished anime cel-shaded painted fantasy, same original character identity as supplied references. Black giant spider QUEEN, eight thick jointed legs, ivory crown-shaped marking on abdomen, ivory fangs, red eyes. Massive larger-than-human body. All poses side view FACING LEFT. TRUE transparent alpha, no background. Exact FOUR COLUMNS by SIX ROWS, 24 distinct complete full-body drawings with equal cell spacing, generous empty gutters; no labels or borders. Same anatomy scale, no camera moves. Row 1 four idle breathing/guard poses. Row 2 four walking leg cycles. Rows 3–4 eight successive attack drawings: rear up, step forward left, expose fangs, recoil, snap fangs LEFT at frame 4, recoil and settle. Row 5 four flinch/stagger/brace/recover poses. Row 6 four defeat drawings: curl legs inward and settle flat. Every limb, staff, fang and tip fully inside its cell. No adjacent figures or effects touching. Complete eyes, natural detailed anatomy, full body. No Hiro on this sheet. Never crop appendages or duplicate silhouettes."
+    },
+    "output": "Generated images are saved to C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227 as C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227\\exec-e0f5501f-d736-4b35-8811-df97149889ae.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  {
+    "slug": "web-spider",
+    "file": "combat.png",
+    "args": {
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\web-spider\\enemy-web_spider-reference.png"
+      ],
+      "prompt": "Use case: stylized-concept. Production animation sprite sheet, polished anime cel-shaded painted fantasy, same original character identity as supplied references. Black giant spider, red eyes, eight thin jointed legs, small crimson back marking; no queen crown. Body half adult-human height. All poses side view FACING LEFT. TRUE transparent alpha, no background. Exact FOUR COLUMNS by SIX ROWS, 24 distinct complete full-body drawings with equal cell spacing, generous empty gutters; no labels or borders. Same anatomy scale, no camera moves. Row 1 four idle breathing/guard poses. Row 2 four crawling leg cycles. Rows 3–4 eight successive attack drawings: brace, crouch, rear, aim LEFT, snap fangs LEFT at frame 4, recoiling body settles. Row 5 four flinch/stagger/brace/recover poses. Row 6 four defeat drawings: curl legs inward and settle flat. Every limb, staff, fang and tip fully inside its cell. No adjacent figures or effects touching. Complete eyes, natural detailed anatomy, full body. No Hiro on this sheet. Never crop appendages or duplicate silhouettes."
+    },
+    "output": "Generated images are saved to C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227 as C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227\\exec-e6e1290b-2f87-4f10-aa6d-96734304d74a.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  {
+    "slug": "thornwise",
+    "file": "combat.png",
+    "args": {
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions\\assets\\expedition\\story\\portraits\\thornwise-7a7d0728df4a.webp",
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\thornwise\\head-thornwise-reference.png",
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\thornwise\\body-thornwise-reference.png"
+      ],
+      "prompt": "Use case: stylized-concept. Production animation sprite sheet, polished anime cel-shaded painted fantasy, same original character identity as supplied references. Mzee Kamau, elderly dark-skinned male archdruid with grey locs and grey goatee, forehead ochre marks, red checked cloth over layered bark and leaf armor, bone necklaces, carved wooden staff. Brown eyes. All poses side view FACING LEFT. TRUE transparent alpha, no background. Exact FOUR COLUMNS by SIX ROWS, 24 distinct complete full-body drawings with equal cell spacing, generous empty gutters; no labels or borders. Same anatomy scale, no camera moves. Row 1 four idle breathing/guard poses. Row 2 four running strides, staff secure. Rows 3–4 eight successive attack drawings: gather green thorn magic with staff in right hand, aim open left hand LEFT, extend palm LEFT at frame 4 release, curl fingers and recover. Row 5 four flinch/stagger/brace/recover poses. Row 6 four defeat drawings: stagger, kneel, slump sideways, remain lying down. Every limb, staff, fang and tip fully inside its cell. No adjacent figures or effects touching. Complete eyes, natural detailed anatomy, full body. No Hiro on this sheet. Never crop appendages or duplicate silhouettes."
+    },
+    "output": "Generated images are saved to C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227 as C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227\\exec-7748ab0d-9976-4624-8ffe-8fa81598db1c.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  {
+    "slug": "umbra-druid",
+    "file": "combat.png",
+    "args": {
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\umbra-druid\\enemy-umbra_druid-reference.png"
+      ],
+      "prompt": "Use case: stylized-concept. Production full-body combat sprites, polished anime cel-shaded painted fantasy. Preserve original supplied character design. Adult dark-brown skinned woman, long black braids, red checked wrap, brown hide and leafy moss armor, wooden vine staff, reference identity. True transparent alpha. EXACT FOUR COLUMNS SIX ROWS =24 distinct drawings ordered row-major. All faces, torsos and attacks face LEFT, full profile three-quarter left. Equal anatomy scale and consistent ground baseline within each row. Row1 four idle breathing poses. Row2 four running strides. Rows3-4 eight attack poses: staff held behind, free palm draws green light, thrust palm left at frame 4, fade small glow and recover. Row5 four hit flinch/stagger/brace/recover poses. Row6 four down poses: kneel, slump, roll onto side, prone. Keep every weapon, tail, wing, tip, foot fully within its own cell; large empty transparent gutters so no pieces touch another pose. No background, labels, borders. No traveling projectiles on this sheet; only small glow directly on casting hand. Do not cross any cell boundary. Eyes complete. Not a portrait, show full bodies."
+    },
+    "output": "Generated images are saved to C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227 as C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227\\exec-1cd005fd-ca2c-413d-af85-cdbfb765fa5d.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  {
+    "slug": "nettle",
+    "file": "combat.png",
+    "args": {
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions\\assets\\expedition\\story\\portraits\\nettle-748ce4ea2342.webp",
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\nettle\\head-nettle-reference.png",
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\nettle\\body-nettle-reference.png"
+      ],
+      "prompt": "Use case: stylized-concept. Production full-body combat sprites, polished anime cel-shaded painted fantasy. Preserve original supplied character design. Wanjiru, adult dark-skinned woman with beaded black locs, red checked asymmetrical druid dress over bark/hide armor, ochre skin markings and bone jewelry. Wooden staff in right hand. True transparent alpha. EXACT FOUR COLUMNS SIX ROWS =24 distinct drawings ordered row-major. All faces, torsos and attacks face LEFT, full profile three-quarter left. Equal anatomy scale and consistent ground baseline within each row. Row1 four idle breathing poses. Row2 four running strides. Rows3-4 eight attack poses: gather root magic with free hand, step LEFT, palm thrust LEFT at frame 4, retract and return guard. Row5 four hit flinch/stagger/brace/recover poses. Row6 four down poses: kneel, hands on ground, sit exhausted, remain seated alive. Keep every weapon, tail, wing, tip, foot fully within its own cell; large empty transparent gutters so no pieces touch another pose. No background, labels, borders. No traveling projectiles on this sheet; only small glow directly on casting hand. Do not cross any cell boundary. Eyes complete. Not a portrait, show full bodies."
+    },
+    "output": "Generated images are saved to C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227 as C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227\\exec-4c6eb67a-9df3-4e97-b7b5-57810e23262a.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  {
+    "slug": "wyvern-matriarch",
+    "file": "combat.png",
+    "args": {
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\wyvern-matriarch\\mini-wyvern_matriarch-reference.png"
+      ],
+      "prompt": "Use case: stylized-concept. Production full-body combat sprites, polished anime cel-shaded painted fantasy. Preserve original supplied character design. Huge brown copper scaled wyvern matriarch, gold throat, swept horns, TWO hind legs and TWO leathery wing-forelimbs, spined tail. Massive compared with human. Keep wing tips folded enough for gutters. True transparent alpha. EXACT FOUR COLUMNS SIX ROWS =24 distinct drawings ordered row-major. All faces, torsos and attacks face LEFT, full profile three-quarter left. Equal anatomy scale and consistent ground baseline within each row. Row1 four idle breathing poses. Row2 four low bounding strides with alternating wing beat. Rows3-4 eight attack poses: brace, raise head, draw neck back, open jaws, bite LEFT at frame4, swing tail then settle. Row5 four hit flinch/stagger/brace/recover poses. Row6 four down poses: crouch, wing buckles, head falls, lie on side wings folded. Keep every weapon, tail, wing, tip, foot fully within its own cell; large empty transparent gutters so no pieces touch another pose. No background, labels, borders. No traveling projectiles on this sheet; only small glow directly on casting hand. Do not cross any cell boundary. Eyes complete. Not a portrait, show full bodies."
+    },
+    "output": "Generated images are saved to C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227 as C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227\\exec-13cd1a95-b5f3-4561-b74b-d277bd720222.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  {
+    "slug": "wyvern",
+    "file": "combat.png",
+    "args": {
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\wyvern\\enemy-wyvern-reference.png"
+      ],
+      "prompt": "Use case: stylized-concept. Production full-body combat sprites, polished anime cel-shaded painted fantasy. Preserve original supplied character design. Green scaled wyvern, cream throat, swept horns, TWO hind legs and TWO leathery wing forelimbs and long spined tail. Smaller slender dragon than matriarch. True transparent alpha. EXACT FOUR COLUMNS SIX ROWS =24 distinct drawings ordered row-major. All faces, torsos and attacks face LEFT, full profile three-quarter left. Equal anatomy scale and consistent ground baseline within each row. Row1 four idle breathing poses. Row2 four low bounding strides alternating wing beat. Rows3-4 eight attack poses: brace, lifthead, drawneckback, open jaws, bite LEFT frame4, swingtailthenrecover. Row5 four hit flinch/stagger/brace/recover poses. Row6 four down poses: crouch, wing buckles, head falls, lie on side wings folded. Keep every weapon, tail, wing, tip, foot fully within its own cell; large empty transparent gutters so no pieces touch another pose. No background, labels, borders. No traveling projectiles on this sheet; only small glow directly on casting hand. Do not cross any cell boundary. Eyes complete. Not a portrait, show full bodies."
+    },
+    "output": "Generated images are saved to C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227 as C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227\\exec-8e1e2f26-d845-4538-9e2b-b85502057986.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  {
+    "slug": "kestrel",
+    "file": "combat.png",
+    "args": {
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\kestrel\\mini-kestrel-reference.png"
+      ],
+      "prompt": "Use case: stylized-concept. Production full-body combat sprites, polished anime cel-shaded painted fantasy. Preserve original supplied character design. Kestrel, adult heavily armored captain in black and gold plate, gold-edged enclosed helmet with tall white crest, long patterned ivory tabard. Spear and large black/gold round shield. True transparent alpha. EXACT FOUR COLUMNS SIX ROWS =24 distinct drawings ordered row-major. All faces, torsos and attacks face LEFT, full profile three-quarter left. Equal anatomy scale and consistent ground baseline within each row. Row1 four idle breathing poses. Row2 four heavy running strides with spear and shield. Rows3-4 eight attack poses: lift shield, brace, retract spear, lunge LEFT, thrust spear LEFT at frame4, recoil,recoverguard. Row5 four hit flinch/stagger/brace/recover poses. Row6 four down poses: kneel, lower shield, fall onto side, lie still with all armor. Keep every weapon, tail, wing, tip, foot fully within its own cell; large empty transparent gutters so no pieces touch another pose. No background, labels, borders. No traveling projectiles on this sheet; only small glow directly on casting hand. Do not cross any cell boundary. Eyes complete. Not a portrait, show full bodies."
+    },
+    "output": "Generated images are saved to C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227 as C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227\\exec-7eb49a9f-874a-4c1d-a0d7-a2deff41c30b.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  {
+    "slug": "consortium-guard",
+    "file": "combat.png",
+    "args": {
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\consortium-guard\\enemy-consortium_guard-reference.png"
+      ],
+      "prompt": "Use case: stylized-concept. Production full-body combat sprites, polished anime cel-shaded painted fantasy. Preserve original supplied character design. Adult dark-skinned bearded male guard with cropped hair, black/gold plate armor, geometric gold tabard, iron spear and tall oval shield with gold diamond emblem. True transparent alpha. EXACT FOUR COLUMNS SIX ROWS =24 distinct drawings ordered row-major. All faces, torsos and attacks face LEFT, full profile three-quarter left. Equal anatomy scale and consistent ground baseline within each row. Row1 four idle breathing poses. Row2 four running strides with shield. Rows3-4 eight attack poses: shield brace, retract spear, step forward, aimleft, thrust spear LEFT frame4, draw back, recoverguard. Row5 four hit flinch/stagger/brace/recover poses. Row6 four down poses: kneel, shield drops, collapse sideways, remain prone. Keep every weapon, tail, wing, tip, foot fully within its own cell; large empty transparent gutters so no pieces touch another pose. No background, labels, borders. No traveling projectiles on this sheet; only small glow directly on casting hand. Do not cross any cell boundary. Eyes complete. Not a portrait, show full bodies."
+    },
+    "output": "Generated images are saved to C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227 as C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227\\exec-79490281-7bf3-47bf-8f5f-101411d61413.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  {
+    "slug": "slave-driver",
+    "file": "combat.png",
+    "args": {
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\slave-driver\\enemy-slave_driver-reference.png"
+      ],
+      "prompt": "Use case: stylized-concept. Production full-body combat sprites, polished anime cel-shaded painted fantasy. Preserve original supplied character design. Adult male masked slave-driver, steel half-mask, short hair, brown leather apron, rolled cream sleeves, leather boots. Right hand iron chain and weighted spiked ball, left hand small lantern. True transparent alpha. EXACT FOUR COLUMNS SIX ROWS =24 distinct drawings ordered row-major. All faces, torsos and attacks face LEFT, full profile three-quarter left. Equal anatomy scale and consistent ground baseline within each row. Row1 four idle breathing poses. Row2 four running strides. Rows3-4 eight attack poses: coil chain, raise weighted end, swing overhead, extend arm, swing chain weight LEFT frame4, recoil, recover. Row5 four hit flinch/stagger/brace/recover poses. Row6 four down poses: stagger, kneel, topple sideways, remain prone. Keep every weapon, tail, wing, tip, foot fully within its own cell; large empty transparent gutters so no pieces touch another pose. No background, labels, borders. No traveling projectiles on this sheet; only small glow directly on casting hand. Do not cross any cell boundary. Eyes complete. Not a portrait, show full bodies."
+    },
+    "output": "Generated images are saved to C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227 as C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227\\exec-d60eb55e-13d4-4c6a-bd42-dad54af6d8fa.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  {
+    "slug": "malvane",
+    "file": "combat.png",
+    "args": {
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions\\assets\\expedition\\story\\portraits\\malvane-7d73a471ec33.webp",
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\malvane\\head-malvane-reference.png",
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\malvane\\body-malvane-reference.png"
+      ],
+      "prompt": "Use case: stylized-concept. Production full-body combat sprites, polished anime cel-shaded painted fantasy. Preserve original supplied character design. Olamide adult dark-skinned male ice mage, short tight black curls, teal and gold patterned high collar robe, angular shoulders, leather boots. Elegant frost focus wand. True transparent alpha. EXACT FOUR COLUMNS SIX ROWS =24 distinct drawings ordered row-major. All faces, torsos and attacks face LEFT, full profile three-quarter left. Equal anatomy scale and consistent ground baseline within each row. Row1 four idle breathing poses. Row2 four running strides robe follows hips. Rows3-4 eight attack poses: lift wand, gather small ice light, aim wand LEFT, wristdrawback, wand release LEFT frame4, recoil and lower focus. Row5 four hit flinch/stagger/brace/recover poses. Row6 four down poses: stagger,kneel,roll sideways, lie still. Keep every weapon, tail, wing, tip, foot fully within its own cell; large empty transparent gutters so no pieces touch another pose. No background, labels, borders. No traveling projectiles on this sheet; only small glow directly on casting hand. Do not cross any cell boundary. Eyes complete. Not a portrait, show full bodies."
+    },
+    "output": "Generated images are saved to C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227 as C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227\\exec-28d6efe2-33fa-40ea-870e-8984823e2576.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  {
+    "slug": "sewer-ogre-mage",
+    "file": "combat.png",
+    "args": {
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\sewer-ogre-mage\\mini-sewer_ogre_mage-reference.png"
+      ],
+      "prompt": "Use case: stylized-concept. Production full body animation sheet, polished anime cel-shaded painted fantasy. Original design references lock identity, clothing, color, skin and hair. Huge potbellied gray-green ogre, blue rune tattoos, heavy chains, tusks, bark club and skull-topped staff with blue crystal. One and a half human height.. EXACT FOUR COLUMNS by SIX ROWS,24 separate full-body distinct drawings, generous transparent gutters. All face and fight LEFT. Row1 four idle guard breathing poses. Row2 four varied running/crawling stride poses. Rows3–4 eight sequential attacks: anticipate, shift weight, ready weapon, preparecontact, raise heavy staff; slam LEFT, contact at attack frame4, followthrough, recover, ready. Row5 four hit reactions. Row6 four defeat poses: kneel/drop, collapse, lie onside, remain still; complete body remains visible. Every frame includes full anatomy, all limbs and weapon tips; same anatomical scale, row ground alignment. NO scene/background/text/grid/borders. TRUE transparent alpha, no gray matte. Effects stay small and within each cell; no long trails connecting cells. Proper feet, five fingers, detailed eyes. No other characters."
+    },
+    "output": "Generated images are saved to C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227 as C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227\\exec-581ce893-6dac-4270-81a3-e26ebb304f0c.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  {
+    "slug": "sewer-crawler",
+    "file": "combat.png",
+    "args": {
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\sewer-crawler\\enemy-sewer_crawler-reference.png"
+      ],
+      "prompt": "Use case: stylized-concept. Production full body animation sheet, polished anime cel-shaded painted fantasy. Original design references lock identity, clothing, color, skin and hair. Pale ivory segmented armored sewer isopod, many jointed pointed legs, two long feelers, pink mandibles, low crawling posture.. EXACT FOUR COLUMNS by SIX ROWS,24 separate full-body distinct drawings, generous transparent gutters. All face and fight LEFT. Row1 four idle guard breathing poses. Row2 four varied running/crawling stride poses. Rows3–4 eight sequential attacks: anticipate, shift weight, ready weapon, preparecontact, rear front segments; thrust mandibles LEFT, contact at attack frame4, followthrough, recover, ready. Row5 four hit reactions. Row6 four defeat poses: kneel/drop, collapse, lie onside, remain still; complete body remains visible. Every frame includes full anatomy, all limbs and weapon tips; same anatomical scale, row ground alignment. NO scene/background/text/grid/borders. TRUE transparent alpha, no gray matte. Effects stay small and within each cell; no long trails connecting cells. Proper feet, five fingers, detailed eyes. No other characters."
+    },
+    "output": "Generated images are saved to C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227 as C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227\\exec-943c144e-9f15-42d3-9095-0e417832dc07.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  {
+    "slug": "shadow-double",
+    "file": "combat.png",
+    "args": {
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\shadow-double\\enemy-shadow_double-reference.png"
+      ],
+      "prompt": "Use case: stylized-concept. Production full body animation sheet, polished anime cel-shaded painted fantasy. Original design references lock identity, clothing, color, skin and hair. Shape-thief, lean adult pallid shapeshifter in torn charcoal court coat, one half face smooth human, other half molten silver, elongated clawed hands.. EXACT FOUR COLUMNS by SIX ROWS,24 separate full-body distinct drawings, generous transparent gutters. All face and fight LEFT. Row1 four idle guard breathing poses. Row2 four varied running/crawling stride poses. Rows3–4 eight sequential attacks: anticipate, shift weight, ready weapon, preparecontact, lunge and rake LEFT with elongated fingers, contact at attack frame4, followthrough, recover, ready. Row5 four hit reactions. Row6 four defeat poses: kneel/drop, collapse, lie onside, remain still; complete body remains visible. Every frame includes full anatomy, all limbs and weapon tips; same anatomical scale, row ground alignment. NO scene/background/text/grid/borders. TRUE transparent alpha, no gray matte. Effects stay small and within each cell; no long trails connecting cells. Proper feet, five fingers, detailed eyes. No other characters."
+    },
+    "output": "Generated images are saved to C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227 as C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227\\exec-c99ca9bf-bac5-4a03-8e01-22e6704ca2e8.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  {
+    "slug": "lantern-master",
+    "file": "combat.png",
+    "args": {
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\lantern-master\\mini-lantern_master-reference.png"
+      ],
+      "prompt": "Use case: stylized-concept. Production full body animation sheet, polished anime cel-shaded painted fantasy. Original design references lock identity, clothing, color, skin and hair. Tall pallid adult Master of Lanterns, dark burgundy and gold long coat, face partly silver and human, staff bearing cluster of small brass lanterns, clawed free hand.. EXACT FOUR COLUMNS by SIX ROWS,24 separate full-body distinct drawings, generous transparent gutters. All face and fight LEFT. Row1 four idle guard breathing poses. Row2 four varied running/crawling stride poses. Rows3–4 eight sequential attacks: anticipate, shift weight, ready weapon, preparecontact, draw lantern staff close, reach claw and aim lanterns LEFT, release small violet handglow attack frame4, followthrough, recover, ready. Row5 four hit reactions. Row6 four defeat poses: kneel/drop, collapse, lie onside, remain still; complete body remains visible. Every frame includes full anatomy, all limbs and weapon tips; same anatomical scale, row ground alignment. NO scene/background/text/grid/borders. TRUE transparent alpha, no gray matte. Effects stay small and within each cell; no long trails connecting cells. Proper feet, five fingers, detailed eyes. No other characters."
+    },
+    "output": "Generated images are saved to C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227 as C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227\\exec-816a2b22-834e-4330-91a8-c6d41ef5138d.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  {
+    "slug": "umbral-pair",
+    "file": "combat.png",
+    "args": {
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\umbral-pair\\mini-umbral_pair-reference.png"
+      ],
+      "prompt": "Use case: stylized-concept. Production full body animation sheet, polished anime cel-shaded painted fantasy. Original design references lock identity, clothing, color, skin and hair. Adult dark-skinned male assassin with black locs, ragged grey cloak, dark leather armor, red-yellow-green waist sash, two curved daggers.. EXACT FOUR COLUMNS by SIX ROWS,24 separate full-body distinct drawings, generous transparent gutters. All face and fight LEFT. Row1 four idle guard breathing poses. Row2 four varied running/crawling stride poses. Rows3–4 eight sequential attacks: anticipate, shift weight, ready weapon, preparecontact, cross twin daggers then step and double cut LEFT, contact at attack frame4, followthrough, recover, ready. Row5 four hit reactions. Row6 four defeat poses: kneel/drop, collapse, lie onside, remain still; complete body remains visible. Every frame includes full anatomy, all limbs and weapon tips; same anatomical scale, row ground alignment. NO scene/background/text/grid/borders. TRUE transparent alpha, no gray matte. Effects stay small and within each cell; no long trails connecting cells. Proper feet, five fingers, detailed eyes. No other characters."
+    },
+    "output": "Generated images are saved to C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227 as C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227\\exec-e8316256-88aa-49e2-bf33-81a85474aeb7.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  {
+    "slug": "tower-captain",
+    "file": "combat.png",
+    "args": {
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\tower-captain\\mini-tower_captain-reference.png"
+      ],
+      "prompt": "Use case: stylized-concept. Production full body animation sheet, polished anime cel-shaded painted fantasy. Original design references lock identity, clothing, color, skin and hair. Tall dark-skinned bearded adult male captain, intricate black/gold heavy plate, short tight hair, long black cape, black rectangular gold-emblem shield and spear.. EXACT FOUR COLUMNS by SIX ROWS,24 separate full-body distinct drawings, generous transparent gutters. All face and fight LEFT. Row1 four idle guard breathing poses. Row2 four varied running/crawling stride poses. Rows3–4 eight sequential attacks: anticipate, shift weight, ready weapon, preparecontact, raise shield, spear thrust LEFT, contact at attack frame4, followthrough, recover, ready. Row5 four hit reactions. Row6 four defeat poses: kneel/drop, collapse, lie onside, remain still; complete body remains visible. Every frame includes full anatomy, all limbs and weapon tips; same anatomical scale, row ground alignment. NO scene/background/text/grid/borders. TRUE transparent alpha, no gray matte. Effects stay small and within each cell; no long trails connecting cells. Proper feet, five fingers, detailed eyes. No other characters."
+    },
+    "output": "Generated images are saved to C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227 as C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227\\exec-b4205d57-b1e2-4879-b6bf-75b059a6c684.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  {
+    "slug": "maddox",
+    "file": "combat.png",
+    "args": {
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions\\assets\\expedition\\story\\portraits\\maddox-8f4eb092ee20.webp",
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\maddox\\head-maddox-reference.png",
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\maddox\\body-maddox-reference.png"
+      ],
+      "prompt": "Use case: stylized-concept. Production full body animation sheet, polished anime cel-shaded painted fantasy. Original design references lock identity, clothing, color, skin and hair. Adigun Adeyinka, elderly dark-skinned nobleman, short silver curls and gray beard, navy and gold court robes, coral bead necklaces, gold medallion, heavy brass mace.. EXACT FOUR COLUMNS by SIX ROWS,24 separate full-body distinct drawings, generous transparent gutters. All face and fight LEFT. Row1 four idle guard breathing poses. Row2 four varied running/crawling stride poses. Rows3–4 eight sequential attacks: anticipate, shift weight, ready weapon, preparecontact, raise mace and bring it down LEFT, contact at attack frame4, followthrough, recover, ready. Row5 four hit reactions. Row6 four defeat poses: kneel/drop, collapse, lie onside, remain still; complete body remains visible. Every frame includes full anatomy, all limbs and weapon tips; same anatomical scale, row ground alignment. NO scene/background/text/grid/borders. TRUE transparent alpha, no gray matte. Effects stay small and within each cell; no long trails connecting cells. Proper feet, five fingers, detailed eyes. No other characters."
+    },
+    "output": "Generated images are saved to C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227 as C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227\\exec-74340711-7ea2-4f6b-ab77-dba8ad26d390.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  {
+    "slug": "vask",
+    "file": "combat.png",
+    "args": {
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions\\assets\\expedition\\story\\portraits\\vask-ef26791f9668.webp",
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\vask\\head-vask-reference.png",
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\vask\\body-vask-reference.png"
+      ],
+      "prompt": "Use case: stylized-concept. Production full body animation sheet, polished anime cel-shaded painted fantasy. Original design references lock identity, clothing, color, skin and hair. Bankole, stocky adult dark-skinned man with short black hair and boxed beard, crimson and gold court coat over dark trousers, broad straight sword.. EXACT FOUR COLUMNS by SIX ROWS,24 separate full-body distinct drawings, generous transparent gutters. All face and fight LEFT. Row1 four idle guard breathing poses. Row2 four varied running/crawling stride poses. Rows3–4 eight sequential attacks: anticipate, shift weight, ready weapon, preparecontact, two handed sword cleave LEFT, contact at attack frame4, followthrough, recover, ready. Row5 four hit reactions. Row6 four defeat poses: kneel/drop, collapse, lie onside, remain still; complete body remains visible. Every frame includes full anatomy, all limbs and weapon tips; same anatomical scale, row ground alignment. NO scene/background/text/grid/borders. TRUE transparent alpha, no gray matte. Effects stay small and within each cell; no long trails connecting cells. Proper feet, five fingers, detailed eyes. No other characters."
+    },
+    "output": "Generated images are saved to C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227 as C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227\\exec-e6055287-8e2b-4c13-ae66-ebe0c77203d0.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  {
+    "slug": "rennick",
+    "file": "combat.png",
+    "args": {
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\rennick\\head-rennick-reference.png",
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\rennick\\body-rennick-reference.png"
+      ],
+      "prompt": "Use case: stylized-concept. Production full body animation sheet, polished anime cel-shaded painted fantasy. Original design references lock identity, clothing, color, skin and hair. Rotimi adult dark-skinned bald accountant-mage, small goatee, round gold spectacles, navy/gold high-collar suit with turquoise sash, engraved wand.. EXACT FOUR COLUMNS by SIX ROWS,24 separate full-body distinct drawings, generous transparent gutters. All face and fight LEFT. Row1 four idle guard breathing poses. Row2 four varied running/crawling stride poses. Rows3–4 eight sequential attacks: anticipate, shift weight, ready weapon, preparecontact, raise wand, collect small iceblue light and point LEFT attack frame4, no emitted bolt, followthrough, recover, ready. Row5 four hit reactions. Row6 four defeat poses: kneel/drop, collapse, lie onside, remain still; complete body remains visible. Every frame includes full anatomy, all limbs and weapon tips; same anatomical scale, row ground alignment. NO scene/background/text/grid/borders. TRUE transparent alpha, no gray matte. Effects stay small and within each cell; no long trails connecting cells. Proper feet, five fingers, detailed eyes. No other characters."
+    },
+    "output": "Generated images are saved to C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227 as C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227\\exec-ba211cfc-31fe-4da1-bc42-e35388c5ea4a.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  {
+    "slug": "grell",
+    "file": "combat.png",
+    "args": {
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions\\assets\\expedition\\story\\portraits\\grell-a7dbb10aef4e.webp",
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\grell\\head-grell-reference.png",
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\grell\\body-grell-reference.png"
+      ],
+      "prompt": "Use case: stylized-concept. Production full body animation sheet, polished anime cel-shaded painted fantasy. Original design references lock identity, clothing, color, skin and hair. Gbenga, adult dark-skinned short-haired assassin in black hooded leather with red sash, light crossbow and sheathed belt dagger.. EXACT FOUR COLUMNS by SIX ROWS,24 separate full-body distinct drawings, generous transparent gutters. All face and fight LEFT. Row1 four idle guard breathing poses. Row2 four varied running/crawling stride poses. Rows3–4 eight sequential attacks: anticipate, shift weight, ready weapon, preparecontact, raise crossbow, aim LEFT, release LEFT attack frame4 without arrow, lower and reload, followthrough, recover, ready. Row5 four hit reactions. Row6 four defeat poses: kneel/drop, collapse, lie onside, remain still; complete body remains visible. Every frame includes full anatomy, all limbs and weapon tips; same anatomical scale, row ground alignment. NO scene/background/text/grid/borders. TRUE transparent alpha, no gray matte. Effects stay small and within each cell; no long trails connecting cells. Proper feet, five fingers, detailed eyes. No other characters."
+    },
+    "output": "Generated images are saved to C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227 as C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227\\exec-c3881697-48b9-4df6-82be-5da46379fcf1.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  {
+    "slug": "family-double",
+    "file": "combat.png",
+    "args": {
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions/assets/expedition/story/portraits/aldric-335eb18a755f.webp"
+      ],
+      "prompt": "Use case: stylized-concept. Production full body animation sheet, polished anime cel-shaded painted fantasy. Original design references lock identity, clothing, color, skin and hair. Hostile shapeshifter impersonating Tesfaye from the reference: dark skin, short salt-and-pepper curls and beard, navy gold-embroidered tunic, white woven scarf with red and gold trim, belt pouches, subtle silver cheek cracks. Claws emerge when attacking; fully clothed adult monster impostor.. EXACT FOUR COLUMNS by SIX ROWS,24 separate full-body distinct drawings, generous transparent gutters. All face and fight LEFT. Row1 four idle guard breathing poses. Row2 four varied running/crawling stride poses. Rows3–4 eight sequential attacks: anticipate, shift weight, ready weapon, preparecontact, step and claw slash LEFT attack frame4, followthrough, recover, ready. Row5 four hit reactions. Row6 four defeat poses: kneel/drop, collapse, lie onside, remain still; complete body remains visible. Every frame includes full anatomy, all limbs and weapon tips; same anatomical scale, row ground alignment. NO scene/background/text/grid/borders. TRUE transparent alpha, no gray matte. Effects stay small and within each cell; no long trails connecting cells. Proper feet, five fingers, detailed eyes. No other characters."
+    },
+    "output": "Generated images are saved to C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227 as C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227\\exec-e228b7f8-298f-41bc-8d1e-0ffb82760af3.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  {
+    "slug": "phase-spider",
+    "file": "combat.png",
+    "args": {
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\phase-spider\\enemy-phase_spider-reference.png"
+      ],
+      "prompt": "Use case: stylized-concept. Production full body animation sheet, polished anime cel-shaded painted fantasy. Original design references lock identity, clothing, color, skin and hair. Translucent cobalt-violet crystalline phase spider, eight long sharp legs, glowing blue eyes, faceted abdomen with luminous veins.. EXACT FOUR COLUMNS by SIX ROWS,24 separate full-body distinct drawings, generous transparent gutters. All face and fight LEFT. Row1 four idle guard breathing poses. Row2 four varied running/crawling stride poses. Rows3–4 eight sequential attacks: anticipate, shift weight, ready weapon, preparecontact, crouch, rear up, fang lunge LEFT attack frame4, followthrough, recover, ready. Row5 four hit reactions. Row6 four defeat poses: kneel/drop, collapse, lie onside, remain still; complete body remains visible. Every frame includes full anatomy, all limbs and weapon tips; same anatomical scale, row ground alignment. NO scene/background/text/grid/borders. TRUE transparent alpha, no gray matte. Effects stay small and within each cell; no long trails connecting cells. Proper feet, five fingers, detailed eyes. No other characters."
+    },
+    "output": "Generated images are saved to C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227 as C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227\\exec-f1296472-a899-492a-87f3-c352393de43f.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  {
+    "slug": "tomb-ghoul",
+    "file": "combat.png",
+    "args": {
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\tomb-ghoul\\enemy-tomb_ghoul-reference.png"
+      ],
+      "prompt": "Use case: stylized-concept. Production full body animation sheet, polished anime cel-shaded painted fantasy. Original design references lock identity, clothing, color, skin and hair. Hunched adult undead ghoul, sunken gray face, dry bandages, ragged faded burial robes, long clawed hands. Intact body.. EXACT FOUR COLUMNS by SIX ROWS,24 separate full-body distinct drawings, generous transparent gutters. All face and fight LEFT. Row1 four idle guard breathing poses. Row2 four varied running/crawling stride poses. Rows3–4 eight sequential attacks: anticipate, shift weight, ready weapon, preparecontact, claw rake LEFT attack frame4, crouch and recover, followthrough, recover, ready. Row5 four hit reactions. Row6 four defeat poses: kneel/drop, collapse, lie onside, remain still; complete body remains visible. Every frame includes full anatomy, all limbs and weapon tips; same anatomical scale, row ground alignment. NO scene/background/text/grid/borders. TRUE transparent alpha, no gray matte. Effects stay small and within each cell; no long trails connecting cells. Proper feet, five fingers, detailed eyes. No other characters."
+    },
+    "output": "Generated images are saved to C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227 as C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227\\exec-bfbdcf4a-b77a-47dc-8aa0-9a26ce752136.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  {
+    "slug": "gauntlet-traitor",
+    "file": "combat.png",
+    "args": {
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\gauntlet-traitor\\enemy-gauntlet_traitor-reference.png"
+      ],
+      "prompt": "Use case: stylized-concept. Production full body animation sheet, polished anime cel-shaded painted fantasy. Original design references lock identity, clothing, color, skin and hair. Adult bald dark-skinned veteran in dark spiked steel armor, red tabard and gold flame emblem, battered steel longsword.. EXACT FOUR COLUMNS by SIX ROWS,24 separate full-body distinct drawings, generous transparent gutters. All face and fight LEFT. Row1 four idle guard breathing poses. Row2 four varied running/crawling stride poses. Rows3–4 eight sequential attacks: anticipate, shift weight, ready weapon, preparecontact, raise longsword, two-handed cleave LEFT contact frame4, followthrough, recover, ready. Row5 four hit reactions. Row6 four defeat poses: kneel/drop, collapse, lie onside, remain still; complete body remains visible. Every frame includes full anatomy, all limbs and weapon tips; same anatomical scale, row ground alignment. NO scene/background/text/grid/borders. TRUE transparent alpha, no gray matte. Effects stay small and within each cell; no long trails connecting cells. Proper feet, five fingers, detailed eyes. No other characters."
+    },
+    "output": "Generated images are saved to C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227 as C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227\\exec-6e704056-40c6-4e8e-8dd4-40499f2ede0c.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  {
+    "slug": "idris",
+    "file": "combat.png",
+    "args": {
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions\\assets\\expedition\\story\\portraits\\idris-134095a43408.webp",
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\idris\\head-idris-reference.png",
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\idris\\body-idris-reference.png"
+      ],
+      "prompt": "Use case: stylized-concept. Production full body animation sheet, polished anime cel-shaded painted fantasy. Original design references lock identity, clothing, color, skin and hair. Idris, dark-skinned adult male doppelganger physician, short tight curls, white and blue-gold doctor robes, ritual dagger. Subtle silver corruption on free fingers, natural eyes.. EXACT FOUR COLUMNS by SIX ROWS,24 separate full-body distinct drawings, generous transparent gutters. All face and fight LEFT. Row1 four idle guard breathing poses. Row2 four varied running/crawling stride poses. Rows3–4 eight sequential attacks: anticipate, shift weight, ready weapon, preparecontact, aim free left hand, small crimson glow at release frame4, retract, followthrough, recover, ready. Row5 four hit reactions. Row6 four defeat poses: kneel/drop, collapse, lie onside, remain still; complete body remains visible. Every frame includes full anatomy, all limbs and weapon tips; same anatomical scale, row ground alignment. NO scene/background/text/grid/borders. TRUE transparent alpha, no gray matte. Effects stay small and within each cell; no long trails connecting cells. Proper feet, five fingers, detailed eyes. No other characters."
+    },
+    "output": "Generated images are saved to C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227 as C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227\\exec-ecb4f581-6d9e-44d1-b317-5cf78689b77e.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  {
+    "slug": "amara",
+    "file": "combat.png",
+    "args": {
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions\\assets\\expedition\\story\\portraits\\amara-105953304edf.webp",
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\amara\\head-amara-reference.png",
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\amara\\body-amara-reference.png"
+      ],
+      "prompt": "Use case: stylized-concept. Production full body animation sheet, polished anime cel-shaded painted fantasy. Original design references lock identity, clothing, color, skin and hair. Amara, adult dark-skinned woman, black braided bun with coral beads, red/gold fitted full armor, red striped cape, TWO straight swords.. EXACT FOUR COLUMNS by SIX ROWS,24 separate full-body distinct drawings, generous transparent gutters. All face and fight LEFT. Row1 four idle guard breathing poses. Row2 four varied running/crawling stride poses. Rows3–4 eight sequential attacks: anticipate, shift weight, ready weapon, preparecontact, cross blades defensively, spin hips, dual cuts LEFT contact frame4, followthrough, recover, ready. Row5 four hit reactions. Row6 four defeat poses: kneel/drop, collapse, lie onside, remain still; keep alive and intact, stunned instead of dead. Every frame includes full anatomy, all limbs and weapon tips; same anatomical scale, row ground alignment. NO scene/background/text/grid/borders. TRUE transparent alpha, no gray matte. Effects stay small and within each cell; no long trails connecting cells. Proper feet, five fingers, detailed eyes. No other characters."
+    },
+    "output": "Generated images are saved to C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227 as C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227\\exec-7b64b422-faa4-4714-bf51-0155fb23b05d.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  {
+    "slug": "ravel",
+    "file": "combat.png",
+    "args": {
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions\\assets\\expedition\\story\\portraits\\ravel-e8ee2c331ab8.webp",
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\ravel\\head-ravel-reference.png",
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\ravel\\body-ravel-reference.png"
+      ],
+      "prompt": "Use case: stylized-concept. Production full body animation sheet, polished anime cel-shaded painted fantasy. Original design references lock identity, clothing, color, skin and hair. Rasheed, adult dark-skinned man, beaded black locs, thin facial hair, burgundy/gold fitted noblecoat, TWO curved sabers.. EXACT FOUR COLUMNS by SIX ROWS,24 separate full-body distinct drawings, generous transparent gutters. All face and fight LEFT. Row1 four idle guard breathing poses. Row2 four varied running/crawling stride poses. Rows3–4 eight sequential attacks: anticipate, shift weight, ready weapon, preparecontact, flow from high guard to crosscut LEFT contact frame4, followthrough, recover, ready. Row5 four hit reactions. Row6 four defeat poses: kneel/drop, collapse, lie onside, remain still; complete body remains visible. Every frame includes full anatomy, all limbs and weapon tips; same anatomical scale, row ground alignment. NO scene/background/text/grid/borders. TRUE transparent alpha, no gray matte. Effects stay small and within each cell; no long trails connecting cells. Proper feet, five fingers, detailed eyes. No other characters."
+    },
+    "output": "Generated images are saved to C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227 as C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227\\exec-caad4624-330f-4900-9545-bf3c8234ae5a.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  {
+    "slug": "kessa",
+    "file": "combat.png",
+    "args": {
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions\\assets\\expedition\\story\\portraits\\kessa-5f8b5f70dbd8.webp",
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\kessa\\head-kessa-reference.png",
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\kessa\\body-kessa-reference.png"
+      ],
+      "prompt": "Use case: stylized-concept. Production full body animation sheet, polished anime cel-shaded painted fantasy. Original design references lock identity, clothing, color, skin and hair. Kemi, adult dark-skinned woman with tall braided bun and gold beads, long purple/gold mage robe, gold necklace, free casting hands.. EXACT FOUR COLUMNS by SIX ROWS,24 separate full-body distinct drawings, generous transparent gutters. All face and fight LEFT. Row1 four idle guard breathing poses. Row2 four varied running/crawling stride poses. Rows3–4 eight sequential attacks: anticipate, shift weight, ready weapon, preparecontact, gather small electric glow between palms, push LEFT at attack frame4, no emitted projectile, followthrough, recover, ready. Row5 four hit reactions. Row6 four defeat poses: kneel/drop, collapse, lie onside, remain still; complete body remains visible. Every frame includes full anatomy, all limbs and weapon tips; same anatomical scale, row ground alignment. NO scene/background/text/grid/borders. TRUE transparent alpha, no gray matte. Effects stay small and within each cell; no long trails connecting cells. Proper feet, five fingers, detailed eyes. No other characters."
+    },
+    "output": "Generated images are saved to C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227 as C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227\\exec-970c9ab4-ca92-482c-a55f-e850c8453e6b.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  {
+    "slug": "hall-doubles",
+    "file": "combat.png",
+    "args": {
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\hall-doubles\\mini-hall_doubles-reference.png"
+      ],
+      "prompt": "Use case: stylized-concept. Production full body animation sheet, polished anime cel-shaded painted fantasy. Original design references lock identity, clothing, color, skin and hair. Ducal Guard adult male doppelganger posing as a dark-skinned guard in red and ornate gold heavy armor with red cape, broad glaive and visible face.. EXACT FOUR COLUMNS by SIX ROWS,24 separate full-body distinct drawings, generous transparent gutters. All face and fight LEFT. Row1 four idle guard breathing poses. Row2 four varied running/crawling stride poses. Rows3–4 eight sequential attacks: anticipate, shift weight, ready weapon, preparecontact, brace glaive, diagonal sweep LEFT contact frame4, followthrough, recover, ready. Row5 four hit reactions. Row6 four defeat poses: kneel/drop, collapse, lie onside, remain still; complete body remains visible. Every frame includes full anatomy, all limbs and weapon tips; same anatomical scale, row ground alignment. NO scene/background/text/grid/borders. TRUE transparent alpha, no gray matte. Effects stay small and within each cell; no long trails connecting cells. Proper feet, five fingers, detailed eyes. No other characters."
+    },
+    "output": "Generated images are saved to C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227 as C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227\\exec-420c39d4-8954-48f5-a19b-2169ea34e654.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  {
+    "slug": "palace-doppelganger",
+    "file": "combat.png",
+    "args": {
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\palace-doppelganger\\enemy-palace_doppelganger-reference.png"
+      ],
+      "prompt": "Use case: stylized-concept. Production full body animation sheet, polished anime cel-shaded painted fantasy. Original design references lock identity, clothing, color, skin and hair. Adult palace guard doppelganger, enclosed red/gold helmet, red plumed crest, full gold plate, red lion shield and gold-tipped spear.. EXACT FOUR COLUMNS by SIX ROWS,24 separate full-body distinct drawings, generous transparent gutters. All face and fight LEFT. Row1 four idle guard breathing poses. Row2 four varied running/crawling stride poses. Rows3–4 eight sequential attacks: anticipate, shift weight, ready weapon, preparecontact, brace shield then spear thrust LEFT contact frame4, followthrough, recover, ready. Row5 four hit reactions. Row6 four defeat poses: kneel/drop, collapse, lie onside, remain still; complete body remains visible. Every frame includes full anatomy, all limbs and weapon tips; same anatomical scale, row ground alignment. NO scene/background/text/grid/borders. TRUE transparent alpha, no gray matte. Effects stay small and within each cell; no long trails connecting cells. Proper feet, five fingers, detailed eyes. No other characters."
+    },
+    "output": "Generated images are saved to C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227 as C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227\\exec-37e3afd2-21e2-427f-aae0-1b96fa3ced09.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  {
+    "slug": "jarem",
+    "file": "combat.png",
+    "args": {
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions\\assets\\expedition\\story\\portraits\\jarem-fcf31c8ba05e.webp",
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\jarem\\head-jarem-reference.png",
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\jarem\\body-jarem-reference.png"
+      ],
+      "prompt": "Use case: stylized-concept. Production full body animation sheet, polished anime cel-shaded painted fantasy. Original design references lock identity, clothing, color, skin and hair. Jelani, adult bald dark-skinned court mage with neat goatee, black/cream/gold long robes, copper pendant and golden casting rod.. EXACT FOUR COLUMNS by SIX ROWS,24 separate full-body distinct drawings, generous transparent gutters. All face and fight LEFT. Row1 four idle guard breathing poses. Row2 four varied running/crawling stride poses. Rows3–4 eight sequential attacks: anticipate, shift weight, ready weapon, preparecontact, small amber glow at rod tip, cast LEFT release attack frame4, followthrough, recover, ready. Row5 four hit reactions. Row6 four defeat poses: kneel/drop, collapse, lie onside, remain still; complete body remains visible. Every frame includes full anatomy, all limbs and weapon tips; same anatomical scale, row ground alignment. NO scene/background/text/grid/borders. TRUE transparent alpha, no gray matte. Effects stay small and within each cell; no long trails connecting cells. Proper feet, five fingers, detailed eyes. No other characters."
+    },
+    "output": "Generated images are saved to C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227 as C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227\\exec-b6f307fe-4e22-4961-8684-40b4777c1aca.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  {
+    "slug": "morrak-cultist",
+    "file": "combat.png",
+    "args": {
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\morrak-cultist\\enemy-morrak_cultist-reference.png"
+      ],
+      "prompt": "Use case: stylized-concept. Production full body animation sheet, polished anime cel-shaded painted fantasy. Original design references lock identity, clothing, color, skin and hair. Adult dark-skinned bearded male cultist in torn black and burgundy hooded robes with skull clasps, short ritual knife.. EXACT FOUR COLUMNS by SIX ROWS,24 separate full-body distinct drawings, generous transparent gutters. All face and fight LEFT. Row1 four idle guard breathing poses. Row2 four varied running/crawling stride poses. Rows3–4 eight sequential attacks: anticipate, shift weight, ready weapon, preparecontact, ritual dagger across chest, free palm points LEFT with small crimson glow at frame4, followthrough, recover, ready. Row5 four hit reactions. Row6 four defeat poses: kneel/drop, collapse, lie onside, remain still; complete body remains visible. Every frame includes full anatomy, all limbs and weapon tips; same anatomical scale, row ground alignment. NO scene/background/text/grid/borders. TRUE transparent alpha, no gray matte. Effects stay small and within each cell; no long trails connecting cells. Proper feet, five fingers, detailed eyes. No other characters."
+    },
+    "output": "Generated images are saved to C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227 as C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227\\exec-58bd98ca-e7ab-4df9-8957-db182fa414e6.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  {
+    "slug": "lucan",
+    "file": "combat.png",
+    "args": {
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions\\assets\\expedition\\story\\portraits\\lucan-4c76e78ae832.webp",
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\lucan\\head-lucan-reference.png",
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\lucan\\body-lucan-reference.png"
+      ],
+      "prompt": "Use case: stylized-concept. Production full body animation sheet, polished anime cel-shaded painted fantasy. Original design references lock identity, clothing, color, skin and hair. Segun Marr, adult dark-skinned commander, short curly hair, neat pointed beard, black steel heavy plate, red tabard with white spiked emblem, red shoulder cape and broad longsword.. EXACT FOUR COLUMNS by SIX ROWS,24 separate full-body distinct drawings, generous transparent gutters. All face and fight LEFT. Row1 four idle guard breathing poses. Row2 four varied running/crawling stride poses. Rows3–4 eight sequential attacks: anticipate, shift weight, ready weapon, preparecontact, raise sword high, forceful cleave LEFT contact frame4, followthrough, recover, ready. Row5 four hit reactions. Row6 four defeat poses: kneel/drop, collapse, lie onside, remain still; complete body remains visible. Every frame includes full anatomy, all limbs and weapon tips; same anatomical scale, row ground alignment. NO scene/background/text/grid/borders. TRUE transparent alpha, no gray matte. Effects stay small and within each cell; no long trails connecting cells. Proper feet, five fingers, detailed eyes. No other characters."
+    },
+    "output": "Generated images are saved to C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227 as C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227\\exec-3f4a1371-e6f0-4de5-975d-33e62dc98e96.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  {
+    "slug": "altar-keepers",
+    "file": "combat.png",
+    "args": {
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\altar-keepers\\mini-altar_keepers-reference.png"
+      ],
+      "prompt": "Use case: stylized-concept. Production full body animation sheet, polished anime cel-shaded painted fantasy. Original design references lock identity, clothing, color, skin and hair. Adult pale gaunt ritual keeper, thorned iron crown, black/burgundy ornate priest robes, white face paint, ritual staff and silver knife.. EXACT FOUR COLUMNS by SIX ROWS,24 separate full-body distinct drawings, generous transparent gutters. All face and fight LEFT. Row1 four idle guard breathing poses. Row2 four varied running/crawling stride poses. Rows3–4 eight sequential attacks: anticipate, shift weight, ready weapon, preparecontact, point staff LEFT and free hand pulls small crimson energy, release frame4, followthrough, recover, ready. Row5 four hit reactions. Row6 four defeat poses: kneel/drop, collapse, lie onside, remain still; complete body remains visible. Every frame includes full anatomy, all limbs and weapon tips; same anatomical scale, row ground alignment. NO scene/background/text/grid/borders. TRUE transparent alpha, no gray matte. Effects stay small and within each cell; no long trails connecting cells. Proper feet, five fingers, detailed eyes. No other characters."
+    },
+    "output": "Generated images are saved to C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227 as C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227\\exec-793ce188-4b49-46c0-a334-282dd350d74a.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  {
+    "slug": "your-own-faces",
+    "file": "combat.png",
+    "args": {
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v1/heroes/hiro/hiro-reference.png"
+      ],
+      "prompt": "Use case: stylized-concept. Production full body animation sheet, polished anime cel-shaded painted fantasy. Original design references lock identity, clothing, color, skin and hair. Adult corrupted reflection of Hiro: dark skin, long purple locs, black and purple samurai armor, silver katana, visible silver mask fracture over cheek. Same Hiro silhouette with ghostly violet eyes.. EXACT FOUR COLUMNS by SIX ROWS,24 separate full-body distinct drawings, generous transparent gutters. All face and fight LEFT. Row1 four idle guard breathing poses. Row2 four varied running/crawling stride poses. Rows3–4 eight sequential attacks: anticipate, shift weight, ready weapon, preparecontact, katana drawing cut LEFT attack frame4, correct two-handed samurai technique, followthrough, recover, ready. Row5 four hit reactions. Row6 four defeat poses: kneel/drop, collapse, lie onside, remain still; complete body remains visible. Every frame includes full anatomy, all limbs and weapon tips; same anatomical scale, row ground alignment. NO scene/background/text/grid/borders. TRUE transparent alpha, no gray matte. Effects stay small and within each cell; no long trails connecting cells. Proper feet, five fingers, detailed eyes. No other characters."
+    },
+    "output": "Generated images are saved to C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227 as C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227\\exec-2112e809-bf69-4c9b-a9a1-139d03f5bf3b.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  {
+    "slug": "korvath",
+    "file": "combat.png",
+    "args": {
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions\\assets\\expedition\\story\\portraits\\korvath-e4d0f4a27d81.webp",
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\korvath\\head-korvath-reference.png",
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\korvath\\body-korvath-reference.png"
+      ],
+      "prompt": "Use case: stylized-concept. Production full body animation sheet, polished anime cel-shaded painted fantasy. Original design references lock identity, clothing, color, skin and hair. Kolade Adeyinka, very tall muscular adult dark-skinned bald man, towering spiked black plate, red/gold patterned tabard and red cape, huge dark two-handed greatsword. One head taller than Hiro.. EXACT FOUR COLUMNS by SIX ROWS,24 separate full-body distinct drawings, generous transparent gutters. All face and fight LEFT. Row1 four idle guard breathing poses. Row2 four varied running/crawling stride poses. Rows3–4 eight sequential attacks: anticipate, shift weight, ready weapon, preparecontact, lift greatsword, planted two handed overhead slash LEFT contact frame4, controlled recovery, followthrough, recover, ready. Row5 four hit reactions. Row6 four defeat poses: kneel/drop, collapse, lie onside, remain still; keep alive and intact, stunned instead of dead. Every frame includes full anatomy, all limbs and weapon tips; same anatomical scale, row ground alignment. NO scene/background/text/grid/borders. TRUE transparent alpha, no gray matte. Effects stay small and within each cell; no long trails connecting cells. Proper feet, five fingers, detailed eyes. No other characters."
+    },
+    "output": "Generated images are saved to C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227 as C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227\\exec-21d38c07-4fa4-4b75-817b-481c1ddf2112.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  }
+]

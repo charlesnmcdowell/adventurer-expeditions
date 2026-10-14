@@ -1,0 +1,34 @@
+{
+  "image": "frost-44a4e8f6d48e.webp",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "columns": 4,
+  "rows": 4,
+  "clips": {
+    "frost_touch": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "rime_grasp": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "rime_breath": [
+      8,
+      9,
+      10,
+      11
+    ],
+    "coven_rime": [
+      12,
+      13,
+      14,
+      15
+    ]
+  },
+  "source": "story-enemies\\effects-frost\\effects.png"
+}

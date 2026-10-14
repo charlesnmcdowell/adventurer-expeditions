@@ -1,0 +1,69 @@
+{
+  "actor": "story_family_double",
+  "name": "A Face You Know",
+  "identity": "mini:family_double",
+  "bodyReferenceHeight": 282,
+  "seedAlpha": 64,
+  "attackContacts": [
+    4
+  ],
+  "pairs": [
+    {
+      "id": "hiro-finisher-1",
+      "files": [
+        "hiro-finisher-1.png"
+      ],
+      "columns": 4,
+      "rows": 4,
+      "hiroReferenceHeights": [
+        201
+      ],
+      "contacts": [
+        6
+      ],
+      "seedErosion": 8
+    },
+    {
+      "id": "hiro-finisher-2",
+      "files": [
+        "hiro-finisher-2.png"
+      ],
+      "columns": 4,
+      "rows": 4,
+      "hiroReferenceHeights": [
+        225
+      ],
+      "contacts": [
+        6
+      ],
+      "seedErosion": 10,
+      "replacementSheets": [
+        {
+          "file": "hiro-finisher-2-repair-late.png",
+          "frames": [
+            15
+          ],
+          "columns": 1,
+          "rows": 1,
+          "hiroReferenceHeight": 856
+        }
+      ]
+    },
+    {
+      "id": "story_family_double-fatal",
+      "files": [
+        "enemy-fatal.png"
+      ],
+      "columns": 4,
+      "rows": 4,
+      "hiroReferenceHeights": [
+        196
+      ],
+      "contacts": [
+        6
+      ],
+      "fatal": true,
+      "seedErosion": 2
+    }
+  ]
+}

@@ -407,6 +407,20 @@ test('story bolt launches at release and damage waits for its arrival',async()=>
   }finally{X.StoryEffects=oldFX;ADV.DATA.SKILLS=oldData;}
 });
 
+test('story Counter returns the same painted projectile before reflected damage', async()=>{
+  const f=recoilFixture(),oldFX=X.StoryEffects,oldData=ADV.DATA.SKILLS,log=[];
+  f.scene.story={};f.foe.kind='human';f.foe.unit.chp=100;f.foe.height=300;
+  f.foe.play=async(id,opts)=>{if(id==='cast')await opts.onRelease({x:600,y:300},{});else log.push('impact');};
+  f.scene.hero.contactPoint=()=>({x:350,y:300});
+  f.scene.hero.chest=()=>({x:300,y:300});
+  f.scene.hero.play=async()=>log.push('deflect');
+  ADV.DATA.SKILLS={fire_bolt:{elemental:true,element:'fire',target:'enemy'}};
+  X.StoryEffects={supports:()=>true,play:async(scene,id,from,to,opts)=>log.push(opts?.reflected?'painted-return:'+id:'painted-out:'+id)};
+  try{await X.Beats.play(f.scene,{events:[{t:'use',uid:'foe',target:'hero',skillId:'fire_bolt'},{t:'counter',uid:'hero',by:'foe'},{t:'damage',uid:'foe',by:'hero',dmg:8,tag:'reflect'}]});
+    assert.deepEqual(log,['painted-out:fire_bolt','deflect','painted-return:fire_bolt','impact']);
+  }finally{X.StoryEffects=oldFX;ADV.DATA.SKILLS=oldData;}
+});
+
 (async () => {
   let failed = 0;
   for (const [name, fn] of cases) { try { await fn(); console.log('PASS', name); } catch (e) { failed++; console.error('FAIL', name, e.message); } }

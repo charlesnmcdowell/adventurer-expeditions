@@ -1,0 +1,62 @@
+[
+  {
+    "slug": "thornwise",
+    "file": "hiro-finisher-1.png",
+    "frames": [
+      3
+    ],
+    "out": "hiro-finisher-1-edge-repair.png",
+    "args": {
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v8/story-enemies/thornwise/hiro-finisher-1.png"
+      ],
+      "prompt": "Use case: precise-object-edit. ONE paired combat animation pose from the reference with exact same two adult characters and cel-shaded art. Hiro LEFT holds a high two-handed katana parry against the elder druid's staff from RIGHT. Keep the FULL staff and katana visible, lowered enough to have margin above. Transparent background, no labels or grid, no scenery, entire bodies and weapons contained with 60px clear margins. Same side camera and anatomical size ratio as original. Repair a clipped weapon only; preserve choreography and character identity."
+    }
+  },
+  {
+    "slug": "kestrel",
+    "file": "hiro-finisher-1.png",
+    "frames": [
+      3
+    ],
+    "out": "hiro-finisher-1-edge-repair.png",
+    "args": {
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v8/story-enemies/kestrel/hiro-finisher-1.png"
+      ],
+      "prompt": "Use case: precise-object-edit. ONE paired combat animation pose from the reference with exact same two adult characters and cel-shaded art. Hiro LEFT parries the masked knight's halberd with katana overhead. Keep BOTH weapons entire, generous overhead margin. Transparent background, no labels or grid, no scenery, entire bodies and weapons contained with 60px clear margins. Same side camera and anatomical size ratio as original. Repair a clipped weapon only; preserve choreography and character identity."
+    }
+  },
+  {
+    "slug": "kestrel",
+    "file": "enemy-fatal.png",
+    "frames": [
+      7
+    ],
+    "out": "enemy-fatal-edge-repair.png",
+    "args": {
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v8/story-enemies/kestrel/enemy-fatal.png"
+      ],
+      "prompt": "Use case: precise-object-edit. ONE paired combat animation pose from the reference with exact same two adult characters and cel-shaded art. Masked gold-black knight RIGHT completes the halberd strike against Hiro LEFT who recoils bloodied. Keep full halberd blade and shaft visible including rightmost edge. Transparent background, no labels or grid, no scenery, entire bodies and weapons contained with 60px clear margins. Same side camera and anatomical size ratio as original. Repair a clipped weapon only; preserve choreography and character identity."
+    }
+  },
+  {
+    "slug": "hall-doubles",
+    "file": "hiro-finisher-2.png",
+    "frames": [
+      3
+    ],
+    "out": "hiro-finisher-2-edge-repair.png",
+    "args": {
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v8/story-enemies/hall-doubles/hiro-finisher-2.png"
+      ],
+      "prompt": "Use case: precise-object-edit. ONE paired combat animation pose from the reference with exact same two adult characters and cel-shaded art. Hiro LEFT guards under raised katana as red-gold armored halberd man RIGHT attacks overhead. Keep entire halberd and sword with margin above. Transparent background, no labels or grid, no scenery, entire bodies and weapons contained with 60px clear margins. Same side camera and anatomical size ratio as original. Repair a clipped weapon only; preserve choreography and character identity."
+    }
+  }
+]

@@ -1,0 +1,18 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Idris animation review</title><style>
+body{margin:0;background:#101724;color:#eee;font:16px system-ui;padding:20px}canvas{width:min(100%,1080px);display:block;background:#354353;border:1px solid #778}button,select,input{font:inherit;padding:9px;margin:5px;min-height:42px}p{max-width:950px;color:#c3cbd7}.tools{display:flex;flex-wrap:wrap;align-items:center}a{color:#cfb5ff}#status{font-variant-numeric:tabular-nums}
+</style></head><body><h1>Idris — combat and paired finishers</h1><p>New campaign art under review. Hiro finishers and Idris's finisher each contain 16 distinct drawings. Pause and step through contact, scale and recovery. This review does not mark the full campaign complete.</p><div class="tools"><select id="clip"></select><button id="play">Pause</button><button id="prev">Previous frame</button><button id="next">Next frame</button><label>Speed <select id="speed"><option value="1">Normal</option><option value=".5">Half</option><option value=".25">Quarter</option></select></label><label>Backdrop <select id="bg"><option value="#354353">Slate</option><option value="#c5c1b0">Light</option><option value="#080a0e">Dark</option></select></label></div><canvas id="view" width="1080" height="620"></canvas><p id="status"></p><p><a href="../../STORY_CAMPAIGN_PREVIEW.html">Campaign opening preview</a></p><script>
+(async()=>{const docs=await Promise.all(['story_idris/story_idris.json','story_idris-fatal/story_idris-fatal.json'].map(async url=>{const d=await fetch(url).then(r=>r.json());d.images=await Promise.all(d.textures.map(t=>new Promise((ok,fail)=>{const i=new Image;i.onload=()=>ok(i);i.onerror=fail;i.src=url.slice(0,url.lastIndexOf('/')+1)+t.image;})));return d;}));
+const el=id=>document.getElementById(id),canvas=el('view'),ctx=canvas.getContext('2d'),clips=[];docs.forEach(d=>Object.entries(d.clips).forEach(([id,c])=>{clips.push({id,c,d});el('clip').add(new Option(id,id));}));
+let current=clips[0],frame=0,elapsed=0,playing=true,last=performance.now();
+el('clip').onchange=()=>{current=clips.find(c=>c.id===el('clip').value);frame=0;elapsed=0;};
+function pause(){playing=false;el('play').textContent='Play';}
+el('play').onclick=()=>{playing=!playing;el('play').textContent=playing?'Pause':'Play';};
+el('prev').onclick=()=>{pause();frame=(frame+current.c.frames.length-1)%current.c.frames.length;elapsed=0;};el('next').onclick=()=>{pause();frame=(frame+1)%current.c.frames.length;elapsed=0;};
+window.animationReview={set:(id,i)=>{current=clips.find(c=>c.id===id);el('clip').value=id;frame=i;elapsed=0;pause();},clips};
+function draw(t){const dt=Math.min(t-last,80);last=t;const {c,d,id}=current;if(playing){elapsed+=dt*Number(el('speed').value);while(elapsed>=c.frameDurationsMs[frame]){elapsed-=c.frameDurationsMs[frame];frame=(frame+1)%c.frames.length;}}
+ctx.fillStyle=el('bg').value;ctx.fillRect(0,0,canvas.width,canvas.height);ctx.strokeStyle='#8ba1af';ctx.beginPath();ctx.moveTo(0,525);ctx.lineTo(1080,525);ctx.stroke();
+const f=d.frames[c.frames[frame]],r=f.frame,s=f.spriteSourceSize,p=d.canvas.pivot,scale=1.15,x=c.paired?300:530;ctx.drawImage(d.images[f.page],r.x,r.y,r.w,r.h,x+(s.x-p.x)*scale,525+(s.y-p.y)*scale,r.w*scale,r.h*scale);
+ctx.fillStyle='#dfbb69';ctx.fillRect(x-2,518,4,14);el('status').textContent=id+' — frame '+(frame+1)+' / '+c.frames.length+' — '+c.durationMs+' ms — contact: '+c.contact.map(v=>v+1).join(', ');requestAnimationFrame(draw);}
+requestAnimationFrame(draw);
+})().catch(e=>document.getElementById('status').textContent=e.message);
+</script></body></html>

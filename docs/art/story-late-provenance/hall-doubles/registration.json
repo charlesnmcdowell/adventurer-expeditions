@@ -1,0 +1,90 @@
+{
+  "actor": "story_hall_doubles",
+  "name": "Ducal Guard",
+  "identity": "mini:hall_doubles",
+  "bodyReferenceHeight": 266,
+  "seedAlpha": 64,
+  "attackContacts": [
+    4
+  ],
+  "pairs": [
+    {
+      "id": "hiro-finisher-1",
+      "files": [
+        "hiro-finisher-1.png"
+      ],
+      "columns": 4,
+      "rows": 4,
+      "hiroReferenceHeights": [
+        190
+      ],
+      "contacts": [
+        6
+      ],
+      "seedErosion": 2
+    },
+    {
+      "id": "hiro-finisher-2",
+      "files": [
+        "hiro-finisher-2.png"
+      ],
+      "columns": 4,
+      "rows": 4,
+      "hiroReferenceHeights": [
+        198
+      ],
+      "contacts": [
+        6
+      ],
+      "seedErosion": 2,
+      "replacementSheets": [
+        {
+          "file": "hiro-finisher-2-repair-late.png",
+          "frames": [
+            2,
+            14
+          ],
+          "columns": 2,
+          "rows": 1,
+          "hiroReferenceHeight": 483
+        },
+        {
+          "file": "hiro-finisher-2-edge-repair.png",
+          "frames": [
+            3
+          ],
+          "columns": 1,
+          "rows": 1,
+          "hiroReferenceHeight": 811
+        }
+      ]
+    },
+    {
+      "id": "story_hall_doubles-fatal",
+      "files": [
+        "enemy-fatal.png"
+      ],
+      "columns": 4,
+      "rows": 4,
+      "hiroReferenceHeights": [
+        206
+      ],
+      "contacts": [
+        6
+      ],
+      "fatal": true,
+      "seedErosion": 2,
+      "replacementSheets": [
+        {
+          "file": "enemy-fatal-repair-late.png",
+          "frames": [
+            15
+          ],
+          "columns": 1,
+          "rows": 1,
+          "hiroReferenceHeight": 698
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "image": "fire-3f3f8705d076.webp",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "columns": 4,
+  "rows": 4,
+  "clips": {
+    "siege_flame": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "ember_lash": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "fire_barrier": [
+      8,
+      9,
+      10,
+      11
+    ],
+    "ashfall": [
+      12,
+      13,
+      14,
+      15
+    ]
+  },
+  "source": "story-enemies\\effects-fire\\effects.png"
+}

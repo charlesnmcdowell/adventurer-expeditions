@@ -1,0 +1,72 @@
+{
+  "actor": "story_wyvern",
+  "name": "Wyvern",
+  "identity": "enemy:wyvern",
+  "bodyReferenceHeight": 222,
+  "seedAlpha": 64,
+  "attackContacts": [
+    4
+  ],
+  "pairs": [
+    {
+      "id": "hiro-finisher-1",
+      "files": [
+        "hiro-finisher-1.png"
+      ],
+      "columns": 4,
+      "rows": 4,
+      "hiroReferenceHeights": [
+        183
+      ],
+      "contacts": [
+        6
+      ],
+      "seedErosion": 2,
+      "replacementSheets": [
+        {
+          "file": "hiro-finisher-1-repair-late.png",
+          "frames": [
+            11,
+            15
+          ],
+          "columns": 2,
+          "rows": 1,
+          "hiroReferenceHeight": 363
+        }
+      ]
+    },
+    {
+      "id": "hiro-finisher-2",
+      "files": [
+        "hiro-finisher-2-wide-a.png",
+        "hiro-finisher-2-wide-b.png"
+      ],
+      "columns": 2,
+      "rows": 4,
+      "hiroReferenceHeights": [
+        195,
+        175
+      ],
+      "contacts": [
+        5
+      ],
+      "seedErosion": 2
+    },
+    {
+      "id": "story_wyvern-fatal",
+      "files": [
+        "enemy-fatal.png"
+      ],
+      "columns": 4,
+      "rows": 4,
+      "hiroReferenceHeights": [
+        164
+      ],
+      "contacts": [
+        6
+      ],
+      "fatal": true,
+      "seedErosion": 2
+    }
+  ]
+}

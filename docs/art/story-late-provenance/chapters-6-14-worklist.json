@@ -1,0 +1,2416 @@
+[
+  {
+    "identity": "mini:silksa",
+    "name": "Silksa, Spider Queen",
+    "slug": "silksa",
+    "definition": {
+      "id": "silksa",
+      "name": "Silksa, Spider Queen",
+      "base": "web_spider",
+      "signature": "venom_fang",
+      "equips": 4,
+      "campaign3": true,
+      "faction": "gate"
+    },
+    "appearances": [
+      {
+        "chapter": 6,
+        "encounter": 0
+      }
+    ],
+    "references": [
+      {
+        "file": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\silksa\\mini-silksa-reference.png",
+        "source": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer\\assets\\anime\\gate\\v1\\runtime\\mini_2.webp",
+        "cell": 3,
+        "box": [
+          500,
+          500,
+          1000,
+          1000
+        ],
+        "sha256": "2be5085bf409a536461fcc5215fcc2e7d18e3a0332b39a65b4c724945d3586f8"
+      }
+    ],
+    "state": "reference-inventoried",
+    "pairsRequired": {
+      "hiro": 2,
+      "enemy": 1,
+      "distinctFramesEach": 16
+    }
+  },
+  {
+    "identity": "enemy:web_spider",
+    "name": "Giant Spider",
+    "slug": "web-spider",
+    "definition": {
+      "id": "web_spider",
+      "name": "Giant Spider",
+      "species": "beast",
+      "portrait": "spider",
+      "equips": 2,
+      "skins": [
+        {
+          "name": "Web-Black",
+          "tint": "#2a2a2a"
+        },
+        {
+          "name": "Bark",
+          "tint": "#4a3a2a"
+        },
+        {
+          "name": "Bone",
+          "tint": "#5a5a4a"
+        }
+      ],
+      "pool": [
+        "glass_web",
+        "tongue_lash",
+        "venom_fang",
+        "snare",
+        "backstab"
+      ],
+      "campaign3": true,
+      "faction": "gate"
+    },
+    "appearances": [
+      {
+        "chapter": 6,
+        "encounter": 0
+      },
+      {
+        "chapter": 6,
+        "encounter": 0
+      }
+    ],
+    "references": [
+      {
+        "file": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\web-spider\\enemy-web_spider-reference.png",
+        "source": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer\\assets\\anime\\gate\\v1\\runtime\\enemy_5.webp",
+        "cell": 2,
+        "box": [
+          0,
+          500,
+          500,
+          1000
+        ],
+        "sha256": "4d628c699826384db7e6393fcc8f94dba0e7bc7aa68bb30b157a2fc1719e63b8"
+      }
+    ],
+    "state": "reference-inventoried",
+    "pairsRequired": {
+      "hiro": 2,
+      "enemy": 1,
+      "distinctFramesEach": 16
+    }
+  },
+  {
+    "identity": "named:thornwise",
+    "name": "Mzee Kamau",
+    "slug": "thornwise",
+    "definition": {
+      "id": "thornwise",
+      "name": "Mzee Kamau",
+      "region": "umbra",
+      "epithet": "Archdruid",
+      "role": "boss",
+      "sex": "m",
+      "level": 15,
+      "desc": "The Umbra archdruid of the Mirkhollow. Believes every axe-holder deserves a root through the chest.",
+      "perks": [
+        "wild_form"
+      ],
+      "actives": [
+        "thorn_lash",
+        "treefall",
+        "grove_raise",
+        "beast_shape",
+        "thorn_skin"
+      ],
+      "portrait": {
+        "skin": "dark",
+        "hair": "long",
+        "wardrobe": "hide",
+        "color": "#2a4a2a"
+      },
+      "campaign3": true,
+      "faction": "gate"
+    },
+    "appearances": [
+      {
+        "chapter": 6,
+        "encounter": 1
+      }
+    ],
+    "references": [
+      {
+        "file": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions\\assets\\expedition\\story\\portraits\\thornwise-7a7d0728df4a.webp",
+        "source": "original portrait compositor",
+        "sha256": "7a7d0728df4a83334186b541f1913319d1800826117e0c79bc3823d518258c51"
+      },
+      {
+        "file": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\thornwise\\head-thornwise-reference.png",
+        "source": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer\\assets\\anime\\gate\\v1\\runtime\\heads_10.webp",
+        "cell": 0,
+        "box": [
+          0,
+          0,
+          500,
+          500
+        ],
+        "sha256": "dfa41f06a720b6a4561366624f6b97f3161bfe8afb53d74e66d4ed20c893ed3d"
+      },
+      {
+        "file": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\thornwise\\body-thornwise-reference.png",
+        "source": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer\\assets\\anime\\gate\\v1\\runtime\\bodies_10.webp",
+        "cell": 0,
+        "box": [
+          0,
+          0,
+          500,
+          500
+        ],
+        "sha256": "b01495de3ac7afd84fcd3521001d64acb41fe3772d4819e18f8686a1a758b3e6"
+      }
+    ],
+    "state": "reference-inventoried",
+    "pairsRequired": {
+      "hiro": 2,
+      "enemy": 1,
+      "distinctFramesEach": 16
+    }
+  },
+  {
+    "identity": "enemy:umbra_druid",
+    "name": "Umbra Druid",
+    "slug": "umbra-druid",
+    "definition": {
+      "id": "umbra_druid",
+      "name": "Umbra Druid",
+      "species": "human",
+      "portrait": "hedge_mage",
+      "equips": 2,
+      "skins": [
+        {
+          "name": "Moss Robe",
+          "tint": "#2a4a2a"
+        },
+        {
+          "name": "Bark Robe",
+          "tint": "#3a3a2a"
+        },
+        {
+          "name": "Fern Robe",
+          "tint": "#2a3a2a"
+        }
+      ],
+      "pool": [
+        "thorn_lash",
+        "fox_form",
+        "growth_field",
+        "crow_sight",
+        "snare"
+      ],
+      "campaign3": true,
+      "faction": "gate"
+    },
+    "appearances": [
+      {
+        "chapter": 6,
+        "encounter": 1
+      },
+      {
+        "chapter": 6,
+        "encounter": 1
+      }
+    ],
+    "references": [
+      {
+        "file": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\umbra-druid\\enemy-umbra_druid-reference.png",
+        "source": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer\\assets\\anime\\gate\\v1\\runtime\\enemy_3.webp",
+        "cell": 0,
+        "box": [
+          0,
+          0,
+          500,
+          500
+        ],
+        "sha256": "21b1f4a90fe750d8e9a08cca8b38e90f64c44783fb4e15f11aee6f2acd0d4558"
+      }
+    ],
+    "state": "reference-inventoried",
+    "pairsRequired": {
+      "hiro": 2,
+      "enemy": 1,
+      "distinctFramesEach": 16
+    }
+  },
+  {
+    "identity": "named:nettle",
+    "name": "Wanjiru",
+    "slug": "nettle",
+    "definition": {
+      "id": "nettle",
+      "name": "Wanjiru",
+      "region": "umbra",
+      "role": "companion",
+      "companion": true,
+      "sex": "f",
+      "campaignExit": true,
+      "desc": "An Umbra druid of the Mirkhollow who believes the forest is owed blood. Fierce, literal, no patience for cities.",
+      "perks": [
+        "wild_form"
+      ],
+      "actives": [
+        "beast_shape",
+        "thorn_skin",
+        "grove_raise",
+        "wither_touch"
+      ],
+      "portrait": {
+        "skin": "dark",
+        "hair": "locs",
+        "wardrobe": "hide",
+        "color": "#2a4a2a"
+      },
+      "campaign3": true,
+      "faction": "gate"
+    },
+    "appearances": [
+      {
+        "chapter": 6,
+        "encounter": 1
+      }
+    ],
+    "references": [
+      {
+        "file": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions\\assets\\expedition\\story\\portraits\\nettle-748ce4ea2342.webp",
+        "source": "original portrait compositor",
+        "sha256": "748ce4ea2342012e744976c582e02eb0dec27262fd55d1dc68b9fe30c260863c"
+      },
+      {
+        "file": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\nettle\\head-nettle-reference.png",
+        "source": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer\\assets\\anime\\gate\\v1\\runtime\\heads_4.webp",
+        "cell": 0,
+        "box": [
+          0,
+          0,
+          500,
+          500
+        ],
+        "sha256": "8a06fd6fcc5a142f53dad32e19809a70b93db833a884ccda9eb336211ac6210d"
+      },
+      {
+        "file": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\nettle\\body-nettle-reference.png",
+        "source": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer\\assets\\anime\\gate\\v1\\runtime\\bodies_4.webp",
+        "cell": 0,
+        "box": [
+          0,
+          0,
+          500,
+          500
+        ],
+        "sha256": "fc1d82f1c52732905d6e2fcdd83cab0f5d310ede76087ce3e4684e38cce7a0b1"
+      }
+    ],
+    "state": "reference-inventoried",
+    "pairsRequired": {
+      "hiro": 2,
+      "enemy": 1,
+      "distinctFramesEach": 16
+    }
+  },
+  {
+    "identity": "mini:wyvern_matriarch",
+    "name": "Wyvern Matriarch",
+    "slug": "wyvern-matriarch",
+    "definition": {
+      "id": "wyvern_matriarch",
+      "name": "Wyvern Matriarch",
+      "base": "wyvern",
+      "signature": "venom_fang",
+      "equips": 4,
+      "campaign3": true,
+      "faction": "gate"
+    },
+    "appearances": [
+      {
+        "chapter": 6,
+        "encounter": 2
+      }
+    ],
+    "references": [
+      {
+        "file": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\wyvern-matriarch\\mini-wyvern_matriarch-reference.png",
+        "source": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer\\assets\\anime\\gate\\v1\\runtime\\mini_3.webp",
+        "cell": 1,
+        "box": [
+          500,
+          0,
+          1000,
+          500
+        ],
+        "sha256": "878bd57a1302c6cb52cecb687499c5e171e410de99022562dbe513a56b11f3db"
+      }
+    ],
+    "state": "reference-inventoried",
+    "pairsRequired": {
+      "hiro": 2,
+      "enemy": 1,
+      "distinctFramesEach": 16
+    }
+  },
+  {
+    "identity": "enemy:wyvern",
+    "name": "Wyvern",
+    "slug": "wyvern",
+    "definition": {
+      "id": "wyvern",
+      "name": "Wyvern",
+      "species": "beast",
+      "portrait": "drake",
+      "equips": 3,
+      "statMult": 1.15,
+      "skins": [
+        {
+          "name": "Green",
+          "tint": "#2a4a2a"
+        },
+        {
+          "name": "Brown",
+          "tint": "#4a3a2a"
+        },
+        {
+          "name": "Grey",
+          "tint": "#4a4a4a"
+        }
+      ],
+      "pool": [
+        "raptor_shred",
+        "rot_wing",
+        "rime_breath",
+        "venom_fang",
+        "counter_attack"
+      ],
+      "campaign3": true,
+      "faction": "gate"
+    },
+    "appearances": [
+      {
+        "chapter": 6,
+        "encounter": 2
+      }
+    ],
+    "references": [
+      {
+        "file": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\wyvern\\enemy-wyvern-reference.png",
+        "source": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer\\assets\\anime\\gate\\v1\\runtime\\enemy_5.webp",
+        "cell": 3,
+        "box": [
+          500,
+          500,
+          1000,
+          1000
+        ],
+        "sha256": "4d628c699826384db7e6393fcc8f94dba0e7bc7aa68bb30b157a2fc1719e63b8"
+      }
+    ],
+    "state": "reference-inventoried",
+    "pairsRequired": {
+      "hiro": 2,
+      "enemy": 1,
+      "distinctFramesEach": 16
+    }
+  },
+  {
+    "identity": "mini:kestrel",
+    "name": "Kestrel",
+    "slug": "kestrel",
+    "definition": {
+      "id": "kestrel",
+      "name": "Kestrel",
+      "base": "consortium_guard",
+      "signature": "sunder",
+      "equips": 4,
+      "campaign3": true,
+      "faction": "gate"
+    },
+    "appearances": [
+      {
+        "chapter": 6,
+        "encounter": 3
+      }
+    ],
+    "references": [
+      {
+        "file": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\kestrel\\mini-kestrel-reference.png",
+        "source": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer\\assets\\anime\\gate\\v1\\runtime\\mini_3.webp",
+        "cell": 0,
+        "box": [
+          0,
+          0,
+          500,
+          500
+        ],
+        "sha256": "878bd57a1302c6cb52cecb687499c5e171e410de99022562dbe513a56b11f3db"
+      }
+    ],
+    "state": "reference-inventoried",
+    "pairsRequired": {
+      "hiro": 2,
+      "enemy": 1,
+      "distinctFramesEach": 16
+    }
+  },
+  {
+    "identity": "enemy:consortium_guard",
+    "name": "Consortium Guard",
+    "slug": "consortium-guard",
+    "definition": {
+      "id": "consortium_guard",
+      "name": "Consortium Guard",
+      "species": "human",
+      "portrait": "plated_sentinel",
+      "equips": 2,
+      "skins": [
+        {
+          "name": "Iron Livery",
+          "tint": "#4a4a52"
+        },
+        {
+          "name": "Black Livery",
+          "tint": "#2a2a2e"
+        },
+        {
+          "name": "Mine Detail",
+          "tint": "#4a3a2a"
+        }
+      ],
+      "pool": [
+        "shield_wall",
+        "taunt",
+        "hold_the_road",
+        "shield_breaker",
+        "bulwark_formation"
+      ],
+      "campaign3": true,
+      "faction": "gate"
+    },
+    "appearances": [
+      {
+        "chapter": 6,
+        "encounter": 3
+      },
+      {
+        "chapter": 7,
+        "encounter": 0
+      },
+      {
+        "chapter": 7,
+        "encounter": 0
+      },
+      {
+        "chapter": 7,
+        "encounter": 2
+      },
+      {
+        "chapter": 7,
+        "encounter": 3
+      },
+      {
+        "chapter": 7,
+        "encounter": 3
+      },
+      {
+        "chapter": 7,
+        "encounter": 4
+      },
+      {
+        "chapter": 7,
+        "encounter": 4
+      },
+      {
+        "chapter": 8,
+        "encounter": 1
+      },
+      {
+        "chapter": 9,
+        "encounter": 0
+      },
+      {
+        "chapter": 9,
+        "encounter": 0
+      },
+      {
+        "chapter": 9,
+        "encounter": 1
+      },
+      {
+        "chapter": 9,
+        "encounter": 1
+      },
+      {
+        "chapter": 9,
+        "encounter": 1
+      },
+      {
+        "chapter": 9,
+        "encounter": 2
+      },
+      {
+        "chapter": 9,
+        "encounter": 3
+      },
+      {
+        "chapter": 10,
+        "encounter": 0
+      },
+      {
+        "chapter": 10,
+        "encounter": 0
+      },
+      {
+        "chapter": 10,
+        "encounter": 1
+      },
+      {
+        "chapter": 13,
+        "encounter": 3
+      }
+    ],
+    "references": [
+      {
+        "file": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\consortium-guard\\enemy-consortium_guard-reference.png",
+        "source": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer\\assets\\anime\\gate\\v1\\runtime\\enemy_2.webp",
+        "cell": 0,
+        "box": [
+          0,
+          0,
+          500,
+          500
+        ],
+        "sha256": "0cafe773aa70f2e820d8397491417e1becbe129d1f9b3e810b38cefaae717829"
+      }
+    ],
+    "state": "reference-inventoried",
+    "pairsRequired": {
+      "hiro": 2,
+      "enemy": 1,
+      "distinctFramesEach": 16
+    }
+  },
+  {
+    "identity": "enemy:slave_driver",
+    "name": "Slave Driver",
+    "slug": "slave-driver",
+    "definition": {
+      "id": "slave_driver",
+      "name": "Slave Driver",
+      "species": "human",
+      "portrait": "bandit",
+      "equips": 2,
+      "skins": [
+        {
+          "name": "Whip Hand",
+          "tint": "#4a3a2a"
+        },
+        {
+          "name": "Chain Hand",
+          "tint": "#3a3a3a"
+        },
+        {
+          "name": "Lamp Hand",
+          "tint": "#5a4a2a"
+        }
+      ],
+      "pool": [
+        "chain_and_weight",
+        "contract_mark",
+        "flanking_pay",
+        "mace_swing",
+        "cleave"
+      ],
+      "campaign3": true,
+      "faction": "gate"
+    },
+    "appearances": [
+      {
+        "chapter": 7,
+        "encounter": 0
+      },
+      {
+        "chapter": 7,
+        "encounter": 1
+      },
+      {
+        "chapter": 7,
+        "encounter": 1
+      },
+      {
+        "chapter": 7,
+        "encounter": 4
+      }
+    ],
+    "references": [
+      {
+        "file": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\slave-driver\\enemy-slave_driver-reference.png",
+        "source": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer\\assets\\anime\\gate\\v1\\runtime\\enemy_2.webp",
+        "cell": 2,
+        "box": [
+          0,
+          500,
+          500,
+          1000
+        ],
+        "sha256": "0cafe773aa70f2e820d8397491417e1becbe129d1f9b3e810b38cefaae717829"
+      }
+    ],
+    "state": "reference-inventoried",
+    "pairsRequired": {
+      "hiro": 2,
+      "enemy": 1,
+      "distinctFramesEach": 16
+    }
+  },
+  {
+    "identity": "named:malvane",
+    "name": "Olamide",
+    "slug": "malvane",
+    "definition": {
+      "id": "malvane",
+      "name": "Olamide",
+      "region": "gate",
+      "role": "boss",
+      "sex": "m",
+      "level": 17,
+      "desc": "The Consortium mage running the Mirkhollow mine. Fussy, meticulous, keeps the slaves' names in a ledger.",
+      "perks": [
+        "ice_queen",
+        "arcane_focus"
+      ],
+      "actives": [
+        "frost_touch",
+        "rime_grasp",
+        "coven_rime",
+        "ranging_ward"
+      ],
+      "portrait": {
+        "skin": "dark",
+        "hair": "fringe",
+        "wardrobe": "robe",
+        "color": "#2a3a5a"
+      },
+      "campaign3": true,
+      "faction": "gate"
+    },
+    "appearances": [
+      {
+        "chapter": 7,
+        "encounter": 3
+      }
+    ],
+    "references": [
+      {
+        "file": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions\\assets\\expedition\\story\\portraits\\malvane-7d73a471ec33.webp",
+        "source": "original portrait compositor",
+        "sha256": "7d73a471ec3311c1001fbecf08c4947eb5b7a87123a8aac27e88cb9bd6b2bf9d"
+      },
+      {
+        "file": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\malvane\\head-malvane-reference.png",
+        "source": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer\\assets\\anime\\gate\\v1\\runtime\\heads_10.webp",
+        "cell": 1,
+        "box": [
+          500,
+          0,
+          1000,
+          500
+        ],
+        "sha256": "dfa41f06a720b6a4561366624f6b97f3161bfe8afb53d74e66d4ed20c893ed3d"
+      },
+      {
+        "file": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\malvane\\body-malvane-reference.png",
+        "source": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer\\assets\\anime\\gate\\v1\\runtime\\bodies_10.webp",
+        "cell": 1,
+        "box": [
+          500,
+          0,
+          1000,
+          500
+        ],
+        "sha256": "b01495de3ac7afd84fcd3521001d64acb41fe3772d4819e18f8686a1a758b3e6"
+      }
+    ],
+    "state": "reference-inventoried",
+    "pairsRequired": {
+      "hiro": 2,
+      "enemy": 1,
+      "distinctFramesEach": 16
+    }
+  },
+  {
+    "identity": "mini:sewer_ogre_mage",
+    "name": "The Ogre Under the Docks",
+    "slug": "sewer-ogre-mage",
+    "definition": {
+      "id": "sewer_ogre_mage",
+      "name": "The Ogre Under the Docks",
+      "base": "sewer_ogre",
+      "signature": "cleave",
+      "equips": 4,
+      "campaign3": true,
+      "faction": "gate"
+    },
+    "appearances": [
+      {
+        "chapter": 8,
+        "encounter": 0
+      }
+    ],
+    "references": [
+      {
+        "file": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\sewer-ogre-mage\\mini-sewer_ogre_mage-reference.png",
+        "source": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer\\assets\\anime\\gate\\v1\\runtime\\mini_3.webp",
+        "cell": 2,
+        "box": [
+          0,
+          500,
+          500,
+          1000
+        ],
+        "sha256": "878bd57a1302c6cb52cecb687499c5e171e410de99022562dbe513a56b11f3db"
+      }
+    ],
+    "state": "reference-inventoried",
+    "pairsRequired": {
+      "hiro": 2,
+      "enemy": 1,
+      "distinctFramesEach": 16
+    }
+  },
+  {
+    "identity": "enemy:sewer_crawler",
+    "name": "Sewer Crawler",
+    "slug": "sewer-crawler",
+    "definition": {
+      "id": "sewer_crawler",
+      "name": "Sewer Crawler",
+      "species": "beast",
+      "portrait": "beetle",
+      "equips": 2,
+      "skins": [
+        {
+          "name": "Wet",
+          "tint": "#2a3a3a"
+        },
+        {
+          "name": "Pale",
+          "tint": "#5a5a4a"
+        },
+        {
+          "name": "Oil",
+          "tint": "#1a1a1a"
+        }
+      ],
+      "pool": [
+        "pincer_lock",
+        "carapace_burst",
+        "venom_fang",
+        "backstab",
+        "snare"
+      ],
+      "campaign3": true,
+      "faction": "gate"
+    },
+    "appearances": [
+      {
+        "chapter": 8,
+        "encounter": 0
+      },
+      {
+        "chapter": 8,
+        "encounter": 0
+      }
+    ],
+    "references": [
+      {
+        "file": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\sewer-crawler\\enemy-sewer_crawler-reference.png",
+        "source": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer\\assets\\anime\\gate\\v1\\runtime\\enemy_6.webp",
+        "cell": 0,
+        "box": [
+          0,
+          0,
+          500,
+          500
+        ],
+        "sha256": "ad8874256010d6343a28d3e4e5b5094e52735dd8f2e719faf4e9ea778c1c6528"
+      }
+    ],
+    "state": "reference-inventoried",
+    "pairsRequired": {
+      "hiro": 2,
+      "enemy": 1,
+      "distinctFramesEach": 16
+    }
+  },
+  {
+    "identity": "enemy:shadow_double",
+    "name": "Shape-Thief",
+    "slug": "shadow-double",
+    "definition": {
+      "id": "shadow_double",
+      "name": "Shape-Thief",
+      "species": "human",
+      "portrait": "shadow",
+      "equips": 3,
+      "skins": [
+        {
+          "name": "Wearing a Face",
+          "tint": "#2a2a3a"
+        },
+        {
+          "name": "Between Faces",
+          "tint": "#1a1a2a"
+        },
+        {
+          "name": "Half-Turned",
+          "tint": "#3a2a3a"
+        }
+      ],
+      "pool": [
+        "backstab",
+        "shadow_rise",
+        "ghoststep",
+        "ward_thief",
+        "bell_silence"
+      ],
+      "campaign3": true,
+      "faction": "gate"
+    },
+    "appearances": [
+      {
+        "chapter": 8,
+        "encounter": 2
+      },
+      {
+        "chapter": 8,
+        "encounter": 2
+      },
+      {
+        "chapter": 8,
+        "encounter": 3
+      },
+      {
+        "chapter": 8,
+        "encounter": 3
+      },
+      {
+        "chapter": 10,
+        "encounter": 3
+      },
+      {
+        "chapter": 11,
+        "encounter": 1
+      },
+      {
+        "chapter": 12,
+        "encounter": 1
+      }
+    ],
+    "references": [
+      {
+        "file": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\shadow-double\\enemy-shadow_double-reference.png",
+        "source": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer\\assets\\anime\\gate\\v1\\runtime\\enemy_6.webp",
+        "cell": 3,
+        "box": [
+          500,
+          500,
+          1000,
+          1000
+        ],
+        "sha256": "ad8874256010d6343a28d3e4e5b5094e52735dd8f2e719faf4e9ea778c1c6528"
+      }
+    ],
+    "state": "reference-inventoried",
+    "pairsRequired": {
+      "hiro": 2,
+      "enemy": 1,
+      "distinctFramesEach": 16
+    }
+  },
+  {
+    "identity": "mini:lantern_master",
+    "name": "The Master of Lanterns",
+    "slug": "lantern-master",
+    "definition": {
+      "id": "lantern_master",
+      "name": "The Master of Lanterns",
+      "base": "shadow_double",
+      "signature": "shadow_rise",
+      "equips": 5,
+      "campaign3": true,
+      "faction": "gate"
+    },
+    "appearances": [
+      {
+        "chapter": 8,
+        "encounter": 3
+      }
+    ],
+    "references": [
+      {
+        "file": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\lantern-master\\mini-lantern_master-reference.png",
+        "source": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer\\assets\\anime\\gate\\v1\\runtime\\mini_3.webp",
+        "cell": 3,
+        "box": [
+          500,
+          500,
+          1000,
+          1000
+        ],
+        "sha256": "878bd57a1302c6cb52cecb687499c5e171e410de99022562dbe513a56b11f3db"
+      }
+    ],
+    "state": "reference-inventoried",
+    "pairsRequired": {
+      "hiro": 2,
+      "enemy": 1,
+      "distinctFramesEach": 16
+    }
+  },
+  {
+    "identity": "mini:umbral_pair",
+    "name": "The Umbral Hand",
+    "slug": "umbral-pair",
+    "definition": {
+      "id": "umbral_pair",
+      "name": "The Umbral Hand",
+      "base": "hired_knife",
+      "signature": "venom_fang",
+      "equips": 4,
+      "count": 2,
+      "campaign3": true,
+      "faction": "gate"
+    },
+    "appearances": [
+      {
+        "chapter": 9,
+        "encounter": 1
+      }
+    ],
+    "references": [
+      {
+        "file": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\umbral-pair\\mini-umbral_pair-reference.png",
+        "source": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer\\assets\\anime\\gate\\v1\\runtime\\mini_5.webp",
+        "cell": 2,
+        "box": [
+          0,
+          500,
+          500,
+          1000
+        ],
+        "sha256": "d95c5713ce9bc181c630f712ff1d9046bdbb78789215376d12e0086b9eb26fc5"
+      }
+    ],
+    "state": "reference-inventoried",
+    "pairsRequired": {
+      "hiro": 2,
+      "enemy": 1,
+      "distinctFramesEach": 16
+    }
+  },
+  {
+    "identity": "mini:tower_captain",
+    "name": "Captain of the Tower",
+    "slug": "tower-captain",
+    "definition": {
+      "id": "tower_captain",
+      "name": "Captain of the Tower",
+      "base": "consortium_guard",
+      "signature": "shield_wall",
+      "equips": 5,
+      "campaign3": true,
+      "faction": "gate"
+    },
+    "appearances": [
+      {
+        "chapter": 9,
+        "encounter": 3
+      }
+    ],
+    "references": [
+      {
+        "file": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\tower-captain\\mini-tower_captain-reference.png",
+        "source": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer\\assets\\anime\\gate\\v1\\runtime\\mini_4.webp",
+        "cell": 0,
+        "box": [
+          0,
+          0,
+          500,
+          500
+        ],
+        "sha256": "4bb93147dc35efd2384c652debedc3ce210da9f807940447a74588ee2fc9a268"
+      }
+    ],
+    "state": "reference-inventoried",
+    "pairsRequired": {
+      "hiro": 2,
+      "enemy": 1,
+      "distinctFramesEach": 16
+    }
+  },
+  {
+    "identity": "named:maddox",
+    "name": "Adigun Adeyinka",
+    "slug": "maddox",
+    "definition": {
+      "id": "maddox",
+      "name": "Adigun Adeyinka",
+      "region": "gate",
+      "role": "boss",
+      "sex": "m",
+      "level": 18,
+      "desc": "Head of the Iron Consortium's Gate office and Kolade's foster-father. A merchant who thinks he is still in charge.",
+      "perks": [
+        "rich",
+        "momentum"
+      ],
+      "actives": [
+        "contract_mark",
+        "chain_and_weight",
+        "mace_swing",
+        "cleave"
+      ],
+      "portrait": {
+        "skin": "dark",
+        "hair": "fringe",
+        "wardrobe": "suit",
+        "color": "#2a2a3a"
+      },
+      "campaign3": true,
+      "faction": "gate"
+    },
+    "appearances": [
+      {
+        "chapter": 10,
+        "encounter": 1
+      }
+    ],
+    "references": [
+      {
+        "file": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions\\assets\\expedition\\story\\portraits\\maddox-8f4eb092ee20.webp",
+        "source": "original portrait compositor",
+        "sha256": "8f4eb092ee206a87bcddba0ada293dc4b1162945344f553096f221914596d30c"
+      },
+      {
+        "file": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\maddox\\head-maddox-reference.png",
+        "source": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer\\assets\\anime\\gate\\v1\\runtime\\heads_12.webp",
+        "cell": 0,
+        "box": [
+          0,
+          0,
+          500,
+          500
+        ],
+        "sha256": "ed608fb9408868f049bf06dfbd225f3102468b9e847bae4eddaf3dd15ed43d49"
+      },
+      {
+        "file": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\maddox\\body-maddox-reference.png",
+        "source": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer\\assets\\anime\\gate\\v1\\runtime\\bodies_12.webp",
+        "cell": 0,
+        "box": [
+          0,
+          0,
+          500,
+          500
+        ],
+        "sha256": "20643a3ce28bcb414ab479816c79b459f13df86c0461a78afb32ce25383f1e90"
+      }
+    ],
+    "state": "reference-inventoried",
+    "pairsRequired": {
+      "hiro": 2,
+      "enemy": 1,
+      "distinctFramesEach": 16
+    }
+  },
+  {
+    "identity": "named:vask",
+    "name": "Bankole",
+    "slug": "vask",
+    "definition": {
+      "id": "vask",
+      "name": "Bankole",
+      "region": "gate",
+      "role": "boss",
+      "sex": "m",
+      "level": 18,
+      "desc": "A Consortium leader; Adigun's partner. Louder than he is clever.",
+      "perks": [
+        "momentum"
+      ],
+      "actives": [
+        "line_advance",
+        "shield_breaker",
+        "cleave",
+        "sunder"
+      ],
+      "portrait": {
+        "skin": "brown",
+        "hair": "buzz",
+        "wardrobe": "suit",
+        "color": "#3a2a2a"
+      },
+      "campaign3": true,
+      "faction": "gate"
+    },
+    "appearances": [
+      {
+        "chapter": 10,
+        "encounter": 1
+      }
+    ],
+    "references": [
+      {
+        "file": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions\\assets\\expedition\\story\\portraits\\vask-ef26791f9668.webp",
+        "source": "original portrait compositor",
+        "sha256": "ef26791f966863238e76f5193a617d4bbd62453beab6a39b75745af03d1bdda2"
+      },
+      {
+        "file": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\vask\\head-vask-reference.png",
+        "source": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer\\assets\\anime\\gate\\v1\\runtime\\heads_12.webp",
+        "cell": 1,
+        "box": [
+          500,
+          0,
+          1000,
+          500
+        ],
+        "sha256": "ed608fb9408868f049bf06dfbd225f3102468b9e847bae4eddaf3dd15ed43d49"
+      },
+      {
+        "file": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\vask\\body-vask-reference.png",
+        "source": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer\\assets\\anime\\gate\\v1\\runtime\\bodies_12.webp",
+        "cell": 1,
+        "box": [
+          500,
+          0,
+          1000,
+          500
+        ],
+        "sha256": "20643a3ce28bcb414ab479816c79b459f13df86c0461a78afb32ce25383f1e90"
+      }
+    ],
+    "state": "reference-inventoried",
+    "pairsRequired": {
+      "hiro": 2,
+      "enemy": 1,
+      "distinctFramesEach": 16
+    }
+  },
+  {
+    "identity": "named:rennick",
+    "name": "Rotimi",
+    "slug": "rennick",
+    "definition": {
+      "id": "rennick",
+      "name": "Rotimi",
+      "region": "gate",
+      "role": "boss",
+      "sex": "m",
+      "level": 18,
+      "desc": "A Consortium leader; the accountant. Would like to survive this meeting.",
+      "perks": [
+        "arcane_focus"
+      ],
+      "actives": [
+        "spark",
+        "frost_touch",
+        "dispel"
+      ],
+      "portrait": {
+        "skin": "dark",
+        "hair": "bald",
+        "wardrobe": "suit",
+        "color": "#2a3a3a"
+      },
+      "campaign3": true,
+      "faction": "gate"
+    },
+    "appearances": [
+      {
+        "chapter": 10,
+        "encounter": 1
+      }
+    ],
+    "references": [
+      {
+        "file": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\rennick\\head-rennick-reference.png",
+        "source": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer\\assets\\anime\\gate\\v1\\runtime\\heads_12.webp",
+        "cell": 2,
+        "box": [
+          0,
+          500,
+          500,
+          1000
+        ],
+        "sha256": "ed608fb9408868f049bf06dfbd225f3102468b9e847bae4eddaf3dd15ed43d49"
+      },
+      {
+        "file": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\rennick\\body-rennick-reference.png",
+        "source": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer\\assets\\anime\\gate\\v1\\runtime\\bodies_12.webp",
+        "cell": 2,
+        "box": [
+          0,
+          500,
+          500,
+          1000
+        ],
+        "sha256": "20643a3ce28bcb414ab479816c79b459f13df86c0461a78afb32ce25383f1e90"
+      }
+    ],
+    "state": "reference-inventoried",
+    "pairsRequired": {
+      "hiro": 2,
+      "enemy": 1,
+      "distinctFramesEach": 16
+    }
+  },
+  {
+    "identity": "named:grell",
+    "name": "Gbenga",
+    "slug": "grell",
+    "definition": {
+      "id": "grell",
+      "name": "Gbenga",
+      "region": "gate",
+      "role": "boss",
+      "sex": "m",
+      "level": 20,
+      "desc": "Kolade's best knife, sent into the catacombs to finish it. Professional, bored, unbothered by tombs.",
+      "perks": [
+        "opportunist",
+        "sniper"
+      ],
+      "actives": [
+        "killing_angle",
+        "aimed_shot",
+        "silenced_step",
+        "backstab",
+        "smoke_bomb"
+      ],
+      "portrait": {
+        "skin": "dark",
+        "hair": "buzz",
+        "wardrobe": "hiking",
+        "color": "#2a2a2a"
+      },
+      "campaign3": true,
+      "faction": "gate"
+    },
+    "appearances": [
+      {
+        "chapter": 10,
+        "encounter": 2
+      }
+    ],
+    "references": [
+      {
+        "file": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions\\assets\\expedition\\story\\portraits\\grell-a7dbb10aef4e.webp",
+        "source": "original portrait compositor",
+        "sha256": "a7dbb10aef4e191d5cd5e3966268b900d158a046c40cb90c22eb5c864bd6189e"
+      },
+      {
+        "file": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\grell\\head-grell-reference.png",
+        "source": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer\\assets\\anime\\gate\\v1\\runtime\\heads_10.webp",
+        "cell": 2,
+        "box": [
+          0,
+          500,
+          500,
+          1000
+        ],
+        "sha256": "dfa41f06a720b6a4561366624f6b97f3161bfe8afb53d74e66d4ed20c893ed3d"
+      },
+      {
+        "file": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\grell\\body-grell-reference.png",
+        "source": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer\\assets\\anime\\gate\\v1\\runtime\\bodies_10.webp",
+        "cell": 2,
+        "box": [
+          0,
+          500,
+          500,
+          1000
+        ],
+        "sha256": "b01495de3ac7afd84fcd3521001d64acb41fe3772d4819e18f8686a1a758b3e6"
+      }
+    ],
+    "state": "reference-inventoried",
+    "pairsRequired": {
+      "hiro": 2,
+      "enemy": 1,
+      "distinctFramesEach": 16
+    }
+  },
+  {
+    "identity": "mini:family_double",
+    "name": "A Face You Know",
+    "slug": "family-double",
+    "definition": {
+      "id": "family_double",
+      "name": "A Face You Know",
+      "base": "shadow_double",
+      "signature": "backstab",
+      "equips": 4,
+      "count": 2,
+      "campaign3": true,
+      "faction": "gate"
+    },
+    "appearances": [
+      {
+        "chapter": 10,
+        "encounter": 3
+      }
+    ],
+    "references": [
+      {
+        "file": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\family-double\\mini-family_double-reference.png",
+        "source": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer\\assets\\anime\\gate\\v1\\runtime\\mini_4.webp",
+        "cell": 1,
+        "box": [
+          500,
+          0,
+          1000,
+          500
+        ],
+        "sha256": "4bb93147dc35efd2384c652debedc3ce210da9f807940447a74588ee2fc9a268"
+      }
+    ],
+    "state": "reference-inventoried",
+    "pairsRequired": {
+      "hiro": 2,
+      "enemy": 1,
+      "distinctFramesEach": 16
+    }
+  },
+  {
+    "identity": "enemy:phase_spider",
+    "name": "Phase Spider",
+    "slug": "phase-spider",
+    "definition": {
+      "id": "phase_spider",
+      "name": "Phase Spider",
+      "species": "beast",
+      "portrait": "spider",
+      "equips": 3,
+      "statMult": 1.1,
+      "skins": [
+        {
+          "name": "Blue",
+          "tint": "#2a3a6a"
+        },
+        {
+          "name": "Violet",
+          "tint": "#4a2a6a"
+        },
+        {
+          "name": "Pale",
+          "tint": "#5a5a6a"
+        }
+      ],
+      "pool": [
+        "glass_web",
+        "coil_crush",
+        "shadow_rise",
+        "venom_fang",
+        "smoke_bomb"
+      ],
+      "campaign3": true,
+      "faction": "gate"
+    },
+    "appearances": [
+      {
+        "chapter": 10,
+        "encounter": 4
+      }
+    ],
+    "references": [
+      {
+        "file": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\phase-spider\\enemy-phase_spider-reference.png",
+        "source": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer\\assets\\anime\\gate\\v1\\runtime\\enemy_6.webp",
+        "cell": 2,
+        "box": [
+          0,
+          500,
+          500,
+          1000
+        ],
+        "sha256": "ad8874256010d6343a28d3e4e5b5094e52735dd8f2e719faf4e9ea778c1c6528"
+      }
+    ],
+    "state": "reference-inventoried",
+    "pairsRequired": {
+      "hiro": 2,
+      "enemy": 1,
+      "distinctFramesEach": 16
+    }
+  },
+  {
+    "identity": "enemy:tomb_ghoul",
+    "name": "Tomb Ghoul",
+    "slug": "tomb-ghoul",
+    "definition": {
+      "id": "tomb_ghoul",
+      "name": "Tomb Ghoul",
+      "species": "human",
+      "portrait": "grave_acolyte",
+      "equips": 2,
+      "undead": true,
+      "skins": [
+        {
+          "name": "Dust",
+          "tint": "#3a3a32"
+        },
+        {
+          "name": "Wrapped",
+          "tint": "#4a4a3a"
+        },
+        {
+          "name": "Split",
+          "tint": "#2a2a2a"
+        }
+      ],
+      "pool": [
+        "soul_bay",
+        "mire_tusk",
+        "wither_touch",
+        "venom_fang",
+        "snare"
+      ],
+      "statusImmunities": [
+        "poison",
+        "bleed"
+      ],
+      "campaign3": true,
+      "faction": "gate"
+    },
+    "appearances": [
+      {
+        "chapter": 10,
+        "encounter": 4
+      },
+      {
+        "chapter": 10,
+        "encounter": 4
+      }
+    ],
+    "references": [
+      {
+        "file": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\tomb-ghoul\\enemy-tomb_ghoul-reference.png",
+        "source": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer\\assets\\anime\\gate\\v1\\runtime\\enemy_4.webp",
+        "cell": 1,
+        "box": [
+          500,
+          0,
+          1000,
+          500
+        ],
+        "sha256": "40e49452aa20a8fe1957810749e244423d28dc7dd581dde6554207d1e637a429"
+      }
+    ],
+    "state": "reference-inventoried",
+    "pairsRequired": {
+      "hiro": 2,
+      "enemy": 1,
+      "distinctFramesEach": 16
+    }
+  },
+  {
+    "identity": "enemy:gauntlet_traitor",
+    "name": "Gauntlet Turncoat",
+    "slug": "gauntlet-traitor",
+    "definition": {
+      "id": "gauntlet_traitor",
+      "name": "Gauntlet Turncoat",
+      "species": "human",
+      "portrait": "plated_sentinel",
+      "equips": 3,
+      "skins": [
+        {
+          "name": "Marr's Own",
+          "tint": "#5a2a2a"
+        },
+        {
+          "name": "Bought Blade",
+          "tint": "#3a2a2a"
+        },
+        {
+          "name": "Late Loyalty",
+          "tint": "#4a3a3a"
+        }
+      ],
+      "pool": [
+        "cleave",
+        "paid_in_full",
+        "disciplined_advance",
+        "ashfall",
+        "sunder"
+      ],
+      "campaign3": true,
+      "faction": "gate"
+    },
+    "appearances": [
+      {
+        "chapter": 11,
+        "encounter": 0
+      },
+      {
+        "chapter": 11,
+        "encounter": 1
+      },
+      {
+        "chapter": 13,
+        "encounter": 4
+      },
+      {
+        "chapter": 13,
+        "encounter": 4
+      }
+    ],
+    "references": [
+      {
+        "file": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\gauntlet-traitor\\enemy-gauntlet_traitor-reference.png",
+        "source": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer\\assets\\anime\\gate\\v1\\runtime\\enemy_3.webp",
+        "cell": 2,
+        "box": [
+          0,
+          500,
+          500,
+          1000
+        ],
+        "sha256": "21b1f4a90fe750d8e9a08cca8b38e90f64c44783fb4e15f11aee6f2acd0d4558"
+      }
+    ],
+    "state": "reference-inventoried",
+    "pairsRequired": {
+      "hiro": 2,
+      "enemy": 1,
+      "distinctFramesEach": 16
+    }
+  },
+  {
+    "identity": "named:idris",
+    "name": "Idris",
+    "slug": "idris",
+    "definition": {
+      "id": "idris",
+      "name": "Idris",
+      "region": "gate",
+      "role": "boss",
+      "sex": "m",
+      "level": 21,
+      "desc": "The 'healer' at Duke Adebayo's bedside. A doppelganger wearing a physician.",
+      "perks": [
+        "devoted"
+      ],
+      "actives": [
+        "blood_lotus",
+        "wither_touch",
+        "mend",
+        "ward_thief",
+        "backstab"
+      ],
+      "portrait": {
+        "skin": "dark",
+        "hair": "fringe",
+        "wardrobe": "robe",
+        "color": "#4a4a5a"
+      },
+      "campaign3": true,
+      "faction": "gate"
+    },
+    "appearances": [
+      {
+        "chapter": 11,
+        "encounter": 1
+      }
+    ],
+    "references": [
+      {
+        "file": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions\\assets\\expedition\\story\\portraits\\idris-134095a43408.webp",
+        "source": "original portrait compositor",
+        "sha256": "134095a43408f70465b6d8d3dd8e2603fcbda32e8a646e42d0ba172240bb6463"
+      },
+      {
+        "file": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\idris\\head-idris-reference.png",
+        "source": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer\\assets\\anime\\gate\\v1\\runtime\\heads_10.webp",
+        "cell": 3,
+        "box": [
+          500,
+          500,
+          1000,
+          1000
+        ],
+        "sha256": "dfa41f06a720b6a4561366624f6b97f3161bfe8afb53d74e66d4ed20c893ed3d"
+      },
+      {
+        "file": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\idris\\body-idris-reference.png",
+        "source": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer\\assets\\anime\\gate\\v1\\runtime\\bodies_10.webp",
+        "cell": 3,
+        "box": [
+          500,
+          500,
+          1000,
+          1000
+        ],
+        "sha256": "b01495de3ac7afd84fcd3521001d64acb41fe3772d4819e18f8686a1a758b3e6"
+      }
+    ],
+    "state": "reference-inventoried",
+    "pairsRequired": {
+      "hiro": 2,
+      "enemy": 1,
+      "distinctFramesEach": 16
+    }
+  },
+  {
+    "identity": "named:amara",
+    "name": "Amara",
+    "slug": "amara",
+    "definition": {
+      "id": "amara",
+      "name": "Amara",
+      "region": "gate",
+      "role": "companion",
+      "companion": true,
+      "sex": "f",
+      "campaignExit": true,
+      "romance": true,
+      "romanceDeferred": true,
+      "favours": "mercy",
+      "desc": "Kolade's lover and sword-hand. A monk of the Gate's fire temples who wants him stopped, not slaughtered. Grave, exact, tired.",
+      "perks": [
+        "momentum"
+      ],
+      "actives": [
+        "dual_swords",
+        "counter_attack",
+        "defiant_stand",
+        "cleave"
+      ],
+      "portrait": {
+        "skin": "dark",
+        "hair": "bun",
+        "wardrobe": "armor",
+        "color": "#7a3a2a"
+      },
+      "campaign3": true,
+      "faction": "gate"
+    },
+    "appearances": [
+      {
+        "chapter": 11,
+        "encounter": 2
+      },
+      {
+        "chapter": 13,
+        "encounter": 1
+      }
+    ],
+    "references": [
+      {
+        "file": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions\\assets\\expedition\\story\\portraits\\amara-105953304edf.webp",
+        "source": "original portrait compositor",
+        "sha256": "105953304edf1a571e61be10dbf1b96f02444f357c37d6380199c93490452c4a"
+      },
+      {
+        "file": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\amara\\head-amara-reference.png",
+        "source": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer\\assets\\anime\\gate\\v1\\runtime\\heads_4.webp",
+        "cell": 2,
+        "box": [
+          0,
+          500,
+          500,
+          1000
+        ],
+        "sha256": "8a06fd6fcc5a142f53dad32e19809a70b93db833a884ccda9eb336211ac6210d"
+      },
+      {
+        "file": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\amara\\body-amara-reference.png",
+        "source": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer\\assets\\anime\\gate\\v1\\runtime\\bodies_4.webp",
+        "cell": 2,
+        "box": [
+          0,
+          500,
+          500,
+          1000
+        ],
+        "sha256": "fc1d82f1c52732905d6e2fcdd83cab0f5d310ede76087ce3e4684e38cce7a0b1"
+      }
+    ],
+    "state": "reference-inventoried",
+    "pairsRequired": {
+      "hiro": 2,
+      "enemy": 1,
+      "distinctFramesEach": 16
+    }
+  },
+  {
+    "identity": "named:ravel",
+    "name": "Rasheed",
+    "slug": "ravel",
+    "definition": {
+      "id": "ravel",
+      "name": "Rasheed",
+      "region": "gate",
+      "role": "boss",
+      "sex": "m",
+      "level": 22,
+      "desc": "Half of Kolade's pet assassins. Loud, vain, deadly with two blades.",
+      "perks": [
+        "momentum"
+      ],
+      "actives": [
+        "dual_swords",
+        "cutlass_work",
+        "butchers_tempo",
+        "backstab",
+        "smoke_bomb"
+      ],
+      "portrait": {
+        "skin": "dark",
+        "hair": "long",
+        "wardrobe": "suit",
+        "color": "#5a2a3a"
+      },
+      "campaign3": true,
+      "faction": "gate"
+    },
+    "appearances": [
+      {
+        "chapter": 11,
+        "encounter": 3
+      }
+    ],
+    "references": [
+      {
+        "file": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions\\assets\\expedition\\story\\portraits\\ravel-e8ee2c331ab8.webp",
+        "source": "original portrait compositor",
+        "sha256": "e8ee2c331ab87e37d92a25fbd525ae6756d1d3eb28e63f7fd2e4d83e13b728e1"
+      },
+      {
+        "file": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\ravel\\head-ravel-reference.png",
+        "source": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer\\assets\\anime\\gate\\v1\\runtime\\heads_11.webp",
+        "cell": 0,
+        "box": [
+          0,
+          0,
+          500,
+          500
+        ],
+        "sha256": "6c61c93c90f37feab911647f460bcd37828e503a1ec57c38acd965e64ec1bf1e"
+      },
+      {
+        "file": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\ravel\\body-ravel-reference.png",
+        "source": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer\\assets\\anime\\gate\\v1\\runtime\\bodies_11.webp",
+        "cell": 0,
+        "box": [
+          0,
+          0,
+          500,
+          500
+        ],
+        "sha256": "f3dd3705446a044726855eb551aefd358269bf0a1db4349c35d5ca3db1ae994e"
+      }
+    ],
+    "state": "reference-inventoried",
+    "pairsRequired": {
+      "hiro": 2,
+      "enemy": 1,
+      "distinctFramesEach": 16
+    }
+  },
+  {
+    "identity": "named:kessa",
+    "name": "Kemi",
+    "slug": "kessa",
+    "definition": {
+      "id": "kessa",
+      "name": "Kemi",
+      "region": "gate",
+      "role": "boss",
+      "sex": "f",
+      "level": 22,
+      "desc": "The other half. Quiet, a mage, the one who actually plans.",
+      "perks": [
+        "lightning_king"
+      ],
+      "actives": [
+        "chain_lightning",
+        "arcane_cascade",
+        "storm_shape",
+        "spark"
+      ],
+      "portrait": {
+        "skin": "dark",
+        "hair": "bun",
+        "wardrobe": "dress",
+        "color": "#3a2a5a"
+      },
+      "campaign3": true,
+      "faction": "gate"
+    },
+    "appearances": [
+      {
+        "chapter": 11,
+        "encounter": 3
+      }
+    ],
+    "references": [
+      {
+        "file": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions\\assets\\expedition\\story\\portraits\\kessa-5f8b5f70dbd8.webp",
+        "source": "original portrait compositor",
+        "sha256": "5f8b5f70dbd8f5b0c7125bc77ffc1e871e0ec13b8959a57b79c7a1c83b3ffa57"
+      },
+      {
+        "file": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\kessa\\head-kessa-reference.png",
+        "source": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer\\assets\\anime\\gate\\v1\\runtime\\heads_11.webp",
+        "cell": 1,
+        "box": [
+          500,
+          0,
+          1000,
+          500
+        ],
+        "sha256": "6c61c93c90f37feab911647f460bcd37828e503a1ec57c38acd965e64ec1bf1e"
+      },
+      {
+        "file": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\kessa\\body-kessa-reference.png",
+        "source": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer\\assets\\anime\\gate\\v1\\runtime\\bodies_11.webp",
+        "cell": 1,
+        "box": [
+          500,
+          0,
+          1000,
+          500
+        ],
+        "sha256": "f3dd3705446a044726855eb551aefd358269bf0a1db4349c35d5ca3db1ae994e"
+      }
+    ],
+    "state": "reference-inventoried",
+    "pairsRequired": {
+      "hiro": 2,
+      "enemy": 1,
+      "distinctFramesEach": 16
+    }
+  },
+  {
+    "identity": "mini:hall_doubles",
+    "name": "Ducal Guard",
+    "slug": "hall-doubles",
+    "definition": {
+      "id": "hall_doubles",
+      "name": "Ducal Guard",
+      "base": "palace_doppelganger",
+      "signature": "shadow_rise",
+      "equips": 4,
+      "count": 2,
+      "campaign3": true,
+      "faction": "gate"
+    },
+    "appearances": [
+      {
+        "chapter": 12,
+        "encounter": 0
+      }
+    ],
+    "references": [
+      {
+        "file": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\hall-doubles\\mini-hall_doubles-reference.png",
+        "source": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer\\assets\\anime\\gate\\v1\\runtime\\mini_4.webp",
+        "cell": 2,
+        "box": [
+          0,
+          500,
+          500,
+          1000
+        ],
+        "sha256": "4bb93147dc35efd2384c652debedc3ce210da9f807940447a74588ee2fc9a268"
+      }
+    ],
+    "state": "reference-inventoried",
+    "pairsRequired": {
+      "hiro": 2,
+      "enemy": 1,
+      "distinctFramesEach": 16
+    }
+  },
+  {
+    "identity": "enemy:palace_doppelganger",
+    "name": "Palace Guard",
+    "slug": "palace-doppelganger",
+    "definition": {
+      "id": "palace_doppelganger",
+      "name": "Palace Guard",
+      "species": "human",
+      "portrait": "plated_sentinel",
+      "equips": 3,
+      "skins": [
+        {
+          "name": "Ducal Livery",
+          "tint": "#3a3a6a"
+        },
+        {
+          "name": "Hall Livery",
+          "tint": "#5a5a3a"
+        },
+        {
+          "name": "Gate Livery",
+          "tint": "#4a4a4a"
+        }
+      ],
+      "pool": [
+        "backstab",
+        "shadow_rise",
+        "smoke_step",
+        "cloak_of_shadows",
+        "countersign"
+      ],
+      "campaign3": true,
+      "faction": "gate"
+    },
+    "appearances": [
+      {
+        "chapter": 12,
+        "encounter": 0
+      },
+      {
+        "chapter": 12,
+        "encounter": 1
+      },
+      {
+        "chapter": 12,
+        "encounter": 1
+      }
+    ],
+    "references": [
+      {
+        "file": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\palace-doppelganger\\enemy-palace_doppelganger-reference.png",
+        "source": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer\\assets\\anime\\gate\\v1\\runtime\\enemy_4.webp",
+        "cell": 0,
+        "box": [
+          0,
+          0,
+          500,
+          500
+        ],
+        "sha256": "40e49452aa20a8fe1957810749e244423d28dc7dd581dde6554207d1e637a429"
+      }
+    ],
+    "state": "reference-inventoried",
+    "pairsRequired": {
+      "hiro": 2,
+      "enemy": 1,
+      "distinctFramesEach": 16
+    }
+  },
+  {
+    "identity": "named:jarem",
+    "name": "Jelani",
+    "slug": "jarem",
+    "definition": {
+      "id": "jarem",
+      "name": "Jelani",
+      "region": "gate",
+      "role": "boss",
+      "sex": "m",
+      "level": 24,
+      "desc": "Kolade's court mage. Serves because Kolade is winning; would serve anyone who was.",
+      "perks": [
+        "arcane_focus",
+        "pyromaniac"
+      ],
+      "actives": [
+        "siege_flame",
+        "fire_ship",
+        "prismatic_bolt",
+        "ember_lash"
+      ],
+      "portrait": {
+        "skin": "dark",
+        "hair": "bald",
+        "wardrobe": "robe",
+        "color": "#5a3a2a"
+      },
+      "campaign3": true,
+      "faction": "gate"
+    },
+    "appearances": [
+      {
+        "chapter": 13,
+        "encounter": 2
+      }
+    ],
+    "references": [
+      {
+        "file": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions\\assets\\expedition\\story\\portraits\\jarem-fcf31c8ba05e.webp",
+        "source": "original portrait compositor",
+        "sha256": "fcf31c8ba05e97862bc1247d2a450548346055ae97ac7077e2ab7ac92d80ee1a"
+      },
+      {
+        "file": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\jarem\\head-jarem-reference.png",
+        "source": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer\\assets\\anime\\gate\\v1\\runtime\\heads_11.webp",
+        "cell": 2,
+        "box": [
+          0,
+          500,
+          500,
+          1000
+        ],
+        "sha256": "6c61c93c90f37feab911647f460bcd37828e503a1ec57c38acd965e64ec1bf1e"
+      },
+      {
+        "file": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\jarem\\body-jarem-reference.png",
+        "source": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer\\assets\\anime\\gate\\v1\\runtime\\bodies_11.webp",
+        "cell": 2,
+        "box": [
+          0,
+          500,
+          500,
+          1000
+        ],
+        "sha256": "f3dd3705446a044726855eb551aefd358269bf0a1db4349c35d5ca3db1ae994e"
+      }
+    ],
+    "state": "reference-inventoried",
+    "pairsRequired": {
+      "hiro": 2,
+      "enemy": 1,
+      "distinctFramesEach": 16
+    }
+  },
+  {
+    "identity": "enemy:morrak_cultist",
+    "name": "Cultist of Morrak",
+    "slug": "morrak-cultist",
+    "definition": {
+      "id": "morrak_cultist",
+      "name": "Cultist of Morrak",
+      "species": "human",
+      "portrait": "grave_acolyte",
+      "equips": 3,
+      "skins": [
+        {
+          "name": "Blood Cowl",
+          "tint": "#4a1a1a"
+        },
+        {
+          "name": "Skull Cowl",
+          "tint": "#2a2a2a"
+        },
+        {
+          "name": "Ash Cowl",
+          "tint": "#3a3a3a"
+        }
+      ],
+      "pool": [
+        "blood_pact",
+        "raise",
+        "poison_spray",
+        "bog_curse",
+        "soul_bay"
+      ],
+      "campaign3": true,
+      "faction": "gate"
+    },
+    "appearances": [
+      {
+        "chapter": 13,
+        "encounter": 2
+      },
+      {
+        "chapter": 13,
+        "encounter": 2
+      },
+      {
+        "chapter": 14,
+        "encounter": 0
+      },
+      {
+        "chapter": 14,
+        "encounter": 2
+      },
+      {
+        "chapter": 14,
+        "encounter": 2
+      }
+    ],
+    "references": [
+      {
+        "file": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\morrak-cultist\\enemy-morrak_cultist-reference.png",
+        "source": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer\\assets\\anime\\gate\\v1\\runtime\\enemy_3.webp",
+        "cell": 3,
+        "box": [
+          500,
+          500,
+          1000,
+          1000
+        ],
+        "sha256": "21b1f4a90fe750d8e9a08cca8b38e90f64c44783fb4e15f11aee6f2acd0d4558"
+      }
+    ],
+    "state": "reference-inventoried",
+    "pairsRequired": {
+      "hiro": 2,
+      "enemy": 1,
+      "distinctFramesEach": 16
+    }
+  },
+  {
+    "identity": "named:lucan",
+    "name": "Segun Marr",
+    "slug": "lucan",
+    "definition": {
+      "id": "lucan",
+      "name": "Segun Marr",
+      "region": "gate",
+      "role": "boss",
+      "sex": "m",
+      "level": 25,
+      "desc": "The Burning Gauntlet officer who sold the company to Kolade. Commands it now. Sneers to hide the shame.",
+      "perks": [
+        "bulwark",
+        "momentum"
+      ],
+      "actives": [
+        "cleave",
+        "shield_wall",
+        "paid_in_full",
+        "close_order",
+        "taunt"
+      ],
+      "portrait": {
+        "skin": "dark",
+        "hair": "fringe",
+        "wardrobe": "armor",
+        "color": "#7a3a2a"
+      },
+      "campaign3": true,
+      "faction": "gate"
+    },
+    "appearances": [
+      {
+        "chapter": 13,
+        "encounter": 4
+      }
+    ],
+    "references": [
+      {
+        "file": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions\\assets\\expedition\\story\\portraits\\lucan-4c76e78ae832.webp",
+        "source": "original portrait compositor",
+        "sha256": "4c76e78ae832a2c9ed95ce0552d34bc17e75945e4650f0ea0865efac331be745"
+      },
+      {
+        "file": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\lucan\\head-lucan-reference.png",
+        "source": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer\\assets\\anime\\gate\\v1\\runtime\\heads_11.webp",
+        "cell": 3,
+        "box": [
+          500,
+          500,
+          1000,
+          1000
+        ],
+        "sha256": "6c61c93c90f37feab911647f460bcd37828e503a1ec57c38acd965e64ec1bf1e"
+      },
+      {
+        "file": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\lucan\\body-lucan-reference.png",
+        "source": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer\\assets\\anime\\gate\\v1\\runtime\\bodies_11.webp",
+        "cell": 3,
+        "box": [
+          500,
+          500,
+          1000,
+          1000
+        ],
+        "sha256": "f3dd3705446a044726855eb551aefd358269bf0a1db4349c35d5ca3db1ae994e"
+      }
+    ],
+    "state": "reference-inventoried",
+    "pairsRequired": {
+      "hiro": 2,
+      "enemy": 1,
+      "distinctFramesEach": 16
+    }
+  },
+  {
+    "identity": "mini:altar_keepers",
+    "name": "Keepers of the Altar",
+    "slug": "altar-keepers",
+    "definition": {
+      "id": "altar_keepers",
+      "name": "Keepers of the Altar",
+      "base": "morrak_cultist",
+      "signature": "raise",
+      "equips": 4,
+      "count": 2,
+      "campaign3": true,
+      "faction": "gate"
+    },
+    "appearances": [
+      {
+        "chapter": 14,
+        "encounter": 0
+      }
+    ],
+    "references": [
+      {
+        "file": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\altar-keepers\\mini-altar_keepers-reference.png",
+        "source": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer\\assets\\anime\\gate\\v1\\runtime\\mini_5.webp",
+        "cell": 0,
+        "box": [
+          0,
+          0,
+          500,
+          500
+        ],
+        "sha256": "d95c5713ce9bc181c630f712ff1d9046bdbb78789215376d12e0086b9eb26fc5"
+      }
+    ],
+    "state": "reference-inventoried",
+    "pairsRequired": {
+      "hiro": 2,
+      "enemy": 1,
+      "distinctFramesEach": 16
+    }
+  },
+  {
+    "identity": "mini:your_own_faces",
+    "name": "Your Own Faces",
+    "slug": "your-own-faces",
+    "definition": {
+      "id": "your_own_faces",
+      "name": "Your Own Faces",
+      "base": "shadow_double",
+      "signature": "backstab",
+      "equips": 5,
+      "count": 3,
+      "campaign3": true,
+      "faction": "gate"
+    },
+    "appearances": [
+      {
+        "chapter": 14,
+        "encounter": 1
+      }
+    ],
+    "references": [
+      {
+        "file": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\your-own-faces\\mini-your_own_faces-reference.png",
+        "source": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer\\assets\\anime\\gate\\v1\\runtime\\mini_5.webp",
+        "cell": 1,
+        "box": [
+          500,
+          0,
+          1000,
+          500
+        ],
+        "sha256": "d95c5713ce9bc181c630f712ff1d9046bdbb78789215376d12e0086b9eb26fc5"
+      }
+    ],
+    "state": "reference-inventoried",
+    "pairsRequired": {
+      "hiro": 2,
+      "enemy": 1,
+      "distinctFramesEach": 16
+    }
+  },
+  {
+    "identity": "named:korvath",
+    "name": "Kolade Adeyinka",
+    "slug": "korvath",
+    "definition": {
+      "id": "korvath",
+      "name": "Kolade Adeyinka",
+      "region": "gate",
+      "epithet": "the Armoured",
+      "role": "antagonist",
+      "sex": "m",
+      "level": 30,
+      "desc": "Your half-brother, raised in the Gate by a Consortium merchant. A giant in spiked black plate who believes bloodshed is a ladder. Calm, courteous, absolutely certain.",
+      "perks": [
+        "momentum",
+        "bulwark"
+      ],
+      "actives": [
+        "cleave",
+        "reaving_arc",
+        "sunder",
+        "shield_wall",
+        "warding_stance",
+        "finisher",
+        "taunt"
+      ],
+      "statMult": 1.35,
+      "hitStatus": {
+        "kind": "bleed",
+        "power": 0.6,
+        "rounds": 3,
+        "stacks": true
+      },
+      "portrait": {
+        "skin": "dark",
+        "hair": "bald",
+        "wardrobe": "armor",
+        "color": "#1a1a1e"
+      },
+      "campaign3": true,
+      "faction": "gate"
+    },
+    "appearances": [
+      {
+        "chapter": 14,
+        "encounter": 2
+      },
+      {
+        "chapter": 14,
+        "encounter": 3
+      }
+    ],
+    "references": [
+      {
+        "file": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions\\assets\\expedition\\story\\portraits\\korvath-e4d0f4a27d81.webp",
+        "source": "original portrait compositor",
+        "sha256": "e4d0f4a27d813927bb0fee7502c0f2d8c8f21736e8185e42def8d96fbf101c3a"
+      },
+      {
+        "file": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\korvath\\head-korvath-reference.png",
+        "source": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer\\assets\\anime\\gate\\v1\\runtime\\heads_8.webp",
+        "cell": 2,
+        "box": [
+          0,
+          500,
+          500,
+          1000
+        ],
+        "sha256": "f09ef22da1efa5a1f6f531a39275049a3f086b478e93506262c326c23ceea1d6"
+      },
+      {
+        "file": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v8\\story-enemies\\korvath\\body-korvath-reference.png",
+        "source": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer\\assets\\anime\\gate\\v1\\runtime\\bodies_8.webp",
+        "cell": 2,
+        "box": [
+          0,
+          500,
+          500,
+          1000
+        ],
+        "sha256": "8c3bf9308738a01d9b2e00b3284fbb26ed391b6a8924b24ce68091004f2ca669"
+      }
+    ],
+    "state": "reference-inventoried",
+    "pairsRequired": {
+      "hiro": 2,
+      "enemy": 1,
+      "distinctFramesEach": 16
+    }
+  }
+]

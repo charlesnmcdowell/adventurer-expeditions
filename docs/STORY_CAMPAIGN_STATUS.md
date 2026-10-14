@@ -2,7 +2,7 @@
 
 Generated from the imported campaign inventory, runtime bindings and atlas file existence. A registered set still needs visual playtest; this is not a release certificate.
 
-**22 of 59 opponent identities registered. 37 remain.**
+**59 of 59 opponent identities registered. 0 remain.**
 
 | Enemy | First chapter | Runtime art | State |
 | --- | ---: | --- | --- |
@@ -28,40 +28,40 @@ Generated from the imported campaign inventory, runtime bindings and atlas file 
 | Hobgoblin Sergeant (enemy:hob_sergeant) | 5 | story_hob_sergeant | Registered |
 | Road Bandit (enemy:gate_bandit) | 5 | story_road_bandit | Registered |
 | Gorruk (named:gorruk) | 5 | story_gorruk | Registered |
-| Silksa, Spider Queen (mini:silksa) | 6 | — | Pending |
-| Giant Spider (enemy:web_spider) | 6 | — | Pending |
-| Mzee Kamau (named:thornwise) | 6 | — | Pending |
-| Umbra Druid (enemy:umbra_druid) | 6 | — | Pending |
-| Wanjiru (named:nettle) | 6 | — | Pending |
-| Wyvern Matriarch (mini:wyvern_matriarch) | 6 | — | Pending |
-| Wyvern (enemy:wyvern) | 6 | — | Pending |
-| Kestrel (mini:kestrel) | 6 | — | Pending |
-| Consortium Guard (enemy:consortium_guard) | 6 | — | Pending |
-| Slave Driver (enemy:slave_driver) | 7 | — | Pending |
-| Olamide (named:malvane) | 7 | — | Pending |
-| The Ogre Under the Docks (mini:sewer_ogre_mage) | 8 | — | Pending |
-| Sewer Crawler (enemy:sewer_crawler) | 8 | — | Pending |
-| Shape-Thief (enemy:shadow_double) | 8 | — | Pending |
-| The Master of Lanterns (mini:lantern_master) | 8 | — | Pending |
-| The Umbral Hand (mini:umbral_pair) | 9 | — | Pending |
-| Captain of the Tower (mini:tower_captain) | 9 | — | Pending |
-| Adigun Adeyinka (named:maddox) | 10 | — | Pending |
-| Bankole (named:vask) | 10 | — | Pending |
-| Rotimi (named:rennick) | 10 | — | Pending |
-| Gbenga (named:grell) | 10 | — | Pending |
-| A Face You Know (mini:family_double) | 10 | — | Pending |
-| Phase Spider (enemy:phase_spider) | 10 | — | Pending |
-| Tomb Ghoul (enemy:tomb_ghoul) | 10 | — | Pending |
-| Gauntlet Turncoat (enemy:gauntlet_traitor) | 11 | — | Pending |
-| Idris (named:idris) | 11 | — | Pending |
-| Amara (named:amara) | 11 | — | Pending |
-| Rasheed (named:ravel) | 11 | — | Pending |
-| Kemi (named:kessa) | 11 | — | Pending |
-| Ducal Guard (mini:hall_doubles) | 12 | — | Pending |
-| Palace Guard (enemy:palace_doppelganger) | 12 | — | Pending |
-| Jelani (named:jarem) | 13 | — | Pending |
-| Cultist of Morrak (enemy:morrak_cultist) | 13 | — | Pending |
-| Segun Marr (named:lucan) | 13 | — | Pending |
-| Keepers of the Altar (mini:altar_keepers) | 14 | — | Pending |
-| Your Own Faces (mini:your_own_faces) | 14 | — | Pending |
-| Kolade Adeyinka (named:korvath) | 14 | — | Pending |
+| Silksa, Spider Queen (mini:silksa) | 6 | story_silksa | Registered |
+| Giant Spider (enemy:web_spider) | 6 | story_web_spider | Registered |
+| Mzee Kamau (named:thornwise) | 6 | story_thornwise | Registered |
+| Umbra Druid (enemy:umbra_druid) | 6 | story_umbra_druid | Registered |
+| Wanjiru (named:nettle) | 6 | story_nettle | Registered |
+| Wyvern Matriarch (mini:wyvern_matriarch) | 6 | story_wyvern_matriarch | Registered |
+| Wyvern (enemy:wyvern) | 6 | story_wyvern | Registered |
+| Kestrel (mini:kestrel) | 6 | story_kestrel | Registered |
+| Consortium Guard (enemy:consortium_guard) | 6 | story_consortium_guard | Registered |
+| Slave Driver (enemy:slave_driver) | 7 | story_slave_driver | Registered |
+| Olamide (named:malvane) | 7 | story_malvane | Registered |
+| The Ogre Under the Docks (mini:sewer_ogre_mage) | 8 | story_sewer_ogre_mage | Registered |
+| Sewer Crawler (enemy:sewer_crawler) | 8 | story_sewer_crawler | Registered |
+| Shape-Thief (enemy:shadow_double) | 8 | story_shadow_double | Registered |
+| The Master of Lanterns (mini:lantern_master) | 8 | story_lantern_master | Registered |
+| The Umbral Hand (mini:umbral_pair) | 9 | story_umbral_pair | Registered |
+| Captain of the Tower (mini:tower_captain) | 9 | story_tower_captain | Registered |
+| Adigun Adeyinka (named:maddox) | 10 | story_maddox | Registered |
+| Bankole (named:vask) | 10 | story_vask | Registered |
+| Rotimi (named:rennick) | 10 | story_rennick | Registered |
+| Gbenga (named:grell) | 10 | story_grell | Registered |
+| A Face You Know (mini:family_double) | 10 | story_family_double | Registered |
+| Phase Spider (enemy:phase_spider) | 10 | story_phase_spider | Registered |
+| Tomb Ghoul (enemy:tomb_ghoul) | 10 | story_tomb_ghoul | Registered |
+| Gauntlet Turncoat (enemy:gauntlet_traitor) | 11 | story_gauntlet_traitor | Registered |
+| Idris (named:idris) | 11 | story_idris | Registered |
+| Amara (named:amara) | 11 | story_amara | Registered |
+| Rasheed (named:ravel) | 11 | story_ravel | Registered |
+| Kemi (named:kessa) | 11 | story_kessa | Registered |
+| Ducal Guard (mini:hall_doubles) | 12 | story_hall_doubles | Registered |
+| Palace Guard (enemy:palace_doppelganger) | 12 | story_palace_doppelganger | Registered |
+| Jelani (named:jarem) | 13 | story_jarem | Registered |
+| Cultist of Morrak (enemy:morrak_cultist) | 13 | story_morrak_cultist | Registered |
+| Segun Marr (named:lucan) | 13 | story_lucan | Registered |
+| Keepers of the Altar (mini:altar_keepers) | 14 | story_altar_keepers | Registered |
+| Your Own Faces (mini:your_own_faces) | 14 | story_your_own_faces | Registered |
+| Kolade Adeyinka (named:korvath) | 14 | story_korvath | Registered |

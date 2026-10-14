@@ -8,6 +8,9 @@ const server=http.createServer((req,res)=>{const rel=decodeURIComponent(req.url.
   try{
     const page=await browser.newPage({viewport:{width:1280,height:760}}),errors=[],media=[];
     page.on('pageerror',e=>errors.push(String(e)));page.on('response',r=>{if(r.status()>=400)errors.push(r.status()+' '+r.url());if(r.url().endsWith('.mp3'))media.push(r.url());});
+    // A UI regression has one reproducible combat roll. Difficulty across
+    // seeds is exercised separately by story_balance, not the wall clock.
+    await page.route('**/docs/STORY_FIGHT_PREVIEW.html*',async route=>{const r=await route.fetch();const body=(await r.text()).replace("true,{record,muted:","true,{record,seed:29,muted:");await route.fulfill({response:r,body});});
     await page.addInitScript(()=>{localStorage.setItem('adv:sentinel','keep');localStorage.setItem('adventurer_expeditions_arcade_v1','keep arcade');});
     await page.goto('http://127.0.0.1:'+server.address().port+'/docs/STORY_CAMPAIGN_PREVIEW.html');
     const button=name=>page.getByRole('button',{name,exact:true});
@@ -28,9 +31,14 @@ const server=http.createServer((req,res)=>{const rel=decodeURIComponent(req.url.
     const lessons=new Set();let won=false;
     for(let start=Date.now();Date.now()-start<180000;){
       await page.waitForTimeout(180);
-      const state=await frame.evaluate(()=>{const s=storyGame.scene.getScene('StoryBattle'),h=s.hud;return{phase:s.story.record.phase,gate:h._gateFor,rect:h._gateRect,arrow:s.arrowArmed,arrowRect:h.arrow.rect,hp:s.hero.unit.chp};});
+      const state=await frame.evaluate(()=>{const s=storyGame.scene.getScene('StoryBattle'),h=s.hud,X=ADV.Expedition;
+        const ready=['finisher','counter_attack','god_aura'].find(id=>X.Encounter.skillState(s.enc,id).ready);
+        return{phase:s.story.record.phase,gate:h._gateFor,rect:h._gateRect,readyRect:ready&&h.icons[ready].rect,arrow:s.arrowArmed,arrowRect:h.arrow.rect,hp:s.hero.unit.chp};});
       if(state.phase==='defeat')throw Error('Opening tutorial lost before completion');
-      const rect=state.arrow?state.arrowRect:state.rect;
+      // Use the available buttons between lessons too, as the player can.
+      // The new solo balance cannot be tested as passive auto-attacking while
+      // an unprompted, ready Iaido Draw sits unused against the first lone foe.
+      const rect=state.arrow?state.arrowRect:state.rect||(lessons.has('use:counter_attack')&&state.readyRect);
       if(rect){const canvas=await frame.locator('canvas').boundingBox();const x=canvas.x+(rect.x+rect.w/2)*canvas.width/1280,y=canvas.y+(rect.y+rect.h/2)*canvas.height/760;
         if(state.gate?.startsWith('use:'))lessons.add(state.gate);
         await page.mouse.click(x,y);await page.waitForTimeout(250);

@@ -1,0 +1,94 @@
+[
+  {
+    "slug": "wyvern",
+    "file": "hiro-finisher-1.png",
+    "frames": [
+      11,
+      15
+    ],
+    "out": "hiro-finisher-1-repair-late.png",
+    "args": {
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v8/story-enemies/wyvern/hiro-finisher-1.png"
+      ],
+      "prompt": "Use case: precise-object-edit. Create only replacement animation pose(s) described below using exact two adult characters, costumes, faces, hair, anatomical proportions and cel-shaded finish of reference. TWO COLUMNS ONE ROW: first pose Hiro stands LEFT with drawn katana while the green wyvern RIGHT is falling forward onto its forelegs, wings folding; second pose Hiro still stands LEFT with katana low and whole green wyvern lies dead RIGHT with folded wings and curled tail. Transparent background with generous margins around both characters, weapons, prone bodies. Fixed side camera, no labels, no grid, no scenery. Retain existing stylized bloody injuries, no added dismemberment. Keep relative physical body sizes unchanged."
+    }
+  },
+  {
+    "slug": "slave-driver",
+    "file": "enemy-fatal.png",
+    "frames": [
+      14
+    ],
+    "out": "enemy-fatal-repair-late.png",
+    "args": {
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v8/story-enemies/slave-driver/enemy-fatal.png"
+      ],
+      "prompt": "Use case: precise-object-edit. Create only replacement animation pose(s) described below using exact two adult characters, costumes, faces, hair, anatomical proportions and cel-shaded finish of reference. ONE complete paired pose: Hiro lies dead on his side LEFT, purple dreadlocks and black armor visible; the masked brown-apron enemy stands RIGHT with his chain flail lowered. Match the corpse pose immediately before the final cell of reference. Transparent background with generous margins around both characters, weapons, prone bodies. Fixed side camera, no labels, no grid, no scenery. Retain existing stylized bloody injuries, no added dismemberment. Keep relative physical body sizes unchanged."
+    }
+  },
+  {
+    "slug": "family-double",
+    "file": "hiro-finisher-2.png",
+    "frames": [
+      15
+    ],
+    "out": "hiro-finisher-2-repair-late.png",
+    "args": {
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v8/story-enemies/family-double/hiro-finisher-2.png"
+      ],
+      "prompt": "Use case: precise-object-edit. Create only replacement animation pose(s) described below using exact two adult characters, costumes, faces, hair, anatomical proportions and cel-shaded finish of reference. ONE final paired pose: Hiro stands LEFT with katana lowered, the gray-bearded man in navy/gold tunic and white scarf lies defeated RIGHT, both complete bodies visible. Transparent background with generous margins around both characters, weapons, prone bodies. Fixed side camera, no labels, no grid, no scenery. Retain existing stylized bloody injuries, no added dismemberment. Keep relative physical body sizes unchanged."
+    }
+  },
+  {
+    "slug": "hall-doubles",
+    "file": "hiro-finisher-2.png",
+    "frames": [
+      2,
+      14
+    ],
+    "out": "hiro-finisher-2-repair-late.png",
+    "args": {
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v8/story-enemies/hall-doubles/hiro-finisher-2.png"
+      ],
+      "prompt": "Use case: precise-object-edit. Create only replacement animation pose(s) described below using exact two adult characters, costumes, faces, hair, anatomical proportions and cel-shaded finish of reference. TWO COLUMNS ONE ROW: first pose Hiro LEFT raises two-handed katana to intercept while red-and-gold armored halberd enemy RIGHT lifts halberd overhead (pre-contact). Second pose Hiro LEFT stands with katana low while same halberd enemy lies dead RIGHT. Both full bodies in EACH cell. Transparent background with generous margins around both characters, weapons, prone bodies. Fixed side camera, no labels, no grid, no scenery. Retain existing stylized bloody injuries, no added dismemberment. Keep relative physical body sizes unchanged."
+    }
+  },
+  {
+    "slug": "hall-doubles",
+    "file": "enemy-fatal.png",
+    "frames": [
+      15
+    ],
+    "out": "enemy-fatal-repair-late.png",
+    "args": {
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v8/story-enemies/hall-doubles/enemy-fatal.png"
+      ],
+      "prompt": "Use case: precise-object-edit. Create only replacement animation pose(s) described below using exact two adult characters, costumes, faces, hair, anatomical proportions and cel-shaded finish of reference. ONE final paired pose: Hiro lies dead LEFT in purple-black armor, red-and-gold armored halberd enemy stands RIGHT with halberd lowered. Both complete bodies visible, fallen Hiro must NOT disappear. Transparent background with generous margins around both characters, weapons, prone bodies. Fixed side camera, no labels, no grid, no scenery. Retain existing stylized bloody injuries, no added dismemberment. Keep relative physical body sizes unchanged."
+    }
+  },
+  {
+    "slug": "lucan",
+    "file": "hiro-finisher-1.png",
+    "frames": [
+      15
+    ],
+    "out": "hiro-finisher-1-repair-late.png",
+    "args": {
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v8/story-enemies/lucan/hiro-finisher-1.png"
+      ],
+      "prompt": "Use case: precise-object-edit. Create only replacement animation pose(s) described below using exact two adult characters, costumes, faces, hair, anatomical proportions and cel-shaded finish of reference. ONE final paired pose: Hiro stands LEFT with katana lowered while black armored red-caped swordsman lies defeated RIGHT. Both complete bodies visible. Match final corpse from reference but RESTORE standing Hiro. Transparent background with generous margins around both characters, weapons, prone bodies. Fixed side camera, no labels, no grid, no scenery. Retain existing stylized bloody injuries, no added dismemberment. Keep relative physical body sizes unchanged."
+    }
+  }
+]

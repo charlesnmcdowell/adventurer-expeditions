@@ -1,0 +1,60 @@
+{
+  "actor": "story_amara",
+  "name": "Amara",
+  "identity": "named:amara",
+  "bodyReferenceHeight": 259,
+  "seedAlpha": 64,
+  "attackContacts": [
+    4
+  ],
+  "pairs": [
+    {
+      "id": "hiro-finisher-1",
+      "files": [
+        "hiro-finisher-1.png"
+      ],
+      "columns": 4,
+      "rows": 4,
+      "hiroReferenceHeights": [
+        255
+      ],
+      "contacts": [
+        6
+      ],
+      "nonlethal": true,
+      "seedErosion": 6
+    },
+    {
+      "id": "hiro-finisher-2",
+      "files": [
+        "hiro-finisher-2.png"
+      ],
+      "columns": 4,
+      "rows": 4,
+      "hiroReferenceHeights": [
+        214
+      ],
+      "contacts": [
+        6
+      ],
+      "nonlethal": true,
+      "seedErosion": 2
+    },
+    {
+      "id": "story_amara-fatal",
+      "files": [
+        "enemy-fatal.png"
+      ],
+      "columns": 4,
+      "rows": 4,
+      "hiroReferenceHeights": [
+        232
+      ],
+      "contacts": [
+        6
+      ],
+      "fatal": true,
+      "seedErosion": 2
+    }
+  ]
+}

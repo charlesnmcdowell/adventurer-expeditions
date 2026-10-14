@@ -1,0 +1,110 @@
+[
+  {
+    "slug": "effects-nature",
+    "file": "effects.png",
+    "clips": [
+      "thorn_lash",
+      "poison_spray",
+      "rot_wing",
+      "glass_web"
+    ],
+    "args": {
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v8/chapter-one-polish-20261012/effects-spaced.png"
+      ],
+      "prompt": "Use case: stylized-concept. Painted game effects atlas, polished cel-shaded anime matching reference. EXACT FOUR COLUMNS by FOUR ROWS,16 isolated effects, transparent alpha. Each row is FOUR consecutive animated phases of ONE effect: ROW1: curved woody thorn vine whipping LEFT, strong hooked tip and green leaf flecks; ROW2: acid-green venom jet flying LEFT, tapered splash with separate droplets; ROW3: torn olive-green rot-feather gust flowing LEFT with small leaf debris; ROW4: pale silver spider-silk web net flying LEFT, intricate real radial strands. Side-view combat. Keep the effect fully inside its own square cell, centered, ample empty transparent padding at least 15% cell on all sides; no cell bleed, no background matte. No figures, no text, no numbers or borders. Make each successive frame visibly different while retaining consistent effect size and center. Travelling projectiles face LEFT, with distinct sharp fronts and tails to the RIGHT. Detailed painted textures, high contrast, readable silhouette, not generic glowing circles."
+    },
+    "output": "Generated images are saved to C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227 as C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227\\exec-c8a62a1d-7ac1-4755-98a0-f5d63e6a3e7c.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  {
+    "slug": "effects-frost",
+    "file": "effects.png",
+    "clips": [
+      "frost_touch",
+      "rime_grasp",
+      "rime_breath",
+      "coven_rime"
+    ],
+    "args": {
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v8/chapter-one-polish-20261012/effects-spaced.png"
+      ],
+      "prompt": "Use case: stylized-concept. Painted game effects atlas, polished cel-shaded anime matching reference. EXACT FOUR COLUMNS by FOUR ROWS,16 isolated effects, transparent alpha. Each row is FOUR consecutive animated phases of ONE effect: ROW1: sharp ice lance flying LEFT, blue-white crystal facets and cold mist trail; ROW2: rising curved ice talons forming a grasp around empty center, then cracking; ROW3: LEFT-facing cone of freezing breath, layered frost wisps and sharp ice flecks; ROW4: cluster of pale blue crystal spears flying LEFT, staggered spear points. Side-view combat. Keep the effect fully inside its own square cell, centered, ample empty transparent padding at least 15% cell on all sides; no cell bleed, no background matte. No figures, no text, no numbers or borders. Make each successive frame visibly different while retaining consistent effect size and center. Travelling projectiles face LEFT, with distinct sharp fronts and tails to the RIGHT. Detailed painted textures, high contrast, readable silhouette, not generic glowing circles."
+    },
+    "output": "Generated images are saved to C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227 as C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227\\exec-f420d868-dc97-4bd4-8bf8-cf87a0899a24.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  {
+    "slug": "effects-weapons",
+    "file": "effects.png",
+    "clips": [
+      "aimed_shot",
+      "kunai_line",
+      "suppressing_volley",
+      "contract_mark"
+    ],
+    "args": {
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v8/chapter-one-polish-20261012/effects-spaced.png"
+      ],
+      "prompt": "Use case: stylized-concept. Painted game effects atlas, polished cel-shaded anime matching reference. EXACT FOUR COLUMNS by FOUR ROWS,16 isolated effects, transparent alpha. Each row is FOUR consecutive animated phases of ONE effect: ROW1: single steel-tipped crossbow bolt flying LEFT, wooden shaft, visible fletching, short motion trail; ROW2: single black triangular kunai flying LEFT, ring pommel and dark-red cloth tail; ROW3: three staggered iron-tipped arrows flying LEFT, thin wood shafts and feather tails; ROW4: golden chain-link curse seal, diamond-shaped frame with clasp icon, expands and contracts without lettering. Side-view combat. Keep the effect fully inside its own square cell, centered, ample empty transparent padding at least 15% cell on all sides; no cell bleed, no background matte. No figures, no text, no numbers or borders. Make each successive frame visibly different while retaining consistent effect size and center. Travelling projectiles face LEFT, with distinct sharp fronts and tails to the RIGHT. Detailed painted textures, high contrast, readable silhouette, not generic glowing circles."
+    },
+    "output": "Generated images are saved to C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227 as C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227\\exec-5fcc8c7f-28a4-4783-8394-11752e06d10c.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  {
+    "slug": "effects-occult",
+    "file": "effects.png",
+    "clips": [
+      "blood_lotus",
+      "soul_bay",
+      "bell_silence",
+      "dispel"
+    ],
+    "args": {
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v8/chapter-one-polish-20261012/effects-spaced.png"
+      ],
+      "prompt": "Use case: stylized-concept. Painted game effects atlas, polished cel-shaded anime matching reference. EXACT FOUR COLUMNS by FOUR ROWS,16 isolated effects, transparent alpha. Each row is FOUR consecutive animated phases of ONE effect: ROW1: crimson petal-edged magic lance flying LEFT, unfolding pointed lotus petal form; ROW2: pale violet spectral howl wave flying LEFT, ghostly rippling crescent not a ball; ROW3: indigo bell-shaped magical seal with a crossed muted bell icon, pulses and fades; ROW4: bright silver broken-rune shards in an expanding circular cancellation burst. Side-view combat. Keep the effect fully inside its own square cell, centered, ample empty transparent padding at least 15% cell on all sides; no cell bleed, no background matte. No figures, no text, no numbers or borders. Make each successive frame visibly different while retaining consistent effect size and center. Travelling projectiles face LEFT, with distinct sharp fronts and tails to the RIGHT. Detailed painted textures, high contrast, readable silhouette, not generic glowing circles."
+    },
+    "output": "Generated images are saved to C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227 as C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227\\exec-6f05ce73-a0ed-48dd-b599-f892f162491e.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  {
+    "slug": "effects-fire",
+    "file": "effects.png",
+    "clips": [
+      "siege_flame",
+      "ember_lash",
+      "fire_barrier",
+      "ashfall"
+    ],
+    "args": {
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v8/chapter-one-polish-20261012/effects-spaced.png"
+      ],
+      "prompt": "Use case: stylized-concept. Painted game effects atlas, polished cel-shaded anime matching reference. EXACT FOUR COLUMNS by FOUR ROWS,16 isolated effects, transparent alpha. Each row is FOUR consecutive animated phases of ONE effect: ROW1: large amber-white fire spear flying LEFT with ragged scarlet combustion trail; ROW2: thin curled whip of orange flame snapping LEFT, distinct burning lash tip; ROW3: upright small wall of golden-orange flame, four sequential dancing tongues; ROW4: downward falling ember streaks in a narrow vertical column, impacts flaring at bottom. Side-view combat. Keep the effect fully inside its own square cell, centered, ample empty transparent padding at least 15% cell on all sides; no cell bleed, no background matte. No figures, no text, no numbers or borders. Make each successive frame visibly different while retaining consistent effect size and center. Travelling projectiles face LEFT, with distinct sharp fronts and tails to the RIGHT. Detailed painted textures, high contrast, readable silhouette, not generic glowing circles."
+    },
+    "output": "Generated images are saved to C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227 as C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227\\exec-432da18f-ba2f-42d2-be1b-4cdb906b22a9.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  },
+  {
+    "slug": "effects-storm",
+    "file": "effects.png",
+    "clips": [
+      "spark",
+      "chain_lightning",
+      "arcane_cascade",
+      "ranging_ward"
+    ],
+    "args": {
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v8/chapter-one-polish-20261012/effects-spaced.png"
+      ],
+      "prompt": "Use case: stylized-concept. Painted game effects atlas, polished cel-shaded anime matching reference. EXACT FOUR COLUMNS by FOUR ROWS,16 isolated effects, transparent alpha. Each row is FOUR consecutive animated phases of ONE effect: ROW1: jagged branching yellow-white electric lance flying LEFT, visibly lightning rather than ball; ROW2: forked blue-white lightning bolt arcing LEFT through three connected forks; ROW3: three spiraling violet-cyan magical crystal darts flying LEFT, vivid comet trails; ROW4: teal-gold geometric protective ward ring with a small shield rune, four pulsing phases. Side-view combat. Keep the effect fully inside its own square cell, centered, ample empty transparent padding at least 15% cell on all sides; no cell bleed, no background matte. No figures, no text, no numbers or borders. Make each successive frame visibly different while retaining consistent effect size and center. Travelling projectiles face LEFT, with distinct sharp fronts and tails to the RIGHT. Detailed painted textures, high contrast, readable silhouette, not generic glowing circles."
+    },
+    "output": "Generated images are saved to C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227 as C:\\Users\\charl\\.codex\\generated_images\\01a08689-8a63-7050-af70-d20000aa6227\\exec-784c2e38-729e-44a8-89c1-b2dd69e6f136.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link."
+  }
+]

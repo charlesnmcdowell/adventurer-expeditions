@@ -1,0 +1,72 @@
+{
+  "actor": "story_sewer_ogre_mage",
+  "name": "The Ogre Under the Docks",
+  "identity": "mini:sewer_ogre_mage",
+  "bodyReferenceHeight": 225,
+  "seedAlpha": 128,
+  "attackContacts": [
+    4
+  ],
+  "pairs": [
+    {
+      "id": "hiro-finisher-1",
+      "files": [
+        "hiro-finisher-1-wide-a.png",
+        "hiro-finisher-1-wide-b.png"
+      ],
+      "columns": 2,
+      "rows": 4,
+      "hiroReferenceHeights": [
+        221,
+        267
+      ],
+      "contacts": [
+        5
+      ],
+      "seedErosion": 2
+    },
+    {
+      "id": "hiro-finisher-2",
+      "files": [
+        "hiro-finisher-2-wide-a.png",
+        "hiro-finisher-2-wide-b.png"
+      ],
+      "columns": 2,
+      "rows": 4,
+      "hiroReferenceHeights": [
+        254,
+        278
+      ],
+      "contacts": [
+        5
+      ],
+      "seedErosion": 2
+    },
+    {
+      "id": "story_sewer_ogre_mage-fatal",
+      "files": [
+        "enemy-fatal-wide-a.png",
+        "enemy-fatal-wide-b.png"
+      ],
+      "columns": 2,
+      "rows": 4,
+      "hiroReferenceHeights": [
+        243,
+        243.0
+      ],
+      "contacts": [
+        5
+      ],
+      "fatal": true,
+      "seedErosion": 2
+    }
+  ],
+  "seedCuts": [
+    [
+      500,
+      1280,
+      503,
+      1536
+    ]
+  ]
+}

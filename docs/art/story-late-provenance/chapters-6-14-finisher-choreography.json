@@ -1,0 +1,520 @@
+[
+  {
+    "identity": "mini:silksa",
+    "slug": "silksa",
+    "name": "Silksa, Spider Queen",
+    "hiroFinishers": [
+      "Mandible parry: Hiro catches the queen's descending foreleg on his two-handed katana, steps outside its arc, then delivers a rising diagonal cut through the thorax.",
+      "Crown breaker: Hiro ducks the forward fangs, raises his katana overhead in a compact two-handed guard, and drives a vertical cut between the eye clusters."
+    ],
+    "enemyFinisher": "The queen hooks Hiro's sword arm with a foreleg, pulls him off balance, drives her fangs into his armored shoulder, shakes once and lets him fall.",
+    "hiroNonlethal": false,
+    "framesEach": 16,
+    "sourceLayout": "4x4",
+    "runtimeApproved": false
+  },
+  {
+    "identity": "enemy:web_spider",
+    "slug": "web-spider",
+    "name": "Giant Spider",
+    "hiroFinishers": [
+      "Leg sweep: Hiro slips the fang lunge, makes a low diagonal cut across the lead leg joint then a controlled descending cut into the exposed thorax.",
+      "Fang counter: Hiro deflects one fang outward with his katana's flat, pivots into a straight two-handed thrust into the spider's head and withdraws."
+    ],
+    "enemyFinisher": "The spider pins Hiro's front boot with silk, lunges up and bites his upper chest through armor, then pulls back as Hiro collapses.",
+    "hiroNonlethal": false,
+    "framesEach": 16,
+    "sourceLayout": "4x4",
+    "runtimeApproved": false
+  },
+  {
+    "identity": "named:thornwise",
+    "slug": "thornwise",
+    "name": "Mzee Kamau",
+    "hiroFinishers": [
+      "Staff disarm: Hiro parries the archdruid's staff downward, steps inside, rotates the katana flat to lever the staff away and checks the druid's chest with the pommel; the druid yields on one knee.",
+      "Root escape: Hiro cuts a binding root away from his boot, turns the katana to its blunt back and sweeps the druid's staff hand aside, then holds the point short of his throat as he kneels alive."
+    ],
+    "enemyFinisher": "The archdruid hooks Hiro's ankle with roots, pins the sword arm with his staff and drives a sharpened root into Hiro's armored chest, then lowers the fallen Hiro to ground.",
+    "hiroNonlethal": true,
+    "framesEach": 16,
+    "sourceLayout": "4x4",
+    "runtimeApproved": false
+  },
+  {
+    "identity": "enemy:umbra_druid",
+    "slug": "umbra-druid",
+    "name": "Umbra Druid",
+    "hiroFinishers": [
+      "Thorn sever: Hiro cuts the incoming thorn vine in a precise draw, advances along its opening and makes a diagonal torso cut.",
+      "Staff bind: Hiro binds the druid's staff to the ground with his blade, slides his front foot in, then withdraws into a rising katana cut beneath the guard."
+    ],
+    "enemyFinisher": "The druid's vine coils around Hiro's sword wrist and pulls him forward onto a thorned staff strike to the torso; Hiro drops as the vine loosens.",
+    "hiroNonlethal": false,
+    "framesEach": 16,
+    "sourceLayout": "4x4",
+    "runtimeApproved": false
+  },
+  {
+    "identity": "named:nettle",
+    "slug": "nettle",
+    "name": "Wanjiru",
+    "hiroFinishers": [
+      "Merciful bind: Hiro catches Wanjiru's staff, rotates his katana flat under it, disarms with a short hip turn and stops the blade at her shoulder; she kneels alive.",
+      "Broken roots: Hiro slices the vines around his legs, steps clear, checks Wanjiru with the katana pommel, and catches her staff as she sits back winded but alive."
+    ],
+    "enemyFinisher": "Wanjiru binds Hiro's blade in roots, drives the staff into his chest and follows with a close withering palm strike; blood at mouth, he sinks to his knees and falls.",
+    "hiroNonlethal": true,
+    "framesEach": 16,
+    "sourceLayout": "4x4",
+    "runtimeApproved": false
+  },
+  {
+    "identity": "mini:wyvern_matriarch",
+    "slug": "wyvern-matriarch",
+    "name": "Wyvern Matriarch",
+    "hiroFinishers": [
+      "Wing gate: Hiro braces against the descending wing claw, pushes it outward, steps under the neck and cuts upward across the throat with a compact two-handed blade arc.",
+      "Queen's fall: Hiro ducks the sweeping jaw, steps toward the planted forelimb, raises the katana and cuts down into the exposed neck base; the enormous body folds beside him."
+    ],
+    "enemyFinisher": "The matriarch catches Hiro's upper torso in her jaws, lifts him just above the ground, bites down and drops him; her huge body remains fully in frame.",
+    "hiroNonlethal": false,
+    "framesEach": 16,
+    "sourceLayout": "4x4",
+    "runtimeApproved": false
+  },
+  {
+    "identity": "enemy:wyvern",
+    "slug": "wyvern",
+    "name": "Wyvern",
+    "hiroFinishers": [
+      "Jaw slip: Hiro steps outside the snapping jaw, draws upward across its underside, then returns to a stable guard while the wyvern falls.",
+      "Grounding cut: Hiro deflects a wing claw with an angled katana guard, pivots low and cuts diagonally through the neck as it overextends."
+    ],
+    "enemyFinisher": "The wyvern bats Hiro's katana aside with a wing, bites his thigh and drags him down, then releases him motionless.",
+    "hiroNonlethal": false,
+    "framesEach": 16,
+    "sourceLayout": "4x4",
+    "runtimeApproved": false
+  },
+  {
+    "identity": "mini:kestrel",
+    "slug": "kestrel",
+    "name": "Kestrel",
+    "hiroFinishers": [
+      "Spear bind: Hiro catches Kestrel's thrust along the katana, steps to the outside and drives a short straight thrust beneath the breastplate before withdrawing.",
+      "High guard break: Hiro parries the spear overhead, draws back into a two-handed high guard and cuts diagonally through the exposed collar."
+    ],
+    "enemyFinisher": "Kestrel knocks Hiro's katana aside with the spear shaft, thrusts the spear into his chest, twists free and leaves him fallen.",
+    "hiroNonlethal": false,
+    "framesEach": 16,
+    "sourceLayout": "4x4",
+    "runtimeApproved": false
+  },
+  {
+    "identity": "enemy:consortium_guard",
+    "slug": "consortium-guard",
+    "name": "Consortium Guard",
+    "hiroFinishers": [
+      "Shield corner: Hiro feints high, beats the shield corner outward with the sword flat and thrusts through the opening under the guard's sword arm.",
+      "Iron split: Hiro catches the guard's sword on a descending parry, rotates his hips and cuts across the unprotected side of the neck."
+    ],
+    "enemyFinisher": "The guard smashes Hiro's sword arm aside with the shield, steps in and thrusts his sword into the torso, withdrawing as Hiro falls.",
+    "hiroNonlethal": false,
+    "framesEach": 16,
+    "sourceLayout": "4x4",
+    "runtimeApproved": false
+  },
+  {
+    "identity": "enemy:slave_driver",
+    "slug": "slave-driver",
+    "name": "Slave Driver",
+    "hiroFinishers": [
+      "Chain catch: Hiro catches the swinging chain on his katana, pulls the driver forward and cuts diagonally across his torso.",
+      "Weight return: Hiro sidesteps the chain weight, pins its slack with his boot, then steps up into a two-handed rising cut beneath the driver's guard."
+    ],
+    "enemyFinisher": "The driver wraps his chain around Hiro's sword arm, yanks him off balance and strikes his torso with the heavy mace, knocking him down with blood on impact.",
+    "hiroNonlethal": false,
+    "framesEach": 16,
+    "sourceLayout": "4x4",
+    "runtimeApproved": false
+  },
+  {
+    "identity": "named:malvane",
+    "slug": "malvane",
+    "name": "Olamide",
+    "hiroFinishers": [
+      "Ward seam: Hiro's first short cut breaks the ice ward, he shifts his front foot into the opening and thrusts the katana through the mage's torso.",
+      "Wand denial: Hiro parries Olamide's wand hand outward using the katana flat, then reverses into a precise descending shoulder cut."
+    ],
+    "enemyFinisher": "Olamide freezes Hiro's sword wrist, projects an ice lance from his wand into Hiro's chest, then lets the frost shatter as Hiro collapses.",
+    "hiroNonlethal": false,
+    "framesEach": 16,
+    "sourceLayout": "4x4",
+    "runtimeApproved": false
+  },
+  {
+    "identity": "mini:sewer_ogre_mage",
+    "slug": "sewer-ogre-mage",
+    "name": "The Ogre Under the Docks",
+    "hiroFinishers": [
+      "Low opening: Hiro ducks the ogre's staff sweep, cuts its forward knee and follows with a thrust under the ribs as it kneels.",
+      "Staff trap: Hiro deflects the falling staff into the ground, steps along its outside and delivers an overhead neck-base cut."
+    ],
+    "enemyFinisher": "The ogre catches Hiro's katana against its staff, knocks him to his knees and drives the heavy crystal staff down onto his upper body.",
+    "hiroNonlethal": false,
+    "framesEach": 16,
+    "sourceLayout": "4x4",
+    "runtimeApproved": false
+  },
+  {
+    "identity": "enemy:sewer_crawler",
+    "slug": "sewer-crawler",
+    "name": "Sewer Crawler",
+    "hiroFinishers": [
+      "Shell seam: Hiro redirects the mandibles with his katana flat and thrusts into the seam beneath the armored head.",
+      "Overturned guard: Hiro slides his blade under the crawler's forward shell, tips it onto its side and cuts down into its exposed underside."
+    ],
+    "enemyFinisher": "The crawler clamps Hiro's calf in its mandibles, knocks him prone with its heavy shell and bites into his armored torso.",
+    "hiroNonlethal": false,
+    "framesEach": 16,
+    "sourceLayout": "4x4",
+    "runtimeApproved": false
+  },
+  {
+    "identity": "enemy:shadow_double",
+    "slug": "shadow-double",
+    "name": "Shape-Thief",
+    "hiroFinishers": [
+      "False guard: Hiro waits for the claw swipe, deflects it upward and cuts diagonally across the shapeshifter's torso, exposing silver cracks.",
+      "Face break: Hiro uses a short katana draw to stop the lunging claw, steps forward and thrusts into the false chest; silver magic fractures around the wound."
+    ],
+    "enemyFinisher": "The thief catches Hiro's sword with a hardened claw, twists his wrist outward and drives the other claw into his torso before releasing him.",
+    "hiroNonlethal": false,
+    "framesEach": 16,
+    "sourceLayout": "4x4",
+    "runtimeApproved": false
+  },
+  {
+    "identity": "mini:lantern_master",
+    "slug": "lantern-master",
+    "name": "The Master of Lanterns",
+    "hiroFinishers": [
+      "Lantern snuff: Hiro cuts the lantern chain, steps through the falling light and makes a rising diagonal cut across the master's torso.",
+      "Staff eclipse: Hiro parries the lantern staff sideways, rotates his grip and thrusts under the master's leading arm."
+    ],
+    "enemyFinisher": "The master blinds Hiro with a brief lantern flare, hooks his sword with the staff and drives the staff's pointed end into his torso.",
+    "hiroNonlethal": false,
+    "framesEach": 16,
+    "sourceLayout": "4x4",
+    "runtimeApproved": false
+  },
+  {
+    "identity": "mini:umbral_pair",
+    "slug": "umbral-pair",
+    "name": "The Umbral Hand",
+    "hiroFinishers": [
+      "Twin knife bind: Hiro catches both daggers against his katana guard, drives them down and completes a compact diagonal collar cut.",
+      "Outside line: Hiro slips the first dagger, checks the second with the katana flat and thrusts into the assassin's side."
+    ],
+    "enemyFinisher": "The assassin crosses daggers around Hiro's blade, pulls it down and drives one dagger into Hiro's exposed side, then withdraws.",
+    "hiroNonlethal": false,
+    "framesEach": 16,
+    "sourceLayout": "4x4",
+    "runtimeApproved": false
+  },
+  {
+    "identity": "mini:tower_captain",
+    "slug": "tower-captain",
+    "name": "Captain of the Tower",
+    "hiroFinishers": [
+      "Captain's guard: Hiro wedges the katana against the shield rim, steps outside the spear and cuts into the exposed neck gap.",
+      "Spear return: Hiro redirects the spear with a sharp katana parry and thrusts through the armpit armor gap."
+    ],
+    "enemyFinisher": "The captain knocks Hiro backward with his shield, follows with a precise spear thrust to the chest and withdraws.",
+    "hiroNonlethal": false,
+    "framesEach": 16,
+    "sourceLayout": "4x4",
+    "runtimeApproved": false
+  },
+  {
+    "identity": "named:maddox",
+    "slug": "maddox",
+    "name": "Adigun Adeyinka",
+    "hiroFinishers": [
+      "Merchant's reach: Hiro slips the mace swing, checks the wrist with the blade flat and delivers a diagonal torso cut.",
+      "Broken bargain: Hiro meets the mace with an angled two-handed guard, slides down its haft and thrusts beneath the ribs."
+    ],
+    "enemyFinisher": "Adigun catches Hiro's sword with the mace haft, shoulders him off balance and strikes down onto his upper body.",
+    "hiroNonlethal": false,
+    "framesEach": 16,
+    "sourceLayout": "4x4",
+    "runtimeApproved": false
+  },
+  {
+    "identity": "named:vask",
+    "slug": "vask",
+    "name": "Bankole",
+    "hiroFinishers": [
+      "Loud steel: Hiro meets Bankole's heavy swing with a compact high parry, pivots and cuts across his torso.",
+      "Open guard: Hiro feints a thrust, beats the broadsword away with the katana and cuts diagonally through the collar opening."
+    ],
+    "enemyFinisher": "Bankole knocks Hiro's katana wide with a two-handed broadsword beat and follows through into a bloody diagonal torso cut.",
+    "hiroNonlethal": false,
+    "framesEach": 16,
+    "sourceLayout": "4x4",
+    "runtimeApproved": false
+  },
+  {
+    "identity": "named:rennick",
+    "slug": "rennick",
+    "name": "Rotimi",
+    "hiroFinishers": [
+      "Wand check: Hiro cuts through the small frost ward, presses the wand arm aside and thrusts into Rotimi's torso.",
+      "Account closed: Hiro steps outside the pointed wand, draws the katana upward across the exposed side and returns to guard."
+    ],
+    "enemyFinisher": "Rotimi traps Hiro's blade in ice, points his wand at Hiro's chest and releases a piercing frost spear, then steps back as Hiro falls.",
+    "hiroNonlethal": false,
+    "framesEach": 16,
+    "sourceLayout": "4x4",
+    "runtimeApproved": false
+  },
+  {
+    "identity": "named:grell",
+    "slug": "grell",
+    "name": "Gbenga",
+    "hiroFinishers": [
+      "Bolt slip: Hiro angles his shoulder past the raised crossbow, cuts its stock aside and thrusts into Gbenga's side.",
+      "Knife counter: Hiro parries Gbenga's close dagger strike, controls its wrist with his free hand and delivers a short diagonal katana cut."
+    ],
+    "enemyFinisher": "Gbenga hooks Hiro's sword with his dagger, steps close and fires the crossbow into his torso, then backs away.",
+    "hiroNonlethal": false,
+    "framesEach": 16,
+    "sourceLayout": "4x4",
+    "runtimeApproved": false
+  },
+  {
+    "identity": "mini:family_double",
+    "slug": "family-double",
+    "name": "A Face You Know",
+    "hiroFinishers": [
+      "Borrowed face: Hiro blocks the impostor's claw with the blade flat, turns his hips and cuts through its shadowed torso.",
+      "Memory broken: Hiro sidesteps the claw lunge and executes a compact overhead cut into the impostor's shoulder; silver fractures spread without changing its identity."
+    ],
+    "enemyFinisher": "The impostor feigns surrender, seizes Hiro's sword wrist, drives a claw into his side and releases him to the ground.",
+    "hiroNonlethal": false,
+    "framesEach": 16,
+    "sourceLayout": "4x4",
+    "runtimeApproved": false
+  },
+  {
+    "identity": "enemy:phase_spider",
+    "slug": "phase-spider",
+    "name": "Phase Spider",
+    "hiroFinishers": [
+      "Phase catch: Hiro waits for the crystalline spider to become solid, parries its fang and slices diagonally through its thorax.",
+      "Crystal break: Hiro cuts a strand of violet silk, steps under the lifted forelegs and thrusts into the head cluster."
+    ],
+    "enemyFinisher": "The spider locks Hiro's sword in glass web, phases solid against his side and bites into his shoulder before dropping him.",
+    "hiroNonlethal": false,
+    "framesEach": 16,
+    "sourceLayout": "4x4",
+    "runtimeApproved": false
+  },
+  {
+    "identity": "enemy:tomb_ghoul",
+    "slug": "tomb-ghoul",
+    "name": "Tomb Ghoul",
+    "hiroFinishers": [
+      "Grave guard: Hiro blocks the ghoul's claw, steps through its weak stance and cuts across the neck and shoulder.",
+      "Bandage snare: Hiro avoids the grabbing hands, uses the katana flat to turn the ghoul and drives a short thrust through the ribs."
+    ],
+    "enemyFinisher": "The ghoul catches Hiro's sword wrist with both claws, drags him close and bites his shoulder until he falls.",
+    "hiroNonlethal": false,
+    "framesEach": 16,
+    "sourceLayout": "4x4",
+    "runtimeApproved": false
+  },
+  {
+    "identity": "enemy:gauntlet_traitor",
+    "slug": "gauntlet-traitor",
+    "name": "Gauntlet Turncoat",
+    "hiroFinishers": [
+      "Turncoat's opening: Hiro parries the longsword down, steps outside and cuts diagonally across the collar.",
+      "Crossed oath: Hiro catches the overhead sword on his katana, slides along it, then thrusts beneath the traitor's sword arm."
+    ],
+    "enemyFinisher": "The turncoat shoulder-checks Hiro's guard, draws back the longsword and thrusts it into Hiro's torso.",
+    "hiroNonlethal": false,
+    "framesEach": 16,
+    "sourceLayout": "4x4",
+    "runtimeApproved": false
+  },
+  {
+    "identity": "named:idris",
+    "slug": "idris",
+    "name": "Idris",
+    "hiroFinishers": [
+      "False healing: Hiro redirects Idris's reaching palm with the katana flat and cuts through the shapeshifter's torso.",
+      "Hidden knife: Hiro binds the concealed dagger at the wrist, pivots inward and delivers an overhead shoulder cut."
+    ],
+    "enemyFinisher": "Idris feigns a healing touch, grips Hiro's sword arm and drives his hidden dagger into Hiro's ribs.",
+    "hiroNonlethal": false,
+    "framesEach": 16,
+    "sourceLayout": "4x4",
+    "runtimeApproved": false
+  },
+  {
+    "identity": "named:amara",
+    "slug": "amara",
+    "name": "Amara",
+    "hiroFinishers": [
+      "Measured mercy: Hiro catches Amara's crossed blades, steps out of their line and uses his katana flat to disarm one sword, then stops the point at her collar; she kneels alive.",
+      "Temple surrender: Hiro parries two alternating cuts, hooks a sword hilt with his guard and turns her wrist into a controlled disarm; both remain alive."
+    ],
+    "enemyFinisher": "Amara crosses her swords to trap Hiro's katana, turns the bind outward and drives one sword into his chest, then lowers him to the ground.",
+    "hiroNonlethal": true,
+    "framesEach": 16,
+    "sourceLayout": "4x4",
+    "runtimeApproved": false
+  },
+  {
+    "identity": "named:ravel",
+    "slug": "ravel",
+    "name": "Rasheed",
+    "hiroFinishers": [
+      "Duelist's answer: Hiro parries the first saber, steps inside the second and cuts diagonally across Rasheed's chest.",
+      "Twin edge trap: Hiro catches the crossed sabers high, rolls his wrists beneath them and thrusts into Rasheed's exposed side."
+    ],
+    "enemyFinisher": "Rasheed scissors both sabers around Hiro's katana, breaks the guard outward and crosses two bloody cuts over his torso.",
+    "hiroNonlethal": false,
+    "framesEach": 16,
+    "sourceLayout": "4x4",
+    "runtimeApproved": false
+  },
+  {
+    "identity": "named:kessa",
+    "slug": "kessa",
+    "name": "Kemi",
+    "hiroFinishers": [
+      "Storm breach: Hiro pushes through a small lightning ward with the katana tip, redirects the casting wrist and thrusts into Kemi's torso.",
+      "Silent thunder: Hiro ducks the casting palm, rises into a diagonal cut beneath her arm and steps clear as sparks fade."
+    ],
+    "enemyFinisher": "Kemi catches Hiro's katana in a lightning bind, thrusts her other palm forward and drives a focused arc through his chest.",
+    "hiroNonlethal": false,
+    "framesEach": 16,
+    "sourceLayout": "4x4",
+    "runtimeApproved": false
+  },
+  {
+    "identity": "mini:hall_doubles",
+    "slug": "hall-doubles",
+    "name": "Ducal Guard",
+    "hiroFinishers": [
+      "Ducal lie: Hiro parries the glaive's heavy head outside, steps along the shaft and cuts into the guard's exposed torso.",
+      "Revealed steel: Hiro catches the glaive on a high katana guard and follows with a short thrust below the breastplate."
+    ],
+    "enemyFinisher": "The false ducal guard pins Hiro's blade with the glaive hook and thrusts its spike into his chest.",
+    "hiroNonlethal": false,
+    "framesEach": 16,
+    "sourceLayout": "4x4",
+    "runtimeApproved": false
+  },
+  {
+    "identity": "enemy:palace_doppelganger",
+    "slug": "palace-doppelganger",
+    "name": "Palace Guard",
+    "hiroFinishers": [
+      "Lion shield: Hiro beats the shield's upper rim, sidesteps the spear and cuts through the opened collar.",
+      "Palace counter: Hiro knocks the spear tip into the ground with his katana, advances and thrusts under the shield arm."
+    ],
+    "enemyFinisher": "The false palace guard strikes Hiro's sword arm with its shield and drives its spear into his torso.",
+    "hiroNonlethal": false,
+    "framesEach": 16,
+    "sourceLayout": "4x4",
+    "runtimeApproved": false
+  },
+  {
+    "identity": "named:jarem",
+    "slug": "jarem",
+    "name": "Jelani",
+    "hiroFinishers": [
+      "Ember opening: Hiro cuts through Jelani's brief fire screen, shifts inside the rod and thrusts through the mage's torso.",
+      "Court mage's fall: Hiro turns the rod aside with the katana flat and delivers a controlled overhead cut to the shoulder."
+    ],
+    "enemyFinisher": "Jelani binds Hiro's sword in a loop of flame and drives a narrow flame lance from his rod into Hiro's chest.",
+    "hiroNonlethal": false,
+    "framesEach": 16,
+    "sourceLayout": "4x4",
+    "runtimeApproved": false
+  },
+  {
+    "identity": "enemy:morrak_cultist",
+    "slug": "morrak-cultist",
+    "name": "Cultist of Morrak",
+    "hiroFinishers": [
+      "Blood seal: Hiro parries the ritual dagger, turns his wrists and cuts diagonally through the cultist's torso.",
+      "Cowl fall: Hiro slips the curse hand, cuts the dagger wrist aside and follows with a short thrust beneath the ribs."
+    ],
+    "enemyFinisher": "The cultist catches Hiro's wrist with a blood sigil, pulls him close and drives the ritual dagger into his chest.",
+    "hiroNonlethal": false,
+    "framesEach": 16,
+    "sourceLayout": "4x4",
+    "runtimeApproved": false
+  },
+  {
+    "identity": "named:lucan",
+    "slug": "lucan",
+    "name": "Segun Marr",
+    "hiroFinishers": [
+      "Sold oath: Hiro meets Segun's longsword with a firm high parry, steps to the outside and cuts through the shoulder gap.",
+      "Command broken: Hiro feints at the helmet, beats the longsword aside and thrusts beneath the breastplate."
+    ],
+    "enemyFinisher": "Segun forces Hiro's katana down with his longsword, steps in and delivers a heavy diagonal torso cut.",
+    "hiroNonlethal": false,
+    "framesEach": 16,
+    "sourceLayout": "4x4",
+    "runtimeApproved": false
+  },
+  {
+    "identity": "mini:altar_keepers",
+    "slug": "altar-keepers",
+    "name": "Keepers of the Altar",
+    "hiroFinishers": [
+      "Altar silence: Hiro catches the ritual staff on his katana, turns it aside and cuts through the keeper's chest.",
+      "Crown lowered: Hiro deflects the keeper's knife hand, raises the katana in both hands and cuts down through the collar."
+    ],
+    "enemyFinisher": "The keeper hooks Hiro's blade with the ritual staff and plunges its dagger into his torso as a red sigil flares.",
+    "hiroNonlethal": false,
+    "framesEach": 16,
+    "sourceLayout": "4x4",
+    "runtimeApproved": false
+  },
+  {
+    "identity": "mini:your_own_faces",
+    "slug": "your-own-faces",
+    "name": "Your Own Faces",
+    "hiroFinishers": [
+      "Mirror cut: Hiro baits the mirror's identical guard, changes his foot angle and cuts beneath the reflected katana into its torso.",
+      "Broken reflection: Hiro locks blades with his double, pivots to break the symmetry and thrusts into the double's chest."
+    ],
+    "enemyFinisher": "The corrupted double mirrors Hiro's guard, traps his katana at the hilt and turns a diagonal slash into his torso.",
+    "hiroNonlethal": false,
+    "framesEach": 16,
+    "sourceLayout": "4x4",
+    "runtimeApproved": false
+  },
+  {
+    "identity": "named:korvath",
+    "slug": "korvath",
+    "name": "Kolade Adeyinka",
+    "hiroFinishers": [
+      "Armour breach: Hiro redirects Kolade's greatsword with a braced angled parry, steps close and thrusts into the side armor gap, withdraws; Kolade drops to one knee wounded but alive.",
+      "Giant stagger: Hiro ducks the greatsword sweep, cuts the back of Kolade's forward leg, then checks him with a shoulder and holds a high guard as Kolade kneels alive."
+    ],
+    "enemyFinisher": "Kolade overpowers Hiro's katana with the greatsword's weight, breaks the guard and delivers a crushing diagonal torso cut before pulling the blade free.",
+    "hiroNonlethal": true,
+    "framesEach": 16,
+    "sourceLayout": "4x4",
+    "runtimeApproved": false
+  }
+]

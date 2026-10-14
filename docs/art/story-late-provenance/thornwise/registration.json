@@ -1,0 +1,71 @@
+{
+  "actor": "story_thornwise",
+  "name": "Mzee Kamau",
+  "identity": "named:thornwise",
+  "bodyReferenceHeight": 254,
+  "seedAlpha": 64,
+  "attackContacts": [
+    4
+  ],
+  "pairs": [
+    {
+      "id": "hiro-finisher-1",
+      "files": [
+        "hiro-finisher-1.png"
+      ],
+      "columns": 4,
+      "rows": 4,
+      "hiroReferenceHeights": [
+        243
+      ],
+      "contacts": [
+        6
+      ],
+      "nonlethal": true,
+      "seedErosion": 2,
+      "replacementSheets": [
+        {
+          "file": "hiro-finisher-1-edge-repair.png",
+          "frames": [
+            3
+          ],
+          "columns": 1,
+          "rows": 1,
+          "hiroReferenceHeight": 614
+        }
+      ]
+    },
+    {
+      "id": "hiro-finisher-2",
+      "files": [
+        "hiro-finisher-2.png"
+      ],
+      "columns": 4,
+      "rows": 4,
+      "hiroReferenceHeights": [
+        226
+      ],
+      "contacts": [
+        6
+      ],
+      "nonlethal": true,
+      "seedErosion": 2
+    },
+    {
+      "id": "story_thornwise-fatal",
+      "files": [
+        "enemy-fatal.png"
+      ],
+      "columns": 4,
+      "rows": 4,
+      "hiroReferenceHeights": [
+        241
+      ],
+      "contacts": [
+        6
+      ],
+      "fatal": true,
+      "seedErosion": 2
+    }
+  ]
+}

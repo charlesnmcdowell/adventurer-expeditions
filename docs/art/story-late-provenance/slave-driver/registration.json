@@ -1,0 +1,82 @@
+{
+  "actor": "story_slave_driver",
+  "name": "Slave Driver",
+  "identity": "enemy:slave_driver",
+  "bodyReferenceHeight": 274,
+  "seedAlpha": 64,
+  "attackContacts": [
+    4
+  ],
+  "pairs": [
+    {
+      "id": "hiro-finisher-1",
+      "files": [
+        "hiro-finisher-1.png"
+      ],
+      "columns": 4,
+      "rows": 4,
+      "hiroReferenceHeights": [
+        225
+      ],
+      "contacts": [
+        6
+      ],
+      "seedErosion": 8,
+      "replacementSheets": [
+        {
+          "file": "hiro-finisher-1-qa-repair.png",
+          "columns": 3,
+          "rows": 1,
+          "frames": [
+            4,
+            6,
+            7
+          ],
+          "hiroReferenceHeight": 460
+        }
+      ]
+    },
+    {
+      "id": "hiro-finisher-2",
+      "files": [
+        "hiro-finisher-2.png"
+      ],
+      "columns": 4,
+      "rows": 4,
+      "hiroReferenceHeights": [
+        216
+      ],
+      "contacts": [
+        6
+      ],
+      "seedErosion": 2
+    },
+    {
+      "id": "story_slave_driver-fatal",
+      "files": [
+        "enemy-fatal.png"
+      ],
+      "columns": 4,
+      "rows": 4,
+      "hiroReferenceHeights": [
+        228
+      ],
+      "contacts": [
+        6
+      ],
+      "fatal": true,
+      "seedErosion": 2,
+      "replacementSheets": [
+        {
+          "file": "enemy-fatal-repair-late.png",
+          "frames": [
+            14
+          ],
+          "columns": 1,
+          "rows": 1,
+          "hiroReferenceHeight": 756
+        }
+      ]
+    }
+  ]
+}

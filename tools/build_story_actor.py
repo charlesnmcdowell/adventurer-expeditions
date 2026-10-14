@@ -32,7 +32,7 @@ def main():
         alpha=arr[:,:,3].astype(float)
         arr[:,:,3]=np.where(alpha>=full,alpha,np.clip((alpha-floor)/(full-floor),0,1)*full).astype('uint8')
         combat_file='combat-alpha-clean.png';Image.fromarray(arr).save(src/combat_file)
-    fs = extraction.extract(combat_file,24,seed_alpha=cfg.get('seedAlpha',64))
+    fs = extraction.extract(combat_file,24,seed_alpha=cfg.get('seedAlpha',64),seed_erosion=cfg.get('seedErosion',0),seed_cuts=cfg.get('seedCuts',[]))
     ref = cfg['bodyReferenceHeight']
     clips=[]; warnings=[]
     for name,start,end in [('idle',0,4),('approach',4,8),('attack',8,16),('hit',16,20),('down',20,24)]:
@@ -60,7 +60,7 @@ def main():
         files=spec.get('files') or [spec['file']]
         refs=spec.get('hiroReferenceHeights') or [spec['hiroReferenceHeight']]*len(files)
         if len(refs)!=len(files):raise ValueError('Every paired sheet needs its anatomical reference')
-        clip,flags=pairs.paired(spec['id'],files,spec.get('columns',4),spec.get('rows',4),refs,spec['contacts'],spec.get('fatal',False),omit_frames=replaced,region_owners=spec.get('regionOwners',[]))
+        clip,flags=pairs.paired(spec['id'],files,spec.get('columns',4),spec.get('rows',4),refs,spec['contacts'],spec.get('fatal',False),omit_frames=replaced,region_owners=spec.get('regionOwners',[]),seed_erosion=spec.get('seedErosion',2))
         for repair_index,repair in enumerate(spec.get('replacementSheets',[])):
             indices=repair['frames']
             replacement,repair_flags=pairs.paired(spec['id']+'-repair-'+str(repair_index),
@@ -127,7 +127,10 @@ def main():
             doc['clips'][spec['id']].update(nonlethal=True,finalState='opponent-survives')
     (out/actor/(actor+'.json')).write_text(json.dumps(doc,separators=(',',':')))
     fatalid=actor+'-fatal'
-    build(src,fatalid,out,300,95,dict(clips=[fatal]),lossless=True)
+    fataldoc=build(src,fatalid,out,300,95,dict(clips=[fatal]),lossless=True)
+    for c in fataldoc['clips'].values():
+        if c.get('paired'):c.update(embeddedBlood=True,preserveTiming=True)
+    (out/fatalid/(fatalid+'.json')).write_text(json.dumps(fataldoc,separators=(',',':')))
     (src/'fatal-manifest.json').write_text(json.dumps(dict(clips=[fatal]),indent=2))
     report=dict(actor=actor,ordinaryFrames=24,hiroFinisherFrames=[16,16],enemyFinisherFrames=16,warnings=warnings)
     (out/'registration-report.json').write_text(json.dumps(report,indent=2))
