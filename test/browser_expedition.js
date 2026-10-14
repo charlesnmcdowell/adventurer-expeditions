@@ -170,10 +170,10 @@ function serve() {
   // button — what must never appear is a purchased skill the policy chose.
   const BY_TAP = ['request', 'cast'];
   if (slice && (!manual.length || manual.some(c => !BY_TAP.includes(c.how)))) errors.push('Purchased skills did not fire exclusively from player taps: ' + JSON.stringify(manual.map(c => c.skill + ':' + c.how)));
-  // September 28 tutorial: Counter first, repeat Finisher readiness windows,
-  // repeat Counter at low HP, and teach God Aura once at the first boss.
+  // October 13 tutorial: Counter first, Iaido Draw once against a group,
+  // then Finisher when a target enters its execute window.
   const firstLessons = [...new Set(lessons)];
-  if (slice && !args.at && (JSON.stringify(firstLessons) !== JSON.stringify(['counter_attack', 'finisher', 'god_aura']) || lessons.filter(id => id === 'god_aura').length !== 1)) errors.push('Tutorial lessons were not taught in order: ' + JSON.stringify(lessons));
+  if (slice && !args.at && (JSON.stringify(firstLessons) !== JSON.stringify(['counter_attack', 'god_aura', 'finisher']) || lessons.filter(id => id === 'god_aura').length !== 1)) errors.push('Tutorial lessons were not taught in order: ' + JSON.stringify(lessons));
   if (JSON.stringify(evidence.saved) !== JSON.stringify(evidence.final)) errors.push('Saved score/progress differs from final inn state');
   if (evidence.trace.restores.some(r => r.clock !== 1 || r.tweens !== 1 || r.animations !== 1)) errors.push('Cinematic speed did not restore');
   if (evidence.camera.zoom !== 1 || evidence.camera.clock !== 1 || evidence.camera.animations !== 1) errors.push('Final camera/time state did not restore');
