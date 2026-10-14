@@ -248,7 +248,11 @@ class Actor {
     const aliases = {
       enter: ['walk', 'run', 'approach', 'idle'], leap: ['approach', 'leap', 'attack'], short_draw: ['short-draw', 'draw'],
       slash: ['slash-l' + level, 'slash-l1', 'attack', 'attack-light', 'bite'],
-      slash_wide: ['slash-l3', 'slash-l1', 'slash', 'attack'], lash: ['lash', 'attack'],
+      slash_wide: ['slash-l3', 'slash-l1', 'slash', 'attack'],
+      // Iaido Draw: its own painted draw-cut once delivered, else the widest slash.
+      iaido: ['iaido-draw', 'slash-l3', 'slash-l2', 'slash-l1', 'slash', 'attack'],
+      // Counter against an arrow or spell: its own guard-and-flick once painted.
+      deflect: ['deflect', 'intercept', 'counter-l2', 'cast'], lash: ['lash', 'attack'],
       hit_short: ['hit-short', 'hit-heavy', 'hit'], stagger: ['hit-short', 'hit-heavy', 'hit'],
       bite_grip: [opts.arm ? 'bite-arm-paired' : 'bite-leg-paired', opts.arm ? 'bite-arm' : 'bite-leg', 'bite-paired', 'hit-short', 'hit'],
       victory: ['victory-sheath', 'victory'], kneel: ['kneel', 'down'],
@@ -631,8 +635,7 @@ P.slash_wide = async function (scene, o, done) {
 };
 
 P.aura = async function (scene, o, done) {
-  V().aura(scene, this.root.x, this.root.y - this.height * 0.5, 0xa66bff);
-  V().aura(scene, this.root.x, this.root.y - this.height * 0.5, 0xd9c2ff);
+  // No ring around the body (Hiro, 2026-10-13); a brief tint only.
   this.img.setTint(0xcdb0ff); scene.time.delayedCall(360, () => { if (this.img.__baseTint != null) this.img.setTint(this.img.__baseTint); else this.img.clearTint(); });
   await this.tweenImg({ scaleY: this.img.scaleY * 1.04 }, 160, 'Sine.Out');
   await this.tweenImg({ scaleY: this.img.scaleY / 1.04 }, 200);
@@ -642,7 +645,6 @@ P.aura = async function (scene, o, done) {
 P.stance = async function (scene, o, done) {
   // Counter stance: a half-step back, blade angled, gold outline pulse.
   await this.tween({ x: this.home.x - 24 * this.facing }, 140, 'Sine.Out');
-  V().aura(scene, this.root.x, this.root.y - this.height * 0.5, 0xe8c86a);
   await ms(scene, 220);
   await this.tween({ x: this.home.x }, 200);
   done();

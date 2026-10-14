@@ -41,9 +41,14 @@ X.skills = {
   // God Aura raises attack, not defense (Hiro, 2026-09-24: "counter attack
   // already handles defense enough"). auraDef stays 1 because the damage code
   // divides by it; a missing value would be NaN, not "no change".
+  // Iaido Draw (Hiro, 2026-10-13) replaces God Aura in the second slot: one
+  // drawn cut through every enemy for heavy damage, on a long recovery. The id
+  // stays god_aura so the HUD slot, tutorial and saves keep working; the shared
+  // engine resolves it through its ordinary all-enemies damage path, and
+  // auraAtk 0 switches the aura branch off.
   god_aura: {
-    base: { target: 'party', power: 0 },
-    1: { auraAtk: 1.35, auraDef: 1, auraEvade: 0, rounds: 3, cooldown: 0 },
+    base: { name: 'Iaido Draw', target: 'allEnemies', reach: 'any', power: 1.8, katana: true, melee: true, noReflect: true },
+    1: { auraAtk: 0, auraDef: 1, auraEvade: 0, rounds: 0, cooldown: 0 },
   },
   counter_attack: {
     base: { target: 'self', power: 0, counterRiposte: 'expedition_riposte' },
@@ -272,9 +277,13 @@ X.pacing = { mode: 'normal', ms: { slow: 2000, normal: 1000, fast: 500 } };
 // 5/5/4 turns, Counter Attack 2/2/1 — read as roughly ten and five seconds.
 // Finisher is absent on purpose: its only gate is the health window.
 X.skillCooldownMs = {
-  god_aura:       { 1: 10000 },
+  god_aura:       { 1: 22000 },          // Iaido Draw: heavy, so a long recovery
   counter_attack: { 1: 5000 },
 };
+// Counter holds at most this many blocks. The engine adds two per cast, so a
+// recast with one left used to stack to three (Hiro, 2026-10-13: "two attacks
+// at a time instead of 3"). Enc clamps after every cast.
+X.counterCap = 2;
 X.cooldownMsFor = function (skillId, level) {
   const t = X.skillCooldownMs[skillId];
   return t ? (t[1] || 0) : 0;
@@ -296,8 +305,8 @@ X.infoHoldMs = 3000;
 X.infoLingerMs = 3000;
 X.skillText = {
   katana_slash:   { name: 'Katana Slash',  text: 'Hiro swings his sword at one enemy. He does this on his own.' },
-  god_aura:       { name: 'God Aura',      text: 'A glowing aura. Hiro hits harder for a while.' },
-  counter_attack: { name: 'Counter Attack', text: 'Hiro gets ready. When an enemy attacks him, he blocks it and strikes back.' },
+  god_aura:       { name: 'Iaido Draw',    text: 'Hiro draws and cuts through every enemy at once for heavy damage. Takes a while to come back.' },
+  counter_attack: { name: 'Counter Attack', text: 'Hiro gets ready for the next two attacks, arrows and spells too. He knocks them aside and strikes back.' },
   finisher:       { name: 'Finisher',      text: 'A big final strike. If a normal enemy is at half health or less, it is knocked out. Bosses have to be at a quarter. Hiro heals a little.' },
 };
 

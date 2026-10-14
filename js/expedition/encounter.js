@@ -275,6 +275,9 @@ Enc.noteCast = function (enc, skillId) {
 // since the skill usage doesn't count as a turn"). Verified against the shared
 // engine before building: an out-of-turn act leaves the current turn and the
 // round exactly where they were.
+// Counter holds at most X.counterCap blocks however often it is recast.
+function capCounter(u) { if (u && X.counterCap && u.counter > X.counterCap) u.counter = X.counterCap; }
+
 Enc.castNow = function (enc) {
   const st = enc.st;
   if (st.over || !enc.request) return null;
@@ -305,6 +308,7 @@ Enc.castNow = function (enc) {
     return null;
   }
   Enc.noteCast(enc, skillId);
+  capCounter(u);
   enc.casts = (enc.casts || 0) + 1;
   const events = st.events.slice(from);
   enc.cursor = st.events.length;
@@ -409,6 +413,7 @@ Enc.step = function (enc) {
     if (unmask) { unmask.ch.boss = false; enc.log.push({ t: 'bossExecutable', uid: unmask.uid }); }
     try { res = commit(st, u, choice); } finally { if (unmask) unmask.ch.boss = true; }
     if (res && res.ok !== false && choice.action && choice.action.skillId) Enc.noteCast(enc, choice.action.skillId);
+    capCounter(u);
     if (res && res.ok === false) { A.Combat.act(st, u, { kind: 'hold' }); choice = { action: { kind: 'hold' }, how: 'hold', error: res.error }; }
   } else {
     // Citadel tactics are edition-owned; shared combat remains the authority
@@ -423,7 +428,12 @@ Enc.step = function (enc) {
       u.planned = {kind:'skill',skillId:'xp_evasive_step',targetUid:u.uid};
       u.xpEvasionUsed = true;
     }
-    A.Combat.aiTakeTurn(st, u);
+    // While Hiro holds a Counter, this enemy's arrows and spells resolve as
+    // counterable attacks (shim.js reads the flag): the engine turns them
+    // aside, bounces the damage back into the shooter and Hiro still ripostes.
+    const hero = Enc.heroUnit(enc);
+    X.__deflecting = !!(hero && !hero.downed && hero.counter > 0);
+    try { A.Combat.aiTakeTurn(st, u); } finally { X.__deflecting = false; }
   }
   A.Combat.advance(st);
   enc.steps++;

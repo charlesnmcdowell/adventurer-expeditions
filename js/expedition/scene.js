@@ -265,7 +265,8 @@ class ExpeditionScene extends Phaser.Scene {
     if (!t.used.counter_attack) want.push('counter_attack');
     want.push('finisher');
     if (low) want.push('counter_attack');
-    if (enc.def && enc.def.boss && !t.used.god_aura) want.push('god_aura');
+    // Iaido Draw (the second slot) is taught once, when it can catch two or more enemies.
+    if (!t.used.god_aura && A.Combat.living(enc.st, 'b').length >= 2) want.push('god_aura');
     for (const id of want) {
       if (armed[id] || !ready(id)) continue;
       const icon = this.hud.icons[id]; if (!icon || !icon.rect) continue;

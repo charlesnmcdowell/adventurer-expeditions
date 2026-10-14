@@ -15,6 +15,47 @@ of small fixes within a day.
 
 ---
 
+## 2026-10-13 — Harder fights, Counter answers projectiles, Iaido Draw replaces God Aura; site demo opens chapter two
+
+Hiro: "unlock chapter 2 but lock chapter 3, make the game a bit harder, hiro to die in 3 to 4 direct hits, counter to only work on two attacks at a time, remove the purple and yellow circle, counter needs to also work on projectiles … his second move to become an ieyasu drawing style attack that targets multiple enemies for heavy damage but has a long cool down."
+
+- **Three to four hits to die.**
+  - New `tools/story_hit_scale.js` simulates every campaign opponent against Hiro, with the old edition multipliers off, and takes the median direct hit. It writes one multiplier per opponent into a generated block in `story_combat.js` (`B.hitScale`).
+  - Result: a direct hit takes 28% of Hiro's health (about 3.6 hits), or 33% for bosses, minibosses and named characters (3 hits).
+  - 57 of 59 opponents are measured. Bahadır and the Umbral Hand landed no hits in the runs and keep their old multipliers.
+  - The multiplier also scales an opponent's damage-over-time, because the engine applies it to all of that opponent's damage.
+  - Rerun the tool after new opponents are registered; `--check` lists any without an entry.
+- **Win rates after the change** (`STORY_CHAPTERS=5 node test/story_balance.js`, 12 seeds; the simulated player uses every skill the moment it's ready):
+  - chapters 1–3 are all 9–12 of 12, except 3:2 at 10/12;
+  - 4:1 10/12, 4:2 6/12, 4:3 7/12;
+  - 5:1 3/12, the hardest;
+  - nothing is unwinnable and nothing stalls.
+  A human who mistimes Counter will lose more often.
+- **Counter caps at two blocks.** The engine adds two per cast, so a recast with one block left made three. `Enc` now clamps to `X.counterCap = 2` after every cast. Verified: over 20 seeded fights with double casts, the most ever held was 2.
+- **Counter answers arrows and spells.**
+  - While Hiro holds a counter, `Enc.step` flags the enemy's turn and the shim hands that enemy's projectile skills to the engine as counterable attacks.
+  - The engine's own counter then blocks the hit, bounces the damage back into the shooter and runs the riposte. Lethal hits, the riposte and the bounce all use the core's own rules; nothing in js/core changed.
+  - On screen: Hiro plays `deflect` (falling back to intercept until the art arrives), and the shot flies back into the shooter, who takes the bounced damage, then the riposte.
+  - Verified: across 20 seeded chapter-one Griffon Road fights, the Consortium Mage's spells were countered 53 times.
+- **Iaido Draw replaces God Aura** in the second slot. The id stays `god_aura`, so the HUD, tutorial and saves keep working.
+  - One drawn cut through every enemy, at power 1.8 against each (Katana Slash is 1.3 on one enemy), with a 22-second recovery.
+  - The aura branch is off (`auraAtk: 0`). It runs the engine's ordinary all-enemies damage path.
+  - It plays a new `iaido` clip, falling back to Hiro's widest slash until the painted `iaido-draw` arrives.
+  - The tutorial teaches it once, when two or more enemies are up.
+  - I tried power 2.2 too; win rates were about the same, so I kept the lower number.
+- **No circles around Hiro.**
+  - Removed the gold arc on the counter stance, the purple flash and the buff ring drawn around Hiro.
+  - Removed the rings in the puppet aura and stance fallbacks.
+  - God Aura's painted purple ring went with the skill. The status badges above his head stay.
+- **Website demo plays chapters 1–2.**
+  - `tools/site_demo.js` has one setting, `SITE_THROUGH = 2`. Voices, music, paintings, the bounty still and enemy art (taken from the story_art bindings) follow it.
+  - The demo cap in the package follows it too.
+  - Verify loads every fight in the playable chapters and the end card after the last one.
+- **Tests:** expedition_sim now checks Iaido Draw's rules instead of God Aura's (all-enemies target, harder than Katana Slash, at least 20 s recovery, auraAtk 0, a damage effect). The unit suite passes, and so do story_campaign and story_combat.
+- **Art for Astra:** docs/ASTRA_PROMPT_IAIDO_DEFLECT_20261013.md covers the Iaido Draw clip, a deflect clip, the knocked-back projectile effects and a new HUD icon.
+
+---
+
 ## 2026-10-13 — Chapter five: The Bandit Camp (Astra)
 
 **Playable locally:** chapter limit **4 → 5**. Completed Skarn, Hobgoblin Sergeant, Road Bandit and Gorruk; campaign registration **18/59 → 22/59**. Femi, Gauntlet patrol, archer and hired knife reuse their existing finished sets. Original chapter dialogue, choices, voices, scenery and music are unchanged. Chapter five returns to the inn; chapter six remains gated. The website demo stays at chapter one. Nothing published.

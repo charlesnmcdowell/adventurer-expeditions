@@ -27,33 +27,51 @@ function frozenFiles(dir=OUT, prefix='') {
 }
 const TOP = ['js', 'lib', 'audio', 'assets'];
 const PAGES = ['docs/STORY_CAMPAIGN_PREVIEW.html', 'docs/STORY_FIGHT_PREVIEW.html', 'docs/story_preview.js'];
-// The four chapter-one opponents' art (story_art.js bindings for Nib, Cobb, the
-// Hired Knife and the Consortium Mage).
-const CH1_ENEMIES = new Set(['story_nib', 'story_cobb', 'story_hired_knife', 'story_consortium_mage']);
+// The public demo plays chapters 1..SITE_THROUGH, then the coming-soon card
+// (Hiro, 2026-10-13: "unlock chapter 2 but lock chapter 3"). Raise it to open
+// the next chapter; media and enemy art follow automatically.
+const SITE_THROUGH = 2;
+const CHAPTERS = Array.from({ length: SITE_THROUGH }, (_, i) => i + 1);
+
+// Enemy art for every opponent fought in those chapters (story_art.js bindings).
+function shippedEnemies() {
+  const d = JSON.parse(fs.readFileSync(path.join(ROOT, 'assets/expedition/story/campaign.json')));
+  const art = fs.readFileSync(path.join(ROOT, 'js/expedition/story_art.js'), 'utf8');
+  const actors = new Map([...art.matchAll(/S\.bindings\['([a-z_]+:[a-z_]+)'\]=\{actor:'([a-z_]+)'/g)].map(m => [m[1], m[2]]));
+  const out = new Set();
+  for (const e of d.combatRoster) if (e.appearances.some(a => a.chapter <= SITE_THROUGH)) {
+    const actor = actors.get(e.kind + ':' + e.id); if (actor) out.add(actor);
+  }
+  return out;
+}
 
 function chapterOneMedia() {
   const d = JSON.parse(fs.readFileSync(path.join(ROOT, 'assets/expedition/story/campaign.json')));
   const media = JSON.parse(fs.readFileSync(path.join(ROOT, 'assets/expedition/story/preview-media.json')));
-  const m = d.music, tracks = new Set([m.quest[1], m.quest[2], m.combat.road, m.dream, 'vg_lanternhold'].filter(Boolean));   // chapter two's track plays behind the coming-soon card
-  const p = d.presentation || {}, places = new Set(['lanternhold', ...(d.routes[1] || []), p.departures?.[1], p.arrivals?.[1]].filter(Boolean));
-  for (const [key, id] of Object.entries(p.changes || {})) if (/^q1_/.test(key)) places.add(id);
+  // The next chapter's track plays behind the coming-soon card.
+  const m = d.music, tracks = new Set([...CHAPTERS.map(n => m.quest[n]), m.quest[SITE_THROUGH + 1], m.combat.road, m.dream, 'vg_lanternhold'].filter(Boolean));
+  const p = d.presentation || {}, places = new Set(['lanternhold']);
+  for (const n of CHAPTERS) for (const id of [...(d.routes[n] || []), p.departures?.[n], p.arrivals?.[n]]) if (id) places.add(id);
+  const keyed = new RegExp('^q(' + CHAPTERS.join('|') + ')_'), voiced = new RegExp('^audio/vo/campaign/[^/]+/q(' + CHAPTERS.join('|') + ')_');
+  for (const [key, id] of Object.entries(p.changes || {})) if (keyed.test(key)) places.add(id);
   const keep = new Set();
   for (const f of media) {
-    if (/^audio\/vo\/campaign\/[^/]+\/q1_/.test(f)) keep.add(f);
+    if (voiced.test(f)) keep.add(f);
     const track = (/^audio\/music\/(.+)\.mp3$/.exec(f) || [])[1];
     if (track && tracks.has(track)) keep.add(f);
   }
   for (const id of places) { const e = d.art.environments[id]; if (e) keep.add(e.file); }
   // Panoramas behind the title and departure scenes travel with their place.
   for (const f of media) if (/panorama_/.test(f) && [...places].some(id => f.includes('panorama_' + id + '.'))) keep.add(f);
-  const death = d.art.stills.death; if (death) keep.add(death.file);
-  return { keep, media };
+  // Story stills in these chapters: Tesfaye's death (1) and the bounty notice (2).
+  for (const id of ['death', ...(SITE_THROUGH >= 2 ? ['bounty'] : [])]) { const st = d.art.stills[id]; if (st) keep.add(st.file); }
+  return { keep, media, enemies: shippedEnemies() };
 }
 
 function skip(rel, media) {
   if (rel.startsWith('assets/expedition/story/media/')) return !media.keep.has(rel.slice('assets/expedition/story/media/'.length));
   const enemy = (/^assets\/expedition\/(?:adult\/)?(story_[a-z_]+?)(?:-fatal)?\//.exec(rel) || [])[1];
-  if (enemy) return !CH1_ENEMIES.has(enemy);
+  if (enemy) return !media.enemies.has(enemy);
   return false;
 }
 
@@ -79,7 +97,7 @@ function build() {
     // local development cap or allow QA query parameters to request absent art.
     if(rel==='docs/story_preview.js'){
       const s=body.toString();if(!/const DEMO_THROUGH=\d+/.test(s))throw Error('Story chapter cap moved');
-      body=Buffer.from(s.replace(/const DEMO_THROUGH=\d+/,'const DEMO_THROUGH=1').replace('const PLAYABLE_THROUGH=localHost&&askedThrough>=1&&askedThrough<=14?askedThrough:DEMO_THROUGH;','const PLAYABLE_THROUGH=DEMO_THROUGH;'));
+      body=Buffer.from(s.replace(/const DEMO_THROUGH=\d+/,'const DEMO_THROUGH='+SITE_THROUGH).replace('const PLAYABLE_THROUGH=localHost&&askedThrough>=1&&askedThrough<=14?askedThrough:DEMO_THROUGH;','const PLAYABLE_THROUGH=DEMO_THROUGH;'));
     }
     if (rel === 'js/expedition/dev.js') {
       const s = body.toString(); if (!s.includes('Dev.DEV_BUILD = true;')) throw Error('dev.js switch moved');
@@ -121,19 +139,22 @@ async function verify() {
     await page.getByRole('button', { name: 'Begin story', exact: true }).click();
     await page.getByText('Chapter 1', { exact: true }).waitFor();
     console.log('title and chapter card: ok');
-    // Each chapter-one fight, opened from a save at that fight.
-    for (const encounter of [0, 1, 2]) {
-      await page.evaluate(e => { const S = ADV.Expedition.Story, s = S.open(S.fresh()), r = s.record;
-        r.encounter = e; r.phase = 'combat'; r.titleCards = [1]; S.syncQuest(s); S.save(s); }, encounter);
-      await page.goto(base + '/docs/STORY_FIGHT_PREVIEW.html?muted=1');
-      await page.waitForFunction(() => window.storyGame?.scene.getScene('StoryBattle')?.hero, null, { timeout: 120000 });
-      await page.waitForTimeout(4000);
-      console.log('chapter-one fight ' + (encounter + 1) + ': loaded');
+    // Every fight in the playable chapters, opened from a save at that fight.
+    for (const chapter of CHAPTERS) {
+      const fights = await page.evaluate(n => ADV.DATA.CAMPAIGN3_QUESTS[n - 1].enc.length, chapter);
+      for (let encounter = 0; encounter < fights; encounter++) {
+        await page.evaluate(([c, e, cards]) => { const S = ADV.Expedition.Story, s = S.open(S.fresh()), r = s.record;
+          r.chapter = c; r.encounter = e; r.phase = 'combat'; r.titleCards = cards; r.completed = cards.filter(n => n < c); S.syncQuest(s); S.save(s); }, [chapter, encounter, CHAPTERS]);
+        await page.goto(base + '/docs/STORY_FIGHT_PREVIEW.html?muted=1');
+        await page.waitForFunction(() => window.storyGame?.scene.getScene('StoryBattle')?.hero, null, { timeout: 120000 });
+        await page.waitForTimeout(4000);
+        console.log('chapter ' + chapter + ' fight ' + (encounter + 1) + ': loaded');
+      }
     }
-    // Chapter one returns to the inn. A paid rest must load its actual scene
-    // from the frozen package before Continue reaches the demo boundary.
-    await page.evaluate(() => { const S = ADV.Expedition.Story, s = S.open(S.fresh()), r = s.record;
-      r.chapter = 2; r.phase = 'inn'; r.completed = [1]; r.titleCards = [1]; r.run.hp=80;r.run.hpMax=344;r.run.score=2000;S.syncQuest(s); S.save(s); });
+    // The last playable chapter returns to the inn. A paid rest must load its
+    // actual scene from the frozen package before Continue reaches the boundary.
+    await page.evaluate(([next, done]) => { const S = ADV.Expedition.Story, s = S.open(S.fresh()), r = s.record;
+      r.chapter = next; r.phase = 'inn'; r.completed = done; r.titleCards = done; r.run.hp=80;r.run.hpMax=344;r.run.score=2000;S.syncQuest(s); S.save(s); }, [SITE_THROUGH + 1, CHAPTERS]);
     await page.goto(base + '/'); await page.getByRole('button', { name: 'Continue story', exact: true }).click();
     await page.locator('#story-rest').click();
     const bath=await page.locator('iframe[title="Moonlit bathhouse"]').elementHandle().then(e=>e.contentFrame());

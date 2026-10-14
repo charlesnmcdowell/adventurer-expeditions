@@ -17,6 +17,17 @@ if (Sys && !Sys.__expeditionWrapped) {
   const orig = Sys.manifest;
   Sys.manifest = function (ch, entry) {
     const m = orig.call(Sys, ch, entry);
+    // Counter answers projectiles too (Hiro, 2026-10-13). While Hiro holds a
+    // Counter (Enc.step sets X.__deflecting for that enemy turn), an enemy's
+    // spell or shot resolves as a counterable attack: the engine's own counter
+    // turns it aside, bounces the damage back into the shooter and ripostes.
+    if (X.__deflecting && m && m.data && !(ch && ch.expedition)) {
+      const d = m.data;
+      const projectile = d.elemental || (d.reach === 'any' && !d.katana && !d.melee);
+      const hostile = d.target !== 'self' && d.target !== 'party' && d.target !== 'ally';
+      if (projectile && hostile && (d.power > 0 || d.pctMaxHp > 0))
+        return Object.assign({}, m, { data: Object.assign({}, d, { elemental: false, melee: true, xpDeflectable: true }) });
+    }
     const run = ch && ch.expedition;
     if (!run || !m) return m;
     const id = entry.skillId;

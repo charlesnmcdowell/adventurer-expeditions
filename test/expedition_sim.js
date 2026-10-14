@@ -74,10 +74,13 @@ test('shim resolves an Expedition Hiro at the one arcade level', () => {
   const fin = A.SkillSys.manifest(hero, hero.actives.find(a => a.skillId === 'finisher'));
   assert.equal(fin.data.permStatGain, 0); assert.equal(fin.data.healOnKillPct, 0.25); assert.equal(fin.data.power, 2.8);
   assert.ok(!fin.data.cooldown, 'Finisher has no cooldown, saw ' + fin.data.cooldown);
-  // God Aura raises attack, not defense (Hiro, 2026-09-24); the defense factor
-  // must be exactly 1 because the damage code divides by it.
-  const aura = A.SkillSys.manifest(hero, hero.actives.find(a => a.skillId === 'god_aura'));
-  assert.equal(aura.data.auraAtk, 1.35); assert.equal(aura.data.auraDef, 1); assert.equal(aura.data.auraEvade, 0);
+  // The second slot is Iaido Draw (Hiro, 2026-10-13): one heavy cut through every
+  // enemy on a long recovery. The aura branch stays off (auraAtk 0); auraDef stays
+  // exactly 1 because the damage code divides by it.
+  const draw = A.SkillSys.manifest(hero, hero.actives.find(a => a.skillId === 'god_aura'));
+  assert.equal(draw.data.target, 'allEnemies'); assert.ok(draw.data.power > m.data.power, 'heavier than Katana Slash');
+  assert.equal(draw.data.auraAtk, 0); assert.equal(draw.data.auraDef, 1);
+  assert.ok(X.cooldownMsFor('god_aura', 1) >= 20000, 'long recovery');
   const rip = A.SkillSys.manifest(hero, hero.actives.find(a => a.skillId === X.riposte.id));
   assert.equal(rip.data.power, 1.4);
   // A save claiming other levels is ignored: level is not a thing any more.
@@ -338,7 +341,7 @@ test('recovery is measured in seconds, not turns', () => {
     assert.equal(Enc.requestSkill(enc, 'god_aura').ok, true);
     assert.ok(Enc.castNow(enc), 'the cast fired');
     const span = X.cooldownMsFor('god_aura', 1);
-    assert.equal(span, 10000, 'God Aura recovers in ten seconds');
+    assert.equal(span, 22000, 'Iaido Draw (the god_aura slot) recovers in twenty-two seconds');
     assert.equal(Enc.skillState(enc, 'god_aura').reason, 'cooldown');
     assert.ok(Enc.cooldownLeftMs(enc, 'god_aura') > 0);
     // Turns passing does NOT shorten it; only the clock does.
@@ -547,7 +550,7 @@ test('every skill fires from a tap and shows its effect', () => {
     }
     console.log('finisher: glow boundaries', glow, 'fired by tap', fired, 'engine errors', errors);
     assert.ok(fired > 0 && errors === 0);
-    const sig = { finisher: 'execute', god_aura: e => e.t === 'status' && e.kind === 'aura', counter_attack: 'counter' };
+    const sig = { finisher: 'execute', god_aura: (e, i, all) => e.t === 'use' && e.skillId === 'god_aura' && all.slice(i + 1, i + 8).some(x => x.t === 'damage' && x.by === e.uid), counter_attack: 'counter' };
     for (const id of Object.keys(sig)) {
       let seen = 0;
       for (let s = 1; s <= 20; s++) { const e2 = Enc.create({ encounter: 'thicket', seed: 200 + s, run: Enc.freshRun() }); Enc.runToEnd(e2, e => { if (Enc.skillState(e, id).ready) Enc.requestSkill(e, id); }); seen += e2.st.events.filter(typeof sig[id] === 'string' ? ev => ev.t === sig[id] : sig[id]).length; }
