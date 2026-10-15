@@ -15,6 +15,42 @@ of small fixes within a day.
 
 ---
 
+## 2026-10-14 — Chapters 6–14 completed locally: scenery, solo balance and progression QA
+
+- **Local access 5 → 14** (`docs/story_preview.js`). Existing chapter-five saves continue through the rest of the campaign; local chapter-jump buttons cover 2–14. Website packaging remains chapter one free / two through five password-gated. No publication or portal export.
+- **Ten combat ground paintings**, 1280×760, **3,573,970 packed bytes**: cliffs, sewers, study, counting room, sickroom, tower, silk floor, undervault, valve and catacombs. New edition-owned plates align feet to a continuous contact surface. `story_stage.js` keeps the distant scene, animated weather/scenery and fixed contact ground behind the actors. All 21 distinct late battle stages were inspected. Original dialogue keeps its original art and landmark coordinates; fixed combat-profile leakage into 12 dialogue scenes. Morrak’s realm flames match its blue painting.
+- **Enemy HP only**, by chapter:zero-based encounter: `7:3` 1.00 → 0.50; `9:0` 1.00 → 0.70; `9:1` 1.00 → 0.55; `13:3` 1.00 → 0.65. Matched 24-seed wins before/after: 1→13, 6→22, 3→11, 8→15. Full sweep: zero zero-win encounters, zero stalls. Counter’s two blocks/reflection, Iaido Draw, source skills and the other session’s damage multipliers unchanged.
+- **Browser coverage:** all 37 fought encounters on the chosen chapters 6–14 route, one peaceful Amara bypass, inns and saved chapter transitions; chapter 14 repeated through reward → ending → reload with zero retries. The first full run’s test waited for the ending before acknowledging the final reward: corrected the harness, then reran the final chapter. Separate full mercy/ruthless simulations assert their selected choices and restore/ascend endings. Inn/rest/reload and all seven original narrated ending cards passed desktop/mobile checks. Detailed scope and evidence: `CHAPTERS_6_14_QA_20261014.md`.
+- **Gates:** baseline and final `npm test` / `npm run test:ship` passed; story campaign/combat/readability checks passed. Normal-entry/save smoke verifies chapters six and fourteen without a QA unlock query. User playtest remains the final visual/difficulty approval.
+- **Files:** ten WebP plates plus `late-stages.json`; `story_stage.js`, `story_combat.js`, local story preview/cached entry pages; `build_story_late_stages.py`; chapter progression, stage, dialogue-stage, local-release and branch tests; GDD, production tracker, art follow-up and QA report. Exact prompts and compact evidence are in `docs/art/chapter-stages-20261014-*`. PNG masters live in sibling `adventurer-expeditions-source-art/astra-v9/chapter-stages-20261014/`, outside this Git repository. Existing 59 enemy sets, finishers, projectiles, dialogue and audio reused.
+- **Preservation:** checkpoint `482b8b5` saved the other session’s Counter/chapter-jump/site-packaging work before edits. Its website/password changelog entry is retained below. Original Adventurer and synced shared files were not changed.
+
+## 2026-10-14 — Website: chapter one free, chapters two to five with a password (live)
+
+Hiro: "send changes to live site, allow players to play chapter 2-5 if they know password, password is Hiro". Chapter 2 went back behind the password, so only chapter one is free.
+
+- **Password gate** (`docs/story_preview.js`).
+  - `UNLOCK_THROUGH` above `DEMO_THROUGH` turns on a "Have a password?" box, on the title screen and on the coming-soon card.
+  - The code holds only a SHA-256 of the lower-cased password, so "Hiro" and "hiro" both work. A match is remembered in that browser (`adventurer_expeditions_unlocked`) and the page reloads with the chapters open.
+  - It's a casual gate: the locked chapters' files ship with the page.
+  - Locally nothing changes: `UNLOCK_THROUGH` equals `DEMO_THROUGH`, so no box appears.
+- **Site package** (`tools/site_demo.js`).
+  - `SITE_THROUGH = 5, PUBLIC_THROUGH = 1`; the build writes `DEMO_THROUGH=1` and `UNLOCK_THROUGH=5` into the shipped script and drops `?through`.
+  - Chapter media now include each chapter's battle track (the bandit camp has its own) and a stills-by-chapter table.
+  - Arcade-only art the story never loads is left out: 18 Arcade monsters, their gore sheets and the Arcade travel art. Its one Arcade creature, the wolf, stays. That's what keeps the site under GitHub Pages' 1 GB.
+  - Verify now checks the lock:
+    - a fresh player gets "Chapter 2 is coming soon";
+    - a wrong password is refused and "Hiro" opens chapters 1–5;
+    - all 16 fights in chapters 1–5 load;
+    - after chapter 5 the card reads "Chapter 6 is coming soon";
+    - nothing is missing and there are no page errors.
+- **Published.**
+  - 784 files and 293 MB in `expeditions/`.
+  - The 134 Arcade-only files left from the previous upload were checked one by one against the Arcade-only list and removed (they remain in git history).
+  - The site totals 0.981 GB published.
+  - Website commit df13186, pushed.
+- **Next:** the site has about 19 MB of headroom. Chapter 6+ needs room first: move the audiobook files (339 MB) to their own host, or retire the hidden Pit and Spire folders (257 MB).
+
 ## 2026-10-14 — No glow around Hiro on Counter; dev chapter jump
 
 - **Yellow aura removed.** `Actor.refresh` drew a pulsing gold ellipse behind Hiro while he held a Counter, and a purple one for the old aura. Hiro asked for it gone, so no body outline is drawn now; the counter badge above his head stays. A new actor_animation_lifecycle test checks that no outline colour is set while the badge still shows. The website copy was rebuilt, verified and staged.

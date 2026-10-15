@@ -32,7 +32,11 @@ Cast release frames and normalized hand/staff/mouth anchors are stored in `tools
 
 Repeat the focused art gate with `npm run test:story-late-art`. Browser reports and screenshots are local test outputs; a compact evidence snapshot is retained under `docs/art/story-late-provenance/`.
 
-## Still required before opening later chapters
+## Follow-up (supersedes the remaining-work snapshot below)
+
+Ground plates, late solo balance and chapter progression are handled in [the chapter-completion report](CHAPTERS_6_14_QA_20261014.md). The following records the state at the end of the earlier enemy-art pass. Website limits are now chapter one free and two through five password-gated; the site is independent of local chapter unlocks.
+
+## Historical remaining work at the end of the art pass
 
 The local playable cap stays **chapter 5**. The existing website packaging cap stays **chapter 2**. Nothing was published or exported to CrazyGames.
 

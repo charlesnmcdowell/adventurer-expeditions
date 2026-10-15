@@ -1,12 +1,18 @@
 # Campaign adaptation — production tracker
 
-Updated 13 October 2026. This is an unfinished expansion, not a release candidate. The live registration checklist is [STORY_CAMPAIGN_STATUS.md](STORY_CAMPAIGN_STATUS.md), regenerated with `node tools/story_status.js`.
+Updated 14 October 2026. The complete local campaign is ready for player review; see `CHAPTERS_6_14_QA_20261014.md` for the evidence and remaining scope. The live registration checklist is [STORY_CAMPAIGN_STATUS.md](STORY_CAMPAIGN_STATUS.md), regenerated with `node tools/story_status.js`.
 
-### October 13 chapter-five completion — current
+### October 14 chapters 6–14 — current
+
+All **59/59 identities** are registered and the local title now opens chapters **1–14**. The chosen later route’s 37 fought encounters, chapter inns, retries and final restore ending were exercised in the browser; alternative mercy/ascension routes were also checked in simulation. Ten new combat paintings provide appropriate ground at cliffs, sewers and later interiors. All 21 later battle locations and 12 affected original dialogue paintings passed environment checks. Four late party-sized encounters received enemy-HP reductions only; the existing damage, Counter and Iaido Draw changes remain. Original story, voices and music are reused. No duplicate enemy-art generation or new voice recording was needed. See the chapter-completion report for the browser harness correction and exact coverage.
+
+The website remains separately packaged: chapter one free, two through five password-gated. No publication by this pass.
+
+### October 13 chapter-five completion — historical
 
 Chapter five, The Bandit Camp, is playable locally. **22/59 identities registered; 37 remain.** New Skarn, Hobgoblin Sergeant, Road Bandit and Gorruk sets complete its roster alongside existing Femi, Gauntlet Soldier, archer and hired knife. All four actual main-route fights passed; quiet entry and both Itsuki/Gorruk choices passed, with both prisoner/letters rescue orders covered. Original story/media remain unchanged. Every new pair has sixteen distinct drawings and passed actual battle lifecycle checks. The patrol Close Order badge crash is fixed locally. Chapter-four inn continues to chapter five; chapter-five inn reaches the chapter-six coming-soon card, retaining progress through reload. The public demo remains chapter one. No publishing. See `CHAPTER_FIVE_ART_QA.md` and the October 13 changelog for evidence and source masters.
 
-**Next chapter is six.** Chapters 6–14 need their remaining identities, visual intake, actual branch playthroughs and later solo balance work. Earlier progress paragraphs below are historical snapshots.
+This chapter-five snapshot is superseded by the October 14 late-chapter completion notes. Earlier progress paragraphs below are historical snapshots.
 
 ### October 12 inn and demo verification
 
@@ -45,17 +51,14 @@ The original import was regenerated unchanged: 14 chapters, 55 encounter slots, 
 - Escaping/spared named opponents keep the source's survival outcome. A lethal dismemberment cannot run before later dialogue with that same character. The adapter retains `noEscape` choice overrides; final combat integration must respect them.
 - Local edition; do not export this material as a restricted-site build. Do not edit the original `adventurer` or any synced shared source file.
 
-## Next work, in dependency order
+## Remaining work after the local chapter-completion pass
 
-1. Start chapter six: inventory missing identities and available original art before generating anything. Chapters 1–5 are locally enabled; later unready fights stay gated. Chapter-five art/intake and actual main/quiet/Itsuki branch QA are complete. Public website demo remains chapter one.
-2. Extend actual chapter playthrough coverage beyond chapter two as art becomes available. Verify first-fight tutorial when Nib is spared and later irreversible events; unit coverage alone is not a completed browser campaign.
-3. Audit every original scene transition and travel beat in context. Original scene selection, portraits, ending cards and ambience are wired, but all fourteen chapters have not been visually played through.
-4. Tune later solo encounters with the corrected between-turn casting audit and actual browser play. A winning seed is a minimum gate, not a satisfactory difficulty curve. The weakest late-game win rates still need attention.
-5. Build remaining enemy sets by chapter using `STORY_CAMPAIGN_INVENTORY.md`. Review shared creature reuse individually; original portraits are references, not finished combat animation. Do not interpret 59 identity entries as 59 newly approved art sets.
-6. Adapt original locations to grounded side-view combat; preserve distance → animated scenery/weather → character/contact ground, no foreground obstruction. Keep indoor weather appropriate. Reuse original music per chapter and named battle cues.
-7. Add optional, geographically coherent extra encounters from the existing five locations. In particular, friendly Lanternhold must not randomly attack Hiro with Citadel elves without a story reason. Write/voice connective lines only where necessary; do not rewrite recorded campaign dialogue.
-8. Add chapter progression/balance, original perk unlocks adapted to this engine, full branching QA and every enemy's lethal/DOT finisher routing. Test reload and defeat before/after irreversible story beats.
-9. Enable the new title/main-campaign boot only when the required chapter content is ready. Preserve Arcade as a separate choice/save. Update ship packaging for the new assets and measure lazy loading; no portal upload/publishing has happened.
+1. Player review of the complete local campaign: narrative pacing, solo difficulty and the new ground paintings. Automated outcomes are evidence, not aesthetic approval.
+2. Optional supplemental encounters from the five Arcade locations. These are not inserted yet; each needs a story reason and appropriate travel placement rather than interrupting the original campaign arbitrarily.
+3. Separately plan website expansion if requested. The current package remains chapter one free and chapters two through five password-gated. Its hosting headroom must be addressed before adding the much larger later enemy-art set.
+4. Portal-specific content/performance review and a separate export if requested. No new CrazyGames export, submission or publication is part of this local update.
+
+Earlier production paragraphs below are historical snapshots. Current chapter evidence belongs in `CHAPTERS_6_14_QA_20261014.md` and the dated changelog.
 
 ## Source masters and rebuilds
 

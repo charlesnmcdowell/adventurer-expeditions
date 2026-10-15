@@ -7,10 +7,10 @@ const MUTE_KEY='adventurer_expeditions_story_muted';
 const storedMute=()=>{try{return localStorage.getItem(MUTE_KEY)==='1';}catch(_){return false;}};
 let session=null,muted=storedMute(),voice=null,music=null,reply=null,line=0,applied=null;
 let battleFrame=null;
-// Local chapter limit; the website packager independently forces chapter one.
-// Raise DEMO_THROUGH as chapters are finished; a local server can play further with
-// ?through=N for testing.
-const DEMO_THROUGH=5,localHost=/^(localhost|127\.0\.0\.1)$/.test(location.hostname);
+// Complete local campaign. The website packager independently sets its free
+// and password chapter limits; changing this does not publish more chapters.
+// A local ?through=N remains useful when checking an earlier chapter boundary.
+const DEMO_THROUGH=14,localHost=/^(localhost|127\.0\.0\.1)$/.test(location.hostname);
 // Password access (Hiro, 2026-10-14: chapter one free on the site, chapters two
 // to five "if they know password"). UNLOCK_THROUGH above DEMO_THROUGH turns it on;
 // the site packager sets both. Only a SHA-256 of the lower-cased password is

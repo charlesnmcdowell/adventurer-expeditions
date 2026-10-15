@@ -17,7 +17,10 @@ B.hitScale={"enemy:bandit_archer":2.47,"enemy:consortium_guard":4.38,"enemy:cons
 B.enemyDamage={'mini:nib':.30,'named:morwin':.35};
 // Mine caster groups were built for a party. Shorten their combined health
 // pools while preserving poison, healing, curses and ranged tactics.
-B.encounterHealth={'4:1':.65,'4:2':.70,'4:3':.40};
+B.encounterHealth={'4:1':.65,'4:2':.70,'4:3':.40,
+  // These later source fights expected a full party. Keep the approved
+  // three-to-four-hit danger and every enemy skill; trim endurance only.
+  '7:3':.50,'9:0':.70,'9:1':.55,'13:3':.65};
 B.encounterDamage={'4:1':.16,'4:2':.16,'4:3':.15};
 // These hostile casts stop after placing a status/hazard or stripping buffs.
 // Zero-power executions, percentage strikes and Paid in Full already hurt;

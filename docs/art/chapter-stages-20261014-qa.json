@@ -1,0 +1,1332 @@
+{
+  "balanceChanges": [
+    {
+      "chapter": 7,
+      "encounterIndex": 3,
+      "beforeHealthScale": 1,
+      "afterHealthScale": 0.5,
+      "beforeWins": 1,
+      "afterWins": 13,
+      "trials": 24
+    },
+    {
+      "chapter": 9,
+      "encounterIndex": 0,
+      "beforeHealthScale": 1,
+      "afterHealthScale": 0.7,
+      "beforeWins": 6,
+      "afterWins": 22,
+      "trials": 24
+    },
+    {
+      "chapter": 9,
+      "encounterIndex": 1,
+      "beforeHealthScale": 1,
+      "afterHealthScale": 0.55,
+      "beforeWins": 3,
+      "afterWins": 11,
+      "trials": 24
+    },
+    {
+      "chapter": 13,
+      "encounterIndex": 3,
+      "beforeHealthScale": 1,
+      "afterHealthScale": 0.65,
+      "beforeWins": 8,
+      "afterWins": 15,
+      "trials": 24
+    }
+  ],
+  "balanceTotalEncounters": 55,
+  "zeroWinEncounters": 0,
+  "stalls": 0,
+  "scenes": [
+    {
+      "id": "mirkhollow",
+      "layers": [
+        "distance",
+        "weather-scenery",
+        "hero-ground"
+      ],
+      "actualLayers": 3,
+      "clock": 664.3299999999975,
+      "ground": 380,
+      "combatPlate": false,
+      "feet": [
+        {
+          "name": "Hiro",
+          "x": 400,
+          "y": 612,
+          "height": 330
+        },
+        {
+          "name": "Silksa, Spider Queen",
+          "x": 783,
+          "y": 608,
+          "height": 270
+        },
+        {
+          "name": "Giant Spider Â· Web-Black",
+          "x": 951,
+          "y": 614,
+          "height": 165
+        },
+        {
+          "name": "Giant Spider Â· Web-Black",
+          "x": 1078,
+          "y": 620,
+          "height": 165
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "grove",
+      "layers": [
+        "distance",
+        "weather-scenery",
+        "hero-ground"
+      ],
+      "actualLayers": 3,
+      "clock": 647.3066666666673,
+      "ground": 380,
+      "combatPlate": false,
+      "feet": [
+        {
+          "name": "Hiro",
+          "x": 400,
+          "y": 612,
+          "height": 330
+        },
+        {
+          "name": "Mzee Kamau",
+          "x": 667,
+          "y": 608,
+          "height": 315
+        },
+        {
+          "name": "Umbra Druid Â· Moss Robe",
+          "x": 865,
+          "y": 614,
+          "height": 315
+        },
+        {
+          "name": "Umbra Druid Â· Bark Robe",
+          "x": 1006,
+          "y": 620,
+          "height": 315
+        },
+        {
+          "name": "Wanjiru",
+          "x": 1128,
+          "y": 626,
+          "height": 315
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "cliffs",
+      "layers": [
+        "distance",
+        "weather-scenery",
+        "hero-ground"
+      ],
+      "actualLayers": 3,
+      "clock": 646.85,
+      "ground": 380,
+      "combatPlate": true,
+      "feet": [
+        {
+          "name": "Hiro",
+          "x": 400,
+          "y": 612,
+          "height": 330
+        },
+        {
+          "name": "Wyvern Matriarch",
+          "x": 861,
+          "y": 608,
+          "height": 450
+        },
+        {
+          "name": "Wyvern Â· Grey",
+          "x": 1036,
+          "y": 614,
+          "height": 420
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "iron_mine",
+      "layers": [
+        "distance",
+        "weather-scenery",
+        "hero-ground"
+      ],
+      "actualLayers": 3,
+      "clock": 627.443333333332,
+      "ground": 380,
+      "combatPlate": false,
+      "feet": [
+        {
+          "name": "Hiro",
+          "x": 400,
+          "y": 612,
+          "height": 330
+        },
+        {
+          "name": "Kestrel",
+          "x": 639,
+          "y": 608,
+          "height": 330
+        },
+        {
+          "name": "Consortium Guard Â· Iron Livery",
+          "x": 869,
+          "y": 614,
+          "height": 315
+        },
+        {
+          "name": "Consortium Mage Â· Ash Cowl",
+          "x": 1163,
+          "y": 620,
+          "height": 330
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "study",
+      "layers": [
+        "distance",
+        "weather-scenery",
+        "hero-ground"
+      ],
+      "actualLayers": 3,
+      "clock": 630.7333333333335,
+      "ground": 380,
+      "combatPlate": true,
+      "feet": [
+        {
+          "name": "Hiro",
+          "x": 400,
+          "y": 612,
+          "height": 330
+        },
+        {
+          "name": "Olamide",
+          "x": 675,
+          "y": 608,
+          "height": 315
+        },
+        {
+          "name": "Consortium Guard Â· Mine Detail",
+          "x": 791,
+          "y": 614,
+          "height": 315
+        },
+        {
+          "name": "Consortium Guard Â· Black Livery",
+          "x": 930,
+          "y": 620,
+          "height": 315
+        },
+        {
+          "name": "Consortium Mage Â· Seal Cowl",
+          "x": 1163,
+          "y": 626,
+          "height": 330
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "valve",
+      "layers": [
+        "distance",
+        "weather-scenery",
+        "hero-ground"
+      ],
+      "actualLayers": 3,
+      "clock": 663.9400000000004,
+      "ground": 380,
+      "combatPlate": true,
+      "feet": [
+        {
+          "name": "Hiro",
+          "x": 400,
+          "y": 612,
+          "height": 330
+        },
+        {
+          "name": "Consortium Guard Â· Mine Detail",
+          "x": 642,
+          "y": 608,
+          "height": 315
+        },
+        {
+          "name": "Consortium Guard Â· Iron Livery",
+          "x": 787,
+          "y": 614,
+          "height": 315
+        },
+        {
+          "name": "Consortium Mage Â· Seal Cowl",
+          "x": 1027,
+          "y": 620,
+          "height": 330
+        },
+        {
+          "name": "Slave Driver Â· Chain Hand",
+          "x": 1114,
+          "y": 626,
+          "height": 315
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "sewers",
+      "layers": [
+        "distance",
+        "weather-scenery",
+        "hero-ground"
+      ],
+      "actualLayers": 3,
+      "clock": 660.08,
+      "ground": 380,
+      "combatPlate": true,
+      "feet": [
+        {
+          "name": "Hiro",
+          "x": 400,
+          "y": 612,
+          "height": 330
+        },
+        {
+          "name": "The Ogre Under the Docks",
+          "x": 873,
+          "y": 608,
+          "height": 390
+        },
+        {
+          "name": "Sewer Crawler Â· Pale",
+          "x": 992,
+          "y": 614,
+          "height": 165
+        },
+        {
+          "name": "Sewer Crawler Â· Wet",
+          "x": 1122,
+          "y": 620,
+          "height": 165
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "nine_lanterns",
+      "layers": [
+        "distance",
+        "weather-scenery",
+        "hero-ground"
+      ],
+      "actualLayers": 3,
+      "clock": 663.2766666666669,
+      "ground": 380,
+      "combatPlate": false,
+      "feet": [
+        {
+          "name": "Hiro",
+          "x": 400,
+          "y": 612,
+          "height": 330
+        },
+        {
+          "name": "Consortium Guard Â· Black Livery",
+          "x": 642,
+          "y": 608,
+          "height": 315
+        },
+        {
+          "name": "Hired Knife Â· Ash Cloak",
+          "x": 1055,
+          "y": 614,
+          "height": 315
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "counting",
+      "layers": [
+        "distance",
+        "weather-scenery",
+        "hero-ground"
+      ],
+      "actualLayers": 3,
+      "clock": 663.3833333333336,
+      "ground": 380,
+      "combatPlate": true,
+      "feet": [
+        {
+          "name": "Hiro",
+          "x": 400,
+          "y": 612,
+          "height": 330
+        },
+        {
+          "name": "Shape-Thief Â· Half-Turned",
+          "x": 624,
+          "y": 608,
+          "height": 315
+        },
+        {
+          "name": "Shape-Thief Â· Wearing a Face",
+          "x": 845,
+          "y": 614,
+          "height": 315
+        },
+        {
+          "name": "Hired Knife Â· Ash Cloak",
+          "x": 1055,
+          "y": 620,
+          "height": 315
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "tower",
+      "layers": [
+        "distance",
+        "weather-scenery",
+        "hero-ground"
+      ],
+      "actualLayers": 3,
+      "clock": 663.7633333333339,
+      "ground": 380,
+      "combatPlate": true,
+      "feet": [
+        {
+          "name": "Hiro",
+          "x": 400,
+          "y": 612,
+          "height": 330
+        },
+        {
+          "name": "Consortium Guard Â· Mine Detail",
+          "x": 642,
+          "y": 608,
+          "height": 315
+        },
+        {
+          "name": "Consortium Guard Â· Iron Livery",
+          "x": 1085,
+          "y": 614,
+          "height": 315
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "silk_floor",
+      "layers": [
+        "distance",
+        "weather-scenery",
+        "hero-ground"
+      ],
+      "actualLayers": 3,
+      "clock": 631.2166666666661,
+      "ground": 380,
+      "combatPlate": true,
+      "feet": [
+        {
+          "name": "Hiro",
+          "x": 400,
+          "y": 612,
+          "height": 330
+        },
+        {
+          "name": "Consortium Mage Â· Ledger Cowl",
+          "x": 737,
+          "y": 608,
+          "height": 330
+        },
+        {
+          "name": "Consortium Guard Â· Black Livery",
+          "x": 871,
+          "y": 614,
+          "height": 315
+        },
+        {
+          "name": "Hired Knife Â· Road Cloak",
+          "x": 1055,
+          "y": 620,
+          "height": 315
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "lanternhold",
+      "layers": [
+        "distance",
+        "weather-scenery",
+        "hero-ground"
+      ],
+      "actualLayers": 3,
+      "clock": 647.1233333333332,
+      "ground": 380,
+      "combatPlate": false,
+      "feet": [
+        {
+          "name": "Hiro",
+          "x": 400,
+          "y": 612,
+          "height": 330
+        },
+        {
+          "name": "Consortium Guard Â· Mine Detail",
+          "x": 642,
+          "y": 608,
+          "height": 315
+        },
+        {
+          "name": "Consortium Guard Â· Black Livery",
+          "x": 863,
+          "y": 614,
+          "height": 315
+        },
+        {
+          "name": "Hired Knife Â· Ash Cloak",
+          "x": 1055,
+          "y": 620,
+          "height": 315
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "catacombs",
+      "layers": [
+        "distance",
+        "weather-scenery",
+        "hero-ground"
+      ],
+      "actualLayers": 3,
+      "clock": 646.3133333333334,
+      "ground": 380,
+      "combatPlate": true,
+      "feet": [
+        {
+          "name": "Hiro",
+          "x": 400,
+          "y": 612,
+          "height": 330
+        },
+        {
+          "name": "Gbenga",
+          "x": 627,
+          "y": 608,
+          "height": 315
+        },
+        {
+          "name": "Hired Knife Â· Ash Cloak",
+          "x": 802,
+          "y": 614,
+          "height": 315
+        },
+        {
+          "name": "Hired Knife Â· Wet Cloak",
+          "x": 1055,
+          "y": 620,
+          "height": 315
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "hunted_city",
+      "layers": [
+        "distance",
+        "weather-scenery",
+        "hero-ground"
+      ],
+      "actualLayers": 3,
+      "clock": 662.1900000000016,
+      "ground": 380,
+      "combatPlate": false,
+      "feet": [
+        {
+          "name": "Hiro",
+          "x": 400,
+          "y": 612,
+          "height": 330
+        },
+        {
+          "name": "Burning Gauntlet Soldier Â· Ash Tabard",
+          "x": 710,
+          "y": 608,
+          "height": 320
+        },
+        {
+          "name": "Burning Gauntlet Soldier Â· Ash Tabard",
+          "x": 893,
+          "y": 614,
+          "height": 320
+        },
+        {
+          "name": "Gauntlet Turncoat Â· Marr's Own",
+          "x": 1085,
+          "y": 620,
+          "height": 315
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "sickroom",
+      "layers": [
+        "distance",
+        "weather-scenery",
+        "hero-ground"
+      ],
+      "actualLayers": 3,
+      "clock": 647.4000000000004,
+      "ground": 380,
+      "combatPlate": true,
+      "feet": [
+        {
+          "name": "Hiro",
+          "x": 400,
+          "y": 612,
+          "height": 330
+        },
+        {
+          "name": "Idris",
+          "x": 637,
+          "y": 608,
+          "height": 315
+        },
+        {
+          "name": "Shape-Thief Â· Half-Turned",
+          "x": 819,
+          "y": 614,
+          "height": 315
+        },
+        {
+          "name": "Gauntlet Turncoat Â· Marr's Own",
+          "x": 1085,
+          "y": 620,
+          "height": 315
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "undervault",
+      "layers": [
+        "distance",
+        "weather-scenery",
+        "hero-ground"
+      ],
+      "actualLayers": 3,
+      "clock": 647.0900000000004,
+      "ground": 380,
+      "combatPlate": true,
+      "feet": [
+        {
+          "name": "Hiro",
+          "x": 400,
+          "y": 612,
+          "height": 330
+        },
+        {
+          "name": "Rasheed",
+          "x": 706,
+          "y": 608,
+          "height": 315
+        },
+        {
+          "name": "Kemi",
+          "x": 909,
+          "y": 614,
+          "height": 315
+        },
+        {
+          "name": "Hired Knife Â· Road Cloak",
+          "x": 1055,
+          "y": 620,
+          "height": 315
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "palace",
+      "layers": [
+        "distance",
+        "weather-scenery",
+        "hero-ground"
+      ],
+      "actualLayers": 3,
+      "clock": 663.7366666666672,
+      "ground": 380,
+      "combatPlate": false,
+      "feet": [
+        {
+          "name": "Hiro",
+          "x": 400,
+          "y": 612,
+          "height": 330
+        },
+        {
+          "name": "Ducal Guard 1",
+          "x": 643,
+          "y": 608,
+          "height": 315
+        },
+        {
+          "name": "Ducal Guard 2",
+          "x": 886,
+          "y": 614,
+          "height": 315
+        },
+        {
+          "name": "Palace Guard Â· Gate Livery",
+          "x": 1129,
+          "y": 620,
+          "height": 315
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "undercity",
+      "layers": [
+        "distance",
+        "weather-scenery",
+        "hero-ground"
+      ],
+      "actualLayers": 3,
+      "clock": 660.51,
+      "ground": 380,
+      "combatPlate": false,
+      "feet": [
+        {
+          "name": "Hiro",
+          "x": 400,
+          "y": 612,
+          "height": 330
+        },
+        {
+          "name": "Amara",
+          "x": 1049,
+          "y": 608,
+          "height": 315
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "temple",
+      "layers": [
+        "distance",
+        "weather-scenery",
+        "hero-ground"
+      ],
+      "actualLayers": 3,
+      "clock": 644.7999999999997,
+      "ground": 380,
+      "combatPlate": false,
+      "feet": [
+        {
+          "name": "Hiro",
+          "x": 400,
+          "y": 612,
+          "height": 330
+        },
+        {
+          "name": "Segun Marr",
+          "x": 615,
+          "y": 608,
+          "height": 315
+        },
+        {
+          "name": "Gauntlet Turncoat Â· Marr's Own",
+          "x": 852,
+          "y": 614,
+          "height": 315
+        },
+        {
+          "name": "Gauntlet Turncoat Â· Marr's Own",
+          "x": 1085,
+          "y": 620,
+          "height": 315
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "mirrors",
+      "layers": [
+        "distance",
+        "weather-scenery",
+        "hero-ground"
+      ],
+      "actualLayers": 3,
+      "clock": 680.6599999999994,
+      "ground": 380,
+      "combatPlate": false,
+      "feet": [
+        {
+          "name": "Hiro",
+          "x": 400,
+          "y": 612,
+          "height": 330
+        },
+        {
+          "name": "Your Own Faces 1",
+          "x": 693,
+          "y": 608,
+          "height": 315
+        },
+        {
+          "name": "Your Own Faces 2",
+          "x": 910,
+          "y": 614,
+          "height": 315
+        },
+        {
+          "name": "Your Own Faces 3",
+          "x": 1126,
+          "y": 620,
+          "height": 315
+        }
+      ],
+      "errors": []
+    },
+    {
+      "id": "morrak_realm",
+      "layers": [
+        "distance",
+        "weather-scenery",
+        "hero-ground"
+      ],
+      "actualLayers": 3,
+      "clock": 646.419999999999,
+      "ground": 380,
+      "combatPlate": false,
+      "feet": [
+        {
+          "name": "Hiro",
+          "x": 400,
+          "y": 612,
+          "height": 330
+        },
+        {
+          "name": "Kolade â€” the Unbound",
+          "x": 1038,
+          "y": 608,
+          "height": 360
+        }
+      ],
+      "errors": []
+    }
+  ],
+  "dialogueScenes": {
+    "report": [
+      {
+        "id": "cliffs",
+        "originalPainting": true,
+        "originalLandmarks": true
+      },
+      {
+        "id": "sewers",
+        "originalPainting": true,
+        "originalLandmarks": true
+      },
+      {
+        "id": "study",
+        "originalPainting": true,
+        "originalLandmarks": true
+      },
+      {
+        "id": "counting",
+        "originalPainting": true,
+        "originalLandmarks": true
+      },
+      {
+        "id": "sickroom",
+        "originalPainting": true,
+        "originalLandmarks": true
+      },
+      {
+        "id": "tower",
+        "originalPainting": true,
+        "originalLandmarks": true
+      },
+      {
+        "id": "silk_floor",
+        "originalPainting": true,
+        "originalLandmarks": true
+      },
+      {
+        "id": "undervault",
+        "originalPainting": true,
+        "originalLandmarks": true
+      },
+      {
+        "id": "valve",
+        "originalPainting": true,
+        "originalLandmarks": true
+      },
+      {
+        "id": "catacombs",
+        "originalPainting": true,
+        "originalLandmarks": true
+      },
+      {
+        "id": "dunmere",
+        "originalPainting": true,
+        "originalLandmarks": true
+      },
+      {
+        "id": "ford",
+        "originalPainting": true,
+        "originalLandmarks": true
+      }
+    ],
+    "errors": []
+  },
+  "inn": {
+    "passed": true,
+    "checks": [
+      "arrival inn",
+      "health carried",
+      "paid heal",
+      "bathhouse repeat",
+      "reload no duplicate charge",
+      "full-health disabled",
+      "chapter-two unlocked",
+      "insufficient points can continue",
+      "mobile fit",
+      "pause"
+    ],
+    "errors": []
+  },
+  "endings": {
+    "ids": [
+      "hero",
+      "monster",
+      "usurper",
+      "mercy",
+      "ascetic",
+      "restored",
+      "ascended"
+    ],
+    "audio": [
+      "http://127.0.0.1:8742/assets/expedition/story/media/audio/music/vg_lanternhold.mp3",
+      "http://127.0.0.1:8742/assets/expedition/story/media/audio/music/vg_lanternhold.mp3",
+      "http://127.0.0.1:8742/assets/expedition/story/media/audio/music/vg_ending.mp3",
+      "http://127.0.0.1:8742/assets/expedition/story/media/audio/vo/campaign/aldric/endcard_heading_hero_1.mp3",
+      "http://127.0.0.1:8742/assets/expedition/story/media/audio/music/vg_lanternhold.mp3",
+      "http://127.0.0.1:8742/assets/expedition/story/media/audio/music/vg_ending.mp3",
+      "http://127.0.0.1:8742/assets/expedition/story/media/audio/vo/campaign/aldric/endcard_heading_monster_1.mp3",
+      "http://127.0.0.1:8742/assets/expedition/story/media/audio/music/vg_lanternhold.mp3",
+      "http://127.0.0.1:8742/assets/expedition/story/media/audio/music/vg_ending.mp3",
+      "http://127.0.0.1:8742/assets/expedition/story/media/audio/vo/campaign/aldric/endcard_heading_usurper_1.mp3",
+      "http://127.0.0.1:8742/assets/expedition/story/media/audio/music/vg_lanternhold.mp3",
+      "http://127.0.0.1:8742/assets/expedition/story/media/audio/music/vg_ending.mp3",
+      "http://127.0.0.1:8742/assets/expedition/story/media/audio/vo/campaign/aldric/endcard_heading_mercy_1.mp3",
+      "http://127.0.0.1:8742/assets/expedition/story/media/audio/music/vg_lanternhold.mp3",
+      "http://127.0.0.1:8742/assets/expedition/story/media/audio/music/vg_ending.mp3",
+      "http://127.0.0.1:8742/assets/expedition/story/media/audio/vo/campaign/aldric/endcard_heading_ascetic_1.mp3",
+      "http://127.0.0.1:8742/assets/expedition/story/media/audio/music/vg_lanternhold.mp3",
+      "http://127.0.0.1:8742/assets/expedition/story/media/audio/music/vg_ending.mp3",
+      "http://127.0.0.1:8742/assets/expedition/story/media/audio/vo/campaign/aldric/endcard_heading_restored_1.mp3",
+      "http://127.0.0.1:8742/assets/expedition/story/media/audio/music/vg_lanternhold.mp3",
+      "http://127.0.0.1:8742/assets/expedition/story/media/audio/music/vg_ending.mp3",
+      "http://127.0.0.1:8742/assets/expedition/story/media/audio/vo/campaign/aldric/endcard_heading_ascended_1.mp3"
+    ],
+    "errors": []
+  },
+  "simulatedBranches": [
+    {
+      "name": "mercy",
+      "fights": 31,
+      "retries": 9,
+      "innVisits": 9,
+      "choices": {
+        "q6_faelen": "cut",
+        "q6_nettle": "talk",
+        "q6_selene_fire": "warm",
+        "q7_dorran": "with",
+        "q7_durnik": "free",
+        "q7_malvane": "fight",
+        "q7_flood": "wait",
+        "q7_vess_papers": "give",
+        "q7_dream": "reject",
+        "q8_span_count": "nineteen",
+        "q8_halloran": "yes",
+        "q8_door": "fennick",
+        "q8_duke_seen": "nobody",
+        "q8_halvard": "city",
+        "q9_lobby": "talk",
+        "q9_floor_offer": "library",
+        "q9_lysandra": "arrest",
+        "q10_sarn": "take",
+        "q10_gate_where": "road",
+        "q10_summit": "talk",
+        "q10_letter_end": "proud",
+        "q10_letter": "grief",
+        "q10_double": "strike",
+        "q10_dream": "reject",
+        "q11_allegiance": "gauntlet",
+        "q11_amara_loved": "yes",
+        "q11_amara": "promise",
+        "q12_dukes": "orlan",
+        "q12_face": "evidence",
+        "q13_maze": "follow",
+        "q13_amara_gate": "join",
+        "q14_final_first": "anger",
+        "q14_final_history": "reject",
+        "q14_final_questions": "enough",
+        "q14_final_last": "tesfaye",
+        "q14_final_resolution": "restore"
+      },
+      "ending": "restored",
+      "outcomes": {
+        "1:0": "combat",
+        "1:1": "combat",
+        "1:2": "combat",
+        "2:0": "combat",
+        "2:1": "combat",
+        "2:2": "combat",
+        "3:0": "combat",
+        "3:1": "combat",
+        "3:2": "combat",
+        "4:0": "combat",
+        "4:1": "combat",
+        "4:2": "combat",
+        "4:3": "combat",
+        "5:0": "combat",
+        "5:1": "combat",
+        "5:2": "combat",
+        "5:3": "combat",
+        "6:0": "combat",
+        "6:1": "bypass",
+        "6:2": "combat",
+        "6:3": "combat",
+        "7:0": "combat",
+        "7:1": "combat",
+        "7:2": "combat",
+        "7:3": "combat",
+        "7:4": "combat",
+        "8:0": "combat",
+        "8:1": "bypass",
+        "8:2": "combat",
+        "8:3": "combat",
+        "9:0": "bypass",
+        "9:1": "combat",
+        "9:2": "combat",
+        "9:3": "combat",
+        "10:0": "combat",
+        "10:1": "bypass",
+        "10:2": "combat",
+        "10:3": "combat",
+        "10:4": "combat",
+        "11:0": "combat",
+        "11:1": "combat",
+        "11:2": "bypass",
+        "11:3": "combat",
+        "12:0": "combat",
+        "12:1": "combat",
+        "12:2": "combat",
+        "13:0": "bypass",
+        "13:1": "bypass",
+        "13:2": "combat",
+        "13:3": "combat",
+        "13:4": "combat",
+        "14:0": "combat",
+        "14:1": "combat",
+        "14:2": "combat",
+        "14:3": "combat"
+      }
+    },
+    {
+      "name": "ruthless",
+      "fights": 36,
+      "retries": 10,
+      "innVisits": 9,
+      "choices": {
+        "q6_faelen": "cut",
+        "q6_nettle": "fight",
+        "q6_selene_fire": "warm",
+        "q7_dorran": "with",
+        "q7_durnik": "free",
+        "q7_malvane": "fight",
+        "q7_flood": "now",
+        "q7_vess_papers": "give",
+        "q7_dream": "reject",
+        "q8_span_count": "many",
+        "q8_halloran": "yes",
+        "q8_door": "force",
+        "q8_duke_seen": "nobody",
+        "q8_halvard": "city",
+        "q9_lobby": "fight",
+        "q9_floor_offer": "library",
+        "q9_lysandra": "kill",
+        "q10_sarn": "take",
+        "q10_gate_where": "road",
+        "q10_summit": "kill",
+        "q10_letter_end": "proud",
+        "q10_letter": "grief",
+        "q10_double": "strike",
+        "q10_dream": "reject",
+        "q11_allegiance": "gauntlet",
+        "q11_amara_loved": "yes",
+        "q11_amara": "lie",
+        "q12_dukes": "orlan",
+        "q12_face": "evidence",
+        "q13_maze": "cut",
+        "q13_amara_gate": "fight",
+        "q14_final_first": "anger",
+        "q14_final_history": "reject",
+        "q14_final_questions": "enough",
+        "q14_final_last": "tesfaye",
+        "q14_final_resolution": "ascend"
+      },
+      "ending": "ascended",
+      "outcomes": {
+        "1:0": "combat",
+        "1:1": "combat",
+        "1:2": "combat",
+        "2:0": "combat",
+        "2:1": "combat",
+        "2:2": "combat",
+        "3:0": "combat",
+        "3:1": "combat",
+        "3:2": "combat",
+        "4:0": "combat",
+        "4:1": "combat",
+        "4:2": "combat",
+        "4:3": "combat",
+        "5:0": "combat",
+        "5:1": "combat",
+        "5:2": "combat",
+        "5:3": "combat",
+        "6:0": "combat",
+        "6:1": "combat",
+        "6:2": "combat",
+        "6:3": "combat",
+        "7:0": "combat",
+        "7:1": "combat",
+        "7:2": "combat",
+        "7:3": "combat",
+        "7:4": "bypass",
+        "8:0": "combat",
+        "8:1": "combat",
+        "8:2": "combat",
+        "8:3": "combat",
+        "9:0": "combat",
+        "9:1": "combat",
+        "9:2": "combat",
+        "9:3": "combat",
+        "10:0": "combat",
+        "10:1": "combat",
+        "10:2": "combat",
+        "10:3": "combat",
+        "10:4": "combat",
+        "11:0": "combat",
+        "11:1": "combat",
+        "11:2": "bypass",
+        "11:3": "combat",
+        "12:0": "combat",
+        "12:1": "combat",
+        "12:2": "combat",
+        "13:0": "combat",
+        "13:1": "combat",
+        "13:2": "combat",
+        "13:3": "combat",
+        "13:4": "combat",
+        "14:0": "combat",
+        "14:1": "combat",
+        "14:2": "combat",
+        "14:3": "combat"
+      }
+    }
+  ],
+  "newCombatPlateBytes": 3573970,
+  "browserChapter6": {
+    "firstChapter": 6,
+    "lastChapter": 6,
+    "fights": [
+      "6:0",
+      "6:1",
+      "6:2",
+      "6:3"
+    ],
+    "retries": 3,
+    "locations": [
+      "lanternhold",
+      "mirkhollow",
+      "grove",
+      "cliffs"
+    ],
+    "completed": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "errors": []
+  },
+  "regression": {
+    "npmTest": "passed",
+    "testShip": "passed",
+    "storyCampaign": "passed",
+    "storyCombat": "passed",
+    "storyReadability": "passed"
+  },
+  "browserChapterBoundaries": [
+    {
+      "completedChapter": 7,
+      "savedChapter": 8,
+      "phase": "inn",
+      "outcomes": [
+        "combat",
+        "combat",
+        "combat",
+        "combat",
+        "combat"
+      ],
+      "score": 17550
+    },
+    {
+      "completedChapter": 8,
+      "savedChapter": 9,
+      "phase": "inn",
+      "outcomes": [
+        "combat",
+        "combat",
+        "combat",
+        "combat"
+      ],
+      "score": 20350
+    },
+    {
+      "completedChapter": 9,
+      "savedChapter": 10,
+      "phase": "inn",
+      "outcomes": [
+        "combat",
+        "combat",
+        "combat",
+        "combat"
+      ],
+      "score": 22500
+    },
+    {
+      "completedChapter": 10,
+      "savedChapter": 11,
+      "phase": "inn",
+      "outcomes": [
+        "combat",
+        "combat",
+        "combat",
+        "combat",
+        "combat"
+      ],
+      "score": 26150
+    },
+    {
+      "completedChapter": 11,
+      "savedChapter": 12,
+      "phase": "inn",
+      "outcomes": [
+        "combat",
+        "combat",
+        "bypass",
+        "combat"
+      ],
+      "score": 28400
+    },
+    {
+      "completedChapter": 12,
+      "savedChapter": 13,
+      "phase": "inn",
+      "outcomes": [
+        "combat",
+        "combat",
+        "combat"
+      ],
+      "score": 30100
+    },
+    {
+      "completedChapter": 13,
+      "savedChapter": 14,
+      "phase": "inn",
+      "outcomes": [
+        "combat",
+        "combat",
+        "combat",
+        "combat",
+        "combat"
+      ],
+      "score": 33650
+    }
+  ],
+  "browserLongRunNote": "Real browser run from chapter 7 completed all remaining fights. Its terminal check timed out at the chapter-14 reward card, before clicking Continue. Chapters 7–13 are evidenced by these actual browser checkpoints. The corrected harness repeats chapter 14 from that run's checkpoint; its final report is recorded separately.",
+  "browserChapter14": {
+    "firstChapter": 14,
+    "lastChapter": 14,
+    "fights": [
+      "14:0",
+      "14:1",
+      "14:2",
+      "14:3"
+    ],
+    "retries": 0,
+    "locations": [
+      "lanternhold",
+      "temple",
+      "mirrors",
+      "hiwot_sacrifice",
+      "morrak_realm",
+      "hiwot_bound"
+    ],
+    "completed": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14
+    ],
+    "phase": "complete",
+    "ending": "restored",
+    "errors": []
+  },
+  "normalEntry": {
+    "defaultBoot": "story",
+    "chapter6ExistingSave": true,
+    "chapter14Accessible": true,
+    "endingReload": true,
+    "mobileWidth": 390,
+    "errors": []
+  }
+}

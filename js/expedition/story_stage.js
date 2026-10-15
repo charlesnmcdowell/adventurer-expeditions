@@ -6,10 +6,21 @@ S.Stage={
 // Edition-owned combat adaptation. Dialogue keeps the original painting.
 files:{dunmere_mine:'assets/expedition/story/stages/dunmere-mine-combat.webp',
   dunmere:'assets/expedition/story/stages/dunmere-combat-20261011.webp',
-  ford:'assets/expedition/story/stages/ford-combat-20261011.webp'},
+  ford:'assets/expedition/story/stages/ford-combat-20261011.webp',
+  ...Object.fromEntries(['cliffs','sewers','study','counting','sickroom','tower','silk_floor','undervault','valve','catacombs'].map(id=>[id,'assets/expedition/story/stages/'+id+'-combat-20261014.webp']))},
 // These combat compositions have different landmarks from the dialogue plates.
 // Keep water behind the bank and attach smoke/cloth/lights to their new positions.
 profiles:{
+  cliffs:{sky:[[.01,.005,.52,.30]],cloth:[[.69,.12,.085,.13]],mist:.59,birds:true},
+  sewers:{lights:[[.125,.13],[.204,.20],[.679,.40],[.91,.33]],water:[[.13,.54,.78,.06]],falls:[[.151,.29,.019,.23],[.21,.37,.018,.17],[.88,.46,.025,.09]],mist:.59},
+  study:{lights:[[.215,.27],[.417,.21],[.627,.17],[.83,.12]],cloth:[[.298,.12,.067,.29]],dust:true},
+  counting:{lights:[[.125,.12],[.27,.155],[.944,.05]],dust:true},
+  sickroom:{cloth:[[.149,.13,.028,.27],[.419,.12,.027,.28]],dust:true},
+  tower:{lights:[[.074,.12],[.27,.20],[.568,.20],[.823,.16]],cloth:[[.04,.01,.05,.27],[.65,.01,.045,.20]],dust:true},
+  silk_floor:{lights:[[.899,.10]],cloth:[[.292,.025,.075,.35],[.84,.015,.038,.24]],dust:true},
+  undervault:{lights:[[.265,.16],[.396,.28],[.792,.28],[.903,.09]],dust:true},
+  valve:{lights:[[.065,.17],[.441,.14],[.925,.06],[.972,.33]],falls:[[.15,.33,.018,.22],[.20,.35,.04,.20],[.49,.40,.021,.15]],water:[[.125,.535,.47,.035]],mist:.58},
+  catacombs:{fires:[[.286,.164,.025,.07],[.382,.235,.026,.06],[.71,.13,.028,.063]],lights:[[.443,.306],[.718,.338]],mist:.59},
   dunmere:{smoke:[[.244,.332,.14],[.294,.372,.12]],
     lights:[[.141,.385],[.388,.485],[.667,.473],[.676,.469]],
     cloth:[[.522,.155,.021,.102],[.642,.155,.018,.108]],
@@ -18,7 +29,11 @@ profiles:{
     cloth:[[.575,.202,.024,.105],[.855,.176,.024,.099]],sky:[[.29,.002,.22,.087]],birds:true}
 },
 paint(scene,id,key,phase){
-  const def=S.Presentation.data.art.environments[id],profile=this.profiles[id]||A.GateAmbience.environments[id];
+  // Dialogue loads the original painting: never apply a combat plate's
+  // relocated water/flame coordinates to it.
+  const def=S.Presentation.data.art.environments[id],combat=!!scene.story;
+  const base=(!combat?null:this.profiles[id])||A.GateAmbience.environments[id];
+  const profile=id==='morrak_realm'?{...base,flameTone:'blue'}:base;
   const source=scene.textures.get(key).getSourceImage(),sw=source.width,sh=source.height;
   const scale=Math.max(1280/sw,760/sh),root=scene.add.container(0,0).setDepth(-10);
   const bg=scene.add.image(640,380,key).setScale(scale);root.add(bg);root.background=bg;
@@ -36,7 +51,8 @@ paint(scene,id,key,phase){
   const fx=A.GateAmbience.weather(scene,root,profile,!!def.indoor,weather,phase,{depth:-9,combat:true});
   if(fx?.container)root.add(fx.container);
   const ground=scene.add.image(640,380,groundKey).setScale(scale);root.add(ground);
-  root.layers=[bg,ground];root.layerOrder=['distance','weather-scenery','hero-ground'];
+  root.layers=[bg,ambience?.layer||fx?.container,ground].filter(Boolean);root.layerOrder=['distance','weather-scenery','hero-ground'];
+  root.combatPlate=combat&&!!this.files[id];root.motionProfile=profile;
   root.locationId=id;root.ready=Promise.resolve(true);scene.battleArt=root;
   if(ambience)scene.events.off('update',ambience.update);
   let elapsed=0;const tick=(t,dt)=>{

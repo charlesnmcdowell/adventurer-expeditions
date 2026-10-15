@@ -1,0 +1,142 @@
+[
+  {
+    "id": "cliffs",
+    "file": "assets/expedition/story/stages/cliffs-combat-20261014.webp",
+    "source": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v9\\chapter-stages-20261014\\cliffs.png",
+    "sourceSha256": "70af11a8366256dfab6b30b2527e9890abc81ab280d08dab52a2d799d203a042",
+    "sha256": "3f7a583c8c2f46678931669ef5b233d6b7314384e405896bbebe1c81cdf4afe0",
+    "width": 1280,
+    "height": 760,
+    "groundY": 612,
+    "clearBand": [
+      0.68,
+      0.93
+    ]
+  },
+  {
+    "id": "sewers",
+    "file": "assets/expedition/story/stages/sewers-combat-20261014.webp",
+    "source": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v9\\chapter-stages-20261014\\sewers.png",
+    "sourceSha256": "9282982a8c2cd6bd795a74cb415bf137a93f095321930fe6bb4fb09d1fce9f14",
+    "sha256": "738ed283c7b695c4aedf13ee28ebca3c3975e6139024e9fabf98ed13dc380c0b",
+    "width": 1280,
+    "height": 760,
+    "groundY": 612,
+    "clearBand": [
+      0.68,
+      0.93
+    ]
+  },
+  {
+    "id": "study",
+    "file": "assets/expedition/story/stages/study-combat-20261014.webp",
+    "source": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v9\\chapter-stages-20261014\\study.png",
+    "sourceSha256": "d3db65b21605cd1b026e9aa9f0f62681ed65e06b4d3a52c0bd73d94b238b62bc",
+    "sha256": "d3d6915ba45d5efd833f591e15322143f766ea14ddc245b00782b0b4a3b259b2",
+    "width": 1280,
+    "height": 760,
+    "groundY": 612,
+    "clearBand": [
+      0.68,
+      0.93
+    ]
+  },
+  {
+    "id": "counting",
+    "file": "assets/expedition/story/stages/counting-combat-20261014.webp",
+    "source": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v9\\chapter-stages-20261014\\counting.png",
+    "sourceSha256": "1cfcaf8b789417e14cb2aa35d13bfd7ad2d8e865f1b4094c8f01049b4343cfce",
+    "sha256": "2752f6100b713c390f75c1a31c38c7fa7e8028d567ddf067dd9fa0cccd5cb92c",
+    "width": 1280,
+    "height": 760,
+    "groundY": 612,
+    "clearBand": [
+      0.68,
+      0.93
+    ]
+  },
+  {
+    "id": "sickroom",
+    "file": "assets/expedition/story/stages/sickroom-combat-20261014.webp",
+    "source": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v9\\chapter-stages-20261014\\sickroom.png",
+    "sourceSha256": "a6987e0c71d82130463207405dd1ff46542ec04fa5f75d438ff6acb64a386566",
+    "sha256": "eca386191b4cafdf8ee5ae5e58ba9e59470d6e193b757dfac4beb9d1c0d48f95",
+    "width": 1280,
+    "height": 760,
+    "groundY": 612,
+    "clearBand": [
+      0.68,
+      0.93
+    ]
+  },
+  {
+    "id": "tower",
+    "file": "assets/expedition/story/stages/tower-combat-20261014.webp",
+    "source": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v9\\chapter-stages-20261014\\tower.png",
+    "sourceSha256": "672c49d3bd635dcfc7a5bcd510f850abb4261cb69a6c7804dafa1d0a199ddc49",
+    "sha256": "8d4c2d80cced6fbb2efd29081cb3ec5e2d5f69b89064b641ad1170ca4c271c91",
+    "width": 1280,
+    "height": 760,
+    "groundY": 612,
+    "clearBand": [
+      0.68,
+      0.93
+    ]
+  },
+  {
+    "id": "silk_floor",
+    "file": "assets/expedition/story/stages/silk_floor-combat-20261014.webp",
+    "source": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v9\\chapter-stages-20261014\\silk_floor.png",
+    "sourceSha256": "e708679d29e7bbaf76862516ec1d108b3eb3bf23073794adcf3add398c1b0c22",
+    "sha256": "dc7cdd1239a5a1a4c1d71573eee331d59bc97a05885c040222735efe84d40271",
+    "width": 1280,
+    "height": 760,
+    "groundY": 612,
+    "clearBand": [
+      0.68,
+      0.93
+    ]
+  },
+  {
+    "id": "undervault",
+    "file": "assets/expedition/story/stages/undervault-combat-20261014.webp",
+    "source": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v9\\chapter-stages-20261014\\undervault.png",
+    "sourceSha256": "c8858483fe4d798b3b2f367638157312b38723b897cc48bc3cc816bba4e8f47a",
+    "sha256": "8b3fa3c0fc4a3f041dd70fc650f6e25f530a0766ed9f2595c45aa4f5cc10d88c",
+    "width": 1280,
+    "height": 760,
+    "groundY": 612,
+    "clearBand": [
+      0.68,
+      0.93
+    ]
+  },
+  {
+    "id": "valve",
+    "file": "assets/expedition/story/stages/valve-combat-20261014.webp",
+    "source": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v9\\chapter-stages-20261014\\valve.png",
+    "sourceSha256": "eedf59b18dcc0a82fe46f379d9204482324d050c96a6325700671a7ab224972f",
+    "sha256": "9f1c0ae7c7c90bc4e189f7246872a810fe74c1f253e2ba7b1737ea8c68b74827",
+    "width": 1280,
+    "height": 760,
+    "groundY": 612,
+    "clearBand": [
+      0.68,
+      0.93
+    ]
+  },
+  {
+    "id": "catacombs",
+    "file": "assets/expedition/story/stages/catacombs-combat-20261014.webp",
+    "source": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v9\\chapter-stages-20261014\\catacombs.png",
+    "sourceSha256": "606b32977ded3dbca99146a8a6e78e791db37f53c22f30820dff2979c32056cd",
+    "sha256": "d60ed35ec261772ae29a1d81ca89012e2a4534163d454549c5a0ff0bc867da29",
+    "width": 1280,
+    "height": 760,
+    "groundY": 612,
+    "clearBand": [
+      0.68,
+      0.93
+    ]
+  }
+]
