@@ -1,0 +1,383 @@
+{
+  "results": [
+    {
+      "id": "swamp-log-slide",
+      "frame": 2,
+      "ms": 5214,
+      "layers": [
+        "distance",
+        "weather-scenery",
+        "hero-ground"
+      ],
+      "canvas": {
+        "w": 452,
+        "h": 368,
+        "pivot": {
+          "x": 226,
+          "y": 338
+        }
+      }
+    },
+    {
+      "id": "swamp-log-slide",
+      "frame": 3,
+      "ms": 5374,
+      "layers": [
+        "distance",
+        "weather-scenery",
+        "hero-ground"
+      ],
+      "canvas": {
+        "w": 452,
+        "h": 368,
+        "pivot": {
+          "x": 226,
+          "y": 338
+        }
+      }
+    },
+    {
+      "id": "swamp-log-slide",
+      "frame": 4,
+      "ms": 5554,
+      "layers": [
+        "distance",
+        "weather-scenery",
+        "hero-ground"
+      ],
+      "canvas": {
+        "w": 452,
+        "h": 368,
+        "pivot": {
+          "x": 226,
+          "y": 338
+        }
+      }
+    },
+    {
+      "id": "swamp-log-slide",
+      "frame": 5,
+      "ms": 5776,
+      "layers": [
+        "distance",
+        "weather-scenery",
+        "hero-ground"
+      ],
+      "canvas": {
+        "w": 452,
+        "h": 368,
+        "pivot": {
+          "x": 226,
+          "y": 338
+        }
+      }
+    },
+    {
+      "id": "swamp-log-slide",
+      "frame": 6,
+      "ms": 6004,
+      "layers": [
+        "distance",
+        "weather-scenery",
+        "hero-ground"
+      ],
+      "canvas": {
+        "w": 452,
+        "h": 368,
+        "pivot": {
+          "x": 226,
+          "y": 338
+        }
+      }
+    },
+    {
+      "id": "swamp-log-slide",
+      "frame": 7,
+      "ms": 6202,
+      "layers": [
+        "distance",
+        "weather-scenery",
+        "hero-ground"
+      ],
+      "canvas": {
+        "w": 452,
+        "h": 368,
+        "pivot": {
+          "x": 226,
+          "y": 338
+        }
+      }
+    },
+    {
+      "id": "swamp-log-slide",
+      "frame": 8,
+      "ms": 6382,
+      "layers": [
+        "distance",
+        "weather-scenery",
+        "hero-ground"
+      ],
+      "canvas": {
+        "w": 452,
+        "h": 368,
+        "pivot": {
+          "x": 226,
+          "y": 338
+        }
+      }
+    },
+    {
+      "id": "city-market-vault",
+      "frame": 2,
+      "ms": 4214,
+      "layers": [
+        "distance",
+        "weather-scenery",
+        "hero-ground"
+      ],
+      "canvas": {
+        "w": 398,
+        "h": 365,
+        "pivot": {
+          "x": 199,
+          "y": 315
+        }
+      }
+    },
+    {
+      "id": "city-market-vault",
+      "frame": 3,
+      "ms": 4374,
+      "layers": [
+        "distance",
+        "weather-scenery",
+        "hero-ground"
+      ],
+      "canvas": {
+        "w": 398,
+        "h": 365,
+        "pivot": {
+          "x": 199,
+          "y": 315
+        }
+      }
+    },
+    {
+      "id": "city-market-vault",
+      "frame": 4,
+      "ms": 4554,
+      "layers": [
+        "distance",
+        "weather-scenery",
+        "hero-ground"
+      ],
+      "canvas": {
+        "w": 398,
+        "h": 365,
+        "pivot": {
+          "x": 199,
+          "y": 315
+        }
+      }
+    },
+    {
+      "id": "city-market-vault",
+      "frame": 5,
+      "ms": 4776,
+      "layers": [
+        "distance",
+        "weather-scenery",
+        "hero-ground"
+      ],
+      "canvas": {
+        "w": 398,
+        "h": 365,
+        "pivot": {
+          "x": 199,
+          "y": 315
+        }
+      }
+    },
+    {
+      "id": "city-market-vault",
+      "frame": 6,
+      "ms": 5004,
+      "layers": [
+        "distance",
+        "weather-scenery",
+        "hero-ground"
+      ],
+      "canvas": {
+        "w": 398,
+        "h": 365,
+        "pivot": {
+          "x": 199,
+          "y": 315
+        }
+      }
+    },
+    {
+      "id": "city-market-vault",
+      "frame": 7,
+      "ms": 5202,
+      "layers": [
+        "distance",
+        "weather-scenery",
+        "hero-ground"
+      ],
+      "canvas": {
+        "w": 398,
+        "h": 365,
+        "pivot": {
+          "x": 199,
+          "y": 315
+        }
+      }
+    },
+    {
+      "id": "city-market-vault",
+      "frame": 8,
+      "ms": 5382,
+      "layers": [
+        "distance",
+        "weather-scenery",
+        "hero-ground"
+      ],
+      "canvas": {
+        "w": 398,
+        "h": 365,
+        "pivot": {
+          "x": 199,
+          "y": 315
+        }
+      }
+    },
+    {
+      "id": "city-rooftop-run",
+      "frame": 2,
+      "ms": 4714,
+      "layers": [
+        "distance",
+        "weather-scenery",
+        "hero-ground"
+      ],
+      "canvas": {
+        "w": 368,
+        "h": 418,
+        "pivot": {
+          "x": 184,
+          "y": 364
+        }
+      }
+    },
+    {
+      "id": "city-rooftop-run",
+      "frame": 3,
+      "ms": 4874,
+      "layers": [
+        "distance",
+        "weather-scenery",
+        "hero-ground"
+      ],
+      "canvas": {
+        "w": 368,
+        "h": 418,
+        "pivot": {
+          "x": 184,
+          "y": 364
+        }
+      }
+    },
+    {
+      "id": "city-rooftop-run",
+      "frame": 4,
+      "ms": 5054,
+      "layers": [
+        "distance",
+        "weather-scenery",
+        "hero-ground"
+      ],
+      "canvas": {
+        "w": 368,
+        "h": 418,
+        "pivot": {
+          "x": 184,
+          "y": 364
+        }
+      }
+    },
+    {
+      "id": "city-rooftop-run",
+      "frame": 5,
+      "ms": 5276,
+      "layers": [
+        "distance",
+        "weather-scenery",
+        "hero-ground"
+      ],
+      "canvas": {
+        "w": 368,
+        "h": 418,
+        "pivot": {
+          "x": 184,
+          "y": 364
+        }
+      }
+    },
+    {
+      "id": "city-rooftop-run",
+      "frame": 6,
+      "ms": 5504,
+      "layers": [
+        "distance",
+        "weather-scenery",
+        "hero-ground"
+      ],
+      "canvas": {
+        "w": 368,
+        "h": 418,
+        "pivot": {
+          "x": 184,
+          "y": 364
+        }
+      }
+    },
+    {
+      "id": "city-rooftop-run",
+      "frame": 7,
+      "ms": 5702,
+      "layers": [
+        "distance",
+        "weather-scenery",
+        "hero-ground"
+      ],
+      "canvas": {
+        "w": 368,
+        "h": 418,
+        "pivot": {
+          "x": 184,
+          "y": 364
+        }
+      }
+    },
+    {
+      "id": "city-rooftop-run",
+      "frame": 8,
+      "ms": 5882,
+      "layers": [
+        "distance",
+        "weather-scenery",
+        "hero-ground"
+      ],
+      "canvas": {
+        "w": 368,
+        "h": 418,
+        "pivot": {
+          "x": 184,
+          "y": 364
+        }
+      }
+    }
+  ],
+  "errors": []
+}

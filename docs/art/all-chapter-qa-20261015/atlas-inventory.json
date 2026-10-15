@@ -1,0 +1,474 @@
+[
+  {
+    "identity": "mini:nib",
+    "actor": "story_nib",
+    "clips": 7,
+    "frames": 68,
+    "authoredFacing": -1,
+    "errors": []
+  },
+  {
+    "identity": "mini:cobb",
+    "actor": "story_cobb",
+    "clips": 7,
+    "frames": 68,
+    "authoredFacing": -1,
+    "errors": []
+  },
+  {
+    "identity": "enemy:hired_knife",
+    "actor": "story_hired_knife",
+    "clips": 7,
+    "frames": 56,
+    "authoredFacing": -1,
+    "errors": []
+  },
+  {
+    "identity": "enemy:consortium_mage",
+    "actor": "story_consortium_mage",
+    "clips": 8,
+    "frames": 56,
+    "authoredFacing": -1,
+    "errors": []
+  },
+  {
+    "identity": "named:morwin",
+    "actor": "story_merle",
+    "clips": 8,
+    "frames": 56,
+    "authoredFacing": -1,
+    "errors": []
+  },
+  {
+    "identity": "named:lessa",
+    "actor": "story_lurleen",
+    "clips": 7,
+    "frames": 56,
+    "authoredFacing": -1,
+    "errors": []
+  },
+  {
+    "identity": "enemy:gnoll_raider",
+    "actor": "story_gnoll_raider",
+    "clips": 7,
+    "frames": 56,
+    "authoredFacing": -1,
+    "errors": []
+  },
+  {
+    "identity": "enemy:bandit_archer",
+    "actor": "story_bandit_archer",
+    "clips": 8,
+    "frames": 56,
+    "authoredFacing": -1,
+    "errors": []
+  },
+  {
+    "identity": "mini:gnoll_warleader",
+    "actor": "story_snarl",
+    "clips": 7,
+    "frames": 56,
+    "authoredFacing": -1,
+    "errors": []
+  },
+  {
+    "identity": "named:bramm",
+    "actor": "story_bahadir",
+    "clips": 7,
+    "frames": 56,
+    "authoredFacing": -1,
+    "errors": []
+  },
+  {
+    "identity": "enemy:tunnel_kobold",
+    "actor": "story_tunnel_kobold",
+    "clips": 7,
+    "frames": 56,
+    "authoredFacing": -1,
+    "errors": []
+  },
+  {
+    "identity": "enemy:kobold_shaman",
+    "actor": "story_kobold_shaman",
+    "clips": 8,
+    "frames": 56,
+    "authoredFacing": -1,
+    "errors": []
+  },
+  {
+    "identity": "mini:kobold_chief",
+    "actor": "story_kobold_chief",
+    "clips": 8,
+    "frames": 56,
+    "authoredFacing": -1,
+    "errors": []
+  },
+  {
+    "identity": "enemy:veylan_acolyte",
+    "actor": "story_veylan_acolyte",
+    "clips": 8,
+    "frames": 56,
+    "authoredFacing": -1,
+    "errors": []
+  },
+  {
+    "identity": "named:grukhar",
+    "actor": "story_grukhar",
+    "clips": 8,
+    "frames": 56,
+    "authoredFacing": -1,
+    "errors": []
+  },
+  {
+    "identity": "mini:verlan",
+    "actor": "story_femi",
+    "clips": 7,
+    "frames": 56,
+    "authoredFacing": -1,
+    "errors": []
+  },
+  {
+    "identity": "enemy:gauntlet_soldier",
+    "actor": "story_gauntlet_soldier",
+    "clips": 7,
+    "frames": 56,
+    "authoredFacing": -1,
+    "errors": []
+  },
+  {
+    "identity": "mini:skarn",
+    "actor": "story_skarn",
+    "clips": 7,
+    "frames": 56,
+    "authoredFacing": -1,
+    "errors": []
+  },
+  {
+    "identity": "enemy:hob_sergeant",
+    "actor": "story_hob_sergeant",
+    "clips": 7,
+    "frames": 56,
+    "authoredFacing": -1,
+    "errors": []
+  },
+  {
+    "identity": "enemy:gate_bandit",
+    "actor": "story_road_bandit",
+    "clips": 7,
+    "frames": 56,
+    "authoredFacing": -1,
+    "errors": []
+  },
+  {
+    "identity": "named:gorruk",
+    "actor": "story_gorruk",
+    "clips": 8,
+    "frames": 60,
+    "authoredFacing": -1,
+    "errors": []
+  },
+  {
+    "identity": "enemy:road_wolf",
+    "actor": "wolf",
+    "clips": 9,
+    "frames": 46,
+    "authoredFacing": null,
+    "errors": []
+  },
+  {
+    "identity": "mini:silksa",
+    "actor": "story_silksa",
+    "clips": 8,
+    "frames": 56,
+    "authoredFacing": -1,
+    "errors": []
+  },
+  {
+    "identity": "enemy:web_spider",
+    "actor": "story_web_spider",
+    "clips": 8,
+    "frames": 56,
+    "authoredFacing": -1,
+    "errors": []
+  },
+  {
+    "identity": "named:thornwise",
+    "actor": "story_thornwise",
+    "clips": 8,
+    "frames": 56,
+    "authoredFacing": -1,
+    "errors": []
+  },
+  {
+    "identity": "enemy:umbra_druid",
+    "actor": "story_umbra_druid",
+    "clips": 8,
+    "frames": 56,
+    "authoredFacing": -1,
+    "errors": []
+  },
+  {
+    "identity": "named:nettle",
+    "actor": "story_nettle",
+    "clips": 8,
+    "frames": 56,
+    "authoredFacing": -1,
+    "errors": []
+  },
+  {
+    "identity": "mini:wyvern_matriarch",
+    "actor": "story_wyvern_matriarch",
+    "clips": 8,
+    "frames": 56,
+    "authoredFacing": -1,
+    "errors": []
+  },
+  {
+    "identity": "enemy:wyvern",
+    "actor": "story_wyvern",
+    "clips": 8,
+    "frames": 56,
+    "authoredFacing": -1,
+    "errors": []
+  },
+  {
+    "identity": "mini:kestrel",
+    "actor": "story_kestrel",
+    "clips": 8,
+    "frames": 56,
+    "authoredFacing": -1,
+    "errors": []
+  },
+  {
+    "identity": "enemy:consortium_guard",
+    "actor": "story_consortium_guard",
+    "clips": 8,
+    "frames": 56,
+    "authoredFacing": -1,
+    "errors": []
+  },
+  {
+    "identity": "enemy:slave_driver",
+    "actor": "story_slave_driver",
+    "clips": 8,
+    "frames": 56,
+    "authoredFacing": -1,
+    "errors": []
+  },
+  {
+    "identity": "named:malvane",
+    "actor": "story_malvane",
+    "clips": 8,
+    "frames": 56,
+    "authoredFacing": -1,
+    "errors": []
+  },
+  {
+    "identity": "mini:sewer_ogre_mage",
+    "actor": "story_sewer_ogre_mage",
+    "clips": 8,
+    "frames": 56,
+    "authoredFacing": -1,
+    "errors": []
+  },
+  {
+    "identity": "enemy:sewer_crawler",
+    "actor": "story_sewer_crawler",
+    "clips": 8,
+    "frames": 56,
+    "authoredFacing": -1,
+    "errors": []
+  },
+  {
+    "identity": "enemy:shadow_double",
+    "actor": "story_shadow_double",
+    "clips": 8,
+    "frames": 56,
+    "authoredFacing": -1,
+    "errors": []
+  },
+  {
+    "identity": "mini:lantern_master",
+    "actor": "story_lantern_master",
+    "clips": 8,
+    "frames": 56,
+    "authoredFacing": -1,
+    "errors": []
+  },
+  {
+    "identity": "mini:umbral_pair",
+    "actor": "story_umbral_pair",
+    "clips": 8,
+    "frames": 56,
+    "authoredFacing": -1,
+    "errors": []
+  },
+  {
+    "identity": "mini:tower_captain",
+    "actor": "story_tower_captain",
+    "clips": 8,
+    "frames": 56,
+    "authoredFacing": -1,
+    "errors": []
+  },
+  {
+    "identity": "named:maddox",
+    "actor": "story_maddox",
+    "clips": 8,
+    "frames": 56,
+    "authoredFacing": -1,
+    "errors": []
+  },
+  {
+    "identity": "named:vask",
+    "actor": "story_vask",
+    "clips": 7,
+    "frames": 56,
+    "authoredFacing": -1,
+    "errors": []
+  },
+  {
+    "identity": "named:rennick",
+    "actor": "story_rennick",
+    "clips": 8,
+    "frames": 56,
+    "authoredFacing": -1,
+    "errors": []
+  },
+  {
+    "identity": "named:grell",
+    "actor": "story_grell",
+    "clips": 8,
+    "frames": 56,
+    "authoredFacing": -1,
+    "errors": []
+  },
+  {
+    "identity": "mini:family_double",
+    "actor": "story_family_double",
+    "clips": 8,
+    "frames": 56,
+    "authoredFacing": -1,
+    "errors": []
+  },
+  {
+    "identity": "enemy:phase_spider",
+    "actor": "story_phase_spider",
+    "clips": 8,
+    "frames": 56,
+    "authoredFacing": -1,
+    "errors": []
+  },
+  {
+    "identity": "enemy:tomb_ghoul",
+    "actor": "story_tomb_ghoul",
+    "clips": 8,
+    "frames": 56,
+    "authoredFacing": -1,
+    "errors": []
+  },
+  {
+    "identity": "enemy:gauntlet_traitor",
+    "actor": "story_gauntlet_traitor",
+    "clips": 8,
+    "frames": 56,
+    "authoredFacing": -1,
+    "errors": []
+  },
+  {
+    "identity": "named:idris",
+    "actor": "story_idris",
+    "clips": 8,
+    "frames": 56,
+    "authoredFacing": -1,
+    "errors": []
+  },
+  {
+    "identity": "named:amara",
+    "actor": "story_amara",
+    "clips": 7,
+    "frames": 56,
+    "authoredFacing": -1,
+    "errors": []
+  },
+  {
+    "identity": "named:ravel",
+    "actor": "story_ravel",
+    "clips": 7,
+    "frames": 56,
+    "authoredFacing": -1,
+    "errors": []
+  },
+  {
+    "identity": "named:kessa",
+    "actor": "story_kessa",
+    "clips": 8,
+    "frames": 56,
+    "authoredFacing": -1,
+    "errors": []
+  },
+  {
+    "identity": "mini:hall_doubles",
+    "actor": "story_hall_doubles",
+    "clips": 7,
+    "frames": 56,
+    "authoredFacing": -1,
+    "errors": []
+  },
+  {
+    "identity": "enemy:palace_doppelganger",
+    "actor": "story_palace_doppelganger",
+    "clips": 7,
+    "frames": 56,
+    "authoredFacing": -1,
+    "errors": []
+  },
+  {
+    "identity": "named:jarem",
+    "actor": "story_jarem",
+    "clips": 8,
+    "frames": 56,
+    "authoredFacing": -1,
+    "errors": []
+  },
+  {
+    "identity": "enemy:morrak_cultist",
+    "actor": "story_morrak_cultist",
+    "clips": 8,
+    "frames": 56,
+    "authoredFacing": -1,
+    "errors": []
+  },
+  {
+    "identity": "named:lucan",
+    "actor": "story_lucan",
+    "clips": 8,
+    "frames": 56,
+    "authoredFacing": -1,
+    "errors": []
+  },
+  {
+    "identity": "mini:altar_keepers",
+    "actor": "story_altar_keepers",
+    "clips": 8,
+    "frames": 56,
+    "authoredFacing": -1,
+    "errors": []
+  },
+  {
+    "identity": "mini:your_own_faces",
+    "actor": "story_your_own_faces",
+    "clips": 8,
+    "frames": 56,
+    "authoredFacing": -1,
+    "errors": []
+  },
+  {
+    "identity": "named:korvath",
+    "actor": "story_korvath",
+    "clips": 8,
+    "frames": 56,
+    "authoredFacing": -1,
+    "errors": []
+  }
+]

@@ -1,0 +1,247 @@
+{
+  "version": 3,
+  "clips": [
+    {
+      "id": "travel",
+      "file": "hiro-actions.png",
+      "frames": 12,
+      "columns": 3,
+      "rows": 4,
+      "durationsMs": [
+        160,
+        150,
+        160,
+        160,
+        210,
+        240,
+        210,
+        180,
+        180,
+        160,
+        160,
+        160
+      ],
+      "loop": false,
+      "contactFramesZeroBased": [
+        2,
+        3,
+        8
+      ],
+      "releaseFrameZeroBased": 11,
+      "registration": {
+        "referenceHeight": 333.04,
+        "anchorX": 181.0,
+        "groundY": 347.52,
+        "frames": [
+          {
+            "groundY": 367,
+            "anchorX": 181.0
+          },
+          {
+            "groundY": 364,
+            "anchorX": 195.0
+          },
+          {
+            "groundY": 367,
+            "anchorX": 157.0
+          },
+          {
+            "groundY": 292,
+            "anchorX": 181.0
+          },
+          {
+            "groundY": 292,
+            "anchorX": 213.0
+          },
+          {
+            "groundY": 286,
+            "anchorX": 213.0
+          },
+          {
+            "groundY": 264,
+            "anchorX": 181.0
+          },
+          {
+            "groundY": 269,
+            "anchorX": 113.0
+          },
+          {
+            "groundY": 266,
+            "anchorX": 148.0
+          },
+          {
+            "groundY": 373,
+            "anchorX": 181.0
+          },
+          {
+            "groundY": 371,
+            "anchorX": 193.0
+          },
+          {
+            "groundY": 373,
+            "anchorX": 169.0
+          }
+        ]
+      },
+      "sources": [
+        {
+          "file": "hiro-actions.png",
+          "frames": 1,
+          "firstFrameZeroBased": 0,
+          "regions": [
+            [
+              0,
+              0,
+              348,
+              395
+            ]
+          ]
+        },
+        {
+          "file": "hiro-actions.png",
+          "frames": 1,
+          "firstFrameZeroBased": 1,
+          "regions": [
+            [
+              348,
+              0,
+              400,
+              395
+            ]
+          ]
+        },
+        {
+          "file": "hiro-actions.png",
+          "frames": 1,
+          "firstFrameZeroBased": 2,
+          "regions": [
+            [
+              748,
+              0,
+              338,
+              395
+            ]
+          ]
+        },
+        {
+          "file": "hiro-actions.png",
+          "frames": 1,
+          "firstFrameZeroBased": 3,
+          "regions": [
+            [
+              0,
+              400,
+              330,
+              310
+            ]
+          ]
+        },
+        {
+          "file": "hiro-actions.png",
+          "frames": 1,
+          "firstFrameZeroBased": 4,
+          "regions": [
+            [
+              330,
+              400,
+              362,
+              310
+            ]
+          ]
+        },
+        {
+          "file": "hiro-actions.png",
+          "frames": 1,
+          "firstFrameZeroBased": 5,
+          "regions": [
+            [
+              692,
+              400,
+              394,
+              310
+            ]
+          ]
+        },
+        {
+          "file": "hiro-actions.png",
+          "frames": 1,
+          "firstFrameZeroBased": 6,
+          "regions": [
+            [
+              0,
+              745,
+              430,
+              295
+            ]
+          ]
+        },
+        {
+          "file": "hiro-actions.png",
+          "frames": 1,
+          "firstFrameZeroBased": 7,
+          "regions": [
+            [
+              430,
+              745,
+              327,
+              295
+            ]
+          ]
+        },
+        {
+          "file": "hiro-actions.png",
+          "frames": 1,
+          "firstFrameZeroBased": 8,
+          "regions": [
+            [
+              757,
+              745,
+              329,
+              295
+            ]
+          ]
+        },
+        {
+          "file": "hiro-actions.png",
+          "frames": 1,
+          "firstFrameZeroBased": 9,
+          "regions": [
+            [
+              0,
+              1050,
+              350,
+              398
+            ]
+          ]
+        },
+        {
+          "file": "hiro-actions.png",
+          "frames": 1,
+          "firstFrameZeroBased": 10,
+          "regions": [
+            [
+              350,
+              1050,
+              386,
+              398
+            ]
+          ]
+        },
+        {
+          "file": "hiro-actions.png",
+          "frames": 1,
+          "firstFrameZeroBased": 11,
+          "regions": [
+            [
+              736,
+              1050,
+              350,
+              398
+            ]
+          ]
+        }
+      ],
+      "sha256": "40c066cf23fc0c02fcba0d9f745ed738211cd6dc8672dc7c37e30d13a7c59c71"
+    }
+  ]
+}

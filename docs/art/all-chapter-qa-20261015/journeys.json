@@ -1,0 +1,603 @@
+{
+  "results": [
+    {
+      "chapter": 2,
+      "leg": "outbound",
+      "art": "coast",
+      "ms": 10500,
+      "layers": [
+        "distance",
+        "weather-scenery",
+        "hero-ground"
+      ],
+      "end": {
+        "chapter": 2,
+        "phase": "departure",
+        "completed": [
+          1
+        ]
+      }
+    },
+    {
+      "chapter": 2,
+      "leg": "return",
+      "art": "coast",
+      "ms": 10500,
+      "layers": [
+        "distance",
+        "weather-scenery",
+        "hero-ground"
+      ],
+      "end": {
+        "chapter": 2,
+        "phase": "arrival",
+        "completed": [
+          1
+        ]
+      }
+    },
+    {
+      "chapter": 3,
+      "leg": "outbound",
+      "art": "rain",
+      "ms": 9490,
+      "layers": [
+        "distance",
+        "weather-scenery",
+        "hero-ground"
+      ],
+      "end": {
+        "chapter": 3,
+        "phase": "departure",
+        "completed": [
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "chapter": 3,
+      "leg": "return",
+      "art": "rain",
+      "ms": 9490,
+      "layers": [
+        "distance",
+        "weather-scenery",
+        "hero-ground"
+      ],
+      "end": {
+        "chapter": 3,
+        "phase": "arrival",
+        "completed": [
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "chapter": 4,
+      "leg": "outbound",
+      "art": "rain",
+      "ms": 9490,
+      "layers": [
+        "distance",
+        "weather-scenery",
+        "hero-ground"
+      ],
+      "end": {
+        "chapter": 4,
+        "phase": "departure",
+        "completed": [
+          1,
+          2,
+          3
+        ]
+      }
+    },
+    {
+      "chapter": 4,
+      "leg": "return",
+      "art": "rain",
+      "ms": 9490,
+      "layers": [
+        "distance",
+        "weather-scenery",
+        "hero-ground"
+      ],
+      "end": {
+        "chapter": 4,
+        "phase": "arrival",
+        "completed": [
+          1,
+          2,
+          3
+        ]
+      }
+    },
+    {
+      "chapter": 5,
+      "leg": "outbound",
+      "art": "rain",
+      "ms": 9490,
+      "layers": [
+        "distance",
+        "weather-scenery",
+        "hero-ground"
+      ],
+      "end": {
+        "chapter": 5,
+        "phase": "departure",
+        "completed": [
+          1,
+          2,
+          3,
+          4
+        ]
+      }
+    },
+    {
+      "chapter": 5,
+      "leg": "return",
+      "art": "rain",
+      "ms": 9490,
+      "layers": [
+        "distance",
+        "weather-scenery",
+        "hero-ground"
+      ],
+      "end": {
+        "chapter": 6,
+        "phase": "inn",
+        "completed": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      }
+    },
+    {
+      "chapter": 6,
+      "leg": "outbound",
+      "art": "marsh",
+      "ms": 11490,
+      "layers": [
+        "distance",
+        "weather-scenery",
+        "hero-ground"
+      ],
+      "end": {
+        "chapter": 6,
+        "phase": "departure",
+        "completed": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      }
+    },
+    {
+      "chapter": 6,
+      "leg": "return",
+      "art": "marsh",
+      "ms": 11490,
+      "layers": [
+        "distance",
+        "weather-scenery",
+        "hero-ground"
+      ],
+      "end": {
+        "chapter": 7,
+        "phase": "inn",
+        "completed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      }
+    },
+    {
+      "chapter": 7,
+      "leg": "outbound",
+      "art": "marsh",
+      "ms": 11490,
+      "layers": [
+        "distance",
+        "weather-scenery",
+        "hero-ground"
+      ],
+      "end": {
+        "chapter": 7,
+        "phase": "departure",
+        "completed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      }
+    },
+    {
+      "chapter": 7,
+      "leg": "return",
+      "art": "marsh",
+      "ms": 11490,
+      "layers": [
+        "distance",
+        "weather-scenery",
+        "hero-ground"
+      ],
+      "end": {
+        "chapter": 7,
+        "phase": "arrival",
+        "completed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      }
+    },
+    {
+      "chapter": 8,
+      "leg": "outbound",
+      "art": "city",
+      "ms": 9490,
+      "layers": [
+        "distance",
+        "weather-scenery",
+        "hero-ground"
+      ],
+      "end": {
+        "chapter": 8,
+        "phase": "departure",
+        "completed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      }
+    },
+    {
+      "chapter": 8,
+      "leg": "return",
+      "art": "city",
+      "ms": 10490,
+      "layers": [
+        "distance",
+        "weather-scenery",
+        "hero-ground"
+      ],
+      "end": {
+        "chapter": 8,
+        "phase": "arrival",
+        "completed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      }
+    },
+    {
+      "chapter": 9,
+      "leg": "outbound",
+      "art": "city",
+      "ms": 9490,
+      "layers": [
+        "distance",
+        "weather-scenery",
+        "hero-ground"
+      ],
+      "end": {
+        "chapter": 9,
+        "phase": "departure",
+        "completed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ]
+      }
+    },
+    {
+      "chapter": 9,
+      "leg": "return",
+      "art": "city",
+      "ms": 10490,
+      "layers": [
+        "distance",
+        "weather-scenery",
+        "hero-ground"
+      ],
+      "end": {
+        "chapter": 9,
+        "phase": "arrival",
+        "completed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ]
+      }
+    },
+    {
+      "chapter": 10,
+      "leg": "outbound",
+      "art": "citadel",
+      "ms": 9320,
+      "layers": [
+        "distance",
+        "weather-scenery",
+        "hero-ground"
+      ],
+      "end": {
+        "chapter": 10,
+        "phase": "departure",
+        "completed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ]
+      }
+    },
+    {
+      "chapter": 10,
+      "leg": "return",
+      "art": "citadel",
+      "ms": 9320,
+      "layers": [
+        "distance",
+        "weather-scenery",
+        "hero-ground"
+      ],
+      "end": {
+        "chapter": 10,
+        "phase": "arrival",
+        "completed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ]
+      }
+    },
+    {
+      "chapter": 11,
+      "leg": "outbound",
+      "art": "city",
+      "ms": 9490,
+      "layers": [
+        "distance",
+        "weather-scenery",
+        "hero-ground"
+      ],
+      "end": {
+        "chapter": 11,
+        "phase": "departure",
+        "completed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ]
+      }
+    },
+    {
+      "chapter": 11,
+      "leg": "return",
+      "art": "city",
+      "ms": 10490,
+      "layers": [
+        "distance",
+        "weather-scenery",
+        "hero-ground"
+      ],
+      "end": {
+        "chapter": 12,
+        "phase": "inn",
+        "completed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ]
+      }
+    },
+    {
+      "chapter": 12,
+      "leg": "outbound",
+      "art": "city",
+      "ms": 9490,
+      "layers": [
+        "distance",
+        "weather-scenery",
+        "hero-ground"
+      ],
+      "end": {
+        "chapter": 12,
+        "phase": "departure",
+        "completed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ]
+      }
+    },
+    {
+      "chapter": 12,
+      "leg": "return",
+      "art": "city",
+      "ms": 10490,
+      "layers": [
+        "distance",
+        "weather-scenery",
+        "hero-ground"
+      ],
+      "end": {
+        "chapter": 12,
+        "phase": "arrival",
+        "completed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ]
+      }
+    },
+    {
+      "chapter": 13,
+      "leg": "outbound",
+      "art": "citadel",
+      "ms": 9320,
+      "layers": [
+        "distance",
+        "weather-scenery",
+        "hero-ground"
+      ],
+      "end": {
+        "chapter": 13,
+        "phase": "departure",
+        "completed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ]
+      }
+    },
+    {
+      "chapter": 13,
+      "leg": "return",
+      "art": "citadel",
+      "ms": 9320,
+      "layers": [
+        "distance",
+        "weather-scenery",
+        "hero-ground"
+      ],
+      "end": {
+        "chapter": 14,
+        "phase": "inn",
+        "completed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13
+        ]
+      }
+    },
+    {
+      "chapter": 14,
+      "leg": "outbound",
+      "art": "citadel",
+      "ms": 9320,
+      "layers": [
+        "distance",
+        "weather-scenery",
+        "hero-ground"
+      ],
+      "end": {
+        "chapter": 14,
+        "phase": "departure",
+        "completed": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13
+        ]
+      }
+    }
+  ],
+  "errors": []
+}

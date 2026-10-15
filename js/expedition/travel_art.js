@@ -16,7 +16,7 @@ Travel.preload = function (scene) {
   const id = Travel.select(run, scene.opts.leg || run.travelLeg);
   scene.__travelArtId = id;
   const base = 'assets/expedition/travel/' + id + '/', key = 'travel_' + id;
-  const revision=id==='citadel-bridge-leap'?'?v=portal-v8-20261009':'';
+  const revision=['swamp-log-slide','city-market-vault','city-rooftop-run'].includes(id)?'?v=pose-ownership-20261015':id==='citadel-bridge-leap'?'?v=portal-v8-20261009':'';
   if (!scene.cache.json.exists(key)) scene.load.json(key, base + 'scene.json'+revision);
   if (!scene.textures.exists(key + '_plate')) scene.load.image(key + '_plate', base + 'plate.webp');
   if (!scene.textures.exists(key + '_actions')) scene.load.multiatlas(key + '_actions', base + 'actions.json'+revision, base);

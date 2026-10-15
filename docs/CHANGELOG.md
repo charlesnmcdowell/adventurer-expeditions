@@ -15,6 +15,39 @@ of small fixes within a day.
 
 ---
 
+## 2026-10-15 — All-chapter art QA, inn journeys and closing card (local)
+
+- Audited **59 campaign identities / 3,322 registered frames**, **32 battle locations**, 118 Hiro finisher plays and 59 enemy defeat-finisher plays. No invalid atlas/trim rectangles or packed-frame overlaps. Rear-row attacks now step inside the right screen edge before playing; runtime bounds observations after repair: **0**. Normal body scale and formation return are unchanged.
+- Repaired **36 travel poses** in swamp slide, city market vault and rooftop climb using measured source rectangles instead of the old equal grid. Removed neighboring-pose fragments and restored clipped hands/feet from original pixels. No new poses or retiming. Corrected planted anchors; swamp/market final contact x is **1770 → 1710 / 1900 → 1840** to keep the landing arm visible. Retained the approved rooftop grip replacement. All 36 poses and 21 browser action snapshots reviewed.
+- Added one combat-only **Nine Lanterns** ground painting; aligned its lantern/water/cloth motion. Original dialogue art retained.
+- Story journey wiring from this pass was included in overlapping commit `1e8eab1`: **0 painted interchapter trips → 25 required legs** (chapters 2–13 round trips, chapter 14 outbound). Reuses six approved travel beats at the existing fast run speed and 8–12-second duration. Pending-trip saves resume safely. Fixed phone travel FIT aspect handling.
+- Per Hiro's finale answer, chapter 14 keeps its final choice/epilogue and now has a **thank-you card** afterward, with games/books/support links and a next-adventure message. No forced return trip after the finale.
+- Checks: `npm test`, `npm run test:ship`, campaign model/readability, all-identity browser playback, all-stage review, all 25 story journeys, repaired travel frames and local ending/mobile checks passed. Browser QA: desktop Chrome and 390×844 emulation, not physical-device certification.
+- Runtime/code: `actors.js`, `story.js`, `story_backdrop.js`, `story_stage.js`, `travel_art.js`, `docs/story_preview.js`, story HTML/entry cache stamps; three travel action bundles/scene metadata and the new story stage. Tests: `art_campaign_atlas.py`, `browser_story_all_art.js`, `browser_story_travel.js`, `browser_story_travel_frames.js`, existing actor/story/stage/local-release checks. Rebuild: `tools/repair_travel_cells_20261015.py`.
+- Full findings and reproducible evidence: **`ALL_CHAPTER_ART_QA_20261015.md`**, `docs/art/all-chapter-qa-20261015/`. Original masters, before-bundles and source registrations remain in sibling `adventurer-expeditions-source-art/astra-v9/all-chapter-qa-20261015/`.
+- No publishing or push by this audit. Preserved the separate session's website chapter-six packaging change and its entry below. Local campaign remains 1–14; original Adventurer files untouched.
+
+## 2026-10-15 — Website: password opens chapters two to six; Pit and Spire retired (live)
+
+Hiro: password should reach chapter 6; "do option 1 but keep a local back up".
+
+- **Room on the site.** A chapters 1–6 package is 414 MB, and the site was at 0.981 of GitHub Pages' 1 GB.
+  - The hidden Pit of Karridge (`/play/`, 107 MB) and Spire of Karridge (`/deck/`, 150 MB) are off the site.
+  - A local backup is at `OneDriveDocumentsNeverendingnarratives-backup-20261015` (375 files, compared byte for byte before removal). They also stay in the site's git history.
+  - `/play/` and `/deck/` now hold a one-line page that forwards to `/#games`.
+  - The audiobook pages' nav links to Adventurer and Expeditions instead.
+  - `_audiobook2_release_upload` was left alone: it's gitignored and never published, so deleting it wouldn't free site space.
+- **Demo:** `SITE_THROUGH = 6, PUBLIC_THROUGH = 1` in `tools/site_demo.js`. Verify passed:
+  - public lock at chapter 2, wrong password refused, "Hiro" opens 1–6;
+  - all 21 fights in chapters 1–6 load;
+  - after chapter 6 the card reads "Chapter 7 is coming soon";
+  - nothing missing, no page errors.
+- **Published.**
+  - The site totals 0.823 GB.
+  - Website commit 98cc626, pushed.
+  - The package includes Astra's then-uncommitted edits (wide-pose staging in actors.js, the travel scale fix in story_backdrop.js, the post-ending thank-you card). npm test and story_combat passed on that exact tree.
+- **Room left:** about 175 MB, enough for chapter 7 (+26 MB) and 8 (+52 MB). Chapters 9–14 need more space or their own Pages site.
+
 ## 2026-10-14 — Chapters 6–14 completed locally: scenery, solo balance and progression QA
 
 - **Local access 5 → 14** (`docs/story_preview.js`). Existing chapter-five saves continue through the rest of the campaign; local chapter-jump buttons cover 2–14. Website packaging remains chapter one free / two through five password-gated. No publication or portal export.

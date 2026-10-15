@@ -1,0 +1,2368 @@
+[
+  {
+    "identity": "mini:nib",
+    "actor": "story_nib",
+    "attacks": [
+      {
+        "name": "slash",
+        "frames": 13,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1,
+        "authoredFacing": -1,
+        "home": true
+      }
+    ],
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "clip": "xp_story_nib_sheet:hiro-finisher-1",
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "clip": "xp_story_nib_sheet:hiro-finisher-2",
+        "restored": true
+      }
+    ],
+    "bounds": [],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "mini:cobb",
+    "actor": "story_cobb",
+    "attacks": [
+      {
+        "name": "slash",
+        "frames": 13,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.1666666666666667,
+        "authoredFacing": -1,
+        "home": true
+      }
+    ],
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "clip": "xp_story_cobb_sheet:hiro-finisher-1",
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "clip": "xp_story_cobb_sheet:hiro-finisher-2",
+        "restored": true
+      }
+    ],
+    "bounds": [],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "enemy:hired_knife",
+    "actor": "story_hired_knife",
+    "attacks": [
+      {
+        "name": "slash",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.05,
+        "authoredFacing": -1,
+        "home": true
+      }
+    ],
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "clip": "xp_story_hired_knife_sheet:hiro-finisher-1",
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "clip": "xp_story_hired_knife_sheet:hiro-finisher-2",
+        "restored": true
+      }
+    ],
+    "bounds": [],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "enemy:consortium_mage",
+    "actor": "story_consortium_mage",
+    "attacks": [
+      {
+        "name": "slash",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.1,
+        "authoredFacing": -1,
+        "home": true
+      },
+      {
+        "name": "cast",
+        "frames": 8,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.1,
+        "authoredFacing": -1,
+        "home": true
+      }
+    ],
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "clip": "xp_story_consortium_mage_sheet:hiro-finisher-1",
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "clip": "xp_story_consortium_mage_sheet:hiro-finisher-2",
+        "restored": true
+      }
+    ],
+    "bounds": [],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "enemy:road_wolf",
+    "actor": "wolf",
+    "attacks": [
+      {
+        "name": "slash",
+        "frames": 13,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.25,
+        "authoredFacing": 1,
+        "home": true
+      }
+    ],
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 12,
+        "clip": "xp_hiro_sheet:wolf-cleave-paired",
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 12,
+        "clip": "xp_hiro_sheet:wolf-pin-paired",
+        "restored": true
+      }
+    ],
+    "bounds": [],
+    "fatal": {
+      "presented": true,
+      "frames": 11
+    }
+  },
+  {
+    "identity": "named:morwin",
+    "actor": "story_merle",
+    "attacks": [
+      {
+        "name": "slash",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.0333333333333334,
+        "authoredFacing": -1,
+        "home": true
+      },
+      {
+        "name": "cast",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.0333333333333334,
+        "authoredFacing": -1,
+        "home": true
+      }
+    ],
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "clip": "xp_story_merle_sheet:hiro-finisher-1",
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "clip": "xp_story_merle_sheet:hiro-finisher-2",
+        "restored": true
+      }
+    ],
+    "bounds": [],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "named:lessa",
+    "actor": "story_lurleen",
+    "attacks": [
+      {
+        "name": "slash",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.0333333333333334,
+        "authoredFacing": -1,
+        "home": true
+      }
+    ],
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "clip": "xp_story_lurleen_sheet:hiro-finisher-1",
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "clip": "xp_story_lurleen_sheet:hiro-finisher-2",
+        "restored": true
+      }
+    ],
+    "bounds": [],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "enemy:gnoll_raider",
+    "actor": "story_gnoll_raider",
+    "attacks": [
+      {
+        "name": "slash",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.1666666666666667,
+        "authoredFacing": -1,
+        "home": true
+      }
+    ],
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "clip": "xp_story_gnoll_raider_sheet:hiro-finisher-1",
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "clip": "xp_story_gnoll_raider_sheet:hiro-finisher-2",
+        "restored": true
+      }
+    ],
+    "bounds": [],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "enemy:bandit_archer",
+    "actor": "story_bandit_archer",
+    "attacks": [
+      {
+        "name": "slash",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.0166666666666666,
+        "authoredFacing": -1,
+        "home": true
+      },
+      {
+        "name": "cast",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.0166666666666666,
+        "authoredFacing": -1,
+        "home": true
+      }
+    ],
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "clip": "xp_story_bandit_archer_sheet:hiro-finisher-1",
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "clip": "xp_story_bandit_archer_sheet:hiro-finisher-2",
+        "restored": true
+      }
+    ],
+    "bounds": [],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "mini:gnoll_warleader",
+    "actor": "story_snarl",
+    "attacks": [
+      {
+        "name": "slash",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.2833333333333334,
+        "authoredFacing": -1,
+        "home": true
+      }
+    ],
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "clip": "xp_story_snarl_sheet:hiro-finisher-1",
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "clip": "xp_story_snarl_sheet:hiro-finisher-2",
+        "restored": true
+      }
+    ],
+    "bounds": [],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "named:bramm",
+    "actor": "story_bahadir",
+    "attacks": [
+      {
+        "name": "slash",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.1666666666666667,
+        "authoredFacing": -1,
+        "home": true
+      }
+    ],
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "clip": "xp_story_bahadir_sheet:hiro-finisher-1",
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "clip": "xp_story_bahadir_sheet:hiro-finisher-2",
+        "restored": true
+      }
+    ],
+    "bounds": [],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "enemy:tunnel_kobold",
+    "actor": "story_tunnel_kobold",
+    "attacks": [
+      {
+        "name": "slash",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 0.7,
+        "authoredFacing": -1,
+        "home": true
+      }
+    ],
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "clip": "xp_story_tunnel_kobold_sheet:hiro-finisher-1",
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "clip": "xp_story_tunnel_kobold_sheet:hiro-finisher-2",
+        "restored": true
+      }
+    ],
+    "bounds": [],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "enemy:kobold_shaman",
+    "actor": "story_kobold_shaman",
+    "attacks": [
+      {
+        "name": "slash",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 0.7,
+        "authoredFacing": -1,
+        "home": true
+      },
+      {
+        "name": "cast",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 0.7,
+        "authoredFacing": -1,
+        "home": true
+      }
+    ],
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "clip": "xp_story_kobold_shaman_sheet:hiro-finisher-1",
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "clip": "xp_story_kobold_shaman_sheet:hiro-finisher-2",
+        "restored": true
+      }
+    ],
+    "bounds": [],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "mini:kobold_chief",
+    "actor": "story_kobold_chief",
+    "attacks": [
+      {
+        "name": "slash",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 0.8333333333333334,
+        "authoredFacing": -1,
+        "home": true
+      },
+      {
+        "name": "cast",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 0.8333333333333334,
+        "authoredFacing": -1,
+        "home": true
+      }
+    ],
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "clip": "xp_story_kobold_chief_sheet:hiro-finisher-1",
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "clip": "xp_story_kobold_chief_sheet:hiro-finisher-2",
+        "restored": true
+      }
+    ],
+    "bounds": [],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "enemy:veylan_acolyte",
+    "actor": "story_veylan_acolyte",
+    "attacks": [
+      {
+        "name": "slash",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.05,
+        "authoredFacing": -1,
+        "home": true
+      },
+      {
+        "name": "cast",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.05,
+        "authoredFacing": -1,
+        "home": true
+      }
+    ],
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "clip": "xp_story_veylan_acolyte_sheet:hiro-finisher-1",
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "clip": "xp_story_veylan_acolyte_sheet:hiro-finisher-2",
+        "restored": true
+      }
+    ],
+    "bounds": [],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "named:grukhar",
+    "actor": "story_grukhar",
+    "attacks": [
+      {
+        "name": "slash",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.1333333333333333,
+        "authoredFacing": -1,
+        "home": true
+      },
+      {
+        "name": "cast",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.1333333333333333,
+        "authoredFacing": -1,
+        "home": true
+      }
+    ],
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "clip": "xp_story_grukhar_sheet:hiro-finisher-1",
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "clip": "xp_story_grukhar_sheet:hiro-finisher-2",
+        "restored": true
+      }
+    ],
+    "bounds": [],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "mini:verlan",
+    "actor": "story_femi",
+    "attacks": [
+      {
+        "name": "slash",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.05,
+        "authoredFacing": -1,
+        "home": true
+      }
+    ],
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "clip": "xp_story_femi_sheet:hiro-finisher-1",
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "clip": "xp_story_femi_sheet:hiro-finisher-2",
+        "restored": true
+      }
+    ],
+    "bounds": [],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "enemy:gauntlet_soldier",
+    "actor": "story_gauntlet_soldier",
+    "attacks": [
+      {
+        "name": "slash",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.0666666666666667,
+        "authoredFacing": -1,
+        "home": true
+      }
+    ],
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "clip": "xp_story_gauntlet_soldier_sheet:hiro-finisher-1",
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "clip": "xp_story_gauntlet_soldier_sheet:hiro-finisher-2",
+        "restored": true
+      }
+    ],
+    "bounds": [],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "mini:skarn",
+    "actor": "story_skarn",
+    "attacks": [
+      {
+        "name": "slash",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.1666666666666667,
+        "authoredFacing": -1,
+        "home": true
+      }
+    ],
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "clip": "xp_story_skarn_sheet:hiro-finisher-1",
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "clip": "xp_story_skarn_sheet:hiro-finisher-2",
+        "restored": true
+      }
+    ],
+    "bounds": [],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "enemy:hob_sergeant",
+    "actor": "story_hob_sergeant",
+    "attacks": [
+      {
+        "name": "slash",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.1333333333333333,
+        "authoredFacing": -1,
+        "home": true
+      }
+    ],
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "clip": "xp_story_hob_sergeant_sheet:hiro-finisher-1",
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "clip": "xp_story_hob_sergeant_sheet:hiro-finisher-2",
+        "restored": true
+      }
+    ],
+    "bounds": [],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "enemy:gate_bandit",
+    "actor": "story_road_bandit",
+    "attacks": [
+      {
+        "name": "slash",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.05,
+        "authoredFacing": -1,
+        "home": true
+      }
+    ],
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "clip": "xp_story_road_bandit_sheet:hiro-finisher-1",
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "clip": "xp_story_road_bandit_sheet:hiro-finisher-2",
+        "restored": true
+      }
+    ],
+    "bounds": [],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "named:gorruk",
+    "actor": "story_gorruk",
+    "attacks": [
+      {
+        "name": "slash",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.4,
+        "authoredFacing": -1,
+        "home": true
+      },
+      {
+        "name": "cast",
+        "frames": 5,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.4,
+        "authoredFacing": -1,
+        "home": true
+      }
+    ],
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "clip": "xp_story_gorruk_sheet:hiro-finisher-1",
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "clip": "xp_story_gorruk_sheet:hiro-finisher-2",
+        "restored": true
+      }
+    ],
+    "bounds": [],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "mini:silksa",
+    "actor": "story_silksa",
+    "attacks": [
+      {
+        "name": "slash",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 0.9,
+        "authoredFacing": -1,
+        "home": true
+      },
+      {
+        "name": "cast",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 0.9,
+        "authoredFacing": -1,
+        "home": true
+      }
+    ],
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "clip": "xp_story_silksa_sheet:hiro-finisher-1",
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "clip": "xp_story_silksa_sheet:hiro-finisher-2",
+        "restored": true
+      }
+    ],
+    "bounds": [],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "enemy:web_spider",
+    "actor": "story_web_spider",
+    "attacks": [
+      {
+        "name": "slash",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 0.55,
+        "authoredFacing": -1,
+        "home": true
+      },
+      {
+        "name": "cast",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 0.55,
+        "authoredFacing": -1,
+        "home": true
+      }
+    ],
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "clip": "xp_story_web_spider_sheet:hiro-finisher-1",
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "clip": "xp_story_web_spider_sheet:hiro-finisher-2",
+        "restored": true
+      }
+    ],
+    "bounds": [],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "named:thornwise",
+    "actor": "story_thornwise",
+    "attacks": [
+      {
+        "name": "slash",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.05,
+        "authoredFacing": -1,
+        "home": true
+      },
+      {
+        "name": "cast",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.05,
+        "authoredFacing": -1,
+        "home": true
+      }
+    ],
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "clip": "xp_story_thornwise_sheet:hiro-finisher-1",
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "clip": "xp_story_thornwise_sheet:hiro-finisher-2",
+        "restored": true
+      }
+    ],
+    "bounds": [],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "enemy:umbra_druid",
+    "actor": "story_umbra_druid",
+    "attacks": [
+      {
+        "name": "slash",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.05,
+        "authoredFacing": -1,
+        "home": true
+      },
+      {
+        "name": "cast",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.05,
+        "authoredFacing": -1,
+        "home": true
+      }
+    ],
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "clip": "xp_story_umbra_druid_sheet:hiro-finisher-1",
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "clip": "xp_story_umbra_druid_sheet:hiro-finisher-2",
+        "restored": true
+      }
+    ],
+    "bounds": [],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "named:nettle",
+    "actor": "story_nettle",
+    "attacks": [
+      {
+        "name": "slash",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.05,
+        "authoredFacing": -1,
+        "home": true
+      },
+      {
+        "name": "cast",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.05,
+        "authoredFacing": -1,
+        "home": true
+      }
+    ],
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "clip": "xp_story_nettle_sheet:hiro-finisher-1",
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "clip": "xp_story_nettle_sheet:hiro-finisher-2",
+        "restored": true
+      }
+    ],
+    "bounds": [],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "mini:wyvern_matriarch",
+    "actor": "story_wyvern_matriarch",
+    "attacks": [
+      {
+        "name": "slash",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.5,
+        "authoredFacing": -1,
+        "home": true
+      },
+      {
+        "name": "cast",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.5,
+        "authoredFacing": -1,
+        "home": true
+      }
+    ],
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "clip": "xp_story_wyvern_matriarch_sheet:hiro-finisher-1",
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "clip": "xp_story_wyvern_matriarch_sheet:hiro-finisher-2",
+        "restored": true
+      }
+    ],
+    "bounds": [],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "enemy:wyvern",
+    "actor": "story_wyvern",
+    "attacks": [
+      {
+        "name": "slash",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.4,
+        "authoredFacing": -1,
+        "home": true
+      },
+      {
+        "name": "cast",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.4,
+        "authoredFacing": -1,
+        "home": true
+      }
+    ],
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "clip": "xp_story_wyvern_sheet:hiro-finisher-1",
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "clip": "xp_story_wyvern_sheet:hiro-finisher-2",
+        "restored": true
+      }
+    ],
+    "bounds": [],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "mini:kestrel",
+    "actor": "story_kestrel",
+    "attacks": [
+      {
+        "name": "slash",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.1,
+        "authoredFacing": -1,
+        "home": true
+      },
+      {
+        "name": "cast",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.1,
+        "authoredFacing": -1,
+        "home": true
+      }
+    ],
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "clip": "xp_story_kestrel_sheet:hiro-finisher-1",
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "clip": "xp_story_kestrel_sheet:hiro-finisher-2",
+        "restored": true
+      }
+    ],
+    "bounds": [],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "enemy:consortium_guard",
+    "actor": "story_consortium_guard",
+    "attacks": [
+      {
+        "name": "slash",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.05,
+        "authoredFacing": -1,
+        "home": true
+      },
+      {
+        "name": "cast",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.05,
+        "authoredFacing": -1,
+        "home": true
+      }
+    ],
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "clip": "xp_story_consortium_guard_sheet:hiro-finisher-1",
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "clip": "xp_story_consortium_guard_sheet:hiro-finisher-2",
+        "restored": true
+      }
+    ],
+    "bounds": [],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "enemy:slave_driver",
+    "actor": "story_slave_driver",
+    "attacks": [
+      {
+        "name": "slash",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.05,
+        "authoredFacing": -1,
+        "home": true
+      },
+      {
+        "name": "cast",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.05,
+        "authoredFacing": -1,
+        "home": true
+      }
+    ],
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "clip": "xp_story_slave_driver_sheet:hiro-finisher-1",
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "clip": "xp_story_slave_driver_sheet:hiro-finisher-2",
+        "restored": true
+      }
+    ],
+    "bounds": [],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "named:malvane",
+    "actor": "story_malvane",
+    "attacks": [
+      {
+        "name": "slash",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.05,
+        "authoredFacing": -1,
+        "home": true
+      },
+      {
+        "name": "cast",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.05,
+        "authoredFacing": -1,
+        "home": true
+      }
+    ],
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "clip": "xp_story_malvane_sheet:hiro-finisher-1",
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "clip": "xp_story_malvane_sheet:hiro-finisher-2",
+        "restored": true
+      }
+    ],
+    "bounds": [],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "mini:sewer_ogre_mage",
+    "actor": "story_sewer_ogre_mage",
+    "attacks": [
+      {
+        "name": "slash",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.3,
+        "authoredFacing": -1,
+        "home": true
+      },
+      {
+        "name": "cast",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.3,
+        "authoredFacing": -1,
+        "home": true
+      }
+    ],
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "clip": "xp_story_sewer_ogre_mage_sheet:hiro-finisher-1",
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "clip": "xp_story_sewer_ogre_mage_sheet:hiro-finisher-2",
+        "restored": true
+      }
+    ],
+    "bounds": [],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "enemy:sewer_crawler",
+    "actor": "story_sewer_crawler",
+    "attacks": [
+      {
+        "name": "slash",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 0.55,
+        "authoredFacing": -1,
+        "home": true
+      },
+      {
+        "name": "cast",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 0.55,
+        "authoredFacing": -1,
+        "home": true
+      }
+    ],
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "clip": "xp_story_sewer_crawler_sheet:hiro-finisher-1",
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "clip": "xp_story_sewer_crawler_sheet:hiro-finisher-2",
+        "restored": true
+      }
+    ],
+    "bounds": [],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "enemy:shadow_double",
+    "actor": "story_shadow_double",
+    "attacks": [
+      {
+        "name": "slash",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.05,
+        "authoredFacing": -1,
+        "home": true
+      },
+      {
+        "name": "cast",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.05,
+        "authoredFacing": -1,
+        "home": true
+      }
+    ],
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "clip": "xp_story_shadow_double_sheet:hiro-finisher-1",
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "clip": "xp_story_shadow_double_sheet:hiro-finisher-2",
+        "restored": true
+      }
+    ],
+    "bounds": [],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "mini:lantern_master",
+    "actor": "story_lantern_master",
+    "attacks": [
+      {
+        "name": "slash",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.05,
+        "authoredFacing": -1,
+        "home": true
+      },
+      {
+        "name": "cast",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.05,
+        "authoredFacing": -1,
+        "home": true
+      }
+    ],
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "clip": "xp_story_lantern_master_sheet:hiro-finisher-1",
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "clip": "xp_story_lantern_master_sheet:hiro-finisher-2",
+        "restored": true
+      }
+    ],
+    "bounds": [],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "mini:umbral_pair",
+    "actor": "story_umbral_pair",
+    "attacks": [
+      {
+        "name": "slash",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.05,
+        "authoredFacing": -1,
+        "home": true
+      },
+      {
+        "name": "cast",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.05,
+        "authoredFacing": -1,
+        "home": true
+      }
+    ],
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "clip": "xp_story_umbral_pair_sheet:hiro-finisher-1",
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "clip": "xp_story_umbral_pair_sheet:hiro-finisher-2",
+        "restored": true
+      }
+    ],
+    "bounds": [],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "mini:tower_captain",
+    "actor": "story_tower_captain",
+    "attacks": [
+      {
+        "name": "slash",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.15,
+        "authoredFacing": -1,
+        "home": true
+      },
+      {
+        "name": "cast",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.15,
+        "authoredFacing": -1,
+        "home": true
+      }
+    ],
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "clip": "xp_story_tower_captain_sheet:hiro-finisher-1",
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "clip": "xp_story_tower_captain_sheet:hiro-finisher-2",
+        "restored": true
+      }
+    ],
+    "bounds": [],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "named:maddox",
+    "actor": "story_maddox",
+    "attacks": [
+      {
+        "name": "slash",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.05,
+        "authoredFacing": -1,
+        "home": true
+      },
+      {
+        "name": "cast",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.05,
+        "authoredFacing": -1,
+        "home": true
+      }
+    ],
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "clip": "xp_story_maddox_sheet:hiro-finisher-1",
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "clip": "xp_story_maddox_sheet:hiro-finisher-2",
+        "restored": true
+      }
+    ],
+    "bounds": [],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "named:vask",
+    "actor": "story_vask",
+    "attacks": [
+      {
+        "name": "slash",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.05,
+        "authoredFacing": -1,
+        "home": true
+      }
+    ],
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "clip": "xp_story_vask_sheet:hiro-finisher-1",
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "clip": "xp_story_vask_sheet:hiro-finisher-2",
+        "restored": true
+      }
+    ],
+    "bounds": [],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "named:rennick",
+    "actor": "story_rennick",
+    "attacks": [
+      {
+        "name": "slash",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.05,
+        "authoredFacing": -1,
+        "home": true
+      },
+      {
+        "name": "cast",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.05,
+        "authoredFacing": -1,
+        "home": true
+      }
+    ],
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "clip": "xp_story_rennick_sheet:hiro-finisher-1",
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "clip": "xp_story_rennick_sheet:hiro-finisher-2",
+        "restored": true
+      }
+    ],
+    "bounds": [],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "named:grell",
+    "actor": "story_grell",
+    "attacks": [
+      {
+        "name": "slash",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.05,
+        "authoredFacing": -1,
+        "home": true
+      },
+      {
+        "name": "cast",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.05,
+        "authoredFacing": -1,
+        "home": true
+      }
+    ],
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "clip": "xp_story_grell_sheet:hiro-finisher-1",
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "clip": "xp_story_grell_sheet:hiro-finisher-2",
+        "restored": true
+      }
+    ],
+    "bounds": [],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "mini:family_double",
+    "actor": "story_family_double",
+    "attacks": [
+      {
+        "name": "slash",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.05,
+        "authoredFacing": -1,
+        "home": true
+      },
+      {
+        "name": "cast",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.05,
+        "authoredFacing": -1,
+        "home": true
+      }
+    ],
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "clip": "xp_story_family_double_sheet:hiro-finisher-1",
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "clip": "xp_story_family_double_sheet:hiro-finisher-2",
+        "restored": true
+      }
+    ],
+    "bounds": [],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "enemy:phase_spider",
+    "actor": "story_phase_spider",
+    "attacks": [
+      {
+        "name": "slash",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 0.65,
+        "authoredFacing": -1,
+        "home": true
+      },
+      {
+        "name": "cast",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 0.65,
+        "authoredFacing": -1,
+        "home": true
+      }
+    ],
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "clip": "xp_story_phase_spider_sheet:hiro-finisher-1",
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "clip": "xp_story_phase_spider_sheet:hiro-finisher-2",
+        "restored": true
+      }
+    ],
+    "bounds": [],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "enemy:tomb_ghoul",
+    "actor": "story_tomb_ghoul",
+    "attacks": [
+      {
+        "name": "slash",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.05,
+        "authoredFacing": -1,
+        "home": true
+      },
+      {
+        "name": "cast",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.05,
+        "authoredFacing": -1,
+        "home": true
+      }
+    ],
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "clip": "xp_story_tomb_ghoul_sheet:hiro-finisher-1",
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "clip": "xp_story_tomb_ghoul_sheet:hiro-finisher-2",
+        "restored": true
+      }
+    ],
+    "bounds": [],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "enemy:gauntlet_traitor",
+    "actor": "story_gauntlet_traitor",
+    "attacks": [
+      {
+        "name": "slash",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.05,
+        "authoredFacing": -1,
+        "home": true
+      },
+      {
+        "name": "cast",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.05,
+        "authoredFacing": -1,
+        "home": true
+      }
+    ],
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "clip": "xp_story_gauntlet_traitor_sheet:hiro-finisher-1",
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "clip": "xp_story_gauntlet_traitor_sheet:hiro-finisher-2",
+        "restored": true
+      }
+    ],
+    "bounds": [],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "named:idris",
+    "actor": "story_idris",
+    "attacks": [
+      {
+        "name": "slash",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.05,
+        "authoredFacing": -1,
+        "home": true
+      },
+      {
+        "name": "cast",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.05,
+        "authoredFacing": -1,
+        "home": true
+      }
+    ],
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "clip": "xp_story_idris_sheet:hiro-finisher-1",
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "clip": "xp_story_idris_sheet:hiro-finisher-2",
+        "restored": true
+      }
+    ],
+    "bounds": [],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "named:amara",
+    "actor": "story_amara",
+    "attacks": [
+      {
+        "name": "slash",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.05,
+        "authoredFacing": -1,
+        "home": true
+      }
+    ],
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "clip": "xp_story_amara_sheet:hiro-finisher-1",
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "clip": "xp_story_amara_sheet:hiro-finisher-2",
+        "restored": true
+      }
+    ],
+    "bounds": [],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "named:ravel",
+    "actor": "story_ravel",
+    "attacks": [
+      {
+        "name": "slash",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.05,
+        "authoredFacing": -1,
+        "home": true
+      }
+    ],
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "clip": "xp_story_ravel_sheet:hiro-finisher-1",
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "clip": "xp_story_ravel_sheet:hiro-finisher-2",
+        "restored": true
+      }
+    ],
+    "bounds": [],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "named:kessa",
+    "actor": "story_kessa",
+    "attacks": [
+      {
+        "name": "slash",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.05,
+        "authoredFacing": -1,
+        "home": true
+      },
+      {
+        "name": "cast",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.05,
+        "authoredFacing": -1,
+        "home": true
+      }
+    ],
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "clip": "xp_story_kessa_sheet:hiro-finisher-1",
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "clip": "xp_story_kessa_sheet:hiro-finisher-2",
+        "restored": true
+      }
+    ],
+    "bounds": [],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "mini:hall_doubles",
+    "actor": "story_hall_doubles",
+    "attacks": [
+      {
+        "name": "slash",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.05,
+        "authoredFacing": -1,
+        "home": true
+      }
+    ],
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "clip": "xp_story_hall_doubles_sheet:hiro-finisher-1",
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "clip": "xp_story_hall_doubles_sheet:hiro-finisher-2",
+        "restored": true
+      }
+    ],
+    "bounds": [],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "enemy:palace_doppelganger",
+    "actor": "story_palace_doppelganger",
+    "attacks": [
+      {
+        "name": "slash",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.05,
+        "authoredFacing": -1,
+        "home": true
+      }
+    ],
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "clip": "xp_story_palace_doppelganger_sheet:hiro-finisher-1",
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "clip": "xp_story_palace_doppelganger_sheet:hiro-finisher-2",
+        "restored": true
+      }
+    ],
+    "bounds": [],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "named:jarem",
+    "actor": "story_jarem",
+    "attacks": [
+      {
+        "name": "slash",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.05,
+        "authoredFacing": -1,
+        "home": true
+      },
+      {
+        "name": "cast",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.05,
+        "authoredFacing": -1,
+        "home": true
+      }
+    ],
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "clip": "xp_story_jarem_sheet:hiro-finisher-1",
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "clip": "xp_story_jarem_sheet:hiro-finisher-2",
+        "restored": true
+      }
+    ],
+    "bounds": [],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "enemy:morrak_cultist",
+    "actor": "story_morrak_cultist",
+    "attacks": [
+      {
+        "name": "slash",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.05,
+        "authoredFacing": -1,
+        "home": true
+      },
+      {
+        "name": "cast",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.05,
+        "authoredFacing": -1,
+        "home": true
+      }
+    ],
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "clip": "xp_story_morrak_cultist_sheet:hiro-finisher-1",
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "clip": "xp_story_morrak_cultist_sheet:hiro-finisher-2",
+        "restored": true
+      }
+    ],
+    "bounds": [],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "named:lucan",
+    "actor": "story_lucan",
+    "attacks": [
+      {
+        "name": "slash",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.05,
+        "authoredFacing": -1,
+        "home": true
+      },
+      {
+        "name": "cast",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.05,
+        "authoredFacing": -1,
+        "home": true
+      }
+    ],
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "clip": "xp_story_lucan_sheet:hiro-finisher-1",
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "clip": "xp_story_lucan_sheet:hiro-finisher-2",
+        "restored": true
+      }
+    ],
+    "bounds": [],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "mini:altar_keepers",
+    "actor": "story_altar_keepers",
+    "attacks": [
+      {
+        "name": "slash",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.05,
+        "authoredFacing": -1,
+        "home": true
+      },
+      {
+        "name": "cast",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.05,
+        "authoredFacing": -1,
+        "home": true
+      }
+    ],
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "clip": "xp_story_altar_keepers_sheet:hiro-finisher-1",
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "clip": "xp_story_altar_keepers_sheet:hiro-finisher-2",
+        "restored": true
+      }
+    ],
+    "bounds": [],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "mini:your_own_faces",
+    "actor": "story_your_own_faces",
+    "attacks": [
+      {
+        "name": "slash",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.05,
+        "authoredFacing": -1,
+        "home": true
+      },
+      {
+        "name": "cast",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.05,
+        "authoredFacing": -1,
+        "home": true
+      }
+    ],
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "clip": "xp_story_your_own_faces_sheet:hiro-finisher-1",
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "clip": "xp_story_your_own_faces_sheet:hiro-finisher-2",
+        "restored": true
+      }
+    ],
+    "bounds": [],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  },
+  {
+    "identity": "named:korvath",
+    "actor": "story_korvath",
+    "attacks": [
+      {
+        "name": "slash",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.2,
+        "authoredFacing": -1,
+        "home": true
+      },
+      {
+        "name": "cast",
+        "frames": 9,
+        "contacts": 1,
+        "facing": -1,
+        "scaleX": 1.2,
+        "authoredFacing": -1,
+        "home": true
+      }
+    ],
+    "pairs": [
+      {
+        "variant": 0,
+        "frames": 16,
+        "clip": "xp_story_korvath_sheet:hiro-finisher-1",
+        "restored": true
+      },
+      {
+        "variant": 1,
+        "frames": 16,
+        "clip": "xp_story_korvath_sheet:hiro-finisher-2",
+        "restored": true
+      }
+    ],
+    "bounds": [],
+    "fatal": {
+      "presented": true,
+      "frames": 16
+    }
+  }
+]

@@ -31,7 +31,7 @@ const PAGES = ['docs/STORY_CAMPAIGN_PREVIEW.html', 'docs/STORY_FIGHT_PREVIEW.htm
 // the password opens the rest (Hiro, 2026-10-14: chapter one free, "allow players
 // to play chapter 2-5 if they know password"). Raise either to open more; media
 // and enemy art follow SITE_THROUGH automatically.
-const SITE_THROUGH = 5, PUBLIC_THROUGH = 1;
+const SITE_THROUGH = 6, PUBLIC_THROUGH = 1;
 // Arcade-only art the story never loads (its one Arcade creature is the wolf).
 // Left out to keep the website under GitHub Pages' 1 GB.
 const ARCADE_ONLY = new Set(['alpha', 'beetle', 'boar', 'crab', 'dark_swordswoman', 'elven_ranger', 'elven_wizard', 'enchantress', 'goblin',

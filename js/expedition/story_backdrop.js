@@ -16,7 +16,7 @@ S.Backdrop=function(parent,onReady){
       if(!this.textures.exists(this.artKey))this.load.image(this.artKey,S.Presentation.media(art.file));}
     create(){
       const {kind,id,phase}=this.spec;
-      this.scale.scaleMode=kind==='travel'?Phaser.Scale.FIT:Phaser.Scale.ENVELOP;this.scale.refresh();
+      this.scale.scaleMode=kind==='travel'?Phaser.Scale.FIT:Phaser.Scale.ENVELOP;this.scale.displaySize.setAspectMode(this.scale.scaleMode);this.scale.refresh();
       if(kind==='travel'){
         const X=A.Expedition;
         if(!X.Painted.require(this,['hiro']))return;

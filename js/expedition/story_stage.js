@@ -4,13 +4,15 @@
 'use strict';const A=ADV,S=A.Expedition.Story;
 S.Stage={
 // Edition-owned combat adaptation. Dialogue keeps the original painting.
-files:{dunmere_mine:'assets/expedition/story/stages/dunmere-mine-combat.webp',
+files:{nine_lanterns:'assets/expedition/story/stages/nine-lanterns-combat-20261015.webp',
+  dunmere_mine:'assets/expedition/story/stages/dunmere-mine-combat.webp',
   dunmere:'assets/expedition/story/stages/dunmere-combat-20261011.webp',
   ford:'assets/expedition/story/stages/ford-combat-20261011.webp',
   ...Object.fromEntries(['cliffs','sewers','study','counting','sickroom','tower','silk_floor','undervault','valve','catacombs'].map(id=>[id,'assets/expedition/story/stages/'+id+'-combat-20261014.webp']))},
 // These combat compositions have different landmarks from the dialogue plates.
 // Keep water behind the bank and attach smoke/cloth/lights to their new positions.
 profiles:{
+  nine_lanterns:{lights:[[.223,.313],[.285,.320],[.335,.326],[.385,.331],[.431,.336],[.480,.341],[.526,.345],[.572,.348],[.614,.351],[.656,.358]],cloth:[[.796,.358,.04,.13]],water:[[.90,.56,.10,.06]],sky:[[.81,.003,.18,.16]],dust:true},
   cliffs:{sky:[[.01,.005,.52,.30]],cloth:[[.69,.12,.085,.13]],mist:.59,birds:true},
   sewers:{lights:[[.125,.13],[.204,.20],[.679,.40],[.91,.33]],water:[[.13,.54,.78,.06]],falls:[[.151,.29,.019,.23],[.21,.37,.018,.17],[.88,.46,.025,.09]],mist:.59},
   study:{lights:[[.215,.27],[.417,.21],[.627,.17],[.83,.12]],cloth:[[.298,.12,.067,.29]],dust:true},

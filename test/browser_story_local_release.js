@@ -8,7 +8,7 @@ const {chromium}=require('playwright'),fs=require('node:fs'),assert=require('nod
  // Exercise the normal player's default redirect in this dedicated check.
  await page.addInitScript(()=>Object.defineProperty(navigator,'webdriver',{get:()=>false}));
  // No QA chapter override: normal index entry and an existing chapter-five save.
- await page.goto('http://127.0.0.1:8742/index.html');await page.getByRole('button',{name:'Begin story',exact:true}).waitFor({timeout:90000});
+ await page.goto((process.env.TEST_ORIGIN||'http://127.0.0.1:8742')+'/index.html');await page.getByRole('button',{name:'Begin story',exact:true}).waitFor({timeout:90000});
  const record=JSON.parse(fs.readFileSync('test/reports/story-chapters-5/verification.json')).result.record;
  await page.evaluate(record=>{const S=ADV.Expedition.Story;S.save(S.open(record));},record);
  await page.reload();await page.getByRole('button',{name:'Continue story',exact:true}).click();
@@ -22,8 +22,10 @@ const {chromium}=require('playwright'),fs=require('node:fs'),assert=require('nod
  await page.evaluate(record=>{const S=ADV.Expedition.Story;S.save(S.open(record));},finish);
  await page.reload();await page.getByRole('button',{name:'Continue story',exact:true}).click();await page.locator('#epilogue').waitFor();
  await page.setViewportSize({width:390,height:844});assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
+ await page.locator('#epilogue').getByRole('button',{name:'Continue',exact:true}).click();await page.locator('#story-thanks').waitFor();
+ const links=await page.locator('#story-thanks a').evaluateAll(rows=>rows.map(a=>a.href));assert.deepEqual(links,['games','read','fund'].map(s=>'https://neverendingnarratives.com/#'+s));assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
  assert.deepEqual(errors,[]);fs.mkdirSync('test/reports/story-local-release',{recursive:true});
- await page.screenshot({path:'test/reports/story-local-release/ending-phone.png'});
+ await page.screenshot({path:'test/reports/story-local-release/thank-you-phone.png'});
  fs.writeFileSync('test/reports/story-local-release/verification.json',JSON.stringify({defaultBoot:'story',chapter6ExistingSave:true,chapter14Accessible:true,endingReload:true,mobileWidth:390,errors},null,2));
  console.log('Default story boot, existing chapter-six save, chapter-fourteen access and ending reload passed');
 }finally{await browser.close();}})().catch(e=>{console.error(e);process.exitCode=1;});

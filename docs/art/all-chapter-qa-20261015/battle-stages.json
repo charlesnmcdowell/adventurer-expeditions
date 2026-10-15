@@ -1,0 +1,1202 @@
+[
+  {
+    "id": "lanternhold",
+    "layers": [
+      "distance",
+      "weather-scenery",
+      "hero-ground"
+    ],
+    "actualLayers": 3,
+    "clock": 645.4866666666659,
+    "ground": 380,
+    "combatPlate": false,
+    "feet": [
+      {
+        "name": "Hiro",
+        "x": 400,
+        "y": 612,
+        "height": 330
+      },
+      {
+        "name": "Nib",
+        "x": 1100,
+        "y": 608,
+        "height": 300
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "griffon",
+    "layers": [
+      "distance",
+      "weather-scenery",
+      "hero-ground"
+    ],
+    "actualLayers": 3,
+    "clock": 646.2466666666662,
+    "ground": 380,
+    "combatPlate": false,
+    "feet": [
+      {
+        "name": "Hiro",
+        "x": 400,
+        "y": 612,
+        "height": 330
+      },
+      {
+        "name": "Hired Knife · Ash Cloak",
+        "x": 612,
+        "y": 608,
+        "height": 315
+      },
+      {
+        "name": "Hired Knife · Wet Cloak",
+        "x": 825,
+        "y": 614,
+        "height": 315
+      },
+      {
+        "name": "Consortium Mage · Seal Cowl",
+        "x": 1163,
+        "y": 620,
+        "height": 330
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "shore",
+    "layers": [
+      "distance",
+      "weather-scenery",
+      "hero-ground"
+    ],
+    "actualLayers": 3,
+    "clock": 665.0599999999996,
+    "ground": 380,
+    "combatPlate": false,
+    "feet": [
+      {
+        "name": "Hiro",
+        "x": 400,
+        "y": 612,
+        "height": 330
+      },
+      {
+        "name": "Road Wolf · Grey",
+        "x": 718,
+        "y": 608,
+        "height": 250
+      },
+      {
+        "name": "Road Wolf · Grey",
+        "x": 1031,
+        "y": 614,
+        "height": 250
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "open_hand",
+    "layers": [
+      "distance",
+      "weather-scenery",
+      "hero-ground"
+    ],
+    "actualLayers": 3,
+    "clock": 646.9733333333321,
+    "ground": 380,
+    "combatPlate": false,
+    "feet": [
+      {
+        "name": "Hiro",
+        "x": 400,
+        "y": 612,
+        "height": 330
+      },
+      {
+        "name": "Merle",
+        "x": 647,
+        "y": 608,
+        "height": 310
+      },
+      {
+        "name": "Hired Knife · Wet Cloak",
+        "x": 1055,
+        "y": 614,
+        "height": 315
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "dunmere",
+    "layers": [
+      "distance",
+      "weather-scenery",
+      "hero-ground"
+    ],
+    "actualLayers": 3,
+    "clock": 630.770000000002,
+    "ground": 380,
+    "combatPlate": true,
+    "feet": [
+      {
+        "name": "Hiro",
+        "x": 400,
+        "y": 612,
+        "height": 330
+      },
+      {
+        "name": "Lurleen",
+        "x": 719,
+        "y": 608,
+        "height": 310
+      },
+      {
+        "name": "Hired Knife · Ash Cloak",
+        "x": 1055,
+        "y": 614,
+        "height": 315
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "ford",
+    "layers": [
+      "distance",
+      "weather-scenery",
+      "hero-ground"
+    ],
+    "actualLayers": 3,
+    "clock": 645.8733333333305,
+    "ground": 380,
+    "combatPlate": true,
+    "feet": [
+      {
+        "name": "Hiro",
+        "x": 400,
+        "y": 612,
+        "height": 330
+      },
+      {
+        "name": "Gnoll Raider · Yellow",
+        "x": 828,
+        "y": 608,
+        "height": 350
+      },
+      {
+        "name": "Gnoll Raider · Yellow",
+        "x": 1022,
+        "y": 614,
+        "height": 350
+      },
+      {
+        "name": "Bandit Archer · Ridge",
+        "x": 1044,
+        "y": 620,
+        "height": 305
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "gnoll_fort",
+    "layers": [
+      "distance",
+      "weather-scenery",
+      "hero-ground"
+    ],
+    "actualLayers": 3,
+    "clock": 648.4200000000002,
+    "ground": 380,
+    "combatPlate": false,
+    "feet": [
+      {
+        "name": "Hiro",
+        "x": 400,
+        "y": 612,
+        "height": 330
+      },
+      {
+        "name": "Snarl, Gnoll Warleader",
+        "x": 865,
+        "y": 608,
+        "height": 385
+      },
+      {
+        "name": "Gnoll Raider · Grey",
+        "x": 986,
+        "y": 614,
+        "height": 350
+      },
+      {
+        "name": "Gnoll Raider · Grey",
+        "x": 1116,
+        "y": 620,
+        "height": 350
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "dunmere_mine",
+    "layers": [
+      "distance",
+      "weather-scenery",
+      "hero-ground"
+    ],
+    "actualLayers": 3,
+    "clock": 646.1733333333359,
+    "ground": 380,
+    "combatPlate": true,
+    "feet": [
+      {
+        "name": "Hiro",
+        "x": 400,
+        "y": 612,
+        "height": 330
+      },
+      {
+        "name": "Tunnel Kobold · Poison Team",
+        "x": 756,
+        "y": 608,
+        "height": 210
+      },
+      {
+        "name": "Tunnel Kobold · Poison Team",
+        "x": 978,
+        "y": 614,
+        "height": 210
+      },
+      {
+        "name": "Tunnel Kobold · Poison Team",
+        "x": 1200,
+        "y": 620,
+        "height": 210
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "black_altar",
+    "layers": [
+      "distance",
+      "weather-scenery",
+      "hero-ground"
+    ],
+    "actualLayers": 3,
+    "clock": 630.9099999999988,
+    "ground": 380,
+    "combatPlate": false,
+    "feet": [
+      {
+        "name": "Hiro",
+        "x": 400,
+        "y": 612,
+        "height": 330
+      },
+      {
+        "name": "Grukhar",
+        "x": 669,
+        "y": 608,
+        "height": 340
+      },
+      {
+        "name": "Acolyte of Veylan · Bone Cowl",
+        "x": 787,
+        "y": 614,
+        "height": 315
+      },
+      {
+        "name": "Tunnel Kobold · Poison Team",
+        "x": 1000,
+        "y": 620,
+        "height": 210
+      },
+      {
+        "name": "Tunnel Kobold · Pick Team",
+        "x": 1200,
+        "y": 626,
+        "height": 210
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "thornbury",
+    "layers": [
+      "distance",
+      "weather-scenery",
+      "hero-ground"
+    ],
+    "actualLayers": 3,
+    "clock": 630.4533333333321,
+    "ground": 380,
+    "combatPlate": false,
+    "feet": [
+      {
+        "name": "Hiro",
+        "x": 400,
+        "y": 612,
+        "height": 330
+      },
+      {
+        "name": "Femi",
+        "x": 709,
+        "y": 608,
+        "height": 315
+      },
+      {
+        "name": "Hired Knife · Wet Cloak",
+        "x": 1055,
+        "y": 614,
+        "height": 315
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "holloway",
+    "layers": [
+      "distance",
+      "weather-scenery",
+      "hero-ground"
+    ],
+    "actualLayers": 3,
+    "clock": 646.7933333333323,
+    "ground": 380,
+    "combatPlate": false,
+    "feet": [
+      {
+        "name": "Hiro",
+        "x": 400,
+        "y": 612,
+        "height": 330
+      },
+      {
+        "name": "Burning Gauntlet Soldier · Night Watch",
+        "x": 710,
+        "y": 608,
+        "height": 320
+      },
+      {
+        "name": "Burning Gauntlet Soldier · Ash Tabard",
+        "x": 905,
+        "y": 614,
+        "height": 320
+      },
+      {
+        "name": "Burning Gauntlet Soldier · Night Watch",
+        "x": 1101,
+        "y": 620,
+        "height": 320
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "bandit_camp",
+    "layers": [
+      "distance",
+      "weather-scenery",
+      "hero-ground"
+    ],
+    "actualLayers": 3,
+    "clock": 629.5533333333346,
+    "ground": 380,
+    "combatPlate": false,
+    "feet": [
+      {
+        "name": "Hiro",
+        "x": 400,
+        "y": 612,
+        "height": 330
+      },
+      {
+        "name": "Skarn Maul",
+        "x": 803,
+        "y": 608,
+        "height": 350
+      },
+      {
+        "name": "Hobgoblin Sergeant · Frostbite Company",
+        "x": 883,
+        "y": 614,
+        "height": 340
+      },
+      {
+        "name": "Road Bandit · Frostbite",
+        "x": 970,
+        "y": 620,
+        "height": 315
+      },
+      {
+        "name": "Bandit Archer · Ford",
+        "x": 1044,
+        "y": 626,
+        "height": 305
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "mirkhollow",
+    "layers": [
+      "distance",
+      "weather-scenery",
+      "hero-ground"
+    ],
+    "actualLayers": 3,
+    "clock": 647.8133333333311,
+    "ground": 380,
+    "combatPlate": false,
+    "feet": [
+      {
+        "name": "Hiro",
+        "x": 400,
+        "y": 612,
+        "height": 330
+      },
+      {
+        "name": "Silksa, Spider Queen",
+        "x": 783,
+        "y": 608,
+        "height": 270
+      },
+      {
+        "name": "Giant Spider · Web-Black",
+        "x": 951,
+        "y": 614,
+        "height": 165
+      },
+      {
+        "name": "Giant Spider · Web-Black",
+        "x": 1078,
+        "y": 620,
+        "height": 165
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "grove",
+    "layers": [
+      "distance",
+      "weather-scenery",
+      "hero-ground"
+    ],
+    "actualLayers": 3,
+    "clock": 646.0366666666663,
+    "ground": 380,
+    "combatPlate": false,
+    "feet": [
+      {
+        "name": "Hiro",
+        "x": 400,
+        "y": 612,
+        "height": 330
+      },
+      {
+        "name": "Mzee Kamau",
+        "x": 667,
+        "y": 608,
+        "height": 315
+      },
+      {
+        "name": "Umbra Druid · Moss Robe",
+        "x": 865,
+        "y": 614,
+        "height": 315
+      },
+      {
+        "name": "Umbra Druid · Bark Robe",
+        "x": 1006,
+        "y": 620,
+        "height": 315
+      },
+      {
+        "name": "Wanjiru",
+        "x": 1128,
+        "y": 626,
+        "height": 315
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "cliffs",
+    "layers": [
+      "distance",
+      "weather-scenery",
+      "hero-ground"
+    ],
+    "actualLayers": 3,
+    "clock": 597.9266666666657,
+    "ground": 380,
+    "combatPlate": true,
+    "feet": [
+      {
+        "name": "Hiro",
+        "x": 400,
+        "y": 612,
+        "height": 330
+      },
+      {
+        "name": "Wyvern Matriarch",
+        "x": 861,
+        "y": 608,
+        "height": 450
+      },
+      {
+        "name": "Wyvern · Grey",
+        "x": 1036,
+        "y": 614,
+        "height": 420
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "iron_mine",
+    "layers": [
+      "distance",
+      "weather-scenery",
+      "hero-ground"
+    ],
+    "actualLayers": 3,
+    "clock": 632.4099999999981,
+    "ground": 380,
+    "combatPlate": false,
+    "feet": [
+      {
+        "name": "Hiro",
+        "x": 400,
+        "y": 612,
+        "height": 330
+      },
+      {
+        "name": "Kestrel",
+        "x": 639,
+        "y": 608,
+        "height": 330
+      },
+      {
+        "name": "Consortium Guard · Iron Livery",
+        "x": 869,
+        "y": 614,
+        "height": 315
+      },
+      {
+        "name": "Consortium Mage · Ash Cowl",
+        "x": 1163,
+        "y": 620,
+        "height": 330
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "study",
+    "layers": [
+      "distance",
+      "weather-scenery",
+      "hero-ground"
+    ],
+    "actualLayers": 3,
+    "clock": 647.7066666666673,
+    "ground": 380,
+    "combatPlate": true,
+    "feet": [
+      {
+        "name": "Hiro",
+        "x": 400,
+        "y": 612,
+        "height": 330
+      },
+      {
+        "name": "Olamide",
+        "x": 675,
+        "y": 608,
+        "height": 315
+      },
+      {
+        "name": "Consortium Guard · Mine Detail",
+        "x": 791,
+        "y": 614,
+        "height": 315
+      },
+      {
+        "name": "Consortium Guard · Black Livery",
+        "x": 930,
+        "y": 620,
+        "height": 315
+      },
+      {
+        "name": "Consortium Mage · Seal Cowl",
+        "x": 1163,
+        "y": 626,
+        "height": 330
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "valve",
+    "layers": [
+      "distance",
+      "weather-scenery",
+      "hero-ground"
+    ],
+    "actualLayers": 3,
+    "clock": 648.7266666666643,
+    "ground": 380,
+    "combatPlate": true,
+    "feet": [
+      {
+        "name": "Hiro",
+        "x": 400,
+        "y": 612,
+        "height": 330
+      },
+      {
+        "name": "Consortium Guard · Mine Detail",
+        "x": 642,
+        "y": 608,
+        "height": 315
+      },
+      {
+        "name": "Consortium Guard · Iron Livery",
+        "x": 787,
+        "y": 614,
+        "height": 315
+      },
+      {
+        "name": "Consortium Mage · Seal Cowl",
+        "x": 1027,
+        "y": 620,
+        "height": 330
+      },
+      {
+        "name": "Slave Driver · Chain Hand",
+        "x": 1114,
+        "y": 626,
+        "height": 315
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "sewers",
+    "layers": [
+      "distance",
+      "weather-scenery",
+      "hero-ground"
+    ],
+    "actualLayers": 3,
+    "clock": 647.7066666666675,
+    "ground": 380,
+    "combatPlate": true,
+    "feet": [
+      {
+        "name": "Hiro",
+        "x": 400,
+        "y": 612,
+        "height": 330
+      },
+      {
+        "name": "The Ogre Under the Docks",
+        "x": 873,
+        "y": 608,
+        "height": 390
+      },
+      {
+        "name": "Sewer Crawler · Pale",
+        "x": 992,
+        "y": 614,
+        "height": 165
+      },
+      {
+        "name": "Sewer Crawler · Wet",
+        "x": 1122,
+        "y": 620,
+        "height": 165
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "nine_lanterns",
+    "layers": [
+      "distance",
+      "weather-scenery",
+      "hero-ground"
+    ],
+    "actualLayers": 3,
+    "clock": 646.4633333333342,
+    "ground": 380,
+    "combatPlate": false,
+    "feet": [
+      {
+        "name": "Hiro",
+        "x": 400,
+        "y": 612,
+        "height": 330
+      },
+      {
+        "name": "Consortium Guard · Black Livery",
+        "x": 642,
+        "y": 608,
+        "height": 315
+      },
+      {
+        "name": "Hired Knife · Ash Cloak",
+        "x": 1055,
+        "y": 614,
+        "height": 315
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "counting",
+    "layers": [
+      "distance",
+      "weather-scenery",
+      "hero-ground"
+    ],
+    "actualLayers": 3,
+    "clock": 648.4666666666636,
+    "ground": 380,
+    "combatPlate": true,
+    "feet": [
+      {
+        "name": "Hiro",
+        "x": 400,
+        "y": 612,
+        "height": 330
+      },
+      {
+        "name": "Shape-Thief · Half-Turned",
+        "x": 624,
+        "y": 608,
+        "height": 315
+      },
+      {
+        "name": "Shape-Thief · Wearing a Face",
+        "x": 845,
+        "y": 614,
+        "height": 315
+      },
+      {
+        "name": "Hired Knife · Ash Cloak",
+        "x": 1055,
+        "y": 620,
+        "height": 315
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "tower",
+    "layers": [
+      "distance",
+      "weather-scenery",
+      "hero-ground"
+    ],
+    "actualLayers": 3,
+    "clock": 662.9133333333341,
+    "ground": 380,
+    "combatPlate": true,
+    "feet": [
+      {
+        "name": "Hiro",
+        "x": 400,
+        "y": 612,
+        "height": 330
+      },
+      {
+        "name": "Consortium Guard · Mine Detail",
+        "x": 642,
+        "y": 608,
+        "height": 315
+      },
+      {
+        "name": "Consortium Guard · Iron Livery",
+        "x": 1085,
+        "y": 614,
+        "height": 315
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "silk_floor",
+    "layers": [
+      "distance",
+      "weather-scenery",
+      "hero-ground"
+    ],
+    "actualLayers": 3,
+    "clock": 316.65999999999997,
+    "ground": 380,
+    "combatPlate": true,
+    "feet": [
+      {
+        "name": "Hiro",
+        "x": 400,
+        "y": 612,
+        "height": 330
+      },
+      {
+        "name": "Consortium Mage · Ledger Cowl",
+        "x": 737,
+        "y": 608,
+        "height": 330
+      },
+      {
+        "name": "Consortium Guard · Black Livery",
+        "x": 871,
+        "y": 614,
+        "height": 315
+      },
+      {
+        "name": "Hired Knife · Road Cloak",
+        "x": 1055,
+        "y": 620,
+        "height": 315
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "catacombs",
+    "layers": [
+      "distance",
+      "weather-scenery",
+      "hero-ground"
+    ],
+    "actualLayers": 3,
+    "clock": 350,
+    "ground": 380,
+    "combatPlate": true,
+    "feet": [
+      {
+        "name": "Hiro",
+        "x": 400,
+        "y": 612,
+        "height": 330
+      },
+      {
+        "name": "Gbenga",
+        "x": 627,
+        "y": 608,
+        "height": 315
+      },
+      {
+        "name": "Hired Knife · Ash Cloak",
+        "x": 802,
+        "y": 614,
+        "height": 315
+      },
+      {
+        "name": "Hired Knife · Wet Cloak",
+        "x": 1055,
+        "y": 620,
+        "height": 315
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "hunted_city",
+    "layers": [
+      "distance",
+      "weather-scenery",
+      "hero-ground"
+    ],
+    "actualLayers": 3,
+    "clock": 350,
+    "ground": 380,
+    "combatPlate": false,
+    "feet": [
+      {
+        "name": "Hiro",
+        "x": 400,
+        "y": 612,
+        "height": 330
+      },
+      {
+        "name": "Burning Gauntlet Soldier · Ash Tabard",
+        "x": 710,
+        "y": 608,
+        "height": 320
+      },
+      {
+        "name": "Burning Gauntlet Soldier · Ash Tabard",
+        "x": 893,
+        "y": 614,
+        "height": 320
+      },
+      {
+        "name": "Gauntlet Turncoat · Marr's Own",
+        "x": 1085,
+        "y": 620,
+        "height": 315
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "sickroom",
+    "layers": [
+      "distance",
+      "weather-scenery",
+      "hero-ground"
+    ],
+    "actualLayers": 3,
+    "clock": 350,
+    "ground": 380,
+    "combatPlate": true,
+    "feet": [
+      {
+        "name": "Hiro",
+        "x": 400,
+        "y": 612,
+        "height": 330
+      },
+      {
+        "name": "Idris",
+        "x": 637,
+        "y": 608,
+        "height": 315
+      },
+      {
+        "name": "Shape-Thief · Half-Turned",
+        "x": 819,
+        "y": 614,
+        "height": 315
+      },
+      {
+        "name": "Gauntlet Turncoat · Marr's Own",
+        "x": 1085,
+        "y": 620,
+        "height": 315
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "undervault",
+    "layers": [
+      "distance",
+      "weather-scenery",
+      "hero-ground"
+    ],
+    "actualLayers": 3,
+    "clock": 333.3333333333333,
+    "ground": 380,
+    "combatPlate": true,
+    "feet": [
+      {
+        "name": "Hiro",
+        "x": 400,
+        "y": 612,
+        "height": 330
+      },
+      {
+        "name": "Rasheed",
+        "x": 706,
+        "y": 608,
+        "height": 315
+      },
+      {
+        "name": "Kemi",
+        "x": 909,
+        "y": 614,
+        "height": 315
+      },
+      {
+        "name": "Hired Knife · Road Cloak",
+        "x": 1055,
+        "y": 620,
+        "height": 315
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "palace",
+    "layers": [
+      "distance",
+      "weather-scenery",
+      "hero-ground"
+    ],
+    "actualLayers": 3,
+    "clock": 350,
+    "ground": 380,
+    "combatPlate": false,
+    "feet": [
+      {
+        "name": "Hiro",
+        "x": 400,
+        "y": 612,
+        "height": 330
+      },
+      {
+        "name": "Ducal Guard 1",
+        "x": 643,
+        "y": 608,
+        "height": 315
+      },
+      {
+        "name": "Ducal Guard 2",
+        "x": 886,
+        "y": 614,
+        "height": 315
+      },
+      {
+        "name": "Palace Guard · Gate Livery",
+        "x": 1129,
+        "y": 620,
+        "height": 315
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "undercity",
+    "layers": [
+      "distance",
+      "weather-scenery",
+      "hero-ground"
+    ],
+    "actualLayers": 3,
+    "clock": 350,
+    "ground": 380,
+    "combatPlate": false,
+    "feet": [
+      {
+        "name": "Hiro",
+        "x": 400,
+        "y": 612,
+        "height": 330
+      },
+      {
+        "name": "Amara",
+        "x": 1049,
+        "y": 608,
+        "height": 315
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "temple",
+    "layers": [
+      "distance",
+      "weather-scenery",
+      "hero-ground"
+    ],
+    "actualLayers": 3,
+    "clock": 350,
+    "ground": 380,
+    "combatPlate": false,
+    "feet": [
+      {
+        "name": "Hiro",
+        "x": 400,
+        "y": 612,
+        "height": 330
+      },
+      {
+        "name": "Segun Marr",
+        "x": 615,
+        "y": 608,
+        "height": 315
+      },
+      {
+        "name": "Gauntlet Turncoat · Marr's Own",
+        "x": 852,
+        "y": 614,
+        "height": 315
+      },
+      {
+        "name": "Gauntlet Turncoat · Marr's Own",
+        "x": 1085,
+        "y": 620,
+        "height": 315
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "mirrors",
+    "layers": [
+      "distance",
+      "weather-scenery",
+      "hero-ground"
+    ],
+    "actualLayers": 3,
+    "clock": 350,
+    "ground": 380,
+    "combatPlate": false,
+    "feet": [
+      {
+        "name": "Hiro",
+        "x": 400,
+        "y": 612,
+        "height": 330
+      },
+      {
+        "name": "Your Own Faces 1",
+        "x": 693,
+        "y": 608,
+        "height": 315
+      },
+      {
+        "name": "Your Own Faces 2",
+        "x": 910,
+        "y": 614,
+        "height": 315
+      },
+      {
+        "name": "Your Own Faces 3",
+        "x": 1126,
+        "y": 620,
+        "height": 315
+      }
+    ],
+    "errors": []
+  },
+  {
+    "id": "morrak_realm",
+    "layers": [
+      "distance",
+      "weather-scenery",
+      "hero-ground"
+    ],
+    "actualLayers": 3,
+    "clock": 366.6666666666667,
+    "ground": 380,
+    "combatPlate": false,
+    "feet": [
+      {
+        "name": "Hiro",
+        "x": 400,
+        "y": 612,
+        "height": 330
+      },
+      {
+        "name": "Kolade — the Unbound",
+        "x": 1038,
+        "y": 608,
+        "height": 360
+      }
+    ],
+    "errors": []
+  }
+]

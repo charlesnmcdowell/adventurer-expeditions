@@ -82,4 +82,16 @@ assert(A.GateFinale.state(f.game).soulTaken);assert(C.state(f.game).dead.include
 f.record.queue=[];S.nextPhase(f);for(const id of S.opponentIds(f))S.bindings[id]={combatReady:true,enemyFinisherReady:true,hiroFinishersReady:2};
 S.beginFight(f);S.defeat(f);S.retry(f);assert(A.GateFinale.state(f.game).soulTaken,'retry does not revive sister or replay ritual');
 S.victory(f);assert(A.GateFinale.state(f.game).realmWon);assert.equal(C.resolveEnding(f.game,'restore'),'restored');assert(!C.state(f.game).dead.includes('wren_ward'));
+// Painted inn journeys survive reload without changing dialogue, health or rewards.
+for(let chapter=2;chapter<=14;chapter++){
+ const trip=S.open();Object.assign(trip.record,{chapter,phase:'inn',completed:[chapter-1]});S.syncQuest(trip);
+ trip.record.run.hpMax=344;trip.record.run.hp=81;const score=trip.record.run.score;
+ assert(S.leaveInn(trip));assert.equal(S.travelSpec(trip).leg,'outbound');
+ const resumed=S.open(S.load());assert.equal(S.travelSpec(resumed).chapter,chapter);
+ assert(S.finishTravel(resumed));assert(!S.finishTravel(resumed),'completion is idempotent');
+ assert.equal(resumed.record.phase,'departure');assert.equal(resumed.record.run.hp,81);assert.equal(resumed.record.run.score,score);
+ resumed.record.phase='closing';resumed.record.queue=[];S.nextPhase(resumed);
+ assert.equal(!!resumed.record.travelPending,chapter<14,'finale stays with its epilogue and thank-you card');
+ if(chapter<14){assert.equal(S.travelSpec(resumed).leg,'return');S.finishTravel(resumed);assert.equal(resumed.record.phase,'arrival');}
+}
 console.log('story_campaign: original text, choices, media inventory, solo world, isolated saves, retry and finale continuity passed');

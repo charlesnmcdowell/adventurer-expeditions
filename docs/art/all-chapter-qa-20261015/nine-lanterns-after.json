@@ -1,0 +1,35 @@
+[
+  {
+    "id": "nine_lanterns",
+    "layers": [
+      "distance",
+      "weather-scenery",
+      "hero-ground"
+    ],
+    "actualLayers": 3,
+    "clock": 647.2466666666668,
+    "ground": 380,
+    "combatPlate": true,
+    "feet": [
+      {
+        "name": "Hiro",
+        "x": 400,
+        "y": 612,
+        "height": 330
+      },
+      {
+        "name": "Consortium Guard · Black Livery",
+        "x": 642,
+        "y": 608,
+        "height": 315
+      },
+      {
+        "name": "Hired Knife · Ash Cloak",
+        "x": 1055,
+        "y": 614,
+        "height": 315
+      }
+    ],
+    "errors": []
+  }
+]

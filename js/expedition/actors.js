@@ -401,9 +401,9 @@ class Actor {
       let ended = false, released = false, hits = 0, clearGore = null;
       const target = c.paired ? opts.target : null, targetVisible = target && target.root.visible;
       const originX = this.root.x;
-      // Wide cast poses can extend beyond their idle footprint in the rear
-      // slot. Step into a visible casting position, then return at native scale.
-      const casting=clip==='cast'&&c.releaseAnchor&&scene.textures;
+      // Wide attack poses can extend beyond their idle footprint in the rear
+      // slot. Step into a visible starting position, then return at native scale.
+      const casting=!c.paired&&opts.target&&/^(cast|slash|slash_wide|riposte|finisher|leap|pounce|charge|bite|lash)$/.test(clip)&&scene.textures;
       let castX=originX;
       if(casting){
         const right=Math.max(...c.frames.map(name=>{const f=scene.textures.getFrame(sheet.key,name);return (f.x+f.width-sheet.canvas.pivot.x)*Math.abs(this._baseScaleX);}));
@@ -504,6 +504,11 @@ class Actor {
         this.img.on('animationstart', onStart); this.img.on('animationupdate', onUpdate); this.img.on('animationcomplete', onDone);
         this.img.play(key, false);
         this.syncPause();
+        if (!c.loop && approaching) {
+          const first = contacts.length ? contacts[0] : Math.floor(c.frames.length / 2);
+          const leadMs = (c.durationMs || 600) * first / c.frames.length;
+          move(contactX, Math.max(1, Math.min(170, leadMs || 1)), 'Sine.Out');
+        } else if (!c.loop && returning) move(this.home.x, Math.max(100, (c.durationMs || 500) - 80), 'Sine.Out');
       };
       if (pairApproach) {
         this.resetImageTransform();
@@ -512,11 +517,6 @@ class Actor {
         this.syncPause();
       } else if(castX!==originX)move(castX,120,'Sine.Out',startClip);
       else startClip();
-      if (!c.loop && approaching) {
-        const first = contacts.length ? contacts[0] : Math.floor(c.frames.length / 2);
-        const leadMs = (c.durationMs || 600) * first / c.frames.length;
-        move(contactX, Math.max(1, Math.min(170, leadMs || 1)), 'Sine.Out');
-      } else if (!c.loop && returning) move(this.home.x, Math.max(100, (c.durationMs || 500) - 80), 'Sine.Out');
       if (c.loop) {
         // Idle used as a safe painted fallback is a hold, never an accidental
         // 200px walk. Locomotion alone moves the root and owns that tween.

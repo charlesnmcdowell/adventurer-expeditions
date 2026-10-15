@@ -13,6 +13,14 @@ for identity,actor in bindings:
    r=f['frame']; x,y,w,h=(r[k] for k in ('x','y','w','h'))
    if x<0 or y<0 or x+w>im.width or y+h>im.height: errors.append('out of atlas '+f['filename'])
    frames[f['filename']]=(im,(x,y,x+w,y+h),f)
+   rsrc=f['spriteSourceSize']; orig=f['sourceSize']
+   if rsrc['x']<0 or rsrc['y']<0 or rsrc['x']+w>orig['w'] or rsrc['y']+h>orig['h']: errors.append('trim outside source '+f['filename'])
+  rects=page['frames']
+  for i,a in enumerate(rects):
+   a=a['frame']
+   for b in rects[i+1:]:
+    b=b['frame']
+    if max(a['x'],b['x'])<min(a['x']+a['w'],b['x']+b['w']) and max(a['y'],b['y'])<min(a['y']+a['h'],b['y']+b['h']): errors.append('overlapping atlas cells')
  for k,c in d['clips'].items():
   for f in c['frames']:
    if f not in frames: errors.append('missing '+k+':'+str(f))

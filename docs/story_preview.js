@@ -269,7 +269,25 @@ function ending(){
   const read=button('Read aloud',()=>{if(active){active=false;stopVoice();read.textContent='Read aloud';return;}setMuted(false);playMusic();active=true;at=-1;next();},controls);
   function next(){stopVoice();if(!active||!box.isConnected||muted)return;const row=end.narration[++at];rows.forEach(p=>p.classList.remove('reading'));if(!row){active=false;read.textContent='Read again';return;}
     const el=rows[row.paragraph];if(el){el.classList.add('reading');el.scrollIntoView({block:'nearest'});}read.textContent='Stop narration';voice=new Audio(url(row.file));voice.onended=next;voice.onerror=next;voice.play().catch(()=>{active=false;read.textContent='Read aloud';});}
+  button('Continue',endCard,controls);
   button('Back to title',title,controls);
+}
+// A separate closing card follows the authored ending; it never replaces the
+// player's final choice, the epilogue, or its narration.
+function endCard(){
+  stopVoice();panel.replaceChildren();sceneContext=null;backdrop.pause(false);
+  backdrop.show({kind:'inn',id:'inn',visit:15,run:{...session.record.run,cycles:{story:14}}});
+  const box=text('section','',panel,'menu');box.id='story-thanks';
+  text('h1','Thanks for playing!',box);
+  text('p','Thank you for taking Hiro all the way to the end. I hope you enjoyed the journey.',box,'speech');
+  text('p','There are more games and books to explore at Neverending Narratives. If you can, a donation helps keep the site running and pays for the next game.',box,'speech');
+  text('p','Stay tuned for the next adventure. — Hiro Protagonist',box,'caption');
+  const links=text('div','',box,'buttons');
+  for(const [label,section]of [['More games','games'],['Explore the books','read'],['Support the next game','fund']]){
+    const a=document.createElement('a');a.textContent=label;a.href='https://neverendingnarratives.com/#'+section;a.target='_blank';a.rel='noopener noreferrer';
+    a.style.cssText='display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 20px;color:#ebcf8f;border:1px solid #a28859;border-radius:5px;background:#172033e8';links.append(a);
+  }
+  button('Read the ending again',()=>{panel.replaceChildren();ending();},box);button('Back to title',title,box);
 }
 // Separate animated atmosphere on the reused panorama, never in front of UI.
 const canvas=$('weather'),ctx=canvas.getContext('2d');let w=0,h=0;

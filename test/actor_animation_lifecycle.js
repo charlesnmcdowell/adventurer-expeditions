@@ -75,6 +75,18 @@ test('per-frame durations retain variable holds and exact configured total', () 
   assert.deepEqual(Array.from(cfg.frames, f => f.duration), [90, 40, 170]);
   assert.equal(cfg.duration, 300);
 });
+test('rear-row enemies step inside the screen before drawing a wide attack', async () => {
+  const a=actor();a.side='b';a.facing=-1;a.root.x=a.home.x=1200;
+  a.sheet.canvas={w:600,h:600,pivot:{x:300,y:450}};
+  a.scene.textures={getFrame:()=>({x:0,width:600})};
+  const starts=[],play=a.img.play.bind(a.img);a.img.play=key=>{starts.push(a.root.x);return play(key);};
+  const p=a.play('slash',{target:{root:{x:200},height:300}});
+  assert.equal(starts.length,0,'wide attack must wait for the visibility step');
+  await tick();assert(starts[0]+300<=1252,'first attack frame is inside the right edge');
+  emit(a,'animationupdate','slash',1);emit(a,'animationcomplete','slash',2);await p;
+  assert.equal(a.root.x,1200,'recovery returns to the assigned formation slot');
+});
+
 test('release hook does not cut recovery or settle the play promise early', async () => {
   const a = actor(); let release = 0, settled = false;
   const p = a.play('slash', { onRelease: () => release++ }).then(() => { settled = true; });
