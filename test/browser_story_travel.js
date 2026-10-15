@@ -28,4 +28,3 @@ const OUT='test/reports/story-travel';fs.mkdirSync(OUT,{recursive:true});
  }
  assert.deepEqual(errors,[]);fs.writeFileSync(OUT+'/verification.json',JSON.stringify({results,errors},null,2));
 }finally{await browser.close();}})().catch(e=>{console.error(e);process.exitCode=1;});
-
