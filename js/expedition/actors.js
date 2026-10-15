@@ -132,7 +132,9 @@ class Actor {
     if(u.stealth||u.untargetable>0)kinds.add('stealth');
     if(this.scene.enc?.st?.hazards?.some(h=>h.side===u.side&&h.lane===u.lane&&h.rounds>0&&!h.heal))kinds.add('hazard');
     for (const k of kinds) if (!this.badges.has(k)) this.addBadge(k);
-    this.setOutline(kinds.has('aura') ? 0xa66bff : kinds.has('counter') ? 0xe8c86a : null);
+    // No glow around the body for a held Counter or a buff (Hiro, 2026-10-14:
+    // "remove the yellow aura that appears when using counter"); the badge says it.
+    this.setOutline(null);
     for (const [k, b] of this.badges) if (!kinds.has(k)) { b.destroy(); this.badges.delete(k); }
     this.layoutBadges();
   }

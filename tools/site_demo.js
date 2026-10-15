@@ -27,10 +27,15 @@ function frozenFiles(dir=OUT, prefix='') {
 }
 const TOP = ['js', 'lib', 'audio', 'assets'];
 const PAGES = ['docs/STORY_CAMPAIGN_PREVIEW.html', 'docs/STORY_FIGHT_PREVIEW.html', 'docs/story_preview.js'];
-// The public demo plays chapters 1..SITE_THROUGH, then the coming-soon card
-// (Hiro, 2026-10-13: "unlock chapter 2 but lock chapter 3"). Raise it to open
-// the next chapter; media and enemy art follow automatically.
-const SITE_THROUGH = 2;
+// The package carries chapters 1..SITE_THROUGH. Anyone can play 1..PUBLIC_THROUGH;
+// the password opens the rest (Hiro, 2026-10-14: chapter one free, "allow players
+// to play chapter 2-5 if they know password"). Raise either to open more; media
+// and enemy art follow SITE_THROUGH automatically.
+const SITE_THROUGH = 5, PUBLIC_THROUGH = 1;
+// Arcade-only art the story never loads (its one Arcade creature is the wolf).
+// Left out to keep the website under GitHub Pages' 1 GB.
+const ARCADE_ONLY = new Set(['alpha', 'beetle', 'boar', 'crab', 'dark_swordswoman', 'elven_ranger', 'elven_wizard', 'enchantress', 'goblin',
+  'hag', 'hydra', 'moss_giant', 'orc', 'plant', 'serpent', 'spider', 'toad', 'vulture', 'travel']);
 const CHAPTERS = Array.from({ length: SITE_THROUGH }, (_, i) => i + 1);
 
 // Enemy art for every opponent fought in those chapters (story_art.js bindings).
@@ -49,7 +54,8 @@ function chapterOneMedia() {
   const d = JSON.parse(fs.readFileSync(path.join(ROOT, 'assets/expedition/story/campaign.json')));
   const media = JSON.parse(fs.readFileSync(path.join(ROOT, 'assets/expedition/story/preview-media.json')));
   // The next chapter's track plays behind the coming-soon card.
-  const m = d.music, tracks = new Set([...CHAPTERS.map(n => m.quest[n]), m.quest[SITE_THROUGH + 1], m.combat.road, m.dream, 'vg_lanternhold'].filter(Boolean));
+  const m = d.music, tracks = new Set([...CHAPTERS.map(n => m.quest[n]), m.quest[PUBLIC_THROUGH + 1], m.quest[SITE_THROUGH + 1],
+    ...CHAPTERS.map(n => m.combatByQuest?.[n] || m.combat[n >= m.cityFrom ? 'city' : 'road']), m.dream, 'vg_lanternhold'].filter(Boolean));
   const p = d.presentation || {}, places = new Set(['lanternhold']);
   for (const n of CHAPTERS) for (const id of [...(d.routes[n] || []), p.departures?.[n], p.arrivals?.[n]]) if (id) places.add(id);
   const keyed = new RegExp('^q(' + CHAPTERS.join('|') + ')_'), voiced = new RegExp('^audio/vo/campaign/[^/]+/q(' + CHAPTERS.join('|') + ')_');
@@ -63,8 +69,10 @@ function chapterOneMedia() {
   for (const id of places) { const e = d.art.environments[id]; if (e) keep.add(e.file); }
   // Panoramas behind the title and departure scenes travel with their place.
   for (const f of media) if (/panorama_/.test(f) && [...places].some(id => f.includes('panorama_' + id + '.'))) keep.add(f);
-  // Story stills in these chapters: Tesfaye's death (1) and the bounty notice (2).
-  for (const id of ['death', ...(SITE_THROUGH >= 2 ? ['bounty'] : [])]) { const st = d.art.stills[id]; if (st) keep.add(st.file); }
+  // Story stills by the chapter they appear in (story_presentation.js P.scene).
+  const STILLS = { 1: ['death'], 2: ['bounty'], 4: ['dream_1'], 7: ['dream_2', 'valve_scene'], 10: ['letter', 'dream_3'], 12: ['reveal', 'frost'],
+    14: ['altar', 'altar_amara', 'hiwot_sacrifice', 'hiwot_bound', 'ending_hero', 'ending_vengeance', 'ending_usurper', 'ending_mercy', 'ending_empty'] };
+  for (const n of CHAPTERS) for (const id of STILLS[n] || []) { const st = d.art.stills[id]; if (st) keep.add(st.file); }
   return { keep, media, enemies: shippedEnemies() };
 }
 
@@ -72,7 +80,8 @@ function skip(rel, media) {
   if (rel.startsWith('assets/expedition/story/media/')) return !media.keep.has(rel.slice('assets/expedition/story/media/'.length));
   const enemy = (/^assets\/expedition\/(?:adult\/)?(story_[a-z_]+?)(?:-fatal)?\//.exec(rel) || [])[1];
   if (enemy) return !media.enemies.has(enemy);
-  return false;
+  const folder = (/^assets\/expedition\/(?:adult\/)?([a-z_]+?)(?:-fatal)?\//.exec(rel) || [])[1];
+  return !!folder && ARCADE_ONLY.has(folder);
 }
 
 function walk(dir, out) {
@@ -97,7 +106,11 @@ function build() {
     // local development cap or allow QA query parameters to request absent art.
     if(rel==='docs/story_preview.js'){
       const s=body.toString();if(!/const DEMO_THROUGH=\d+/.test(s))throw Error('Story chapter cap moved');
-      body=Buffer.from(s.replace(/const DEMO_THROUGH=\d+/,'const DEMO_THROUGH='+SITE_THROUGH).replace('const PLAYABLE_THROUGH=localHost&&askedThrough>=1&&askedThrough<=14?askedThrough:DEMO_THROUGH;','const PLAYABLE_THROUGH=DEMO_THROUGH;'));
+      // Public cap, password cap, and no ?through on the website.
+      const cap='const PLAYABLE_THROUGH=localHost&&askedThrough>=1&&askedThrough<=14?askedThrough:unlocked()?Math.max(DEMO_THROUGH,UNLOCK_THROUGH):DEMO_THROUGH;';
+      if(!s.includes(cap)||!s.includes('const UNLOCK_THROUGH=DEMO_THROUGH,'))throw Error('Story unlock code moved');
+      body=Buffer.from(s.replace(/const DEMO_THROUGH=\d+/,'const DEMO_THROUGH='+PUBLIC_THROUGH).replace('const UNLOCK_THROUGH=DEMO_THROUGH,','const UNLOCK_THROUGH='+SITE_THROUGH+',')
+        .replace(cap,'const PLAYABLE_THROUGH=unlocked()?Math.max(DEMO_THROUGH,UNLOCK_THROUGH):DEMO_THROUGH;'));
     }
     if (rel === 'js/expedition/dev.js') {
       const s = body.toString(); if (!s.includes('Dev.DEV_BUILD = true;')) throw Error('dev.js switch moved');
@@ -139,6 +152,25 @@ async function verify() {
     await page.getByRole('button', { name: 'Begin story', exact: true }).click();
     await page.getByText('Chapter 1', { exact: true }).waitFor();
     console.log('title and chapter card: ok');
+    // Public lock: after chapter PUBLIC_THROUGH a stranger reaches the coming-soon
+    // card; a wrong password is refused and the right one opens the rest.
+    if (SITE_THROUGH > PUBLIC_THROUGH) {
+      const done = CHAPTERS.filter(n => n <= PUBLIC_THROUGH);
+      await page.evaluate(([next, done]) => { const S = ADV.Expedition.Story, s = S.open(S.fresh()), r = s.record;
+        r.chapter = next; r.phase = 'inn'; r.completed = done; r.titleCards = done; S.syncQuest(s); S.save(s); }, [PUBLIC_THROUGH + 1, done]);
+      await page.goto(base + '/'); await page.getByRole('button', { name: 'Continue story', exact: true }).click();
+      await page.locator('#story-embark').click();
+      const locked = await page.locator('.demo-end h1').textContent({ timeout: 15000 });
+      if (!locked.includes('Chapter ' + (PUBLIC_THROUGH + 1))) throw Error('Public lock missing: ' + locked);
+      const box = page.locator('.demo-end input[type=password]');
+      await box.fill('not it'); await box.press('Enter');
+      await page.getByText("That's not it.").waitFor();
+      await box.fill('Hiro'); await box.press('Enter');
+      await page.waitForURL(/.*/); await page.getByRole('button', { name: 'Continue story', exact: true }).waitFor({ timeout: 15000 });
+      const notice = await page.locator('#panel .notice').first().textContent();
+      if (!notice.includes('1–' + SITE_THROUGH)) throw Error('Password did not open the chapters: ' + notice);
+      console.log('public lock at chapter ' + (PUBLIC_THROUGH + 1) + ', wrong password refused, password opens 1–' + SITE_THROUGH);
+    }
     // Every fight in the playable chapters, opened from a save at that fight.
     for (const chapter of CHAPTERS) {
       const fights = await page.evaluate(n => ADV.DATA.CAMPAIGN3_QUESTS[n - 1].enc.length, chapter);

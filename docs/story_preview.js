@@ -11,8 +11,14 @@ let battleFrame=null;
 // Raise DEMO_THROUGH as chapters are finished; a local server can play further with
 // ?through=N for testing.
 const DEMO_THROUGH=5,localHost=/^(localhost|127\.0\.0\.1)$/.test(location.hostname);
+// Password access (Hiro, 2026-10-14: chapter one free on the site, chapters two
+// to five "if they know password"). UNLOCK_THROUGH above DEMO_THROUGH turns it on;
+// the site packager sets both. Only a SHA-256 of the lower-cased password is
+// here. It is a casual gate: the chapters' files ship with the page.
+const UNLOCK_THROUGH=DEMO_THROUGH,UNLOCK_HASH='e2324f665ae42249ee042331e8e804bb24aa492e123ca40ea13ac9fa0ab56de9',UNLOCK_KEY='adventurer_expeditions_unlocked';
+const unlocked=()=>{try{return localStorage.getItem(UNLOCK_KEY)===UNLOCK_HASH;}catch(_){return false;}};
 const askedThrough=Number(new URLSearchParams(location.search).get('through'));
-const PLAYABLE_THROUGH=localHost&&askedThrough>=1&&askedThrough<=14?askedThrough:DEMO_THROUGH;
+const PLAYABLE_THROUGH=localHost&&askedThrough>=1&&askedThrough<=14?askedThrough:unlocked()?Math.max(DEMO_THROUGH,UNLOCK_THROUGH):DEMO_THROUGH;
 // The original's fallback caption for a death beat without its own (campaign3_ui.js).
 const DEATH_CAPTION='The sword goes through him. You run because he told you to.';
 const d=await fetch('assets/expedition/story/campaign.json').then(r=>{if(!r.ok)throw Error('Campaign manifest failed');return r.json();});
@@ -102,6 +108,53 @@ function title(){stopVoice();session=null;reply=null;sceneContext=null;playMusic
   const buttons=text('div','',box,'buttons');if(S.load())button('Continue story',()=>open(S.load()),buttons);
   button('Begin story',()=>{if(S.load()){panel.replaceChildren();text('p','Start over from chapter one? This replaces your current save.',panel);button('Start over',()=>open(S.fresh()));button('Cancel',title);}else open(S.fresh());},buttons);
   text('p',PLAYABLE_THROUGH===1?'Demo: chapter one of the story. More chapters are on the way.':'Chapters 1–'+PLAYABLE_THROUGH+' are playable.',box,'notice');
+  passwordBox(box);
+  if(devTools()){
+    const row=text('div','',box,'buttons dev-skip');text('span','Dev: jump to chapter',row);
+    for(let n=2;n<=PLAYABLE_THROUGH;n++)button(String(n),()=>{try{open(devSkipTo(n));}catch(e){console.error(e);alert('Chapter jump failed: '+e.message);}},row);
+  }
+}
+// Dev-only chapter jump for playtesting (Hiro, 2026-10-14). Local server and a
+// dev build only: the site package turns DEV_BUILD off and is never localhost.
+// The skipped chapters' story runs instantly with the first ordinary answer to
+// each choice, so flags, recruits and the company are real; their fights count
+// as won. Replaces the current save.
+// "Have a password?" for the locked chapters. A match is remembered on this
+// browser and the page reloads with the chapters open.
+function passwordBox(parent){
+  if(UNLOCK_THROUGH<=DEMO_THROUGH||unlocked())return;
+  const form=document.createElement('form');form.className='board-entry unlock';
+  const input=document.createElement('input');input.type='password';input.placeholder='Have a password?';input.setAttribute('aria-label','Password for more chapters');
+  const go=document.createElement('button');go.textContent='Unlock';form.append(input,go);parent.append(form);
+  const note=text('p','',parent,'caption unlock-note');
+  form.onsubmit=async e=>{e.preventDefault();
+    try{const bytes=new TextEncoder().encode(input.value.trim().toLowerCase());
+      const hash=[...new Uint8Array(await crypto.subtle.digest('SHA-256',bytes))].map(b=>b.toString(16).padStart(2,'0')).join('');
+      if(hash!==UNLOCK_HASH){note.textContent="That's not it.";input.select();return;}
+      localStorage.setItem(UNLOCK_KEY,UNLOCK_HASH);note.textContent='Unlocked. Chapters '+(DEMO_THROUGH+1)+'–'+UNLOCK_THROUGH+' are open.';
+      setTimeout(()=>location.reload(),700);
+    }catch(_){note.textContent="Couldn't check that here. Try again on the website.";}
+  };
+}
+function devTools(){return localHost&&!!ADV.Expedition.Dev?.enabled?.();}
+function devSkipTo(target){
+  const s=S.open(S.fresh()),r=s.record,g=s.game;
+  for(let guard=0;guard<20000&&!(r.chapter===target&&r.phase==='departure');guard++){
+    const perks=ADV.GatePerks?.state(g);if(perks?.pending.length)ADV.GatePerks.acknowledge(g,perks.pending.slice());
+    delete r.chapterRewardDue;delete r.seatOffer;
+    if(r.phase==='inn'){S.leaveInn(s);continue;}
+    if(r.phase==='combat'){S.victory(s,[]);continue;}
+    const beat=r.reply||S.beats(s)[0];
+    if(!beat){S.nextPhase(s);continue;}
+    S.applyBeat(s,beat);
+    const opts=beat.choice?S.options(s,beat.choice):[];
+    const pick=opts.find(o=>!o.ask&&!o.bypass)||opts.find(o=>!o.ask)||opts[0];
+    if(pick){if(!S.choose(s,beat,pick.id))S.shiftBeat(s);}
+    else S.shiftBeat(s);
+  }
+  if(r.chapter!==target)throw Error('stopped at chapter '+r.chapter+' ('+r.phase+')');
+  r.titleCards=Array.from({length:target-1},(_,i)=>i+1);r.tutorialFightStarted=true;
+  if(r.run.hpMax)r.run.hp=r.run.hpMax;S.save(s);return r;
 }
 function render(){
   stopVoice();panel.replaceChildren();const r=session.record;
@@ -188,6 +241,7 @@ function toBeContinued(){
     form.onsubmit=e=>{e.preventDefault();const n=name.value.trim().slice(0,16)||'Hiro';X.Board.insert({name:n,score,loop:1});r.boardEntered=true;S.save(session);form.remove();list();};
   }
   list();if(X.board.note)text('p',X.board.note,box,'caption');
+  passwordBox(box);
   const buttons=text('div','',box,'buttons');button('Back to title',title,buttons);
 }
 function ending(){

@@ -15,6 +15,15 @@ of small fixes within a day.
 
 ---
 
+## 2026-10-14 — No glow around Hiro on Counter; dev chapter jump
+
+- **Yellow aura removed.** `Actor.refresh` drew a pulsing gold ellipse behind Hiro while he held a Counter, and a purple one for the old aura. Hiro asked for it gone, so no body outline is drawn now; the counter badge above his head stays. A new actor_animation_lifecycle test checks that no outline colour is set while the badge still shows. The website copy was rebuilt, verified and staged.
+- **Dev chapter jump** (title screen, local server with a dev build only; the site package turns DEV_BUILD off and is never localhost). "Dev: jump to chapter" buttons for 2..PLAYABLE_THROUGH:
+  - the skipped chapters' story runs instantly with the first ordinary answer to each choice, so flags, recruits and the company are real;
+  - their fights count as won, and the jump replaces the current save;
+  - verified in a browser: chapter 2 starts with Hiwot riding, chapter 5 with chapters 1–4 complete and a five-strong company, no page errors.
+  - Use `?through=N` to jump past the local cap of 5.
+
 ## 2026-10-14 — Remaining campaign enemy art and painted projectiles (Astra)
 
 **Enemy-art coverage 22/59 → 59/59.** Added the remaining 37 opponent identities for chapters 6–14: 24 ordinary drawings per set and 111 paired finishing clips (two Hiro moves and one enemy-on-Hiro move per identity), each with 16 distinct drawings and a 2,190 ms base timeline. Nonlethal Hiro endings preserve Thornwise, Nettle, Amara and Kolade's story branches. Wide source sheets, targeted pose repairs and fixed body references correct clipped weapons, disappearing/doubled Hiro poses and neighboring-frame ownership. All 37 registration reports have zero boundary warnings.

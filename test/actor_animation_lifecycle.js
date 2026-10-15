@@ -45,6 +45,14 @@ test('legacy unnamed statuses cannot crash actor badges', () => {
  assert.doesNotThrow(()=>a.refresh(true));assert.equal(a.badges.size,0);
 });
 
+test('a held Counter or buff draws no glow around the body (badge only)', () => {
+ const a=actor();a.unit={chp:100,maxHp:100,counter:2,statuses:[{kind:'aura',rounds:2}]};
+ const colours=[];a.bar={};a.barHurt={};a.setOutline=c=>colours.push(c);a.layoutBadges=()=>{};a.addBadge=k=>a.badges.set(k,{destroy(){}});
+ a.refresh(true);
+ assert.ok(colours.length&&colours.every(c=>c==null),'no outline colour, saw '+colours);
+ assert.ok(a.badges.has('counter'),'the counter badge still shows');
+});
+
 test('story survivors are not thrown by ordinary defeat knockback', async () => {
   const previous=X.Knockback;let thrown=0;
   X.Knockback={enabled:true,play:async()=>{thrown++;}};
