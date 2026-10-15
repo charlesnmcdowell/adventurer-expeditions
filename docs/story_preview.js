@@ -142,6 +142,7 @@ function devSkipTo(target){
   for(let guard=0;guard<20000&&!(r.chapter===target&&r.phase==='departure');guard++){
     const perks=ADV.GatePerks?.state(g);if(perks?.pending.length)ADV.GatePerks.acknowledge(g,perks.pending.slice());
     delete r.chapterRewardDue;delete r.seatOffer;
+    if(r.travelPending){S.finishTravel(s);continue;}
     if(r.phase==='inn'){S.leaveInn(s);continue;}
     if(r.phase==='combat'){S.victory(s,[]);continue;}
     const beat=r.reply||S.beats(s)[0];
@@ -158,6 +159,8 @@ function devSkipTo(target){
 }
 function render(){
   stopVoice();panel.replaceChildren();const r=session.record;
+  // Cap the outbound leg before showing content from a locked website chapter.
+  if(r.travelPending&&r.travelPending.chapter<=PLAYABLE_THROUGH)return travel();
   const perks=ADV.GatePerks?.state(session.game);
   if(perks?.pending.length){
     const notices=perks.pending.slice(),box=text('section','',panel,'menu');text('h1','Campaign gifts',box);
@@ -205,6 +208,18 @@ function render(){
   function advance(){if(beat.death&&!reply){choices.querySelectorAll('button').forEach(b=>b.disabled=true);flash();setTimeout(step,600);}else step();}
   function step(){if(!box.isConnected)return;if(reply)reply=null;S.shiftBeat(session);line=0;applied=null;render();}
   if(sceneFile)holdForScene(box,sceneFile,()=>say(beat));else say(beat);
+}
+function travel(){
+  const activeSession=session,spec=S.travelSpec(session);if(!spec){S.finishTravel(session);render();return;}
+  sceneContext=null;$('weather').hidden=true;playMusic();backdrop.pause(false);
+  // Leave the entire painting visible; the title/sound controls remain usable.
+  const note=text('div',spec.leg==='return'?'Returning to the inn':'On the road',panel,'travel-caption');
+  note.style.cssText='position:fixed;bottom:max(18px,env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);color:#fff;text-shadow:0 2px 4px #000;pointer-events:none';
+  const id=spec.id;
+  backdrop.show({...spec,onComplete:()=>{
+    if(session!==activeSession||S.travelSpec(session)?.id!==id)return;
+    S.finishTravel(session);render();
+  }});
 }
 function inn(){
   const X=ADV.Expedition,r=session.record,run=r.run;

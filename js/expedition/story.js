@@ -106,7 +106,10 @@ S.nextPhase=function(session){
   else if(r.phase==='opener'){
     if(r.bypassed){delete r.bypassed;r.phase=r.encounter>=session.game.quest.quest.encounters.length?'closing':'opener';S.syncQuest(session);}
     else r.phase='combat';
-  }else if(r.phase==='closing')r.phase='arrival';
+  }else if(r.phase==='closing'){
+    r.phase='arrival';
+    if(r.chapter>1&&r.chapter<14)r.travelPending={chapter:r.chapter,leg:'return'};
+  }
   else if(r.phase==='arrival'){
     const q=session.game.quest.quest;
     if(!r.completed.includes(r.chapter)){
@@ -123,9 +126,21 @@ S.nextPhase=function(session){
   }
   S.save(session);return r.phase;
 };
+// Journeys are saved separately from dialogue: reload resumes the same leg,
+// and completing a trip never advances a chapter or pays its reward twice.
+S.travelRoutes={2:'coast',3:'rain',4:'rain',5:'rain',6:'marsh',7:'marsh',8:'city',9:'city',10:'citadel',11:'city',12:'city',13:'citadel',14:'citadel'};
+S.travelSpec=function(session){
+  const t=session.record.travelPending;if(!t)return null;
+  const questId=S.travelRoutes[t.chapter];if(!questId)return null;
+  return {kind:'travel',id:t.chapter+':'+t.leg,chapter:t.chapter,leg:t.leg,
+    run:{...session.record.run,questId,wave:0,field:[],roster:[]},
+    phase:questId==='citadel'||questId==='marsh'?'night':'day',
+    weather:questId==='rain'||questId==='marsh'?'rain':'clear'};
+};
+S.finishTravel=function(session){if(!session.record.travelPending)return false;delete session.record.travelPending;S.save(session);return true;};
 S.leaveInn=function(session){
   const r=session.record;if(r.phase!=='inn'||r.restScenePending)return false;
-  r.phase='departure';S.save(session);return true;
+  r.phase='departure';if(r.chapter>1)r.travelPending={chapter:r.chapter,leg:'outbound'};S.save(session);return true;
 };
 S.rest=function(session){
   const r=session.record;if(r.phase!=='inn'||r.restScenePending)return {ok:false,reason:'phase'};

@@ -7,13 +7,29 @@ S.Backdrop=function(parent,onReady){
   const identity=s=>s.kind+':'+s.id+':'+(s.phase||'day')+':'+(s.visit||0);
   class Backdrop extends Phaser.Scene{
     constructor(){super('StoryBackdrop');}
-    init(spec){this.spec=spec?.kind?spec:wanted;this.game_={world:{seed:1,questClock:0}};this.paused=false;scene=this;}
-    preload(){if(this.spec.kind==='inn'){A.Expedition.InnArt.preload(this);return;}
+    init(spec){this.spec=spec?.kind?spec:wanted;this.game_={world:{seed:1,questClock:0}};this.paused=false;this.travelDone=false;scene=this;}
+    preload(){if(this.spec.kind==='travel'){
+      this.opts={run:this.spec.run,leg:this.spec.leg};
+      A.Expedition.Painted.preload(this,['hiro']);A.Expedition.TravelArt.preload(this);return;
+    }if(this.spec.kind==='inn'){A.Expedition.InnArt.preload(this);return;}
       const art=S.Presentation.data.art[this.spec.kind][this.spec.id];this.artKey='story_scene_'+this.spec.kind+'_'+this.spec.id;
       if(!this.textures.exists(this.artKey))this.load.image(this.artKey,S.Presentation.media(art.file));}
     create(){
       const {kind,id,phase}=this.spec;
-      if(kind==='inn'){this.art=A.Expedition.InnArt.paint(this,this.spec.run);this.events.once('shutdown',()=>this.art?.destroy());}
+      this.scale.scaleMode=kind==='travel'?Phaser.Scale.FIT:Phaser.Scale.ENVELOP;this.scale.refresh();
+      if(kind==='travel'){
+        const X=A.Expedition;
+        if(!X.Painted.require(this,['hiro']))return;
+        this.art=X.TravelArt.paint(this);this.travelElapsed=0;
+        const wx=A.Weather.at(this.game_.world,{phase,override:{kind:this.spec.weather,intensity:this.spec.weather==='rain'?.45:0,wind:.2}});
+        this.art.mountWeather?.(A.WeatherFX.attach(this,wx,phase,{x:0,y:0,w:1280,h:760},{depth:-5}));
+        let active=true,ready=false;this.art.ready.then(ok=>{if(active&&ok!==false)ready=true;});
+        const advance=(_,dt)=>{if(!ready||paused||document.hidden)return;this.travelElapsed+=Math.min(dt,100);this.art.advance(Math.min(dt,100));
+          if(this.travelElapsed>=this.art.durationMs&&!this.travelDone){this.travelDone=true;this.spec.onComplete?.();}};
+        this.events.on('update',advance);
+        this.events.once('shutdown',()=>{active=false;this.events.off('update',advance);this.art?.destroy(true);});
+      }
+      else if(kind==='inn'){this.art=A.Expedition.InnArt.paint(this,this.spec.run);this.events.once('shutdown',()=>this.art?.destroy());}
       else if(kind==='environments')this.art=S.Stage.paint(this,id,this.artKey,phase||'day');
       else{
         const source=this.textures.get(this.artKey).getSourceImage(),root=this.add.container(0,0);
