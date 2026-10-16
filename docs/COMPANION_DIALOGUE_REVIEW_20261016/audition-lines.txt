@@ -1,0 +1,45 @@
+wren_ward|q14_final_restored|1|rewrite|[unsteady] My hands. I can feel them again. Hold on. My knees are not quite ready.
+wren_ward|q9_lobby_talk|1|rewrite|[impressed] That worked. Olamide's name got us in. Third floor. Keep your hands to yourself; he is still watching.
+wren_ward|banter|4|bark|[quick] Watch my knife. I am going round him.
+vess|q2_pair_yes|1|rewrite|[sing-song] You hear that, Winston? We have friends now. Stay close, {target}. I'll keep the fire off you.
+vess|q10_exp_gap_vess|1|gap|[soft] You grew up here? Show me which windows they leave open.
+vess|banter|4|bark|[delighted] Your turn to worry, man.
+fennick|q5_camp_storm|1|rewrite|[flat] Loud, then. The one with the horns is the sergeant. Take him first, man. He's giving the orders.
+fennick|q8_door|1|rewrite|[flat] Let me speak to him. He's watching our purses, man. I doubt he needs much persuading.
+fennick|banter|4|bark|[flat] Mind the blade. It's coated.
+cassian|banter|4|bark|[earnest] Behind my shield. Stay close.
+cassian|banter|5|bark|[strained] Flame preserve us. That was close.
+cassian|banter|6|bark|[firm] Keep back while I raise the ward.
+dorran|q12_exp_gap_dorran|1|gap|[low] Go on. S-speak. I will watch the guards.
+dorran|banter|4|bark|[steady] B-behind me. Plenty of room.
+dorran|banter|5|bark|[grunting] Sword arm free. Stand clear.
+selene|q9_lobby_talk|1|rewrite|[quiet] Upstairs, honey. Third floor. Leave the ornaments alone till we're past his guards.
+selene|q10_double_strike|1|rewrite|[sharp] Stop swinging, {target}! You caught the real girl behind it. She's breathing, but she can't walk. Give me room.
+selene|banter|4|bark|[calm] Easy, sugar. I've got a little healing left.
+ithrel|banter|1|rewrite|[quiet] Clear my shot.
+ithrel|banter|4|bark|[low] Stay below my bow.
+ithrel|banter|5|bark|[precise] Wait. I have a clear line now.
+bramm|q7_exp_gap_bramm|1|gap|[angry] Chains. Vallahi. We are not leaving those people down there.
+bramm|banter|4|bark|[booming] Stand back, canım. I need room to swing!
+bramm|banter|5|bark|[roaring] You will need more than that!
+ysolde|q12_exp_gap_ysolde|1|gap|[precise] Morrak's blood. At the cage I could only tell something had been worshipped. Now we know whose.
+ysolde|q14_exp_gap_ysolde|1|gap|[low] Your aura is flaring here again. Stay beside me, canım. Tell me if you feel it pulling.
+ysolde|banter|4|bark|[dry] A little room, canım. These fans are not decorative.
+aurelius|q9_exp_gap_aurelius|1|gap|[measured] The clerks will know where the records are. Do try asking before threatening them.
+aurelius|banter|4|bark|[disdainful] Must you stand in front of my staff?
+aurelius|banter|5|bark|[cool] Move aside. I have a spell prepared.
+ilvara|q10_double_strike|1|rewrite|[approving] The double is down. Your sister was behind it; you struck her too. She still breathes. Someone carry her.
+ilvara|q10_double_listen|1|rewrite|[sharp] Stop listening to that thing. Kill it before it reaches you.
+ilvara|banter|4|bark|[cool] Stand still if you want my help.
+faelen|q6_web|2|rewrite|[appraising] A green sash. Wardens, or travelling with them? Good. You cut people out of webs without charging, I hope. Kaito. Bounty hunter. I came for a wyvern and found spiders instead.
+faelen|q9_lobby_talk|1|rewrite|[smiling] Third floor. Yes, of course. I shall keep my hands where the gentleman can see them.
+faelen|banter|1|rewrite|[smiling] Got him. Handsome fellow, too. What a pity.
+nettle|q8_exp_gap_nettle|1|gap|[hard] So this is where the iron goes. Look how much of it they put on one gate.
+nettle|banter|4|bark|[fierce] Hit the thorns. Go on.
+nettle|banter|5|bark|[low] Sawa. Stay close while I cast.
+durnik|q9_lobby_talk|1|rewrite|[grunting] Three floors up. Aye. Keep off the fittings, bach. No sense giving him a reason to call us back.
+durnik|q13_exp_gap_durnik|1|gap|[gravelly] Old stone below new stone. Mind the joins, bach. Water gets between them.
+durnik|banter|4|bark|[calm] Hold still, bach. I'll mend that.
+amara|banter|4|bark|[exact] Leave room for my second blade.
+amara|banter|5|bark|[steady] Keep your guard. I will take this side.
+amara|banter|6|bark|[quiet] Watch my hands. Move when I move.

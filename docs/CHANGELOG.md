@@ -15,6 +15,15 @@ of small fixes within a day.
 
 ---
 
+## 2026-10-16 — Companion dialogue audit and voice auditions (awaiting approval)
+
+- Read `ASTRA_PROMPT_COMPANION_DIALOGUE_20261016.md` and verified its claims against the live data plus Santiago's edition overrides. Saved all **445 current spoken segments** with IDs and voice casting in `docs/COMPANION_DIALOGUE_REVIEW_20261016/`.
+- Corrected the audit: Winston already speaks in chapters 3/4/5/8; Desmond/Winston chapter-nine betrayal lines do not cover the loyal-company route. Layla's Arabic-influenced register is explicit in the region lore, so `ya stranger` is retained. Existing foe-status and named-companion bark conditions must remain intact. Bond/romance lines stay unchanged and have no accessible inn conversation entry in Expeditions.
+- Prepared **45 auditions (three per companion)**, Desmond first on the review page. Santiago's three are only the proposed extra combat barks; his approved 29-line rewrite is untouched. **2,905 submitted characters / 1,279 response-header credits**, no retakes. Every voice ID checked against the original casting JSON; normalized to each speaker's existing audio. The combined job cap remains 15,000, with auditions reserved in the persistent ledger for later reuse.
+- Drafted the review samples and a **70-beat gap-placement plan** for eight companions. Full prose production, runtime overrides, added beat hooks, six-bark banks and in-game chapter checks remain pending audition approval. No sample is active in gameplay; no source game/shared file was changed.
+- Tests: `node test/companion_dialogue_auditions.js` and `node test/browser_companion_dialogue_auditions.js` passed (45 clip hashes/decodes, exact casting, placeholders, Hiwot register, short barks, audio playback, desktop and 390×844 review layout). Runtime tests were not rerun for this review-only checkpoint.
+- Review: `docs/COMPANION_DIALOGUE_REVIEW_20261016/index.html`; audit findings, before/after samples, full inventory, gap keys and cost ledger alongside. Raw masters: sibling `adventurer-expeditions-source-art/astra-v10/companion-dialogue-20261016/`. Nothing published or pushed.
+
 ## 2026-10-16 — Santiago dialogue rewrite and matching voice (local only)
 
 - Inventoried **29 spoken segments / 22 groups**, keyed to `cassian`, before editing. Preserved every original ID, segment boundary, cue tag, `{target}` placeholder, choice hook and recruitment/departure/romance condition. Other speakers, narrator epilogues and Hiro choices remain unchanged.

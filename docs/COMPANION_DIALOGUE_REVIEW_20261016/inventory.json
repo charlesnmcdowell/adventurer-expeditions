@@ -1,0 +1,3562 @@
+[
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q1_catchup",
+    "index": 1,
+    "text": "[breathless] {target}! Oh, thank every saint that listens. I saw you both leave and I followed — yes, I know, I was not supposed to — and then I saw the torches, and the big one in the black armour, and I ran the other way, because I am not brave. I am only fast.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q1_catchup",
+    "index": 2,
+    "text": "[quieter] He is dead. Tesfaye. I saw him fall. I can't believe we left him there. He should be with us.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q1_catchup",
+    "index": 3,
+    "text": "[urgent] Tell me what the big one said to him. I was too far; I saw his mouth move and Tesfaye shake his head. What did he want?",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q1_wren_kind",
+    "index": 1,
+    "text": "[steadying] He wanted you. By name. Then it was never about Tesfaye at all. — Close. Yes. I can do close. I have his letter; it was in his coat. An inn on the Shore Road, and two names, Beau and Delphine. He must have meant for us to go to them.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q1_wren_cold",
+    "index": 1,
+    "text": "[stung, then flat] Right. I am fine. — I have his letter. An inn and two names. You may read it when you have finished being a wall.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q1_wren_dark",
+    "index": 1,
+    "text": "[uneasy] \"What you are.\" He said that? — You sounded like him just then. Not Tesfaye. The other one. [softer] There is a letter. An inn, two names. Let us go and be alive first. You can be terrible later.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q1_join",
+    "index": 1,
+    "text": "[firm] I am coming with you. I can pick locks and keep watch while you sleep. Besides, if you leave me here, I will only have to follow you again.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q2_road",
+    "index": 1,
+    "text": "[reading] \"The Open Hand, on the Shore Road, past the salt-flats. Ask for Beau and Delphine. They are Wardens, and they were my friends before you were born. Trust them as you would trust me.\" — That is all it says. He never wasted ink.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q2_road",
+    "index": 2,
+    "text": "[thinking] Wardens. He never once said that word in twenty years, and now it is the first thing he wants us to know. That is the first thing I am asking them.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q2_pair_hiwot",
+    "index": 1,
+    "text": "[low, to you] Do not tell them anything. We do not know them.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q2_wolves",
+    "index": 1,
+    "text": "[low] Wolves. Road wolves, the big grey kind — Tesfaye said they only come down to the road when the hills are hungry.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q2_wolves",
+    "index": 2,
+    "text": "[very quiet] Something has made the hills hungry.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q2_cassian_hiwot",
+    "index": 1,
+    "text": "[sceptical] Alone. Who sends one squire to a wolf den? What did you do to your Order?",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q2_morwin_hiwot",
+    "index": 1,
+    "text": "[quickly] Neither. We are pilgrims. Going to the shrine at — the shrine.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q2_notice",
+    "index": 1,
+    "text": "[picking up the paper] He was carrying this. Your face, and a bounty, and a seal of an iron hand in red wax. No name.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q2_notice",
+    "index": 2,
+    "text": "[quiet] Somebody with a great deal of money wants you dead badly enough to send two men in one night and a third to wait at the one door Tesfaye trusted. I am keeping this. Somebody at that inn will know the mark.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q3_south_hiwot",
+    "index": 1,
+    "text": "[thinking] A locked drawer in his study. I never got it open, and I tried twice, which he knew, because he moved the key. He never moved anything else.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q3_south_hiwot",
+    "index": 2,
+    "text": "[quiet] It is still there. Whatever it is.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q4_down",
+    "index": 1,
+    "text": "[low] It smells like wet dog and hot metal. Four levels of that, going down.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q4_down",
+    "index": 2,
+    "text": "[quiet] Keep your light up. I can't see where these stairs end.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q4_letters",
+    "index": 1,
+    "text": "[reading] \"Keep the ore fouled until the spring shipment. Gorruk holds the north road.\" And a name — Femi, at the inn in Thornbury.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q4_letters",
+    "index": 2,
+    "text": "[quiet] Tesfaye died over a shipping schedule. That cannot be the whole of it. It cannot.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q4_camp_hiwot",
+    "index": 1,
+    "text": "[quiet, at the fire] Delphine. Was he a good Warden? Tesfaye. He never talked about it, and I have been wondering all day whether that was because it was bad, or because it was good.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q5_verlan_pocket",
+    "index": 1,
+    "text": "[murmuring] Map, seal, and a very old sausage. He did not feel a thing.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q5_verlan_pocket",
+    "index": 2,
+    "text": "[low] Past Holloway Vale, under the oaks. There is a note about the road being watched.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q5_camp",
+    "index": 1,
+    "text": "[whispering] Or I go over the palisade and open the back gate while every eye is on the front.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q5_camp_quiet",
+    "index": 1,
+    "text": "[breathless] The back gate is open. Two sentries were sleeping, and one of them is going to wake with a headache and no boots.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q5_camp_quiet",
+    "index": 2,
+    "text": "[low] The big tent is the lord's. There is a man chained in it who looks as though he still has jokes left.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q5_camp_storm",
+    "index": 1,
+    "text": "[resigned] Loud, then. Go for the one with the horns first; the rest will look to him.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q6_forest",
+    "index": 1,
+    "text": "[low] Old trees. Very old, very big. Things in the branches that stop moving when we look.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q6_forest",
+    "index": 2,
+    "text": "[a breath] I will go first. No. I will not. You go first.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q6_wyverns",
+    "index": 1,
+    "text": "[appalled] It has a sting on its tail. Its tail has a sting.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q7_cages",
+    "index": 1,
+    "text": "[sick] They keep them in cages between shifts. Like dogs. Worse than dogs; I have seen dogs kept better than this.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q7_valve",
+    "index": 1,
+    "text": "[frantic] Beau is below with the chain-gang. If you turn that wheel he drowns with them.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q7_flood_now",
+    "index": 1,
+    "text": "[shouting] NO —",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q7_flood_now",
+    "index": 2,
+    "text": "[hollow] He was coming up. We could hear the chains.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q7_papers",
+    "index": 1,
+    "text": "[reading] Three names at the Consortium's tower in the city. Adigun Adeyinka, Bankole, Rotimi.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q7_papers",
+    "index": 2,
+    "text": "[quiet] The road north is open now. There is nothing between us and the Gate but the Gate.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q7_mine_umbra_none",
+    "index": 1,
+    "text": "[low] The druids wanted this mine shut down too.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q7_mine_umbra_none",
+    "index": 2,
+    "text": "[dry] We could have had their help. Instead, we picked a fight with them. That was clever of us.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q8_sewers",
+    "index": 1,
+    "text": "[gagging] I have been in a mine, a fortress and a spider nest this month, and THIS is the worst. This is the worst place.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q8_door",
+    "index": 1,
+    "text": "[whispering] Doorman. I can get us past him. He will not even remember we were here.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q8_door_wren",
+    "index": 1,
+    "text": "[smug] Side window. He is asleep on his feet. I told you.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q8_door_force",
+    "index": 1,
+    "text": "[sighing] Loud again. I am keeping a list.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q8_faces",
+    "index": 1,
+    "text": "[horrified] That is the merchant's face. That is his FACE and it is not him. Nothing is behind the eyes.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q9_lobby",
+    "index": 1,
+    "text": "[whispering] A clerk. Two guards. A very long list of names on his desk, and we are not on it.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q9_lobby_talk",
+    "index": 1,
+    "text": "[impressed] He BELIEVED you. Olamide's name still opens doors. Third floor, he says. Do not touch anything.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q9_lobby_fight",
+    "index": 1,
+    "text": "[flat] So much for quiet. Stairs. Go.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q9_lobby_wren",
+    "index": 1,
+    "text": "[hushed] Got it. There is a name at the bottom in red: \"the ward — as agreed.\" Whatever we do up there, somebody upstairs already knows we are coming.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q9_top",
+    "index": 1,
+    "text": "[stunned] Lanternhold. They went HOME. The three men who paid to kill Tesfaye are sitting in his library. — The drawer. Delphine, the locked drawer. We are going to be in that room.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q10_ring_hiwot",
+    "index": 1,
+    "text": "[suspicious] How did you know Tesfaye? I lived in that keep twenty years and I never once saw you.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q10_ring_hiwot_after",
+    "index": 1,
+    "text": "[flat] That is not an answer.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q10_home",
+    "index": 1,
+    "text": "[strange] It smells the same. Ink and dust and the brothers' lentils. I thought it would feel like home, and it feels like a trap.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q10_catacombs_hiwot",
+    "index": 1,
+    "text": "[brightly] None of us. We are pilgrims.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q10_double",
+    "index": 1,
+    "text": "[Hiwot's voice, wrong] {target}. Thank the saints. I got separated — come here, come HERE, we have to go —",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q10_double_question",
+    "index": 1,
+    "text": "[the real Hiwot, furious] The HONEY. It was the honey, and Brother Yonas still blames the cat — that thing wearing my face does not know that, so STAB IT.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q10_shore",
+    "index": 1,
+    "text": "[shaking] Out. We are out. I am never going home again, am I.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q10_shore",
+    "index": 2,
+    "text": "[small] Sanni sent us into that room. Then he told the guards we'd murdered his father. He had this planned before we ever left the city.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q11_posters",
+    "index": 1,
+    "text": "[reading] \"Wanted, for the murder of Grand Duke Ayodele and of the Consortium summit at Lanternhold: the ward of Tesfaye, and company.\" That is your face. That is a BAD drawing of your face.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q11_posters",
+    "index": 2,
+    "text": "[quiet] The street is full of it: Emeka Obi is dead. A man called Segun Marr commands the Gauntlet now, and he is the one who signed this.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q11_doors",
+    "index": 1,
+    "text": "[thinking] Three doors. Adebayo, if we can save him. Folake, if you can stand her. Or Tunde Softfoot and a debt.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q11_alleg_gauntlet",
+    "index": 1,
+    "text": "[nodding] The Duke. All right. I like a Duke who owes us.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q11_alleg_consortium",
+    "index": 1,
+    "text": "[uneasy] Folake. I do not trust her smile. I do not trust anything about her. But she does have a door.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q11_alleg_thieves",
+    "index": 1,
+    "text": "[grinning] Tunde! Yes. I was hoping you would say that. Thieves are honest about what they are.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q12_steps",
+    "index": 1,
+    "text": "[itching] I hate silk. I hate silk SO much. — There he is. On the dais. Smiling. He has a lovely smile. I want to put it through a wall.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q12_dukes_korvath",
+    "index": 1,
+    "text": "[shouting] The dukes — {target}, the DUKES — we cannot hold them if you run at him —",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q13_return",
+    "index": 1,
+    "text": "[stiff, bandaged] I heard you were going under the city without me. Absolutely not.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q13_return",
+    "index": 2,
+    "text": "[fierce] I am stitched, I am furious, and I still open locks better than anyone here. Move over.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q13_maze",
+    "index": 1,
+    "text": "[hushed] The thieves' maze. I can read it — half of it is Lanternhold locks, the cheap kind. Follow me exactly.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q13_maze_follow",
+    "index": 1,
+    "text": "[murmuring] Left. Again. Not that one. — Through. Nobody bled. Tell Tesfaye I was paying attention.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q13_maze_cut",
+    "index": 1,
+    "text": "[groaning] Straight through. Fine. The loud list is getting long.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q14_sanctum",
+    "index": 1,
+    "text": "[whispering] It is warm down here. It should not be warm.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q14_sanctum",
+    "index": 2,
+    "text": "[fierce] Whatever he says in there — you are Tesfaye's. Not his. Tesfaye's.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q14_mirrors",
+    "index": 1,
+    "text": "[horrified] That is ME. That is all of us. They are wearing US.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "banter",
+    "index": 1,
+    "text": "[shouting] The left one! The left one is looking at YOU!",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "banter",
+    "index": 2,
+    "text": "[breathless] Still with you. Keep going!",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "banter",
+    "index": 3,
+    "text": "[gleeful] Got his purse. And his knife. And his — never mind, keep fighting.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q14_final_warning",
+    "index": 1,
+    "text": "[urgent] The marks on the floor! They lead to the altar. Get away from them!",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q14_final_taken",
+    "index": 1,
+    "text": "[shocked] No. Let go of me!",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q14_final_soul",
+    "index": 1,
+    "text": "[weak] I can hear you. He has bound me to the throne. Break his hold before he can finish.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q14_final_choice",
+    "index": 1,
+    "text": "[quiet] He’s gone. I can feel the power he took, and yours. It is holding this place open.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q14_final_choice",
+    "index": 2,
+    "text": "[steady] If you let it all go, I can come back with you. You will lose Morrak’s blood, and any claim to his throne. If you keep it, you can take his place. I cannot come back that way.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q14_final_restored",
+    "index": 1,
+    "text": "[unsteady] I can breathe. I thought I would never...",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q14_final_restored",
+    "index": 2,
+    "text": "[soft] You came back for me. Let’s get out of here. Please.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "wren_ward",
+    "name": "Hiwot",
+    "key": "q14_final_farewell",
+    "index": 1,
+    "text": "[quiet] I wanted to go home with you. I hope you remember that.",
+    "voiceId": "0F4ybvRD5Lm0AIt5almW"
+  },
+  {
+    "who": "vess",
+    "name": "Desmond",
+    "key": "q2_pair",
+    "index": 1,
+    "text": "[bright] Well now — look at this, Winston. Two little travellers on a big empty road, and one of them holding a sword like it might bite.",
+    "voiceId": "5OtKrUz8y0NUBuMW6YcK"
+  },
+  {
+    "who": "vess",
+    "name": "Desmond",
+    "key": "q2_pair",
+    "index": 2,
+    "text": "[delighted] Desmond. This is Winston. We are going the same way as you, which is a coincidence, and we are very good in a fight, which is not.",
+    "voiceId": "5OtKrUz8y0NUBuMW6YcK"
+  },
+  {
+    "who": "vess",
+    "name": "Desmond",
+    "key": "q2_where_lie",
+    "index": 1,
+    "text": "[gleeful] Lying. Look at the hands, Winston — the hands always know. I like them already.",
+    "voiceId": "5OtKrUz8y0NUBuMW6YcK"
+  },
+  {
+    "who": "vess",
+    "name": "Desmond",
+    "key": "q2_where_lie",
+    "index": 2,
+    "text": "[sing-song] No worry yourself. Everybody lies to us. We are used to it.",
+    "voiceId": "5OtKrUz8y0NUBuMW6YcK"
+  },
+  {
+    "who": "vess",
+    "name": "Desmond",
+    "key": "q2_pair_yes",
+    "index": 1,
+    "text": "[sing-song] You hear that, Winston? We have friends now. — No worry yourself, {target}. I bite only the ones you tell me to.",
+    "voiceId": "5OtKrUz8y0NUBuMW6YcK"
+  },
+  {
+    "who": "vess",
+    "name": "Desmond",
+    "key": "q7_papers",
+    "index": 1,
+    "text": "[soft] Those papers. Names, seals, routes. The people we answer to would pay plenty to read them before the Gauntlet does.",
+    "voiceId": "5OtKrUz8y0NUBuMW6YcK"
+  },
+  {
+    "who": "vess",
+    "name": "Desmond",
+    "key": "q7_papers",
+    "index": 2,
+    "text": "[softer] Let Winston copy them tonight, and we stay quiet and useful for as long as you like.",
+    "voiceId": "5OtKrUz8y0NUBuMW6YcK"
+  },
+  {
+    "who": "vess",
+    "name": "Desmond",
+    "key": "q7_papers_refuse",
+    "index": 1,
+    "text": "[very calm] Then we go, and you will see us again, and it won't be as friends.",
+    "voiceId": "5OtKrUz8y0NUBuMW6YcK"
+  },
+  {
+    "who": "vess",
+    "name": "Desmond",
+    "key": "q7_papers_refuse",
+    "index": 2,
+    "text": "[light] It never was, really. I did tell you stories like yours get told badly.",
+    "voiceId": "5OtKrUz8y0NUBuMW6YcK"
+  },
+  {
+    "who": "vess",
+    "name": "Desmond",
+    "key": "q9_betrayal",
+    "index": 1,
+    "text": "[bright] {target}! You found us! We work here now, you see it? It pays better than you did.",
+    "voiceId": "5OtKrUz8y0NUBuMW6YcK"
+  },
+  {
+    "who": "vess",
+    "name": "Desmond",
+    "key": "q9_betrayal",
+    "index": 2,
+    "text": "[giggling] Winston says we should kill you quick. Me, I would like to take my time.",
+    "voiceId": "5OtKrUz8y0NUBuMW6YcK"
+  },
+  {
+    "who": "vess",
+    "name": "Desmond",
+    "key": "banter",
+    "index": 1,
+    "text": "[giggling] Oh, he is BURNING. Look at him go, man.",
+    "voiceId": "5OtKrUz8y0NUBuMW6YcK"
+  },
+  {
+    "who": "vess",
+    "name": "Desmond",
+    "key": "banter",
+    "index": 2,
+    "text": "[sing-song] More, more, more —",
+    "voiceId": "5OtKrUz8y0NUBuMW6YcK"
+  },
+  {
+    "who": "vess",
+    "name": "Desmond",
+    "key": "banter",
+    "index": 3,
+    "text": "[delighted] Come on, then. I'm right here.",
+    "voiceId": "5OtKrUz8y0NUBuMW6YcK"
+  },
+  {
+    "who": "fennick",
+    "name": "Winston",
+    "key": "q2_pair",
+    "index": 1,
+    "text": "[flat] He talks. I do the rest.",
+    "voiceId": "R7jdv6H5bZOU3sQIMhbd"
+  },
+  {
+    "who": "fennick",
+    "name": "Winston",
+    "key": "q2_pair_ask",
+    "index": 1,
+    "text": "[level] Before anybody says yes or no: where are two children walking so fast, with one blade between them and no pack? People with a reason walk like that. I want the reason.",
+    "voiceId": "R7jdv6H5bZOU3sQIMhbd"
+  },
+  {
+    "who": "fennick",
+    "name": "Winston",
+    "key": "q2_where_truth",
+    "index": 1,
+    "text": "[thoughtful] The Open Hand. That's a Warden house; everybody on this coast knows it. So you are walking toward trouble, not away from it, and you are honest about it. Both of those are useful to me.",
+    "voiceId": "R7jdv6H5bZOU3sQIMhbd"
+  },
+  {
+    "who": "fennick",
+    "name": "Winston",
+    "key": "q2_where_refuse",
+    "index": 1,
+    "text": "[unbothered] Fair. It is. Then here is mine, so we are even.",
+    "voiceId": "R7jdv6H5bZOU3sQIMhbd"
+  },
+  {
+    "who": "fennick",
+    "name": "Winston",
+    "key": "q2_pair_offer",
+    "index": 1,
+    "text": "[flat] We are hired blades between hirings, and the road is bad for two and better for four. Say yes or say no, but say it before the light goes. I do not like this stretch after dark.",
+    "voiceId": "R7jdv6H5bZOU3sQIMhbd"
+  },
+  {
+    "who": "fennick",
+    "name": "Winston",
+    "key": "q2_pair_who",
+    "index": 1,
+    "text": "[dry] You want the true answer or the polite one? Polite: two men with skills and no master this month. True: we work for people who pay to know things, and right now they would like to know why iron costs three times what it did last year. You are not the thing we are looking for. You are on the road to it.",
+    "voiceId": "R7jdv6H5bZOU3sQIMhbd"
+  },
+  {
+    "who": "fennick",
+    "name": "Winston",
+    "key": "q2_pair_vess",
+    "index": 1,
+    "text": "[a sigh] Desmond is well the way a fire is well. He can raise the dead for a little while and he laughs when the dead fall down again. I keep him pointed the right way. I have done it since we were boys and I am tired, but I am still doing it.",
+    "voiceId": "R7jdv6H5bZOU3sQIMhbd"
+  },
+  {
+    "who": "fennick",
+    "name": "Winston",
+    "key": "q2_pair_no",
+    "index": 1,
+    "text": "[unbothered] Then go easy. If you change your mind, we will be the ones ahead of you with the fire lit. — Desmond. Walk.",
+    "voiceId": "R7jdv6H5bZOU3sQIMhbd"
+  },
+  {
+    "who": "fennick",
+    "name": "Winston",
+    "key": "q3_lessa_winston",
+    "index": 1,
+    "text": "[flat] Before the knives, girl. What's the rate? Two hundred, still, or has it gone up since Merle?",
+    "voiceId": "R7jdv6H5bZOU3sQIMhbd"
+  },
+  {
+    "who": "fennick",
+    "name": "Winston",
+    "key": "q3_lessa_winston_after",
+    "index": 1,
+    "text": "[dry] Thinking about who can afford to keep raising it. Carry on.",
+    "voiceId": "R7jdv6H5bZOU3sQIMhbd"
+  },
+  {
+    "who": "fennick",
+    "name": "Winston",
+    "key": "q3_tollan_winston",
+    "index": 1,
+    "text": "[flat] Mayor. Who takes your wagons north? One buyer, or many?",
+    "voiceId": "R7jdv6H5bZOU3sQIMhbd"
+  },
+  {
+    "who": "fennick",
+    "name": "Winston",
+    "key": "q3_tollan_winston_after",
+    "index": 1,
+    "text": "[low, to himself] One buyer. That's what they wanted to know. — Go on, man.",
+    "voiceId": "R7jdv6H5bZOU3sQIMhbd"
+  },
+  {
+    "who": "fennick",
+    "name": "Winston",
+    "key": "q4_healing",
+    "index": 1,
+    "text": "[firm] That chief keeps healing. I've shut it off for now. Hit him before it wears off.",
+    "voiceId": "R7jdv6H5bZOU3sQIMhbd"
+  },
+  {
+    "who": "fennick",
+    "name": "Winston",
+    "key": "q4_grukhar_winston",
+    "index": 1,
+    "text": "[flat] Which spring shipment, priest? Whose wagons?",
+    "voiceId": "R7jdv6H5bZOU3sQIMhbd"
+  },
+  {
+    "who": "fennick",
+    "name": "Winston",
+    "key": "q5_camp",
+    "index": 1,
+    "text": "[calm] Three ways into a camp like that, man. Loud, quiet, or invited.",
+    "voiceId": "R7jdv6H5bZOU3sQIMhbd"
+  },
+  {
+    "who": "fennick",
+    "name": "Winston",
+    "key": "q5_camp",
+    "index": 2,
+    "text": "[dry] Desmond and I can be invited. Recruiters never look too close at faces that frighten them.",
+    "voiceId": "R7jdv6H5bZOU3sQIMhbd"
+  },
+  {
+    "who": "fennick",
+    "name": "Winston",
+    "key": "q5_camp_recruits",
+    "index": 1,
+    "text": "[murmuring] Walk like you already killed somebody today. Desmond — no smiling.",
+    "voiceId": "R7jdv6H5bZOU3sQIMhbd"
+  },
+  {
+    "who": "fennick",
+    "name": "Winston",
+    "key": "q5_camp_recruits",
+    "index": 2,
+    "text": "[low] We are in. The big tent is Gorruk's. There is a chained man inside; don't look at him yet.",
+    "voiceId": "R7jdv6H5bZOU3sQIMhbd"
+  },
+  {
+    "who": "fennick",
+    "name": "Winston",
+    "key": "q5_camp_storm",
+    "index": 1,
+    "text": "[flat] Loud. Sawa — fine. The one with the horns is a sergeant; the rest look to him. Kill him first and they look to nobody.",
+    "voiceId": "R7jdv6H5bZOU3sQIMhbd"
+  },
+  {
+    "who": "fennick",
+    "name": "Winston",
+    "key": "q7_study_winston",
+    "index": 1,
+    "text": "[flat] Two sets of books, mage. Which one goes to the Gate?",
+    "voiceId": "R7jdv6H5bZOU3sQIMhbd"
+  },
+  {
+    "who": "fennick",
+    "name": "Winston",
+    "key": "q7_papers",
+    "index": 1,
+    "text": "[flat] He means it. So do I. It is the only thing we were ever on this road for, and I told you I would say so before the day came. This is the day.",
+    "voiceId": "R7jdv6H5bZOU3sQIMhbd"
+  },
+  {
+    "who": "fennick",
+    "name": "Winston",
+    "key": "q7_papers_who",
+    "index": 1,
+    "text": "[level] The Umbral Hand. You have heard the name; everybody has, and everybody pretends they haven't. Merchants, mostly, of a kind. They want to know who is cornering iron on this coast, and why, and they don't much care who dies of the knowing.",
+    "voiceId": "R7jdv6H5bZOU3sQIMhbd"
+  },
+  {
+    "who": "fennick",
+    "name": "Winston",
+    "key": "q7_papers_give",
+    "index": 1,
+    "text": "[nodding] Copies. Fair. You won't regret keeping us.",
+    "voiceId": "R7jdv6H5bZOU3sQIMhbd"
+  },
+  {
+    "who": "fennick",
+    "name": "Winston",
+    "key": "q7_papers_give",
+    "index": 2,
+    "text": "[dry] You may regret Desmond. That is a separate matter.",
+    "voiceId": "R7jdv6H5bZOU3sQIMhbd"
+  },
+  {
+    "who": "fennick",
+    "name": "Winston",
+    "key": "q8_door",
+    "index": 1,
+    "text": "[flat] Doorman. Leave him to me. Everybody has a price, and his is written on his face.",
+    "voiceId": "R7jdv6H5bZOU3sQIMhbd"
+  },
+  {
+    "who": "fennick",
+    "name": "Winston",
+    "key": "q8_door_fennick",
+    "index": 1,
+    "text": "[flat] Thirty gold and the man has gone for a very long lunch.",
+    "voiceId": "R7jdv6H5bZOU3sQIMhbd"
+  },
+  {
+    "who": "fennick",
+    "name": "Winston",
+    "key": "q8_door_force",
+    "index": 1,
+    "text": "[dry] Through him, then. Mind — a man that size falls slow.",
+    "voiceId": "R7jdv6H5bZOU3sQIMhbd"
+  },
+  {
+    "who": "fennick",
+    "name": "Winston",
+    "key": "q9_betrayal",
+    "index": 1,
+    "text": "[flat] Nothing personal, man. You said that yourself once.",
+    "voiceId": "R7jdv6H5bZOU3sQIMhbd"
+  },
+  {
+    "who": "fennick",
+    "name": "Winston",
+    "key": "banter",
+    "index": 1,
+    "text": "[flat] Back lane. Poison. Done.",
+    "voiceId": "R7jdv6H5bZOU3sQIMhbd"
+  },
+  {
+    "who": "fennick",
+    "name": "Winston",
+    "key": "banter",
+    "index": 2,
+    "text": "[calm] Stay close. Don't give them a gap.",
+    "voiceId": "R7jdv6H5bZOU3sQIMhbd"
+  },
+  {
+    "who": "fennick",
+    "name": "Winston",
+    "key": "banter",
+    "index": 3,
+    "text": "[dry] Desmond, stop laughing, it puts them off.",
+    "voiceId": "R7jdv6H5bZOU3sQIMhbd"
+  },
+  {
+    "who": "cassian",
+    "name": "Santiago",
+    "key": "q2_cassian",
+    "index": 1,
+    "text": "[formal, out of breath] Wait! Wolves in that den. Give me a moment. I ran all the way from the bend.",
+    "voiceId": "xHLnsxqUy4cc16VOmSD4"
+  },
+  {
+    "who": "cassian",
+    "name": "Santiago",
+    "key": "q2_cassian",
+    "index": 2,
+    "text": "[straightening] Santiago. I'm a squire with the Order of the Dawning Flame. They sent me to clear this road. No, there's no one else coming.",
+    "voiceId": "xHLnsxqUy4cc16VOmSD4"
+  },
+  {
+    "who": "cassian",
+    "name": "Santiago",
+    "key": "q2_cassian_answer",
+    "index": 1,
+    "text": "[reddening, honest] Nothing! This is my first errand. They said the road was quiet. I counted the tracks outside that den twice. Please don't tell the Order I asked for help.",
+    "voiceId": "xHLnsxqUy4cc16VOmSD4"
+  },
+  {
+    "who": "cassian",
+    "name": "Santiago",
+    "key": "q2_cassian_alone",
+    "index": 1,
+    "text": "[honest] I've only fought in the training yard. Straw doesn't come at you in a pack. Could you stay?",
+    "voiceId": "xHLnsxqUy4cc16VOmSD4"
+  },
+  {
+    "who": "cassian",
+    "name": "Santiago",
+    "key": "q2_cassian_order",
+    "index": 1,
+    "text": "[earnest] Knights sworn to the sun. Our chapter house is down in the sun-lands, where I grew up. I still turn east when I pray, even under all these trees. They sent me north to learn the roads. I hadn't expected to be grateful for strangers this soon.",
+    "voiceId": "xHLnsxqUy4cc16VOmSD4"
+  },
+  {
+    "who": "cassian",
+    "name": "Santiago",
+    "key": "q2_cassian_tease",
+    "index": 1,
+    "text": "[reddening, then honest] Sword practice. Prayers. They didn't put teeth on the practice dummy. With respect, are you going to help?",
+    "voiceId": "xHLnsxqUy4cc16VOmSD4"
+  },
+  {
+    "who": "cassian",
+    "name": "Santiago",
+    "key": "q2_cassian_join",
+    "index": 1,
+    "text": "[relieved] God keep you. Give me a moment to tighten this strap. All right. Stay behind my shield.",
+    "voiceId": "xHLnsxqUy4cc16VOmSD4"
+  },
+  {
+    "who": "cassian",
+    "name": "Santiago",
+    "key": "q2_cassian_no",
+    "index": 1,
+    "text": "[formal, hurt] I see. God go with you. I'll wait until they come out. One at a time, I hope.",
+    "voiceId": "xHLnsxqUy4cc16VOmSD4"
+  },
+  {
+    "who": "cassian",
+    "name": "Santiago",
+    "key": "q5_patrol",
+    "index": 1,
+    "text": "[uneasy] Burning Gauntlet. What's a city patrol doing down here? They've got a woman at sword-point. I don't recognise her dress.",
+    "voiceId": "xHLnsxqUy4cc16VOmSD4"
+  },
+  {
+    "who": "cassian",
+    "name": "Santiago",
+    "key": "q5_patrol_cassian",
+    "index": 1,
+    "text": "[formal, tight] Which goddess, señora? Tell me her name before I draw my weapon.",
+    "voiceId": "xHLnsxqUy4cc16VOmSD4"
+  },
+  {
+    "who": "cassian",
+    "name": "Santiago",
+    "key": "q5_patrol_cassian_after",
+    "index": 1,
+    "text": "[quietly] Yes, it matters to me. {target}, are we stepping in? I'll follow your lead here.",
+    "voiceId": "xHLnsxqUy4cc16VOmSD4"
+  },
+  {
+    "who": "cassian",
+    "name": "Santiago",
+    "key": "q5_cassian_leaves",
+    "index": 1,
+    "text": "[quietly] I've prayed over this every night. I still can't accept the company we're keeping. If I stay, we'll have this same argument at every fire. I'm leaving.",
+    "voiceId": "xHLnsxqUy4cc16VOmSD4"
+  },
+  {
+    "who": "cassian",
+    "name": "Santiago",
+    "key": "q5_cassian_leaves",
+    "index": 2,
+    "text": "[formal] I'll be at the Open Hand. If you part ways with them, come and find me. I'd like to ride with you again. God keep you, {target}.",
+    "voiceId": "xHLnsxqUy4cc16VOmSD4"
+  },
+  {
+    "who": "cassian",
+    "name": "Santiago",
+    "key": "q9_floor_cassian",
+    "index": 1,
+    "text": "[low] Let her wait. You don't owe her an answer just because she's frightened.",
+    "voiceId": "xHLnsxqUy4cc16VOmSD4"
+  },
+  {
+    "who": "cassian",
+    "name": "Santiago",
+    "key": "bond_first",
+    "index": 1,
+    "text": "[hesitant] In the yard, you could put your hand up and stop the bout. I miss that.",
+    "voiceId": "xHLnsxqUy4cc16VOmSD4"
+  },
+  {
+    "who": "cassian",
+    "name": "Santiago",
+    "key": "bond_first",
+    "index": 2,
+    "text": "[honest] I pray before we fight. Then I look for somewhere to run. Haven't done it yet. I'm afraid I will.",
+    "voiceId": "xHLnsxqUy4cc16VOmSD4"
+  },
+  {
+    "who": "cassian",
+    "name": "Santiago",
+    "key": "bond_first_reply",
+    "index": 1,
+    "text": "[relieved] Thank you. You've stood beside me. I'll try to remember that when I start worrying again.",
+    "voiceId": "xHLnsxqUy4cc16VOmSD4"
+  },
+  {
+    "who": "cassian",
+    "name": "Santiago",
+    "key": "bond_second",
+    "index": 1,
+    "text": "[easier] I wrote to Mother. Told her about you. Left out the fighting, or she'd walk all the way here to fetch me.",
+    "voiceId": "xHLnsxqUy4cc16VOmSD4"
+  },
+  {
+    "who": "cassian",
+    "name": "Santiago",
+    "key": "bond_second",
+    "index": 2,
+    "text": "[fond] She has a bakery. I used to carry flour before dawn and complain about the weight. I'd give a good deal to be back there tomorrow morning.",
+    "voiceId": "xHLnsxqUy4cc16VOmSD4"
+  },
+  {
+    "who": "cassian",
+    "name": "Santiago",
+    "key": "bond_second_reply",
+    "index": 1,
+    "text": "[warm] She's kept my stool by the oven. I used to sleep there between deliveries. Apparently my bedroom was too far away when she needed another sack.",
+    "voiceId": "xHLnsxqUy4cc16VOmSD4"
+  },
+  {
+    "who": "cassian",
+    "name": "Santiago",
+    "key": "bond_interest",
+    "index": 1,
+    "text": "[shy] Yes. I'd like that. Could we take our time? There's still so much I don't know about you.",
+    "voiceId": "xHLnsxqUy4cc16VOmSD4"
+  },
+  {
+    "who": "cassian",
+    "name": "Santiago",
+    "key": "bond_later",
+    "index": 1,
+    "text": "[gentle] All right. I won't keep asking. Come and sit with me later, if you'd like.",
+    "voiceId": "xHLnsxqUy4cc16VOmSD4"
+  },
+  {
+    "who": "cassian",
+    "name": "Santiago",
+    "key": "q9_romance",
+    "index": 1,
+    "text": "[nervous] I've been looking forward to our evenings together. Even when I'm too tired to say much.",
+    "voiceId": "xHLnsxqUy4cc16VOmSD4"
+  },
+  {
+    "who": "cassian",
+    "name": "Santiago",
+    "key": "q9_romance",
+    "index": 2,
+    "text": "[earnest] Would you have supper with me when we get a night to ourselves? I'd like to take you somewhere decent.",
+    "voiceId": "xHLnsxqUy4cc16VOmSD4"
+  },
+  {
+    "who": "cassian",
+    "name": "Santiago",
+    "key": "q9_romance_yes",
+    "index": 1,
+    "text": "[pleased] Good. I know a place. And if I salute you at the table, please pretend you didn't see it.",
+    "voiceId": "xHLnsxqUy4cc16VOmSD4"
+  },
+  {
+    "who": "cassian",
+    "name": "Santiago",
+    "key": "q9_romance_no",
+    "index": 1,
+    "text": "[bravely] All right. I'm glad you told me plainly. I won't bring it up again.",
+    "voiceId": "xHLnsxqUy4cc16VOmSD4"
+  },
+  {
+    "who": "cassian",
+    "name": "Santiago",
+    "key": "banter",
+    "index": 1,
+    "text": "[shouting] Dawning Flame, keep my hand steady!",
+    "voiceId": "xHLnsxqUy4cc16VOmSD4"
+  },
+  {
+    "who": "cassian",
+    "name": "Santiago",
+    "key": "banter",
+    "index": 2,
+    "text": "[earnest] Get behind my shield! Now!",
+    "voiceId": "xHLnsxqUy4cc16VOmSD4"
+  },
+  {
+    "who": "cassian",
+    "name": "Santiago",
+    "key": "banter",
+    "index": 3,
+    "text": "[strained] Caught the mail. I'm standing. Keep going!",
+    "voiceId": "xHLnsxqUy4cc16VOmSD4"
+  },
+  {
+    "who": "dorran",
+    "name": "Beau",
+    "key": "q2_selene",
+    "index": 1,
+    "text": "[stammering, warm] You're — y-you're his. Tesfaye's. I'd know that coat anywhere; he w-wore it the day we met. Come in. Come in out of the road.",
+    "voiceId": "7ma36jg9JC0d1pfrWXMw"
+  },
+  {
+    "who": "dorran",
+    "name": "Beau",
+    "key": "q2_selene",
+    "index": 2,
+    "text": "[quiet] Del. It's the ward. He sent the ward.",
+    "voiceId": "7ma36jg9JC0d1pfrWXMw"
+  },
+  {
+    "who": "dorran",
+    "name": "Beau",
+    "key": "q2_beau_seal",
+    "index": 1,
+    "text": "[low] Del. The p-paper the man on the steps had. Look at the seal. Iron hand, red wax.",
+    "voiceId": "7ma36jg9JC0d1pfrWXMw"
+  },
+  {
+    "who": "dorran",
+    "name": "Beau",
+    "key": "q2_beau_seal",
+    "index": 2,
+    "text": "[steadier] That's the mark on the ore wagons. The ones that come up from Dunmere and go north. I've seen it a hundred times at the ford.",
+    "voiceId": "7ma36jg9JC0d1pfrWXMw"
+  },
+  {
+    "who": "dorran",
+    "name": "Beau",
+    "key": "q7_gate",
+    "index": 1,
+    "text": "[grim] Slaves. They're w-working slaves in there. I can hear the chains from here.",
+    "voiceId": "7ma36jg9JC0d1pfrWXMw"
+  },
+  {
+    "who": "dorran",
+    "name": "Beau",
+    "key": "q7_gate",
+    "index": 2,
+    "text": "[steady] I'm going to the bottom for 'em, {target}. Whatever else we do today. Tell me you're with me.",
+    "voiceId": "7ma36jg9JC0d1pfrWXMw"
+  },
+  {
+    "who": "dorran",
+    "name": "Beau",
+    "key": "q7_dorran_with",
+    "index": 1,
+    "text": "[fierce] Good. G-good. The front's mine. Nothing gets past me today.",
+    "voiceId": "7ma36jg9JC0d1pfrWXMw"
+  },
+  {
+    "who": "dorran",
+    "name": "Beau",
+    "key": "q7_dorran_mission",
+    "index": 1,
+    "text": "[quiet] There'll be time. I'll m-make time.",
+    "voiceId": "7ma36jg9JC0d1pfrWXMw"
+  },
+  {
+    "who": "dorran",
+    "name": "Beau",
+    "key": "q7_cage_beau",
+    "index": 1,
+    "text": "[urgent] The ch-chain-gang. Where do they keep them between shifts?",
+    "voiceId": "7ma36jg9JC0d1pfrWXMw"
+  },
+  {
+    "who": "dorran",
+    "name": "Beau",
+    "key": "q7_flood_wait",
+    "index": 1,
+    "text": "[shouting from below] Coming up! Nineteen of 'em and me! Hold the d-door — they're right behind us!",
+    "voiceId": "7ma36jg9JC0d1pfrWXMw"
+  },
+  {
+    "who": "dorran",
+    "name": "Beau",
+    "key": "q7_after",
+    "index": 1,
+    "text": "[exhausted] Nineteen. Every one. Not one left in the dark.",
+    "voiceId": "7ma36jg9JC0d1pfrWXMw"
+  },
+  {
+    "who": "dorran",
+    "name": "Beau",
+    "key": "q7_after",
+    "index": 2,
+    "text": "[quiet] Thank you for holding. I heard you say it. I won't forget it.",
+    "voiceId": "7ma36jg9JC0d1pfrWXMw"
+  },
+  {
+    "who": "dorran",
+    "name": "Beau",
+    "key": "banter",
+    "index": 1,
+    "text": "[steady] H-hold the line. Hold it. Nothing gets past.",
+    "voiceId": "7ma36jg9JC0d1pfrWXMw"
+  },
+  {
+    "who": "dorran",
+    "name": "Beau",
+    "key": "banter",
+    "index": 2,
+    "text": "[grunting] Shield's up. Hit 'em while they hit me.",
+    "voiceId": "7ma36jg9JC0d1pfrWXMw"
+  },
+  {
+    "who": "dorran",
+    "name": "Beau",
+    "key": "banter",
+    "index": 3,
+    "text": "[shouting] Del! Behind you!",
+    "voiceId": "7ma36jg9JC0d1pfrWXMw"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q2_selene",
+    "index": 1,
+    "text": "[warm, gentle] I'm Delphine, Beau's wife. Your late stepfather, Tesfaye, was an old friend of ours. Sit down, honey. Beau, get the good bread.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q2_selene",
+    "index": 2,
+    "text": "[steady] He wrote to us from Lanternhold every year for twenty years. Said you and Hiwot were growing up in that keepers' library, getting into everything he tried to keep you out of. His last letter said if you came here without him, we were to keep you safe.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q2_selene",
+    "index": 3,
+    "text": "[quiet, direct] So. How did he die? All of it. Don't you spare me.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q2_how_armour",
+    "index": 1,
+    "text": "[very still] Black plate. Asked for you by name.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q2_how_armour",
+    "index": 2,
+    "text": "[to Beau] Beau. The letter from the spring. He said if a big man in black iron ever came asking, we weren't to fight him, we were to run with the child and ask questions after. I thought he'd gone strange.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q2_how_quick",
+    "index": 1,
+    "text": "[gently] That's a kindness, and a lie, and I'll take both. Thank you, sugar.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q2_how_quick",
+    "index": 2,
+    "text": "[to Beau] Beau. Whoever did it knew where Tesfaye was, and Tesfaye chose that library because nobody knew. Somebody talked.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q2_how_refuse",
+    "index": 1,
+    "text": "[soft] Then don't. But you'll tell Beau when you can; he loved him too, and he's worse at waiting than I am.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q2_selene_seal",
+    "index": 1,
+    "text": "[looking] It is. The Iron Consortium's mark — the trading house out of the Gate that's been buying every bar on this coast since the ore went bad.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q2_selene_seal",
+    "index": 2,
+    "text": "[slowly] So the folks paying to kill Tesfaye's ward are the folks who own the iron. That ain't two stories, honey. That's one. Now you ask me whatever you need to, and then we decide what he'd have done.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q2_selene_wardens",
+    "index": 1,
+    "text": "[matter-of-fact] Folks who keep the balance between the towns and the wild, and between the strong and the weak, when the law's too far off to do it. Tesfaye was one, before the library. So are we. It don't pay, and nobody thanks you, and you do it anyway. That's the whole of the oath.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q2_selene_why",
+    "index": 1,
+    "text": "[carefully] I don't know, and I won't pretend I do. I know Tesfaye hid you like a man hides a lit candle in a wind, and never said from what. A trading house don't spend two hundred on spite. They think you're worth it, or they think you're dangerous, and I can't tell you which from here.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q2_selene_trust",
+    "index": 1,
+    "text": "[softening] He'd have followed the money. The iron's gone bad since spring — tools snapping, blades cracking, every smith from here to the Gate cussing — and the ore comes up out of Dunmere. The Consortium's mark is on the wagons and on your bounty. So we go to Dunmere and find out what's wrong with that ore, and I'd bet my house we find out who wants you dead the same day.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q2_selene_alone",
+    "index": 1,
+    "text": "[flat] You'll go with us or you'll go over my husband, and he's a big man. Tesfaye asked. I don't break a promise to a dead friend because a child is grieving and rude about it.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q2_join",
+    "index": 1,
+    "text": "[decisive] Beau, get the shields. We're going to Dunmere.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q2_join",
+    "index": 2,
+    "text": "[to you] I'll tell you what: you're Tesfaye's, and Tesfaye's is ours. That's all the reason we need, and it's all the reason you're getting tonight.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q3_south",
+    "index": 1,
+    "text": "[calm] Dunmere's two days south. Mining town, hard folk, honest as far as it goes. The mayor's a man called Gethin Pryce; he'll be sweating, and he'll pay.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q3_south",
+    "index": 2,
+    "text": "[dry] Stay off the river road after dark. Gnolls come down it. I know because I've buried the people who didn't listen.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q3_south_hiwot",
+    "index": 1,
+    "text": "[casual, not casual] Hiwot. You grew up in that library with him. Did he keep letters? Anything from the Gate, anything with that iron seal on it?",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q3_south_hiwot_reply",
+    "index": 1,
+    "text": "[nodding] Then it's still there. Remember that, both of you. If this road ever bends back toward Lanternhold, that drawer's the first door we open.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q3_ithrel_selene",
+    "index": 1,
+    "text": "[sharp] A year hunting one ogre alone, and the Wardens never heard of you. Why didn't you come to us?",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q3_ithrel_selene_after",
+    "index": 1,
+    "text": "[a beat] ...It ain't. Damn it. It should be.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q3_tollan_selene",
+    "index": 1,
+    "text": "[level] Gethin. Before the crews. Who's been buying your bad ore since spring, and who's been selling the smiths good iron since?",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q3_tollan_selene_after",
+    "index": 1,
+    "text": "[to Beau, quiet] Same hand. Beau, I told you. Buy the ore cheap because it's bad, sell the iron dear because it's the only good iron left. Somebody's making that ore bad on purpose.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q4_down",
+    "index": 1,
+    "text": "[calm] Mind the timbers; half of them are rotten. If the kobolds are as thick as the mayor says, we go slow and we keep the healer in the middle. That's me, honey. Don't argue.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q4_flooded",
+    "index": 1,
+    "text": "[calm] Water on the second level, and not from any spring. Somebody opened a channel and let the river in on purpose.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q4_flooded",
+    "index": 2,
+    "text": "[thoughtful] Kobolds don't plan. Kobolds dig where they're pointed. Whoever's pointing them is below us, and has been for weeks.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q4_grukhar_selene",
+    "index": 1,
+    "text": "[flat] Your orders. Sealed how? Iron hand, red wax, pressed hard.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q4_grukhar_selene_after",
+    "index": 1,
+    "text": "[to you, low] On a wagon, on a bounty, and now on an altar. That's three. — Go on, honey. He's yours to deal with.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q4_letters",
+    "index": 1,
+    "text": "[reading] \"To the priest, from Femi at the Thornbury inn. Keep the ore fouled until the spring shipment. Gorruk holds the north road; do not use it without his mark.\"",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q4_letters",
+    "index": 2,
+    "text": "[calm] A courier, and a bandit lord above him, and above them somebody who buys with a seal instead of a name. The mine was only the bottom of this.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q4_camp_selene",
+    "index": 1,
+    "text": "[after a moment] He was the best of us, sugar. And he quit. Those ain't two different stories either.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q5_inn_selene",
+    "index": 1,
+    "text": "[pleasant, deadly] Hollister says you've had that room since the spring, Femi. Now I'll tell you what puzzles me. What does a wine merchant sell for six months in a town with one inn, that already has a cellar?",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q5_inn_selene_after",
+    "index": 1,
+    "text": "[to you] He's got papers, honey. I'd like to see them.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q5_letters_selene",
+    "index": 1,
+    "text": "[level] A name, Cal. Not a seal. Somebody at the Consortium signs for this. Who?",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q6_forest",
+    "index": 1,
+    "text": "[calm] The Mirkhollow. Old wood — older than the Wardens, older than the Gate. It's got its own druids, and they ain't friends of ours; we keep the balance by law and they keep it by blood.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q6_forest",
+    "index": 2,
+    "text": "[quiet] Keep to the deer paths. Anything down here that looks like a road was made by something with a great many legs.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q6_grove_selene",
+    "index": 1,
+    "text": "[steady] None of us. The iron's what we took off the men who are poisoning your river. We're here to shut their mine.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q6_gate",
+    "index": 1,
+    "text": "[calm] Iron livery on the guards. Consortium men. And the tall one — Kestrel. A sword for hire who'll guard anything for anybody. I've crossed him before.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q6_gate",
+    "index": 2,
+    "text": "[flat] He won't talk. Don't waste your breath on it.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q6_fire",
+    "index": 1,
+    "text": "[quiet] Sit a minute. The forest's loud tonight and I want to say a thing before I lose the nerve.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q6_fire",
+    "index": 2,
+    "text": "[soft] Tesfaye wrote to us every year about you. Twenty letters. I feel like I've known you since you could walk, and I met you a month ago. It's a strange thing. It ain't an unwelcome one.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q6_fire_letters",
+    "index": 1,
+    "text": "[fond] The first year, that you'd learned to walk and walked straight into the library. The seventh, that you'd stolen honey from the brothers and let a cat take the blame. The last — that you were ready, and that he wasn't.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q6_fire_warm",
+    "index": 1,
+    "text": "[a soft laugh] Enough. Yeah. That's a very Tesfaye amount.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q6_fire_warm",
+    "index": 2,
+    "text": "[warm] Goodnight, {target}. Wake me if the trees start walking.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q6_fire_deflect",
+    "index": 1,
+    "text": "[quiet] All right. Get some rest. We can talk another time.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q6_fire_deflect",
+    "index": 2,
+    "text": "[calm] Goodnight.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q6_fire_dorran",
+    "index": 1,
+    "text": "[fond] He is. He also snores like a bear in a barrel, so the fortune runs both ways.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q6_fire_dorran",
+    "index": 2,
+    "text": "[warm] Goodnight, {target}. Don't you tell him I said that.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q7_valve",
+    "index": 1,
+    "text": "[tight] Beau's still down there. {target}. Beau is still down there.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q7_flood_now",
+    "index": 1,
+    "text": "[screaming] NO —",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q7_flood_now",
+    "index": 2,
+    "text": "[broken] He was coming up. He was coming up. You heard the chains. You heard him.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q7_after_dead",
+    "index": 1,
+    "text": "[hollow] Olamide's papers. Names in the city. Take them. I don't care.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q7_after_dead",
+    "index": 2,
+    "text": "[cold] I'll finish this road because Tesfaye asked it of me. Don't you speak to me until it's done.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q7_papers",
+    "index": 1,
+    "text": "[reading] Olamide wrote to three men at the Consortium's tower in Varenholm's Gate. Adigun Adeyinka. Bankole. Rotimi.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q7_papers",
+    "index": 2,
+    "text": "[calm] Adeyinka. Cal heard right. The bandits are broke and the mine's drowned, and the road north is open, and so, at last, are the names.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q8_faces",
+    "index": 1,
+    "text": "[disturbed] That's the merchant's face and it ain't the merchant. Look at the eyes, honey. Nothing lives behind 'em.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q8_faces",
+    "index": 2,
+    "text": "[hard] Shape-thieves. They wear you after they kill you. Don't let one get behind you.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q9_lobby",
+    "index": 1,
+    "text": "[murmuring] A clerk with a list and two guards who are paid to believe him.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q9_lobby_talk",
+    "index": 1,
+    "text": "[quiet] He believed it. Third floor. Don't touch anything.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q9_lobby_fight",
+    "index": 1,
+    "text": "[flat] Stairs, then.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q9_top",
+    "index": 1,
+    "text": "[reading] Adigun Adeyinka, Bankole, Rotimi. Gone to Lanternhold — to LANTERNHOLD — for a summit with the keepers.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q9_top",
+    "index": 2,
+    "text": "[cold] The three men behind all of this are sitting in the library you grew up in.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q9_family",
+    "index": 1,
+    "text": "[warm] You're family, honey. You don't have to face this alone. Get some rest. We leave for Lanternhold in the morning.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q10_summit_selene",
+    "index": 1,
+    "text": "[flat] Then answer me this, Adeyinka, before anybody decides anything. The iron hand in red wax on the ore wagons. Whose seal is that?",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q10_summit_selene_after",
+    "index": 1,
+    "text": "[to you, quiet] Your seal on the wagons and his on the bounty. Same wax. I've been right since the inn, honey, and I ain't glad of it.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q10_double_strike",
+    "index": 1,
+    "text": "[sharp] Two of 'em — and the real Hiwot was BEHIND it, {target}, you cut her — she's breathing. She's breathing. She ain't walking out of here on her own.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q10_double_strike",
+    "index": 2,
+    "text": "[grim] I'll get her to the surface. Go on without us.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q10_double_listen",
+    "index": 1,
+    "text": "[urgent] That ain't who it looks like. {target}. That is NOT them. It's already reaching for your throat — move!",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q10_double_strike_alone",
+    "index": 1,
+    "text": "[grim] That wasn't him, and you knew it before I did. It's dead. There's two more behind it wearing faces I don't know — keep moving.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q10_shore",
+    "index": 1,
+    "text": "[weary] The shore. Air. We're out.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q10_shore",
+    "index": 2,
+    "text": "[hard] Sanni sent us after his father. Then he called the guards on us. With Adigun dead and us wanted for murder, who is left to stop him?",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q11_posters",
+    "index": 1,
+    "text": "[cold] Grand Duke Ayodele was murdered last night and they've put your name on it. Obi's dead too. A man called Segun Marr runs the Gauntlet now.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q11_posters",
+    "index": 2,
+    "text": "[calm] Kolade will be sworn in as the new Duke within days. He's moved everything into place while we were underground.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q11_doors",
+    "index": 1,
+    "text": "[calm] Three ways into that palace, and we won't get a second try.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q11_doors",
+    "index": 2,
+    "text": "[measured] Adebayo's dying; cure him and the Gauntlet is ours. Folake offered a way in, for a price. And the thieves under the Undervault will sell us a door if we owe 'em after.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q11_alleg_gauntlet",
+    "index": 1,
+    "text": "[approving] Lawfully. Tesfaye would've said the same, and then he'd have cheated a little. Let's go find the Duke.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q11_alleg_consortium",
+    "index": 1,
+    "text": "[flat] Her. Fine. I'll hold my nose. Don't you let her hold anything of yours.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q11_alleg_thieves",
+    "index": 1,
+    "text": "[dry] Tunde Softfoot never forgets a debt. Neither will you. All right — the Undervault.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q12_steps",
+    "index": 1,
+    "text": "[low] Borrowed silks, real steel, two invitations. Everybody in that hall is either a guest or a shape-thief, and there's no way to tell which till the knives come out.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q12_steps",
+    "index": 2,
+    "text": "[calm] Stay near the dukes. He needs them dead more than he needs you.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q12_dukes_korvath",
+    "index": 1,
+    "text": "[shouting] The dukes are DYING, {target} — we can't hold both if you run at him —",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q13_steps_selene",
+    "index": 1,
+    "text": "[flat] Where's Emeka Obi, Marr? He had a wife on Tanner Street. She'd like to know where to put the flowers.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q14_sanctum",
+    "index": 1,
+    "text": "[low] A temple to a dead god, still swept, still lit. Somebody's been praying here for twenty years.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q14_sanctum",
+    "index": 2,
+    "text": "[steady] Whatever he says at that altar, {target}, you remember who raised you. Then you do what you have to.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "q14_mirrors",
+    "index": 1,
+    "text": "[cold] Our faces. Every one. Kill 'em quick; don't look at the eyes.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "banter",
+    "index": 1,
+    "text": "[calm] Breathe, honey. The one in front's slower than he looks.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "banter",
+    "index": 2,
+    "text": "[sharp] Mind the mage. I'll mind the rest.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "selene",
+    "name": "Delphine",
+    "key": "banter",
+    "index": 3,
+    "text": "[dry] If you die, I will be very put out. Don't.",
+    "voiceId": "a3tSl2M9CVI359Oy7H6v"
+  },
+  {
+    "who": "ithrel",
+    "name": "Itsuki",
+    "key": "q3_ithrel",
+    "index": 1,
+    "text": "[quiet, from the treeline] Forgive me. I do not mean to alarm you. I have walked beside your road for an hour, deciding whether to speak.",
+    "voiceId": "EqIniNyrvzFcbGecFyI5"
+  },
+  {
+    "who": "ithrel",
+    "name": "Itsuki",
+    "key": "q3_ithrel",
+    "index": 2,
+    "text": "[level] You are going north to the Gate, by the river road? — Then I will be plain. I am Itsuki. A year ago an ogre called Gorruk, who leads the bandit companies in the north, burned a wagon on this road. My wife was in it. I have hunted him since, alone, and alone I cannot reach him.",
+    "voiceId": "EqIniNyrvzFcbGecFyI5"
+  },
+  {
+    "who": "ithrel",
+    "name": "Itsuki",
+    "key": "q3_ithrel_selene_reply",
+    "index": 1,
+    "text": "[calm] I did. A man at a Warden house on the coast told me the north road is not the Wardens' road. He was polite about it.",
+    "voiceId": "EqIniNyrvzFcbGecFyI5"
+  },
+  {
+    "who": "ithrel",
+    "name": "Itsuki",
+    "key": "q3_ithrel_ask",
+    "index": 1,
+    "text": "[level] You are going towards him. I would go with you. I ask nothing else.",
+    "voiceId": "EqIniNyrvzFcbGecFyI5"
+  },
+  {
+    "who": "ithrel",
+    "name": "Itsuki",
+    "key": "q3_ithrel_seal",
+    "index": 1,
+    "text": "[thinking] I have seen letters carried to his camp. Sealed. I did not read them; I was too far, and I am no thief. The seal was red, and pressed hard. That is all I can say honestly.",
+    "voiceId": "EqIniNyrvzFcbGecFyI5"
+  },
+  {
+    "who": "ithrel",
+    "name": "Itsuki",
+    "key": "q3_ithrel_wife",
+    "index": 1,
+    "text": "[a long pause] Hana. Thank you for asking. No one asks. They ask about him.",
+    "voiceId": "EqIniNyrvzFcbGecFyI5"
+  },
+  {
+    "who": "ithrel",
+    "name": "Itsuki",
+    "key": "q3_ithrel_yes",
+    "index": 1,
+    "text": "[a small bow] Then I am in your debt before I have earned my place. I will keep the rear. You will not hear me unless you need to.",
+    "voiceId": "EqIniNyrvzFcbGecFyI5"
+  },
+  {
+    "who": "ithrel",
+    "name": "Itsuki",
+    "key": "q3_ithrel_no",
+    "index": 1,
+    "text": "[calm] I understand. I will walk on ahead of you, then. If our roads cross again, I will not ask twice.",
+    "voiceId": "EqIniNyrvzFcbGecFyI5"
+  },
+  {
+    "who": "ithrel",
+    "name": "Itsuki",
+    "key": "q5_tent_ithrel",
+    "index": 1,
+    "text": "[very quiet] Gorruk. Where does he sleep?",
+    "voiceId": "EqIniNyrvzFcbGecFyI5"
+  },
+  {
+    "who": "ithrel",
+    "name": "Itsuki",
+    "key": "q5_shot",
+    "index": 1,
+    "text": "[very quietly] {target}. I have him. A clean line, no cover. Say yes.",
+    "voiceId": "EqIniNyrvzFcbGecFyI5"
+  },
+  {
+    "who": "ithrel",
+    "name": "Itsuki",
+    "key": "q5_shot_yes",
+    "index": 1,
+    "text": "[exhaling] Thank you. Whatever comes after this — thank you.",
+    "voiceId": "EqIniNyrvzFcbGecFyI5"
+  },
+  {
+    "who": "ithrel",
+    "name": "Itsuki",
+    "key": "q5_shot_no",
+    "index": 1,
+    "text": "[tight] Alive. I have waited a year. I can wait until the end of a fight.",
+    "voiceId": "EqIniNyrvzFcbGecFyI5"
+  },
+  {
+    "who": "ithrel",
+    "name": "Itsuki",
+    "key": "q5_gone",
+    "index": 1,
+    "text": "[cold] He walked out of that tent because you wished it. I will find him myself.",
+    "voiceId": "EqIniNyrvzFcbGecFyI5"
+  },
+  {
+    "who": "ithrel",
+    "name": "Itsuki",
+    "key": "q5_gone",
+    "index": 2,
+    "text": "[flat] Do not follow me.",
+    "voiceId": "EqIniNyrvzFcbGecFyI5"
+  },
+  {
+    "who": "ithrel",
+    "name": "Itsuki",
+    "key": "q5_dead",
+    "index": 1,
+    "text": "[quietly] It is done. I thought I would feel taller. I feel as though I could sleep for a year.",
+    "voiceId": "EqIniNyrvzFcbGecFyI5"
+  },
+  {
+    "who": "ithrel",
+    "name": "Itsuki",
+    "key": "q5_dead",
+    "index": 2,
+    "text": "[soft] I will stay, if you will have me. There is nothing else I was for.",
+    "voiceId": "EqIniNyrvzFcbGecFyI5"
+  },
+  {
+    "who": "ithrel",
+    "name": "Itsuki",
+    "key": "bond_first",
+    "index": 1,
+    "text": "[low] I have spent so long following tracks that I have given little thought to what comes after.",
+    "voiceId": "EqIniNyrvzFcbGecFyI5"
+  },
+  {
+    "who": "ithrel",
+    "name": "Itsuki",
+    "key": "bond_first",
+    "index": 2,
+    "text": "[tired] I cannot go back to the life I had with my wife. I do not yet know what else I want.",
+    "voiceId": "EqIniNyrvzFcbGecFyI5"
+  },
+  {
+    "who": "ithrel",
+    "name": "Itsuki",
+    "key": "bond_first_reply",
+    "index": 1,
+    "text": "[quiet] I would like to stay. It helps to have people expecting me back.",
+    "voiceId": "EqIniNyrvzFcbGecFyI5"
+  },
+  {
+    "who": "ithrel",
+    "name": "Itsuki",
+    "key": "bond_second",
+    "index": 1,
+    "text": "[thoughtful] I used to guide travellers through the woods. Some had never slept outside. They would wake me over every rustle.",
+    "voiceId": "EqIniNyrvzFcbGecFyI5"
+  },
+  {
+    "who": "ithrel",
+    "name": "Itsuki",
+    "key": "bond_second",
+    "index": 2,
+    "text": "[faintly amused] One paid me extra to keep the owls away. I gave him something to plug his ears.",
+    "voiceId": "EqIniNyrvzFcbGecFyI5"
+  },
+  {
+    "who": "ithrel",
+    "name": "Itsuki",
+    "key": "bond_second_reply",
+    "index": 1,
+    "text": "[warm] I would enjoy that. There are places worth visiting without a bounty to collect.",
+    "voiceId": "EqIniNyrvzFcbGecFyI5"
+  },
+  {
+    "who": "ithrel",
+    "name": "Itsuki",
+    "key": "bond_interest",
+    "index": 1,
+    "text": "[careful] I care for you. I need time before I can promise more. If you are willing to wait, I would like to try.",
+    "voiceId": "EqIniNyrvzFcbGecFyI5"
+  },
+  {
+    "who": "ithrel",
+    "name": "Itsuki",
+    "key": "bond_later",
+    "index": 1,
+    "text": "[calm] Take the time you need. You know where to find me.",
+    "voiceId": "EqIniNyrvzFcbGecFyI5"
+  },
+  {
+    "who": "ithrel",
+    "name": "Itsuki",
+    "key": "q9_romance",
+    "index": 1,
+    "text": "[low] I still miss my wife. I always will.",
+    "voiceId": "EqIniNyrvzFcbGecFyI5"
+  },
+  {
+    "who": "ithrel",
+    "name": "Itsuki",
+    "key": "q9_romance",
+    "index": 2,
+    "text": "[quiet] But I have come to care for you too. If you feel the same, I would like us to be together.",
+    "voiceId": "EqIniNyrvzFcbGecFyI5"
+  },
+  {
+    "who": "ithrel",
+    "name": "Itsuki",
+    "key": "q9_romance_yes",
+    "index": 1,
+    "text": "[quiet] Then we will take our time. I am glad you told me.",
+    "voiceId": "EqIniNyrvzFcbGecFyI5"
+  },
+  {
+    "who": "ithrel",
+    "name": "Itsuki",
+    "key": "q9_romance_no",
+    "index": 1,
+    "text": "[calm] I understand. It was enough to say it. Sleep.",
+    "voiceId": "EqIniNyrvzFcbGecFyI5"
+  },
+  {
+    "who": "ithrel",
+    "name": "Itsuki",
+    "key": "q11_docks_ithrel",
+    "index": 1,
+    "text": "[very quiet] The north road. A year ago. Were you there when the wagons burned?",
+    "voiceId": "EqIniNyrvzFcbGecFyI5"
+  },
+  {
+    "who": "ithrel",
+    "name": "Itsuki",
+    "key": "q13_gorruk",
+    "index": 1,
+    "text": "[very quietly] Mine. You said. Say it again.",
+    "voiceId": "EqIniNyrvzFcbGecFyI5"
+  },
+  {
+    "who": "ithrel",
+    "name": "Itsuki",
+    "key": "banter",
+    "index": 1,
+    "text": "[quiet] Loosing.",
+    "voiceId": "EqIniNyrvzFcbGecFyI5"
+  },
+  {
+    "who": "ithrel",
+    "name": "Itsuki",
+    "key": "banter",
+    "index": 2,
+    "text": "[flat] The archer is mine. Leave him.",
+    "voiceId": "EqIniNyrvzFcbGecFyI5"
+  },
+  {
+    "who": "ithrel",
+    "name": "Itsuki",
+    "key": "banter",
+    "index": 3,
+    "text": "[cold] Again.",
+    "voiceId": "EqIniNyrvzFcbGecFyI5"
+  },
+  {
+    "who": "bramm",
+    "name": "Bahadır",
+    "key": "q3_bramm",
+    "index": 1,
+    "text": "[booming] — and I say AGAIN, red man, you touch that cage and I will fold you into it!",
+    "voiceId": "ZZKBkhKNX9bfxn63cQTM"
+  },
+  {
+    "who": "bramm",
+    "name": "Bahadır",
+    "key": "q3_bramm",
+    "index": 2,
+    "text": "[turning] VALLAHI. Strangers. Good. Strangers, listen: Bahadır, ranger of Kalden, and this is Fındık, who is small but very brave. There is a woman in that fortress, in a cage. Yasemin. A witch of my country, and a good one.",
+    "voiceId": "ZZKBkhKNX9bfxn63cQTM"
+  },
+  {
+    "who": "bramm",
+    "name": "Bahadır",
+    "key": "q3_bramm_argue",
+    "index": 1,
+    "text": "[hot] Tell them why Vashk burns women, wizard! Tell them what your Crimson masters do with a witch's bones!",
+    "voiceId": "ZZKBkhKNX9bfxn63cQTM"
+  },
+  {
+    "who": "bramm",
+    "name": "Bahadır",
+    "key": "q3_bramm_rescue",
+    "index": 1,
+    "text": "[overjoyed] With you! Yes! Fındık, did you hear? We have friends, and they are good ones. Come — the gate is that way, and I am going through it.",
+    "voiceId": "ZZKBkhKNX9bfxn63cQTM"
+  },
+  {
+    "who": "bramm",
+    "name": "Bahadır",
+    "key": "q3_road_block",
+    "index": 1,
+    "text": "[wounded, roaring] You TOOK his coin. You looked at me and you took his coin! Then you go through me, and Fındık, and every tree in this valley — come on! COME ON!",
+    "voiceId": "ZZKBkhKNX9bfxn63cQTM"
+  },
+  {
+    "who": "bramm",
+    "name": "Bahadır",
+    "key": "q3_joined",
+    "index": 1,
+    "text": "[emphatic] We are yours, {target}. Vallahi. Where you go, we go, and anyone who says otherwise answers to Fındık.",
+    "voiceId": "ZZKBkhKNX9bfxn63cQTM"
+  },
+  {
+    "who": "bramm",
+    "name": "Bahadır",
+    "key": "banter",
+    "index": 1,
+    "text": "[roaring] FINDIK SAYS GO FOR THE EYES!",
+    "voiceId": "ZZKBkhKNX9bfxn63cQTM"
+  },
+  {
+    "who": "bramm",
+    "name": "Bahadır",
+    "key": "banter",
+    "index": 2,
+    "text": "[booming] Nobody touches the witch! NOBODY! Vallahi!",
+    "voiceId": "ZZKBkhKNX9bfxn63cQTM"
+  },
+  {
+    "who": "bramm",
+    "name": "Bahadır",
+    "key": "banter",
+    "index": 3,
+    "text": "[gleeful] Ha HA! Did you SEE that, canım?",
+    "voiceId": "ZZKBkhKNX9bfxn63cQTM"
+  },
+  {
+    "who": "ysolde",
+    "name": "Yasemin",
+    "key": "q3_freed",
+    "index": 1,
+    "text": "[cold, from the cage] Thank you. I would kneel, but the bars have made it difficult.",
+    "voiceId": "E7IRB2a3OVqRb6T7du39"
+  },
+  {
+    "who": "ysolde",
+    "name": "Yasemin",
+    "key": "q3_freed",
+    "index": 2,
+    "text": "[looking at you] You. Come closer. Something in your blood woke when you came through the fortress gate; I felt it through the bars like heat from a stove in the next room. I have read auras all my life and I have never felt one like it.",
+    "voiceId": "E7IRB2a3OVqRb6T7du39"
+  },
+  {
+    "who": "ysolde",
+    "name": "Yasemin",
+    "key": "q3_freed",
+    "index": 3,
+    "text": "[direct] So tell me, before I decide what to do about it. When it woke — what did it want?",
+    "voiceId": "E7IRB2a3OVqRb6T7du39"
+  },
+  {
+    "who": "ysolde",
+    "name": "Yasemin",
+    "key": "q3_ysolde_blood",
+    "index": 1,
+    "text": "[a slow nod] Honest. Good. Then I know what kind of thing it is, if not its name: something that was worshipped once, and fed. I would sooner walk beside it than behind it. Bahadır goes where I go, and Fındık goes where Bahadır goes, and so you have three. Two and a half.",
+    "voiceId": "E7IRB2a3OVqRb6T7du39"
+  },
+  {
+    "who": "ysolde",
+    "name": "Yasemin",
+    "key": "q3_ysolde_nothing",
+    "index": 1,
+    "text": "[dry] You felt nothing. Canım, I watched your hand. — Very well; you are not ready to say it, and that is your right. I will walk beside you anyway, and I will keep watching the hand. Bahadır goes where I go.",
+    "voiceId": "E7IRB2a3OVqRb6T7du39"
+  },
+  {
+    "who": "ysolde",
+    "name": "Yasemin",
+    "key": "q3_ysolde_what",
+    "index": 1,
+    "text": "[precise] Something that was worshipped once, and should not have been. That is as plain as I can be without lying to you. I read auras, not histories. Now answer mine.",
+    "voiceId": "E7IRB2a3OVqRb6T7du39"
+  },
+  {
+    "who": "ysolde",
+    "name": "Yasemin",
+    "key": "q3_ysolde_quiet",
+    "index": 1,
+    "text": "[dry] As you like. I am a witch. Keeping things to myself is most of the work. I will walk beside you, and I will not say it again in front of the others. Bahadır goes where I go.",
+    "voiceId": "E7IRB2a3OVqRb6T7du39"
+  },
+  {
+    "who": "ysolde",
+    "name": "Yasemin",
+    "key": "banter",
+    "index": 1,
+    "text": "[calm] Frost. Hold him still.",
+    "voiceId": "E7IRB2a3OVqRb6T7du39"
+  },
+  {
+    "who": "ysolde",
+    "name": "Yasemin",
+    "key": "banter",
+    "index": 2,
+    "text": "[formal] Your aura flares when you fight. Interesting.",
+    "voiceId": "E7IRB2a3OVqRb6T7du39"
+  },
+  {
+    "who": "ysolde",
+    "name": "Yasemin",
+    "key": "banter",
+    "index": 3,
+    "text": "[cool] Keep them in front of us.",
+    "voiceId": "E7IRB2a3OVqRb6T7du39"
+  },
+  {
+    "who": "aurelius",
+    "name": "Devendra",
+    "key": "q3_bramm",
+    "index": 1,
+    "text": "[disdainful] Kindly disregard the large gentleman; his enthusiasms are exhausting. Devendra, Crimson Wizard of Vashk. The woman in the cage is a Kalden witch, and it is quite evident that a Kalden witch loose in these hills is a calamity waiting for a date.",
+    "voiceId": "Sm4AUh4ykvT9ljuZ5Uy8"
+  },
+  {
+    "who": "aurelius",
+    "name": "Devendra",
+    "key": "q3_bramm_argue",
+    "index": 1,
+    "text": "[coolly] Vashk and Kalden have been at war, in one form or another, since before these strangers' grandparents were born. I do not expect the large gentleman to understand policy. I expect him to understand a hundred in gold — which I am offering to you, not to him. A hundred to see her burned, and my considerable talents beside you until the Gate.",
+    "voiceId": "Sm4AUh4ykvT9ljuZ5Uy8"
+  },
+  {
+    "who": "aurelius",
+    "name": "Devendra",
+    "key": "q3_bramm_why",
+    "index": 1,
+    "text": "[coolly] Because one witch becomes a coven, and a coven becomes a border dispute, and a border dispute becomes my problem. That I am polite about it is a courtesy, not a change of policy.",
+    "voiceId": "Sm4AUh4ykvT9ljuZ5Uy8"
+  },
+  {
+    "who": "aurelius",
+    "name": "Devendra",
+    "key": "q3_bramm_coin",
+    "index": 1,
+    "text": "[satisfied] A sensible arrangement. The large gentleman will object; I recommend we not be near him when he does.",
+    "voiceId": "Sm4AUh4ykvT9ljuZ5Uy8"
+  },
+  {
+    "who": "aurelius",
+    "name": "Devendra",
+    "key": "q3_bramm_both",
+    "index": 1,
+    "text": "[thin] Hold my tongue. Very well. I shall hold it most eloquently. Do not expect me to be happy about it.",
+    "voiceId": "Sm4AUh4ykvT9ljuZ5Uy8"
+  },
+  {
+    "who": "aurelius",
+    "name": "Devendra",
+    "key": "banter",
+    "index": 1,
+    "text": "[bored] Do kindly keep them off me; I am the expensive one.",
+    "voiceId": "Sm4AUh4ykvT9ljuZ5Uy8"
+  },
+  {
+    "who": "aurelius",
+    "name": "Devendra",
+    "key": "banter",
+    "index": 2,
+    "text": "[smug] Burning. Obviously.",
+    "voiceId": "Sm4AUh4ykvT9ljuZ5Uy8"
+  },
+  {
+    "who": "aurelius",
+    "name": "Devendra",
+    "key": "banter",
+    "index": 3,
+    "text": "[sneering] Barely worth the spell.",
+    "voiceId": "Sm4AUh4ykvT9ljuZ5Uy8"
+  },
+  {
+    "who": "ilvara",
+    "name": "Layla",
+    "key": "q5_patrol",
+    "index": 1,
+    "text": "[cold] Yes. Stare. A dark elf, above ground, in daylight. You will not see another.",
+    "voiceId": "7nj1jqrTE7EDXPyxWBhY"
+  },
+  {
+    "who": "ilvara",
+    "name": "Layla",
+    "key": "q5_patrol",
+    "index": 2,
+    "text": "[contemptuous] I am a priestess, and a fugitive, and there is a bounty on me that these three would like to collect. I cured a village of the coughing sickness on my way here. They are arresting me for having the wrong face. Decide what that makes you.",
+    "voiceId": "7nj1jqrTE7EDXPyxWBhY"
+  },
+  {
+    "who": "ilvara",
+    "name": "Layla",
+    "key": "q5_patrol_cassian_reply",
+    "index": 1,
+    "text": "[level] Of a goddess your Order has no name for, boy, and would not like if it did. Does it change your sword arm?",
+    "voiceId": "7nj1jqrTE7EDXPyxWBhY"
+  },
+  {
+    "who": "ilvara",
+    "name": "Layla",
+    "key": "q5_ilvara_why",
+    "index": 1,
+    "text": "[flat] My own people. I refused a thing that was asked of me, and among my kind refusal is answered with a knife. I came up into the light because there was nowhere left to go down. I have not found the light kinder, ya stranger. Only brighter.",
+    "voiceId": "7nj1jqrTE7EDXPyxWBhY"
+  },
+  {
+    "who": "ilvara",
+    "name": "Layla",
+    "key": "q5_ilvara_defend",
+    "index": 1,
+    "text": "[surprised] Protection. From you. How strange, and how useful.",
+    "voiceId": "7nj1jqrTE7EDXPyxWBhY"
+  },
+  {
+    "who": "ilvara",
+    "name": "Layla",
+    "key": "q5_ilvara_defend",
+    "index": 2,
+    "text": "[dry] Very well. By the deep, I go where you go, until I decide otherwise. Try to be interesting.",
+    "voiceId": "7nj1jqrTE7EDXPyxWBhY"
+  },
+  {
+    "who": "ilvara",
+    "name": "Layla",
+    "key": "q5_ilvara_walk",
+    "index": 1,
+    "text": "[flat] Of course. Walk on. Everyone does.",
+    "voiceId": "7nj1jqrTE7EDXPyxWBhY"
+  },
+  {
+    "who": "ilvara",
+    "name": "Layla",
+    "key": "q5_ilvara_sell",
+    "index": 1,
+    "text": "[venomous] You will remember this. I will see that you do, from wherever they put me.",
+    "voiceId": "7nj1jqrTE7EDXPyxWBhY"
+  },
+  {
+    "who": "ilvara",
+    "name": "Layla",
+    "key": "q5_patrol_ask",
+    "index": 1,
+    "text": "[cold] Well? You have looked long enough to decide.",
+    "voiceId": "7nj1jqrTE7EDXPyxWBhY"
+  },
+  {
+    "who": "ilvara",
+    "name": "Layla",
+    "key": "q9_floor_ilvara",
+    "index": 1,
+    "text": "[low, amused] Answer her. She is the only person in this tower telling the truth, and she is doing it for money. I respect that.",
+    "voiceId": "7nj1jqrTE7EDXPyxWBhY"
+  },
+  {
+    "who": "ilvara",
+    "name": "Layla",
+    "key": "bond_first",
+    "index": 1,
+    "text": "[direct] I appreciate what you did for me. Understand something, though. You did not buy my loyalty by keeping me alive.",
+    "voiceId": "7nj1jqrTE7EDXPyxWBhY"
+  },
+  {
+    "who": "ilvara",
+    "name": "Layla",
+    "key": "bond_first",
+    "index": 2,
+    "text": "[firm] I choose where I go and whom I serve.",
+    "voiceId": "7nj1jqrTE7EDXPyxWBhY"
+  },
+  {
+    "who": "ilvara",
+    "name": "Layla",
+    "key": "bond_first_reply",
+    "index": 1,
+    "text": "[approving] Good. I prefer travelling with someone who understands that.",
+    "voiceId": "7nj1jqrTE7EDXPyxWBhY"
+  },
+  {
+    "who": "ilvara",
+    "name": "Layla",
+    "key": "bond_second",
+    "index": 1,
+    "text": "[unguarded] I miss the quiet of the shrine. Before the petitions began, I had an hour to myself.",
+    "voiceId": "7nj1jqrTE7EDXPyxWBhY"
+  },
+  {
+    "who": "ilvara",
+    "name": "Layla",
+    "key": "bond_second",
+    "index": 2,
+    "text": "[dry] Up here, someone is always shouting, selling something, or telling me what a lovely morning it is. Usually in the rain.",
+    "voiceId": "7nj1jqrTE7EDXPyxWBhY"
+  },
+  {
+    "who": "ilvara",
+    "name": "Layla",
+    "key": "bond_second_reply",
+    "index": 1,
+    "text": "[measured] The work was demanding. I liked that. I knew what was expected of me, and I was good at it. I miss having a place of my own.",
+    "voiceId": "7nj1jqrTE7EDXPyxWBhY"
+  },
+  {
+    "who": "ilvara",
+    "name": "Layla",
+    "key": "bond_interest",
+    "index": 1,
+    "text": "[interested] You have my attention. Let us spend more time together before deciding anything.",
+    "voiceId": "7nj1jqrTE7EDXPyxWBhY"
+  },
+  {
+    "who": "ilvara",
+    "name": "Layla",
+    "key": "bond_later",
+    "index": 1,
+    "text": "[level] Then leave it for now. You can bring it up when you know what you want.",
+    "voiceId": "7nj1jqrTE7EDXPyxWBhY"
+  },
+  {
+    "who": "ilvara",
+    "name": "Layla",
+    "key": "q9_romance",
+    "index": 1,
+    "text": "[dry] I enjoy your company when you stop trying to give me orders.",
+    "voiceId": "7nj1jqrTE7EDXPyxWBhY"
+  },
+  {
+    "who": "ilvara",
+    "name": "Layla",
+    "key": "q9_romance",
+    "index": 2,
+    "text": "[direct] I would like some time alone with you. Interested?",
+    "voiceId": "7nj1jqrTE7EDXPyxWBhY"
+  },
+  {
+    "who": "ilvara",
+    "name": "Layla",
+    "key": "q9_romance_yes",
+    "index": 1,
+    "text": "[pleased] Good. Come and sit with me. Your duties can wait for an evening.",
+    "voiceId": "7nj1jqrTE7EDXPyxWBhY"
+  },
+  {
+    "who": "ilvara",
+    "name": "Layla",
+    "key": "q9_romance_no",
+    "index": 1,
+    "text": "[cool] Very well. I will not ask again.",
+    "voiceId": "7nj1jqrTE7EDXPyxWBhY"
+  },
+  {
+    "who": "ilvara",
+    "name": "Layla",
+    "key": "q10_catacombs_ilvara",
+    "index": 1,
+    "text": "[amused] Guess.",
+    "voiceId": "7nj1jqrTE7EDXPyxWBhY"
+  },
+  {
+    "who": "ilvara",
+    "name": "Layla",
+    "key": "q10_double_strike",
+    "index": 1,
+    "text": "[approving] Ruthless. Correct. The real one is breathing behind it; someone drag her out.",
+    "voiceId": "7nj1jqrTE7EDXPyxWBhY"
+  },
+  {
+    "who": "ilvara",
+    "name": "Layla",
+    "key": "q10_double_listen",
+    "index": 1,
+    "text": "[sharp] That is not your kin. Kill it before it kisses you.",
+    "voiceId": "7nj1jqrTE7EDXPyxWBhY"
+  },
+  {
+    "who": "ilvara",
+    "name": "Layla",
+    "key": "q10_double_strike_alone",
+    "index": 1,
+    "text": "[approving] Good. You did not even let it finish. There are more behind it; kill them the same way.",
+    "voiceId": "7nj1jqrTE7EDXPyxWBhY"
+  },
+  {
+    "who": "ilvara",
+    "name": "Layla",
+    "key": "q14_sanctum",
+    "index": 1,
+    "text": "[reverent] Do you feel it? The stone remembers him. Morrak. By the deep — it would remember you too, if you let it.",
+    "voiceId": "7nj1jqrTE7EDXPyxWBhY"
+  },
+  {
+    "who": "ilvara",
+    "name": "Layla",
+    "key": "banter",
+    "index": 1,
+    "text": "[contemptuous] Bleed, then, if you must.",
+    "voiceId": "7nj1jqrTE7EDXPyxWBhY"
+  },
+  {
+    "who": "ilvara",
+    "name": "Layla",
+    "key": "banter",
+    "index": 2,
+    "text": "[cool] Wound them. I will decide who heals.",
+    "voiceId": "7nj1jqrTE7EDXPyxWBhY"
+  },
+  {
+    "who": "ilvara",
+    "name": "Layla",
+    "key": "banter",
+    "index": 3,
+    "text": "[dry] Surface-dwellers. Always the front lane.",
+    "voiceId": "7nj1jqrTE7EDXPyxWBhY"
+  },
+  {
+    "who": "faelen",
+    "name": "Kaito",
+    "key": "q6_web",
+    "index": 1,
+    "text": "[cheerful, from above] Ah — hello. Yes. Up here. In the web. It is exactly as embarrassing as it looks, and I apologise for it.",
+    "voiceId": "O5EDsXljBLA6l3KfYEde"
+  },
+  {
+    "who": "faelen",
+    "name": "Kaito",
+    "key": "q6_web",
+    "index": 2,
+    "text": "[appraising] Not bounty hunters; you walk too close together. A green sash — Wardens, then, or with Wardens. Good. Wardens cut people down for nothing. Kaito. I hunt bounties, mostly, and I was hunting a wyvern's head when the spiders took offence.",
+    "voiceId": "O5EDsXljBLA6l3KfYEde"
+  },
+  {
+    "who": "faelen",
+    "name": "Kaito",
+    "key": "q6_faelen_wyvern",
+    "index": 1,
+    "text": "[bright] The magistrate of Thornbury, whose sheep keep disappearing. Three hundred in gold, and — I am told — the gratitude of a woman with a very fine face. I am still negotiating the second part.",
+    "voiceId": "O5EDsXljBLA6l3KfYEde"
+  },
+  {
+    "who": "faelen",
+    "name": "Kaito",
+    "key": "q6_faelen_price",
+    "index": 1,
+    "text": "[delighted] Ah. Now we are talking properly. My bow, until your road ends. And a thing I saw, which I think you will want: east of here, past the wyvern cliffs, there is a mine under the hill. Men in iron livery go in at dawn and men in chains come out at dusk. I did not go closer. I hunt beasts. That did not look like a beast.",
+    "voiceId": "O5EDsXljBLA6l3KfYEde"
+  },
+  {
+    "who": "faelen",
+    "name": "Kaito",
+    "key": "q6_faelen_cut",
+    "index": 1,
+    "text": "[relieved] You are my favourite person. I say that to everyone. This once, forgive me, I mean it.",
+    "voiceId": "O5EDsXljBLA6l3KfYEde"
+  },
+  {
+    "who": "faelen",
+    "name": "Kaito",
+    "key": "q6_faelen_cut",
+    "index": 2,
+    "text": "[smiling] I will come along, if you will have me. The wyverns are that way, and so, I suspect, is whatever you came into these woods to find.",
+    "voiceId": "O5EDsXljBLA6l3KfYEde"
+  },
+  {
+    "who": "faelen",
+    "name": "Kaito",
+    "key": "q6_faelen_leave",
+    "index": 1,
+    "text": "[calling after you] Fair enough! If you change your mind, I will be — well. Here.",
+    "voiceId": "O5EDsXljBLA6l3KfYEde"
+  },
+  {
+    "who": "faelen",
+    "name": "Kaito",
+    "key": "q6_wyverns",
+    "index": 1,
+    "text": "[bright] There she is. The matriarch. That head is worth three hundred in gold and a magistrate's gratitude, and I intend, respectfully, to collect both.",
+    "voiceId": "O5EDsXljBLA6l3KfYEde"
+  },
+  {
+    "who": "faelen",
+    "name": "Kaito",
+    "key": "q8_door",
+    "index": 1,
+    "text": "[murmuring] Doorman. Big. Bored. I can talk us past him; bored men love a story, and I have several.",
+    "voiceId": "O5EDsXljBLA6l3KfYEde"
+  },
+  {
+    "who": "faelen",
+    "name": "Kaito",
+    "key": "q8_door_faelen",
+    "index": 1,
+    "text": "[pleased] — and that is how I lost the boot. He is still laughing. In, in, before he thinks about it.",
+    "voiceId": "O5EDsXljBLA6l3KfYEde"
+  },
+  {
+    "who": "faelen",
+    "name": "Kaito",
+    "key": "q8_door_force",
+    "index": 1,
+    "text": "[resigned] Through him. Very well. I will apologise to him afterwards; it seems only polite.",
+    "voiceId": "O5EDsXljBLA6l3KfYEde"
+  },
+  {
+    "who": "faelen",
+    "name": "Kaito",
+    "key": "q9_lobby",
+    "index": 1,
+    "text": "[murmuring] A clerk. A list. Two guards. Forgive me — I love a lobby.",
+    "voiceId": "O5EDsXljBLA6l3KfYEde"
+  },
+  {
+    "who": "faelen",
+    "name": "Kaito",
+    "key": "q9_lobby_talk",
+    "index": 1,
+    "text": "[smiling] He believed it. Third floor. Touch nothing, he says — as if.",
+    "voiceId": "O5EDsXljBLA6l3KfYEde"
+  },
+  {
+    "who": "faelen",
+    "name": "Kaito",
+    "key": "q9_lobby_fight",
+    "index": 1,
+    "text": "[cheerful] Stairs it is.",
+    "voiceId": "O5EDsXljBLA6l3KfYEde"
+  },
+  {
+    "who": "faelen",
+    "name": "Kaito",
+    "key": "bond_first",
+    "index": 1,
+    "text": "[quieter] I know I make a performance of everything. It is easier than admitting I was scared.",
+    "voiceId": "O5EDsXljBLA6l3KfYEde"
+  },
+  {
+    "who": "faelen",
+    "name": "Kaito",
+    "key": "bond_first",
+    "index": 2,
+    "text": "[honest] When you found me, I thought I was going to die there. I have been sleeping badly since.",
+    "voiceId": "O5EDsXljBLA6l3KfYEde"
+  },
+  {
+    "who": "faelen",
+    "name": "Kaito",
+    "key": "bond_first_reply",
+    "index": 1,
+    "text": "[soft] Thank you. I might be rather poor company tonight, but I would like you to stay.",
+    "voiceId": "O5EDsXljBLA6l3KfYEde"
+  },
+  {
+    "who": "faelen",
+    "name": "Kaito",
+    "key": "bond_second",
+    "index": 1,
+    "text": "[cheerful] I used to play for supper at roadside inns. I know six songs well and about forty badly.",
+    "voiceId": "O5EDsXljBLA6l3KfYEde"
+  },
+  {
+    "who": "faelen",
+    "name": "Kaito",
+    "key": "bond_second",
+    "index": 2,
+    "text": "[smiling] I still have the lute. I sold the feathered hat. A man has to improve himself somehow.",
+    "voiceId": "O5EDsXljBLA6l3KfYEde"
+  },
+  {
+    "who": "faelen",
+    "name": "Kaito",
+    "key": "bond_second_reply",
+    "index": 1,
+    "text": "[amused] Cruel, but fair. I will play you the good six. You can request the others after enough wine.",
+    "voiceId": "O5EDsXljBLA6l3KfYEde"
+  },
+  {
+    "who": "faelen",
+    "name": "Kaito",
+    "key": "bond_interest",
+    "index": 1,
+    "text": "[pleased] I was hoping you might say that. Let us have a little time together and see how we get on.",
+    "voiceId": "O5EDsXljBLA6l3KfYEde"
+  },
+  {
+    "who": "faelen",
+    "name": "Kaito",
+    "key": "bond_later",
+    "index": 1,
+    "text": "[easy] All right. Let me know if you want to try again. No awkwardness between us.",
+    "voiceId": "O5EDsXljBLA6l3KfYEde"
+  },
+  {
+    "who": "faelen",
+    "name": "Kaito",
+    "key": "q9_romance",
+    "index": 1,
+    "text": "[smiling] I like you. I'd like to spend an evening with you, without the rest of this lot.",
+    "voiceId": "O5EDsXljBLA6l3KfYEde"
+  },
+  {
+    "who": "faelen",
+    "name": "Kaito",
+    "key": "q9_romance_yes",
+    "index": 1,
+    "text": "[delighted] Excellent. A decent meal, some wine, and no work.",
+    "voiceId": "O5EDsXljBLA6l3KfYEde"
+  },
+  {
+    "who": "faelen",
+    "name": "Kaito",
+    "key": "q9_romance_yes",
+    "index": 2,
+    "text": "[warm] I have been looking forward to this.",
+    "voiceId": "O5EDsXljBLA6l3KfYEde"
+  },
+  {
+    "who": "faelen",
+    "name": "Kaito",
+    "key": "q9_romance_no",
+    "index": 1,
+    "text": "[light] Stop it is. Friends, then, and I am very good at that as well.",
+    "voiceId": "O5EDsXljBLA6l3KfYEde"
+  },
+  {
+    "who": "faelen",
+    "name": "Kaito",
+    "key": "q10_double_strike",
+    "index": 1,
+    "text": "[wincing] Right call, wrong result — the real Hiwot was behind it. She is breathing. I will carry her out; go.",
+    "voiceId": "O5EDsXljBLA6l3KfYEde"
+  },
+  {
+    "who": "faelen",
+    "name": "Kaito",
+    "key": "q10_double_strike_alone",
+    "index": 1,
+    "text": "[breathless] Not him — and you knew. It is down. Two more behind it, and I do not like their faces either.",
+    "voiceId": "O5EDsXljBLA6l3KfYEde"
+  },
+  {
+    "who": "faelen",
+    "name": "Kaito",
+    "key": "q10_double_listen",
+    "index": 1,
+    "text": "[shouting] Not them! NOT them! It has teeth, {target}!",
+    "voiceId": "O5EDsXljBLA6l3KfYEde"
+  },
+  {
+    "who": "faelen",
+    "name": "Kaito",
+    "key": "q13_maze",
+    "index": 1,
+    "text": "[hushed] The thieves' maze. Every third flagstone is a trap and every fourth is a thief. I know the path; follow my feet exactly, please.",
+    "voiceId": "O5EDsXljBLA6l3KfYEde"
+  },
+  {
+    "who": "faelen",
+    "name": "Kaito",
+    "key": "q13_maze_follow",
+    "index": 1,
+    "text": "[murmuring] Left. Left. Do not step there. — And we are through, and nobody even bled. I love being right.",
+    "voiceId": "O5EDsXljBLA6l3KfYEde"
+  },
+  {
+    "who": "faelen",
+    "name": "Kaito",
+    "key": "q13_maze_cut",
+    "index": 1,
+    "text": "[sighing] Straight through. Watch the flagstones, then, and try to bleed on the thieves and not on me.",
+    "voiceId": "O5EDsXljBLA6l3KfYEde"
+  },
+  {
+    "who": "faelen",
+    "name": "Kaito",
+    "key": "banter",
+    "index": 1,
+    "text": "[smiling] Loosing, loosing — got him, and he was handsome, too. A pity.",
+    "voiceId": "O5EDsXljBLA6l3KfYEde"
+  },
+  {
+    "who": "faelen",
+    "name": "Kaito",
+    "key": "banter",
+    "index": 2,
+    "text": "[cheerful] Behind them! I am behind them!",
+    "voiceId": "O5EDsXljBLA6l3KfYEde"
+  },
+  {
+    "who": "faelen",
+    "name": "Kaito",
+    "key": "banter",
+    "index": 3,
+    "text": "[light] If I die, tell the magistrate I was thinking of her.",
+    "voiceId": "O5EDsXljBLA6l3KfYEde"
+  },
+  {
+    "who": "nettle",
+    "name": "Wanjiru",
+    "key": "q6_grove",
+    "index": 1,
+    "text": "[fierce] Far enough. This wood is not a road, and you are not welcome on it. The Umbra hold this grove, and the Umbra say turn around. Eh?",
+    "voiceId": "U1NXjHF5ene7Eze10d5J"
+  },
+  {
+    "who": "nettle",
+    "name": "Wanjiru",
+    "key": "q6_grove",
+    "index": 2,
+    "text": "[sniffing] You carry iron from the Gate. The wood smells it on you. Which of you is theirs?",
+    "voiceId": "U1NXjHF5ene7Eze10d5J"
+  },
+  {
+    "who": "nettle",
+    "name": "Wanjiru",
+    "key": "q6_grove_selene_reply",
+    "index": 1,
+    "text": "[narrowing] A Warden says so. Wardens said so about the last mine, and the last mine is still there.",
+    "voiceId": "U1NXjHF5ene7Eze10d5J"
+  },
+  {
+    "who": "nettle",
+    "name": "Wanjiru",
+    "key": "q6_grove_selene_reply",
+    "index": 2,
+    "text": "[low] Mzee Kamau would sooner have you bleed than speak. I would sooner hear you first. So. Speak.",
+    "voiceId": "U1NXjHF5ene7Eze10d5J"
+  },
+  {
+    "who": "nettle",
+    "name": "Wanjiru",
+    "key": "q6_grove_ask",
+    "index": 1,
+    "text": "[low] No answer. Then hear this: the Mzee would sooner have you bleed than speak. I would sooner hear you first. Speak, or turn around.",
+    "voiceId": "U1NXjHF5ene7Eze10d5J"
+  },
+  {
+    "who": "nettle",
+    "name": "Wanjiru",
+    "key": "q6_nettle_ask",
+    "index": 1,
+    "text": "[bitter] Dead fish for a mile downstream. Stags with sores on their flanks. And men — men in chains, walking into a hole in the hill every dawn, and fewer walking out. The wood knows what is being done to it. It does not know how to stop it. I do.",
+    "voiceId": "U1NXjHF5ene7Eze10d5J"
+  },
+  {
+    "who": "nettle",
+    "name": "Wanjiru",
+    "key": "q6_nettle_talk",
+    "index": 1,
+    "text": "[grudging] Then we want the same thing, and I would rather kill them beside you than argue with the Mzee about killing you.",
+    "voiceId": "U1NXjHF5ene7Eze10d5J"
+  },
+  {
+    "who": "nettle",
+    "name": "Wanjiru",
+    "key": "q6_nettle_talk",
+    "index": 2,
+    "text": "[decisive] Sawa. I am coming. He can take it up with the trees.",
+    "voiceId": "U1NXjHF5ene7Eze10d5J"
+  },
+  {
+    "who": "nettle",
+    "name": "Wanjiru",
+    "key": "q6_nettle_fight",
+    "index": 1,
+    "text": "[snarling] Then the roots will have you. MZEE! Kamau! They have chosen!",
+    "voiceId": "U1NXjHF5ene7Eze10d5J"
+  },
+  {
+    "who": "nettle",
+    "name": "Wanjiru",
+    "key": "q7_mine_umbra",
+    "index": 1,
+    "text": "[quiet] So this is the mine.",
+    "voiceId": "U1NXjHF5ene7Eze10d5J"
+  },
+  {
+    "who": "nettle",
+    "name": "Wanjiru",
+    "key": "q7_mine_umbra",
+    "index": 2,
+    "text": "[hard] For two years, I have watched the river get worse. Dead fish, sick animals. All because of this place.",
+    "voiceId": "U1NXjHF5ene7Eze10d5J"
+  },
+  {
+    "who": "nettle",
+    "name": "Wanjiru",
+    "key": "q7_mine_umbra",
+    "index": 3,
+    "text": "[firm] I want this mine shut before we leave.",
+    "voiceId": "U1NXjHF5ene7Eze10d5J"
+  },
+  {
+    "who": "nettle",
+    "name": "Wanjiru",
+    "key": "banter",
+    "index": 1,
+    "text": "[snarling] The roots have him.",
+    "voiceId": "U1NXjHF5ene7Eze10d5J"
+  },
+  {
+    "who": "nettle",
+    "name": "Wanjiru",
+    "key": "banter",
+    "index": 2,
+    "text": "[fierce] Trees do not forgive. Neither do I.",
+    "voiceId": "U1NXjHF5ene7Eze10d5J"
+  },
+  {
+    "who": "nettle",
+    "name": "Wanjiru",
+    "key": "banter",
+    "index": 3,
+    "text": "[low] Bleed into the soil. Good. Sawa.",
+    "voiceId": "U1NXjHF5ene7Eze10d5J"
+  },
+  {
+    "who": "durnik",
+    "name": "Dai Morgan",
+    "key": "q7_cage",
+    "index": 1,
+    "text": "[gravelly, Welsh] Well now. Either you're the new drivers or the old ones are dead. Which is it, then? — No, don't tell me; you're too muddy for drivers, and they'd have shot me by now.",
+    "voiceId": "QZU5JP2C26gx328DNBza"
+  },
+  {
+    "who": "durnik",
+    "name": "Dai Morgan",
+    "key": "q7_cage",
+    "index": 2,
+    "text": "[hopeful] Dai Morgan. Priest of the deep places, and the last of the clan that cut this mine before the Consortium took it with paper and knives. I know every valve in it — including the one at the bottom that lets the river in.",
+    "voiceId": "QZU5JP2C26gx328DNBza"
+  },
+  {
+    "who": "durnik",
+    "name": "Dai Morgan",
+    "key": "q7_cage_beau_reply",
+    "index": 1,
+    "text": "[grim] Bottom level, by the valve room, so the drivers can drown them if the mine's ever taken. Mind that, shield-man. Whoever turns that wheel turns it on them.",
+    "voiceId": "QZU5JP2C26gx328DNBza"
+  },
+  {
+    "who": "durnik",
+    "name": "Dai Morgan",
+    "key": "q7_durnik_paper",
+    "index": 1,
+    "text": "[grim] A debt we didn't owe, bought off a man who didn't own it, and enforced by men with swords while the magistrate looked at the ceiling. My cousins argued. My cousins are on the lowest level now, and they don't argue anymore.",
+    "voiceId": "QZU5JP2C26gx328DNBza"
+  },
+  {
+    "who": "durnik",
+    "name": "Dai Morgan",
+    "key": "q7_durnik_free",
+    "index": 1,
+    "text": "[grunting to his feet] With you. Aye. There's lovely. Mind the third level; the mage keeps his study there, and he doesn't care for knocking.",
+    "voiceId": "QZU5JP2C26gx328DNBza"
+  },
+  {
+    "who": "durnik",
+    "name": "Dai Morgan",
+    "key": "q7_durnik_leave",
+    "index": 1,
+    "text": "[flat] Come back for me. Aye. Everybody says that, bach.",
+    "voiceId": "QZU5JP2C26gx328DNBza"
+  },
+  {
+    "who": "durnik",
+    "name": "Dai Morgan",
+    "key": "q7_study_dai",
+    "index": 1,
+    "text": "[very level] Morgan. Bryn and Gareth Morgan. My cousins. Which ledger are they in, mage?",
+    "voiceId": "QZU5JP2C26gx328DNBza"
+  },
+  {
+    "who": "durnik",
+    "name": "Dai Morgan",
+    "key": "q7_study_dai_after",
+    "index": 1,
+    "text": "[quiet] ...Then I'll be having ledger four. Go on, {target}.",
+    "voiceId": "QZU5JP2C26gx328DNBza"
+  },
+  {
+    "who": "durnik",
+    "name": "Dai Morgan",
+    "key": "q7_valve",
+    "index": 1,
+    "text": "[urgent] The valve room. Turn the great wheel and the river takes the bottom two levels in the time it takes to say a prayer.",
+    "voiceId": "QZU5JP2C26gx328DNBza"
+  },
+  {
+    "who": "durnik",
+    "name": "Dai Morgan",
+    "key": "q7_valve",
+    "index": 2,
+    "text": "[hard] Your shield-man went below for the chain-gang. He isn't up yet.",
+    "voiceId": "QZU5JP2C26gx328DNBza"
+  },
+  {
+    "who": "durnik",
+    "name": "Dai Morgan",
+    "key": "q7_cage_ask",
+    "index": 1,
+    "text": "[hopeful] So. Are you letting me out, or are you the polite sort of drivers?",
+    "voiceId": "QZU5JP2C26gx328DNBza"
+  },
+  {
+    "who": "durnik",
+    "name": "Dai Morgan",
+    "key": "q8_sewers",
+    "index": 1,
+    "text": "[approving] Good stonework, mind. Dwarven, some of it, and old. Shame about the smell.",
+    "voiceId": "QZU5JP2C26gx328DNBza"
+  },
+  {
+    "who": "durnik",
+    "name": "Dai Morgan",
+    "key": "q9_lobby",
+    "index": 1,
+    "text": "[gravelly] Clerk with a list. Two guards. Good stone, again. Shame.",
+    "voiceId": "QZU5JP2C26gx328DNBza"
+  },
+  {
+    "who": "durnik",
+    "name": "Dai Morgan",
+    "key": "q9_lobby_talk",
+    "index": 1,
+    "text": "[grunting] Third floor. Don't touch anything. Good advice for a tower, that.",
+    "voiceId": "QZU5JP2C26gx328DNBza"
+  },
+  {
+    "who": "durnik",
+    "name": "Dai Morgan",
+    "key": "q9_lobby_fight",
+    "index": 1,
+    "text": "[grim] Stairs.",
+    "voiceId": "QZU5JP2C26gx328DNBza"
+  },
+  {
+    "who": "durnik",
+    "name": "Dai Morgan",
+    "key": "banter",
+    "index": 1,
+    "text": "[gravelly] Wall. I'm the wall, I am.",
+    "voiceId": "QZU5JP2C26gx328DNBza"
+  },
+  {
+    "who": "durnik",
+    "name": "Dai Morgan",
+    "key": "banter",
+    "index": 2,
+    "text": "[grunting] Hit 'em. I've got 'em.",
+    "voiceId": "QZU5JP2C26gx328DNBza"
+  },
+  {
+    "who": "durnik",
+    "name": "Dai Morgan",
+    "key": "banter",
+    "index": 3,
+    "text": "[calm] The deep places keep me. Keep going, bach.",
+    "voiceId": "QZU5JP2C26gx328DNBza"
+  },
+  {
+    "who": "amara",
+    "name": "Amara",
+    "key": "q13_trust",
+    "index": 1,
+    "text": "[quiet] You kept your word. Thank you for letting me help.",
+    "voiceId": "nlQtoxiWTYC3witBlK1H"
+  },
+  {
+    "who": "amara",
+    "name": "Amara",
+    "key": "q11_docks",
+    "index": 1,
+    "text": "[steady] Put the swords away. If I wanted you dead I would have done it from the rooftop.",
+    "voiceId": "nlQtoxiWTYC3witBlK1H"
+  },
+  {
+    "who": "amara",
+    "name": "Amara",
+    "key": "q11_docks",
+    "index": 2,
+    "text": "[grave] I am Amara. I love Kolade Adeyinka. I also helped him kill the man who raised you. I know what that makes me to you. But I need you to hear me. Have you ever loved someone even after you knew what they'd done?",
+    "voiceId": "nlQtoxiWTYC3witBlK1H"
+  },
+  {
+    "who": "amara",
+    "name": "Amara",
+    "key": "q11_loved_yes",
+    "index": 1,
+    "text": "[a slow nod] Then you know the shape of it. Good. I will not have to explain the rest, only ask it.",
+    "voiceId": "nlQtoxiWTYC3witBlK1H"
+  },
+  {
+    "who": "amara",
+    "name": "Amara",
+    "key": "q11_loved_tesfaye",
+    "index": 1,
+    "text": "[quiet] Yes. Kolade has lied to me too. I know he has hurt people. I still care for him, but I cannot let him go on killing.",
+    "voiceId": "nlQtoxiWTYC3witBlK1H"
+  },
+  {
+    "who": "amara",
+    "name": "Amara",
+    "key": "q11_loved_no",
+    "index": 1,
+    "text": "[level] Then you will think what I ask is weakness. Hear it anyway; you may need it later, when you are older and less certain.",
+    "voiceId": "nlQtoxiWTYC3witBlK1H"
+  },
+  {
+    "who": "amara",
+    "name": "Amara",
+    "key": "q11_docks_ithrel_reply",
+    "index": 1,
+    "text": "[without flinching] No. I was not. But I did not stop him sending Gorruk north, and I could have. Put that on my account with the rest, ranger. I will not argue the sum.",
+    "voiceId": "nlQtoxiWTYC3witBlK1H"
+  },
+  {
+    "who": "amara",
+    "name": "Amara",
+    "key": "q11_docks_ask",
+    "index": 1,
+    "text": "[grave] Here is what I ask. Stop him. Not kill him. Stop him. There is a difference, and it matters to me more than my own life.",
+    "voiceId": "nlQtoxiWTYC3witBlK1H"
+  },
+  {
+    "who": "amara",
+    "name": "Amara",
+    "key": "q11_amara_how",
+    "index": 1,
+    "text": "[exact] Chains, and a cell, and the Council's law. He is not a god yet. He bleeds, he tires, he can be beaten to his knees; I have seen it done, once, in the fire temple where we met. On his knees he can be bound. It is not a small thing I ask. I know that.",
+    "voiceId": "nlQtoxiWTYC3witBlK1H"
+  },
+  {
+    "who": "amara",
+    "name": "Amara",
+    "key": "q11_amara_promise",
+    "index": 1,
+    "text": "[exhaling] Thank you. I did not expect that.",
+    "voiceId": "nlQtoxiWTYC3witBlK1H"
+  },
+  {
+    "who": "amara",
+    "name": "Amara",
+    "key": "q11_amara_promise",
+    "index": 2,
+    "text": "[quiet] The coronation is in three nights. Two people called Rasheed and Kemi hold the invitations in the Undervault. Take them from them; they will not give them up.",
+    "voiceId": "nlQtoxiWTYC3witBlK1H"
+  },
+  {
+    "who": "amara",
+    "name": "Amara",
+    "key": "q11_amara_refuse",
+    "index": 1,
+    "text": "[cold] Then we will meet at the gate of the Undercity, and one of us will not walk past the other.",
+    "voiceId": "nlQtoxiWTYC3witBlK1H"
+  },
+  {
+    "who": "amara",
+    "name": "Amara",
+    "key": "q11_amara_refuse",
+    "index": 2,
+    "text": "[flat] Rasheed and Kemi hold the invitations. Undervault. Take them; it does not change what I said.",
+    "voiceId": "nlQtoxiWTYC3witBlK1H"
+  },
+  {
+    "who": "amara",
+    "name": "Amara",
+    "key": "q11_amara_lie",
+    "index": 1,
+    "text": "[searching] ...Your word. Yes. — Rasheed and Kemi, the Undervault. The invitations. Go.",
+    "voiceId": "nlQtoxiWTYC3witBlK1H"
+  },
+  {
+    "who": "amara",
+    "name": "Amara",
+    "key": "q13_gate",
+    "index": 1,
+    "text": "[quiet] I said one of us would not walk past the other.",
+    "voiceId": "nlQtoxiWTYC3witBlK1H"
+  },
+  {
+    "who": "amara",
+    "name": "Amara",
+    "key": "q13_gate",
+    "index": 2,
+    "text": "[steady] I am still asking. Stop him. Do not kill him. And if you cannot promise me that, then draw, because I will not let you reach him without it.",
+    "voiceId": "nlQtoxiWTYC3witBlK1H"
+  },
+  {
+    "who": "amara",
+    "name": "Amara",
+    "key": "q13_gate_fight",
+    "index": 1,
+    "text": "[sad] Then draw.",
+    "voiceId": "nlQtoxiWTYC3witBlK1H"
+  },
+  {
+    "who": "amara",
+    "name": "Amara",
+    "key": "q13_gate_pass",
+    "index": 1,
+    "text": "[stepping aside] Go. I will be at the altar before you, on my knees, asking him the same thing. He will not listen to me. He might listen to you.",
+    "voiceId": "nlQtoxiWTYC3witBlK1H"
+  },
+  {
+    "who": "amara",
+    "name": "Amara",
+    "key": "q13_gate_join",
+    "index": 1,
+    "text": "[startled] With — yes. Yes. I know the way; I have walked it a hundred times. Stay behind me at the stairs.",
+    "voiceId": "nlQtoxiWTYC3witBlK1H"
+  },
+  {
+    "who": "amara",
+    "name": "Amara",
+    "key": "q13_gate_lie",
+    "index": 1,
+    "text": "[searching your face] ...Go, then. If you are lying, I will know it at the altar.",
+    "voiceId": "nlQtoxiWTYC3witBlK1H"
+  },
+  {
+    "who": "amara",
+    "name": "Amara",
+    "key": "q14_plea",
+    "index": 1,
+    "text": "[kneeling] Kolade. Please. Look at me. It does not have to be the altar. It can be a cell and a window and me visiting every week for the rest of your life.",
+    "voiceId": "nlQtoxiWTYC3witBlK1H"
+  },
+  {
+    "who": "amara",
+    "name": "Amara",
+    "key": "banter",
+    "index": 1,
+    "text": "[exact] Two blades. Two throats. Next.",
+    "voiceId": "nlQtoxiWTYC3witBlK1H"
+  },
+  {
+    "who": "amara",
+    "name": "Amara",
+    "key": "banter",
+    "index": 2,
+    "text": "[steady] Watch the flank. I have the front.",
+    "voiceId": "nlQtoxiWTYC3witBlK1H"
+  },
+  {
+    "who": "amara",
+    "name": "Amara",
+    "key": "banter",
+    "index": 3,
+    "text": "[quiet] Not like this. Quickly. Clean.",
+    "voiceId": "nlQtoxiWTYC3witBlK1H"
+  }
+]

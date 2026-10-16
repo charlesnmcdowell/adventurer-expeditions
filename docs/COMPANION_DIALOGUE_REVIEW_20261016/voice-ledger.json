@@ -1,0 +1,475 @@
+{
+  "scope": "auditions only; full batch awaits user approval",
+  "jobCap": 15000,
+  "requests": [
+    {
+      "id": "wren_ward__q14_final_restored_1",
+      "voiceId": "0F4ybvRD5Lm0AIt5almW",
+      "text": "[unsteady] My hands. I can feel them again. Hold on. My knees are not quite ready.",
+      "characters": 82,
+      "state": "saved",
+      "requestId": "RvabjnAGq48dRNaf4dsB",
+      "chargedCharacters": "36"
+    },
+    {
+      "id": "wren_ward__q9_lobby_talk_1",
+      "voiceId": "0F4ybvRD5Lm0AIt5almW",
+      "text": "[impressed] That worked. The mage's name got us in. Third floor. Keep your hands to yourself; he is still watching.",
+      "characters": 115,
+      "state": "saved",
+      "requestId": "Smp4e8qbGYXGAdozLos4",
+      "chargedCharacters": "51"
+    },
+    {
+      "id": "wren_ward__banter_4",
+      "voiceId": "0F4ybvRD5Lm0AIt5almW",
+      "text": "[quick] Watch my knife. I am going round him.",
+      "characters": 45,
+      "state": "saved",
+      "requestId": "3mLsiXkavypO27QktD5z",
+      "chargedCharacters": "20"
+    },
+    {
+      "id": "vess__q2_pair_yes_1",
+      "voiceId": "5OtKrUz8y0NUBuMW6YcK",
+      "text": "[sing-song] You hear that? We have friends now. Stay close. I'll keep the fire off you.",
+      "characters": 87,
+      "state": "saved",
+      "requestId": "cVHY8Cr0xJP603NbMqrN",
+      "chargedCharacters": "38"
+    },
+    {
+      "id": "vess__q10_exp_gap_vess_1",
+      "voiceId": "5OtKrUz8y0NUBuMW6YcK",
+      "text": "[soft] You grew up here? Show me which windows they leave open.",
+      "characters": 63,
+      "state": "saved",
+      "requestId": "SNjR820oy6mDYSDetjWT",
+      "chargedCharacters": "28"
+    },
+    {
+      "id": "vess__banter_4",
+      "voiceId": "5OtKrUz8y0NUBuMW6YcK",
+      "text": "[delighted] Your turn to worry, man.",
+      "characters": 36,
+      "state": "saved",
+      "requestId": "eAXBMvinKqKnxLeJh2rw",
+      "chargedCharacters": "16"
+    },
+    {
+      "id": "fennick__q5_camp_storm_1",
+      "voiceId": "R7jdv6H5bZOU3sQIMhbd",
+      "text": "[flat] Loud, then. The one with the horns is the sergeant. Take him first, man. He's giving the orders.",
+      "characters": 103,
+      "state": "saved",
+      "requestId": "FiL3vzqdnAJmkk4A7NuU",
+      "chargedCharacters": "45"
+    },
+    {
+      "id": "fennick__q8_door_1",
+      "voiceId": "R7jdv6H5bZOU3sQIMhbd",
+      "text": "[flat] Let me speak to him. He's watching our purses, man. I doubt he needs much persuading.",
+      "characters": 92,
+      "state": "saved",
+      "requestId": "xSyOWmUazlS9sXKJWxun",
+      "chargedCharacters": "40"
+    },
+    {
+      "id": "fennick__banter_4",
+      "voiceId": "R7jdv6H5bZOU3sQIMhbd",
+      "text": "[flat] Mind the blade. It's coated.",
+      "characters": 35,
+      "state": "saved",
+      "requestId": "U0Q4PdsflW6s88XPcJJx",
+      "chargedCharacters": "15"
+    },
+    {
+      "id": "cassian__banter_4",
+      "voiceId": "xHLnsxqUy4cc16VOmSD4",
+      "text": "[earnest] Behind my shield. Stay close.",
+      "characters": 39,
+      "state": "saved",
+      "requestId": "NFVVY1qW1Nbv2v1qG6vr",
+      "chargedCharacters": "17"
+    },
+    {
+      "id": "cassian__banter_5",
+      "voiceId": "xHLnsxqUy4cc16VOmSD4",
+      "text": "[strained] Flame preserve us. That was close.",
+      "characters": 45,
+      "state": "saved",
+      "requestId": "ysX3yje8ZimKRqZXL1Ms",
+      "chargedCharacters": "20"
+    },
+    {
+      "id": "cassian__banter_6",
+      "voiceId": "xHLnsxqUy4cc16VOmSD4",
+      "text": "[firm] Keep back while I raise the ward.",
+      "characters": 40,
+      "state": "saved",
+      "requestId": "o9gwnCakaDzQtphiPj6E",
+      "chargedCharacters": "18"
+    },
+    {
+      "id": "dorran__q12_exp_gap_dorran_1",
+      "voiceId": "7ma36jg9JC0d1pfrWXMw",
+      "text": "[low] Go on. S-speak. I will watch the guards.",
+      "characters": 46,
+      "state": "saved",
+      "requestId": "huIsRA2t2mDAaOUo7kmS",
+      "chargedCharacters": "20"
+    },
+    {
+      "id": "dorran__banter_4",
+      "voiceId": "7ma36jg9JC0d1pfrWXMw",
+      "text": "[steady] B-behind me. Plenty of room.",
+      "characters": 37,
+      "state": "saved",
+      "requestId": "ziDkofqGyq34toxcztcN",
+      "chargedCharacters": "16"
+    },
+    {
+      "id": "dorran__banter_5",
+      "voiceId": "7ma36jg9JC0d1pfrWXMw",
+      "text": "[grunting] Sword arm free. Stand clear.",
+      "characters": 39,
+      "state": "saved",
+      "requestId": "ts6WrW82PWMBcvony0yi",
+      "chargedCharacters": "17"
+    },
+    {
+      "id": "selene__q9_lobby_talk_1",
+      "voiceId": "a3tSl2M9CVI359Oy7H6v",
+      "text": "[quiet] Upstairs, honey. Third floor. Leave the ornaments alone till we're past his guards.",
+      "characters": 91,
+      "state": "saved",
+      "requestId": "Ffj7GrMcua9SN186XrBf",
+      "chargedCharacters": "40"
+    },
+    {
+      "id": "selene__q10_double_strike_1",
+      "voiceId": "a3tSl2M9CVI359Oy7H6v",
+      "text": "[sharp] Stop swinging! You caught the real girl behind it. She's breathing, but she can't walk. Give me room.",
+      "characters": 109,
+      "state": "saved",
+      "requestId": "FHoh93UMYEWmvUg4u1sa",
+      "chargedCharacters": "48"
+    },
+    {
+      "id": "selene__banter_4",
+      "voiceId": "a3tSl2M9CVI359Oy7H6v",
+      "text": "[calm] Easy, sugar. I've got a little healing left.",
+      "characters": 51,
+      "state": "saved",
+      "requestId": "Mb4p6empDyuIwW1zcRjQ",
+      "chargedCharacters": "22"
+    },
+    {
+      "id": "ithrel__banter_1",
+      "voiceId": "EqIniNyrvzFcbGecFyI5",
+      "text": "[quiet] Clear my shot.",
+      "characters": 22,
+      "state": "saved",
+      "requestId": "puezV3NnXVinBprri6Dq",
+      "chargedCharacters": "10"
+    },
+    {
+      "id": "ithrel__banter_4",
+      "voiceId": "EqIniNyrvzFcbGecFyI5",
+      "text": "[low] Stay below my bow.",
+      "characters": 24,
+      "state": "saved",
+      "requestId": "5oThrbLkPxKCIJWxul1q",
+      "chargedCharacters": "11"
+    },
+    {
+      "id": "ithrel__banter_5",
+      "voiceId": "EqIniNyrvzFcbGecFyI5",
+      "text": "[precise] Wait. I have a clear line now.",
+      "characters": 40,
+      "state": "saved",
+      "requestId": "K9qaDddGPjoQKUUVYNbA",
+      "chargedCharacters": "18"
+    },
+    {
+      "id": "bramm__q7_exp_gap_bramm_1",
+      "voiceId": "ZZKBkhKNX9bfxn63cQTM",
+      "text": "[angry] Chains. Vallahi. We are not leaving those people down there.",
+      "characters": 68,
+      "state": "saved",
+      "requestId": "rFgnJ4mNrklXbOaGedQL",
+      "chargedCharacters": "30"
+    },
+    {
+      "id": "bramm__banter_4",
+      "voiceId": "ZZKBkhKNX9bfxn63cQTM",
+      "text": "[booming] Stand back, canım. I need room to swing!",
+      "characters": 50,
+      "state": "saved",
+      "requestId": "2EHudqglVSX42T2mSzrH",
+      "chargedCharacters": "22"
+    },
+    {
+      "id": "bramm__banter_5",
+      "voiceId": "ZZKBkhKNX9bfxn63cQTM",
+      "text": "[roaring] You will need more than that!",
+      "characters": 39,
+      "state": "saved",
+      "requestId": "C4oiSXTLOO9u4Kz35HQZ",
+      "chargedCharacters": "17"
+    },
+    {
+      "id": "ysolde__q12_exp_gap_ysolde_1",
+      "voiceId": "E7IRB2a3OVqRb6T7du39",
+      "text": "[precise] The murder god's blood. At the cage I could only tell something had been worshipped. Now we know whose.",
+      "characters": 113,
+      "state": "saved",
+      "requestId": "fkOIB9uyEDBQu9VVRmqA",
+      "chargedCharacters": "50"
+    },
+    {
+      "id": "ysolde__q14_exp_gap_ysolde_1",
+      "voiceId": "E7IRB2a3OVqRb6T7du39",
+      "text": "[low] Your aura is flaring here again. Stay beside me, canım. Tell me if you feel it pulling.",
+      "characters": 93,
+      "state": "saved",
+      "requestId": "EUSrLaifYkGa3l1S28uS",
+      "chargedCharacters": "41"
+    },
+    {
+      "id": "ysolde__banter_4",
+      "voiceId": "E7IRB2a3OVqRb6T7du39",
+      "text": "[dry] A little room, canım. These fans are not decorative.",
+      "characters": 58,
+      "state": "saved",
+      "requestId": "UDobSsSvtSBjfcDNStHD",
+      "chargedCharacters": "26"
+    },
+    {
+      "id": "aurelius__q9_exp_gap_aurelius_1",
+      "voiceId": "Sm4AUh4ykvT9ljuZ5Uy8",
+      "text": "[measured] The clerks will know where the records are. Do try asking before threatening them.",
+      "characters": 93,
+      "state": "saved",
+      "requestId": "VdaFT9lBYwdk17dCNGYd",
+      "chargedCharacters": "41"
+    },
+    {
+      "id": "aurelius__banter_4",
+      "voiceId": "Sm4AUh4ykvT9ljuZ5Uy8",
+      "text": "[disdainful] Must you stand in front of my staff?",
+      "characters": 49,
+      "state": "saved",
+      "requestId": "KJ5q205Qm45E4toT4yBW",
+      "chargedCharacters": "22"
+    },
+    {
+      "id": "aurelius__banter_5",
+      "voiceId": "Sm4AUh4ykvT9ljuZ5Uy8",
+      "text": "[cool] Move aside. I have a spell prepared.",
+      "characters": 43,
+      "state": "saved",
+      "requestId": "5CkOk4rwvxp7rFFQGGmD",
+      "chargedCharacters": "19"
+    },
+    {
+      "id": "ilvara__q10_double_strike_1",
+      "voiceId": "7nj1jqrTE7EDXPyxWBhY",
+      "text": "[approving] The double is down. Your sister was behind it; you struck her too. She still breathes. Someone carry her.",
+      "characters": 117,
+      "state": "saved",
+      "requestId": "wBUSeedwvi4ydKBc5zsn",
+      "chargedCharacters": "51"
+    },
+    {
+      "id": "ilvara__q10_double_listen_1",
+      "voiceId": "7nj1jqrTE7EDXPyxWBhY",
+      "text": "[sharp] Stop listening to that thing. Kill it before it reaches you.",
+      "characters": 68,
+      "state": "saved",
+      "requestId": "r9YLjWZPYmCKPjz9jgGJ",
+      "chargedCharacters": "30"
+    },
+    {
+      "id": "ilvara__banter_4",
+      "voiceId": "7nj1jqrTE7EDXPyxWBhY",
+      "text": "[cool] Stand still if you want my help.",
+      "characters": 39,
+      "state": "saved",
+      "requestId": "2sf5DrH0W4EwZaL6dyr0",
+      "chargedCharacters": "17"
+    },
+    {
+      "id": "faelen__q6_web_2",
+      "voiceId": "O5EDsXljBLA6l3KfYEde",
+      "text": "[appraising] A green sash. Wardens, or travelling with them? Good. You cut people out of webs without charging, I hope. Bounty hunter. I came for a wyvern and found spiders instead.",
+      "characters": 181,
+      "state": "saved",
+      "requestId": "Au3IjoOMVuQRzDqpgwaw",
+      "chargedCharacters": "80"
+    },
+    {
+      "id": "faelen__q9_lobby_talk_1",
+      "voiceId": "O5EDsXljBLA6l3KfYEde",
+      "text": "[smiling] Third floor. Yes, of course. I shall keep my hands where the gentleman can see them.",
+      "characters": 94,
+      "state": "saved",
+      "requestId": "kV1QHp3BegJyHpLloUx0",
+      "chargedCharacters": "41"
+    },
+    {
+      "id": "faelen__banter_1",
+      "voiceId": "O5EDsXljBLA6l3KfYEde",
+      "text": "[smiling] Got him. Handsome fellow, too. What a pity.",
+      "characters": 53,
+      "state": "saved",
+      "requestId": "PHpfQlZQfbBVZFIWd631",
+      "chargedCharacters": "23"
+    },
+    {
+      "id": "nettle__q8_exp_gap_nettle_1",
+      "voiceId": "U1NXjHF5ene7Eze10d5J",
+      "text": "[hard] So this is where the iron goes. Look how much of it they put on one gate.",
+      "characters": 80,
+      "state": "saved",
+      "requestId": "dtqkZcT3axh0yN8uV7sY",
+      "chargedCharacters": "35"
+    },
+    {
+      "id": "nettle__banter_4",
+      "voiceId": "U1NXjHF5ene7Eze10d5J",
+      "text": "[fierce] Hit the thorns. Go on.",
+      "characters": 31,
+      "state": "saved",
+      "requestId": "KGVVqmcSYlKhxOuU9rLf",
+      "chargedCharacters": "14"
+    },
+    {
+      "id": "nettle__banter_5",
+      "voiceId": "U1NXjHF5ene7Eze10d5J",
+      "text": "[low] Sawa. Stay close while I cast.",
+      "characters": 36,
+      "state": "saved",
+      "requestId": "OXlUaiiEvAta4jc545Xi",
+      "chargedCharacters": "16"
+    },
+    {
+      "id": "durnik__q9_lobby_talk_1",
+      "voiceId": "QZU5JP2C26gx328DNBza",
+      "text": "[grunting] Three floors up. Aye. Keep off the fittings, bach. No sense giving him a reason to call us back.",
+      "characters": 107,
+      "state": "saved",
+      "requestId": "FGLCKuIhTX8VhuOH04Gt",
+      "chargedCharacters": "47"
+    },
+    {
+      "id": "durnik__q13_exp_gap_durnik_1",
+      "voiceId": "QZU5JP2C26gx328DNBza",
+      "text": "[gravelly] Old stone below new stone. Mind the joins, bach. Water gets between them.",
+      "characters": 84,
+      "state": "saved",
+      "requestId": "t7NPcKvHYPJ6yuOsl1Ov",
+      "chargedCharacters": "37"
+    },
+    {
+      "id": "durnik__banter_4",
+      "voiceId": "QZU5JP2C26gx328DNBza",
+      "text": "[calm] Hold still, bach. I'll mend that.",
+      "characters": 40,
+      "state": "saved",
+      "requestId": "8MU4fV30geHPAQUGBUcU",
+      "chargedCharacters": "18"
+    },
+    {
+      "id": "amara__banter_4",
+      "voiceId": "nlQtoxiWTYC3witBlK1H",
+      "text": "[exact] Leave room for my second blade.",
+      "characters": 39,
+      "state": "saved",
+      "requestId": "MbcBXWnMdHSMyszq1qQA",
+      "chargedCharacters": "17"
+    },
+    {
+      "id": "amara__banter_5",
+      "voiceId": "nlQtoxiWTYC3witBlK1H",
+      "text": "[steady] Keep your guard. I will take this side.",
+      "characters": 48,
+      "state": "saved",
+      "requestId": "B35u42RtY7IoXzLf9sgf",
+      "chargedCharacters": "21"
+    },
+    {
+      "id": "amara__banter_6",
+      "voiceId": "nlQtoxiWTYC3witBlK1H",
+      "text": "[quiet] Watch my hands. Move when I move.",
+      "characters": 41,
+      "state": "saved",
+      "requestId": "vflXR100cB4I2zfBZ87I",
+      "chargedCharacters": "18"
+    }
+  ],
+  "normalization": {
+    "wren_ward": {
+      "reference": "assets\\expedition\\story\\media\\audio\\vo\\campaign\\wren_ward\\banter_1.mp3",
+      "targetLUFS": -14
+    },
+    "vess": {
+      "reference": "assets\\expedition\\story\\media\\audio\\vo\\campaign\\vess\\banter_1.mp3",
+      "targetLUFS": -15.5
+    },
+    "fennick": {
+      "reference": "assets\\expedition\\story\\media\\audio\\vo\\campaign\\fennick\\banter_1.mp3",
+      "targetLUFS": -20.6
+    },
+    "cassian": {
+      "reference": "assets\\expedition\\story\\media\\audio\\vo\\campaign\\cassian\\banter_1.mp3",
+      "targetLUFS": -15.1
+    },
+    "dorran": {
+      "reference": "assets\\expedition\\story\\media\\audio\\vo\\campaign\\dorran\\banter_1.mp3",
+      "targetLUFS": -16.4
+    },
+    "selene": {
+      "reference": "assets\\expedition\\story\\media\\audio\\vo\\campaign\\selene\\banter_1.mp3",
+      "targetLUFS": -21.5
+    },
+    "ithrel": {
+      "reference": "assets\\expedition\\story\\media\\audio\\vo\\campaign\\ithrel\\banter_1.mp3",
+      "targetLUFS": -17.8
+    },
+    "bramm": {
+      "reference": "assets\\expedition\\story\\media\\audio\\vo\\campaign\\bramm\\banter_1.mp3",
+      "targetLUFS": -14
+    },
+    "ysolde": {
+      "reference": "assets\\expedition\\story\\media\\audio\\vo\\campaign\\ysolde\\banter_1.mp3",
+      "targetLUFS": -19.1
+    },
+    "aurelius": {
+      "reference": "assets\\expedition\\story\\media\\audio\\vo\\campaign\\aurelius\\banter_1.mp3",
+      "targetLUFS": -22.2
+    },
+    "ilvara": {
+      "reference": "assets\\expedition\\story\\media\\audio\\vo\\campaign\\ilvara\\banter_1.mp3",
+      "targetLUFS": -15.0
+    },
+    "faelen": {
+      "reference": "assets\\expedition\\story\\media\\audio\\vo\\campaign\\faelen\\banter_1.mp3",
+      "targetLUFS": -16.4
+    },
+    "nettle": {
+      "reference": "assets\\expedition\\story\\media\\audio\\vo\\campaign\\nettle\\banter_1.mp3",
+      "targetLUFS": -16.1
+    },
+    "durnik": {
+      "reference": "assets\\expedition\\story\\media\\audio\\vo\\campaign\\durnik\\banter_1.mp3",
+      "targetLUFS": -22.8
+    },
+    "amara": {
+      "reference": "assets\\expedition\\story\\media\\audio\\vo\\campaign\\amara\\banter_1.mp3",
+      "targetLUFS": -16.5
+    }
+  },
+  "before": 5256,
+  "after": 6289
+}

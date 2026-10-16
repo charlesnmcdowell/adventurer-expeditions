@@ -1,0 +1,705 @@
+{
+  "status": "planned; not installed",
+  "placements": [
+    {
+      "who": "bramm",
+      "chapter": 4,
+      "key": "q4_exp_gap_bramm",
+      "condition": {
+        "company": "bramm"
+      },
+      "placement": "Existing opener/arrival aside; choose after checking the chapter context, never after a terminating choice",
+      "maxSegments": 1
+    },
+    {
+      "who": "bramm",
+      "chapter": 5,
+      "key": "q5_exp_gap_bramm",
+      "condition": {
+        "company": "bramm"
+      },
+      "placement": "Existing opener/arrival aside; choose after checking the chapter context, never after a terminating choice",
+      "maxSegments": 1
+    },
+    {
+      "who": "bramm",
+      "chapter": 6,
+      "key": "q6_exp_gap_bramm",
+      "condition": {
+        "company": "bramm"
+      },
+      "placement": "Existing opener/arrival aside; choose after checking the chapter context, never after a terminating choice",
+      "maxSegments": 1
+    },
+    {
+      "who": "bramm",
+      "chapter": 7,
+      "key": "q7_exp_gap_bramm",
+      "condition": {
+        "company": "bramm"
+      },
+      "placement": "Existing opener/arrival aside; choose after checking the chapter context, never after a terminating choice",
+      "maxSegments": 1
+    },
+    {
+      "who": "bramm",
+      "chapter": 8,
+      "key": "q8_exp_gap_bramm",
+      "condition": {
+        "company": "bramm"
+      },
+      "placement": "Existing opener/arrival aside; choose after checking the chapter context, never after a terminating choice",
+      "maxSegments": 1
+    },
+    {
+      "who": "bramm",
+      "chapter": 9,
+      "key": "q9_exp_gap_bramm",
+      "condition": {
+        "company": "bramm"
+      },
+      "placement": "Existing opener/arrival aside; choose after checking the chapter context, never after a terminating choice",
+      "maxSegments": 1
+    },
+    {
+      "who": "bramm",
+      "chapter": 10,
+      "key": "q10_exp_gap_bramm",
+      "condition": {
+        "company": "bramm"
+      },
+      "placement": "Existing opener/arrival aside; choose after checking the chapter context, never after a terminating choice",
+      "maxSegments": 1
+    },
+    {
+      "who": "bramm",
+      "chapter": 11,
+      "key": "q11_exp_gap_bramm",
+      "condition": {
+        "company": "bramm"
+      },
+      "placement": "Existing opener/arrival aside; choose after checking the chapter context, never after a terminating choice",
+      "maxSegments": 1
+    },
+    {
+      "who": "bramm",
+      "chapter": 12,
+      "key": "q12_exp_gap_bramm",
+      "condition": {
+        "company": "bramm"
+      },
+      "placement": "Existing opener/arrival aside; choose after checking the chapter context, never after a terminating choice",
+      "maxSegments": 1
+    },
+    {
+      "who": "bramm",
+      "chapter": 13,
+      "key": "q13_exp_gap_bramm",
+      "condition": {
+        "company": "bramm"
+      },
+      "placement": "Existing opener/arrival aside; choose after checking the chapter context, never after a terminating choice",
+      "maxSegments": 1
+    },
+    {
+      "who": "bramm",
+      "chapter": 14,
+      "key": "q14_exp_gap_bramm",
+      "condition": {
+        "company": "bramm"
+      },
+      "placement": "Existing opener/arrival aside; choose after checking the chapter context, never after a terminating choice",
+      "maxSegments": 1
+    },
+    {
+      "who": "ysolde",
+      "chapter": 4,
+      "key": "q4_exp_gap_ysolde",
+      "condition": {
+        "company": "ysolde"
+      },
+      "placement": "Existing opener/arrival aside; choose after checking the chapter context, never after a terminating choice",
+      "maxSegments": 1
+    },
+    {
+      "who": "ysolde",
+      "chapter": 5,
+      "key": "q5_exp_gap_ysolde",
+      "condition": {
+        "company": "ysolde"
+      },
+      "placement": "Existing opener/arrival aside; choose after checking the chapter context, never after a terminating choice",
+      "maxSegments": 1
+    },
+    {
+      "who": "ysolde",
+      "chapter": 6,
+      "key": "q6_exp_gap_ysolde",
+      "condition": {
+        "company": "ysolde"
+      },
+      "placement": "Existing opener/arrival aside; choose after checking the chapter context, never after a terminating choice",
+      "maxSegments": 1
+    },
+    {
+      "who": "ysolde",
+      "chapter": 7,
+      "key": "q7_exp_gap_ysolde",
+      "condition": {
+        "company": "ysolde"
+      },
+      "placement": "Existing opener/arrival aside; choose after checking the chapter context, never after a terminating choice",
+      "maxSegments": 1
+    },
+    {
+      "who": "ysolde",
+      "chapter": 8,
+      "key": "q8_exp_gap_ysolde",
+      "condition": {
+        "company": "ysolde"
+      },
+      "placement": "Existing opener/arrival aside; choose after checking the chapter context, never after a terminating choice",
+      "maxSegments": 1
+    },
+    {
+      "who": "ysolde",
+      "chapter": 9,
+      "key": "q9_exp_gap_ysolde",
+      "condition": {
+        "company": "ysolde"
+      },
+      "placement": "Existing opener/arrival aside; choose after checking the chapter context, never after a terminating choice",
+      "maxSegments": 1
+    },
+    {
+      "who": "ysolde",
+      "chapter": 10,
+      "key": "q10_exp_gap_ysolde",
+      "condition": {
+        "company": "ysolde"
+      },
+      "placement": "Existing opener/arrival aside; choose after checking the chapter context, never after a terminating choice",
+      "maxSegments": 1
+    },
+    {
+      "who": "ysolde",
+      "chapter": 11,
+      "key": "q11_exp_gap_ysolde",
+      "condition": {
+        "company": "ysolde"
+      },
+      "placement": "Existing opener/arrival aside; choose after checking the chapter context, never after a terminating choice",
+      "maxSegments": 1
+    },
+    {
+      "who": "ysolde",
+      "chapter": 12,
+      "key": "q12_exp_gap_ysolde",
+      "condition": {
+        "company": "ysolde"
+      },
+      "placement": "Existing opener/arrival aside; choose after checking the chapter context, never after a terminating choice",
+      "maxSegments": 1
+    },
+    {
+      "who": "ysolde",
+      "chapter": 13,
+      "key": "q13_exp_gap_ysolde",
+      "condition": {
+        "company": "ysolde"
+      },
+      "placement": "Existing opener/arrival aside; choose after checking the chapter context, never after a terminating choice",
+      "maxSegments": 1
+    },
+    {
+      "who": "ysolde",
+      "chapter": 14,
+      "key": "q14_exp_gap_ysolde",
+      "condition": {
+        "company": "ysolde"
+      },
+      "placement": "Existing opener/arrival aside; choose after checking the chapter context, never after a terminating choice",
+      "maxSegments": 1
+    },
+    {
+      "who": "aurelius",
+      "chapter": 4,
+      "key": "q4_exp_gap_aurelius",
+      "condition": {
+        "company": "aurelius"
+      },
+      "placement": "Existing opener/arrival aside; choose after checking the chapter context, never after a terminating choice",
+      "maxSegments": 1
+    },
+    {
+      "who": "aurelius",
+      "chapter": 5,
+      "key": "q5_exp_gap_aurelius",
+      "condition": {
+        "company": "aurelius"
+      },
+      "placement": "Existing opener/arrival aside; choose after checking the chapter context, never after a terminating choice",
+      "maxSegments": 1
+    },
+    {
+      "who": "aurelius",
+      "chapter": 6,
+      "key": "q6_exp_gap_aurelius",
+      "condition": {
+        "company": "aurelius"
+      },
+      "placement": "Existing opener/arrival aside; choose after checking the chapter context, never after a terminating choice",
+      "maxSegments": 1
+    },
+    {
+      "who": "aurelius",
+      "chapter": 7,
+      "key": "q7_exp_gap_aurelius",
+      "condition": {
+        "company": "aurelius"
+      },
+      "placement": "Existing opener/arrival aside; choose after checking the chapter context, never after a terminating choice",
+      "maxSegments": 1
+    },
+    {
+      "who": "aurelius",
+      "chapter": 8,
+      "key": "q8_exp_gap_aurelius",
+      "condition": {
+        "company": "aurelius"
+      },
+      "placement": "Existing opener/arrival aside; choose after checking the chapter context, never after a terminating choice",
+      "maxSegments": 1
+    },
+    {
+      "who": "aurelius",
+      "chapter": 9,
+      "key": "q9_exp_gap_aurelius",
+      "condition": {
+        "company": "aurelius"
+      },
+      "placement": "Existing opener/arrival aside; choose after checking the chapter context, never after a terminating choice",
+      "maxSegments": 1
+    },
+    {
+      "who": "aurelius",
+      "chapter": 10,
+      "key": "q10_exp_gap_aurelius",
+      "condition": {
+        "company": "aurelius"
+      },
+      "placement": "Existing opener/arrival aside; choose after checking the chapter context, never after a terminating choice",
+      "maxSegments": 1
+    },
+    {
+      "who": "aurelius",
+      "chapter": 11,
+      "key": "q11_exp_gap_aurelius",
+      "condition": {
+        "company": "aurelius"
+      },
+      "placement": "Existing opener/arrival aside; choose after checking the chapter context, never after a terminating choice",
+      "maxSegments": 1
+    },
+    {
+      "who": "aurelius",
+      "chapter": 12,
+      "key": "q12_exp_gap_aurelius",
+      "condition": {
+        "company": "aurelius"
+      },
+      "placement": "Existing opener/arrival aside; choose after checking the chapter context, never after a terminating choice",
+      "maxSegments": 1
+    },
+    {
+      "who": "aurelius",
+      "chapter": 13,
+      "key": "q13_exp_gap_aurelius",
+      "condition": {
+        "company": "aurelius"
+      },
+      "placement": "Existing opener/arrival aside; choose after checking the chapter context, never after a terminating choice",
+      "maxSegments": 1
+    },
+    {
+      "who": "aurelius",
+      "chapter": 14,
+      "key": "q14_exp_gap_aurelius",
+      "condition": {
+        "company": "aurelius"
+      },
+      "placement": "Existing opener/arrival aside; choose after checking the chapter context, never after a terminating choice",
+      "maxSegments": 1
+    },
+    {
+      "who": "vess",
+      "chapter": 3,
+      "key": "q3_exp_gap_vess",
+      "condition": {
+        "company": "vess"
+      },
+      "placement": "Existing opener/arrival aside; choose after checking the chapter context, never after a terminating choice",
+      "maxSegments": 1
+    },
+    {
+      "who": "vess",
+      "chapter": 4,
+      "key": "q4_exp_gap_vess",
+      "condition": {
+        "company": "vess"
+      },
+      "placement": "Existing opener/arrival aside; choose after checking the chapter context, never after a terminating choice",
+      "maxSegments": 1
+    },
+    {
+      "who": "vess",
+      "chapter": 5,
+      "key": "q5_exp_gap_vess",
+      "condition": {
+        "company": "vess"
+      },
+      "placement": "Existing opener/arrival aside; choose after checking the chapter context, never after a terminating choice",
+      "maxSegments": 1
+    },
+    {
+      "who": "vess",
+      "chapter": 6,
+      "key": "q6_exp_gap_vess",
+      "condition": {
+        "company": "vess"
+      },
+      "placement": "Existing opener/arrival aside; choose after checking the chapter context, never after a terminating choice",
+      "maxSegments": 1
+    },
+    {
+      "who": "vess",
+      "chapter": 8,
+      "key": "q8_exp_gap_vess",
+      "condition": {
+        "company": "vess"
+      },
+      "placement": "Existing opener/arrival aside; choose after checking the chapter context, never after a terminating choice",
+      "maxSegments": 1
+    },
+    {
+      "who": "vess",
+      "chapter": 9,
+      "key": "q9_exp_gap_vess",
+      "condition": {
+        "company": "vess"
+      },
+      "placement": "Existing opener/arrival aside; choose after checking the chapter context, never after a terminating choice",
+      "maxSegments": 1
+    },
+    {
+      "who": "vess",
+      "chapter": 10,
+      "key": "q10_exp_gap_vess",
+      "condition": {
+        "company": "vess"
+      },
+      "placement": "Existing opener/arrival aside; choose after checking the chapter context, never after a terminating choice",
+      "maxSegments": 1
+    },
+    {
+      "who": "vess",
+      "chapter": 11,
+      "key": "q11_exp_gap_vess",
+      "condition": {
+        "company": "vess"
+      },
+      "placement": "Existing opener/arrival aside; choose after checking the chapter context, never after a terminating choice",
+      "maxSegments": 1
+    },
+    {
+      "who": "vess",
+      "chapter": 12,
+      "key": "q12_exp_gap_vess",
+      "condition": {
+        "company": "vess"
+      },
+      "placement": "Existing opener/arrival aside; choose after checking the chapter context, never after a terminating choice",
+      "maxSegments": 1
+    },
+    {
+      "who": "vess",
+      "chapter": 13,
+      "key": "q13_exp_gap_vess",
+      "condition": {
+        "company": "vess"
+      },
+      "placement": "Existing opener/arrival aside; choose after checking the chapter context, never after a terminating choice",
+      "maxSegments": 1
+    },
+    {
+      "who": "vess",
+      "chapter": 14,
+      "key": "q14_exp_gap_vess",
+      "condition": {
+        "company": "vess"
+      },
+      "placement": "Existing opener/arrival aside; choose after checking the chapter context, never after a terminating choice",
+      "maxSegments": 1
+    },
+    {
+      "who": "fennick",
+      "chapter": 6,
+      "key": "q6_exp_gap_fennick",
+      "condition": {
+        "company": "fennick"
+      },
+      "placement": "Existing opener/arrival aside; choose after checking the chapter context, never after a terminating choice",
+      "maxSegments": 1
+    },
+    {
+      "who": "fennick",
+      "chapter": 9,
+      "key": "q9_exp_gap_fennick",
+      "condition": {
+        "company": "fennick"
+      },
+      "placement": "Existing opener/arrival aside; choose after checking the chapter context, never after a terminating choice",
+      "maxSegments": 1
+    },
+    {
+      "who": "fennick",
+      "chapter": 10,
+      "key": "q10_exp_gap_fennick",
+      "condition": {
+        "company": "fennick"
+      },
+      "placement": "Existing opener/arrival aside; choose after checking the chapter context, never after a terminating choice",
+      "maxSegments": 1
+    },
+    {
+      "who": "fennick",
+      "chapter": 11,
+      "key": "q11_exp_gap_fennick",
+      "condition": {
+        "company": "fennick"
+      },
+      "placement": "Existing opener/arrival aside; choose after checking the chapter context, never after a terminating choice",
+      "maxSegments": 1
+    },
+    {
+      "who": "fennick",
+      "chapter": 12,
+      "key": "q12_exp_gap_fennick",
+      "condition": {
+        "company": "fennick"
+      },
+      "placement": "Existing opener/arrival aside; choose after checking the chapter context, never after a terminating choice",
+      "maxSegments": 1
+    },
+    {
+      "who": "fennick",
+      "chapter": 13,
+      "key": "q13_exp_gap_fennick",
+      "condition": {
+        "company": "fennick"
+      },
+      "placement": "Existing opener/arrival aside; choose after checking the chapter context, never after a terminating choice",
+      "maxSegments": 1
+    },
+    {
+      "who": "fennick",
+      "chapter": 14,
+      "key": "q14_exp_gap_fennick",
+      "condition": {
+        "company": "fennick"
+      },
+      "placement": "Existing opener/arrival aside; choose after checking the chapter context, never after a terminating choice",
+      "maxSegments": 1
+    },
+    {
+      "who": "dorran",
+      "chapter": 8,
+      "key": "q8_exp_gap_dorran",
+      "condition": {
+        "company": "dorran"
+      },
+      "placement": "Existing opener/arrival aside; choose after checking the chapter context, never after a terminating choice",
+      "maxSegments": 1
+    },
+    {
+      "who": "dorran",
+      "chapter": 9,
+      "key": "q9_exp_gap_dorran",
+      "condition": {
+        "company": "dorran"
+      },
+      "placement": "Existing opener/arrival aside; choose after checking the chapter context, never after a terminating choice",
+      "maxSegments": 1
+    },
+    {
+      "who": "dorran",
+      "chapter": 10,
+      "key": "q10_exp_gap_dorran",
+      "condition": {
+        "company": "dorran"
+      },
+      "placement": "Existing opener/arrival aside; choose after checking the chapter context, never after a terminating choice",
+      "maxSegments": 1
+    },
+    {
+      "who": "dorran",
+      "chapter": 11,
+      "key": "q11_exp_gap_dorran",
+      "condition": {
+        "company": "dorran"
+      },
+      "placement": "Existing opener/arrival aside; choose after checking the chapter context, never after a terminating choice",
+      "maxSegments": 1
+    },
+    {
+      "who": "dorran",
+      "chapter": 12,
+      "key": "q12_exp_gap_dorran",
+      "condition": {
+        "company": "dorran"
+      },
+      "placement": "Existing opener/arrival aside; choose after checking the chapter context, never after a terminating choice",
+      "maxSegments": 1
+    },
+    {
+      "who": "dorran",
+      "chapter": 13,
+      "key": "q13_exp_gap_dorran",
+      "condition": {
+        "company": "dorran"
+      },
+      "placement": "Existing opener/arrival aside; choose after checking the chapter context, never after a terminating choice",
+      "maxSegments": 1
+    },
+    {
+      "who": "dorran",
+      "chapter": 14,
+      "key": "q14_exp_gap_dorran",
+      "condition": {
+        "company": "dorran"
+      },
+      "placement": "Existing opener/arrival aside; choose after checking the chapter context, never after a terminating choice",
+      "maxSegments": 1
+    },
+    {
+      "who": "nettle",
+      "chapter": 8,
+      "key": "q8_exp_gap_nettle",
+      "condition": {
+        "company": "nettle"
+      },
+      "placement": "Existing opener/arrival aside; choose after checking the chapter context, never after a terminating choice",
+      "maxSegments": 1
+    },
+    {
+      "who": "nettle",
+      "chapter": 9,
+      "key": "q9_exp_gap_nettle",
+      "condition": {
+        "company": "nettle"
+      },
+      "placement": "Existing opener/arrival aside; choose after checking the chapter context, never after a terminating choice",
+      "maxSegments": 1
+    },
+    {
+      "who": "nettle",
+      "chapter": 10,
+      "key": "q10_exp_gap_nettle",
+      "condition": {
+        "company": "nettle"
+      },
+      "placement": "Existing opener/arrival aside; choose after checking the chapter context, never after a terminating choice",
+      "maxSegments": 1
+    },
+    {
+      "who": "nettle",
+      "chapter": 11,
+      "key": "q11_exp_gap_nettle",
+      "condition": {
+        "company": "nettle"
+      },
+      "placement": "Existing opener/arrival aside; choose after checking the chapter context, never after a terminating choice",
+      "maxSegments": 1
+    },
+    {
+      "who": "nettle",
+      "chapter": 12,
+      "key": "q12_exp_gap_nettle",
+      "condition": {
+        "company": "nettle"
+      },
+      "placement": "Existing opener/arrival aside; choose after checking the chapter context, never after a terminating choice",
+      "maxSegments": 1
+    },
+    {
+      "who": "nettle",
+      "chapter": 13,
+      "key": "q13_exp_gap_nettle",
+      "condition": {
+        "company": "nettle"
+      },
+      "placement": "Existing opener/arrival aside; choose after checking the chapter context, never after a terminating choice",
+      "maxSegments": 1
+    },
+    {
+      "who": "nettle",
+      "chapter": 14,
+      "key": "q14_exp_gap_nettle",
+      "condition": {
+        "company": "nettle"
+      },
+      "placement": "Existing opener/arrival aside; choose after checking the chapter context, never after a terminating choice",
+      "maxSegments": 1
+    },
+    {
+      "who": "durnik",
+      "chapter": 10,
+      "key": "q10_exp_gap_durnik",
+      "condition": {
+        "company": "durnik"
+      },
+      "placement": "Existing opener/arrival aside; choose after checking the chapter context, never after a terminating choice",
+      "maxSegments": 1
+    },
+    {
+      "who": "durnik",
+      "chapter": 11,
+      "key": "q11_exp_gap_durnik",
+      "condition": {
+        "company": "durnik"
+      },
+      "placement": "Existing opener/arrival aside; choose after checking the chapter context, never after a terminating choice",
+      "maxSegments": 1
+    },
+    {
+      "who": "durnik",
+      "chapter": 12,
+      "key": "q12_exp_gap_durnik",
+      "condition": {
+        "company": "durnik"
+      },
+      "placement": "Existing opener/arrival aside; choose after checking the chapter context, never after a terminating choice",
+      "maxSegments": 1
+    },
+    {
+      "who": "durnik",
+      "chapter": 13,
+      "key": "q13_exp_gap_durnik",
+      "condition": {
+        "company": "durnik"
+      },
+      "placement": "Existing opener/arrival aside; choose after checking the chapter context, never after a terminating choice",
+      "maxSegments": 1
+    },
+    {
+      "who": "durnik",
+      "chapter": 14,
+      "key": "q14_exp_gap_durnik",
+      "condition": {
+        "company": "durnik"
+      },
+      "placement": "Existing opener/arrival aside; choose after checking the chapter context, never after a terminating choice",
+      "maxSegments": 1
+    }
+  ]
+}
