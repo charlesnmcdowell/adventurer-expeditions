@@ -32,7 +32,10 @@ const PAGES = ['docs/STORY_CAMPAIGN_PREVIEW.html', 'docs/STORY_FIGHT_PREVIEW.htm
 // the password opens the rest (Hiro, 2026-10-14: chapter one free, "allow players
 // to play chapter 2-5 if they know password"). Raise either to open more; media
 // and enemy art follow SITE_THROUGH automatically.
-const SITE_THROUGH = 6, PUBLIC_THROUGH = 1;
+const SITE_THROUGH = Number(process.env.EXPEDITIONS_SITE_THROUGH || 6), PUBLIC_THROUGH = 1;
+if(!Number.isInteger(SITE_THROUGH)||SITE_THROUGH<1||SITE_THROUGH>14)throw Error('EXPEDITIONS_SITE_THROUGH must be 1..14');
+// Size projection only; never bypass the production art-approval switch in a build.
+const PROJECT_COMPANIONS=process.argv[2]==='size'&&process.argv.includes('--include-companions');
 // Arcade-only art the story never loads (its one Arcade creature is the wolf;
 // the travel art stays, because the story's road trips between chapters use it).
 // Left out to keep the website under GitHub Pages' 1 GB.
@@ -55,7 +58,7 @@ function shippedEnemies() {
 // Ship only enabled, chapter-eligible companion sets. Draft pilots stay local.
 function shippedCompanions() {
   const source=fs.readFileSync(path.join(ROOT,'js/expedition/story_companions.js'),'utf8');
-  if(/enabled\s*:\s*false/.test(source))return new Set();
+  if(!PROJECT_COMPANIONS&&/enabled\s*:\s*false/.test(source))return new Set();
   return new Set([...source.matchAll(/^ ([a-z_]+):\{join:(\d+),/gm)]
     .filter(m=>Number(m[2])<=SITE_THROUGH).map(m=>'companion_'+m[1]));
 }
@@ -105,6 +108,13 @@ function walk(dir, out) {
     if (e.isDirectory()) walk(rel, out); else out.push(rel);
   }
   return out;
+}
+
+function size() {
+  const media=chapterOneMedia(),files=[...TOP.flatMap(t=>walk(t,[])),...PAGES].filter(f=>!skip(f,media));
+  const bytes=files.reduce((sum,f)=>sum+fs.statSync(path.join(ROOT,f)).size,0)+fs.statSync(path.join(ROOT,'docs/STORY_CAMPAIGN_PREVIEW.html')).size;
+  const result={chapters:SITE_THROUGH,companions:media.companions.size,projectedCompanions:PROJECT_COMPANIONS,bytes,MB:Math.round(bytes/1e4)/100,GBHeadroom:Math.round((1e9-bytes)/1e4)/100,files:files.length+1};
+  console.log(JSON.stringify(result,null,2));return result;
 }
 
 function build() {
@@ -193,6 +203,18 @@ async function verify() {
       await page.getByText('Chapter ' + (PUBLIC_THROUGH + 1), { exact: true }).waitFor({ timeout: 15000 });
       console.log('road trip into chapter ' + (PUBLIC_THROUGH + 1) + ' played, chapter card shown');
     }
+    if(shippedCompanions().size&&SITE_THROUGH>=2){
+      await page.evaluate(()=>{const S=ADV.Expedition.Story,s=S.open(S.fresh());Object.assign(s.record,{chapter:2,phase:'departure',titleCards:[1,2]});S.syncQuest(s);ADV.Campaign3.recruit(s.game,'wren_ward');S.Companions.queueUnlocks(s,[]);S.save(s);});
+      await page.goto(base+'/');await page.getByRole('button',{name:'Continue story',exact:true}).click();
+      await page.locator('#companion-unlocked').waitFor();await page.getByRole('button',{name:'Accept',exact:true}).click();
+      await page.locator('#companion-confirm').waitFor();await page.getByRole('button',{name:'Set out',exact:true}).click();
+      await page.evaluate(()=>{const S=ADV.Expedition.Story,s=S.open(S.load());s.record.phase='combat';s.record.encounter=0;S.save(s);});
+      await page.goto(base+'/docs/STORY_FIGHT_PREVIEW.html?muted=1');
+      await page.waitForFunction(()=>window.storyGame?.scene.getScene('StoryBattle')?.__presentationReady,null,{timeout:120000});
+      const allies=await page.evaluate(()=>storyGame.scene.getScene('StoryBattle').enc.allies.length);
+      if(allies!==1)throw Error('Packaged Hiwot party fight did not load');
+      console.log('companion welcome, Accept, party confirmation and Hiwot battle: ok');
+    }else console.log('Companion package QA deferred: production roster is awaiting art approval.');
     // Every fight in the playable chapters, opened from a save at that fight.
     for (const chapter of CHAPTERS) {
       const fights = await page.evaluate(n => ADV.DATA.CAMPAIGN3_QUESTS[n - 1].enc.length, chapter);
@@ -252,6 +274,6 @@ function stage() {
 }
 
 const cmd = process.argv[2];
-const run = { build, verify, stage }[cmd];
-if (!run) { console.log('Usage: node tools/site_demo.js build|verify|stage <audiobook2-audio-checkout>'); process.exitCode = 1; }
+const run = { build, verify, stage, size }[cmd];
+if (!run) { console.log('Usage: node tools/site_demo.js build|verify|size [--include-companions]|stage <audiobook2-audio-checkout>'); process.exitCode = 1; }
 else Promise.resolve(run()).catch(e => { console.error(e.message || e); process.exitCode = 1; });

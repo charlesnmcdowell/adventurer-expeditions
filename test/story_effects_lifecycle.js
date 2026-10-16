@@ -10,7 +10,12 @@ function fixture(){const sprites=[],events=new EventEmitter();return {sprites,ev
   for(let i=0;i<20;i++)s.events.emit('update',i*50,50);await p;assert(sprite.dead);assert.equal(s.events.listenerCount('update'),0);
   const cancel=F.play(s,id,{x:200,y:280},{x:500,y:250},{reflected:true});const bounced=s.sprites.at(-1);s.events.emit('update',0,50);assert(bounced.x>200&&bounced.x<500);s.events.emit('shutdown');await cancel;assert(bounced.dead);assert.equal(s.events.listenerCount('update'),0);
  }
- const loads=[];F.preload({textures:{exists:key=>key==='story_chapter_one_effects'},load:{json:(k,url)=>loads.push(url),once(){}}});assert.equal(loads.length,6,'cached opening atlas must not suppress later atlases');
+ const loads=[];F.preload({textures:{exists:key=>key==='story_chapter_one_effects'},load:{json:(k,url)=>loads.push(url),once(){}}});assert.equal(loads.length,7,'cached opening atlas must not suppress later atlases or reflected shots');
+ for(const id of ['fire_bolt','prismatic_bolt','aimed_shot','marked_for_the_knife']){
+  const s=fixture(),p=F.play(s,id,{x:200,y:200},{x:500,y:200},{reflected:true});
+  assert.equal(s.sprites[0].key,'story_effects_reflected');assert.equal(s.sprites[0].r,0,'right-facing painted shot follows its actual return direction');
+  s.events.emit('shutdown');await p;
+ }
  for(const id of ['whisper_of_ending','shield_wall','cleanse','thorn_skin']){
   assert(!F.supports(id),'companion additions must not change enemy mappings');assert(F.supports(id,{companion:true}));
   const s=fixture(),p=F.play(s,id,{x:200,y:200},{x:500,y:230},{companion:true,height:220});

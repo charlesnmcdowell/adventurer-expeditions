@@ -61,5 +61,7 @@ if __name__=='__main__':
         src=a.masters/('heroes/'+actor if human else 'beasts')
         manifest=hiro_delta(a.masters,a.v2_masters) if actor=='hiro' else ROOT/('tools/art_registration/'+actor+'.json')
         build(src,actor,ROOT/'assets/expedition',320 if human else 200,76,manifest)
+    if 'hiro' in a.actors.split(',') and (ROOT.parent/'adventurer-expeditions-source-art/astra-v10/hiro-actions-20261016/manifest.json').exists():
+        subprocess.run([sys.executable,'tools/build_hiro_actions_20261016.py'],check=True)
     subprocess.run(['node','test/art_registration.js'],check=True)
     subprocess.run(['node','tools/size_check.js'],check=True)

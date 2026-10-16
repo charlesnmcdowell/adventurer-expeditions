@@ -96,6 +96,8 @@
       "paddingPx": 4,
       "webpQuality": 90,
       "operation": "Approved authored bounds cropped and resized; original alpha preserved."
-    }
+    },
+    "iaidoSource": "adventurer-expeditions-source-art/astra-v10/hiro-actions-20261016/iaido-icon.png",
+    "iaidoSha256": "2b002694514020583dcd5002b41e14490bc17c19472d3ee2b81eed74ddfd5b98"
   }
 }

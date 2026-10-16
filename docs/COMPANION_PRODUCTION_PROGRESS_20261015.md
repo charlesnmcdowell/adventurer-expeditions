@@ -2,6 +2,17 @@
 
 The user approved the five voice samples and all fifteen proposed kits on October 15. No further audition or kit approval is needed. This is an unfinished production checkpoint, not a declaration that companions are available in normal play.
 
+## October 16 completion pass — ready for roster approval
+
+The sections below record the earlier pilot checkpoint. They are superseded by this update:
+
+- All 15 companions have eight groups of 16 distinct drawings (1,920 decoded frames). Every companion passed actual battle-scene signature and nonlethal-knockout checks. Hiwot received a new registered run, an edge-safe victory sheet, and a one-pixel blade-trace repair in derived intake only.
+- The welcome now slides in, shows the styled name and original dialogue hook, plays an original 2.6-second melodic fanfare, and waits for Accept. It persists through reload and respects mute/reduced motion. All 15 displays passed desktop and 390×844 checks.
+- Hiwot's welcome waits until chapter two, after the inn, travel and title. Chapter two onward asks for the party with Change / Set out. Explicit solo/one-person choices persist; invalid/departed companions are replaced from eligible company members. An inn selection does not bypass the next chapter's confirmation.
+- Hiro's Iaido Draw and deflect each have 16 distinct drawings. Painted reflected fire, prism, arrow and knife effects launch on blade contact. The Iaido icon is replaced. A painted ring in Counter level three is repaired without changing its timing.
+- The **production switch remains false pending the roster-art approval requested on October 16**, as required by `ASTRA_PROMPT_NEXT_20261016.md` sections 1 and 4. Test-only activation verifies the complete party flow. Weapon/move approval and voice approval remain valid; neither is being requested again.
+- Review all 15: `art/companions-hiro-20261015/pilot.html`. Hiro: `art/hiro-actions-20261016/index.html`. Full checks and package measurements are recorded in the October 16 CHANGELOG completion entry.
+
 ## Completed voice work
 
 - 200 reachable choice lines recorded with `V8MrPOnARtlsjrlxEsE7`, `eleven_v3`; the five auditions were reused. Ten retired finale options were deliberately not recorded.

@@ -2,7 +2,7 @@
 'use strict';
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
 const root=path.resolve(__dirname,'..');
-const counts={hiro:206,bram:96,wolf:46,boar:20,plant:23,alpha:59,serpent:56,beetle:56,moss_giant:46,hag:56,goblin:56,spider:56,orc:50};
+const counts={hiro:238,bram:96,wolf:46,boar:20,plant:23,alpha:59,serpent:56,beetle:56,moss_giant:46,hag:56,goblin:56,spider:56,orc:50};
 Object.assign(counts,{crab:45,toad:44,vulture:44,hydra:48,elven_wizard:56,elven_ranger:56,dark_swordswoman:56,enchantress:60});
 for(const [id,count] of Object.entries(counts)){
   const dir=path.join(root,'assets/expedition',id);
@@ -41,7 +41,7 @@ for(const [id,count] of Object.entries(counts)){
     assert(m.canvas.pivot.y<m.canvas.h);
   }
   if(id==='hiro'){
-    const required={walk:16,'idle-sheathed':4,'wolf-cleave-paired':12,
+    const required={'iaido-draw':16,deflect:16,walk:16,'idle-sheathed':4,'wolf-cleave-paired':12,
       'wolf-pin-paired':12,'wolf-rising-cut-paired':12,'plant-stem-cut-paired':12,
       'plant-vine-pin-paired':12,'plant-crosscut-paired':6};
     for(const [name,n] of Object.entries(required)){

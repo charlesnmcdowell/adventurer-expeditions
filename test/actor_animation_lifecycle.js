@@ -446,7 +446,7 @@ test('story Counter returns the same painted projectile before reflected damage'
   f.foe.play=async(id,opts)=>{if(id==='cast')await opts.onRelease({x:600,y:300},{});else log.push('impact');};
   f.scene.hero.contactPoint=()=>({x:350,y:300});
   f.scene.hero.chest=()=>({x:300,y:300});
-  f.scene.hero.play=async()=>log.push('deflect');
+  f.scene.hero.play=async(id,opts)=>{log.push('deflect');opts?.onContact?.();};
   ADV.DATA.SKILLS={fire_bolt:{elemental:true,element:'fire',target:'enemy'}};
   X.StoryEffects={supports:()=>true,play:async(scene,id,from,to,opts)=>log.push(opts?.reflected?'painted-return:'+id:'painted-out:'+id)};
   try{await X.Beats.play(f.scene,{events:[{t:'use',uid:'foe',target:'hero',skillId:'fire_bolt'},{t:'counter',uid:'hero',by:'foe'},{t:'damage',uid:'foe',by:'hero',dmg:8,tag:'reflect'}]});

@@ -1,0 +1,37 @@
+{
+  "image": "reflected.webp",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "columns": 4,
+  "rows": 4,
+  "authoredFacing": 1,
+  "clips": {
+    "fire_bolt": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "prismatic_bolt": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "arrow": [
+      8,
+      9,
+      10,
+      11
+    ],
+    "marked_for_the_knife": [
+      12,
+      13,
+      14,
+      15
+    ]
+  },
+  "source": "adventurer-expeditions-source-art/astra-v10/hiro-actions-20261016/reflected.png",
+  "sha256": "5c91dd8879a674e6b4a3cc59c123e08de4c742989a583dea63420dbe480677e5",
+  "releaseFrameZeroBased": 0
+}

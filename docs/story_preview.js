@@ -25,7 +25,7 @@ const d=await fetch('assets/expedition/story/campaign.json').then(r=>{if(!r.ok)t
 P.configure(d);let sceneContext=null,musicId=null;
 const available=new Set(await fetch('assets/expedition/story/preview-media.json').then(r=>r.json()));
 const portraits=await fetch('assets/expedition/story/portraits/portraits.json').then(r=>{if(!r.ok)throw Error('Story portraits missing');return r.json();});
-const companionUI=S.CompanionUI({panel,portraits,muted:()=>muted,render,getSession:()=>session});
+const companionUI=S.CompanionUI({panel,portraits,muted:()=>muted,render,getSession:()=>session,duckMusic:on=>{if(music)music.volume=on?.035:.17;}});
 const backdrop=S.Backdrop('animated-background',()=>$('stage').classList.add('rendered'));window.storyBackdrop=backdrop;
 const url=path=>'assets/expedition/story/media/'+path;
 function setMuted(value){muted=value;try{localStorage.setItem(MUTE_KEY,value?'1':'0');}catch(_){}$('sound').textContent=muted?'Sound on':'Mute';}
@@ -83,7 +83,7 @@ function seatMenu(){
   const r=session.record,g=session.game;
   r.seatOffer=r.seatOffer.filter(id=>C.isRecruited(g,id)&&!C.inCompany(g,id));
   const who=r.seatOffer[0];if(!who){delete r.seatOffer;S.save(session);return false;}
-  const done=msg=>{r.seatOffer.shift();if(!r.seatOffer.length)delete r.seatOffer;S.save(session);if(msg)toast(msg);render();};
+  const done=msg=>{r.seatOffer.shift();if(!r.seatOffer.length)delete r.seatOffer;r.companionPickerDue=true;S.save(session);if(msg)toast(msg);render();};
   if(C.seat(g,who)){done(C.charName(who)+' rides with you.');return true;}
   const name=C.charName(who),box=text('section','',panel,'menu');text('h1','The company is full',box);
   text('p',name+' wants to ride, but only '+(C.MAX_COMPANY+1)+' can. Who stays at the inn?',box);
@@ -99,7 +99,7 @@ function chapterCard(){
   const box=text('section','',panel,'menu chapter-card');text('div','Chapter '+r.chapter,box,'chapter-number');text('h1',session.game.quest.quest.name,box);
   const go=button('Continue',()=>{r.titleCards=[...(r.titleCards||[]),r.chapter];S.save(session);render();},box);go.hidden=true;setTimeout(()=>{go.hidden=false;},1800);
 }
-$('sound').onclick=()=>{setMuted(!muted);if(muted){stopVoice();music?.pause();}else{const beat=reply||session&&S.beats(session)[0];playMusic(beat);if(session?.record.hiroChoice)render();else if(beat)say(beat);}};
+$('sound').onclick=()=>{setMuted(!muted);if(muted){companionUI.stopAudio();stopVoice();music?.pause();}else{const beat=reply||session&&S.beats(session)[0];playMusic(beat);if(session?.record.hiroChoice)render();else if(beat&&!panel.querySelector('#companion-unlocked,#companion-confirm'))say(beat);}};
 $('home').onclick=()=>{companionUI.stop();stopVoice();battleFrame?.remove();battleFrame=null;session=null;reply=null;title();};
 window.addEventListener('message',event=>{
   if(event.origin!==location.origin||event.source!==battleFrame?.contentWindow||event.data?.type!=='expeditions-story-battle')return;
@@ -186,7 +186,6 @@ function devSkipTo(target){
 }
 function render(){
   companionUI.stop();stopVoice();panel.replaceChildren();const r=session.record;
-  if(companionUI.unlock())return;
   if(r.hiroChoice)return hiroChoice();
   // Cap the outbound leg before showing content from a locked website chapter.
   if(r.travelPending&&r.travelPending.chapter<=PLAYABLE_THROUGH)return travel();
@@ -203,6 +202,9 @@ function render(){
   if(r.phase==='complete')return ending();
   if(r.phase==='inn')return inn();
   if(r.chapter>PLAYABLE_THROUGH&&(r.completed||[]).includes(PLAYABLE_THROUGH))return toBeContinued();
+  if(r.phase==='departure'&&!reply&&applied===null&&line===0&&!(r.titleCards||[]).includes(r.chapter))return chapterCard();
+  if(companionUI.unlock())return;
+  if(S.Companions.enabled&&r.chapter>=2&&(r.companionPickerDue||(r.phase==='departure'&&r.companionPickedChapter!==r.chapter))&&companionUI.confirm())return;
   if(r.phase==='combat'||r.phase==='defeat'){
     const box=text('section','',panel,'menu');text('h1','The road ahead',box);text('p',session.game.quest.quest.encounters[r.encounter]?.label||'Encounter',box,'speaker');
     if(S.Companions.enabled&&S.Companions.readiness(session).length){
@@ -220,12 +222,10 @@ function render(){
     text('p','Pending: '+S.readiness(session).join(', '),box,'notice error');button('Back to title',title,box);return;
   }
   if(r.seatOffer?.length&&!reply&&applied===null&&seatMenu())return;
-  if(S.Companions.enabled&&r.chapter>=2&&(r.companionPickerDue||(r.phase==='departure'&&r.companionPickedChapter!==r.chapter))&&companionUI.picker())return;
-  if(r.phase==='departure'&&!reply&&applied===null&&line===0&&!(r.titleCards||[]).includes(r.chapter))return chapterCard();
   let beat=reply||S.beats(session)[0];
   if(!beat){S.nextPhase(session);return render();}
   const identity=r.chapter+':'+r.encounter+':'+r.phase+':'+beat.who+':'+beat.key;
-  if(applied!==identity){const before=company();S.applyBeat(session,beat);applied=identity;noteSeats(before);if(r.companionUnlocksPending?.length)return render();}
+  if(applied!==identity){const before=company();S.applyBeat(session,beat);applied=identity;noteSeats(before);if(S.Companions.enabled&&S.Companions.pendingUnlock(session))return render();}
   const sceneFile=showScene(beat);playMusic(beat);
   const box=text('section','',panel);box.id='dialogue';text('div',ADV.DATA.CAMPAIGN_CHARS[beat.who]?.name||beat.who,box,'speaker');
   const portrait=portraits.portraits[P.portrait(beat)];
@@ -278,7 +278,7 @@ function inn(){
   if(S.Companions.enabled&&S.Companions.eligible(session).length)button('Choose who fights with you',()=>companionUI.picker(),actions).id='story-party';
   button('Continue story',()=>{
     const leave=()=>{if(S.leaveInn(session))render();};
-    if(S.Companions.enabled&&r.companionPickedChapter!==r.chapter&&companionUI.picker(leave))return;leave();
+    leave();
   },actions).id='story-embark';
   text('p',can.reason==='score'?'You need '+cost.toLocaleString()+' points to rest. You can continue with your current health; a lost fight can be retried at full health.':can.reason==='full'?'You are fully healed and ready to travel.':'Rest restores all health. The point cost doubles each time.',box,'notice');
   if(r.restScenePending){

@@ -12,10 +12,10 @@ assert ACTOR in ACTORS
 IDENTITY,HEIGHT=ACTORS[ACTOR]
 KEY='companion_'+IDENTITY
 SRC=ROOT.parent/'adventurer-expeditions-source-art/astra-v10/companions-hiro-20261015'/ACTOR
-SPECS=[('idle','idle.png',308,1600,[],15),('walk','run-v2.png',308,800,[],15),
+SPECS=[('idle','idle.png',308,1600,[],15),('walk','run-v3.png',308,800,[],15),
  ('attack','attack-draft.png',295,960,[7],8),('signature-1','backstab.png',288,1120,[7],8),
  ('signature-2','smoke-bomb.png',303,1200,[],7),('hit','hit.png',306,640,[],7),
- ('knockout','knockout.png',352,1400,[],15),('victory','victory.png',312,1600,[],15)]
+ ('knockout','knockout.png',352,1400,[],15),('victory','victory-v2.png',290,1600,[],15)]
 if ACTOR=='desmond':
  SPECS=[('idle','idle.png',303,1600,[],15),('walk','walk-v2.png',298,1000,[],15),
  ('attack','attack-draft.png',297,960,[7],8),('signature-1','signature-1.png',289,1200,[],7),
@@ -53,7 +53,7 @@ elif ACTOR=='yasemin':
  ('attack','attack.png',310,1120,[7],7),
  ('signature-1',[('signature-1-v2-a.png',352,2),('signature-1-v2-b.png',331,2)],None,1280,[],7),
  ('signature-2',[('signature-2-v2-a.png',360,2),('signature-2-v2-b.png',334,2)],None,1280,[],7),
- ('hit','hit.png',309,640,[],7),('knockout','knockout.png',398,1600,[],15),('victory','victory.png',312,1600,[],15)]
+ ('hit','hit.png',309,640,[],7),('knockout','knockout.png',398,1600,[],15),('victory','victory-v2.png',290,1600,[],15)]
 elif ACTOR=='devendra':
  SPECS=[('idle','idle.png',310,1600,[],15),('walk','walk.png',313,1000,[],15),
  ('attack','attack.png',310,1120,[7],7),('signature-1','signature-1.png',293,1280,[],7),
@@ -84,6 +84,11 @@ elif ACTOR in ['layla','kaito','wanjiru','dai-morgan','amara']:
 def extract(file,ref,columns):
  """Silhouette extraction; wider half-sheets keep long weapons inside a pose."""
  im=Image.open(SRC/file).convert('RGBA');pixels=np.array(im);alpha=pixels[:,:,3]
+ # A single reviewed brush trace beyond the complete blade, not blade steel.
+ # Source stays intact; remove only this exact pixel in the derived intake.
+ if ACTOR=='hiwot' and file=='attack-draft.png':
+  assert int(alpha[544,1253])==72
+  pixels[544,1253]=0
  labels,count=ndimage.label(alpha>32)
  # Frame 13's staff is separated by a two-pixel transparent gap. Retain it
  # with its owner rather than dropping a weapon or guessing cell boundaries.
@@ -95,11 +100,7 @@ def extract(file,ref,columns):
  assert len(bodies)==columns*4,(file,len(bodies))
  edge_mask=np.zeros(alpha.shape,dtype=bool);edge_mask[0]=True;edge_mask[-1]=True;edge_mask[:,0]=True;edge_mask[:,-1]=True
  edge_pixels=np.argwhere(edge_mask&(alpha>32))
- # Visually reviewed: the complete blade terminates before the edge; a single
- # antialiased brush trace (72/255) reaches x=1253,y=544. Preserve it, never
- # erase steel or loosen clipping checks for another sheet.
- reviewed_tip=ACTOR=='hiwot' and file=='attack-draft.png' and edge_pixels.tolist()==[[544,1253]] and int(alpha[544,1253])==72
- assert not len(edge_pixels) or reviewed_tip,(file,'clipped outer edge')
+ assert not len(edge_pixels),(file,'clipped outer edge')
  bodies.sort(key=lambda r:r['y']+r['h']/2)
  bodies=[r for row in range(4) for r in sorted(bodies[row*columns:(row+1)*columns],key=lambda r:r['x'])]
  for r in bodies:
@@ -121,7 +122,12 @@ def main():
    target=SRC/'registered'/name/(str(i).zfill(2)+'.png');target.parent.mkdir(parents=True,exist_ok=True);cell.save(target)
    fingerprints.append(hashlib.sha256(cell.tobytes()).hexdigest())
    sources.append({'file':str(target.relative_to(SRC)).replace('\\','/'),'frames':1,'firstFrameZeroBased':i,'regions':[[0,0,cell.width,cell.height]],'preservePixels':True,'sha256':hashlib.sha256(target.read_bytes()).hexdigest()})
-   guides.append({'referenceHeight':reference,'anchorX':anchor_x(cell,box),'groundY':box[3]})
+   x=anchor_x(cell,box)
+   if ACTOR=='hiwot' and name=='walk':
+    # Belt/pelvis centres measured on run-v3. A foot-centroid anchor jumps
+    # sideways as the forward boot changes; the torso should stay in its lane.
+    x=[174,501,810,1137,168,495,807,1136,180,506,810,1144,177,500,811,1147][i]-record['region'][0]
+   guides.append({'referenceHeight':reference,'anchorX':x,'groundY':box[3]})
    audit.append({'clip':name,'frame':i,**record})
   assert len(set(fingerprints))==16,(name,'duplicate drawing')
   clips.append({'id':name,'frames':16,'sources':sources,'registration':{'frames':guides},'durationMsDraft':duration,'contactFramesZeroBased':contacts,'releaseFrameZeroBased':release,'paired':False,'loop':name in ['idle','walk']})

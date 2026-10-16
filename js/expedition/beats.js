@@ -233,13 +233,17 @@ async function heroAction(scene, hero, g, step) {
     } });
   } else if (skill === 'god_aura') {
     // Iaido Draw (Hiro, 2026-10-13): one drawn cut through every enemy. Plays
-    // the painted 'iaido' clip once delivered; until then the widest slash.
+    // the registered sixteen-drawing draw, contact and re-sheathing sequence.
     const first = hits[0] ? targetOf(hits[0]) : actorOf(scene, e.target);
     if (!scene.__cine) V().zoomPunch(scene);
     sfx(scene, 'slash', 'use');
     await hero.play('iaido', { target: first, level, lethal: false, onContact: () => {
       sfx(scene, 'slash', 'hit');
       V().flashOverlay(scene, 0xffffff, 0.18);
+      const start=hero.chest(),end=Math.max(start.x+80,...hits.map(h=>targetOf(h)?.chest().x||start.x));
+      const streak=scene.add.rectangle((start.x+end)/2,start.y,end-start.x,4,0xfffcf2,.95).setDepth(650).setName('iaido_blade_streak');
+      const clear=()=>streak.destroy();scene.events.once('shutdown',clear);
+      scene.tweens.add({targets:streak,alpha:0,scaleY:.2,duration:160,onComplete:()=>{scene.events.off('shutdown',clear);clear();}});
       hits.forEach((h, i) => deferImpact(scene, i * 90, () => impact(scene, targetOf(h), h, { arc: 0xfff4d6, hitStop: i === 0, shake: 0.005 })));
       showDefences(scene, hero, g);
     } });
@@ -494,8 +498,11 @@ async function humanAction(scene, foe, hero, g, r) {
     if (r.counter) {
       sfx(scene, 'block', 'block');
       V().damageNumber(scene,hero.x,hero.y-hero.height*.65,'Blocked','#bce5ff');
-      await hero.play(ranged ? 'deflect' : 'intercept', { onContact: () => { const c = hero.contactPoint(foe); V().burst(scene, c.x, c.y - 40, 0xfff2b0, 10); hitStop(scene, TM().hitStop); } });
-      if (ranged) await deflect(scene, hero, foe, color, g.after.find(x => x.t === 'damage' && x.uid === foe.uid && x.tag === 'reflect'),g.use.skillId);
+      let reflected=null;
+      await hero.play(ranged ? 'deflect' : 'intercept', { onContact: () => { const c = hero.contactPoint(foe); V().burst(scene, c.x, c.y - 40, 0xfff2b0, 10); hitStop(scene, TM().hitStop);
+        if(ranged)reflected=deflect(scene,hero,foe,color,g.after.find(x=>x.t==='damage'&&x.uid===foe.uid&&x.tag==='reflect'),g.use.skillId);
+      } });
+      if(reflected)await reflected;
       if (r.riposte) { sfx(scene, 'slash', 'use'); await hero.play('riposte', { target: foe, onContact: () => { sfx(scene, 'slash', 'hit'); if (r.riposteHit) impact(scene, foe, r.riposteHit, { arc: 0xe8dfc8, hitStop: true }); if (r.riposteKill) V().burst(scene, foe.chest().x, foe.chest().y, 0xd9c2ff, 12); } }); }
       if (r.hit) impact(scene, hero, r.hit, {});
     } else if (r.evade) { sfx(scene, 'miss', 'miss'); V().damageNumber(scene,hero.x,hero.y-hero.height*.6,'Miss','#d7eaf3'); await hero.play('roll'); }

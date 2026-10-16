@@ -10,6 +10,7 @@ const groups={
  fire:['siege_flame','ember_lash','fire_barrier','ashfall'],
  storm:['spark','chain_lightning','arcane_cascade','ranging_ward']};
 const clips={};for(const [group,ids]of Object.entries(groups))ids.forEach((id,i)=>clips[id]={group,start:i*4});
+const reflectedClips={fire_bolt:0,prismatic_bolt:4,aimed_shot:8,suppressing_volley:8,kunai_line:8,marked_for_the_knife:12};
 // New companion-only effects do not replace any original enemy spell artwork.
 const companionClips={};['whisper_of_ending','shield_wall','cleanse','thorn_skin'].forEach((id,i)=>companionClips[id]={group:'companion-support',start:i*4});
 ['mend','regenerate','defiant_stand','counter_attack'].forEach((id,i)=>companionClips[id]={group:'companion-recovery',start:i*4});
@@ -27,7 +28,7 @@ const F=X.StoryEffects={
   supports:(id,opts={})=>Object.hasOwn(clips,id)||(opts.companion&&Object.hasOwn(companionClips,id)),
   catalog:clips,
   preload(scene){
-   const loadGroups=Object.keys(groups);
+   const loadGroups=[...Object.keys(groups),'reflected'];
    if(X.Story?.Companions?.enabled)loadGroups.push('companion-support','companion-recovery');
    for(const group of loadGroups){
     const KEY=keyFor(group);
@@ -41,7 +42,8 @@ const F=X.StoryEffects={
   },
   play(scene,id,from,to,opts={}){
     if(!F.supports(id,opts))return Promise.resolve(false);
-    const entry=(opts.companion&&companionClips[id])||clips[id],KEY=keyFor(entry.group);
+    const reflected=opts.reflected&&Object.hasOwn(reflectedClips,id);
+    const entry=reflected?{group:'reflected',start:reflectedClips[id]}:(opts.companion&&companionClips[id])||clips[id],KEY=keyFor(entry.group);
     if(!scene.textures.exists(KEY))throw Error('Campaign effect art missing: '+id);
     const missile=opts.reflected||!(stationary.has(id)||(opts.companion&&companionStationary.has(id))),smoke=id==='smoke_bomb';
     const duration=missile?360:smoke?800:650;
@@ -50,7 +52,7 @@ const F=X.StoryEffects={
     const sprite=scene.add.image(start.x,start.y,KEY,entry.start).setDepth(650)
       .setDisplaySize(size,size)
       .setName('story_effect_'+id);
-    if(missile)sprite.setRotation(Math.atan2(to.y-from.y,to.x-from.x)-Math.PI);
+    if(missile)sprite.setRotation(Math.atan2(to.y-from.y,to.x-from.x)-(reflected?0:Math.PI));
     return new Promise(resolve=>{
       let elapsed=0,done=false;
       const finish=()=>{if(done)return;done=true;scene.events.off('update',tick);

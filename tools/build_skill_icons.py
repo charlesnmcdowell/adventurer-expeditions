@@ -52,6 +52,13 @@ def build(source: Path, dest: Path) -> dict:
                            'spriteSourceSize': {'x': 0, 'y': 0, 'w': CELL, 'h': CELL},
                            'sourceSize': {'w': CELL, 'h': CELL}}
     dest.mkdir(parents=True, exist_ok=True)
+    # The god_aura ID is deliberately stable for saves and the combat contract;
+    # its player-facing skill is Iaido Draw. Replace only that painted tile.
+    iaido = ROOT.parent / 'adventurer-expeditions-source-art/astra-v10/hiro-actions-20261016/iaido-icon.png'
+    if source.resolve() == DEFAULT_SOURCE.resolve() and iaido.exists():
+        replacement = ImageOps.contain(Image.open(iaido).convert('RGBA'), (88, 88), Image.Resampling.LANCZOS)
+        atlas.paste((0, 0, 0, 0), (CELL, 0, CELL * 2, CELL))
+        atlas.alpha_composite(replacement, (CELL + (CELL-replacement.width)//2, (CELL-replacement.height)//2))
     output = dest / 'hiro-skills.webp'
     atlas.save(output, 'WEBP', quality=90, method=6, exact=True)
     data = {'frames': frames, 'meta': {'image': output.name, 'format': 'RGBA8888',
@@ -60,6 +67,9 @@ def build(source: Path, dest: Path) -> dict:
             'intake': {'cellPx': CELL, 'paddingPx': PADDING, 'webpQuality': 90,
                        'operation': 'Approved authored bounds cropped and resized; original alpha preserved.'}}}
     atlas_json = dest / 'hiro-skills.json'
+    if source.resolve() == DEFAULT_SOURCE.resolve() and iaido.exists():
+        data['meta']['iaidoSource'] = str(iaido.relative_to(ROOT.parent)).replace('\\', '/')
+        data['meta']['iaidoSha256'] = hashlib.sha256(iaido.read_bytes()).hexdigest()
     atlas_json.write_text(json.dumps(data, indent=2) + '\n', encoding='utf-8')
     total = output.stat().st_size + atlas_json.stat().st_size
     if total >= 100_000:

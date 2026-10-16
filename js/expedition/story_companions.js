@@ -1,7 +1,7 @@
 // Expedition-owned companion production contract. Source characters stay read-only.
 (function(){
 'use strict';const A=ADV,X=A.Expedition,S=X.Story,C=A.Campaign3;
-const P=S.Companions={fieldMax:2,bindings:{},enabled:false};
+const P=S.Companions={fieldMax:2,foeHealthPerAlly:.25,bindings:{},enabled:false};
 // Enable in the story entry only once the complete roster and browser QA pass.
 P.kits={
  wren_ward:{join:1,weapon:'Short blade and throwing knife',skills:['backstab','smoke_bomb'],height:310},
@@ -27,14 +27,18 @@ P.selected=function(s){
  // Explicit empty / one-member selections are choices, not missing data.
  if(Array.isArray(saved)){
   const valid=[...new Set(saved)].filter(id=>eligible.includes(id)).slice(0,P.fieldMax);
-  if(valid.length||!saved.length)return valid;
+  if(!saved.length)return valid;
+  if(valid.length&&s.record.companionSelectionExplicit!==false&&valid.length===saved.length)return valid;
+  const recruited=C.state(s.game).recruited||[];
+  const fill=eligible.filter(id=>!valid.includes(id)).sort((a,b)=>recruited.indexOf(b)-recruited.indexOf(a));
+  return valid.concat(fill).slice(0,P.fieldMax);
  }
  const recruited=C.state(s.game).recruited||[];
  return eligible.slice().sort((a,b)=>recruited.indexOf(b)-recruited.indexOf(a)).slice(0,P.fieldMax);
 };
-P.select=function(s,ids){
+P.select=function(s,ids,{explicit=true}={}){
  if(!Array.isArray(ids)||ids.length>P.fieldMax||new Set(ids).size!==ids.length||ids.some(id=>!P.eligible(s).includes(id)))throw Error('Choose up to two riding companions');
- s.record.fightingCompanions=ids.slice();S.save(s);return ids;
+ s.record.fightingCompanions=ids.slice();s.record.companionSelectionExplicit=explicit;S.save(s);return ids;
 };
 P.readiness=s=>P.selected(s).filter(id=>!P.bindings[id]?.ready).map(id=>'companion:'+id);
 P.register=function(id,atlas){
@@ -45,9 +49,9 @@ P.register=function(id,atlas){
  P.bindings[id]={actor:'companion_'+id,ready:true,height:P.kits[id].height};
 };
 const loading=new Map();
-P.ensure=async function(s){
+P.ensure=async function(s,ids=P.selected(s)){
  if(!P.enabled)return;
- await Promise.all(P.selected(s).map(id=>{
+ await Promise.all(ids.filter(id=>P.eligible(s).includes(id)).map(id=>{
   if(P.bindings[id]?.ready)return;
   if(!loading.has(id))loading.set(id,(async()=>{
    const response=await fetch('assets/expedition/companion_'+id+'/companion_'+id+'.json');
@@ -63,9 +67,18 @@ P.queueUnlocks=function(s,beforeRoster){
  const joined=C.roster(s.game).filter(id=>P.kits[id]&&!beforeRoster.includes(id)&&!seen.includes(id)&&!pending.includes(id));
  if(joined.length){r.companionUnlocksPending=pending.concat(joined);r.companionPickerDue=true;S.save(s);}return joined;
 };
-P.claimUnlock=function(s){
- const r=s.record,id=(r.companionUnlocksPending||[]).shift();if(!id)return null;
+P.claimUnlock=function(s,wanted){
+ const r=s.record,pending=r.companionUnlocksPending||[],id=wanted||pending[0];if(!id||!pending.includes(id))return null;
+ r.companionUnlocksPending=pending.filter(v=>v!==id);
  r.companionUnlocksSeen=[...new Set([...(r.companionUnlocksSeen||[]),id])];S.save(s);return id;
+};
+// Peek is non-destructive. Only Accept calls claimUnlock, so an interrupted
+// welcome reappears after reload, while an accepted welcome never repeats.
+P.pendingUnlock=function(s){
+ const r=s.record;
+ if(r.chapter<2||r.travelPending||r.phase==='inn'||r.phase==='complete'||r.chapterRewardDue)return null;
+ if(r.phase==='departure'&&!(r.titleCards||[]).includes(r.chapter))return null;
+ return (r.companionUnlocksPending||[]).find(id=>P.kits[id]&&C.isRecruited(s.game,id))||null;
 };
 P.make=function(s,id){
  if(!P.eligible(s).includes(id))throw Error('Companion is not riding: '+id);
