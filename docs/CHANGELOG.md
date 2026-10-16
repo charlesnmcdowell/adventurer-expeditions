@@ -15,6 +15,34 @@ of small fixes within a day.
 
 ---
 
+## 2026-10-15 — Companion kits and Hiro voice audition (approval pending)
+
+- Verified the supplied companion prompt against original read-only data: 15 companions; two existing ally slots, with three story paths currently forcing solo combat. Joins/seat limits/departures remain authoritative. Chapter 1 stays solo by design, although Hiwot already has a combat kit.
+- Voice inventory: **210 stored options / 9,309 characters; 200 current options / 8,831 characters**. The other ten are retired finale menus. Conditional finale choice menus were included. No full batch generated.
+- Generated exactly **5 audition lines / 281 text characters** with voice `V8MrPOnARtlsjrlxEsE7` (Zero Vex street samurai), model `eleven_v3`. No retakes. API response cost headers sum to **124 credits**; immediate account counter remained unchanged, so do not interpret that as free generation. Conservatively reserve 281 from the 40,000-credit job cap. Auditions normalize against the existing opening voice; raw masters retained, key never written to the repo.
+- Review page: `docs/art/companions-hiro-20261015/index.html`. Full scope/corrections: `docs/COMPANION_PRODUCTION_REVIEW_20261015.md`. Source/ledger/generator: sibling `adventurer-expeditions-source-art/astra-v10/companions-hiro-20261015/`.
+- Proposed weapons/signatures below are **awaiting Hiro's veto/approval before painting**. Support kits keep source healing/protection; no invented damage skills. Eight groups × at least 16 distinct drawings × 15 companions = **1,920 drawings minimum**, plus effects; a twelve-pose planned move requires 24 under the doubling rule.
+
+| Joins | Companion | Proposed weapon / visual style | Two source signature moves |
+| --- | --- | --- | --- |
+| 1, fights from 2 | Hiwot | Short blade and throwing knife; quick low footwork | Backstab; Smoke Bomb |
+| 2 | Desmond | Ritual wand; off-balance gestures and coiling spell casts | Ember Lash; Wither Touch |
+| 2 | Winston | Hooked knife; short, economical cuts, halfling proportions | Venom Fang; Whisper of Ending |
+| 2 | Santiago | Spear and round shield; disciplined defensive guard | Shield Wall; Cleanse |
+| 2 arrival | Beau | Broadsword and kite shield; planted weight and broad cuts | Cleave; Sunder |
+| 2 arrival | Delphine | Branch staff; controlled druid gestures, mature family-friend identity | Mend; Thorn Skin |
+| 3 | Itsuki | Longbow; measured stance and deliberate shots | Aimed Shot; Snare |
+| 3 | Bahadır | Two-handed greatsword; powerful ranger swings | Cleave; Defiant Stand |
+| 3 | Yasemin | Paired talisman fans; formal frost-binding gestures | Frost Touch; Rime Grasp |
+| 3 | Devendra | Hooked wizard staff; sharp, commanding casts | Fire Bolt; Spark |
+| 5 | Layla | Priestess's sceptre; restrained draining/curse gestures | Wither Touch; Blood Pact |
+| 6 | Kaito | Shortbow and belt dagger; mobile shots and close lunges | Aimed Shot; Backstab |
+| 6 | Wanjiru | Thorn/bone ritual gauntlets; forceful close-range druid magic | Thorn Skin; Wither Touch |
+| 7 | Dai Morgan | Warhammer and small shield; low, sturdy dwarven stance | Mend; Regenerate |
+| 13 | Amara | Twin sabres; temple-trained combinations and parries | Dual Swords; Counter Attack |
+
+- Baseline `npm test` and `npm run test:ship` passed with the other session's hotfixes intact. Five audio files decode, finish sequential playback and fit the 390px review layout. No companion code/art, full voice integration, balance changes, jingle, publishing or export yet. This pass commits only its review files and this changelog entry; the other session's changes remain unstaged.
+
 ## 2026-10-15 — All-chapter art QA, inn journeys and closing card (local)
 
 - Audited **59 campaign identities / 3,322 registered frames**, **32 battle locations**, 118 Hiro finisher plays and 59 enemy defeat-finisher plays. No invalid atlas/trim rectangles or packed-frame overlaps. Rear-row attacks now step inside the right screen edge before playing; runtime bounds observations after repair: **0**. Normal body scale and formation return are unchanged.

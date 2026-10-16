@@ -1,0 +1,34 @@
+{
+  "result": {
+    "clips": [
+      {
+        "file": "q1_wake_why.mp3",
+        "duration": 2,
+        "completed": true
+      },
+      {
+        "file": "q1_nib_run.mp3",
+        "duration": 2.88,
+        "completed": true
+      },
+      {
+        "file": "q1_wren_dark.mp3",
+        "duration": 6.56,
+        "completed": true
+      },
+      {
+        "file": "q2_pair_vess.mp3",
+        "duration": 2.48,
+        "completed": true
+      },
+      {
+        "file": "q14_final_history_reject.mp3",
+        "duration": 4.16,
+        "completed": true
+      }
+    ],
+    "tableRows": 16,
+    "overflow": false
+  },
+  "errors": []
+}

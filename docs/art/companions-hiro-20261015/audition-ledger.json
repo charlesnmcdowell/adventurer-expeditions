@@ -1,0 +1,56 @@
+{
+  "voiceId": "V8MrPOnARtlsjrlxEsE7",
+  "model": "eleven_v3",
+  "jobCap": 40000,
+  "requests": [
+    {
+      "id": "q1_wake_why",
+      "text": "Why tonight? What has happened?",
+      "characters": 31,
+      "state": "saved",
+      "requestId": "ajGBKlWy9pJNWiUfE0VK",
+      "chargedCharacters": "14"
+    },
+    {
+      "id": "q1_nib_run",
+      "text": "Go. Run, and I will not follow.",
+      "characters": 31,
+      "state": "saved",
+      "requestId": "Yy3aS5uMhXbePfY4KX5R",
+      "chargedCharacters": "14"
+    },
+    {
+      "id": "q1_wren_dark",
+      "text": "He asked whether I knew what I am. I will find him, ask him what he meant, and take him apart.",
+      "characters": 94,
+      "state": "saved",
+      "requestId": "pQtTr9Kmuv3Aq0tkONcC",
+      "chargedCharacters": "41"
+    },
+    {
+      "id": "q2_pair_vess",
+      "text": "Your friend is laughing at nothing. Is he well?",
+      "characters": 47,
+      "state": "saved",
+      "requestId": "RzcoQO8c72mtoEUebrBL",
+      "chargedCharacters": "21"
+    },
+    {
+      "id": "q14_final_history_reject",
+      "text": "You ordered these murders. Fighting your men does not make me your accomplice.",
+      "characters": 78,
+      "state": "saved",
+      "requestId": "CfsVXm6G9SPttL3r0C7f",
+      "chargedCharacters": "34"
+    }
+  ],
+  "accountCountBefore": 1,
+  "normalization": {
+    "reference": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions\\assets\\expedition\\story\\media\\audio\\vo\\campaign\\aldric\\q1_wake_1.mp3",
+    "referenceLUFS": "-22.87",
+    "targetLUFS": -22.9,
+    "truePeak": -1.5
+  },
+  "accountCountAfter": 1,
+  "observedAccountDelta": 0
+}

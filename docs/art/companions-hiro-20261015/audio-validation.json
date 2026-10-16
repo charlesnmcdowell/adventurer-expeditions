@@ -1,0 +1,27 @@
+[
+  {
+    "file": "q14_final_history_reject.mp3",
+    "LUFS": -23.33,
+    "truePeak": -8.32
+  },
+  {
+    "file": "q1_nib_run.mp3",
+    "LUFS": -23.33,
+    "truePeak": -9.83
+  },
+  {
+    "file": "q1_wake_why.mp3",
+    "LUFS": -23.4,
+    "truePeak": -8.02
+  },
+  {
+    "file": "q1_wren_dark.mp3",
+    "LUFS": -23.36,
+    "truePeak": -8.44
+  },
+  {
+    "file": "q2_pair_vess.mp3",
+    "LUFS": -23.38,
+    "truePeak": -9.03
+  }
+]
