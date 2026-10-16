@@ -1,7 +1,7 @@
 # Companion dialogue pass: audition checkpoint
 
 ## State
-45 sample recordings are prepared for approval: three per companion. No new dialogue is installed in the game. No full production batch has been recorded. Santiago retains his 29 approved lines; only his three proposed additional barks are auditioned.
+All 45 auditions approved and reused. The complete 156-segment production is now integrated locally. See [CHANGES.md](CHANGES.md) for every revision, new line, placement and exception, or [production.html](production.html) to hear all recordings.
 
 ## Verified corrections to the supplied audit
 - The live inventory totals 445 spoken segments across 15 companions, including Santiago overrides.
@@ -11,7 +11,7 @@
 - Existing barks carry withCompany and foeStatus guards (Delphine/Desmond/Yasemin presence; burn/poison/rooted). Preserve those guards. A line about a burning enemy is not a generic random bark.
 - No bond/courtship entry exists in docs/story_preview.js or story_companion_ui.js. Shared courtship functions and optional recordings remain intact. This pass will not activate romance or delete those lines. The same limitation affects Santiago's optional bond recordings.
 
-## Production after approval
+## Production plan (completed; detailed results in CHANGES.md)
 - Apply only the listed errors and repeated beats, with per-segment voice revisions. Retain unchanged audio within partially edited beats.
 - Expand every banter bank from three to six; use measured weapon-specific language and preserve existing eligibility metadata.
 - Planned gap coverage: 70 short remarks across eight companions; one per missing later chapter, living/riding companions only. Listed in gap-plan.json. Do not place them inside a dream, after an ending, or before a revelation they depend on.

@@ -95,3 +95,6 @@ for(let chapter=2;chapter<=14;chapter++){
  if(chapter<14){assert.equal(S.travelSpec(resumed).leg,'return');S.finishTravel(resumed);assert.equal(resumed.record.phase,'arrival');}
 }
 console.log('story_campaign: original text, choices, media inventory, solo world, isolated saves, retry and finale continuity passed');
+// Keep the source-import assertions above, then check the edition's live overrides
+// in an isolated harness so archived source text is never confused with runtime.
+require('node:child_process').execFileSync(process.execPath,['test/story_companion_dialogue.js'],{cwd:ROOT,stdio:'inherit'});

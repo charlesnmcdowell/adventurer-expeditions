@@ -13,6 +13,7 @@ P.portrait=function(beat){
 P.voice=function(beat,line){
   const rows=beat.lines||C.lines('gate',beat.who,beat.key),row=rows[line];
   if(!row)return null;
+  if(row.voiceFile)return row.voiceFile;
   const revision=beat.who==='cassian'&&S.SantiagoDialogue?.lines[beat.key]?'_'+S.SantiagoDialogue.revision:'';
   return 'audio/vo/campaign/'+beat.who+'/'+beat.key+'_'+(row.vo||(beat.voOffset||0)+line+1)+revision+'.mp3';
 };

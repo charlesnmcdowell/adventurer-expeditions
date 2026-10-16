@@ -340,6 +340,7 @@ class ExpeditionScene extends Phaser.Scene {
       if (this.ended) return;                        // the run was ended from the pause menu mid-beat
       this.hud.setSkillStates(Enc.skillStates(enc));
       if (step.over || enc.st.over) break;
+      this.storyBanter?.();
       // A beat of air between turns (Hiro, 2026-09-22: "turns are going by too
       // quickly ... lets go with 2s to give me more time to click my skills").
       // It sits after the beats have played and the icons have been refreshed,

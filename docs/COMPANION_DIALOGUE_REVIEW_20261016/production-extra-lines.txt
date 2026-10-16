@@ -1,0 +1,111 @@
+wren_ward|q1_catchup|2|rewrite|[quieter] He is dead. Tesfaye. I saw him fall. I cannot believe we left him there. He should be with us.
+wren_ward|q4_down|2|rewrite|[quiet] Keep your light up. I cannot see where these stairs end.
+wren_ward|q10_shore|2|rewrite|[small] Sanni sent us into that room. Then he told the guards we had murdered his father. He had this planned before we ever left the city.
+wren_ward|q14_final_taken|1|rewrite|[shocked] Get your hands off me! Let go!
+wren_ward|q14_final_soul|1|rewrite|[weak] I can hear you. I am still here. He has tied me to the throne. Break his hold. Please hurry.
+wren_ward|q14_final_choice|1|rewrite|[quiet] He is gone. The power he stole is still here. So is yours. It is keeping this place open.
+wren_ward|q14_final_choice|2|rewrite|[steady] Let all of it go and I can come with you. No more of Morrak's blood. No throne. Keep it, and you take his place. I have to stay here.
+wren_ward|q14_final_restored|2|rewrite|[soft] You came back for me. Come on. Both of us are getting out this time.
+wren_ward|q14_final_farewell|1|rewrite|[quiet] I wanted to walk home with you. That was all. Please remember me there.
+wren_ward|q8_door|1|rewrite|[whispering] He has not noticed the side window. Give me a moment and we can leave him to his nap.
+faelen|q8_door|1|rewrite|[murmuring] That poor man has been standing there all day. I have a story he might enjoy. Follow my lead.
+wren_ward|q9_lobby|1|rewrite|[whispering] Our names are missing from that list. The clerk has two guards. Try to look expected.
+selene|q9_lobby|1|rewrite|[murmuring] Best have your story ready, honey. Those two guards are waiting for the clerk to nod.
+faelen|q9_lobby|1|rewrite|[murmuring] A list at the door. How exclusive. Forgive me if I look over his shoulder.
+durnik|q9_lobby|1|rewrite|[gravelly] Look at the stone they paid for here. Clerk's got guards, too. We'll need to get past him.
+wren_ward|q13_maze_follow|1|rewrite|[murmuring] Left. Left again. Step over that plate. There. All those hours watching the locks finally paid off.
+faelen|q13_maze_follow|1|rewrite|[murmuring] This way. Mind your foot; that tile moves. There we are. You may applaud once we are outside.
+faelen|q10_double_strike|1|rewrite|[wincing] Wait, the girl behind it is real! She is hurt. Still breathing. I will carry her out. Go!
+selene|q10_double_strike_alone|1|rewrite|[grim] You were right. That wasn't him. Two more coming, honey. I don't recognise those faces.
+ilvara|q10_double_strike_alone|1|rewrite|[approving] You struck before it could fool you. Good. The others behind it deserve no more time.
+faelen|q10_double_strike_alone|1|rewrite|[breathless] That was not him. You saw it first. Two more coming. I would rather not meet them here.
+selene|q10_double_listen|1|rewrite|[urgent] Back, {target}! Look at its hand. It's reaching for your throat!
+faelen|q10_double_listen|1|rewrite|[shouting] Those teeth! Get back, {target}! That is not your family!
+wren_ward|banter|3|rewrite|[gleeful] Got his knife! He is rather upset about it!
+faelen|banter|3|rewrite|[light] Tell the magistrate I thought of her.
+durnik|banter|1|rewrite|[gravelly] Shield up. Come round me, bach.
+aurelius|banter|1|rewrite|[bored] Kindly keep them off my robes.
+wren_ward|banter|5|bark|[urgent] Stay close. I can cover us with smoke.
+wren_ward|banter|6|bark|[breathless] He nearly had my coat!
+vess|banter|5|bark|[sing-song] Still got another spell for you.
+vess|banter|6|bark|[bright] Ah, you saw the wand. Clever boy.
+fennick|banter|5|bark|[low] Keep him busy. I need a moment.
+fennick|banter|6|bark|[dry] Still working, man.
+dorran|banter|6|bark|[firm] N-no. You stay on that side.
+selene|banter|5|bark|[sharp] Let them come. Mind the thorns.
+selene|banter|6|bark|[dry] That staff is harder than it looks, honey.
+ithrel|banter|6|bark|[quiet] I can keep shooting. Go.
+bramm|banter|6|bark|[gleeful] Ha! My turn!
+ysolde|banter|5|bark|[cool] Stop moving. I am trying to freeze you.
+ysolde|banter|6|bark|[quiet] Watch their feet.
+aurelius|banter|6|bark|[irritated] This is taking far too long.
+ilvara|banter|5|bark|[contemptuous] By the deep. You call that a threat?
+ilvara|banter|6|bark|[dry] Keep fighting. I have not finished casting.
+faelen|banter|4|bark|[cheerful] Excuse me. Coming round with a knife.
+faelen|banter|5|bark|[quick] Duck, please. Bowstring is drawn.
+faelen|banter|6|bark|[light] The magistrate would have enjoyed that.
+nettle|banter|6|bark|[snarling] Eh? Still coming at me?
+durnik|banter|5|bark|[grunting] Plenty of hammer left.
+durnik|banter|6|bark|[gravelly] There we are. Breathe, now.
+bramm|q4_exp_gap_bramm|1|gap|[booming, lowered] Low ceiling. I shall have to swing carefully. Nobody stand beside me.
+bramm|q5_exp_gap_bramm|1|gap|[eager] A bandit camp? Good. Let them try shouting me off the road.
+bramm|q6_exp_gap_bramm|1|gap|[warm] Stay where I can see you, canım. There is too much web between these trees.
+bramm|q8_exp_gap_bramm|1|gap|[booming] A fine big gate! They can open it for us like anyone else.
+bramm|q9_exp_gap_bramm|1|gap|[low] So this is where they send the money. I would like to meet the men who spend it.
+bramm|q10_exp_gap_bramm|1|gap|[warm] This is your home, canım? Then we shall be decent guests. Unless they give us cause.
+bramm|q11_exp_gap_bramm|1|gap|[angry] They have put your face on the walls. Let them put mine beside it.
+bramm|q12_exp_gap_bramm|1|gap|[low, emphatic] I will keep quiet until you speak. Do not ask me for much longer than that.
+bramm|q13_exp_gap_bramm|1|gap|[grumbling] More stairs. Does this city have no bottom?
+bramm|q14_exp_gap_bramm|1|gap|[firm] I am with you, canım. Say when, and I will move.
+ysolde|q4_exp_gap_ysolde|1|gap|[dry] Damp stone. Rust. I shall be very glad to wash after this.
+ysolde|q5_exp_gap_ysolde|1|gap|[quiet] Let us find the letters before someone burns them, canım.
+ysolde|q6_exp_gap_ysolde|1|gap|[dry] Mind the webs. I would rather not spend tonight cutting silk from my hair.
+ysolde|q7_exp_gap_ysolde|1|gap|[cold] They have put cages underground as well. Keep walking. I need a moment.
+ysolde|q8_exp_gap_ysolde|1|gap|[dry] The guards are looking for a reason to turn us back. Give them nothing extra.
+ysolde|q9_exp_gap_ysolde|1|gap|[quiet] Hands off their papers until we know which ones matter. They will notice a missing ledger.
+ysolde|q10_exp_gap_ysolde|1|gap|[dry] You know the keep. Lead on, canım. I will watch behind us.
+ysolde|q11_exp_gap_ysolde|1|gap|[low] Keep your face away from the lamps. We can argue with the notices later.
+ysolde|q13_exp_gap_ysolde|1|gap|[quiet] Watch the steps, canım. I cannot read a broken ankle before it happens.
+aurelius|q4_exp_gap_aurelius|1|gap|[disdainful] A mine. Naturally. I wore the wrong boots for this expedition.
+aurelius|q5_exp_gap_aurelius|1|gap|[cool] Do retrieve the correspondence before setting anything alight.
+aurelius|q6_exp_gap_aurelius|1|gap|[irritated] Kindly keep the branches out of my face. I require my eyes for the spellwork.
+aurelius|q7_exp_gap_aurelius|1|gap|[cold] A wizard administering a mine. Evidently his ambitions were modest.
+aurelius|q8_exp_gap_aurelius|1|gap|[satisfied] At last. Paved streets. Let us see whether they also have competent officials.
+aurelius|q10_exp_gap_aurelius|1|gap|[cool] We have the documents. I suggest we let the keepers read them before we begin arguing.
+aurelius|q11_exp_gap_aurelius|1|gap|[disdainful] They have spelled your name correctly on the notices. A pity. An error might have helped us.
+aurelius|q12_exp_gap_aurelius|1|gap|[quiet] Leave the talking to whoever has the evidence. I shall be ready if the guards object.
+aurelius|q13_exp_gap_aurelius|1|gap|[irritated] I can provide light. I cannot make these stairs fit for civilised use.
+aurelius|q14_exp_gap_aurelius|1|gap|[cold] Keep him occupied. I would prefer to finish my casting without a sword through it.
+vess|q3_exp_gap_vess|1|gap|[bright] More road. Good, man. I was getting tired of sitting still.
+vess|q4_exp_gap_vess|1|gap|[sing-song] Careful where you put your hands. I like mine attached.
+vess|q5_exp_gap_vess|1|gap|[gleeful] A whole camp. Think any of them will be pleased to see us?
+vess|q6_exp_gap_vess|1|gap|[bright] Big webs, man. I want to see what made them. From here.
+vess|q8_exp_gap_vess|1|gap|[delighted] Look at those gates. Somebody paid plenty to feel safe.
+vess|q9_exp_gap_vess|1|gap|[soft] Fancy place, man. Keep an eye on the stairs while we talk.
+vess|q11_exp_gap_vess|1|gap|[amused] That picture does you no favours, man. Nearly walked past it.
+vess|q12_exp_gap_vess|1|gap|[hushed, delighted] All these fine clothes. I'll try not to singe yours.
+vess|q13_exp_gap_vess|1|gap|[sing-song] Down we go. Keep a little light for me, man.
+vess|q14_exp_gap_vess|1|gap|[quiet] No laughing now. I want to hear what he says.
+fennick|q6_exp_gap_fennick|1|gap|[flat] Watch where you step, man. I don't want to cut you out of a web.
+fennick|q9_exp_gap_fennick|1|gap|[low] Let them talk, man. We came for the records.
+fennick|q10_exp_gap_fennick|1|gap|[low] Let the keepers see the seals before anyone touches the papers.
+fennick|q11_exp_gap_fennick|1|gap|[flat] Don't look at the posters. People watch whoever stops to read them.
+fennick|q12_exp_gap_fennick|1|gap|[low] Keep the papers in reach, man. No fumbling when they call on you.
+fennick|q13_exp_gap_fennick|1|gap|[flat] One at a time on the narrow steps. Keep your blade clear.
+fennick|q14_exp_gap_fennick|1|gap|[low] Watch his hands, man. I will watch the way behind us.
+nettle|q9_exp_gap_nettle|1|gap|[low] Let me see the men who signed those orders. I want them to hear what happened downstream.
+nettle|q10_exp_gap_nettle|1|gap|[wary] These keepers had better read what we brought. I did not come here to be waved away.
+nettle|q11_exp_gap_nettle|1|gap|[fierce] They call you the criminal. Eh? After what their mine did?
+nettle|q12_exp_gap_nettle|1|gap|[low] Let them hear the names from the mine. Loud enough for the back of the hall.
+nettle|q13_exp_gap_nettle|1|gap|[quiet] No roots this far down. Keep close. I do not like it here.
+nettle|q14_exp_gap_nettle|1|gap|[hard] He wants a sacrifice. He can come and try to take one.
+durnik|q10_exp_gap_durnik|1|gap|[gravelly] Keep those papers dry, bach. We brought them a long way.
+durnik|q11_exp_gap_durnik|1|gap|[grim] A wanted notice. Aye. Easier than answering what's in the ledgers.
+durnik|q12_exp_gap_durnik|1|gap|[quiet] Let them read the names. No one talks over that. Not while I am here.
+durnik|q14_exp_gap_durnik|1|gap|[low] Deep places should be quiet. Listen to this one. Keep your shield up, bach.
+dorran|q8_exp_gap_dorran|1|gap|[quiet] G-good to be above ground. Give me a moment before we cross.
+dorran|q9_exp_gap_dorran|1|gap|[steady] I will keep the door clear. You find the papers.
+dorran|q10_exp_gap_dorran|1|gap|[quiet] T-this is where you grew up? We will stay close.
+dorran|q11_exp_gap_dorran|1|gap|[firm] L-let them look. They will have to get past my shield.
+dorran|q13_exp_gap_dorran|1|gap|[steady] Stay behind the shield on these stairs. N-no passing.
+dorran|q14_exp_gap_dorran|1|gap|[quiet] R-ready when you are. I am not moving away.

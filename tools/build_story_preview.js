@@ -26,6 +26,19 @@ for(const row of santiagoVoice.files){
   if(crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex')!==row.sha256)throw Error('Santiago voice changed: '+row.file);
   if(!media.includes(row.file))media.push(row.file);
 }
+const companionVoice=JSON.parse(fs.readFileSync(path.join(root,'assets/expedition/story/companion-voice.json')));
+for(const row of companionVoice.files){
+  if(!/^audio\/vo\/campaign\/[a-z_]+\/[a-z0-9_]+_companion20261016\.mp3$/.test(row.file))throw Error('Invalid companion voice path');
+  const file=path.join(root,'assets/expedition/story/media',row.file);
+  if(crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex')!==row.sha256)throw Error('Companion voice changed: '+row.file);
+  // Keep the imported master on disk, but exclude obsolete recordings from
+  // the runtime/package media index. Other segments in the group stay intact.
+  if(row.kind==='rewrite'){
+    const old='audio/vo/campaign/'+row.who+'/'+row.key+'_'+row.index+'.mp3',i=media.indexOf(old);
+    if(i>=0)media.splice(i,1);
+  }
+  if(!media.includes(row.file))media.push(row.file);
+}
 const scripts=[...fs.readFileSync(path.join(root,'index.html'),'utf8').matchAll(/<script src="[^"]+"><\/script>/g)].map(m=>m[0]).join('\n');
 // The story's own scripts carry the same release stamp, so a returning player
 // never runs a cached copy against newer data (2026-10-11).

@@ -73,6 +73,8 @@ function chapterOneMedia() {
   const keep = new Set();
   for (const f of media) {
     if (voiced.test(f)) keep.add(f);
+    const bark=/^audio\/vo\/campaign\/([a-z_]+)\/banter_/.exec(f);
+    if(bark&&shippedCompanions().has('companion_'+bark[1]))keep.add(f);
     const track = (/^audio\/music\/(.+)\.mp3$/.exec(f) || [])[1];
     if (track && tracks.has(track)) keep.add(f);
   }

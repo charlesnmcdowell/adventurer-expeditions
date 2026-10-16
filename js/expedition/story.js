@@ -32,6 +32,7 @@ S.load=function(){
 };
 S.open=function(record){
   const r=copy(record||S.fresh());r.run.field=[];r.run.roster=[];
+  S.CompanionDialogue?.refreshSaved(r);
   // Old chapter-one demo saves stopped at the next departure. Give those saves
   // the inn visit once, without resetting choices, dialogue or earned rewards.
   if(r.innVersion!==1){
@@ -73,12 +74,13 @@ S.readiness=function(session){
 S.beats=function(session){
   const r=session.record,g=session.game,q=g.quest.quest;
   if(r.phase==='inn')return [];
-  if(r.queue)return r.queue;
+  if(r.queue){r.queue=r.queue.filter(b=>!S.CompanionDialogue||S.CompanionDialogue.available(session,b));return r.queue;}
   let beats=[];
   if(r.phase==='departure')beats=C.departureBeats(g,q);
   if(r.phase==='opener')beats=C.openerBeats(g,q,r.encounter);
   if(r.phase==='closing')beats=C.closingBeats(g,q);
   if(r.phase==='arrival')beats=C.arrivalBeats(g,r.chapter);
+  if(S.CompanionDialogue)beats=S.CompanionDialogue.asides(session,beats);
   r.queue=copy(S.Presentation?.data?S.Presentation.annotate(session,beats):beats);S.save(session);return r.queue;
 };
 S.applyBeat=function(session,beat){C.applyBeat(session.game,beat);S.save(session);};

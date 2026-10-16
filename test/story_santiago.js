@@ -4,7 +4,8 @@ const A=require('./harness').load();
 const before=JSON.parse(JSON.stringify(A.DATA.CAMPAIGN3_DIALOGUE));
 const choices=JSON.stringify(A.DATA.CAMPAIGN3_CHOICES),script=JSON.stringify(A.DATA.CAMPAIGN3_SCRIPT);
 A.Expedition={Story:{}};
-vm.runInThisContext(fs.readFileSync('js/expedition/story_dialogue.js','utf8'));
+// Isolate the original Santiago pass; the later batch has its own full test.
+vm.runInThisContext(fs.readFileSync('js/expedition/story_dialogue.js','utf8').split('// Companion dialogue production: 2026-10-16')[0]);
 vm.runInThisContext(fs.readFileSync('js/expedition/story_presentation.js','utf8'));
 const S=A.Expedition.Story,P=S.Presentation,newLines=A.DATA.CAMPAIGN3_DIALOGUE.gate.cassian;
 const edits=JSON.parse(fs.readFileSync('docs/SANTIAGO_DIALOGUE_REVIEW_20261016/changes.json'));

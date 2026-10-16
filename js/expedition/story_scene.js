@@ -26,11 +26,11 @@ class StoryBattle extends X.Scene{
     this.hud=new X.Hud(this,{run:this.run,hero:this.story.hero,portraitKey:this.hero.faceKey,waveCount:this.game_.quest.quest.encounters.length,
       onSkill:id=>this.tapSkill(id),onArrow:()=>this.returnToStory('victory'),onPause:()=>this.togglePause()});
     this.hud.refresh();this.hud.setSkillStates(X.Encounter.skillStates(this.enc));
-    const controls=[['Story',()=>this.returnToStory('leave')],['Pause',()=>this.togglePause()],['Sound',()=>{this.opts.muted=!this.opts.muted;try{localStorage.setItem('adventurer_expeditions_story_muted',this.opts.muted?'1':'0');}catch(_){}this.opts.muted?this.music?.pause():this.music?.play().catch(()=>{});this.game.sound.mute=this.opts.muted;}]];
+    const controls=[['Story',()=>this.returnToStory('leave')],['Pause',()=>this.togglePause()],['Sound',()=>{this.opts.muted=!this.opts.muted;try{localStorage.setItem('adventurer_expeditions_story_muted',this.opts.muted?'1':'0');}catch(_){}this.opts.muted?this.music?.pause():this.music?.play().catch(()=>{});this.game.sound.mute=this.opts.muted;if(this.opts.muted)this.stopBanter();}]];
     controls.forEach(([label,click],i)=>{const b=A.T.button(this,965+i*99,16,94,44,label,click,{size:15});for(const item of [b.g,b.txt,b.zone])item.setDepth(X.UI.DEPTH.hand+20);});
     this.game.sound.mute=!!this.opts.muted;X.UI.splitCameras(this);
     this.cooldownTicker=this.time.addEvent({delay:100,loop:true,callback:()=>{if(!this.ended&&!this.enc.st.over)this.hud.setSkillStates(X.Encounter.skillStates(this.enc));}});
-    this.events.once('shutdown',()=>{this.ended=true;this.music?.pause();});
+    this.events.once('shutdown',()=>{this.ended=true;this.music?.pause();this.stopBanter();});
     this.startMusic();X.Painted.present(this,this.env,()=>this.fight(true));
   }
   spawnCompanions(){
@@ -92,8 +92,28 @@ class StoryBattle extends X.Scene{
   // Nib, doesn't use one up. Retries of those fights keep them (Hiro, 2026-10-12).
   tutoring(){const won=Object.values(this.story.record.outcomes||{}).filter(v=>v==='combat').length;
     return won<2&&!this.run.tutorial.skipGuide;}
-  togglePause(){this.paused=!this.paused;this.time.paused=this.paused;this.music&&(this.paused?this.music.pause():!this.opts.muted&&this.music.play().catch(()=>{}));}
+  stopBanter(){
+    if(this.banterVoice){this.banterVoice.onended=null;this.banterVoice.onerror=null;this.banterVoice.pause();this.banterVoice.src='';this.banterVoice=null;}
+    // Hud.banner owns its fade timer and destruction. Hide early without invalidating it.
+    this.banterCaption?.setVisible(false);this.banterCaption=null;
+  }
+  storyBanter(){
+    if(!S.Companions?.enabled||this.paused||this.ended||this.enc.st.over||this.enc.st.round<2)return;
+    const beat=A.Campaign3.banter(this.story.game,this.enc.st,2);if(!beat)return;
+    const text=beat.line.t.replace(/\[[^\]]*\]/g,'').replace(/\{target\}/g,'Hiro').trim();
+    const name=A.DATA.CAMPAIGN_CHARS[beat.who].name;
+    this.banterCaption=this.hud.banner(name+': '+text,3800).setFontSize(26).setWordWrapWidth(1050).setAlign('center');
+    if(this.hudCam)this.cameras.main.ignore(this.banterCaption);
+    const file=S.Presentation.voice({...beat,lines:[beat.line]},0);
+    if(file&&!this.opts.muted){
+      const voice=this.banterVoice=new Audio(S.Presentation.media(file));voice.volume=.9;
+      voice.onended=()=>this.stopBanter();voice.onerror=()=>this.stopBanter();voice.play().catch(()=>this.stopBanter());
+    }
+  }
+  togglePause(){this.paused=!this.paused;this.time.paused=this.paused;this.music&&(this.paused?this.music.pause():!this.opts.muted&&this.music.play().catch(()=>{}));
+    if(this.banterVoice)this.paused?this.banterVoice.pause():!this.opts.muted&&this.banterVoice.play().catch(()=>this.stopBanter());}
   async victory(){
+    this.stopBanter();
     X.UI.resetCamera(this);await Promise.all([...this.actors.values()].filter(a=>a.side==='a'&&a.alive).map(a=>a.play('victory')));if(this.ended)return;
     S.Combat.win(this.story,this.enc);this.hud.refresh();this.hud.showArrow();
     this.hud.banner('Fight won — continue your journey',1800);
@@ -102,6 +122,7 @@ class StoryBattle extends X.Scene{
   }
   tapArrow(){if(!this.arrowArmed)return;this.arrowArmed=false;this.returnToStory('victory');}
   async defeat(){
+    this.stopBanter();
     await X.EnemyFinishers.ensureDefeat(this);if(this.ended)return;
     if(!this.__enemyFinishPresented)await this.hero.play('kneel');X.UI.resetCamera(this);
     S.Combat.lose(this.story,this.enc);this.hud.banner('Defeated — your chapter progress is saved',2000);
@@ -109,6 +130,7 @@ class StoryBattle extends X.Scene{
     for(const item of [button.g,button.txt,button.zone]){item.setDepth(X.UI.DEPTH.hud+50);if(this.hudCam)this.cameras.main.ignore(item);}
   }
   returnToStory(outcome){if(this.ended)return;this.ended=true;X.UI.resetCamera(this);this.music?.pause();S.save(this.story);
+    this.stopBanter();
     if(window.parent!==window)window.parent.postMessage({type:'expeditions-story-battle',outcome},location.origin);
     else location.href='docs/STORY_CAMPAIGN_PREVIEW.html';}
   endRun(){this.returnToStory('leave');}
