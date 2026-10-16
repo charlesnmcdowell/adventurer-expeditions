@@ -44,6 +44,19 @@ P.register=function(id,atlas){
  }
  P.bindings[id]={actor:'companion_'+id,ready:true,height:P.kits[id].height};
 };
+const loading=new Map();
+P.ensure=async function(s){
+ if(!P.enabled)return;
+ await Promise.all(P.selected(s).map(id=>{
+  if(P.bindings[id]?.ready)return;
+  if(!loading.has(id))loading.set(id,(async()=>{
+   const response=await fetch('assets/expedition/companion_'+id+'/companion_'+id+'.json');
+   if(!response.ok)throw Error('Companion art could not load: '+id);
+   P.register(id,await response.json());
+  })().finally(()=>loading.delete(id)));
+  return loading.get(id);
+ }));
+};
 // Track actual recruitment separately from seating, picker changes and reloads.
 P.queueUnlocks=function(s,beforeRoster){
  const r=s.record,seen=r.companionUnlocksSeen||[],pending=r.companionUnlocksPending||[];

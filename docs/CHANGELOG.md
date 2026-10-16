@@ -27,13 +27,17 @@ of small fixes within a day.
 ## 2026-10-15 — Approved Hiro voice production and companion pilots (local, unfinished)
 
 - User approved all five voice auditions and fifteen source kits. Recorded/integrated **200 reachable Hiro choices**, reusing the auditions; **8,811 spoken characters / 3,878 response-header credits**, no retakes. Ten retired options were not recorded. All 200 clips decode; 4,542,941 runtime bytes. Saved choice playback, replay, mute, reload and skip preserve original choice hooks.
-- Hiwot and Desmond each have **128 drawings / eight groups**, registered as gated pilots: **3,116,303** and **2,532,320 bytes** respectively. Thirteen companions are still unpainted. Not a completed party release. `S.Companions.enabled=false` keeps normal story play unchanged apart from Hiro's voice.
+- Hiwot and Desmond each have **128 drawings / eight groups**, registered as gated pilots: **3,116,303** and **2,532,320 bytes** respectively. This initial two-pilot checkpoint was extended below; the complete companion feature remains unfinished. Not a completed party release. `S.Companions.enabled=false` keeps normal story play unchanged apart from Hiro's voice.
 - Added original-kit party selection and nonlethal knockout/Hiro-only defeat contracts, portrait picker, once-per-save 2.4-second join presentation, and a composed 2.2-second unpitched welcome flourish (zero ElevenLabs credits). Real browser fixtures cover both pilots and four source signature actions. The ordinary chapter-two party playthrough and complete roster balance are still pending.
 - Balance: 55 encounters × 20 seeds; solo **1,048/1,100**, one-companion fixture **960/1,100**, two-companion fixture **1,021/1,100**. Zero unwinnable slots/stalls at the retained **1.0 enemy-HP multiplier**. Rejected an experimental +60% HP per ally. Companion endurance is 5.5 measured basic hits; existing Hiro hit scale, Counter and Iaido values preserved.
-- `npm test`, `npm run test:ship`, `npm run test:story`, companion unit/UI/pilot checks and Hiro voice browser/decode checks passed. An initially stale cache stamp and story-jingle shipping-hash failure were corrected; the jingle now lives with story-only assets. New stamp `20261016-xp1` (UTC).
+- `npm test`, `npm run test:ship`, `npm run test:story`, companion unit/UI/pilot checks and Hiro voice browser/decode checks passed. An initially stale cache stamp and story-jingle shipping-hash failure were corrected; the jingle now lives with story-only assets. Current stamp `20261016-xp2` (UTC).
 - Story rebuild retains and hash-checks new Hiro recordings. Website filtering excludes gated draft actors and limits future companion sets to chapter-six joins. A local chapter 1–6 package measured about 431 MB; no website staging, publishing or pushing.
 - Files: `story_companions.js`, `story_companion_ui.js`, story combat/scene/director/actor adapters, story UI/CSS/templates, media manifest and 200 MP3s, two pilot atlases, pilot intake/jingle tools, browser/unit/balance tests and review records. Preserve the other session's hotfix hunks in the shared files.
 - Full evidence, art caveats, cost ledger, exact scope still pending: **docs/COMPANION_PRODUCTION_PROGRESS_20261015.md**. Source images/prompts/rejected drafts: sibling `adventurer-expeditions-source-art/astra-v10/companions-hiro-20261015/`. The one edge-touching Hiwot blade pixel and final stride polish remain flagged; pilots are not marked production-approved.
+
+- Continued the same approved pass: **Winston and Santiago** now also have eight groups / 128 drawings each, at **1,798,601** and **4,274,300** runtime bytes. Four pilots total **11,721,524 bytes**. Companion-only Whisper / Shield Wall / Holy Smite / Thorn Skin effects add **558,268 WebP bytes**, without altering enemy spell mappings. All four effects passed alpha-edge and lifecycle checks.
+- Actual two-actor browser fixtures exercise Hiwot with each other pilot, both source signatures and nonlethal knockout. The rear slot is **x=150 instead of 200**, improving short-companion visibility; wide casts step inside the left screen edge, then restore formation on completion/cancel. Added companion move sounds.
+- **Eleven companion sets remain unfinished**: Beau has idle/walk and attack drafts (Attack/Cleave rejected for cropped or joined frames); Delphine has an idle draft; nine later companions are unpainted. No rejected draft is intaken. Santiago’s first Smite draft was replaced with a shield-origin cast. Review all four packed pilots at `docs/art/companions-hiro-20261015/pilot.html`.
 
 ## 2026-10-15 — Companion kits and Hiro voice audition (historical; now approved)
 
@@ -62,6 +66,33 @@ of small fixes within a day.
 | 13 | Amara | Twin sabres; temple-trained combinations and parries | Dual Swords; Counter Attack |
 
 - Baseline `npm test` and `npm run test:ship` passed with the other session's hotfixes intact. Five audio files decode, finish sequential playback and fit the 390px review layout. No companion code/art, full voice integration, balance changes, jingle, publishing or export yet. This pass commits only its review files and this changelog entry; the other session's changes remain unstaged.
+
+## 2026-10-15 — Hotfix: road trips on the website, retry music, Snarl's retaliation, Iaido Draw ×2 (live)
+
+Hiro: "music isn't playing during fights starting at chapter 2 … the fight against the gnolls I sometimes die after defeating everyone … damage needs to be significantly increased for the iado draw move."
+
+- **Website road trips (my regression).** Astra's painted road trips between chapters load the travel art, which the site package had left out as Arcade-only.
+  - Reproduced on the live site: a password player leaving the inn after chapter one waited 120 s on "On the road", with six 404s for `travel/coast-mast-vault/*`.
+  - `travel` is no longer in `ARCADE_ONLY` in `tools/site_demo.js`.
+  - Verify now plays the road trip into chapter two and waits for its chapter card.
+- **Silent fights after Retry.** This was bug review item 8. Retry restarts `StoryBattle`; shutdown pauses the track, and `startMusic` returned early because `this.music` existed.
+  - It now resumes the existing track.
+  - Fresh fights in chapters 1–3 already played music, locally and on the live site, so the silence came from Retry, which the harder fights make common from chapter two.
+  - Verified: music playing before a forced defeat, at the defeat card, and after Retry (currentTime still advancing).
+- **Dying after the last gnoll.** The cause was Snarl's Taunt.
+  - While Hiro is marked, every hit on Snarl triggers a fixed, no-Defence retaliation. The per-opponent hit scale (×2.42 for Snarl) also multiplied it, to 63 (18% of Hiro), and it played no attack.
+  - All 12 of 60 lost fortress fights in simulation were retaliation kills.
+  - `shim.js` now divides `taunt.retaliationPower` by the opponent's `c3FoeDmg`, so it's back at source strength (about 26).
+  - `beats.js` labels it "Struck back" over Hiro.
+  - The three chapter-three fights now win 60/60, 60/60 and 60/60 in simulation.
+- **Iaido Draw power 1.8 → 3.6** against every enemy.
+- **Win rates, chapters 1–6** (12 seeds, a player who uses every skill when ready): all fights 12/12, except 4:2 6/12, 4:3 7/12, 6:0 9/12, 6:1 8/12 and 6:2 10/12. Nothing is unwinnable and nothing stalls.
+- **Published.** Website commit 71da97f: 938 files, 429 MB demo, 0.838 GB site. Verify passed:
+  - public lock;
+  - the password opens 1–6;
+  - the road trip into chapter two;
+  - all 21 fights;
+  - the "Chapter 7 is coming soon" card.
 
 ## 2026-10-15 — All-chapter art QA, inn journeys and closing card (local)
 

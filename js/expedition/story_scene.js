@@ -35,7 +35,7 @@ class StoryBattle extends X.Scene{
   }
   spawnCompanions(){
     const units=this.enc.st.units.filter(u=>u.ch.expeditionStoryCompanion);
-    const marks=[{x:265,y:this.hero.groundY-34,depth:98},{x:200,y:this.hero.groundY-60,depth:96}];
+    const marks=[{x:265,y:this.hero.groundY-34,depth:98},{x:150,y:this.hero.groundY-60,depth:96}];
     units.forEach((u,i)=>{
       const id=u.ch.expeditionStoryCompanion,kit=S.Companions.kits[id],sheet=X.Painted.sheet(this,'companion_'+id);
       if(!sheet)throw Error('Companion art missing: '+id);
@@ -43,7 +43,10 @@ class StoryBattle extends X.Scene{
       this.actors.set(u.uid,a);a.refresh(true);
     });
   }
-  startMusic(){if(this.music)return;this.music=new Audio(S.Presentation.media('audio/music/'+this.quest.music+'.mp3'));this.music.loop=true;this.music.volume=.16;
+  // A Retry restarts this scene, and shutdown paused the old track: resume it
+  // instead of returning early, which left every retried fight silent (Hiro,
+  // 2026-10-15: no music in fights from chapter two, where retries began).
+  startMusic(){if(this.music){if(!this.opts.muted)this.music.play().catch(()=>{});return;}this.music=new Audio(S.Presentation.media('audio/music/'+this.quest.music+'.mp3'));this.music.loop=true;this.music.volume=.16;
     if(!this.opts.muted)this.music.play().catch(()=>{});}
   spawnFoes(){
     super.spawnFoes();

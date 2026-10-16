@@ -28,6 +28,12 @@ if (Sys && !Sys.__expeditionWrapped) {
       if (projectile && hostile && (d.power > 0 || d.pctMaxHp > 0))
         return Object.assign({}, m, { data: Object.assign({}, d, { elemental: false, melee: true, xpDeflectable: true }) });
     }
+    // Taunt retaliation is a fixed hit that ignores Defence. The story's
+    // per-opponent hit scale (c3FoeDmg) multiplies all of a foe's damage, which
+    // made Snarl's retaliation a silent one-shot (Hiro, 2026-10-15: "I sometimes
+    // die after defeating everyone"). Divide it back to the source strength.
+    if (m && m.data && entry && entry.skillId === 'taunt' && ch && !ch.expedition && ch.c3FoeDmg > 1)
+      return Object.assign({}, m, { data: Object.assign({}, m.data, { retaliationPower: (m.data.retaliationPower || 1.5) / ch.c3FoeDmg }) });
     const run = ch && ch.expedition;
     if (!run || !m) return m;
     const id = entry.skillId;

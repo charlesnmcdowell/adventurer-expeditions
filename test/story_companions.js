@@ -44,4 +44,15 @@ assert(X.Encounter.lost(e),'Hiro defeat ends battle with surviving ally');
 assert.equal(JSON.stringify(C.state(party.game)),before,'knockout does not kill story companion');
 S.Combat.lose(party,e);S.retry(party);const retry=S.Combat.create(party,29);
 for(const u of retry.st.units.filter(u=>u.ch.expeditionStoryCompanion))assert(u.chp===u.maxHp&&!u.downed,'fresh fight full ally health');
+// A companion's lethal hit must use the original campaign withdrawal path.
+// With withdrawal explicitly disabled (the source noEscape outcome), it downs normally.
+for(const exits of [true,false]){
+ const battle=S.Combat.create(party,31),attacker=battle.st.units.find(u=>u.ch.expeditionStoryCompanion),target=battle.st.units.find(u=>u.side==='b');
+ target.ch.campaignExit=exits;target.chp=1;target.statuses=[];target.ch.perks=[];
+ attacker.atk=100000;attacker.lane=target.lane;attacker.statuses=[];
+ for(let tries=0;tries<30&&target.chp>0;tries++)A.Combat.act(battle.st,attacker,{kind:'attack',targetUid:target.uid});
+ assert.equal(target.chp,0,'fixture landed a lethal companion strike');
+ if(exits){assert(target.fled&&target.exited&&!target.downed,'protected enemy withdraws');assert(battle.st.events.some(e=>e.t==='campaignExit'&&e.uid===target.uid));}
+ else assert(target.downed&&!target.exited,'noEscape enemy uses normal defeat');
+}
 console.log('Companion contract: 15 source kits, chapter gate, seats, deaths, persistence, unlock-once, two allies, Hiro-only defeat and knockout recovery passed');

@@ -47,7 +47,7 @@ X.skills = {
   // engine resolves it through its ordinary all-enemies damage path, and
   // auraAtk 0 switches the aura branch off.
   god_aura: {
-    base: { name: 'Iaido Draw', target: 'allEnemies', reach: 'any', power: 1.8, katana: true, melee: true, noReflect: true },
+    base: { name: 'Iaido Draw', target: 'allEnemies', reach: 'any', power: 3.6, katana: true, melee: true, noReflect: true },
     1: { auraAtk: 0, auraDef: 1, auraEvade: 0, rounds: 0, cooldown: 0 },
   },
   counter_attack: {

@@ -87,6 +87,19 @@ test('rear-row enemies step inside the screen before drawing a wide attack', asy
   assert.equal(a.root.x,1200,'recovery returns to the assigned formation slot');
 });
 
+test('rear companions cast fully on screen and return to their slot', async () => {
+  for(const cancel of [false,true]){
+    const a=actor({cast:clip('cast')});a.unit={ch:{expeditionStoryCompanion:'vess'}};a.side='a';a.facing=1;a.root.x=a.home.x=150;
+    a.sheet.canvas={w:600,h:600,pivot:{x:300,y:450}};
+    a.scene.textures={getFrame:()=>({x:0,width:600})};
+    const starts=[],play=a.img.play.bind(a.img);a.img.play=key=>{starts.push(a.root.x);return play(key);};
+    const p=a.play('cast',{target:{root:{x:650},height:300}});
+    assert.equal(starts.length,0);await tick();assert(starts[0]-300>=28,'left-most paint is inside the screen');
+    if(cancel)a.cancelPlayback();else{emit(a,'animationupdate','cast',1);emit(a,'animationcomplete','cast',2);}
+    await p;assert.equal(a.root.x,150,'completion and interruption restore the same formation');
+  }
+});
+
 test('release hook does not cut recovery or settle the play promise early', async () => {
   const a = actor(); let release = 0, settled = false;
   const p = a.play('slash', { onRelease: () => release++ }).then(() => { settled = true; });
@@ -439,6 +452,18 @@ test('story Counter returns the same painted projectile before reflected damage'
   try{await X.Beats.play(f.scene,{events:[{t:'use',uid:'foe',target:'hero',skillId:'fire_bolt'},{t:'counter',uid:'hero',by:'foe'},{t:'damage',uid:'foe',by:'hero',dmg:8,tag:'reflect'}]});
     assert.deepEqual(log,['painted-out:fire_bolt','deflect','painted-return:fire_bolt','impact']);
   }finally{X.StoryEffects=oldFX;ADV.DATA.SKILLS=oldData;}
+});
+
+test('enemy area strike shows both companion damage and evasion at contact',async()=>{
+ const f=recoilFixture(),log=[],old=ADV.VFX;
+ ADV.VFX=new Proxy({damageNumber:(s,x,y,v)=>log.push(String(v))},{get:(o,k)=>o[k]||(()=>{})});
+ f.foe.kind='human';f.scene.hero.chest=()=>({x:300,y:300});
+ f.foe.play=async(id,opts)=>{log.push('contact');opts?.onContact?.();};
+ for(const id of ['ally1','ally2'])f.scene.actors.set(id,{...f.scene.hero,uid:id,chest:()=>({x:150,y:300}),play:async clip=>log.push(id+':'+clip)});
+ try{await X.Beats.play(f.scene,{events:[{t:'use',uid:'foe',target:'hero',skillId:'cleave'},
+  {t:'damage',uid:'hero',by:'foe',dmg:8},{t:'damage',uid:'ally1',by:'foe',dmg:7},{t:'evade',uid:'ally2',by:'foe'}]});
+  assert(log.includes('ally1:hit_short'));assert(log.includes('ally2:hit_short'));assert(log.includes('7'));assert(log.includes('Miss'));assert.equal(log[0],'contact');
+ }finally{ADV.VFX=old;}
 });
 
 (async () => {

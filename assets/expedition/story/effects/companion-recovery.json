@@ -1,0 +1,35 @@
+{
+  "image": "companion-recovery-8ea8207f3aba.webp",
+  "frameWidth": 256,
+  "frameHeight": 256,
+  "columns": 4,
+  "rows": 4,
+  "clips": {
+    "mend": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "regenerate": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "defiant_stand": [
+      8,
+      9,
+      10,
+      11
+    ],
+    "counter_attack": [
+      12,
+      13,
+      14,
+      15
+    ]
+  },
+  "source": "astra-v10/companions-hiro-20261015/effects/support-b.png",
+  "alphaNoiseCeiling": 12
+}

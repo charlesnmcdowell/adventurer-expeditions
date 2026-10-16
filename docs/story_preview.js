@@ -205,6 +205,13 @@ function render(){
   if(r.chapter>PLAYABLE_THROUGH&&(r.completed||[]).includes(PLAYABLE_THROUGH))return toBeContinued();
   if(r.phase==='combat'||r.phase==='defeat'){
     const box=text('section','',panel,'menu');text('h1','The road ahead',box);text('p',session.game.quest.quest.encounters[r.encounter]?.label||'Encounter',box,'speaker');
+    if(S.Companions.enabled&&S.Companions.readiness(session).length){
+      const active=session;const note=text('p','Getting your companions ready…',box,'notice');
+      S.Companions.ensure(active).then(()=>{if(session===active&&box.isConnected)render();}).catch(error=>{
+        if(!box.isConnected)return;note.textContent=error.message;
+        button('Try again',render,box);button('Back to title',title,box);
+      });return;
+    }
     if(!S.readiness(session).length){
       text('p',r.phase==='defeat'?'Your chapter progress is safe. Retry this fight with full health.':(S.Companions.enabled&&S.Companions.selected(session).length?'Ready to fight. '+names(S.Companions.selected(session))+' will fight beside Hiro.':'Ready to fight. Hiro battles alone.'),box,'notice');
       button(r.phase==='defeat'?'Retry fight':'Begin fight',()=>{if(r.phase==='defeat')S.retry(session);battle();},box);button('Back to title',title,box);return;

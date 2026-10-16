@@ -408,6 +408,10 @@ class Actor {
       if(casting){
         const right=Math.max(...c.frames.map(name=>{const f=scene.textures.getFrame(sheet.key,name);return (f.x+f.width-sheet.canvas.pivot.x)*Math.abs(this._baseScaleX);}));
         castX=Math.min(originX,1252-right);
+        if(this.unit?.ch?.expeditionStoryCompanion){
+          const left=Math.min(...c.frames.map(name=>{const f=scene.textures.getFrame(sheet.key,name);return (f.x-sheet.canvas.pivot.x)*Math.abs(this._baseScaleX);}));
+          castX=Math.max(castX,28-left);
+        }
       }
       const pairedFinish = !!(target && /finisher/.test(clip) && opts.lethal);
       // Pair canvases are registered on the hero. Close to the embedded foe's

@@ -8,6 +8,7 @@
 //
 //   node tools/story_hit_scale.js           measure and rewrite the block
 //   node tools/story_hit_scale.js --check   fail if an opponent has no entry
+//   node tools/story_hit_scale.js --report  measure without changing approved tuning
 const fs = require('node:fs'), vm = require('node:vm'), path = require('node:path');
 const ROOT = path.resolve(__dirname, '..'); process.chdir(ROOT);
 const SHARE = { regular: 0.28, boss: 0.33 };
@@ -52,6 +53,11 @@ for (const [id, list] of Object.entries(hits).sort()) {
 console.table(rows);
 const missing = data.combatRoster.map(e => e.kind + ':' + e.id).filter(id => !scale[id]);
 if (missing.length) console.log('No hits measured (they keep the old multiplier): ' + missing.join(', '));
+if(process.argv.includes('--report')){
+  fs.mkdirSync('test/reports/story',{recursive:true});
+  fs.writeFileSync('test/reports/story/hit-scale-measurement.json',JSON.stringify({heroHp,rows,missing},null,2));
+  console.log('Read-only measurement: approved hit-scale block unchanged');process.exit(0);
+}
 let src = fs.readFileSync(FILE, 'utf8'); const crlf = src.includes('\r\n'); src = src.replace(/\r\n/g, '\n');
 const block = START + '\n// Multiplier per opponent so a direct hit takes ' + SHARE.regular + ' of Hiro\'s health (' + SHARE.boss + ' for bosses and named characters), measured at Hiro ' + heroHp + ' HP.\nB.hitScale=' + JSON.stringify(scale) + ';\n' + END;
 const a = src.indexOf(START), b = src.indexOf(END);

@@ -18,11 +18,12 @@ const fs = require('node:fs'), path = require('node:path'), http = require('node
 const ROOT = path.resolve(__dirname, '..'), OUT = path.join(ROOT, 'dist', 'site-demo');
 const RECEIPT = path.join(ROOT, 'dist', 'site-demo-verified.json');
 const sha = file => crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex');
-function frozenFiles(dir=OUT, prefix='') {
+function frozenFiles(dir=OUT, prefix='', skipDot=false) {
   return fs.readdirSync(dir,{withFileTypes:true}).flatMap(e=>{
+    if(skipDot&&e.name.startsWith('.'))return [];
     const rel=prefix+e.name,full=path.join(dir,e.name);
     if(e.isSymbolicLink())throw Error('Refusing linked package entry: '+rel);
-    return e.isDirectory()?frozenFiles(full,rel+'/'):[{file:rel,bytes:fs.statSync(full).size,sha256:sha(full)}];
+    return e.isDirectory()?frozenFiles(full,rel+'/',skipDot):[{file:rel,bytes:fs.statSync(full).size,sha256:sha(full)}];
   }).sort((a,b)=>a.file.localeCompare(b.file));
 }
 const TOP = ['js', 'lib', 'audio', 'assets'];
@@ -32,10 +33,11 @@ const PAGES = ['docs/STORY_CAMPAIGN_PREVIEW.html', 'docs/STORY_FIGHT_PREVIEW.htm
 // to play chapter 2-5 if they know password"). Raise either to open more; media
 // and enemy art follow SITE_THROUGH automatically.
 const SITE_THROUGH = 6, PUBLIC_THROUGH = 1;
-// Arcade-only art the story never loads (its one Arcade creature is the wolf).
+// Arcade-only art the story never loads (its one Arcade creature is the wolf;
+// the travel art stays, because the story's road trips between chapters use it).
 // Left out to keep the website under GitHub Pages' 1 GB.
 const ARCADE_ONLY = new Set(['alpha', 'beetle', 'boar', 'crab', 'dark_swordswoman', 'elven_ranger', 'elven_wizard', 'enchantress', 'goblin',
-  'hag', 'hydra', 'moss_giant', 'orc', 'plant', 'serpent', 'spider', 'toad', 'vulture', 'travel']);
+  'hag', 'hydra', 'moss_giant', 'orc', 'plant', 'serpent', 'spider', 'toad', 'vulture']);
 const CHAPTERS = Array.from({ length: SITE_THROUGH }, (_, i) => i + 1);
 
 // Enemy art for every opponent fought in those chapters (story_art.js bindings).
@@ -85,6 +87,7 @@ function chapterOneMedia() {
 }
 
 function skip(rel, media) {
+  if(rel.startsWith('assets/expedition/story/effects/companion-'))return !media.companions.size;
   const companion=(/^assets\/expedition\/(companion_[a-z_]+)\//.exec(rel)||[])[1];
   if(companion)return !media.companions.has(companion);
   if (rel.startsWith('assets/expedition/story/media/')) return !media.keep.has(rel.slice('assets/expedition/story/media/'.length));
@@ -180,6 +183,13 @@ async function verify() {
       const notice = await page.locator('#panel .notice').first().textContent();
       if (!notice.includes('1–' + SITE_THROUGH)) throw Error('Password did not open the chapters: ' + notice);
       console.log('public lock at chapter ' + (PUBLIC_THROUGH + 1) + ', wrong password refused, password opens 1–' + SITE_THROUGH);
+      // The locked card already left the inn, so Continue plays the road trip.
+      await page.getByRole('button', { name: 'Continue story', exact: true }).click();
+      await page.locator('.travel-caption').waitFor({ timeout: 15000 });
+      await page.waitForFunction(() => window.storyBackdrop?.state()?.kind === 'travel', null, { timeout: 30000 });
+      await page.waitForFunction(() => !window.storyPreview?.record.travelPending, null, { timeout: 60000 });
+      await page.getByText('Chapter ' + (PUBLIC_THROUGH + 1), { exact: true }).waitFor({ timeout: 15000 });
+      console.log('road trip into chapter ' + (PUBLIC_THROUGH + 1) + ' played, chapter card shown');
     }
     // Every fight in the playable chapters, opened from a save at that fight.
     for (const chapter of CHAPTERS) {
@@ -218,25 +228,28 @@ async function verify() {
   console.log('Site demo verified: nothing missing, no page errors.');
 }
 
-// Publish only the exact tested bytes into the website checkout. Git remains
-// the deployment transport; this command neither commits nor pushes anything.
+// Publish only the exact tested bytes into the Expeditions Pages repo
+// (charlesnmcdowell/audiobook2-audio), at the repo root. Git remains the
+// deployment transport; this command neither commits nor pushes anything.
 function stage() {
   const site=path.resolve(process.argv[3]||'');
-  if(!process.argv[3]||!fs.existsSync(path.join(site,'.git'))||!fs.existsSync(path.join(site,'CNAME')))throw Error('Pass the website Git checkout');
-  if(fs.readFileSync(path.join(site,'CNAME'),'utf8').trim()!=='neverendingnarratives.com')throw Error('Wrong website');
+  if(!process.argv[3]||!fs.existsSync(path.join(site,'.git')))throw Error('Pass the Expeditions Pages checkout');
+  const remote=require('node:child_process').execSync('git remote get-url origin',{cwd:site,encoding:'utf8'}).trim();
+  if(!/audiobook2-audio(?:\.git)?$/.test(remote))throw Error('Wrong Pages repo');
   const receipt=JSON.parse(fs.readFileSync(RECEIPT,'utf8'));
   if(JSON.stringify(receipt.files)!==JSON.stringify(frozenFiles()))throw Error('Package is not the verified copy; run verify');
-  const dest=path.resolve(site,'expeditions');
-  if(path.dirname(dest)!==site||dest===ROOT)throw Error('Unsafe stage target');
-  if(fs.existsSync(dest)&&fs.lstatSync(dest).isSymbolicLink())throw Error('Refusing linked destination');
+  const dest=site;
+  if(dest===ROOT)throw Error('Unsafe stage target');
+  if(fs.lstatSync(dest).isSymbolicLink())throw Error('Refusing linked destination');
   const allowed=new Set(receipt.files.map(f=>f.file));
+  allowed.add('README.md');
   // No blanket deletion. Unexpected pre-existing files require manual review.
-  if(fs.existsSync(dest))for(const f of frozenFiles(dest))if(!allowed.has(f.file))throw Error('Unexpected destination file: '+f.file);
+  for(const f of frozenFiles(dest,'',true))if(!allowed.has(f.file))throw Error('Unexpected destination file: '+f.file);
   for(const f of receipt.files){const to=path.join(dest,f.file);fs.mkdirSync(path.dirname(to),{recursive:true});fs.copyFileSync(path.join(OUT,f.file),to);if(sha(to)!==f.sha256)throw Error('Staged hash mismatch: '+f.file);}
   console.log('Staged '+receipt.files.length+' verified files -> '+dest);
 }
 
 const cmd = process.argv[2];
 const run = { build, verify, stage }[cmd];
-if (!run) { console.log('Usage: node tools/site_demo.js build|verify|stage <website-checkout>'); process.exitCode = 1; }
+if (!run) { console.log('Usage: node tools/site_demo.js build|verify|stage <audiobook2-audio-checkout>'); process.exitCode = 1; }
 else Promise.resolve(run()).catch(e => { console.error(e.message || e); process.exitCode = 1; });
