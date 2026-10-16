@@ -18,6 +18,14 @@ for(const row of hiroVoice.files){
   if(crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex')!==row.sha256)throw Error('Hiro voice changed: '+row.file);
   if(!media.includes(row.file))media.push(row.file);
 }
+const santiagoVoice=JSON.parse(fs.readFileSync(path.join(root,'assets/expedition/story/santiago-voice.json')));
+if(santiagoVoice.voiceId!=='xHLnsxqUy4cc16VOmSD4')throw Error('Santiago casting changed');
+for(const row of santiagoVoice.files){
+  if(!/^audio\/vo\/campaign\/cassian\/[a-z0-9_]+_santiago20261016\.mp3$/.test(row.file))throw Error('Invalid Santiago voice path');
+  const file=path.join(root,'assets/expedition/story/media',row.file);
+  if(crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex')!==row.sha256)throw Error('Santiago voice changed: '+row.file);
+  if(!media.includes(row.file))media.push(row.file);
+}
 const scripts=[...fs.readFileSync(path.join(root,'index.html'),'utf8').matchAll(/<script src="[^"]+"><\/script>/g)].map(m=>m[0]).join('\n');
 // The story's own scripts carry the same release stamp, so a returning player
 // never runs a cached copy against newer data (2026-10-11).

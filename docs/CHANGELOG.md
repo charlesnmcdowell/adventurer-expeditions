@@ -15,6 +15,15 @@ of small fixes within a day.
 
 ---
 
+## 2026-10-16 — Santiago dialogue rewrite and matching voice (local only)
+
+- Inventoried **29 spoken segments / 22 groups**, keyed to `cassian`, before editing. Preserved every original ID, segment boundary, cue tag, `{target}` placeholder, choice hook and recruitment/departure/romance condition. Other speakers, narrator epilogues and Hiro choices remain unchanged.
+- Replaced role explanations and stock rhetorical phrasing with practical shield instructions, understated prayers, first-assignment nerves and existing bakery/home details. No new saints or religious doctrine. Reviewed the wolf scene first. The departure wording works for both Layla and Desmond triggers; it does not invent a specific theological accusation.
+- Verified **xHLnsxqUy4cc16VOmSD4** against the original casting JSON and voice script. Re-recorded all 29 segments with ElevenLabs v3: **3,128 submitted characters including direction tags; 1,377 response-header credits**, no retakes; 5,000-credit cap. Account counter was delayed, so the header sum is the cost evidence. Matched the existing Santiago reference at **−16.2 LUFS**, true-peak target −1.5 dB.
+- Added edition-owned `story_dialogue.js`, revisioned audio and `santiago-voice.json`. Both campaign and fight pages load the overrides. Preview rebuilds verify and preserve new recordings instead of replacing them with old source audio. Original Adventurer/shared source files remain untouched. Cache stamp `20261016-xp3`.
+- QA: `npm test`, `test/story_santiago.js`, `test/story_campaign.js`, `test/story_combat.js` and `test/browser_santiago.js` passed. Browser covers actual rewritten dialogue/audio playback, replay, saved-line resume, 390×844 layout and decoding all 29 clips; unit checks include sliced combat-bark audio offsets and unchanged story hooks.
+- Review: `docs/SANTIAGO_DIALOGUE_REVIEW_20261016/index.html`; complete inventory, before/after table, five speech habits and cost ledger are beside it. Raw masters/receipts: sibling `adventurer-expeditions-source-art/astra-v10/santiago-dialogue-20261016/`. Nothing published or pushed. This does not mark the separate companion production pass complete.
+
 ## 2026-10-15 — Approved Hiro voice production and companion pilots (local, unfinished)
 
 - User approved all five voice auditions and fifteen source kits. Recorded/integrated **200 reachable Hiro choices**, reusing the auditions; **8,811 spoken characters / 3,878 response-header credits**, no retakes. Ten retired options were not recorded. All 200 clips decode; 4,542,941 runtime bytes. Saved choice playback, replay, mute, reload and skip preserve original choice hooks.

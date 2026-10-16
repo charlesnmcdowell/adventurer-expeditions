@@ -1,0 +1,234 @@
+[
+  {
+    "file": "js/data/campaign3_dialogue.js",
+    "line": 161,
+    "key": "q2_cassian",
+    "index": 1,
+    "id": "q2_cassian_1",
+    "text": "[formal, out of breath] Hold — with respect, hold! Do not go into the den, señor — señora — forgive me, I do not know which, and I have run a long way."
+  },
+  {
+    "file": "js/data/campaign3_dialogue.js",
+    "line": 161,
+    "key": "q2_cassian",
+    "index": 2,
+    "id": "q2_cassian_2",
+    "text": "[straightening] Santiago, squire of the Order of the Dawning Flame. I have been sent to clear these wolves from the road, and I have been sent alone."
+  },
+  {
+    "file": "js/data/campaign3_dialogue.js",
+    "line": 163,
+    "key": "q2_cassian_answer",
+    "index": 1,
+    "id": "q2_cassian_answer_1",
+    "text": "[reddening, honest] Nothing. That is the difficulty. A knight who has done nothing is sent to do something, and a wolf den on a road nobody uses is the something. I will confess to you, as I would to no one in the Order, that I am not certain I can."
+  },
+  {
+    "file": "js/data/campaign3_dialogue.js",
+    "line": 164,
+    "key": "q2_cassian_alone",
+    "index": 1,
+    "id": "q2_cassian_alone_1",
+    "text": "[honest] I will confess to you, as I would to no one in the Order, that I am not certain I can. I have never fought anything that was not a straw man."
+  },
+  {
+    "file": "js/data/campaign3_dialogue.js",
+    "line": 171,
+    "key": "q2_cassian_order",
+    "index": 1,
+    "id": "q2_cassian_order_1",
+    "text": "[earnest] An order of knights sworn to the sun and the sunrise: to be first into the dark and last out of it. Our chapter house is far south of here, in the sun-lands, where I was born. The Order sent me north to learn what the roads are like. I am learning."
+  },
+  {
+    "file": "js/data/campaign3_dialogue.js",
+    "line": 172,
+    "key": "q2_cassian_tease",
+    "index": 1,
+    "id": "q2_cassian_tease_1",
+    "text": "[reddening, then honest] Prayers, mostly. And the sword, and how to stand still while people say unkind things — which, with respect, you are doing very well."
+  },
+  {
+    "file": "js/data/campaign3_dialogue.js",
+    "line": 173,
+    "key": "q2_cassian_join",
+    "index": 1,
+    "id": "q2_cassian_join_1",
+    "text": "[relieved] God keep you for it. Then I will take the front, because that is what I am for, and you will tell me if I am doing it wrong."
+  },
+  {
+    "file": "js/data/campaign3_dialogue.js",
+    "line": 174,
+    "key": "q2_cassian_no",
+    "index": 1,
+    "id": "q2_cassian_no_1",
+    "text": "[formal, hurt] Of course. God go with you, then. I will — I will manage."
+  },
+  {
+    "file": "js/data/campaign3_dialogue.js",
+    "line": 457,
+    "key": "q5_patrol",
+    "index": 1,
+    "id": "q5_patrol_1",
+    "text": "[uneasy] Burning Gauntlet. A patrol, this far south of the city. They have someone at sword-point — and with respect, by her look, she is not from anywhere near here."
+  },
+  {
+    "file": "js/data/campaign3_dialogue.js",
+    "line": 459,
+    "key": "q5_patrol_cassian",
+    "index": 1,
+    "id": "q5_patrol_cassian_1",
+    "text": "[formal, tight] A priestess of what, señora? Say it. I would know what I am deciding about."
+  },
+  {
+    "file": "js/data/campaign3_dialogue.js",
+    "line": 461,
+    "key": "q5_patrol_cassian_after",
+    "index": 1,
+    "id": "q5_patrol_cassian_after_1",
+    "text": "[quietly] It might. — {target}. Your word decides it. Not mine."
+  },
+  {
+    "file": "js/data/campaign3_dialogue.js",
+    "line": 472,
+    "key": "q5_cassian_leaves",
+    "index": 1,
+    "id": "q5_cassian_leaves_1",
+    "text": "[quietly] I cannot ride beside a company that shelters what this one shelters. I have prayed on it, and I have tried to find a way, and I cannot."
+  },
+  {
+    "file": "js/data/campaign3_dialogue.js",
+    "line": 472,
+    "key": "q5_cassian_leaves",
+    "index": 2,
+    "id": "q5_cassian_leaves_2",
+    "text": "[formal] If your company changes, you will find me at the Open Hand. I hope it does. I hope that very much. God keep you, {target}."
+  },
+  {
+    "file": "js/data/campaign3_dialogue.js",
+    "line": 822,
+    "key": "q9_floor_cassian",
+    "index": 1,
+    "id": "q9_floor_cassian_1",
+    "text": "[low] With respect. You do not have to answer her. She is bargaining."
+  },
+  {
+    "file": "js/data/campaign3_dialogue.js",
+    "line": 867,
+    "key": "bond_first",
+    "index": 1,
+    "id": "bond_first_1",
+    "text": "[hesitant] The training yard was easy. You knew the other man would stop."
+  },
+  {
+    "file": "js/data/campaign3_dialogue.js",
+    "line": 867,
+    "key": "bond_first",
+    "index": 2,
+    "id": "bond_first_2",
+    "text": "[honest] In a real fight, I still want to run. I worry that one day I will."
+  },
+  {
+    "file": "js/data/campaign3_dialogue.js",
+    "line": 868,
+    "key": "bond_first_reply",
+    "index": 1,
+    "id": "bond_first_reply_1",
+    "text": "[relieved] Thank you. I needed to hear that from someone who had actually seen me fight."
+  },
+  {
+    "file": "js/data/campaign3_dialogue.js",
+    "line": 869,
+    "key": "bond_second",
+    "index": 1,
+    "id": "bond_second_1",
+    "text": "[easier] I wrote home. Mostly about the people I have met. My mother would worry if I described the fighting."
+  },
+  {
+    "file": "js/data/campaign3_dialogue.js",
+    "line": 869,
+    "key": "bond_second",
+    "index": 2,
+    "id": "bond_second_2",
+    "text": "[fond] She runs a bakery. I used to get up before dawn to carry flour. I complained every morning. Now I miss it."
+  },
+  {
+    "file": "js/data/campaign3_dialogue.js",
+    "line": 870,
+    "key": "bond_second_reply",
+    "index": 1,
+    "id": "bond_second_reply_1",
+    "text": "[warm] There is a stool by the oven where I used to sleep between deliveries. Mother still keeps it there. She says my room is too far from the work."
+  },
+  {
+    "file": "js/data/campaign3_dialogue.js",
+    "line": 871,
+    "key": "bond_interest",
+    "index": 1,
+    "id": "bond_interest_1",
+    "text": "[shy] I would like that too. May we take a little time? I want to know you better."
+  },
+  {
+    "file": "js/data/campaign3_dialogue.js",
+    "line": 872,
+    "key": "bond_later",
+    "index": 1,
+    "id": "bond_later_1",
+    "text": "[gentle] Of course. Tell me when you are ready. We can still enjoy each other's company."
+  },
+  {
+    "file": "js/data/campaign3_dialogue.js",
+    "line": 895,
+    "key": "q9_romance",
+    "index": 1,
+    "id": "q9_romance_1",
+    "text": "[nervous] I enjoy the time we spend together. More than I know how to say properly."
+  },
+  {
+    "file": "js/data/campaign3_dialogue.js",
+    "line": 895,
+    "key": "q9_romance",
+    "index": 2,
+    "id": "q9_romance_2",
+    "text": "[earnest] When we have a quiet evening, may I take you to supper? Just the two of us."
+  },
+  {
+    "file": "js/data/campaign3_dialogue.js",
+    "line": 896,
+    "key": "q9_romance_yes",
+    "index": 1,
+    "id": "q9_romance_yes_1",
+    "text": "[pleased] Supper, then. I know a decent place. I will try to get through the evening without saluting you."
+  },
+  {
+    "file": "js/data/campaign3_dialogue.js",
+    "line": 897,
+    "key": "q9_romance_no",
+    "index": 1,
+    "id": "q9_romance_no_1",
+    "text": "[bravely] Then I am glad I said it, and I will not say it again. Thank you for hearing it."
+  },
+  {
+    "file": "js/data/campaign3_dialogue.js",
+    "line": 1288,
+    "key": "banter",
+    "index": 1,
+    "id": "banter_1",
+    "text": "[shouting] For the Dawning Flame! — forgive me. Habit."
+  },
+  {
+    "file": "js/data/campaign3_dialogue.js",
+    "line": 1288,
+    "key": "banter",
+    "index": 2,
+    "id": "banter_2",
+    "text": "[earnest] On me! I can take it!"
+  },
+  {
+    "file": "js/data/campaign3_dialogue.js",
+    "line": 1288,
+    "key": "banter",
+    "index": 3,
+    "id": "banter_3",
+    "text": "[strained] I am fine! I am — mostly fine!"
+  }
+]
