@@ -15,6 +15,14 @@ of small fixes within a day.
 
 ---
 
+## 2026-10-16 — Hiro draw-cut correction: four review sheets, not runtime
+
+- Replaced the thrust-like proposal with four review sequences: **do horizontal midsection (19 drawings / 2675 ms)**, **horizontal neck sweep (20 / 2795 ms)**, **kote rising vertical hand cut (20 / 2795 ms)** and **men rising vertical head cut (20 / 2795 ms)**. The supplied Samurai Shodown image informed motion/silhouette changes while Hiro retains his own design. Neck uses the user-requested horizontal path; it is not claimed as traditional kesa kata.
+- Added controlled wrist recovery and eight shared no-look sheathing drawings; corrected three middle guide poses to show base → middle → tip before insertion. **55 distinct adopted drawings / 79 frame references**, with source-based scale, boot registration and contact indices **4 / 5 / 4 / 5**. Rejected a neighboring-frame-bleed grid. An unused clipped frame in the noto repair is excluded; only its requested frames 1–3 replace originals. No duplicated poses counted as new frames.
+- **Review:** `docs/art/iaido-cuts-20261016/` has four lossless sheets, manifest, all 13 built-in image-generation request records, normal/half/quarter playback, contact/noto jumps, frame stepping, hand close-up and transparency backgrounds. Full masters/rejections remain in sibling source-art `astra-v10/hiro-draw-cuts-20261016/`. No new voice requests. Review assets total about **7.43 MB**, excluded from runtime shipping.
+- **Validation:** source-edge/component/unique-frame/padded-canvas checks plus `node test/browser_iaido_cuts_review.js` passed; contact and guide-hand screenshots inspected. Tests verify technical presentation, not martial-arts correctness. No runtime atlas, game code, damage, cooldown or website package changed; motion approval precedes runtime replacement under ART_STANDARD §2.9. Other session's live-release log and new `ASTRA_PROMPT_NEXT_20261016b.md` are preserved and are not part of this art task.
+- **Files:** review directory, `tools/build_iaido_review_20261016.py`, `test/browser_iaido_cuts_review.js`, this entry. No publishing or pushing.
+
 ## 2026-10-16 — Approved companion roster activated (local)
 
 - **Approval and runtime:** user approved the complete roster for combat. `S.Companions.enabled` changes **false → true**. Chapter one remains solo; chapter two onward supports Hiro plus up to two eligible companions with the completed welcome/Accept and chapter party-confirmation flow. Existing recruitment, departure/death filters, explicit solo choice, nonlethal ally knockout and next-fight recovery are unchanged. No additional art generation or voice credits.

@@ -1,0 +1,2295 @@
+{
+  "reviewOnly": true,
+  "cell": [
+    640,
+    520
+  ],
+  "pivot": [
+    300,
+    470
+  ],
+  "clips": {
+    "do": {
+      "title": "Do \u2014 horizontal midsection draw",
+      "image": "do.webp",
+      "contact": 4,
+      "durationMs": 2675,
+      "frames": [
+        {
+          "source": "do-motion-v3-clean.png",
+          "sourceRect": [
+            98,
+            0,
+            313,
+            399
+          ],
+          "scale": 0.8483290488431876,
+          "anchor": [
+            168.90896389636532,
+            397
+          ],
+          "placed": [
+            157,
+            133
+          ],
+          "pixelHash": "beaa783e371e9d0ebc3674e1fa238643448ffa44e9c375b7bce0e0e0315f1595",
+          "sourceFrameZeroBased": 0,
+          "rect": [
+            0,
+            0,
+            640,
+            520
+          ],
+          "durationMs": 120,
+          "phase": "draw"
+        },
+        {
+          "source": "do-motion-v3-clean.png",
+          "sourceRect": [
+            607,
+            47,
+            364,
+            347
+          ],
+          "scale": 0.8483290488431876,
+          "anchor": [
+            188.36657069189005,
+            345
+          ],
+          "placed": [
+            140,
+            177
+          ],
+          "pixelHash": "cd490f8fec872d8e7887e23b64eceb8cbff3be1e4c2d7438ded1cbadace98104",
+          "sourceFrameZeroBased": 1,
+          "rect": [
+            640,
+            0,
+            640,
+            520
+          ],
+          "durationMs": 120,
+          "phase": "draw"
+        },
+        {
+          "source": "do-motion-v3-clean.png",
+          "sourceRect": [
+            73,
+            401,
+            392,
+            369
+          ],
+          "scale": 0.8483290488431876,
+          "anchor": [
+            215.33012556198318,
+            367
+          ],
+          "placed": [
+            117,
+            159
+          ],
+          "pixelHash": "6ecb4e4dc2fc0bed704230dc584fc0320f78368cfaf259b15a91702b3a193523",
+          "sourceFrameZeroBased": 2,
+          "rect": [
+            1280,
+            0,
+            640,
+            520
+          ],
+          "durationMs": 120,
+          "phase": "draw"
+        },
+        {
+          "source": "do-motion-v3-clean.png",
+          "sourceRect": [
+            588,
+            396,
+            405,
+            382
+          ],
+          "scale": 0.8483290488431876,
+          "anchor": [
+            219.80097154805512,
+            380
+          ],
+          "placed": [
+            114,
+            148
+          ],
+          "pixelHash": "d332b19e78ff0e1a696d5c7f278e04b014179bb5621e1c567661717fe63bb448",
+          "sourceFrameZeroBased": 3,
+          "rect": [
+            1920,
+            0,
+            640,
+            520
+          ],
+          "durationMs": 90,
+          "phase": "draw"
+        },
+        {
+          "source": "do-motion-v3-clean.png",
+          "sourceRect": [
+            69,
+            752,
+            428,
+            381
+          ],
+          "scale": 0.8483290488431876,
+          "anchor": [
+            195.95216616443366,
+            379
+          ],
+          "placed": [
+            134,
+            148
+          ],
+          "pixelHash": "f8820d8f798ab42cd5f45a29294c57b774f5ed03d2e282561091a85699b50674",
+          "sourceFrameZeroBased": 4,
+          "rect": [
+            2560,
+            0,
+            640,
+            520
+          ],
+          "durationMs": 65,
+          "phase": "draw"
+        },
+        {
+          "source": "do-motion-v3-clean.png",
+          "sourceRect": [
+            554,
+            771,
+            462,
+            364
+          ],
+          "scale": 0.8483290488431876,
+          "anchor": [
+            213.6717432665737,
+            362
+          ],
+          "placed": [
+            119,
+            163
+          ],
+          "pixelHash": "916108a2198db94d26999a3b81d81898c2b0667bc0359ddb904247fff762ceae",
+          "sourceFrameZeroBased": 5,
+          "rect": [
+            0,
+            520,
+            640,
+            520
+          ],
+          "durationMs": 90,
+          "phase": "draw"
+        },
+        {
+          "source": "do-motion-v3-clean.png",
+          "sourceRect": [
+            62,
+            1121,
+            578,
+            401
+          ],
+          "scale": 0.8483290488431876,
+          "anchor": [
+            190.17636258049671,
+            399
+          ],
+          "placed": [
+            139,
+            132
+          ],
+          "pixelHash": "777ac0d3a32b99aba169a1d13bde6b8f4e508a5b225b0fd30c82b596c34849da",
+          "sourceFrameZeroBased": 6,
+          "rect": [
+            640,
+            520,
+            640,
+            520
+          ],
+          "durationMs": 120,
+          "phase": "draw"
+        },
+        {
+          "source": "do-bridge.png",
+          "sourceRect": [
+            64,
+            0,
+            532,
+            363
+          ],
+          "scale": 0.9269662921348315,
+          "anchor": [
+            191.77699790502794,
+            361
+          ],
+          "placed": [
+            122,
+            135
+          ],
+          "pixelHash": "236365534dda6f272cc446150e1cdf13d5a8f3990e7e47f0ea064666f86ad2aa",
+          "sourceFrameZeroBased": 0,
+          "rect": [
+            1280,
+            520,
+            640,
+            520
+          ],
+          "durationMs": 120,
+          "phase": "recovery"
+        },
+        {
+          "source": "do-bridge.png",
+          "sourceRect": [
+            635,
+            6,
+            402,
+            363
+          ],
+          "scale": 0.9269662921348315,
+          "anchor": [
+            169.81473064580842,
+            361
+          ],
+          "placed": [
+            143,
+            135
+          ],
+          "pixelHash": "ae902a8d1ff6503dc721b575e5326d074c6195d99687d69e8239f9006e542ff0",
+          "sourceFrameZeroBased": 1,
+          "rect": [
+            1920,
+            520,
+            640,
+            520
+          ],
+          "durationMs": 120,
+          "phase": "recovery"
+        },
+        {
+          "source": "do-bridge.png",
+          "sourceRect": [
+            107,
+            353,
+            415,
+            368
+          ],
+          "scale": 0.9269662921348315,
+          "anchor": [
+            165.8012163113859,
+            366
+          ],
+          "placed": [
+            146,
+            131
+          ],
+          "pixelHash": "10d61d72d184253f295acbd678c314fa248134285cbdef64c2beae5b68ca6efe",
+          "sourceFrameZeroBased": 2,
+          "rect": [
+            2560,
+            520,
+            640,
+            520
+          ],
+          "durationMs": 120,
+          "phase": "recovery"
+        },
+        {
+          "source": "do-bridge.png",
+          "sourceRect": [
+            640,
+            352,
+            346,
+            376
+          ],
+          "scale": 0.9269662921348315,
+          "anchor": [
+            167.88666893341963,
+            374
+          ],
+          "placed": [
+            144,
+            123
+          ],
+          "pixelHash": "d3704f6335d5a3dc8daa83bf6b004b504bc56c7732d355f0da6ba79800c1cfb6",
+          "sourceFrameZeroBased": 3,
+          "rect": [
+            0,
+            1040,
+            640,
+            520
+          ],
+          "durationMs": 120,
+          "phase": "recovery"
+        },
+        {
+          "source": "noto-a.png",
+          "sourceRect": [
+            177,
+            0,
+            281,
+            366
+          ],
+          "scale": 0.9269662921348315,
+          "anchor": [
+            134.3616690056058,
+            364
+          ],
+          "placed": [
+            175,
+            133
+          ],
+          "pixelHash": "4f9683ecc325e92194db8bd308f3c3b238fd58ac4f5c6af376db0d4eaaaec74f",
+          "sourceFrameZeroBased": 0,
+          "rect": [
+            640,
+            1040,
+            640,
+            520
+          ],
+          "durationMs": 140,
+          "phase": "noto"
+        },
+        {
+          "source": "noto-guide-repair.png",
+          "sourceRect": [
+            669,
+            0,
+            396,
+            369
+          ],
+          "scale": 0.9269662921348315,
+          "anchor": [
+            139.60650015032653,
+            367
+          ],
+          "placed": [
+            171,
+            130
+          ],
+          "pixelHash": "385d334e0c64d4695d7117cbc74aaa6d3ca489b3f5386ae16b38e6981d3a39d0",
+          "sourceFrameZeroBased": 1,
+          "rect": [
+            1280,
+            1040,
+            640,
+            520
+          ],
+          "durationMs": 130,
+          "phase": "noto"
+        },
+        {
+          "source": "noto-guide-repair.png",
+          "sourceRect": [
+            93,
+            354,
+            369,
+            378
+          ],
+          "scale": 0.9269662921348315,
+          "anchor": [
+            216.60981345534358,
+            376
+          ],
+          "placed": [
+            99,
+            121
+          ],
+          "pixelHash": "9cafef0f34f4bd79cd78723bddfdae0cba91a7e9fd905029a81618980af5038c",
+          "sourceFrameZeroBased": 2,
+          "rect": [
+            1920,
+            1040,
+            640,
+            520
+          ],
+          "durationMs": 170,
+          "phase": "noto"
+        },
+        {
+          "source": "noto-guide-repair.png",
+          "sourceRect": [
+            604,
+            355,
+            361,
+            378
+          ],
+          "scale": 0.9269662921348315,
+          "anchor": [
+            217.66375046912742,
+            376
+          ],
+          "placed": [
+            98,
+            121
+          ],
+          "pixelHash": "e950cf72a13975fba43b2731b72e3dbacacf777acb25010aa7b1b6aea8264630",
+          "sourceFrameZeroBased": 3,
+          "rect": [
+            2560,
+            1040,
+            640,
+            520
+          ],
+          "durationMs": 170,
+          "phase": "noto"
+        },
+        {
+          "source": "noto-a.png",
+          "sourceRect": [
+            121,
+            721,
+            340,
+            369
+          ],
+          "scale": 0.9269662921348315,
+          "anchor": [
+            201.9850438517062,
+            367
+          ],
+          "placed": [
+            113,
+            130
+          ],
+          "pixelHash": "52fd7e3bb450f85e457f28d47c62d6a7ccef5db59923ba5a1cd0edaf84165314",
+          "sourceFrameZeroBased": 4,
+          "rect": [
+            0,
+            1560,
+            640,
+            520
+          ],
+          "durationMs": 220,
+          "phase": "noto"
+        },
+        {
+          "source": "noto-a.png",
+          "sourceRect": [
+            679,
+            722,
+            278,
+            367
+          ],
+          "scale": 0.9269662921348315,
+          "anchor": [
+            143.07687381907687,
+            365
+          ],
+          "placed": [
+            167,
+            132
+          ],
+          "pixelHash": "ea3dca6d3709a0b85e1267d1d91e63224210e2a9645c754e75b7a989734a0cb8",
+          "sourceFrameZeroBased": 5,
+          "rect": [
+            640,
+            1560,
+            640,
+            520
+          ],
+          "durationMs": 180,
+          "phase": "noto"
+        },
+        {
+          "source": "noto-a.png",
+          "sourceRect": [
+            190,
+            1080,
+            271,
+            361
+          ],
+          "scale": 0.9269662921348315,
+          "anchor": [
+            139.78727680214558,
+            359
+          ],
+          "placed": [
+            170,
+            137
+          ],
+          "pixelHash": "0d7a51dbbda403fed69b9d46483f3552d8c0a01418d6a57b760ab9744e381217",
+          "sourceFrameZeroBased": 6,
+          "rect": [
+            1280,
+            1560,
+            640,
+            520
+          ],
+          "durationMs": 200,
+          "phase": "noto"
+        },
+        {
+          "source": "noto-a.png",
+          "sourceRect": [
+            694,
+            1080,
+            248,
+            368
+          ],
+          "scale": 0.9269662921348315,
+          "anchor": [
+            121.71093060833176,
+            366
+          ],
+          "placed": [
+            187,
+            131
+          ],
+          "pixelHash": "abca5daf459d33b9c84e02d742874c4b27affcfa5519cbb1b0d48d1628803353",
+          "sourceFrameZeroBased": 7,
+          "rect": [
+            1920,
+            1560,
+            640,
+            520
+          ],
+          "durationMs": 260,
+          "phase": "noto"
+        }
+      ]
+    },
+    "neck": {
+      "title": "Neck-height horizontal draw",
+      "image": "neck.webp",
+      "contact": 5,
+      "durationMs": 2795,
+      "frames": [
+        {
+          "source": "neck-a.png",
+          "sourceRect": [
+            186,
+            2,
+            215,
+            370
+          ],
+          "scale": 0.9217877094972067,
+          "anchor": [
+            108.09272453995206,
+            368
+          ],
+          "placed": [
+            200,
+            131
+          ],
+          "pixelHash": "e9f3ca9d1fae03e64e3adb7260214bf57d08623636f709a97809708305e1ace0",
+          "sourceFrameZeroBased": 0,
+          "rect": [
+            0,
+            0,
+            640,
+            520
+          ],
+          "durationMs": 120,
+          "phase": "draw"
+        },
+        {
+          "source": "neck-a.png",
+          "sourceRect": [
+            689,
+            1,
+            262,
+            371
+          ],
+          "scale": 0.9217877094972067,
+          "anchor": [
+            131.75740265150213,
+            369
+          ],
+          "placed": [
+            179,
+            130
+          ],
+          "pixelHash": "1435e99e211a680358f1bace501f77617dec0e27eed73962e62c9d273f9f60d6",
+          "sourceFrameZeroBased": 1,
+          "rect": [
+            640,
+            0,
+            640,
+            520
+          ],
+          "durationMs": 120,
+          "phase": "draw"
+        },
+        {
+          "source": "neck-a.png",
+          "sourceRect": [
+            144,
+            367,
+            293,
+            362
+          ],
+          "scale": 0.9217877094972067,
+          "anchor": [
+            145.83186389422215,
+            360
+          ],
+          "placed": [
+            166,
+            138
+          ],
+          "pixelHash": "9fbfd2237a822a93625f1ae3ad4d40c81fc7b4d7a92b291cd6eea2dbb10349ab",
+          "sourceFrameZeroBased": 2,
+          "rect": [
+            1280,
+            0,
+            640,
+            520
+          ],
+          "durationMs": 120,
+          "phase": "draw"
+        },
+        {
+          "source": "neck-a.png",
+          "sourceRect": [
+            673,
+            366,
+            308,
+            363
+          ],
+          "scale": 0.9217877094972067,
+          "anchor": [
+            155.93559060760072,
+            361
+          ],
+          "placed": [
+            156,
+            137
+          ],
+          "pixelHash": "6cf02897cf3901e9fbeaf67d6dd8711e1bb9e674e35a4e93336322175632ec53",
+          "sourceFrameZeroBased": 3,
+          "rect": [
+            1920,
+            0,
+            640,
+            520
+          ],
+          "durationMs": 120,
+          "phase": "draw"
+        },
+        {
+          "source": "neck-a.png",
+          "sourceRect": [
+            133,
+            725,
+            320,
+            366
+          ],
+          "scale": 0.9217877094972067,
+          "anchor": [
+            161.3037470247611,
+            364
+          ],
+          "placed": [
+            151,
+            134
+          ],
+          "pixelHash": "46c5390d6e5e3c9bbc04f8b5326aa564dbe6c2427b356a63fac5174c4efe7faf",
+          "sourceFrameZeroBased": 4,
+          "rect": [
+            2560,
+            0,
+            640,
+            520
+          ],
+          "durationMs": 90,
+          "phase": "draw"
+        },
+        {
+          "source": "neck-a.png",
+          "sourceRect": [
+            638,
+            726,
+            380,
+            365
+          ],
+          "scale": 0.9217877094972067,
+          "anchor": [
+            186.21086088850447,
+            363
+          ],
+          "placed": [
+            128,
+            135
+          ],
+          "pixelHash": "436eec5c88bd0155b44524e21c549ea65044058cb2437bf1a3bf7cd259f13c14",
+          "sourceFrameZeroBased": 5,
+          "rect": [
+            0,
+            520,
+            640,
+            520
+          ],
+          "durationMs": 65,
+          "phase": "draw"
+        },
+        {
+          "source": "neck-a.png",
+          "sourceRect": [
+            121,
+            1084,
+            333,
+            363
+          ],
+          "scale": 0.9217877094972067,
+          "anchor": [
+            169.677902492982,
+            361
+          ],
+          "placed": [
+            144,
+            137
+          ],
+          "pixelHash": "459a3b0f8578879f0e34f92f1f25f6d05d8e8a35438a8225530dc32c456420d8",
+          "sourceFrameZeroBased": 6,
+          "rect": [
+            640,
+            520,
+            640,
+            520
+          ],
+          "durationMs": 90,
+          "phase": "draw"
+        },
+        {
+          "source": "neck-a.png",
+          "sourceRect": [
+            659,
+            1085,
+            364,
+            362
+          ],
+          "scale": 0.9217877094972067,
+          "anchor": [
+            161.72630826679043,
+            360
+          ],
+          "placed": [
+            151,
+            138
+          ],
+          "pixelHash": "c3a04208824d2bdea82208a0911c4ce99908b0f225993530641f70408cb0f4cf",
+          "sourceFrameZeroBased": 7,
+          "rect": [
+            1280,
+            520,
+            640,
+            520
+          ],
+          "durationMs": 120,
+          "phase": "draw"
+        },
+        {
+          "source": "neck-b.png",
+          "sourceRect": [
+            144,
+            13,
+            329,
+            352
+          ],
+          "scale": 0.9428571428571428,
+          "anchor": [
+            182.56814366018662,
+            350
+          ],
+          "placed": [
+            128,
+            140
+          ],
+          "pixelHash": "a3a9191a42f7df5fe32f653a054d4af15d8473c0b389ed4c95e661488be637ed",
+          "sourceFrameZeroBased": 0,
+          "rect": [
+            1920,
+            520,
+            640,
+            520
+          ],
+          "durationMs": 120,
+          "phase": "recovery"
+        },
+        {
+          "source": "neck-b.png",
+          "sourceRect": [
+            647,
+            12,
+            360,
+            355
+          ],
+          "scale": 0.9428571428571428,
+          "anchor": [
+            215.9947657754933,
+            353
+          ],
+          "placed": [
+            96,
+            137
+          ],
+          "pixelHash": "117cdec31669b22fa8d6e511364a4d1c82219a82ee08033de605bfcf6b426dc8",
+          "sourceFrameZeroBased": 1,
+          "rect": [
+            2560,
+            520,
+            640,
+            520
+          ],
+          "durationMs": 120,
+          "phase": "recovery"
+        },
+        {
+          "source": "neck-b.png",
+          "sourceRect": [
+            150,
+            368,
+            328,
+            372
+          ],
+          "scale": 0.9428571428571428,
+          "anchor": [
+            158.38520685690344,
+            370
+          ],
+          "placed": [
+            151,
+            121
+          ],
+          "pixelHash": "81eba4676479c69e38603ed162bd79234104b9b10ff8bf4cdca5dda93f97f38a",
+          "sourceFrameZeroBased": 2,
+          "rect": [
+            0,
+            1040,
+            640,
+            520
+          ],
+          "durationMs": 120,
+          "phase": "recovery"
+        },
+        {
+          "source": "neck-b.png",
+          "sourceRect": [
+            681,
+            369,
+            299,
+            372
+          ],
+          "scale": 0.9428571428571428,
+          "anchor": [
+            152.07567680674322,
+            370
+          ],
+          "placed": [
+            157,
+            121
+          ],
+          "pixelHash": "9a668af658d9a249f0792f95d6bb8c1a195539f801b43d2ad6b63a1a6bc94c89",
+          "sourceFrameZeroBased": 3,
+          "rect": [
+            640,
+            1040,
+            640,
+            520
+          ],
+          "durationMs": 120,
+          "phase": "recovery"
+        },
+        {
+          "source": "noto-a.png",
+          "sourceRect": [
+            177,
+            0,
+            281,
+            366
+          ],
+          "scale": 0.9269662921348315,
+          "anchor": [
+            134.3616690056058,
+            364
+          ],
+          "placed": [
+            175,
+            133
+          ],
+          "pixelHash": "4f9683ecc325e92194db8bd308f3c3b238fd58ac4f5c6af376db0d4eaaaec74f",
+          "sourceFrameZeroBased": 0,
+          "rect": [
+            1280,
+            1040,
+            640,
+            520
+          ],
+          "durationMs": 140,
+          "phase": "noto"
+        },
+        {
+          "source": "noto-guide-repair.png",
+          "sourceRect": [
+            669,
+            0,
+            396,
+            369
+          ],
+          "scale": 0.9269662921348315,
+          "anchor": [
+            139.60650015032653,
+            367
+          ],
+          "placed": [
+            171,
+            130
+          ],
+          "pixelHash": "385d334e0c64d4695d7117cbc74aaa6d3ca489b3f5386ae16b38e6981d3a39d0",
+          "sourceFrameZeroBased": 1,
+          "rect": [
+            1920,
+            1040,
+            640,
+            520
+          ],
+          "durationMs": 130,
+          "phase": "noto"
+        },
+        {
+          "source": "noto-guide-repair.png",
+          "sourceRect": [
+            93,
+            354,
+            369,
+            378
+          ],
+          "scale": 0.9269662921348315,
+          "anchor": [
+            216.60981345534358,
+            376
+          ],
+          "placed": [
+            99,
+            121
+          ],
+          "pixelHash": "9cafef0f34f4bd79cd78723bddfdae0cba91a7e9fd905029a81618980af5038c",
+          "sourceFrameZeroBased": 2,
+          "rect": [
+            2560,
+            1040,
+            640,
+            520
+          ],
+          "durationMs": 170,
+          "phase": "noto"
+        },
+        {
+          "source": "noto-guide-repair.png",
+          "sourceRect": [
+            604,
+            355,
+            361,
+            378
+          ],
+          "scale": 0.9269662921348315,
+          "anchor": [
+            217.66375046912742,
+            376
+          ],
+          "placed": [
+            98,
+            121
+          ],
+          "pixelHash": "e950cf72a13975fba43b2731b72e3dbacacf777acb25010aa7b1b6aea8264630",
+          "sourceFrameZeroBased": 3,
+          "rect": [
+            0,
+            1560,
+            640,
+            520
+          ],
+          "durationMs": 170,
+          "phase": "noto"
+        },
+        {
+          "source": "noto-a.png",
+          "sourceRect": [
+            121,
+            721,
+            340,
+            369
+          ],
+          "scale": 0.9269662921348315,
+          "anchor": [
+            201.9850438517062,
+            367
+          ],
+          "placed": [
+            113,
+            130
+          ],
+          "pixelHash": "52fd7e3bb450f85e457f28d47c62d6a7ccef5db59923ba5a1cd0edaf84165314",
+          "sourceFrameZeroBased": 4,
+          "rect": [
+            640,
+            1560,
+            640,
+            520
+          ],
+          "durationMs": 220,
+          "phase": "noto"
+        },
+        {
+          "source": "noto-a.png",
+          "sourceRect": [
+            679,
+            722,
+            278,
+            367
+          ],
+          "scale": 0.9269662921348315,
+          "anchor": [
+            143.07687381907687,
+            365
+          ],
+          "placed": [
+            167,
+            132
+          ],
+          "pixelHash": "ea3dca6d3709a0b85e1267d1d91e63224210e2a9645c754e75b7a989734a0cb8",
+          "sourceFrameZeroBased": 5,
+          "rect": [
+            1280,
+            1560,
+            640,
+            520
+          ],
+          "durationMs": 180,
+          "phase": "noto"
+        },
+        {
+          "source": "noto-a.png",
+          "sourceRect": [
+            190,
+            1080,
+            271,
+            361
+          ],
+          "scale": 0.9269662921348315,
+          "anchor": [
+            139.78727680214558,
+            359
+          ],
+          "placed": [
+            170,
+            137
+          ],
+          "pixelHash": "0d7a51dbbda403fed69b9d46483f3552d8c0a01418d6a57b760ab9744e381217",
+          "sourceFrameZeroBased": 6,
+          "rect": [
+            1920,
+            1560,
+            640,
+            520
+          ],
+          "durationMs": 200,
+          "phase": "noto"
+        },
+        {
+          "source": "noto-a.png",
+          "sourceRect": [
+            694,
+            1080,
+            248,
+            368
+          ],
+          "scale": 0.9269662921348315,
+          "anchor": [
+            121.71093060833176,
+            366
+          ],
+          "placed": [
+            187,
+            131
+          ],
+          "pixelHash": "abca5daf459d33b9c84e02d742874c4b27affcfa5519cbb1b0d48d1628803353",
+          "sourceFrameZeroBased": 7,
+          "rect": [
+            2560,
+            1560,
+            640,
+            520
+          ],
+          "durationMs": 260,
+          "phase": "noto"
+        }
+      ]
+    },
+    "kote": {
+      "title": "Kote \u2014 vertical rising hand cut",
+      "image": "kote.webp",
+      "contact": 4,
+      "durationMs": 2795,
+      "frames": [
+        {
+          "source": "kote-a.png",
+          "sourceRect": [
+            177,
+            0,
+            194,
+            350
+          ],
+          "scale": 0.967741935483871,
+          "anchor": [
+            104.7322691349901,
+            348
+          ],
+          "placed": [
+            199,
+            133
+          ],
+          "pixelHash": "a02e4c2060d83fc6dc55a821f7e3ded7c53f931fe9b3b847b3ee7eae46103f94",
+          "sourceFrameZeroBased": 0,
+          "rect": [
+            0,
+            0,
+            640,
+            520
+          ],
+          "durationMs": 120,
+          "phase": "draw"
+        },
+        {
+          "source": "kote-a.png",
+          "sourceRect": [
+            703,
+            0,
+            212,
+            353
+          ],
+          "scale": 0.967741935483871,
+          "anchor": [
+            113.79077440819079,
+            351
+          ],
+          "placed": [
+            190,
+            130
+          ],
+          "pixelHash": "3b540f9f49a0e75d373ff5e403359a9454e770548aeb3946ccce403bd513c175",
+          "sourceFrameZeroBased": 1,
+          "rect": [
+            640,
+            0,
+            640,
+            520
+          ],
+          "durationMs": 120,
+          "phase": "draw"
+        },
+        {
+          "source": "kote-a.png",
+          "sourceRect": [
+            171,
+            364,
+            233,
+            353
+          ],
+          "scale": 0.967741935483871,
+          "anchor": [
+            125.4970680443269,
+            351
+          ],
+          "placed": [
+            179,
+            130
+          ],
+          "pixelHash": "60933abdc9b3f861a882667e3cd7af70079cfadbd24a58cbb5e7e6088e6ee07c",
+          "sourceFrameZeroBased": 2,
+          "rect": [
+            1280,
+            0,
+            640,
+            520
+          ],
+          "durationMs": 120,
+          "phase": "draw"
+        },
+        {
+          "source": "kote-a.png",
+          "sourceRect": [
+            690,
+            364,
+            251,
+            353
+          ],
+          "scale": 0.967741935483871,
+          "anchor": [
+            126.4220229752648,
+            351
+          ],
+          "placed": [
+            178,
+            130
+          ],
+          "pixelHash": "9ce83beaedb78e9bbb915af117c7f39d2020d929ad0b9dc4754dd7a4231e01d8",
+          "sourceFrameZeroBased": 3,
+          "rect": [
+            1920,
+            0,
+            640,
+            520
+          ],
+          "durationMs": 90,
+          "phase": "draw"
+        },
+        {
+          "source": "kote-a.png",
+          "sourceRect": [
+            147,
+            713,
+            238,
+            377
+          ],
+          "scale": 0.967741935483871,
+          "anchor": [
+            126.21861554931625,
+            375
+          ],
+          "placed": [
+            178,
+            107
+          ],
+          "pixelHash": "36bb056ff30a4b5bbf801e17cdd670bf1fdbdfd0903d751239ad39d62f0353db",
+          "sourceFrameZeroBased": 4,
+          "rect": [
+            2560,
+            0,
+            640,
+            520
+          ],
+          "durationMs": 65,
+          "phase": "draw"
+        },
+        {
+          "source": "kote-a.png",
+          "sourceRect": [
+            708,
+            704,
+            222,
+            386
+          ],
+          "scale": 0.967741935483871,
+          "anchor": [
+            108.90086240873657,
+            384
+          ],
+          "placed": [
+            195,
+            98
+          ],
+          "pixelHash": "e5ee6ca156b44dfdcaf0e500fae7eaa1c3d9f99d8984e2c368a0c9920200311b",
+          "sourceFrameZeroBased": 5,
+          "rect": [
+            0,
+            520,
+            640,
+            520
+          ],
+          "durationMs": 90,
+          "phase": "draw"
+        },
+        {
+          "source": "kote-a.png",
+          "sourceRect": [
+            174,
+            1079,
+            220,
+            369
+          ],
+          "scale": 0.967741935483871,
+          "anchor": [
+            110.33779788175443,
+            368
+          ],
+          "placed": [
+            193,
+            114
+          ],
+          "pixelHash": "2f7dd6f2682c25009aded6172d3b973a58e2abb68b83de63ac63a9e08d8d143a",
+          "sourceFrameZeroBased": 6,
+          "rect": [
+            640,
+            520,
+            640,
+            520
+          ],
+          "durationMs": 120,
+          "phase": "draw"
+        },
+        {
+          "source": "kote-a.png",
+          "sourceRect": [
+            699,
+            1081,
+            223,
+            367
+          ],
+          "scale": 0.967741935483871,
+          "anchor": [
+            109.51362956908882,
+            367
+          ],
+          "placed": [
+            194,
+            115
+          ],
+          "pixelHash": "e563478a4861c3c860659f003dfa23b221dcdbb1faafa47b586e01142bb6f568",
+          "sourceFrameZeroBased": 7,
+          "rect": [
+            1280,
+            520,
+            640,
+            520
+          ],
+          "durationMs": 120,
+          "phase": "draw"
+        },
+        {
+          "source": "vertical-bridge.png",
+          "sourceRect": [
+            160,
+            0,
+            266,
+            377
+          ],
+          "scale": 0.9850746268656716,
+          "anchor": [
+            139.4102033880295,
+            375
+          ],
+          "placed": [
+            163,
+            101
+          ],
+          "pixelHash": "edadb81817402090d077db962c9ad6afee294d05cd0874421f1762dc58efce89",
+          "sourceFrameZeroBased": 0,
+          "rect": [
+            1920,
+            520,
+            640,
+            520
+          ],
+          "durationMs": 120,
+          "phase": "recovery"
+        },
+        {
+          "source": "vertical-bridge.png",
+          "sourceRect": [
+            674,
+            33,
+            286,
+            346
+          ],
+          "scale": 0.9850746268656716,
+          "anchor": [
+            148.52797156392634,
+            344
+          ],
+          "placed": [
+            154,
+            131
+          ],
+          "pixelHash": "0919dc473e667c03c15178179cd38cbc551cd429ba9b575a5acbc6cf87b1b3d2",
+          "sourceFrameZeroBased": 1,
+          "rect": [
+            2560,
+            520,
+            640,
+            520
+          ],
+          "durationMs": 120,
+          "phase": "recovery"
+        },
+        {
+          "source": "vertical-bridge.png",
+          "sourceRect": [
+            151,
+            381,
+            285,
+            342
+          ],
+          "scale": 0.9850746268656716,
+          "anchor": [
+            151.7046990345519,
+            340
+          ],
+          "placed": [
+            151,
+            135
+          ],
+          "pixelHash": "92b262006dc8bdadcdf8f73e45aa5967cfb491f46e3a6baecbba98d441cfb902",
+          "sourceFrameZeroBased": 2,
+          "rect": [
+            0,
+            1040,
+            640,
+            520
+          ],
+          "durationMs": 120,
+          "phase": "recovery"
+        },
+        {
+          "source": "vertical-bridge.png",
+          "sourceRect": [
+            667,
+            378,
+            303,
+            349
+          ],
+          "scale": 0.9850746268656716,
+          "anchor": [
+            157.1231781647537,
+            347
+          ],
+          "placed": [
+            145,
+            128
+          ],
+          "pixelHash": "5c3767ca8cfacdd6677908038db1bf871061ea6cee97ba3e0158213496f32919",
+          "sourceFrameZeroBased": 3,
+          "rect": [
+            640,
+            1040,
+            640,
+            520
+          ],
+          "durationMs": 120,
+          "phase": "recovery"
+        },
+        {
+          "source": "noto-a.png",
+          "sourceRect": [
+            177,
+            0,
+            281,
+            366
+          ],
+          "scale": 0.9269662921348315,
+          "anchor": [
+            134.3616690056058,
+            364
+          ],
+          "placed": [
+            175,
+            133
+          ],
+          "pixelHash": "4f9683ecc325e92194db8bd308f3c3b238fd58ac4f5c6af376db0d4eaaaec74f",
+          "sourceFrameZeroBased": 0,
+          "rect": [
+            1280,
+            1040,
+            640,
+            520
+          ],
+          "durationMs": 140,
+          "phase": "noto"
+        },
+        {
+          "source": "noto-guide-repair.png",
+          "sourceRect": [
+            669,
+            0,
+            396,
+            369
+          ],
+          "scale": 0.9269662921348315,
+          "anchor": [
+            139.60650015032653,
+            367
+          ],
+          "placed": [
+            171,
+            130
+          ],
+          "pixelHash": "385d334e0c64d4695d7117cbc74aaa6d3ca489b3f5386ae16b38e6981d3a39d0",
+          "sourceFrameZeroBased": 1,
+          "rect": [
+            1920,
+            1040,
+            640,
+            520
+          ],
+          "durationMs": 130,
+          "phase": "noto"
+        },
+        {
+          "source": "noto-guide-repair.png",
+          "sourceRect": [
+            93,
+            354,
+            369,
+            378
+          ],
+          "scale": 0.9269662921348315,
+          "anchor": [
+            216.60981345534358,
+            376
+          ],
+          "placed": [
+            99,
+            121
+          ],
+          "pixelHash": "9cafef0f34f4bd79cd78723bddfdae0cba91a7e9fd905029a81618980af5038c",
+          "sourceFrameZeroBased": 2,
+          "rect": [
+            2560,
+            1040,
+            640,
+            520
+          ],
+          "durationMs": 170,
+          "phase": "noto"
+        },
+        {
+          "source": "noto-guide-repair.png",
+          "sourceRect": [
+            604,
+            355,
+            361,
+            378
+          ],
+          "scale": 0.9269662921348315,
+          "anchor": [
+            217.66375046912742,
+            376
+          ],
+          "placed": [
+            98,
+            121
+          ],
+          "pixelHash": "e950cf72a13975fba43b2731b72e3dbacacf777acb25010aa7b1b6aea8264630",
+          "sourceFrameZeroBased": 3,
+          "rect": [
+            0,
+            1560,
+            640,
+            520
+          ],
+          "durationMs": 170,
+          "phase": "noto"
+        },
+        {
+          "source": "noto-a.png",
+          "sourceRect": [
+            121,
+            721,
+            340,
+            369
+          ],
+          "scale": 0.9269662921348315,
+          "anchor": [
+            201.9850438517062,
+            367
+          ],
+          "placed": [
+            113,
+            130
+          ],
+          "pixelHash": "52fd7e3bb450f85e457f28d47c62d6a7ccef5db59923ba5a1cd0edaf84165314",
+          "sourceFrameZeroBased": 4,
+          "rect": [
+            640,
+            1560,
+            640,
+            520
+          ],
+          "durationMs": 220,
+          "phase": "noto"
+        },
+        {
+          "source": "noto-a.png",
+          "sourceRect": [
+            679,
+            722,
+            278,
+            367
+          ],
+          "scale": 0.9269662921348315,
+          "anchor": [
+            143.07687381907687,
+            365
+          ],
+          "placed": [
+            167,
+            132
+          ],
+          "pixelHash": "ea3dca6d3709a0b85e1267d1d91e63224210e2a9645c754e75b7a989734a0cb8",
+          "sourceFrameZeroBased": 5,
+          "rect": [
+            1280,
+            1560,
+            640,
+            520
+          ],
+          "durationMs": 180,
+          "phase": "noto"
+        },
+        {
+          "source": "noto-a.png",
+          "sourceRect": [
+            190,
+            1080,
+            271,
+            361
+          ],
+          "scale": 0.9269662921348315,
+          "anchor": [
+            139.78727680214558,
+            359
+          ],
+          "placed": [
+            170,
+            137
+          ],
+          "pixelHash": "0d7a51dbbda403fed69b9d46483f3552d8c0a01418d6a57b760ab9744e381217",
+          "sourceFrameZeroBased": 6,
+          "rect": [
+            1920,
+            1560,
+            640,
+            520
+          ],
+          "durationMs": 200,
+          "phase": "noto"
+        },
+        {
+          "source": "noto-a.png",
+          "sourceRect": [
+            694,
+            1080,
+            248,
+            368
+          ],
+          "scale": 0.9269662921348315,
+          "anchor": [
+            121.71093060833176,
+            366
+          ],
+          "placed": [
+            187,
+            131
+          ],
+          "pixelHash": "abca5daf459d33b9c84e02d742874c4b27affcfa5519cbb1b0d48d1628803353",
+          "sourceFrameZeroBased": 7,
+          "rect": [
+            2560,
+            1560,
+            640,
+            520
+          ],
+          "durationMs": 260,
+          "phase": "noto"
+        }
+      ]
+    },
+    "men": {
+      "title": "Men \u2014 vertical rising head cut",
+      "image": "men.webp",
+      "contact": 5,
+      "durationMs": 2795,
+      "frames": [
+        {
+          "source": "men-a.png",
+          "sourceRect": [
+            201,
+            12,
+            220,
+            356
+          ],
+          "scale": 0.9565217391304348,
+          "anchor": [
+            111.4507290181137,
+            354
+          ],
+          "placed": [
+            193,
+            131
+          ],
+          "pixelHash": "57f688f774320dedf6d2abb7b56638a1fb322cabd19920e4bbbe4813f27bdd29",
+          "sourceFrameZeroBased": 0,
+          "rect": [
+            0,
+            0,
+            640,
+            520
+          ],
+          "durationMs": 120,
+          "phase": "draw"
+        },
+        {
+          "source": "men-a.png",
+          "sourceRect": [
+            677,
+            13,
+            235,
+            355
+          ],
+          "scale": 0.9565217391304348,
+          "anchor": [
+            117.84360961750203,
+            353
+          ],
+          "placed": [
+            187,
+            132
+          ],
+          "pixelHash": "48f7a4a4d8b5ed07f06242b5ddbff5c9fa0e1b8935ad6ddd455687c3a3e4cd07",
+          "sourceFrameZeroBased": 1,
+          "rect": [
+            640,
+            0,
+            640,
+            520
+          ],
+          "durationMs": 120,
+          "phase": "draw"
+        },
+        {
+          "source": "men-a.png",
+          "sourceRect": [
+            181,
+            371,
+            261,
+            359
+          ],
+          "scale": 0.9565217391304348,
+          "anchor": [
+            133.20111050367606,
+            357
+          ],
+          "placed": [
+            173,
+            129
+          ],
+          "pixelHash": "b6274606b94dbf60a2b207530d4211717291da4fa7cece03d61a581b927a5266",
+          "sourceFrameZeroBased": 2,
+          "rect": [
+            1280,
+            0,
+            640,
+            520
+          ],
+          "durationMs": 120,
+          "phase": "draw"
+        },
+        {
+          "source": "men-a.png",
+          "sourceRect": [
+            670,
+            372,
+            279,
+            356
+          ],
+          "scale": 0.9565217391304348,
+          "anchor": [
+            139.5371260111006,
+            354
+          ],
+          "placed": [
+            167,
+            131
+          ],
+          "pixelHash": "fdc4ad165f0596dfd5f88957204368045ba547fef8145c49544032332e1c79e3",
+          "sourceFrameZeroBased": 3,
+          "rect": [
+            1920,
+            0,
+            640,
+            520
+          ],
+          "durationMs": 120,
+          "phase": "draw"
+        },
+        {
+          "source": "men-a.png",
+          "sourceRect": [
+            169,
+            753,
+            302,
+            343
+          ],
+          "scale": 0.9565217391304348,
+          "anchor": [
+            149.88460022205808,
+            341
+          ],
+          "placed": [
+            157,
+            144
+          ],
+          "pixelHash": "78dff889f30e12cc29187d3227eafb97717c3170510099b7e6b7d3071444c212",
+          "sourceFrameZeroBased": 4,
+          "rect": [
+            2560,
+            0,
+            640,
+            520
+          ],
+          "durationMs": 90,
+          "phase": "draw"
+        },
+        {
+          "source": "men-a.png",
+          "sourceRect": [
+            679,
+            712,
+            263,
+            385
+          ],
+          "scale": 0.9565217391304348,
+          "anchor": [
+            132.75915319918025,
+            383
+          ],
+          "placed": [
+            173,
+            104
+          ],
+          "pixelHash": "99b252c2c2c07785767b18a6bac707eba550901a82ba884ee3bbfbacad065fad",
+          "sourceFrameZeroBased": 5,
+          "rect": [
+            0,
+            520,
+            640,
+            520
+          ],
+          "durationMs": 65,
+          "phase": "draw"
+        },
+        {
+          "source": "men-a.png",
+          "sourceRect": [
+            195,
+            1081,
+            256,
+            367
+          ],
+          "scale": 0.9565217391304348,
+          "anchor": [
+            128.15759566510022,
+            366
+          ],
+          "placed": [
+            177,
+            120
+          ],
+          "pixelHash": "8df7febaf722a6754b949361aefadf6a7eba147a74b0caddd32a9ec49e107a9f",
+          "sourceFrameZeroBased": 6,
+          "rect": [
+            640,
+            520,
+            640,
+            520
+          ],
+          "durationMs": 90,
+          "phase": "draw"
+        },
+        {
+          "source": "men-a.png",
+          "sourceRect": [
+            705,
+            1101,
+            248,
+            347
+          ],
+          "scale": 0.9565217391304348,
+          "anchor": [
+            125.29170867676802,
+            346
+          ],
+          "placed": [
+            180,
+            139
+          ],
+          "pixelHash": "48c3bcc6517761edcf8835a9b9c8e751faf3a49adf72457203d732bb32be6525",
+          "sourceFrameZeroBased": 7,
+          "rect": [
+            1280,
+            520,
+            640,
+            520
+          ],
+          "durationMs": 120,
+          "phase": "draw"
+        },
+        {
+          "source": "vertical-bridge.png",
+          "sourceRect": [
+            153,
+            727,
+            305,
+            369
+          ],
+          "scale": 0.9850746268656716,
+          "anchor": [
+            153.68564935493163,
+            367
+          ],
+          "placed": [
+            149,
+            108
+          ],
+          "pixelHash": "6cbd7cd3c1026c670f52690fc8eb14646f7761d315cda05e2e16815f1b833db3",
+          "sourceFrameZeroBased": 4,
+          "rect": [
+            1920,
+            520,
+            640,
+            520
+          ],
+          "durationMs": 120,
+          "phase": "recovery"
+        },
+        {
+          "source": "vertical-bridge.png",
+          "sourceRect": [
+            673,
+            750,
+            300,
+            349
+          ],
+          "scale": 0.9850746268656716,
+          "anchor": [
+            153.44909706313888,
+            347
+          ],
+          "placed": [
+            149,
+            128
+          ],
+          "pixelHash": "33a3038dcbbd51611e6cca8ff08966dd92002ad61682b4d11f28ece97852df4b",
+          "sourceFrameZeroBased": 5,
+          "rect": [
+            2560,
+            520,
+            640,
+            520
+          ],
+          "durationMs": 120,
+          "phase": "recovery"
+        },
+        {
+          "source": "vertical-bridge.png",
+          "sourceRect": [
+            152,
+            1081,
+            290,
+            350
+          ],
+          "scale": 0.9850746268656716,
+          "anchor": [
+            151.8320298555898,
+            348
+          ],
+          "placed": [
+            150,
+            127
+          ],
+          "pixelHash": "68d1366c0255a8ab2274744e3d0a9c6cc4775ee2fa85dd8ba30f750499b270b6",
+          "sourceFrameZeroBased": 6,
+          "rect": [
+            0,
+            1040,
+            640,
+            520
+          ],
+          "durationMs": 120,
+          "phase": "recovery"
+        },
+        {
+          "source": "vertical-bridge.png",
+          "sourceRect": [
+            668,
+            1082,
+            302,
+            350
+          ],
+          "scale": 0.9850746268656716,
+          "anchor": [
+            156.77514748373304,
+            348
+          ],
+          "placed": [
+            146,
+            127
+          ],
+          "pixelHash": "0337f80715b85fc4f54edbe0d0cd79eb5b040c758be11c4b070c3167e8c4e8fb",
+          "sourceFrameZeroBased": 7,
+          "rect": [
+            640,
+            1040,
+            640,
+            520
+          ],
+          "durationMs": 120,
+          "phase": "recovery"
+        },
+        {
+          "source": "noto-a.png",
+          "sourceRect": [
+            177,
+            0,
+            281,
+            366
+          ],
+          "scale": 0.9269662921348315,
+          "anchor": [
+            134.3616690056058,
+            364
+          ],
+          "placed": [
+            175,
+            133
+          ],
+          "pixelHash": "4f9683ecc325e92194db8bd308f3c3b238fd58ac4f5c6af376db0d4eaaaec74f",
+          "sourceFrameZeroBased": 0,
+          "rect": [
+            1280,
+            1040,
+            640,
+            520
+          ],
+          "durationMs": 140,
+          "phase": "noto"
+        },
+        {
+          "source": "noto-guide-repair.png",
+          "sourceRect": [
+            669,
+            0,
+            396,
+            369
+          ],
+          "scale": 0.9269662921348315,
+          "anchor": [
+            139.60650015032653,
+            367
+          ],
+          "placed": [
+            171,
+            130
+          ],
+          "pixelHash": "385d334e0c64d4695d7117cbc74aaa6d3ca489b3f5386ae16b38e6981d3a39d0",
+          "sourceFrameZeroBased": 1,
+          "rect": [
+            1920,
+            1040,
+            640,
+            520
+          ],
+          "durationMs": 130,
+          "phase": "noto"
+        },
+        {
+          "source": "noto-guide-repair.png",
+          "sourceRect": [
+            93,
+            354,
+            369,
+            378
+          ],
+          "scale": 0.9269662921348315,
+          "anchor": [
+            216.60981345534358,
+            376
+          ],
+          "placed": [
+            99,
+            121
+          ],
+          "pixelHash": "9cafef0f34f4bd79cd78723bddfdae0cba91a7e9fd905029a81618980af5038c",
+          "sourceFrameZeroBased": 2,
+          "rect": [
+            2560,
+            1040,
+            640,
+            520
+          ],
+          "durationMs": 170,
+          "phase": "noto"
+        },
+        {
+          "source": "noto-guide-repair.png",
+          "sourceRect": [
+            604,
+            355,
+            361,
+            378
+          ],
+          "scale": 0.9269662921348315,
+          "anchor": [
+            217.66375046912742,
+            376
+          ],
+          "placed": [
+            98,
+            121
+          ],
+          "pixelHash": "e950cf72a13975fba43b2731b72e3dbacacf777acb25010aa7b1b6aea8264630",
+          "sourceFrameZeroBased": 3,
+          "rect": [
+            0,
+            1560,
+            640,
+            520
+          ],
+          "durationMs": 170,
+          "phase": "noto"
+        },
+        {
+          "source": "noto-a.png",
+          "sourceRect": [
+            121,
+            721,
+            340,
+            369
+          ],
+          "scale": 0.9269662921348315,
+          "anchor": [
+            201.9850438517062,
+            367
+          ],
+          "placed": [
+            113,
+            130
+          ],
+          "pixelHash": "52fd7e3bb450f85e457f28d47c62d6a7ccef5db59923ba5a1cd0edaf84165314",
+          "sourceFrameZeroBased": 4,
+          "rect": [
+            640,
+            1560,
+            640,
+            520
+          ],
+          "durationMs": 220,
+          "phase": "noto"
+        },
+        {
+          "source": "noto-a.png",
+          "sourceRect": [
+            679,
+            722,
+            278,
+            367
+          ],
+          "scale": 0.9269662921348315,
+          "anchor": [
+            143.07687381907687,
+            365
+          ],
+          "placed": [
+            167,
+            132
+          ],
+          "pixelHash": "ea3dca6d3709a0b85e1267d1d91e63224210e2a9645c754e75b7a989734a0cb8",
+          "sourceFrameZeroBased": 5,
+          "rect": [
+            1280,
+            1560,
+            640,
+            520
+          ],
+          "durationMs": 180,
+          "phase": "noto"
+        },
+        {
+          "source": "noto-a.png",
+          "sourceRect": [
+            190,
+            1080,
+            271,
+            361
+          ],
+          "scale": 0.9269662921348315,
+          "anchor": [
+            139.78727680214558,
+            359
+          ],
+          "placed": [
+            170,
+            137
+          ],
+          "pixelHash": "0d7a51dbbda403fed69b9d46483f3552d8c0a01418d6a57b760ab9744e381217",
+          "sourceFrameZeroBased": 6,
+          "rect": [
+            1920,
+            1560,
+            640,
+            520
+          ],
+          "durationMs": 200,
+          "phase": "noto"
+        },
+        {
+          "source": "noto-a.png",
+          "sourceRect": [
+            694,
+            1080,
+            248,
+            368
+          ],
+          "scale": 0.9269662921348315,
+          "anchor": [
+            121.71093060833176,
+            366
+          ],
+          "placed": [
+            187,
+            131
+          ],
+          "pixelHash": "abca5daf459d33b9c84e02d742874c4b27affcfa5519cbb1b0d48d1628803353",
+          "sourceFrameZeroBased": 7,
+          "rect": [
+            2560,
+            1560,
+            640,
+            520
+          ],
+          "durationMs": 260,
+          "phase": "noto"
+        }
+      ]
+    }
+  },
+  "sources": {
+    "do-motion-v3-clean.png": {
+      "sha256": "50500d8e1f9f17ba07232537bd0997f5bbdb06aa4c1daf1ee70d22c3f60f1e91",
+      "standingReferencePixels": 389
+    },
+    "do-bridge.png": {
+      "sha256": "90fb4a8ce01dd2c06caa98869269b9c01ca9cfe570302741b0ffa8a62e07718a",
+      "standingReferencePixels": 356
+    },
+    "neck-a.png": {
+      "sha256": "3fe616d5b48085cc2744b830f8bd91cf5e5383c8c5cd636880fc252a2880637b",
+      "standingReferencePixels": 358
+    },
+    "neck-b.png": {
+      "sha256": "2b06eeb9ce03b4be61487910e86b5c5c33fbfe60a985249fb8d35fd66ea3eeda",
+      "standingReferencePixels": 350
+    },
+    "kote-a.png": {
+      "sha256": "8b9bb46a12f62d7b7582ef68fe298e1b9f802a3ca3c3e3fe0703e89a1ff95241",
+      "standingReferencePixels": 341
+    },
+    "men-a.png": {
+      "sha256": "44e01c313940a0fa505ef3d9c142a09b6e308438065aca52f89a137150416cdc",
+      "standingReferencePixels": 345
+    },
+    "vertical-bridge.png": {
+      "sha256": "ecebd102718e133439d053eb4a8a976d25f09a9e3dc5dd01f1a8ef8ea28f0e19",
+      "standingReferencePixels": 335
+    },
+    "noto-a.png": {
+      "sha256": "25914b0188f539d3a065aaf49e0a27559ebf279055b2f12e6b0b6873a8655d61",
+      "standingReferencePixels": 356
+    },
+    "noto-guide-repair.png": {
+      "sha256": "bcace0410e312a8477e3c76136c6002e8824cbb9eee8ad74be9d11063994b42b",
+      "standingReferencePixels": 356
+    }
+  }
+}
