@@ -26,7 +26,7 @@ function frozenFiles(dir=OUT, prefix='') {
   }).sort((a,b)=>a.file.localeCompare(b.file));
 }
 const TOP = ['js', 'lib', 'audio', 'assets'];
-const PAGES = ['docs/STORY_CAMPAIGN_PREVIEW.html', 'docs/STORY_FIGHT_PREVIEW.html', 'docs/story_preview.js'];
+const PAGES = ['docs/STORY_CAMPAIGN_PREVIEW.html', 'docs/STORY_FIGHT_PREVIEW.html', 'docs/story_preview.js', 'docs/story_companions.css'];
 // The package carries chapters 1..SITE_THROUGH. Anyone can play 1..PUBLIC_THROUGH;
 // the password opens the rest (Hiro, 2026-10-14: chapter one free, "allow players
 // to play chapter 2-5 if they know password"). Raise either to open more; media
@@ -48,6 +48,14 @@ function shippedEnemies() {
     const actor = actors.get(e.kind + ':' + e.id); if (actor) out.add(actor);
   }
   return out;
+}
+
+// Ship only enabled, chapter-eligible companion sets. Draft pilots stay local.
+function shippedCompanions() {
+  const source=fs.readFileSync(path.join(ROOT,'js/expedition/story_companions.js'),'utf8');
+  if(/enabled\s*:\s*false/.test(source))return new Set();
+  return new Set([...source.matchAll(/^ ([a-z_]+):\{join:(\d+),/gm)]
+    .filter(m=>Number(m[2])<=SITE_THROUGH).map(m=>'companion_'+m[1]));
 }
 
 function chapterOneMedia() {
@@ -73,10 +81,12 @@ function chapterOneMedia() {
   const STILLS = { 1: ['death'], 2: ['bounty'], 4: ['dream_1'], 7: ['dream_2', 'valve_scene'], 10: ['letter', 'dream_3'], 12: ['reveal', 'frost'],
     14: ['altar', 'altar_amara', 'hiwot_sacrifice', 'hiwot_bound', 'ending_hero', 'ending_vengeance', 'ending_usurper', 'ending_mercy', 'ending_empty'] };
   for (const n of CHAPTERS) for (const id of STILLS[n] || []) { const st = d.art.stills[id]; if (st) keep.add(st.file); }
-  return { keep, media, enemies: shippedEnemies() };
+  return { keep, media, enemies: shippedEnemies(), companions: shippedCompanions() };
 }
 
 function skip(rel, media) {
+  const companion=(/^assets\/expedition\/(companion_[a-z_]+)\//.exec(rel)||[])[1];
+  if(companion)return !media.companions.has(companion);
   if (rel.startsWith('assets/expedition/story/media/')) return !media.keep.has(rel.slice('assets/expedition/story/media/'.length));
   const enemy = (/^assets\/expedition\/(?:adult\/)?(story_[a-z_]+?)(?:-fatal)?\//.exec(rel) || [])[1];
   if (enemy) return !media.enemies.has(enemy);

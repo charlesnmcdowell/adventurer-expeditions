@@ -1,0 +1,1802 @@
+[
+  {
+    "id": "q1_wake_why",
+    "choice": "q1_wake",
+    "option": "why",
+    "text": "Why tonight? What has happened?",
+    "spokenText": "Why tonight? What has happened?",
+    "current": true,
+    "audition": true
+  },
+  {
+    "id": "q1_wake_afraid",
+    "choice": "q1_wake",
+    "option": "afraid",
+    "text": "You have never been afraid of anything. You are afraid now.",
+    "spokenText": "You have never been afraid of anything. You are afraid now.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q1_wake_go",
+    "choice": "q1_wake",
+    "option": "go",
+    "text": "I will get my things.",
+    "spokenText": "I will get my things.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q1_wake_seen_nobody",
+    "choice": "q1_wake_seen",
+    "option": "nobody",
+    "text": "No one. The same faces as every day.",
+    "spokenText": "No one. The same faces as every day.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q1_wake_seen_pilgrim",
+    "choice": "q1_wake_seen",
+    "option": "pilgrim",
+    "text": "A pilgrim at the well asked my name. I told him.",
+    "spokenText": "A pilgrim at the well asked my name. I told him.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q1_wake_seen_why",
+    "choice": "q1_wake_seen",
+    "option": "why",
+    "text": "Why? Who would come here?",
+    "spokenText": "Why? Who would come here?",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q1_nib_who",
+    "choice": "q1_nib",
+    "option": "who",
+    "text": "Who paid you? Say the name and I let you walk.",
+    "spokenText": "Who paid you? Say the name and I let you walk.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q1_nib_richer",
+    "choice": "q1_nib",
+    "option": "richer",
+    "text": "Richer for whom?",
+    "spokenText": "Richer for whom?",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q1_nib_draw",
+    "choice": "q1_nib",
+    "option": "draw",
+    "text": "You have picked the wrong storehouse.",
+    "spokenText": "You have picked the wrong storehouse.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q1_nib_run",
+    "choice": "q1_nib",
+    "option": "run",
+    "text": "Go. Run, and I will not follow.",
+    "spokenText": "Go. Run, and I will not follow.",
+    "current": true,
+    "audition": true
+  },
+  {
+    "id": "q1_cobb_seal",
+    "choice": "q1_cobb",
+    "option": "seal",
+    "text": "No name. He said there is only ever a seal on a letter and a purse at an inn.",
+    "spokenText": "No name. He said there is only ever a seal on a letter and a purse at an inn.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q1_cobb_bounty",
+    "choice": "q1_cobb",
+    "option": "bounty",
+    "text": "Two hundred in gold for me, alive or otherwise. He wondered why.",
+    "spokenText": "Two hundred in gold for me, alive or otherwise. He wondered why.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q1_cobb_nothing",
+    "choice": "q1_cobb",
+    "option": "nothing",
+    "text": "I did not ask. There was no time.",
+    "spokenText": "I did not ask. There was no time.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q1_wren_kind",
+    "choice": "q1_wren",
+    "option": "kind",
+    "text": "Me. Tesfaye said no. We do what he told us â€” the Open Hand. Stay close to me.",
+    "spokenText": "Me. Father said no. We do what he told us — the Open Hand. Stay close to me.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q1_wren_cold",
+    "choice": "q1_wren",
+    "option": "cold",
+    "text": "Later. Keep your voice down; grief will not help us, and it will get us found.",
+    "spokenText": "Later. Keep your voice down; grief will not help us, and it will get us found.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q1_wren_dark",
+    "choice": "q1_wren",
+    "option": "dark",
+    "text": "He asked whether I knew what I am. I will find him, ask him what he meant, and take him apart.",
+    "spokenText": "He asked whether I knew what I am. I will find him, ask him what he meant, and take him apart.",
+    "current": true,
+    "audition": true
+  },
+  {
+    "id": "q2_pair_where_truth",
+    "choice": "q2_pair_where",
+    "option": "truth",
+    "text": "An inn called the Open Hand. Friends of my father's. He is dead.",
+    "spokenText": "An inn called the Open Hand. Friends of my father's. He is dead.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q2_pair_where_lie",
+    "choice": "q2_pair_where",
+    "option": "lie",
+    "text": "South. Family.",
+    "spokenText": "South. Family.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q2_pair_where_refuse",
+    "choice": "q2_pair_where",
+    "option": "refuse",
+    "text": "That is my business.",
+    "spokenText": "That is my business.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q2_pair_who",
+    "choice": "q2_pair",
+    "option": "who",
+    "text": "Who are you, really? Nobody walks this road for the pleasure of it.",
+    "spokenText": "Who are you, really? Nobody walks this road for the pleasure of it.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q2_pair_vess",
+    "choice": "q2_pair",
+    "option": "vess",
+    "text": "Your friend is laughing at nothing. Is he well?",
+    "spokenText": "Your friend is laughing at nothing. Is he well?",
+    "current": true,
+    "audition": true
+  },
+  {
+    "id": "q2_pair_yes",
+    "choice": "q2_pair",
+    "option": "yes",
+    "text": "Four is better than two. Walk with us.",
+    "spokenText": "Four is better than two. Walk with us.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q2_pair_no",
+    "choice": "q2_pair",
+    "option": "no",
+    "text": "We travel alone. Good road to you.",
+    "spokenText": "We travel alone. Good road to you.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q2_cassian_order",
+    "choice": "q2_cassian",
+    "option": "order",
+    "text": "The Dawning Flame. What is that?",
+    "spokenText": "The Dawning Flame. What is that?",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q2_cassian_join",
+    "choice": "q2_cassian",
+    "option": "join",
+    "text": "Then we clear them together, and you may tell your Order whatever you like.",
+    "spokenText": "Then we clear them together, and you may tell your Order whatever you like.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q2_cassian_tease",
+    "choice": "q2_cassian",
+    "option": "tease",
+    "text": "A knight who cannot manage wolves. What do they teach in that Order?",
+    "spokenText": "A knight who cannot manage wolves. What do they teach in that Order?",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q2_cassian_no",
+    "choice": "q2_cassian",
+    "option": "no",
+    "text": "We are in a hurry. Manage your own wolves.",
+    "spokenText": "We are in a hurry. Manage your own wolves.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q2_morwin_name",
+    "choice": "q2_morwin",
+    "option": "name",
+    "text": "Whose name is on that paper? Who is paying?",
+    "spokenText": "Whose name is on that paper? Who is paying?",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q2_morwin_how",
+    "choice": "q2_morwin",
+    "option": "how",
+    "text": "How did you know to wait here?",
+    "spokenText": "How did you know to wait here?",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q2_morwin_kill",
+    "choice": "q2_morwin",
+    "option": "kill",
+    "text": "You should have stayed home, Merle.",
+    "spokenText": "You should have stayed home.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q2_morwin_inn",
+    "choice": "q2_morwin",
+    "option": "inn",
+    "text": "Delphine! Beau! There is a man on your steps who means murder!",
+    "spokenText": "Help! There is a man on your steps who means murder!",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q2_selene_how_armour",
+    "choice": "q2_selene_how",
+    "option": "armour",
+    "text": "A man in black plate, taller than a man should be. He asked for me by name. Tesfaye said no.",
+    "spokenText": "A man in black plate, taller than a man should be. He asked for me by name. Father said no.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q2_selene_how_quick",
+    "choice": "q2_selene_how",
+    "option": "quick",
+    "text": "Quickly. He did not suffer.",
+    "spokenText": "Quickly. He did not suffer.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q2_selene_how_refuse",
+    "choice": "q2_selene_how",
+    "option": "refuse",
+    "text": "I cannot. Not tonight.",
+    "spokenText": "I cannot. Not tonight.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q2_selene_wardens",
+    "choice": "q2_selene",
+    "option": "wardens",
+    "text": "What are the Wardens? He never told me.",
+    "spokenText": "What are the Wardens? He never told me.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q2_selene_why",
+    "choice": "q2_selene",
+    "option": "why",
+    "text": "Why would a trading house pay two hundred in gold for a scholar's foundling?",
+    "spokenText": "Why would a trading house pay two hundred in gold for a scholar's foundling?",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q2_selene_trust",
+    "choice": "q2_selene",
+    "option": "trust",
+    "text": "He trusted you. So will I. Tell me what he would have done.",
+    "spokenText": "He trusted you. So will I. Tell me what he would have done.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q2_selene_alone",
+    "choice": "q2_selene",
+    "option": "alone",
+    "text": "I did not come for bread. Tell me who killed him and I will go alone.",
+    "spokenText": "I did not come for bread. Tell me who killed him and I will go alone.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q3_ithrel_seal",
+    "choice": "q3_ithrel",
+    "option": "seal",
+    "text": "Gorruk. Does he use a seal? An iron hand in red wax?",
+    "spokenText": "This man. Does he use a seal? An iron hand in red wax?",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q3_ithrel_wife",
+    "choice": "q3_ithrel",
+    "option": "wife",
+    "text": "Your wife. I am sorry. What was her name?",
+    "spokenText": "Your wife. I am sorry. What was her name?",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q3_ithrel_yes",
+    "choice": "q3_ithrel",
+    "option": "yes",
+    "text": "Walk with us. When we find him, he is yours.",
+    "spokenText": "Walk with us. When we find him, he is yours.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q3_ithrel_no",
+    "choice": "q3_ithrel",
+    "option": "no",
+    "text": "I have enough grief in this company. I do not need yours.",
+    "spokenText": "I have enough grief in this company. I do not need yours.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q3_lessa_why",
+    "choice": "q3_lessa",
+    "option": "why",
+    "text": "Why do you do this work?",
+    "spokenText": "Why do you do this work?",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q3_lessa_fight",
+    "choice": "q3_lessa",
+    "option": "fight",
+    "text": "Then let it be personal.",
+    "spokenText": "Then let it be personal.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q3_bramm_why",
+    "choice": "q3_bramm",
+    "option": "why",
+    "text": "Why would a Crimson Wizard care what happens to one witch?",
+    "spokenText": "Why would a Crimson Wizard care what happens to one witch?",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q3_bramm_rescue",
+    "choice": "q3_bramm",
+    "option": "rescue",
+    "text": "We are freeing her. BahadÄ±r, with me.",
+    "spokenText": "We are freeing her. With me.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q3_bramm_coin",
+    "choice": "q3_bramm",
+    "option": "coin",
+    "text": "A hundred gold, and your staff until the Gate. Done.",
+    "spokenText": "A hundred gold, and your staff until the Gate. Done.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q3_bramm_both",
+    "choice": "q3_bramm",
+    "option": "both",
+    "text": "The witch lives, and the wizard walks with us and holds his tongue about it.",
+    "spokenText": "The witch lives, and the wizard walks with us and holds his tongue about it.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q3_ysolde_blood",
+    "choice": "q3_ysolde",
+    "option": "blood",
+    "text": "The warleader's throat. I gave it that.",
+    "spokenText": "The warleader's throat. I gave it that.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q3_ysolde_nothing",
+    "choice": "q3_ysolde",
+    "option": "nothing",
+    "text": "I felt nothing. I fought, and it ended.",
+    "spokenText": "I felt nothing. I fought, and it ended.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q3_ysolde_what",
+    "choice": "q3_ysolde",
+    "option": "what",
+    "text": "You tell me. What is it? Say it plainly.",
+    "spokenText": "You tell me. What is it? Say it plainly.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q3_ysolde_quiet",
+    "choice": "q3_ysolde",
+    "option": "quiet",
+    "text": "Whatever you felt, keep it to yourself in front of the others.",
+    "spokenText": "Whatever you felt, keep it to yourself in front of the others.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q3_tollan_crews",
+    "choice": "q3_tollan",
+    "option": "crews",
+    "text": "What did your crews see, before they stopped going down?",
+    "spokenText": "What did your crews see, before they stopped going down?",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q3_tollan_iron",
+    "choice": "q3_tollan",
+    "option": "iron",
+    "text": "Who profits when your iron goes bad?",
+    "spokenText": "Who profits when your iron goes bad?",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q3_tollan_fee",
+    "choice": "q3_tollan",
+    "option": "fee",
+    "text": "We will go down. Two hundred in gold, and the town's thanks.",
+    "spokenText": "We will go down. Two hundred in gold, and the town's thanks.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q3_tollan_yes",
+    "choice": "q3_tollan",
+    "option": "yes",
+    "text": "We will go down. Pay what the town can spare.",
+    "spokenText": "We will go down. Pay what the town can spare.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q4_grukhar_who",
+    "choice": "q4_grukhar",
+    "option": "who",
+    "text": "Who lied to you? Say the names.",
+    "spokenText": "Who lied to you? Say the names.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q4_grukhar_why",
+    "choice": "q4_grukhar",
+    "option": "why",
+    "text": "Why foul the ore at all? Who profits from a town starving?",
+    "spokenText": "Why foul the ore at all? Who profits from a town starving?",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q4_grukhar_walk",
+    "choice": "q4_grukhar",
+    "option": "walk",
+    "text": "Leave the letters on the altar and walk. Now, before I change my mind.",
+    "spokenText": "Leave the letters on the altar and walk. Now, before I change my mind.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q4_grukhar_kill",
+    "choice": "q4_grukhar",
+    "option": "kill",
+    "text": "I will take the letters off your body.",
+    "spokenText": "I will take the letters off your body.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q4_dream_ask",
+    "choice": "q4_dream",
+    "option": "ask",
+    "text": "You knew what I was when you brought me to Lanternhold?",
+    "spokenText": "You knew what I was when you brought me to Lanternhold?",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q4_dream_reject",
+    "choice": "q4_dream",
+    "option": "reject",
+    "text": "I do not want whatever this is. Starve it.",
+    "spokenText": "I do not want whatever this is. Starve it.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q4_dream_embrace",
+    "choice": "q4_dream",
+    "option": "embrace",
+    "text": "Show me the throne.",
+    "spokenText": "Show me the throne.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q5_torvald_test_word",
+    "choice": "q5_torvald_test",
+    "option": "word",
+    "text": "\"Give the child to me and you may keep your life and your library.\"",
+    "spokenText": "\"Give the child to me and you may keep your life and your library.\"",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q5_torvald_test_forget",
+    "choice": "q5_torvald_test",
+    "option": "forget",
+    "text": "I did not hear it. I was running, as I was told.",
+    "spokenText": "I did not hear it. I was running, as I was told.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q5_torvald_test_refuse",
+    "choice": "q5_torvald_test",
+    "option": "refuse",
+    "text": "Ask him yourself, old man. I am going to.",
+    "spokenText": "Ask him yourself, old man. I am going to.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q5_torvald_why",
+    "choice": "q5_torvald",
+    "option": "why",
+    "text": "Why did Tesfaye die? You know. Say it.",
+    "spokenText": "Why did my father die? You know. Say it.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q5_torvald_armour",
+    "choice": "q5_torvald",
+    "option": "armour",
+    "text": "The man in black armour. Who is he?",
+    "spokenText": "The man in black armour. Who is he?",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q5_torvald_help",
+    "choice": "q5_torvald",
+    "option": "help",
+    "text": "Then help. Not riddles â€” help.",
+    "spokenText": "Then help. Not riddles â€” help.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q5_torvald_go",
+    "choice": "q5_torvald",
+    "option": "go",
+    "text": "North, then. Stay out of my way, old man.",
+    "spokenText": "North, then. Stay out of my way, old man.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q5_verlan_letters",
+    "choice": "q5_verlan",
+    "option": "letters",
+    "text": "A priest under Dunmere had your letters. Your name, your inn, your hand.",
+    "spokenText": "A priest under Dunmere had your letters. Your name, your inn, your hand.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q5_verlan_beat",
+    "choice": "q5_verlan",
+    "option": "beat",
+    "text": "Wrong answer.",
+    "spokenText": "Wrong answer.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q5_verlan_pay",
+    "choice": "q5_verlan",
+    "option": "pay",
+    "text": "Fifty in gold for the camp's location. Then you leave this town tonight.",
+    "spokenText": "Fifty in gold for the camp's location. Then you leave this town tonight.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q5_verlan_pocket",
+    "choice": "q5_verlan",
+    "option": "pocket",
+    "text": "Hiwot. His coat.",
+    "spokenText": "Check his coat.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q5_ilvara_why",
+    "choice": "q5_ilvara",
+    "option": "why",
+    "text": "What are you fleeing?",
+    "spokenText": "What are you fleeing?",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q5_ilvara_defend",
+    "choice": "q5_ilvara",
+    "option": "defend",
+    "text": "Let her go. She is under my protection.",
+    "spokenText": "Let her go. She is under my protection.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q5_ilvara_walk",
+    "choice": "q5_ilvara",
+    "option": "walk",
+    "text": "This is not my fight. We keep moving.",
+    "spokenText": "This is not my fight. We keep moving.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q5_ilvara_sell",
+    "choice": "q5_ilvara",
+    "option": "sell",
+    "text": "There is a bounty? Then I will take her in myself.",
+    "spokenText": "There is a bounty? Then I will take her in myself.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q5_camp_recruits",
+    "choice": "q5_camp",
+    "option": "recruits",
+    "text": "Get us invited.",
+    "spokenText": "Get us invited.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q5_camp_quiet",
+    "choice": "q5_camp",
+    "option": "quiet",
+    "text": "Hiwot. The back gate.",
+    "spokenText": "Take the back gate.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q5_camp_storm",
+    "choice": "q5_camp",
+    "option": "storm",
+    "text": "Loud. The front gate, now.",
+    "spokenText": "Loud. The front gate, now.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q5_ithrel_shot_shoot",
+    "choice": "q5_ithrel_shot",
+    "option": "shoot",
+    "text": "Yes. Take it.",
+    "spokenText": "Yes. Take it.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q5_ithrel_shot_hold",
+    "choice": "q5_ithrel_shot",
+    "option": "hold",
+    "text": "Hold. I want him alive to answer questions.",
+    "spokenText": "Hold. I want him alive to answer questions.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q5_rescue_free_first",
+    "choice": "q5_rescue",
+    "option": "free_first",
+    "text": "Break Calâ€™s chains first. Then take the chest.",
+    "spokenText": "Break his chains first. Then take the chest.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q5_rescue_letters_first",
+    "choice": "q5_rescue",
+    "option": "letters_first",
+    "text": "Secure the chest first. Then break Calâ€™s chains.",
+    "spokenText": "Secure the chest first. Then break his chains.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q6_faelen_wyvern",
+    "choice": "q6_faelen",
+    "option": "wyvern",
+    "text": "Who pays a bounty on a wyvern?",
+    "spokenText": "Who pays a bounty on a wyvern?",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q6_faelen_price",
+    "choice": "q6_faelen",
+    "option": "price",
+    "text": "Wardens cut for nothing. I am not a Warden. What is your debt worth?",
+    "spokenText": "Wardens cut for nothing. I am not a Warden. What is your debt worth?",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q6_faelen_cut",
+    "choice": "q6_faelen",
+    "option": "cut",
+    "text": "Hold still. Iâ€™ll cut you free. You can ride with us.",
+    "spokenText": "Hold still. Iâ€™ll cut you free. You can ride with us.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q6_faelen_leave",
+    "choice": "q6_faelen",
+    "option": "leave",
+    "text": "Spiders have to eat too.",
+    "spokenText": "Spiders have to eat too.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q6_nettle_ask",
+    "choice": "q6_nettle",
+    "option": "ask",
+    "text": "What has been done to this wood?",
+    "spokenText": "What has been done to this wood?",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q6_nettle_talk",
+    "choice": "q6_nettle",
+    "option": "talk",
+    "text": "We are here for the men who poison your river with their mine. Your enemy is ours.",
+    "spokenText": "We are here for the men who poison your river with their mine. Your enemy is ours.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q6_nettle_fight",
+    "choice": "q6_nettle",
+    "option": "fight",
+    "text": "Move, or be moved.",
+    "spokenText": "Move, or be moved.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q6_selene_fire_letters",
+    "choice": "q6_selene_fire",
+    "option": "letters",
+    "text": "What did he write?",
+    "spokenText": "What did he write?",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q6_selene_fire_warm",
+    "choice": "q6_selene_fire",
+    "option": "warm",
+    "text": "He wrote to me about you, too. Not twenty letters. But enough.",
+    "spokenText": "He wrote to me about you, too. Not twenty letters. But enough.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q6_selene_fire_deflect",
+    "choice": "q6_selene_fire",
+    "option": "deflect",
+    "text": "You should sleep. It is a long walk to the mine.",
+    "spokenText": "You should sleep. It is a long walk to the mine.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q6_selene_fire_dorran",
+    "choice": "q6_selene_fire",
+    "option": "dorran",
+    "text": "Beau is a fortunate man.",
+    "spokenText": "Your husband is a fortunate man.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q7_dorran_with",
+    "choice": "q7_dorran",
+    "option": "with",
+    "text": "We are with you. Everyone comes out.",
+    "spokenText": "We are with you. Everyone comes out.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q7_dorran_mission",
+    "choice": "q7_dorran",
+    "option": "mission",
+    "text": "The mage first. Then the slaves, if there is time.",
+    "spokenText": "The mage first. Then the slaves, if there is time.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q7_durnik_paper",
+    "choice": "q7_durnik",
+    "option": "paper",
+    "text": "Paper and knives? How does a trading house take a dwarven mine?",
+    "spokenText": "Paper and knives? How does a trading house take a dwarven mine?",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q7_durnik_free",
+    "choice": "q7_durnik",
+    "option": "free",
+    "text": "The old ones are dead. Get up; you are with us.",
+    "spokenText": "The old ones are dead. Get up; you are with us.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q7_durnik_leave",
+    "choice": "q7_durnik",
+    "option": "leave",
+    "text": "Stay where you are. We will come back for you.",
+    "spokenText": "Stay where you are. We will come back for you.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q7_malvane_who",
+    "choice": "q7_malvane",
+    "option": "who",
+    "text": "Who do you answer to? Say the name and I may let you keep your ledgers.",
+    "spokenText": "Who do you answer to? Say the name and I may let you keep your ledgers.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q7_malvane_fight",
+    "choice": "q7_malvane",
+    "option": "fight",
+    "text": "Enough. Weâ€™re freeing the prisoners.",
+    "spokenText": "Enough. Weâ€™re freeing the prisoners.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q7_flood_now",
+    "choice": "q7_flood",
+    "option": "now",
+    "text": "Turn the wheel. Now.",
+    "spokenText": "Turn the wheel. Now.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q7_flood_wait",
+    "choice": "q7_flood",
+    "option": "wait",
+    "text": "No one touches that wheel until Beau is up. Hold this room.",
+    "spokenText": "No one touches that wheel until our friend is up. Hold this room.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q7_vess_papers_who",
+    "choice": "q7_vess_papers",
+    "option": "who",
+    "text": "Who are the people you answer to?",
+    "spokenText": "Who are the people you answer to?",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q7_vess_papers_give",
+    "choice": "q7_vess_papers",
+    "option": "give",
+    "text": "Copy them tonight. The originals go to the city.",
+    "spokenText": "Copy them tonight. The originals go to the city.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q7_vess_papers_refuse",
+    "choice": "q7_vess_papers",
+    "option": "refuse",
+    "text": "No. And if either of you touches them, you leave this company.",
+    "spokenText": "No. And if either of you touches them, you leave this company.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q7_dream_others",
+    "choice": "q7_dream",
+    "option": "others",
+    "text": "Others. How many? Who?",
+    "spokenText": "Others. How many? Who?",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q7_dream_reject",
+    "choice": "q7_dream",
+    "option": "reject",
+    "text": "I will stop him. I will not claim Morrak's throne.",
+    "spokenText": "I will stop him. I will not claim the murder god’s throne.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q7_dream_embrace",
+    "choice": "q7_dream",
+    "option": "embrace",
+    "text": "If there are others, I had better be the strongest.",
+    "spokenText": "If there are others, I had better be the strongest.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q8_span_count_nineteen",
+    "choice": "q8_span_count",
+    "option": "nineteen",
+    "text": "Nineteen. I counted them out.",
+    "spokenText": "Nineteen. I counted them out.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q8_span_count_many",
+    "choice": "q8_span_count",
+    "option": "many",
+    "text": "Cages of them. I did not count.",
+    "spokenText": "Cages of them. I did not count.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q8_span_count_none",
+    "choice": "q8_span_count",
+    "option": "none",
+    "text": "That is between me and the Duke.",
+    "spokenText": "That is between me and the Duke.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q8_halloran_why",
+    "choice": "q8_halloran",
+    "option": "why",
+    "text": "Why does the Duke want me? He does not know me.",
+    "spokenText": "Why does the Duke want me? He does not know me.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q8_halloran_yes",
+    "choice": "q8_halloran",
+    "option": "yes",
+    "text": "Consider it done.",
+    "spokenText": "Consider it done.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q8_halloran_pay",
+    "choice": "q8_halloran",
+    "option": "pay",
+    "text": "The Gauntlet pays for this, I assume.",
+    "spokenText": "The Gauntlet pays for this, I assume.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q8_door_faelen",
+    "choice": "q8_door",
+    "option": "faelen",
+    "text": "Kaito. Talk.",
+    "spokenText": "Talk to him.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q8_door_wren_ward",
+    "choice": "q8_door",
+    "option": "wren_ward",
+    "text": "Hiwot. Quietly.",
+    "spokenText": "Quietly.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q8_door_fennick",
+    "choice": "q8_door",
+    "option": "fennick",
+    "text": "Winston. Pay him.",
+    "spokenText": "Pay him.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q8_door_force",
+    "choice": "q8_door",
+    "option": "force",
+    "text": "We go through him.",
+    "spokenText": "We go through him.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q8_duke_seen_nobody",
+    "choice": "q8_duke_seen",
+    "option": "nobody",
+    "text": "My company, and now you.",
+    "spokenText": "My company, and now you.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q8_duke_seen_hand",
+    "choice": "q8_duke_seen",
+    "option": "hand",
+    "text": "The Umbral Hand has copies. I allowed it.",
+    "spokenText": "The Umbral Hand has copies. I allowed it.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q8_duke_seen_wardens",
+    "choice": "q8_duke_seen",
+    "option": "wardens",
+    "text": "Wardens. Delphine of the Open Hand read them first.",
+    "spokenText": "Wardens. Our friend from the Open Hand read them first.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q8_halvard_city",
+    "choice": "q8_halvard",
+    "option": "city",
+    "text": "Then we will get them. For the city.",
+    "spokenText": "Then we will get them. For the city.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q8_halvard_pay",
+    "choice": "q8_halvard",
+    "option": "pay",
+    "text": "For the city, and for a price.",
+    "spokenText": "For the city, and for a price.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q8_halvard_blood",
+    "choice": "q8_halvard",
+    "option": "blood",
+    "text": "The Consortium has been trying to kill me since Lanternhold. Why me, Duke?",
+    "spokenText": "The Consortium has been trying to kill me since Lanternhold. Why me, Duke?",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q9_lobby_talk",
+    "choice": "q9_lobby",
+    "option": "talk",
+    "text": "We are the company from the south. Olamide sent for us before the mine flooded.",
+    "spokenText": "We are the company from the south. Your master sent for us before the mine flooded.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q9_lobby_fight",
+    "choice": "q9_lobby",
+    "option": "fight",
+    "text": "Guards first. The clerk if he runs.",
+    "spokenText": "Guards first. The clerk if he runs.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q9_lobby_wren_ward",
+    "choice": "q9_lobby",
+    "option": "wren_ward",
+    "text": "Hiwot, go and see what is on that list.",
+    "spokenText": "Go and see what is on that list.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q9_floor_offer_library",
+    "choice": "q9_floor_offer",
+    "option": "library",
+    "text": "His life and his library, in exchange for me.",
+    "spokenText": "His life and his library, in exchange for me.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q9_floor_offer_nothing",
+    "choice": "q9_floor_offer",
+    "option": "nothing",
+    "text": "Nothing. He simply took.",
+    "spokenText": "Nothing. He simply took.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q9_floor_offer_price",
+    "choice": "q9_floor_offer",
+    "option": "price",
+    "text": "Tell me what you are selling first, and I will decide what it costs.",
+    "spokenText": "Tell me what you are selling first, and I will decide what it costs.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q9_lysandra_kolade",
+    "choice": "q9_lysandra",
+    "option": "kolade",
+    "text": "Kolade Adeyinka. Who is he to this city? Say it as if I had never heard the name.",
+    "spokenText": "Who is he to this city? Say it as if I had never heard his name.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q9_lysandra_deal",
+    "choice": "q9_lysandra",
+    "option": "deal",
+    "text": "Talk. Quickly.",
+    "spokenText": "Talk. Quickly.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q9_lysandra_arrest",
+    "choice": "q9_lysandra",
+    "option": "arrest",
+    "text": "You will talk to Duke Adebayo. In chains.",
+    "spokenText": "You will talk to the Duke. In chains.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q9_lysandra_kill",
+    "choice": "q9_lysandra",
+    "option": "kill",
+    "text": "You share his bed. You share his end.",
+    "spokenText": "You share his bed. You share his end.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q10_sarn_take",
+    "choice": "q10_sarn",
+    "option": "take",
+    "text": "If it was Tesfaye's, I want it back.",
+    "spokenText": "If it was my father’s, I want it back.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q10_sarn_refuse",
+    "choice": "q10_sarn",
+    "option": "refuse",
+    "text": "Keep it. I have not decided whether to trust you.",
+    "spokenText": "Keep it. I have not decided whether to trust you.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q10_sarn_threat",
+    "choice": "q10_sarn",
+    "option": "threat",
+    "text": "If this is a trick, I will find you.",
+    "spokenText": "If this is a trick, I will find you.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q10_gate_where_road",
+    "choice": "q10_gate_where",
+    "option": "road",
+    "text": "The Griffon Road, the night we left. He stood between me and the man who killed him.",
+    "spokenText": "The Griffon Road, the night we left. He stood between me and the man who killed him.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q10_gate_where_refuse",
+    "choice": "q10_gate_where",
+    "option": "refuse",
+    "text": "Write \"on the road.\" It is all you need.",
+    "spokenText": "Write \"on the road.\" It is all you need.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q10_summit_kill",
+    "choice": "q10_summit",
+    "option": "kill",
+    "text": "You paid for the mines and the bandits. You will not leave this room alive.",
+    "spokenText": "You paid for the mines and the bandits. You will not leave this room alive.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q10_summit_talk",
+    "choice": "q10_summit",
+    "option": "talk",
+    "text": "I will not kill you. Tell me what your son has been doing.",
+    "spokenText": "I will not kill you. Tell me what your son has been doing.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q10_summit_arrest",
+    "choice": "q10_summit",
+    "option": "arrest",
+    "text": "You will answer to Adebayo. All three of you. Nobody dies in a library.",
+    "spokenText": "You will answer to the Duke. All three of you. Nobody dies in a library.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q10_letter_end_proud",
+    "choice": "q10_letter_end",
+    "option": "proud",
+    "text": "That he had been proud of me every day since he carried me through the gate.",
+    "spokenText": "That he had been proud of me every day since he carried me through the gate.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q10_letter_end_run",
+    "choice": "q10_letter_end",
+    "option": "run",
+    "text": "Only \"run.\" And two names.",
+    "spokenText": "Only \"run.\" And two names.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q10_letter_end_nothing",
+    "choice": "q10_letter_end",
+    "option": "nothing",
+    "text": "I did not hear. I was doing as I was told.",
+    "spokenText": "I did not hear. I was doing as I was told.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q10_letter_grief",
+    "choice": "q10_letter",
+    "option": "grief",
+    "text": "He raised a monster and loved it anyway.",
+    "spokenText": "He raised a monster and loved it anyway.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q10_letter_anger",
+    "choice": "q10_letter",
+    "option": "anger",
+    "text": "Twenty years and he never said a word. He should have told me.",
+    "spokenText": "Twenty years and he never said a word. He should have told me.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q10_letter_hunger",
+    "choice": "q10_letter",
+    "option": "hunger",
+    "text": "A throne. And a brother sitting in my seat.",
+    "spokenText": "A throne. And a brother sitting in my seat.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q10_double_strike",
+    "choice": "q10_double",
+    "option": "strike",
+    "text": "Wrong voice. Strike first.",
+    "spokenText": "Wrong voice. Strike first.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q10_double_strike_alone",
+    "choice": "q10_double",
+    "option": "strike_alone",
+    "text": "Wrong voice. Strike first.",
+    "spokenText": "Wrong voice. Strike first.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q10_double_question",
+    "choice": "q10_double",
+    "option": "question",
+    "text": "What did I steal from the brothers' kitchen when I was nine?",
+    "spokenText": "What did I steal from the brothers' kitchen when I was nine?",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q10_double_listen",
+    "choice": "q10_double",
+    "option": "listen",
+    "text": "...Come here, then. Slowly.",
+    "spokenText": "...Come here, then. Slowly.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q10_dream_reject",
+    "choice": "q10_dream",
+    "option": "reject",
+    "text": "Starve it. I will stop him as myself.",
+    "spokenText": "Starve it. I will stop him as myself.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q10_dream_embrace",
+    "choice": "q10_dream",
+    "option": "embrace",
+    "text": "If it takes a god to stop a god, then feed it.",
+    "spokenText": "If it takes a god to stop a god, then feed it.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q11_allegiance_gauntlet",
+    "choice": "q11_allegiance",
+    "option": "gauntlet",
+    "text": "We find Adebayo and we save him. We do this lawfully.",
+    "spokenText": "We find the Duke and we save him. We do this lawfully.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q11_allegiance_consortium",
+    "choice": "q11_allegiance",
+    "option": "consortium",
+    "text": "Folake. Kolade's head for her Consortium. I can live with that.",
+    "spokenText": "The Consortium. His head for her trading house. I can live with that.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q11_allegiance_thieves",
+    "choice": "q11_allegiance",
+    "option": "thieves",
+    "text": "The thieves. A debt is cheaper than a Duke.",
+    "spokenText": "The thieves. A debt is cheaper than a Duke.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q11_amara_loved_yes",
+    "choice": "q11_amara_loved",
+    "option": "yes",
+    "text": "Yes.",
+    "spokenText": "Yes.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q11_amara_loved_tesfaye",
+    "choice": "q11_amara_loved",
+    "option": "tesfaye",
+    "text": "I loved a man who lied to me for twenty years. Does that count?",
+    "spokenText": "I loved a man who lied to me for twenty years. Does that count?",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q11_amara_loved_no",
+    "choice": "q11_amara_loved",
+    "option": "no",
+    "text": "No. And I do not intend to start.",
+    "spokenText": "No. And I do not intend to start.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q11_amara_how",
+    "choice": "q11_amara",
+    "option": "how",
+    "text": "How does one stop a man like that without killing him?",
+    "spokenText": "How does one stop a man like that without killing him?",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q11_amara_promise",
+    "choice": "q11_amara",
+    "option": "promise",
+    "text": "If it can be done without killing him, I will do it that way. You have my word.",
+    "spokenText": "If it can be done without killing him, I will do it that way. You have my word.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q11_amara_refuse",
+    "choice": "q11_amara",
+    "option": "refuse",
+    "text": "He killed Tesfaye. He dies.",
+    "spokenText": "He killed my father. He dies.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q11_amara_lie",
+    "choice": "q11_amara",
+    "option": "lie",
+    "text": "Of course. You have my word.",
+    "spokenText": "Of course. You have my word.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q12_dukes_orlan",
+    "choice": "q12_dukes",
+    "option": "orlan",
+    "text": "Olumide first. He is the one with the sword.",
+    "spokenText": "The man first. He is the one with the sword.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q12_dukes_mira",
+    "choice": "q12_dukes",
+    "option": "mira",
+    "text": "Folasade first. She is the one who will believe us.",
+    "spokenText": "The woman first. She is the one who will believe us.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q12_dukes_korvath",
+    "choice": "q12_dukes",
+    "option": "korvath",
+    "text": "Neither. Kolade. Now, while he is on the dais.",
+    "spokenText": "Neither. Our enemy. Now, while he is on the dais.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q12_face_evidence",
+    "choice": "q12_face",
+    "option": "evidence",
+    "text": "Olamide's ledgers. Adigun's confession. Folake's letters. Every duke here can read.",
+    "spokenText": "The ledgers. His father’s confession. The letters. Every duke here can read.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q12_face_aldric",
+    "choice": "q12_face",
+    "option": "aldric",
+    "text": "You killed the only father either of us ever had.",
+    "spokenText": "You killed the only father either of us ever had.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q12_face_throne",
+    "choice": "q12_face",
+    "option": "throne",
+    "text": "You are sitting in my seat, brother.",
+    "spokenText": "You are sitting in my seat, brother.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q13_maze_follow",
+    "choice": "q13_maze",
+    "option": "follow",
+    "text": "Lead.",
+    "spokenText": "Lead.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q13_maze_cut",
+    "choice": "q13_maze",
+    "option": "cut",
+    "text": "No time. Straight through.",
+    "spokenText": "No time. Straight through.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q13_amara_gate_fight",
+    "choice": "q13_amara_gate",
+    "option": "fight",
+    "text": "Then draw.",
+    "spokenText": "Then draw.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q13_amara_gate_pass",
+    "choice": "q13_amara_gate",
+    "option": "pass",
+    "text": "Stand aside. I keep my promises.",
+    "spokenText": "Stand aside. I keep my promises.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q13_amara_gate_join",
+    "choice": "q13_amara_gate",
+    "option": "join",
+    "text": "Come with us. Help me stop him the way you want him stopped.",
+    "spokenText": "Come with us. Help me stop him the way you want him stopped.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q13_amara_gate_lie",
+    "choice": "q13_amara_gate",
+    "option": "lie",
+    "text": "Stand aside. He will live.",
+    "spokenText": "Stand aside. He will live.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q14_final_first_anger",
+    "choice": "q14_final_first",
+    "option": "anger",
+    "text": "You murdered Tesfaye, you bastard. I came here to kill you.",
+    "spokenText": "You murdered my father, you bastard. I came here to kill you.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q14_final_first_justice",
+    "choice": "q14_final_first",
+    "option": "justice",
+    "text": "You have killed enough people. Surrender.",
+    "spokenText": "You have killed enough people. Surrender.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q14_final_first_truth",
+    "choice": "q14_final_first",
+    "option": "truth",
+    "text": "Before this ends, you are going to tell me the truth.",
+    "spokenText": "Before this ends, you are going to tell me the truth.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q14_final_history_reject",
+    "choice": "q14_final_history",
+    "option": "reject",
+    "text": "You ordered these murders. Fighting your men does not make me your accomplice.",
+    "spokenText": "You ordered these murders. Fighting your men does not make me your accomplice.",
+    "current": true,
+    "audition": true
+  },
+  {
+    "id": "q14_final_history_regret",
+    "choice": "q14_final_history",
+    "option": "regret",
+    "text": "I made choices I regret. I am still going to stop you.",
+    "spokenText": "I made choices I regret. I am still going to stop you.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q14_final_history_mercy",
+    "choice": "q14_final_history",
+    "option": "mercy",
+    "text": "I spared people you would have killed. You know that.",
+    "spokenText": "I spared people you would have killed. You know that.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q14_final_questions_lineage",
+    "choice": "q14_final_questions",
+    "option": "lineage",
+    "text": "How did you learn who your father was?",
+    "spokenText": "How did you learn who your father was?",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q14_final_questions_rescue",
+    "choice": "q14_final_questions",
+    "option": "rescue",
+    "text": "What happened when Tesfaye found us?",
+    "spokenText": "What happened when he found us?",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q14_final_questions_plans",
+    "choice": "q14_final_questions",
+    "option": "plans",
+    "text": "Tell me about Adigun and your plans for the throne.",
+    "spokenText": "Tell me about your father and your plans for the throne.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q14_final_questions_enough",
+    "choice": "q14_final_questions",
+    "option": "enough",
+    "text": "Enough. I will stop you.",
+    "spokenText": "Enough. I will stop you.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q14_final_childhood_blame",
+    "choice": "q14_final_childhood",
+    "option": "blame",
+    "text": "Tesfaye believed you were dead. He did not choose to abandon you.",
+    "spokenText": "He believed you were dead. He did not choose to abandon you.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q14_final_childhood_back",
+    "choice": "q14_final_childhood",
+    "option": "back",
+    "text": "There is something else I want to know.",
+    "spokenText": "There is something else I want to know.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q14_final_plans_father",
+    "choice": "q14_final_plans",
+    "option": "father",
+    "text": "What did Adigun know about your plans?",
+    "spokenText": "What did your father know about your plans?",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q14_final_plans_trap",
+    "choice": "q14_final_plans",
+    "option": "trap",
+    "text": "You arranged Adigunâ€™s death and my arrest.",
+    "spokenText": "You arranged your father’s death and my arrest.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q14_final_plans_rite",
+    "choice": "q14_final_plans",
+    "option": "rite",
+    "text": "You have lost the war. How can you still ascend?",
+    "spokenText": "You have lost the war. How can you still ascend?",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q14_final_plans_back",
+    "choice": "q14_final_plans",
+    "option": "back",
+    "text": "There is something else I want to know.",
+    "spokenText": "There is something else I want to know.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q14_final_last_tesfaye",
+    "choice": "q14_final_last",
+    "option": "tesfaye",
+    "text": "Tesfaye should be here. You took him from me. Draw your weapon.",
+    "spokenText": "My father should be here. You took him from me. Draw your weapon.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q14_final_last_justice",
+    "choice": "q14_final_last",
+    "option": "justice",
+    "text": "I will stop you. Surrender while you still can.",
+    "spokenText": "I will stop you. Surrender while you still can.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q14_final_last_power",
+    "choice": "q14_final_last",
+    "option": "power",
+    "text": "I know what taking your power would mean. I want it anyway.",
+    "spokenText": "I know what taking your power would mean. I want it anyway.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q14_final_resolution_restore",
+    "choice": "q14_final_resolution",
+    "option": "restore",
+    "text": "Come home, Hiwot. I give up the divine power.",
+    "spokenText": "Come home, sister. I give up the divine power.",
+    "current": true,
+    "audition": false
+  },
+  {
+    "id": "q14_final_resolution_ascend",
+    "choice": "q14_final_resolution",
+    "option": "ascend",
+    "text": "I will keep the power and claim the throne. [Hiwot cannot return.]",
+    "spokenText": "I will keep the power and claim the throne.",
+    "current": true,
+    "audition": false
+  }
+]

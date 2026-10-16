@@ -7,6 +7,9 @@ const X=A.Expedition,S=X.Story,E=X.Encounter,report=[];let clock=0;X.now=()=>clo
 if(process.env.STORY_DAMAGE)S.Combat.tuning.foeDamage=S.Combat.tuning.laterFoeDamage=Number(process.env.STORY_DAMAGE);
 const data=JSON.parse(fs.readFileSync('assets/expedition/story/campaign.json'));
 for(const e of data.combatRoster)S.bindings[e.kind+':'+e.id]={actor:'SIMULATION_ONLY',combatReady:true,hiroFinishersReady:2,enemyFinisherReady:true};
+const partyCount=Number(process.env.STORY_PARTY)||0;
+if(partyCount){vm.runInThisContext(fs.readFileSync('js/expedition/story_companions.js','utf8'));S.Companions.enabled=true;
+ for(const id of Object.keys(S.Companions.kits))S.Companions.bindings[id]={ready:true,actor:'SIMULATION_ONLY'};}
 const trials=Number(process.env.STORY_TRIALS)||20;
 for(const q of A.DATA.CAMPAIGN3_QUESTS.filter(q=>!process.env.STORY_CHAPTERS||q.n<=Number(process.env.STORY_CHAPTERS)))for(let i=0;i<q.enc.length;i++){
   let wins=0,steps=0,rounds=0,stalls=0;const skills=new Set();let stats;
@@ -16,6 +19,11 @@ for(const q of A.DATA.CAMPAIGN3_QUESTS.filter(q=>!process.env.STORY_CHAPTERS||q.
     const state=A.Campaign3.state(s.game);state.stage=q.n-1;
     state.choices.q4_dream='reject';state.choices.q7_dream='reject';state.choices.q10_dream='reject';
     A.GatePerks.reconcile(s.game);S.syncQuest(s);
+    // Hiwot joins after chapter one; Winston can join on chapter two's road.
+    // These named fixtures measure a reproducible damage party, not every branch/kit.
+    if(partyCount&&q.n>=2){const ids=['wren_ward'];if(q.n>2||i>0)ids.push('fennick');
+      for(const id of ids.slice(0,partyCount))A.Campaign3.recruit(s.game,id);
+      S.Companions.select(s,ids.slice(0,partyCount));}
     const e=S.Combat.create(s,seed);stats=e.st.units.map(u=>({name:u.ch.name,hp:u.maxHp,atk:u.atk,def:u.def}));
     // Browser buttons fire between turns (drainCasts), without replacing
     // Katana Slash. The old turn-only policy falsely reported unwinnable
@@ -31,7 +39,7 @@ for(const q of A.DATA.CAMPAIGN3_QUESTS.filter(q=>!process.env.STORY_CHAPTERS||q.
   }
   report.push({chapter:q.n,encounter:i,wins,trials,stalls,maxSteps:steps,avgRounds:Math.round(rounds/trials*10)/10,stats,enemySkills:[...skills]});
 }
-fs.mkdirSync('test/reports/story',{recursive:true});fs.writeFileSync('test/reports/story/balance'+(process.env.STORY_DAMAGE?'-'+process.env.STORY_DAMAGE:'')+'.json',JSON.stringify(report,null,2));
+fs.mkdirSync('test/reports/story',{recursive:true});fs.writeFileSync('test/reports/story/balance'+(partyCount?'-party'+partyCount:'')+(process.env.STORY_DAMAGE?'-'+process.env.STORY_DAMAGE:'')+'.json',JSON.stringify(report,null,2));
 console.log(JSON.stringify(report.map(({stats,enemySkills,...r})=>r)));
 console.log('Unwinnable:',report.filter(r=>r.wins===0).length,'Stalls:',report.reduce((n,r)=>n+r.stalls,0));
 if(process.argv.includes('--gate'))assert(report.every(r=>r.wins>0&&!r.stalls),'story balance gate failed');

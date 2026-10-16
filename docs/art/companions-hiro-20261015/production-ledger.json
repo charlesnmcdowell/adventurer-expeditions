@@ -1,0 +1,1618 @@
+{
+  "voiceId": "V8MrPOnARtlsjrlxEsE7",
+  "model": "eleven_v3",
+  "jobCap": 40000,
+  "requests": [
+    {
+      "id": "q1_wake_why",
+      "text": "Why tonight? What has happened?",
+      "characters": 31,
+      "state": "saved",
+      "requestId": "ajGBKlWy9pJNWiUfE0VK",
+      "chargedCharacters": "14"
+    },
+    {
+      "id": "q1_nib_run",
+      "text": "Go. Run, and I will not follow.",
+      "characters": 31,
+      "state": "saved",
+      "requestId": "Yy3aS5uMhXbePfY4KX5R",
+      "chargedCharacters": "14"
+    },
+    {
+      "id": "q1_wren_dark",
+      "text": "He asked whether I knew what I am. I will find him, ask him what he meant, and take him apart.",
+      "characters": 94,
+      "state": "saved",
+      "requestId": "pQtTr9Kmuv3Aq0tkONcC",
+      "chargedCharacters": "41"
+    },
+    {
+      "id": "q2_pair_vess",
+      "text": "Your friend is laughing at nothing. Is he well?",
+      "characters": 47,
+      "state": "saved",
+      "requestId": "RzcoQO8c72mtoEUebrBL",
+      "chargedCharacters": "21"
+    },
+    {
+      "id": "q14_final_history_reject",
+      "text": "You ordered these murders. Fighting your men does not make me your accomplice.",
+      "characters": 78,
+      "state": "saved",
+      "requestId": "CfsVXm6G9SPttL3r0C7f",
+      "chargedCharacters": "34"
+    },
+    {
+      "id": "q1_wake_afraid",
+      "text": "You have never been afraid of anything. You are afraid now.",
+      "characters": 59,
+      "state": "saved",
+      "requestId": "RdJ46r1D7hd6AjcPac8S",
+      "chargedCharacters": "26"
+    },
+    {
+      "id": "q1_wake_go",
+      "text": "I will get my things.",
+      "characters": 21,
+      "state": "saved",
+      "requestId": "Fr6PWGlhlTcPKbvqKcGD",
+      "chargedCharacters": "9"
+    },
+    {
+      "id": "q1_wake_seen_nobody",
+      "text": "No one. The same faces as every day.",
+      "characters": 36,
+      "state": "saved",
+      "requestId": "b3NqONEVQEqx0KatMbHA",
+      "chargedCharacters": "16"
+    },
+    {
+      "id": "q1_wake_seen_pilgrim",
+      "text": "A pilgrim at the well asked my name. I told him.",
+      "characters": 48,
+      "state": "saved",
+      "requestId": "87A7qO1PVkCM5mwpdOsE",
+      "chargedCharacters": "21"
+    },
+    {
+      "id": "q1_wake_seen_why",
+      "text": "Why? Who would come here?",
+      "characters": 25,
+      "state": "saved",
+      "requestId": "WkckDQRPohjz0jkizCct",
+      "chargedCharacters": "11"
+    },
+    {
+      "id": "q1_nib_who",
+      "text": "Who paid you? Say the name and I let you walk.",
+      "characters": 46,
+      "state": "saved",
+      "requestId": "UZSh1qm063Zk3PfoPuit",
+      "chargedCharacters": "20"
+    },
+    {
+      "id": "q1_nib_richer",
+      "text": "Richer for whom?",
+      "characters": 16,
+      "state": "saved",
+      "requestId": "eQg8AJo4jlSGAxQXSB84",
+      "chargedCharacters": "7"
+    },
+    {
+      "id": "q1_nib_draw",
+      "text": "You have picked the wrong storehouse.",
+      "characters": 37,
+      "state": "saved",
+      "requestId": "0k4WpXA4ZurIg3zIGDcU",
+      "chargedCharacters": "16"
+    },
+    {
+      "id": "q1_cobb_seal",
+      "text": "No name. He said there is only ever a seal on a letter and a purse at an inn.",
+      "characters": 77,
+      "state": "saved",
+      "requestId": "8wi4sledaxxhWt6uXQTl",
+      "chargedCharacters": "34"
+    },
+    {
+      "id": "q1_cobb_bounty",
+      "text": "Two hundred in gold for me, alive or otherwise. He wondered why.",
+      "characters": 64,
+      "state": "saved",
+      "requestId": "vKeKNszxCuyNDc5EZRpR",
+      "chargedCharacters": "28"
+    },
+    {
+      "id": "q1_cobb_nothing",
+      "text": "I did not ask. There was no time.",
+      "characters": 33,
+      "state": "saved",
+      "requestId": "VOzZ9KDlgA0codUEEzzf",
+      "chargedCharacters": "15"
+    },
+    {
+      "id": "q1_wren_kind",
+      "text": "Me. Father said no. We do what he told us \u2014 the Open Hand. Stay close to me.",
+      "characters": 76,
+      "state": "saved",
+      "requestId": "5RqygcKxvm2UrqdiblcA",
+      "chargedCharacters": "33"
+    },
+    {
+      "id": "q1_wren_cold",
+      "text": "Later. Keep your voice down; grief will not help us, and it will get us found.",
+      "characters": 78,
+      "state": "saved",
+      "requestId": "0SSJcyID55rXFMhaEHLN",
+      "chargedCharacters": "34"
+    },
+    {
+      "id": "q2_pair_where_truth",
+      "text": "An inn called the Open Hand. Friends of my father's. He is dead.",
+      "characters": 64,
+      "state": "saved",
+      "requestId": "VvM8TaVlIyfkVKI6RmRD",
+      "chargedCharacters": "28"
+    },
+    {
+      "id": "q2_pair_where_lie",
+      "text": "South. Family.",
+      "characters": 14,
+      "state": "saved",
+      "requestId": "fCE0MbbIWM9k4xj2Ah01",
+      "chargedCharacters": "6"
+    },
+    {
+      "id": "q2_pair_where_refuse",
+      "text": "That is my business.",
+      "characters": 20,
+      "state": "saved",
+      "requestId": "M5gUm79UZD31nKGa0Wrp",
+      "chargedCharacters": "9"
+    },
+    {
+      "id": "q2_pair_who",
+      "text": "Who are you, really? Nobody walks this road for the pleasure of it.",
+      "characters": 67,
+      "state": "saved",
+      "requestId": "f6YvV3mcPdhCPwjql9I9",
+      "chargedCharacters": "29"
+    },
+    {
+      "id": "q2_pair_yes",
+      "text": "Four is better than two. Walk with us.",
+      "characters": 38,
+      "state": "saved",
+      "requestId": "faoUeLxFS1FIm9tWNYVt",
+      "chargedCharacters": "17"
+    },
+    {
+      "id": "q2_pair_no",
+      "text": "We travel alone. Good road to you.",
+      "characters": 34,
+      "state": "saved",
+      "requestId": "CMQPaSkQul6Z1nZ492xo",
+      "chargedCharacters": "15"
+    },
+    {
+      "id": "q2_cassian_order",
+      "text": "The Dawning Flame. What is that?",
+      "characters": 32,
+      "state": "saved",
+      "requestId": "NNZgP3FJhJpuS4PN18oM",
+      "chargedCharacters": "14"
+    },
+    {
+      "id": "q2_cassian_join",
+      "text": "Then we clear them together, and you may tell your Order whatever you like.",
+      "characters": 75,
+      "state": "saved",
+      "requestId": "NbwcaP2xZkNqJn4TMvCb",
+      "chargedCharacters": "33"
+    },
+    {
+      "id": "q2_cassian_tease",
+      "text": "A knight who cannot manage wolves. What do they teach in that Order?",
+      "characters": 68,
+      "state": "saved",
+      "requestId": "ANkBBUXqjHFmW4XIFjbZ",
+      "chargedCharacters": "30"
+    },
+    {
+      "id": "q2_cassian_no",
+      "text": "We are in a hurry. Manage your own wolves.",
+      "characters": 42,
+      "state": "saved",
+      "requestId": "ECIOAbrHZGWH893u93cj",
+      "chargedCharacters": "18"
+    },
+    {
+      "id": "q2_morwin_name",
+      "text": "Whose name is on that paper? Who is paying?",
+      "characters": 43,
+      "state": "saved",
+      "requestId": "maZ0UzUBp3h4906n12qC",
+      "chargedCharacters": "19"
+    },
+    {
+      "id": "q2_morwin_how",
+      "text": "How did you know to wait here?",
+      "characters": 30,
+      "state": "saved",
+      "requestId": "zEgw7s0dQ4VIWC59oyOJ",
+      "chargedCharacters": "13"
+    },
+    {
+      "id": "q2_morwin_kill",
+      "text": "You should have stayed home.",
+      "characters": 28,
+      "state": "saved",
+      "requestId": "Gc2mg3HhETMu1kHrx3U2",
+      "chargedCharacters": "12"
+    },
+    {
+      "id": "q2_morwin_inn",
+      "text": "Help! There is a man on your steps who means murder!",
+      "characters": 52,
+      "state": "saved",
+      "requestId": "kEehGFxGfEugLf8ukiyq",
+      "chargedCharacters": "23"
+    },
+    {
+      "id": "q2_selene_how_armour",
+      "text": "A man in black plate, taller than a man should be. He asked for me by name. Father said no.",
+      "characters": 91,
+      "state": "saved",
+      "requestId": "zyA3amBa6xGWBUETz07c",
+      "chargedCharacters": "40"
+    },
+    {
+      "id": "q2_selene_how_quick",
+      "text": "Quickly. He did not suffer.",
+      "characters": 27,
+      "state": "saved",
+      "requestId": "UtNWzFfpFAT1Fd1JZhVH",
+      "chargedCharacters": "12"
+    },
+    {
+      "id": "q2_selene_how_refuse",
+      "text": "I cannot. Not tonight.",
+      "characters": 22,
+      "state": "saved",
+      "requestId": "wIgvVGNxpsn7yAOEYEWa",
+      "chargedCharacters": "10"
+    },
+    {
+      "id": "q2_selene_wardens",
+      "text": "What are the Wardens? He never told me.",
+      "characters": 39,
+      "state": "saved",
+      "requestId": "boBKjWtP74Pc34ypacH3",
+      "chargedCharacters": "17"
+    },
+    {
+      "id": "q2_selene_why",
+      "text": "Why would a trading house pay two hundred in gold for a scholar's foundling?",
+      "characters": 76,
+      "state": "saved",
+      "requestId": "kXB9Vye66Jk62GJWupEg",
+      "chargedCharacters": "33"
+    },
+    {
+      "id": "q2_selene_trust",
+      "text": "He trusted you. So will I. Tell me what he would have done.",
+      "characters": 59,
+      "state": "saved",
+      "requestId": "gwTmXwHFGy8W969oGF2h",
+      "chargedCharacters": "26"
+    },
+    {
+      "id": "q2_selene_alone",
+      "text": "I did not come for bread. Tell me who killed him and I will go alone.",
+      "characters": 69,
+      "state": "saved",
+      "requestId": "uUMJMl0CitF7d6a73k8S",
+      "chargedCharacters": "30"
+    },
+    {
+      "id": "q3_ithrel_seal",
+      "text": "This man. Does he use a seal? An iron hand in red wax?",
+      "characters": 54,
+      "state": "saved",
+      "requestId": "ehZBC7yG4hbNrKoK0CFa",
+      "chargedCharacters": "24"
+    },
+    {
+      "id": "q3_ithrel_wife",
+      "text": "Your wife. I am sorry. What was her name?",
+      "characters": 41,
+      "state": "saved",
+      "requestId": "TfzZ9jfDZiz3fYSGQDJA",
+      "chargedCharacters": "18"
+    },
+    {
+      "id": "q3_ithrel_yes",
+      "text": "Walk with us. When we find him, he is yours.",
+      "characters": 44,
+      "state": "saved",
+      "requestId": "6kRRdptAs8EJLhfmF1QA",
+      "chargedCharacters": "19"
+    },
+    {
+      "id": "q3_ithrel_no",
+      "text": "I have enough grief in this company. I do not need yours.",
+      "characters": 57,
+      "state": "saved",
+      "requestId": "y37d2eT8suXxatKf7zlC",
+      "chargedCharacters": "25"
+    },
+    {
+      "id": "q3_lessa_why",
+      "text": "Why do you do this work?",
+      "characters": 24,
+      "state": "saved",
+      "requestId": "ktERIdSY1ZdPqwsq1wBV",
+      "chargedCharacters": "11"
+    },
+    {
+      "id": "q3_lessa_fight",
+      "text": "Then let it be personal.",
+      "characters": 24,
+      "state": "saved",
+      "requestId": "trfqzxTdwQ5pUtUkMmoL",
+      "chargedCharacters": "11"
+    },
+    {
+      "id": "q3_bramm_why",
+      "text": "Why would a Crimson Wizard care what happens to one witch?",
+      "characters": 58,
+      "state": "saved",
+      "requestId": "geH3Vi7HB0zrqyVr0WhS",
+      "chargedCharacters": "26"
+    },
+    {
+      "id": "q3_bramm_rescue",
+      "text": "We are freeing her. With me.",
+      "characters": 28,
+      "state": "saved",
+      "requestId": "EYkRAUEdYBNmosQXpshc",
+      "chargedCharacters": "12"
+    },
+    {
+      "id": "q3_bramm_coin",
+      "text": "A hundred gold, and your staff until the Gate. Done.",
+      "characters": 52,
+      "state": "saved",
+      "requestId": "zSuTZUS47Zbu5osyqlpa",
+      "chargedCharacters": "23"
+    },
+    {
+      "id": "q3_bramm_both",
+      "text": "The witch lives, and the wizard walks with us and holds his tongue about it.",
+      "characters": 76,
+      "state": "saved",
+      "requestId": "JM10RisKn8mziUkuvVfc",
+      "chargedCharacters": "33"
+    },
+    {
+      "id": "q3_ysolde_blood",
+      "text": "The warleader's throat. I gave it that.",
+      "characters": 39,
+      "state": "saved",
+      "requestId": "vjwAUQtOpcSDqm9osAIm",
+      "chargedCharacters": "17"
+    },
+    {
+      "id": "q3_ysolde_nothing",
+      "text": "I felt nothing. I fought, and it ended.",
+      "characters": 39,
+      "state": "saved",
+      "requestId": "pDvCzO2pAZ22wSTGMSLk",
+      "chargedCharacters": "17"
+    },
+    {
+      "id": "q3_ysolde_what",
+      "text": "You tell me. What is it? Say it plainly.",
+      "characters": 40,
+      "state": "saved",
+      "requestId": "wlopxqsKCeS8f7FNelxH",
+      "chargedCharacters": "18"
+    },
+    {
+      "id": "q3_ysolde_quiet",
+      "text": "Whatever you felt, keep it to yourself in front of the others.",
+      "characters": 62,
+      "state": "saved",
+      "requestId": "BAZuNLrbMvwfkYF84s5K",
+      "chargedCharacters": "27"
+    },
+    {
+      "id": "q3_tollan_crews",
+      "text": "What did your crews see, before they stopped going down?",
+      "characters": 56,
+      "state": "saved",
+      "requestId": "PEEOzZVwI4HXKr055vqJ",
+      "chargedCharacters": "25"
+    },
+    {
+      "id": "q3_tollan_iron",
+      "text": "Who profits when your iron goes bad?",
+      "characters": 36,
+      "state": "saved",
+      "requestId": "omLXz3aQyL37l4PjJCt9",
+      "chargedCharacters": "16"
+    },
+    {
+      "id": "q3_tollan_fee",
+      "text": "We will go down. Two hundred in gold, and the town's thanks.",
+      "characters": 60,
+      "state": "saved",
+      "requestId": "0dPrKcOVX4r7Fiq82moF",
+      "chargedCharacters": "26"
+    },
+    {
+      "id": "q3_tollan_yes",
+      "text": "We will go down. Pay what the town can spare.",
+      "characters": 45,
+      "state": "saved",
+      "requestId": "f19sL5YZLvU94Z0w1pCg",
+      "chargedCharacters": "20"
+    },
+    {
+      "id": "q4_grukhar_who",
+      "text": "Who lied to you? Say the names.",
+      "characters": 31,
+      "state": "saved",
+      "requestId": "7MmCDYmnH6ISEOJ74XR3",
+      "chargedCharacters": "14"
+    },
+    {
+      "id": "q4_grukhar_why",
+      "text": "Why foul the ore at all? Who profits from a town starving?",
+      "characters": 58,
+      "state": "saved",
+      "requestId": "0mLgbSdERBHeMGnvKOEq",
+      "chargedCharacters": "26"
+    },
+    {
+      "id": "q4_grukhar_walk",
+      "text": "Leave the letters on the altar and walk. Now, before I change my mind.",
+      "characters": 70,
+      "state": "saved",
+      "requestId": "F0ZqUn2lVX3HMbnjHo4l",
+      "chargedCharacters": "31"
+    },
+    {
+      "id": "q4_grukhar_kill",
+      "text": "I will take the letters off your body.",
+      "characters": 38,
+      "state": "saved",
+      "requestId": "TtwFtOv1OIOyNJImIIt1",
+      "chargedCharacters": "17"
+    },
+    {
+      "id": "q4_dream_ask",
+      "text": "You knew what I was when you brought me to Lanternhold?",
+      "characters": 55,
+      "state": "saved",
+      "requestId": "dycI9LU6tjHAk1kQinwb",
+      "chargedCharacters": "24"
+    },
+    {
+      "id": "q4_dream_reject",
+      "text": "I do not want whatever this is. Starve it.",
+      "characters": 42,
+      "state": "saved",
+      "requestId": "d60pWxaGKqFhROTMchJY",
+      "chargedCharacters": "18"
+    },
+    {
+      "id": "q4_dream_embrace",
+      "text": "Show me the throne.",
+      "characters": 19,
+      "state": "saved",
+      "requestId": "CwGvbu4HWbllV080OVyk",
+      "chargedCharacters": "8"
+    },
+    {
+      "id": "q5_torvald_test_word",
+      "text": "\"Give the child to me and you may keep your life and your library.\"",
+      "characters": 67,
+      "state": "saved",
+      "requestId": "HSBeJq86X6LeU8Vhz2eU",
+      "chargedCharacters": "29"
+    },
+    {
+      "id": "q5_torvald_test_forget",
+      "text": "I did not hear it. I was running, as I was told.",
+      "characters": 48,
+      "state": "saved",
+      "requestId": "GDx83skRsXrlAJhDmJVv",
+      "chargedCharacters": "21"
+    },
+    {
+      "id": "q5_torvald_test_refuse",
+      "text": "Ask him yourself, old man. I am going to.",
+      "characters": 41,
+      "state": "saved",
+      "requestId": "DlQN4Uj9j8AE4iV4rU6w",
+      "chargedCharacters": "18"
+    },
+    {
+      "id": "q5_torvald_why",
+      "text": "Why did my father die? You know. Say it.",
+      "characters": 40,
+      "state": "saved",
+      "requestId": "dcHLLBFXBUy22fL9GSOX",
+      "chargedCharacters": "18"
+    },
+    {
+      "id": "q5_torvald_armour",
+      "text": "The man in black armour. Who is he?",
+      "characters": 35,
+      "state": "saved",
+      "requestId": "yms82c5e6gzRvZdcWtG2",
+      "chargedCharacters": "15"
+    },
+    {
+      "id": "q5_torvald_help",
+      "text": "Then help. Not riddles \u00e2\u20ac\u201d help.",
+      "characters": 32,
+      "state": "saved",
+      "requestId": "cz7Offmhxq337n54hr0U",
+      "chargedCharacters": "14"
+    },
+    {
+      "id": "q5_torvald_go",
+      "text": "North, then. Stay out of my way, old man.",
+      "characters": 41,
+      "state": "saved",
+      "requestId": "0wQuFJrZfocaxSjvSViZ",
+      "chargedCharacters": "18"
+    },
+    {
+      "id": "q5_verlan_letters",
+      "text": "A priest under Dunmere had your letters. Your name, your inn, your hand.",
+      "characters": 72,
+      "state": "saved",
+      "requestId": "jWzjL1XE0YKjUpkI7ouh",
+      "chargedCharacters": "32"
+    },
+    {
+      "id": "q5_verlan_beat",
+      "text": "Wrong answer.",
+      "characters": 13,
+      "state": "saved",
+      "requestId": "St1bzWeBMqKceDhLmZQW",
+      "chargedCharacters": "6"
+    },
+    {
+      "id": "q5_verlan_pay",
+      "text": "Fifty in gold for the camp's location. Then you leave this town tonight.",
+      "characters": 72,
+      "state": "saved",
+      "requestId": "e9UKJXIITndWHgWSKWPA",
+      "chargedCharacters": "32"
+    },
+    {
+      "id": "q5_verlan_pocket",
+      "text": "Check his coat.",
+      "characters": 15,
+      "state": "saved",
+      "requestId": "OGLOtQzpazLAQ3rlo62u",
+      "chargedCharacters": "7"
+    },
+    {
+      "id": "q5_ilvara_why",
+      "text": "What are you fleeing?",
+      "characters": 21,
+      "state": "saved",
+      "requestId": "7DISMUGDBkJLbXejpTZE",
+      "chargedCharacters": "9"
+    },
+    {
+      "id": "q5_ilvara_defend",
+      "text": "Let her go. She is under my protection.",
+      "characters": 39,
+      "state": "saved",
+      "requestId": "7uERKC5IsFssUpsLADH5",
+      "chargedCharacters": "17"
+    },
+    {
+      "id": "q5_ilvara_walk",
+      "text": "This is not my fight. We keep moving.",
+      "characters": 37,
+      "state": "saved",
+      "requestId": "swkN14U8ymZzxh1TAaLl",
+      "chargedCharacters": "16"
+    },
+    {
+      "id": "q5_ilvara_sell",
+      "text": "There is a bounty? Then I will take her in myself.",
+      "characters": 50,
+      "state": "saved",
+      "requestId": "wUBgXUUXHP65qsSTv9aK",
+      "chargedCharacters": "22"
+    },
+    {
+      "id": "q5_camp_recruits",
+      "text": "Get us invited.",
+      "characters": 15,
+      "state": "saved",
+      "requestId": "AAqPtVePXbbTnegI6iDi",
+      "chargedCharacters": "7"
+    },
+    {
+      "id": "q5_camp_quiet",
+      "text": "Take the back gate.",
+      "characters": 19,
+      "state": "saved",
+      "requestId": "0s2zB5wEiDPRxCLvWd9i",
+      "chargedCharacters": "8"
+    },
+    {
+      "id": "q5_camp_storm",
+      "text": "Loud. The front gate, now.",
+      "characters": 26,
+      "state": "saved",
+      "requestId": "UCAIgS6W21K1cvT32Rve",
+      "chargedCharacters": "11"
+    },
+    {
+      "id": "q5_ithrel_shot_shoot",
+      "text": "Yes. Take it.",
+      "characters": 13,
+      "state": "saved",
+      "requestId": "wNLD6Uamyu4HaUnYp4K7",
+      "chargedCharacters": "6"
+    },
+    {
+      "id": "q5_ithrel_shot_hold",
+      "text": "Hold. I want him alive to answer questions.",
+      "characters": 43,
+      "state": "saved",
+      "requestId": "c3MEVSiv1zFlGQ1S9Aoa",
+      "chargedCharacters": "19"
+    },
+    {
+      "id": "q5_rescue_free_first",
+      "text": "Break his chains first. Then take the chest.",
+      "characters": 44,
+      "state": "saved",
+      "requestId": "c4c9w3dMJYChBMQdrfDz",
+      "chargedCharacters": "19"
+    },
+    {
+      "id": "q5_rescue_letters_first",
+      "text": "Secure the chest first. Then break his chains.",
+      "characters": 46,
+      "state": "saved",
+      "requestId": "bMKaan3tRST5iIuoqmPL",
+      "chargedCharacters": "20"
+    },
+    {
+      "id": "q6_faelen_wyvern",
+      "text": "Who pays a bounty on a wyvern?",
+      "characters": 30,
+      "state": "saved",
+      "requestId": "GkesxQgGszsBsu1OXxdX",
+      "chargedCharacters": "13"
+    },
+    {
+      "id": "q6_faelen_price",
+      "text": "Wardens cut for nothing. I am not a Warden. What is your debt worth?",
+      "characters": 68,
+      "state": "saved",
+      "requestId": "GHhVLd7H7I494b49GQSp",
+      "chargedCharacters": "30"
+    },
+    {
+      "id": "q6_faelen_cut",
+      "text": "Hold still. I\u00e2\u20ac\u2122ll cut you free. You can ride with us.",
+      "characters": 54,
+      "state": "saved",
+      "requestId": "l0INKDaejbjnpR5IGem4",
+      "chargedCharacters": "24"
+    },
+    {
+      "id": "q6_faelen_leave",
+      "text": "Spiders have to eat too.",
+      "characters": 24,
+      "state": "saved",
+      "requestId": "ApzAwq6BX1Vn9fyP3Kj9",
+      "chargedCharacters": "11"
+    },
+    {
+      "id": "q6_nettle_ask",
+      "text": "What has been done to this wood?",
+      "characters": 32,
+      "state": "saved",
+      "requestId": "rlbyh9adVkHSE23KqOyt",
+      "chargedCharacters": "14"
+    },
+    {
+      "id": "q6_nettle_talk",
+      "text": "We are here for the men who poison your river with their mine. Your enemy is ours.",
+      "characters": 82,
+      "state": "saved",
+      "requestId": "QlzPKrcFzf4e6wjESrpl",
+      "chargedCharacters": "36"
+    },
+    {
+      "id": "q6_nettle_fight",
+      "text": "Move, or be moved.",
+      "characters": 18,
+      "state": "saved",
+      "requestId": "3OgvF29BuqGJJdvfuQJY",
+      "chargedCharacters": "8"
+    },
+    {
+      "id": "q6_selene_fire_letters",
+      "text": "What did he write?",
+      "characters": 18,
+      "state": "saved",
+      "requestId": "W10omTsU16UhI1Aj05aE",
+      "chargedCharacters": "8"
+    },
+    {
+      "id": "q6_selene_fire_warm",
+      "text": "He wrote to me about you, too. Not twenty letters. But enough.",
+      "characters": 62,
+      "state": "saved",
+      "requestId": "vFFfXztL67kKw7ohtfRr",
+      "chargedCharacters": "27"
+    },
+    {
+      "id": "q6_selene_fire_deflect",
+      "text": "You should sleep. It is a long walk to the mine.",
+      "characters": 48,
+      "state": "saved",
+      "requestId": "2babkAQhotrd9JphrTcj",
+      "chargedCharacters": "21"
+    },
+    {
+      "id": "q6_selene_fire_dorran",
+      "text": "Your husband is a fortunate man.",
+      "characters": 32,
+      "state": "saved",
+      "requestId": "IcbSYURaIgiLiUtVXTdy",
+      "chargedCharacters": "14"
+    },
+    {
+      "id": "q7_dorran_with",
+      "text": "We are with you. Everyone comes out.",
+      "characters": 36,
+      "state": "saved",
+      "requestId": "vF7vajSyOnE2KwLA41gb",
+      "chargedCharacters": "16"
+    },
+    {
+      "id": "q7_dorran_mission",
+      "text": "The mage first. Then the slaves, if there is time.",
+      "characters": 50,
+      "state": "saved",
+      "requestId": "7ilajuxaflCrvsTjJC2G",
+      "chargedCharacters": "22"
+    },
+    {
+      "id": "q7_durnik_paper",
+      "text": "Paper and knives? How does a trading house take a dwarven mine?",
+      "characters": 63,
+      "state": "saved",
+      "requestId": "kNEwnH148XIH4m9xbOyD",
+      "chargedCharacters": "28"
+    },
+    {
+      "id": "q7_durnik_free",
+      "text": "The old ones are dead. Get up; you are with us.",
+      "characters": 47,
+      "state": "saved",
+      "requestId": "Sf61JgDKiHd7g6JwLNwA",
+      "chargedCharacters": "21"
+    },
+    {
+      "id": "q7_durnik_leave",
+      "text": "Stay where you are. We will come back for you.",
+      "characters": 46,
+      "state": "saved",
+      "requestId": "lrTOSsI8IbbaChANrGMG",
+      "chargedCharacters": "20"
+    },
+    {
+      "id": "q7_malvane_who",
+      "text": "Who do you answer to? Say the name and I may let you keep your ledgers.",
+      "characters": 71,
+      "state": "saved",
+      "requestId": "rn7mLU2mtpiXZa5gwTQh",
+      "chargedCharacters": "31"
+    },
+    {
+      "id": "q7_malvane_fight",
+      "text": "Enough. We\u00e2\u20ac\u2122re freeing the prisoners.",
+      "characters": 38,
+      "state": "saved",
+      "requestId": "1vxW3wP45b8hzeON9lcH",
+      "chargedCharacters": "17"
+    },
+    {
+      "id": "q7_flood_now",
+      "text": "Turn the wheel. Now.",
+      "characters": 20,
+      "state": "saved",
+      "requestId": "yblMwz0xFoBeq3Cdbyof",
+      "chargedCharacters": "9"
+    },
+    {
+      "id": "q7_flood_wait",
+      "text": "No one touches that wheel until our friend is up. Hold this room.",
+      "characters": 65,
+      "state": "saved",
+      "requestId": "TDvQHioMlYQX2wv1imFT",
+      "chargedCharacters": "29"
+    },
+    {
+      "id": "q7_vess_papers_who",
+      "text": "Who are the people you answer to?",
+      "characters": 33,
+      "state": "saved",
+      "requestId": "7QgPTMVoC4m5hBdRNlrI",
+      "chargedCharacters": "15"
+    },
+    {
+      "id": "q7_vess_papers_give",
+      "text": "Copy them tonight. The originals go to the city.",
+      "characters": 48,
+      "state": "saved",
+      "requestId": "InkoEQaSnOmPO94DGFGH",
+      "chargedCharacters": "21"
+    },
+    {
+      "id": "q7_vess_papers_refuse",
+      "text": "No. And if either of you touches them, you leave this company.",
+      "characters": 62,
+      "state": "saved",
+      "requestId": "K5Y2SuLW3UWmC4Od1Y3I",
+      "chargedCharacters": "27"
+    },
+    {
+      "id": "q7_dream_others",
+      "text": "Others. How many? Who?",
+      "characters": 22,
+      "state": "saved",
+      "requestId": "NQ5NbDHr0AdJNwpvF9rf",
+      "chargedCharacters": "10"
+    },
+    {
+      "id": "q7_dream_reject",
+      "text": "I will stop him. I will not claim the murder god\u2019s throne.",
+      "characters": 58,
+      "state": "saved",
+      "requestId": "oFsFcWE2vTM6f6Hp0e2e",
+      "chargedCharacters": "26"
+    },
+    {
+      "id": "q7_dream_embrace",
+      "text": "If there are others, I had better be the strongest.",
+      "characters": 51,
+      "state": "saved",
+      "requestId": "wUaBnVa4yJv9xY7ij5UZ",
+      "chargedCharacters": "22"
+    },
+    {
+      "id": "q8_span_count_nineteen",
+      "text": "Nineteen. I counted them out.",
+      "characters": 29,
+      "state": "saved",
+      "requestId": "pqXdgtmtYWTt4jLMa8wZ",
+      "chargedCharacters": "13"
+    },
+    {
+      "id": "q8_span_count_many",
+      "text": "Cages of them. I did not count.",
+      "characters": 31,
+      "state": "saved",
+      "requestId": "uPXIyxpyHED4djh1dgdk",
+      "chargedCharacters": "14"
+    },
+    {
+      "id": "q8_span_count_none",
+      "text": "That is between me and the Duke.",
+      "characters": 32,
+      "state": "saved",
+      "requestId": "RiQVjknngIsLC74p5FF4",
+      "chargedCharacters": "14"
+    },
+    {
+      "id": "q8_halloran_why",
+      "text": "Why does the Duke want me? He does not know me.",
+      "characters": 47,
+      "state": "saved",
+      "requestId": "lQInQMsKMHbXG0EQ7DfS",
+      "chargedCharacters": "21"
+    },
+    {
+      "id": "q8_halloran_yes",
+      "text": "Consider it done.",
+      "characters": 17,
+      "state": "saved",
+      "requestId": "h19fkeeKtd7UmpV6Hhw0",
+      "chargedCharacters": "7"
+    },
+    {
+      "id": "q8_halloran_pay",
+      "text": "The Gauntlet pays for this, I assume.",
+      "characters": 37,
+      "state": "saved",
+      "requestId": "r05McUlSTHjxQhsz6DR8",
+      "chargedCharacters": "16"
+    },
+    {
+      "id": "q8_door_faelen",
+      "text": "Talk to him.",
+      "characters": 12,
+      "state": "saved",
+      "requestId": "CkmLC3sDvvrsLDUJnrj6",
+      "chargedCharacters": "5"
+    },
+    {
+      "id": "q8_door_wren_ward",
+      "text": "Quietly.",
+      "characters": 8,
+      "state": "saved",
+      "requestId": "n9TWKJDRFwxRDGyT5ewK",
+      "chargedCharacters": "4"
+    },
+    {
+      "id": "q8_door_fennick",
+      "text": "Pay him.",
+      "characters": 8,
+      "state": "saved",
+      "requestId": "AKdxOhpHa177NrhYyBVW",
+      "chargedCharacters": "4"
+    },
+    {
+      "id": "q8_door_force",
+      "text": "We go through him.",
+      "characters": 18,
+      "state": "saved",
+      "requestId": "Of1xfKKapWbuaz2kDaCu",
+      "chargedCharacters": "8"
+    },
+    {
+      "id": "q8_duke_seen_nobody",
+      "text": "My company, and now you.",
+      "characters": 24,
+      "state": "saved",
+      "requestId": "tgAa9KwX7Oum0fYa0r8s",
+      "chargedCharacters": "11"
+    },
+    {
+      "id": "q8_duke_seen_hand",
+      "text": "The Umbral Hand has copies. I allowed it.",
+      "characters": 41,
+      "state": "saved",
+      "requestId": "NBxEulkmTCrcnZvqTV3G",
+      "chargedCharacters": "18"
+    },
+    {
+      "id": "q8_duke_seen_wardens",
+      "text": "Wardens. Our friend from the Open Hand read them first.",
+      "characters": 55,
+      "state": "saved",
+      "requestId": "bUTmYbzCM0k7s0u2UGUx",
+      "chargedCharacters": "24"
+    },
+    {
+      "id": "q8_halvard_city",
+      "text": "Then we will get them. For the city.",
+      "characters": 36,
+      "state": "saved",
+      "requestId": "SHdibp7YVsYEBy2ujFfA",
+      "chargedCharacters": "16"
+    },
+    {
+      "id": "q8_halvard_pay",
+      "text": "For the city, and for a price.",
+      "characters": 30,
+      "state": "saved",
+      "requestId": "udEKHbypqRi0NRDr5IHt",
+      "chargedCharacters": "13"
+    },
+    {
+      "id": "q8_halvard_blood",
+      "text": "The Consortium has been trying to kill me since Lanternhold. Why me, Duke?",
+      "characters": 74,
+      "state": "saved",
+      "requestId": "TnoaUYEHv2NWlPZ7ePjj",
+      "chargedCharacters": "33"
+    },
+    {
+      "id": "q9_lobby_talk",
+      "text": "We are the company from the south. Your master sent for us before the mine flooded.",
+      "characters": 83,
+      "state": "saved",
+      "requestId": "zxhyj3w3AQ9c38T8qnu5",
+      "chargedCharacters": "37"
+    },
+    {
+      "id": "q9_lobby_fight",
+      "text": "Guards first. The clerk if he runs.",
+      "characters": 35,
+      "state": "saved",
+      "requestId": "Iwbqr3el6jrD9a5IvAKw",
+      "chargedCharacters": "15"
+    },
+    {
+      "id": "q9_lobby_wren_ward",
+      "text": "Go and see what is on that list.",
+      "characters": 32,
+      "state": "saved",
+      "requestId": "x4QJhgs7jWksIRX416mD",
+      "chargedCharacters": "14"
+    },
+    {
+      "id": "q9_floor_offer_library",
+      "text": "His life and his library, in exchange for me.",
+      "characters": 45,
+      "state": "saved",
+      "requestId": "YgvfVZe06PDCMSD0EUYY",
+      "chargedCharacters": "20"
+    },
+    {
+      "id": "q9_floor_offer_nothing",
+      "text": "Nothing. He simply took.",
+      "characters": 24,
+      "state": "saved",
+      "requestId": "T5PEeOGGYhMroxBve9hz",
+      "chargedCharacters": "11"
+    },
+    {
+      "id": "q9_floor_offer_price",
+      "text": "Tell me what you are selling first, and I will decide what it costs.",
+      "characters": 68,
+      "state": "saved",
+      "requestId": "7sqeEWA24IiwlhrHvkqC",
+      "chargedCharacters": "30"
+    },
+    {
+      "id": "q9_lysandra_kolade",
+      "text": "Who is he to this city? Say it as if I had never heard his name.",
+      "characters": 64,
+      "state": "saved",
+      "requestId": "jwYxbprGEkyAid6xE17P",
+      "chargedCharacters": "28"
+    },
+    {
+      "id": "q9_lysandra_deal",
+      "text": "Talk. Quickly.",
+      "characters": 14,
+      "state": "saved",
+      "requestId": "5ddaqoi9Tt5LzojdKSKr",
+      "chargedCharacters": "6"
+    },
+    {
+      "id": "q9_lysandra_arrest",
+      "text": "You will talk to the Duke. In chains.",
+      "characters": 37,
+      "state": "saved",
+      "requestId": "jzGJV6c29UuGoHIqBO9y",
+      "chargedCharacters": "16"
+    },
+    {
+      "id": "q9_lysandra_kill",
+      "text": "You share his bed. You share his end.",
+      "characters": 37,
+      "state": "saved",
+      "requestId": "ZQt9LzywH6OgBY7aFN65",
+      "chargedCharacters": "16"
+    },
+    {
+      "id": "q10_sarn_take",
+      "text": "If it was my father\u2019s, I want it back.",
+      "characters": 38,
+      "state": "saved",
+      "requestId": "lwpRZo0Vp7oB35dyGnJN",
+      "chargedCharacters": "17"
+    },
+    {
+      "id": "q10_sarn_refuse",
+      "text": "Keep it. I have not decided whether to trust you.",
+      "characters": 49,
+      "state": "saved",
+      "requestId": "w336496cClqTAe5TaSle",
+      "chargedCharacters": "22"
+    },
+    {
+      "id": "q10_sarn_threat",
+      "text": "If this is a trick, I will find you.",
+      "characters": 36,
+      "state": "saved",
+      "requestId": "Mflq9lV67UiB9GaELMlR",
+      "chargedCharacters": "16"
+    },
+    {
+      "id": "q10_gate_where_road",
+      "text": "The Griffon Road, the night we left. He stood between me and the man who killed him.",
+      "characters": 84,
+      "state": "saved",
+      "requestId": "ftupmEDc9BTrwk7GkZjz",
+      "chargedCharacters": "37"
+    },
+    {
+      "id": "q10_gate_where_refuse",
+      "text": "Write \"on the road.\" It is all you need.",
+      "characters": 40,
+      "state": "saved",
+      "requestId": "kLoLRZx2928C4eROSNgi",
+      "chargedCharacters": "18"
+    },
+    {
+      "id": "q10_summit_kill",
+      "text": "You paid for the mines and the bandits. You will not leave this room alive.",
+      "characters": 75,
+      "state": "saved",
+      "requestId": "moaO5pQl4hmdtEOhvJF2",
+      "chargedCharacters": "33"
+    },
+    {
+      "id": "q10_summit_talk",
+      "text": "I will not kill you. Tell me what your son has been doing.",
+      "characters": 58,
+      "state": "saved",
+      "requestId": "lljpoLZMhG0Qgj9HEWpU",
+      "chargedCharacters": "26"
+    },
+    {
+      "id": "q10_summit_arrest",
+      "text": "You will answer to the Duke. All three of you. Nobody dies in a library.",
+      "characters": 72,
+      "state": "saved",
+      "requestId": "9pCt8expRFidbL6XtuUg",
+      "chargedCharacters": "32"
+    },
+    {
+      "id": "q10_letter_end_proud",
+      "text": "That he had been proud of me every day since he carried me through the gate.",
+      "characters": 76,
+      "state": "saved",
+      "requestId": "eyA9tD7yqGQ9eZV00FNl",
+      "chargedCharacters": "33"
+    },
+    {
+      "id": "q10_letter_end_run",
+      "text": "Only \"run.\" And two names.",
+      "characters": 26,
+      "state": "saved",
+      "requestId": "vhN0dUlvb2FiYi5qWUGZ",
+      "chargedCharacters": "11"
+    },
+    {
+      "id": "q10_letter_end_nothing",
+      "text": "I did not hear. I was doing as I was told.",
+      "characters": 42,
+      "state": "saved",
+      "requestId": "Jes86vaV1yIl8J37oxZp",
+      "chargedCharacters": "18"
+    },
+    {
+      "id": "q10_letter_grief",
+      "text": "He raised a monster and loved it anyway.",
+      "characters": 40,
+      "state": "saved",
+      "requestId": "06gnRmdCWswCPkSlr1iZ",
+      "chargedCharacters": "18"
+    },
+    {
+      "id": "q10_letter_anger",
+      "text": "Twenty years and he never said a word. He should have told me.",
+      "characters": 62,
+      "state": "saved",
+      "requestId": "3GBFFPhoGCGMTzkNeDqO",
+      "chargedCharacters": "27"
+    },
+    {
+      "id": "q10_letter_hunger",
+      "text": "A throne. And a brother sitting in my seat.",
+      "characters": 43,
+      "state": "saved",
+      "requestId": "Gfffp5gFLQabKFADBd92",
+      "chargedCharacters": "19"
+    },
+    {
+      "id": "q10_double_strike",
+      "text": "Wrong voice. Strike first.",
+      "characters": 26,
+      "state": "saved",
+      "requestId": "0BpPAS0Pfx9l2OQuld7v",
+      "chargedCharacters": "11"
+    },
+    {
+      "id": "q10_double_strike_alone",
+      "text": "Wrong voice. Strike first.",
+      "characters": 26,
+      "state": "saved",
+      "requestId": "4SvvsK6YyrKSFaXmr6i1",
+      "chargedCharacters": "11"
+    },
+    {
+      "id": "q10_double_question",
+      "text": "What did I steal from the brothers' kitchen when I was nine?",
+      "characters": 60,
+      "state": "saved",
+      "requestId": "hWhVcrgG8rJ6SLcsDHAy",
+      "chargedCharacters": "26"
+    },
+    {
+      "id": "q10_double_listen",
+      "text": "...Come here, then. Slowly.",
+      "characters": 27,
+      "state": "saved",
+      "requestId": "1OF5W6OdNCSlWd6W3aFj",
+      "chargedCharacters": "12"
+    },
+    {
+      "id": "q10_dream_reject",
+      "text": "Starve it. I will stop him as myself.",
+      "characters": 37,
+      "state": "saved",
+      "requestId": "b5Pg5aOajUcfvoHZgUUZ",
+      "chargedCharacters": "16"
+    },
+    {
+      "id": "q10_dream_embrace",
+      "text": "If it takes a god to stop a god, then feed it.",
+      "characters": 46,
+      "state": "saved",
+      "requestId": "Rs1ADJ2yWkEqRKv1EmnB",
+      "chargedCharacters": "20"
+    },
+    {
+      "id": "q11_allegiance_gauntlet",
+      "text": "We find the Duke and we save him. We do this lawfully.",
+      "characters": 54,
+      "state": "saved",
+      "requestId": "fcYA8x8aUUPVMEKYjxQZ",
+      "chargedCharacters": "24"
+    },
+    {
+      "id": "q11_allegiance_consortium",
+      "text": "The Consortium. His head for her trading house. I can live with that.",
+      "characters": 69,
+      "state": "saved",
+      "requestId": "0HwmCWWX4X0E9RAa0pTk",
+      "chargedCharacters": "30"
+    },
+    {
+      "id": "q11_allegiance_thieves",
+      "text": "The thieves. A debt is cheaper than a Duke.",
+      "characters": 43,
+      "state": "saved",
+      "requestId": "fuLHQOmOfMZ9vRMTcOjf",
+      "chargedCharacters": "19"
+    },
+    {
+      "id": "q11_amara_loved_yes",
+      "text": "Yes.",
+      "characters": 4,
+      "state": "saved",
+      "requestId": "ucVyrRTEk08ZWAeZvXRi",
+      "chargedCharacters": "2"
+    },
+    {
+      "id": "q11_amara_loved_tesfaye",
+      "text": "I loved a man who lied to me for twenty years. Does that count?",
+      "characters": 63,
+      "state": "saved",
+      "requestId": "rmzX0r5r2J3xpgPokEX4",
+      "chargedCharacters": "28"
+    },
+    {
+      "id": "q11_amara_loved_no",
+      "text": "No. And I do not intend to start.",
+      "characters": 33,
+      "state": "saved",
+      "requestId": "7JSx9kLL2AlJXk1hXYKy",
+      "chargedCharacters": "15"
+    },
+    {
+      "id": "q11_amara_how",
+      "text": "How does one stop a man like that without killing him?",
+      "characters": 54,
+      "state": "saved",
+      "requestId": "MSpzoij1DPsOVxlxbOLL",
+      "chargedCharacters": "24"
+    },
+    {
+      "id": "q11_amara_promise",
+      "text": "If it can be done without killing him, I will do it that way. You have my word.",
+      "characters": 79,
+      "state": "saved",
+      "requestId": "unSkUbVFQp2Z09Sl1Wo7",
+      "chargedCharacters": "35"
+    },
+    {
+      "id": "q11_amara_refuse",
+      "text": "He killed my father. He dies.",
+      "characters": 29,
+      "state": "saved",
+      "requestId": "5qY1k3S2ci9nKK03wCcw",
+      "chargedCharacters": "13"
+    },
+    {
+      "id": "q11_amara_lie",
+      "text": "Of course. You have my word.",
+      "characters": 28,
+      "state": "saved",
+      "requestId": "9bLPTrgS91G1qEySukiy",
+      "chargedCharacters": "12"
+    },
+    {
+      "id": "q12_dukes_orlan",
+      "text": "The man first. He is the one with the sword.",
+      "characters": 44,
+      "state": "saved",
+      "requestId": "v3r5YFx9wmck5M5NgBn2",
+      "chargedCharacters": "19"
+    },
+    {
+      "id": "q12_dukes_mira",
+      "text": "The woman first. She is the one who will believe us.",
+      "characters": 52,
+      "state": "saved",
+      "requestId": "hx6qao8jVkv4sr7Chq7P",
+      "chargedCharacters": "23"
+    },
+    {
+      "id": "q12_dukes_korvath",
+      "text": "Neither. Our enemy. Now, while he is on the dais.",
+      "characters": 49,
+      "state": "saved",
+      "requestId": "6VcDdvrhXKfMml4QxG4z",
+      "chargedCharacters": "22"
+    },
+    {
+      "id": "q12_face_evidence",
+      "text": "The ledgers. His father\u2019s confession. The letters. Every duke here can read.",
+      "characters": 76,
+      "state": "saved",
+      "requestId": "5rSmuE0JMlpLO4BkZyoP",
+      "chargedCharacters": "33"
+    },
+    {
+      "id": "q12_face_aldric",
+      "text": "You killed the only father either of us ever had.",
+      "characters": 49,
+      "state": "saved",
+      "requestId": "fXB9BkXZEr7JLjNTdKSJ",
+      "chargedCharacters": "22"
+    },
+    {
+      "id": "q12_face_throne",
+      "text": "You are sitting in my seat, brother.",
+      "characters": 36,
+      "state": "saved",
+      "requestId": "drTJeh3v4MxQqXMvbZ4w",
+      "chargedCharacters": "16"
+    },
+    {
+      "id": "q13_maze_follow",
+      "text": "Lead.",
+      "characters": 5,
+      "state": "saved",
+      "requestId": "nhSsKGfWSMUnD5JQaPSR",
+      "chargedCharacters": "2"
+    },
+    {
+      "id": "q13_maze_cut",
+      "text": "No time. Straight through.",
+      "characters": 26,
+      "state": "saved",
+      "requestId": "eCUB5ZlpZ6ii8eVqxwdg",
+      "chargedCharacters": "11"
+    },
+    {
+      "id": "q13_amara_gate_fight",
+      "text": "Then draw.",
+      "characters": 10,
+      "state": "saved",
+      "requestId": "tgD8mu5szlJpfIxZLNQd",
+      "chargedCharacters": "4"
+    },
+    {
+      "id": "q13_amara_gate_pass",
+      "text": "Stand aside. I keep my promises.",
+      "characters": 32,
+      "state": "saved",
+      "requestId": "ZJgJWsaKiC98oLCVtjXG",
+      "chargedCharacters": "14"
+    },
+    {
+      "id": "q13_amara_gate_join",
+      "text": "Come with us. Help me stop him the way you want him stopped.",
+      "characters": 60,
+      "state": "saved",
+      "requestId": "kJzY2bb9P00ibEMbfZAf",
+      "chargedCharacters": "26"
+    },
+    {
+      "id": "q13_amara_gate_lie",
+      "text": "Stand aside. He will live.",
+      "characters": 26,
+      "state": "saved",
+      "requestId": "whEmJMkByWRm6kwbEgyA",
+      "chargedCharacters": "11"
+    },
+    {
+      "id": "q14_final_first_anger",
+      "text": "You murdered my father, you bastard. I came here to kill you.",
+      "characters": 61,
+      "state": "saved",
+      "requestId": "YS6raawvtNQMxYJFSrU7",
+      "chargedCharacters": "27"
+    },
+    {
+      "id": "q14_final_first_justice",
+      "text": "You have killed enough people. Surrender.",
+      "characters": 41,
+      "state": "saved",
+      "requestId": "ixzDRSwRtyQNe2kgazIv",
+      "chargedCharacters": "18"
+    },
+    {
+      "id": "q14_final_first_truth",
+      "text": "Before this ends, you are going to tell me the truth.",
+      "characters": 53,
+      "state": "saved",
+      "requestId": "d0C3p0Ikgd5nmDMLQY8I",
+      "chargedCharacters": "23"
+    },
+    {
+      "id": "q14_final_history_regret",
+      "text": "I made choices I regret. I am still going to stop you.",
+      "characters": 54,
+      "state": "saved",
+      "requestId": "pLd2lVRN2RrOA8ClW524",
+      "chargedCharacters": "24"
+    },
+    {
+      "id": "q14_final_history_mercy",
+      "text": "I spared people you would have killed. You know that.",
+      "characters": 53,
+      "state": "saved",
+      "requestId": "GVgvxRQbaUIku3QJG93T",
+      "chargedCharacters": "23"
+    },
+    {
+      "id": "q14_final_questions_lineage",
+      "text": "How did you learn who your father was?",
+      "characters": 38,
+      "state": "saved",
+      "requestId": "xROSe4uOfV96JtIlgj6f",
+      "chargedCharacters": "17"
+    },
+    {
+      "id": "q14_final_questions_rescue",
+      "text": "What happened when he found us?",
+      "characters": 31,
+      "state": "saved",
+      "requestId": "2yx0mPuOrSsZfCpgpM2r",
+      "chargedCharacters": "14"
+    },
+    {
+      "id": "q14_final_questions_plans",
+      "text": "Tell me about your father and your plans for the throne.",
+      "characters": 56,
+      "state": "saved",
+      "requestId": "MkrKTxw5tdOLAV2z0DFF",
+      "chargedCharacters": "25"
+    },
+    {
+      "id": "q14_final_questions_enough",
+      "text": "Enough. I will stop you.",
+      "characters": 24,
+      "state": "saved",
+      "requestId": "hYoleDVAU93mxzfSm5FA",
+      "chargedCharacters": "11"
+    },
+    {
+      "id": "q14_final_childhood_blame",
+      "text": "He believed you were dead. He did not choose to abandon you.",
+      "characters": 60,
+      "state": "saved",
+      "requestId": "ZJsa4JOzgoWjjHf2h6Eh",
+      "chargedCharacters": "26"
+    },
+    {
+      "id": "q14_final_childhood_back",
+      "text": "There is something else I want to know.",
+      "characters": 39,
+      "state": "saved",
+      "requestId": "8V4p0IW48eI0ASplMqaF",
+      "chargedCharacters": "17"
+    },
+    {
+      "id": "q14_final_plans_father",
+      "text": "What did your father know about your plans?",
+      "characters": 43,
+      "state": "saved",
+      "requestId": "1oXDEvgu6KdIir03HP5d",
+      "chargedCharacters": "19"
+    },
+    {
+      "id": "q14_final_plans_trap",
+      "text": "You arranged your father\u2019s death and my arrest.",
+      "characters": 47,
+      "state": "saved",
+      "requestId": "fG3PKEpkELa2D2qfEzSe",
+      "chargedCharacters": "21"
+    },
+    {
+      "id": "q14_final_plans_rite",
+      "text": "You have lost the war. How can you still ascend?",
+      "characters": 48,
+      "state": "saved",
+      "requestId": "1p4sy7zoK0Km5RoEILiX",
+      "chargedCharacters": "21"
+    },
+    {
+      "id": "q14_final_plans_back",
+      "text": "There is something else I want to know.",
+      "characters": 39,
+      "state": "saved",
+      "requestId": "TkEe47JVW4yPrjoHi98V",
+      "chargedCharacters": "17"
+    },
+    {
+      "id": "q14_final_last_tesfaye",
+      "text": "My father should be here. You took him from me. Draw your weapon.",
+      "characters": 65,
+      "state": "saved",
+      "requestId": "Zyx8lsIyX5AGBLmoQedR",
+      "chargedCharacters": "29"
+    },
+    {
+      "id": "q14_final_last_justice",
+      "text": "I will stop you. Surrender while you still can.",
+      "characters": 47,
+      "state": "saved",
+      "requestId": "VTLqsdPY3FhBLvFZX9V9",
+      "chargedCharacters": "21"
+    },
+    {
+      "id": "q14_final_last_power",
+      "text": "I know what taking your power would mean. I want it anyway.",
+      "characters": 59,
+      "state": "saved",
+      "requestId": "2gHBnB9YvXSoQ0HNGnlT",
+      "chargedCharacters": "26"
+    },
+    {
+      "id": "q14_final_resolution_restore",
+      "text": "Come home, sister. I give up the divine power.",
+      "characters": 46,
+      "state": "saved",
+      "requestId": "ym4xrQB14StkE25MWsqF",
+      "chargedCharacters": "20"
+    },
+    {
+      "id": "q14_final_resolution_ascend",
+      "text": "I will keep the power and claim the throne.",
+      "characters": 43,
+      "state": "saved",
+      "requestId": "tbxDMRCtgU277LAALfGL",
+      "chargedCharacters": "19"
+    }
+  ],
+  "accountCountBefore": 1,
+  "normalization": {
+    "reference": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions\\assets\\expedition\\story\\media\\audio\\vo\\campaign\\aldric\\q1_wake_1.mp3",
+    "referenceLUFS": "-22.87",
+    "targetLUFS": -22.9,
+    "truePeak": -1.5
+  },
+  "accountCountAfter": 3529,
+  "observedAccountDelta": 3528,
+  "approval": "User approved five auditions and companion kits on 2026-10-15",
+  "productionCountBefore": 125
+}

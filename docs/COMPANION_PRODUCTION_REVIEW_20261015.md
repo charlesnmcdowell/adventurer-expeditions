@@ -1,8 +1,10 @@
 # Companion production and Hiro voice — approval review
 
-Status: **preflight and five voice auditions complete; companion painting and
-full voice production awaiting the review requested in the supplied prompt.**
-No gameplay or website files were changed in this preparation pass.
+Status: **voice and all fifteen kits approved by Hiro on October 15.** All 200
+reachable voice lines are recorded and integrated locally. Hiwot and Desmond
+have gated art pilots; the complete companion feature is not ready yet. See
+[production progress](COMPANION_PRODUCTION_PROGRESS_20261015.md) for costs,
+tests and remaining work.
 
 ## Confirmed facts and corrections
 

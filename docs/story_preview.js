@@ -25,6 +25,7 @@ const d=await fetch('assets/expedition/story/campaign.json').then(r=>{if(!r.ok)t
 P.configure(d);let sceneContext=null,musicId=null;
 const available=new Set(await fetch('assets/expedition/story/preview-media.json').then(r=>r.json()));
 const portraits=await fetch('assets/expedition/story/portraits/portraits.json').then(r=>{if(!r.ok)throw Error('Story portraits missing');return r.json();});
+const companionUI=S.CompanionUI({panel,portraits,muted:()=>muted,render,getSession:()=>session});
 const backdrop=S.Backdrop('animated-background',()=>$('stage').classList.add('rendered'));window.storyBackdrop=backdrop;
 const url=path=>'assets/expedition/story/media/'+path;
 function setMuted(value){muted=value;try{localStorage.setItem(MUTE_KEY,value?'1':'0');}catch(_){}$('sound').textContent=muted?'Sound on':'Mute';}
@@ -42,6 +43,30 @@ function lineFile(beat){const file=P.voice(beat,line);return file&&available.has
 function replay(beat){const file=lineFile(beat);if(!file)return;stopVoice();voice=new Audio(url(file));voice.volume=.9;voice.play().catch(()=>{});}
 // Joins and full-company seat offers, worded and ordered as the original's
 // announceJoins/offerSeats (campaign3_ui.js). Diffed around each beat and choice.
+// Choice speech is a saved, cancellable step before the source choice hook.
+// Reload cannot repeat rewards/recruits; Continue also escapes failed audio.
+function hiroChoiceFile(id){const file='audio/vo/campaign/hiro/'+id+'.mp3';return available.has(file)?file:null;}
+function chooseWithVoice(beat,o){
+  session.record.hiroChoice={choice:beat.choice,option:o.id,text:o.text};S.save(session);render();
+}
+function hiroChoice(){
+  const active=session,r=active.record,pending=r.hiroChoice;
+  const beat=S.beats(active)[0],option=beat?.choice===pending.choice&&S.options(active,pending.choice).find(o=>o.id===pending.option);
+  if(!option){delete r.hiroChoice;S.save(active);render();return;}
+  const box=text('section','',panel);box.id='hiro-choice';text('div','Hiro',box,'speaker');
+  text('p',pending.text.replace(/\[[^\]]+\]/g,'').trim(),box,'speech');
+  const file=hiroChoiceFile(pending.choice+'_'+pending.option);let finished=false;
+  function finish(){
+    if(finished||session!==active||!box.isConnected)return;finished=true;stopVoice();
+    delete r.hiroChoice;r.lastHiroChoice=pending.choice+'_'+pending.option;
+    const before=company();reply=S.choose(active,beat,option.id);noteSeats(before);line=0;applied=null;
+    if(!reply)S.shiftBeat(active);S.save(active);render();
+  }
+  button('Continue',finish,box);
+  function speak(){stopVoice();if(muted)return;voice=new Audio(url(file));voice.volume=.9;voice.onended=finish;voice.play().catch(()=>{});}
+  if(file)button('Replay line',speak,box).classList.add('replay');
+  if(muted||!file)finish();else speak();
+}
 function company(){const g=session.game;return {roster:C.roster(g),riding:C.companyIds(g)};}
 function names(ids){const n=ids.map(C.charName);return n.length<3?n.join(' and '):n.slice(0,-1).join(', ')+', and '+n.at(-1);}
 function toast(msg){const t=text('div',msg,document.body,'story-toast');setTimeout(()=>t.classList.add('gone'),3200);setTimeout(()=>t.remove(),4200);}
@@ -49,7 +74,9 @@ function noteSeats(before){
   const after=company(),r=session.record;
   const joined=after.riding.filter(id=>!before.riding.includes(id));
   const waiting=after.roster.filter(id=>!before.roster.includes(id)&&!after.riding.includes(id));
-  if(joined.length)toast(names(joined)+(joined.length===1?' rides with you.':' ride with you.'));
+  const newRecruits=S.Companions.enabled?S.Companions.queueUnlocks(session,before.roster):[];
+  const reseated=joined.filter(id=>!newRecruits.includes(id));
+  if(reseated.length)toast(names(reseated)+(reseated.length===1?' rides with you.':' ride with you.'));
   if(waiting.length){r.seatOffer=[...(r.seatOffer||[]),...waiting];S.save(session);}
 }
 function seatMenu(){
@@ -72,8 +99,8 @@ function chapterCard(){
   const box=text('section','',panel,'menu chapter-card');text('div','Chapter '+r.chapter,box,'chapter-number');text('h1',session.game.quest.quest.name,box);
   const go=button('Continue',()=>{r.titleCards=[...(r.titleCards||[]),r.chapter];S.save(session);render();},box);go.hidden=true;setTimeout(()=>{go.hidden=false;},1800);
 }
-$('sound').onclick=()=>{setMuted(!muted);if(muted){stopVoice();music?.pause();}else{const beat=reply||session&&S.beats(session)[0];playMusic(beat);if(beat)say(beat);}};
-$('home').onclick=()=>{stopVoice();battleFrame?.remove();battleFrame=null;session=null;reply=null;title();};
+$('sound').onclick=()=>{setMuted(!muted);if(muted){stopVoice();music?.pause();}else{const beat=reply||session&&S.beats(session)[0];playMusic(beat);if(session?.record.hiroChoice)render();else if(beat)say(beat);}};
+$('home').onclick=()=>{companionUI.stop();stopVoice();battleFrame?.remove();battleFrame=null;session=null;reply=null;title();};
 window.addEventListener('message',event=>{
   if(event.origin!==location.origin||event.source!==battleFrame?.contentWindow||event.data?.type!=='expeditions-story-battle')return;
   battleFrame.remove();battleFrame=null;setMuted(storedMute());backdrop.pause(false);open(S.load());
@@ -158,7 +185,9 @@ function devSkipTo(target){
   if(r.run.hpMax)r.run.hp=r.run.hpMax;S.save(s);return r;
 }
 function render(){
-  stopVoice();panel.replaceChildren();const r=session.record;
+  companionUI.stop();stopVoice();panel.replaceChildren();const r=session.record;
+  if(companionUI.unlock())return;
+  if(r.hiroChoice)return hiroChoice();
   // Cap the outbound leg before showing content from a locked website chapter.
   if(r.travelPending&&r.travelPending.chapter<=PLAYABLE_THROUGH)return travel();
   const perks=ADV.GatePerks?.state(session.game);
@@ -177,18 +206,19 @@ function render(){
   if(r.phase==='combat'||r.phase==='defeat'){
     const box=text('section','',panel,'menu');text('h1','The road ahead',box);text('p',session.game.quest.quest.encounters[r.encounter]?.label||'Encounter',box,'speaker');
     if(!S.readiness(session).length){
-      text('p',r.phase==='defeat'?'Your chapter progress is safe. Retry this fight with full health.':'Ready to fight. Hiro battles alone; your companions remain part of the story.',box,'notice');
+      text('p',r.phase==='defeat'?'Your chapter progress is safe. Retry this fight with full health.':(S.Companions.enabled&&S.Companions.selected(session).length?'Ready to fight. '+names(S.Companions.selected(session))+' will fight beside Hiro.':'Ready to fight. Hiro battles alone.'),box,'notice');
       button(r.phase==='defeat'?'Retry fight':'Begin fight',()=>{if(r.phase==='defeat')S.retry(session);battle();},box);button('Back to title',title,box);return;
     }
     text('p','This fight is not ready to play. The campaign needs its own approved full-body enemies and finishers before combat can open. Your dialogue choices have been saved.',box,'notice');
     text('p','Pending: '+S.readiness(session).join(', '),box,'notice error');button('Back to title',title,box);return;
   }
   if(r.seatOffer?.length&&!reply&&applied===null&&seatMenu())return;
+  if(S.Companions.enabled&&r.chapter>=2&&(r.companionPickerDue||(r.phase==='departure'&&r.companionPickedChapter!==r.chapter))&&companionUI.picker())return;
   if(r.phase==='departure'&&!reply&&applied===null&&line===0&&!(r.titleCards||[]).includes(r.chapter))return chapterCard();
   let beat=reply||S.beats(session)[0];
   if(!beat){S.nextPhase(session);return render();}
   const identity=r.chapter+':'+r.encounter+':'+r.phase+':'+beat.who+':'+beat.key;
-  if(applied!==identity){const before=company();S.applyBeat(session,beat);applied=identity;noteSeats(before);}
+  if(applied!==identity){const before=company();S.applyBeat(session,beat);applied=identity;noteSeats(before);if(r.companionUnlocksPending?.length)return render();}
   const sceneFile=showScene(beat);playMusic(beat);
   const box=text('section','',panel);box.id='dialogue';text('div',ADV.DATA.CAMPAIGN_CHARS[beat.who]?.name||beat.who,box,'speaker');
   const portrait=portraits.portraits[P.portrait(beat)];
@@ -201,9 +231,11 @@ function render(){
   text('p',raw.replace(/\[[^\]]+\]/g,'').replaceAll('{target}',target).trim(),box,'speech');
   const choices=text('div','',box,'choices');
   if(line<rows.length-1)button('Continue',()=>{line++;r.line=line;S.save(session);render();},choices);
-  else if(beat.choice){const opts=S.options(session,beat.choice);for(const o of opts)button(o.text,()=>{const before=company();reply=S.choose(session,beat,o.id);noteSeats(before);line=0;applied=null;if(!reply)S.shiftBeat(session);render();},choices);if(!opts.length)button('Continue',advance,choices);}
+  else if(beat.choice){const opts=S.options(session,beat.choice);for(const o of opts)button(o.text,()=>chooseWithVoice(beat,o),choices);if(!opts.length)button('Continue',advance,choices);}
   else button('Continue',advance,choices);
   if(lineFile(beat))button('Replay line',()=>replay(beat),choices).classList.add('replay');
+  const chosenFile=reply&&hiroChoiceFile(r.lastHiroChoice);
+  if(chosenFile)button('Replay Hiro',()=>{stopVoice();if(muted)return;voice=new Audio(url(chosenFile));voice.volume=.9;voice.play().catch(()=>{});},choices).classList.add('replay');
   // A death keeps the original's red flash and short hold before the story moves on.
   function advance(){if(beat.death&&!reply){choices.querySelectorAll('button').forEach(b=>b.disabled=true);flash();setTimeout(step,600);}else step();}
   function step(){if(!box.isConnected)return;if(reply)reply=null;S.shiftBeat(session);line=0;applied=null;render();}
@@ -236,7 +268,11 @@ function inn(){
   const rest=button(X.Encounter.atFullHp(run)?'Rest — full health':'Rest to heal — '+cost.toLocaleString()+' points',()=>{
     const result=S.rest(session);if(result.ok)render();
   },actions);rest.id='story-rest';rest.disabled=!can.ok;
-  button('Continue story',()=>{if(S.leaveInn(session))render();},actions).id='story-embark';
+  if(S.Companions.enabled&&S.Companions.eligible(session).length)button('Choose who fights with you',()=>companionUI.picker(),actions).id='story-party';
+  button('Continue story',()=>{
+    const leave=()=>{if(S.leaveInn(session))render();};
+    if(S.Companions.enabled&&r.companionPickedChapter!==r.chapter&&companionUI.picker(leave))return;leave();
+  },actions).id='story-embark';
   text('p',can.reason==='score'?'You need '+cost.toLocaleString()+' points to rest. You can continue with your current health; a lost fight can be retried at full health.':can.reason==='full'?'You are fully healed and ready to travel.':'Rest restores all health. The point cost doubles each time.',box,'notice');
   if(r.restScenePending){
     backdrop.pause(true);X.Bathhouse.open({onClose:()=>{S.finishRest(session);backdrop.pause(false);render();}});

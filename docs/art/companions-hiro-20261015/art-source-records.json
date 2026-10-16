@@ -1,0 +1,142 @@
+{
+  "hiwot": {
+    "hit-request.json": {
+      "prompt": "Use case: stylized-concept. Production animation sheet of Hiwot from the supplied identity reference. Adult Ethiopian woman, dark brown skin, black side braids, white shawl with green red gold woven borders, burgundy leather tunic and trousers, calf boots, short steel blade. Detailed anime cel shaded RPG art. EXACTLY 16 distinct full body poses in 4 columns and 4 rows, chronological row-major. Facing RIGHT consistently, fixed camera, consistent body size. Complete anatomy with all limbs, hair and weapon visible. Wide empty margins, never touch neighbors or the image edges. Each pose is a distinct inbetween in ONE motion, not duplicates. Transparent alpha background, no scene or text or labels/grid lines. HIT reaction: light impact to shoulder FROM RIGHT. Frames0-3 guard anticipates,4-7 torso twists left slightly and head recoils, planted feet and bent knees absorb blow,8-11 chin lifts and balance returns,12-15 back to guard. No gore, death or weapon changes. Every pose fully visible, stable foot anchor and realistic body proportions.",
+      "references": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v10/companions-hiro-20261015/hiwot/idle.png"
+      ],
+      "generator": "built-in image_gen",
+      "status": "requested"
+    },
+    "knockout-request.json": {
+      "prompt": "Use case: stylized-concept. Production animation sheet of Hiwot from the supplied identity reference. Adult Ethiopian woman, dark brown skin, black side braids, white shawl with green red gold woven borders, burgundy leather tunic and trousers, calf boots, short steel blade. Detailed anime cel shaded RPG art. EXACTLY 16 distinct full body poses in 4 columns and 4 rows, chronological row-major. Facing RIGHT consistently, fixed camera, consistent body size. Complete anatomy with all limbs, hair and weapon visible. Wide empty margins, never touch neighbors or the image edges. Each pose is a distinct inbetween in ONE motion, not duplicates. Transparent alpha background, no scene or text or labels/grid lines. NONLETHAL KNOCKOUT: frames0-3 knees buckle,4-7 kneels down with one hand supporting weight on floor,8-11 lowers onto left hip and elbow,12-15 rests on side breathing, eyes closed, weapon safely beside hand. All poses face RIGHT, full body remains visible with legs and feet INSIDE each cell. Keep same body scale while height reduces naturally on crouch. NOT death, no blood, no gore, no disintegration.",
+      "references": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v10/companions-hiro-20261015/hiwot/idle.png"
+      ],
+      "generator": "built-in image_gen",
+      "status": "requested"
+    },
+    "run-v2-request.json": {
+      "tool": "image_gen",
+      "prompt": "Use case: stylized-concept. Precise new locomotion sheet for Hiwot. 16 drawings in exactly 4 columns x4 rows chronological row-major. Match supplied idle reference face, skin, braid and white embroidered shawl, burgundy leather tunic, trousers, boots and shortblade. RIGHT-FACING side profile running. CRITICAL: alternate which leg leads. One FULL STRIDE lasts all16frames: frame0 NEAR leg straight forward heel reaching ground FAR leg stretched behind;1-3 near foot rolls heel-to-toe and travels beneath pelvis, far knee swings FORWARD;4 near foot lifts behind, far knee fully raised ahead;5-7 airborne transition far leg straightens forward, near knee folds behind;8 FAR foot extends forward contacts ground with NEAR knee bent back;9-11 far planted leg travels under pelvis, near knee swings forward;12 far foot lifts behind near knee rises;13-15 airborne transition near shin straightens forward back into frame0. Arms counter-swing, dagger right hand low pointing backward. Do NOT repeat the same four running poses in each row. Show both legs clearly, especially which knee passes which. Full figure with spare margin for hair and feet, stable hip height except slight running bounce. Fine anime cel-shading. No ground shadow/scenery/text/gridline. True transparent alpha. 16 DISTINCT poses forming smooth alternating running cycle.",
+      "status": "pilot; playback QA pending"
+    },
+    "smoke-bomb-request.json": {
+      "prompt": "Use case: stylized-concept. Production animation sheet of Hiwot from the supplied identity reference. Adult Ethiopian woman, dark brown skin, black side braids, white shawl with green red gold woven borders, burgundy leather tunic and trousers, calf boots, short steel blade. Detailed anime cel shaded RPG art. EXACTLY 16 distinct full body poses in 4 columns and 4 rows, chronological row-major. Facing RIGHT consistently, fixed camera, consistent body size. Complete anatomy with all limbs, hair and weapon visible. Wide empty margins, never touch neighbors or the image edges. Each pose is a distinct inbetween in ONE motion, not duplicates. Transparent alpha background, no scene or text or labels/grid lines. SMOKE BOMB signature action: frames0-3 keeps blade lowered and reaches belt pouch with free left hand;4-7 brings a small dark smoke pellet forward, arm rises then releases it to RIGHT at frame7;8-11 empty open hand follows throw, elbow bends back;12-15 settles into guard. Only the pellet held before release; after frame7 no pellet because runtime supplies projectile. NO painted smoke over the body, no disappearance.",
+      "references": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v10/companions-hiro-20261015/hiwot/idle.png"
+      ],
+      "generator": "built-in image_gen",
+      "status": "requested"
+    },
+    "victory-request.json": {
+      "prompt": "Use case: stylized-concept. Production animation sheet of Hiwot from the supplied identity reference. Adult Ethiopian woman, dark brown skin, black side braids, white shawl with green red gold woven borders, burgundy leather tunic and trousers, calf boots, short steel blade. Detailed anime cel shaded RPG art. EXACTLY 16 distinct full body poses in 4 columns and 4 rows, chronological row-major. Facing RIGHT consistently, fixed camera, consistent body size. Complete anatomy with all limbs, hair and weapon visible. Wide empty margins, never touch neighbors or the image edges. Each pose is a distinct inbetween in ONE motion, not duplicates. Transparent alpha background, no scene or text or labels/grid lines. VICTORY: frames0-3 relaxed guard;4-7 wipes blade with small belt cloth,8-11 lowers and slides shortblade into belt sheath,12-15 straightens, confident warm small smile, left hand on belt, right hand relaxes. No drawn blade by last frame. Subtle expressive personality. No scenery, enemy or blood. Same fullbody scale every frame.",
+      "references": [
+        "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v10/companions-hiro-20261015/hiwot/idle.png"
+      ],
+      "generator": "built-in image_gen",
+      "status": "requested"
+    },
+    "initial-prompts": {
+      "generator": "built-in image_gen",
+      "approvedWeaponsAndVoice": "2026-10-15",
+      "records": [
+        {
+          "file": "idle.png",
+          "prompt": "Use case: stylized-concept. Production game animation sheet, Hiwot IDLE loop, 16 distinct hand-painted frames arranged precisely 4 columns x 4 rows, row-major. Full-body adult Ethiopian female rogue, same identity as supplied portrait: dark brown skin, long black side braids, gold eyes, burgundy fitted leather tunic, white shawl with intricate green gold red woven borders, leather belt and bracers. Add practical burgundy trousers and calf-high leather boots to complete unseen lower body. Short steel blade in right hand, throwing knife at belt. All frames face RIGHT in side three-quarter view toward enemy, no camera rotation. Elegant detailed anime cel shaded game finish, clean anatomy and consistent costume. Each cell same size with generous empty alpha gutters, all hair, shawl, weapon, hands, feet wholly inside its own cell. Same floor and body size, anchored heels, subtle continuous 16-phase breathing/cloth sway and watchful guard, no walking and no big body deformation. Transparent alpha no gray matte, no ground/background, no shadows crossing cells. No text/numbers/grid lines/UI. Aim large high-resolution square sheet. The whole 16-frame cycle is one coherent idle motion. This is approved companion production art.",
+          "reference": "assets/expedition/story/portraits/wren_ward-e97bbed3f85d.webp",
+          "qa": "16 figures; all exterior alpha edges clear; not yet runtime approved"
+        },
+        {
+          "file": "run-draft.png",
+          "prompt": "Use case: stylized-concept. Hiwot companion RUN animation sheet, exactly 16 distinct consecutive drawings, 4 columns x 4 rows row-major. Reference is identity/costume anchor, not sheet to reproduce. Same adult Ethiopian woman rogue with side-braided black hair, dark brown skin, white embroidered shawl, burgundy leather tunic and trousers, boots, short blade held low. Full body RIGHT-facing side view. A genuinely smooth athletic light-footed run cycle: left foot contact, compression, push, flight, right foot contact, compression, push, flight with inbetween drawings. Bent alternating knees, opposing arm swing with blade safely behind; hair/shawl lag naturally. 16 UNIQUE poses not repeated static standing. Every cell has 12 percent EMPTY MARGIN on every edge, NOTHING touches cell edge, same body height and floor line; no missing feet/hands/blade, no overlapping cells. Detailed anime cel shading matching reference. Transparent alpha, no shadows, backdrop, text, borders or grid. Large square sheet.",
+          "reference": "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v10/companions-hiro-20261015/hiwot/idle.png",
+          "qa": "hold: stride phase repetition"
+        },
+        {
+          "file": "attack-draft.png",
+          "prompt": "Use case: stylized-concept. Production companion animation: Hiwot BASIC ATTACK, exactly 16 distinct full-body frames in 4 columns by 4 rows, chronological row-major. Match reference adult Ethiopian female rogue identity and outfit, black side braids, white shawl woven gold/red/green borders, burgundy leather tunic, burgundy trousers and boots. RIGHT facing throughout. Controlled short steel blade single lunge and diagonal cut: row1 ready to windup weight sinks and right elbow draws blade back; row2 front foot advances, hips turn and arm extends blade THROUGH enemy space to RIGHT (contact frames6-8); row3 blade follows through down/right, back foot steps under body; row4 retract hand, straighten and settle into original guard. Real swordsmanship, shoulders/hips/legs turn in connected followthrough, no bent blade or extra hands. One subject per cell, consistently scaled, all body/weapon extremities clear of cell edges by at least 12%, no crop/bleed. Clean detailed anime celshaded finish like source. No enemy, no blood, no text/labels/grid, no ground. TRUE TRANSPARENT alpha. Every cell a new inbetween pose, not repeating 4 poses.",
+          "reference": "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v10/companions-hiro-20261015/hiwot/idle.png",
+          "qa": "hold: right-edge blade pixel; nonuniform source cell boundaries"
+        },
+        {
+          "file": "backstab.png",
+          "prompt": "Use case: stylized-concept. Hiwot companion BACKSTAB animation, 16 distinct chronological frames, 4 columns x 4 rows. Square sheet. Fullbody adult Ethiopian rogue, dark skin black side braids white patterned shawl burgundy leather tunic/trousers boots, same identity/reference. Facing RIGHT. A low deceptive stab combo: frames0-3 drops guard bends knees draws dagger close to hip;4-7 quick low step and compact forward thrust at waist height to right;8-11 controlled withdrawal crossing rear foot under body;12-15 returns upright right-facing ready stance. No victim, no blood. IMPORTANT small figures within LARGE EMPTY CELLS: character height maximum 65 percent of cell height, all blades must end at least 15 percent cell width away from every cell boundary. Entire sheet outer margin at least 50 pixels. NOTHING touching neighboring cell or image edge. Stable body scale, ground level, no camera movement. Clean expressive high-detail anime cel shaded art; distinct inbetween drawings and precise anatomy. Transparent alpha background. No text/gridlines/borders.",
+          "reference": "C:/Users/charl/The Sorcerer Sword ARPG/adventurer-expeditions-source-art/astra-v10/companions-hiro-20261015/hiwot/idle.png",
+          "qa": "16 figures; external edges clear, needs measured crop"
+        },
+        {
+          "file": "attack-wide-draft.png",
+          "prompt": "Use case: stylized-concept. TALL PORTRAIT sprite sheet, ideally 2048x4096. EXACTLY TWO COLUMNS and EIGHT ROWS, 16 fullbody drawings. Cells WIDE horizontal rectangles with large empty gutters. Hiwot shortblade BASIC ATTACK, same adult Ethiopian woman as reference portrait, dark brown skin, long black side-braids, burgundy leather tunic and pants, white woven embroidered shawl, boots. She faces RIGHT. Read order left to right then next row. Frame0 steady guard,1 knees soften,2 right elbow retracts,3 blade near shoulder,4 front foot begins step,5 hips turn,6 right arm blade extends right at waist,7 contact longest reach,8 follows through down-right,9 shoulder unwinds,10 blade hand retracts,11 back foot draws in,12 rises,13 resets stance,14 soft settle,15 original guard. One continuous grounded shortknife strike with sixteen genuinely distinct drawn inbetween poses. NO repeated rows. Each fullfigure HEIGHT about55% of its cell height and horizontally centered with action reaching only within center65% of cell width. All blades and feet INSIDE cell. No border contact anywhere. Entire anatomy visible. Detailed clean anime cel shaded style from reference, fullbody stage scale constant throughout. Transparent alpha, no labels/text/grid/ground/environment/victim/blood.",
+          "reference": "assets/expedition/story/portraits/wren_ward-e97bbed3f85d.webp",
+          "qa": "rejected: only 14 figures, outfit drift"
+        }
+      ]
+    }
+  },
+  "desmond": {
+    "attack-request.json": {
+      "tool": "image_gen",
+      "prompt": "Use case: identity-preserve. Production anime cel shaded 2D game animation sheet. EXACTLY16 different sequential full-body drawings, 4 columns x4 rows chronological row major. Same Desmond as attached idle model: lean adult dark skinned male, shoulder locs gold bead, small chin beard, plum embroidered long coat, cream shirt, striped red green gold sash, dark trousers brown boots, short ritual wand. EVERY frame faces RIGHT, retain proportions, uniform anatomical scale and camera, whole body and wand visible. Genuine alpha background. GENEROUS 25px outer border and 25px space between EACH silhouette; no overlap or cropped boots/hair/wand. No floor shadow, text, outlines, grid, people or scenery. Draw exactly one smooth action, not sixteen unrelated poses. One BASIC ATTACK: quick horizontal wand strike toward enemy to his RIGHT. Frames0-3 guard and short right-facing windup,4-7 step and controlled right-handed swing across chest height,frame7 contact wand extended right at waist/chest,8-11 follow-through,12-15 recover originalguard. Body twists within RIGHT-facing side profile, no camera rotation, no giant glowing spell, no target painted. Clean wrist and elbow biomechanics, readable action.",
+      "references": [
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v10\\companions-hiro-20261015\\desmond\\idle.png"
+      ]
+    },
+    "hit-request.json": {
+      "tool": "image_gen",
+      "prompt": "Use case: identity-preserve. Transparent production full-body animation sheet. Exactly 16 different sequential drawings in 4 columns x4 rows row-major, one continuous motion. Same adult male Desmond as reference, EXACT identity wardrobe and anatomical scale: dark brown skin/shoulder black locs/gold bead/chin goatee/plum long coat/cream shirt/striped sash/dark trousers/brown boots/ritual wand. All faces orient RIGHT. Fixed camera, FULL body included and wand visible, generous 25px gap between each figure and25px clear outer edges. No other characters, labels,grid,scenery,blood or shadow floors. Hit reaction then RECOVERY. Frames0-3 standing guard,4-7 torso recoils LEFT from hit to chest, knees bend, head grimace to RIGHT,8-11 stabilizing footstep catches weight,12-15 return stand original guard. Keep wand in hand. Subtle crisp recoil, no shrinking/growing.",
+      "references": [
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v10\\companions-hiro-20261015\\desmond\\idle.png"
+      ]
+    },
+    "idle-request.json": {
+      "tool": "image_gen",
+      "prompt": "Use case: stylized-concept. Production 2D game sprite sheet, polished anime cel-shaded fantasy, genuine transparent background. Desmond, the adult male companion in the reference: dark brown skin, shoulder-length black locs with one gold bead, violet eyes, narrow chin goatee, worn dark plum long coat with embroidered trim over cream open collar shirt, red gold green sash, dark trousers and boots. Retain exact recognizable face, outfit, lean physique. Holds a short ritual wand in right hand, LEFT hand relaxed. Full body true side view facing RIGHT in EVERY frame. Exactly SIXTEEN distinct consecutive drawings in a 4 columns x 4 rows grid, all equal generous cells, chronological row major. One single smooth subtle breathing IDLE LOOP: quiet weight transfer, chest rises then falls, slight wand and coat movement, grounded feet. All16 distinct drawings but no large pose jumps. Locked camera, character scale and ground per cell. Full boots and wand visible. Minimum generous transparent padding around EACH figure, no touching neighboring cell. No ground, shadow ellipse, text, labels, border, other people, purple glow or effects. 1536 square composition.",
+      "references": [
+        "assets/expedition/story/portraits/vess-bfe7082047db.webp"
+      ]
+    },
+    "knockout-request.json": {
+      "tool": "image_gen",
+      "prompt": "Use case: identity-preserve. Transparent production full-body animation sheet. Exactly 16 different sequential drawings in 4 columns x4 rows row-major, one continuous motion. Same adult male Desmond as reference, EXACT identity wardrobe and anatomical scale: dark brown skin/shoulder black locs/gold bead/chin goatee/plum long coat/cream shirt/striped sash/dark trousers/brown boots/ritual wand. All faces orient RIGHT. Fixed camera, FULL body included and wand visible, generous 25px gap between each figure and25px clear outer edges. No other characters, labels,grid,scenery,blood or shadow floors. NONLETHAL knocked-out collapse. Frame0 standing guard;1-3 knees buckle and wand lowers;4-7 on one knee,hand braces ground;8-11 lowers onto left hip then side;12-15 curled ON GROUND breathing, eyes closed,wand safe close by. Unconscious not dead,no blood,no violence. All16 one continuous sequence. Do NOT make prone body bigger than standing body. Spacious horizontal cells for final prone figures, separate every body part from neighbor. Final frame STAY DOWN.",
+      "references": [
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v10\\companions-hiro-20261015\\desmond\\idle.png"
+      ]
+    },
+    "signature-1-request.json": {
+      "tool": "image_gen",
+      "prompt": "Use case: identity-preserve. Production transparent sprite animation. Exactly16 FULL BODY drawings,4columns4rows row-major, consistent anatomical size and fixedcamera. Same adult male DESMOND as attached: lean dark brown skinned man, black shoulder locs/gold bead,small chin goatee,plum long coat/creamshirt/red green goldsash/darktrousers/brownboots,ritualwand. Preserve identity/outfit. Facing RIGHT throughout. All limbs and wand uncut, 30pxpaddingbetweenfigures and outsideedges. No labels, grids, shadowfloor or scenery, no target or othercharacters. Eachrow continuesprevious, not repeatedcopies. EMBER LASH action: frames0-3 tight low stance and wand-hand curls inward preparing fiery whip.4-7 broad rising right arm gesture with wand extending diagonally RIGHT, release at7, lefthandcounterbalances.8-11 flowing wrist follow-through then shoulder settles,12-15 backtoguard. No flame painted beyond wand; the separate projectile supplies fire. A confident readable outward spellcast with actual pose progression.",
+      "references": [
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v10\\companions-hiro-20261015\\desmond\\idle.png"
+      ]
+    },
+    "signature-2-request.json": {
+      "tool": "image_gen",
+      "prompt": "Use case: identity-preserve. Production transparent sprite animation. Exactly16 FULL BODY drawings,4columns4rows row-major, consistent anatomical size and fixedcamera. Same adult male DESMOND as attached: lean dark brown skinned man, black shoulder locs/gold bead,small chin goatee,plum long coat/creamshirt/red green goldsash/darktrousers/brownboots,ritualwand. Preserve identity/outfit. Facing RIGHT throughout. All limbs and wand uncut, 30pxpaddingbetweenfigures and outsideedges. No labels, grids, shadowfloor or scenery, no target or othercharacters. Eachrow continuesprevious, not repeatedcopies. WITHER TOUCH curse action: frames0-3 left hand closes by chest, right wand held LOW;4-7 left palm reaches out fully toward RIGHT at opponent chestheight, release7;8-11 fingers curl drawing energy back, left elbow bends into ribs,12-15 settles back to idle. Wand stayslowright hand, no weaponattack. No spellcloud or glow covering hands. Continuous expressive purposeful casting gesture, readable silhouette unlike the EmberLash raisingwand gesture.",
+      "references": [
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v10\\companions-hiro-20261015\\desmond\\idle.png"
+      ]
+    },
+    "victory-request.json": {
+      "tool": "image_gen",
+      "prompt": "Use case: identity-preserve. Transparent production full-body animation sheet. Exactly 16 different sequential drawings in 4 columns x4 rows row-major, one continuous motion. Same adult male Desmond as reference, EXACT identity wardrobe and anatomical scale: dark brown skin/shoulder black locs/gold bead/chin goatee/plum long coat/cream shirt/striped sash/dark trousers/brown boots/ritual wand. All faces orient RIGHT. Fixed camera, FULL body included and wand visible, generous 25px gap between each figure and25px clear outer edges. No other characters, labels,grid,scenery,blood or shadow floors. Victory flourish: frame0 relaxed standing guard,1-3 brings wand up,4-7 twirls wand with fingers near shoulder,8-11 catches wand and gives cocky small smirk toward RIGHT,12-15 lowers wand back to original idle. Whole body present and grounded all frames; only controlled arm/wrist/head changes not big bounces. No fire/glows/effects.",
+      "references": [
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v10\\companions-hiro-20261015\\desmond\\idle.png"
+      ]
+    },
+    "walk-request.json": {
+      "tool": "image_gen",
+      "prompt": "Use case: identity-preserve. Production anime cel shaded 2D game animation sheet. EXACTLY16 different sequential full-body drawings, 4 columns x4 rows chronological row major. Same Desmond as attached idle model: lean adult dark skinned male, shoulder locs gold bead, small chin beard, plum embroidered long coat, cream shirt, striped red green gold sash, dark trousers brown boots, short ritual wand. EVERY frame faces RIGHT, retain proportions, uniform anatomical scale and camera, whole body and wand visible. Genuine alpha background. GENEROUS 25px outer border and 25px space between EACH silhouette; no overlap or cropped boots/hair/wand. No floor shadow, text, outlines, grid, people or scenery. Draw exactly one smooth action, not sixteen unrelated poses. A brisk WALK LOOP carrying wand down at his side. Real alternating legs: frames0-3 right foot planted left leg passing,4-7 left foot swings ahead then plants,8-11 left foot planted right passes,12-15 right swings ahead and returns to first pose. Opposite arm counter swing, coat follow-through. Distinct leg positions at each frame, do not drag one foot. Boots never cropped.",
+      "references": [
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v10\\companions-hiro-20261015\\desmond\\idle.png"
+      ]
+    },
+    "walk-v2-request.json": {
+      "tool": "image_gen",
+      "prompt": "Use case: identity-preserve. REDRAW a smooth WALK CYCLE for a 2D game. Desmond adult lean dark skinned man, shoulder black locs, chin goatee, plum embroidered long coat cream shirt red gold green sash dark trousers brown boots, carrying short ritual wand at his side. Match portrait. Full body facing RIGHT, true side view. Genuine transparent background. 16 drawings in4columns4rows. They MUST NOT all have widely spread straight legs! Show the passing positions with both knees nearly under the hips and the free knee BENT and LIFTED. Gait timeline EXACTLY: 0 right heel touches ahead left toe behind,1 right knee bends bearing weight,2 LEFT KNEE LIFTED BENT90 under torso passing right leg,3 left knee moves forward,4 LEFT heel forward toesup RIGHTlegbehind,5 leftknee compression,6 RIGHT KNEE LIFTED BENT90 under torso passing leftleg,7 rightknee movesforward,8 rightheel contactsleftlegbehind,9 compressright,10 bentLEFTknee passes,11 leftswing,12 leftheelcontactrightbehind,13 leftcompression,14 bentRIGHTkneepasses,15 rightswing. Four distinct stride phases repeated with slightly different cloth/arm followthrough, no duplicated drawings. Keep torso near upright. Opposite arm counter swing, coat moves. AllframesSAME anatomicalscale and camera. 30pxpaddingaroundEVERYfigure. Wholehead,boots,wandnotcropped. No floor/shadows, otherpeople,text,grid orlabels.",
+      "references": [
+        "assets/expedition/story/portraits/vess-bfe7082047db.webp"
+      ]
+    }
+  }
+}

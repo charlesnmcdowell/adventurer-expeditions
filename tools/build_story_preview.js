@@ -10,6 +10,14 @@ for(const a of d.assets){
   if(!fs.existsSync(output)||crypto.createHash('sha256').update(fs.readFileSync(output)).digest('hex')!==a.sha256)fs.writeFileSync(output,bytes);
   media.push(a.file);
 }
+// Edition-owned recordings survive rebuilding the read-only source import.
+const hiroVoice=JSON.parse(fs.readFileSync(path.join(root,'assets/expedition/story/hiro-voice.json')));
+for(const row of hiroVoice.files){
+  const file=path.join(root,'assets/expedition/story/media',row.file);
+  if(!/^audio\/vo\/campaign\/hiro\/q[0-9]+_[a-z0-9_]+\.mp3$/.test(row.file))throw Error('Invalid Hiro voice path');
+  if(crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex')!==row.sha256)throw Error('Hiro voice changed: '+row.file);
+  if(!media.includes(row.file))media.push(row.file);
+}
 const scripts=[...fs.readFileSync(path.join(root,'index.html'),'utf8').matchAll(/<script src="[^"]+"><\/script>/g)].map(m=>m[0]).join('\n');
 // The story's own scripts carry the same release stamp, so a returning player
 // never runs a cached copy against newer data (2026-10-11).
@@ -20,4 +28,4 @@ fs.writeFileSync(path.join(root,'docs/STORY_CAMPAIGN_PREVIEW.html'),stampStory(h
 fs.writeFileSync(path.join(root,'assets/expedition/story/preview-media.json'),JSON.stringify(media,null,2));
 const fight=fs.readFileSync(path.join(__dirname,'story_fight.template.html'),'utf8').replace('<!-- MODULES -->',scripts);
 fs.writeFileSync(path.join(root,'docs/STORY_FIGHT_PREVIEW.html'),stampStory(fight));
-console.log('Story preview: '+media.length+' existing media files reused; no new voice generation.');
+console.log('Story preview: '+media.length+' verified media files reused, including recorded Hiro choices; no new voice generation.');

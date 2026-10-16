@@ -1,0 +1,806 @@
+{
+  "voiceId": "V8MrPOnARtlsjrlxEsE7",
+  "model": "eleven_v3",
+  "files": [
+    {
+      "file": "audio/vo/campaign/hiro/q10_double_listen.mp3",
+      "sha256": "168d2a4f912a35ef61b86f01a990cb3cd34c1bde2b170b23fd310d5aaaa2c44c"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q10_double_question.mp3",
+      "sha256": "ef9d2079296ed7d4389618ea6320ef2876127e8796fbc5e6395964deaebfc38d"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q10_double_strike.mp3",
+      "sha256": "572ff1641cbdc2d1cd69989d536da36b7d93e2d4b4507c6982f6eaace0cfe0ff"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q10_double_strike_alone.mp3",
+      "sha256": "08860fc8c32fb8b36e47da35431a7f579a1f5db6f1d2db3ca447763d3153571d"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q10_dream_embrace.mp3",
+      "sha256": "a8267b491c4e8e04f8225d164e53c02d2b59e13189a6fe78a703aea417635abc"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q10_dream_reject.mp3",
+      "sha256": "06e819e0f8e026fc8f7c2106b518ddcac8669e3d6dfa66b3188c5af5e26eb779"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q10_gate_where_refuse.mp3",
+      "sha256": "b89b9a25f37b8ebace7e2bd6d2a07ef3b6c07eedfbad9983376c04af1e229307"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q10_gate_where_road.mp3",
+      "sha256": "d39ad9b8391467497a463f320d31321223cc321912acef2ec13e0c8a9c682f9e"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q10_letter_anger.mp3",
+      "sha256": "0bc8c03f71d9027a10ac13490075508c487b00a96eb014a57b08f0ab4df74714"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q10_letter_end_nothing.mp3",
+      "sha256": "94f00dc771acdf3b3a6c42d93bd7a9a8ad5f6d60ecd05ce3a65fe152b734d6d8"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q10_letter_end_proud.mp3",
+      "sha256": "22c99af7465bb1bcef5a34d45e2ad3b707839a2696e184ca508610dd96f1ef12"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q10_letter_end_run.mp3",
+      "sha256": "5683ec13ac8320e7ad720141ca800b7f02ddf7a2fac999b93f081aef3f1d8022"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q10_letter_grief.mp3",
+      "sha256": "68f2f012e0c0e714805f39faa9f8881eb824f7ac4f60a5f265566c733393c2cc"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q10_letter_hunger.mp3",
+      "sha256": "48d43dc8826b181afa180c06ecfc2533fccdc4b24b7af33866787106eda376b5"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q10_sarn_refuse.mp3",
+      "sha256": "6f6ef24da77853231c247f0a3f5183b735cbc29a741798c71116e1d95d6ba69b"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q10_sarn_take.mp3",
+      "sha256": "8e1c65554b0280e80c07d47fe4490bc41d1e4e636ec6130fcdabc551b182cf86"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q10_sarn_threat.mp3",
+      "sha256": "243c5440668f79169258202c0c4e2e4477426f6a5a062fa58d154689ba4713d8"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q10_summit_arrest.mp3",
+      "sha256": "b24dc04f0de0c0dc14a9083d14ca29a58e3671c71d7da05cce8099cf545a3001"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q10_summit_kill.mp3",
+      "sha256": "f2b7ac55cd7062726eac5332deffd94eaa7b5f45a233dbe5fb7b1ff7e5364bbb"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q10_summit_talk.mp3",
+      "sha256": "09a61334464bff4b52c9061845c467f6670a44cfb6251d1e276a0d81590b2af0"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q11_allegiance_consortium.mp3",
+      "sha256": "f6ecc517e01c47f8d0e50866eb962deee0d965c03d499e7dbd86863e7e686f03"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q11_allegiance_gauntlet.mp3",
+      "sha256": "8634be2136c92dbe116da942f9223be7c70cd2ed138327b9f49a79e97fba010e"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q11_allegiance_thieves.mp3",
+      "sha256": "0e0328aef00fd8ed1b764748ba40e8836b8df6dfce3f783bc754d6551631e4e6"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q11_amara_how.mp3",
+      "sha256": "8227add3a00f5aa061cdce6cdb9646f860ee5421901e4fe015de565300d4c269"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q11_amara_lie.mp3",
+      "sha256": "d45a49822a967d925c74a1f9007d4be491b98b30522083dc797e39b5872dbcfa"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q11_amara_loved_no.mp3",
+      "sha256": "3a4abc13e40a8394e403042a5c255870768444568d150cd6529c70507cdd25d7"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q11_amara_loved_tesfaye.mp3",
+      "sha256": "b8a7942f8986b3e4e184ea258d793682b39fbbaffa8ed2d4563c8c0d7b28ffd1"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q11_amara_loved_yes.mp3",
+      "sha256": "9396e9a599b92cb62fa7bc18940562d6a3ae47fd6e66f7b561afd3dd235ecb95"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q11_amara_promise.mp3",
+      "sha256": "083747bfd10fecaafb14b337c98e69570eab0f39b84b4cee41481817a0f53334"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q11_amara_refuse.mp3",
+      "sha256": "c2afddc0eba19ea11828e74af5bc5a30a0190cb614962be2d45671ca95989463"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q12_dukes_korvath.mp3",
+      "sha256": "c3fa636892b7c899afc309fc6c1ec3b45c68c6bb69786419cc5711daa0a3d4ea"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q12_dukes_mira.mp3",
+      "sha256": "d4981e569605f82eb95d63c3809e4c5b093af1e23072c1dbd367de1256af560c"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q12_dukes_orlan.mp3",
+      "sha256": "85b1d944ac889fac1bd3a6251bb5a41b0e5d4b5ee2f2e6bb89f9ce60ab44cffb"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q12_face_aldric.mp3",
+      "sha256": "2c43216a3f0d421a153d7fa4b2ba470855e8985768880fc3378b07f7968d249a"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q12_face_evidence.mp3",
+      "sha256": "e4548058d8eb728822cd8ab51ea3eb445bc605da2953c3298f4c6e330acd43ed"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q12_face_throne.mp3",
+      "sha256": "8ddaff84ab349aa78dc5eb5e8074970c80bb65bb66d7d2406ec26d0f75f40f2b"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q13_amara_gate_fight.mp3",
+      "sha256": "9bfaaa1869729203e00ec1e28c2567b508d26cea2fe5359013840face37f1d48"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q13_amara_gate_join.mp3",
+      "sha256": "fbaf26eedc40ceccb22c2eb24cea9e00f6b0d9e0af5e4fea87aa6c175d9a8134"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q13_amara_gate_lie.mp3",
+      "sha256": "e1f4611f6e30edf3a9592c948c0e46adf757bda9923cb6b083b0543ec094b724"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q13_amara_gate_pass.mp3",
+      "sha256": "dc7339e77e5e6f1b85791563d0b2c99afea8011703c46ec4d5b2735fe167e36f"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q13_maze_cut.mp3",
+      "sha256": "80168627c1198958c79b78624ea41e85715b1924225a5902a992464aebc41dd7"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q13_maze_follow.mp3",
+      "sha256": "f2230028bf4d74b8f14d29e850b111e81648949212687268737d72ccdc744ac6"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q14_final_childhood_back.mp3",
+      "sha256": "9841ee27a4c4c640533a3de0b00aa4ebf1cd84e3beeaa3411ba5e1fa6e455bb1"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q14_final_childhood_blame.mp3",
+      "sha256": "62d5c9f4cf25e69a16e3e8cb38cae51e7a8afd13a3df684174537adb6fea8272"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q14_final_first_anger.mp3",
+      "sha256": "f44de705936ee8f017bf72b0b379cdd5cbfbfedfdcc58e0e5cb56cb1db905987"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q14_final_first_justice.mp3",
+      "sha256": "10d55840912d880f2495ab4d1b83916ec0a87b2c9cd5eae32b1fdc8e522bcd74"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q14_final_first_truth.mp3",
+      "sha256": "671e0a15f5f12c204f2f3002b74ea3f97e23b3ee00863e1fff4a32d3e9ef3f85"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q14_final_history_mercy.mp3",
+      "sha256": "28b8e90eb0451589ac4411ce1d58cd96d4436f2459e513e79e02e51268a13ef7"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q14_final_history_regret.mp3",
+      "sha256": "55715cc8179e370df84f8cf1b16768b7d00ecc6ddf0dc3401ee07f5d878d699c"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q14_final_history_reject.mp3",
+      "sha256": "71f1bd6f2d28f04a13bfed626ca3d7ab575a7a4de3e4155b17045be46871c96a"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q14_final_last_justice.mp3",
+      "sha256": "7f62b49787e92bae9f2150e7228c5bdc5d62251037d76426d3e04882d74a698d"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q14_final_last_power.mp3",
+      "sha256": "18fdce582d62fe19c897e6cc62e62ec8a4c8297df4a105f548ee14a758283122"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q14_final_last_tesfaye.mp3",
+      "sha256": "27d1d8145e1711f9f03357e45f2c00ea8ccd849e4d7301fe6bba51db3ab3204b"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q14_final_plans_back.mp3",
+      "sha256": "a96bddc34a9ea3ddab12744df7720fd765a1a17ccdbe3815dc11236cfe4dc290"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q14_final_plans_father.mp3",
+      "sha256": "10f2a11b4477c92b79b781d393770e36993fdeb188d30af978abb8139c7040da"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q14_final_plans_rite.mp3",
+      "sha256": "5fed3872c642e73ac4b89c0dafa7ca52325e380c9801d6747a26fa107ffc10d2"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q14_final_plans_trap.mp3",
+      "sha256": "722b261eb0e4b7888e63cbb55cbe01951edf3bd503188cbb087b5d7e0a4986aa"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q14_final_questions_enough.mp3",
+      "sha256": "075860784f188996ca9e5d6d6ae010ee969ba78ccf5b061a6369adb3f6ea70d9"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q14_final_questions_lineage.mp3",
+      "sha256": "60a526c621deacd08662edb722d5c092b775fc1d6d8c8bf065b8dd759ffcbaae"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q14_final_questions_plans.mp3",
+      "sha256": "cefa6a4d03680c3a9de9d869bba0784d584c0f7947c9efd0e014223c7f43d771"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q14_final_questions_rescue.mp3",
+      "sha256": "e3370269708161e418643736a38c89420c294d20c49a61c4176f39f413fe8671"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q14_final_resolution_ascend.mp3",
+      "sha256": "22fdd638b248478cdf018ebdaba7e8199563816eac6cb66735b650fda7bed309"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q14_final_resolution_restore.mp3",
+      "sha256": "1502684da8d840bcecb246adada024a45c0700da200ab8ec3a5ae84a053ec322"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q1_cobb_bounty.mp3",
+      "sha256": "3eb5f084db8a6e175430ad2fe9e5b5548a2764d2fdd05bc426798961e2ee553f"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q1_cobb_nothing.mp3",
+      "sha256": "c0ea1d73d7e3e7ad97cb024bfd6d2ef5549416f3f2a3a7a0145eb1dec45b04d5"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q1_cobb_seal.mp3",
+      "sha256": "0e5773c4427b416ae16d3e237ef716cbae16b6efa41d6bc3217cc63d8aefe01a"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q1_nib_draw.mp3",
+      "sha256": "45f279a43d022d524f64d794bdf45e0fb0dd2c5fd9b55d43316ae5b0e278410a"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q1_nib_richer.mp3",
+      "sha256": "cf975b1e2708b1d93a8f6fcfe83a2cf2cf89f4c98d8f305dfdbed4f9b84fb21e"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q1_nib_run.mp3",
+      "sha256": "ced40fd372e3a49d1d74e4fcda68fe9ded124709d42d84174aae21403dfd531a"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q1_nib_who.mp3",
+      "sha256": "5bcf816a714fd540d4ba0e3f1870af60b84d0b63091e5c21db034073320c08ab"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q1_wake_afraid.mp3",
+      "sha256": "dbe22d31ffcdf46e66f13cd8ce50ab0a665291aa718948d94df3b5166c9f56ff"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q1_wake_go.mp3",
+      "sha256": "5e097a7cef614c456be37305691c7c65fdf4583a82db90017269dd0fa4000890"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q1_wake_seen_nobody.mp3",
+      "sha256": "88aa11a82f7718d79125f825af34ce39c68149ad14c30c2f391865bae3def934"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q1_wake_seen_pilgrim.mp3",
+      "sha256": "f6ff868648ba8134e6fcadcd82c17c19f2c7d1a87fa29161a6eedd3678333572"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q1_wake_seen_why.mp3",
+      "sha256": "4f908d1f8dcadfca7120e8af036871f4f132c135131c3890004ad6950e804263"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q1_wake_why.mp3",
+      "sha256": "fd9eb447ffaa1e036324d5bd840b9e06b7d1f3a36d6ba7afefb019f0a0d0f9d5"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q1_wren_cold.mp3",
+      "sha256": "51965ebb055587fd8a24391f278c5011519b1c52dfc883e8d69419e18cba5e66"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q1_wren_dark.mp3",
+      "sha256": "51b7986e81e2ba63b7f26843d9c8bd043f991ef7febfd0189e3399a1fafb0207"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q1_wren_kind.mp3",
+      "sha256": "aa622ac16ca970887fc467fb3f558a669e52cf23b4160f93ec82cd0b0c18460b"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q2_cassian_join.mp3",
+      "sha256": "00a2a4ad6f4fb22755861a18cfa134dbcae37eb004ea6bc78b73113c367ff443"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q2_cassian_no.mp3",
+      "sha256": "bfc0fbb42eee6dcbe233c8765a88e16201098bbc39f09e07dd3169f9a69d039d"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q2_cassian_order.mp3",
+      "sha256": "cc9eb0de724d06bb8e6afc7ed574f057bd0fc5cab4ce84ae47d4fdd9b0720b6f"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q2_cassian_tease.mp3",
+      "sha256": "ce5431e19e5b3c7e18445edc7ece437e1738fd11c3f27e485578eb52035a07c0"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q2_morwin_how.mp3",
+      "sha256": "235990b4a6746757bfd5fd51af17aa3e4958a31d5b3913957b4e5ab452c1e0be"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q2_morwin_inn.mp3",
+      "sha256": "e676017ba348a11a8e1e522d983177462e93f78ba60f49a3768a3b955cf08c03"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q2_morwin_kill.mp3",
+      "sha256": "339bc1caa6dfbb39184933f4d4e6c7366d8e19f076c6794c054bf2eadd5c20b3"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q2_morwin_name.mp3",
+      "sha256": "fccfa3f154b051dde6f7ee2b6f02ecd9703cf113dd3dfe71559ac8d4ac297ed0"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q2_pair_no.mp3",
+      "sha256": "e65e7dc51a9975b6ee9b2dba9dc2523564cb3c8ddccd97189ae59146799e1c18"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q2_pair_vess.mp3",
+      "sha256": "da3024ce40b3d4dd11a9544b80dd67fdabe6e6b4774260e6d4fcdf52ffe33972"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q2_pair_where_lie.mp3",
+      "sha256": "154fac1fb180a0393b777208ed77cc6e45c397548e4361d70f6ca739a119443a"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q2_pair_where_refuse.mp3",
+      "sha256": "25fa0ffc4642e1a657c52f69336686af64bf03cfd66c01b8bc2983e10c0e3db2"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q2_pair_where_truth.mp3",
+      "sha256": "eb9fe51b593b2aaba94f436c6bc169f48cc7442961b80ed1bde216dde06fb615"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q2_pair_who.mp3",
+      "sha256": "4c463c08c48a55d72af6597c71ae8a38bec6d76c547cce0a90edf7be7a15bd84"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q2_pair_yes.mp3",
+      "sha256": "685b8023afbba96785db6bbba3a71d2097b7abf0916592605d87d012320718d4"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q2_selene_alone.mp3",
+      "sha256": "504f07d6a24b3d01dce6f3fcc790397ab9d51bbc7b6528e2df8a5b72c1d5744c"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q2_selene_how_armour.mp3",
+      "sha256": "2ce35b76f5b94287b307157ffc5ddf68de20fa1b98aafe5066aee2c9f04e8ff0"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q2_selene_how_quick.mp3",
+      "sha256": "33b2b22bee0dfb76c9d5f14021abacc88281f8f23204128b3143d97f27fe5877"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q2_selene_how_refuse.mp3",
+      "sha256": "cd2f7e771278f46c643ede358ba95fe115d96875fbc624dc3481ea0fc9c6338b"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q2_selene_trust.mp3",
+      "sha256": "9e467bf89706b2cb9cad4ec437becdbfe3b0939dc4238a64f53add7b13ed45ff"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q2_selene_wardens.mp3",
+      "sha256": "a40c9df857490338cf4ffb3ad3a899797fff189ae67fd659430f7b83adc8d9a1"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q2_selene_why.mp3",
+      "sha256": "d778f060ca885072d07c6168b4b49ea26e19651fee6c7f79ae1f764e7388f96b"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q3_bramm_both.mp3",
+      "sha256": "84c28736a874d8f48085540a27a3f57d4aada9c4093bb6e1a9878e947d1e8406"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q3_bramm_coin.mp3",
+      "sha256": "43614dfe61545357a109e481cf84399d9209732209ee09cd073091f546a797bf"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q3_bramm_rescue.mp3",
+      "sha256": "82fb37d3374045eeac71fec72d498df9abfe9650a58c53be042bd7845432037e"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q3_bramm_why.mp3",
+      "sha256": "e55f68de4ec35d56f71427e8167fc190dfd5468c25a7abb4ed40990115117bf4"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q3_ithrel_no.mp3",
+      "sha256": "d09407b33586e25b4b1aef82a196ef90f807aced68199e62ea01ba46b7df4bf6"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q3_ithrel_seal.mp3",
+      "sha256": "f9414d0e54b16f50bca2e5dc73169fffdc09efdb3c8231321ecaf1ff0980bfca"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q3_ithrel_wife.mp3",
+      "sha256": "fa8efa8b06c266f9a4412f1424e4e4b9e7f95fecd6eee9a0e0247e7997460191"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q3_ithrel_yes.mp3",
+      "sha256": "a0b89b91a22403a414072f022e8c793bb88a24b4597700036a293bc114e6ea2b"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q3_lessa_fight.mp3",
+      "sha256": "2fe3ca52914a0881a9df55f41ebe40f017544284db2d2c3846564d3eb28a2482"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q3_lessa_why.mp3",
+      "sha256": "1694f72b6927eaad8a8e1825338d93f29fd4567e57040a9a8aca1d8aa60f08fc"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q3_tollan_crews.mp3",
+      "sha256": "278b961acb4b4e29e3cae26f6042444100b181fe23bdef382cbb8360a8dcdfe4"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q3_tollan_fee.mp3",
+      "sha256": "163206f39ef86dc60bcff1e82f2d2c5055885218bbcde110b62a4e67b416fd58"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q3_tollan_iron.mp3",
+      "sha256": "40ac9d00316c83245507d097fef5e44d4a24e6dc5c2374f8f95f4e68ea9afb4a"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q3_tollan_yes.mp3",
+      "sha256": "ccc6b9445691da66366b688f7bc553dfda868c9abe5ddcb4eb4f6fc41082db08"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q3_ysolde_blood.mp3",
+      "sha256": "e67e39280144e2a451db766756bfe8b92bf3701924beb503964d0b5bd75aea57"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q3_ysolde_nothing.mp3",
+      "sha256": "3d4254dae385b0cab918aab526d70b4a958a975e174c3899af1b803a2ac831bc"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q3_ysolde_quiet.mp3",
+      "sha256": "7a7b6b42265bebbed9a7f234046d70217c54ef21cf92bf3ae3f56e7825eccc2a"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q3_ysolde_what.mp3",
+      "sha256": "4b0ba10f6380ad3d0168f7f230b3c842aae614b56b7eb05c239dee26abcf1275"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q4_dream_ask.mp3",
+      "sha256": "fa0b850f399578436664485a624f90287743f861f5bda4b7974d8fd6409e8a1c"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q4_dream_embrace.mp3",
+      "sha256": "a166b312aa23c205c2f9f1f16f329837894e8afba526eefe816dadd7adb4de00"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q4_dream_reject.mp3",
+      "sha256": "968c0cda857ede9e448f24095ce6faad0672ad541573c5f44f31994d00f74561"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q4_grukhar_kill.mp3",
+      "sha256": "d0a1cb0b8b74a94e11144671571b632a871460fbfbe15d616c73d207d17b0563"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q4_grukhar_walk.mp3",
+      "sha256": "057a28db71c9a70ebcabc524fdfc748e2e49f621bda3d47afd74aff22a1492e4"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q4_grukhar_who.mp3",
+      "sha256": "9143f9e42dd55c19333d4996b41bb9dbe59ca90f8d8dcd84b2d5f1b1813d0731"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q4_grukhar_why.mp3",
+      "sha256": "937330e238a76664d30397a40601d728c5fa7d819b62e6e2925070fb67eb9150"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q5_camp_quiet.mp3",
+      "sha256": "35fa9d4d35e20f441c48303c446f715ac7ab253b1fc80aa00734b3feb40fc4c7"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q5_camp_recruits.mp3",
+      "sha256": "166b62443b58f29917a1fdb5163dc12e1ed3b10c4fa7b8408e6f109303d57a0a"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q5_camp_storm.mp3",
+      "sha256": "d778f7784a5b29406e72e2365ac05ba44b67a0cb36f8c4452ee5b00564b5e6fe"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q5_ilvara_defend.mp3",
+      "sha256": "ab4ebe348b0d50c3596c508aa1c01cbfc376f41d523ab1a06b35e893fdf69aac"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q5_ilvara_sell.mp3",
+      "sha256": "9cbe023994da940be4c5a4a78ebc355958ee41b85d52ffc383d490ad895322bd"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q5_ilvara_walk.mp3",
+      "sha256": "fb429cb126eedd86bab9c291f0ccd29920fe329621d8191c5a483cee4394e17a"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q5_ilvara_why.mp3",
+      "sha256": "5d276ec177e605686b2f960adaf1e9ca91d5a6d135667472dfccf90d548d503b"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q5_ithrel_shot_hold.mp3",
+      "sha256": "15b715dd41362aee714347f945d65909020c5ed0da9f366437c3e1fb46424ab0"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q5_ithrel_shot_shoot.mp3",
+      "sha256": "790d73a0bdabfe5c39f9bbad2cc6f053ad792f63e35d2e13e6993eacc2be14e9"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q5_rescue_free_first.mp3",
+      "sha256": "7b1cd901b049326aeaa2e68157d3a4a697d75d5dafc13548fe7a97a2f9f35a90"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q5_rescue_letters_first.mp3",
+      "sha256": "86e7eb3cfd6213ddec2e04e06174fb39623ede36cc9c64723b38694773b54156"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q5_torvald_armour.mp3",
+      "sha256": "3bf20cc46e7356c6287036bbcb4289692f578091a6ac7843d3ada46c759d095d"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q5_torvald_go.mp3",
+      "sha256": "4d5ec678ce8496e400f69538001db74d9a7af05015dccc6345ff5e19c5283c74"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q5_torvald_help.mp3",
+      "sha256": "575cb4cc55212829100385475105f5816e1e1aff39617194fe6b8d2af0904fd7"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q5_torvald_test_forget.mp3",
+      "sha256": "e692844faf024c5064d7a16b6bcc547204497c90f48ba7160f52880370db4751"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q5_torvald_test_refuse.mp3",
+      "sha256": "25668c837497c7617e76caf4d694502d62c9da1c2ec2e46c8a62c8d9cc2a12cd"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q5_torvald_test_word.mp3",
+      "sha256": "4e8be569244c02fc140f1c00ed4cf43938a5f175b804a9a40628a7504e4a8337"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q5_torvald_why.mp3",
+      "sha256": "57cc78c8f945578686ca474f957ff86b8bdc1660c4d2eb71ec5a18688527710c"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q5_verlan_beat.mp3",
+      "sha256": "e351c006a8053de264953e57b48ad6459da018a19769d2f92bc4e5243a047866"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q5_verlan_letters.mp3",
+      "sha256": "0db49c4ca5ced40d054b7184a3425f4dea88dbe586b80e8c552ebdbfd04d2971"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q5_verlan_pay.mp3",
+      "sha256": "933cd178805aae2f55bf637c56e3a66c84dc06ec3dfebfb90017a7b642691679"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q5_verlan_pocket.mp3",
+      "sha256": "8830e3c356752d21ff5f8e34c2b52a6baa893878aae616c3a3c33c525fb281fc"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q6_faelen_cut.mp3",
+      "sha256": "6fab6fffa51ce2988a6e49f6da5c8ccf7b6668194d490d1338d9fe18673540b0"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q6_faelen_leave.mp3",
+      "sha256": "b1e3a3dfa383b01f76cf53f6f05d8a892991a93bf8f3cae36cece6fcc8fe37b3"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q6_faelen_price.mp3",
+      "sha256": "042ca831a477520d1fe1f8cd74e0cc13cbb01014ee12b2350fd33ff2e98bb104"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q6_faelen_wyvern.mp3",
+      "sha256": "e5eadd2d01ee64d5b7a9b887ea00accec594ccec71f02753042ac782a4c9ab22"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q6_nettle_ask.mp3",
+      "sha256": "cef344448536f42cccb111736f30a8c369fc2a6367ba3696ef5fbd065b3e2f14"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q6_nettle_fight.mp3",
+      "sha256": "04b7add59d6399492ef09c09d24dbea24717b51844040d2bc078cfc5dd06da83"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q6_nettle_talk.mp3",
+      "sha256": "b6eea6838aab528b314705bf290c20b0edb3a01b9cf7d268b51f05cbad20dbb3"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q6_selene_fire_deflect.mp3",
+      "sha256": "184d11c77082e9ecc116c77a581e9d2bb19ffec00cbbe131c5a24bc5c7d25a6e"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q6_selene_fire_dorran.mp3",
+      "sha256": "2af945f65b4fa9c93efecc368ce536d3e12b6a8c127b2fb81461376e9885170f"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q6_selene_fire_letters.mp3",
+      "sha256": "e1edad1de3e926521f67e7bc5aace36fe24ff7a8bda4e48c8eebd64bf225a5e7"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q6_selene_fire_warm.mp3",
+      "sha256": "99004fc37b4382e7d58c72f6537501ecab432ef7c2b77f9cc838f2cf6747ef66"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q7_dorran_mission.mp3",
+      "sha256": "309a4a0cf18023e14960da32834e1f27d734a7a85b36585315ef6e5edaf0526e"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q7_dorran_with.mp3",
+      "sha256": "1217f527b8dfa056ac7a116dba9ca081b82cc93c508d3a9f87ade09a7e635593"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q7_dream_embrace.mp3",
+      "sha256": "21f3b94de5e8af8f7a54f50e776aceb8a8cece770163cc1c6bb8ab6c7b1f7f23"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q7_dream_others.mp3",
+      "sha256": "1d29ee690fb0a0f7eecc5bac4d94130ea89a840d80c7514c992e0f1b887537e9"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q7_dream_reject.mp3",
+      "sha256": "753f0085d09551707a30b63c355883d3046cec1cb11df5673eff9a3b9499999f"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q7_durnik_free.mp3",
+      "sha256": "61371b90a63857382c63b0d9816e1a98520e4cdc2751d730b90161872b830197"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q7_durnik_leave.mp3",
+      "sha256": "bdfa433fd98f573994ee1ffa0937a67c58ea92f4d0c4cb67a5c9744b958806f5"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q7_durnik_paper.mp3",
+      "sha256": "708e32284c542e748bc13c8db0b168b6cd08ceb48190f28996b5db20f0ef2fe8"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q7_flood_now.mp3",
+      "sha256": "c02ad8c083f2a2f9ae33a8c110e9cacb0a76be40b9545f331655df2c03b1f208"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q7_flood_wait.mp3",
+      "sha256": "11a71c51389feefc15171d92048ff436492462efe191fc89eec4d5dea1da4fa4"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q7_malvane_fight.mp3",
+      "sha256": "d5158d4edc8515ad5407703289a723f05cc2716b4529a8e2bc88e12364eb4f32"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q7_malvane_who.mp3",
+      "sha256": "795821e1558a638193a8f23fb564e7f7f2c5a19229e7f0528261da6f38a2e126"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q7_vess_papers_give.mp3",
+      "sha256": "d68441fab800ddd893a944a9b4eaa3cd034d1e47e4aa8818ef92a341e6361aed"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q7_vess_papers_refuse.mp3",
+      "sha256": "d340044a81292124a685eb36cc8e83b56c3f40ea4c0cbaa789b69cc9108e20c5"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q7_vess_papers_who.mp3",
+      "sha256": "4b63d152d4a635831ee33aa3f09634d85bbdb31baf39181d832bb8033f8437be"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q8_door_faelen.mp3",
+      "sha256": "1408f6cf7c1c84b5261a8d82af28d98d4cdfb6dbda6b01ee8021e2db00a39e4f"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q8_door_fennick.mp3",
+      "sha256": "f32ca7556ded38b9922c7acc639fba1abfcdda87431ad6dcbb6ee37e1afb8f4a"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q8_door_force.mp3",
+      "sha256": "9e183b4fd233ee9f48c446800753d0e8ac97b73fbe15bd27df25eed0c8d10faf"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q8_door_wren_ward.mp3",
+      "sha256": "6d8222a1d603a56308a92ed82bfb2edcc5b9afd361c63acea7f6492fca8e11ec"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q8_duke_seen_hand.mp3",
+      "sha256": "7ebf478eac20c0b5586e564e28d172cb5146e0c9930ab284afc83ee1ffbf7cce"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q8_duke_seen_nobody.mp3",
+      "sha256": "77375ff9f2ee925c5ab10277116f45d6473711af97059f0ec6824ee66a25969d"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q8_duke_seen_wardens.mp3",
+      "sha256": "4e4850b16174e2d4fbee59a1588f15393301db33d3d2d8e93a12f35d5bfc1d2c"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q8_halloran_pay.mp3",
+      "sha256": "6b865e7f46fedf07164a38c1caf36922c63b08f03bc062a1a81258d401195c33"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q8_halloran_why.mp3",
+      "sha256": "92988f4903d54f1ff5264e738ceb2bb78c6ba338367411ab6252c903efed561d"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q8_halloran_yes.mp3",
+      "sha256": "a3df7c320096e14452f33ce2cff962c891c1ed439537ecf07a7a2b47557c2eed"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q8_halvard_blood.mp3",
+      "sha256": "956076169155389bf82b8a5b8d7b49f70e8fe7761ea2c78efabd2ac8cf5f2186"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q8_halvard_city.mp3",
+      "sha256": "d9989cd3879dcdf2f17fa405d540058d95a7c1e308d43c1f41d6ea7c1eddf49f"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q8_halvard_pay.mp3",
+      "sha256": "dc1b1276babeb51b210fddabf14a42ace14e60b6db8a8d49aa82554b042cce6f"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q8_span_count_many.mp3",
+      "sha256": "28ecd9b3642af15d12d7040e3a47dad849d9d3b62ef7c8426ed42744edcda85b"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q8_span_count_nineteen.mp3",
+      "sha256": "18412251a4a5ff3252bbbd703aedeeb467a9cb565e8221037a476c840ef5b1f3"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q8_span_count_none.mp3",
+      "sha256": "6dbe6ae732a4426f0c59f5ced40a5f0b22ad4885ad07f3922d1c57161232abfc"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q9_floor_offer_library.mp3",
+      "sha256": "fe5ecdf228499d7e6e735021407a7b0afd0e1bf10514b7455b48cda4cbfb96df"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q9_floor_offer_nothing.mp3",
+      "sha256": "10f46691a7b51869f3391a2e234414c7c012aabf1dfa0cfed87750eb36ff6c8f"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q9_floor_offer_price.mp3",
+      "sha256": "84670b4d18145526588b92f26accd94c1a3688a89d4dbea02d0034125da8ce51"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q9_lobby_fight.mp3",
+      "sha256": "63c8452e922f3d6f71f205424c991e55b50831a64e425918771c9da89aaaea01"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q9_lobby_talk.mp3",
+      "sha256": "b19dd409244929877eead86e91ab45c4d961dcb4b23ca9e34c77974d9154863c"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q9_lobby_wren_ward.mp3",
+      "sha256": "5a64a56f37ca89ede15a57088f7a68d7b3dec83a6cba0eab244ea99c79b064ba"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q9_lysandra_arrest.mp3",
+      "sha256": "15177037c3d0c2201be03e049c8408eb1e1303e85d0b37ac74f3fd2d8a0e0d78"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q9_lysandra_deal.mp3",
+      "sha256": "15488a0d5b2fa4f9003ee1c46f4730d67c2f4781555bcf58193ad11ac2dffe35"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q9_lysandra_kill.mp3",
+      "sha256": "77ecfba6182d3d13289fc70aa3a28f9688bce79f5145382b854fa4589663e731"
+    },
+    {
+      "file": "audio/vo/campaign/hiro/q9_lysandra_kolade.mp3",
+      "sha256": "0f709101b4ce39aa8540b6bca975b75730b2ee2202d1cf4ac3dbd0c3f379ccc1"
+    }
+  ]
+}

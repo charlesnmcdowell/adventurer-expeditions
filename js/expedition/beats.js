@@ -166,6 +166,11 @@ async function playDowns(scene, downs, events, byFinisher) {
   for (const e of downs) {
     const target = actorOf(scene, e.uid);
     if (!target || !target.alive || target._destroyed) continue;
+    if (target.unit?.ch?.expeditionStoryCompanion) {
+      await target.play('knockout');if(scene.ended||target._destroyed)continue;
+      target.alive=false;target.plate.setVisible(false);for(const badge of target.badges.values())badge.setVisible(false);
+      await target.tween({alpha:0},250);target.root.setVisible(false);continue;
+    }
     if (target.__finisherPresented) { await target.play('down_fade'); continue; }
     const source = e.by || [...(events || [])].reverse().find(p => p.uid === e.uid && ['damage', 'execute'].includes(p.t))?.by;
     const sourceActor = actorOf(scene, source);
@@ -382,6 +387,7 @@ async function enemyAction(scene, foe, g) {
 
 // ---------------------------------------------------------------- companion actions
 async function allyAction(scene, ally, g) {
+  if(ally.unit?.ch?.expeditionStoryCompanion)return storyCompanionAction(scene,ally,g);
   const e = g.use;
   const targetOf = ev => actorOf(scene, ev.uid);
   const hits = g.after.filter(x => x.t === 'damage' && x.tag !== 'dot' && x.by === ally.uid);
@@ -398,6 +404,33 @@ async function allyAction(scene, ally, g) {
   // A companion's kill is an ordinary kill: only Hiro's tapped Finisher finishes.
   sfx(scene, 'slash', 'use');
   await ally.play('slash', { target: first, lethal: false, onContact: () => { sfx(scene, 'slash', 'hit'); hits.forEach((h, i) => deferImpact(scene, i * 60, () => impact(scene, targetOf(h), h, { arc: 0xe8dfc8, hitStop: i === 0 }))); } });
+}
+
+async function storyCompanionAction(scene,ally,g){
+  const id=g.use.skillId,kit=X.Story.Companions.kits[ally.unit.ch.expeditionStoryCompanion],ix=kit.skills.indexOf(id);
+  const companionClip=ix<0?'attack':'signature-'+(ix+1);
+  const entry=ally.unit.ch.actives.find(e=>e.skillId===id)||{skillId:id,level:1};
+  const sk=A.SkillSys.manifest(ally.unit.ch,entry).data;
+  const hits=g.after.filter(e=>e.t==='damage'&&e.by===ally.uid&&e.tag!=='dot');
+  const target=actorOf(scene,g.use.target)||ally;
+  const ranged=sk.elemental||(sk.reach==='any'&&!sk.melee&&!sk.katana);
+  const support=['self','party','ally','deadAlly'].includes(sk.target);
+  V().damageNumber(scene,ally.x,ally.y-ally.height-60,A.DATA.SKILLS[id]?.name||id,'#d7eaf3');
+  let landed=false;
+  const land=()=>{
+    if(landed||scene.ended)return;landed=true;
+    for(const e of hits)impact(scene,actorOf(scene,e.uid),e,{arc:0xe8dfc8,hitStop:true});
+    for(const e of g.after.filter(e=>e.t==='heal')){const a=actorOf(scene,e.uid);if(a){V().healSparkle(scene,a.x,a.y-a.height*.5);a.refresh();}}
+    showDefences(scene,ally,g);
+    for(const a of scene.actors.values())a.refresh();
+  };
+  if(ranged||support){
+    let flight=null;
+    if(!X.StoryEffects.supports(id))throw Error('Companion effect art not ready: '+id);
+    await ally.play('cast',{companionClip,holdRelease:true,onRelease:(from,clip)=>{
+      flight=X.StoryEffects.play(scene,id,from,target.chest(),{height:ally.height,clip}).then(land);return flight;
+    }});if(flight)await flight;
+  }else await ally.play('slash',{companionClip,target,onContact:land});
 }
 
 // A human foe: a spell or shot is a cast and a bolt; anything else a lunge.
@@ -503,10 +536,10 @@ Beats.play = async function (scene, step) {
     else await perform();
   } else if (step.choice && step.choice.action && step.choice.action.kind === 'hold') {
     await wait(scene, 200);
-  } else if (!g.pre.length) {
-    await wait(scene, 60);
   } else if (g.down.length) {
     await playDowns(scene, g.down, step.events);
+  } else if (!g.pre.length) {
+    await wait(scene, 60);
   }
   for (const a of scene.actors.values()) if (a.alive) a.refresh();
   // Boss second wind: once, the first time it drops under its threshold.

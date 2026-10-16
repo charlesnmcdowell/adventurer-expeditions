@@ -63,7 +63,7 @@ A.SkillSys.manifest=function(ch,entry){
   return {...m,data:{...m.data,pctMaxHp:Math.min(m.data.pctMaxHp,B.tuning.percentHitCap)}};
 };
 const originalAllies=C.alliesFor;
-C.alliesFor=function(game,...args){return game?.__expeditionStory?[]:originalAllies.call(this,game,...args);};
+C.alliesFor=function(game,...args){return game?.__expeditionStory?(S.Companions?.enabled?S.Companions.characters(game.__expeditionStory):[]):originalAllies.call(this,game,...args);};
 
 B.identity=function(ch,spec){
   if(ch.campaignId&&A.DATA.CAMPAIGN_CHARS[ch.campaignId])return 'named:'+ch.campaignId;
@@ -114,16 +114,20 @@ B.spawn=function(session){
 };
 
 B.create=function(session,seed){
-  const missing=S.readiness(session);if(missing.length)throw Error('Campaign combat art not ready: '+missing.join(', '));
-  const foes=B.spawn(session),r=session.record;
+  const party=S.Companions?.enabled?S.Companions:null;
+  const missing=S.readiness(session).concat(party?party.readiness(session):[]);if(missing.length)throw Error('Campaign combat art not ready: '+missing.join(', '));
+  const foes=B.spawn(session),r=session.record,allies=party?party.characters(session):[];
+  // Extra fighters add endurance, not larger hits on Hiro. Party floor testing owns this factor.
+  for(const foe of foes){const scale=1+allies.length*(party?.foeHealthPerAlly||0);foe.stats.hp*=scale;if(foe.bonusStats?.hp)foe.bonusStats.hp*=scale;if(foe.hpFloor)foe.hpFloor=Math.ceil(foe.hpFloor*scale);}
   // A source guard added by a boss hook also needs a verified identity/art set.
   for(const ch of foes)if(!S.bindings[ch.storyOpponent]?.actor)throw Error('Campaign combat binding missing: '+ch.storyOpponent);
   const info=S.beginFight(session);
   if(Number.isFinite(r.run.hp))session.hero.combatHp=Math.max(1,r.run.hp);
   const encounter={id:'story-'+r.chapter+'-'+r.encounter,enemies:[],boss:foes.some(c=>c.boss),
     label:session.game.quest.quest.encounters[r.encounter]?.label||session.game.quest.quest.name,story:true};
-  const enc=X.Encounter.create({encounter,seed,run:r.run,hero:session.hero,allies:[],foes});
+  const enc=X.Encounter.create({encounter,seed,run:r.run,hero:session.hero,allies,foes});
   enc.storySession=session;enc.storyTutorial=info.tutorial;
+  if(party){enc.st.__storyHiroUid=enc.heroUid;party.prepareEncounter(enc);}
   return enc;
 };
 

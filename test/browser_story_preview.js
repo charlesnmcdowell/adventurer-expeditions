@@ -17,12 +17,12 @@ const server=http.createServer((req,res)=>{const rel=decodeURIComponent(req.url.
     await button('Begin story').waitFor();await page.screenshot({path:path.join(OUT,'title.png')});
     await button('Begin story').click();await page.getByText('Chapter 1',{exact:true}).waitFor();await page.getByRole('heading',{name:'The Road from Lanternhold'}).waitFor();await button('Continue').click();await page.getByText('Tesfaye',{exact:true}).waitFor();
     assert.equal(await button('Mute').count(),1,'sound starts on');await page.waitForTimeout(1200);await page.screenshot({path:path.join(OUT,'opening.png')});
-    await button('Continue').click();await button('Why tonight? What has happened?').click();
+    await button('Continue').click();await button('Why tonight? What has happened?').click();await page.locator('#hiro-choice').getByRole('button',{name:'Continue',exact:true}).click();
     assert.equal(await button('Why tonight? What has happened?').count(),0,'asked question removed');
-    await button('I will get my things.').click();await button('Continue').click();
-    await button('No one. The same faces as every day.').click();await button('Continue').click();
+    await button('I will get my things.').click();await page.locator('#hiro-choice').getByRole('button',{name:'Continue',exact:true}).click();await button('Continue').click();
+    await button('No one. The same faces as every day.').click();await page.locator('#hiro-choice').getByRole('button',{name:'Continue',exact:true}).click();await button('Continue').click();
     assert.equal(await page.locator('.speaker').textContent(),'Nib');await button('Continue').click();
-    await button('You have picked the wrong storehouse.').click();await button('Continue').click();
+    await button('You have picked the wrong storehouse.').click();await page.locator('#hiro-choice').getByRole('button',{name:'Continue',exact:true}).click();await button('Continue').click();
     await page.getByText('The road ahead',{exact:true}).waitFor();await page.screenshot({path:path.join(OUT,'pending-combat.png')});
     await page.reload();await button('Continue story').waitFor();
     await button('Continue story').click();await page.getByText('The road ahead',{exact:true}).waitFor();

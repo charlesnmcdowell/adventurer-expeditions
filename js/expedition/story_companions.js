@@ -1,0 +1,118 @@
+// Expedition-owned companion production contract. Source characters stay read-only.
+(function(){
+'use strict';const A=ADV,X=A.Expedition,S=X.Story,C=A.Campaign3;
+const P=S.Companions={fieldMax:2,bindings:{},enabled:false};
+// Enable in the story entry only once the complete roster and browser QA pass.
+P.kits={
+ wren_ward:{join:1,weapon:'Short blade and throwing knife',skills:['backstab','smoke_bomb'],height:310},
+ vess:{join:2,weapon:'Ritual wand',skills:['ember_lash','wither_touch'],height:325},
+ fennick:{join:2,weapon:'Hooked knife',skills:['venom_fang','whisper_of_ending'],height:220},
+ cassian:{join:2,weapon:'Spear and round shield',skills:['shield_wall','cleanse'],height:340},
+ dorran:{join:2,weapon:'Broadsword and kite shield',skills:['cleave','sunder'],height:350},
+ selene:{join:2,weapon:'Branch staff',skills:['mend','thorn_skin'],height:320},
+ ithrel:{join:3,weapon:'Longbow',skills:['aimed_shot','snare'],height:330},
+ bramm:{join:3,weapon:'Two-handed greatsword',skills:['cleave','defiant_stand'],height:365},
+ ysolde:{join:3,weapon:'Talisman fans',skills:['frost_touch','rime_grasp'],height:315},
+ aurelius:{join:3,weapon:'Hooked wizard staff',skills:['fire_bolt','spark'],height:345},
+ ilvara:{join:5,weapon:'Priestess’s sceptre',skills:['wither_touch','blood_pact'],height:320},
+ faelen:{join:6,weapon:'Shortbow and dagger',skills:['aimed_shot','backstab'],height:320},
+ nettle:{join:6,weapon:'Thorn and bone gauntlets',skills:['thorn_skin','wither_touch'],height:310},
+ durnik:{join:7,weapon:'Warhammer and shield',skills:['mend','regenerate'],height:245},
+ amara:{join:13,weapon:'Twin sabres',skills:['dual_swords','counter_attack'],height:330},
+};
+P.clips=['idle','walk','attack','signature-1','signature-2','hit','knockout','victory'];
+P.eligible=s=>s.record.chapter<2?[]:C.companyIds(s.game).filter(id=>P.kits[id]?.join<=s.record.chapter&&C.isRecruited(s.game,id));
+P.selected=function(s){
+ const eligible=P.eligible(s),saved=s.record.fightingCompanions;
+ // Explicit empty / one-member selections are choices, not missing data.
+ if(Array.isArray(saved)){
+  const valid=[...new Set(saved)].filter(id=>eligible.includes(id)).slice(0,P.fieldMax);
+  if(valid.length||!saved.length)return valid;
+ }
+ const recruited=C.state(s.game).recruited||[];
+ return eligible.slice().sort((a,b)=>recruited.indexOf(b)-recruited.indexOf(a)).slice(0,P.fieldMax);
+};
+P.select=function(s,ids){
+ if(!Array.isArray(ids)||ids.length>P.fieldMax||new Set(ids).size!==ids.length||ids.some(id=>!P.eligible(s).includes(id)))throw Error('Choose up to two riding companions');
+ s.record.fightingCompanions=ids.slice();S.save(s);return ids;
+};
+P.readiness=s=>P.selected(s).filter(id=>!P.bindings[id]?.ready).map(id=>'companion:'+id);
+P.register=function(id,atlas){
+ if(!P.kits[id])throw Error('Unknown companion '+id);
+ for(const name of P.clips){const clip=atlas?.clips?.[name];
+  if(!clip||clip.paired||clip.frames?.length<16||new Set(clip.frames).size!==clip.frames.length)throw Error('Incomplete companion clip '+id+'/'+name);
+ }
+ P.bindings[id]={actor:'companion_'+id,ready:true,height:P.kits[id].height};
+};
+// Track actual recruitment separately from seating, picker changes and reloads.
+P.queueUnlocks=function(s,beforeRoster){
+ const r=s.record,seen=r.companionUnlocksSeen||[],pending=r.companionUnlocksPending||[];
+ const joined=C.roster(s.game).filter(id=>P.kits[id]&&!beforeRoster.includes(id)&&!seen.includes(id)&&!pending.includes(id));
+ if(joined.length){r.companionUnlocksPending=pending.concat(joined);r.companionPickerDue=true;S.save(s);}return joined;
+};
+P.claimUnlock=function(s){
+ const r=s.record,id=(r.companionUnlocksPending||[]).shift();if(!id)return null;
+ r.companionUnlocksSeen=[...new Set([...(r.companionUnlocksSeen||[]),id])];S.save(s);return id;
+};
+P.make=function(s,id){
+ if(!P.eligible(s).includes(id))throw Error('Companion is not riding: '+id);
+ const kit=P.kits[id],ch=JSON.parse(JSON.stringify(C.actor(s.game,id)));
+ // Cached source actors never receive combat mutations or knockout state.
+ ch.expeditionStoryCompanion=id;ch.companionKey='companion_'+id;ch.expeditionArtIdentity=ch.companionKey;
+ ch.campaignExit=false;ch.isPlayer=false;ch.alive=true;ch.noCombatVoice=true;delete ch.personalityId;delete ch.combatHp;
+ ch.actives=kit.skills.map(skillId=>{
+  const entry=ch.actives.find(e=>e.skillId===skillId);if(!entry)throw Error('Approved skill missing from source: '+id+'/'+skillId);return entry;
+ });
+ ch.autoOrder=kit.skills.map(skillId=>({skillId,off:false})).concat([{skillId:'basic_attack',off:false}]);ch.autoAdopted=true;
+ return ch;
+};
+P.characters=s=>P.selected(s).map(id=>P.make(s,id));
+P.prepareEncounter=function(enc){
+ if(!enc.allies.length)return;
+ const foes=enc.st.units.filter(u=>u.side==='b');
+ for(const u of enc.st.units.filter(u=>u.ch.expeditionStoryCompanion)){
+  const damage=foes.map(foe=>{
+   const m=A.SkillSys.manifest(foe.ch,{skillId:'basic_attack',level:1});
+   return A.Combat._internals.computeDamage(enc.st,foe,u,m)*(foe.ch.c3FoeDmg||1);
+  });
+  // Five to six comparable basic hits, measured against this fight's foes.
+  u.maxHp=u.chp=Math.max(1,Math.ceil(damage.reduce((a,b)=>a+b,0)/damage.length*5.5));
+  u.tempHp=0;u.downed=false;
+ }
+};
+const oldManifest=A.SkillSys.manifest;
+A.SkillSys.manifest=function(ch,entry){
+ const m=oldManifest.call(this,ch,entry);
+ if(!ch?.expeditionStoryCompanion||entry.skillId==='basic_attack')return m;
+ return {...m,data:{...m.data,cooldown:Math.max(3,m.data.cooldown||0)}};
+};
+const recoverySkills=new Set(['mend','regenerate','wither_touch','blood_pact']);
+const oldAI=A.Combat.aiTakeTurn;
+A.Combat.aiTakeTurn=function(st,u){
+ if(!u.ch.expeditionStoryCompanion)return oldAI.call(this,st,u);
+ const keep=u.ch.actives,uses=u.companionSignatureUses||(u.companionSignatureUses={});
+ u.ch.actives=keep.filter(e=>!recoverySkills.has(e.skillId)||(uses[e.skillId]||0)<3);
+ const before=st.events.length;
+ try{return oldAI.call(this,st,u);}finally{
+  u.ch.actives=keep;
+  for(const e of st.events.slice(before))if(e.t==='use'&&e.uid===u.uid)uses[e.skillId]=(uses[e.skillId]||0)+1;
+ }
+};
+// Source combat normally waits for every ally to fall. Story defeat is Hiro's.
+function checkHiro(st){
+ const hero=st.__storyHiroUid&&st.units.find(u=>u.uid===st.__storyHiroUid);
+ if(!hero||(!hero.downed&&hero.chp>0&&!hero.fled))return;
+ if(!st.__hiroDefeat){st.__hiroDefeat=true;st.events.push({t:'end',winner:'b',reason:'hiroDefeated'});}
+ st.over=true;st.winner='b';
+}
+for(const name of ['act','advance','currentTurn']){
+ const old=A.Combat[name];
+ A.Combat[name]=function(st,...args){
+  checkHiro(st);if(st.__hiroDefeat)return name==='act'?{ok:false,error:'Hiro defeated'}:null;
+  const result=old.call(this,st,...args);checkHiro(st);
+  return name==='currentTurn'&&st.__hiroDefeat?null:result;
+ };
+}
+const oldWon=X.Encounter.won;
+X.Encounter.won=enc=>!enc.st.__hiroDefeat&&oldWon(enc);
+})();

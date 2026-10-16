@@ -15,7 +15,18 @@ of small fixes within a day.
 
 ---
 
-## 2026-10-15 — Companion kits and Hiro voice audition (approval pending)
+## 2026-10-15 — Approved Hiro voice production and companion pilots (local, unfinished)
+
+- User approved all five voice auditions and fifteen source kits. Recorded/integrated **200 reachable Hiro choices**, reusing the auditions; **8,811 spoken characters / 3,878 response-header credits**, no retakes. Ten retired options were not recorded. All 200 clips decode; 4,542,941 runtime bytes. Saved choice playback, replay, mute, reload and skip preserve original choice hooks.
+- Hiwot and Desmond each have **128 drawings / eight groups**, registered as gated pilots: **3,116,303** and **2,532,320 bytes** respectively. Thirteen companions are still unpainted. Not a completed party release. `S.Companions.enabled=false` keeps normal story play unchanged apart from Hiro's voice.
+- Added original-kit party selection and nonlethal knockout/Hiro-only defeat contracts, portrait picker, once-per-save 2.4-second join presentation, and a composed 2.2-second unpitched welcome flourish (zero ElevenLabs credits). Real browser fixtures cover both pilots and four source signature actions. The ordinary chapter-two party playthrough and complete roster balance are still pending.
+- Balance: 55 encounters × 20 seeds; solo **1,048/1,100**, one-companion fixture **960/1,100**, two-companion fixture **1,021/1,100**. Zero unwinnable slots/stalls at the retained **1.0 enemy-HP multiplier**. Rejected an experimental +60% HP per ally. Companion endurance is 5.5 measured basic hits; existing Hiro hit scale, Counter and Iaido values preserved.
+- `npm test`, `npm run test:ship`, `npm run test:story`, companion unit/UI/pilot checks and Hiro voice browser/decode checks passed. An initially stale cache stamp and story-jingle shipping-hash failure were corrected; the jingle now lives with story-only assets. New stamp `20261016-xp1` (UTC).
+- Story rebuild retains and hash-checks new Hiro recordings. Website filtering excludes gated draft actors and limits future companion sets to chapter-six joins. A local chapter 1–6 package measured about 431 MB; no website staging, publishing or pushing.
+- Files: `story_companions.js`, `story_companion_ui.js`, story combat/scene/director/actor adapters, story UI/CSS/templates, media manifest and 200 MP3s, two pilot atlases, pilot intake/jingle tools, browser/unit/balance tests and review records. Preserve the other session's hotfix hunks in the shared files.
+- Full evidence, art caveats, cost ledger, exact scope still pending: **docs/COMPANION_PRODUCTION_PROGRESS_20261015.md**. Source images/prompts/rejected drafts: sibling `adventurer-expeditions-source-art/astra-v10/companions-hiro-20261015/`. The one edge-touching Hiwot blade pixel and final stride polish remain flagged; pilots are not marked production-approved.
+
+## 2026-10-15 — Companion kits and Hiro voice audition (historical; now approved)
 
 - Verified the supplied companion prompt against original read-only data: 15 companions; two existing ally slots, with three story paths currently forcing solo combat. Joins/seat limits/departures remain authoritative. Chapter 1 stays solo by design, although Hiwot already has a combat kit.
 - Voice inventory: **210 stored options / 9,309 characters; 200 current options / 8,831 characters**. The other ten are retired finale menus. Conditional finale choice menus were included. No full batch generated.

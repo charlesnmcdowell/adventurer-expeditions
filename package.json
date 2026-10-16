@@ -35,7 +35,7 @@
     "test:combat-pilot": "node test/browser_combat_pilot.js",
     "test:combat-roster": "node test/browser_combat_roster.js",
     "test:enemy-defeats": "node test/browser_enemy_defeats.js",
-    "test:story": "node test/story_campaign.js && node test/story_combat.js && node test/story_readability.js && node test/browser_story_preview.js",
+    "test:story": "node test/story_campaign.js && node test/story_combat.js && node test/story_companions.js && node test/story_readability.js && node test/browser_story_preview.js",
     "test:story-art": "node test/browser_story_art.js && node test/browser_story_fight.js",
     "test:story-late-art": "node test/story_late_art.js && node test/story_effects_lifecycle.js && node test/browser_story_late_art.js && node test/browser_story_projectiles.js",
     "story:inventory": "node tools/import_story_campaign.js",

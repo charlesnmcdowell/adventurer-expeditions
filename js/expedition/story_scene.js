@@ -4,7 +4,7 @@
 class StoryBattle extends X.Scene{
   constructor(){super();this.sys.settings.key='StoryBattle';}
   init(opts){this.opts=opts||{};this.story=S.open(this.opts.record||S.load());this.run=this.story.record.run;
-    this.artIds=['hiro',...new Set(S.opponentIds(this.story).map(id=>S.bindings[id]?.actor).filter(Boolean))];}
+    this.artIds=['hiro',...new Set(S.opponentIds(this.story).map(id=>S.bindings[id]?.actor).filter(Boolean)),...(S.Companions?.enabled?S.Companions.selected(this.story).map(id=>'companion_'+id):[])];}
   preload(){
     X.Painted.preload(this,this.artIds);X.UI.preloadBusts(this);X.DefeatFX.preload(this);X.StoryEffects.preload(this);
     const r=this.story.record,d=S.Presentation.data,id=d.routes[r.chapter][r.encounter];
@@ -17,11 +17,11 @@ class StoryBattle extends X.Scene{
     this.world={game:this.story.game,hero:this.story.hero,companions:[]};this.game_=this.story.game;
     this.seed=this.opts.seed||Math.floor(Date.now()%100000);this.phase=this.story.record.chapter===1?'night':'day';
     this.quest={title:this.game_.quest.quest.name,music:S.Presentation.music(this.story,true)};
-    this.enc=S.Combat.create(this.story,this.seed);this.encs=[this.enc.def];
+    this.enc=S.Combat.create(this.story,this.seed);this.encs=[this.enc.def];this.world.companions=this.enc.allies;
     this.buildTextures();X.UI.installBusts(this);
     this.env=S.Stage.paint(this,this.location,this.storyBackground,this.phase);
     this.buildBand();this.buildHero();
-    this.hero.unit=X.Encounter.heroUnit(this.enc);this.hero.uid=this.hero.unit.uid;this.actors.set(this.hero.uid,this.hero);this.hero.refresh(true);this.spawnFoes();
+    this.hero.unit=X.Encounter.heroUnit(this.enc);this.hero.uid=this.hero.unit.uid;this.actors.set(this.hero.uid,this.hero);this.hero.refresh(true);this.spawnFoes();this.spawnCompanions();
     this.run.wave=this.story.record.encounter;
     this.hud=new X.Hud(this,{run:this.run,hero:this.story.hero,portraitKey:this.hero.faceKey,waveCount:this.game_.quest.quest.encounters.length,
       onSkill:id=>this.tapSkill(id),onArrow:()=>this.returnToStory('victory'),onPause:()=>this.togglePause()});
@@ -32,6 +32,16 @@ class StoryBattle extends X.Scene{
     this.cooldownTicker=this.time.addEvent({delay:100,loop:true,callback:()=>{if(!this.ended&&!this.enc.st.over)this.hud.setSkillStates(X.Encounter.skillStates(this.enc));}});
     this.events.once('shutdown',()=>{this.ended=true;this.music?.pause();});
     this.startMusic();X.Painted.present(this,this.env,()=>this.fight(true));
+  }
+  spawnCompanions(){
+    const units=this.enc.st.units.filter(u=>u.ch.expeditionStoryCompanion);
+    const marks=[{x:265,y:this.hero.groundY-34,depth:98},{x:200,y:this.hero.groundY-60,depth:96}];
+    units.forEach((u,i)=>{
+      const id=u.ch.expeditionStoryCompanion,kit=S.Companions.kits[id],sheet=X.Painted.sheet(this,'companion_'+id);
+      if(!sheet)throw Error('Companion art missing: '+id);
+      const a=new X.Actor(this,{uid:u.uid,unit:u,side:'a',kind:'ally',sheet,height:kit.height,name:u.ch.name,...marks[i]});
+      this.actors.set(u.uid,a);a.refresh(true);
+    });
   }
   startMusic(){if(this.music)return;this.music=new Audio(S.Presentation.media('audio/music/'+this.quest.music+'.mp3'));this.music.loop=true;this.music.volume=.16;
     if(!this.opts.muted)this.music.play().catch(()=>{});}
@@ -81,7 +91,7 @@ class StoryBattle extends X.Scene{
     return won<2&&!this.run.tutorial.skipGuide;}
   togglePause(){this.paused=!this.paused;this.time.paused=this.paused;this.music&&(this.paused?this.music.pause():!this.opts.muted&&this.music.play().catch(()=>{}));}
   async victory(){
-    X.UI.resetCamera(this);await this.hero.play('victory');if(this.ended)return;
+    X.UI.resetCamera(this);await Promise.all([...this.actors.values()].filter(a=>a.side==='a'&&a.alive).map(a=>a.play('victory')));if(this.ended)return;
     S.Combat.win(this.story,this.enc);this.hud.refresh();this.hud.showArrow();
     this.hud.banner('Fight won — continue your journey',1800);
     // Story checkpoint already advanced: clicking cannot award the fight twice.
