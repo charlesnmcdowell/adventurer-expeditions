@@ -1,8 +1,8 @@
 # Companions and Hiro voice — production checkpoint
 
-The user approved the five voice samples and all fifteen proposed kits on October 15. No further audition or kit approval is needed. This is an unfinished production checkpoint, not a declaration that companions are available in normal play.
+The user approved the five voice samples and all fifteen proposed kits on October 15. No further audition or kit approval is needed. The user also approved the complete packed animation roster on October 16. Companions are now enabled in normal story play from chapter two; chapter one stays solo.
 
-## October 16 completion pass — ready for roster approval
+## October 16 completion pass — roster approved and enabled
 
 The sections below record the earlier pilot checkpoint. They are superseded by this update:
 
@@ -10,7 +10,7 @@ The sections below record the earlier pilot checkpoint. They are superseded by t
 - The welcome now slides in, shows the styled name and original dialogue hook, plays an original 2.6-second melodic fanfare, and waits for Accept. It persists through reload and respects mute/reduced motion. All 15 displays passed desktop and 390×844 checks.
 - Hiwot's welcome waits until chapter two, after the inn, travel and title. Chapter two onward asks for the party with Change / Set out. Explicit solo/one-person choices persist; invalid/departed companions are replaced from eligible company members. An inn selection does not bypass the next chapter's confirmation.
 - Hiro's Iaido Draw and deflect each have 16 distinct drawings. Painted reflected fire, prism, arrow and knife effects launch on blade contact. The Iaido icon is replaced. A painted ring in Counter level three is repaired without changing its timing.
-- The **production switch remains false pending the roster-art approval requested on October 16**, as required by `ASTRA_PROMPT_NEXT_20261016.md` sections 1 and 4. Test-only activation verifies the complete party flow. Weapon/move approval and voice approval remain valid; neither is being requested again.
+- The user answered **“Approve the roster for combat”** on October 16, satisfying the final gate in `ASTRA_PROMPT_NEXT_20261016.md` sections 1 and 4. **Production is enabled.** Welcome and full-party browser checks now run without replacing the source switch. No new voice recordings or art generation were required. The local chapter-six website package includes 13 eligible companions: 1,201 files / 478,972,757 bytes. All fourteen chapters with all 15 companions project to 814,023,460 bytes. No site publication is part of this activation.
 - Review all 15: `art/companions-hiro-20261015/pilot.html`. Hiro: `art/hiro-actions-20261016/index.html`. Full checks and package measurements are recorded in the October 16 CHANGELOG completion entry.
 
 ## Completed voice work
@@ -23,7 +23,7 @@ The sections below record the earlier pilot checkpoint. They are superseded by t
 - `assets/expedition/story/hiro-voice.json` records exact hashes. The story rebuild validates and retains these edition-owned recordings alongside the original media.
 - Source generator, raw masters, normalized masters, scripts and ledger remain in `../adventurer-expeditions-source-art/astra-v10/companions-hiro-20261015/`. No credentials were copied into this repository.
 
-## Companion framework and pilots
+## Historical companion framework and pilots (superseded above)
 
 `S.Companions.enabled` remains **false**. Test fixtures enable it locally without enabling incomplete companions in the normal story or website package.
 

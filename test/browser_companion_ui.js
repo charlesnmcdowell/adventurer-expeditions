@@ -5,7 +5,6 @@ try{
  const out='test/reports/story/companions';fs.mkdirSync(out,{recursive:true});
  const page=await browser.newPage({viewport:{width:1280,height:760}}),errors=[],sounds=[];
  page.on('pageerror',e=>errors.push(String(e)));page.on('response',r=>{if(r.status()>=400)errors.push(r.status()+' '+r.url());if(r.url().includes('companion-unlocked.mp3'))sounds.push(r.url());});
- await page.route('**/js/expedition/story_companions.js*',async route=>{const r=await route.fetch();await route.fulfill({response:r,body:(await r.text()).replace('enabled:false','enabled:true')});});
  const home='http://127.0.0.1:8742/docs/STORY_CAMPAIGN_PREVIEW.html';await page.goto(home);
  await page.getByRole('button',{name:'Begin story',exact:true}).waitFor();
  await page.evaluate(()=>{const S=ADV.Expedition.Story,C=ADV.Campaign3,s=S.open();s.record.chapter=2;s.record.phase='inn';S.syncQuest(s);

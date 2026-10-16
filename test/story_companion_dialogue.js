@@ -60,7 +60,7 @@ const seen=new Set();for(let i=0;i<6;i++){
  assert(media.has(S.Presentation.voice({...b,lines:[b.line]},0)));assert.equal(C.banter(s.game,st,2),null,'once per fight');
 }
 assert.equal(C.banter(s.game,{round:2,units:[{side:'a',ch:ally,downed:true}]},2),null);
-assert.equal(S.Companions.enabled,false,'dialogue pass does not enable staged combat roster');
+assert.equal(S.Companions.enabled,true,'dialogue preserves the approved combat roster activation');
 assert.equal(JSON.stringify(A.DATA.CAMPAIGN3_SCRIPT),script);assert.equal(JSON.stringify(A.DATA.CAMPAIGN3_CHOICES),choices);
 const ledger=JSON.parse(fs.readFileSync('docs/COMPANION_DIALOGUE_REVIEW_20261016/production-ledger.json'));
 for(const r of rows){const paid=ledger.requests.find(p=>p.id===r.id);assert.equal(paid.text,r.spokenText);assert.equal(paid.voiceId,r.voiceId);assert.equal(paid.state,'saved');}

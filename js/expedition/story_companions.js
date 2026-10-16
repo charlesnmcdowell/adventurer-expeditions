@@ -1,8 +1,8 @@
 // Expedition-owned companion production contract. Source characters stay read-only.
 (function(){
 'use strict';const A=ADV,X=A.Expedition,S=X.Story,C=A.Campaign3;
-const P=S.Companions={fieldMax:2,foeHealthPerAlly:.25,bindings:{},enabled:false};
-// Enable in the story entry only once the complete roster and browser QA pass.
+const P=S.Companions={fieldMax:2,foeHealthPerAlly:.25,bindings:{},enabled:true};
+// Full roster approved for combat on 2026-10-16 after packed-art and browser QA.
 P.kits={
  wren_ward:{join:1,weapon:'Short blade and throwing knife',skills:['backstab','smoke_bomb'],height:310},
  vess:{join:2,weapon:'Ritual wand',skills:['ember_lash','wither_touch'],height:325},

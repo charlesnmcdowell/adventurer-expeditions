@@ -15,6 +15,14 @@ of small fixes within a day.
 
 ---
 
+## 2026-10-16 — Approved companion roster activated (local)
+
+- **Approval and runtime:** user approved the complete roster for combat. `S.Companions.enabled` changes **false → true**. Chapter one remains solo; chapter two onward supports Hiro plus up to two eligible companions with the completed welcome/Accept and chapter party-confirmation flow. Existing recruitment, departure/death filters, explicit solo choice, nonlethal ally knockout and next-fight recovery are unchanged. No additional art generation or voice credits.
+- **Production-path checks:** removed source-switch interception from the welcome, all-roster welcome and full-party browser tests; they now exercise the actual enabled source. Updated the companion and dialogue assertions from staged-off to approved-on. Verified welcome order, Accept/reload, party changes, solo, mute, mobile, actual party victory/signatures, knockout and next-fight recovery. Chapter one tutorial and story reload remain covered by the story regression suite.
+- **Local package:** rebuilt `dist/site-demo` with **1,201 files / 478,972,757 bytes (478.97 MB)** and **13 chapter-six-eligible companions**. `site_demo.js verify` passed welcome → Accept → confirmation → Hiwot battle, every chapter 1–6 fight load, password boundaries, paid rest and mobile title with no missing files/page errors. The fourteen-chapter/all-15 projection is **814,023,460 bytes**, leaving **185.98 MB** below decimal 1 GB. Public chapter one and password `Hiro` for chapters 2–6 remain unchanged. Package receipt: `dist/site-demo-verified.json`. No staging, publishing or pushing.
+- **Validation:** `npm test`, `npm run test:story`, `npm run test:ship` (two clears and both inn returns), production-source companion UI/full-party browser checks, and local website build verification all passed. The pre-existing separate Arcade 281.78 MB / 250 MB budget warning remains; this is not a CrazyGames submission approval.
+- **Files:** `js/expedition/story_companions.js`; five companion/dialogue browser and contract tests; index and both story entry-page cache stamps **20261016-xp5 → xp6**; this log and `COMPANION_PRODUCTION_PROGRESS_20261015.md`. The original `adventurer/` and synced shared files were not changed.
+
 ## 2026-10-16 — Companion presentation, roster QA and Hiro action art (local; roster approval pending)
 
 - **Status:** all fifteen packed companion sets and the complete join/party flow are ready for the requested art review. `S.Companions.enabled` remains **false** until Hiro approves the roster, explicitly required by `ASTRA_PROMPT_NEXT_20261016.md` §1/§4. Tests activate it in isolated browser fixtures; normal play and the website package still fight solo. Prior weapon/move and voice approvals remain valid. No publishing, staging or pushing.

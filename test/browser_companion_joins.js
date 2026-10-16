@@ -2,7 +2,6 @@
 const {chromium}=require('playwright'),fs=require('fs'),assert=require('node:assert/strict');
 (async()=>{const b=await chromium.launch({channel:'chrome',headless:true}),p=await b.newPage(),errors=[];try{
 p.on('pageerror',e=>errors.push(String(e)));p.on('response',r=>{if(r.status()>=400)errors.push(r.status()+' '+r.url())});
-await p.route('**/js/expedition/story_companions.js*',async route=>{const r=await route.fetch();await route.fulfill({response:r,body:(await r.text()).replace('enabled:false','enabled:true')});});
 await p.goto('http://127.0.0.1:8742/docs/STORY_CAMPAIGN_PREVIEW.html');await p.getByRole('button',{name:'Begin story',exact:true}).waitFor();
 const ids=await p.evaluate(()=>Object.keys(ADV.Expedition.Story.Companions.kits)),out='test/reports/story/companions/joins';fs.mkdirSync(out,{recursive:true});
 for(const [name,viewport]of [['desktop',{width:1280,height:760}],['phone',{width:390,height:844}]]){

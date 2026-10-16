@@ -36,7 +36,7 @@ for(const id of Object.keys(P.kits)){
 }
 assert.throws(()=>P.register('wren_ward',{clips:{}}),/Incomplete/);
 assert(P.readiness(s).every(id=>id.startsWith('companion:')));
-assert.equal(P.enabled,false,'production remains gated until art and full party QA');
+assert.equal(P.enabled,true,'approved companion roster is enabled in ordinary production play');
 // Browser cannot receive these deliberately named simulation-only bindings.
 for(const row of JSON.parse(fs.readFileSync('assets/expedition/story/campaign.json')).combatRoster)
  S.bindings[row.kind+':'+row.id]={actor:'SIMULATION_ONLY',combatReady:true,hiroFinishersReady:2,enemyFinisherReady:true};

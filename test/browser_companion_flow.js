@@ -5,7 +5,6 @@ const base=process.env.STORY_TEST_BASE||'http://127.0.0.1:8742',out='test/report
 try{
  const page=await browser.newPage({viewport:{width:1280,height:760}}),errors=[];
  page.on('pageerror',e=>errors.push(String(e)));page.on('response',r=>{if(r.status()>=400)errors.push(r.status()+' '+r.url());});
- await page.route('**/js/expedition/story_companions.js*',async route=>{const r=await route.fetch();await route.fulfill({response:r,body:(await r.text()).replace('enabled:false','enabled:true')});});
  await page.goto(base+'/docs/STORY_CAMPAIGN_PREVIEW.html?through=14');await page.getByRole('button',{name:'Begin story',exact:true}).waitFor();
  await page.evaluate(()=>{const S=ADV.Expedition.Story,s=S.open();s.record.chapter=2;s.record.phase='departure';s.record.titleCards=[2];s.record.run.tutorial.skipGuide=true;S.syncQuest(s);
   for(const id of ['wren_ward','vess','fennick'])ADV.Campaign3.recruit(s.game,id);S.Companions.queueUnlocks(s,[]);S.save(s);});
