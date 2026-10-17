@@ -15,6 +15,30 @@ of small fixes within a day.
 
 ---
 
+## 2026-10-17 — Enemies no longer vanish after Shadow Rise; smoke and an "Invisible" tag for hiding
+
+Hiro saw enemies disappear from about chapter 10 on. It was a real bug, not just an image glitch.
+- **Cause:** Shadow Rise lets a unit cheat death. The engine reports the fall (`down`), then revives the unit with 5% health and 2 rounds of stealth.
+- `playDowns` played the death fade on the `down` and never undid it. So the enemy kept fighting while invisible, and Hiro couldn't see what he was hitting.
+- Only companion revives were redrawn.
+- **Who was affected:** shape-thieves and "A Face You Know" (8:2, 8:3, 10:3, 11:1, 12:1), the Master of Lanterns, the phase spider (10:4), and the Ducal and Palace guards (12:0, 12:1).
+
+**Fix:**
+- `js/expedition/beats.js`:
+  - A foe that rises again shows a stagger, a burst of smoke and the skill name instead of its death.
+  - A `revive` or `selfRevive` restores any body whose fade had already played (`Actor.restoreFromFade`).
+  - New `smokeOnHide`: smoke comes out of anyone who slips into stealth (Smoke Bomb, Vanish, Smoke Step, Ghoststep, an ally's Smoke Bomb), with an "Invisible" label.
+- `js/expedition/actors.js`:
+  - A hidden unit (`stealth` or `untargetable`) stands in a looping veil of Smoke Bomb's own painted cloud at its spot, with the body at 55% opacity.
+  - Its status tag now reads "Invisible" instead of "S".
+  - The veil clears when stealth ends or the unit falls.
+- New `test/browser_story_stealth.js` checks the 10:3 fight:
+  - the engine's down/revive/stealth order keeps the enemy drawn, with veil and tag;
+  - the veil clears;
+  - a faded body comes back;
+  - three real fights with real Shadow Rises never leave a living enemy undrawn.
+- `npm test`, `npm run test:story` and `npm run test:story-art` pass.
+
 ## 2026-10-17 — Unused-art report and safe disk cleanup (local)
 
 - **Report first:** `docs/UNUSED_ART_AND_CLEANUP_REPORT_20261017.md` and `docs/UNUSED_ART_REVIEW_20261017.html`; per-file inventories, SHA-256 duplicate groups, package selection, source provenance, unobserved browser requests, atlas candidates and Git blobs in `docs/cleanup-audit-20261017/`. The gallery filters/sorts records, shows thumbnails and prepares a review message; it cannot approve or execute removals.
