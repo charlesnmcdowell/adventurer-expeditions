@@ -1,0 +1,19 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><base href="../">
+<title>Idle animation review</title>
+<style>body{background:#121820;color:#eee;font:16px system-ui;margin:24px auto;max-width:1100px;padding:0 16px}button,select{font:inherit;padding:10px;margin:4px;background:#283849;color:white;border:1px solid #718294;border-radius:5px}main{display:flex;flex-wrap:wrap;gap:16px}figure{flex:1 1 340px;margin:0}canvas{width:100%;background:#414750}p{line-height:1.5}#status{color:#b8d5e8}</style>
+<h1>Idle animation review</h1><p>Same artwork and timing. Before and after play together. Crosshairs mark the actor's unchanged ground pivot. Includes all 15 companions and the complete local enemy collection; unused legacy sets are labelled by their asset ID.</p>
+<button id="prev">Previous</button><select id="actor" aria-label="Actor"></select><button id="next">Next</button><button id="play">Pause</button><button id="step">Next frame</button><select id="speed" aria-label="Playback speed"><option value="1">Normal speed</option><option value=".5">Half speed</option><option value=".25">Quarter speed</option></select>
+<p id="status"></p><main><figure><figcaption>Before</figcaption><canvas id="before" width="500" height="450"></canvas></figure><figure><figcaption>Current game</figcaption><canvas id="after" width="500" height="450"></canvas></figure></main>
+<script>
+let rows=[],row,pages=[],frame=0,time=0,playing=true,ready=false,serial=0;
+const select=document.querySelector('#actor'),status=document.querySelector('#status');
+async function choose(index){const token=++serial;ready=false;select.selectedIndex=(index+rows.length)%rows.length;row=rows[select.selectedIndex];location.hash=row.id;frame=0;time=0;
+ const loaded=await Promise.all(row.pages.map(url=>new Promise((ok,bad)=>{const i=new Image();i.onload=()=>ok(i);i.onerror=bad;i.src=url;})));if(token!==serial)return;pages=loaded;ready=true;draw();}
+function draw(){if(!ready)return;const f=row.frames[frame],scale=Math.min(1,300/row.standing,470/row.canvas.w),pivot=row.canvas.pivot;
+ for(const key of ['before','after']){const c=document.querySelector('#'+key),x=c.getContext('2d'),p=f[key],r=f.rect;x.clearRect(0,0,500,450);x.strokeStyle='#73818d';x.beginPath();x.moveTo(250,0);x.lineTo(250,450);x.moveTo(0,390);x.lineTo(500,390);x.stroke();x.drawImage(pages[f.page],r.x,r.y,r.w,r.h,250+(p.x-pivot.x)*scale,390+(p.y-pivot.y)*scale,r.w*scale,r.h*scale);}
+ status.textContent=`${select.selectedIndex+1}/${rows.length} · ${row.id} · frame ${frame+1}/${row.frames.length} · ${row.changed?'Registration corrected':'Reviewed; unchanged'}`;}
+select.onchange=()=>choose(select.selectedIndex);document.querySelector('#prev').onclick=()=>choose(select.selectedIndex-1);document.querySelector('#next').onclick=()=>choose(select.selectedIndex+1);
+document.querySelector('#play').onclick=()=>{playing=!playing;document.querySelector('#play').textContent=playing?'Pause':'Play';};document.querySelector('#step').onclick=()=>{playing=false;document.querySelector('#play').textContent='Play';frame=(frame+1)%row.frames.length;time=0;draw();};
+let last=performance.now();function tick(now){if(ready&&playing){time+=Math.min(100,now-last)*Number(document.querySelector('#speed').value);while(time>=row.times[frame]){time-=row.times[frame];frame=(frame+1)%row.frames.length;}draw();}last=now;requestAnimationFrame(tick);}requestAnimationFrame(tick);
+fetch('docs/IDLE_ROSTER_REVIEW.json').then(r=>r.json()).then(r=>{rows=r;for(const row of rows)select.add(new Option(row.id+(row.changed?' — corrected':''),row.id));choose(Math.max(0,rows.findIndex(r=>r.id===(location.hash.slice(1)||'story_grell'))));});
+</script></html>

@@ -200,6 +200,8 @@ def build(src,hero,out,height=360,quality=82,manifest=None,clip_ids=None,max_w=2
     out.mkdir(parents=True,exist_ok=True)
     doc=dict(textures=textures,frames=all_frames,meta=dict(app='tools/art_intake_v2.py',multiatlas=True,source=hero,pages=[t['image'] for t in textures]),
              hero=hero,canvas=dict(w=cw,h=ch,pivot=dict(x=half,y=above)),standing=height,clips=result_clips)
+    from repair_idle_roster import repair as repair_idle_roster
+    repair_idle_roster(doc)
     # Complete encoding before replacing the live atlas. Never leave a half
     # written JSON after a failed source validation or WebP encode.
     with tempfile.TemporaryDirectory(prefix=hero+'-intake-') as tmp:
