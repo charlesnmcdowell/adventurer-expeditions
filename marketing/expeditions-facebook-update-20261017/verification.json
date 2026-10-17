@@ -1,0 +1,186 @@
+{
+  "file": "Adventurer_Expeditions_Facebook_Update_45s.mp4",
+  "duration": "45.022000",
+  "bytes": 15833218,
+  "sha256": "bdf583d8780f7b07df61714a608bf57b6d8a51a17e75efdf1e36012a6fd69102",
+  "music": "C:\\Users\\charl\\OneDrive\\Documents\\TTRPG\\Kenji\\music\\Hammer Psalm black smith theme 1.wav",
+  "musicSourceStartSeconds": 27,
+  "musicSourceEndSeconds": 72,
+  "voiceover": false,
+  "gameAudio": false,
+  "cuts": [
+    {
+      "name": "01-santiago-beau",
+      "duration": 14,
+      "sourceDuration": 13.532,
+      "rate": 0.9665714285714285,
+      "start": 0,
+      "party": [
+        "cassian",
+        "dorran"
+      ],
+      "location": "gnoll_fort",
+      "finisher": {
+        "type": "finisher-end",
+        "time": 11.84740000000596,
+        "remaining": 0
+      }
+    },
+    {
+      "name": "02-winston-hiwot",
+      "duration": 13,
+      "sourceDuration": 11.832,
+      "rate": 0.9101538461538462,
+      "start": 14,
+      "party": [
+        "fennick",
+        "wren_ward"
+      ],
+      "location": "shore",
+      "finisher": {
+        "type": "finisher-end",
+        "time": 10.20840000000596,
+        "remaining": 0
+      }
+    },
+    {
+      "name": "03-layla-wanjiru",
+      "duration": 14,
+      "sourceDuration": 13.598,
+      "rate": 0.9712857142857143,
+      "start": 27,
+      "party": [
+        "ilvara",
+        "nettle"
+      ],
+      "location": "sewers",
+      "finisher": {
+        "type": "finisher-end",
+        "time": 11.954799999982118,
+        "remaining": 0
+      }
+    }
+  ],
+  "originalEndcard": {
+    "source": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions\\marketing\\expeditions-facebook-20260928\\Adventurer_Expeditions_Facebook_Reel_70s.mp4",
+    "sourceStartSeconds": 66,
+    "duration": 4
+  },
+  "fullBattleWidthPreserved": true,
+  "probe": {
+    "streams": [
+      {
+        "index": 0,
+        "codec_name": "h264",
+        "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+        "profile": "High",
+        "codec_type": "video",
+        "codec_time_base": "1/60",
+        "codec_tag_string": "avc1",
+        "codec_tag": "0x31637661",
+        "width": 1080,
+        "height": 1920,
+        "coded_width": 1080,
+        "coded_height": 1920,
+        "has_b_frames": 2,
+        "sample_aspect_ratio": "1:1",
+        "display_aspect_ratio": "9:16",
+        "pix_fmt": "yuv420p",
+        "level": 40,
+        "chroma_location": "left",
+        "refs": 1,
+        "is_avc": "true",
+        "nal_length_size": "4",
+        "r_frame_rate": "30/1",
+        "avg_frame_rate": "30/1",
+        "time_base": "1/15360",
+        "start_pts": 0,
+        "start_time": "0.000000",
+        "duration_ts": 691200,
+        "duration": "45.000000",
+        "bit_rate": "2609838",
+        "bits_per_raw_sample": "8",
+        "nb_frames": "1350",
+        "disposition": {
+          "default": 1,
+          "dub": 0,
+          "original": 0,
+          "comment": 0,
+          "lyrics": 0,
+          "karaoke": 0,
+          "forced": 0,
+          "hearing_impaired": 0,
+          "visual_impaired": 0,
+          "clean_effects": 0,
+          "attached_pic": 0,
+          "timed_thumbnails": 0
+        },
+        "tags": {
+          "language": "und",
+          "handler_name": "VideoHandler"
+        }
+      },
+      {
+        "index": 1,
+        "codec_name": "aac",
+        "codec_long_name": "AAC (Advanced Audio Coding)",
+        "profile": "LC",
+        "codec_type": "audio",
+        "codec_time_base": "1/48000",
+        "codec_tag_string": "mp4a",
+        "codec_tag": "0x6134706d",
+        "sample_fmt": "fltp",
+        "sample_rate": "48000",
+        "channels": 2,
+        "channel_layout": "stereo",
+        "bits_per_sample": 0,
+        "r_frame_rate": "0/0",
+        "avg_frame_rate": "0/0",
+        "time_base": "1/48000",
+        "start_pts": 0,
+        "start_time": "0.000000",
+        "duration_ts": 2160000,
+        "duration": "45.000000",
+        "bit_rate": "195837",
+        "max_bit_rate": "195837",
+        "nb_frames": "2111",
+        "disposition": {
+          "default": 1,
+          "dub": 0,
+          "original": 0,
+          "comment": 0,
+          "lyrics": 0,
+          "karaoke": 0,
+          "forced": 0,
+          "hearing_impaired": 0,
+          "visual_impaired": 0,
+          "clean_effects": 0,
+          "attached_pic": 0,
+          "timed_thumbnails": 0
+        },
+        "tags": {
+          "language": "und",
+          "handler_name": "SoundHandler"
+        }
+      }
+    ],
+    "format": {
+      "filename": "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions\\marketing\\expeditions-facebook-update-20261017\\Adventurer_Expeditions_Facebook_Update_45s.mp4",
+      "nb_streams": 2,
+      "nb_programs": 0,
+      "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+      "format_long_name": "QuickTime / MOV",
+      "start_time": "0.000000",
+      "duration": "45.022000",
+      "size": "15833218",
+      "bit_rate": "2813418",
+      "probe_score": 100,
+      "tags": {
+        "major_brand": "isom",
+        "minor_version": "512",
+        "compatible_brands": "isomiso2avc1mp41",
+        "encoder": "Lavf57.75.100"
+      }
+    }
+  }
+}

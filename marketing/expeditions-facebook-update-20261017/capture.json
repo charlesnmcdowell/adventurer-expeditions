@@ -1,0 +1,447 @@
+{
+  "shots": [
+    {
+      "name": "01-santiago-beau",
+      "pair": [
+        "cassian",
+        "dorran"
+      ],
+      "chapter": 3,
+      "encounter": 2,
+      "location": "gnoll_fort",
+      "actors": [
+        {
+          "uid": "a0",
+          "name": "Hiro",
+          "kind": "hero",
+          "side": "a"
+        },
+        {
+          "uid": "b0",
+          "name": "Snarl, Gnoll Warleader",
+          "kind": "story_snarl",
+          "side": "b"
+        },
+        {
+          "uid": "b1",
+          "name": "Gnoll Raider · Grey",
+          "kind": "story_gnoll_raider",
+          "side": "b"
+        },
+        {
+          "uid": "b2",
+          "name": "Gnoll Raider · Grey",
+          "kind": "story_gnoll_raider",
+          "side": "b"
+        },
+        {
+          "uid": "a1",
+          "name": "Santiago",
+          "kind": "ally",
+          "side": "a",
+          "companion": "cassian"
+        },
+        {
+          "uid": "a2",
+          "name": "Beau",
+          "kind": "ally",
+          "side": "a",
+          "companion": "dorran"
+        }
+      ],
+      "markers": [
+        {
+          "type": "attack",
+          "time": 0.2657000000178814,
+          "actor": "Santiago",
+          "target": "Gnoll Raider · Grey",
+          "skill": "basic_attack",
+          "kill": true
+        },
+        {
+          "type": "attack",
+          "time": 3.467,
+          "actor": "Beau",
+          "target": "Gnoll Raider · Grey",
+          "skill": "cleave",
+          "kill": true
+        },
+        {
+          "type": "attack",
+          "time": 6.964200000017882,
+          "actor": "Snarl, Gnoll Warleader",
+          "target": "Hiro",
+          "skill": "basic_attack",
+          "kill": false
+        },
+        {
+          "type": "attack",
+          "time": 8.19790000000596,
+          "actor": "Hiro",
+          "target": "Snarl, Gnoll Warleader",
+          "skill": "basic_attack",
+          "kill": false
+        },
+        {
+          "type": "finisher-start",
+          "time": 9.081,
+          "target": "Snarl, Gnoll Warleader",
+          "kind": "story_snarl"
+        },
+        {
+          "type": "finisher-end",
+          "time": 11.84740000000596,
+          "remaining": 0
+        },
+        {
+          "type": "victory-end",
+          "time": 12.9465
+        }
+      ],
+      "duration": 13.6755
+    },
+    {
+      "name": "02-winston-hiwot",
+      "pair": [
+        "fennick",
+        "wren_ward"
+      ],
+      "chapter": 2,
+      "encounter": 0,
+      "location": "shore",
+      "actors": [
+        {
+          "uid": "a0",
+          "name": "Hiro",
+          "kind": "hero",
+          "side": "a"
+        },
+        {
+          "uid": "b0",
+          "name": "Road Wolf · Grey",
+          "kind": "wolf",
+          "side": "b"
+        },
+        {
+          "uid": "b1",
+          "name": "Road Wolf · Grey",
+          "kind": "wolf",
+          "side": "b"
+        },
+        {
+          "uid": "a1",
+          "name": "Winston",
+          "kind": "ally",
+          "side": "a",
+          "companion": "fennick"
+        },
+        {
+          "uid": "a2",
+          "name": "Hiwot",
+          "kind": "ally",
+          "side": "a",
+          "companion": "wren_ward"
+        }
+      ],
+      "markers": [
+        {
+          "type": "attack",
+          "time": 0.2592000000178814,
+          "actor": "Winston",
+          "target": "Road Wolf · Grey",
+          "skill": "basic_attack",
+          "kill": true
+        },
+        {
+          "type": "attack",
+          "time": 3.4084000000059604,
+          "actor": "Hiwot",
+          "target": "Road Wolf · Grey",
+          "skill": "backstab",
+          "kill": false
+        },
+        {
+          "type": "attack",
+          "time": 4.81040000000596,
+          "actor": "Road Wolf · Grey",
+          "target": "Hiro",
+          "skill": "basic_attack",
+          "kill": false
+        },
+        {
+          "type": "attack",
+          "time": 6.9081000000238415,
+          "actor": "Hiro",
+          "target": "Road Wolf · Grey",
+          "skill": "basic_attack",
+          "kill": false
+        },
+        {
+          "type": "finisher-start",
+          "time": 7.759900000005961,
+          "target": "Road Wolf · Grey",
+          "kind": "wolf"
+        },
+        {
+          "type": "finisher-end",
+          "time": 10.20840000000596,
+          "remaining": 0
+        },
+        {
+          "type": "victory-end",
+          "time": 11.310600000023841
+        }
+      ],
+      "duration": 11.989
+    },
+    {
+      "name": "03-layla-wanjiru",
+      "pair": [
+        "ilvara",
+        "nettle"
+      ],
+      "chapter": 8,
+      "encounter": 0,
+      "location": "sewers",
+      "actors": [
+        {
+          "uid": "a0",
+          "name": "Hiro",
+          "kind": "hero",
+          "side": "a"
+        },
+        {
+          "uid": "b0",
+          "name": "The Ogre Under the Docks",
+          "kind": "story_sewer_ogre_mage",
+          "side": "b"
+        },
+        {
+          "uid": "b1",
+          "name": "Sewer Crawler · Pale",
+          "kind": "story_sewer_crawler",
+          "side": "b"
+        },
+        {
+          "uid": "b2",
+          "name": "Sewer Crawler · Wet",
+          "kind": "story_sewer_crawler",
+          "side": "b"
+        },
+        {
+          "uid": "a1",
+          "name": "Layla",
+          "kind": "ally",
+          "side": "a",
+          "companion": "ilvara"
+        },
+        {
+          "uid": "a2",
+          "name": "Wanjiru",
+          "kind": "ally",
+          "side": "a",
+          "companion": "nettle"
+        }
+      ],
+      "markers": [
+        {
+          "type": "attack",
+          "time": 0.2736999999880791,
+          "actor": "Layla",
+          "target": "Sewer Crawler · Pale",
+          "skill": "basic_attack",
+          "kill": true
+        },
+        {
+          "type": "attack",
+          "time": 3.5570999999940396,
+          "actor": "Wanjiru",
+          "target": "Sewer Crawler · Wet",
+          "skill": "wither_touch",
+          "kill": true
+        },
+        {
+          "type": "attack",
+          "time": 7.0555999999940395,
+          "actor": "The Ogre Under the Docks",
+          "target": "Hiro",
+          "skill": "basic_attack",
+          "kill": false
+        },
+        {
+          "type": "attack",
+          "time": 8.28879999998212,
+          "actor": "Hiro",
+          "target": "The Ogre Under the Docks",
+          "skill": "basic_attack",
+          "kill": false
+        },
+        {
+          "type": "finisher-start",
+          "time": 9.189900000005961,
+          "target": "The Ogre Under the Docks",
+          "kind": "story_sewer_ogre_mage"
+        },
+        {
+          "type": "finisher-end",
+          "time": 11.954799999982118,
+          "remaining": 0
+        },
+        {
+          "type": "victory-end",
+          "time": 13.056
+        }
+      ],
+      "duration": 13.7335
+    }
+  ],
+  "sourceHashes": {
+    "js\\core\\balance_support.js": "fafca76dce3ad45401d23d07b119d5e93236df6b5eb78a38da36b5750c8fd142",
+    "js\\core\\campaign.js": "626bc2e7fb47a08e6bdeac721e337ec99396ab4b423ea3f241a95e93d6ec2edf",
+    "js\\core\\campaign2.js": "dd22aa942a9ef5ea16a8383da3b1b22b6862478bd2caa2a17095d52e442572d7",
+    "js\\core\\campaign3.js": "cb9786449a24e3e0133f1fffcdd56eed31cb6b0a33dc4f6bd04e5cdc39256090",
+    "js\\core\\campaign3_perks.js": "b4c9f7305f1c999cc3e55963bd54ad3f32efd4c52a5589d3d4c6b1b3a40e4682",
+    "js\\core\\campaign3_perk_combat.js": "8a02a7a2586f6332a5e34aa96044e71ca39e8105de9a46f61986a73ce8712fd6",
+    "js\\core\\campaign_router.js": "5bb6e5e69b5ca2191028f5fcaa278c95242ebf3655392e295ec47e5a194cdc31",
+    "js\\core\\censorship.js": "c68d286bfa882bdbd29982ce97a924cf38ec5df08f5db9bef70fee58cac3e5d3",
+    "js\\core\\character.js": "cbce8d310e02288e30f28107b28d6c048fedf39b3c4efe2ffe5794420a9810a7",
+    "js\\core\\combat.js": "a88de710843957fa78fea1eb425e877d7b840259eee365f93da987dfa64b1de2",
+    "js\\core\\combat_ai.js": "314f4a007dd898f0d3f1bbdd731adab883ef56ee097cf75350e0346462c8c508",
+    "js\\core\\combat_damage.js": "ef993a672cfdb192567cca57d35c9e429287261e4990c4fbf71df34c495cc12a",
+    "js\\core\\combat_effects.js": "38db64174093634febceb2e9814f579536da8b3a640db6932a9ad6dfb175abd7",
+    "js\\core\\combat_events.js": "0dbad716171154245a9bc78cb093ee90b1d747a7d579b27b26a618014414a76e",
+    "js\\core\\combat_healing.js": "071da1a904bfcdaa1d9c95a846579ff0226205c7dc76826c05130ea8266689b0",
+    "js\\core\\combat_statuses.js": "1aa0a2cff1a400e057bd12761b2accf3e33270e3345475dcdfcbc3dc7ce9b0c8",
+    "js\\core\\combat_targeting.js": "7a67c1924e574d705fc830b94ebecadbaa690d81d80601b60bc5e39887c3090d",
+    "js\\core\\combat_turns.js": "149ed9ba5ee661b3ad8f52f5b6c66a410a326f25339c41afa530a9493f156476",
+    "js\\core\\contracts.js": "c2488b59aafaf5c27fb423656b9460c37fbd7de21f9867af27f6510a6455702e",
+    "js\\core\\conversation.js": "9972d476fc33b8ecff64052ab6791ab2385e8e60bccb06050191d43ca98f2f5a",
+    "js\\core\\courtship.js": "b70c9168b7010d85f870402fe09486f098d344ac7b8ea559a7533ddb11e32c96",
+    "js\\core\\death.js": "321cf314d3daf999bda1df38027f7e3abf975a3b4277c49807c3ce63cce9a1bc",
+    "js\\core\\difficulty.js": "08b68e7472c702d8eb0a6828b0ce6b1f8443fed67a6a1a590693c3fa13a5a643",
+    "js\\core\\divine.js": "2696daaecfcf76ee4e52d9115a8dc2c24192c8a2b0a06e474a51508cd8b43e7c",
+    "js\\core\\family_support.js": "d2ef782049ae9536e26488e7d82032cb2a4c5855645a6c96fe324f463e05bf21",
+    "js\\core\\game.js": "26dbdd3d63c8a492bdcad9a0e098f18243133472ebbfdb114afc7a4fc196eebe",
+    "js\\core\\gate_finale.js": "87a90888689266acc867a7a839dc88d4463381e4d703a22106aa04295dbb8246",
+    "js\\core\\hiro.js": "41e47dffc64d9448228a77c06be401ba3e0945bd5886d5ed979dc6e6e9126873",
+    "js\\core\\housing.js": "e912b003cc80a7a7d7183bada2e51536629d7d147e6cf13b9ce35b7cca0a5297",
+    "js\\core\\party.js": "3a11733510f58f81042dbbf4489ee206836e7749287826fe7c77bcea0ff9cea2",
+    "js\\core\\prefs.js": "5b8e7dc05fc07f590ca542f527e6b79b04f0388b8aa8be8cbac4c0952842afc1",
+    "js\\core\\quests.js": "ff84a1bda8a701c19e8a0fa7eb8e137fb58f457e61934215e79d87efffcf8220",
+    "js\\core\\quest_lifecycle.js": "91b061fa8a9b19250757ba64c38e034ae43390c64c26c775a9dcb06d5f68a7e0",
+    "js\\core\\relationships.js": "9641a8de36c28c068936f94c5b152a9dc7c4d36cad0ef32962407d03ca30fd9f",
+    "js\\core\\release_config.js": "693678f0b96d804849ef5530de7948b9cd770c71895a26097920b3ec405ccf87",
+    "js\\core\\rng.js": "508d09dac8caeccec0ad851d814f016e323db939e64de8fec96b087c4f9c24ea",
+    "js\\core\\save.js": "9c841e3fcd1fb8bc5937156a36621d60c66174e125ecd0e6a93a3339a9b6ff74",
+    "js\\core\\save_store.js": "5dca80577e21adaecd7115a750e9a262bdc449b8ab3cc67656796229c133912e",
+    "js\\core\\skillsys.js": "7b9eedfe69e3267328c204dae490a6c6469c658a8fd1472e26b2a144aa028790",
+    "js\\core\\survival.js": "41feb86a82dcf86a51181eb79c67434b466760f91db33f65c6b7ffca288562d6",
+    "js\\core\\travel.js": "fea7e5d5d8edd8f18be2c73257725adf85b289db4d524a6cd6c039c7a5587ee1",
+    "js\\core\\util.js": "84c2ed81861c3224706b178846d8e86f560a09a8b79e41fd8c0613903975fa74",
+    "js\\core\\vault.js": "07a09f3671a11a1037f2d21cabfacd15fe2f2c1cd86ce400a9fc31dbe41fb61f",
+    "js\\core\\world.js": "fadb9bfdbef69624fbe5cace8258df4801144b62a66de3e27a15824d1030dd46",
+    "js\\data\\audio_update_manifest.js": "e45db3346a7593b2d8116c0944b822faa472ae206cba7597402f2fcc824eacd5",
+    "js\\data\\campaign2_data.js": "ea02a699fb73d23c7f16ba93c27c2c04f448c242eabe879d9af289ec6de63e87",
+    "js\\data\\campaign2_dialogue.js": "03f1c082c00ef705c8c43483e7c658f2e59dcf22ffc0292cb4dfa626f28d3ef5",
+    "js\\data\\campaign2_skills.js": "a3a25618370bb5ab4db41fa6c22f3995443e2b1ae5c9d39488a2ccd97347be36",
+    "js\\data\\campaign3_data.js": "32c3982f36c751f8306c899a1a57642845e4c6c7b3e15372814a92dbcd478951",
+    "js\\data\\campaign3_dialogue.js": "11d98dc327b6c1a236a658b942c449cd54bd324dcdb1599c7b2db9843ec6cf4a",
+    "js\\data\\campaign3_perks.js": "c60510e44e0391022df14ca771c8f47763da23db106a9a6fae12bacff25234af",
+    "js\\data\\campaign_data.js": "5ba436cddaedf3fb22a4b22c8ec8c9c3c7b32adec30b411b86c9616d82f62c2e",
+    "js\\data\\campaign_dialogue.js": "032c7f365b9f290279ec0e360ab674d219dccfcb1c036ae21192323ad945f081",
+    "js\\data\\campaign_skills.js": "7c8d7cb2d08241efbfd28e835255f65adc350e3b7bc847bced0156f8297187b8",
+    "js\\data\\campaign_story.js": "42aa53e5d19746808a237890424909d9980782e27734dbee268df260c394c9cc",
+    "js\\data\\constants.js": "8f7e4498d9dc6cba43c4404b0b50371c0e7a2a5ff827e791a115e8ff7cf8a2e1",
+    "js\\data\\dialogue.js": "a992adb14dfcf4279ec6db5efd240a07ef925b1388b3820c1e91b40da90eacf6",
+    "js\\data\\dialogue2.js": "94768c0e5d90561adaac721681d62d4173c387b4818d338f520df7d3f62498ae",
+    "js\\data\\dialogue_bonus.js": "4a94c93667f7d5c2bd72aee040bc4e49ffe5dd6f30ca7801d4078bb4c68f6c02",
+    "js\\data\\dialogue_context.js": "ca8c8e3543c0868213c8ca558ff903b74734a706b68268e49defc93f101cb431",
+    "js\\data\\dialogue_hiro.js": "73ecbbd58327f9beb2e63083966ab81b2788bae9246e5fb38e99a5dfa595e2d1",
+    "js\\data\\enemies.js": "e6dfa1a5568ce2ac590737903d74dfb26f9928605e6105f1ef72d07f027ba0fc",
+    "js\\data\\enemy_tactics.js": "efa255bd61186b2a2e88f61a608fe8d65696a16a0accd37c87b0cf7a0a3fbe26",
+    "js\\data\\gate_epilogue_voice.js": "2a1869f3ddb2b7e1c68761860c41d80a7c0dd046dc511b9e65fc02a201cf8549",
+    "js\\data\\gate_finale.js": "7e16c5419d9f9d9f75754ea689a499212703306cd40b7e78fced03b20bd0cc68",
+    "js\\data\\lifecycle_voice_manifest.js": "ca986f5c7538df90a6f84022c9fc7a8d2d5b30120d92e8f4e549d2ad6213bcc2",
+    "js\\data\\minibosses.js": "82675dbacfa9c472d1d25c4de256faa5033143af7e094b996bfce3f07c445ee8",
+    "js\\data\\monster_skills.js": "7903f49679e8fc737b6befad000c0449e606c392b0c3156e4bd935a7f11083fb",
+    "js\\data\\names.js": "8ce45146940db04813d3403ed8a6bee1fc301fd2a33305a38206758b81b41cce",
+    "js\\data\\personality_events.js": "7d3e802311fe6453b0e21c3d3a4abbd28e0313c891f38936070ff653d9a1cd49",
+    "js\\data\\personality_pairs.js": "3e83394e49e9846008339c13ffddcef4ecf625636d9dbc556954a9865f680e50",
+    "js\\data\\personality_social.js": "4235027a94f016bdfb32014a4096765a7622578eaa24b4633c8ea3eb0f28c17c",
+    "js\\data\\personality_travel.js": "d040daf252bd334e75ebc3a6ea09824b37527033c38e258fc06defc30746fc46",
+    "js\\data\\registry.js": "6b50388bad0434d99f3c5e07d74be54514154e3e421c25e8b04f856b66399fa4",
+    "js\\data\\skills.js": "f544d061c92fa5c2024f625955c45448240ab52f2417856eaea00ae979f6747b",
+    "js\\data\\travel.js": "f95cf3eb06e7a2c6a52703b4bd807ed172d0b84bede6601d32d978538b8bc357",
+    "js\\data\\tutorial.js": "d19e281f53ef741d8567453c219846d40b9109b6124b7cef6981c99de026cb4c",
+    "js\\data\\version.js": "a69d95ee131ada6cb55e07be4db17a0fb68971c0d4ffebbe41f8152793647754",
+    "js\\data\\voice_manifest.js": "f0e9f99304077a04c5eb57f327db6f021124ae2d65357426f479222985058b0b",
+    "js\\expedition\\actors.js": "85061c7dab02f4dda6f7e82a862fa8b77c23bce02c0082b5a113f1163c0b5fd0",
+    "js\\expedition\\atmosphere.js": "bf86ab88bea1ed9a6136262c688356b02c3e3f83876f59c0b72fa1a30e71bbbc",
+    "js\\expedition\\bathhouse.js": "df44754ed45db48d4abfe1f2a55b96d9317f4442538c26f134c365bb0e0f0431",
+    "js\\expedition\\battle_stage.js": "357bc686b506364f7b3e66fa5801e944d1a9e15e1b839f8917bc2eac34d72e31",
+    "js\\expedition\\beats.js": "95e2e76916f64d92b5f84d22c7cde4a1fa5e5290cafd8e9e3a263df054c59846",
+    "js\\expedition\\campaign.js": "97bf956d6f88ce6a4d73d267e0541bee09ba044d5b1f1cab5557f6d24a044ac0",
+    "js\\expedition\\data.js": "bd87e01215d3c84f8acafa25c2dd5c82b31507fcf611554bd2c866c82e920358",
+    "js\\expedition\\defeat_fx.js": "dce81b30d0a702a310300ea7646aca7872ad46ec6c7469dc778c4da7352730a6",
+    "js\\expedition\\dev.js": "a23ddf0bae9a2d2e991ff10cb046a3f2b59ab3bb3f6ce9478f8e12db007c1bf4",
+    "js\\expedition\\encounter.js": "7822137a4f76049b888e131069f8a6ccf083740c6ad140085dcd0958f0b8bd3d",
+    "js\\expedition\\enemy_finishers.js": "59616793acd4b31446e1fe6cbdde2fcabf8fd596527d150a473ced5d9a90d163",
+    "js\\expedition\\gore_fx.js": "29126c71a34d7a5ab824cba6e569dd577aecab0ec91e817800ebfe0a2556f029",
+    "js\\expedition\\hud.js": "6dc3f7f8d68e62a3493593f112ba4f65c951b630ded3b4ef61ad630b9a2d0f76",
+    "js\\expedition\\inn_art.js": "7d11e1747fb5c000ac8c575631790e248796ea43be722f58af1c6dca2aff124d",
+    "js\\expedition\\knockback.js": "cc4feefea0cece8b904ed01b4d54982234f750d549fe7d0248f1143d2ff24f70",
+    "js\\expedition\\light_anchors.js": "c739257d25fd3a47dcb495caabd1fea2bb6ea3a0baa1c113d252aa942656a427",
+    "js\\expedition\\media_hashes.js": "66dd5159240a077472c127da6903a5dea279929e607fa41d38e3ccfd31f36f2b",
+    "js\\expedition\\memory.js": "e8d9cf4f948718cccbab9385c94cee8c4433da62dcf58b9d1462a284e8dffd35",
+    "js\\expedition\\painted.js": "17c55be123dfc80dae7be621af7536e3e9b08b93b6d45c18930cee4db164ac24",
+    "js\\expedition\\props.js": "df7b8625c1f0ae8aa05be5a16d8f82257d5300049bf1d2ca259703a59e97bac5",
+    "js\\expedition\\run.js": "5944a5970bd7a99a1409dbeb2ea87ee43703acf0b88344f9f6ad8933dcde6f61",
+    "js\\expedition\\scene.js": "b4baab5324b837e9a307e42a72dbbf2f77fc39682bd68372b9191e2d5d9a26ea",
+    "js\\expedition\\scenes_town.js": "3cbe15465314f79f12770def5683128958477408f1e1bdf93c98d5c8938b1d36",
+    "js\\expedition\\shim.js": "18fe119f0817126436e86dbb0141dcca4d921cf9c6669c1b4bbd1149fd967237",
+    "js\\expedition\\story.js": "5e7259caeb70942624cfc2ed669ae56b165a96bee9633982df8106853505c6d2",
+    "js\\expedition\\story_art.js": "d983258328e0e9e632c9d44372edc43473e5b698a1f2947a04e821b1308a4f5c",
+    "js\\expedition\\story_backdrop.js": "a176cbaa1616303ed9e29635af8ef79b3d696d3be401b6cd7995884012d56d65",
+    "js\\expedition\\story_combat.js": "88dfd73d4dd008a8569e80bf2b9f6d374cda6eac0ed4a049534b9961015a0a5f",
+    "js\\expedition\\story_companions.js": "66e959139e001de7ba980c0dc5e0f7cf8ffcad3924a54d8ec95849887967f411",
+    "js\\expedition\\story_companion_ui.js": "3845f9f3a1ba995254dbc86b43a1d293510e0eefab2878110eb6620eb387eb64",
+    "js\\expedition\\story_dialogue.js": "b8eb1d27b9c827e34c748a1583efdaba492ec5a6e1969ba8138e7bae04e88008",
+    "js\\expedition\\story_effects.js": "9b5fd8305bcd47443e15ff4c91639ba44ea29c83cb30d94d1dbc3783f59a0682",
+    "js\\expedition\\story_presentation.js": "b0987f6770473f1f0be0becb4cf01b5bcd3d5eea19d0fe5f4f340c173d2bd338",
+    "js\\expedition\\story_scene.js": "69b20d752224948ad5c2b978d1958491d9ad10186a4b94679a242217619fdaa1",
+    "js\\expedition\\story_stage.js": "c6e2586e062e3afd178019717ad51ba0c92783eadc6df6885fd36f4393fae9f8",
+    "js\\expedition\\travel_art.js": "ccaf053cf3506a547b7e31bca79204f4c6176596e596bfc042f19f58a0b4f268",
+    "js\\expedition\\ui_common.js": "b01d6d1880c26e3da40512e66e338b585791e930cf00f990ce475cf6e6863cb9",
+    "js\\ui\\anime_art.js": "d5c146719c269dcb3de55ddf360bf4140508cd1646e633abd544276d0af1e907",
+    "js\\ui\\anime_environments.js": "61149e991bad45210013b7066147742a9ddef149bc11a56453e1b45e2302c31e",
+    "js\\ui\\anime_identities.js": "bd53ca4280c0970b5eefedb13462a5de12603bed9db8a572f1dddede491771fc",
+    "js\\ui\\anime_manifest.js": "13ebd0b7e3057d110810e8de4a1018f4541ed4c4f967725873e0c68b3339f9ba",
+    "js\\ui\\anime_world.js": "b5290616e470c24373c69971ae30faa85fc347bf7a6b480181437f352b45e28f",
+    "js\\ui\\asset_queue.js": "02132836aac27086ef963e239eb865380c185a95c36a1729c1dd2b15292ed517",
+    "js\\ui\\battle_art.js": "53522f124487968da872d0327cbdbd73fd349dbfe2e5e16a29e3b98f7364cbd7",
+    "js\\ui\\combat_presentation.js": "0dcd2f088426b1401a6af60a48c3530a217a700ba18bf88a33c92001cbae29ab",
+    "js\\ui\\cutscenes.js": "e2aac1a5aec2b3faf9bd02969b9b9fd50eef48035163da6e2a26a81a5aa17403",
+    "js\\ui\\dialoguebox.js": "0e796d2e1f471c499a927e6ac595da80cbd3e809f661135e1fd07f4ca41d9b0c",
+    "js\\ui\\gate_ambience.js": "a57af02948fd02c4c3356f61e847a152a788b0e8ab60851cced7816238b93f24",
+    "js\\ui\\home_art.js": "391e6a8c6ecb04ff4028be840220f5c46de01aa1a793e0930ade9dbec2dd1f1f",
+    "js\\ui\\home_life.js": "f66d16e79387bbf06fc3e41a53437613caf8a179b62cc24177f48243de126228",
+    "js\\ui\\mobile_viewport.js": "565cb3e2bffc48c0b6eea76b2c768e510b37c036f278fb67b0909cb5b524aa30",
+    "js\\ui\\music.js": "7685b00bbbe37aa96aecb6aa7a0baa144136e94fe9d3b7c252836870ce6304c7",
+    "js\\ui\\portal.js": "ac8eb2ccbc650f968f5c30aa8a80d450cd44e6839474db8c1d41fd3e188ed56a",
+    "js\\ui\\portraits.js": "8802d8a7e7f91e15b34becee2c39f66f2a44d887e5e4fafb8a32e08510b6f1c4",
+    "js\\ui\\skill_art.js": "8389ea37d21a0862ee9868112d2fd21e0ff44818a12af3121d69ec3a02553301",
+    "js\\ui\\skill_art_catalog.js": "daca687c02a5195dd08f55058adfac2cbd780d4899d375c8029ec2e4d11042ca",
+    "js\\ui\\spell_fx.js": "d5939b49562a4220cef35bff317b13d847ec051f3627aaf571a80ea462f22c32",
+    "js\\ui\\theme.js": "c2ca9af5e36b1e00ece78002b483361af7407f0bcc402f89444ff328bddaade4",
+    "js\\ui\\tooltip.js": "c14c1925e2c14c40f08de7458999729daf59a1a500403694282247af403b10c6",
+    "js\\ui\\travel_ambience.js": "c92c5720f7a1b4d3ea4332bc865126b93fddb277575d87219728f883985c81f9",
+    "js\\ui\\travel_battle_art.js": "42ea1fca40cc6027a8d0609c96b3d2ab2cfb2b3f8710e254f676f77eb2ee41fb",
+    "js\\ui\\travel_panorama.js": "165960436f4006a40a00f296440d20d3c3797065ec6f07f42a9573c026378256",
+    "js\\ui\\uikit.js": "dc7f8685845a099805038ab904b459c4ff1bace2965690672b9f3a2a858da585",
+    "js\\ui\\vfx.js": "6ad1088e0b4c04eb8403bce7bed7ed1c4390a484f177f8294215e6f95d2ecd0a",
+    "js\\ui\\weather.js": "389b0a1922dca10227e65567e7c9b468cf1c46b6fce854f3890e85da0570ab21",
+    "lib\\phaser.min.js": "3fa1b12c88a8246fb5f563bfe6f7e0fe2c22fb61088f77dc54d076e335b3879e",
+    "docs\\STORY_FIGHT_PREVIEW.html": "55013b3e4249dd210b077adfe3b306ed28be808d159726854149398c9d794793"
+  },
+  "errors": []
+}
