@@ -82,7 +82,11 @@
             "h": 311
           }
         }
-      ]
+      ],
+      "referencePivot": {
+        "x": 497,
+        "y": 480
+      }
     },
     "story_bandit_archer": {
       "targetX": 476.0,
@@ -164,7 +168,11 @@
             "h": 310
           }
         }
-      ]
+      ],
+      "referencePivot": {
+        "x": 455,
+        "y": 393
+      }
     },
     "story_cobb": {
       "targetX": 485.0,
@@ -246,7 +254,11 @@
             "h": 342
           }
         }
-      ]
+      ],
+      "referencePivot": {
+        "x": 486,
+        "y": 452
+      }
     },
     "story_family_double": {
       "targetX": 455.0,
@@ -328,7 +340,11 @@
             "h": 309
           }
         }
-      ]
+      ],
+      "referencePivot": {
+        "x": 423,
+        "y": 570
+      }
     },
     "story_gauntlet_soldier": {
       "targetX": 505.5,
@@ -410,7 +426,11 @@
             "h": 306
           }
         }
-      ]
+      ],
+      "referencePivot": {
+        "x": 477,
+        "y": 331
+      }
     },
     "story_gauntlet_traitor": {
       "targetX": 421.5,
@@ -492,7 +512,11 @@
             "h": 306
           }
         }
-      ]
+      ],
+      "referencePivot": {
+        "x": 406,
+        "y": 457
+      }
     },
     "story_gnoll_raider": {
       "targetX": 326.0,
@@ -574,7 +598,11 @@
             "h": 318
           }
         }
-      ]
+      ],
+      "referencePivot": {
+        "x": 403,
+        "y": 439
+      }
     },
     "story_grell": {
       "targetX": 555.0,
@@ -656,7 +684,11 @@
             "h": 310
           }
         }
-      ]
+      ],
+      "referencePivot": {
+        "x": 530,
+        "y": 394
+      }
     },
     "story_hall_doubles": {
       "targetX": 520.5,
@@ -738,7 +770,11 @@
             "h": 311
           }
         }
-      ]
+      ],
+      "referencePivot": {
+        "x": 495,
+        "y": 539
+      }
     },
     "story_idris": {
       "targetX": 400.0,
@@ -820,7 +856,11 @@
             "h": 290
           }
         }
-      ]
+      ],
+      "referencePivot": {
+        "x": 374,
+        "y": 399
+      }
     },
     "story_jarem": {
       "targetX": 437.5,
@@ -902,7 +942,11 @@
             "h": 302
           }
         }
-      ]
+      ],
+      "referencePivot": {
+        "x": 412,
+        "y": 447
+      }
     },
     "story_kessa": {
       "targetX": 364.0,
@@ -984,7 +1028,11 @@
             "h": 304
           }
         }
-      ]
+      ],
+      "referencePivot": {
+        "x": 341,
+        "y": 428
+      }
     },
     "story_kestrel": {
       "targetX": 563.5,
@@ -1066,7 +1114,11 @@
             "h": 308
           }
         }
-      ]
+      ],
+      "referencePivot": {
+        "x": 538,
+        "y": 514
+      }
     },
     "story_kobold_chief": {
       "targetX": 445.5,
@@ -1148,7 +1200,11 @@
             "h": 343
           }
         }
-      ]
+      ],
+      "referencePivot": {
+        "x": 402,
+        "y": 382
+      }
     },
     "story_kobold_shaman": {
       "targetX": 534.5,
@@ -1230,7 +1286,11 @@
             "h": 354
           }
         }
-      ]
+      ],
+      "referencePivot": {
+        "x": 498,
+        "y": 367
+      }
     },
     "story_lantern_master": {
       "targetX": 420.0,
@@ -1312,7 +1372,11 @@
             "h": 346
           }
         }
-      ]
+      ],
+      "referencePivot": {
+        "x": 397,
+        "y": 436
+      }
     },
     "story_lurleen": {
       "targetX": 407.0,
@@ -1394,7 +1458,11 @@
             "h": 319
           }
         }
-      ]
+      ],
+      "referencePivot": {
+        "x": 408,
+        "y": 351
+      }
     },
     "story_maddox": {
       "targetX": 370.5,
@@ -1476,7 +1544,11 @@
             "h": 314
           }
         }
-      ]
+      ],
+      "referencePivot": {
+        "x": 344,
+        "y": 418
+      }
     },
     "story_morrak_cultist": {
       "targetX": 346.0,
@@ -1558,7 +1630,11 @@
             "h": 308
           }
         }
-      ]
+      ],
+      "referencePivot": {
+        "x": 352,
+        "y": 437
+      }
     },
     "story_nib": {
       "targetX": 386.5,
@@ -1640,7 +1716,11 @@
             "h": 303
           }
         }
-      ]
+      ],
+      "referencePivot": {
+        "x": 331,
+        "y": 402
+      }
     },
     "story_palace_doppelganger": {
       "targetX": 422.5,
@@ -1722,7 +1802,11 @@
             "h": 307
           }
         }
-      ]
+      ],
+      "referencePivot": {
+        "x": 404,
+        "y": 425
+      }
     },
     "story_phase_spider": {
       "targetX": 338.5,
@@ -1804,7 +1888,11 @@
             "h": 315
           }
         }
-      ]
+      ],
+      "referencePivot": {
+        "x": 354,
+        "y": 418
+      }
     },
     "story_ravel": {
       "targetX": 426.5,
@@ -1886,7 +1974,11 @@
             "h": 322
           }
         }
-      ]
+      ],
+      "referencePivot": {
+        "x": 390,
+        "y": 440
+      }
     },
     "story_rennick": {
       "targetX": 324.0,
@@ -1968,7 +2060,11 @@
             "h": 309
           }
         }
-      ]
+      ],
+      "referencePivot": {
+        "x": 357,
+        "y": 405
+      }
     },
     "story_road_bandit": {
       "targetX": 546.0,
@@ -2050,7 +2146,11 @@
             "h": 286
           }
         }
-      ]
+      ],
+      "referencePivot": {
+        "x": 502,
+        "y": 419
+      }
     },
     "story_silksa": {
       "targetX": 423.0,
@@ -2132,7 +2232,11 @@
             "h": 323
           }
         }
-      ]
+      ],
+      "referencePivot": {
+        "x": 377,
+        "y": 435
+      }
     },
     "story_skarn": {
       "targetX": 644.5,
@@ -2214,7 +2318,11 @@
             "h": 348
           }
         }
-      ]
+      ],
+      "referencePivot": {
+        "x": 603,
+        "y": 508
+      }
     },
     "story_slave_driver": {
       "targetX": 389.5,
@@ -2296,7 +2404,11 @@
             "h": 309
           }
         }
-      ]
+      ],
+      "referencePivot": {
+        "x": 373,
+        "y": 441
+      }
     },
     "story_snarl": {
       "targetX": 336.0,
@@ -2378,7 +2490,11 @@
             "h": 327
           }
         }
-      ]
+      ],
+      "referencePivot": {
+        "x": 419,
+        "y": 543
+      }
     },
     "story_thornwise": {
       "targetX": 569.5,
@@ -2460,7 +2576,11 @@
             "h": 308
           }
         }
-      ]
+      ],
+      "referencePivot": {
+        "x": 550,
+        "y": 468
+      }
     },
     "story_tomb_ghoul": {
       "targetX": 413.5,
@@ -2542,7 +2662,11 @@
             "h": 318
           }
         }
-      ]
+      ],
+      "referencePivot": {
+        "x": 369,
+        "y": 428
+      }
     },
     "story_tower_captain": {
       "targetX": 423.0,
@@ -2624,7 +2748,11 @@
             "h": 296
           }
         }
-      ]
+      ],
+      "referencePivot": {
+        "x": 409,
+        "y": 485
+      }
     },
     "story_umbral_pair": {
       "targetX": 615.0,
@@ -2706,7 +2834,11 @@
             "h": 305
           }
         }
-      ]
+      ],
+      "referencePivot": {
+        "x": 587,
+        "y": 519
+      }
     },
     "story_vask": {
       "targetX": 455.5,
@@ -2788,7 +2920,11 @@
             "h": 307
           }
         }
-      ]
+      ],
+      "referencePivot": {
+        "x": 452,
+        "y": 426
+      }
     },
     "story_web_spider": {
       "targetX": 293.0,
@@ -2870,7 +3006,11 @@
             "h": 335
           }
         }
-      ]
+      ],
+      "referencePivot": {
+        "x": 399,
+        "y": 474
+      }
     },
     "story_your_own_faces": {
       "targetX": 264.0,
@@ -2952,7 +3092,11 @@
             "h": 308
           }
         }
-      ]
+      ],
+      "referencePivot": {
+        "x": 310,
+        "y": 390
+      }
     }
   }
 }

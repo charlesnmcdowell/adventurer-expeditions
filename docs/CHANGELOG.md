@@ -15,6 +15,33 @@ of small fixes within a day.
 
 ---
 
+## 2026-10-17 — Full idle roster registration audit (local)
+
+- Reviewed all **94 actor sets / 553 idle frames**, including all **15 companions**, using registered contact sheets and the actual Phaser animations. The screenshot enemy is **Grell** (`story_grell`).
+- Corrected planted-foot registration in **36 story enemy sets / 144 idle frames**. Grell's foot-centre spread was 10 px; the reviewed anchors now remain within 0.5 px of their target in each corrected frame. Large offenders included Skarn and the spider sets. Natural gestures, breathing, cloth and wing movement remain; this is a translation repair, not new in-between animation.
+- **Scope proof:** compared against checkpoint `8dd7847`: only idle `spriteSourceSize.x/y` changed in the 36 runtime JSON files. No atlas pixels, attack/finisher frames, timing, canvas sizes or character scales changed. Companion sets were inspected and did not need translation repairs.
+- **Rebuild safety:** `tools/idle_roster_registration.json`, `tools/repair_idle_roster.py` and `tools/art_intake_v2.py` retain the reviewed anchors on intake, relative to the canvas pivot. A changed crop size stops intake for remeasurement. `tools/test_idle_roster.py` verifies idempotence, original-registration intake, changed-canvas handling and rejection of stale guides.
+- **Review:** `docs/IDLE_ROSTER_REVIEW.html` uses the real atlases for synchronized before/after playback, pause, frame stepping and slow motion; defaults to Grell. `tools/audit_idle_roster.py` rebuilds the contact-sheet audit. No new art generation or atlas download weight.
+- **Validation passed:** `npm test` (including new `test/idle_roster.js`), `python tools/test_idle_roster.py`, five intake regressions, `test/browser_idle_roster.js` (94 real Phaser loops, no root drift, packed trim checks and review controls), and `test/browser_formation_spacing.js` (six desktop/mobile formation cases). A browser loop check detects registration/root movement, not whether every authored gesture looks natural; visual contact-sheet review complements it.
+- **Cache:** all story actor metadata gets the idle-roster revision; shared entry-script stamp refreshed to `20261017-xp5`. Changes are local; nothing published by this pass. The parallel session's inn-travel change is preserved separately.
+
+## 2026-10-17 — Road trips only to and from the inn (local)
+
+Hiro: "I'd like the travel scenes to only play when leaving inn and when heading to inn, not between fights."
+
+- **What the code already did.** `story.js` queues only two trips: `outbound` when the player leaves the inn (`S.leaveInn`), and `return` when a chapter's closing dialogue ends (closing → arrival). A traced chapter-two run from the dev jump showed the outbound trip at the chapter start and nothing between fights 2:0 and 2:1.
+- **The gap.** `render()` played any `travelPending` it found, whatever the phase. So a leftover trip in a save (an interrupted trip, an older save, a reload at the wrong moment) could play in the middle of a chapter.
+- **Fix** (`docs/story_preview.js`). A trip plays only if it's:
+  - `outbound` at the chapter start (phase `departure`, encounter 0), or
+  - `return` once the chapter is over (phase `arrival` or `inn`).
+  Anywhere else it's cleared with `S.finishTravel` and the story continues.
+- **Verified in Chrome:**
+  - a mid-chapter save with a stale outbound trip goes straight to dialogue;
+  - a departure trip plays;
+  - an arrival trip plays;
+  - `npm test` passes, and `browser_story_travel.js` passes all 25 chapter trips.
+- **Not on the website yet.** The live full-game package (c864665) is from b954f25.
+
 ## 2026-10-17 — Website: the password unlocks the full game (live)
 
 Hiro: "I'd like the password to now unlock the full game."

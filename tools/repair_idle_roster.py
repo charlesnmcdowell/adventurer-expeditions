@@ -10,6 +10,9 @@ CONFIG=ROOT/'tools/idle_roster_registration.json'
 def repair(doc):
     spec=json.loads(CONFIG.read_text(encoding='utf-8'))['actors'].get(doc.get('hero'))
     if not spec:return doc
+    pivot=doc['canvas']['pivot']
+    reference=spec['referencePivot']
+    dx=pivot['x']-reference['x'];dy=pivot['y']-reference['y']
     packed={f['filename']:f for t in doc['textures'] for f in t['frames']}
     for g in spec['frames']:
         f=doc['frames'][g['frame']]
@@ -17,7 +20,7 @@ def repair(doc):
             raise ValueError('Idle art changed; remeasure registration for '+doc['hero']+'/'+g['frame'])
         # Preserve canvas pivot and first pose; only trim placement changes.
         for entry in [f,packed[g['frame']]]:
-            entry['spriteSourceSize']={**entry['spriteSourceSize'],'x':g['after']['x'],'y':g['after']['y']}
+            entry['spriteSourceSize']={**entry['spriteSourceSize'],'x':g['after']['x']+dx,'y':g['after']['y']+dy}
     return doc
 
 if __name__=='__main__':
