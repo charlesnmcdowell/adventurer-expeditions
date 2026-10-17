@@ -90,6 +90,10 @@ B.spawn=function(session){
   for(const ch of foes){
     const id=B.identity(ch,spec),b=S.bindings[id];
     ch.storyOpponent=id;ch.expeditionKey='story:'+id;
+    // Every unique named character fights as a boss: two attacks a round, the
+    // boss finisher line (Hiro, 2026-10-17). Groups of identical copies and
+    // ordinary helpers stay as they are.
+    if(id.startsWith('named:'))ch.boss=true;
     ch.expeditionStoryFoe=true;
     // Measured per opponent (B.hitScale): a direct hit takes about a quarter to a
     // third of Hiro's health, three to four hits to die (Hiro, 2026-10-13).

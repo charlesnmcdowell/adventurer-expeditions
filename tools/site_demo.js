@@ -37,7 +37,7 @@ if(!Number.isInteger(SITE_THROUGH)||SITE_THROUGH<1||SITE_THROUGH>14)throw Error(
 // Size projection only; never bypass the production art-approval switch in a build.
 const PROJECT_COMPANIONS=process.argv[2]==='size'&&process.argv.includes('--include-companions');
 // Arcade-only art the story never loads (its one Arcade creature is the wolf;
-// the travel art stays, because the story's road trips between chapters use it).
+// the travel art stays, because the story's trips back to the inn use it).
 // Left out to keep the website under GitHub Pages' 1 GB.
 const ARCADE_ONLY = new Set(['alpha', 'beetle', 'boar', 'crab', 'dark_swordswoman', 'elven_ranger', 'elven_wizard', 'enchantress', 'goblin',
   'hag', 'hydra', 'moss_giant', 'orc', 'plant', 'serpent', 'spider', 'toad', 'vulture']);
@@ -199,13 +199,19 @@ async function verify() {
       const notice = await page.locator('#panel .notice').first().textContent();
       if (!notice.includes('1–' + SITE_THROUGH)) throw Error('Password did not open the chapters: ' + notice);
       console.log('public lock at chapter ' + (PUBLIC_THROUGH + 1) + ', wrong password refused, password opens 1–' + SITE_THROUGH);
-      // The locked card already left the inn, so Continue plays the road trip.
+      // Leaving the inn plays no trip now; Continue goes straight to the chapter card.
       await page.getByRole('button', { name: 'Continue story', exact: true }).click();
-      await page.locator('.travel-caption').waitFor({ timeout: 15000 });
+      await page.getByText('Chapter ' + (PUBLIC_THROUGH + 1), { exact: true }).waitFor({ timeout: 15000 });
+      if (await page.evaluate(() => !!window.storyPreview?.record.travelPending)) throw Error('Leaving the inn queued a road trip');
+      console.log('chapter ' + (PUBLIC_THROUGH + 1) + ' card shown, no trip on leaving the inn');
+      // The one road trip per chapter plays on the way back to the inn.
+      await page.evaluate(next => { const S = ADV.Expedition.Story, s = S.open(S.load()), r = s.record;
+        Object.assign(r, { chapter: next, phase: 'closing', queue: [], travelPending: null }); S.syncQuest(s); S.nextPhase(s); S.save(s); }, PUBLIC_THROUGH + 1);
+      await page.goto(base + '/'); await page.getByRole('button', { name: 'Continue story', exact: true }).click();
+      await page.getByText('Returning to the inn').waitFor({ timeout: 15000 });
       await page.waitForFunction(() => window.storyBackdrop?.state()?.kind === 'travel', null, { timeout: 30000 });
       await page.waitForFunction(() => !window.storyPreview?.record.travelPending, null, { timeout: 60000 });
-      await page.getByText('Chapter ' + (PUBLIC_THROUGH + 1), { exact: true }).waitFor({ timeout: 15000 });
-      console.log('road trip into chapter ' + (PUBLIC_THROUGH + 1) + ' played, chapter card shown');
+      console.log('road trip back to the inn after chapter ' + (PUBLIC_THROUGH + 1) + ' played');
     }
     if(shippedCompanions().size&&SITE_THROUGH>=2){
       await page.evaluate(()=>{const S=ADV.Expedition.Story,s=S.open(S.fresh());Object.assign(s.record,{chapter:2,phase:'departure',titleCards:[1,2]});S.syncQuest(s);ADV.Campaign3.recruit(s.game,'wren_ward');S.Companions.queueUnlocks(s,[]);S.save(s);});

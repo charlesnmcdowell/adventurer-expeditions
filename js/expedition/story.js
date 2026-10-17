@@ -106,7 +106,9 @@ S.nextPhase=function(session){
   r.queue=null;
   if(r.phase==='departure')r.phase='opener';
   else if(r.phase==='opener'){
-    if(r.bypassed){delete r.bypassed;r.phase=r.encounter>=session.game.quest.quest.encounters.length?'closing':'opener';S.syncQuest(session);}
+    if(r.bypassed){delete r.bypassed;const total=session.game.quest.quest.encounters.length;r.phase=r.encounter>=total?'closing':'opener';
+      if(r.phase==='opener'&&r.encounter===total-1&&S.bossTrip(r.chapter)&&!(r.bossTrips||[]).includes(r.chapter)){r.bossTrips=[...(r.bossTrips||[]),r.chapter];r.travelPending={chapter:r.chapter,leg:'boss'};}
+      S.syncQuest(session);}
     else r.phase='combat';
   }else if(r.phase==='closing'){
     r.phase='arrival';
@@ -131,18 +133,25 @@ S.nextPhase=function(session){
 // Journeys are saved separately from dialogue: reload resumes the same leg,
 // and completing a trip never advances a chapter or pays its reward twice.
 S.travelRoutes={2:'coast',3:'rain',4:'rain',5:'rain',6:'marsh',7:'marsh',8:'city',9:'city',10:'citadel',11:'city',12:'city',13:'citadel',14:'citadel'};
+// One road trip per chapter, on the way back to the inn (Hiro, 2026-10-17:
+// "too many travel scenes"). The city chapters also play the rooftop climb on
+// the way to their boss; their trip back to the inn is the market run.
+S.bossTrip=chapter=>S.travelRoutes[chapter]==='city';
 S.travelSpec=function(session){
   const t=session.record.travelPending;if(!t)return null;
   const questId=S.travelRoutes[t.chapter];if(!questId)return null;
-  return {kind:'travel',id:t.chapter+':'+t.leg,chapter:t.chapter,leg:t.leg,
-    run:{...session.record.run,questId,wave:0,field:[],roster:[]},
+  const city=questId==='city',boss=t.leg==='boss';
+  // TravelArt picks the rooftop for 'return' or wave 2+, the market otherwise.
+  const artLeg=city?(boss?'midleg':'outbound'):t.leg;
+  return {kind:'travel',id:t.chapter+':'+t.leg,chapter:t.chapter,leg:artLeg,storyLeg:t.leg,
+    run:{...session.record.run,questId,wave:boss?2:0,field:[],roster:[]},
     phase:questId==='citadel'||questId==='marsh'?'night':'day',
     weather:questId==='rain'||questId==='marsh'?'rain':'clear'};
 };
 S.finishTravel=function(session){if(!session.record.travelPending)return false;delete session.record.travelPending;S.save(session);return true;};
 S.leaveInn=function(session){
   const r=session.record;if(r.phase!=='inn'||r.restScenePending)return false;
-  r.phase='departure';if(r.chapter>1)r.travelPending={chapter:r.chapter,leg:'outbound'};S.save(session);return true;
+  r.phase='departure';S.save(session);return true;
 };
 S.rest=function(session){
   const r=session.record;if(r.phase!=='inn'||r.restScenePending)return {ok:false,reason:'phase'};
@@ -180,7 +189,12 @@ S.victory=function(session,units=[]){
   if(!r.outcomes[key]){A.GateFinale.record(session.game,r.encounter,'combat',units);r.outcomes[key]='combat';}
   if(r.chapter===14&&r.encounter===3)A.GateFinale.state(session.game).realmWon=true;
   r.encounter++;r.checkpoint=null;r.queue=null;
-  r.phase=r.encounter>=session.game.quest.quest.encounters.length?'closing':'opener';
+  const total=session.game.quest.quest.encounters.length;
+  r.phase=r.encounter>=total?'closing':'opener';
+  // City chapters: the rooftop climb on the way to the boss, once.
+  if(r.phase==='opener'&&r.encounter===total-1&&S.bossTrip(r.chapter)&&!(r.bossTrips||[]).includes(r.chapter)){
+    r.bossTrips=[...(r.bossTrips||[]),r.chapter];r.travelPending={chapter:r.chapter,leg:'boss'};
+  }
   S.syncQuest(session);S.save(session);
 };
 })();

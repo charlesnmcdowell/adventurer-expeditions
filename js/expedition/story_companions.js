@@ -80,6 +80,13 @@ P.pendingUnlock=function(s){
  if(r.phase==='departure'&&!(r.titleCards||[]).includes(r.chapter))return null;
  return (r.companionUnlocksPending||[]).find(id=>P.kits[id]&&C.isRecruited(s.game,id))||null;
 };
+// Per-ally tuning (Hiro, 2026-10-17): quicker allies act twice a turn, heavy
+// hitters deal moderately more, the shield and guard allies take far more.
+P.tuning={
+ wren_ward:{turns:2},fennick:{turns:2},ithrel:{turns:2},amara:{turns:2},
+ bramm:{atk:1.3},durnik:{atk:1.3},nettle:{atk:1.3,hp:1.75},
+ dorran:{hp:1.75},cassian:{hp:1.75},
+};
 P.make=function(s,id){
  if(!P.eligible(s).includes(id))throw Error('Companion is not riding: '+id);
  const kit=P.kits[id],ch=JSON.parse(JSON.stringify(C.actor(s.game,id)));
@@ -90,6 +97,8 @@ P.make=function(s,id){
   const entry=ch.actives.find(e=>e.skillId===skillId);if(!entry)throw Error('Approved skill missing from source: '+id+'/'+skillId);return entry;
  });
  ch.autoOrder=kit.skills.map(skillId=>({skillId,off:false})).concat([{skillId:'basic_attack',off:false}]);ch.autoAdopted=true;
+ const tune=P.tuning[id];
+ if(tune?.atk){ch.stats.atk=Math.round(ch.stats.atk*tune.atk);if(ch.bonusStats?.atk)ch.bonusStats.atk=Math.round(ch.bonusStats.atk*tune.atk);}
  return ch;
 };
 P.characters=s=>P.selected(s).map(id=>P.make(s,id));
@@ -102,7 +111,10 @@ P.prepareEncounter=function(enc){
    return A.Combat._internals.computeDamage(enc.st,foe,u,m)*(foe.ch.c3FoeDmg||1);
   });
   // Five to six comparable basic hits, measured against this fight's foes.
-  u.maxHp=u.chp=Math.max(1,Math.ceil(damage.reduce((a,b)=>a+b,0)/damage.length*5.5));
+  const tune=P.tuning[u.ch.expeditionStoryCompanion]||{};
+  u.maxHp=u.chp=Math.max(1,Math.ceil(damage.reduce((a,b)=>a+b,0)/damage.length*5.5*(tune.hp||1)));
+  // Two actions, spread through the round rather than back to back.
+  if(tune.turns){u.turnsPerRound=Math.max(u.turnsPerRound||1,tune.turns);u.consecutiveTurns=false;}
   u.tempHp=0;u.downed=false;
  }
 };

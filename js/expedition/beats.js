@@ -138,9 +138,12 @@ function splitEvents(events) {
 
 // DOT ticks and other round-boundary events (from peek or the tail of a step).
 async function playTicks(scene, events) {
-  for(const e of events)if(e.t==='revive'){
+  for(const e of events)if(e.t==='revive'||e.t==='selfRevive'){
     const a=actorOf(scene,e.uid),id=a?.unit?.ch?.expeditionStoryCompanion;
-    if(!id||scene.ended)continue;
+    // An enemy that cheats death (Shadow Rise) stays on the field; if its fall
+    // was already shown, bring the body back instead of leaving it invisible.
+    if(!id){if(a&&!scene.ended&&!a.alive&&a.unit.chp>0&&!a.unit.downed){a.restoreFromFade();a.refresh(true);}continue;}
+    if(scene.ended)continue;
     a.alive=true;a.root.setVisible(true);a.root.setAlpha(1);a.plate.setVisible(true);
     const ix=X.Story.Companions.kits[id].skills.indexOf(e.skillId);
     if(ix>=0){
@@ -181,6 +184,18 @@ async function playDowns(scene, downs, events, byFinisher) {
   for (const e of downs) {
     const target = actorOf(scene, e.uid);
     if (!target || !target.alive || target._destroyed) continue;
+    // Shadow Rise (and Demigod) answer the killing blow at once: the engine
+    // reports the fall and then the rise. Show a stagger and a burst of smoke,
+    // never the death, or the living enemy would vanish from sight (2026-10-17).
+    if (target.side === 'b' && target.unit && target.unit.chp > 0 && !target.unit.downed) {
+      const rose = (events || []).find(x => (x.t === 'revive' || x.t === 'selfRevive') && x.uid === e.uid);
+      await Promise.all([target.play('hit_short'), target.smokePuff()]);
+      if (scene.ended || target._destroyed) continue;
+      (scene.__smoked ||= new Set()).add(target.uid);
+      V().damageNumber(scene, target.x, target.y - target.height * .7, A.DATA.SKILLS[rose?.skillId]?.name || 'Rises again', '#d7eaf3');
+      target.refresh();
+      continue;
+    }
     if (target.unit?.ch?.expeditionStoryCompanion) {
       if(target.unit.chp>0&&!target.unit.downed)continue; // Defiant Stand already restored this ally.
       await target.play('knockout');if(scene.ended||target._destroyed)continue;
@@ -512,7 +527,8 @@ async function humanAction(scene, foe, hero, g, r) {
   if (!r.hit && !r.evade && !r.counter && ['self','party','ally','deadAlly'].includes(sk.target)) {
     if(scene.story&&X.StoryEffects?.supports(g.use.skillId)){
       await foe.play('cast');const at={x:foe.x,y:foe.y-100};
-      await X.StoryEffects.play(scene,g.use.skillId,at,at);if(!scene.ended){foe.refresh();if(g.use.skillId==='smoke_bomb')V().damageNumber(scene,foe.x,foe.y-foe.height*.65,'Evasion up','#d7eaf3');}return;
+      if(g.use.skillId==='smoke_bomb'){(scene.__smoked||=new Set()).add(foe.uid);await foe.smokePuff();}else await X.StoryEffects.play(scene,g.use.skillId,at,at);
+      if(!scene.ended){foe.refresh();if(g.use.skillId==='smoke_bomb')V().damageNumber(scene,foe.x,foe.y-foe.height*.65,'Invisible','#d7eaf3');}return;
     }
     sfx(scene, 'heal', 'use');
     await foe.play('cast',{onRelease:()=>{for(const e of g.after.filter(e=>e.t==='heal'||e.t==='status')){const a=actorOf(scene,e.uid);if(a)V().healSparkle(scene,a.x,a.y-a.height*.5);}}});
@@ -543,8 +559,23 @@ async function humanAction(scene, foe, hero, g, r) {
   if (reply) await reply;
 }
 
+// Smoke comes out of whoever slips into hiding this step (Smoke Step, Ghoststep,
+// Vanish, an ally's Smoke Bomb), unless their own move already showed it.
+async function smokeOnHide(scene, events) {
+  const seen = scene.__smoked || new Set(), work = [];
+  for (const e of events || []) {
+    if (e.t !== 'stealth' || seen.has(e.uid)) continue;
+    const a = actorOf(scene, e.uid);seen.add(e.uid);
+    if (!a || !a.alive || a._destroyed || !(a.unit.chp > 0) || a.unit.downed) continue;
+    work.push(a.smokePuff());V().damageNumber(scene, a.x, a.y - a.height * .65, 'Invisible', '#d7eaf3');
+  }
+  scene.__smoked = seen;
+  if (work.length) { await Promise.all(work); for (const e of events) actorOf(scene, e.uid)?.alive && actorOf(scene, e.uid).refresh(); }
+}
+
 // ---------------------------------------------------------------- entry point
 Beats.play = async function (scene, step) {
+  scene.__smoked = new Set();
   const g = splitEvents(step.events || []);
   await playTicks(scene, g.pre);
   // Round-boundary downs (a wolf bleeding out) happen before any action.
@@ -561,6 +592,7 @@ Beats.play = async function (scene, step) {
       await finishReactions(scene);
       await playTicks(scene, g.after);
       await playDowns(scene, g.down, step.events, finisherKill);
+      await smokeOnHide(scene, step.events);
       await X.EnemyFinishers?.tryLowHealth(scene, step.events);
     };
     // Cinematic rules (Hiro, round 3): a tapped skill gets the `cast` beat; only
@@ -580,6 +612,7 @@ Beats.play = async function (scene, step) {
     await wait(scene, 200);
   } else if (g.down.length) {
     await playDowns(scene, g.down, step.events);
+    await smokeOnHide(scene, step.events);
   } else if (!g.pre.length) {
     await wait(scene, 60);
   }
@@ -592,5 +625,5 @@ Beats.play = async function (scene, step) {
   for (const e of step.events) if (e.t === 'exposedBurst') { const t = actorOf(scene, e.uid); if (t) V().burst(scene, t.chest().x, t.chest().y, 0xf4c26b, 6); }
 };
 
-Beats.ticksOnly = async function (scene, events) { await playTicks(scene, events); const downs = events.filter(e => e.t === 'down'); if (downs.length) await playDowns(scene, downs, events); await X.EnemyFinishers?.tryLowHealth(scene, events); };
+Beats.ticksOnly = async function (scene, events) { scene.__smoked = new Set(); await playTicks(scene, events); const downs = events.filter(e => e.t === 'down'); if (downs.length) await playDowns(scene, downs, events); await smokeOnHide(scene, events); await X.EnemyFinishers?.tryLowHealth(scene, events); };
 })();

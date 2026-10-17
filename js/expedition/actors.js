@@ -25,7 +25,7 @@ const STATUS_STYLE = {
   withering: { color: 0x7e8b41, glyph: 'W' },
   healcut: { color: 0xa65767, glyph: '-+' },
   evasion: { color: 0x518ca4, glyph: 'Evasion' },
-  stealth: { color: 0x606783, glyph: 'S' },
+  stealth: { color: 0x606783, glyph: 'Invisible' },
   hazard: { color: 0xd9813e, glyph: '!' },
 };
 
@@ -129,7 +129,9 @@ class Actor {
     }
     if (u.counter > 0) kinds.add('counter');
     if(u.evade>0||u.statuses?.some(s=>s?.evadePct>0))kinds.add('evasion');
-    if(u.stealth||u.untargetable>0)kinds.add('stealth');
+    const hidden=!!(u.stealth||u.untargetable>0)&&u.chp>0&&!u.downed;
+    if(hidden)kinds.add('stealth');
+    this.syncVeil(hidden&&this.alive&&!this._destroyed);
     if(this.scene.enc?.st?.hazards?.some(h=>h.side===u.side&&h.lane===u.lane&&h.rounds>0&&!h.heal))kinds.add('hazard');
     for (const k of kinds) if (!this.badges.has(k)) this.addBadge(k);
     // No glow around the body for a held Counter or a buff (Hiro, 2026-10-14:
@@ -149,6 +151,52 @@ class Actor {
     this.root.addAt(o, 1);
     this.scene.tweens.add({ targets: o, alpha: 0.55, scaleX: 1.04, duration: 520, yoyo: true, repeat: -1, ease: 'Sine.InOut' });
     this.outline = o;
+  }
+
+  // Anyone hidden by Smoke Bomb, Vanish, Shadow Rise, Smoke Step or Ghoststep
+  // stands in a veil of smoke under an "Invisible" tag (Hiro, 2026-10-17), so a
+  // vanish never reads as an enemy that dropped off the field.
+  syncVeil(on) {
+    const scene=this.scene;
+    if(!on){
+      if(!this.veil)return;const v=this.veil;this.veil=null;v.__timer?.remove();scene.tweens.killTweensOf(v);
+      if(this.alive&&!this._destroyed&&this.img)this.img.setAlpha(1);
+      scene.tweens.add({targets:v,alpha:0,duration:320,onComplete:()=>v.destroy()});return;
+    }
+    if(this.veil)return;
+    const v=scene.add.container(0,0).setName('stealth_veil'),h=this.height,KEY='story_chapter_one_effects';
+    const puffs=[];
+    if(scene.textures.exists(KEY)){
+      // Smoke Bomb's own painted cloud (frames 12-15), held on its dense middle frames.
+      for(const [dx,dy,k] of [[-.18,-.32,.62],[.2,-.5,.58],[0,-.72,.5]])
+        puffs.push(scene.add.image(h*dx,h*dy,KEY,13).setDisplaySize(h*k*1.25,h*k).setAlpha(.7));
+    }else{
+      for(const [dx,dy,k] of [[-.18,-.32,.3],[.2,-.5,.28],[0,-.72,.24]])
+        puffs.push(scene.add.ellipse(h*dx,h*dy,h*k*2.2,h*k*1.6,0xb9c2cc,.45));
+    }
+    v.add(puffs);v.setAlpha(0);
+    this.root.addAt(v,Math.max(0,this.root.getIndex(this.plate)));
+    this.veil=v;this.img.setAlpha(.55);
+    scene.tweens.add({targets:v,alpha:1,duration:260});
+    puffs.forEach((p,i)=>scene.tweens.add({targets:p,x:p.x+(i%2?-1:1)*h*.06,y:p.y-h*.03,alpha:p.alpha*.7,duration:900+i*170,yoyo:true,repeat:-1,ease:'Sine.InOut'}));
+    if(puffs[0]?.setFrame){let f=0;v.__timer=scene.time.addEvent({delay:240,loop:true,callback:()=>{f^=1;puffs.forEach((p,i)=>p.setFrame(13+((f+i)&1)));}});}
+  }
+
+  // A burst of smoke out of this body, for the moment it hides.
+  smokePuff() {
+    const scene=this.scene,p=this.chest();
+    if(X.StoryEffects?.supports('smoke_bomb')&&scene.textures.exists('story_chapter_one_effects'))return X.StoryEffects.play(scene,'smoke_bomb',p,p);
+    V().burst(scene,p.x,p.y,0xc9d1d8,14);return Promise.resolve();
+  }
+
+  // Undo a death fade for a unit the engine brought back.
+  restoreFromFade() {
+    if(this._destroyed)return;
+    this.alive=true;this.root.setVisible(true).setAlpha(1);this.plate.setVisible(true);
+    for(const b of this.badges.values())b.setVisible(true);
+    this.scene.tweens.killTweensOf(this.img);this.img.clearTint();this.img.setAlpha(1);
+    if(this.shadow){this.scene.tweens.killTweensOf(this.shadow);this.shadow.setAlpha(1);}
+    this.idle();
   }
 
   addBadge(kind) {
@@ -572,6 +620,7 @@ class Actor {
   flash(color) { V().tintFlash(this.scene, this.img, color); }
 
   async fadeOut() {
+    this.syncVeil(false);
     if (X.DefeatFX) X.DefeatFX.play(this);
     this.alive = false;
     this.plate.setVisible(false);
@@ -585,7 +634,7 @@ class Actor {
     this.root.setVisible(false);
   }
 
-  destroy() { this._destroyed = true; this.cancelPlayback(); this.scene.tweens.killTweensOf(this.img); this.scene.tweens.killTweensOf(this.root); if (this.img.anims) this.img.anims.stop(); this.root.destroy(); }
+  destroy() { if (this.veil) { this.veil.__timer?.remove(); this.scene.tweens.killTweensOf(this.veil); this.veil = null; } this._destroyed = true; this.cancelPlayback(); this.scene.tweens.killTweensOf(this.img); this.scene.tweens.killTweensOf(this.root); if (this.img.anims) this.img.anims.stop(); this.root.destroy(); }
 }
 
 // ---------------------------------------------------------------- placeholder motion

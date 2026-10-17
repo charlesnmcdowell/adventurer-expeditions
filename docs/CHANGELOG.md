@@ -25,6 +25,35 @@ of small fixes within a day.
 - **Validation:** `npm test`, `npm run test:story` and seeded `npm run test:ship -- --seed=1` passed during the initial audit; request paths were captured without query strings or storage. Review-page checks passed (filter, sort, runtime/source thumbnails, message-only checklist). Full 14-chapter package rebuild/verify and additional all-chapter/companion gates are **deferred at Hiro's direction**, because the other session is still editing story/party code. This is not a new release certification. The old package was compared with recorded live checkout commit `c864665` and did not match; no replacement package was built or published.
 - **Next:** approve exact Phase-3 categories/file lists if desired. Quarantine on the same C: drive frees no space until Hiro empties it. Once story edits settle, build with `EXPEDITIONS_SITE_THROUGH=14` and run full site verification; the packager's default is only six chapters.
 
+## 2026-10-17 — Faster and tougher allies, every one-off foe a boss, one road trip per chapter
+
+Hiro asked for quicker, harder-hitting and sturdier allies, double attacks from every boss, and far fewer travel scenes.
+
+**Allies** (`js/expedition/story_companions.js`, new `P.tuning`):
+- Two actions a round: Hiwot (`wren_ward`), Winston (`fennick`), Itsuki (`ithrel`), Amara (`amara`). They act through `turnsPerRound=2`, not back to back.
+- Attack ×1.3: Bahadır (`bramm`), Dai Morgan (`durnik`), Wanjiru (`nettle`). In simulation that's 25 and 30 attack, against 19–23 for the others.
+- Health ×1.75 over the usual 5.5 measured hits: Beau (`dorran`), Santiago (`cassian`), Wanjiru. Beau has 187 HP in a fight where Dai Morgan has 107.
+
+**Bosses** (`js/expedition/story_combat.js`): every named enemy (`named:*`) now spawns as a boss, and bosses already attack twice a round.
+- Newly promoted: Wanjiru when met as a foe (6:1), Bankole and Rotimi (10:1), and Kemi (11:3).
+- Multi-copy foes (`family_double`, `hall_doubles`, `altar_keepers`, `your_own_faces`) and helpers such as the small spiders stay regular.
+
+**Travel** (`js/expedition/story.js`, `docs/story_preview.js`):
+- Leaving the inn no longer plays a trip.
+- Each chapter from 2 to 13 has one trip, on the way back to the inn.
+- City chapters (8, 9, 11, 12) use the market run (`city-market-vault`) for that trip. They also play the rooftop climb (`city-rooftop-run`, caption "Over the rooftops") once, just before the last encounter. `r.bossTrips` remembers it.
+- The render guard drops any trip saved under the old rules.
+
+**Balance** (12 trials per encounter): nothing is unwinnable and nothing stalls, with the default party or solo. The lowest results:
+- party: 14:3 at 8/12, 6:2 and 10:3 at 9/12;
+- solo: 4:3 at 6/12, 13:4 at 6/12, 4:4 at 7/12.
+
+**Tests:**
+- `test/browser_story_travel.js` now covers: no trip on leaving the inn, return trips for chapters 2–13, and city boss trips with the right art.
+- `test/story_campaign.js` has the same rules at engine level, and checks the boss trip plays once.
+- `tools/site_demo.js` verify now expects no trip on leaving the inn, then plays the trip back.
+- `npm test`, `npm run test:story` and the travel browser test pass.
+
 ## 2026-10-17 — Full idle roster registration audit (local)
 
 - Reviewed all **94 actor sets / 553 idle frames**, including all **15 companions**, using registered contact sheets and the actual Phaser animations. The screenshot enemy is **Grell** (`story_grell`).

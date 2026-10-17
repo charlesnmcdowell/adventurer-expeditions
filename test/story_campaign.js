@@ -86,13 +86,21 @@ S.victory(f);assert(A.GateFinale.state(f.game).realmWon);assert.equal(C.resolveE
 for(let chapter=2;chapter<=14;chapter++){
  const trip=S.open();Object.assign(trip.record,{chapter,phase:'inn',completed:[chapter-1]});S.syncQuest(trip);
  trip.record.run.hpMax=344;trip.record.run.hp=81;const score=trip.record.run.score;
- assert(S.leaveInn(trip));assert.equal(S.travelSpec(trip).leg,'outbound');
- const resumed=S.open(S.load());assert.equal(S.travelSpec(resumed).chapter,chapter);
- assert(S.finishTravel(resumed));assert(!S.finishTravel(resumed),'completion is idempotent');
- assert.equal(resumed.record.phase,'departure');assert.equal(resumed.record.run.hp,81);assert.equal(resumed.record.run.score,score);
- resumed.record.phase='closing';resumed.record.queue=[];S.nextPhase(resumed);
- assert.equal(!!resumed.record.travelPending,chapter<14,'finale stays with its epilogue and thank-you card');
- if(chapter<14){assert.equal(S.travelSpec(resumed).leg,'return');S.finishTravel(resumed);assert.equal(resumed.record.phase,'arrival');}
+ // Leaving the inn plays no trip; the one trip per chapter is the walk back.
+ assert(S.leaveInn(trip));assert.equal(S.travelSpec(trip),null,'no trip leaving the inn');assert.equal(trip.record.phase,'departure');
+ trip.record.phase='closing';trip.record.queue=[];S.nextPhase(trip);
+ assert.equal(!!trip.record.travelPending,chapter<14,'finale stays with its epilogue and thank-you card');
+ if(chapter<14){const resumed=S.open(S.load());assert.equal(S.travelSpec(resumed).chapter,chapter);assert.equal(S.travelSpec(resumed).storyLeg,'return');
+  assert(S.finishTravel(resumed));assert(!S.finishTravel(resumed),'completion is idempotent');
+  assert.equal(resumed.record.phase,'arrival');assert.equal(resumed.record.run.hp,81);assert.equal(resumed.record.run.score,score);}
+}
+// City chapters also climb the rooftops once, on the way to their boss.
+for(const chapter of [8,9,11,12]){
+ const city=S.open();Object.assign(city.record,{chapter,phase:'combat',completed:[chapter-1],bossTrips:[],travelPending:null});S.syncQuest(city);
+ const last=city.game.quest.quest.encounters.length-1;city.record.encounter=last-1;S.syncQuest(city);S.victory(city);
+ assert.equal(city.record.travelPending?.leg,'boss','city '+chapter+' boss trip');const spec=S.travelSpec(city);assert.equal(spec.leg,'midleg');assert.equal(spec.run.wave,2);
+ assert(S.finishTravel(city));assert.equal(city.record.phase,'opener');assert.equal(city.record.encounter,last);
+ city.record.phase='combat';city.record.encounter=last-1;S.syncQuest(city);S.victory(city);assert(!city.record.travelPending,'boss trip plays once per chapter');
 }
 console.log('story_campaign: original text, choices, media inventory, solo world, isolated saves, retry and finale continuity passed');
 // Keep the source-import assertions above, then check the edition's live overrides
