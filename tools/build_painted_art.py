@@ -63,5 +63,7 @@ if __name__=='__main__':
         build(src,actor,ROOT/'assets/expedition',320 if human else 200,76,manifest)
     if 'hiro' in a.actors.split(',') and (ROOT.parent/'adventurer-expeditions-source-art/astra-v10/hiro-actions-20261016/manifest.json').exists():
         subprocess.run([sys.executable,'tools/build_hiro_actions_20261016.py'],check=True)
+    if 'hiro' in a.actors.split(','):
+        subprocess.run([sys.executable,'tools/reuse_hiro_parry.py'],check=True)
     subprocess.run(['node','test/art_registration.js'],check=True)
     subprocess.run(['node','tools/size_check.js'],check=True)

@@ -224,6 +224,9 @@ class Actor {
     if (!this.sheet) return null;
     opts = opts || {};
     let sheet = this.sheet;
+    // Reuse the reviewed rising-blade drawings for melee Counter only.
+    // Projectile deflect and Iaido retain their dedicated clips.
+    if (clip === 'intercept' && sheet.clips['parry-rise']) return 'parry-rise';
     const targetIdentity = opts.target && opts.target.unit && opts.target.unit.ch && opts.target.unit.ch.expeditionArtIdentity;
     // Alpha's paired source sheets contain both Hiro and the boss. Play those
     // frames on Hiro for an exact contact pose, then restore Hiro's own atlas

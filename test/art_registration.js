@@ -2,7 +2,7 @@
 'use strict';
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
 const root=path.resolve(__dirname,'..');
-const counts={hiro:238,bram:96,wolf:46,boar:20,plant:23,alpha:59,serpent:56,beetle:56,moss_giant:46,hag:56,goblin:56,spider:56,orc:50};
+const counts={hiro:247,bram:96,wolf:46,boar:20,plant:23,alpha:59,serpent:56,beetle:56,moss_giant:46,hag:56,goblin:56,spider:56,orc:50};
 Object.assign(counts,{crab:45,toad:44,vulture:44,hydra:48,elven_wizard:56,elven_ranger:56,dark_swordswoman:56,enchantress:60});
 for(const [id,count] of Object.entries(counts)){
   const dir=path.join(root,'assets/expedition',id);
@@ -55,10 +55,13 @@ for(const [id,count] of Object.entries(counts)){
       }
     }
     for(const old of ['finisher-l1-paired','finisher-l2-paired','finisher-l3-paired'])assert(!m.clips[old],'obsolete victim art '+old);
+    assert.equal(m.clips['parry-rise'].frames.length,9);
+    assert.equal(m.clips['parry-rise'].durationMs,625);
+    assert.deepEqual(m.clips['parry-rise'].contact,[2]);
     const retained={idle:4,draw:8,'short-draw':4,'slash-l1':12,'slash-l2':6,'slash-l3':6,
       roll:6,'victory-sheath':8,kneel:4,'aura-l1':4,'aura-l2':4,'aura-l3':4,
       'bite-leg-paired':10,'bite-arm-paired':10,intercept:6,riposte:6,'hit-short':6,'counter-l2':6,'counter-l3':6};
-    assert.deepEqual(Object.keys(m.clips).sort(),Object.keys({...retained,...required}).sort(),'delta must retain every unaffected v1 clip');
+    assert.deepEqual(Object.keys(m.clips).sort(),Object.keys({...retained,...required,'parry-rise':9}).sort(),'delta must retain every unaffected v1 clip');
     for(const [name,n] of Object.entries(retained))assert.equal(m.clips[name].frames.length,n,'lost approved v1 poses: '+name);
     assert.deepEqual(m.clips['wolf-cleave-paired'].sources,['wolf-overhead-v4-a.png','wolf-overhead-v4-b.png']);
     assert.equal(m.clips['wolf-cleave-paired'].primaryImpactFrame,3);
