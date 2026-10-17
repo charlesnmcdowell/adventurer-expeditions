@@ -15,6 +15,12 @@ of small fixes within a day.
 
 ---
 
+## 2026-10-16 — Reused draw-review art as melee parry (local)
+
+- Added `parry-rise`: **9 reused drawings / 625 ms**, contact frame **2**, using kote review frames 2,3,4,5,6,8,9,10,11. No image generation or voice credits. Adds **763,380 bytes**. Existing frames and clips preserved.
+- Melee Counter uses the rising guard before the existing riposte. Projectile Deflect and Iaido Draw remain separate; the Iaido correction is still pending. Runtime rebuild, cache stamp, allowlist and packed-art review updated.
+- `npm test`, real melee Counter browser/contact/scale checks passed. Extended Hiro-actions browser check hit a scene-load timeout; recheck pending. No publishing or pushing.
+
 ## 2026-10-16 — Hiro draw-cut correction: four review sheets, not runtime
 
 - Replaced the thrust-like proposal with four review sequences: **do horizontal midsection (19 drawings / 2675 ms)**, **horizontal neck sweep (20 / 2795 ms)**, **kote rising vertical hand cut (20 / 2795 ms)** and **men rising vertical head cut (20 / 2795 ms)**. The supplied Samurai Shodown image informed motion/silhouette changes while Hiro retains his own design. Neck uses the user-requested horizontal path; it is not claimed as traditional kesa kata.
