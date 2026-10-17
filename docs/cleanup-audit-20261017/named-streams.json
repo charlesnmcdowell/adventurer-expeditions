@@ -1,0 +1,256 @@
+[
+  {
+    "path": "test/reports/cleanup-ship-20261017/03-Expedition-rain-0-gate-use",
+    "group": "test/reports",
+    "streams": [
+      {
+        "name": ":counter_attack.png:$DATA",
+        "bytes": 1355128
+      }
+    ],
+    "extraBytes": 1355128
+  },
+  {
+    "path": "test/reports/cleanup-ship-20261017/04-Expedition-rain-0-gate-use",
+    "group": "test/reports",
+    "streams": [
+      {
+        "name": ":god_aura.png:$DATA",
+        "bytes": 1349984
+      }
+    ],
+    "extraBytes": 1349984
+  },
+  {
+    "path": "test/reports/cleanup-ship-20261017/06-Expedition-rain-0-gate-use",
+    "group": "test/reports",
+    "streams": [
+      {
+        "name": ":finisher.png:$DATA",
+        "bytes": 1349418
+      }
+    ],
+    "extraBytes": 1349418
+  },
+  {
+    "path": "test/reports/cleanup-ship-20261017/12-Expedition-rain-1-gate-use",
+    "group": "test/reports",
+    "streams": [
+      {
+        "name": ":counter_attack.png:$DATA",
+        "bytes": 1381696
+      }
+    ],
+    "extraBytes": 1381696
+  },
+  {
+    "path": "test/reports/cleanup-ship-20261017/14-Expedition-rain-1-gate-use",
+    "group": "test/reports",
+    "streams": [
+      {
+        "name": ":counter_attack.png:$DATA",
+        "bytes": 1374884
+      }
+    ],
+    "extraBytes": 1374884
+  },
+  {
+    "path": "test/reports/cleanup-ship-20261017/16-Expedition-rain-1-gate-use",
+    "group": "test/reports",
+    "streams": [
+      {
+        "name": ":finisher.png:$DATA",
+        "bytes": 1377039
+      }
+    ],
+    "extraBytes": 1377039
+  },
+  {
+    "path": "test/reports/cleanup-ship-20261017/17-Expedition-rain-1-gate-use",
+    "group": "test/reports",
+    "streams": [
+      {
+        "name": ":finisher.png:$DATA",
+        "bytes": 1362455
+      }
+    ],
+    "extraBytes": 1362455
+  },
+  {
+    "path": "test/reports/cleanup-ship-20261017/23-Expedition-rain-2-gate-use",
+    "group": "test/reports",
+    "streams": [
+      {
+        "name": ":counter_attack.png:$DATA",
+        "bytes": 1457581
+      }
+    ],
+    "extraBytes": 1457581
+  },
+  {
+    "path": "test/reports/cleanup-ship-20261017/24-Expedition-rain-2-gate-use",
+    "group": "test/reports",
+    "streams": [
+      {
+        "name": ":finisher.png:$DATA",
+        "bytes": 1467441
+      }
+    ],
+    "extraBytes": 1467441
+  },
+  {
+    "path": "test/reports/enemy-defeats/review-download.txt",
+    "group": "test/reports",
+    "streams": [
+      {
+        "name": ":Zone.Identifier:$DATA",
+        "bytes": 50
+      }
+    ],
+    "extraBytes": 50
+  },
+  {
+    "path": "test/reports/expedition/03-Expedition-rain-0-gate-use",
+    "group": "test/reports",
+    "streams": [
+      {
+        "name": ":counter_attack.png:$DATA",
+        "bytes": 1357685
+      }
+    ],
+    "extraBytes": 1357685
+  },
+  {
+    "path": "test/reports/expedition/04-Expedition-rain-0-gate-use",
+    "group": "test/reports",
+    "streams": [
+      {
+        "name": ":god_aura.png:$DATA",
+        "bytes": 1349468
+      }
+    ],
+    "extraBytes": 1349468
+  },
+  {
+    "path": "test/reports/expedition/05-Expedition-rain-0-gate-use",
+    "group": "test/reports",
+    "streams": [
+      {
+        "name": ":finisher.png:$DATA",
+        "bytes": 1343513
+      },
+      {
+        "name": ":god_aura.png:$DATA",
+        "bytes": 1338582
+      }
+    ],
+    "extraBytes": 2682095
+  },
+  {
+    "path": "test/reports/expedition/06-Expedition-rain-0-gate-use",
+    "group": "test/reports",
+    "streams": [
+      {
+        "name": ":finisher.png:$DATA",
+        "bytes": 1348187
+      }
+    ],
+    "extraBytes": 1348187
+  },
+  {
+    "path": "test/reports/expedition/07-Expedition-rain-0-gate-use",
+    "group": "test/reports",
+    "streams": [
+      {
+        "name": ":finisher.png:$DATA",
+        "bytes": 1348513
+      }
+    ],
+    "extraBytes": 1348513
+  },
+  {
+    "path": "test/reports/expedition/12-Expedition-rain-1-gate-use",
+    "group": "test/reports",
+    "streams": [
+      {
+        "name": ":counter_attack.png:$DATA",
+        "bytes": 1381541
+      }
+    ],
+    "extraBytes": 1381541
+  },
+  {
+    "path": "test/reports/expedition/14-Expedition-rain-1-gate-use",
+    "group": "test/reports",
+    "streams": [
+      {
+        "name": ":counter_attack.png:$DATA",
+        "bytes": 1371310
+      }
+    ],
+    "extraBytes": 1371310
+  },
+  {
+    "path": "test/reports/expedition/16-Expedition-rain-1-gate-use",
+    "group": "test/reports",
+    "streams": [
+      {
+        "name": ":finisher.png:$DATA",
+        "bytes": 1374789
+      }
+    ],
+    "extraBytes": 1374789
+  },
+  {
+    "path": "test/reports/expedition/18-Expedition-rain-1-gate-use",
+    "group": "test/reports",
+    "streams": [
+      {
+        "name": ":finisher.png:$DATA",
+        "bytes": 1364720
+      }
+    ],
+    "extraBytes": 1364720
+  },
+  {
+    "path": "test/reports/expedition/23-Expedition-rain-2-gate-use",
+    "group": "test/reports",
+    "streams": [
+      {
+        "name": ":counter_attack.png:$DATA",
+        "bytes": 1457795
+      }
+    ],
+    "extraBytes": 1457795
+  },
+  {
+    "path": "test/reports/expedition/24-Expedition-rain-2-gate-use",
+    "group": "test/reports",
+    "streams": [
+      {
+        "name": ":counter_attack.png:$DATA",
+        "bytes": 1457883
+      },
+      {
+        "name": ":finisher.png:$DATA",
+        "bytes": 1473156
+      }
+    ],
+    "extraBytes": 2931039
+  },
+  {
+    "path": "test/reports/expedition/25-Expedition-rain-2-gate-use",
+    "group": "test/reports",
+    "streams": [
+      {
+        "name": ":counter_attack.png:$DATA",
+        "bytes": 1464174
+      },
+      {
+        "name": ":finisher.png:$DATA",
+        "bytes": 1469675
+      }
+    ],
+    "extraBytes": 2933849
+  }
+]

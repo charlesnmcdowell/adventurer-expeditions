@@ -11,7 +11,6 @@ assets/anime/v2/runtime/heads_f_styles1.webp,633318,referenced,js/ui/anime_manif
 assets/anime/v2/runtime/heads_m_styles1.webp,713284,referenced,js/ui/anime_manifest.js (basename match)
 assets/anime/v2/runtime/hiro_cyber_20260916.webp,462636,referenced,js/ui/anime_manifest.js (basename match)
 assets/anime/v2/runtime/marsh.webp,361934,referenced,js/ui/anime_manifest.js (basename match)
-assets/anime/v2/runtime/mountain.webp,358134,referenced,js/expedition/battle_stage.js | js/expedition/battle_stage.js (basename match) | js/ui/anime_manifest.js (basename match)
 assets/anime/v2/runtime/road.webp,405060,referenced,js/ui/anime_manifest.js (basename match)
 assets/anime/v2/runtime/ruins.webp,399110,referenced,js/ui/anime_manifest.js (basename match)
 assets/anime/v2/runtime/tavern.webp,279194,referenced,js/ui/anime_manifest.js (basename match)
@@ -20,9 +19,6 @@ assets/anime/v2/runtime/wardrobe_m2.webp,1027782,referenced,js/ui/anime_manifest
 assets/app/icon-180.png,31505,referenced,index.html | index.html (basename match)
 assets/app/icon-512.png,227687,packaged-only / unclear,
 assets/app/icon.svg,1281,packaged-only / unclear,
-assets/expedition/adult/beetle-fatal/beetle-fatal-0.webp,480368,arcade-only,assets/expedition/adult/beetle-fatal/beetle-fatal.json | assets/expedition/adult/beetle-fatal/beetle-fatal.json (basename match)
-assets/expedition/adult/beetle-fatal/beetle-fatal.json,5675,arcade-only,
-assets/expedition/adult/blood/slash.webp,156856,referenced,js/expedition/gore_fx.js | js/expedition/gore_fx.js (basename match)
 assets/expedition/adult/crab-fatal/crab-fatal-0.webp,316990,arcade-only,assets/expedition/adult/crab-fatal/crab-fatal.json | assets/expedition/adult/crab-fatal/crab-fatal.json (basename match)
 assets/expedition/adult/crab-fatal/crab-fatal.json,3510,arcade-only,
 assets/expedition/adult/dark_swordswoman-fatal/dark_swordswoman-fatal-0.webp,297644,arcade-only,assets/expedition/adult/dark_swordswoman-fatal/dark_swordswoman-fatal.json | assets/expedition/adult/dark_swordswoman-fatal/dark_swordswoman-fatal.json (basename match)
@@ -35,16 +31,10 @@ assets/expedition/adult/enchantress-fatal/enchantress-fatal-0.webp,487248,arcade
 assets/expedition/adult/enchantress-fatal/enchantress-fatal.json,3765,arcade-only,
 assets/expedition/adult/goblin-fatal/goblin-fatal-0.webp,472832,arcade-only,assets/expedition/adult/goblin-fatal/goblin-fatal.json | assets/expedition/adult/goblin-fatal/goblin-fatal.json (basename match)
 assets/expedition/adult/goblin-fatal/goblin-fatal.json,6136,arcade-only,
-assets/expedition/adult/hag-fatal/hag-fatal-0.webp,667778,arcade-only,assets/expedition/adult/hag-fatal/hag-fatal.json | assets/expedition/adult/hag-fatal/hag-fatal.json (basename match)
-assets/expedition/adult/hag-fatal/hag-fatal.json,5934,arcade-only,
 assets/expedition/adult/hydra-fatal/hydra-fatal-0.webp,558224,arcade-only,assets/expedition/adult/hydra-fatal/hydra-fatal.json | assets/expedition/adult/hydra-fatal/hydra-fatal.json (basename match)
 assets/expedition/adult/hydra-fatal/hydra-fatal.json,3629,arcade-only,
-assets/expedition/adult/moss_giant-fatal/moss_giant-fatal-0.webp,1533410,arcade-only,assets/expedition/adult/moss_giant-fatal/moss_giant-fatal.json | assets/expedition/adult/moss_giant-fatal/moss_giant-fatal.json (basename match)
-assets/expedition/adult/moss_giant-fatal/moss_giant-fatal.json,6428,arcade-only,
 assets/expedition/adult/orc-fatal/orc-fatal-0-review-r2.webp,818986,arcade-only,assets/expedition/adult/orc-fatal/orc-fatal.json | assets/expedition/adult/orc-fatal/orc-fatal.json (basename match)
 assets/expedition/adult/orc-fatal/orc-fatal.json,6826,arcade-only,
-assets/expedition/adult/serpent-fatal/serpent-fatal-0.webp,493240,arcade-only,assets/expedition/adult/serpent-fatal/serpent-fatal.json | assets/expedition/adult/serpent-fatal/serpent-fatal.json (basename match)
-assets/expedition/adult/serpent-fatal/serpent-fatal.json,5745,arcade-only,
 assets/expedition/adult/spider-fatal/spider-fatal-0.webp,452026,arcade-only,assets/expedition/adult/spider-fatal/spider-fatal.json | assets/expedition/adult/spider-fatal/spider-fatal.json (basename match)
 assets/expedition/adult/spider-fatal/spider-fatal.json,6135,arcade-only,
 assets/expedition/adult/story_altar_keepers-fatal/story_altar_keepers-fatal-a6e892da5f11.webp,2367622,referenced,assets/expedition/adult/story_altar_keepers-fatal/story_altar_keepers-fatal.json | assets/expedition/adult/story_altar_keepers-fatal/story_altar_keepers-fatal.json (basename match)
@@ -169,9 +159,6 @@ assets/expedition/adult/vulture-fatal/vulture-fatal.json,3154,arcade-only,
 assets/expedition/bathhouse/bathhouse.png,2531619,referenced,assets/expedition/bathhouse/index.html | assets/expedition/bathhouse/index.html (basename match) | assets/expedition/bathhouse/scene.js | assets/expedition/bathhouse/scene.js (basename match)
 assets/expedition/bathhouse/index.html,1653,packaged-only / unclear,
 assets/expedition/bathhouse/scene.js,6763,packaged-only / unclear,
-assets/expedition/beetle/beetle-0.webp,1857236,arcade-only,assets/expedition/beetle/beetle.json | assets/expedition/beetle/beetle.json (basename match)
-assets/expedition/beetle/beetle-roster-0.webp,1762590,arcade-only,assets/expedition/beetle/beetle.json | assets/expedition/beetle/beetle.json (basename match)
-assets/expedition/beetle/beetle.json,28051,arcade-only,
 assets/expedition/boar/boar-0.webp,295148,arcade-only,assets/expedition/boar/boar.json | assets/expedition/boar/boar.json (basename match)
 assets/expedition/boar/boar.json,9334,arcade-only,
 assets/expedition/bram/bram-0.webp,2083060,referenced,assets/expedition/bram/bram.json | assets/expedition/bram/bram.json (basename match)
@@ -249,36 +236,19 @@ assets/expedition/enchantress/enchantress.json,38241,arcade-only,
 assets/expedition/goblin/goblin-0.webp,1243832,arcade-only,assets/expedition/goblin/goblin.json | assets/expedition/goblin/goblin.json (basename match)
 assets/expedition/goblin/goblin-roster-0.webp,1371586,arcade-only,assets/expedition/goblin/goblin.json | assets/expedition/goblin/goblin.json (basename match)
 assets/expedition/goblin/goblin.json,27933,arcade-only,
-assets/expedition/hag/hag-0.webp,1721480,arcade-only,assets/expedition/hag/hag.json | assets/expedition/hag/hag.json (basename match)
-assets/expedition/hag/hag-roster-0.webp,1858506,arcade-only,assets/expedition/hag/hag.json | assets/expedition/hag/hag.json (basename match)
-assets/expedition/hag/hag.json,27879,arcade-only,
 assets/expedition/hiro/hiro-portrait.webp,19644,referenced,js/expedition/story_companion_ui.js | js/expedition/story_companion_ui.js (basename match)
 assets/expedition/hiro/hiro.webp,1355454,superseded candidate,
 assets/expedition/hydra/hydra-v7-3142de7d4eaa-0.webp,7326204,arcade-only,assets/expedition/hydra/hydra.json | assets/expedition/hydra/hydra.json (basename match)
 assets/expedition/hydra/hydra-v7-f7b7319e38fa-1.webp,2359860,arcade-only,assets/expedition/hydra/hydra.json | assets/expedition/hydra/hydra.json (basename match)
 assets/expedition/hydra/hydra.json,30512,arcade-only,
-assets/expedition/inn/inn-candle-flame.webp,6760,referenced,assets/expedition/inn/inn.json | assets/expedition/inn/inn.json (basename match)
-assets/expedition/inn/inn-hearth-fire.webp,43186,referenced,assets/expedition/inn/inn.json | assets/expedition/inn/inn.json (basename match)
-assets/expedition/inn/inn-hiro-bram.webp,157814,referenced,assets/expedition/inn/inn.json | assets/expedition/inn/inn.json (basename match)
 assets/expedition/inn/inn-hiro-mage-v2.webp,126070,packaged-only / unclear,
-assets/expedition/inn/inn-hiro-mage.webp,153948,referenced,assets/expedition/inn/inn.json | assets/expedition/inn/inn.json (basename match)
-assets/expedition/inn/inn-hiro-ranger.webp,141766,referenced,assets/expedition/inn/inn.json | assets/expedition/inn/inn.json (basename match)
-assets/expedition/inn/inn-hiro-solo.webp,165500,referenced,assets/expedition/inn/inn.json | assets/expedition/inn/inn.json (basename match) | docs/story_preview.js | docs/story_preview.js (basename match)
 assets/expedition/inn/inn-hiro-warrior-v2.webp,137274,packaged-only / unclear,
-assets/expedition/inn/inn-hiro-warrior.webp,144806,referenced,assets/expedition/inn/inn.json | assets/expedition/inn/inn.json (basename match)
-assets/expedition/inn/inn-stew-steam.webp,17122,referenced,assets/expedition/inn/inn.json | assets/expedition/inn/inn.json (basename match)
-assets/expedition/inn/inn.json,6381,referenced,js/expedition/inn_art.js (basename match)
 assets/expedition/moss_giant/moss_giant-roster-0.webp,417194,arcade-only,
-assets/expedition/moss_giant/moss_giant-v7-5c280fb1db04-0.webp,8244280,arcade-only,assets/expedition/moss_giant/moss_giant.json | assets/expedition/moss_giant/moss_giant.json (basename match)
-assets/expedition/moss_giant/moss_giant.json,24264,arcade-only,
 assets/expedition/orc/orc-0.webp,1915580,superseded candidate,
 assets/expedition/orc/orc-clean-0.webp,4635720,arcade-only,assets/expedition/orc/orc.json | assets/expedition/orc/orc.json (basename match)
 assets/expedition/orc/orc-roster-0.webp,1365234,arcade-only,assets/expedition/orc/orc.json | assets/expedition/orc/orc.json (basename match)
 assets/expedition/orc/orc.json,25006,arcade-only,
 assets/expedition/plant/plant-0.webp,396418,superseded candidate,
-assets/expedition/serpent/serpent-0.webp,1641744,arcade-only,assets/expedition/serpent/serpent.json | assets/expedition/serpent/serpent.json (basename match)
-assets/expedition/serpent/serpent-roster-0.webp,1753586,arcade-only,assets/expedition/serpent/serpent.json | assets/expedition/serpent/serpent.json (basename match)
-assets/expedition/serpent/serpent.json,28125,arcade-only,
 assets/expedition/spider/spider-0.webp,1305932,arcade-only,assets/expedition/spider/spider.json | assets/expedition/spider/spider.json (basename match)
 assets/expedition/spider/spider-roster-0.webp,1644304,arcade-only,assets/expedition/spider/spider.json | assets/expedition/spider/spider.json (basename match)
 assets/expedition/spider/spider.json,28021,arcade-only,
@@ -1890,22 +1860,13 @@ assets/expedition/travel/coast-mast-vault/loops.webp,187192,referenced,js/expedi
 assets/expedition/travel/coast-mast-vault/plate.webp,322004,referenced,js/expedition/light_anchors.js (basename match) | js/expedition/travel_art.js (basename match)
 assets/expedition/travel/coast-mast-vault/scene.json,2074,referenced,js/expedition/travel_art.js (basename match)
 assets/expedition/travel/forest-carriage-vault/atmosphere-near.webp,274532,packaged-only / unclear,
-assets/expedition/travel/swamp-log-slide/actions-qa-afe2f5c5e00d.webp,1054740,referenced,assets/expedition/travel/swamp-log-slide/actions.json | assets/expedition/travel/swamp-log-slide/actions.json (basename match)
-assets/expedition/travel/swamp-log-slide/actions.json,5796,referenced,js/expedition/travel_art.js (basename match)
-assets/expedition/travel/swamp-log-slide/atmosphere-far.webp,141418,referenced,js/expedition/light_anchors.js (basename match)
-assets/expedition/travel/swamp-log-slide/atmosphere-ground.webp,258904,referenced,js/expedition/light_anchors.js (basename match)
 assets/expedition/travel/swamp-log-slide/atmosphere-near.webp,228498,packaged-only / unclear,
-assets/expedition/travel/swamp-log-slide/loops.webp,243936,referenced,js/expedition/travel_art.js (basename match)
-assets/expedition/travel/swamp-log-slide/plate.webp,572934,referenced,js/expedition/light_anchors.js (basename match) | js/expedition/travel_art.js (basename match)
-assets/expedition/travel/swamp-log-slide/scene.json,2473,referenced,js/expedition/travel_art.js (basename match)
 assets/expedition/vulture/vulture-v7-8a6629e04d02-0.webp,5562346,arcade-only,assets/expedition/vulture/vulture.json | assets/expedition/vulture/vulture.json (basename match)
 assets/expedition/vulture/vulture.json,27876,arcade-only,
 assets/fonts/cinzel/Cinzel.ttf,125468,referenced,docs/story_companions.css | docs/story_companions.css (basename match)
 assets/fonts/cinzel/OFL.txt,4383,packaged-only / unclear,
 audio/music/citadel_ronin.mp3,3881429,packaged-only / unclear,
 audio/music/coast_clove.mp3,3900629,packaged-only / unclear,
-audio/music/edwyn2.mp3,1032638,packaged-only / unclear,
-audio/music/night1.mp3,995806,packaged-only / unclear,
 audio/vo/F03/travel_city_1.mp3,32017,referenced,js/data/voice_manifest.js | js/data/voice_manifest.js (basename match) | js/expedition/media_hashes.js (basename match)
 audio/vo/F03/travel_forest_1.mp3,22404,referenced,js/data/voice_manifest.js | js/data/voice_manifest.js (basename match) | js/expedition/media_hashes.js (basename match)
 audio/vo/F03/travel_hatred_1.mp3,36406,referenced,js/data/voice_manifest.js | js/data/voice_manifest.js (basename match) | js/expedition/media_hashes.js (basename match)

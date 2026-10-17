@@ -3,6 +3,7 @@ Static mentions and observed requests are evidence, not exhaustive reachability.
 """
 import collections,csv,datetime,hashlib,json,os,re,shutil,subprocess
 from pathlib import Path
+from windows_streams import named_streams
 ROOT=Path(__file__).resolve().parents[1]
 SOURCE=ROOT.parent/'adventurer-expeditions-source-art'
 DATE='20261017'
@@ -39,10 +40,11 @@ pack=set(plan['files']);ship=set(plan['ship'])
 tracked=set(run(['git','ls-files','-z']).decode().split('\0'))
 changelog=text(ROOT/'docs/CHANGELOG.md')
 inventory=[];totals=collections.Counter()
+previous={r['path']:r for r in json.loads((OUT/'disk-inventory.json').read_text(encoding='utf-8'))} if (OUT/'disk-inventory.json').exists() else {}
 for group in ['assets','audio','docs/art','dist','test/reports']:
  for p in walk(ROOT/group):
   st=p.stat();rel=p.relative_to(ROOT).as_posix()
-  inventory.append(dict(path=rel,bytes=st.st_size,mtime=st.st_mtime,sha256=digest(p),group=group,tracked=rel in tracked))
+  inventory.append(dict(path=rel,bytes=st.st_size,mtime=st.st_mtime,sha256=(previous[rel]['sha256'] if rel in previous and previous[rel]['bytes']==st.st_size and previous[rel]['mtime']==st.st_mtime else digest(p)),group=group,tracked=rel in tracked,streams=named_streams(p)))
   totals[group]+=st.st_size
 by_path={r['path']:r for r in inventory}
 save('disk-inventory.json',inventory)
@@ -138,15 +140,40 @@ sourcefiles=list(walk(SOURCE));sourceDocs=[]
 for p in sourcefiles:
  if p.suffix.lower() in {'.json','.md','.py','.js'} and p.stat().st_size<5e6:sourceDocs.append((p.relative_to(SOURCE).as_posix(),text(p).replace('\\\\','/').replace('\\','/')))
 source_index=collections.defaultdict(set)
+exact_sources=collections.defaultdict(set)
+actor_runtime={}
+for p in (ROOT/'assets/expedition').glob('*/*.json'):
+ try:d=json.loads(text(p))
+ except ValueError:continue
+ if isinstance(d,dict) and d.get('clips') and isinstance(d['clips'],dict):actor_runtime[d.get('hero')]=d
 for origin,s in corpus+sourceDocs:
  for tok in re.findall(r"[A-Za-z0-9_./:-]+\.(?:png|webp|jpe?g|json|psd|svg)",s):
   source_index[Path(tok).name].add(origin)
+for origin,s in sourceDocs:
+ try:d=json.loads(s)
+ except ValueError:continue
+ if not isinstance(d,dict):continue
+ actor=d.get('actor',d.get('hero'));live=actor_runtime.get(actor) if isinstance(actor,str) else None
+ if not live:continue
+ clips=d.get('clips',[])
+ if not isinstance(clips,list):continue
+ for c in clips:
+  if not isinstance(c,dict):continue
+  name=c.get('id');runtime=live['clips'].get(name,{})
+  live_paths={str(x).replace('\\','/') for x in runtime.get('sources',[])}
+  for src in c.get('sources',[]):
+   if not isinstance(src,dict):continue
+   f=src.get('file','').replace('\\','/')
+   if f not in live_paths:continue
+   p=(SOURCE/Path(origin).parent/f).resolve()
+   if p.is_relative_to(SOURCE.resolve()) and p.exists():exact_sources[p.relative_to(SOURCE.resolve()).as_posix()].add(origin+' -> '+str(actor)+'/'+name)
 sources=[];sg=collections.Counter()
 for p in sourcefiles:
  rel=p.relative_to(SOURCE).as_posix();size=p.stat().st_size;sg[rel.split('/')[0]]+=size
  records=sorted(source_index.get(p.name,[]));protected=bool(re.search(r'prompt|reference|manifest|receipt',p.name,re.I))
- state='protected prompt/reference/manifest' if protected else 'referenced source / keep' if records else 'unresolved provenance / keep'
- sources.append(dict(path=rel,bytes=size,status=state,proposal='keep',references=records[:30],referenceCount=len(records),sha256=digest(p)))
+ exact=sorted(exact_sources[rel])
+ state='protected prompt/reference/manifest' if protected else 'current clip source-path match / keep' if exact else 'possible source basename match / keep' if records else 'unresolved provenance / keep'
+ sources.append(dict(path=rel,bytes=size,status=state,proposal='keep',references=(exact+records)[:3],referenceCount=len(records)+len(exact),sha256=digest(p)))
 save('source-art.json',sources)
 csvout('source-art.csv',[{**r,'references':' | '.join(r['references'])} for r in sources])
 
@@ -158,6 +185,13 @@ for p in (ROOT/'docs/art').iterdir():
  reviews.append(dict(path=p.relative_to(ROOT).as_posix(),bytes=sum(r['bytes'] for r in rows),status='approval not established by audit',proposal='needs Hiro',evidence=citations[:8],images=sum(Path(r['path']).suffix.lower() in ['.png','.webp','.jpg'] for r in rows)))
 for p in (ROOT/'docs').glob('*REVIEW*'):
  if p.is_file():reviews.append(dict(path=p.relative_to(ROOT).as_posix(),bytes=p.stat().st_size,status='review page / keep',proposal='keep',evidence=[],images=0))
+for r in reviews:
+ if r['path']=='docs/art/iaido-cuts-20261016':
+  r['status']='Approved for parry reuse; original Iaido draw not accepted'
+  r['evidence'].insert(0,'User approved repurposing these drawings as parries, not deletion.')
+ if r['path']=='docs/art/companions-hiro-20261015':
+  r['status']='Roster approved for combat; retain source and review history'
+  r['evidence'].insert(0,'User approved the roster for combat, not deletion.')
 save('reviews.json',reviews)
 groups=collections.defaultdict(list)
 for r in inventory:
@@ -182,7 +216,10 @@ blobs.sort(key=lambda r:r['diskBytes'],reverse=True);save('git-blobs.json',blobs
 gitbytes=sum(p.stat().st_size for p in walk(ROOT/'.git'))
 tempbytes=sum(p.stat().st_size for p in walk(ROOT/'.git/objects') if p.name.startswith('tmp_obj_'))
 count=subprocess.run(['git','count-objects','-v'],cwd=ROOT,capture_output=True,text=True)
-(OUT/'git-count-objects.txt').write_text(count.stdout+'\n'+count.stderr,encoding='utf-8')
+(OUT/'git-count-objects.txt').write_text((count.stdout+'\n'+count.stderr).rstrip()+'\n',encoding='utf-8')
 summary=dict(created=datetime.datetime.now(datetime.timezone.utc).isoformat(),commit=run(['git','rev-parse','HEAD']).decode().strip(),drive=shutil.disk_usage(ROOT)._asdict(),totals=dict(totals),sourceTotals=dict(sg),gitBytes=gitbytes,gitTemporaryBytes=tempbytes,historicalBlobDiskBytes=sum(r['diskBytes'] for r in blobs if not r['current']),duplicateBytes=sum(r['redundantBytes'] for r in duplicates),runtimeFiles=len(assets),observedFiles=sum(r['observed'] for r in assets),neverRequestedFiles=sum(not r['observed'] for r in assets),atlasEstimate=sum(p['estimatedBytes'] for a in atlases for p in a['pages']))
+before=collections.Counter()
+for row in json.loads((OUT/'before-inventory.json').read_text(encoding='utf-8')):before[row['group']]+=row['bytes']
+summary['initialTotals']=dict(before)
 save('summary.json',summary)
 print(json.dumps(summary,indent=2),flush=True)

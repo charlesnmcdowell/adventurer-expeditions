@@ -1,0 +1,38 @@
+[
+  {
+    "name": "npm test",
+    "status": "PASS before cleanup; concurrent story edits mean this is not a final release certification"
+  },
+  {
+    "name": "npm run test:story + request logging",
+    "status": "PASS: story/data checks and actual chapter-one guided battle, audio, reload and mobile flow"
+  },
+  {
+    "name": "npm run test:ship -- --seed=1 + request logging",
+    "status": "PASS: two clears and return to inn on packaged ship list"
+  },
+  {
+    "name": "Full 14-chapter site build/verify",
+    "status": "DEFERRED by user: other session is still editing; no stale package is presented as verified"
+  },
+  {
+    "name": "Additional all-chapter / companion browser suites after cleanup",
+    "status": "DEFERRED until concurrent story/party edits settle"
+  },
+  {
+    "name": "Audit review page",
+    "status": "PASS: runtime/source previews, filtering, sorting and approval-message controls"
+  },
+  {
+    "name": "Safe cleanup",
+    "status": "EXCEPTION: 7 older screenshot containers removed before named-stream detection. Build/cache checks passed. See cleanup-results.json incident; all further named-stream files are now excluded."
+  },
+  {
+    "name": "git gc",
+    "status": "PASS: normal GC only; no forced expiration/history rewrite"
+  },
+  {
+    "name": "Named-stream detection regression",
+    "status": "PASS: retained screenshot streams are detected; ordinary report file has no named streams"
+  }
+]
