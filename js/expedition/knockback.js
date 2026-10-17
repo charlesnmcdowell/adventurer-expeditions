@@ -26,24 +26,25 @@ K.launch = function (opts) {
 
 // One integration step. `b.x`/`b.y` are the feet offset from where the enemy
 // stood (y < 0 is above the floor); `b.a` is the tilt in radians. Pure.
-K.step = function (b, dt, limitX) {
+K.step = function (b, dt, limitX, floorY = 0) {
   if (b.rest) return b;
   b.t += dt * 1000;
   if (!b.grounded) {
     b.vy += K.gravity * dt;
     b.x += b.vx * dt; b.y += b.vy * dt; b.a += b.w * dt;
-    if (b.y >= 0) {                                     // floor contact
-      b.y = 0; b.bounces++;
+    if (b.y >= floorY) {                                // authored floor contact
+      b.y = floorY; b.bounces++;
       b.vy = -b.vy * K.restitution; b.vx *= K.friction; b.w *= 0.4;
       if (Math.abs(b.vy) < 140 || b.bounces >= 3) { b.vy = 0; b.grounded = true; }
     }
   } else {
+    b.y = floorY;
     const s = Math.sign(b.vx), v = Math.max(0, Math.abs(b.vx) - K.slide * dt);
     b.vx = s * v; b.x += b.vx * dt;
     b.a += (0 - b.a) * Math.min(1, dt * 7);             // the body settles flat
   }
   if (limitX != null && b.x > limitX) { b.x = limitX; b.vx = 0; }
-  if ((b.grounded && Math.abs(b.vx) < 8 && Math.abs(b.a) < 0.01) || b.t >= K.maxMs) { b.rest = true; b.a = 0; b.y = 0; }
+  if ((b.grounded && Math.abs(b.vx) < 8 && Math.abs(b.a) < 0.01) || b.t >= K.maxMs) { b.rest = true; b.a = 0; b.y = floorY; }
   return b;
 };
 
@@ -52,6 +53,7 @@ K.step = function (b, dt, limitX) {
 K.play = function (actor) {
   const scene = actor.scene, img = actor.img;
   if (!K.enabled || !scene || !img || actor._destroyed) return Promise.resolve();
+  actor.syncPerspective?.();
   const x0 = img.x, y0 = img.y, a0 = img.rotation || 0;
   const dir = actor.root.x >= (scene.hero ? scene.hero.root.x : 0) ? 1 : -1;
   const b = K.launch({ boss: actor.kind === 'boss', seed: String(actor.uid || '').split('').reduce((n, c) => n * 31 + c.charCodeAt(0), 7) >>> 0, dir });
@@ -71,7 +73,8 @@ K.play = function (actor) {
       if (actor._destroyed || !img.active) return finish();
       const clock = scene.time;
       if (scene.paused || (clock && clock.paused) || scene.__paintedHitStopCount > 0) return;
-      K.step(b, Math.min(0.05, dtMs * (clock ? clock.timeScale : 1) / 1000), dir > 0 ? limit : null);
+      const floor=scene.groundPoint?scene.groundPoint(actor.root.x+b.x,actor.root.y,actor).y-actor.root.y:0;
+      K.step(b, Math.min(0.05, dtMs * (clock ? clock.timeScale : 1) / 1000), dir > 0 ? limit : null, floor);
       img.x = x0 + b.x / scale; img.y = y0 + b.y / scale; img.rotation = a0 + b.a;
       if (actor.shadow) actor.shadow.x = img.x;
       if (X.Props && b.y > -50) X.Props.sweep(scene, actor.root.x + img.x * scale, half, b.vx);   // shove props it lands among

@@ -3,6 +3,24 @@
 (function(){
 'use strict';const A=ADV,S=A.Expedition.Story;
 S.Stage={
+// Walkable floor boundaries measured in the 1280x760 combat view (after cover
+// cropping), not the source image. Architecture, water and sky are not floor.
+groundProfiles:{
+  lanternhold:[[0,560],[1280,560]],griffon:[[0,530],[640,500],[1280,540]],
+  shore:[[0,560],[400,540],[850,510],[1280,565]],open_hand:[[0,610],[1280,610]],
+  dunmere:[[0,520],[1280,520]],ford:[[0,515],[1280,515]],
+  gnoll_fort:[[0,550],[280,530],[500,540],[800,580],[1000,635],[1280,700]],
+  dunmere_mine:[[0,540],[1280,540]],black_altar:[[0,570],[1280,570]],
+  thornbury:[[0,585],[640,545],[1280,600]],holloway:[[0,625],[640,590],[1280,620]],
+  bandit_camp:[[0,580],[640,550],[1280,580]],mirkhollow:[[0,665],[350,625],[700,600],[1280,665]],
+  grove:[[0,555],[640,520],[1280,555]],cliffs:[[0,525],[1280,525]],
+  iron_mine:[[0,620],[1280,620]],study:[[0,540],[1280,540]],valve:[[0,505],[1280,505]],
+  sewers:[[0,530],[1280,530]],nine_lanterns:[[0,550],[1280,550]],counting:[[0,530],[1280,530]],
+  tower:[[0,535],[1280,535]],silk_floor:[[0,520],[1280,520]],catacombs:[[0,540],[1280,540]],
+  hunted_city:[[0,645],[640,620],[1280,675]],sickroom:[[0,460],[1280,460]],undervault:[[0,520],[1280,520]],
+  palace:[[0,610],[1280,610]],undercity:[[0,625],[640,575],[1280,625]],temple:[[0,610],[1280,610]],
+  mirrors:[[0,615],[1280,615]],morrak_realm:[[0,570],[1280,570]]
+},
 // Edition-owned combat adaptation. Dialogue keeps the original painting.
 files:{nine_lanterns:'assets/expedition/story/stages/nine-lanterns-combat-20261015.webp',
   dunmere_mine:'assets/expedition/story/stages/dunmere-mine-combat.webp',

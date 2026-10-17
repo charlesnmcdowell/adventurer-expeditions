@@ -200,7 +200,9 @@ class Actor {
   get y() { return this.root.y; }
   perspectiveAt(y) { return this.scene.perspectiveAt ? this.scene.perspectiveAt(y) : 1; }
   syncPerspective() {
-    if(!this._destroyed && this.root.setScale)this.root.setScale(this.perspectiveAt(this.root.y));
+    if(this._destroyed)return;
+    if(this.scene.groundPoint)this.root.y=this.scene.groundPoint(this.root.x,this.root.y,this).y;
+    if(this.root.setScale)this.root.setScale(this.perspectiveAt(this.root.y));
   }
   chest() { return { x: this.root.x, y: this.root.y - this.height * this.perspectiveAt(this.root.y) * 0.55 }; }
   contactPoint(other) { return { x: (this.root.x + other.root.x) / 2, y: this.root.y - this.height * this.perspectiveAt(this.root.y) * 0.4 }; }
@@ -577,7 +579,7 @@ class Actor {
     const loc = X.DefeatFX && X.DefeatFX.location(this.scene.run);
     this.img.setTintFill(loc === 'swamp' ? 0x715337 : loc === 'city' ? 0x63cfff : 0xfff4d6);
     await Promise.all([
-      this.tweenImg({ alpha: 0, y: this.img.y - 30 }, 420, 'Power1'),
+      this.tweenImg({ alpha: 0 }, 420, 'Power1'),
       new Promise(res => this.scene.tweens.add({ targets: this.shadow, alpha: 0, duration: 420, onComplete: res })),
     ]);
     this.root.setVisible(false);

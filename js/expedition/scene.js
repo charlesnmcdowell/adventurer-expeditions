@@ -132,6 +132,7 @@ class ExpeditionScene extends Phaser.Scene {
     a.setLevel(X.Encounter.heroLevel(this.run));
     a.faceKey = 'xp_hiro_face';
     this.hero = a;
+    this.placeOnGround(a);
   }
 
   spawnCompanions() {
@@ -148,9 +149,11 @@ class ExpeditionScene extends Phaser.Scene {
       const m = marks[i] || marks[marks.length - 1];
       const a = new X.Actor(this, { uid: u.uid, unit: u, side: 'a', x: m.x, y: m.y, texture: key, height: 310, name: u.ch.name, level: 3, depth: m.depth, kind: 'ally', sheet });
       a.setLevel(2 + X.Campaign.loopOf(this.run));
+      this.placeOnGround(a);
       this.actors.set(u.uid, a);
       i++;
     }
+    this.spreadParty();
   }
 
   companionMarks() {
@@ -163,6 +166,36 @@ class ExpeditionScene extends Phaser.Scene {
     // Ground depth, not crowd size: near 100%, middle 81%, far 65%.
     // Root scaling keeps art, shadows and plates together through all clips.
     return Math.max(.60,Math.min(1.08,1+(y-GROUND_Y)*.0019));
+  }
+
+  groundProfile() { return [[0,530],[1280,530]]; }
+  groundPoint(x,y,actor) {
+    const line=this.groundProfile(),radius=Math.min(45,(actor?.height||250)*.12)*this.perspectiveAt(y);
+    const floorAt=q=>{
+      q=Math.max(0,Math.min(1280,q));
+      for(let i=1;i<line.length;i++)if(q<=line[i][0]){
+        const [x0,y0]=line[i-1],[x1,y1]=line[i];return y0+(y1-y0)*(q-x0)/(x1-x0);
+      }
+      return line.at(-1)[1];
+    };
+    const minY=Math.max(floorAt(x-radius),floorAt(x),floorAt(x+radius));
+    return {x,y:Math.max(minY,Math.min(710,Number.isFinite(y)?y:minY)),minY,maxY:710};
+  }
+  placeOnGround(a) {
+    const p=this.groundPoint(a.home.x,a.home.y,a);
+    a.home.y=a.groundY=a.root.y=p.y;a.syncPerspective();
+  }
+
+  spreadParty() {
+    const allies=[...this.actors.values()].filter(a=>a.side==='a').sort((a,b)=>a.home.x-b.home.x);
+    let previous=null;
+    for(const a of allies){
+      if(previous)a.root.x=a.home.x=Math.max(a.home.x,previous.home.x+(a===this.hero?170:155));
+      this.placeOnGround(a);previous=a;
+    }
+    const foes=[...this.actors.values()].filter(a=>a.side==='b');
+    this.spaceFoes(foes);
+    if(this.foeSlots)this.foeSlots=foes.map(a=>({...a.home})).sort((a,b)=>a.x-b.x);
   }
 
   spawnFoes() {
@@ -195,6 +228,7 @@ class ExpeditionScene extends Phaser.Scene {
   // fits the stage. Ordinary waves land on the same marks as before.
   spaceFoes(foes) {
     if (!foes.length) return;
+    const laneLeft=Math.max(735,this.hero?this.hero.home.x+this.idleExtents(this.hero).right+120:735);
     foes.forEach((a,i)=>{
       const rank=foes.length===1?0:i/(foes.length-1);
       a.home.y=GROUND_Y-180*rank;
@@ -202,8 +236,14 @@ class ExpeditionScene extends Phaser.Scene {
       a.syncPerspective();
       const ext=this.idleExtents(a);
       const nominal=foes.length===1?1010:840+rank*300;
-      a.home.x=Math.round(Math.max(735-ext.left,Math.min(nominal,1252-ext.right)));
-      a.root.setDepth(105-i*2);
+      a.home.x=Math.round(Math.max(laneLeft-ext.left,Math.min(nominal,1252-ext.right)));
+      this.placeOnGround(a);
+      for(let pass=0;pass<3;pass++){
+        const bounds=this.idleExtents(a);
+        a.home.x=Math.round(Math.max(laneLeft-bounds.left,Math.min(a.home.x,1252-bounds.right)));
+        this.placeOnGround(a);
+      }
+      a.root.setDepth(90+a.home.y/100);
     });
   }
 
