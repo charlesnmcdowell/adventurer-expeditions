@@ -188,7 +188,15 @@ function render(){
   companionUI.stop();stopVoice();panel.replaceChildren();const r=session.record;
   if(r.hiroChoice)return hiroChoice();
   // Cap the outbound leg before showing content from a locked website chapter.
-  if(r.travelPending&&r.travelPending.chapter<=PLAYABLE_THROUGH)return travel();
+  // Road trips only when leaving the inn (a chapter's very start) or heading
+  // back to it (the chapter is over). A trip found anywhere else, such as a
+  // stale one left in a save, is dropped instead of playing between fights
+  // (Hiro, 2026-10-17).
+  if(r.travelPending){
+    const t=r.travelPending,atStart=t.leg==='outbound'&&r.phase==='departure'&&r.encounter===0,atEnd=t.leg==='return'&&(r.phase==='arrival'||r.phase==='inn');
+    if(!atStart&&!atEnd){S.finishTravel(session);return render();}
+    if(t.chapter<=PLAYABLE_THROUGH)return travel();
+  }
   const perks=ADV.GatePerks?.state(session.game);
   if(perks?.pending.length){
     const notices=perks.pending.slice(),box=text('section','',panel,'menu');text('h1','Campaign gifts',box);
