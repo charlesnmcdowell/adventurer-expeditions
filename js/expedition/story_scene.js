@@ -35,11 +35,15 @@ class StoryBattle extends X.Scene{
   }
   spawnCompanions(){
     const units=this.enc.st.units.filter(u=>u.ch.expeditionStoryCompanion);
-    const marks=[{x:265,y:this.hero.groundY-34,depth:98},{x:150,y:this.hero.groundY-60,depth:96}];
+    const marks=this.companionMarks();
     units.forEach((u,i)=>{
       const id=u.ch.expeditionStoryCompanion,kit=S.Companions.kits[id],sheet=X.Painted.sheet(this,'companion_'+id);
       if(!sheet)throw Error('Companion art missing: '+id);
       const a=new X.Actor(this,{uid:u.uid,unit:u,side:'a',kind:'ally',sheet,height:kit.height,name:u.ch.name,...marks[i]});
+      // Wide shields/staves must not clip against the left edge.
+      const ext=this.idleExtents(a);
+      a.root.x=a.home.x=Math.max(a.home.x,24-ext.left);
+      a.syncPerspective();
       this.actors.set(u.uid,a);a.refresh(true);
     });
   }
@@ -59,33 +63,15 @@ class StoryBattle extends X.Scene{
     // Fill original rear slots; never add an offset repeatedly or shrink foes.
     const slots=this.foeSlots.slice(-alive.length);
     await Promise.all(alive.map(async(a,i)=>{
-      const slot=slots[i],pivot=a.sheet.canvas.pivot.x,scale=Math.abs(a._baseScaleX);
-      const right=Math.max(...a.sheet.clips.idle.frames.map(id=>{
-        const f=this.textures.getFrame(a.sheet.key,id);return(f.x+f.width-pivot)*scale;
-      }));
-      a.home.x=Math.max(a.home.x,Math.min(slot.x,1252-right));
-      if(Math.abs(a.root.x-a.home.x)>1)await a.play('walk',{x:a.home.x,duration:340});
+      const slot=slots[i];a.home.y=a.groundY=slot.y;
+      const ext=this.idleExtents(a);
+      a.home.x=Math.max(a.home.x,Math.min(slot.x,1252-ext.right));
+      a.root.setDepth(105-2*(this.foeSlots.length-alive.length+i));
+      if(Math.abs(a.root.x-a.home.x)>1||Math.abs(a.root.y-a.home.y)>1)await a.play('walk',{x:a.home.x,y:a.home.y,duration:340});
     }));
   }
   spaceFoes(foes){
-    // Atlas canvases include wide paired finishers. Use the visible ordinary
-    // idle silhouettes, not that canvas width, to keep the back-rank archer
-    // inside the screen without shrinking the gnolls to fit the crowd.
-    if(!foes.length)return;
-    const left=565,right=1252,span=right-left;
-    const boxes=foes.map(a=>{
-      const pivot=a.sheet.canvas.pivot.x,scale=Math.abs(a._baseScaleX);
-      const frames=a.sheet.clips.idle.frames.map(id=>{
-        const f=this.textures.getFrame(a.sheet.key,id);
-        return {x:f.x,w:f.width};
-      });
-      const lo=Math.min(...frames.map(f=>f.x)),hi=Math.max(...frames.map(f=>f.x+f.w));
-      return {left:(lo-pivot)*scale,width:(hi-lo)*scale};
-    });
-    const total=boxes.reduce((v,b)=>v+b.width,0);
-    const gap=foes.length>1?(span-total)/(foes.length-1):0;
-    let x=foes.length===1?right-boxes[0].width:left;
-    foes.forEach((a,i)=>{a.home.x=Math.round(x-boxes[i].left);a.root.setDepth(100+i);x+=boxes[i].width+gap;});
+    super.spaceFoes(foes);
   }
   // The first two fights the player actually fights hold for the lessons
   // (Counter, Finisher, God Aura on a boss); a bypassed fight, such as sparing

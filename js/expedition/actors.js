@@ -188,8 +188,9 @@ class Actor {
   releasePoint(clip) {
     const anchor=clip?.releaseAnchor,canvas=this.sheet?.canvas;
     if(!anchor||!canvas)return this.chest();
-    return {x:this.root.x+(anchor.x-canvas.pivot.x)*this._baseScaleX,
-      y:this.root.y+(anchor.y-canvas.pivot.y)*this._baseScaleY};
+    const depth=this.perspectiveAt(this.root.y);
+    return {x:this.root.x+(anchor.x-canvas.pivot.x)*this._baseScaleX*depth,
+      y:this.root.y+(anchor.y-canvas.pivot.y)*this._baseScaleY*depth};
   }
 
   setLevel(n) { this.level = n; }   // kept for the clip picker; nothing is drawn
@@ -197,8 +198,12 @@ class Actor {
   // ---------------------------------------------------------------- geometry
   get x() { return this.root.x; }
   get y() { return this.root.y; }
-  chest() { return { x: this.root.x, y: this.root.y - this.height * 0.55 }; }
-  contactPoint(other) { return { x: (this.root.x + other.root.x) / 2, y: this.root.y - this.height * 0.4 }; }
+  perspectiveAt(y) { return this.scene.perspectiveAt ? this.scene.perspectiveAt(y) : 1; }
+  syncPerspective() {
+    if(!this._destroyed && this.root.setScale)this.root.setScale(this.perspectiveAt(this.root.y));
+  }
+  chest() { return { x: this.root.x, y: this.root.y - this.height * this.perspectiveAt(this.root.y) * 0.55 }; }
+  contactPoint(other) { return { x: (this.root.x + other.root.x) / 2, y: this.root.y - this.height * this.perspectiveAt(this.root.y) * 0.4 }; }
 
   // ---------------------------------------------------------------- clips
   // `opts.onContact` fires at contact, `opts.onRelease` at the release frame,
@@ -327,6 +332,7 @@ class Actor {
   }
 
   syncPause() {
+    this.syncPerspective();
     if (this._destroyed || !this.img.anims) return;
     const clock = this.scene.time;
     const paused = !!(this._playback?.releaseHeld || this.scene.paused || (clock && clock.paused) || this.scene.__paintedHitStopCount > 0 || (clock && clock.now < (this.scene.__paintedHitStopUntil || 0)));
@@ -403,7 +409,7 @@ class Actor {
     return new Promise(resolve => {
       let ended = false, released = false, hits = 0, clearGore = null;
       const target = c.paired ? opts.target : null, targetVisible = target && target.root.visible;
-      const originX = this.root.x;
+      const originX = this.root.x, originY = this.root.y, originDepth = this.root.depth;
       // Wide attack poses can extend beyond their idle footprint in the rear
       // slot. Step into a visible starting position, then return at native scale.
       const casting=!c.paired&&opts.target&&/^(cast|slash|slash_wide|riposte|finisher|leap|pounce|charge|bite|lash)$/.test(clip)&&scene.textures;
@@ -420,14 +426,16 @@ class Actor {
       // Pair canvases are registered on the hero. Close to the embedded foe's
       // authored offset before replacing the separate actor, rather than making
       // a distant foe teleport into the contact pose. Metadata can tune each pair.
-      const pairDistance = c.pairTargetDistance != null ? c.pairTargetDistance : this.height * (c.pairTargetDistanceRatio || 0.65);
+      const pairDistance = (c.pairTargetDistance != null ? c.pairTargetDistance : this.height * (c.pairTargetDistanceRatio || 0.65)) * this.perspectiveAt(target?.root.y ?? originY);
       const pairX = pairedFinish ? target.root.x - pairDistance * this.facing : originX;
-      const pairApproach = pairedFinish && Math.abs(pairX - originX) > 24;
+      const pairY = pairedFinish && Number.isFinite(target.root.y) ? target.root.y : originY;
+      const pairApproach = pairedFinish && (Math.abs(pairX - originX) > 24 || Math.abs(pairY-originY)>1);
       const approaching = !c.paired && opts.target && /^(slash|slash_wide|riposte|finisher|leap|pounce|charge)$/.test(clip);
       const attacking = /^(slash|slash_wide|riposte|finisher)$/.test(clip);
       const returning = /^(land_tumble|land_beside|overshoot_land|lash_back)$/.test(clip);
-      const reach = c.contactDistance || this.height * (attacking ? 0.55 : 0.34) + (opts.target ? opts.target.height * 0.2 : 0);
+      const reach = (c.contactDistance || this.height * (attacking ? 0.55 : 0.34) + (opts.target ? opts.target.height * 0.2 : 0)) * this.perspectiveAt(opts.target?.root.y ?? originY);
       const contactX = approaching ? opts.target.root.x - reach * this.facing : originX;
+      const contactY = approaching && Number.isFinite(opts.target.root.y) ? opts.target.root.y : originY;
       const contacts = [...new Set(c.contact || c.contactFramesZeroBased || [])].filter(n => Number.isInteger(n) && n >= 0 && n < c.frames.length).sort((a, b) => a - b);
       const release = Math.max(0, Math.min(c.frames.length - 1, c.release != null ? c.release : c.releaseFrameZeroBased != null ? c.releaseFrameZeroBased : c.frames.length - 1));
       const motion = new Set();
@@ -454,12 +462,15 @@ class Actor {
         ended = true; clean();
         if (this._playback === playback) this._playback = null;
         if (cancelled && (drift || approaching || returning || pairApproach || casting)) this.root.x = originX;
+        if (cancelled && (approaching || returning || pairApproach)) this.root.y = originY;
+        if (originDepth!=null && this.root.setDepth) this.root.setDepth(originDepth);
+        this.syncPerspective();
         resolve();
       };
       const playback = this._playback = { cancel: () => finish(true) };
       const live = () => !ended && !this._destroyed && this._playback === playback;
-      const move = (x, duration, ease, then) => {
-        const t = scene.tweens.add({ targets: this.root, x, duration, ease, onComplete: () => { motion.delete(t); if (live() && then) then(); } });
+      const move = (x, duration, ease, then, y) => {
+        const t = scene.tweens.add({ targets: this.root, x, ...(Number.isFinite(y)?{y}:{}), duration, ease, onUpdate:()=>this.syncPerspective(), onComplete: () => { this.syncPerspective(); motion.delete(t); if (live() && then) then(); } });
         motion.add(t);
       };
       const at = i => {
@@ -501,8 +512,8 @@ class Actor {
         if (pairApproach) {
           this.resetImageTransform();
           if (this.sheet.clips.walk) this.img.play(this.animKey('walk'), true);
-          move(originX, Math.min(260, Math.abs(pairX - originX)), 'Sine.InOut', settle);
-        } else if (drift || (approaching && attacking) || castX!==originX) move(originX, 100, 'Sine.Out', settle); else settle();
+          move(originX, Math.min(260, Math.max(120,Math.hypot(pairX-originX,pairY-originY))), 'Sine.InOut', settle, originY);
+        } else if (drift || (approaching && attacking) || castX!==originX) move(originX, 100, 'Sine.Out', settle, originY); else settle();
       };
       const startClip = () => {
         if (!live()) return;
@@ -514,13 +525,15 @@ class Actor {
         if (!c.loop && approaching) {
           const first = contacts.length ? contacts[0] : Math.floor(c.frames.length / 2);
           const leadMs = (c.durationMs || 600) * first / c.frames.length;
-          move(contactX, Math.max(1, Math.min(170, leadMs || 1)), 'Sine.Out');
-        } else if (!c.loop && returning) move(this.home.x, Math.max(100, (c.durationMs || 500) - 80), 'Sine.Out');
+          if(this.root.setDepth)this.root.setDepth(110);
+          move(contactX, Math.max(1, Math.min(170, leadMs || 1)), 'Sine.Out', null, contactY);
+        } else if (!c.loop && returning) move(this.home.x, Math.max(100, (c.durationMs || 500) - 80), 'Sine.Out', null, this.home.y);
       };
       if (pairApproach) {
+        if(this.root.setDepth)this.root.setDepth(110);
         this.resetImageTransform();
         if (this.sheet.clips.walk) this.img.play(this.animKey('walk'), true);
-        move(pairX, Math.min(280, Math.max(120, Math.abs(pairX - originX))), 'Sine.InOut', startClip);
+        move(pairX, Math.min(280, Math.max(120, Math.hypot(pairX-originX,pairY-originY))), 'Sine.InOut', startClip, pairY);
         this.syncPause();
       } else if(castX!==originX)move(castX,120,'Sine.Out',startClip);
       else startClip();
@@ -530,7 +543,7 @@ class Actor {
         if (clip === 'enter' || clip === 'walk') {
           if (opts.from != null) this.root.x = opts.from;
           const to = opts.x != null ? opts.x : clip === 'enter' ? this.home.x : this.root.x + 200;
-          move(to, opts.duration || 700, 'Sine.InOut', () => { if (opts.thenIdle !== false) this.idle(); finish(false); });
+          move(to, opts.duration || 700, 'Sine.InOut', () => { if (opts.thenIdle !== false) this.idle(); finish(false); }, opts.y != null ? opts.y : clip === 'enter' ? this.home.y : this.root.y);
         } else if (opts.onContact && /^(slash|slash_wide|riposte|finisher|bite|lash|charge|pounce|leap|cast)$/.test(clip)) {
           // An attack with no painted clip of its own (Hiro, 2026-09-28: a
           // mob must never die to an invisible animation). Hold the pose,

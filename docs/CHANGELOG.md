@@ -15,6 +15,22 @@ of small fixes within a day.
 
 ---
 
+## 2026-10-17 — Companion names never wrap (local)
+
+Hiro: "winston name shows up too big, can you fix font sizes so they don't get too big and need to wrap."
+
+- **Cause.** The welcome card's name ran up to 65 px wide, with `overflow-wrap:anywhere`. Winston's style added a larger size of its own and 0.13 em letter spacing, so his name overflowed and broke mid-word.
+- **`docs/story_companions.css`:**
+  - the welcome name is now `clamp(26px, 4.2vw, 52px)`;
+  - names are `display:block; white-space:nowrap` and can never wrap;
+  - Winston's extra size is removed, and his letter spacing goes from 0.13 to 0.09 em.
+  The per-companion styling is otherwise unchanged.
+- **`story_companion_ui.js` `fitName`.** After render, any name in the welcome card or the party check that still overflows its column shrinks 2 px at a time, to no smaller than 16 px.
+- **Cache.** `tools/build_story_preview.js` now stamps `docs/story_companions.css` like the story scripts, so returning players get the fix. Stamp 20261017-xp2.
+- **Verified in Chrome** for all 15 welcome cards at 1280×760 and 390×844: every name has one text line (counted from rendered line boxes) and no overflow. Screenshots of Winston (desktop) and Dai Morgan (phone).
+  - Tests passed: `npm test`, `story_companions.js`, `browser_companion_ui.js` and `browser_companion_joins.js`.
+- **Not published yet.** The live site (15625c2) still has the old sizes. Since then the tree also holds Astra's parry reuse of the draw-cut frames (hiro.json, painted.js, actors.js) and the start of the formation work, so the next publish should wait for that pass or ship with it knowingly.
+
 ## 2026-10-16 — Reused draw-review art as melee parry (local)
 
 - Added `parry-rise`: **9 reused drawings / 625 ms**, contact frame **2**, using kote review frames 2,3,4,5,6,8,9,10,11. No image generation or voice credits. Adds **763,380 bytes**. Existing frames and clips preserved.

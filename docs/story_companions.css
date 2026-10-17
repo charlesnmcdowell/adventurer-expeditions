@@ -12,8 +12,8 @@
 .companion-unlock{--accent:#edc58b;position:relative;isolation:isolate;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);align-items:center;gap:clamp(12px,3vw,36px);overflow:hidden;padding:clamp(18px,4vw,44px);border-color:var(--accent);background:linear-gradient(115deg,#111d2cef,#121319f5);box-shadow:0 12px 70px #0009;text-align:left}
 .companion-unlock::before{content:'';position:absolute;z-index:-1;inset:18% -15%;transform:rotate(-9deg);background:linear-gradient(90deg,transparent,color-mix(in srgb,var(--accent) 24%,transparent),transparent);border-block:1px solid color-mix(in srgb,var(--accent) 40%,transparent);animation:welcome-banner .65s ease-out}
 .companion-unlock>img{width:100%;height:min(49dvh,390px);object-fit:contain;filter:drop-shadow(0 8px 18px #000b);animation:welcome-slide .65s cubic-bezier(.16,1.22,.3,1)}
-.companion-name{font-family:Company,Georgia,serif;font-weight:700;color:var(--accent,#e8cb92);text-shadow:0 3px 0 #0008;overflow-wrap:anywhere}
-.companion-unlock h1{font-size:clamp(30px,5.5vw,65px);line-height:1.1;margin:10px 0 20px;animation:welcome-name .65s ease-out}
+.companion-name{font-family:Company,Georgia,serif;font-weight:700;color:var(--accent,#e8cb92);text-shadow:0 3px 0 #0008;display:block;white-space:nowrap;overflow-wrap:normal;max-width:100%}
+.companion-unlock h1{font-size:clamp(26px,4.2vw,52px);line-height:1.1;margin:10px 0 20px;animation:welcome-name .65s ease-out}
 .companion-unlock .join-label{text-transform:uppercase;font:700 12px/1.5 system-ui;letter-spacing:.16em;color:#eee7d6}
 .companion-unlock .join-hook{font:clamp(16px,2vw,21px)/1.5 Georgia,serif;color:#faf0dc;margin:0 0 16px}
 .companion-unlock .join-weapon{font:14px/1.4 system-ui;color:#bdc5cf}
@@ -22,7 +22,7 @@
 .party-confirm-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:22px 0}.party-member{border:1px solid #6a614f;background:#16202c;padding:16px 10px;border-radius:8px}.party-member img{display:block;object-fit:contain;width:100%;height:145px;margin-bottom:12px}.party-member strong{font-size:22px}.party-member p{font:14px/1.45 system-ui;margin:8px 0}.companion-picker button{min-height:44px}
 [data-companion-style=wren_ward]{--accent:#f6c272}[data-companion-style=wren_ward] .companion-name{font-style:italic;transform:rotate(-3deg);text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:8px}
 [data-companion-style=vess]{--accent:#f3a963}[data-companion-style=vess] .companion-name{text-shadow:2px 3px #742e25;letter-spacing:.04em}
-[data-companion-style=fennick]{--accent:#bbd7ae}[data-companion-style=fennick] .companion-name{font-size:clamp(28px,4vw,48px);letter-spacing:.13em;border-bottom:1px solid #bbd7ae66}
+[data-companion-style=fennick]{--accent:#bbd7ae}[data-companion-style=fennick] .companion-name{letter-spacing:.09em;border-bottom:1px solid #bbd7ae66}
 [data-companion-style=cassian]{--accent:#f6dfa0}[data-companion-style=cassian] .companion-name{border-block:double 3px #f6dfa066;padding-block:8px}
 [data-companion-style=dorran]{--accent:#cae0a8}[data-companion-style=dorran] .companion-name{font-weight:900;text-shadow:2px 3px #234238}
 [data-companion-style=selene]{--accent:#e6b98e}[data-companion-style=selene] .companion-name{border-bottom:3px solid #a8794e;letter-spacing:.025em}
@@ -42,3 +42,5 @@
 @keyframes welcome-exit{to{opacity:0;transform:translateX(12%)}}
 @media(max-width:500px){.companion-unlock{grid-template-columns:1fr;gap:0;text-align:center;padding:16px}.companion-unlock>img{height:29dvh}.companion-unlock h1{margin:8px 0 14px}.companion-unlock .join-hook{font-size:16px}.companion-unlock .join-label{margin:6px 0}.party-confirm-list{gap:6px}.party-member{padding:10px 5px}.party-member img{height:95px}.party-member strong{font-size:16px!important}.party-member p{font-size:12px}}
 @media(prefers-reduced-motion:reduce){.companion-unlock,.companion-unlock>img,.companion-unlock::before,.companion-unlock .companion-name{animation:welcome-name .12s linear!important;transform:none!important}.companion-unlock.leaving{opacity:0}}
+
+/* 2026-10-17: names never wrap; story_companion_ui.js shrinks any that still overflow (Hiro: "Winston name shows up too big"). */

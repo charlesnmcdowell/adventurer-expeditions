@@ -7,7 +7,7 @@ const A = ADV, X = A.Expedition;
 const T = () => A.T;
 const W = 1280, H = 760;
 const GROUND_Y = 612;
-const HERO_X = 400;
+const HERO_X = 450;
 const FOE_X = [850, 1000, 1140];
 const wait = (scene, t) => new Promise(r => scene.time.delayedCall(t, r));
 
@@ -137,7 +137,7 @@ class ExpeditionScene extends Phaser.Scene {
   spawnCompanions() {
     for (const a of [...this.actors.values()]) if (a.side === 'a' && a !== this.hero) { a.destroy(); this.actors.delete(a.uid); }
     if (!this.world.companions.length) return;
-    const marks = [{ x: 265, y: GROUND_Y - 34, depth: 98 }, { x: 150, y: GROUND_Y - 60, depth: 96 }];   // behind Hiro, clear of the HUD's icons (x < 230, y > 550)
+    const marks = this.companionMarks();
     let i = 0;
     for (const u of this.enc.st.units) {
       if (u.side !== 'a' || u.uid === this.hero.uid) continue;
@@ -151,6 +151,18 @@ class ExpeditionScene extends Phaser.Scene {
       this.actors.set(u.uid, a);
       i++;
     }
+  }
+
+  companionMarks() {
+    // Separate faces and silhouettes without reducing authored character size.
+    // Rear feet sit above the skill buttons; the centre remains an attack lane.
+    return [{x:280,y:GROUND_Y-100,depth:98},{x:110,y:GROUND_Y-182,depth:96}];
+  }
+
+  perspectiveAt(y) {
+    // Ground depth, not crowd size: near 100%, middle 81%, far 65%.
+    // Root scaling keeps art, shadows and plates together through all clips.
+    return Math.max(.60,Math.min(1.08,1+(y-GROUND_Y)*.0019));
   }
 
   spawnFoes() {
@@ -183,22 +195,25 @@ class ExpeditionScene extends Phaser.Scene {
   // fits the stage. Ordinary waves land on the same marks as before.
   spaceFoes(foes) {
     if (!foes.length) return;
-    const left = 790, right = 1210, span = right - left;
-    const widths = foes.map(a => Math.max(90, (a.img && a.img.displayWidth ? a.img.displayWidth : a.height * 0.9) * 0.62));
-    const total = widths.reduce((n, w) => n + w, 0);
-    const wide = total > span * 0.98;
-    // Small waves keep the classic marks when they fit; anything wider is packed.
-    if (!wide && foes.length <= FOE_X.length && total <= 300) { foes.forEach((a, i) => { a.home.x = FOE_X[i]; }); return; }
-    if (wide) {
-      // A crowd uses a wider span, front-most last for readable overlap.
-      // Keep authored scale: crowds use spacing and depth, never smaller bodies.
-      const l2 = left - 40, r2 = right + 20, step = (r2 - l2) / foes.length;
-      foes.forEach((a, i) => { a.home.x = Math.round(l2 + step * (i + 0.5)); a.root.setDepth(100 + i); });
-      return;
-    }
-    const gap = (span - total) / (foes.length + 1);
-    let x = left + gap;
-    foes.forEach((a, i) => { a.home.x = Math.round(x + widths[i] / 2); x += widths[i] + gap; });
+    foes.forEach((a,i)=>{
+      const rank=foes.length===1?0:i/(foes.length-1);
+      a.home.y=GROUND_Y-180*rank;
+      a.root.y=a.groundY=a.home.y;
+      a.syncPerspective();
+      const ext=this.idleExtents(a);
+      const nominal=foes.length===1?1010:840+rank*300;
+      a.home.x=Math.round(Math.max(735-ext.left,Math.min(nominal,1252-ext.right)));
+      a.root.setDepth(105-i*2);
+    });
+  }
+
+  idleExtents(a) {
+    const pivot=a.sheet.canvas.pivot.x,scale=a._baseScaleX*this.perspectiveAt(a.home.y);
+    const edges=a.sheet.clips.idle.frames.flatMap(id=>{
+      const f=this.textures.getFrame(a.sheet.key,id);
+      return [(f.x-pivot)*scale,(f.x+f.width-pivot)*scale];
+    });
+    return {left:Math.min(...edges),right:Math.max(...edges)};
   }
 
   startMusic(track) {

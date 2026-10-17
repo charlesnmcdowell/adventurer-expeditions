@@ -75,6 +75,38 @@ test('per-frame durations retain variable holds and exact configured total', () 
   assert.deepEqual(Array.from(cfg.frames, f => f.duration), [90, 40, 170]);
   assert.equal(cfg.duration, 300);
 });
+
+test('staggered melee crosses to the target row and restores both coordinates', async () => {
+  for(const cancel of [false,true]){
+    const a=actor(),target={root:{x:900,y:500},height:300};
+    const p=a.play('slash',{target});await tick();
+    assert.equal(a.root.y,500,'contact must share the target ground line');
+    assert(a.root.x>100,'must cross the empty centre');
+    if(cancel)a.cancelPlayback();else {emit(a,'animationupdate','slash',1);emit(a,'animationcomplete','slash',2);}
+    await p;assert.equal(a.root.x,100);assert.equal(a.root.y,300);
+  }
+});
+
+test('staggered walk fills a rear slot in both axes without changing size', async () => {
+  const a=actor({walk:clip('walk',{loop:true,contact:[]})});
+  await a.play('walk',{x:400,y:420,duration:340});
+  assert.equal(a.root.x,400);assert.equal(a.root.y,420);assert.equal(a.img.scaleX,1);
+});
+
+test('ground perspective follows travel, paired clips and interruption without altering native size', async () => {
+  const a=actor();a.scene.perspectiveAt=y=>Math.max(.6,1+(y-612)*.0019);
+  a.root.setScale=function(s){this.scaleX=this.scaleY=s;};
+  a.root.y=430;a.home.y=430;a.syncPerspective();
+  assert(Math.abs(a.root.scaleX-.6542)<.0001);assert.equal(a.height,300);
+  const target={root:{x:900,y:612},height:300};
+  const p=a.play('slash',{target});await tick();assert.equal(a.root.scaleX,1);
+  a.cancelPlayback();await p;assert.equal(a.root.y,430);assert(Math.abs(a.root.scaleX-.6542)<.0001);
+  assert.equal(a._baseScaleX,1);assert.equal(a.img.scaleX,1);
+  a.sheet.canvas={pivot:{x:200,y:400}};
+  const point=a.releasePoint({releaseAnchor:{x:220,y:300}});
+  assert(Math.abs(point.x-(100+20*.6542))<.001);
+  assert(Math.abs(point.y-(430-100*.6542))<.001);
+});
 test('rear-row enemies step inside the screen before drawing a wide attack', async () => {
   const a=actor();a.side='b';a.facing=-1;a.root.x=a.home.x=1200;
   a.sheet.canvas={w:600,h:600,pivot:{x:300,y:450}};

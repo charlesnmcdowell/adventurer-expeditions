@@ -68,10 +68,11 @@ F.play = (scene, killer, hero) => new Promise(resolve => {
   const actor = killer.sheet?.actor, KEY = keyFor(actor);
   const data = scene.cache.json.get(KEY + '_clips'), clip = data?.clips[actor + '-fatal'];
   if (!F.enabled() || !clip || scene.ended) { resolve(false); return; }
-  const old = { hero: hero.root.visible, killer: killer.root.visible, x: killer.root.x };
-  const origin = data.canvas.pivot, scale = hero.height / data.standing;
+  const old = { hero: hero.root.visible, killer: killer.root.visible, x: killer.root.x, y:killer.root.y };
+  const perspective=hero.perspectiveAt?hero.perspectiveAt(hero.y):1;
+  const origin = data.canvas.pivot, scale = hero.height / data.standing * perspective;
   let elapsed = 0, frame = 0, pair = null, done = false, settled = false;
-  const approachMs = 180, endX = hero.x + hero.height * (clip.pairTargetDistanceRatio || 0.73);
+  const approachMs = 180, endX = hero.x + hero.height * (clip.pairTargetDistanceRatio || 0.73) * perspective;
   hero.cancelPlayback(); killer.cancelPlayback();
   const startX = killer.x;
   const approach = ['approach-leap', 'approach', 'run'].find(id => killer.sheet.clips[id]);
@@ -82,7 +83,7 @@ F.play = (scene, killer, hero) => new Promise(resolve => {
     if (pair) pair.destroy();
     scene.__enemyFinishSprite = null;
     if (!hero._destroyed) { hero.root.setVisible(old.hero); }
-    if (!killer._destroyed) { killer.root.setVisible(old.killer); killer.root.x = old.x; killer.idle(); }
+    if (!killer._destroyed) { killer.root.setVisible(old.killer); killer.root.x = old.x;killer.root.y=old.y;killer.syncPerspective?.(); killer.idle(); }
     if (!settled) { settled = true; resolve(false); }
   };
   const shutdown = () => { detach(); if (pair) pair.destroy(); scene.__enemyFinishSprite = null; if (!settled) { settled = true; resolve(false); } };
@@ -93,6 +94,8 @@ F.play = (scene, killer, hero) => new Promise(resolve => {
     elapsed += delta * scene.time.timeScale;
     if (!pair) {
       killer.root.x = startX + (endX - startX) * Math.min(1, elapsed / approachMs);
+      if(Number.isFinite(old.y)&&Number.isFinite(hero.y))killer.root.y=old.y+(hero.y-old.y)*Math.min(1,elapsed/approachMs);
+      killer.syncPerspective?.();
       if (elapsed < approachMs) return;
       elapsed -= approachMs;
       killer.img.anims.stop(); hero.img.anims.stop();
