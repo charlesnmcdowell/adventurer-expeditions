@@ -10,6 +10,7 @@ from PIL import Image
 import build_citadel_combat as extraction
 import build_story_nib as pairs
 from art_intake_v2 import build
+from repair_femi_idle import repair as repair_femi_idle
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -98,6 +99,7 @@ def main():
     manifest=dict(actor=actor,authoredFacing=-1,clips=clips,status='registered review; visual approval required')
     (src/'combat-manifest.json').write_text(json.dumps(manifest,indent=2))
     doc=build(src,actor,out,300,95,manifest,lossless=True);doc['authoredFacing']=-1
+    repair_femi_idle(doc,out/actor)
     # Measured on the registered runtime canvas (Oct 12 readability review).
     # Rebuilds retain cast release timing and hand/staff attachment points.
     anchors=json.loads((ROOT/'tools/story_cast_anchors.json').read_text())

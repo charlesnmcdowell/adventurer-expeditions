@@ -15,6 +15,16 @@ of small fixes within a day.
 
 ---
 
+## 2026-10-17 — Grounded formations, enemy idle registration and spacing (local)
+
+- **Ground and perspective:** `scene.js`, `story_scene.js`, `story_stage.js`, `actors.js`, `knockback.js` now enforce 32 scene-specific walkable ground profiles. Gnoll-fort right-hand positions land below the tower instead of on it. Actors share continuous depth scaling; melee approach/return follows both coordinates. Knockback lands on the local floor, and the old death fade's 30 px upward drift is removed. Profiles are authored visual boundaries, not automatic collision detection against every painted object.
+- **Party:** Hiro's front mark is 450 (formerly 400); companion preferred marks are 280/512 and 110/430, constrained by the scene's floor. Wide allies receive 155 px centre spacing (170 before Hiro). Rear actors scale with ground depth rather than retaining foreground size.
+- **Enemy huddling:** replace independently clamped nominal slots with a joint layout using the union of each actor's visible idle bounds. Available horizontal room is shared evenly; survivors re-space after a death, leaving an additional 40 px at the front per defeated enemy, capped at 100 px. Crowded waves use a common formation view scale (65–100%, aiming for 150 px spacing), applied to **all** fighters, fixed for that encounter and retained through finishers. This preserves relative character sizes. Some overlap is still unavoidable in very large waves; the central attack lane stays clear.
+- **Femi/Verlan idle:** the burgundy-coated Thornbury opponent had boot centres at 460.5, 375.5, 379.5 and 481 atlas pixels. The four anchors now stay within 1 px of x=428 and sit at floor y=490. Only trimmed-frame metadata changed; all atlas bytes, non-idle frames and the four 180 ms holds are unchanged. `tools/repair_femi_idle.py` is idempotent and called by `build_story_actor.py`, so future intakes preserve the correction. No new art or voice generation.
+- **Regression coverage:** `battle_ground.js` covers all 32 ground profiles and corpse settling; `idle_registration.js` checks both Phaser/review metadata and idle timing. Both are included in `npm test`. Browser formation coverage includes six desktop/mobile chapter 2/3/5/7 scenarios, live Femi idle cycling, melee contact/return, four-enemy spacing and survivor/death checks. Evidence is in ignored `test/reports/story/formation/`.
+- **Validation:** final `npm test`, all six real-browser formation cases (including fixed framing after deaths), and the seed-1 shipping browser journey passed. The shipping journey completed two quests and returned to the inn. The earlier seed-11 shipping driver stalled on its defeat screen, not a successful gate. Prior melee parry reuse passed its real-browser test; rejected Iaido pose art remains unapproved as an Iaido attack.
+- **Cache:** entry pages share 20261017-xp3; Femi's atlas metadata has its own idle-anchor revision. Other session's site packaging changes are left alone. Nothing published or pushed.
+
 ## 2026-10-17 — Companion names never wrap (local)
 
 Hiro: "winston name shows up too big, can you fix font sizes so they don't get too big and need to wrap."

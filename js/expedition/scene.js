@@ -163,9 +163,10 @@ class ExpeditionScene extends Phaser.Scene {
   }
 
   perspectiveAt(y) {
-    // Ground depth, not crowd size: near 100%, middle 81%, far 65%.
+    // Ground-depth factors: near 100%, middle 81%, far 65%, multiplied
+    // by the common encounter framing (never an individual crowd shrink).
     // Root scaling keeps art, shadows and plates together through all clips.
-    return Math.max(.60,Math.min(1.08,1+(y-GROUND_Y)*.0019));
+    return (this.formationScale||1)*Math.max(.60,Math.min(1.08,1+(y-GROUND_Y)*.0019));
   }
 
   groundProfile() { return [[0,530],[1280,530]]; }
@@ -199,6 +200,7 @@ class ExpeditionScene extends Phaser.Scene {
   }
 
   spawnFoes() {
+    this.formationScale=1;this._formationFramed=false;
     for (const a of [...this.actors.values()]) if (a.side === 'b') { a.destroy(); this.actors.delete(a.uid); }
     const spawned = [];
     let i = 0;
@@ -223,28 +225,39 @@ class ExpeditionScene extends Phaser.Scene {
     this.spaceFoes(spawned);
   }
 
-  // Place the foes by their painted widths rather than at a fixed pitch, so a
-  // boss wave of two or three 330-px bosses (the loop rules, 2026-09-27) still
-  // fits the stage. Ordinary waves land on the same marks as before.
-  spaceFoes(foes) {
+  // Solve idle footprints across the enemy half, rather than clamping each
+  // nominal slot independently (which piles wide actors onto the same edge).
+  // Large waves share unavoidable overlap evenly and retain size ratios.
+  spaceFoes(foes, minimumLeft=735) {
     if (!foes.length) return;
-    const laneLeft=Math.max(735,this.hero?this.hero.home.x+this.idleExtents(this.hero).right+120:735);
+    const left=Math.max(minimumLeft,this.hero?this.hero.home.x+this.idleExtents(this.hero).right+120:735),right=1252;
     foes.forEach((a,i)=>{
       const rank=foes.length===1?0:i/(foes.length-1);
       a.home.y=GROUND_Y-180*rank;
-      a.root.y=a.groundY=a.home.y;
-      a.syncPerspective();
-      const ext=this.idleExtents(a);
-      const nominal=foes.length===1?1010:840+rank*300;
-      a.home.x=Math.round(Math.max(laneLeft-ext.left,Math.min(nominal,1252-ext.right)));
       this.placeOnGround(a);
-      for(let pass=0;pass<3;pass++){
-        const bounds=this.idleExtents(a);
-        a.home.x=Math.round(Math.max(laneLeft-bounds.left,Math.min(a.home.x,1252-bounds.right)));
-        this.placeOnGround(a);
-      }
-      a.root.setDepth(90+a.home.y/100);
     });
+    if(!this._formationFramed){
+      // Fit one common view scale, including Hiro/allies, before the entrance.
+      // Keep it for the whole encounter: deaths/finishers never resize actors.
+      const ext=foes.map(a=>this.idleExtents(a)),widths=ext.map(b=>b.right-b.left);
+      const span=(widths[0]+widths.at(-1))/2+150*(foes.length-1);
+      this.formationScale=foes.length>1?Math.max(.65,Math.min(1,(right-left)/span)):1;
+      this._formationFramed=true;
+      for(const a of this.actors.values())a.syncPerspective();
+    }
+    // Ground contours alter perspective/width, so converge on their bounds.
+    for(let pass=0;pass<12;pass++){
+      const bounds=foes.map(a=>this.idleExtents(a));
+      const widths=bounds.map(b=>b.right-b.left),total=widths.reduce((a,b)=>a+b,0);
+      const gap=foes.length>1?(right-left-total)/(foes.length-1):0;
+      let edge=left;
+      foes.forEach((a,i)=>{
+        a.home.x=foes.length===1?Math.max(left-bounds[i].left,Math.min(1010,right-bounds[i].right)):edge-bounds[i].left;
+        this.placeOnGround(a);
+        a.root.setDepth(90+a.home.y/100);
+        edge+=widths[i]+gap;
+      });
+    }
   }
 
   idleExtents(a) {

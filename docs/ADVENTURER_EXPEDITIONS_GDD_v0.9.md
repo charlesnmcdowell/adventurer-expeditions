@@ -601,6 +601,9 @@ with `ambush: true` and a rival's member list — the code for it is written.
 
 ## 7. Combat, presentation and the HUD
 
+**October 17 formation decision:** ground position is constrained by each battle plate's authored walkable profile (32 story locations). Depth scales every actor, shadow and plate together. Idle enemy slots use painted widths and re-space survivors after a death; no continuously shifting idle solver. A crowded encounter may frame **all fighters together** at 65–100% scale to improve separation, held constant until the next encounter, including paired finishers. Keep the centre clear for approach/return, preserve character proportions, and settle death bodies on the local floor. Shared framing is a readability compromise; very large waves can still overlap. Correct frame registration before ordering new art (Femi's four idle poses were fixed without repainting).
+
+
 ### 7.0 Skill levelling removed; God Aura changes job (decided 2026-09-24)
 
 *Hiro, 2026-09-24: skill levelling "doesn't really add much to the game."*
