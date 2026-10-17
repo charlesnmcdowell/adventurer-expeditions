@@ -15,6 +15,29 @@ of small fixes within a day.
 
 ---
 
+## 2026-10-17 — Website: the password unlocks the full game (live)
+
+Hiro: "I'd like the password to now unlock the full game."
+
+- **Live** at charlesnmcdowell.github.io/audiobook2-audio, commit c864665.
+  - Chapter one is still free. "Hiro" now opens chapters 2–14 and the endings.
+  - 2,120 files; the site totals 0.852 GB of 1 GB.
+  - Checked live: the public notice says chapter one only; with the password it says 1–14; a chapter-9 fight and the chapter-14 Kolade fight load with music; no page errors or failed requests.
+- **Built from a clean copy of b954f25** (a temporary git worktree, since removed), not the working tree. Astra's uncommitted formation edits (actors, knockback, scene, story_scene, story_stage) are not in it. b954f25 does include the companion-name fix and the committed part of the formation spacing.
+- **`tools/site_demo.js` changes:**
+  - with EXPEDITIONS_SITE_THROUGH=14 it ships every media file, because ending narration carries no chapter prefix;
+  - verify checks a real ending ("The Gate Stands") in place of the coming-soon boundary.
+  The first full verify had one page error. It came from a test save marked complete with no ending recorded, which play can't produce: the "hero", "mercy" and "monster" endings rendered cleanly.
+- **Final verify:**
+  - all 55 fights load;
+  - public lock, wrong password refused, password opens 1–14;
+  - road trip into chapter 2;
+  - companion welcome, Accept, party check and the Hiwot fight;
+  - the ending card;
+  - nothing missing, no page errors.
+- **Staging:** 2,120 files copied with every sha256 checked against the receipt. Files a new receipt doesn't list would have been removed (none were). The repo's README.md, .nojekyll and Hiro's untracked `_to_delete` audio chunks were left alone.
+- **Still to decide:** the public demo text and the post-chapter-one card say more chapters are "on the way", though the full game exists behind the password. The main site's funding goals still say $500 for chapter 2 and $700 for chapter 3.
+
 ## 2026-10-17 — Grounded formations, enemy idle registration and spacing (local)
 
 - **Ground and perspective:** `scene.js`, `story_scene.js`, `story_stage.js`, `actors.js`, `knockback.js` now enforce 32 scene-specific walkable ground profiles. Gnoll-fort right-hand positions land below the tower instead of on it. Actors share continuous depth scaling; melee approach/return follows both coordinates. Knockback lands on the local floor, and the old death fade's 30 px upward drift is removed. Profiles are authored visual boundaries, not automatic collision detection against every painted object.

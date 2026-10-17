@@ -66,6 +66,10 @@ function shippedCompanions() {
 function chapterOneMedia() {
   const d = JSON.parse(fs.readFileSync(path.join(ROOT, 'assets/expedition/story/campaign.json')));
   const media = JSON.parse(fs.readFileSync(path.join(ROOT, 'assets/expedition/story/preview-media.json')));
+  // The full game (Hiro, 2026-10-17: "the password to now unlock the full game")
+  // ships every story recording, painting and track, including the endings'
+  // narration, which carries no chapter prefix.
+  if (SITE_THROUGH >= 14) return { keep: new Set(media), media, enemies: shippedEnemies(), companions: shippedCompanions() };
   // The next chapter's track plays behind the coming-soon card.
   const m = d.music, tracks = new Set([...CHAPTERS.map(n => m.quest[n]), m.quest[PUBLIC_THROUGH + 1], m.quest[SITE_THROUGH + 1],
     ...CHAPTERS.map(n => m.combatByQuest?.[n] || m.combat[n >= m.cityFrom ? 'city' : 'road']), m.dream, 'vg_lanternhold'].filter(Boolean));
@@ -229,6 +233,16 @@ async function verify() {
     }
     // The last playable chapter returns to the inn. A paid rest must load its
     // actual scene from the frozen package before Continue reaches the boundary.
+    if (SITE_THROUGH >= 14) {
+      // Full game: no boundary. The finished campaign shows its ending card and
+      // narration, then the closing thank-you card.
+      await page.evaluate(() => { const S = ADV.Expedition.Story, s = S.open(S.fresh()), r = s.record;
+        r.chapter = 14; r.phase = 'complete'; r.completed = Array.from({ length: 14 }, (_, i) => i + 1); r.titleCards = r.completed; ADV.Campaign3.state(s.game).ending = 'hero'; S.syncQuest(s); S.save(s); });
+      await page.goto(base + '/'); await page.getByRole('button', { name: 'Continue story', exact: true }).click();
+      await page.locator('#epilogue').waitFor({ timeout: 20000 });
+      const title = await page.locator('#epilogue h1').first().textContent();
+      console.log('full game: ending card "' + title.trim() + '" shown');
+    } else {
     await page.evaluate(([next, done]) => { const S = ADV.Expedition.Story, s = S.open(S.fresh()), r = s.record;
       r.chapter = next; r.phase = 'inn'; r.completed = done; r.titleCards = done; r.run.hp=80;r.run.hpMax=344;r.run.score=2000;S.syncQuest(s); S.save(s); }, [SITE_THROUGH + 1, CHAPTERS]);
     await page.goto(base + '/'); await page.getByRole('button', { name: 'Continue story', exact: true }).click();
@@ -240,6 +254,7 @@ async function verify() {
     const card = await page.locator('.demo-end h1').textContent({ timeout: 15000 });
     if (!/coming soon/i.test(card)) throw Error('Unexpected end card: ' + card);
     console.log('demo end card: "' + card.trim() + '"');
+    }
     const phone = await browser.newPage({ viewport: { width: 390, height: 844 } });
     await phone.goto(base + '/'); await phone.getByRole('button', { name: /story/i }).first().waitFor();
     fs.mkdirSync(path.join(ROOT, 'test/reports/site-demo'), { recursive: true });
