@@ -23,6 +23,22 @@ of small fixes within a day.
 - **Validation:** source-edge/component/unique-frame/padded-canvas checks plus `node test/browser_iaido_cuts_review.js` passed; contact and guide-hand screenshots inspected. Tests verify technical presentation, not martial-arts correctness. No runtime atlas, game code, damage, cooldown or website package changed; motion approval precedes runtime replacement under ART_STANDARD §2.9. Other session's live-release log and new `ASTRA_PROMPT_NEXT_20261016b.md` are preserved and are not part of this art task.
 - **Files:** review directory, `tools/build_iaido_review_20261016.py`, `test/browser_iaido_cuts_review.js`, this entry. No publishing or pushing.
 
+## 2026-10-16 — Website: companions, welcome and Iaido art published (live)
+
+Hiro: "make sure site is updated."
+
+- **Published** the verified package (`dist/site-demo-verified.json`, 1,201 files, built from 9f623e3; the later checkpoint fcc1a67 changed no files) to the demo's own Pages site, charlesnmcdowell.github.io/audiobook2-audio.
+  - Commit 15625c2.
+  - The site totals 0.479 GB.
+  - Chapter one is free; the password "Hiro" opens two to six.
+- **How it was staged.**
+  - The local `_audiobook2_release_upload` checkout was a commit behind GitHub (the previous demo was pushed from another copy), so it was fast-forwarded to f898d6f first.
+  - `site_demo.js stage` refused, rightly, because of the repo's own README.md and .nojekyll, the untracked `_to_delete` audio chunks (93 MB, left untouched) and five superseded recordings.
+  - So the 1,201 files were copied with every sha256 checked against the verify receipt, and the five replaced recordings were removed: faelen/q6_web_2, fennick/q5_camp_storm_1, vess/q2_pair_yes_1, wren_ward/q1_catchup_2 and wren_ward/q4_down_2.
+- **Live check.** Companions are enabled on the live site. A password save at the chapter-one inn played the road trip, then Hiwot's join display, then a chapter-two fight with Hiwot and Winston beside Hiro and the music on. No page errors, no failed requests.
+- **Seen in the live fight screenshot:** the two companions crowd behind Hiro, and the rear one's feet sit behind the bottom-left skill buttons. This is in the next brief.
+- The Hiro draw-cut art correction started at checkpoint fcc1a67 is not in this upload.
+
 ## 2026-10-16 — Approved companion roster activated (local)
 
 - **Approval and runtime:** user approved the complete roster for combat. `S.Companions.enabled` changes **false → true**. Chapter one remains solo; chapter two onward supports Hiro plus up to two eligible companions with the completed welcome/Accept and chapter party-confirmation flow. Existing recruitment, departure/death filters, explicit solo choice, nonlethal ally knockout and next-fight recovery are unchanged. No additional art generation or voice credits.
