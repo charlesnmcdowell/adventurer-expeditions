@@ -486,6 +486,27 @@ class Actor {
       const reach = (c.contactDistance || this.height * (attacking ? 0.55 : 0.34) + (opts.target ? opts.target.height * 0.2 : 0)) * this.perspectiveAt(opts.target?.root.y ?? originY);
       const contactX = approaching ? opts.target.root.x - reach * this.facing : originX;
       const contactY = approaching && Number.isFinite(opts.target.root.y) ? opts.target.root.y : originY;
+      const form = !c.paired && approaching && c.formMotion?.length===c.frames.length ? c.formMotion : null;
+      let formFrame=0,formElapsed=0;
+      const shadowAlpha=this.shadow?.alpha;
+      // The root/shadow stays on the battle floor. Only the painted eagle rises.
+      // Motion follows the authored frames so contact, pause and hit-stop agree.
+      const drawForm=(blend=0)=>{
+        if(!form)return;
+        const a=form[formFrame],b=form[Math.min(form.length-1,formFrame+1)];
+        const forward=a.forward+(b.forward-a.forward)*blend,lift=a.lift+(b.lift-a.lift)*blend;
+        this.root.x=originX+(contactX-originX)*forward;
+        this.root.y=originY+(contactY-originY)*forward;
+        this.img.y=-this.height*lift;
+        if(this.shadow)this.shadow.alpha=(shadowAlpha??1)*(1-Math.min(.65,lift));
+        this.syncPerspective();
+      };
+      const formTick=(time,dt)=>{
+        if(!form||!live()||this.img.anims?.isPaused||scene.paused||scene.time?.paused||scene.__paintedHitStopCount>0||scene.time?.now<(scene.__paintedHitStopUntil||0))return;
+        formElapsed+=Math.min(dt,50)*(scene.time?.timeScale??1);
+        const hold=c.frameDurationsMs?.[formFrame]||c.durationMs/c.frames.length;
+        drawForm(Math.min(1,formElapsed/hold));
+      };
       const contacts = [...new Set(c.contact || c.contactFramesZeroBased || [])].filter(n => Number.isInteger(n) && n >= 0 && n < c.frames.length).sort((a, b) => a - b);
       const release = Math.max(0, Math.min(c.frames.length - 1, c.release != null ? c.release : c.releaseFrameZeroBased != null ? c.releaseFrameZeroBased : c.frames.length - 1));
       const motion = new Set();
@@ -494,6 +515,11 @@ class Actor {
       };
       const clean = () => {
         detach();
+        if(form){
+          scene.events?.off('update',formTick);
+          this.root.x=originX;this.root.y=originY;this.img.y=0;
+          if(this.shadow)this.shadow.alpha=shadowAlpha;
+        }
         if(clearGore)clearGore();
         if(clearCharge){clearCharge();clearCharge=null;}
         for (const t of motion) t.stop();
@@ -511,6 +537,7 @@ class Actor {
           target.root.setVisible(false);
         }
         ended = true; clean();
+        if(cancelled&&form&&!this._destroyed){this.img.anims.stop();this.resetImageTransform();if(this.alive)this.idle();}
         if (this._playback === playback) this._playback = null;
         if (cancelled && (drift || approaching || returning || pairApproach || casting)) this.root.x = originX;
         if (cancelled && (approaching || returning || pairApproach)) this.root.y = originY;
@@ -526,6 +553,7 @@ class Actor {
       };
       const at = i => {
         if (!live()) return;
+        if(form){formFrame=i;formElapsed=0;drawForm();}
         while (contacts.length && i >= contacts[0]) {
           contacts.shift();
           if (hits++ === 0) {
@@ -561,7 +589,8 @@ class Actor {
       const onDone = (anim) => {
         if (anim.key !== key || !live()) return;
         at(c.frames.length - 1); detach();
-        if (pairApproach) {
+        if(form)settle();
+        else if (pairApproach) {
           this.resetImageTransform();
           if (this.sheet.clips.walk) this.img.play(this.animKey('walk'), true);
           move(originX, Math.min(260, Math.max(120,Math.hypot(pairX-originX,pairY-originY))), 'Sine.InOut', settle, originY);
@@ -573,9 +602,10 @@ class Actor {
         if (target) target.root.setVisible(false);
         clearCharge=opts.onWindup?.(this.releasePoint(c),c)||null;
         this.img.on('animationstart', onStart); this.img.on('animationupdate', onUpdate); this.img.on('animationcomplete', onDone);
+        if(form){scene.events?.on('update',formTick);if(this.root.setDepth)this.root.setDepth(110);}
         this.img.play(key, false);
         this.syncPause();
-        if (!c.loop && approaching) {
+        if (!c.loop && approaching && !form) {
           const first = contacts.length ? contacts[0] : Math.floor(c.frames.length / 2);
           const leadMs = (c.durationMs || 600) * first / c.frames.length;
           if(this.root.setDepth)this.root.setDepth(110);

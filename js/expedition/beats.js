@@ -447,7 +447,8 @@ async function storyCompanionAction(scene,ally,g){
   const id=g.use.skillId,kit=X.Story.Companions.kits[ally.unit.ch.expeditionStoryCompanion],ix=kit.skills.indexOf(id);
   const caster=X.Story.Companions.casters[ally.unit.ch.expeditionStoryCompanion];
   const basicMagic=id==='basic_attack'&&caster;
-  const companionClip=basicMagic?caster.clip:caster?.spellClips?.[id]||(ix<0?'attack':'signature-'+(ix+1));
+  const form=X.Story.Companions.formAttack(ally,id);
+  const companionClip=form?'form-'+form:basicMagic?caster.clip:caster?.spellClips?.[id]||(ix<0?'attack':'signature-'+(ix+1));
   const entry=ally.unit.ch.actives.find(e=>e.skillId===id)||{skillId:id,level:1};
   const sk=A.SkillSys.manifest(ally.unit.ch,entry).data;
   const hits=g.after.filter(e=>e.t==='damage'&&e.by===ally.uid&&e.tag!=='dot');
@@ -458,7 +459,7 @@ async function storyCompanionAction(scene,ally,g){
   const support=['self','party','ally','deadAlly'].includes(sk.target);
   const soundFamily=support?(/mend|regen|blood_pact/.test(id)?'heal':'guard'):ranged?(sk.elemental?'magic':'projectile'):'slash';
   sfx(scene,soundFamily,'use');
-  V().damageNumber(scene,ally.x,ally.y-ally.height-60,basicMagic?caster.name:A.DATA.SKILLS[id]?.name||id,'#d7eaf3');
+  V().damageNumber(scene,ally.x,ally.y-ally.height-60,form?(form==='bear'?'Bear Swipe':'Eagle Dive'):basicMagic?caster.name:A.DATA.SKILLS[id]?.name||id,'#d7eaf3');
   let landed=false;
   const land=()=>{
     if(landed||scene.ended)return;landed=true;
@@ -477,8 +478,8 @@ async function storyCompanionAction(scene,ally,g){
     }});if(flight)await flight;
   }else await ally.play('slash',{companionClip,target,
     // Wanjiru keeps her gauntlet strike; its nature magic charges on the fist.
-    onWindup:id==='wither_touch'?(from,clip)=>X.StoryEffects.charge(scene,'thorn_lash',ally,clip,{companion:true}):undefined,
-    onContact:()=>{if(id==='wither_touch')X.StoryEffects.impact(scene,'thorn_lash',target.chest(),ally.height);land();}});
+    onWindup:!form&&id==='wither_touch'?(from,clip)=>X.StoryEffects.charge(scene,'thorn_lash',ally,clip,{companion:true}):undefined,
+    onContact:()=>{if(form||id==='wither_touch')X.StoryEffects.impact(scene,'thorn_lash',target.chest(),ally.height);land();}});
 }
 
 // A human foe: a spell or shot is a cast and a bolt; anything else a lunge.

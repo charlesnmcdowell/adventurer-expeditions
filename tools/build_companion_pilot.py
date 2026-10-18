@@ -149,5 +149,8 @@ def main():
   scale=HEIGHT/guide['referenceHeight'];pivot=doc['canvas']['pivot']
   doc['clips'][name]['releaseAnchor']={'x':round(pivot['x']+(x-guide['anchorX'])*scale,2),'y':round(pivot['y']+(y-guide['groundY'])*scale,2),'sizeRatio':size,'measuredFrame':i}
  (ROOT/'assets/expedition'/KEY/(KEY+'.json')).write_text(json.dumps(doc,separators=(',',':')),encoding='utf-8')
- print('Pilot only: 128 distinct drawings. Runtime approval requires playback review.')
+ if ACTOR=='wanjiru':
+  from build_wanjiru_forms import build as add_wanjiru_forms
+  add_wanjiru_forms()
+ print('Pilot only: 128 base drawings plus any approved extensions. Runtime approval requires playback review.')
 if __name__=='__main__':main()

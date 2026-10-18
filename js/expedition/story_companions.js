@@ -30,6 +30,14 @@ P.casters={vess:{name:'Ember Bolt',effect:'ember_lash',element:'fire',clip:'sign
  ysolde:{name:'Frost Bolt',effect:'frost_touch',element:'ice',clip:'signature-1'},
  selene:{name:'Thorn Bolt',effect:'thorn_lash',element:'nature',clip:'signature-2'},
  ilvara:{name:'Shadow Bolt',effect:'blood_lotus',element:'shadow',clip:'signature-1'}};
+// A visual variation of the resolved gauntlet hit, never an extra damage roll.
+// Normal -> bear -> normal -> eagle. Defensive/support actions do not consume it.
+P.formAttack=function(actor,skill){
+ if(actor.unit?.ch?.expeditionStoryCompanion!=='nettle'||!['basic_attack','wither_touch'].includes(skill))return null;
+ if(!actor.sheet?.clips['form-bear']||!actor.sheet?.clips['form-eagle'])return null;
+ const beat=actor._natureStrikes||0;actor._natureStrikes=beat+1;
+ return [null,'bear',null,'eagle'][beat%4];
+};
 P.eligible=s=>s.record.chapter<2?[]:C.companyIds(s.game).filter(id=>P.kits[id]?.join<=s.record.chapter&&C.isRecruited(s.game,id));
 P.selected=function(s){
  const eligible=P.eligible(s),saved=s.record.fightingCompanions;

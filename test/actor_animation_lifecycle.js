@@ -506,6 +506,22 @@ test('spell windup is cleared exactly at release, or when cancelled before relea
  log.length=0;const p2=a.play('cast',opts);a.cancelPlayback();await p2;assert.deepEqual(log,['charge','clear']);
 });
 
+test('painted form travel shares contact timing, pauses and restores on every exit',async()=>{
+ for(const cancelAt of [null,0,1]){
+  const a=actor({'form-eagle':clip('form-eagle',{formMotion:[{forward:0,lift:0},{forward:1,lift:.4},{forward:0,lift:0}],contactDistance:140})});
+  a.scene.events=new EventEmitter();a.scene.time={now:0,timeScale:1};a.unit={ch:{expeditionStoryCompanion:'nettle'}};
+  let hits=0;const target={root:{x:900,y:500},height:300};
+  const p=a.play('slash',{companionClip:'form-eagle',target,onContact:()=>{hits++;assert.equal(a.root.x,760);assert.equal(a.root.y,500);assert.equal(a.img.y,-120);}});
+  a.scene.events.emit('update',0,40);assert(a.root.x>100&&a.root.x<760);assert(a.img.y<0);
+  a.scene.paused=true;const frozen=[a.root.x,a.root.y,a.img.y];a.scene.events.emit('update',40,40);assert.deepEqual([a.root.x,a.root.y,a.img.y],frozen);a.scene.paused=false;
+  if(cancelAt!==0)emit(a,'animationupdate','form-eagle',1);
+  if(cancelAt!==null)a.cancelPlayback();else emit(a,'animationcomplete','form-eagle',2);
+  await p;assert.equal(hits,cancelAt===0?0:1);assert.deepEqual([a.root.x,a.root.y,a.img.y],[100,300,0]);assert.equal(a.shadow.alpha,1);
+  assert.equal(a.scene.events.listenerCount('update'),0);assert.equal(a.img.key,'hero:idle');
+  a.scene.events.emit('update',80,40);assert.deepEqual([a.root.x,a.root.y,a.img.y],[100,300,0]);
+ }
+});
+
 (async () => {
   let failed = 0;
   for (const [name, fn] of cases) { try { await fn(); console.log('PASS', name); } catch (e) { failed++; console.error('FAIL', name, e.message); } }
