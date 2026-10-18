@@ -1,0 +1,822 @@
+{
+  "date": "2026-10-18",
+  "scope": "Local campaign wolf contact and spell presentation; nothing published",
+  "checkpoint": "7808043",
+  "spellOnly": [
+    "Desmond",
+    "Winston",
+    "Devendra",
+    "Yasemin",
+    "Delphine",
+    "Layla"
+  ],
+  "keepWeapons": [
+    "Santiago",
+    "Wanjiru",
+    "Dai Morgan"
+  ],
+  "deferredByUser": "Bear/eagle transformation art",
+  "repairedFrames": 25,
+  "newArtGenerated": false,
+  "runtimeArtBytesAdded": 2332272,
+  "casterBalance": {
+    "party": [
+      "Desmond",
+      "Devendra"
+    ],
+    "trials": 1100,
+    "winsBefore": 1071,
+    "winsAfter": 1065,
+    "stalls": 0,
+    "unwinnableEncounters": 0
+  },
+  "browserCases": [
+    {
+      "label": "vess-basic",
+      "done": true,
+      "charge": true,
+      "flight": true,
+      "damage": true,
+      "clips": [
+        {
+          "clip": "cast",
+          "companionClip": "signature-1"
+        }
+      ],
+      "origin": {
+        "x": 280,
+        "y": 620
+      },
+      "start": 5113.900000035763,
+      "release": 528.2999999523163,
+      "size": 325,
+      "effect": "ember_lash",
+      "launch": {
+        "x": 438.9144038312106,
+        "y": 338.5265423420516
+      },
+      "atRelease": {
+        "x": 438.9144038312106,
+        "y": 338.5265423420516
+      },
+      "arrived": 980.8999999761581,
+      "hitAt": 982.5999999642372,
+      "end": {
+        "x": 280,
+        "y": 620
+      },
+      "effects": 0
+    },
+    {
+      "label": "aurelius-basic",
+      "done": true,
+      "charge": true,
+      "flight": true,
+      "damage": true,
+      "clips": [
+        {
+          "clip": "cast",
+          "companionClip": "signature-1"
+        }
+      ],
+      "origin": {
+        "x": 122.77607624533641,
+        "y": 620
+      },
+      "start": 7197.5,
+      "release": 711.6000000238419,
+      "size": 345,
+      "effect": "fire_bolt",
+      "launch": {
+        "x": 284.0420948611401,
+        "y": 398.68404974855594
+      },
+      "atRelease": {
+        "x": 284.0420948611401,
+        "y": 398.68404974855594
+      },
+      "arrived": 1165.4000000357628,
+      "hitAt": 1166.4000000357628,
+      "end": {
+        "x": 122.77607624533641,
+        "y": 620
+      },
+      "effects": 0
+    },
+    {
+      "label": "devendra-lightning",
+      "done": true,
+      "charge": true,
+      "flight": true,
+      "damage": true,
+      "clips": [
+        {
+          "clip": "cast",
+          "companionClip": "signature-2"
+        }
+      ],
+      "origin": {
+        "x": 122.77607624533641,
+        "y": 620
+      },
+      "start": 9598,
+      "release": 710.6999999880791,
+      "size": 345,
+      "effect": "spark",
+      "launch": {
+        "x": 314.67062647888906,
+        "y": 336.14824458391143
+      },
+      "atRelease": {
+        "x": 314.67062647888906,
+        "y": 336.14824458391143
+      },
+      "arrived": 1163.9000000357628,
+      "hitAt": 1164.699999988079,
+      "end": {
+        "x": 122.77607624533641,
+        "y": 620
+      },
+      "effects": 0
+    },
+    {
+      "label": "desmond-wither",
+      "done": true,
+      "charge": true,
+      "flight": true,
+      "damage": true,
+      "clips": [
+        {
+          "clip": "cast",
+          "companionClip": "signature-2"
+        }
+      ],
+      "origin": {
+        "x": 280,
+        "y": 620
+      },
+      "start": 12000.400000035763,
+      "release": 524.8999999761581,
+      "size": 325,
+      "effect": "wither_touch",
+      "launch": {
+        "x": 418.8619013623759,
+        "y": 367.5935605070627
+      },
+      "atRelease": {
+        "x": 418.8619013623759,
+        "y": 367.5935605070627
+      },
+      "arrived": 979.0999999642372,
+      "hitAt": 979.8999999761581,
+      "end": {
+        "x": 280,
+        "y": 620
+      },
+      "effects": 0
+    },
+    {
+      "label": "ysolde-basic",
+      "done": true,
+      "charge": true,
+      "flight": true,
+      "damage": true,
+      "clips": [
+        {
+          "clip": "cast",
+          "companionClip": "signature-1"
+        }
+      ],
+      "origin": {
+        "x": 280,
+        "y": 620
+      },
+      "start": 4439.799999952316,
+      "release": 562,
+      "size": 315,
+      "effect": "frost_touch",
+      "launch": {
+        "x": 476.0944861227805,
+        "y": 371.12264750301256
+      },
+      "atRelease": {
+        "x": 476.0944861227805,
+        "y": 371.12264750301256
+      },
+      "arrived": 1015.8000000119209,
+      "hitAt": 1017.5,
+      "end": {
+        "x": 280,
+        "y": 620
+      },
+      "effects": 0
+    },
+    {
+      "label": "selene-basic",
+      "done": true,
+      "charge": true,
+      "flight": true,
+      "damage": true,
+      "clips": [
+        {
+          "clip": "cast",
+          "companionClip": "signature-2"
+        }
+      ],
+      "origin": {
+        "x": 123.73506727684453,
+        "y": 620
+      },
+      "start": 6592.699999988079,
+      "release": 709.3000000119209,
+      "size": 320,
+      "effect": "thorn_lash",
+      "launch": {
+        "x": 270.8480201962088,
+        "y": 397.7825981789383
+      },
+      "atRelease": {
+        "x": 270.8480201962088,
+        "y": 397.7825981789383
+      },
+      "arrived": 1163.8999999761581,
+      "hitAt": 1164.800000011921,
+      "end": {
+        "x": 123.73506727684453,
+        "y": 620
+      },
+      "effects": 0
+    },
+    {
+      "label": "ilvara-basic",
+      "done": true,
+      "charge": true,
+      "flight": true,
+      "damage": true,
+      "clips": [
+        {
+          "clip": "cast",
+          "companionClip": "signature-1"
+        }
+      ],
+      "origin": {
+        "x": 280,
+        "y": 620
+      },
+      "start": 4144.599999964237,
+      "release": 561.3000000119209,
+      "size": 320,
+      "effect": "blood_lotus",
+      "launch": {
+        "x": 400.9095892525438,
+        "y": 386.4856838277727
+      },
+      "atRelease": {
+        "x": 400.9095892525438,
+        "y": 386.4856838277727
+      },
+      "arrived": 1015.3000000119209,
+      "hitAt": 1017,
+      "end": {
+        "x": 280,
+        "y": 620
+      },
+      "effects": 0
+    },
+    {
+      "label": "fennick-basic",
+      "done": true,
+      "charge": true,
+      "flight": true,
+      "damage": true,
+      "clips": [
+        {
+          "clip": "cast",
+          "companionClip": "signature-2"
+        }
+      ],
+      "origin": {
+        "x": 110,
+        "y": 620
+      },
+      "start": 6302.199999988079,
+      "release": 670.3999999761581,
+      "size": 220,
+      "effect": "whisper_of_ending",
+      "launch": {
+        "x": 205.26717646862784,
+        "y": 472.8907757666543
+      },
+      "atRelease": {
+        "x": 205.26717646862784,
+        "y": 472.8907757666543
+      },
+      "arrived": 1124.0999999642372,
+      "hitAt": 1125.199999988079,
+      "end": {
+        "x": 110,
+        "y": 620
+      },
+      "effects": 0
+    },
+    {
+      "label": "layla-wither",
+      "done": true,
+      "charge": true,
+      "flight": true,
+      "damage": true,
+      "clips": [
+        {
+          "clip": "cast",
+          "companionClip": "signature-1"
+        }
+      ],
+      "origin": {
+        "x": 280,
+        "y": 620
+      },
+      "start": 8630.399999976158,
+      "release": 558.6000000238419,
+      "size": 320,
+      "effect": "wither_touch",
+      "launch": {
+        "x": 400.9095892525438,
+        "y": 386.4856838277727
+      },
+      "atRelease": {
+        "x": 400.9095892525438,
+        "y": 386.4856838277727
+      },
+      "arrived": 1012.8999999761581,
+      "hitAt": 1013.8999999761581,
+      "end": {
+        "x": 280,
+        "y": 620
+      },
+      "effects": 0
+    },
+    {
+      "label": "winston-venom",
+      "done": true,
+      "charge": true,
+      "flight": true,
+      "damage": true,
+      "clips": [
+        {
+          "clip": "cast",
+          "companionClip": "signature-2"
+        }
+      ],
+      "origin": {
+        "x": 110,
+        "y": 620
+      },
+      "start": 10778.199999988079,
+      "release": 677.5999999642372,
+      "size": 220,
+      "effect": "poison_spray",
+      "launch": {
+        "x": 205.26717646862784,
+        "y": 472.8907757666543
+      },
+      "atRelease": {
+        "x": 205.26717646862784,
+        "y": 472.8907757666543
+      },
+      "arrived": 1130.800000011921,
+      "hitAt": 1131.8999999761581,
+      "end": {
+        "x": 110,
+        "y": 620
+      },
+      "effects": 0
+    },
+    {
+      "label": "wanjiru-thorns",
+      "done": true,
+      "charge": true,
+      "flight": true,
+      "damage": true,
+      "clips": [
+        {
+          "clip": "cast",
+          "companionClip": "signature-1"
+        }
+      ],
+      "origin": {
+        "x": 281.6120403713689,
+        "y": 620
+      },
+      "start": 4228.099999964237,
+      "release": 562.6999999880791,
+      "size": 310,
+      "effect": "thorn_skin",
+      "launch": {
+        "x": 362.77145136790114,
+        "y": 452.24369885828446
+      },
+      "atRelease": {
+        "x": 362.77145136790114,
+        "y": 452.24369885828446
+      },
+      "arrived": 1215.699999988079,
+      "hitAt": 1932.199999988079,
+      "end": {
+        "x": 281.6120403713689,
+        "y": 620
+      },
+      "effects": 0
+    },
+    {
+      "label": "dai-heal",
+      "done": true,
+      "charge": true,
+      "flight": true,
+      "damage": true,
+      "clips": [
+        {
+          "clip": "cast",
+          "companionClip": "signature-1"
+        }
+      ],
+      "origin": {
+        "x": 126.61204037136889,
+        "y": 620
+      },
+      "start": 6579.599999964237,
+      "release": 561,
+      "size": 245,
+      "effect": "mend",
+      "launch": {
+        "x": 155.9859356664626,
+        "y": 483.1519798037912
+      },
+      "atRelease": {
+        "x": 155.9859356664626,
+        "y": 483.1519798037912
+      },
+      "arrived": 1231.6000000238419,
+      "hitAt": 1949.699999988079,
+      "end": {
+        "x": 126.61204037136889,
+        "y": 620
+      },
+      "effects": 0
+    },
+    {
+      "label": "dai-regenerate",
+      "done": true,
+      "charge": true,
+      "flight": true,
+      "damage": true,
+      "clips": [
+        {
+          "clip": "cast",
+          "companionClip": "signature-2"
+        }
+      ],
+      "origin": {
+        "x": 126.61204037136889,
+        "y": 620
+      },
+      "start": 8948.299999952316,
+      "release": 709.9000000357628,
+      "size": 245,
+      "effect": "regenerate",
+      "launch": {
+        "x": 203.34994014281529,
+        "y": 506.9349573851926
+      },
+      "atRelease": {
+        "x": 203.34994014281529,
+        "y": 506.9349573851926
+      },
+      "arrived": 1364.6000000238419,
+      "hitAt": 2179.900000035763,
+      "end": {
+        "x": 126.61204037136889,
+        "y": 620
+      },
+      "effects": 0
+    },
+    {
+      "label": "merle-fire",
+      "done": true,
+      "charge": true,
+      "flight": true,
+      "damage": true,
+      "clips": [
+        {
+          "clip": "cast"
+        }
+      ],
+      "origin": {
+        "x": 816.6333333333333,
+        "y": 612
+      },
+      "start": 3947.899999976158,
+      "release": 412,
+      "size": 310,
+      "effect": "fire_bolt",
+      "launch": {
+        "x": 798.0333333333333,
+        "y": 405.3333333333333
+      },
+      "atRelease": {
+        "x": 798.0333333333333,
+        "y": 405.3333333333333
+      },
+      "arrived": 868.5,
+      "hitAt": 872.1000000238419,
+      "end": {
+        "x": 816.6333333333333,
+        "y": 612
+      },
+      "effects": 0
+    },
+    {
+      "label": "olamide-ice",
+      "done": true,
+      "charge": true,
+      "flight": true,
+      "damage": true,
+      "clips": [
+        {
+          "clip": "cast"
+        }
+      ],
+      "origin": {
+        "x": 817.5964617644645,
+        "y": 612
+      },
+      "start": 4845.699999988079,
+      "release": 413.30000001192093,
+      "size": 315,
+      "effect": "frost_touch",
+      "launch": {
+        "x": 747.586127506966,
+        "y": 420.0615555187683
+      },
+      "atRelease": {
+        "x": 747.586127506966,
+        "y": 420.0615555187683
+      },
+      "arrived": 868.9000000357628,
+      "hitAt": 871.5,
+      "end": {
+        "x": 817.5964617644645,
+        "y": 612
+      },
+      "effects": 0
+    },
+    {
+      "label": "mzee-nature",
+      "done": true,
+      "charge": true,
+      "flight": true,
+      "damage": true,
+      "clips": [
+        {
+          "clip": "cast"
+        }
+      ],
+      "origin": {
+        "x": 813.5830704626201,
+        "y": 612
+      },
+      "start": 5191.199999988079,
+      "release": 412.10000002384186,
+      "size": 315,
+      "effect": "poison_spray",
+      "launch": {
+        "x": 769.0256593755674,
+        "y": 478.32776673884223
+      },
+      "atRelease": {
+        "x": 769.0256593755674,
+        "y": 478.32776673884223
+      },
+      "arrived": 865.1999999880791,
+      "hitAt": 867.1999999880791,
+      "end": {
+        "x": 813.5830704626201,
+        "y": 612
+      },
+      "effects": 0
+    },
+    {
+      "label": "weapon-status",
+      "clips": [
+        "slash",
+        "slash",
+        "slash"
+      ],
+      "effects": 0
+    }
+  ],
+  "startup": {
+    "generatedAt": "2026-10-18T14:46:06.632Z",
+    "mode": "unmodified local ship-allowlist build",
+    "sceneryDelayMs": 0,
+    "limitations": [
+      "Headless Chromium, Canvas renderer; mobile device settings are emulated, not a physical iPhone/Safari measurement.",
+      "Local HTTP server sends uncompressed bodies. CDP encoded response bytes include HTTP response overhead, not TLS/IP overhead. Browser cache disabled; each profile uses a new context.",
+      "SDK stub bytes excluded. An uploaded CrazyGames preview is still needed for actual SDK/platform hosting measurements."
+    ],
+    "ship": {
+      "totalBytes": 284891408,
+      "limitBytes": 250000000
+    },
+    "results": [
+      {
+        "profile": "desktop",
+        "viewport": {
+          "width": 1280,
+          "height": 760
+        },
+        "mobileEmulated": false,
+        "portal": {
+          "active": false,
+          "ready": false,
+          "error": null
+        },
+        "milestones": [
+          {
+            "name": "visibleGameplay",
+            "at": 1291,
+            "epoch": 1792334748185.9,
+            "state": {
+              "running": true,
+              "hero": true,
+              "foes": 2,
+              "scenery": true,
+              "controls": true,
+              "steps": 0,
+              "ready": true
+            },
+            "encodedResponseBytes": 25012362,
+            "completedRequests": 175,
+            "inFlightRequests": 1
+          },
+          {
+            "name": "firstCombatStep",
+            "at": 3347.5,
+            "epoch": 1792334750242.4,
+            "state": {
+              "running": true,
+              "hero": true,
+              "foes": 2,
+              "scenery": true,
+              "controls": true,
+              "steps": 1,
+              "ready": true
+            },
+            "encodedResponseBytes": 27398412,
+            "completedRequests": 219,
+            "inFlightRequests": 0
+          }
+        ],
+        "sceneryWaitSamples": 0,
+        "prematureCombat": [],
+        "afterAudioUnlock": {
+          "encodedResponseBytes": 27398412,
+          "completedRequests": 219,
+          "inFlightRequests": 0
+        },
+        "errors": [],
+        "requestedCount": 219
+      },
+      {
+        "profile": "mobile-portrait",
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "mobileEmulated": true,
+        "portal": {
+          "active": false,
+          "ready": false,
+          "error": null
+        },
+        "milestones": [
+          {
+            "name": "visibleGameplay",
+            "at": 1404.0999999642372,
+            "epoch": 1792334754849.2002,
+            "state": {
+              "running": true,
+              "hero": true,
+              "foes": 2,
+              "scenery": true,
+              "controls": true,
+              "steps": 0,
+              "ready": true
+            },
+            "encodedResponseBytes": 25012362,
+            "completedRequests": 175,
+            "inFlightRequests": 1
+          },
+          {
+            "name": "firstCombatStep",
+            "at": 3735.300000011921,
+            "epoch": 1792334757180.4001,
+            "state": {
+              "running": true,
+              "hero": true,
+              "foes": 2,
+              "scenery": true,
+              "controls": true,
+              "steps": 1,
+              "ready": true
+            },
+            "encodedResponseBytes": 27398412,
+            "completedRequests": 219,
+            "inFlightRequests": 0
+          }
+        ],
+        "sceneryWaitSamples": 0,
+        "prematureCombat": [],
+        "afterAudioUnlock": {
+          "encodedResponseBytes": 27398412,
+          "completedRequests": 219,
+          "inFlightRequests": 0
+        },
+        "errors": [],
+        "requestedCount": 219
+      },
+      {
+        "profile": "mobile-landscape",
+        "viewport": {
+          "width": 844,
+          "height": 390
+        },
+        "mobileEmulated": true,
+        "portal": {
+          "active": false,
+          "ready": false,
+          "error": null
+        },
+        "milestones": [
+          {
+            "name": "visibleGameplay",
+            "at": 838.5,
+            "epoch": 1792334761009.3,
+            "state": {
+              "running": true,
+              "hero": true,
+              "foes": 2,
+              "scenery": true,
+              "controls": true,
+              "steps": 0,
+              "ready": true
+            },
+            "encodedResponseBytes": 25012362,
+            "completedRequests": 175,
+            "inFlightRequests": 1
+          },
+          {
+            "name": "firstCombatStep",
+            "at": 3331.100000023842,
+            "epoch": 1792334763501.9001,
+            "state": {
+              "running": true,
+              "hero": true,
+              "foes": 2,
+              "scenery": true,
+              "controls": true,
+              "steps": 1,
+              "ready": true
+            },
+            "encodedResponseBytes": 27398412,
+            "completedRequests": 219,
+            "inFlightRequests": 0
+          }
+        ],
+        "sceneryWaitSamples": 0,
+        "prematureCombat": [],
+        "afterAudioUnlock": {
+          "encodedResponseBytes": 27398412,
+          "completedRequests": 219,
+          "inFlightRequests": 0
+        },
+        "errors": [],
+        "requestedCount": 219
+      }
+    ],
+    "findings": [
+      "Ship set fails size/completeness gate.",
+      "desktop: initial download reaches/exceeds 20 MB mobile budget",
+      "mobile-portrait: initial download reaches/exceeds 20 MB mobile budget",
+      "mobile-landscape: initial download reaches/exceeds 20 MB mobile budget"
+    ]
+  },
+  "functionalTests": [
+    "npm test",
+    "npm run test:story",
+    "node test/browser_magic_polish.js",
+    "python test/wolf_contact_art.py",
+    "npm run test:ship -- --seed=1 (two quest clears and inn returns)"
+  ],
+  "failedGate": "test:startup: 27.40 MB by first combat step, over 20 MB; 284.89 MB allowlist, over 250 MB. Baseline allowlist already 282.56 MB.",
+  "rawEvidence": "test/reports/magic-polish/ and test/reports/magic-polish-startup/cold-start.json (regenerable local reports)"
+}

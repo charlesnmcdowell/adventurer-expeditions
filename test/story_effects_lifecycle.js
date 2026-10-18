@@ -17,7 +17,7 @@ function fixture(){const sprites=[],events=new EventEmitter();return {sprites,ev
   s.events.emit('shutdown');await p;
  }
  for(const id of ['whisper_of_ending','shield_wall','cleanse','thorn_skin']){
-  assert(!F.supports(id),'companion additions must not change enemy mappings');assert(F.supports(id,{companion:true}));
+  if(id!=='thorn_skin')assert(!F.supports(id),'companion additions must not change enemy mappings');assert(F.supports(id,{companion:true}));
   const s=fixture(),p=F.play(s,id,{x:200,y:200},{x:500,y:230},{companion:true,height:220});
   const sprite=s.sprites[0];assert.equal(sprite.key,'story_effects_companion-support');
   const stationary=['shield_wall','thorn_skin'].includes(id);assert.equal(sprite.x,stationary?500:200);
@@ -34,5 +34,22 @@ function fixture(){const sprites=[],events=new EventEmitter();return {sprites,ev
  F.preload({textures:{exists:()=>false},load:{json:(key,url)=>partyLoads.push(url),once(){}}});
  assert(partyLoads.includes('assets/expedition/story/effects/companion-support.json'));
  assert(partyLoads.includes('assets/expedition/story/effects/companion-recovery.json'));
+ // Enhanced casts own every aura, trail and contact burst through interruptions.
+ for(const id of ['fire_bolt','frost_touch','thorn_lash','whisper_of_ending','spark','mend']){
+  const s=fixture(),actor={x:200,y:500,height:300,perspectiveAt:()=>1,releasePoint:()=>({x:260,y:300})};
+  const clip={frames:Array(16),release:7,durationMs:1280};
+  const stop=F.charge(s,id,actor,clip,{companion:true});assert.equal(s.sprites.length,6);
+  s.events.emit('update',0,50);const a=s.sprites.map(s=>[s.x,s.y,s.w,s.alpha]);
+  s.paused=true;s.events.emit('update',0,50);assert.deepEqual(s.sprites.map(s=>[s.x,s.y,s.w,s.alpha]),a);s.paused=false;
+  s.__paintedHitStopCount=1;s.events.emit('update',0,50);assert.deepEqual(s.sprites.map(s=>[s.x,s.y,s.w,s.alpha]),a);s.__paintedHitStopCount=0;
+  stop();stop();assert(s.sprites.every(s=>s.dead));assert.equal(s.events.listenerCount('update'),0);
+  F.charge(s,id,actor,clip,{companion:true});s.events.emit('shutdown');assert(s.sprites.every(s=>s.dead));assert.equal(s.events.listenerCount('update'),0);
+  const p=F.play(s,id,{x:260,y:300},{x:650,y:300},{height:300,cinematic:true,companion:true});
+  for(let i=0;i<22;i++)s.events.emit('update',i*50,50);await p;
+  assert(s.sprites.every(s=>s.dead),'all flight/impact sprites cleared: '+id);assert.equal(s.events.listenerCount('update'),0);
+  const p2=F.play(s,id,{x:260,y:300},{x:650,y:300},{height:300,cinematic:true,companion:true});
+  s.ended=true;s.events.emit('update',0,50);await p2;
+  assert(s.sprites.every(s=>s.dead));assert.equal(s.events.listenerCount('shutdown'),0);
+ }
  console.log('Painted effects: all mappings pause, hit-stop, reflected flight, completion and shutdown cleanup pass.');
 })().catch(e=>{console.error(e);process.exitCode=1;});

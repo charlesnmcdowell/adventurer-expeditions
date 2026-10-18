@@ -1,0 +1,57 @@
+{
+  "hiro": {
+    "repaired": [
+      "bite-arm-paired/3",
+      "bite-arm-paired/8",
+      "bite-leg-paired/0",
+      "bite-leg-paired/1",
+      "bite-leg-paired/2",
+      "bite-leg-paired/3",
+      "bite-leg-paired/4",
+      "bite-leg-paired/5",
+      "bite-arm-paired/1",
+      "bite-arm-paired/2",
+      "bite-arm-paired/4",
+      "bite-arm-paired/7",
+      "bite-leg-paired/6",
+      "bite-leg-paired/7",
+      "bite-leg-paired/8",
+      "bite-leg-paired/9",
+      "bite-arm-paired/0",
+      "bite-arm-paired/5",
+      "bite-arm-paired/6",
+      "bite-arm-paired/9"
+    ],
+    "canvas": {
+      "w": 828,
+      "h": 535,
+      "pivot": {
+        "x": 414,
+        "y": 475
+      }
+    },
+    "standing": 320,
+    "clipsSha256": "beb18096cbc944e053f3564c794fd01743fd996929aff051d02296f7757f6688",
+    "unaffectedFramesSha256": "62c8149d53848c27c9505e3a66534404e352820a43479b9ffd62b4a2b8fc1e38"
+  },
+  "wolf": {
+    "repaired": [
+      "leap/0",
+      "leap/1",
+      "leap/2",
+      "leap/3",
+      "leap/4"
+    ],
+    "canvas": {
+      "w": 526,
+      "h": 233,
+      "pivot": {
+        "x": 263,
+        "y": 230
+      }
+    },
+    "standing": 200,
+    "clipsSha256": "8a0a765c534951a8ac0c58cb6f99459d431c47d77f2aa286fd36f7ec416c6847",
+    "unaffectedFramesSha256": "596cdd48d87770d07d723653881925daa0160c86636201f426f7e7b21dd38b65"
+  }
+}

@@ -21,6 +21,15 @@ P.kits={
  amara:{join:13,weapon:'Twin sabres',skills:['dual_swords','counter_attack'],height:330},
 };
 P.clips=['idle','walk','attack','signature-1','signature-2','hit','knockout','victory'];
+// Spellcasters keep a free, reliable basic action while their signatures recharge.
+// Same power/cost/statuses; only the edition's copies become ranged spells.
+// Hiro's exceptions (2026-10-18): Santiago, Wanjiru and Dai Morgan keep weapons.
+P.casters={vess:{name:'Ember Bolt',effect:'ember_lash',element:'fire',clip:'signature-1'},
+ fennick:{name:'Shadow Bolt',effect:'whisper_of_ending',element:'shadow',clip:'signature-2',spellClips:{venom_fang:'signature-2'},effects:{venom_fang:'poison_spray'}},
+ aurelius:{name:'Fire Bolt',effect:'fire_bolt',element:'fire',clip:'signature-1'},
+ ysolde:{name:'Frost Bolt',effect:'frost_touch',element:'ice',clip:'signature-1'},
+ selene:{name:'Thorn Bolt',effect:'thorn_lash',element:'nature',clip:'signature-2'},
+ ilvara:{name:'Shadow Bolt',effect:'blood_lotus',element:'shadow',clip:'signature-1'}};
 P.eligible=s=>s.record.chapter<2?[]:C.companyIds(s.game).filter(id=>P.kits[id]?.join<=s.record.chapter&&C.isRecruited(s.game,id));
 P.selected=function(s){
  const eligible=P.eligible(s),saved=s.record.fightingCompanions;
@@ -121,8 +130,14 @@ P.prepareEncounter=function(enc){
 const oldManifest=A.SkillSys.manifest;
 A.SkillSys.manifest=function(ch,entry){
  const m=oldManifest.call(this,ch,entry);
- if(!ch?.expeditionStoryCompanion||entry.skillId==='basic_attack')return m;
- return {...m,data:{...m.data,cooldown:Math.max(3,m.data.cooldown||0)}};
+ if(!ch?.expeditionStoryCompanion)return m;
+ const caster=P.casters[ch.expeditionStoryCompanion];
+ if(entry.skillId==='basic_attack'){
+  return caster?{...m,data:{...m.data,name:caster.name,elemental:true,
+    element:caster.element,reach:'any',melee:false,katana:false}}:m;
+ }
+ const offensive=caster&&['enemy','allEnemies'].includes(m.data.target);
+ return {...m,data:{...m.data,...(offensive?{elemental:true,element:m.data.element||caster.element,reach:'any',melee:false,katana:false}:{}),cooldown:Math.max(3,m.data.cooldown||0)}};
 };
 const recoverySkills=new Set(['mend','regenerate','wither_touch','blood_pact']);
 const oldAI=A.Combat.aiTakeTurn;

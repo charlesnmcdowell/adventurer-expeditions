@@ -136,14 +136,14 @@ def main():
  (SRC/'crop-audit.json').write_text(json.dumps(audit,indent=2),encoding='utf-8')
  doc=build(SRC,KEY,ROOT/'assets/expedition',HEIGHT,82,SRC/'manifest.json')
  # Measured spell origin in the registered, unscaled release drawing (not chest).
- anchors={'hiwot':{'signature-2':(240,63,.42)},'desmond':{'signature-1':(290,12,.44)},
+ anchors={'hiwot':{'signature-2':(240,63,.42)},'desmond':{'signature-1':(290,12,.44),'signature-2':(218,68,.38)},
  'winston':{'signature-2':(240,95,.32)},
  'santiago':{'signature-1':(160,130,.4),'signature-2':(152,137,.4)},'beau':{},
  'delphine':{'signature-1':(221,64,.35),'signature-2':(225,88,.4)},
  'itsuki':{'attack':(231,131,.22),'signature-1':(242,150,.22),'signature-2':(206,256,.35)},
  'yasemin':{'signature-1':(348,77,.32),'signature-2':(320,118,.4)},
  'devendra':{'signature-1':(223,98,.35),'signature-2':(283,64,.32)},
- 'bahadir':{'signature-2': (143, 146, 0.34)},'layla':{'signature-2': (222, 112, 0.32)},'kaito':{'attack': (213, 99, 0.22), 'signature-1': (224, 82, 0.22)},'wanjiru':{'signature-1': (168, 132, 0.32)},'dai-morgan':{'signature-1': (123, 115, 0.32), 'signature-2': (193, 139, 0.34)},'amara':{'signature-2': (350, 109, 0.25)}}[ACTOR]
+ 'bahadir':{'signature-2': (143, 146, 0.34)},'layla':{'signature-1':(238,76,.38),'signature-2': (222, 112, 0.32)},'kaito':{'attack': (213, 99, 0.22), 'signature-1': (224, 82, 0.22)},'wanjiru':{'signature-1': (168, 132, 0.32),'signature-2':(207,77,.40)},'dai-morgan':{'signature-1': (123, 115, 0.32), 'signature-2': (193, 139, 0.34)},'amara':{'signature-2': (350, 109, 0.25)}}[ACTOR]
  for name,(x,y,size) in anchors.items():
   clip=next(c for c in clips if c['id']==name);i=clip['releaseFrameZeroBased'];guide=clip['registration']['frames'][i]
   scale=HEIGHT/guide['referenceHeight'];pivot=doc['canvas']['pivot']

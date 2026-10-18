@@ -65,5 +65,8 @@ if __name__=='__main__':
         subprocess.run([sys.executable,'tools/build_hiro_actions_20261016.py'],check=True)
     if 'hiro' in a.actors.split(','):
         subprocess.run([sys.executable,'tools/reuse_hiro_parry.py'],check=True)
+    from repair_wolf_contact import patch as repair_wolf_contact
+    for actor in a.actors.split(','):
+        if actor in ('hiro','wolf'):repair_wolf_contact(actor)
     subprocess.run(['node','test/art_registration.js'],check=True)
     subprocess.run(['node','tools/size_check.js'],check=True)

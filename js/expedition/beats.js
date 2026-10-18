@@ -148,7 +148,9 @@ async function playTicks(scene, events) {
     const ix=X.Story.Companions.kits[id].skills.indexOf(e.skillId);
     if(ix>=0){
       V().damageNumber(scene,a.x,a.y-a.height-50,A.DATA.SKILLS[e.skillId]?.name||e.skillId,'#d7eaf3');
-      await a.play('cast',{companionClip:'signature-'+(ix+1),target:a,holdRelease:true,onRelease:(from,clip)=>X.StoryEffects.play(scene,e.skillId,from,a.chest(),{height:a.height,clip,companion:true})});
+      await a.play('cast',{companionClip:'signature-'+(ix+1),target:a,holdRelease:true,
+        onWindup:(from,clip)=>X.StoryEffects.charge(scene,e.skillId,a,clip,{companion:true}),
+        onRelease:(from,clip)=>X.StoryEffects.play(scene,e.skillId,from,a.chest(),{height:a.height,clip,companion:true,cinematic:true})});
     }
     a.refresh();
   }
@@ -443,18 +445,20 @@ async function allyAction(scene, ally, g) {
 
 async function storyCompanionAction(scene,ally,g){
   const id=g.use.skillId,kit=X.Story.Companions.kits[ally.unit.ch.expeditionStoryCompanion],ix=kit.skills.indexOf(id);
-  const companionClip=ix<0?'attack':'signature-'+(ix+1);
+  const caster=X.Story.Companions.casters[ally.unit.ch.expeditionStoryCompanion];
+  const basicMagic=id==='basic_attack'&&caster;
+  const companionClip=basicMagic?caster.clip:caster?.spellClips?.[id]||(ix<0?'attack':'signature-'+(ix+1));
   const entry=ally.unit.ch.actives.find(e=>e.skillId===id)||{skillId:id,level:1};
   const sk=A.SkillSys.manifest(ally.unit.ch,entry).data;
   const hits=g.after.filter(e=>e.t==='damage'&&e.by===ally.uid&&e.tag!=='dot');
   const target=actorOf(scene,g.use.target)||ally;
   const bowBasic=id==='basic_attack'&&/bow/i.test(kit.weapon);
-  const effectId=bowBasic?'aimed_shot':id;
+  const effectId=basicMagic?caster.effect:caster?.effects?.[id]||(bowBasic?'aimed_shot':id);
   const ranged=bowBasic||sk.elemental||(sk.reach==='any'&&!sk.melee&&!sk.katana);
   const support=['self','party','ally','deadAlly'].includes(sk.target);
   const soundFamily=support?(/mend|regen|blood_pact/.test(id)?'heal':'guard'):ranged?(sk.elemental?'magic':'projectile'):'slash';
   sfx(scene,soundFamily,'use');
-  V().damageNumber(scene,ally.x,ally.y-ally.height-60,A.DATA.SKILLS[id]?.name||id,'#d7eaf3');
+  V().damageNumber(scene,ally.x,ally.y-ally.height-60,basicMagic?caster.name:A.DATA.SKILLS[id]?.name||id,'#d7eaf3');
   let landed=false;
   const land=()=>{
     if(landed||scene.ended)return;landed=true;
@@ -467,10 +471,14 @@ async function storyCompanionAction(scene,ally,g){
   if(ranged||support){
     let flight=null;
     if(!X.StoryEffects.supports(effectId,{companion:true}))throw Error('Companion effect art not ready: '+effectId);
-    await ally.play('cast',{companionClip,target,holdRelease:true,onRelease:(from,clip)=>{
-      flight=X.StoryEffects.play(scene,effectId,from,target.chest(),{height:ally.height,clip,companion:true}).then(land);return flight;
+    await ally.play('cast',{companionClip,target,holdRelease:true,
+     onWindup:(from,clip)=>X.StoryEffects.charge(scene,effectId,ally,clip,{companion:true}),onRelease:(from,clip)=>{
+      flight=X.StoryEffects.play(scene,effectId,from,target.chest(),{height:ally.height,clip,companion:true,cinematic:!['aimed_shot','kunai_line','suppressing_volley'].includes(effectId)}).then(land);return flight;
     }});if(flight)await flight;
-  }else await ally.play('slash',{companionClip,target,onContact:land});
+  }else await ally.play('slash',{companionClip,target,
+    // Wanjiru keeps her gauntlet strike; its nature magic charges on the fist.
+    onWindup:id==='wither_touch'?(from,clip)=>X.StoryEffects.charge(scene,'thorn_lash',ally,clip,{companion:true}):undefined,
+    onContact:()=>{if(id==='wither_touch')X.StoryEffects.impact(scene,'thorn_lash',target.chest(),ally.height);land();}});
 }
 
 // A human foe: a spell or shot is a cast and a bolt; anything else a lunge.
@@ -492,7 +500,9 @@ async function deflect(scene, hero, foe, color, back, skillId) {
 
 async function humanAction(scene, foe, hero, g, r) {
   const sk = (A.DATA.SKILLS || {})[g.use && g.use.skillId] || {};
-  const ranged = sk.elemental || (sk.reach === 'any' && !sk.melee && !sk.katana && sk.target && sk.target !== 'self');
+  const id=g.use.skillId,weaponStatus=scene.story&&X.StoryEffects?.meleeStatus?.has(id);
+  const effectId=id==='killing_angle'?'aimed_shot':id;
+  const ranged = !weaponStatus&&(sk.elemental || (sk.reach === 'any' && !sk.melee && !sk.katana && sk.target && sk.target !== 'self'));
   const color = ELEMENT_COLOR[sk.element] || 0xe8dfc8;
   const answer = async () => {
     if(scene.ended||foe._destroyed||hero._destroyed||scene.actors.get(foe.uid)!==foe)return;
@@ -524,10 +534,13 @@ async function humanAction(scene, foe, hero, g, r) {
     else if (r.hit) { sfx(scene, 'slash', 'hit'); impact(scene, hero, r.hit, { burst: color, hitStop: true, shake: 0.004 }); await hero.play('hit_short'); }
     else showDefences(scene,foe,g);
   };
-  if (!r.hit && !r.evade && !r.counter && ['self','party','ally','deadAlly'].includes(sk.target)) {
+  if (!r.hit && !r.evade && !r.counter && ['self','party','ally','deadAlly','allyLane'].includes(sk.target)) {
     if(scene.story&&X.StoryEffects?.supports(g.use.skillId)){
-      await foe.play('cast');const at={x:foe.x,y:foe.y-100};
-      if(g.use.skillId==='smoke_bomb'){(scene.__smoked||=new Set()).add(foe.uid);await foe.smokePuff();}else await X.StoryEffects.play(scene,g.use.skillId,at,at);
+      const recipients=[...new Set(g.after.filter(e=>['heal','status','revive'].includes(e.t)).map(e=>actorOf(scene,e.uid)).filter(a=>a?.side===foe.side))];
+      if(!recipients.length)recipients.push(foe);
+      if(g.use.skillId==='smoke_bomb'){await foe.play('cast');(scene.__smoked||=new Set()).add(foe.uid);await foe.smokePuff();}
+      else await foe.play('cast',{target:foe,holdRelease:true,onWindup:(from,clip)=>X.StoryEffects.charge(scene,effectId,foe,clip),
+       onRelease:(from,clip)=>Promise.all(recipients.map(a=>X.StoryEffects.play(scene,effectId,from,a.chest(),{height:a.height,clip,cinematic:true})))});
       if(!scene.ended){foe.refresh();if(g.use.skillId==='smoke_bomb')V().damageNumber(scene,foe.x,foe.y-foe.height*.65,'Invisible','#d7eaf3');}return;
     }
     sfx(scene, 'heal', 'use');
@@ -538,8 +551,8 @@ async function humanAction(scene, foe, hero, g, r) {
     sfx(scene, sk.elemental ? 'magic' : 'projectile', 'use');
     if(scene.story&&X.StoryEffects?.supports(g.use.skillId)){
       let flight=null;
-      await foe.play('cast',{holdRelease:true,onRelease:(from,clip)=>{
-        flight=X.StoryEffects.play(scene,g.use.skillId,from,hero.chest(),{height:foe.height,clip})
+      await foe.play('cast',{target:hero,holdRelease:true,onWindup:(from,clip)=>X.StoryEffects.charge?.(scene,effectId,foe,clip),onRelease:(from,clip)=>{
+        flight=X.StoryEffects.play(scene,effectId,from,hero.chest(),{height:foe.height,clip,cinematic:!['aimed_shot','kunai_line','suppressing_volley'].includes(effectId)})
           .then(async()=>{if(!scene.ended)await answer();});
         return flight;
       }});
@@ -555,7 +568,9 @@ async function humanAction(scene, foe, hero, g, r) {
   }
   sfx(scene, 'slash', 'use');
   let reply = null;
-  await foe.play('slash', { target: hero, onContact: () => { reply = answer(); } });
+  await foe.play('slash', { target: hero, onContact: () => {
+    if(weaponStatus){const at=hero.chest();V().slashArc(scene,at.x,at.y,id==='marked_for_the_knife'?0xff967f:0xffe3a0);hitStop(scene,TM().hitStop);}
+    reply = answer(); } });
   if (reply) await reply;
 }
 

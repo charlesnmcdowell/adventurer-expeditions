@@ -457,7 +457,7 @@ class Actor {
     const drift = !c.paired && imp.drift ? Number(imp.drift.distancePx) || 0 : 0;
     if (!['walk', 'enter', 'idle', 'victory'].includes(clip)) this._sheathed = false;
     return new Promise(resolve => {
-      let ended = false, released = false, hits = 0, clearGore = null;
+      let ended = false, released = false, hits = 0, clearGore = null, clearCharge = null;
       const target = c.paired ? opts.target : null, targetVisible = target && target.root.visible;
       const originX = this.root.x, originY = this.root.y, originDepth = this.root.depth;
       // Wide attack poses can extend beyond their idle footprint in the rear
@@ -495,6 +495,7 @@ class Actor {
       const clean = () => {
         detach();
         if(clearGore)clearGore();
+        if(clearCharge){clearCharge();clearCharge=null;}
         for (const t of motion) t.stop();
         motion.clear();
         if (target && !target._destroyed && target.alive) target.root.setVisible(targetVisible);
@@ -536,6 +537,7 @@ class Actor {
         }
         if (!released && i >= release) {
           released = true;
+          if(clearCharge){clearCharge();clearCharge=null;}
           const flight=opts.onRelease?.(this.releasePoint(c),c);
           if(opts.holdRelease&&flight?.then){
             playback.releaseHeld=true;this.syncPause();
@@ -569,6 +571,7 @@ class Actor {
         if (!live()) return;
         applySheetTransform();
         if (target) target.root.setVisible(false);
+        clearCharge=opts.onWindup?.(this.releasePoint(c),c)||null;
         this.img.on('animationstart', onStart); this.img.on('animationupdate', onUpdate); this.img.on('animationcomplete', onDone);
         this.img.play(key, false);
         this.syncPause();

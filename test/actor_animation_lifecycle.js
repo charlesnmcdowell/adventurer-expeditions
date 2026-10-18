@@ -498,6 +498,14 @@ test('enemy area strike shows both companion damage and evasion at contact',asyn
  }finally{ADV.VFX=old;}
 });
 
+test('spell windup is cleared exactly at release, or when cancelled before release',async()=>{
+ const a=actor({cast:clip('cast')});const log=[];
+ const opts={onWindup:()=>{log.push('charge');return ()=>log.push('clear');},onRelease:()=>log.push('release')};
+ const p=a.play('cast',opts);assert.deepEqual(log,['charge']);emit(a,'animationupdate','cast',1);
+ assert.deepEqual(log,['charge','clear','release']);emit(a,'animationcomplete','cast',2);await p;assert.equal(log.filter(x=>x==='clear').length,1);
+ log.length=0;const p2=a.play('cast',opts);a.cancelPlayback();await p2;assert.deepEqual(log,['charge','clear']);
+});
+
 (async () => {
   let failed = 0;
   for (const [name, fn] of cases) { try { await fn(); console.log('PASS', name); } catch (e) { failed++; console.error('FAIL', name, e.message); } }
