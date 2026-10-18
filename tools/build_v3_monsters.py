@@ -59,6 +59,10 @@ def intake(actor):
     (src/'manifest.json').write_text(json.dumps(man,indent=2),encoding='utf-8')
     doc=build(src,actor,ROOT/'assets/expedition',height=300,quality=80,manifest=man)
     doc['authoredFacing']=-1
+    from repair_cast_releases import repair as repair_cast
+    # The v3 original has four attack drawings; the roster extension supplies
+    # the twelve-frame hag attack before the measured cast overlay is applied.
+    if len(doc['clips']['attack']['frames'])>4:repair_cast(doc,actor)
     (ROOT/'assets/expedition'/actor/(actor+'.json')).write_text(json.dumps(doc,separators=(',',':')),encoding='utf-8')
 
 if __name__=='__main__':

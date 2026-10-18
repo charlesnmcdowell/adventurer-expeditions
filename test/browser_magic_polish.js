@@ -31,11 +31,11 @@ try{
   const r=await p.evaluate(()=>({...spellQA,effects:storyGame.scene.getScene('StoryBattle').children.list.filter(x=>/^spell_|^story_effect_/.test(x.name||'')).length}));
   assert(r.release>150&&r.arrived>r.release+300,label+' readable windup and flight');assert(r.damage&&r.hitAt>=r.arrived,label+' hit must wait for projectile arrival');assert.deepEqual(r.launch,r.atRelease);assert.deepEqual(r.end,r.origin);assert.equal(r.effects,0);assert(r.clips.every(c=>c.clip==='cast'||c.clip==='hit_short'),label+' must cast instead of melee');assert.deepEqual(p.errors,[]);results.push({label,...r});console.log('PASS',label);
  }
- for(const pair of [['vess','aurelius'],['ysolde','selene'],['ilvara','fennick']]){
+ for(const pair of [['vess','aurelius'],['ysolde','selene'],['ilvara']]){
   const p=await scene(7,0,pair);
   for(const id of pair)await spell(p,id,'basic_attack',id+'-basic');
   if(pair[0]==='vess'){await spell(p,'aurelius','spark','devendra-lightning');await spell(p,'vess','wither_touch','desmond-wither');}
-  if(pair[0]==='ilvara'){await spell(p,'ilvara','wither_touch','layla-wither');await spell(p,'fennick','venom_fang','winston-venom');}
+  if(pair[0]==='ilvara')await spell(p,'ilvara','wither_touch','layla-wither');
   await p.close();
  }
  {const p=await scene(7,0,['nettle','durnik']);

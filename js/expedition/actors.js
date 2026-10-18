@@ -12,21 +12,35 @@ const T = () => A.T;
 const V = () => A.VFX;
 
 const STATUS_STYLE = {
-  bleed:   { color: 0xc0392b, glyph: '/' },
-  poison:  { color: 0x5cb85c, glyph: '~' },
-  aura:    { color: 0xa66bff, glyph: '◈' },
-  counter: { color: 0xe8c86a, glyph: '⟲' },
+  bleed:   { color: 0xa92e36, glyph: 'Bleed' },
+  poison:  { color: 0x3e7340, glyph: 'Poison' },
+  aura:    { color: 0x7651b0, glyph: 'Aura' },
+  counter: { color: 0x806a30, glyph: 'Counter' },
   marked: { color: 0xc65369, glyph: 'Marked' },
   contractMark: { color: 0xbe5982, glyph: 'Marked+' },
   taunted: { color: 0xd57643, glyph: 'Taunted' },
-  burn: { color: 0xdb762f, glyph: 'F' },
-  shocked: { color: 0xc4a72e, glyph: 'Z' },
-  sealed: { color: 0x9268bf, glyph: 'X' },
-  withering: { color: 0x7e8b41, glyph: 'W' },
-  healcut: { color: 0xa65767, glyph: '-+' },
+  burn: { color: 0x9d4c22, glyph: 'Burn' },
+  shocked: { color: 0x7b6a26, glyph: 'Shocked' },
+  shock: { color: 0x7b6a26, glyph: 'Shocked' },
+  sealed: { color: 0x765497, glyph: 'Sealed' },
+  withering: { color: 0x59652d, glyph: 'No heal' },
+  healcut: { color: 0x824453, glyph: 'Heal cut' },
+  shadowDot: { color: 0x634471, glyph: 'Decay' },
+  frozen: { color: 0x367890, glyph: 'Frozen' },
+  rooted: { color: 0x526e36, glyph: 'Rooted' },
+  exposed: { color: 0x995638, glyph: 'Exposed' },
+  guard: { color: 0x486d88, glyph: 'Guard' },
+  ward: { color: 0x486d88, glyph: 'Ward' },
+  thorns: { color: 0x526e36, glyph: 'Thorns' },
+  hot: { color: 0x3e7340, glyph: 'Regen' },
+  atkBuff: { color: 0x835442, glyph: 'Attack +' },
+  takenReduce: { color: 0x486d88, glyph: 'Armored' },
+  closed: { color: 0x486d88, glyph: 'Formation' },
+  lifesteal: { color: 0x824453, glyph: 'Life steal' },
+  beastShape: { color: 0x526e36, glyph: 'Beast' },
   evasion: { color: 0x518ca4, glyph: 'Evasion' },
   stealth: { color: 0x606783, glyph: 'Invisible' },
-  hazard: { color: 0xd9813e, glyph: '!' },
+  hazard: { color: 0x995638, glyph: 'Hazard' },
 };
 
 class Actor {
@@ -124,7 +138,7 @@ class Actor {
       if(!s||typeof s.kind!=='string'||!s.kind)continue;
       // evadeS is a bookkeeping marker; the actual charge counter expires it.
       if(s.kind==='evadeS')continue;
-      if(!STATUS_STYLE[s.kind])STATUS_STYLE[s.kind]={color:0x827599,glyph:s.kind.slice(0,2).toUpperCase()};
+      if(!STATUS_STYLE[s.kind])STATUS_STYLE[s.kind]={color:0x615870,glyph:s.kind.replace(/([a-z])([A-Z])/g,'$1 $2').replace(/_/g,' ').replace(/^./,c=>c.toUpperCase())};
       kinds.add(s.kind);
     }
     if (u.counter > 0) kinds.add('counter');
@@ -212,8 +226,16 @@ class Actor {
   }
 
   layoutBadges() {
-    let x=-this.height*.28;
-    for(const b of this.badges.values()){const w=b.__badgeWidth||22;b.setPosition(x+w/2,-this.height-64);x+=w+4;}
+    // Keep labels above their owner instead of extending across neighboring
+    // actors. Rows are centred and grow upward, away from the health bar.
+    const maxWidth=180,rows=[[]];let width=0;
+    for(const b of this.badges.values()){
+      const w=b.__badgeWidth||22;
+      if(width&&width+4+w>maxWidth){rows.push([]);width=0;}
+      rows.at(-1).push(b);width+=(width?4:0)+w;
+    }
+    rows.forEach((row,i)=>{let x=-(row.reduce((n,b)=>n+(b.__badgeWidth||22),0)+Math.max(0,row.length-1)*4)/2;
+      for(const b of row){const w=b.__badgeWidth||22;b.setPosition(x+w/2,-this.height-64-i*26);x+=w+4;}});
   }
 
   pulseBadge(kind) {
@@ -627,6 +649,10 @@ class Actor {
           if (opts.from != null) this.root.x = opts.from;
           const to = opts.x != null ? opts.x : clip === 'enter' ? this.home.x : this.root.x + 200;
           move(to, opts.duration || 700, 'Sine.InOut', () => { if (opts.thenIdle !== false) this.idle(); finish(false); }, opts.y != null ? opts.y : clip === 'enter' ? this.home.y : this.root.y);
+        } else if(returning){
+          // Alpha has no tumble sheet. Its idle can supply the recovery pose,
+          // but must still carry it back to its own grounded formation slot.
+          move(this.home.x,260,'Sine.Out',()=>{this.idle();finish(false);},this.home.y);
         } else if (opts.onContact && /^(slash|slash_wide|riposte|finisher|bite|lash|charge|pounce|leap|cast)$/.test(clip)) {
           // An attack with no painted clip of its own (Hiro, 2026-09-28: a
           // mob must never die to an invisible animation). Hold the pose,

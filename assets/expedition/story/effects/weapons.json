@@ -1,5 +1,5 @@
 {
-  "image": "weapons-19fb1ba49b73.webp",
+  "image": "weapons-clean-55b4b106fd57.webp",
   "frameWidth": 256,
   "frameHeight": 256,
   "columns": 4,
@@ -30,5 +30,31 @@
       15
     ]
   },
-  "source": "story-enemies\\effects-weapons\\effects-v2.png"
+  "source": "story-enemies\\effects-weapons\\effects-v2.png",
+  "boundaryRepair": {
+    "original": "weapons-19fb1ba49b73.webp",
+    "master": "adventurer-expeditions-source-art\\astra-v8\\story-enemies\\effects-weapons\\effects-v2.png",
+    "sourceSHA256": "8aa4c6323ce40e1f8ec73bb8d7572f554e0a70fab6f0dd90439ca9dc7adc76d3",
+    "masterSeamY": 890,
+    "unchangedFrames": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "recoveredFrames": [
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ]
+  }
 }

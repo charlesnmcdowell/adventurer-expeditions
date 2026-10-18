@@ -24,6 +24,8 @@ class ExpeditionScene extends Phaser.Scene {
     X.UI.preloadBusts(this);
     X.DefeatFX.preload(this);
     X.BattleStage.preload(this);
+    // Arcade casters and archers use the same authored effects as story foes.
+    if(X.Painted.needed(this).some(id=>X.monsterActors.includes(id)))X.StoryEffects?.preload(this);
   }
 
   // The painted sheet descriptor for Actor, or null while the plates stand in.

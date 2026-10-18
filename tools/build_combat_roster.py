@@ -149,6 +149,8 @@ def merge(actor,clips):
         doc['textures']=textures;doc['canvas']={'w':cw,'h':ch,'pivot':{'x':px,'y':py}}
         doc['frames']={f['filename']:{**f,'page':i} for i,tex in enumerate(textures) for f in tex['frames']}
         for c in clips:doc['clips'][c['id']]={**doc['clips'].get(c['id'],{}),**fresh['clips'][c['id']], 'bodyScale':c.get('bodyScale',1)}
+        from repair_cast_releases import repair as repair_cast
+        repair_cast(doc,actor)
         (dest/(actor+'.json')).write_text(json.dumps(doc,separators=(',',':')))
         return [str((dest/x['image']).relative_to(ROOT)).replace('\\','/') for x in textures]
 

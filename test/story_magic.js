@@ -23,7 +23,7 @@ for(const id of Object.keys(P.casters)){
  const from=e.st.events.length;A.Combat.act(e.st,u,{kind:'attack',targetUid:foe.uid});
  assert(e.st.events.slice(from).some(ev=>ev.t==='use'&&ev.skillId==='basic_attack'),'free spell available with signatures cooling down');
 }
-for(const id of ['cassian','nettle','durnik']){
+for(const id of ['fennick','cassian','nettle','durnik']){
  assert(!P.casters[id],'hybrids retain weapons');
  const s=S.open();s.record.chapter=7;S.syncQuest(s);A.Campaign3.recruit(s.game,id);
  const basic=A.SkillSys.manifest(P.make(s,id),{skillId:'basic_attack',level:1}).data;
@@ -40,4 +40,4 @@ for(const q of A.DATA.CAMPAIGN3_QUESTS)for(let i=0;i<q.enc.length;i++)for(const 
   if(d.elemental)assert(F.supports(entry.skillId),ch.name+'/'+entry.skillId+' needs painted magic');
  }
 }
-console.log('PASS: six casters, free spell basics and magical signatures; three weapon exceptions; preserved power/source data and casting anchors');
+console.log('PASS: five casters, free spell basics and magical signatures; four weapon exceptions; preserved power/source data and casting anchors');

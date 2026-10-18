@@ -93,6 +93,14 @@ test('staggered walk fills a rear slot in both axes without changing size', asyn
   assert.equal(a.root.x,400);assert.equal(a.root.y,420);assert.equal(a.img.scaleX,1);
 });
 
+test('boss recovery using idle still returns to its own grounded home',async()=>{
+  for(const move of ['land_tumble','land_beside','overshoot_land','lash_back']){
+    const a=actor();a.kind='boss';a.root.x=600;a.root.y=520;
+    await a.play(move);assert.equal(a.root.x,a.home.x);assert.equal(a.root.y,a.home.y);
+    assert.equal(a._playback,null);assert.equal(a.img.key,'hero:idle');
+  }
+});
+
 test('ground perspective follows travel, paired clips and interruption without altering native size', async () => {
   const a=actor();a.scene.perspectiveAt=y=>Math.max(.6,1+(y-612)*.0019);
   a.root.setScale=function(s){this.scaleX=this.scaleY=s;};

@@ -1,5 +1,5 @@
 {
-  "image": "storm-be65b99de0c4.webp",
+  "image": "storm-clean-e1b7f5453f97.webp",
   "frameWidth": 256,
   "frameHeight": 256,
   "columns": 4,
@@ -30,5 +30,31 @@
       15
     ]
   },
-  "source": "story-enemies\\effects-storm\\effects.png"
+  "source": "story-enemies\\effects-storm\\effects.png",
+  "boundaryRepair": {
+    "original": "storm-be65b99de0c4.webp",
+    "master": "adventurer-expeditions-source-art\\astra-v8\\story-enemies\\effects-storm\\effects.png",
+    "sourceSHA256": "238117816a3de9c7a700d449d220a04149f73ad5d866a199446ecf82ddd66ee4",
+    "masterSeamY": 890,
+    "unchangedFrames": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "recoveredFrames": [
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ]
+  }
 }

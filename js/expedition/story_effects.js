@@ -20,10 +20,13 @@ for(const [id,source]of Object.entries({cinder_charge:'ember_lash',fire_ship:'si
  killing_angle:'contract_mark',ranged_discipline:'ranging_ward',crossing_guard:'ranging_ward',
  vital_anchor:'ranging_ward',mend:'ranging_ward',restorative_circle:'ranging_ward',
  grove_raise:'thorn_lash',growth_field:'thorn_lash',thorn_skin:'thorn_lash',storm_shape:'ranging_ward',
- blood_price:'blood_lotus',raise:'blood_lotus',taunt:'contract_mark'}))clips[id]=clips[source];
+ blood_price:'blood_lotus',raise:'blood_lotus',taunt:'contract_mark',
+ xp_arcane_volley:'arcane_cascade',xp_arcane_ward:'ranging_ward',
+ xp_binding_sigil:'bell_silence',xp_waning_curse:'soul_bay'}))clips[id]=clips[source];
 const stationary=new Set(['marked_for_the_knife','smoke_bomb','contract_mark','killing_angle','taunt',
  'ranging_ward','ranged_discipline','crossing_guard','vital_anchor','fire_barrier','blood_pact','dispel','bell_silence','snare',
- 'mend','restorative_circle','grove_raise','growth_field','thorn_skin','storm_shape','blood_price','raise']);
+ 'mend','restorative_circle','grove_raise','growth_field','thorn_skin','storm_shape','blood_price','raise',
+ 'xp_arcane_ward','xp_binding_sigil']);
 const keyFor=group=>group==='chapter-one'?'story_chapter_one_effects':'story_effects_'+group;
 const themes={
  fire:{aura:'fire_barrier',impact:'ashfall',color:0xffab4c},
@@ -52,7 +55,31 @@ function animate(scene,duration,draw,done=()=>{}){
  scene.events.on('update',tick);scene.events.once('shutdown',finish);return finish;
 }
 const F=X.StoryEffects={
+  // Presentation only: never changes a resolved roll, damage or story skill.
+  // Match the weapon actually painted in each set, not a generic basic attack.
+  basicEffects:{story_bandit_archer:'aimed_shot',story_grell:'aimed_shot',elven_ranger:'aimed_shot',
+    story_consortium_mage:'prismatic_bolt',story_merle:'fire_bolt',story_femi:'frost_touch',
+    story_kobold_shaman:'fire_bolt',story_kobold_chief:'fire_bolt',story_veylan_acolyte:'blood_lotus',
+    story_grukhar:'poison_spray',story_thornwise:'thorn_lash',story_umbra_druid:'thorn_lash',
+    story_malvane:'frost_touch',story_rennick:'spark',story_kessa:'chain_lightning',story_jarem:'siege_flame',
+    story_altar_keepers:'poison_spray',elven_wizard:'prismatic_bolt',enchantress:'soul_bay',hag:'bog_curse'},
+  enemyAction(actor,id,skill){
+    const key=actor.sheet?.actor||actor.kind;
+    // These two source kits include ranger skills but their approved art is
+    // a greatsword and a hooked blade respectively. Deliver those via contact.
+    const bladeShot=['story_bahadir','story_tunnel_kobold'].includes(key)&&['aimed_shot','snare'].includes(id);
+    const weaponStatus=F.meleeStatus.has(id)||bladeShot;
+    const basic=id==='basic_attack'&&F.basicEffects[key];
+    const effect=basic||({killing_angle:'aimed_shot',xp_enchanted_arrow:'aimed_shot',
+      ghoststep:'smoke_bomb',shadow_rise:'smoke_bomb',smoke_step:'smoke_bomb',cloak_of_shadows:'smoke_bomb',
+      beast_shape:'thorn_skin',warding_stance:'ranging_ward'}[id]||id);
+    const ranged=!!basic||(!weaponStatus&&(skill.elemental||(skill.reach==='any'&&!skill.melee&&!skill.katana&&skill.target&&!['self','party','ally','deadAlly','allyLane'].includes(skill.target))));
+    return {effect,ranged:!!ranged,weaponStatus};
+  },
   supports:(id,opts={})=>Object.hasOwn(clips,id)||(opts.companion&&Object.hasOwn(companionClips,id)),
+  stanceFor:id=>id==='xp_evasive_step'?'roll':[
+    'xp_blade_counter','shield_wall','close_order','stone_stance','defiant_stand',
+    'hold_the_road','bulwark_formation','counter_attack','countersign'].includes(id)?'intercept':null,
   catalog:clips,
   family,
   // Marks from a knife/mace/guard are carried by that weapon's contact, never a flying badge.

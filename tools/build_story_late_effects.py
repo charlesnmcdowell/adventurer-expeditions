@@ -27,4 +27,7 @@ def main():
   (OUT/name).write_bytes(content)
   (OUT/(group+'.json')).write_text(json.dumps(dict(image=name,frameWidth=256,frameHeight=256,columns=4,rows=4,clips={k:list(range(i*4,i*4+4)) for i,k in enumerate(clips)},source=str(file.relative_to(SRC.parent))),indent=2))
   print(group,len(content))
-if __name__=='__main__':main()
+if __name__=='__main__':
+ main()
+ from repair_effect_boundaries import main as repair_boundaries
+ repair_boundaries()

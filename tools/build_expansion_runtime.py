@@ -18,6 +18,8 @@ def actors():
             man=dict(clips=ordinary['clips']+[c for c in pairs['clips'] if c['id'].startswith('hiro-')])
             doc=build(src,actor,ROOT/'assets/expedition',300,90,man)
             doc['authoredFacing']=-1
+            from repair_cast_releases import repair as repair_cast
+            repair_cast(doc,actor)
             (ROOT/'assets/expedition'/actor/f'{actor}.json').write_text(json.dumps(doc,separators=(',',':')),encoding='utf8')
             fatal=dict(clips=[c for c in pairs['clips'] if c['id'].endswith('-fatal')])
             build(src,actor+'-fatal',ROOT/'assets/expedition/adult',300,90,fatal)

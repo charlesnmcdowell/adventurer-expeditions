@@ -127,6 +127,8 @@ def main():
     for spec in cfg['pairs']:
         if spec.get('nonlethal') and not spec.get('fatal'):
             doc['clips'][spec['id']].update(nonlethal=True,finalState='opponent-survives')
+    from repair_cast_releases import repair as repair_cast
+    repair_cast(doc,actor)
     (out/actor/(actor+'.json')).write_text(json.dumps(doc,separators=(',',':')))
     fatalid=actor+'-fatal'
     fataldoc=build(src,fatalid,out,300,95,dict(clips=[fatal]),lossless=True)

@@ -23,9 +23,8 @@ P.kits={
 P.clips=['idle','walk','attack','signature-1','signature-2','hit','knockout','victory'];
 // Spellcasters keep a free, reliable basic action while their signatures recharge.
 // Same power/cost/statuses; only the edition's copies become ranged spells.
-// Hiro's exceptions (2026-10-18): Santiago, Wanjiru and Dai Morgan keep weapons.
+// Hiro's exceptions (2026-10-18): Winston, Santiago, Wanjiru and Dai Morgan keep weapons.
 P.casters={vess:{name:'Ember Bolt',effect:'ember_lash',element:'fire',clip:'signature-1'},
- fennick:{name:'Shadow Bolt',effect:'whisper_of_ending',element:'shadow',clip:'signature-2',spellClips:{venom_fang:'signature-2'},effects:{venom_fang:'poison_spray'}},
  aurelius:{name:'Fire Bolt',effect:'fire_bolt',element:'fire',clip:'signature-1'},
  ysolde:{name:'Frost Bolt',effect:'frost_touch',element:'ice',clip:'signature-1'},
  selene:{name:'Thorn Bolt',effect:'thorn_lash',element:'nature',clip:'signature-2'},
@@ -140,6 +139,10 @@ A.SkillSys.manifest=function(ch,entry){
  const m=oldManifest.call(this,ch,entry);
  if(!ch?.expeditionStoryCompanion)return m;
  const caster=P.casters[ch.expeditionStoryCompanion];
+ // Winston delivers his lingering wound with the hooked knife. Keep the
+ // source skill ID, power, status payload and cooldown; no free shadow bolt.
+ if(ch.expeditionStoryCompanion==='fennick'&&entry.skillId==='whisper_of_ending')
+  return {...m,data:{...m.data,name:'Ending Cut',desc:'A hooked-knife cut that leaves a lingering wound and prevents healing.',elemental:false,element:undefined,reach:'front',melee:true,katana:false,cooldown:Math.max(3,m.data.cooldown||0)}};
  if(entry.skillId==='basic_attack'){
   return caster?{...m,data:{...m.data,name:caster.name,elemental:true,
     element:caster.element,reach:'any',melee:false,katana:false}}:m;

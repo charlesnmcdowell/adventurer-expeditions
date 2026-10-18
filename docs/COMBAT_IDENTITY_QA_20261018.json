@@ -1,0 +1,1112 @@
+{
+  "date": "2026-10-18",
+  "checkpoint": "a7a2c42",
+  "scope": "Local Expeditions, no publishing; original Adventurer and synced code untouched",
+  "enemyIdentities": 77,
+  "movePresentations": 361,
+  "idleActors": 94,
+  "idleFrames": 553,
+  "browserErrors": [],
+  "balanceBefore": {
+    "wins": 1082,
+    "fights": 1100,
+    "stalls": 0,
+    "zeroWinEncounters": 0
+  },
+  "balanceAfter": {
+    "wins": 1087,
+    "fights": 1100,
+    "stalls": 0,
+    "zeroWinEncounters": 0
+  },
+  "effectArtBytes": 1344224,
+  "generatedImages": 0,
+  "evidenceDirectory": "test/reports/combat-identity",
+  "idleEvidence": "test/reports/idle-roster/browser/report.json",
+  "notes": [
+    "Real director/atlas playback uses injected resolved events for exhaustive skill coverage; it is not an AI/balance proof.",
+    "Balance is a separate 1,100-fight seeded Hiwot/Winston fixture.",
+    "Missing release anchors listed below occur only on stationary smoke/wards/blood-price, not moving projectiles.",
+    "Portrait screenshot is a letterboxed desktop scene in Chrome viewport emulation, not a physical-phone usability certification."
+  ],
+  "enemies": [
+    {
+      "id": "mini:nib",
+      "name": "Nib",
+      "actor": "story_nib",
+      "moves": [
+        "basic_attack",
+        "backstab",
+        "smoke_bomb",
+        "silenced_step"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": [
+        "smoke_bomb"
+      ]
+    },
+    {
+      "id": "mini:cobb",
+      "name": "Cobb",
+      "actor": "story_cobb",
+      "moves": [
+        "basic_attack",
+        "venom_fang",
+        "backstab",
+        "marked_for_the_knife"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": []
+    },
+    {
+      "id": "enemy:hired_knife",
+      "name": "Hired Knife · Road Cloak",
+      "actor": "story_hired_knife",
+      "moves": [
+        "basic_attack",
+        "backstab",
+        "marked_for_the_knife",
+        "venom_fang",
+        "smoke_bomb",
+        "silenced_step"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": [
+        "smoke_bomb"
+      ]
+    },
+    {
+      "id": "enemy:consortium_mage",
+      "name": "Consortium Mage · Seal Cowl",
+      "actor": "story_consortium_mage",
+      "moves": [
+        "basic_attack",
+        "fire_bolt",
+        "prismatic_bolt",
+        "frost_touch",
+        "chain_lightning",
+        "ranging_ward"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": []
+    },
+    {
+      "id": "enemy:road_wolf",
+      "name": "Road Wolf · Grey",
+      "actor": "wolf",
+      "moves": [
+        "basic_attack",
+        "pack_snap",
+        "cleave",
+        "defiant_stand",
+        "pack_frenzy"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": []
+    },
+    {
+      "id": "named:morwin",
+      "name": "Merle",
+      "actor": "story_merle",
+      "moves": [
+        "basic_attack",
+        "fire_bolt",
+        "spark",
+        "ember_lash",
+        "ashfall"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": []
+    },
+    {
+      "id": "named:lessa",
+      "name": "Lurleen",
+      "actor": "story_lurleen",
+      "moves": [
+        "basic_attack",
+        "backstab",
+        "venom_fang",
+        "marked_for_the_knife",
+        "blood_price"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": [
+        "blood_price"
+      ]
+    },
+    {
+      "id": "enemy:gnoll_raider",
+      "name": "Gnoll Raider · Yellow",
+      "actor": "story_gnoll_raider",
+      "moves": [
+        "basic_attack",
+        "war_bellow",
+        "rending_talons",
+        "taunt",
+        "cleave"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": []
+    },
+    {
+      "id": "enemy:bandit_archer",
+      "name": "Bandit Archer · Ridge",
+      "actor": "story_bandit_archer",
+      "moves": [
+        "basic_attack",
+        "aimed_shot",
+        "venom_fang",
+        "suppressing_volley",
+        "kunai_line"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": []
+    },
+    {
+      "id": "mini:gnoll_warleader",
+      "name": "Snarl, Gnoll Warleader",
+      "actor": "story_snarl",
+      "moves": [
+        "basic_attack",
+        "cleave",
+        "taunt",
+        "rending_talons",
+        "defiant_stand"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": []
+    },
+    {
+      "id": "named:bramm",
+      "name": "Bahadır",
+      "actor": "story_bahadir",
+      "moves": [
+        "basic_attack",
+        "aimed_shot",
+        "cleave",
+        "defiant_stand",
+        "snare"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": []
+    },
+    {
+      "id": "enemy:tunnel_kobold",
+      "name": "Tunnel Kobold · Poison Team",
+      "actor": "story_tunnel_kobold",
+      "moves": [
+        "basic_attack",
+        "aimed_shot",
+        "sand_sting",
+        "snare",
+        "venom_fang"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": []
+    },
+    {
+      "id": "enemy:kobold_shaman",
+      "name": "Kobold Shaman · Ore Mask",
+      "actor": "story_kobold_shaman",
+      "moves": [
+        "basic_attack",
+        "cinder_charge",
+        "fire_bolt",
+        "spark"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": []
+    },
+    {
+      "id": "mini:kobold_chief",
+      "name": "Kobold Chief",
+      "actor": "story_kobold_chief",
+      "moves": [
+        "basic_attack",
+        "fire_bolt",
+        "spark",
+        "mend",
+        "snare"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": []
+    },
+    {
+      "id": "enemy:veylan_acolyte",
+      "name": "Acolyte of Veylan · Bone Cowl",
+      "actor": "story_veylan_acolyte",
+      "moves": [
+        "basic_attack",
+        "mend",
+        "wither_touch",
+        "restorative_circle"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": []
+    },
+    {
+      "id": "named:grukhar",
+      "name": "Grukhar",
+      "actor": "story_grukhar",
+      "moves": [
+        "basic_attack",
+        "wither_touch",
+        "blood_pact",
+        "bog_curse",
+        "mend",
+        "raise"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": []
+    },
+    {
+      "id": "mini:verlan",
+      "name": "Femi",
+      "actor": "story_femi",
+      "moves": [
+        "basic_attack",
+        "frost_touch",
+        "fire_bolt",
+        "chain_lightning",
+        "prismatic_bolt"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": []
+    },
+    {
+      "id": "enemy:gauntlet_soldier",
+      "name": "Burning Gauntlet Soldier · Night Watch",
+      "actor": "story_gauntlet_soldier",
+      "moves": [
+        "basic_attack",
+        "shield_wall",
+        "taunt",
+        "close_order",
+        "crossing_guard"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": [
+        "crossing_guard"
+      ]
+    },
+    {
+      "id": "mini:skarn",
+      "name": "Skarn Maul",
+      "actor": "story_skarn",
+      "moves": [
+        "basic_attack",
+        "dual_swords",
+        "shield_wall",
+        "line_advance",
+        "stone_stance"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": []
+    },
+    {
+      "id": "enemy:hob_sergeant",
+      "name": "Hobgoblin Sergeant · Frostbite Company",
+      "actor": "story_hob_sergeant",
+      "moves": [
+        "basic_attack",
+        "dual_swords",
+        "line_advance",
+        "taunt",
+        "stone_stance",
+        "shield_wall"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": []
+    },
+    {
+      "id": "enemy:gate_bandit",
+      "name": "Road Bandit · Frostbite",
+      "actor": "story_road_bandit",
+      "moves": [
+        "basic_attack",
+        "cleave",
+        "sunder",
+        "veterans_cut"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": []
+    },
+    {
+      "id": "named:gorruk",
+      "name": "Gorruk",
+      "actor": "story_gorruk",
+      "moves": [
+        "basic_attack",
+        "cleave",
+        "sunder",
+        "war_bellow",
+        "fire_bolt",
+        "taunt"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": []
+    },
+    {
+      "id": "mini:silksa",
+      "name": "Silksa, Spider Queen",
+      "actor": "story_silksa",
+      "moves": [
+        "basic_attack",
+        "venom_fang",
+        "glass_web",
+        "backstab",
+        "tongue_lash"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": []
+    },
+    {
+      "id": "enemy:web_spider",
+      "name": "Giant Spider · Web-Black",
+      "actor": "story_web_spider",
+      "moves": [
+        "basic_attack",
+        "glass_web",
+        "snare",
+        "tongue_lash"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": []
+    },
+    {
+      "id": "named:thornwise",
+      "name": "Mzee Kamau",
+      "actor": "story_thornwise",
+      "moves": [
+        "basic_attack",
+        "thorn_lash",
+        "treefall",
+        "grove_raise",
+        "beast_shape",
+        "thorn_skin"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": []
+    },
+    {
+      "id": "enemy:umbra_druid",
+      "name": "Umbra Druid · Moss Robe",
+      "actor": "story_umbra_druid",
+      "moves": [
+        "basic_attack",
+        "thorn_lash",
+        "growth_field",
+        "snare"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": []
+    },
+    {
+      "id": "named:nettle",
+      "name": "Wanjiru",
+      "actor": "story_nettle",
+      "moves": [
+        "basic_attack",
+        "beast_shape",
+        "thorn_skin",
+        "grove_raise",
+        "wither_touch"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": []
+    },
+    {
+      "id": "mini:wyvern_matriarch",
+      "name": "Wyvern Matriarch",
+      "actor": "story_wyvern_matriarch",
+      "moves": [
+        "basic_attack",
+        "venom_fang",
+        "rime_breath",
+        "raptor_shred",
+        "counter_attack"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": []
+    },
+    {
+      "id": "enemy:wyvern",
+      "name": "Wyvern · Grey",
+      "actor": "story_wyvern",
+      "moves": [
+        "basic_attack",
+        "raptor_shred",
+        "venom_fang",
+        "rime_breath"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": []
+    },
+    {
+      "id": "mini:kestrel",
+      "name": "Kestrel",
+      "actor": "story_kestrel",
+      "moves": [
+        "basic_attack",
+        "hold_the_road",
+        "shield_breaker",
+        "taunt",
+        "bulwark_formation"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": []
+    },
+    {
+      "id": "enemy:consortium_guard",
+      "name": "Consortium Guard · Iron Livery",
+      "actor": "story_consortium_guard",
+      "moves": [
+        "basic_attack",
+        "shield_wall",
+        "hold_the_road",
+        "bulwark_formation",
+        "taunt",
+        "shield_breaker"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": []
+    },
+    {
+      "id": "enemy:slave_driver",
+      "name": "Slave Driver · Chain Hand",
+      "actor": "story_slave_driver",
+      "moves": [
+        "basic_attack",
+        "chain_and_weight",
+        "contract_mark",
+        "cleave",
+        "flanking_pay"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": []
+    },
+    {
+      "id": "named:malvane",
+      "name": "Olamide",
+      "actor": "story_malvane",
+      "moves": [
+        "basic_attack",
+        "frost_touch",
+        "rime_grasp",
+        "coven_rime",
+        "ranging_ward"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": []
+    },
+    {
+      "id": "mini:sewer_ogre_mage",
+      "name": "The Ogre Under the Docks",
+      "actor": "story_sewer_ogre_mage",
+      "moves": [
+        "basic_attack",
+        "cleave",
+        "taunt",
+        "mace_swing",
+        "fault_line"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": []
+    },
+    {
+      "id": "enemy:sewer_crawler",
+      "name": "Sewer Crawler · Pale",
+      "actor": "story_sewer_crawler",
+      "moves": [
+        "basic_attack",
+        "pincer_lock",
+        "backstab",
+        "snare"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": []
+    },
+    {
+      "id": "enemy:shadow_double",
+      "name": "Shape-Thief · Half-Turned",
+      "actor": "story_shadow_double",
+      "moves": [
+        "basic_attack",
+        "backstab",
+        "ghoststep",
+        "bell_silence",
+        "shadow_rise",
+        "ward_thief"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": []
+    },
+    {
+      "id": "mini:lantern_master",
+      "name": "The Master of Lanterns",
+      "actor": "story_lantern_master",
+      "moves": [
+        "basic_attack",
+        "shadow_rise",
+        "bell_silence",
+        "backstab",
+        "ward_thief",
+        "ghoststep"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": []
+    },
+    {
+      "id": "mini:umbral_pair",
+      "name": "The Umbral Hand 1",
+      "actor": "story_umbral_pair",
+      "moves": [
+        "basic_attack",
+        "venom_fang",
+        "backstab",
+        "smoke_bomb",
+        "silenced_step",
+        "marked_for_the_knife"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": [
+        "smoke_bomb"
+      ]
+    },
+    {
+      "id": "mini:tower_captain",
+      "name": "Captain of the Tower",
+      "actor": "story_tower_captain",
+      "moves": [
+        "basic_attack",
+        "shield_wall",
+        "bulwark_formation",
+        "taunt",
+        "shield_breaker",
+        "hold_the_road"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": []
+    },
+    {
+      "id": "named:maddox",
+      "name": "Adigun Adeyinka",
+      "actor": "story_maddox",
+      "moves": [
+        "basic_attack",
+        "contract_mark",
+        "chain_and_weight",
+        "mace_swing",
+        "cleave"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": []
+    },
+    {
+      "id": "named:vask",
+      "name": "Bankole",
+      "actor": "story_vask",
+      "moves": [
+        "basic_attack",
+        "line_advance",
+        "shield_breaker",
+        "cleave",
+        "sunder"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": []
+    },
+    {
+      "id": "named:rennick",
+      "name": "Rotimi",
+      "actor": "story_rennick",
+      "moves": [
+        "basic_attack",
+        "spark",
+        "frost_touch",
+        "dispel"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": []
+    },
+    {
+      "id": "named:grell",
+      "name": "Gbenga",
+      "actor": "story_grell",
+      "moves": [
+        "basic_attack",
+        "killing_angle",
+        "aimed_shot",
+        "silenced_step",
+        "backstab",
+        "smoke_bomb"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": [
+        "smoke_bomb"
+      ]
+    },
+    {
+      "id": "mini:family_double",
+      "name": "A Face You Know 1",
+      "actor": "story_family_double",
+      "moves": [
+        "basic_attack",
+        "backstab",
+        "ward_thief",
+        "shadow_rise",
+        "bell_silence",
+        "ghoststep"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": []
+    },
+    {
+      "id": "enemy:phase_spider",
+      "name": "Phase Spider · Blue",
+      "actor": "story_phase_spider",
+      "moves": [
+        "basic_attack",
+        "glass_web",
+        "shadow_rise",
+        "venom_fang"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": []
+    },
+    {
+      "id": "enemy:tomb_ghoul",
+      "name": "Tomb Ghoul · Dust",
+      "actor": "story_tomb_ghoul",
+      "moves": [
+        "basic_attack",
+        "soul_bay",
+        "wither_touch",
+        "venom_fang"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": []
+    },
+    {
+      "id": "enemy:gauntlet_traitor",
+      "name": "Gauntlet Turncoat · Marr's Own",
+      "actor": "story_gauntlet_traitor",
+      "moves": [
+        "basic_attack",
+        "cleave",
+        "sunder",
+        "paid_in_full",
+        "ashfall",
+        "disciplined_advance"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": []
+    },
+    {
+      "id": "named:idris",
+      "name": "Idris",
+      "actor": "story_idris",
+      "moves": [
+        "basic_attack",
+        "blood_lotus",
+        "wither_touch",
+        "mend",
+        "ward_thief",
+        "backstab"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": []
+    },
+    {
+      "id": "named:amara",
+      "name": "Amara",
+      "actor": "story_amara",
+      "moves": [
+        "basic_attack",
+        "dual_swords",
+        "counter_attack",
+        "defiant_stand",
+        "cleave"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": []
+    },
+    {
+      "id": "named:ravel",
+      "name": "Rasheed",
+      "actor": "story_ravel",
+      "moves": [
+        "basic_attack",
+        "dual_swords",
+        "cutlass_work",
+        "butchers_tempo",
+        "backstab",
+        "smoke_bomb"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": [
+        "smoke_bomb"
+      ]
+    },
+    {
+      "id": "named:kessa",
+      "name": "Kemi",
+      "actor": "story_kessa",
+      "moves": [
+        "basic_attack",
+        "chain_lightning",
+        "arcane_cascade",
+        "storm_shape",
+        "spark"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": []
+    },
+    {
+      "id": "mini:hall_doubles",
+      "name": "Ducal Guard 1",
+      "actor": "story_hall_doubles",
+      "moves": [
+        "basic_attack",
+        "shadow_rise",
+        "countersign",
+        "smoke_step",
+        "backstab",
+        "cloak_of_shadows"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": [
+        "shadow_rise",
+        "smoke_step",
+        "cloak_of_shadows"
+      ]
+    },
+    {
+      "id": "enemy:palace_doppelganger",
+      "name": "Palace Guard · Gate Livery",
+      "actor": "story_palace_doppelganger",
+      "moves": [
+        "basic_attack",
+        "backstab",
+        "smoke_step",
+        "cloak_of_shadows"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": [
+        "smoke_step",
+        "cloak_of_shadows"
+      ]
+    },
+    {
+      "id": "named:jarem",
+      "name": "Jelani",
+      "actor": "story_jarem",
+      "moves": [
+        "basic_attack",
+        "siege_flame",
+        "fire_ship",
+        "prismatic_bolt",
+        "ember_lash"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": []
+    },
+    {
+      "id": "enemy:morrak_cultist",
+      "name": "Cultist of Morrak · Blood Cowl",
+      "actor": "story_morrak_cultist",
+      "moves": [
+        "basic_attack",
+        "blood_pact",
+        "raise",
+        "soul_bay",
+        "poison_spray",
+        "bog_curse"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": []
+    },
+    {
+      "id": "named:lucan",
+      "name": "Segun Marr",
+      "actor": "story_lucan",
+      "moves": [
+        "basic_attack",
+        "cleave",
+        "shield_wall",
+        "paid_in_full",
+        "close_order",
+        "taunt"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": []
+    },
+    {
+      "id": "mini:altar_keepers",
+      "name": "Keepers of the Altar 1",
+      "actor": "story_altar_keepers",
+      "moves": [
+        "basic_attack",
+        "raise",
+        "poison_spray",
+        "soul_bay",
+        "bog_curse",
+        "blood_pact"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": []
+    },
+    {
+      "id": "mini:your_own_faces",
+      "name": "Your Own Faces 1",
+      "actor": "story_your_own_faces",
+      "moves": [
+        "basic_attack",
+        "backstab",
+        "bell_silence",
+        "ghoststep",
+        "shadow_rise",
+        "ward_thief"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": []
+    },
+    {
+      "id": "named:korvath",
+      "name": "Kolade Adeyinka",
+      "actor": "story_korvath",
+      "moves": [
+        "basic_attack",
+        "cleave",
+        "reaving_arc",
+        "sunder",
+        "shield_wall",
+        "warding_stance",
+        "finisher",
+        "taunt",
+        "unbound_arc",
+        "the_strongest_among_you",
+        "fire_bolt",
+        "ashfall"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": []
+    },
+    {
+      "id": "arcade:dire_wolf",
+      "name": "Dire Wolf",
+      "actor": "wolf",
+      "moves": [
+        "basic_attack",
+        "pack_snap"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": []
+    },
+    {
+      "id": "arcade:thorn_lurker",
+      "name": "Thorn Lurker",
+      "actor": "plant",
+      "moves": [
+        "basic_attack",
+        "thorn_lash"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": []
+    },
+    {
+      "id": "arcade:road_wolf_leader",
+      "name": "Alpha",
+      "actor": "alpha",
+      "moves": [
+        "basic_attack",
+        "pack_snap"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": []
+    },
+    {
+      "id": "arcade:serpent",
+      "name": "Reed Serpent",
+      "actor": "serpent",
+      "moves": [
+        "basic_attack",
+        "coil_crush",
+        "venom_fang"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": []
+    },
+    {
+      "id": "arcade:beetle",
+      "name": "Iron Beetle",
+      "actor": "beetle",
+      "moves": [
+        "basic_attack",
+        "carapace_burst",
+        "sunder"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": []
+    },
+    {
+      "id": "arcade:moss_giant",
+      "name": "Moss Giant",
+      "actor": "moss_giant",
+      "moves": [
+        "basic_attack",
+        "treefall",
+        "cleave"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": []
+    },
+    {
+      "id": "arcade:hag",
+      "name": "Mire Hag",
+      "actor": "hag",
+      "moves": [
+        "basic_attack",
+        "bog_curse",
+        "wither_touch"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": []
+    },
+    {
+      "id": "arcade:goblin",
+      "name": "Gutter Goblin",
+      "actor": "goblin",
+      "moves": [
+        "basic_attack",
+        "backstab",
+        "smoke_bomb"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": [
+        "smoke_bomb"
+      ]
+    },
+    {
+      "id": "arcade:spider",
+      "name": "Glass Spider",
+      "actor": "spider",
+      "moves": [
+        "basic_attack",
+        "glass_web"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": []
+    },
+    {
+      "id": "arcade:orc",
+      "name": "Ironjaw",
+      "actor": "orc",
+      "moves": [
+        "basic_attack",
+        "war_bellow",
+        "cleave"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": []
+    },
+    {
+      "id": "arcade:crab",
+      "name": "Tidal Crab",
+      "actor": "crab",
+      "moves": [
+        "basic_attack",
+        "pincer_lock",
+        "sunder"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": []
+    },
+    {
+      "id": "arcade:toad",
+      "name": "Brine Toad",
+      "actor": "toad",
+      "moves": [
+        "basic_attack",
+        "tongue_lash",
+        "venom_fang"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": []
+    },
+    {
+      "id": "arcade:vulture",
+      "name": "Carrion Vulture",
+      "actor": "vulture",
+      "moves": [
+        "basic_attack",
+        "sky_pluck",
+        "umbral_rake"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": []
+    },
+    {
+      "id": "arcade:hydra",
+      "name": "Wreck Hydra",
+      "actor": "hydra",
+      "moves": [
+        "basic_attack",
+        "tri_bite",
+        "venom_fang"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": []
+    },
+    {
+      "id": "arcade:elven_wizard",
+      "name": "Citadel Wizard",
+      "actor": "elven_wizard",
+      "moves": [
+        "basic_attack",
+        "xp_arcane_volley",
+        "xp_arcane_ward"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": []
+    },
+    {
+      "id": "arcade:elven_ranger",
+      "name": "Citadel Ranger",
+      "actor": "elven_ranger",
+      "moves": [
+        "basic_attack",
+        "xp_enchanted_arrow",
+        "xp_evasive_step"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": []
+    },
+    {
+      "id": "arcade:dark_swordswoman",
+      "name": "Duskblade",
+      "actor": "dark_swordswoman",
+      "moves": [
+        "basic_attack",
+        "xp_twin_cut",
+        "xp_blade_counter"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": []
+    },
+    {
+      "id": "arcade:enchantress",
+      "name": "The Enchantress",
+      "actor": "enchantress",
+      "moves": [
+        "basic_attack",
+        "xp_binding_sigil",
+        "xp_waning_curse",
+        "xp_arcane_volley"
+      ],
+      "allReturnedHome": true,
+      "stationaryAnchorFallbacks": []
+    }
+  ],
+  "legacyArcadePackageMB": 290.18
+}
