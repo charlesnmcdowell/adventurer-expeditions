@@ -4,8 +4,9 @@ const A=require('./harness').load();
 for(const n of ['data','shim','encounter','campaign','run','story','story_combat','story_companions'])vm.runInThisContext(fs.readFileSync('js/expedition/'+n+'.js','utf8'));
 const S=A.Expedition.Story,P=S.Companions;
 const atlas=id=>JSON.parse(fs.readFileSync('assets/expedition/companion_'+id+'/companion_'+id+'.json'));
+let registeredFrames=0;
 for(const id of Object.keys(P.kits)){
- const doc=atlas(id);P.register(id,doc);
+ const doc=atlas(id);P.register(id,doc);registeredFrames+=Object.values(doc.clips).reduce((n,c)=>n+c.frames.length,0);
  for(const clip of Object.values(doc.clips)){
   assert.equal(clip.frames.length,16);assert.equal(new Set(clip.frames).size,16);
   assert(clip.frames.every(f=>doc.frames[f]));
@@ -20,5 +21,5 @@ for(const id of Object.keys(P.kits)){
  await assert.rejects(P.ensure(s),/could not load/);fail=false;requests=0;
  await Promise.all([P.ensure(s),P.ensure(s)]);assert.equal(requests,2,'one manifest request per selected companion');
  assert.deepEqual(P.readiness(s),[]);await P.ensure(s);assert.equal(requests,2,'ready manifests reused');
- console.log('15 companion atlases: 1,920 registered frames; selected loading, retry and deduplication passed');
+ console.log(Object.keys(P.kits).length+' companion atlases: '+registeredFrames.toLocaleString('en-US')+' registered frames; selected loading, retry and deduplication passed');
 })().catch(e=>{console.error(e);process.exitCode=1;});
