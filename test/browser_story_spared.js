@@ -13,8 +13,8 @@ const OUT='test/reports/story-spared';fs.mkdirSync(OUT,{recursive:true});
  assert.equal(spared.encounter,1);assert.equal(spared.tutorial,false);
  await page.goto('http://127.0.0.1:8742/docs/STORY_FIGHT_PREVIEW.html');
  await page.waitForFunction(()=>window.storyGame?.scene.getScene('StoryBattle')?.hud?._gateFor);
- const first=await page.evaluate(()=>{const s=storyGame.scene.getScene('StoryBattle');return{tutorial:s.enc.storyTutorial,encounter:s.story.record.encounter,gate:s.hud._gateFor,worldBodies:s.matter?.world?.localWorld?.bodies?.length||0};});
- assert(first.tutorial);assert.equal(first.encounter,1);assert.equal(first.worldBodies,0);
+ const first=await page.evaluate(()=>{const s=storyGame.scene.getScene('StoryBattle');return{tutorial:s.enc.storyTutorial,encounter:s.story.record.encounter,gate:s.hud._gateFor,physics:!!s.matter};});
+ assert(first.tutorial);assert.equal(first.encounter,1);assert.equal(first.physics,false,'no physics engine in fights');
  await page.screenshot({path:OUT+'/cobb-first-guide.png'});
  // Force a genuine defeat presentation at this checkpoint, then reload before retry.
  const defeatZoom=await page.evaluate(async()=>{const s=storyGame.scene.getScene('StoryBattle'),X=ADV.Expedition;

@@ -1,5 +1,7 @@
 # Physics and open-road art brief — for Astra
 
+> **Retired 19 October 2026.** Hiro switched the physics engine off: the thrown deaths did not look right, and a turn-based idle RPG has little use for physical props. Knockback (`js/expedition/knockback.js`) and battlefield props (`js/expedition/props.js`, Matter.js) were removed from the game. Do not generate prop or debris art from this brief.
+
 Written 11 October 2026 for the physics and open-road proposal. Code for each drop is built or specified so the art plugs straight in. Match the existing standard: painted anime cel-shaded finish, side view at eye level, true transparency (never a painted checkerboard or grey matte), no text, no logos, no UI. Save every prompt and output path beside the art, as earlier rounds did. Generate one test asset per category and get Hiro's approval before the rest (the forest travel beat showed this saves most rework).
 
 Runtime scale: Hiro stands about 330 px tall on screen; the combat floor is at y = 612 on a 1280 × 760 stage. Paint props at twice their runtime size.

@@ -12,8 +12,7 @@ const FOE_X = [850, 1000, 1140];
 const wait = (scene, t) => new Promise(r => scene.time.delayedCall(t, r));
 
 class ExpeditionScene extends Phaser.Scene {
-  // Matter.js (bundled in Phaser) for battlefield props, X.Props. Idle when a location has none.
-  constructor() { super({ key: 'Expedition', physics: { matter: { gravity: { y: 1.6 }, enableSleeping: true } } }); }
+  constructor() { super({ key: 'Expedition' }); }
 
   init(data) { this.opts = data || {}; }
 
@@ -64,7 +63,6 @@ class ExpeditionScene extends Phaser.Scene {
     this.game_.quest = { travel: { weather: X.Campaign.weatherFor(this.quest, this.world, this.phase) } };
     this.buildTextures(); X.UI.installBusts(this);
     this.env = X.BattleStage.paint(this, this.encs[this.run.wave].bg, this.phase);
-    if (X.Props) X.Props.spawn(this, this.encs[this.run.wave].bg);
     // The shared painted environment re-resolves ground weather, whose marsh
     // bias can override an explicitly clear quest. Keep the edition's declared
     // sky authoritative without changing the synced website renderer.

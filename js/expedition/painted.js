@@ -106,7 +106,6 @@ P.present = function (scene, environment, onReady) {
     scene.game.events.once('postrender', afterRender);
   }).catch(() => { if (active) P.failed(scene, 'Scenery could not load.'); });
 };
-UI.preloadHiroSheet = P.preload;
 UI.paintedFigure = function (scene, id, x, bottom, height, depth, requested) {
   const s = P.sheet(scene, id); if (!s) return null;
   const name = s.clips[requested] ? requested : 'idle', c = s.clips[name]; if (!c) return null;
@@ -125,7 +124,6 @@ UI.paintedFigure = function (scene, id, x, bottom, height, depth, requested) {
   scene.events.on('update', pause); sp.once('destroy', () => scene.events.off('update', pause));
   return sp;
 };
-UI.hiroFigure = (scene, x, bottom, height, depth, clip) => UI.paintedFigure(scene, 'hiro', x, bottom, height, depth, clip || 'idle');
 UI.ensureHiroTextures = function (scene) {
   if (scene.textures.exists('xp_hiro_face')) return;
   const s = P.sheet(scene, 'hiro'); if (!s) return;

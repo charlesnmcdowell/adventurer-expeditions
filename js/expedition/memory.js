@@ -44,7 +44,6 @@ M.releasable = function (keys, keep, innKeys) {
     else if (key === 'xp_battle_mountain_far') { if (!keep.stages.has('mountain')) out.push(key); }
     else if ((m = /^xp_battle_(.+)_(far|ground|near)$/.exec(key)) && !keepSets.has(m[1])) out.push(key);
     else if ((m = /^travel_(.+)_(plate|actions|far|ground|near|loops)$/.exec(key)) && !keep.travel.has(m[1])) out.push(key);
-    else if ((m = /^xp_props_(.+)$/.exec(key)) && !keepSets.has(m[1])) out.push(key);
     else if (key === 'defeat_city' && !keep.city) out.push(key);
     else if (!keep.inn && innKeys.has(key)) out.push(key);
   }

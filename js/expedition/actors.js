@@ -286,9 +286,10 @@ class Actor {
     if (sheetClip) {
       const playing = this.playSheet(sheetClip, clip, opts);
       if (clip !== 'down_fade') return playing;
-      // An ordinary enemy death is thrown back by the blow (X.Knockback) while its fall plays.
-      const thrown = this.side === 'b' && !this.unit?.ch?.campaignExit && !this.__finisherPresented && X.Knockback && X.Knockback.enabled ? X.Knockback.play(this) : null;
-      return Promise.all([playing, thrown]).then(() => this._destroyed ? undefined : this.fadeOut());
+      // A death is the creature's own painted fall, then the fade. The physics
+      // throw (X.Knockback) was retired on 2026-10-19: it never looked right in a
+      // turn-based fight.
+      return playing.then(() => this._destroyed ? undefined : this.fadeOut());
     }
     const fn = Actor.PLACEHOLDER[clip];
     if (!fn) return Promise.resolve();

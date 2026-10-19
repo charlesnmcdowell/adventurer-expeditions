@@ -21,7 +21,6 @@ Stage.preload = scene => {
   Stage.preloadBackground(scene,e?.bg);
 };
 Stage.preloadBackground = (scene,bg) => {
-  if (X.Props) X.Props.preload(scene, bg);
   const set = sets[bg];
   if (!set) return;
   for (const layer of names) {

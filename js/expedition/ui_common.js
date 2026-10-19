@@ -540,14 +540,4 @@ UI.installBusts = function (scene) {
   };
 })();
 
-// A face crop from any composed portrait texture (for the HUD portrait of a picked hero).
-UI.faceFrom = function (scene, textureKey, outKey) {
-  if (scene.textures.exists(outKey)) return outKey;
-  const src = scene.textures.get(textureKey).getSourceImage();
-  const w = src.width, h = src.height;
-  const f = document.createElement('canvas'); f.width = 256; f.height = 256;
-  f.getContext('2d').drawImage(src, w * 0.15, 0, w * 0.7, h * 0.55, 0, 0, 256, 256);
-  scene.textures.addCanvas(outKey, f);
-  return outKey;
-};
 })();

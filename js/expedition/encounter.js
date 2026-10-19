@@ -246,7 +246,6 @@ Enc.requestSkill = function (enc, skillId) {
 };
 Enc.requestFinisher = enc => Enc.requestSkill(enc, 'finisher');
 
-Enc.clearRequest = function (enc) { enc.request = null; };
 
 // ------------------------------------------------- recovery, on a clock
 // Kept on the encounter rather than the unit, because the shared engine owns

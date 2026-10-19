@@ -15,6 +15,32 @@ of small fixes within a day.
 
 ---
 
+## 2026-10-19 — Physics engine retired; small dead-code cleanup
+
+Hiro: the physics deaths didn't look right, and a turn-based idle RPG makes little use of physical objects. Disable the engine and clean up.
+- **Removed:**
+  - `js/expedition/knockback.js`: the gravity, bounce and slide throw on every ordinary enemy death.
+  - `js/expedition/props.js`: Matter.js battlefield props. No location ever got prop art, so it never drew anything.
+- **Unhooked:**
+  - `actors.js`: a death is the creature's own painted fall, then the fade.
+  - `beats.js`: no prop blasts on hits or deflects.
+  - `scene.js`: the fight scene no longer starts Matter.js.
+  - `battle_stage.js`: no prop preload.
+  - `memory.js`: no prop textures to free.
+  - `index.html` and both story pages: the two scripts are no longer loaded.
+- **Unused helpers removed:** `Campaign.timesCleared`, `Encounter.clearRequest`, `UI.preloadHiroSheet`, `UI.hiroFigure`, `UI.faceFrom`.
+  - A scan of all 359 exported names in the edition code found nothing else unused. The three Arcade scenes in `scenes_town.js` stay, because `index.html` still registers them.
+  - Every script in `js/expedition/` is loaded by a page.
+- **Tests:**
+  - `test/physics_memory.js` became `test/memory_release.js` (the memory checks stay; the physics ones went with the engine).
+  - `battle_ground.js` no longer tests corpse landing.
+  - `actor_animation_lifecycle.js` now asserts a death is fall then fade, with no throw.
+  - `browser_story_spared.js` asserts fights run without a physics engine.
+- `docs/PHYSICS_ART_BRIEF_20261011.md` is marked retired.
+- **Passing:** `npm test`, `npm run test:story`, `npm run test:story-art`, plus the spared, stealth and recommended-party browser tests.
+  - The stealth test passes on this commit by itself.
+  - It fails on the working tree with Astra's uncommitted Shadow Rise "grave" rework in `beats.js`, which leaves a risen enemy undrawn in real fights. That rework also carries mis-encoded text ("â€”") in `beats.js` and `scene.js`, including the player-facing "Waiting — recovering" chip.
+
 ## 2026-10-19 — Recommended party: the newest companions by default
 
 Hiro wants players to meet every companion. The default party is now the two newest recruits, marked **Recommended**. Players can still change it.

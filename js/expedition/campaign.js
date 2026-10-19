@@ -192,7 +192,6 @@ Camp.questEncounters = (q, run) => {
 // Enemies climb 30% per completed playthrough, compounding, with no cap: the
 // run is supposed to end by a fall, not a plateau. (Was: 30% per clear of that
 // quest, capped at x3.) Bosses scale the same way.
-Camp.timesCleared = (run, questId) => (run.cycles && run.cycles[questId]) || 0;
 Camp.scaleFor = run => Math.pow(1.3, Math.max(0, Camp.loopOf(run) - 1));
 
 // One pool of regular monsters, drawn from every open location, and one boss

@@ -53,16 +53,11 @@ test('a held Counter or buff draws no glow around the body (badge only)', () => 
  assert.ok(a.badges.has('counter'),'the counter badge still shows');
 });
 
-test('story survivors are not thrown by ordinary defeat knockback', async () => {
-  const previous=X.Knockback;let thrown=0;
-  X.Knockback={enabled:true,play:async()=>{thrown++;}};
-  try {
-    for(const survivor of [true,false]) {
-      const a=actor({down:clip('down')});a.side='b';a.unit={ch:{campaignExit:survivor}};
-      a.playSheet=async()=>{};a.fadeOut=async()=>{};
-      await a.play('down_fade');assert.equal(thrown,survivor?0:1);
-    }
-  } finally {X.Knockback=previous;}
+test('an enemy death is its own painted fall, then the fade, with no physics throw', async () => {
+  assert.equal(X.Knockback,undefined,'the knockback engine is retired');
+  const a=actor({down:clip('down')});a.side='b';a.unit={ch:{}};let order=[];
+  a.playSheet=async()=>{order.push('fall');};a.fadeOut=async()=>{order.push('fade');};
+  const x=a.root.x;await a.play('down_fade');assert.deepEqual(order,['fall','fade']);assert.equal(a.root.x,x,'the body is not thrown');
 });
 
 test('direct actor clips take precedence over Hiro aliases', () => {

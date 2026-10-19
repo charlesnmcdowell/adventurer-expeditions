@@ -1,7 +1,7 @@
 'use strict';
 const fs=require('fs'),vm=require('vm'),assert=require('node:assert/strict');
 const X={Story:{}},ADV={Expedition:X},scope={ADV,Phaser:{Scene:class{}},console};
-for(const file of ['scene','story_stage','story_scene','actors','knockback'])vm.runInNewContext(fs.readFileSync('js/expedition/'+file+'.js','utf8'),scope);
+for(const file of ['scene','story_stage','story_scene','actors'])vm.runInNewContext(fs.readFileSync('js/expedition/'+file+'.js','utf8'),scope);
 const scene=Object.create(X.StoryBattle.prototype),routes=JSON.parse(fs.readFileSync('assets/expedition/story/campaign.json','utf8')).routes;
 const locations=[...new Set(Object.values(routes).flat())];
 for(const location of locations){
@@ -15,9 +15,5 @@ scene.location='gnoll_fort';
 assert(scene.groundPoint(1140,432,{height:330}).y>660,'fort rear row cannot stand on a tower');
 const actor=Object.create(X.Actor.prototype);Object.assign(actor,{scene,height:330,root:{x:1140,y:432,setScale(s){this.scaleX=s;}}});
 actor.syncPerspective();assert(actor.root.y>660);assert.equal(actor.root.scaleX,scene.perspectiveAt(actor.root.y));
-for(const floor of [0,40,85]){
- const body=X.Knockback.launch({seed:23});for(let i=0;i<300&&!body.rest;i++){X.Knockback.step(body,1/60,300,floor);assert(body.y<=floor);}
- assert(body.rest);assert.equal(body.y,floor,'corpse must settle on authored floor');
-}
 assert(scene.perspectiveAt(430)<scene.perspectiveAt(512));assert.equal(scene.perspectiveAt(612),1);
-console.log('PASS: '+locations.length+' story ground profiles, hard floor clamp, continuous depth scale, corpse landing');
+console.log('PASS: '+locations.length+' story ground profiles, hard floor clamp, continuous depth scale');

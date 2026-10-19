@@ -2,11 +2,11 @@
   "name": "adventurer-expeditions",
   "version": "0.1.0",
   "private": true,
-  "description": "Adventurer: Expeditions — the CrazyGames edition of Adventurer (Hiro's loop: inn, recruit, quest, repeat). Separate from the website game.",
+  "description": "Adventurer: Expeditions \u00e2\u20ac\u201d the CrazyGames edition of Adventurer (Hiro's loop: inn, recruit, quest, repeat). Separate from the website game.",
   "scripts": {
     "sync": "node tools/sync_shared.js",
     "sync:check": "node tools/sync_shared.js --check",
-    "test": "node test/expedition_sim.js && node test/expedition_recruit_gate.js && node test/actor_animation_lifecycle.js && node test/cinematic_scope.js && node test/portal_readiness.js && node test/inn_art_lifecycle.js && node test/art_registration.js && node test/ship_budget_contract.js && node tools/size_check.js && node tools/levels_doc.js --check && node test/finisher_pacing.js && node test/enemy_finishers.js && node test/finisher_removals.js && node test/finisher_coverage.js && node test/expansion_sim.js && node test/visual_polish.js && node test/physics_memory.js && node test/battle_ground.js && node test/idle_registration.js && node test/idle_roster.js",
+    "test": "node test/expedition_sim.js && node test/expedition_recruit_gate.js && node test/actor_animation_lifecycle.js && node test/cinematic_scope.js && node test/portal_readiness.js && node test/inn_art_lifecycle.js && node test/art_registration.js && node test/ship_budget_contract.js && node tools/size_check.js && node tools/levels_doc.js --check && node test/finisher_pacing.js && node test/enemy_finishers.js && node test/finisher_removals.js && node test/finisher_coverage.js && node test/expansion_sim.js && node test/visual_polish.js && node test/memory_release.js && node test/battle_ground.js && node test/idle_registration.js && node test/idle_roster.js",
     "test:browser": "node test/browser_expedition.js",
     "test:ship": "node test/browser_expedition.js --ship",
     "art:review": "node test/browser_art_review.js",
@@ -40,6 +40,7 @@
     "test:story-late-art": "node test/story_late_art.js && node test/story_effects_lifecycle.js && node test/browser_story_late_art.js && node test/browser_story_projectiles.js",
     "story:inventory": "node tools/import_story_campaign.js",
     "story:preview": "node tools/build_story_preview.js",
-    "test:combat-identity": "node tools/audit_combat_identity.js && node test/combat_identity.js && node test/browser_combat_identity.js && node test/browser_status_bows.js"
+    "test:combat-identity": "node tools/audit_combat_identity.js && node test/combat_identity.js && node test/browser_combat_identity.js && node test/browser_status_bows.js",
+    "test:chapter10-polish": "node test/browser_chapter10_polish.js && node test/browser_archer_signatures.js"
   }
 }
