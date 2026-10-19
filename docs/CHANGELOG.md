@@ -15,6 +15,25 @@ of small fixes within a day.
 
 ---
 
+## 2026-10-19 — Recommended party: the newest companions by default
+
+Hiro wants players to meet every companion. The default party is now the two newest recruits, marked **Recommended**. Players can still change it.
+- `js/expedition/story_companions.js`:
+  - `P.recommended(s)` returns the two newest eligible recruits.
+  - `P.selectionKey(s)` is the chapter plus how many people have joined.
+  - A saved pick only counts while that key matches. So the party resets to recommended at the start of every chapter and whenever someone new joins. Inside a chapter, the player's own pick (including fighting alone) holds.
+  - `P.isRecommended` reports whether a party is the recommended one.
+- `js/expedition/story_companion_ui.js`:
+  - The party check shows a "Recommended" tag and "Your newest companions, so you get to know everyone. Change them any time."
+  - The picker marks the recommended two and adds a "Recommended party" button.
+  - Change, Ready, Keep current team and Fight alone work as before.
+- `docs/story_companions.css` has the tag styles.
+- Saves from before this change start the next party check on the recommended pair.
+- New `test/browser_story_recommended_party.js` covers:
+  - the default, the in-chapter pick holding, the reset at a new chapter and after a joiner;
+  - the tag, changing the party, returning to recommended and Set out.
+- `npm test` and `npm run test:story` pass.
+
 ## 2026-10-19 — Wanjiru idle replacement demo (not integrated)
 
 - **Direction:** follows the user's approval of Layla's demo. Wanjiru keeps her athletic adult identity, beaded locs, checked wrap, leather armor and gauntlets, with a relaxed, feminine stance and restrained breathing. Her current **16 drawings / 1,600 ms** loop contains abrupt head-down and gauntlet-adjusting poses; those gestures are absent from the replacement.

@@ -35,11 +35,13 @@ S.CompanionUI=function({panel,portraits,muted,render,getSession,duckMusic=()=>{}
   const s=getSession();if(!P.enabled||s.record.chapter<2)return false;
   if(loadArt(confirm))return true;
   panel.replaceChildren();const box=el('section',panel);box.id='companion-confirm';box.className='companion-picker';
-  el('h1',box,'Your party for this chapter');const list=el('div',box);list.className='party-confirm-list';
+  const selected=P.selected(s),recommended=P.isRecommended(s,selected);
+  const head=el('h1',box,'Your party for this chapter');if(recommended&&selected.length)el('span',head,'Recommended').className='recommended-tag';
+  if(recommended&&selected.length)el('p',box,'Your newest companions, so you get to know everyone. Change them any time.').className='recommended-note';
+  const list=el('div',box);list.className='party-confirm-list';
   const hiro=el('article',list);hiro.className='party-member';
   const hi=el('img',hiro);hi.src='assets/expedition/hiro/hiro-portrait.webp';hi.alt='Hiro';
   el('strong',hiro,'Hiro');el('p',hiro,'Katana');el('p',hiro,'Counter Attack · Iaido Draw');
-  const selected=P.selected(s);
   for(const id of selected){const card=el('article',list);card.className='party-member';style(card,id);portrait(card,id);{const n=el('strong',card,C.charName(id));n.className='companion-name';fitName(n);}el('p',card,P.kits[id].weapon);el('p',card,P.kits[id].skills.map(k=>A.DATA.SKILLS[k]?.name||k).join(' · '));}
   if(selected.length<2)el('p',box,selected.length?'There is room for one more.':'Hiro is fighting alone. You can bring up to two companions.');
   const actions=el('div',box);actions.className='buttons';button(actions,'Change',()=>picker(confirm)).disabled=!P.eligible(s).length;
@@ -51,7 +53,7 @@ S.CompanionUI=function({panel,portraits,muted,render,getSession,duckMusic=()=>{}
   panel.replaceChildren();const box=el('section',panel);box.id='companion-picker';box.className='companion-picker';
   el('h1',box,'Choose who fights with you');el('p',box,'Pick up to two. Everyone else stays with the company.');
   let picked=P.selected(s).slice(),swap=0;const slots=el('div',box),list=el('div',box);slots.className='companion-slots';list.className='companion-list';
-  const buttons=new Map();
+  const buttons=new Map(),suggested=P.recommended(s);
   function draw(){
    slots.replaceChildren();for(let i=0;i<2;i++){const b=button(slots,picked[i]?C.charName(picked[i]):'Empty slot',()=>{swap=i;draw();});b.setAttribute('aria-pressed',String(swap===i));}
    for(const [id,b]of buttons){b.setAttribute('aria-pressed',String(picked.includes(id)));b.querySelector('.pick-state').textContent=picked.includes(id)?'Selected':'Choose';}
@@ -62,11 +64,13 @@ S.CompanionUI=function({panel,portraits,muted,render,getSession,duckMusic=()=>{}
    draw();
   });b.dataset.companion=id;portrait(b,id);el('strong',b,C.charName(id));el('span',b,kit.weapon);
    for(const skill of kit.skills)el('span',b,A.DATA.SKILLS[skill]?.name||skill);
+   if(suggested.includes(id))el('span',b,'Recommended').className='recommended-tag';
    el('span',b,'').className='pick-state';buttons.set(id,b);
   }
   draw();const actions=el('div',box);actions.className='buttons';
   function finish(selection){P.select(s,selection);S.save(s);done();}
   button(actions,'Ready',()=>finish(picked));button(actions,'Keep current team',()=>finish(P.selected(s)));
+  if(suggested.length)button(actions,'Recommended party',()=>finish(suggested));
   button(actions,'Fight alone',()=>finish([]));return true;
  }
  return {unlock,picker,confirm,stop,stopAudio};

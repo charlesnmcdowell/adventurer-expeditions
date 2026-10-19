@@ -44,3 +44,7 @@
 @media(prefers-reduced-motion:reduce){.companion-unlock,.companion-unlock>img,.companion-unlock::before,.companion-unlock .companion-name{animation:welcome-name .12s linear!important;transform:none!important}.companion-unlock.leaving{opacity:0}}
 
 /* 2026-10-17: names never wrap; story_companion_ui.js shrinks any that still overflow (Hiro: "Winston name shows up too big"). */
+/* Recommended party tag (Hiro, 2026-10-19). */
+.recommended-tag{display:inline-block;vertical-align:middle;margin-left:12px;padding:3px 10px;border-radius:999px;background:#efcf88;color:#1a1410;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+.companion-list .recommended-tag{display:inline-block;margin:6px 0 0}
+.recommended-note{margin:6px 0 0;color:#d9cfbb}

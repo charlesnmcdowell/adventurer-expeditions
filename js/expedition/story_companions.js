@@ -38,8 +38,18 @@ P.formAttack=function(actor,skill){
  return [null,'bear',null,'eagle'][beat%4];
 };
 P.eligible=s=>s.record.chapter<2?[]:C.companyIds(s.game).filter(id=>P.kits[id]?.join<=s.record.chapter&&C.isRecruited(s.game,id));
+// The recommended party is the two newest recruits, so every companion gets a
+// turn (Hiro, 2026-10-19). It is the default at the start of each chapter and
+// again whenever someone new joins; a player's own pick lasts until then.
+P.recommended=function(s){
+ const recruited=C.state(s.game).recruited||[];
+ return P.eligible(s).slice().sort((a,b)=>recruited.indexOf(b)-recruited.indexOf(a)).slice(0,P.fieldMax);
+};
+P.selectionKey=s=>s.record.chapter+'|'+(C.state(s.game).recruited||[]).length;
+P.isRecommended=(s,ids=P.selected(s))=>{const r=P.recommended(s);return ids.length===r.length&&r.every(id=>ids.includes(id));};
 P.selected=function(s){
  const eligible=P.eligible(s),saved=s.record.fightingCompanions;
+ if(s.record.companionSelectionKey!==P.selectionKey(s))return P.recommended(s);
  // Explicit empty / one-member selections are choices, not missing data.
  if(Array.isArray(saved)){
   const valid=[...new Set(saved)].filter(id=>eligible.includes(id)).slice(0,P.fieldMax);
@@ -54,7 +64,7 @@ P.selected=function(s){
 };
 P.select=function(s,ids,{explicit=true}={}){
  if(!Array.isArray(ids)||ids.length>P.fieldMax||new Set(ids).size!==ids.length||ids.some(id=>!P.eligible(s).includes(id)))throw Error('Choose up to two riding companions');
- s.record.fightingCompanions=ids.slice();s.record.companionSelectionExplicit=explicit;S.save(s);return ids;
+ s.record.fightingCompanions=ids.slice();s.record.companionSelectionExplicit=explicit;s.record.companionSelectionKey=P.selectionKey(s);S.save(s);return ids;
 };
 P.readiness=s=>P.selected(s).filter(id=>!P.bindings[id]?.ready).map(id=>'companion:'+id);
 P.register=function(id,atlas){
