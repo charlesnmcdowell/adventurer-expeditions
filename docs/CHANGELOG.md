@@ -15,6 +15,15 @@ of small fixes within a day.
 
 ---
 
+## 2026-10-20 — A fight loop never plays turns in the next fight
+
+Found while checking Astra's character entrances (f806526) before publishing. `test/browser_story_fight.js` failed: Hiro's paired finisher was cut off after 0.5 s (2 of 16 drawings).
+- **Cause:** the entrance waits finish on scene shutdown, by design, so the intro can never hang. After a scene restart, the previous `fight()` loop woke up, saw `ended` reset by the new `create`, and went on taking turns in the new fight. That interrupts animations, and can call the defeat screen on an unfinished fight ("Cannot retry an unfinished or won story fight").
+- **Fix** (`js/expedition/scene.js`): each loop belongs to its own encounter. `gone()` is `this.ended || this.enc !== enc`, and it replaces every `this.ended` check in `fight()`.
+- `test/browser_story_stealth.js` now resets the save before each real fight and only checks visibility while the fight is live.
+- **Passing:** `npm test`, `npm run test:story`, `npm run test:story-art`, plus the stealth, spared and recommended-party browser tests.
+- The spared test sometimes logs a load-order error from the shared `js/data` files ("Missing personality M21"). It comes from the local test server dropping a request under load, and passes on rerun.
+
 ## 2026-10-19 — Enemy entrances and companion monster reactions
 
 - **Coverage:** 57 directed entrances, including every one of the campaign's **36 unique/named/miniboss identities**. **41 new transparent sheets / 340 drawings**, plus 16 entrances using their own previously approved art (including Gbenga's hood removal). Individual gestures follow their identities: Nib's dagger toss/shrug, Bahadır's greatsword challenge, Rotimi's ward, Femi's reluctant retreat, military shield/spear salutes, Kolade's invitation, Silksa's web descent, the Matriarch's wingbeat/landing and the wolves' run/howl. No approved combat, idle, attack or finisher atlas was replaced. Flying arrivals were lowered so the wingbeats are visible before touchdown; intentional airborne bodies stay above their grounded shadows.

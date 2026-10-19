@@ -39,16 +39,16 @@ const ORIGIN=process.env.TEST_ORIGIN||'http://127.0.0.1:8742';
   // 4. Real fights through chapter 10's shape-thieves: no living enemy is ever left undrawn.
   const real=[];
   for(const seed of [3,7,11]){real.push(await page.evaluate(async seed=>{const X=ADV.Expedition,s=storyGame.scene.getScene('StoryBattle');
-    X.turnPauseMs=()=>0;window.__rises=window.__rises||0;if(!X.Beats.__counted){X.Beats.__counted=true;const wrap=fn=>async function(sc,x){const evs=Array.isArray(x)?x:(x?.events||[]);window.__rises+=evs.filter(e=>e.t==='revive'&&sc.actors.get?.(e.uid)?.side!=='a').length;return fn.apply(this,arguments);};X.Beats.play=wrap(X.Beats.play);X.Beats.ticksOnly=wrap(X.Beats.ticksOnly);}const r0=window.__rises;delete s.fight;let introDone=false;const intro=s.intro;s.intro=async function(f){await intro.call(this,f);introDone=true;};
+    X.turnPauseMs=()=>0;{const S=X.Story,r=s.story.record;Object.assign(r,{chapter:10,encounter:3,phase:'combat',checkpoint:null,queue:null});S.syncQuest(s.story);S.save(s.story);}window.__rises=window.__rises||0;if(!X.Beats.__counted){X.Beats.__counted=true;const wrap=fn=>async function(sc,x){const evs=Array.isArray(x)?x:(x?.events||[]);window.__rises+=evs.filter(e=>e.t==='revive'&&sc.actors.get?.(e.uid)?.side!=='a').length;return fn.apply(this,arguments);};X.Beats.play=wrap(X.Beats.play);X.Beats.ticksOnly=wrap(X.Beats.ticksOnly);}const r0=window.__rises;delete s.fight;let introDone=false;const intro=s.intro;s.intro=async function(f){await intro.call(this,f);introDone=true;};
     s.scene.restart({record:s.story.record,seed,muted:true});
-    return new Promise(res=>{const bad=[],rises=new Set(),t0=Date.now();const iv=setInterval(()=>{const sc=storyGame.scene.getScene('StoryBattle');const hu=sc.enc&&ADV.Expedition.Encounter.heroUnit(sc.enc);if(hu&&hu.chp>0)hu.chp=hu.maxHp;for(const fu of sc.enc?.st?.units||[])if(fu.side!==hu?.side&&fu.chp>3&&!fu.__lowered){fu.chp=3;fu.__lowered=true;}
+    return new Promise(res=>{const bad=[],rises=new Set(),t0=Date.now();let overAt=0;const iv=setInterval(()=>{const sc=storyGame.scene.getScene('StoryBattle');const hu=sc.enc&&ADV.Expedition.Encounter.heroUnit(sc.enc);if(hu&&hu.chp>0)hu.chp=hu.maxHp;for(const fu of sc.enc?.st?.units||[])if(fu.side!==hu?.side&&fu.chp>3&&!fu.__lowered){fu.chp=3;fu.__lowered=true;}
       
-      if(introDone&&!sc.ended)for(const a of sc.actors?.values()||[])if(a.side==='b'&&!a._destroyed&&a.unit.chp>0&&!a.unit.downed){
+      if(introDone&&!sc.ended&&!sc.enc?.st?.over)for(const a of sc.actors?.values()||[])if(a.side==='b'&&!a._destroyed&&a.unit.chp>0&&!a.unit.downed){
         const grave=sc.children.list.find(x=>x.name==='shadow_rise_grave'&&x.__riserUid===a.uid&&x.active&&x.visible&&x.alpha>.3);
         if(a.__rising&&grave){rises.add(a.uid);continue;}
         if(!a.alive||!a.root.visible||a.img.alpha<.3)bad.push(a.unit.ch.name);
       }
-      if(sc.ended||sc.enc?.st?.over||Date.now()-t0>170000){clearInterval(iv);res({seed,round:sc.enc?.st?.round,rises:window.__rises-r0,bad:[...new Set(bad)],over:!!sc.enc?.st?.over});}},200);});},seed));
+      if(sc.enc?.st?.over&&!overAt)overAt=Date.now();if(sc.ended||overAt&&Date.now()-overAt>6000||Date.now()-t0>170000){clearInterval(iv);res({seed,round:sc.enc?.st?.round,rises:window.__rises-r0,bad:[...new Set(bad)],over:!!sc.enc?.st?.over});}},200);});},seed));
     console.log('real fight',JSON.stringify(real.at(-1)));}
   assert(real.every(r=>!r.bad.length),'a living enemy went invisible');assert(real.some(r=>r.rises>0),'at least one real Shadow Rise was seen');
   assert.deepEqual(errors,[]);fs.writeFileSync(OUT+'/verification.json',JSON.stringify({rise,after,back,real},null,2));
