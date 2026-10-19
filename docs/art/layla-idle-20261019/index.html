@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Layla · Idle animation review</title>
+<style>
+:root{color-scheme:dark}*{box-sizing:border-box}body{margin:0;background:#10101a;color:#eee9f5;font:16px/1.5 system-ui,sans-serif}main{max-width:1220px;margin:auto;padding:36px 24px}small{color:#bd9ddc;letter-spacing:.16em;font-size:12px}h1{font:400 38px Georgia,serif;margin:7px 0}p{color:#bcb5ca;max-width:830px;margin:10px 0 22px}.controls{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:20px 0}button,select{font:inherit;background:#30223f;border:1px solid #705389;color:#f8f1ff;border-radius:7px;padding:9px 15px;cursor:pointer}button:hover{background:#493255}label{color:#c8bed7}input[type=range]{accent-color:#c59aea;width:100%}.comparison{display:grid;grid-template-columns:1fr 1fr;gap:20px}article{min-width:0;border:1px solid #3a2f49;border-radius:12px;background:#1a1623;overflow:hidden}article.new{border-color:#9a71b9}header{padding:15px 20px;display:flex;justify-content:space-between;align-items:center}h2{font-size:18px;margin:0}header span{font-size:13px;color:#baabc9}canvas{display:block;width:100%;height:auto;aspect-ratio:560/470}.scrub{padding:12px 20px 18px;display:grid;gap:8px}.scrub output{font-size:13px;color:#bdb2ca}.scrub button{padding:5px 12px;font-size:13px}footer{margin:22px 0;color:#a79bb6;font-size:14px}a{color:#d7aff4}details{margin-top:24px;border-top:1px solid #3c3148;padding-top:16px}details img{width:100%;margin-top:15px}#error{color:#ffb4b4}@media(max-width:720px){main{padding:24px 14px}.comparison{grid-template-columns:1fr}h1{font-size:30px}}
+</style>
+<main><small>ADVENTURER: EXPEDITIONS · ART PREVIEW</small><h1>A calmer, more confident Layla</h1>
+<p>A relaxed stance, a slight head tilt and gentle movement in her hair and robes. Compare the new loop with her current in-game idle.</p>
+<div class="controls"><button id="play">Pause both</button><label>Speed <select id="speed"><option value="1">Normal</option><option value="0.5">Half</option><option value="2">Double</option></select></label><label>Backdrop <select id="backdrop"><option value="studio">Studio</option><option value="battle">Battle scene</option></select></label></div>
+<div class="comparison">
+<article id="current"><header><h2>Current idle</h2><span>1.6-second loop</span></header><canvas width="560" height="470" aria-label="Current Layla idle animation"></canvas><div class="scrub"><input type="range" min="0" max="15" value="0" aria-label="Current idle frame"><div><button class="previous">Previous</button> <button class="next">Next</button></div><output></output></div></article>
+<article class="new" id="candidate"><header><h2>New idle demo</h2><span>4.8-second loop</span></header><canvas width="560" height="470" aria-label="New Layla idle animation"></canvas><div class="scrub"><input type="range" min="0" max="29" value="0" aria-label="New idle frame"><div><button class="previous">Previous</button> <button class="next">Next</button></div><output></output></div></article>
+</div>
+<footer>Preview only. This page does not change the game or your save. Pause to inspect individual drawings.</footer>
+<details><summary>View all 16 new drawings</summary><img src="contact-sheet.jpg" alt="Sixteen registered full-body Layla idle drawings"><p>The preview plays the drawings forward and back to avoid a jump at the loop seam. It uses painted frames with fixed scale, not a body rig or blended images. <a href="prompts.json">Generation record</a> · <a href="manifest.json">Animation record</a></p></details><p id="error" role="alert"></p>
+</main>
+<script>
+(async()=>{
+ const load=src=>new Promise((resolve,reject)=>{const im=new Image();im.onload=()=>resolve(im);im.onerror=()=>reject(new Error('Could not load '+src));im.src=src;});
+ const fetchJson=async url=>{const r=await fetch(url);if(!r.ok)throw Error(r.status+' '+url);return r.json();};
+ const base='../../../assets/expedition/companion_ilvara/';
+ const [old,neo]=await Promise.all([fetchJson(base+'companion_ilvara.json'),fetchJson('manifest.json')]);
+ const [pages,sheet,bg]=await Promise.all([Promise.all(old.meta.pages.map(p=>load(base+p))),load(neo.image),load('../../../assets/expedition/story/stages/silk_floor-combat-20261014.webp')]);
+ const clip=old.clips.idle;
+ let playing=true,last=performance.now();
+ const entries=[{id:'current',seq:clip.frames,times:clip.frameDurationsMs,duration:clip.durationMs,elapsed:0,index:0},{id:'candidate',seq:neo.sequence,times:neo.sequence.map(()=>neo.frameMs),duration:neo.durationMs,elapsed:0,index:0}];
+ function pause(){playing=false;document.querySelector('#play').textContent='Play both';}
+ function draw(e){
+  const card=document.getElementById(e.id),canvas=card.querySelector('canvas'),ctx=canvas.getContext('2d'),w=canvas.width,h=canvas.height;
+  const g=ctx.createLinearGradient(0,0,0,h);g.addColorStop(0,'#151324');g.addColorStop(.72,'#30243e');g.addColorStop(1,'#181621');ctx.fillStyle=g;ctx.fillRect(0,0,w,h);
+  if(document.getElementById('backdrop').value==='battle'){const scale=Math.max(w/bg.width,h/bg.height);ctx.drawImage(bg,(w-bg.width*scale)/2,(h-bg.height*scale)/2,bg.width*scale,bg.height*scale);ctx.fillStyle='#0b071a35';ctx.fillRect(0,0,w,h);}
+  const x=w*.53,y=421,scale=1;
+  ctx.fillStyle='#08050f88';ctx.beginPath();ctx.ellipse(x,y+3,53,8,0,0,Math.PI*2);ctx.fill();
+  if(e.id==='current'){const f=old.frames[e.seq[e.index]],r=f.frame,s=f.spriteSourceSize;ctx.drawImage(pages[f.page],r.x,r.y,r.w,r.h,x+(s.x-old.canvas.pivot.x)*scale,y+(s.y-old.canvas.pivot.y)*scale,s.w*scale,s.h*scale);}
+  else{const f=e.seq[e.index],fw=neo.frameSize[0],fh=neo.frameSize[1];ctx.drawImage(sheet,(f%neo.columns)*fw,Math.floor(f/neo.columns)*fh,fw,fh,x-neo.pivot[0]*scale,y-neo.pivot[1]*scale,fw*scale,fh*scale);}
+  card.querySelector('input').value=e.index;card.querySelector('output').textContent=e.id==='current'?`Drawing ${e.index+1} / ${e.seq.length}`:`Drawing ${e.seq[e.index]+1} / 16 · ${e.index<16?'forward':'return'}`;
+ }
+ function scrub(e,n){pause();e.index=(n+e.seq.length)%e.seq.length;e.elapsed=e.times.slice(0,e.index).reduce((a,b)=>a+b,0);draw(e);}
+ for(const e of entries){const card=document.getElementById(e.id);card.querySelector('input').oninput=ev=>scrub(e,+ev.target.value);card.querySelector('.previous').onclick=()=>scrub(e,e.index-1);card.querySelector('.next').onclick=()=>scrub(e,e.index+1);draw(e);}
+ document.getElementById('play').onclick=()=>{playing=!playing;document.getElementById('play').textContent=playing?'Pause both':'Play both';};
+ document.getElementById('backdrop').onchange=()=>entries.forEach(draw);
+ function tick(now){const dt=Math.min(80,now-last);last=now;if(playing){for(const e of entries){e.elapsed=(e.elapsed+dt*Number(document.getElementById('speed').value))%e.duration;let time=e.elapsed,i=0;while(i<e.seq.length-1&&time>=e.times[i])time-=e.times[i++];e.index=i;draw(e);}}requestAnimationFrame(tick);}
+ window.laylaReview={ready:true,entries,pause,show:(id,n)=>scrub(entries.find(e=>e.id===id),n),sourceDrawings:16};requestAnimationFrame(tick);
+})().catch(e=>{document.getElementById('error').textContent=e.message;console.error(e);});
+</script></html>

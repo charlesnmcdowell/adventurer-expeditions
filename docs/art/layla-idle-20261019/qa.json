@@ -1,0 +1,104 @@
+{
+  "distinctDrawings": 16,
+  "playbackSteps": 30,
+  "durationMs": 4800,
+  "footCentroidRangePx": 0.97,
+  "groundRangePx": 0,
+  "transparentCellBorders": true,
+  "allFramesUnique": true,
+  "browser": {
+    "errors": [],
+    "desktop": [
+      1280,
+      960
+    ],
+    "phone": [
+      390,
+      844
+    ],
+    "phoneOverflow": false
+  },
+  "runtimeChanged": false,
+  "frames": [
+    {
+      "frame": 0,
+      "bootCenterX": 191.51,
+      "bottom": 368
+    },
+    {
+      "frame": 1,
+      "bootCenterX": 192.48,
+      "bottom": 368
+    },
+    {
+      "frame": 2,
+      "bootCenterX": 192.27,
+      "bottom": 368
+    },
+    {
+      "frame": 3,
+      "bootCenterX": 192.44,
+      "bottom": 368
+    },
+    {
+      "frame": 4,
+      "bootCenterX": 192.2,
+      "bottom": 368
+    },
+    {
+      "frame": 5,
+      "bootCenterX": 192.33,
+      "bottom": 368
+    },
+    {
+      "frame": 6,
+      "bootCenterX": 192.24,
+      "bottom": 368
+    },
+    {
+      "frame": 7,
+      "bootCenterX": 192.47,
+      "bottom": 368
+    },
+    {
+      "frame": 8,
+      "bootCenterX": 192.0,
+      "bottom": 368
+    },
+    {
+      "frame": 9,
+      "bootCenterX": 192.48,
+      "bottom": 368
+    },
+    {
+      "frame": 10,
+      "bootCenterX": 191.74,
+      "bottom": 368
+    },
+    {
+      "frame": 11,
+      "bootCenterX": 192.44,
+      "bottom": 368
+    },
+    {
+      "frame": 12,
+      "bootCenterX": 191.54,
+      "bottom": 368
+    },
+    {
+      "frame": 13,
+      "bootCenterX": 191.59,
+      "bottom": 368
+    },
+    {
+      "frame": 14,
+      "bootCenterX": 192.17,
+      "bottom": 368
+    },
+    {
+      "frame": 15,
+      "bootCenterX": 191.79,
+      "bottom": 368
+    }
+  ]
+}

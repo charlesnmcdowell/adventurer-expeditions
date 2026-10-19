@@ -15,6 +15,14 @@ of small fixes within a day.
 
 ---
 
+## 2026-10-19 — Layla idle replacement demo (not integrated)
+
+- **Request:** reduce Layla's restless idle and give her a more confident, sultry presence while retaining her adult identity, veil, fitted robes and sceptre. Inspection found the current **16 drawings / 1,600 ms** cycle changes hair silhouette, body height and stance rapidly. Prior root-registration QA did not establish that the drawn pose changes looked smooth.
+- **Art:** one built-in image-generation request produced **16 new painted drawings**. Whole figures were isolated by connected silhouette, registered at the planted boots and kept at one constant scale. No body rig, crossfade, new costume or runtime sprite replacement. Preview plays the drawings forward and back over **30 playback steps / 4,800 ms**, avoiding the abrupt last-to-first reset.
+- **Delivery:** `docs/art/layla-idle-20261019/index.html` compares the current packed game loop with the candidate; pause, frame stepping, half speed and studio/battle backgrounds are available. `manifest.json`, `prompts.json`, the lossless preview atlas, contact sheet and `qa.json` sit beside it. Rebuild: `tools/build_layla_idle_demo.py`. Master and reference records are retained in sibling `adventurer-expeditions-source-art/astra-v11/layla-idle-20261019/`.
+- **Checks:** 16 unique drawings, transparent cell borders, a complete browser loop, working controls and no browser exceptions or phone-width overflow. Desktop/phone screenshots retained with the demo. Visual approval still belongs to the user; this is not a claim that all companion animations are approved.
+- **Scope:** checkpoint `fb3e2c7`; only the preview, its intake script and this log changed. Runtime, saves, original Adventurer and shared code are untouched. No export or publication.
+
 ## 2026-10-18 — Winston's dagger, boss identity and projectile/status QA
 
 - **Winston correction:** removed him from the caster list (**6 → 5** spell-only companions). His three offensive actions use the hooked knife; Whisper of Ending keeps its ID/status payload but displays as **Ending Cut**, with physical melee delivery and the existing minimum 3-round cooldown. No source-game data changed. Wanjiru's approved transformations and the Santiago/Dai Morgan weapon exceptions remain intact.

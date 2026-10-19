@@ -1,0 +1,17 @@
+{
+  "date": "2026-10-19",
+  "mode": "built-in image_gen",
+  "purpose": "Layla idle replacement demo; runtime untouched",
+  "requests": [
+    {
+      "prompt": "Use case: stylized-concept.\nAsset type: polished full-body painted sprite animation sheet for an adult fantasy game, sixteen successive drawings in a precise four-column four-row layout, row-major chronological order, transparent alpha background.\nInput image 1: Layla's established adult character portrait, identity/costume reference. Input image 2: current sixteen-frame idle sheet, style and equipment reference ONLY; replace its excessive restless sway with one coherent restrained animation.\nCharacter: Layla is an unmistakably adult dark elf woman, dark charcoal-gray skin, long silver-white hair, elegant long pointed ears, alluring lavender eyes, crescent forehead jewel, black embroidered lower-face veil, fitted black and violet silver-embroidered robes, purple sash, high boots, short silver sceptre with violet crescent gem. Retain her established outfit, face, proportions and silhouette.\nMotion direction: she is facing RIGHT toward the enemy, three-quarter side view. A beautiful, confident, sultry battle idle: relaxed contrapposto with one hip gently settled, softly bent free knee, elegant wrist and a slightly knowing head tilt. Poised and alluring through posture and gaze. Fully clothed, non-explicit. Keep both boots planted at exactly the same positions throughout. Left hand rests softly near hip; right hand holds sceptre near her waist/side. One slow, shallow breath and tiny measured chin tilt; hair tips and cape hem settle just a little. NOT a dance, walking, sudden hip swing or windstorm. The motion amplitude is extremely restrained, only a few pixels at game size. Body proportions and head size NEVER change. Constant camera, constant character scale, constant boots baseline within each equal cell. Sixteen genuinely distinct tiny successive in-betweens: neutral through gentle inhale during frames 1-8, smoothly returning on exhale through frames 9-16. Final frame is almost identical to first for a seamless loop. Clear stable anatomy/hands, consistent weapon orientation, no staff teleporting. No detached sprite pieces or hair, no extra limbs.\nStyle: match established polished anime cel shading and silver linework, crisp clean contours and rich purple fabric, attractive graceful adult character rather than chibi. Same soft upper-left light in all frames. Entire body, all hair, all clothing, sceptre and feet must fit inside each cell with broad transparent gutters; character no more than 65% cell width and 82% cell height. Four by four evenly spaced cells; nothing overlaps adjacent cells. No ground shadows, text, numbers, grid lines, labels, UI, background, nudity or new equipment.",
+      "referenced_image_paths": [
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions\\assets\\expedition\\story\\portraits\\ilvara-a03e53629501.webp",
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v10\\companions-hiro-20261015\\layla\\idle.png"
+      ],
+      "transparent_background": true,
+      "output": "idle-draft.png",
+      "generatorFile": "C:/Users/charl/.codex/generated_images/01a08689-8a63-7050-af70-d20000aa6227/exec-e495c17b-16d6-4a8b-8e29-c69ca92ae6e8.png"
+    }
+  ]
+}
