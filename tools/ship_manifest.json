@@ -78,7 +78,9 @@
     "assets/expedition/story/effects/storm.json",
     "assets/expedition/story/effects/storm-clean-e1b7f5453f97.webp",
     "assets/expedition/story/effects/reflected.json",
-    "assets/expedition/story/effects/reflected.webp"
+    "assets/expedition/story/effects/reflected.webp",
+    "assets/expedition/story/effects/resurrection.json",
+    "assets/expedition/story/effects/shadow-rise-4c744f1981e2.webp"
   ],
   "dirs": [
     "audio/sfx",

@@ -68,15 +68,16 @@ const F=X.StoryEffects={
     // These two source kits include ranger skills but their approved art is
     // a greatsword and a hooked blade respectively. Deliver those via contact.
     const bladeShot=['story_bahadir','story_tunnel_kobold'].includes(key)&&['aimed_shot','snare'].includes(id);
-    const weaponStatus=F.meleeStatus.has(id)||bladeShot;
+    const crossbow=key==='story_grell'&&['basic_attack','aimed_shot','killing_angle','backstab'].includes(id);
+    const weaponStatus=!crossbow&&(F.meleeStatus.has(id)||bladeShot);
     const basic=id==='basic_attack'&&F.basicEffects[key];
-    const effect=basic||({killing_angle:'aimed_shot',xp_enchanted_arrow:'aimed_shot',
-      ghoststep:'smoke_bomb',shadow_rise:'smoke_bomb',smoke_step:'smoke_bomb',cloak_of_shadows:'smoke_bomb',
+    const effect=crossbow?'aimed_shot':basic||({killing_angle:'aimed_shot',xp_enchanted_arrow:'aimed_shot',
+      ghoststep:'smoke_bomb',smoke_step:'smoke_bomb',cloak_of_shadows:'smoke_bomb',
       beast_shape:'thorn_skin',warding_stance:'ranging_ward'}[id]||id);
-    const ranged=!!basic||(!weaponStatus&&(skill.elemental||(skill.reach==='any'&&!skill.melee&&!skill.katana&&skill.target&&!['self','party','ally','deadAlly','allyLane'].includes(skill.target))));
+    const ranged=crossbow||!!basic||(!weaponStatus&&(skill.elemental||(skill.reach==='any'&&!skill.melee&&!skill.katana&&skill.target&&!['self','party','ally','deadAlly','allyLane'].includes(skill.target))));
     return {effect,ranged:!!ranged,weaponStatus};
   },
-  supports:(id,opts={})=>Object.hasOwn(clips,id)||(opts.companion&&Object.hasOwn(companionClips,id)),
+  supports:(id,opts={})=>id==='shadow_rise'||Object.hasOwn(clips,id)||(opts.companion&&Object.hasOwn(companionClips,id)),
   stanceFor:id=>id==='xp_evasive_step'?'roll':[
     'xp_blade_counter','shield_wall','close_order','stone_stance','defiant_stand',
     'hold_the_road','bulwark_formation','counter_attack','countersign'].includes(id)?'intercept':null,
@@ -119,7 +120,7 @@ const F=X.StoryEffects={
     },()=>burst.destroy());
   },
   preload(scene){
-   const loadGroups=[...Object.keys(groups),'reflected'];
+   const loadGroups=[...Object.keys(groups),'reflected','resurrection'];
    if(X.Story?.Companions?.enabled)loadGroups.push('companion-support','companion-recovery');
    for(const group of loadGroups){
     const KEY=keyFor(group);
@@ -131,7 +132,73 @@ const F=X.StoryEffects={
     });
    }
   },
+  // One resolved attack, many painted arrows. No extra damage/status rolls.
+  skyVolley(scene,from,to,height){
+    const key=keyFor('weapons'),size=height*.24;
+    const leader=scene.add.image(from.x,from.y,key,0).setDepth(650).setDisplaySize(size,size).setName('sky_volley_launch');
+    const rain=Array.from({length:100},(_,i)=>{
+      const end={x:to.x+((i*37)%181)-90,y:to.y+((i*19)%81)-35};
+      return {start:{x:end.x-60,y:Math.max(70,to.y-380)-((i*11)%55)},end,delay:.26+(i%20)*.017,
+        sprite:scene.add.image(0,0,key,0).setDepth(650).setDisplaySize(size*.8,size*.8).setAlpha(0).setName('sky_volley_arrow')};
+    });
+    return new Promise(resolve=>animate(scene,1250,t=>{
+      const p=Math.min(1,t/.27);leader.setPosition(from.x+170*p,from.y-280*p)
+        .setRotation(Math.atan2(-280,170)-Math.PI).setAlpha(t<.27?1:0).setFrame(Math.min(3,Math.floor(p*4)));
+      for(const r of rain){const q=(t-r.delay)/.35;
+        if(q<0||q>1){r.sprite.setAlpha(0);continue;}
+        r.sprite.setPosition(r.start.x+(r.end.x-r.start.x)*q,r.start.y+(r.end.y-r.start.y)*q)
+          .setRotation(Math.atan2(r.end.y-r.start.y,r.end.x-r.start.x)-Math.PI)
+          .setAlpha(q>.86?(1-q)/.14:.88).setFrame(Math.min(3,Math.floor(q*4)));
+      }
+    },()=>{leader.destroy();rain.forEach(r=>r.sprite.destroy());resolve(true);}));
+  },
+  // The combat engine has already revived the unit. Present its fall and
+  // return without changing HP, charges, stealth, team or damage outcomes.
+  async resurrect(scene,actor){
+    if(!actor||actor._destroyed||scene.ended)return false;
+    if(actor.__rising)return actor.__rising;
+    const task=(async()=>{
+      actor.restoreFromFade();
+      await actor.play('kneel');
+      if(actor._destroyed||scene.ended)return false;
+      const size=actor.height*actor.perspectiveAt(actor.y),key=keyFor('resurrection');
+      const fx=scene.add.image(actor.x,actor.y,key,0).setOrigin(.5,300/384)
+        .setDisplaySize(size*1.55,size*1.55*384/400).setDepth(actor.root.depth+.01).setName('shadow_rise_grave');
+      fx.__riserUid=actor.uid;
+      const maskShape=scene.make.graphics({x:0,y:0,add:false});
+      maskShape.fillStyle(0xffffff).fillRect(actor.x-size*2,actor.y-size*3,size*4,size*3+2);
+      const mask=maskShape.createGeometryMask(),oldMask=actor.img.mask;
+      const plateVisible=actor.plate.visible,shadowAlpha=actor.shadow?.alpha??1;
+      actor.plate.setVisible(false);actor.img.setMask(mask);actor.img.anims.stop();
+      let standing=false;
+      await new Promise(resolve=>animate(scene,1900,(t)=>{
+        if(actor._destroyed)return;
+        fx.setFrame(Math.min(15,Math.floor(t*16))).setAlpha(t>.88?(1-t)/.12:1);
+        if(t<.23){actor.img.setAlpha(1-t/.23);}
+        else{
+          if(!standing){actor.resetImageTransform();actor.img.setFrame(actor.sheet.clips.idle.frames[0]);standing=true;}
+          const p=Math.max(0,Math.min(1,(t-.31)/.51)),ease=p*p*(3-2*p);
+          actor.img.y=actor.height*(1-ease);actor.img.setAlpha(1);
+          if(actor.shadow)actor.shadow.setAlpha(shadowAlpha*ease);
+        }
+      },()=>{
+        fx.destroy();
+        if(!actor._destroyed){
+          actor.img.clearMask();if(oldMask)actor.img.setMask(oldMask);
+          actor.img.setAlpha(1);actor.img.y=0;actor.resetImageTransform();
+          actor.plate.setVisible(plateVisible);if(actor.shadow)actor.shadow.setAlpha(shadowAlpha);
+          if(!scene.ended&&scene.sys?.isActive())actor.idle();
+        }
+        mask.destroy();maskShape.destroy();resolve();
+      }));
+      if(!actor._destroyed&&!scene.ended){actor.alive=true;actor.refresh(true);}
+      return true;
+    })();
+    actor.__rising=task;
+    try{return await task;}finally{actor.__rising=null;}
+  },
   play(scene,id,from,to,opts={}){
+    if(id==='shadow_rise')return opts.actor?F.resurrect(scene,opts.actor):Promise.resolve(false);
     if(!F.supports(id,opts))return Promise.resolve(false);
     const reflected=opts.reflected&&Object.hasOwn(reflectedClips,id);
     const entry=reflected?{group:'reflected',start:reflectedClips[id]}:(opts.companion&&companionClips[id])||clips[id],KEY=keyFor(entry.group);

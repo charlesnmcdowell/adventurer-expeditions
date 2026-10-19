@@ -488,14 +488,20 @@ class Actor {
       const casting=!c.paired&&opts.target&&/^(cast|slash|slash_wide|riposte|finisher|leap|pounce|charge|bite|lash)$/.test(clip)&&scene.textures;
       let castX=originX;
       if(casting){
-        const right=Math.max(...c.frames.map(name=>{const f=scene.textures.getFrame(sheet.key,name);return (f.x+f.width-sheet.canvas.pivot.x)*Math.abs(this._baseScaleX);}));
+        const drawScale=Math.abs(this._baseScaleX)*this.perspectiveAt(originY);
+        const right=Math.max(...c.frames.map(name=>{const f=scene.textures.getFrame(sheet.key,name);return (f.x+f.width-sheet.canvas.pivot.x)*drawScale;}));
         castX=Math.min(originX,1252-right);
         if(this.unit?.ch?.expeditionStoryCompanion){
-          const left=Math.min(...c.frames.map(name=>{const f=scene.textures.getFrame(sheet.key,name);return (f.x-sheet.canvas.pivot.x)*Math.abs(this._baseScaleX);}));
+          const left=Math.min(...c.frames.map(name=>{const f=scene.textures.getFrame(sheet.key,name);return (f.x-sheet.canvas.pivot.x)*drawScale;}));
           castX=Math.max(castX,28-left);
         }
       }
       const pairedFinish = !!(target && /finisher/.test(clip) && opts.lethal);
+      // Keep crowded ranks from visually cutting through the paired figures.
+      // Preserve visibility/alpha exactly, including interruption and death.
+      const bystanders=pairedFinish&&scene.actors?[...scene.actors.values()]
+        .filter(a=>a!==this&&a!==target&&!a._destroyed&&a.root.visible)
+        .map(a=>({actor:a,alpha:a.root.alpha})):[];
       // Pair canvases are registered on the hero. Close to the embedded foe's
       // authored offset before replacing the separate actor, rather than making
       // a distant foe teleport into the contact pose. Metadata can tune each pair.
@@ -538,6 +544,7 @@ class Actor {
       };
       const clean = () => {
         detach();
+        for(const b of bystanders)if(!b.actor._destroyed)b.actor.root.setAlpha(b.alpha);
         if(form){
           scene.events?.off('update',formTick);
           this.root.x=originX;this.root.y=originY;this.img.y=0;
@@ -623,6 +630,7 @@ class Actor {
         if (!live()) return;
         applySheetTransform();
         if (target) target.root.setVisible(false);
+        for(const b of bystanders)b.actor.root.setAlpha(b.alpha*.20);
         clearCharge=opts.onWindup?.(this.releasePoint(c),c)||null;
         this.img.on('animationstart', onStart); this.img.on('animationupdate', onUpdate); this.img.on('animationcomplete', onDone);
         if(form){scene.events?.on('update',formTick);if(this.root.setDepth)this.root.setDepth(110);}

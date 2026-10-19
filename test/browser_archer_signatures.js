@@ -1,0 +1,23 @@
+'use strict';
+const {chromium}=require('playwright'),fs=require('fs'),assert=require('node:assert/strict');
+const out='test/reports/chapter10-polish';
+(async()=>{const b=await chromium.launch({channel:'chrome',headless:true});try{
+ const p=await b.newPage({viewport:{width:1280,height:760}}),errors=[],results=[];p.setDefaultTimeout(60000);p.on('pageerror',e=>errors.push(e.message));
+ await p.route('**/docs/STORY_FIGHT_PREVIEW.html*',async route=>{const r=await route.fetch();const body=(await r.text()).replace('const record=S.load();',`const pilot=S.open(S.fresh());Object.assign(pilot.record,{chapter:7,encounter:0,phase:'combat'});pilot.record.run.tutorial.skipGuide=true;S.syncQuest(pilot);for(const id of ['ithrel','faelen']){ADV.Campaign3.recruit(pilot.game,id);S.Companions.register(id,await fetch('assets/expedition/companion_'+id+'/companion_'+id+'.json').then(r=>r.json()));}S.Companions.select(pilot,['ithrel','faelen']);const record=pilot.record;X.StoryBattle.prototype.fight=async function(){await this.intro(false);this.__ready=true;};`);await route.fulfill({response:r,body});});
+ await p.goto('http://127.0.0.1:8742/docs/STORY_FIGHT_PREVIEW.html?muted=1');await p.waitForFunction(()=>window.storyGame?.scene.getScene('StoryBattle')?.__ready);
+ for(const [id,skills]of [['ithrel',['basic_attack','aimed_shot','snare']],['faelen',['basic_attack','aimed_shot','backstab']]])for(const skill of skills){
+  await p.evaluate(({id,skill})=>{window.X=ADV.Expedition;window.s=storyGame.scene.getScene('StoryBattle');X.fx.cinematics=false;window.a=[...s.actors.values()].find(a=>a.unit.ch.expeditionStoryCompanion===id);window.t=[...s.actors.values()].find(a=>a.side==='b');window.qa={done:false,frames:[],root:[],shots:0,rain:0};const f=X.StoryEffects.play,v=X.StoryEffects.skyVolley;X.StoryEffects.play=(...args)=>{qa.shots++;return f(...args);};X.StoryEffects.skyVolley=(...args)=>{qa.rain++;return v(...args);};const watch=()=>{qa.frames.push(a.img.frame.name);qa.root.push([a.root.x,a.root.y]);};s.events.on('update',watch);X.Beats.play(s,{events:[{t:'use',uid:a.uid,target:t.uid,skillId:skill},{t:'damage',uid:t.uid,by:a.uid,dmg:6}]}).then(()=>{s.events.off('update',watch);X.StoryEffects.play=f;X.StoryEffects.skyVolley=v;qa.done=true;});},{id,skill});
+  if(skill==='aimed_shot'&&id==='ithrel'){await p.waitForFunction(()=>s.children.list.some(x=>x.name==='sky_volley_arrow'&&x.alpha>0));await p.waitForTimeout(220);await p.evaluate(()=>s.paused=true);await p.screenshot({path:out+'/itsuki-volley.png'});const before=await p.evaluate(()=>s.children.list.filter(x=>x.name==='sky_volley_arrow').map(x=>[x.x,x.y,x.alpha]));await p.waitForTimeout(150);assert.deepEqual(await p.evaluate(()=>s.children.list.filter(x=>x.name==='sky_volley_arrow').map(x=>[x.x,x.y,x.alpha])),before);await p.evaluate(()=>s.paused=false);}
+  if(skill==='backstab'){await p.waitForFunction(()=>a.img.frame.name==='flip-burst/4');await p.evaluate(()=>s.paused=true);await p.screenshot({path:out+'/kaito-flip.png'});await p.evaluate(()=>s.paused=false);await p.waitForFunction(()=>qa.shots===2);await p.screenshot({path:out+'/kaito-burst.png'});}
+  await p.waitForFunction(()=>qa.done);const r=await p.evaluate(()=>({...qa,frames:[...new Set(qa.frames)],scale:[a.img.scaleX,a.img.scaleY],base:[a._baseScaleX,a._baseScaleY],idle:a.sheet.clips.idle.frames,liveFx:s.children.list.filter(x=>/sky_volley|story_effect_aimed_shot/.test(x.name)).length}));
+  // The wide flip needs a short visibility adjustment at the extreme left;
+  // it must never approach melee range or leave its formation after recovery.
+  const travel=Math.max(...r.root.map(x=>x[0]))-Math.min(...r.root.map(x=>x[0]));
+  assert(travel<120,id+'/'+skill+' remains in the rear firing area');
+  const range=await p.evaluate(()=>({gap:t.root.x-Math.max(...qa.root.map(x=>x[0])),x:a.root.x,home:a.home.x}));
+  assert(range.gap>400,'no run-up into melee');assert.equal(range.x,range.home);
+  assert.deepEqual(r.scale,r.base);assert.equal(r.liveFx,0);if(skill==='backstab')assert.equal(r.shots,3);else if(id==='ithrel'&&skill==='aimed_shot')assert.equal(r.rain,1);else assert.equal(r.shots,1);results.push({id,skill,...r,root:undefined,travel,range});
+ }
+ await p.screenshot({path:out+'/archers-idle.png'});await p.setViewportSize({width:390,height:844});await p.waitForTimeout(250);await p.screenshot({path:out+'/archers-phone.png'});
+ assert.deepEqual(errors,[]);fs.writeFileSync(out+'/archer-verification.json',JSON.stringify({results,errors},null,2));console.log('PASS: all 6 bow actions ranged; sky volley + 3-shot burst; pause, complete recovery, clean FX, desktop/phone');
+}finally{await b.close();}})().catch(e=>{console.error(e);process.exitCode=1;});

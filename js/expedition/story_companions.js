@@ -15,11 +15,12 @@ P.kits={
  ysolde:{join:3,weapon:'Talisman fans',skills:['frost_touch','rime_grasp'],height:315},
  aurelius:{join:3,weapon:'Hooked wizard staff',skills:['fire_bolt','spark'],height:345},
  ilvara:{join:5,weapon:'Priestess’s sceptre',skills:['wither_touch','blood_pact'],height:320},
- faelen:{join:6,weapon:'Shortbow and dagger',skills:['aimed_shot','backstab'],height:320},
+ faelen:{join:6,weapon:'Shortbow',skills:['aimed_shot','backstab'],height:320},
  nettle:{join:6,weapon:'Thorn and bone gauntlets',skills:['thorn_skin','wither_touch'],height:310},
  durnik:{join:7,weapon:'Warhammer and shield',skills:['mend','regenerate'],height:245},
  amara:{join:13,weapon:'Twin sabres',skills:['dual_swords','counter_attack'],height:330},
 };
+P.bows=new Set(['ithrel','faelen']);
 P.clips=['idle','walk','attack','signature-1','signature-2','hit','knockout','victory'];
 // Spellcasters keep a free, reliable basic action while their signatures recharge.
 // Same power/cost/statuses; only the edition's copies become ranged spells.
@@ -70,7 +71,7 @@ P.readiness=s=>P.selected(s).filter(id=>!P.bindings[id]?.ready).map(id=>'compani
 P.register=function(id,atlas){
  if(!P.kits[id])throw Error('Unknown companion '+id);
  for(const name of P.clips){const clip=atlas?.clips?.[name];
-  if(!clip||clip.paired||clip.frames?.length<16||new Set(clip.frames).size!==clip.frames.length)throw Error('Incomplete companion clip '+id+'/'+name);
+  if(!clip||clip.paired||clip.frames?.length<(name==='idle'&&clip.technicalCalmLoop?4:16)||new Set(clip.frames).size!==clip.frames.length)throw Error('Incomplete companion clip '+id+'/'+name);
  }
  P.bindings[id]={actor:'companion_'+id,ready:true,height:P.kits[id].height};
 };
@@ -149,6 +150,11 @@ A.SkillSys.manifest=function(ch,entry){
  const m=oldManifest.call(this,ch,entry);
  if(!ch?.expeditionStoryCompanion)return m;
  const caster=P.casters[ch.expeditionStoryCompanion];
+ if(P.bows.has(ch.expeditionStoryCompanion)&&['basic_attack',...P.kits[ch.expeditionStoryCompanion].skills].includes(entry.skillId)){
+  const names=ch.expeditionStoryCompanion==='ithrel'?{aimed_shot:'Sky Volley',snare:'Pinning Shot'}:{backstab:'Tumbling Triple Shot'};
+  return {...m,data:{...m.data,name:names[entry.skillId]||m.data.name,elemental:false,element:undefined,reach:'any',melee:false,katana:false,
+    ...(entry.skillId==='basic_attack'?{}:{cooldown:Math.max(3,m.data.cooldown||0)})}};
+ }
  // Winston delivers his lingering wound with the hooked knife. Keep the
  // source skill ID, power, status payload and cooldown; no free shadow bolt.
  if(ch.expeditionStoryCompanion==='fennick'&&entry.skillId==='whisper_of_ending')

@@ -10,7 +10,7 @@ function fixture(){const sprites=[],events=new EventEmitter();return {sprites,ev
   for(let i=0;i<20;i++)s.events.emit('update',i*50,50);await p;assert(sprite.dead);assert.equal(s.events.listenerCount('update'),0);
   const cancel=F.play(s,id,{x:200,y:280},{x:500,y:250},{reflected:true});const bounced=s.sprites.at(-1);s.events.emit('update',0,50);assert(bounced.x>200&&bounced.x<500);s.events.emit('shutdown');await cancel;assert(bounced.dead);assert.equal(s.events.listenerCount('update'),0);
  }
- const loads=[];F.preload({textures:{exists:key=>key==='story_chapter_one_effects'},load:{json:(k,url)=>loads.push(url),once(){}}});assert.equal(loads.length,7,'cached opening atlas must not suppress later atlases or reflected shots');
+ const loads=[];F.preload({textures:{exists:key=>key==='story_chapter_one_effects'},load:{json:(k,url)=>loads.push(url),once(){}}});assert.equal(loads.length,8,'cached opening atlas must not suppress later atlases or reflected shots');
  for(const id of ['fire_bolt','prismatic_bolt','aimed_shot','marked_for_the_knife']){
   const s=fixture(),p=F.play(s,id,{x:200,y:200},{x:500,y:200},{reflected:true});
   assert.equal(s.sprites[0].key,'story_effects_reflected');assert.equal(s.sprites[0].r,0,'right-facing painted shot follows its actual return direction');
@@ -51,5 +51,14 @@ function fixture(){const sprites=[],events=new EventEmitter();return {sprites,ev
   s.ended=true;s.events.emit('update',0,50);await p2;
   assert(s.sprites.every(s=>s.dead));assert.equal(s.events.listenerCount('shutdown'),0);
  }
- console.log('Painted effects: all mappings pause, hit-stop, reflected flight, completion and shutdown cleanup pass.');
+ for(const cancel of [false,true]){
+  const s=fixture(),p=F.skyVolley(s,{x:200,y:300},{x:800,y:350},300);
+  assert.equal(s.sprites.length,101,'one launch arrow and one hundred falling arrows');
+  s.events.emit('update',0,400);const positions=s.sprites.map(s=>[s.x,s.y,s.alpha]);
+  s.paused=true;s.events.emit('update',0,50);assert.deepEqual(s.sprites.map(s=>[s.x,s.y,s.alpha]),positions);s.paused=false;
+  s.__paintedHitStopCount=1;s.events.emit('update',0,50);assert.deepEqual(s.sprites.map(s=>[s.x,s.y,s.alpha]),positions);s.__paintedHitStopCount=0;
+  if(cancel)s.events.emit('shutdown');else for(let i=0;i<40;i++)s.events.emit('update',0,50);
+  await p;assert(s.sprites.every(s=>s.dead));assert.equal(s.events.listenerCount('update'),0);assert.equal(s.events.listenerCount('shutdown'),0);
+ }
+ console.log('Painted effects: all mappings and sky volley pause, hit-stop, reflected flight, completion and shutdown cleanup pass.');
 })().catch(e=>{console.error(e);process.exitCode=1;});

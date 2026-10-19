@@ -186,6 +186,14 @@ UI.cinematic = async function (scene, kind, focus, fn) {
   const token = { scale: reduced ? 1 : c.scale, zoom: reduced ? base.zoom : c.zoom,
     x: focus ? Math.max(W * .32, Math.min(W * .68, focus.x)) : base.x,
     y: focus ? Math.max(H * .42, Math.min(H * .6, focus.y)) : base.y };
+  if(focus?.bounds&&!reduced){
+    const b=focus.bounds,pad=45;
+    token.zoom=Math.max(1,Math.min(token.zoom,(W-pad*2)/(b.right-b.left),(H-110)/(b.bottom-b.top)));
+    // Fit within the full-screen plate; oversized pairs get the resting view.
+    const hx=W/(2*token.zoom),hy=H/(2*token.zoom);
+    token.x=Math.max(hx,Math.min(W-hx,(b.left+b.right)/2));
+    token.y=Math.max(hy,Math.min(H-hy,(b.top+b.bottom)/2));
+  }
   state.tokens.push(token); scene.__cine = state.tokens.length;
   const apply = current => {
     const k = current ? Math.min(...state.tokens.map(t => t.scale)) : 1;

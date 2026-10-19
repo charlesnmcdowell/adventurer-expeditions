@@ -1,0 +1,29 @@
+{
+  "image": "shadow-rise-4c744f1981e2.webp",
+  "frameWidth": 400,
+  "frameHeight": 384,
+  "frames": 16,
+  "groundY": 300,
+  "sourceSha256": "fd7dc194849dfdfe1f18590bd2a4a6232700b738b94263ed51e3cebb90ed55ca",
+  "registration": {
+    "ground": [
+      185,
+      185,
+      185,
+      185,
+      218,
+      218,
+      218,
+      218,
+      242,
+      242,
+      242,
+      242,
+      196,
+      196,
+      196,
+      196
+    ]
+  },
+  "skill": "shadow_rise"
+}

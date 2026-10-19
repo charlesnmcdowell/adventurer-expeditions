@@ -1,0 +1,88 @@
+{
+  "date": "2026-10-19",
+  "baseline": "574a9a0",
+  "actors": [
+    {
+      "actor": "story_grell",
+      "oldFramesPreserved": 56,
+      "pages": [
+        {
+          "file": "assets\\expedition\\story_grell\\story_grell-ch10-5551f6c40758.webp",
+          "bytes": 1313862,
+          "frames": 23,
+          "sha256": "b00fbdc59fbd2da084ddfb1ed26b884f26c9b2e8243bcb00c3da8bc7a464530c"
+        }
+      ],
+      "idleFrames": 2,
+      "idleMs": 1100
+    },
+    {
+      "actor": "companion_ithrel",
+      "oldFramesPreserved": 128,
+      "pages": [
+        {
+          "file": "assets\\expedition\\companion_ithrel\\companion_ithrel-archer-88fba5c75a50.webp",
+          "bytes": 1104196,
+          "frames": 16,
+          "sha256": "3811f4461ffef266cff257dc2aa96fbba5c966cbe064e3ea4fbcebf556fc673a"
+        }
+      ],
+      "idleFrames": 16,
+      "idleMs": 3120
+    },
+    {
+      "actor": "companion_faelen",
+      "oldFramesPreserved": 128,
+      "pages": [
+        {
+          "file": "assets\\expedition\\companion_faelen\\companion_faelen-archer-2507a7811a0a.webp",
+          "bytes": 1092332,
+          "frames": 14,
+          "sha256": "df72f44762f2af4ad79d0e78c5927f5ffd5a3d3baa5f202cf6de759921cd0e9c"
+        }
+      ],
+      "idleFrames": 4,
+      "idleMs": 1700
+    }
+  ],
+  "resurrection": {
+    "bytes": 1365166,
+    "frames": 16,
+    "transparentEdges": true
+  },
+  "newAtlasBytes": 4875556,
+  "originalPixelsAndGroundAnchorsPreserved": true,
+  "rebuildIdempotent": true,
+  "generationRequests": 5,
+  "acceptedCharacterDrawings": 53,
+  "acceptedEffectDrawings": 16,
+  "review": "docs/COMBAT_POLISH_REVIEW_20261019.html",
+  "checks": {
+    "npm test": "passed",
+    "npm run test:story": "passed",
+    "npm run test:ship -- --seed=1": "passed; two clears and inn returns",
+    "actorLifecycle": 49,
+    "camera": 7,
+    "browserEvidence": [
+      "test/reports/chapter10-polish/verification.json",
+      "test/reports/chapter10-polish/archer-verification.json",
+      "test/reports/chapter10-polish/review-verification.json",
+      "test/reports/story-stealth/verification.json"
+    ],
+    "realFightShadowRiseSeeds": [
+      3,
+      7,
+      11
+    ]
+  },
+  "limits": {
+    "coldArcadeAfterAudioUnlockBytes": 27411728,
+    "mobile20MBGate": "failed",
+    "arcadePackageMB": 291.55,
+    "arcade250MBGate": "failed",
+    "websiteSixChapterProjectionMB": 491.54,
+    "published": false,
+    "visualAcceptance": "user playtest pending",
+    "viewportTesting": "headless Chrome desktop/phone emulation, not physical-device certification"
+  }
+}

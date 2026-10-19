@@ -135,6 +135,16 @@ test('rear companions cast fully on screen and return to their slot', async () =
   }
 });
 
+test('cast visibility uses the actual perspective scale', async () => {
+  const a=actor({cast:clip('cast')});a.unit={ch:{expeditionStoryCompanion:'faelen'}};
+  a.root.x=a.home.x=150;a.scene.perspectiveAt=()=>.6;
+  a.sheet.canvas={w:600,h:600,pivot:{x:300,y:450}};
+  a.scene.textures={getFrame:()=>({x:0,width:600})};
+  const p=a.play('cast',{target:{root:{x:850},height:300}});await tick();
+  assert.equal(a.root.x,208,'28 px margin plus 180 px scaled paint extent');
+  emit(a,'animationcomplete','cast',2);await p;assert.equal(a.root.x,150);
+});
+
 test('release hook does not cut recovery or settle the play promise early', async () => {
   const a = actor(); let release = 0, settled = false;
   const p = a.play('slash', { onRelease: () => release++ }).then(() => { settled = true; });
@@ -304,6 +314,18 @@ test('paired finisher closes the distance before hiding the separate foe', async
   assert.equal(a.root.x, 620); await tick(); assert.equal(target.root.visible, false);
   emit(a, 'animationcomplete', 'finisher-l1-paired', 2); await p;
   assert.equal(target.alive, false); assert.equal(target.root.visible, false); assert.equal(a.root.x, 100);
+});
+
+test('paired focus restores bystander alpha on completion and interruption',async()=>{
+  for(const cancel of [false,true]){
+    const a=actor({walk:clip('walk',{loop:true}),'finisher-l1-paired':clip('finisher-l1-paired',{paired:true,opponentKinds:['wolf']})});
+    const target=actor();target.kind='wolf';target.root.x=800;
+    const bystander=actor();bystander.root.alpha=.6;bystander.root.setAlpha=function(v){this.alpha=v;return this;};
+    a.scene.actors=new Map([['a',a],['t',target],['b',bystander]]);
+    const p=a.play('finisher',{target,lethal:true});await tick();assert.equal(bystander.root.alpha,.12);
+    if(cancel)a.cancelPlayback();else emit(a,'animationcomplete','finisher-l1-paired',2);
+    await p;assert.equal(bystander.root.alpha,.6);
+  }
 });
 
 test('interruption during paired approach leaves the foe alive and visible', async () => {

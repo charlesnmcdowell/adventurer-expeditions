@@ -435,7 +435,13 @@ class ExpeditionScene extends Phaser.Scene {
     // Foes pour in from the right while Hiro plants and draws (a short draw on later waves).
     const foes = [...this.actors.values()].filter(a => a.side === 'b');
     const ambush = !!this.enc.def.ambush;
-    const enters = foes.map((a, i) => wait(this, i * (ambush ? 90 : 180)).then(() => a.play('enter', { from: a.root.x, duration: ambush ? 420 : a.kind === 'plant' ? 900 : 720 })));
+    const enters = foes.map((a, i) => wait(this, i * (ambush ? 90 : 180)).then(async () => {
+      if(this.ended||a._destroyed)return;
+      if(a.sheet?.clips.entrance){
+        a.root.setPosition(a.home.x,a.home.y);a.syncPerspective();
+        await a.play('entrance');
+      }else await a.play('enter', { from: a.root.x, duration: ambush ? 420 : a.kind === 'plant' ? 900 : 720 });
+    }));
     if (ambush) {
       // Jumped on the road: a red flash, the rivals pour in fast, the party draws late.
       A.VFX.flashOverlay(this, 0xc0392b, 0.35);

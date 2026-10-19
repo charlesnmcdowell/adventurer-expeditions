@@ -64,6 +64,16 @@ test('normal completion returns the scene to its resting camera and time scales'
   assert.equal(s.__cine || 0, 0);
   assert.equal(s.events.listenerCount('shutdown'), 1, 'one shutdown guard for the scene, not one per cinematic');
 });
+test('wide paired choreography pulls back without revealing outside the plate',async()=>{
+  for(const width of [1100,1600]){
+    const s=scene();await X.UI.cinematic(s,'kill',{x:1000,y:300,bounds:{left:50,right:50+width,top:50,bottom:650}},async()=>{
+      const z=s.cameras.main.zoom;assert(z>=1&&z<=1.1);
+      const cx=s.cameras.main.scrollX+640,cy=s.cameras.main.scrollY+380;
+      assert(cx-640/z>=0&&cx+640/z<=1280);assert(cy-380/z>=0&&cy+380/z<=760);
+    });assert.deepEqual(snapshot(s),rest);
+  }
+});
+
 test('nested kill restores the outer cast before restoring the baseline', async () => {
   const s = scene(), before = snapshot(s);
   await X.UI.cinematic(s, 'cast', { x: 570, y: 360 }, async () => {

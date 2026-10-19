@@ -1,0 +1,163 @@
+<!doctype html><html><head><meta charset="utf-8"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"><base href="../"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Combat polish — Campaign battle</title><link rel="icon" type="image/png" href="assets/app/icon-192.png">
+<style>html,body{margin:0;width:100%;height:100%;background:#05070c;overflow:hidden}#game{width:100%;height:100%}.art-warning{position:fixed;inset:25%;background:#172033;color:white;font:20px system-ui;padding:30px;z-index:20}</style></head><body><style>body{margin:0;background:#10151e;color:#eee;font:14px system-ui}#game{height:calc(100vh - 76px)!important}.review{height:76px;box-sizing:border-box;padding:8px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}button,select{background:#25354b;color:#fff;padding:7px;border:1px solid #b6a465;border-radius:5px}small{color:#c0c9d5}</style><div class="review"><select id="case" aria-label="Review encounter"><option value="archers">Kaito &amp; Itsuki</option><option value="grell">Gbenga</option><option value="rennick">Rotimi</option></select><span id="actions"></span><small id="status">Isolated demo — your campaign save is unchanged. Loading...</small></div><div id="game"></div>
+<script src="lib/phaser.min.js?v=20260918-xp2"></script>
+<script src="js/data/constants.js?v=20260918-xp2"></script>
+<script src="js/data/version.js?v=20260918-xp2"></script>
+<script src="js/data/skills.js?v=20260918-xp2"></script>
+<script src="js/data/campaign_skills.js?v=20260918-xp2"></script>
+<script src="js/data/campaign_data.js?v=20260918-xp2"></script>
+<script src="js/data/campaign_dialogue.js?v=20260918-xp2"></script>
+<script src="js/data/campaign2_skills.js?v=20260918-xp2"></script>
+<script src="js/data/monster_skills.js?v=20260918-xp2"></script>
+<script src="js/data/campaign2_data.js?v=20260918-xp2"></script>
+<script src="js/data/campaign2_dialogue.js?v=20260918-xp2"></script>
+<script src="js/data/campaign3_data.js?v=20260918-xp2"></script>
+<script src="js/data/campaign3_dialogue.js?v=20260918-xp2"></script>
+<script src="js/data/gate_finale.js?v=20260918-xp2"></script>
+<script src="js/data/gate_epilogue_voice.js?v=20260918-xp2"></script>
+<script src="js/data/campaign3_perks.js?v=20260918-xp2"></script>
+<script src="js/data/enemies.js?v=20260918-xp2"></script>
+<script src="js/data/minibosses.js?v=20260918-xp2"></script>
+<script src="js/data/enemy_tactics.js?v=20260918-xp2"></script>
+<script src="js/data/names.js?v=20260918-xp2"></script>
+<script src="js/data/tutorial.js?v=20260918-xp2"></script>
+<script src="js/data/registry.js?v=20260918-xp2"></script>
+<script src="js/data/dialogue.js?v=20260918-xp2"></script>
+<script src="js/data/dialogue_hiro.js?v=20260918-xp2"></script>
+<script src="js/data/dialogue2.js?v=20260918-xp2"></script>
+<script src="js/data/dialogue_context.js?v=20260918-xp2"></script>
+<script src="js/data/dialogue_bonus.js?v=20260918-xp2"></script>
+<script src="js/data/travel.js?v=20260918-xp2"></script>
+<script src="js/data/personality_events.js?v=20260918-xp2"></script>
+<script src="js/data/personality_pairs.js?v=20260918-xp2"></script>
+<script src="js/data/personality_travel.js?v=20260918-xp2"></script>
+<script src="js/data/personality_social.js?v=20260918-xp2"></script>
+<script src="js/data/campaign_story.js?v=20260918-xp2"></script>
+<script src="js/expedition/media_hashes.js?v=20261019-xp3"></script>
+<script src="js/core/rng.js?v=20260918-xp2"></script>
+<script src="js/core/util.js?v=20260918-xp2"></script>
+<script src="js/core/skillsys.js?v=20260918-xp2"></script>
+<script src="js/core/character.js?v=20260918-xp2"></script>
+<script src="js/core/housing.js?v=20260918-xp2"></script>
+<script src="js/core/survival.js?v=20260918-xp2"></script>
+<script src="js/core/combat_events.js?v=20260918-xp2"></script>
+<script src="js/core/combat_turns.js?v=20260918-xp2"></script>
+<script src="js/core/combat_targeting.js?v=20260918-xp2"></script>
+<script src="js/core/combat_damage.js?v=20260918-xp2"></script>
+<script src="js/core/combat_healing.js?v=20260918-xp2"></script>
+<script src="js/core/combat_statuses.js?v=20260918-xp2"></script>
+<script src="js/core/combat.js?v=20260918-xp2"></script>
+<script src="js/core/combat_ai.js?v=20260918-xp2"></script>
+<script src="js/core/combat_effects.js?v=20260918-xp2"></script>
+<script src="js/core/relationships.js?v=20260918-xp2"></script>
+<script src="js/core/courtship.js?v=20260918-xp2"></script>
+<script src="js/core/hiro.js?v=20260918-xp2"></script>
+<script src="js/core/vault.js?v=20260918-xp2"></script>
+<script src="js/core/quests.js?v=20260918-xp2"></script>
+<script src="js/core/party.js?v=20260918-xp2"></script>
+<script src="js/core/divine.js?v=20260918-xp2"></script>
+<script src="js/core/death.js?v=20260918-xp2"></script>
+<script src="js/core/world.js?v=20260918-xp2"></script>
+<script src="js/core/save_store.js?v=20260918-xp2"></script>
+<script src="js/core/save.js?v=20260918-xp2"></script>
+<script src="js/core/release_config.js?v=20260918-xp2"></script>
+<script src="js/core/prefs.js?v=20260918-xp2"></script>
+<script src="js/core/censorship.js?v=20260918-xp2"></script>
+<script src="js/core/campaign_router.js?v=20260918-xp2"></script>
+<script src="js/core/campaign.js?v=20260918-xp2"></script>
+<script src="js/core/campaign2.js?v=20260918-xp2"></script>
+<script src="js/core/quest_lifecycle.js?v=20260918-xp2"></script>
+<script src="js/core/game.js?v=20260918-xp2"></script>
+<script src="js/core/campaign3.js?v=20260918-xp2"></script>
+<script src="js/core/gate_finale.js?v=20260918-xp2"></script>
+<script src="js/core/campaign3_perks.js?v=20260918-xp2"></script>
+<script src="js/core/campaign3_perk_combat.js?v=20260918-xp2"></script>
+<script src="js/core/conversation.js?v=20260918-xp2"></script>
+<script src="js/core/travel.js?v=20260918-xp2"></script>
+<script src="js/core/difficulty.js?v=20260918-xp2"></script>
+<script src="js/core/balance_support.js?v=20260918-xp2"></script>
+<script src="js/core/family_support.js?v=20260918-xp2"></script>
+<script src="js/ui/theme.js?v=20260918-xp2"></script>
+<script src="js/ui/uikit.js?v=20260918-xp2"></script>
+<script src="js/ui/home_art.js?v=20260918-xp2"></script>
+<script src="js/ui/home_life.js?v=20260918-xp2"></script>
+<script src="js/ui/music.js?v=20260918-xp2"></script>
+<script src="js/ui/tooltip.js?v=20260918-xp2"></script>
+<script src="js/ui/portraits.js?v=20260918-xp2"></script>
+<script src="js/ui/vfx.js?v=20260918-xp2"></script>
+<script src="js/ui/combat_presentation.js?v=20260918-xp2"></script>
+<script src="js/ui/weather.js?v=20260918-xp2"></script>
+<script src="js/ui/spell_fx.js?v=20260918-xp2"></script>
+<script src="js/ui/skill_art_catalog.js?v=20260918-xp2"></script>
+<script src="js/ui/skill_art.js?v=20260918-xp2"></script>
+<script src="js/ui/battle_art.js?v=20260918-xp2"></script>
+<script src="js/ui/travel_battle_art.js?v=20260918-xp2"></script>
+<script src="js/ui/mobile_viewport.js?v=20260918-xp2"></script>
+<script src="js/ui/anime_art.js?v=20260918-xp2"></script>
+<script src="js/ui/anime_manifest.js?v=20260918-xp2"></script>
+<script src="js/ui/anime_identities.js?v=20260918-xp2"></script>
+<script src="js/ui/asset_queue.js?v=20260918-xp2"></script>
+<script src="js/ui/anime_world.js?v=20260918-xp2"></script>
+<script src="js/ui/anime_environments.js?v=20260918-xp2"></script>
+<script src="js/ui/travel_ambience.js?v=20260918-xp2"></script>
+<script src="js/ui/gate_ambience.js?v=20260921-xp2"></script>
+<script src="js/ui/travel_panorama.js?v=20260918-xp2"></script>
+<script src="js/ui/dialoguebox.js?v=20260918-xp2"></script>
+<script src="js/ui/cutscenes.js?v=20260918-xp2"></script>
+<script src="js/ui/portal.js?v=20260918-xp2"></script>
+<script src="js/expedition/data.js?v=20261019-xp3"></script>
+<script src="js/expedition/shim.js?v=20261019-xp3"></script>
+<script src="js/expedition/encounter.js?v=20261019-xp3"></script>
+<script src="js/expedition/run.js?v=20261019-xp3"></script>
+<script src="js/expedition/ui_common.js?v=20261019-xp3"></script>
+<script src="js/expedition/dev.js?v=20261019-xp3"></script>
+<script src="js/expedition/enemy_finishers.js?v=20261019-xp3"></script>
+<script src="js/expedition/gore_fx.js?v=20261019-xp3"></script>
+<script src="js/expedition/painted.js?v=20261019-xp3"></script>
+<script src="js/expedition/light_anchors.js?v=20261019-xp3"></script>
+<script src="js/expedition/atmosphere.js?v=20261019-xp3"></script>
+<script src="js/expedition/battle_stage.js?v=20261019-xp3"></script>
+<script src="js/expedition/inn_art.js?v=20261019-xp3"></script>
+<script src="js/expedition/actors.js?v=20261019-xp3"></script>
+<script src="js/expedition/defeat_fx.js?v=20261019-xp3"></script>
+<script src="js/expedition/story_effects.js?v=20261019-xp3"></script>
+<script src="js/expedition/beats.js?v=20261019-xp3"></script>
+<script src="js/expedition/hud.js?v=20261019-xp3"></script>
+<script src="js/expedition/campaign.js?v=20261019-xp3"></script>
+<script src="js/expedition/scene.js?v=20261019-xp3"></script>
+<script src="js/expedition/travel_art.js?v=20261019-xp3"></script>
+<script src="js/expedition/bathhouse.js?v=20261019-xp3"></script>
+<script src="js/expedition/scenes_town.js?v=20261019-xp3"></script>
+<script src="js/expedition/memory.js?v=20261019-xp3"></script>
+<script src="js/expedition/story.js?v=20261019-xp3"></script><script src="js/expedition/story_dialogue.js?v=20261019-xp3"></script><script src="js/expedition/story_combat.js?v=20261019-xp3"></script><script src="js/expedition/story_companions.js?v=20261019-xp3"></script><script src="js/expedition/story_presentation.js?v=20261019-xp3"></script><script src="js/expedition/story_art.js?v=20261019-xp3"></script><script src="js/expedition/story_stage.js?v=20261019-xp3"></script><script src="js/expedition/story_effects.js?v=20261019-xp3"></script><script src="js/expedition/story_scene.js?v=20261019-xp3"></script>
+<script>(async()=>{const X=ADV.Expedition,S=X.Story;S.Presentation.configure(await fetch('assets/expedition/story/campaign.json').then(r=>r.json()));S.save=()=>{};X.Run.save=()=>{};
+const which=new URLSearchParams(location.search).get('case')||'archers';
+const pilot=S.open(S.fresh());Object.assign(pilot.record,{chapter:which==='archers'?7:10,encounter:which==='grell'?2:which==='rennick'?1:0,phase:'combat'});pilot.record.run.tutorial.skipGuide=true;S.syncQuest(pilot);
+if(which==='archers'){for(const id of ['ithrel','faelen']){ADV.Campaign3.recruit(pilot.game,id);S.Companions.register(id,await fetch('assets/expedition/companion_'+id+'/companion_'+id+'.json').then(r=>r.json()));}S.Companions.select(pilot,['ithrel','faelen']);}
+const record=pilot.record;X.StoryBattle.prototype.fight=async function(){await this.intro(false);window.reviewScene=this;document.getElementById('status').textContent='Ready — isolated demo; your save is unchanged.';};
+document.getElementById('case').value=which;document.getElementById('case').onchange=e=>location.search='?case='+e.target.value;
+window.reviewAction=async action=>{
+ const s=window.reviewScene;if(!s||window.reviewBusy)return;window.reviewBusy=true;document.getElementById('status').textContent='Playing...';
+ try{
+  X.UI.resetCamera(s);X.fx.cinematics=true;
+  for(const a of s.actors.values()){a.unit.chp=a.unit.maxHp;a.unit.downed=false;a.restoreFromFade();a.root.setPosition(a.home.x,a.home.y);}
+  const foe=[...s.actors.values()].find(a=>a.side==='b'),named=[...s.actors.values()].find(a=>a.unit.ch.storyOpponent==='named:'+which);
+  if(which==='archers'){
+   const [id,skill]=action.split(':');const a=[...s.actors.values()].find(a=>a.unit.ch.expeditionStoryCompanion===id);
+   await X.Beats.play(s,{events:[{t:'use',uid:a.uid,target:foe.uid,skillId:skill},{t:'damage',uid:foe.uid,by:a.uid,dmg:6}]});
+  }else if(action==='rise'){
+   named.unit.chp=Math.round(named.unit.maxHp*.3);
+   await X.Beats.ticksOnly(s,[{t:'down',uid:named.uid},{t:'revive',uid:named.uid,by:named.uid,skillId:'shadow_rise'}]);
+  }else if(action==='entrance')await named.play('entrance');
+  else if(which==='grell')await X.Beats.play(s,{events:[{t:'use',uid:named.uid,target:s.hero.uid,skillId:'backstab'},{t:'damage',uid:s.hero.uid,by:named.uid,dmg:3}]});
+  else{
+   X.finisherLast.story_rennick=action==='pair1'?'hiro-finisher-2':'hiro-finisher-1';named.unit.chp=0;named.unit.downed=true;
+   await X.Beats.play(s,{hero:true,choice:{how:'cast',action:{skillId:'finisher'}},events:[{t:'use',uid:s.hero.uid,target:named.uid,skillId:'finisher'},{t:'execute',uid:named.uid,by:s.hero.uid},{t:'down',uid:named.uid}]});
+  }
+ }catch(e){console.error(e);document.getElementById('status').textContent=e.message;return;}
+ finally{window.reviewBusy=false;X.UI.resetCamera(s);}
+ document.getElementById('status').textContent='Ready — replay or choose another scene.';
+};
+const actions=which==='archers'?[['ithrel:aimed_shot','Itsuki: sky volley'],['ithrel:snare','Itsuki: pinning shot'],['faelen:backstab','Kaito: flip + triple shot'],['faelen:basic_attack','Kaito: basic shot']]:which==='grell'?[['entrance','Hood-off entrance'],['shot','Kneeling crossbow'],['rise','Shadow Rise']]:[['pair1','Finisher 1'],['pair2','Finisher 2'],['rise','Shadow Rise']];
+for(const [id,label]of actions){const b=document.createElement('button');b.textContent=label;b.onclick=()=>reviewAction(id);document.getElementById('actions').append(b);}
+if(!record||record.phase!=='combat')throw Error('No campaign battle is pending');await S.Companions.ensure(S.open(record));const missing=S.readiness(S.open(record));if(missing.length)throw Error('Combat art is not ready: '+missing.join(', '));const game=new Phaser.Game({type:Phaser.AUTO,parent:'game',width:1280,height:760,backgroundColor:'#080b15',scale:{mode:Phaser.Scale.FIT,autoCenter:Phaser.Scale.CENTER_BOTH},scene:[]});game.scene.add('StoryBattle',X.StoryBattle,true,{record,muted:new URLSearchParams(location.search).get('muted')!=='0'});window.storyGame=game;})().catch(e=>{document.getElementById('game').textContent=e.message;console.error(e);});</script></body></html>

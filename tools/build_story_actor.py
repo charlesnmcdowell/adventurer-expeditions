@@ -129,6 +129,8 @@ def main():
             doc['clips'][spec['id']].update(nonlethal=True,finalState='opponent-survives')
     from repair_cast_releases import repair as repair_cast
     repair_cast(doc,actor)
+    from build_chapter10_polish import repair as repair_chapter10
+    repair_chapter10(doc,actor,out/actor)
     (out/actor/(actor+'.json')).write_text(json.dumps(doc,separators=(',',':')))
     fatalid=actor+'-fatal'
     fataldoc=build(src,fatalid,out,300,95,dict(clips=[fatal]),lossless=True)

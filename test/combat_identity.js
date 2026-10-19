@@ -15,7 +15,7 @@ for(const id of ['basic_attack','venom_fang','whisper_of_ending']){
 assert(original.elemental,'original skill stays magic for other characters');
 for(const [actor,id,effect]of [
  ['story_bandit_archer','basic_attack','aimed_shot'],['story_grell','basic_attack','aimed_shot'],
- ['story_grell','killing_angle','aimed_shot'],['elven_ranger','xp_enchanted_arrow','aimed_shot'],
+ ['story_grell','killing_angle','aimed_shot'],['story_grell','backstab','aimed_shot'],['elven_ranger','xp_enchanted_arrow','aimed_shot'],
  ['story_merle','basic_attack','fire_bolt'],['story_malvane','basic_attack','frost_touch'],
  ['enchantress','xp_waning_curse','xp_waning_curse'],['elven_wizard','xp_arcane_volley','xp_arcane_volley']]){
  const r=F.enemyAction({sheet:{actor}},id,A.DATA.SKILLS[id]);assert(r.ranged);assert.equal(r.effect,effect);assert(F.supports(effect));
@@ -25,7 +25,7 @@ for(const actor of ['story_bahadir','story_tunnel_kobold'])for(const id of ['aim
 }
 for(const id of ['shield_wall','defiant_stand','close_order','counter_attack','countersign'])assert.equal(F.stanceFor(id),'intercept');
 assert.equal(F.stanceFor('xp_evasive_step'),'roll');assert.equal(F.stanceFor('warding_stance'),null);
-for(const [id,effect]of [['shadow_rise','smoke_bomb'],['ghoststep','smoke_bomb'],['warding_stance','ranging_ward'],['beast_shape','thorn_skin']]){
+for(const [id,effect]of [['shadow_rise','shadow_rise'],['ghoststep','smoke_bomb'],['warding_stance','ranging_ward'],['beast_shape','thorn_skin']]){
  const r=F.enemyAction({kind:'human'},id,A.DATA.SKILLS[id]);assert.equal(r.effect,effect);assert(F.supports(effect));
 }
 for(const actor of ['story_femi','elven_wizard','elven_ranger','enchantress','hag','spider']){

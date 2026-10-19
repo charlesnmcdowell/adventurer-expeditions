@@ -1,7 +1,8 @@
 'use strict';
 // Shadow Rise / Smoke Bomb must never leave a living enemy invisible
-// (Hiro, 2026-10-17): the fall is answered by a stagger and smoke, the body
-// stays, and anyone hidden stands in a veil of smoke under an "Invisible" tag.
+// Outside the authored resurrection, living bodies remain drawn. During the
+// grave emergence, that actor's visible grave is the required substitute cue.
+// Afterward stealth keeps a visible body, smoke veil and "Invisible" tag.
 const {chromium}=require('playwright'),fs=require('node:fs'),assert=require('node:assert/strict');
 const OUT='test/reports/story-stealth';fs.mkdirSync(OUT,{recursive:true});
 const ORIGIN=process.env.TEST_ORIGIN||'http://127.0.0.1:8742';
@@ -42,7 +43,11 @@ const ORIGIN=process.env.TEST_ORIGIN||'http://127.0.0.1:8742';
     s.scene.restart({record:s.story.record,seed,muted:true});
     return new Promise(res=>{const bad=[],rises=new Set(),t0=Date.now();const iv=setInterval(()=>{const sc=storyGame.scene.getScene('StoryBattle');const hu=sc.enc&&ADV.Expedition.Encounter.heroUnit(sc.enc);if(hu&&hu.chp>0)hu.chp=hu.maxHp;for(const fu of sc.enc?.st?.units||[])if(fu.side!==hu?.side&&fu.chp>3&&!fu.__lowered){fu.chp=3;fu.__lowered=true;}
       
-      if(introDone&&!sc.ended)for(const a of sc.actors?.values()||[])if(a.side==='b'&&!a._destroyed&&a.unit.chp>0&&!a.unit.downed&&(!a.alive||!a.root.visible||a.img.alpha<.3))bad.push(a.unit.ch.name);
+      if(introDone&&!sc.ended)for(const a of sc.actors?.values()||[])if(a.side==='b'&&!a._destroyed&&a.unit.chp>0&&!a.unit.downed){
+        const grave=sc.children.list.find(x=>x.name==='shadow_rise_grave'&&x.__riserUid===a.uid&&x.active&&x.visible&&x.alpha>.3);
+        if(a.__rising&&grave){rises.add(a.uid);continue;}
+        if(!a.alive||!a.root.visible||a.img.alpha<.3)bad.push(a.unit.ch.name);
+      }
       if(sc.ended||sc.enc?.st?.over||Date.now()-t0>170000){clearInterval(iv);res({seed,round:sc.enc?.st?.round,rises:window.__rises-r0,bad:[...new Set(bad)],over:!!sc.enc?.st?.over});}},200);});},seed));
     console.log('real fight',JSON.stringify(real.at(-1)));}
   assert(real.every(r=>!r.bad.length),'a living enemy went invisible');assert(real.some(r=>r.rises>0),'at least one real Shadow Rise was seen');

@@ -4,11 +4,17 @@ const A=require('./harness').load();
 for(const n of ['data','shim','encounter','campaign','run','story','story_combat','story_companions'])vm.runInThisContext(fs.readFileSync('js/expedition/'+n+'.js','utf8'));
 const S=A.Expedition.Story,P=S.Companions;
 const atlas=id=>JSON.parse(fs.readFileSync('assets/expedition/companion_'+id+'/companion_'+id+'.json'));
+for(const id of ['ithrel','faelen'])for(const skillId of ['basic_attack',...P.kits[id].skills]){
+ const ch={level:1,stats:{},expeditionStoryCompanion:id};
+ const m=A.SkillSys.manifest(ch,{skillId,level:1}),base=A.SkillSys.manifest({...ch,expeditionStoryCompanion:undefined},{skillId,level:1});
+ assert.equal(m.data.reach,'any');assert.equal(m.data.melee,false);assert.equal(m.data.katana,false);assert.equal(m.data.elemental,false);
+ for(const key of ['power','target','statuses','cost'])assert.deepEqual(m.data[key],base.data[key],id+'/'+skillId+' preserves '+key);
+}
 let registeredFrames=0;
 for(const id of Object.keys(P.kits)){
  const doc=atlas(id);P.register(id,doc);registeredFrames+=Object.values(doc.clips).reduce((n,c)=>n+c.frames.length,0);
- for(const clip of Object.values(doc.clips)){
-  assert.equal(clip.frames.length,16);assert.equal(new Set(clip.frames).size,16);
+ for(const [name,clip] of Object.entries(doc.clips)){
+  const expected=clip.technicalCalmLoop?4:16;assert.equal(clip.frames.length,expected);assert.equal(new Set(clip.frames).size,name==='flip-burst'?14:expected);
   assert(clip.frames.every(f=>doc.frames[f]));
   assert(clip.contact.every(i=>i>=0&&i<16));assert(clip.release>=0&&clip.release<16);
  }

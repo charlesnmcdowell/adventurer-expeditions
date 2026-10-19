@@ -138,6 +138,15 @@ function splitEvents(events) {
 async function playTicks(scene, events) {
   for(const e of events)if(e.t==='revive'||e.t==='selfRevive'){
     const a=actorOf(scene,e.uid),id=a?.unit?.ch?.expeditionStoryCompanion;
+    if(e.skillId==='shadow_rise'&&a&&a.unit?.chp>0&&!a.unit.downed&&!scene.ended){
+      const seen=scene.__risen||(scene.__risen=new Set());
+      if(!seen.has(a.uid)){
+        seen.add(a.uid);(scene.__smoked ||= new Set()).add(a.uid);
+        V().damageNumber(scene,a.x,a.y-a.height*.7,'Shadow Rise','#d7c4ff');
+        await X.StoryEffects.resurrect(scene,a);
+      }
+      continue;
+    }
     // An enemy that cheats death (Shadow Rise) stays on the field; if its fall
     // was already shown, bring the body back instead of leaving it invisible.
     if(!id){if(a&&!scene.ended&&!a.alive&&a.unit.chp>0&&!a.unit.downed){a.restoreFromFade();a.refresh(true);}continue;}
@@ -171,6 +180,16 @@ const lethalTarget = (g, target) => !!target && g.down.some(d => d.uid === targe
 async function cinematic(scene, kind, actor, target, fn) {
   if (scene.__cine > 0 || !X.UI || !X.UI.cinematic) return fn();
   const focus = target ? { x: (actor.x + target.x) / 2, y: actor.y - actor.height * 0.45 } : { x: actor.x + 120 * actor.facing, y: actor.y - actor.height * 0.45 };
+  if(kind==='kill'&&target?.sheet?.clips&&scene.textures){
+    const sheet=target.sheet,pv=sheet.canvas.pivot,boxes=[];
+    for(const [id,c]of Object.entries(sheet.clips))if(/^hiro-finisher/.test(id)&&c.paired){
+      const scale=actor.height/sheet.standing*(c.bodyScale||1)*actor.perspectiveAt(target.y);
+      const distance=(c.pairTargetDistance??actor.height*(c.pairTargetDistanceRatio||.65))*actor.perspectiveAt(target.y);
+      const root=target.x-distance*actor.facing;
+      for(const name of c.frames){const f=scene.textures.getFrame(sheet.key,name);if(f)boxes.push({l:root+(f.x-pv.x)*scale,r:root+(f.x+f.width-pv.x)*scale,t:target.y+(f.y-pv.y)*scale,b:target.y+(f.y+f.height-pv.y)*scale});}
+    }
+    if(boxes.length)focus.bounds={left:Math.min(...boxes.map(b=>b.l)),right:Math.max(...boxes.map(b=>b.r)),top:Math.min(...boxes.map(b=>b.t)),bottom:Math.max(...boxes.map(b=>b.b))};
+  }
   return X.UI.cinematic(scene, kind, focus, fn);
 }
 
@@ -184,11 +203,11 @@ async function playDowns(scene, downs, events, byFinisher) {
   for (const e of downs) {
     const target = actorOf(scene, e.uid);
     if (!target || !target.alive || target._destroyed) continue;
-    // Shadow Rise (and Demigod) answer the killing blow at once: the engine
-    // reports the fall and then the rise. Show a stagger and a burst of smoke,
-    // never the death, or the living enemy would vanish from sight (2026-10-17).
-    if (target.side === 'b' && target.unit && target.unit.chp > 0 && !target.unit.downed) {
+    // A revive already restored by playTicks must not receive a second death.
+    // Shadow Rise owns its grave sequence; other revive skills keep their tells.
+    if (target.unit && target.unit.chp > 0 && !target.unit.downed && (events||[]).some(x=>x.uid===e.uid&&['revive','selfRevive'].includes(x.t))) {
       const rose = (events || []).find(x => (x.t === 'revive' || x.t === 'selfRevive') && x.uid === e.uid);
+      if(rose?.skillId==='shadow_rise'&&scene.__risen?.has(target.uid)){target.refresh();continue;}
       await Promise.all([target.play('hit_short'), target.smokePuff()]);
       if (scene.ended || target._destroyed) continue;
       (scene.__smoked ||= new Set()).add(target.uid);
@@ -447,14 +466,16 @@ async function storyCompanionAction(scene,ally,g){
   const basicMagic=id==='basic_attack'&&caster;
   const form=X.Story.Companions.formAttack(ally,id);
   const knifeEnding=ally.unit.ch.expeditionStoryCompanion==='fennick'&&id==='whisper_of_ending';
-  const companionClip=knifeEnding?'signature-1':form?'form-'+form:basicMagic?caster.clip:caster?.spellClips?.[id]||(ix<0?'attack':'signature-'+(ix+1));
+  const bowId=ally.unit.ch.expeditionStoryCompanion,bow=X.Story.Companions.bows.has(bowId);
+  const volley=bowId==='ithrel'&&id==='aimed_shot',triple=bowId==='faelen'&&id==='backstab';
+  const companionClip=volley?'sky-volley':triple?'flip-burst':bowId==='ithrel'&&id==='snare'?'attack':knifeEnding?'signature-1':form?'form-'+form:basicMagic?caster.clip:caster?.spellClips?.[id]||(ix<0?'attack':'signature-'+(ix+1));
   const entry=ally.unit.ch.actives.find(e=>e.skillId===id)||{skillId:id,level:1};
   const sk=A.SkillSys.manifest(ally.unit.ch,entry).data;
   const hits=g.after.filter(e=>e.t==='damage'&&e.by===ally.uid&&e.tag!=='dot');
   const target=actorOf(scene,g.use.target)||ally;
   const bowBasic=id==='basic_attack'&&/bow/i.test(kit.weapon);
-  const effectId=basicMagic?caster.effect:caster?.effects?.[id]||(bowBasic?'aimed_shot':id);
-  const ranged=bowBasic||sk.elemental||(sk.reach==='any'&&!sk.melee&&!sk.katana);
+  const effectId=bow?'aimed_shot':basicMagic?caster.effect:caster?.effects?.[id]||(bowBasic?'aimed_shot':id);
+  const ranged=bow||bowBasic||sk.elemental||(sk.reach==='any'&&!sk.melee&&!sk.katana);
   const support=['self','party','ally','deadAlly'].includes(sk.target);
   const soundFamily=support?(/mend|regen|blood_pact/.test(id)?'heal':'guard'):ranged?(sk.elemental?'magic':'projectile'):'slash';
   sfx(scene,soundFamily,'use');
@@ -471,9 +492,16 @@ async function storyCompanionAction(scene,ally,g){
   if(ranged||support){
     let flight=null;
     if(!X.StoryEffects.supports(effectId,{companion:true}))throw Error('Companion effect art not ready: '+effectId);
+    const shots=[];
+    const shoot=(frame)=>{
+      const clip=ally.sheet.clips[companionClip],firing={...clip,releaseAnchor:clip.releaseAnchors?.[frame]||clip.releaseAnchor};
+      const p=X.StoryEffects.play(scene,'aimed_shot',ally.releasePoint(firing),target.chest(),{height:ally.height,clip:firing,companion:true});shots.push(p);return p;
+    };
     await ally.play('cast',{companionClip,target,holdRelease:true,
+     onContact:triple?()=>shoot(9):undefined,onHit:triple?()=>shoot(11):undefined,
      onWindup:(from,clip)=>X.StoryEffects.charge(scene,effectId,ally,clip,{companion:true}),onRelease:(from,clip)=>{
-      flight=X.StoryEffects.play(scene,effectId,from,target.chest(),{height:ally.height,clip,companion:true,cinematic:!['aimed_shot','kunai_line','suppressing_volley'].includes(effectId)}).then(land);return flight;
+      flight=(triple?(shoot(13),Promise.all(shots)):volley?X.StoryEffects.skyVolley(scene,from,target.chest(),ally.height):
+        X.StoryEffects.play(scene,effectId,from,target.chest(),{height:ally.height,clip,companion:true,cinematic:!['aimed_shot','kunai_line','suppressing_volley'].includes(effectId)})).then(land);return flight;
     }});if(flight)await flight;
   }else await ally.play('slash',{companionClip,target,
     // Wanjiru keeps her gauntlet strike; its nature magic charges on the fist.
@@ -602,7 +630,7 @@ async function smokeOnHide(scene, events) {
 
 // ---------------------------------------------------------------- entry point
 Beats.play = async function (scene, step) {
-  scene.__smoked = new Set();
+  scene.__smoked = new Set(); scene.__risen = new Set();
   const g = splitEvents(step.events || []);
   await playTicks(scene, g.pre);
   // Round-boundary downs (a wolf bleeding out) happen before any action.
@@ -652,5 +680,5 @@ Beats.play = async function (scene, step) {
   for (const e of step.events) if (e.t === 'exposedBurst') { const t = actorOf(scene, e.uid); if (t) V().burst(scene, t.chest().x, t.chest().y, 0xf4c26b, 6); }
 };
 
-Beats.ticksOnly = async function (scene, events) { scene.__smoked = new Set(); await playTicks(scene, events); const downs = events.filter(e => e.t === 'down'); if (downs.length) await playDowns(scene, downs, events); await smokeOnHide(scene, events); await X.EnemyFinishers?.tryLowHealth(scene, events); };
+Beats.ticksOnly = async function (scene, events) { scene.__smoked = new Set(); scene.__risen = new Set(); await playTicks(scene, events); const downs = events.filter(e => e.t === 'down'); if (downs.length) await playDowns(scene, downs, events); await smokeOnHide(scene, events); await X.EnemyFinishers?.tryLowHealth(scene, events); };
 })();
