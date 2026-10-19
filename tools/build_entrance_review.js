@@ -1,0 +1,11 @@
+'use strict';
+const fs=require('node:fs'),path=require('node:path');
+const root=path.resolve(__dirname,'..');
+const modules=[...fs.readFileSync(path.join(root,'index.html'),'utf8').matchAll(/<script src="[^"]+"><\/script>/g)].map(m=>m[0]).join('\n');
+const story=['story','story_dialogue','story_combat','story_companions','story_presentation','story_art','story_stage'].map(n=>'<script src="js/expedition/'+n+'.js?v=entrance-review"></script>').join('\n');
+const html=`<!doctype html><html><head><meta charset="utf-8"><base href="../../"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Entrances — Adventurer: Expeditions</title><style>
+*{box-sizing:border-box}body{margin:0;background:#10131c;color:#eee;font:15px system-ui}header{padding:10px 16px;display:flex;align-items:center;gap:9px;flex-wrap:wrap}button,select{padding:8px;background:#233149;border:1px solid #9b8557;color:#fff;border-radius:5px;max-width:94vw}h1{font-size:18px;margin:0 10px 0 0}#game{width:100%;height:calc(100vh - 156px);min-height:300px}footer{padding:8px 16px;color:#c5cbd7}#status{display:block;margin-top:4px}.art-warning{padding:30px;background:#551c28}a{color:#e6ca7e}label{white-space:nowrap}</style></head><body>
+<header><h1>Enemy entrances</h1><select id="enemy" aria-label="Enemy"></select><select id="moment" aria-label="Story appearance"></select><select id="companion" aria-label="Companion reaction"></select><button id="play">Replay</button><button id="pause">Pause</button><label><input type="checkbox" id="sound"> Sound</label><label>Speed <select id="speed"><option value="1">Normal</option><option value="0.5">Half</option><option value="0.25">Quarter</option></select></label></header><div id="game"></div><footer><span id="description"></span><small id="status">Loading isolated review. Your campaign save is unchanged.</small><a href="docs/ENTRANCE_REVIEW_20261019/voice-script.json" target="_blank">All dialogue and voice IDs</a> · <a href="docs/STORY_CAMPAIGN_PREVIEW.html">Campaign</a></footer>
+${modules}\n${story}\n<script src="docs/ENTRANCE_REVIEW_20261019/review.js?v=20261019"></script></body></html>`;
+fs.writeFileSync(path.join(root,'docs/ENTRANCE_REVIEW_20261019/index.html'),html);
+console.log('Entrance review rebuilt from current runtime scripts');

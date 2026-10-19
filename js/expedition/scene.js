@@ -432,6 +432,7 @@ class ExpeditionScene extends Phaser.Scene {
   }
 
   async intro(first) {
+    if (X.Entrances) return X.Entrances.begin(this, first);
     // Foes pour in from the right while Hiro plants and draws (a short draw on later waves).
     const foes = [...this.actors.values()].filter(a => a.side === 'b');
     const ambush = !!this.enc.def.ambush;

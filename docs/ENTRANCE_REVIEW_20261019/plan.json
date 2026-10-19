@@ -1,0 +1,1044 @@
+[
+  {
+    "actor": "story_nib",
+    "name": "Nib",
+    "motion": "walk",
+    "action": "Casually roll the dagger once in his palm, catch it safely, shrug, then lower into a knife-fighter stance.",
+    "who": "nib",
+    "text": "Stand still, friend. You're worth two hundred either way.",
+    "voiceId": "aiHuPZx6mGgpzcNDwtX2",
+    "identity": "mini:nib",
+    "appearances": [
+      {
+        "chapter": 1,
+        "encounter": 0,
+        "label": "The storehouse"
+      }
+    ],
+    "newArt": true,
+    "frames": 8,
+    "monsterReaction": false
+  },
+  {
+    "actor": "story_cobb",
+    "name": "Cobb",
+    "motion": "heavy",
+    "action": "Rest the axe on shoulder, roll his neck, bring the axe down into a two-handed guard without striking anything.",
+    "who": null,
+    "text": null,
+    "voiceId": null,
+    "identity": "mini:cobb",
+    "appearances": [
+      {
+        "chapter": 1,
+        "encounter": 1,
+        "label": "The priests' quarters"
+      }
+    ],
+    "newArt": true,
+    "frames": 8,
+    "monsterReaction": false
+  },
+  {
+    "actor": "story_merle",
+    "name": "Merle",
+    "motion": "walk",
+    "action": "With a lazy half-smile, conjure a small ember above a finger, let it roll over his knuckles, close his fist and take his casting stance.",
+    "who": "morwin",
+    "text": "Let's finish before Delphine comes outside.",
+    "voiceId": "al2GsnInvOnScFc93vu6",
+    "identity": "named:morwin",
+    "appearances": [
+      {
+        "chapter": 2,
+        "encounter": 2,
+        "label": "The steps of the Open Hand"
+      }
+    ],
+    "newArt": true,
+    "frames": 8,
+    "monsterReaction": false
+  },
+  {
+    "actor": "story_lurleen",
+    "name": "Lurleen",
+    "motion": "stalk",
+    "action": "Smile with dangerous confidence, slowly reveal her knife from beside her thigh, turn the blade once and settle into a low assassin guard.",
+    "who": "lessa",
+    "text": "You kept me waiting, sugar. Hold still a moment.",
+    "voiceId": "xWbXI06Q9UpLaSG8TVpw",
+    "identity": "named:lessa",
+    "appearances": [
+      {
+        "chapter": 3,
+        "encounter": 0,
+        "label": "The Dunmere inn"
+      }
+    ],
+    "newArt": true,
+    "frames": 8,
+    "monsterReaction": false
+  },
+  {
+    "actor": "story_snarl",
+    "name": "Snarl, Gnoll Warleader",
+    "motion": "heavy",
+    "action": "Plant his polearm, throw his red-maned head back in a savage barking laugh, grip the shaft with both hands and lean into a fighting guard.",
+    "who": null,
+    "text": null,
+    "voiceId": null,
+    "identity": "mini:gnoll_warleader",
+    "appearances": [
+      {
+        "chapter": 3,
+        "encounter": 2,
+        "label": "The gnoll fortress"
+      }
+    ],
+    "newArt": true,
+    "frames": 8,
+    "monsterReaction": true
+  },
+  {
+    "actor": "story_bahadir",
+    "name": "Bahadır",
+    "motion": "heavy",
+    "action": "Stamp forward in fury, raise his greatsword in a threatening salute, point it left down the road then lower it into guard.",
+    "who": "bramm",
+    "text": "You took his coin! Now get past me!",
+    "voiceId": "ZZKBkhKNX9bfxn63cQTM",
+    "identity": "named:bramm",
+    "appearances": [
+      {
+        "chapter": 3,
+        "encounter": 2,
+        "label": "Bahadır blocks the road"
+      }
+    ],
+    "newArt": true,
+    "frames": 8,
+    "monsterReaction": false
+  },
+  {
+    "actor": "story_kobold_chief",
+    "name": "Kobold Chief",
+    "motion": "scurry",
+    "action": "Puff up his small chest under the red cape, bang the base of his decorated staff once on the ground, jab a commanding claw left and ready himself.",
+    "who": null,
+    "text": null,
+    "voiceId": null,
+    "identity": "mini:kobold_chief",
+    "appearances": [
+      {
+        "chapter": 4,
+        "encounter": 2,
+        "label": "The third level"
+      }
+    ],
+    "newArt": true,
+    "frames": 8,
+    "monsterReaction": true
+  },
+  {
+    "actor": "story_grukhar",
+    "name": "Grukhar",
+    "motion": "walk",
+    "action": "Wearily straighten, clutch his priestly talisman, build a sickly violet light in his palm and curl the hand into a curse.",
+    "who": "grukhar",
+    "text": "Unpaid since spring. Now you want my letters too?",
+    "voiceId": "d9QexFKeaE8pDBNegABG",
+    "identity": "named:grukhar",
+    "appearances": [
+      {
+        "chapter": 4,
+        "encounter": 3,
+        "label": "Grukhar's chamber"
+      }
+    ],
+    "newArt": true,
+    "frames": 8,
+    "monsterReaction": false
+  },
+  {
+    "actor": "story_femi",
+    "name": "Femi",
+    "motion": "retreat",
+    "action": "Nervously retreat half a step, pat his coat protectively, lift open hands in protest then reluctantly raise a guarded fist. Preserve his merchant clothes.",
+    "who": "verlan",
+    "text": "Keep your hands off me! These papers are mine!",
+    "voiceId": "1V8ftW86u2NXoV2QR76J",
+    "identity": "mini:verlan",
+    "appearances": [
+      {
+        "chapter": 5,
+        "encounter": 0,
+        "label": "Hollister's Inn"
+      }
+    ],
+    "newArt": true,
+    "frames": 8,
+    "monsterReaction": false
+  },
+  {
+    "actor": "story_skarn",
+    "name": "Skarn Maul",
+    "motion": "heavy",
+    "action": "Lift the heavy maul onto shoulder, scrape one boot forward, swing the maul down into a low two-handed ready pose with its head touching ground.",
+    "who": null,
+    "text": null,
+    "voiceId": null,
+    "identity": "mini:skarn",
+    "appearances": [
+      {
+        "chapter": 5,
+        "encounter": 2,
+        "label": "The palisade"
+      }
+    ],
+    "newArt": true,
+    "frames": 8,
+    "monsterReaction": true
+  },
+  {
+    "actor": "story_gorruk",
+    "name": "Gorruk",
+    "motion": "heavy",
+    "action": "Square his massive shoulders, lift the huge axe toward the intruder, bare teeth in a roar then brace in a grounded fighting stance.",
+    "who": "gorruk",
+    "text": "In my own tent. You've got nerve, foundling.",
+    "voiceId": "fHJkS6rGX3KuLo1kf0wn",
+    "identity": "named:gorruk",
+    "appearances": [
+      {
+        "chapter": 5,
+        "encounter": 3,
+        "label": "Gorruk's tent"
+      },
+      {
+        "chapter": 13,
+        "encounter": 3,
+        "label": "Gorruk, again"
+      }
+    ],
+    "newArt": true,
+    "frames": 8,
+    "monsterReaction": false
+  },
+  {
+    "actor": "story_thornwise",
+    "name": "Mzee Kamau",
+    "motion": "walk",
+    "action": "Lean on his staff, examine the ground sternly, slowly lift his free hand as fine green tendrils curl around the wrist, then command them toward the intruder.",
+    "who": "thornwise",
+    "text": "Nine graves since that mine opened. Leave this grove.",
+    "voiceId": "9dYmrG7ILONuyEDKOapp",
+    "identity": "named:thornwise",
+    "appearances": [
+      {
+        "chapter": 6,
+        "encounter": 1,
+        "label": "The druid grove"
+      }
+    ],
+    "newArt": true,
+    "frames": 8,
+    "monsterReaction": false
+  },
+  {
+    "actor": "story_nettle",
+    "name": "Wanjiru",
+    "motion": "stalk",
+    "action": "Lower her centre of gravity, plant a gauntleted hand briefly near the soil, straighten with a feral warning gesture and guard the grove.",
+    "who": "nettle",
+    "text": "You heard us. Stay out of the grove.",
+    "voiceId": "U1NXjHF5ene7Eze10d5J",
+    "identity": "named:nettle",
+    "appearances": [
+      {
+        "chapter": 6,
+        "encounter": 1,
+        "label": "The druid grove"
+      }
+    ],
+    "newArt": true,
+    "frames": 8,
+    "monsterReaction": false
+  },
+  {
+    "actor": "story_kestrel",
+    "name": "Kestrel",
+    "motion": "march",
+    "action": "Check the edge of his shield with a gauntlet, plant his spear vertically, point the spear left while keeping the shield tight across the chest.",
+    "who": null,
+    "text": null,
+    "voiceId": null,
+    "identity": "mini:kestrel",
+    "appearances": [
+      {
+        "chapter": 6,
+        "encounter": 3,
+        "label": "The mine gate"
+      }
+    ],
+    "newArt": true,
+    "frames": 8,
+    "monsterReaction": false
+  },
+  {
+    "actor": "story_malvane",
+    "name": "Olamide",
+    "motion": "walk",
+    "action": "Dust one sleeve with irritated precision, raise a palm and form a sharp blue frost sigil, then bring the other hand into his casting stance.",
+    "who": "malvane",
+    "text": "Those ledgers stay here. So do you.",
+    "voiceId": "qY77JO62oGpUeMUDF7bS",
+    "identity": "named:malvane",
+    "appearances": [
+      {
+        "chapter": 7,
+        "encounter": 3,
+        "label": "Olamide's study"
+      }
+    ],
+    "newArt": true,
+    "frames": 8,
+    "monsterReaction": false
+  },
+  {
+    "actor": "story_sewer_ogre_mage",
+    "name": "The Ogre Under the Docks",
+    "motion": "heavy",
+    "action": "Hunch forward into view, sniff the air with a suspicious scowl, lift his blue-crystal staff and bellow while the crystal flickers, then settle under its weight.",
+    "who": null,
+    "text": null,
+    "voiceId": null,
+    "identity": "mini:sewer_ogre_mage",
+    "appearances": [
+      {
+        "chapter": 8,
+        "encounter": 0,
+        "label": "The sewers"
+      }
+    ],
+    "newArt": true,
+    "frames": 8,
+    "monsterReaction": true
+  },
+  {
+    "actor": "story_lantern_master",
+    "name": "The Master of Lanterns",
+    "motion": "walk",
+    "action": "Hold the lantern-staff up beside his face, slowly turn it toward the left to examine the intruder, then draw it back as its warm light becomes an ominous violet.",
+    "who": null,
+    "text": null,
+    "voiceId": null,
+    "identity": "mini:lantern_master",
+    "appearances": [
+      {
+        "chapter": 8,
+        "encounter": 3,
+        "label": "The upper office"
+      }
+    ],
+    "newArt": true,
+    "frames": 8,
+    "monsterReaction": false
+  },
+  {
+    "actor": "story_umbral_pair",
+    "name": "The Umbral Hand",
+    "motion": "shadow",
+    "action": "Emerge from a low smoky violet silhouette, reveal the blade from the cape, glance left and sink into a deliberate crouched guard.",
+    "who": null,
+    "text": null,
+    "voiceId": null,
+    "identity": "mini:umbral_pair",
+    "appearances": [
+      {
+        "chapter": 9,
+        "encounter": 1,
+        "label": "The counting floor — old friends"
+      }
+    ],
+    "newArt": true,
+    "frames": 8,
+    "monsterReaction": false
+  },
+  {
+    "actor": "story_tower_captain",
+    "name": "Captain of the Tower",
+    "motion": "march",
+    "action": "Step into a parade halt, strike the shield rim once with the spear shaft, level the spear left and brace behind the shield.",
+    "who": null,
+    "text": null,
+    "voiceId": null,
+    "identity": "mini:tower_captain",
+    "appearances": [
+      {
+        "chapter": 9,
+        "encounter": 3,
+        "label": "The top floor"
+      }
+    ],
+    "newArt": true,
+    "frames": 8,
+    "monsterReaction": false
+  },
+  {
+    "actor": "story_maddox",
+    "name": "Adigun Adeyinka",
+    "motion": "retreat",
+    "action": "Startle, clutch his gold chain, raise his heavy mace with reluctant shaking resolve, steady the weapon with his other hand.",
+    "who": "maddox",
+    "text": "Wait! Killing us won't stop my foster-son!",
+    "voiceId": "KZpCMq3CCfA6P6hsnSvp",
+    "identity": "named:maddox",
+    "appearances": [
+      {
+        "chapter": 10,
+        "encounter": 1,
+        "label": "The summit"
+      }
+    ],
+    "newArt": true,
+    "frames": 8,
+    "monsterReaction": false
+  },
+  {
+    "actor": "story_vask",
+    "name": "Bankole",
+    "motion": "march",
+    "action": "Fuss indignantly at his rich robe, point accusingly left, throw up a defensive forearm and finally ready his weapon.",
+    "who": "vask",
+    "text": "Guards! Get them away from the records!",
+    "voiceId": "4cHt9cX9ngcPiEaw8Kud",
+    "identity": "named:vask",
+    "appearances": [
+      {
+        "chapter": 10,
+        "encounter": 1,
+        "label": "The summit"
+      }
+    ],
+    "newArt": true,
+    "frames": 8,
+    "monsterReaction": false
+  },
+  {
+    "actor": "story_rennick",
+    "name": "Rotimi",
+    "motion": "walk",
+    "action": "Quietly smooth the sleeve of his blue robe, bring two fingers together, trace a compact pale-blue ward in front of his hand and take his casting guard.",
+    "who": null,
+    "text": null,
+    "voiceId": null,
+    "identity": "named:rennick",
+    "appearances": [
+      {
+        "chapter": 10,
+        "encounter": 1,
+        "label": "The summit"
+      }
+    ],
+    "newArt": true,
+    "frames": 8,
+    "monsterReaction": false
+  },
+  {
+    "actor": "story_family_double",
+    "name": "A Face You Know",
+    "motion": "shadow",
+    "action": "Lift a hand in a falsely friendly greeting, let the smile freeze unnaturally, purple shadow ripple over one arm, then curl fingers into a hostile guard.",
+    "who": null,
+    "text": null,
+    "voiceId": null,
+    "identity": "mini:family_double",
+    "appearances": [
+      {
+        "chapter": 10,
+        "encounter": 3,
+        "label": "The crypt of faces"
+      }
+    ],
+    "newArt": true,
+    "frames": 8,
+    "monsterReaction": false
+  },
+  {
+    "actor": "story_idris",
+    "name": "Idris",
+    "motion": "walk",
+    "action": "Hold one hand out like a reassuring physician, let the false smile fall away, turn the palm up to reveal a dark blood-red magical glow and ready the other hand.",
+    "who": "idris",
+    "text": "The Duke needs his rest. I can arrange yours.",
+    "voiceId": "Zjllzaofqu5CuNshWGwW",
+    "identity": "named:idris",
+    "appearances": [
+      {
+        "chapter": 11,
+        "encounter": 1,
+        "label": "Adebayo's sick-room"
+      }
+    ],
+    "newArt": true,
+    "frames": 8,
+    "monsterReaction": false
+  },
+  {
+    "actor": "story_amara",
+    "name": "Amara",
+    "motion": "walk",
+    "action": "Pause with quiet resolve, draw her twin sabres apart in a controlled cross, exhale, set one blade high and the other low toward the opponent.",
+    "who": "amara",
+    "text": "Lower your sword. Don't make me stop you here.",
+    "voiceId": "nlQtoxiWTYC3witBlK1H",
+    "identity": "named:amara",
+    "appearances": [
+      {
+        "chapter": 11,
+        "encounter": 2,
+        "label": "The docks"
+      },
+      {
+        "chapter": 13,
+        "encounter": 1,
+        "label": "The gate of the Undercity"
+      }
+    ],
+    "newArt": true,
+    "frames": 8,
+    "monsterReaction": false
+  },
+  {
+    "actor": "story_ravel",
+    "name": "Rasheed",
+    "motion": "swagger",
+    "action": "Give an amused half-bow, show off one controlled cutlass flourish, roll his shoulders, then spread his two blades into an aggressive guard.",
+    "who": "ravel",
+    "text": "A bounty AND an invitation. What a generous evening.",
+    "voiceId": "SwayIXZEQHYPgOU8ZLVO",
+    "identity": "named:ravel",
+    "appearances": [
+      {
+        "chapter": 11,
+        "encounter": 3,
+        "label": "The Undervault"
+      }
+    ],
+    "newArt": true,
+    "frames": 8,
+    "monsterReaction": false
+  },
+  {
+    "actor": "story_kessa",
+    "name": "Kemi",
+    "motion": "walk",
+    "action": "Look briefly bored, raise one palm, let fine violet lightning arc between her fingers, flick it away and set both hands for a spell.",
+    "who": "kessa",
+    "text": "The invitations are worth more than you. Move, Rasheed.",
+    "voiceId": "zzp11mPTUa7yKugVGfwD",
+    "identity": "named:kessa",
+    "appearances": [
+      {
+        "chapter": 11,
+        "encounter": 3,
+        "label": "The Undervault"
+      }
+    ],
+    "newArt": true,
+    "frames": 8,
+    "monsterReaction": false
+  },
+  {
+    "actor": "story_hall_doubles",
+    "name": "Ducal Guard",
+    "motion": "march",
+    "action": "Give a stiff courtly bow that stops a little too abruptly, straighten behind the ceremonial polearm, then lower its blade across the doorway to bar entry.",
+    "who": null,
+    "text": null,
+    "voiceId": null,
+    "identity": "mini:hall_doubles",
+    "appearances": [
+      {
+        "chapter": 12,
+        "encounter": 0,
+        "label": "The great hall"
+      }
+    ],
+    "newArt": true,
+    "frames": 8,
+    "monsterReaction": false
+  },
+  {
+    "actor": "story_jarem",
+    "name": "Jelani",
+    "motion": "walk",
+    "action": "Thrust the staff upright like a torch, gather orange flame above his free palm, sweep it to illuminate his face and lower into a casting stance.",
+    "who": "jarem",
+    "text": "Cultists! Light the street. Leave the ward to me.",
+    "voiceId": "68X70AB3zrqH7rtaQUHH",
+    "identity": "named:jarem",
+    "appearances": [
+      {
+        "chapter": 13,
+        "encounter": 2,
+        "label": "The buried street"
+      }
+    ],
+    "newArt": true,
+    "frames": 8,
+    "monsterReaction": false
+  },
+  {
+    "actor": "story_lucan",
+    "name": "Segun Marr",
+    "motion": "march",
+    "action": "Lift his sword in a clipped military salute, dismissively point it toward the left, bring his shield up and step into a disciplined combat guard.",
+    "who": "lucan",
+    "text": "I signed your poster. This saves us a search.",
+    "voiceId": "ouilM4BVCVF7fxKGukKI",
+    "identity": "named:lucan",
+    "appearances": [
+      {
+        "chapter": 13,
+        "encounter": 4,
+        "label": "The temple steps"
+      }
+    ],
+    "newArt": true,
+    "frames": 8,
+    "monsterReaction": false
+  },
+  {
+    "actor": "story_altar_keepers",
+    "name": "Keepers of the Altar",
+    "motion": "ritual",
+    "action": "Incline the masked head toward the unseen altar, lift the ritual staff with both hands, turn left and lower it into a threatening ceremonial guard.",
+    "who": null,
+    "text": null,
+    "voiceId": null,
+    "identity": "mini:altar_keepers",
+    "appearances": [
+      {
+        "chapter": 14,
+        "encounter": 0,
+        "label": "The outer sanctum"
+      }
+    ],
+    "newArt": true,
+    "frames": 8,
+    "monsterReaction": false
+  },
+  {
+    "actor": "story_your_own_faces",
+    "name": "Your Own Faces",
+    "motion": "shadow",
+    "action": "Copy Hiro's poised hand-to-hilt stance, let a purple shadow flicker across the face, draw the blade a short distance and freeze in an unsettling mirrored guard.",
+    "who": null,
+    "text": null,
+    "voiceId": null,
+    "identity": "mini:your_own_faces",
+    "appearances": [
+      {
+        "chapter": 14,
+        "encounter": 1,
+        "label": "The hall of mirrors"
+      }
+    ],
+    "newArt": true,
+    "frames": 8,
+    "monsterReaction": false
+  },
+  {
+    "actor": "story_korvath",
+    "name": "Kolade Adeyinka",
+    "motion": "walk",
+    "action": "With calm regal confidence, spread his empty hand in a courteous invitation, slowly lift the great blade, turn its point left and settle into an imposing steady guard.",
+    "who": "korvath",
+    "text": "Come closer, brother. You've kept me waiting long enough.",
+    "voiceId": "CmD1sSN0Gj3pJq3OxRyg",
+    "identity": "named:korvath",
+    "appearances": [
+      {
+        "chapter": 14,
+        "encounter": 2,
+        "label": "The altar"
+      },
+      {
+        "chapter": 14,
+        "encounter": 3,
+        "label": "Morrak’s realm — the unfinished ascension"
+      }
+    ],
+    "newArt": true,
+    "frames": 8,
+    "monsterReaction": false
+  },
+  {
+    "actor": "alpha",
+    "name": "Alpha Wolf",
+    "motion": "run",
+    "action": "Run left for two frames, brake with all four paws planted, lift the scarred muzzle toward the sky and howl strongly, lower into a threatening ready crouch. Preserve his unique mane and scars.",
+    "who": null,
+    "text": null,
+    "voiceId": null,
+    "identity": null,
+    "appearances": [],
+    "newArt": true,
+    "frames": 8,
+    "monsterReaction": true
+  },
+  {
+    "actor": "hag",
+    "name": "Mire Hag",
+    "motion": "ritual",
+    "action": "Hunch over her crooked staff, sniff the air, unfurl a clawed hand dripping with faint swamp-green magic, grin and settle into her crooked ready stance.",
+    "who": null,
+    "text": null,
+    "voiceId": null,
+    "identity": null,
+    "appearances": [],
+    "newArt": true,
+    "frames": 8,
+    "monsterReaction": true
+  },
+  {
+    "actor": "orc",
+    "name": "Ironjaw",
+    "motion": "heavy",
+    "action": "Rest the axe on one shoulder, strike his chest with a fist, let out a fierce war bellow, lower the axe into a grounded two-handed ready stance.",
+    "who": null,
+    "text": null,
+    "voiceId": null,
+    "identity": null,
+    "appearances": [],
+    "newArt": true,
+    "frames": 8,
+    "monsterReaction": true
+  },
+  {
+    "actor": "hydra",
+    "name": "Wreck Hydra",
+    "motion": "surf",
+    "action": "Rise from a low crouch as though surf is falling away, fan all three necks apart, roar with the centre head while the other heads scan, then plant firmly. No ground or water backdrop painted.",
+    "who": null,
+    "text": null,
+    "voiceId": null,
+    "identity": null,
+    "appearances": [],
+    "newArt": true,
+    "frames": 8,
+    "monsterReaction": true
+  },
+  {
+    "actor": "enchantress",
+    "name": "The Enchantress",
+    "motion": "portal",
+    "action": "Step out with composed hauteur, float her violet staff in front of one palm for a moment, catch it and open her free hand in a commanding arcane gesture.",
+    "who": null,
+    "text": null,
+    "voiceId": null,
+    "identity": null,
+    "appearances": [],
+    "newArt": true,
+    "frames": 8,
+    "monsterReaction": false
+  },
+  {
+    "actor": "wolf",
+    "name": "Road Wolf",
+    "motion": "run",
+    "action": "Run in and howl",
+    "who": null,
+    "text": null,
+    "voiceId": null,
+    "identity": "enemy:road_wolf",
+    "appearances": [
+      {
+        "chapter": 2,
+        "encounter": 0,
+        "label": "The Shore Road"
+      },
+      {
+        "chapter": 2,
+        "encounter": 1,
+        "label": "The wolf den"
+      }
+    ],
+    "newArt": true,
+    "frames": 12,
+    "monsterReaction": false
+  },
+  {
+    "actor": "story_silksa",
+    "name": "Silksa, Spider Queen",
+    "motion": "web",
+    "action": "Lower from a strand of silk, spread legs and threaten",
+    "who": null,
+    "text": null,
+    "voiceId": null,
+    "identity": "mini:silksa",
+    "appearances": [
+      {
+        "chapter": 6,
+        "encounter": 0,
+        "label": "The nest"
+      }
+    ],
+    "newArt": true,
+    "frames": 12,
+    "monsterReaction": true
+  },
+  {
+    "actor": "story_wyvern_matriarch",
+    "name": "Wyvern Matriarch",
+    "motion": "fly",
+    "action": "Fly down with a wingbeat, air-brake, plant feet and roar",
+    "who": null,
+    "text": null,
+    "voiceId": null,
+    "identity": "mini:wyvern_matriarch",
+    "appearances": [
+      {
+        "chapter": 6,
+        "encounter": 2,
+        "label": "The wyvern cliffs"
+      }
+    ],
+    "newArt": true,
+    "frames": 12,
+    "monsterReaction": true
+  },
+  {
+    "actor": "story_grell",
+    "name": "Gbenga",
+    "motion": "walk",
+    "action": "Remove hood, settle into the hood-off crossbow stance",
+    "who": "grell",
+    "text": "Hold still. Your brother wants this done before breakfast.",
+    "voiceId": "brlt4NQGEVKYUPZHGlMp",
+    "identity": "named:grell",
+    "newArt": false,
+    "frames": 12,
+    "appearances": [
+      {
+        "chapter": 10,
+        "encounter": 2
+      }
+    ],
+    "monsterReaction": false
+  },
+  {
+    "actor": "plant",
+    "name": "Road Blossom",
+    "motion": "burrow",
+    "action": "unfurl",
+    "who": null,
+    "text": null,
+    "voiceId": null,
+    "identity": null,
+    "appearances": [],
+    "newArt": false,
+    "monsterReaction": false
+  },
+  {
+    "actor": "serpent",
+    "name": "Reed Serpent",
+    "motion": "slither",
+    "action": "rear",
+    "who": null,
+    "text": null,
+    "voiceId": null,
+    "identity": null,
+    "appearances": [],
+    "newArt": false,
+    "monsterReaction": false
+  },
+  {
+    "actor": "beetle",
+    "name": "Iron Beetle",
+    "motion": "scurry",
+    "action": "carapace",
+    "who": null,
+    "text": null,
+    "voiceId": null,
+    "identity": null,
+    "appearances": [],
+    "newArt": false,
+    "monsterReaction": false
+  },
+  {
+    "actor": "moss_giant",
+    "name": "Moss Giant",
+    "motion": "heavy",
+    "action": "treefall",
+    "who": null,
+    "text": null,
+    "voiceId": null,
+    "identity": null,
+    "appearances": [],
+    "newArt": false,
+    "monsterReaction": false
+  },
+  {
+    "actor": "goblin",
+    "name": "Gutter Goblin",
+    "motion": "scurry",
+    "action": "knife",
+    "who": null,
+    "text": null,
+    "voiceId": null,
+    "identity": null,
+    "appearances": [],
+    "newArt": false,
+    "monsterReaction": false
+  },
+  {
+    "actor": "spider",
+    "name": "Glass Spider",
+    "motion": "web",
+    "action": "threat",
+    "who": null,
+    "text": null,
+    "voiceId": null,
+    "identity": null,
+    "appearances": [],
+    "newArt": false,
+    "monsterReaction": false
+  },
+  {
+    "actor": "crab",
+    "name": "Tidal Crab",
+    "motion": "scuttle",
+    "action": "claws",
+    "who": null,
+    "text": null,
+    "voiceId": null,
+    "identity": null,
+    "appearances": [],
+    "newArt": false,
+    "monsterReaction": false
+  },
+  {
+    "actor": "toad",
+    "name": "Brine Toad",
+    "motion": "hop",
+    "action": "croak",
+    "who": null,
+    "text": null,
+    "voiceId": null,
+    "identity": null,
+    "appearances": [],
+    "newArt": false,
+    "monsterReaction": false
+  },
+  {
+    "actor": "vulture",
+    "name": "Carrion Vulture",
+    "motion": "fly",
+    "action": "wings",
+    "who": null,
+    "text": null,
+    "voiceId": null,
+    "identity": null,
+    "appearances": [],
+    "newArt": false,
+    "monsterReaction": false
+  },
+  {
+    "actor": "elven_wizard",
+    "name": "Citadel Wizard",
+    "motion": "portal",
+    "action": "ward",
+    "who": null,
+    "text": null,
+    "voiceId": null,
+    "identity": null,
+    "appearances": [],
+    "newArt": false,
+    "monsterReaction": false
+  },
+  {
+    "actor": "elven_ranger",
+    "name": "Citadel Ranger",
+    "motion": "stalk",
+    "action": "bow",
+    "who": null,
+    "text": null,
+    "voiceId": null,
+    "identity": null,
+    "appearances": [],
+    "newArt": false,
+    "monsterReaction": false
+  },
+  {
+    "actor": "dark_swordswoman",
+    "name": "Duskblade",
+    "motion": "stalk",
+    "action": "blades",
+    "who": null,
+    "text": null,
+    "voiceId": null,
+    "identity": null,
+    "appearances": [],
+    "newArt": false,
+    "monsterReaction": false
+  },
+  {
+    "actor": "story_web_spider",
+    "name": "Giant Spider",
+    "motion": "web",
+    "action": "threat",
+    "who": null,
+    "text": null,
+    "voiceId": null,
+    "identity": "enemy:web_spider",
+    "appearances": [
+      {
+        "chapter": 6,
+        "encounter": 0,
+        "label": "The nest"
+      }
+    ],
+    "newArt": false,
+    "monsterReaction": false
+  },
+  {
+    "actor": "story_phase_spider",
+    "name": "Phase Spider",
+    "motion": "web",
+    "action": "phase",
+    "who": null,
+    "text": null,
+    "voiceId": null,
+    "identity": "enemy:phase_spider",
+    "appearances": [
+      {
+        "chapter": 10,
+        "encounter": 4,
+        "label": "The way out"
+      }
+    ],
+    "newArt": false,
+    "monsterReaction": false
+  },
+  {
+    "actor": "story_wyvern",
+    "name": "Wyvern",
+    "motion": "fly",
+    "action": "wings",
+    "who": null,
+    "text": null,
+    "voiceId": null,
+    "identity": "enemy:wyvern",
+    "appearances": [
+      {
+        "chapter": 6,
+        "encounter": 2,
+        "label": "The wyvern cliffs"
+      }
+    ],
+    "newArt": false,
+    "monsterReaction": false
+  }
+]

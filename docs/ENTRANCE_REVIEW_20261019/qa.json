@@ -1,0 +1,161 @@
+{
+  "date": "2026-10-19",
+  "scope": "Local entrance integration; user visual playtest pending. Nothing published.",
+  "gallery": {
+    "cases": 57,
+    "actors": [
+      "story_nib",
+      "story_cobb",
+      "story_merle",
+      "story_lurleen",
+      "story_snarl",
+      "story_bahadir",
+      "story_kobold_chief",
+      "story_grukhar",
+      "story_femi",
+      "story_skarn",
+      "story_gorruk",
+      "story_thornwise",
+      "story_nettle",
+      "story_kestrel",
+      "story_malvane",
+      "story_sewer_ogre_mage",
+      "story_lantern_master",
+      "story_umbral_pair",
+      "story_tower_captain",
+      "story_maddox",
+      "story_vask",
+      "story_rennick",
+      "story_family_double",
+      "story_idris",
+      "story_amara",
+      "story_ravel",
+      "story_kessa",
+      "story_hall_doubles",
+      "story_jarem",
+      "story_lucan",
+      "story_altar_keepers",
+      "story_your_own_faces",
+      "story_korvath",
+      "alpha",
+      "hag",
+      "orc",
+      "hydra",
+      "enchantress",
+      "wolf",
+      "story_silksa",
+      "story_wyvern_matriarch",
+      "story_grell",
+      "plant",
+      "serpent",
+      "beetle",
+      "moss_giant",
+      "goblin",
+      "spider",
+      "crab",
+      "toad",
+      "vulture",
+      "elven_wizard",
+      "elven_ranger",
+      "dark_swordswoman",
+      "story_web_spider",
+      "story_phase_spider",
+      "story_wyvern"
+    ],
+    "errors": [],
+    "missing": []
+  },
+  "realStoryCases": [
+    {
+      "chapter": 1,
+      "encounter": 0,
+      "lines": [
+        "intro_story_nib"
+      ],
+      "cameraZoom": 1,
+      "hpUnchanged": true
+    },
+    {
+      "chapter": 6,
+      "encounter": 0,
+      "lines": [
+        "react_story_silksa_cassian"
+      ],
+      "cameraZoom": 1,
+      "hpUnchanged": true
+    },
+    {
+      "chapter": 6,
+      "encounter": 2,
+      "lines": [
+        "react_story_wyvern_matriarch_cassian"
+      ],
+      "cameraZoom": 1,
+      "hpUnchanged": true
+    },
+    {
+      "chapter": 10,
+      "encounter": 2,
+      "lines": [
+        "intro_story_grell"
+      ],
+      "cameraZoom": 1,
+      "hpUnchanged": true
+    },
+    {
+      "chapter": 13,
+      "encounter": 3,
+      "lines": [
+        "intro_story_gorruk_return"
+      ],
+      "cameraZoom": 1,
+      "hpUnchanged": true
+    },
+    {
+      "chapter": 14,
+      "encounter": 3,
+      "lines": [
+        "intro_story_korvath_ascendant"
+      ],
+      "cameraZoom": 1,
+      "hpUnchanged": true
+    }
+  ],
+  "finalFlightRetest": {
+    "cases": 17,
+    "errors": [],
+    "missing": []
+  },
+  "voice": {
+    "files": 173,
+    "allDecoded": true,
+    "maximumPeakDb": -0.8,
+    "correctExistingCast": true,
+    "paidRequests": 174,
+    "submittedCharacters": 8047,
+    "chargedCharactersFromHeaders": 3537,
+    "newCastAssignments": 0,
+    "silentUnvoicedEnemies": true,
+    "audioPauseMuteShutdown": "passed"
+  },
+  "art": {
+    "pages": 41,
+    "drawings": 340,
+    "bytes": 42722452,
+    "unusedRuntimeDrafts": []
+  },
+  "tests": {
+    "npm test": "passed",
+    "npm run test:story": "passed",
+    "npm run test:ship -- --seed=1": "passed",
+    "entrance contracts": "passed",
+    "Skarn/Beau reaction + ascended rematch selectors": "passed"
+  },
+  "packageProjection": {
+    "websiteSixChapterBytes": 508896395,
+    "arcadeBytes": 299342575,
+    "arcadeBudgetPass": false
+  },
+  "sources": "../adventurer-expeditions-source-art/astra-v12/entrances-20261019/",
+  "sourceGame": "Read-only; no original Adventurer or synced shared code edits."
+}

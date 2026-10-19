@@ -41,6 +41,7 @@
     "story:inventory": "node tools/import_story_campaign.js",
     "story:preview": "node tools/build_story_preview.js",
     "test:combat-identity": "node tools/audit_combat_identity.js && node test/combat_identity.js && node test/browser_combat_identity.js && node test/browser_status_bows.js",
-    "test:chapter10-polish": "node test/browser_chapter10_polish.js && node test/browser_archer_signatures.js && node test/browser_story_stealth.js && node test/browser_combat_polish_review.js"
+    "test:chapter10-polish": "node test/browser_chapter10_polish.js && node test/browser_archer_signatures.js && node test/browser_story_stealth.js && node test/browser_combat_polish_review.js",
+    "test:entrances": "node test/entrances.js && node test/browser_entrances.js && node test/browser_story_entrances.js"
   }
 }

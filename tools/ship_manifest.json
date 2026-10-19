@@ -83,6 +83,12 @@
     "assets/expedition/story/effects/shadow-rise-4c744f1981e2.webp"
   ],
   "dirs": [
+    "assets/expedition/entrances/wolf",
+    "assets/expedition/entrances/alpha",
+    "assets/expedition/entrances/hag",
+    "assets/expedition/entrances/orc",
+    "assets/expedition/entrances/hydra",
+    "assets/expedition/entrances/enchantress",
     "audio/sfx",
     "audio/vo/M05",
     "assets/expedition/serpent",

@@ -18,7 +18,7 @@
 .story-board{margin:8px auto 10px;max-width:360px;text-align:left;font-size:16px}.board-row{padding:3px 0;border-bottom:1px solid #a2885933}
 .board-entry{display:flex;gap:8px;justify-content:center;margin:8px 0}.board-entry input{font:inherit;padding:10px;border-radius:5px;border:1px solid #a28859;background:#0c1428;color:inherit;width:min(220px,55vw)}
 @media(max-width:500px){#dialogue .speech{max-height:7.3em}#dialogue .speaker-portrait{width:60px;max-height:80px}}
-</style><link rel="stylesheet" href="docs/story_companions.css?v=20261019-xp4"></head><body>
+</style><link rel="stylesheet" href="docs/story_companions.css?v=20261019-xp5"></head><body>
 <div id="stage"><div class="backdrop"></div><canvas id="weather"></canvas><div id="animated-background"></div><div id="shade"></div></div>
 <div class="tools"><button id="sound">Sound on</button><button id="home">Title</button></div><main id="panel"></main>
 <script src="lib/phaser.min.js?v=20260918-xp2"></script>
@@ -54,7 +54,7 @@
 <script src="js/data/personality_travel.js?v=20260918-xp2"></script>
 <script src="js/data/personality_social.js?v=20260918-xp2"></script>
 <script src="js/data/campaign_story.js?v=20260918-xp2"></script>
-<script src="js/expedition/media_hashes.js?v=20261019-xp4"></script>
+<script src="js/expedition/media_hashes.js?v=20261019-xp5"></script>
 <script src="js/core/rng.js?v=20260918-xp2"></script>
 <script src="js/core/util.js?v=20260918-xp2"></script>
 <script src="js/core/skillsys.js?v=20260918-xp2"></script>
@@ -126,29 +126,31 @@
 <script src="js/ui/dialoguebox.js?v=20260918-xp2"></script>
 <script src="js/ui/cutscenes.js?v=20260918-xp2"></script>
 <script src="js/ui/portal.js?v=20260918-xp2"></script>
-<script src="js/expedition/data.js?v=20261019-xp4"></script>
-<script src="js/expedition/shim.js?v=20261019-xp4"></script>
-<script src="js/expedition/encounter.js?v=20261019-xp4"></script>
-<script src="js/expedition/run.js?v=20261019-xp4"></script>
-<script src="js/expedition/ui_common.js?v=20261019-xp4"></script>
-<script src="js/expedition/dev.js?v=20261019-xp4"></script>
-<script src="js/expedition/enemy_finishers.js?v=20261019-xp4"></script>
-<script src="js/expedition/gore_fx.js?v=20261019-xp4"></script>
-<script src="js/expedition/painted.js?v=20261019-xp4"></script>
-<script src="js/expedition/light_anchors.js?v=20261019-xp4"></script>
-<script src="js/expedition/atmosphere.js?v=20261019-xp4"></script>
-<script src="js/expedition/battle_stage.js?v=20261019-xp4"></script>
-<script src="js/expedition/inn_art.js?v=20261019-xp4"></script>
-<script src="js/expedition/actors.js?v=20261019-xp4"></script>
-<script src="js/expedition/defeat_fx.js?v=20261019-xp4"></script>
-<script src="js/expedition/story_effects.js?v=20261019-xp4"></script>
-<script src="js/expedition/beats.js?v=20261019-xp4"></script>
-<script src="js/expedition/hud.js?v=20261019-xp4"></script>
-<script src="js/expedition/campaign.js?v=20261019-xp4"></script>
-<script src="js/expedition/scene.js?v=20261019-xp4"></script>
-<script src="js/expedition/travel_art.js?v=20261019-xp4"></script>
-<script src="js/expedition/bathhouse.js?v=20261019-xp4"></script>
-<script src="js/expedition/scenes_town.js?v=20261019-xp4"></script>
-<script src="js/expedition/memory.js?v=20261019-xp4"></script>
-<script src="js/expedition/story.js?v=20261019-xp4"></script><script src="js/expedition/story_dialogue.js?v=20261019-xp4"></script><script src="js/expedition/story_combat.js?v=20261019-xp4"></script><script src="js/expedition/story_companions.js?v=20261019-xp4"></script><script src="js/expedition/story_presentation.js?v=20261019-xp4"></script><script src="js/expedition/story_art.js?v=20261019-xp4"></script><script src="js/expedition/story_stage.js?v=20261019-xp4"></script><script src="js/expedition/story_backdrop.js?v=20261019-xp4"></script><script src="js/expedition/story_companion_ui.js?v=20261019-xp4"></script><script src="docs/story_preview.js?v=20261019-xp4"></script>
+<script src="js/expedition/data.js?v=20261019-xp5"></script>
+<script src="js/expedition/shim.js?v=20261019-xp5"></script>
+<script src="js/expedition/encounter.js?v=20261019-xp5"></script>
+<script src="js/expedition/run.js?v=20261019-xp5"></script>
+<script src="js/expedition/ui_common.js?v=20261019-xp5"></script>
+<script src="js/expedition/dev.js?v=20261019-xp5"></script>
+<script src="js/expedition/enemy_finishers.js?v=20261019-xp5"></script>
+<script src="js/expedition/gore_fx.js?v=20261019-xp5"></script>
+<script src="js/expedition/painted.js?v=20261019-xp5"></script>
+<script src="js/expedition/light_anchors.js?v=20261019-xp5"></script>
+<script src="js/expedition/atmosphere.js?v=20261019-xp5"></script>
+<script src="js/expedition/battle_stage.js?v=20261019-xp5"></script>
+<script src="js/expedition/inn_art.js?v=20261019-xp5"></script>
+<script src="js/expedition/actors.js?v=20261019-xp5"></script>
+<script src="js/expedition/defeat_fx.js?v=20261019-xp5"></script>
+<script src="js/expedition/story_effects.js?v=20261019-xp5"></script>
+<script src="js/expedition/beats.js?v=20261019-xp5"></script>
+<script src="js/expedition/hud.js?v=20261019-xp5"></script>
+<script src="js/expedition/campaign.js?v=20261019-xp5"></script>
+<script src="js/expedition/scene.js?v=20261019-xp5"></script>
+<script src="js/expedition/entrance_data.js?v=20261019-xp5"></script>
+<script src="js/expedition/entrances.js?v=20261019-xp5"></script>
+<script src="js/expedition/travel_art.js?v=20261019-xp5"></script>
+<script src="js/expedition/bathhouse.js?v=20261019-xp5"></script>
+<script src="js/expedition/scenes_town.js?v=20261019-xp5"></script>
+<script src="js/expedition/memory.js?v=20261019-xp5"></script>
+<script src="js/expedition/story.js?v=20261019-xp5"></script><script src="js/expedition/story_dialogue.js?v=20261019-xp5"></script><script src="js/expedition/story_combat.js?v=20261019-xp5"></script><script src="js/expedition/story_companions.js?v=20261019-xp5"></script><script src="js/expedition/story_presentation.js?v=20261019-xp5"></script><script src="js/expedition/story_art.js?v=20261019-xp5"></script><script src="js/expedition/story_stage.js?v=20261019-xp5"></script><script src="js/expedition/story_backdrop.js?v=20261019-xp5"></script><script src="js/expedition/story_companion_ui.js?v=20261019-xp5"></script><script src="docs/story_preview.js?v=20261019-xp5"></script>
 </body></html>

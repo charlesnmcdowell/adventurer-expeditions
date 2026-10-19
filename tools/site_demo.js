@@ -95,7 +95,18 @@ function chapterOneMedia() {
   return { keep, media, enemies: shippedEnemies(), companions: shippedCompanions() };
 }
 
+const entranceVoices=new Map(JSON.parse(fs.readFileSync(path.join(ROOT,'assets/expedition/entrances/voice.json'),'utf8')).files.map(r=>[r.file,r]));
 function skip(rel, media) {
+  // Entrances follow the same chapter/party scope as their combat art. Do not
+  // carry late-story drawings or unused reaction recordings into a short demo.
+  const entrance=/^assets\/expedition\/entrances\/([^/]+)\//.exec(rel);
+  if(entrance){
+    if(entrance[1]==='voice'){
+      const row=entranceVoices.get(rel);
+      return !row||!media.enemies.has(row.actor)||(row.variant==='return'&&SITE_THROUGH<13)||(row.variant==='ascendant'&&SITE_THROUGH<14)||(row.kind==='reaction'&&!media.companions.has('companion_'+row.who));
+    }
+    return !media.enemies.has(entrance[1]);
+  }
   if(rel.startsWith('assets/expedition/story/effects/companion-'))return !media.companions.size;
   const companion=(/^assets\/expedition\/(companion_[a-z_]+)\//.exec(rel)||[])[1];
   if(companion)return !media.companions.has(companion);

@@ -40,6 +40,7 @@ P.needed = function (scene) {
 P.preload = function (scene, ids) {
   if (X.Hud && X.Hud.preloadArt) X.Hud.preloadArt(scene);
   const needed = ids || P.needed(scene);
+  if (X.Entrances) X.Entrances.preload(scene, needed);
   if (X.HumanoidGore) X.HumanoidGore.preload(scene,needed);
   if (X.EnemyFinishers) X.EnemyFinishers.preload(scene, needed);
   for (const id of needed) {
