@@ -15,6 +15,14 @@ of small fixes within a day.
 
 ---
 
+## 2026-10-19 — Wanjiru idle replacement demo (not integrated)
+
+- **Direction:** follows the user's approval of Layla's demo. Wanjiru keeps her athletic adult identity, beaded locs, checked wrap, leather armor and gauntlets, with a relaxed, feminine stance and restrained breathing. Her current **16 drawings / 1,600 ms** loop contains abrupt head-down and gauntlet-adjusting poses; those gestures are absent from the replacement.
+- **Art and playback:** **one built-in image-generation request, 16 new drawings**, registered as whole figures at one constant scale. The same forward/return sequence as Layla uses **30 playback steps / 4,800 ms**. No frame blending or body rig. Source master and prompt/reference records: sibling `adventurer-expeditions-source-art/astra-v11/wanjiru-idle-20261019/`; old masters preserved.
+- **Demo:** `docs/art/wanjiru-idle-20261019/index.html` compares the current packed idle with the new candidate, with pause, frame stepping, playback speed and studio/forest backdrops. That folder also contains the lossless preview atlas (**1,132,474 bytes**), manifest, prompts, contact sheet, desktop/phone captures and `qa.json`. Rebuild: `tools/build_wanjiru_idle_demo.py`, using the approved Layla intake procedure.
+- **QA:** all **16** drawings unique; transparent cell borders; ground-line variation **0 px**, measured foot-centroid drift **0.96 px**. Browser loop, pause/resume, stepping, half speed and backdrop switching passed at **1280×960** and **390×844**, without browser errors or horizontal overflow. This establishes technical preview readiness; the user still judges the animation in motion.
+- **Scope:** checkpoint `eaa0c17`. Preview only: no runtime registration, save, balance or publication changes. Wanjiru's gauntlet attacks and approved bear/eagle animations, Layla's preview, original Adventurer and shared code remain unchanged. Runtime manifest/page hashes are retained in the QA record.
+
 ## 2026-10-19 — Layla idle replacement demo (not integrated)
 
 - **Request:** reduce Layla's restless idle and give her a more confident, sultry presence while retaining her adult identity, veil, fitted robes and sceptre. Inspection found the current **16 drawings / 1,600 ms** cycle changes hair silhouette, body height and stance rapidly. Prior root-registration QA did not establish that the drawn pose changes looked smooth.

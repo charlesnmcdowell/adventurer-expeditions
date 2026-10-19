@@ -1,0 +1,116 @@
+{
+  "distinctDrawings": 16,
+  "playbackSteps": 30,
+  "durationMs": 4800,
+  "footCentroidRangePx": 0.96,
+  "groundRangePx": 0,
+  "transparentCellBorders": true,
+  "allFramesUnique": true,
+  "browser": {
+    "errors": [],
+    "desktop": [
+      1280,
+      960
+    ],
+    "phone": [
+      390,
+      844
+    ],
+    "phoneOverflow": false,
+    "controls": [
+      "pause/resume",
+      "step",
+      "half speed",
+      "backdrop"
+    ],
+    "completeLoop": true
+  },
+  "runtimeChanged": false,
+  "frames": [
+    {
+      "frame": 0,
+      "bootCenterX": 191.93,
+      "bottom": 368
+    },
+    {
+      "frame": 1,
+      "bootCenterX": 192.37,
+      "bottom": 368
+    },
+    {
+      "frame": 2,
+      "bootCenterX": 191.86,
+      "bottom": 368
+    },
+    {
+      "frame": 3,
+      "bootCenterX": 191.84,
+      "bottom": 368
+    },
+    {
+      "frame": 4,
+      "bootCenterX": 191.77,
+      "bottom": 368
+    },
+    {
+      "frame": 5,
+      "bootCenterX": 191.79,
+      "bottom": 368
+    },
+    {
+      "frame": 6,
+      "bootCenterX": 192.48,
+      "bottom": 368
+    },
+    {
+      "frame": 7,
+      "bootCenterX": 191.53,
+      "bottom": 368
+    },
+    {
+      "frame": 8,
+      "bootCenterX": 191.71,
+      "bottom": 368
+    },
+    {
+      "frame": 9,
+      "bootCenterX": 192.49,
+      "bottom": 368
+    },
+    {
+      "frame": 10,
+      "bootCenterX": 191.89,
+      "bottom": 368
+    },
+    {
+      "frame": 11,
+      "bootCenterX": 192.15,
+      "bottom": 368
+    },
+    {
+      "frame": 12,
+      "bootCenterX": 192,
+      "bottom": 368
+    },
+    {
+      "frame": 13,
+      "bootCenterX": 192.28,
+      "bottom": 368
+    },
+    {
+      "frame": 14,
+      "bootCenterX": 192.27,
+      "bottom": 368
+    },
+    {
+      "frame": 15,
+      "bootCenterX": 191.81,
+      "bottom": 368
+    }
+  ],
+  "runtimeBeforeAfterReference": {
+    "companion_nettle.json": "4a6654f71f58729eca49cfb543046ba25b370321e95f18ab722c57b5072e492e",
+    "companion_nettle-0.webp": "ab3a05fa8bc0ba14c53beb0671a308d9bf8ef7d03298e08f4a9fe9bcc586f8ba",
+    "companion_nettle-forms-d834f267d947.webp": "aba97ee242957c90253c23eb77260b0dbf86f400f705f150779dfa70b78005fb"
+  }
+}

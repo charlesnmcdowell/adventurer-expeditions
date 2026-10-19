@@ -1,0 +1,17 @@
+{
+  "date": "2026-10-19",
+  "mode": "built-in image_gen",
+  "purpose": "Wanjiru idle replacement demo; runtime untouched",
+  "requests": [
+    {
+      "prompt": "Use case: stylized-concept.\nAsset type: full-body painted animation sheet for an adult fantasy game, EXACTLY sixteen distinct sequential drawings in a four-column four-row grid, row-major order, transparent alpha background.\nInput image 1: Wanjiru portrait, exact established adult identity and costume anchor. Input image 2: her existing idle sheet, exact established equipment, anatomy and rendering style; replace its abrupt gestures with one coherent restrained idle.\nCharacter: Wanjiru, an unmistakably adult beautiful athletic Black woman with deep brown skin, shoulder-length thick brown locs adorned with red/gold beads, amber eyes, gold dotted face paint, gold disc earrings, red and black checked wrap crossing fitted leather armor, small fur shoulder, bone charms and beaded belts, sturdy boots and paired thorn/bone battle gauntlets. Keep her established body proportions, face, skin tone, checked wrap, fitted armor, boots and equipment. Match the crisp polished anime cel shading and richly painted textures of the references.\nPose and personality: attractive, confident and quietly sultry, a poised formidable nature warrior rather than restless. Relaxed contrapposto with a gentle settled hip and soft bend in the free knee, shoulders easy, chin very slightly raised, self-assured gaze toward the RIGHT. Both boots planted at fixed positions with a comfortably grounded stance. Hands relaxed in her gauntlets at her sides; do not raise, inspect or fiddle with the gauntlets. Feminine and graceful, fully clothed in the same costume, non-explicit. Her appeal is in her posture and composure.\nAnimation: one small slow breath. Frames 1-8 subtly inhale, frames 9-16 settle back on exhale. Barely perceptible chest/shoulder movement, tiny hair-tip and wrap-hem settling, slight natural eye/head nuance. Very small motion amplitude, just a few pixels at game size. NO glance downward, sudden head turn, fist clench gesture, large hip swing, squat, walking or dancing. No wind whipping the hair. Body height, head size and limb proportions never change between drawings. CONSTANT camera, perspective, scale and right-facing direction. Draw every in-between as part of the SAME pose, not sixteen different poses. Final pose nearly matches the first for a seamless loop.\nComposition: clean FOUR by FOUR evenly spaced cells, one complete isolated whole-body figure per cell. Feet, hair and both gauntlets wholly visible in every frame. Generous transparent gutters, character occupies at most 60% cell width and 80% cell height. No clipped extremities, overlapping neighboring figures, shadows, extra people, new weapons, text, numbering, grid lines or backgrounds. True transparent alpha.",
+      "referenced_image_paths": [
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions\\assets\\expedition\\story\\portraits\\nettle-748ce4ea2342.webp",
+        "C:\\Users\\charl\\The Sorcerer Sword ARPG\\adventurer-expeditions-source-art\\astra-v10\\companions-hiro-20261015\\wanjiru\\idle.png"
+      ],
+      "transparent_background": true,
+      "output": "idle-draft.png",
+      "generatorFile": "C:/Users/charl/.codex/generated_images/01a08689-8a63-7050-af70-d20000aa6227/exec-1ae6bc48-217b-48ee-9bc4-10606a87406c.png"
+    }
+  ]
+}

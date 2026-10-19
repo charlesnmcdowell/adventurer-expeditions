@@ -1,0 +1,313 @@
+{
+  "previewOnly": true,
+  "image": "wanjiru-idle-preview.webp",
+  "frameSize": [
+    384,
+    374
+  ],
+  "columns": 4,
+  "standing": 310,
+  "pivot": [
+    192,
+    368
+  ],
+  "distinctDrawings": 16,
+  "sequence": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    14,
+    13,
+    12,
+    11,
+    10,
+    9,
+    8,
+    7,
+    6,
+    5,
+    4,
+    3,
+    2,
+    1
+  ],
+  "frameMs": 160,
+  "durationMs": 4800,
+  "registration": [
+    {
+      "frame": 0,
+      "sourceRegion": [
+        84,
+        26,
+        234,
+        336
+      ],
+      "scale": 1.0333333333333334,
+      "bootAnchorX": 68.92894280762565,
+      "placement": [
+        123,
+        52
+      ],
+      "groundY": 368
+    },
+    {
+      "frame": 1,
+      "sourceRegion": [
+        411,
+        26,
+        558,
+        336
+      ],
+      "scale": 1.0333333333333334,
+      "bootAnchorX": 67.36725663716814,
+      "placement": [
+        125,
+        53
+      ],
+      "groundY": 368
+    },
+    {
+      "frame": 2,
+      "sourceRegion": [
+        722,
+        25,
+        870,
+        336
+      ],
+      "scale": 1.0333333333333334,
+      "bootAnchorX": 67.86115214180207,
+      "placement": [
+        124,
+        52
+      ],
+      "groundY": 368
+    },
+    {
+      "frame": 3,
+      "sourceRegion": [
+        1032,
+        24,
+        1179,
+        336
+      ],
+      "scale": 1.0333333333333334,
+      "bootAnchorX": 66.83759398496241,
+      "placement": [
+        125,
+        51
+      ],
+      "groundY": 368
+    },
+    {
+      "frame": 4,
+      "sourceRegion": [
+        86,
+        336,
+        236,
+        642
+      ],
+      "scale": 1.0333333333333334,
+      "bootAnchorX": 70.77333333333333,
+      "placement": [
+        121,
+        57
+      ],
+      "groundY": 368
+    },
+    {
+      "frame": 5,
+      "sourceRegion": [
+        410,
+        336,
+        558,
+        642
+      ],
+      "scale": 1.0333333333333334,
+      "bootAnchorX": 69.7865671641791,
+      "placement": [
+        122,
+        57
+      ],
+      "groundY": 368
+    },
+    {
+      "frame": 6,
+      "sourceRegion": [
+        721,
+        336,
+        870,
+        642
+      ],
+      "scale": 1.0333333333333334,
+      "bootAnchorX": 64.47840531561462,
+      "placement": [
+        128,
+        56
+      ],
+      "groundY": 368
+    },
+    {
+      "frame": 7,
+      "sourceRegion": [
+        1031,
+        336,
+        1181,
+        642
+      ],
+      "scale": 1.0333333333333334,
+      "bootAnchorX": 65.52941176470588,
+      "placement": [
+        126,
+        56
+      ],
+      "groundY": 368
+    },
+    {
+      "frame": 8,
+      "sourceRegion": [
+        86,
+        643,
+        235,
+        946
+      ],
+      "scale": 1.0333333333333334,
+      "bootAnchorX": 67.71232876712328,
+      "placement": [
+        124,
+        59
+      ],
+      "groundY": 368
+    },
+    {
+      "frame": 9,
+      "sourceRegion": [
+        410,
+        644,
+        558,
+        946
+      ],
+      "scale": 1.0333333333333334,
+      "bootAnchorX": 66.49066213921901,
+      "placement": [
+        126,
+        60
+      ],
+      "groundY": 368
+    },
+    {
+      "frame": 10,
+      "sourceRegion": [
+        722,
+        644,
+        870,
+        947
+      ],
+      "scale": 1.0333333333333334,
+      "bootAnchorX": 64.89049919484702,
+      "placement": [
+        127,
+        60
+      ],
+      "groundY": 368
+    },
+    {
+      "frame": 11,
+      "sourceRegion": [
+        1032,
+        643,
+        1179,
+        947
+      ],
+      "scale": 1.0333333333333334,
+      "bootAnchorX": 66.14660493827161,
+      "placement": [
+        126,
+        59
+      ],
+      "groundY": 368
+    },
+    {
+      "frame": 12,
+      "sourceRegion": [
+        89,
+        946,
+        237,
+        1247
+      ],
+      "scale": 1.0333333333333334,
+      "bootAnchorX": 64.0,
+      "placement": [
+        128,
+        61
+      ],
+      "groundY": 368
+    },
+    {
+      "frame": 13,
+      "sourceRegion": [
+        410,
+        946,
+        559,
+        1247
+      ],
+      "scale": 1.0333333333333334,
+      "bootAnchorX": 66.27508090614887,
+      "placement": [
+        126,
+        61
+      ],
+      "groundY": 368
+    },
+    {
+      "frame": 14,
+      "sourceRegion": [
+        724,
+        946,
+        870,
+        1248
+      ],
+      "scale": 1.0333333333333334,
+      "bootAnchorX": 62.27272727272727,
+      "placement": [
+        130,
+        61
+      ],
+      "groundY": 368
+    },
+    {
+      "frame": 15,
+      "sourceRegion": [
+        1032,
+        946,
+        1181,
+        1248
+      ],
+      "scale": 1.0333333333333334,
+      "bootAnchorX": 66.80838323353294,
+      "placement": [
+        125,
+        61
+      ],
+      "groundY": 368
+    }
+  ],
+  "masterSha256": "63a07a2fae95168b0ea6f512b95a9e312bafdb4fbeaf225fe4e84cb750ef5970",
+  "notes": [
+    "One constant scale; painted whole figures, no body rig or crossfade.",
+    "Forward/reverse loop avoids a discontinuous reset.",
+    "Preview only: current runtime and saves are untouched."
+  ]
+}
