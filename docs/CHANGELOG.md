@@ -15,6 +15,19 @@ of small fixes within a day.
 
 ---
 
+## 2026-10-20 — A full company makes room on its own
+
+Hiro: automatically send the oldest character back to the inn when the party is full.
+- **Before:** the company holds 5 companions (`C.MAX_COMPANY`). When a sixth joined, a "The company is full" menu asked who stays at the inn. That already happens in chapter 2, where Hiwot, Desmond, Winston, Santiago, Beau and Delphine all join.
+- **Now** (`docs/story_preview.js`, `noteSeats`): a newcomer is seated right away.
+  - If the company is full, whoever has ridden longest (the first in `C.companyIds`, the order people took their seats) goes back to the inn through `C.replaceCompany`. They stay recruited.
+  - A notice says "Hiwot heads back to the inn to make room for Delphine."
+  - Seating happens before the party screen, so the recommended party includes the newcomer.
+  - A plain "rides with you" notice only shows for someone without a welcome card.
+- `seatMenu` keeps handling `seatOffer` lists in older saves, the same automatic way. The menu and its `.seat-list` style are gone.
+- New `test/browser_story_full_company.js` checks: no menu, the longest rider goes to the inn but stays recruited, the newcomer rides and is in the recommended party.
+- `npm test` and `npm run test:story` pass.
+
 ## 2026-10-20 — A fight loop never plays turns in the next fight
 
 Found while checking Astra's character entrances (f806526) before publishing. `test/browser_story_fight.js` failed: Hiro's paired finisher was cut off after 0.5 s (2 of 16 drawings).
