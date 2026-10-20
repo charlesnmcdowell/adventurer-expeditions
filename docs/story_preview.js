@@ -77,7 +77,17 @@ function noteSeats(before){
   const newRecruits=S.Companions.enabled?S.Companions.queueUnlocks(session,before.roster):[];
   const reseated=joined.filter(id=>!newRecruits.includes(id));
   if(reseated.length)toast(names(reseated)+(reseated.length===1?' rides with you.':' ride with you.'));
-  if(waiting.length){r.seatOffer=[...(r.seatOffer||[]),...waiting];S.save(session);}
+  // Seat newcomers at once, before any party screen, so the recommended party
+  // can include them. A full company sends its longest-riding member home.
+  const g=session.game,notes=[];
+  for(const who of waiting){
+    const out=C.seat(g,who)?null:C.companyIds(g)[0];
+    if(out&&!C.replaceCompany(g,out,who))continue;
+    if(out)notes.push(C.charName(out)+' heads back to the inn to make room for '+C.charName(who)+'.');
+    else if(!newRecruits.includes(who))notes.push(C.charName(who)+' rides with you.');
+  }
+  if(notes.length)toast(notes.join(' '));
+  if(waiting.length){r.companionPickerDue=true;S.save(session);}
 }
 function seatMenu(){
   const r=session.record,g=session.game;
@@ -85,12 +95,11 @@ function seatMenu(){
   const who=r.seatOffer[0];if(!who){delete r.seatOffer;S.save(session);return false;}
   const done=msg=>{r.seatOffer.shift();if(!r.seatOffer.length)delete r.seatOffer;r.companionPickerDue=true;S.save(session);if(msg)toast(msg);render();};
   if(C.seat(g,who)){done(C.charName(who)+' rides with you.');return true;}
-  const name=C.charName(who),box=text('section','',panel,'menu');text('h1','The company is full',box);
-  text('p',name+' wants to ride, but only '+(C.MAX_COMPANY+1)+' can. Who stays at the inn?',box);
-  const list=text('div','',box,'buttons seat-list');
-  for(const id of C.companyIds(g))button('Send '+C.charName(id)+' back — '+name+' rides',()=>{C.replaceCompany(g,id,who);done(name+' rides. '+C.charName(id)+' waits at the inn.');},list);
-  button('Leave '+name+' at the inn',()=>done(name+' waits at the inn.'),list);
-  return true;
+  // A full company makes room on its own (Hiro, 2026-10-20): whoever has ridden
+  // longest heads back to the inn, so the newcomer always joins.
+  const name=C.charName(who),out=C.companyIds(g)[0];
+  if(out&&C.replaceCompany(g,out,who)){done(C.charName(out)+' heads back to the inn to make room for '+name+'.');return true;}
+  done(name+' waits at the inn.');return true;
 }
 // Each chapter opens on its title over the departure scene, like the original's
 // chapter plates (gate_cinema.js). Shown once per chapter per save.

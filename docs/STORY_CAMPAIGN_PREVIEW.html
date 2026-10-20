@@ -5,7 +5,7 @@
 .speaker-portrait{float:left;width:clamp(110px,16vw,190px);height:auto;max-height:260px;object-fit:contain;object-position:bottom;margin:0 20px 8px -8px;filter:drop-shadow(0 8px 16px #0008)}.choices{clear:both}#dialogue:after{content:'';display:block;clear:both}@media(max-width:500px){.speaker-portrait{float:right;width:85px;max-height:110px;margin:0 -8px 4px 8px}}
 #epilogue{width:min(1050px,100%);padding:24px;background:#090f20ed;border:1px solid #9f8757;border-radius:8px}#epilogue h1{font-size:clamp(27px,4vw,44px)}.ending-scroll{max-height:52dvh;overflow:auto;font-size:18px;line-height:1.6;margin-bottom:15px}.reading{color:#ebcf8f}.story-still{animation:none}
 #animated-background{position:absolute;inset:0;pointer-events:none;overflow:hidden}#animated-background canvas{display:block}#stage.rendered>.backdrop,#stage.rendered>#weather{display:none}
-.story-toast{position:fixed;left:50%;top:72px;transform:translateX(-50%);z-index:8;max-width:calc(100% - 32px);padding:10px 20px;background:#101a2eee;border:1px solid #a28859;border-radius:6px;color:#ebcf8f;text-align:center;transition:opacity .8s;pointer-events:none}.story-toast.gone{opacity:0}.chapter-card{align-self:center;padding:40px 24px;background:#08111f99;border-radius:8px}.chapter-number{letter-spacing:.22em;text-transform:uppercase;color:#d7b56d;font-size:18px}.chapter-card h1{font-size:clamp(30px,5vw,52px);margin:12px 0 28px}.chapter-card button[hidden]{display:inline-block;visibility:hidden}.choices button.replay{background:transparent;border-color:#a2885988}.seat-list{display:flex;flex-direction:column;align-items:center;gap:8px}
+.story-toast{position:fixed;left:50%;top:72px;transform:translateX(-50%);z-index:8;max-width:calc(100% - 32px);padding:10px 20px;background:#101a2eee;border:1px solid #a28859;border-radius:6px;color:#ebcf8f;text-align:center;transition:opacity .8s;pointer-events:none}.story-toast.gone{opacity:0}.chapter-card{align-self:center;padding:40px 24px;background:#08111f99;border-radius:8px}.chapter-number{letter-spacing:.22em;text-transform:uppercase;color:#d7b56d;font-size:18px}.chapter-card h1{font-size:clamp(30px,5vw,52px);margin:12px 0 28px}.chapter-card button[hidden]{display:inline-block;visibility:hidden}.choices button.replay{background:transparent;border-color:#a2885988}
 /* 2026-10-11: a compact box docked at the bottom, so the painting stays the picture (the original's box is about a fifth of the stage). */
 #dialogue{padding:12px 18px;transition:opacity .45s}#dialogue .speaker{font-size:19px}#dialogue .caption{font-size:14px;margin-bottom:6px}
 #dialogue .speech{font-size:clamp(15px,1.55vw,19px);line-height:1.45;max-height:5.8em;overflow:auto;margin:4px 0 8px}
@@ -18,7 +18,7 @@
 .story-board{margin:8px auto 10px;max-width:360px;text-align:left;font-size:16px}.board-row{padding:3px 0;border-bottom:1px solid #a2885933}
 .board-entry{display:flex;gap:8px;justify-content:center;margin:8px 0}.board-entry input{font:inherit;padding:10px;border-radius:5px;border:1px solid #a28859;background:#0c1428;color:inherit;width:min(220px,55vw)}
 @media(max-width:500px){#dialogue .speech{max-height:7.3em}#dialogue .speaker-portrait{width:60px;max-height:80px}}
-</style><link rel="stylesheet" href="docs/story_companions.css?v=20261019-xp6"></head><body>
+</style><link rel="stylesheet" href="docs/story_companions.css?v=20261020-xp2"></head><body>
 <div id="stage"><div class="backdrop"></div><canvas id="weather"></canvas><div id="animated-background"></div><div id="shade"></div></div>
 <div class="tools"><button id="sound">Sound on</button><button id="home">Title</button></div><main id="panel"></main>
 <script src="lib/phaser.min.js?v=20260918-xp2"></script>
@@ -54,7 +54,7 @@
 <script src="js/data/personality_travel.js?v=20260918-xp2"></script>
 <script src="js/data/personality_social.js?v=20260918-xp2"></script>
 <script src="js/data/campaign_story.js?v=20260918-xp2"></script>
-<script src="js/expedition/media_hashes.js?v=20261019-xp6"></script>
+<script src="js/expedition/media_hashes.js?v=20261020-xp2"></script>
 <script src="js/core/rng.js?v=20260918-xp2"></script>
 <script src="js/core/util.js?v=20260918-xp2"></script>
 <script src="js/core/skillsys.js?v=20260918-xp2"></script>
@@ -126,31 +126,31 @@
 <script src="js/ui/dialoguebox.js?v=20260918-xp2"></script>
 <script src="js/ui/cutscenes.js?v=20260918-xp2"></script>
 <script src="js/ui/portal.js?v=20260918-xp2"></script>
-<script src="js/expedition/data.js?v=20261019-xp6"></script>
-<script src="js/expedition/shim.js?v=20261019-xp6"></script>
-<script src="js/expedition/encounter.js?v=20261019-xp6"></script>
-<script src="js/expedition/run.js?v=20261019-xp6"></script>
-<script src="js/expedition/ui_common.js?v=20261019-xp6"></script>
-<script src="js/expedition/dev.js?v=20261019-xp6"></script>
-<script src="js/expedition/enemy_finishers.js?v=20261019-xp6"></script>
-<script src="js/expedition/gore_fx.js?v=20261019-xp6"></script>
-<script src="js/expedition/painted.js?v=20261019-xp6"></script>
-<script src="js/expedition/light_anchors.js?v=20261019-xp6"></script>
-<script src="js/expedition/atmosphere.js?v=20261019-xp6"></script>
-<script src="js/expedition/battle_stage.js?v=20261019-xp6"></script>
-<script src="js/expedition/inn_art.js?v=20261019-xp6"></script>
-<script src="js/expedition/actors.js?v=20261019-xp6"></script>
-<script src="js/expedition/defeat_fx.js?v=20261019-xp6"></script>
-<script src="js/expedition/story_effects.js?v=20261019-xp6"></script>
-<script src="js/expedition/beats.js?v=20261019-xp6"></script>
-<script src="js/expedition/hud.js?v=20261019-xp6"></script>
-<script src="js/expedition/campaign.js?v=20261019-xp6"></script>
-<script src="js/expedition/scene.js?v=20261019-xp6"></script>
-<script src="js/expedition/entrance_data.js?v=20261019-xp6"></script>
-<script src="js/expedition/entrances.js?v=20261019-xp6"></script>
-<script src="js/expedition/travel_art.js?v=20261019-xp6"></script>
-<script src="js/expedition/bathhouse.js?v=20261019-xp6"></script>
-<script src="js/expedition/scenes_town.js?v=20261019-xp6"></script>
-<script src="js/expedition/memory.js?v=20261019-xp6"></script>
-<script src="js/expedition/story.js?v=20261019-xp6"></script><script src="js/expedition/story_dialogue.js?v=20261019-xp6"></script><script src="js/expedition/story_combat.js?v=20261019-xp6"></script><script src="js/expedition/story_companions.js?v=20261019-xp6"></script><script src="js/expedition/story_presentation.js?v=20261019-xp6"></script><script src="js/expedition/story_art.js?v=20261019-xp6"></script><script src="js/expedition/story_stage.js?v=20261019-xp6"></script><script src="js/expedition/story_backdrop.js?v=20261019-xp6"></script><script src="js/expedition/story_companion_ui.js?v=20261019-xp6"></script><script src="docs/story_preview.js?v=20261019-xp6"></script>
+<script src="js/expedition/data.js?v=20261020-xp2"></script>
+<script src="js/expedition/shim.js?v=20261020-xp2"></script>
+<script src="js/expedition/encounter.js?v=20261020-xp2"></script>
+<script src="js/expedition/run.js?v=20261020-xp2"></script>
+<script src="js/expedition/ui_common.js?v=20261020-xp2"></script>
+<script src="js/expedition/dev.js?v=20261020-xp2"></script>
+<script src="js/expedition/enemy_finishers.js?v=20261020-xp2"></script>
+<script src="js/expedition/gore_fx.js?v=20261020-xp2"></script>
+<script src="js/expedition/painted.js?v=20261020-xp2"></script>
+<script src="js/expedition/light_anchors.js?v=20261020-xp2"></script>
+<script src="js/expedition/atmosphere.js?v=20261020-xp2"></script>
+<script src="js/expedition/battle_stage.js?v=20261020-xp2"></script>
+<script src="js/expedition/inn_art.js?v=20261020-xp2"></script>
+<script src="js/expedition/actors.js?v=20261020-xp2"></script>
+<script src="js/expedition/defeat_fx.js?v=20261020-xp2"></script>
+<script src="js/expedition/story_effects.js?v=20261020-xp2"></script>
+<script src="js/expedition/beats.js?v=20261020-xp2"></script>
+<script src="js/expedition/hud.js?v=20261020-xp2"></script>
+<script src="js/expedition/campaign.js?v=20261020-xp2"></script>
+<script src="js/expedition/scene.js?v=20261020-xp2"></script>
+<script src="js/expedition/entrance_data.js?v=20261020-xp2"></script>
+<script src="js/expedition/entrances.js?v=20261020-xp2"></script>
+<script src="js/expedition/travel_art.js?v=20261020-xp2"></script>
+<script src="js/expedition/bathhouse.js?v=20261020-xp2"></script>
+<script src="js/expedition/scenes_town.js?v=20261020-xp2"></script>
+<script src="js/expedition/memory.js?v=20261020-xp2"></script>
+<script src="js/expedition/story.js?v=20261020-xp2"></script><script src="js/expedition/story_dialogue.js?v=20261020-xp2"></script><script src="js/expedition/story_combat.js?v=20261020-xp2"></script><script src="js/expedition/story_companions.js?v=20261020-xp2"></script><script src="js/expedition/story_presentation.js?v=20261020-xp2"></script><script src="js/expedition/story_art.js?v=20261020-xp2"></script><script src="js/expedition/story_stage.js?v=20261020-xp2"></script><script src="js/expedition/story_backdrop.js?v=20261020-xp2"></script><script src="js/expedition/story_companion_ui.js?v=20261020-xp2"></script><script src="docs/story_preview.js?v=20261020-xp2"></script>
 </body></html>
