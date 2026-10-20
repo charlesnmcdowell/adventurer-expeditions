@@ -7,7 +7,7 @@ S.Stage={
 // cropping), not the source image. Architecture, water and sky are not floor.
 groundProfiles:{
   lanternhold:[[0,560],[1280,560]],griffon:[[0,530],[640,500],[1280,540]],
-  shore:[[0,560],[400,540],[850,510],[1280,565]],open_hand:[[0,610],[1280,610]],
+  shore:[[0,560],[400,540],[850,510],[1280,565]],open_hand:[[0,450],[1280,450]],
   dunmere:[[0,520],[1280,520]],ford:[[0,515],[1280,515]],
   gnoll_fort:[[0,550],[280,530],[500,540],[800,580],[1000,635],[1280,700]],
   dunmere_mine:[[0,540],[1280,540]],black_altar:[[0,570],[1280,570]],
@@ -23,6 +23,7 @@ groundProfiles:{
 },
 // Edition-owned combat adaptation. Dialogue keeps the original painting.
 files:{nine_lanterns:'assets/expedition/story/stages/nine-lanterns-combat-20261015.webp',
+  open_hand:'assets/expedition/story/stages/open-hand-combat-20261020.webp',
   dunmere_mine:'assets/expedition/story/stages/dunmere-mine-combat.webp',
   dunmere:'assets/expedition/story/stages/dunmere-combat-20261011.webp',
   ford:'assets/expedition/story/stages/ford-combat-20261011.webp',
@@ -30,6 +31,9 @@ files:{nine_lanterns:'assets/expedition/story/stages/nine-lanterns-combat-202610
 // These combat compositions have different landmarks from the dialogue plates.
 // Keep water behind the bank and attach smoke/cloth/lights to their new positions.
 profiles:{
+  open_hand:{lights:[[.520,.279],[.707,.166],[.768,.254],[.117,.432],[.218,.437],[.321,.442]],
+    fires:[[.093,.150,.014,.035],[.126,.155,.014,.037],[.394,.161,.012,.030]],
+    cloth:[[.820,.040,.051,.246],[.385,.040,.048,.057]],sky:[[.16,.003,.20,.075]],dust:true},
   nine_lanterns:{lights:[[.223,.313],[.285,.320],[.335,.326],[.385,.331],[.431,.336],[.480,.341],[.526,.345],[.572,.348],[.614,.351],[.656,.358]],cloth:[[.796,.358,.04,.13]],water:[[.90,.56,.10,.06]],sky:[[.81,.003,.18,.16]],dust:true},
   cliffs:{sky:[[.01,.005,.52,.30]],cloth:[[.69,.12,.085,.13]],mist:.59,birds:true},
   sewers:{lights:[[.125,.13],[.204,.20],[.679,.40],[.91,.33]],water:[[.13,.54,.78,.06]],falls:[[.151,.29,.019,.23],[.21,.37,.018,.17],[.88,.46,.025,.09]],mist:.59},
@@ -55,7 +59,9 @@ paint(scene,id,key,phase){
   const base=(!combat?null:this.profiles[id])||A.GateAmbience.environments[id];
   const profile=id==='morrak_realm'?{...base,flameTone:'blue'}:base;
   const source=scene.textures.get(key).getSourceImage(),sw=source.width,sh=source.height;
-  const scale=Math.max(1280/sw,760/sh),root=scene.add.container(0,0).setDepth(-10);
+  // Dialogue shows the complete painting. Combat still fills its authored
+  // arena, whose walkable boundaries are measured in this fixed viewport.
+  const scale=(combat?Math.max:Math.min)(1280/sw,760/sh),root=scene.add.container(0,0).setDepth(-10);
   const bg=scene.add.image(640,380,key).setScale(scale);root.add(bg);root.background=bg;
   const ambience=A.GateAmbience.attach(scene,root,bg,profile);
   // A technical crop of existing pixels, not a new painted floor. Feathering
@@ -78,7 +84,7 @@ paint(scene,id,key,phase){
   let elapsed=0;const tick=(t,dt)=>{
     if(scene.paused||scene.time.paused)return;
     elapsed+=Math.min(dt,50)*scene.time.timeScale;
-    bg.x=640+Math.sin(elapsed/13000)*2+(scene.cameras.main.scrollX||0)*.035;
+    if(combat)bg.x=640+Math.sin(elapsed/13000)*2+(scene.cameras.main.scrollX||0)*.035;
     ambience?.update(t,Math.min(dt,50)*scene.time.timeScale);
   };
   scene.events.on('update',tick);scene.events.once('shutdown',()=>{scene.events.off('update',tick);root.destroy(true);});

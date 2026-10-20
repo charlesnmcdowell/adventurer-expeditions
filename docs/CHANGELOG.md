@@ -15,6 +15,15 @@ of small fixes within a day.
 
 ---
 
+## 2026-10-20 — Open Hand courtyard and full cutscene framing
+
+- **Battle ground:** the Chapter 2 inn fight reused `environment_open_hand.webp`, whose stairs crossed the combat plane and made stationary fighters look suspended. Added the edition-only `assets/expedition/story/stages/open-hand-combat-20261020.webp`: **1280×760, 418,822 bytes**. The same inn, stable, banners, dusk and lamps remain; steps and objects are behind a continuous cobbled fighting surface. The walkable boundary changes **y=610 → 450** so rear ranks can occupy the painted courtyard at their existing perspective scale. No actor atlas, native height, combat rule or original-game file changed.
+- **Layers:** retained distance → animated scenery/weather → fixed hero ground. Registered lanterns, tower fires, banners and sky to the new composition. Dialogue still uses the unedited original painting and its original effect anchors.
+- **Cutscenes:** there were two crops: a source-to-stage `Math.max` cover scale and Phaser `ENVELOP` against the browser window. Story stills and dialogue environments now use uniform **contain** scale and **FIT**, with the canvas/camera matched to the painting's aspect ratio so there is only the necessary outer letterboxing. No stretching or regenerated cutscene art. Dialogue backgrounds no longer drift their image edges outside that frame; authored atmospheric motion remains. Inn/travel reset to their 1280×760 stage. The loading fallback also uses contain with no enlargement animation.
+- **Source/provenance:** built-in image generation edited the imported Open Hand reference. PNG master and prompt/reference record are in the sibling `adventurer-expeditions-source-art/astra-v12/open-hand-ground-20261020/`; `tools/build_open_hand_stage.py` encodes the runtime WebP and writes source/runtime hashes plus prompt to `docs/art/open-hand-ground-20261020.json`.
+- **Verification:** `npm test` and `npm run test:story` pass. `test/browser_story_framing.js` checks full-image bounds and original landmarks for **51 original paintings**, plus the bounty still, finale still and Open Hand environment at **1910×840, 1280×760, 390×844 and 844×390**. The real Chapter 2 fight uses Santiago and Winston, checks feet and melee traversal inside the floor, three layers, camera zoom 1 and desktop/phone renders. Inn/travel camera transitions are included. No missing assets or browser errors. Screenshots/report: `test/reports/story-framing/`. Visual review remains available to the player.
+- **Files:** `js/expedition/{story_stage,story_backdrop}.js`, `tools/story_preview.template.html`, the new WebP/intake tool/provenance record/browser test, generated preview pages/cache stamp, GDD and this log. Preserved the other session's full-company seating change and encounter-loop fix. Checkpoint before edits: `a2343bd`; that session's completion is `b45b3db`. No export, upload or publication.
+
 ## 2026-10-20 — A full company makes room on its own
 
 Hiro: automatically send the oldest character back to the inn when the party is full.

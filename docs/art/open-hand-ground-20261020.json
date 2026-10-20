@@ -1,0 +1,19 @@
+{
+  "date": "2026-10-20",
+  "tool": "built-in image_gen",
+  "use": "precise-object-edit",
+  "prompt": "Use case: precise-object-edit. Asset: Adventurer Expeditions dedicated combat background, landscape 1280x760 composition. Input image is the EDIT TARGET and style/lighting reference: Open Hand inn courtyard at dusk. Preserve the distinctive timber-and-stone inn on the right, arched double wooden door, green tree-and-sword banners, warm amber lanterns, stable and horses on the left, blue-violet dusk sky, distant mountain fortress and viaduct. Same polished detailed anime cel-shaded painted finish. Recompose the scene for a side-view RPG combat arena. Critical change: move the entrance steps, barrels, benches, stable posts and all obstacles BACK, entirely into the upper 58 percent of the image. Replace the whole lower 42 percent with one broad continuous EMPTY FLAT cobblestone courtyard across the full width; no staircase, raised platform, ledge, slope, objects, railing, plants or gap in this fighting surface. The courtyard must read as level ground with gentle perspective and subtle warm reflected lamplight, suitable for fighters standing at different depths around y=520 to710 in a1280x760 canvas. Keep the architecture naturally proportioned further away, leaving generous open floor foreground. The lowest entrance step ends behind the rear combat line, no steps beneath fighter feet. Do not put characters, monsters, UI, text or labels in this painting. Keep image wide at aspect ratio 32:19. Fully opaque background.",
+  "reference": "adventurer-expeditions/assets/expedition/story/media/assets/anime/gate/v1/runtime/environment_open_hand.webp",
+  "master": "open-hand-courtyard.png",
+  "file": "assets/expedition/story/stages/open-hand-combat-20261020.webp",
+  "width": 1280,
+  "height": 760,
+  "sourceSha256": "c0b1e25d77333fbd39d5be1b3223451b9b39ddaa425d82545790ecaf251e5c3e",
+  "sha256": "dac38fbe11e5c53b55984988243c6c15a56237e1fc7d84390cc99ce7591d94e5",
+  "bytes": 418822,
+  "walkableY": [
+    450,
+    710
+  ],
+  "note": "Combat only; original dialogue painting remains unchanged."
+}

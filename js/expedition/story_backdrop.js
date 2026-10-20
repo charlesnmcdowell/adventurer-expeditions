@@ -16,7 +16,10 @@ S.Backdrop=function(parent,onReady){
       if(!this.textures.exists(this.artKey))this.load.image(this.artKey,S.Presentation.media(art.file));}
     create(){
       const {kind,id,phase}=this.spec;
-      this.scale.scaleMode=kind==='travel'?Phaser.Scale.FIT:Phaser.Scale.ENVELOP;this.scale.displaySize.setAspectMode(this.scale.scaleMode);this.scale.refresh();
+      // Preserve the entire canvas on wide screens and phones. ENVELOP clipped
+      // it a second time after the painting had already been cover-cropped.
+      this.scale.scaleMode=Phaser.Scale.FIT;this.scale.displaySize.setAspectMode(this.scale.scaleMode);this.scale.refresh();
+      this.scale.setGameSize(1280,760);this.cameras.main.setViewport(0,0,1280,760).setScroll(0,0);
       if(kind==='travel'){
         const X=A.Expedition;
         if(!X.Painted.require(this,['hiro']))return;
@@ -33,9 +36,17 @@ S.Backdrop=function(parent,onReady){
       else if(kind==='environments')this.art=S.Stage.paint(this,id,this.artKey,phase||'day');
       else{
         const source=this.textures.get(this.artKey).getSourceImage(),root=this.add.container(0,0);
-        root.background=this.add.image(640,380,this.artKey).setScale(Math.max(1280/source.width,760/source.height));root.add(root.background);
+        root.background=this.add.image(640,380,this.artKey).setScale(Math.min(1280/source.width,760/source.height));root.add(root.background);
         A.GateAmbience.attach(this,root,root.background,A.GateAmbience.stills[id]);this.art=root;
         this.events.once('shutdown',()=>root.destroy(true));
+      }
+      // Match the canvas to this painting's aspect ratio as well. Otherwise a
+      // 2:1 still would get bars inside the 1280x760 canvas AND outside it.
+      // Camera framing preserves the original world coordinates of every lamp,
+      // water strip and cloth effect; travel/inn keep their authored stage.
+      if(kind==='stills'||kind==='environments'){
+        const b=this.art.background.getBounds(),w=Math.round(b.width),h=Math.round(b.height);
+        this.scale.setGameSize(w,h);this.cameras.main.setViewport(0,0,w,h).setScroll(b.x,b.y);
       }
       this.events.once('shutdown',()=>{this.art=null;});
       onReady?.(this.spec);if(paused)game.loop.sleep();
@@ -44,7 +55,7 @@ S.Backdrop=function(parent,onReady){
   }
   game=new Phaser.Game({type:Phaser.AUTO,width:1280,height:760,parent,
     backgroundColor:'#090d18',audio:{noAudio:true},input:{keyboard:false,mouse:false,touch:false},
-    scale:{mode:Phaser.Scale.ENVELOP,autoCenter:Phaser.Scale.CENTER_BOTH},scene:[Backdrop]});
+    scale:{mode:Phaser.Scale.FIT,autoCenter:Phaser.Scale.CENTER_BOTH},scene:[Backdrop]});
   const api={game,
     show(spec){if(!spec)return;wanted={...spec};
       if(scene?.sys.isActive()&&identity(scene.spec)!==identity(wanted))scene.scene.restart(wanted);},
